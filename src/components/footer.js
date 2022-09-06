@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const footer = () => {
     return (
         <div className="footer">
@@ -34,7 +36,7 @@ const footer = () => {
                         <div className="footer-head"><h3>Support</h3></div>
                         <div>
                             <ul className="footer_ul">
-                                <li><a href="/">Help & Support</a></li>
+                                <li><Link to="/help-support">Help & Support</Link></li>
                                 <li><a href="/">Trust & Safety</a></li>
                                 <li><a href="/">Selling on Unify</a></li>
                                 <li><a href="/">Buying on Unify</a></li>

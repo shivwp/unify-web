@@ -1,15 +1,15 @@
-import NavbarHeader from "./navbar";
+import Navbarlogin from "./navbarlogin";
 import Container from 'react-bootstrap/Container';
 import { Col, Row } from 'react-bootstrap';
 import Footer from './footer';
 import Title from './title';
 
 
-const category = () => {
+const Category = () => {
     Title(" | category");
     return (
         <>
-            <NavbarHeader />
+            <Navbarlogin />
             <Container>
                 <div className="s_nav_body">
                     <div className="s_b_head panel_pag"><h3><span>Categories</span> / Sales & Marketing</h3></div>
@@ -128,4 +128,4 @@ const category = () => {
         </>
     )
 }
-export default category
+export default Category

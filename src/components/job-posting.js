@@ -19,7 +19,7 @@ const JobPosting = () => {
                                 <label htmlFor="r_1"> <p>Create a new job post.</p></label>
                             </div>
                             <Row>
-                                <Col md={5} sm={6}>
+                                <Col md={6} sm={6}>
                                     <div className="select_card">
                                         <div className="sel_icon">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-tools" viewBox="0 0 16 16">
@@ -31,7 +31,7 @@ const JobPosting = () => {
                                         <div className="sm_seds">Less than 3 months</div>
                                     </div>
                                 </Col>
-                                <Col md={5} sm={6}>
+                                <Col md={6} sm={6}>
                                     <div className="select_card">
                                         <div className="sel_icon">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-calendar-event" viewBox="0 0 16 16">
@@ -54,7 +54,7 @@ const JobPosting = () => {
                                 <label htmlFor="r_3"> <p>Reuse a previous job pst</p></label>
                             </div>
                             <div className="s_select">
-                                <select>
+                                <select className='carrt_css_select'>
                                     <option>HubSpot Automations - Work flow</option>
                                 </select>
                             </div>

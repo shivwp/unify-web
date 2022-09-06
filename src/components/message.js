@@ -49,8 +49,6 @@ const Screen = () => {
                             <ul className="activite_ul">
                                 <li><div className='au_name'>Proposals</div> : <span>Less than 5</span></li>
                                 <li><div className='au_name'>interviewing</div> : <span>0</span></li>
-                                <li><div className='au_name'>invites sents</div> : <span>0</span></li>
-                                <li><div className='au_name'>unanswered invites</div> : <span>0</span></li>
                             </ul>
                         </div>
                         <div className="b_bot_inp pt-0">

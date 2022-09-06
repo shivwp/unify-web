@@ -2,12 +2,12 @@ import Container from 'react-bootstrap/Container';
 import { Row, Col } from 'react-bootstrap';
 import star from '../icons/star.svg';
 
-const jobPortal = () => {
+const JobPortal = () => {
     return (
         <>
             <Container className="mt-5">
                 <Row>
-                    <Col lg={6}><div className="jp_h3_no"><h3>HRM Recruitment Center</h3></div></Col>
+                    <Col lg={6}><div className="jp_h3_no"><h3 className="f-ffive">HRM Recruitment Center</h3></div></Col>
                     <Col lg={6}>
                         <div className='jp_btn_m_no'>
                             <button>Browse Project Catelog</button>
@@ -15,7 +15,7 @@ const jobPortal = () => {
                         </div>
                     </Col>
                 </Row>
-                <Row>
+                <Row className="mt-4">
                     <Col lg={8}>
                         <div className="s_nav_body mt-4 s_trans_bos">
                             <div className="d-flex justify-content-between snb_heading kwxnow">
@@ -237,4 +237,4 @@ const jobPortal = () => {
         </>
     )
 }
-export default jobPortal
+export default JobPortal

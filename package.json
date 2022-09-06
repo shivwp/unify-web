@@ -10,9 +10,13 @@
     "jquery": "^3.6.0",
     "react": "^18.2.0",
     "react-bootstrap": "^2.5.0",
+    "react-custom-checkbox": "^2.0.2",
+    "react-datepicker": "^4.8.0",
     "react-dom": "^18.2.0",
+    "react-icons": "^4.4.0",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
+    "react-select": "^5.4.0",
     "react-switch": "^7.0.0",
     "swiper": "^8.3.2",
     "web-vitals": "^2.1.4"

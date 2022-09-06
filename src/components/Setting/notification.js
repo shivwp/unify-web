@@ -3,6 +3,9 @@ import { Row, Col } from 'react-bootstrap';
 import SideNav from './site_nav';
 import Title from '../title'
 import '../job.css'
+import Checkbox from "react-custom-checkbox";
+import * as Icon from "react-icons/fi";
+
 
 const Screen = () => {
     Title(' | Setting - Notification Setting')
@@ -22,20 +25,88 @@ const Screen = () => {
                                 </div>
                                 <div>
                                     <div className='d-flex justify-content-between flex-wrap'>
-                                        <div className='inp_w_haf'><input type="checkbox" />A job is posted or modified</div>
-                                        <div className='inp_w_haf'><input type="checkbox" />A job is posted or modified</div>
+                                        <div className='inp_w_haf'>
+                                            <Checkbox
+                                                icon={<Icon.FiCheck color="#6D2EF1" size={14} />}
+                                                name="my-input"
+                                                borderRadius={0}
+                                                borderWidth={1}
+                                                checked={true}
+                                                borderColor="#6D2EF1"
+                                                style={{ cursor: "pointer" }}
+                                            />
+                                            A job is posted or modified</div>
+                                        <div className='inp_w_haf'>
+                                        <Checkbox
+                                                icon={<Icon.FiCheck color="#6D2EF1" size={14} />}
+                                                name="my-input"
+                                                borderRadius={0}
+                                                checked={true}
+                                                borderWidth={1}
+                                                borderColor="#6D2EF1"
+                                                style={{ cursor: "pointer" }}
+                                            />
+                                            A job is posted or modified</div>
                                     </div>
                                     <div className='d-flex justify-content-between flex-wrap'>
-                                        <div className='inp_w_haf'><input type="checkbox" />A job is posted or modified</div>
-                                        <div className='inp_w_haf'><input type="checkbox" />A job is posted or modified</div>
+                                        <div className='inp_w_haf'>                                            <Checkbox
+                                                icon={<Icon.FiCheck color="#6D2EF1" size={14} />}
+                                                name="my-input"
+                                                borderRadius={0}
+                                                checked={true}
+                                                borderWidth={1}
+                                                borderColor="#6D2EF1"
+                                                style={{ cursor: "pointer" }}
+                                            />A job is posted or modified</div>
+                                        <div className='inp_w_haf'>                                            <Checkbox
+                                                icon={<Icon.FiCheck color="#6D2EF1" size={14} />}
+                                                name="my-input"
+                                                borderRadius={0}
+                                                checked={true}
+                                                borderWidth={1}
+                                                borderColor="#6D2EF1"
+                                                style={{ cursor: "pointer" }}
+                                            />A job is posted or modified</div>
                                     </div>
                                     <div className='d-flex justify-content-between flex-wrap'>
-                                        <div className='inp_w_haf'><input type="checkbox" />A job is posted or modified</div>
-                                        <div className='inp_w_haf'><input type="checkbox" />A job is posted or modified</div>
+                                        <div className='inp_w_haf'>                                            <Checkbox
+                                                icon={<Icon.FiCheck color="#6D2EF1" size={14} />}
+                                                name="my-input"
+                                                borderRadius={0}
+                                                checked={true}
+                                                borderWidth={1}
+                                                borderColor="#6D2EF1"
+                                                style={{ cursor: "pointer" }}
+                                            />A job is posted or modified</div>
+                                        <div className='inp_w_haf'>                                            <Checkbox
+                                                icon={<Icon.FiCheck color="#6D2EF1" size={14} />}
+                                                name="my-input"
+                                                borderRadius={0}
+                                                checked={true}
+                                                borderWidth={1}
+                                                borderColor="#6D2EF1"
+                                                style={{ cursor: "pointer" }}
+                                            />A job is posted or modified</div>
                                     </div>
                                     <div className='d-flex justify-content-between flex-wrap'>
-                                        <div className='inp_w_haf'><input type="checkbox" />A job is posted or modified</div>
-                                        <div className='inp_w_haf'><input type="checkbox" />A job is posted or modified</div>
+                                        <div className='inp_w_haf'>                                            <Checkbox
+                                                icon={<Icon.FiCheck color="#6D2EF1" size={14} />}
+                                                name="my-input"
+                                                borderRadius={0}
+                                                checked={true}
+                                                borderWidth={1}
+                                                borderColor="#6D2EF1"
+                                                style={{ cursor: "pointer" }}
+                                            />A job is posted or modified</div>
+                                        <div className='inp_w_haf'>                                            <Checkbox
+                                                icon={<Icon.FiCheck color="#6D2EF1" size={14} />}
+                                                name="my-input"
+                                                borderRadius={0}
+                                                checked={true}
+                                                borderWidth={1}
+                                                borderColor="#6D2EF1"
+                                                style={{ cursor: "pointer" }}
+                                            />A job is posted or modified</div>
                                     </div>
                                 </div>
                             </div>
@@ -47,20 +118,84 @@ const Screen = () => {
                                 </div>
                                 <div>
                                     <div className='d-flex justify-content-between flex-wrap'>
-                                        <div className='inp_w_haf'><input type="checkbox" />A job is posted or modified</div>
-                                        <div className='inp_w_haf'><input type="checkbox" />A job is posted or modified</div>
+                                        <div className='inp_w_haf'>                                            <Checkbox
+                                                icon={<Icon.FiCheck color="#6D2EF1" size={14} />}
+                                                name="my-input"
+                                                borderRadius={0}
+                                                checked={true}
+                                                borderWidth={1}
+                                                borderColor="#6D2EF1"
+                                                style={{ cursor: "pointer" }}
+                                            />A job is posted or modified</div>
+                                        <div className='inp_w_haf'>                                            <Checkbox
+                                                icon={<Icon.FiCheck color="#6D2EF1" size={14} />}
+                                                name="my-input"
+                                                borderRadius={0}
+                                                checked={true}
+                                                borderWidth={1}
+                                                borderColor="#6D2EF1"
+                                                style={{ cursor: "pointer" }}
+                                            />A job is posted or modified</div>
                                     </div>
                                     <div className='d-flex justify-content-between flex-wrap'>
-                                        <div className='inp_w_haf'><input type="checkbox" />A job is posted or modified</div>
-                                        <div className='inp_w_haf'><input type="checkbox" />A job is posted or modified</div>
+                                        <div className='inp_w_haf'>                                            <Checkbox
+                                                icon={<Icon.FiCheck color="#6D2EF1" size={14} />}
+                                                name="my-input"
+                                                borderRadius={0}
+                                                checked={true}
+                                                borderWidth={1}
+                                                borderColor="#6D2EF1"
+                                                style={{ cursor: "pointer" }}
+                                            />A job is posted or modified</div>
+                                        <div className='inp_w_haf'>                                            <Checkbox
+                                                icon={<Icon.FiCheck color="#6D2EF1" size={14} />}
+                                                name="my-input"
+                                                borderRadius={0}
+                                                checked={true}
+                                                borderWidth={1}
+                                                borderColor="#6D2EF1"
+                                                style={{ cursor: "pointer" }}
+                                            />A job is posted or modified</div>
                                     </div>
                                     <div className='d-flex justify-content-between flex-wrap'>
-                                        <div className='inp_w_haf'><input type="checkbox" />A job is posted or modified</div>
-                                        <div className='inp_w_haf'><input type="checkbox" />A job is posted or modified</div>
+                                        <div className='inp_w_haf'>                                            <Checkbox
+                                                icon={<Icon.FiCheck color="#6D2EF1" size={14} />}
+                                                name="my-input"
+                                                borderRadius={0}
+                                                checked={true}
+                                                borderWidth={1}
+                                                borderColor="#6D2EF1"
+                                                style={{ cursor: "pointer" }}
+                                            />A job is posted or modified</div>
+                                        <div className='inp_w_haf'>                                            <Checkbox
+                                                icon={<Icon.FiCheck color="#6D2EF1" size={14} />}
+                                                name="my-input"
+                                                borderRadius={0}
+                                                checked={true}
+                                                borderWidth={1}
+                                                borderColor="#6D2EF1"
+                                                style={{ cursor: "pointer" }}
+                                            />A job is posted or modified</div>
                                     </div>
                                     <div className='d-flex justify-content-between flex-wrap'>
-                                        <div className='inp_w_haf'><input type="checkbox" />A job is posted or modified</div>
-                                        <div className='inp_w_haf'><input type="checkbox" />A job is posted or modified</div>
+                                        <div className='inp_w_haf'>                                            <Checkbox
+                                                icon={<Icon.FiCheck color="#6D2EF1" size={14} />}
+                                                name="my-input"
+                                                borderRadius={0}
+                                                checked={true}
+                                                borderWidth={1}
+                                                borderColor="#6D2EF1"
+                                                style={{ cursor: "pointer" }}
+                                            />A job is posted or modified</div>
+                                        <div className='inp_w_haf'>                                            <Checkbox
+                                                icon={<Icon.FiCheck color="#6D2EF1" size={14} />}
+                                                name="my-input"
+                                                borderRadius={0}
+                                                checked={true}
+                                                borderWidth={1}
+                                                borderColor="#6D2EF1"
+                                                style={{ cursor: "pointer" }}
+                                            />A job is posted or modified</div>
                                     </div>
                                 </div>
                             </div>
@@ -72,20 +207,84 @@ const Screen = () => {
                                 </div>
                                 <div>
                                     <div className='d-flex justify-content-between flex-wrap'>
-                                        <div className='inp_w_haf'><input type="checkbox" />A job is posted or modified</div>
-                                        <div className='inp_w_haf'><input type="checkbox" />A job is posted or modified</div>
+                                        <div className='inp_w_haf'>                                            <Checkbox
+                                                icon={<Icon.FiCheck color="#6D2EF1" size={14} />}
+                                                name="my-input"
+                                                borderRadius={0}
+                                                checked={true}
+                                                borderWidth={1}
+                                                borderColor="#6D2EF1"
+                                                style={{ cursor: "pointer" }}
+                                            />A job is posted or modified</div>
+                                        <div className='inp_w_haf'>                                            <Checkbox
+                                                icon={<Icon.FiCheck color="#6D2EF1" size={14} />}
+                                                name="my-input"
+                                                borderRadius={0}
+                                                checked={true}
+                                                borderWidth={1}
+                                                borderColor="#6D2EF1"
+                                                style={{ cursor: "pointer" }}
+                                            />A job is posted or modified</div>
                                     </div>
                                     <div className='d-flex justify-content-between flex-wrap'>
-                                        <div className='inp_w_haf'><input type="checkbox" />A job is posted or modified</div>
-                                        <div className='inp_w_haf'><input type="checkbox" />A job is posted or modified</div>
+                                        <div className='inp_w_haf'>                                            <Checkbox
+                                                icon={<Icon.FiCheck color="#6D2EF1" size={14} />}
+                                                name="my-input"
+                                                borderRadius={0}
+                                                checked={true}
+                                                borderWidth={1}
+                                                borderColor="#6D2EF1"
+                                                style={{ cursor: "pointer" }}
+                                            />A job is posted or modified</div>
+                                        <div className='inp_w_haf'>                                            <Checkbox
+                                                icon={<Icon.FiCheck color="#6D2EF1" size={14} />}
+                                                name="my-input"
+                                                borderRadius={0}
+                                                checked={true}
+                                                borderWidth={1}
+                                                borderColor="#6D2EF1"
+                                                style={{ cursor: "pointer" }}
+                                            />A job is posted or modified</div>
                                     </div>
                                     <div className='d-flex justify-content-between flex-wrap'>
-                                        <div className='inp_w_haf'><input type="checkbox" />A job is posted or modified</div>
-                                        <div className='inp_w_haf'><input type="checkbox" />A job is posted or modified</div>
+                                        <div className='inp_w_haf'>                                            <Checkbox
+                                                icon={<Icon.FiCheck color="#6D2EF1" size={14} />}
+                                                name="my-input"
+                                                borderRadius={0}
+                                                checked={true}
+                                                borderWidth={1}
+                                                borderColor="#6D2EF1"
+                                                style={{ cursor: "pointer" }}
+                                            />A job is posted or modified</div>
+                                        <div className='inp_w_haf'>                                            <Checkbox
+                                                icon={<Icon.FiCheck color="#6D2EF1" size={14} />}
+                                                name="my-input"
+                                                borderRadius={0}
+                                                checked={true}
+                                                borderWidth={1}
+                                                borderColor="#6D2EF1"
+                                                style={{ cursor: "pointer" }}
+                                            />A job is posted or modified</div>
                                     </div>
                                     <div className='d-flex justify-content-between flex-wrap'>
-                                        <div className='inp_w_haf'><input type="checkbox" />A job is posted or modified</div>
-                                        <div className='inp_w_haf'><input type="checkbox" />A job is posted or modified</div>
+                                        <div className='inp_w_haf'>                                            <Checkbox
+                                                icon={<Icon.FiCheck color="#6D2EF1" size={14} />}
+                                                name="my-input"
+                                                borderRadius={0}
+                                                checked={true}
+                                                borderWidth={1}
+                                                borderColor="#6D2EF1"
+                                                style={{ cursor: "pointer" }}
+                                            />A job is posted or modified</div>
+                                        <div className='inp_w_haf'>                                            <Checkbox
+                                                icon={<Icon.FiCheck color="#6D2EF1" size={14} />}
+                                                name="my-input"
+                                                borderRadius={0}
+                                                checked={true}
+                                                borderWidth={1}
+                                                borderColor="#6D2EF1"
+                                                style={{ cursor: "pointer" }}
+                                            />A job is posted or modified</div>
                                     </div>
                                 </div>
                             </div>
@@ -97,20 +296,84 @@ const Screen = () => {
                                 </div>
                                 <div>
                                     <div className='d-flex justify-content-between flex-wrap'>
-                                        <div className='inp_w_haf'><input type="checkbox" />A job is posted or modified</div>
-                                        <div className='inp_w_haf'><input type="checkbox" />A job is posted or modified</div>
+                                        <div className='inp_w_haf'>                                            <Checkbox
+                                                icon={<Icon.FiCheck color="#6D2EF1" size={14} />}
+                                                name="my-input"
+                                                borderRadius={0}
+                                                checked={true}
+                                                borderWidth={1}
+                                                borderColor="#6D2EF1"
+                                                style={{ cursor: "pointer" }}
+                                            />A job is posted or modified</div>
+                                        <div className='inp_w_haf'>                                            <Checkbox
+                                                icon={<Icon.FiCheck color="#6D2EF1" size={14} />}
+                                                name="my-input"
+                                                borderRadius={0}
+                                                checked={true}
+                                                borderWidth={1}
+                                                borderColor="#6D2EF1"
+                                                style={{ cursor: "pointer" }}
+                                            />A job is posted or modified</div>
                                     </div>
                                     <div className='d-flex justify-content-between flex-wrap'>
-                                        <div className='inp_w_haf'><input type="checkbox" />A job is posted or modified</div>
-                                        <div className='inp_w_haf'><input type="checkbox" />A job is posted or modified</div>
+                                        <div className='inp_w_haf'>                                            <Checkbox
+                                                icon={<Icon.FiCheck color="#6D2EF1" size={14} />}
+                                                name="my-input"
+                                                borderRadius={0}
+                                                checked={true}
+                                                borderWidth={1}
+                                                borderColor="#6D2EF1"
+                                                style={{ cursor: "pointer" }}
+                                            />A job is posted or modified</div>
+                                        <div className='inp_w_haf'>                                            <Checkbox
+                                                icon={<Icon.FiCheck color="#6D2EF1" size={14} />}
+                                                name="my-input"
+                                                borderRadius={0}
+                                                checked={true}
+                                                borderWidth={1}
+                                                borderColor="#6D2EF1"
+                                                style={{ cursor: "pointer" }}
+                                            />A job is posted or modified</div>
                                     </div>
                                     <div className='d-flex justify-content-between flex-wrap'>
-                                        <div className='inp_w_haf'><input type="checkbox" />A job is posted or modified</div>
-                                        <div className='inp_w_haf'><input type="checkbox" />A job is posted or modified</div>
+                                        <div className='inp_w_haf'>                                            <Checkbox
+                                                icon={<Icon.FiCheck color="#6D2EF1" size={14} />}
+                                                name="my-input"
+                                                borderRadius={0}
+                                                checked={true}
+                                                borderWidth={1}
+                                                borderColor="#6D2EF1"
+                                                style={{ cursor: "pointer" }}
+                                            />A job is posted or modified</div>
+                                        <div className='inp_w_haf'>                                            <Checkbox
+                                                icon={<Icon.FiCheck color="#6D2EF1" size={14} />}
+                                                name="my-input"
+                                                borderRadius={0}
+                                                checked={true}
+                                                borderWidth={1}
+                                                borderColor="#6D2EF1"
+                                                style={{ cursor: "pointer" }}
+                                            />A job is posted or modified</div>
                                     </div>
                                     <div className='d-flex justify-content-between flex-wrap'>
-                                        <div className='inp_w_haf'><input type="checkbox" />A job is posted or modified</div>
-                                        <div className='inp_w_haf'><input type="checkbox" />A job is posted or modified</div>
+                                        <div className='inp_w_haf'>                                            <Checkbox
+                                                icon={<Icon.FiCheck color="#6D2EF1" size={14} />}
+                                                name="my-input"
+                                                borderRadius={0}
+                                                checked={true}
+                                                borderWidth={1}
+                                                borderColor="#6D2EF1"
+                                                style={{ cursor: "pointer" }}
+                                            />A job is posted or modified</div>
+                                        <div className='inp_w_haf'>                                            <Checkbox
+                                                icon={<Icon.FiCheck color="#6D2EF1" size={14} />}
+                                                name="my-input"
+                                                borderRadius={0}
+                                                checked={true}
+                                                borderWidth={1}
+                                                borderColor="#6D2EF1"
+                                                style={{ cursor: "pointer" }}
+                                            />A job is posted or modified</div>
                                     </div>
                                 </div>
                             </div>
@@ -122,7 +385,15 @@ const Screen = () => {
                                 </div>
                                 <div>
                                     <div className='d-flex justify-content-between flex-wrap'>
-                                        <div className='inp_w_haf'><input type="checkbox" />Subscription related event occur</div>
+                                        <div className='inp_w_haf'>                                            <Checkbox
+                                                icon={<Icon.FiCheck color="#6D2EF1" size={14} />}
+                                                name="my-input"
+                                                borderRadius={0}
+                                                checked={true}
+                                                borderWidth={1}
+                                                borderColor="#6D2EF1"
+                                                style={{ cursor: "pointer" }}
+                                            />Subscription related event occur</div>
                                     </div>
                                 </div>
                             </div>

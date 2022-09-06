@@ -1,11 +1,11 @@
-import NavbarHeader from "./navbar";
+import NavbarHeader from "./navbarlogin";
 import Container from 'react-bootstrap/Container';
 import { Col, Row } from 'react-bootstrap';
 import Footer from './footer';
 import Title from './title';
 
 
-const bsize = () => {
+const Screen = () => {
     Title(" | Notification");
     return (
         <>
@@ -73,4 +73,4 @@ const bsize = () => {
         </>
     )
 }
-export default bsize
+export default Screen

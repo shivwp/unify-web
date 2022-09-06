@@ -128,7 +128,7 @@ const Screen = () => {
             <Container>
                 <Row>
                     <SideNav />
-                    <Col lg={9}>
+                    <Col lg={9}> 
                         <div className="s_nav_body">
                             <div className="s_b_head no-border"><h2>Members & Permission</h2></div>
                             <div className="r-box_setting">

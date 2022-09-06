@@ -53,6 +53,7 @@ import HelpSupport from './helpsupport'
 import Message from './message'
 import ManagementBoard from './managementb'
 import TransactionHistory from './transactionhistory'
+import Dashboard from './dashboard'
 
 const root = ReactDOM.createRoot(
   document.getElementById("root")
@@ -80,7 +81,7 @@ root.render(
       <Route path="/project-search" element={<ProjectSearch />} />
       <Route path="/project-detail" element={<ProjectDetail />} />
       <Route path="/freelancer-detail" element={<FreelancerDetail />} />
-      <Route path="/dashboard" element={<JobPortal />} />
+      <Route path="/job-portal" element={<JobPortal />} />
       <Route path="/post-description" element={<Description />} />
       <Route path="/job-description" element={<JobDescription />} />
       <Route path="/view-job" element={<ViewJob />} />
@@ -105,6 +106,7 @@ root.render(
       <Route path="/message" element={<Message />} />
       <Route path="/management-board" element={<ManagementBoard />} />
       <Route path="/transaction-history" element={<TransactionHistory />} />
+      <Route path="/dashboard" element={<Dashboard />} />
     </Routes>
   </BrowserRouter>
 );

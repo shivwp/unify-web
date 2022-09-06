@@ -13,10 +13,10 @@ const Budget = () => {
                     <Col lg={9}>
                         <div className="s_nav_body">
                             <div className="s_b_head"><h2>Budget</h2><div className="s_on">Step 5 of 5</div></div>
-                            <Row>
+                            <Row className="mt-3">
                                 <Col md={5} sm={6}>
                                     <label className='form_card_label'>
-                                        <div className="select_card subscription_box_r">
+                                        <div className="select_card subscription_box_r pnew_bud">
                                             <div className="sub_radio"><input type="radio" name="s" /></div>
                                             <div className="sel_icon">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-clock" viewBox="0 0 16 16">
@@ -30,7 +30,7 @@ const Budget = () => {
                                 </Col>
                                 <Col md={5} sm={6}>
                                     <label className='form_card_label'>
-                                        <div className="select_card subscription_box_r">
+                                        <div className="select_card subscription_box_r pnew_bud">
                                             <div className="sub_radio"><input type="radio" name="s" /></div>
                                             <div className="sel_icon">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-ui-checks" viewBox="0 0 16 16">
@@ -44,31 +44,32 @@ const Budget = () => {
                             </Row>
                             <div className="d-flex">
                                 <div className='input_ft'>
-                                    <div className="input_t_lab">From</div>
+                                    <div className="input_t_lab bud_new_l_tex">From</div>
                                     <div className="d-flex">
-                                        <div className='input_from_tlab'>
-                                            <div>$</div>
+                                        <div className='input_from_tlab lign_tex'>
+                                            <div className="d-flex align-items-center">$</div>
                                             <input type="text" value="15" />
                                         </div>
-                                        <div className="input_t_lab input_hour">/hour</div>
+                                        <div className="input_t_lab input_hour lign_tex pl-2">/hour</div>
                                     </div>
                                 </div>
                                 <div className='input_ft'>
-                                    <div className="input_t_lab">To</div>
+                                    <div className="input_t_lab bud_new_l_tex">To</div>
                                     <div className="d-flex">
-                                        <div className='input_from_tlab'>
-                                            <div>$</div>
+                                        <div className='input_from_tlab lign_tex'>
+                                            <div className="d-flex align-items-center">$</div>
                                             <input type="text" value="30" />
                                         </div>
-                                        <div className="input_t_lab input_hour">/hour</div>
+                                        <div className="input_t_lab input_hour lign_tex pl-2">/hour</div>
                                     </div>
                                 </div>
                             </div>
                             <div className="ft_par">This is the average rate for similar projects.</div>
+                            <div className="mt-4 bud_news_para">Professionals tend to charge <span>$15 - $35/hour (USD)</span> for UI/UX design projects like yours. Experts may charge higher rates.</div>
                             <div className="ft_form_linki">Not ready to set an hourly rate?</div>
-                            <div className="btn_foot_sec no-border pt-0 mt-0">
-                                <div className='fo_btn_c'><button>Back</button></div>
-                                <div className='fo_btn_c'><button>Review Job Post</button></div>
+                            <div className="btn_foot_sec flex-wrap no-border mt-2">
+                                <div className='fo_btn_c next_b_btn_c'><button>Back</button></div>
+                                <div className='fo_btn_c next_b_btn_c'><button className="active_btn_blue">Review Job Post</button></div>
                             </div>
                         </div>
                     </Col>

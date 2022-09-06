@@ -12,7 +12,7 @@ const Screen = () => {
     return (
         <>
             <Container>
-                <div className="d-flex justify-content-between flex-wrap align-items-center disc_top_s_ar">
+                <div className="d-flex justify-content-between flex-wrap align-items-center disc_top_s_ar mt-4 mb-4">
                     <div>
                         <div className='disc_head_h1'><h1>Discover</h1></div>
                         <div className='disc_para_h'>Tailored talent matches to help you hire the right person faster</div>

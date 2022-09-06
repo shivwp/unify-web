@@ -1,19 +1,19 @@
-import NavbarHeader from "./navbar";
+import NavbarHeader from "./navbarlogin";
 import Container from 'react-bootstrap/Container';
 import { Col, Row } from 'react-bootstrap';
 import Footer from './footer';
 import Title from './title';
 
 
-const subscriptionplan = () => {
+const Subscriptionplan = () => {
     Title(" | Subscription plan");
     return (
         <>
             <NavbarHeader />
             <Container>
                 <div className="question_box">
-                    <div className="questio_heading no-border blue_lin">
-                        <h1 className="text-center wel_b_headn">Subscription plan</h1>
+                    <div className="questio_heading no-border blue_lin mt-2 mb-2">
+                        <h1 className="text-center font-fiftie">Subscription plan</h1>
                     </div>
                     <Row className="justify-content-center">
                         <Col lg={6} className="sub_col_c">
@@ -63,4 +63,4 @@ const subscriptionplan = () => {
         </>
     )
 }
-export default subscriptionplan
+export default Subscriptionplan

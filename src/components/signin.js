@@ -1,4 +1,5 @@
 import Title from './title';
+import { Link } from "react-router-dom";
 
 const signup = () => {
     Title(" | signin");
@@ -37,7 +38,7 @@ const signup = () => {
                             Continue with Google
                         </button>
                     </div>
-                    <div className='sin_dont_accou'>Don't have an Unify account? <span className='link_don_acc'>Signup</span></div>
+                    <div className='sin_dont_accou'>Don't have an Unify account? <span className='link_don_acc'><Link to="/Signup">Signup</Link></span></div>
                 </div>
             </div>
         </>

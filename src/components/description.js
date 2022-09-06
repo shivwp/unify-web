@@ -1,10 +1,18 @@
 import { Container } from "react-bootstrap"
 import "./job.css";
+import $ from 'jquery';
+import Title from './title';
 
 const Description = () => {
+
+    Title(' | Description')
+    const hanDleSlide = (e) => {
+        $(e.target.nextSibling).slideToggle();
+    }
+    $(".slider_shutter").slideDown();
     return (
         <Container>
-            <div className="main_box_descr">
+            <div className="main_box_descr mbd_n_pd">
                 <div className="top_sec_bb">
                     <div className="ts_h1"><h1>Now just finish and review your job post.</h1></div>
                     <div className="ts_btn"><button>Post Your Job Now</button></div>
@@ -21,16 +29,21 @@ const Description = () => {
                         Include your expectations about the task or deliverable, what you’re looking for in a work relationship, and anything unique about your project, team, or company. Here are several examples that illustrate best practices for effective job posts.
                     </div>
                     <div className="job_t_inp"><textarea></textarea></div>
-                    <div className="sm_label_inp">
-                        <span className="sm_span_icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-info-circle-fill" viewBox="0 0 16 16">
-                                <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z" />
-                            </svg>
-                        </span>
-                        Please add a job description.</div>
+                    <div className="d-flex justify-content-between">
+                        <div className="sm_label_inp">
+                            <span className="sm_span_icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-info-circle-fill" viewBox="0 0 16 16">
+                                    <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z" />
+                                </svg>
+                            </span>
+                            Please add a job description.
+                        </div>
+                        <div className="sm_label_inp text-right">5000 characters left</div>
+                    </div>
+
                     <div className="ts_btn attach_f_btn">
                         <input type="file" />
-                        <button>
+                        <button className="rot_svg_oety">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-paperclip" viewBox="0 0 16 16">
                                 <path d="M4.5 3a2.5 2.5 0 0 1 5 0v9a1.5 1.5 0 0 1-3 0V5a.5.5 0 0 1 1 0v7a.5.5 0 0 0 1 0V3a1.5 1.5 0 1 0-3 0v9a2.5 2.5 0 0 0 5 0V5a.5.5 0 0 1 1 0v7a3.5 3.5 0 1 1-7 0V3z" />
                             </svg>
@@ -103,18 +116,35 @@ const Description = () => {
                         </button>
                     </div>
                 </div>
-                <div className="b_bot_inp">
+                <div className="p-0 flex_slide_ta toggle_shutter" onClick={(e) => hanDleSlide(e)}>
                     <div className="input_t_lab">Screening questions (optional)</div>
-                    <div className="sm_label_inp">Narrow down your candidates</div>
+                    <div className="pr-10">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-chevron-down" viewBox="0 0 16 16">
+                            <path fillRule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
+                        </svg>
+                    </div>
                 </div>
-                <div className="b_bot_inp">
+                <div className='slide_btnss slider_shutter'><div className="sm_label_inp">Narrow down your candidates</div></div>
+                <div className="p-0 flex_slide_ta toggle_shutter" onClick={(e) => hanDleSlide(e)}>
                     <div className="input_t_lab">Advanced preferences (optional)</div>
-                    <div className="sm_label_inp">Hours per week, hire date, and more</div>
+                    <div className="pr-10">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-chevron-down" viewBox="0 0 16 16">
+                            <path fillRule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
+                        </svg>
+                    </div>
                 </div>
-                <div className="b_bot_inp">
+                <div className='slide_btnss slider_shutter'><div className="sm_label_inp">Hours per week, hire date, and more</div></div>
+                
+                <div className="p-0 flex_slide_ta toggle_shutter" onClick={(e) => hanDleSlide(e)}>
                     <div className="input_t_lab">Job post preferences (optional)</div>
-                    <div className="sm_label_inp">Adjust visibility and add coworkers</div>
+                    <div className="pr-10">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-chevron-down" viewBox="0 0 16 16">
+                            <path fillRule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
+                        </svg>
+                    </div>
                 </div>
+                <div className='slide_btnss slider_shutter'><div className="sm_label_inp">Adjust visibility and add coworkers</div></div>
+                
                 <div className="d-flex justify-content-between mt-5 mb-3">
                     <div className="btn_job_back"><button>Back</button></div>
                     <div className="d-flex">

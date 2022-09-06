@@ -18,13 +18,14 @@ const Screen = () => {
                     <input type={`text`} placeholder={`search...`} />
                 </div>
             </div>
+            <div className='sort_by_pa width-inherit d-flex align-items-center color-puple'>2 Archived</div>
             <div className='freelancer_box_in'>
                 <Row>
                     <Col lg={12}>
                         <div className="freelancer_box_area_in">
                             <div className='d-flex justify-content-between'>
                                 <div className='d-flex'>
-                                    <div className='freelancer_img_in_r'>
+                                    <div className='freelancer_img_in_r online_profile'>
                                         <img src="/assets/PRO-2.png" alt='' />
                                     </div>
                                     <div className='freel_det_bin'>
@@ -34,7 +35,7 @@ const Screen = () => {
                                     </div>
                                 </div>
                                 <div className='ts_btn attach_f_btn wid_30_in d-flex'>
-                                    <button>unarchive</button>
+                                    <button className='fw-500'>unarchive</button>
                                 </div>
                             </div>
                             <div className='freelancer_timin d-flex'>

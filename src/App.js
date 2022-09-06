@@ -6,13 +6,13 @@ import Footer from './components/footer';
 
 function App() {
   return (
-    <div>
-      <Slider />
+    <>
+      <Slider nonavbg={true}/>
       <Services />
       <FreelanceWorld />
       <Findfreelance />
       <Footer />
-    </div>
+    </>
   )
 }
 

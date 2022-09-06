@@ -3,14 +3,14 @@ import { Col, Row } from 'react-bootstrap';
 import Title from './title';
 
 const Screen = () => {
-    Title(" | Talent Your Hires");
+    Title(" | Talent BYO");
     return (
         <>
             <Container>
                 <div className="d-flex justify-content-between flex-wrap align-items-center disc_top_s_ar">
                     <div>
-                        <div className='disc_head_h1'><h1>Your Hires</h1></div>
-                        <div className='disc_para_h'>Look up people you've worked with</div>
+                        <div className='disc_head_h1'><h1>BYO Talent</h1></div>
+                        <div className='disc_para_h'>Find talent your company has brought to Unify</div>
                     </div>
                 </div>
                 <Row>
@@ -48,9 +48,8 @@ const Screen = () => {
                 <div className="d_pbtn_as">
                     <div className='disc_para_h'>Already working with freelancers outside of Unify? Simplify things by inviting them to join and use Unify collaboration, time tracking, and payment tools. <a href="#0">See how it works</a></div>
                     <button className="find_tal_btn">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-plus" viewBox="0 0 16 16">
-                            <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
-                        </svg>
+                    <svg fill="#fff" height={20} width={20} class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  css-w2bhrx" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="AddIcon" aria-label="fontSize medium"><path 
+    stroke={`#fff`} d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"></path></svg>
                         Invite Talent</button>
                 </div>
             </Container>

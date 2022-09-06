@@ -29,10 +29,10 @@ const JonComponent = () => {
             <Col lg={12}>
                 <div className="box_vs_m">
                     <div className="d-flex flex-wrap tab_m_nodea">
-                        <button className={`tab_btn_vs w-auto ${TabActive === 'all' ? 'active_bvs' : ''}`} onClick={() => { changeTab("all") }}>All Proposals</button>
-                        <button className={`tab_btn_vs w-auto ${TabActive === 'satisfied' ? 'active_bvs' : ''}`} onClick={() => { changeTab("satisfied") }}>Satisfied</button>
-                        <button className={`tab_btn_vs w-auto ${TabActive === 'message' ? 'active_bvs' : ''}`} onClick={() => { changeTab("message") }}>Messaged</button>
-                        <button className={`tab_btn_vs w-auto ${TabActive === 'archive' ? 'active_bvs' : ''}`} onClick={() => { changeTab("archive") }}>Archived</button>
+                        <button className={`text-capitalize tab_btn_vs w-auto ${TabActive === 'all' ? 'active_bvs' : ''}`} onClick={() => { changeTab("all") }}>All Proposals</button>
+                        <button className={`text-capitalize tab_btn_vs w-auto ${TabActive === 'satisfied' ? 'active_bvs' : ''}`} onClick={() => { changeTab("satisfied") }}>Shortlisted</button>
+                        <button className={`text-capitalize tab_btn_vs w-auto ${TabActive === 'message' ? 'active_bvs' : ''}`} onClick={() => { changeTab("message") }}>Messaged</button>
+                        <button className={`text-capitalize tab_btn_vs w-auto ${TabActive === 'archive' ? 'active_bvs' : ''}`} onClick={() => { changeTab("archive") }}>Archived</button>
                     </div>
                     {Tab}
                 </div>

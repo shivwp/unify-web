@@ -1,14 +1,21 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
-const services = () => {
+import "swiper/css/navigation";
+import {Navigation } from "swiper";
+
+const Services = () => {
     return (
         <div className="services_sec">
             <div className="container">
-                <div className="services_sec_heading"><div className="zero_one zer_to">02</div><h2>Popular professional <br /> services</h2></div>
+                <div className="services_sec_heading"><div className="zero_one zer_to">02</div><h2>Popular  
+                <span className="blue_ater_s blue_ater_h_min"> professional</span> <br /> services</h2></div>
                 <Swiper
+                className='services_swip'
                     spaceBetween={30}
                     slidesPerView={4}
                     loop="true"
+                    modules={[Navigation]}
+                    navigation={true}
                     onSlideChange={() => console.log('slide change')}
                     onSwiper={(swiper) => console.log(swiper)}
                     breakpoints={{
@@ -74,4 +81,4 @@ const services = () => {
         </div>
     );
 }
-export default services;
+export default Services;

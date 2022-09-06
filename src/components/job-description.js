@@ -28,10 +28,10 @@ const titleDescription = () => {
                                 </div>
                             </div>
                             <div className="bl_apra"><p>You may attach to 5 files under 100 mb each.</p></div>
-                            <div className="btn_foot_sec">
-                                <div className='fo_btn_c'><button>Cancel</button></div>
-                                <div className='fo_btn_c'><button>Next</button></div>
-                            </div>
+                    <div className="btn_foot_sec flex-wrap no-border mt-2">
+                        <div className='fo_btn_c next_b_btn_c'><button>Cancel</button></div>
+                        <div className='fo_btn_c next_b_btn_c'><button className="active_btn_blue">Next</button></div>
+                    </div>
                         </div>
                     </Col>
                 </Row>

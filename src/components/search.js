@@ -10,7 +10,7 @@ function ListCard() {
     return (
         <>
             {card.map((person, index) => (
-                <div className='freelancer_box_in b-gr' key={index}>
+                <div className='freelancer_box_in b-gr bg-transparent' key={index}>
                     <Row>
                         <Col lg={12}>
                             <div className="freelancer_box_area_in">
@@ -25,13 +25,17 @@ function ListCard() {
                                             <div className='freelancer_exp_in freelancer_loc_in'>Kharkov, Ukraine</div>
                                         </div>
                                     </div>
-                                    <div className='ts_btn attach_f_btn wid_30_in d-flex'>
-                                        <button className="transp_fil_btn heart_roun_btn btn-hf m-0">
+                                    <div className='d-flex align-items-center'>
+                                        <div>
+                                        <button className="transp_fil_btn heart_roun_btn btn-hf m-0 round_b_btn">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-heart" viewBox="0 0 16 16">
                                                 <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
                                             </svg>
                                         </button>
-                                        <button className="transp_fil_btn blue_btn_smm">Invite To Job</button>
+                                        </div>
+                                        <div className='ts_btn attach_f_btn wid_30_in'>
+                                        <button className="transp_fil_btn blue_btn_smm fw-500">Invite To Job</button>
+                                        </div>
                                     </div>
                                 </div>
                                 <div className='freelancer_timin d-flex'>
@@ -261,7 +265,7 @@ const Project_Search = () => {
                                 </div>
                                 <input type={`text`} placeholder={`Search`} />
                             </div>
-                            <div className='post_job_btn_m in_btn_p_sm'><button>Advanced Search</button></div>
+                            <div className='post_job_btn_m in_btn_p_sm'><button className="fw-500">Advanced Search</button></div>
                         </div>
                         {ListCard()}
                     </Col>
@@ -272,6 +276,8 @@ const Project_Search = () => {
                             <button className='pagi_butt'>3</button>
                             <button className='pagi_butt'>4</button>
                             <button className='pagi_butt'>5</button>
+                            <div className='pagination_dots'>...</div>
+                            <button className='pagi_butt'>10</button>
                         </div>
                     </Col>
                 </Row>

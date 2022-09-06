@@ -4,7 +4,8 @@ const Screen = () => {
     return (
         <>
             <div className='search_area_in'>
-                <div className='select_inp_in'>
+                <div className='select_inp_in d-flex'>
+                <div className='sort_by_pa width-inherit d-flex align-items-center'>Sort By</div>
                     <select>
                         <option>All</option>
                     </select>
@@ -33,15 +34,17 @@ const Screen = () => {
                                         <div className='freelancer_exp_in freelancer_loc_in'>Kharkov, Ukraine</div>
                                     </div>
                                 </div>
-                                <div className='ts_btn attach_f_btn wid_30_in d-flex'>
+                                <div className='d-flex align-items-center'>
                                     <button className="transp_fil_btn heart_roun_btn">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-box-arrow-down" viewBox="0 0 16 16">
                                             <path fillRule="evenodd" d="M3.5 10a.5.5 0 0 1-.5-.5v-8a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 0 0 1h2A1.5 1.5 0 0 0 14 9.5v-8A1.5 1.5 0 0 0 12.5 0h-9A1.5 1.5 0 0 0 2 1.5v8A1.5 1.5 0 0 0 3.5 11h2a.5.5 0 0 0 0-1h-2z" />
                                             <path fillRule="evenodd" d="M7.646 15.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 14.293V5.5a.5.5 0 0 0-1 0v8.793l-2.146-2.147a.5.5 0 0 0-.708.708l3 3z" />
                                         </svg>
                                     </button>
+                                    <div className='ts_btn attach_f_btn wid_30_in d-flex'>
                                     <button className="transp_fil_btn">Message</button>
                                     <button>Hire</button>
+                                    </div>
                                 </div>
                             </div>
                             <div className='freelancer_timin d-flex'>

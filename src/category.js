@@ -1,6 +1,6 @@
 import Category from './components/category';
 
-const categoryScreen = ()=>{
+const CategoryScreen = ()=>{
     return <Category />
 }
-export default categoryScreen
+export default CategoryScreen

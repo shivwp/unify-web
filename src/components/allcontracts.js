@@ -2,7 +2,9 @@ import Container from 'react-bootstrap/Container';
 import { Col, Row } from 'react-bootstrap';
 import Title from './title';
 import { useState } from 'react';
+import Select from 'react-select';
 
+ 
 const Screen = () => {
     Title(" | All Contracts");
     const Filter = () => {
@@ -15,7 +17,7 @@ const Screen = () => {
                                 <div>Contract Start Dates</div>
                                 <div className="reset_link_con"><a href="#0">Reset</a></div>
                             </div>
-                            <div className='select_inp_in filter_select_m flex-wrap d-flex align-items-center w-100'>
+                            <div className='select_inp_in filter_select_m flex-wrap  justify-content-between d-flex align-items-center w-100'>
                                 <div className="inpu_date m-0">
                                     <input type="date" />
                                 </div>
@@ -56,7 +58,7 @@ const Screen = () => {
                                 <div>Contract End Dates</div>
                                 <div className="reset_link_con"><a href="#0">Reset</a></div>
                             </div>
-                            <div className='select_inp_in filter_select_m flex-wrap d-flex align-items-center w-100'>
+                            <div className='select_inp_in filter_select_m  justify-content-between flex-wrap d-flex align-items-center w-100'>
                                 <div className="inpu_date m-0">
                                     <input type="date" />
                                 </div>
@@ -98,6 +100,15 @@ const Screen = () => {
             </div>
         )
     };
+    const options = [
+        { value: 'Start date', label: 'Start date' },
+        { value: 'End date', label: 'End date' },
+        { value: 'Client name', label: 'Client name' },
+        { value: 'Contract name', label: 'Contract name' },
+    ];
+    const optionsne = [
+        { value: 'Descending', label: 'Descending' },
+    ];
     const Jobs = () => {
         return (
             <>
@@ -106,17 +117,16 @@ const Screen = () => {
                     <div className="d-flex justify-content-between align-items-center">
                         <div className="d-flex justify-content-between align-items-center contract_sel">
                             <div className='select_inp_in filter_select_m'>
-                                <select>
-                                    <option>Start date</option>
-                                    <option>End date</option>
-                                    <option>Client name</option>
-                                    <option>Contrcat name</option>
-                                </select>
+                                <Select
+                                    className="custom_css_select"
+                                    options={options}
+                                />
                             </div>
                             <div className='select_inp_in filter_select_m'>
-                                <select>
-                                    <option>Descending</option>
-                                </select>
+                                <Select
+                                    className="custom_css_select"
+                                    options={optionsne}
+                                />
                             </div>
                             <div className='sort_by_pa'>0 toal</div>
                         </div>
@@ -159,12 +169,12 @@ const Screen = () => {
     return (
         <>
             <Container>
-                <div className='flex_m_j_t'>
+                <div className='flex_m_j_t mt-3'>
                     <div className='my_jo_headin'>All Contracts</div>
                 </div>
                 <div className="main_hirefreelancer_bx main_box_descr">
                     <div className='search_area_in'>
-                        <div className='search_input_in search_reel_9_wi'>
+                        <div className='search_input_in search_reel_9_wi mx_eity'>
                             <div className='search_icon_in'>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-search" viewBox="0 0 16 16">
                                     <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
