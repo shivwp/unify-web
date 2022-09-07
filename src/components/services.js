@@ -29,14 +29,14 @@ const Services = () => {
                             spaceBetween: 0,
                         },
                         640: {
-                            slidesPerView: 3,
+                            slidesPerView: 2,
                             spaceBetween: 0,
                         },
                         768: {
-                            slidesPerView: 3,
+                            slidesPerView: 2,
                             spaceBetween: 0,
                         },
-                        1024: {
+                        992: {
                             slidesPerView: 4,
                             spaceBetween: 0,
                         },

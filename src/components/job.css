@@ -225,6 +225,7 @@
     border: none;
     outline: none;
     max-width: 100%;
+    letter-spacing: -0.5px;
     width: auto;
     min-width: 320px;
     font-weight: 500;
@@ -1921,4 +1922,13 @@
     margin: 12px;
     display: flex;
     align-items: center;
+}
+.help_swip .swiper-slide-duplicate-prev .acc_bxo_h{
+    margin-right: 15px !important;
+}
+.help_swip .swiper-slide-active .acc_bxo_h{
+    margin-left: 15px !important;
+}
+.help_swip .acc_bxo_h{
+    min-height: 128px;
 }

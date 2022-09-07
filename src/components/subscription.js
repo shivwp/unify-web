@@ -19,7 +19,7 @@ const Subscriptionplan = () => {
                         <Col lg={6} className="sub_col_c">
                             <label>
                                 <div className="subscription_box_r">
-                                    <div className="sub_radio"><input type="radio" name="s"/></div>
+                                    <div className="sub_radio new_sub_rad"><input type="radio" name="s"/></div>
                                     <div className="sub_sm_tex">BASIC</div>
                                     <div className="sub_pric">$0.00 /month</div>
                                     <ul className="sub_list_ul">
@@ -39,7 +39,7 @@ const Subscriptionplan = () => {
                         <Col lg={6} className="sub_col_c">
                             <label>
                                 <div className="subscription_box_r">
-                                    <div className="sub_radio"><input type="radio"  name="s"/></div>
+                                    <div className="sub_radio new_sub_rad"><input type="radio"  name="s"/></div>
                                     <div className="sub_sm_tex">PLUS</div>
                                     <div className="sub_pric">$50.00/year</div>
                                     <ul className="sub_list_ul">

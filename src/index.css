@@ -350,7 +350,7 @@ body {
 
 .as_used {
   font-size: 20px;
-  line-height: 53px;
+  line-height: 20px;
   color: #180095;
   font-weight: 600;
   font-family: "Poppins";
@@ -497,7 +497,8 @@ body {
   background-size: 70% 100%;
   position: relative;
   background-position: right;
-  z-index: -1;
+  /* z-index: -1; */
+  z-index: 1;
 }
 
 .sp-right-0 {
@@ -607,6 +608,7 @@ body {
   line-height: 18px;
   color: #fff;
   opacity: 40%;
+  margin-top: 10px;
   padding-bottom: 20px;
   font-weight: 300;
   font-family: "Poppins";
@@ -1358,6 +1360,12 @@ body {
   align-items: self-end;
   padding: 15px 0px;
   border-bottom: 1px solid #707070;
+}
+.b-bottom-b{
+  border-bottom: #D4D4D5 solid 1px;
+}
+.stroke-width-2{
+  stroke-width: 2px;
 }
 
 .comp_name_p {
@@ -2665,6 +2673,12 @@ body {
   width: 100%;
 }
 
+@media only screen and (max-width:1024px) {
+  .service_icon img{
+    height: 90%;
+  }
+}
+
 @media only screen and (max-width:570px) {
   .input_group, .sign_form_btn_subm {
     flex-wrap: wrap;
@@ -3224,8 +3238,8 @@ body {
 
 .sub_radio input {
   -webkit-appearance: none;
-  width: 20px;
-  height: 20px;
+  width: 22px;
+  height: 22px;
   border-radius: 50%;
   outline: none;
   border: 2px solid #707070;
@@ -3241,7 +3255,7 @@ body {
 }
 
 .sub_radio input:checked {
-  border: 5px solid #6D2EF1;
+  border: 6px solid #6D2EF1;
 }
 
 .sub_sm_tex {
@@ -4181,10 +4195,48 @@ a {
 .blue_ater_h_min::before{
   height: 20px !important;
 }
+@media only screen and (max-width:768px) {
+  .slider_headin{
+    font-size: 35px;
+    font-weight: 800;
+  }
+  .shuuter_man{
+    width: 105%;
+  }
+  .free_sec_para{
+    padding-left: 10px;
+  }
+  .find-freel-para{
+    margin-top: 65px;
+  }
+}
+@media only screen and (max-width:800px) {
+  .fworld_swip .swiper-button-prev, .fworld_swip .swiper-rtl .swiper-button-next {
+    left: 25px;
+  }
 
+  .fworld_swip .swiper-button-next, .fworld_swip .swiper-rtl .swiper-button-prev {
+    right: 25px;
+  }
+
+  .fworld_swip .swiper-button-next:after, .fworld_swip .swiper-rtl .swiper-button-prev:after, .fworld_swip .swiper-button-prev:after, .fworld_swip .swiper-rtl .swiper-button-next:after {
+    font-size: 26px;
+    color: #e2e2e261;
+    font-weight: bolder;
+    visibility: visible !important;
+    -webkit-text-stroke-width: 1px;
+  }
+
+}
+@media only screen and (max-width:991px) {
+  .freelance_section {
+    background-size: contain !important;
+  }
+}
 @media only screen and (max-width:670px) {
   .freelance_section {
-    z-index: auto !important;
+    z-index: -1 !important;
+    /* z-index: auto !important; */
   }
   .services_sec_heading h2{
     font-size: 40px;
@@ -4237,17 +4289,17 @@ a {
     right: 25px;
   }
 
-  .freelance_box {
-    padding-top: 30px;
-    padding-bottom: 30px;
-  }
-
   .fworld_swip .swiper-button-next:after, .fworld_swip .swiper-rtl .swiper-button-prev:after, .fworld_swip .swiper-button-prev:after, .fworld_swip .swiper-rtl .swiper-button-next:after {
     font-size: 26px;
     color: #e2e2e261;
     font-weight: bolder;
     visibility: visible !important;
     -webkit-text-stroke-width: 1px;
+  }
+
+  .freelance_box {
+    padding-top: 30px;
+    padding-bottom: 30px;
   }
 
   .services_swip .swiper-button-next:after, .services_swip .swiper-rtl .swiper-button-prev:after, .services_swip .swiper-button-prev:after, .services_swip .swiper-rtl .swiper-button-next:after {
@@ -4289,10 +4341,15 @@ a {
     text-align: center;
   }
 
+  .find-freel-para{
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+
   .free_sec_para {
-    background-image: url(http://localhost:3000/static/media/freelance_world.5ea7b7392a4b06be9b46.png);
+    background-image: url('/public/assets/freelance_world.png');
     background-repeat: no-repeat;
-    padding: 30px 0px 250px 0px;
+    padding: 30px 5px 250px 5px;
     background-position: bottom center;
     background-size: contain;
   }
@@ -4315,7 +4372,7 @@ a {
   }
 
   .zer_thr {
-    top: -85px !important;
+    top: -35px !important;
     font-size: 200px;
     text-align: center;
     -webkit-text-stroke-color: #fff;
@@ -4366,4 +4423,8 @@ a {
 }
 .pl-2{
   padding-left: 2px !important;
+}
+.new_sub_rad{
+  right: 20px !important;
+  top: 25px !important;
 }

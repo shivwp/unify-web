@@ -116,35 +116,38 @@ const Description = () => {
                         </button>
                     </div>
                 </div>
-                <div className="p-0 flex_slide_ta toggle_shutter" onClick={(e) => hanDleSlide(e)}>
-                    <div className="input_t_lab">Screening questions (optional)</div>
+                <div className="p-0 flex_slide_ta toggle_shutter b-bottom-b" onClick={(e) => hanDleSlide(e)}>
+                    <div className="">
+                        <div className="input_t_lab pb-0">Screening questions (optional)</div>
+                        <div className="sm_label_inp">Narrow down your candidates</div>
+                    </div>
                     <div className="pr-10">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-chevron-down" viewBox="0 0 16 16">
-                            <path fillRule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
-                        </svg>
+                        <svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiBox-root css-1om0hkc" width="24" height="24" fill="#393939" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="KeyboardArrowDownIcon"><path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"></path></svg>
                     </div>
                 </div>
                 <div className='slide_btnss slider_shutter'><div className="sm_label_inp">Narrow down your candidates</div></div>
-                <div className="p-0 flex_slide_ta toggle_shutter" onClick={(e) => hanDleSlide(e)}>
-                    <div className="input_t_lab">Advanced preferences (optional)</div>
+                <div className="p-0 flex_slide_ta toggle_shutter b-bottom-b" onClick={(e) => hanDleSlide(e)}>
+                    <div className="">
+                        <div className="input_t_lab pb-0">Advanced preferences (optional)</div>
+                        <div className="sm_label_inp">Hours per week, hire date, and more</div>
+                    </div>
                     <div className="pr-10">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-chevron-down" viewBox="0 0 16 16">
-                            <path fillRule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
-                        </svg>
+                        <svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiBox-root css-1om0hkc" width="24" height="24" fill="#393939" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="KeyboardArrowDownIcon"><path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"></path></svg>
                     </div>
                 </div>
                 <div className='slide_btnss slider_shutter'><div className="sm_label_inp">Hours per week, hire date, and more</div></div>
-                
-                <div className="p-0 flex_slide_ta toggle_shutter" onClick={(e) => hanDleSlide(e)}>
-                    <div className="input_t_lab">Job post preferences (optional)</div>
+
+                <div className="p-0 flex_slide_ta toggle_shutter b-bottom-b" onClick={(e) => hanDleSlide(e)}>
+                    <div className="">
+                        <div className="input_t_lab pb-0">Job post preferences (optional)</div>
+                        <div className="sm_label_inp">Adjust visibility and add coworkers</div>
+                    </div>
                     <div className="pr-10">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-chevron-down" viewBox="0 0 16 16">
-                            <path fillRule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
-                        </svg>
+                        <svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiBox-root css-1om0hkc" width="24" height="24" fill="#393939" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="KeyboardArrowDownIcon"><path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"></path></svg>
                     </div>
                 </div>
                 <div className='slide_btnss slider_shutter'><div className="sm_label_inp">Adjust visibility and add coworkers</div></div>
-                
+
                 <div className="d-flex justify-content-between mt-5 mb-3">
                     <div className="btn_job_back"><button>Back</button></div>
                     <div className="d-flex">

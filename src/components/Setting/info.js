@@ -26,7 +26,7 @@ const Screen = () => {
                                         </button>
                                     </div>
                                 </div>
-                                <div className='d-flex justify-content-between mt-3'>
+                                <div className='d-flex justify-content-between flex-wrap mt-3'>
                                     <div className="d-flex">
                                         <div className='setting_pro_r_big'>
                                             <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330" alt="" />

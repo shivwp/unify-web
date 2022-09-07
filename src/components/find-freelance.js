@@ -36,16 +36,14 @@ const findfreelance = () => {
                                     spaceBetween: 0,
                                 },
                                 640: {
-                                    centeredSlides: true,
                                     slidesPerView: 2,
                                     spaceBetween: 0,
                                 },
                                 768: {
-                                    slidesPerView: 3,
-                                    centeredSlides: true,
+                                    slidesPerView: 2,
                                     spaceBetween: 0,
                                 },
-                                1024: {
+                                992: {
                                     slidesPerView: 3,
                                     centeredSlides: true,
                                     spaceBetween: 0,

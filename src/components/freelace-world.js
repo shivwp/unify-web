@@ -41,6 +41,10 @@ const FreelanceWorld = () => {
                                 800: {
                                     slidesPerView: 3,
                                     spaceBetween: 0,
+                                },
+                                995: {
+                                    slidesPerView: 3,
+                                    spaceBetween: 0,
                                 }
                             }}
                         >
