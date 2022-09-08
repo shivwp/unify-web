@@ -1,21 +1,25 @@
 import Container from 'react-bootstrap/Container';
 import Title from './title';
+import $ from 'jquery';
 
 const Screen = () => {
     Title(" | Dashboard");
-
+    const hanDleSlide = (e) => {
+        $(e.target.nextSibling).slideToggle();
+    }
+    $(".slider_shutter").slideDown();
     return (
         <>
             <Container>
-                <div className='flex_m_j_t pt-4 pb-4'>
-                    <div className='my_jo_headin'>
+                <div className='flex_m_j_t pt-4 pb-4 flex-wrap'>
+                    <div className='my_jo_headin font-35'>
                         Your Dashboard
                         <div className="my_job_sm_text">Marina Pokhilko</div>
                     </div>
-                    <div className='post_job_btn_m d-flex'>
-                        <button className="trans_btn_myjo mr_btn">Browse Project Catalog</button>
-                        <button>Post A Job</button>
-                        <button className="ml_btn trans_btn_myjo blue_coloe_brn">
+                    <div className='post_job_btn_m d-flex flex-wrap'>
+                        <button className="trans_btn_myjo mr_btn mt-2">Browse Project Catalog</button>
+                        <button className=' mt-2'>Post A Job</button>
+                        <button className="ml_btn trans_btn_myjo blue_coloe_brn mt-2">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-person-plus" viewBox="0 0 16 16">
                                 <path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H1s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C9.516 10.68 8.289 10 6 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z" />
                                 <path fillRule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z" />
@@ -34,7 +38,7 @@ const Screen = () => {
                             <div className='my_job_h'>Invite only - Hourly</div>
                             <div className="my_job_pos_tme">Posted 21 min ago by you</div>
                         </div>
-                        <div className='d-flex justify-content-between'>
+                        <div className='d-flex justify-content-between flex-wrap'>
                             <div className='my_job_n_box'>
                                 <div className='my_job_nm'>0</div>
                                 <div className='my_job_h pt-0'>Proposals</div>
@@ -77,12 +81,15 @@ const Screen = () => {
                     </div>
                 </div>
                 <div className='yourp_box pb-0 pt-3'>
-                    <div className='d-flex justify-content-between align-items-center pb-3 b-bottom-gr'>
+                    <div className='d-flex justify-content-between align-items-center pb-3 b-bottom-gr' onClick={(e) => hanDleSlide(e)}>
                         <div className='headin_yourp_b'>How to work with talent
                         <div className="my_job_pos_tme">Connect with a talent community that numbers in the millions, fast and at no cost.</div>
                         </div>
-                        <div className='see_ps_ing'></div>
+                        <div className='see_ps_ing'>
+                        <div><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"></path></svg></div>
+                        </div>
                     </div>
+                    <div className='slide_btnss slider_shutter'>
                     <div className='my_job_flx b-bottom-gr pb-2'>
                         <div>
                             <div className="my_job_a job_na_bol">1. Post a job to the marketplace</div>
@@ -108,6 +115,7 @@ const Screen = () => {
                             <div className="my_job_pos_tme">Reports are useful for keeping track of payments and reviewing work. As you complete jobs, you can build trusting relationships with talent in a way that helps you both grow.</div>
                             <div className="my_job_pos_tme inner_a_sty"><a href="#0">Read about payment protections, billing methods, taxes, and more</a></div>
                         </div>
+                    </div>
                     </div>
                 </div>
                 <div className='yourp_box pb-0 pt-0'>

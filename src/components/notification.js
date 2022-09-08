@@ -16,7 +16,7 @@ const Screen = () => {
                     <Row>
                         <Col lg={12}>
                             <div className="form_box_bor mt-2">
-                                <div className="not_head">Today</div>
+                                <div className="not_head font-30">Today</div>
                                 <div className="notification_box">
                                     <div>
                                         <div className="notification_text">A recent sign-in to your Upwork account (c42c68a5) from an unknown device or browser.</div>
@@ -52,7 +52,7 @@ const Screen = () => {
                                 </div>
                             </div>
                             <div className="form_box_bor mt-2">
-                                <div className="not_head">Earlier</div>
+                                <div className="not_head font-30">Earlier</div>
                                 <div className="notification_box">
                                     <div>
                                         <div className="notification_text">A recent sign-in to your Upwork account (c42c68a5) from an unknown device or browser.</div>

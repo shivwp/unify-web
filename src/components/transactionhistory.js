@@ -153,15 +153,21 @@ const Screen = () => {
     return (
       <>
         <div className="mt-2">
-          <div className="d-flex justify-content-between align-items-center">
-            <div className="d-flex justify-content-between align-items-center contract_sel">
+          <div className="d-flex justify-content-between flex-wrap align-items-center">
+            <div className="d-flex justify-content-between align-items-center contract_sel flex-wrap">
+              <Row>
+                <Col sm={12} lg={6}>
               <div className="select_inp_in filter_select_m">
                 <Select className="custom_css_select" options={options} />
               </div>
+                </Col>
+                <Col sm={12} lg={6}>
               <div className="select_inp_in filter_select_m">
                 <Select className="custom_css_select" options={options1} />
               </div>
-              <div className="sort_by_pa"></div>
+              </Col>
+              </Row>
+              {/* <div className="sort_by_pa"></div> */}
             </div>
             <div className="download_lnk_csx">
               <div className="btn_foot_sec justify-content-center flex-wrap no-border m-0 p-0">
@@ -207,8 +213,10 @@ const Screen = () => {
           Balance: <span>$0.00</span>
         </div>
         <div className="main_hirefreelancer_bx main_box_descr">
-          <div className="d-flex justify-content-between align-items-center mb-0 mt-0 pb-0">
-            <div className="d-flex justify-content-between align-items-center contract_sel mb-0 pb-0 ">
+          <div className="d-flex justify-content-between align-items-center flex-wrap mb-0 mt-0 pb-0">
+            <div className="d-flex justify-content-between align-items-center flex-wrap contract_sel mb-0 pb-0 ">
+            <Row>
+              <Col className="mt-2">
               <div className="select_inp_in filter_select_m mt-0 mb-0">
                 <div className="select_inp_in filter_select_m flex-wrap d-flex align-items-center w-100 mt-0 mb-0">
                   <div className="inpu_date m-0">
@@ -216,6 +224,8 @@ const Screen = () => {
                   </div>
                 </div>
               </div>
+              </Col>
+              <Col className="mt-2">
               <div>
                 <div className="ts_btn attach_f_btn wid_30_in mt-0 mb-0">
                   <button className="transp_fil_btn">
@@ -233,6 +243,8 @@ const Screen = () => {
                   </button>
                 </div>
               </div>
+              </Col>
+            </Row>
             </div>
             <div className="download_lnk_csx">
               <div className="btn_foot_sec p-0 justify-content-center flex-wrap no-border mt-2">

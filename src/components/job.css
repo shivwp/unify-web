@@ -1578,6 +1578,11 @@
 .w-20{
     width: 20% !important;
 }
+@media only screen and (max-width:770px) {
+    .inp_w_haf{
+        width: 100% !important;
+    }
+  }
 .inp_w_haf{
     width: 50%;    
     font-family: "Poppins-Bold", "Poppins";
@@ -1656,6 +1661,7 @@
 .mn_six_hun{
     min-width: 600px;
 }
+
 .find_sol_headin{
     text-align: center;
     font-family: "Poppins-Bold", "Poppins";

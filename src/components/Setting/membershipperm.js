@@ -132,7 +132,7 @@ const Screen = () => {
                         <div className="s_nav_body">
                             <div className="s_b_head no-border"><h2>Members & Permission</h2></div>
                             <div className="r-box_setting">
-                                <div className="d-flex justify-content-between align-items-center pt-2 pb-2">
+                                <div className="d-flex justify-content-between align-items-center flex-wrap pt-2 pb-2">
                                     <div>
                                         <div className='setting_b_head_s'>Owner</div>
                                         <div className='sett_y_b'>John Doe (Me)</div>
@@ -149,7 +149,9 @@ const Screen = () => {
                                 </div>
                                 <div className="main_hirefreelancer_bx main_box_descr no-border mt-0 pl-0 pr-0">
                                     <div className='search_area_in'>
-                                        <div className='search_input_in search_reel_9_wi bg-transparent w-80'>
+                                        <Row className='w-100'>
+                                            <Col sm={12} md={8}>
+                                        <div className='search_input_in search_reel_9_wi bg-transparent w-100 min-width-100'>
                                             <div className='search_icon_in'>
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-search" viewBox="0 0 16 16">
                                                     <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
@@ -157,6 +159,8 @@ const Screen = () => {
                                             </div>
                                             <input type={`text`} placeholder={`Search ...`} className="bg-transparent" />
                                         </div>
+                                            </Col>
+                                            <Col sm={12} md={4}>
                                         <div className='ts_btn attach_f_btn wid_30_in d-flex justify-content-right w-20'>
                                             <button className="transp_fil_btn" onClick={() => { ToggleFilter() }}>
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-funnel-fill" viewBox="0 0 16 16">
@@ -165,6 +169,8 @@ const Screen = () => {
                                                 Filters
                                             </button>
                                         </div>
+                                        </Col>
+                                        </Row>
                                     </div>
                                     {open}
                                 </div>

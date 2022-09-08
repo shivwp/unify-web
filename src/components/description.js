@@ -15,7 +15,7 @@ const Description = () => {
             <div className="main_box_descr mbd_n_pd">
                 <div className="top_sec_bb">
                     <div className="ts_h1"><h1>Now just finish and review your job post.</h1></div>
-                    <div className="ts_btn"><button>Post Your Job Now</button></div>
+                    <div className="ts_btn"><button className="font-weight-500">Post Your Job Now</button></div>
                 </div>
                 <div className="b_bot_inp">
                     <div className="input_t_lab">Title</div>
@@ -54,7 +54,7 @@ const Description = () => {
                 </div>
                 <div className="b_bot_inp">
                     <div className="input_t_lab">Category</div>
-                    <div className="job_t_inp cat_inp_j d-flex"><input type="text" value="UI/UX Design" />
+                    <div className="job_t_inp cat_inp_j d-flex flex-wrap"><input type="text" value="UI/UX Design" />
                         <button className="round_b_btn">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#D4D4D5" className="bi bi-pencil-square" viewBox="0 0 16 16">
                                 <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
@@ -96,7 +96,7 @@ const Description = () => {
                 </div>
                 <div className="b_bot_inp">
                     <div className="input_t_lab">Scop</div>
-                    <div className="job_t_inp cat_inp_j d-flex"><input type="text" value="Large, More than 6 months, Entry level" />
+                    <div className="job_t_inp cat_inp_j d-flex flex-wrap"><input type="text" value="Large, More than 6 months, Entry level" />
                         <button className="round_b_btn">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#D4D4D5" className="bi bi-pencil-square" viewBox="0 0 16 16">
                                 <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
@@ -107,7 +107,7 @@ const Description = () => {
                 </div>
                 <div className="b_bot_inp">
                     <div className="input_t_lab">Budget</div>
-                    <div className="job_t_inp cat_inp_j d-flex"><input type="text" value="$15.00 - $35.00 / hr" />
+                    <div className="job_t_inp cat_inp_j d-flex flex-wrap"><input type="text" value="$15.00 - $35.00 / hr" />
                         <button className="round_b_btn">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#D4D4D5" className="bi bi-pencil-square" viewBox="0 0 16 16">
                                 <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
@@ -148,11 +148,11 @@ const Description = () => {
                 </div>
                 <div className='slide_btnss slider_shutter'><div className="sm_label_inp">Adjust visibility and add coworkers</div></div>
 
-                <div className="d-flex justify-content-between mt-5 mb-3">
-                    <div className="btn_job_back"><button>Back</button></div>
-                    <div className="d-flex">
-                        <button className="draf_jo_btnbn">Save as a draft</button>
-                        <button className="post_job_btn">Post Your Job Now</button>
+                <div className="d-flex justify-content-between flex-wrap mt-5 mb-3">
+                    <div className="btn_job_back no-border fo_btn_c next_b_btn_c"><button className="mt-2">Back</button></div>
+                    <div className="d-flex flex-wrap no-border mt-0 pt-0 btn_foot_sec">
+                    <div className='fo_btn_c next_b_btn_c'><button className="draf_jo_btnbn mt-2">Save as a draft</button></div>
+                    <div className='fo_btn_c next_b_btn_c'><button className="post_job_btn mt-2">Post Your Job Now</button></div>
                     </div>
                 </div>
             </div>

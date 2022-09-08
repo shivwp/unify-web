@@ -33,11 +33,13 @@ const ViewScreen = () => {
                         <div className="vj_r_sm_t">Upgrade this job</div>
                     </div>
                 </div>
-                <div className="d-flex flex-wrap tab_m_nodea mt-4">
+                <div className='overflow-scroll'>
+                <div className="d-flex flex-wrap tab_m_nodea mt-4 tab_scroll_cont">
                     <button className={`tab_btn_vs ${TabActive === 'view_job' ? 'active_bvs' : ''}`} onClick={() => { changeTab("view_job") }}>View Job Post</button>
                     <button className={`tab_btn_vs ${TabActive === 'invite' ? 'active_bvs' : ''}`} onClick={() => { changeTab("invite") }}>Invite freelancers</button>
                     <button className={`tab_btn_vs ${TabActive === 'review' ? 'active_bvs' : ''}`} onClick={() => { changeTab("review") }}>Review proposals</button>
                     <button className={`tab_btn_vs ${TabActive === 'hire' ? 'active_bvs' : ''}`} onClick={() => { changeTab("hire") }}>Hire</button>
+                </div>
                 </div>
                 {Tab}
             </div>

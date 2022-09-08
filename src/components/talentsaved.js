@@ -9,7 +9,7 @@ const Screen = () => {
     return (
         <>
             <Container>
-                <div className='flex_m_j_t b-bottom-gr mt-3 pb-0'>
+                <div className='flex_m_j_t b-bottom-gr mt-3 pb-1 flex-wrap'>
                     <div className='disc_head_h1'>
                         <h1>Talent Saved</h1>
                         <p className='dis_t_pra_s'>Look up people you've saved</p>
@@ -54,8 +54,8 @@ const Screen = () => {
                             </Col>
                             <Col lg={11}>
                                 <div className="freelancer_box_area_in">
-                                    <div className='d-flex justify-content-between'>
-                                        <div className='d-flex'>
+                                    <div className='d-flex justify-content-between flex-wrap'>
+                                        <div className='d-flex flex-wrap'>
                                             <div className='freelancer_img_in_r'>
                                                 <img src="/assets/PRO-2.png" alt='' />
                                             </div>

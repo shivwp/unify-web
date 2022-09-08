@@ -31,6 +31,12 @@ body {
   width: 220px;
 }
 
+.external_nav_padding{
+  padding: 25px 35px !important;
+}
+.ml-10-n{
+  margin-left: 10px;
+}
 .navabr_t_li {
   cursor: pointer;
   background-color: transparent;
@@ -84,12 +90,22 @@ body {
     display: block !important;
   }
 }
-
+.side_nav{
+  margin-top: 10px;
+}
+.font-20{
+  font-size: 20px !important;
+}
+.f-16{
+  font-size: 16px !important;
+}
 @media only screen and (max-width:670px) {
   .flex_rev {
     flex-direction: row-reverse !important;
   }
-
+  .mn_six_hun{
+    min-width: auto !important;
+  }
   .side_nav {
     position: fixed;
     left: 0;
@@ -872,9 +888,15 @@ body {
   font-size: 13px;
   text-decoration: none;
   line-height: 23px;
-  color: #ffffff;
+  color: #FFFFFFad;
   font-weight: 300;
   font-family: "Poppins";
+}
+.font-35{
+  font-size: 35px !important;
+}
+.font-30{
+  font-size: 30px !important;
 }
 
 .footer_border {
@@ -1145,7 +1167,9 @@ body {
   font-weight: 500;
   font-family: "Poppins";
 }
-
+.font-weight-500{
+  font-weight: 500 !important;
+}
 .ab_icon {
   height: 40px;
 }
@@ -1529,10 +1553,12 @@ body {
   color: #6d2ef1;
 }
 
-.nav_box.active_s_nav .s_nav_icon svg {
+.nav_box.active_s_nav .s_nav_icon svg , .nav_box.active_s_nav .s_nav_icon svg path {
   fill: #6d2ef1;
 }
-
+.nav_box.active_s_nav .s_nav_icon svg .no_fill{
+  fill: none !important;
+}
 .s_nav_icon {
   height: 25px;
   width: 25px;
@@ -1551,6 +1577,7 @@ body {
 .s_nav_body {
   background-color: #fff;
   padding: 30px 25px;
+  margin-top: 10px;
 }
 
 .s_b_head {
@@ -2656,7 +2683,9 @@ body {
   font: normal normal normal 16px/30px Poppins;
   letter-spacing: 0px;
 }
-
+.min-width-100{
+  min-width: 100% !important;
+}
 .input_nodxq input, .input_nodxq select {
   background-color: transparent;
   border-radius: 0px !important;
@@ -2672,6 +2701,11 @@ body {
   color: #170048;
   width: 100%;
 }
+@media only screen and (min-width:992px ) and (max-width:1200px) {
+  .inpu_date select{
+      min-width: 200px !important;
+  }
+}
 
 @media only screen and (max-width:1024px) {
   .service_icon img{
@@ -2679,6 +2713,11 @@ body {
   }
 }
 
+@media only screen and (max-width:640px) {
+  .help_swip .swiper-slide-active .acc_bxo_h{
+    margin-right: 15px !important;
+  }
+}
 @media only screen and (max-width:570px) {
   .input_group, .sign_form_btn_subm {
     flex-wrap: wrap;
@@ -4427,4 +4466,21 @@ a {
 .new_sub_rad{
   right: 20px !important;
   top: 25px !important;
+}
+.overflow-scroll{
+  overflow: scroll;
+}
+.overflow-scroll::-webkit-scrollbar{
+  display: none;
+}
+.tab_scroll_cont{
+  overflow: scroll;
+  flex-wrap: nowrap !important;
+  width: 100%;
+}
+.tab_scroll_cont::-webkit-scrollbar{
+  display: none;
+}
+.tab_scroll_cont .tab_btn_vs{
+  min-width: max-content;
 }

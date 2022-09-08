@@ -47,7 +47,7 @@ const Screen = () => {
             </div>
             <Container>
                 <div className="chose_acc_type_p mt-3 pt-2">Choose An Account Type For Personalized Service</div>
-                <div className="d-flex flex-wrap tab_m_nodea all_bt_fif">
+                <div className="d-flex flex-wrap tab_m_nodea all_bt_fif tab_scroll_cont">
                     <button className={`tab_btn_vs w-auto ${TabActive === 'freelancerl' ? 'active_bvs' : ''}`} onClick={() => { changeTab("freelancerl") }}>I'm a Freelancer</button>
                     <button className={`tab_btn_vs w-auto ${TabActive === 'agency' ? 'active_bvs' : ''}`} onClick={() => { changeTab("agency") }}>I'm an Agency</button>
                     <button className={`tab_btn_vs w-auto ${TabActive === 'client' ? 'active_bvs' : ''}`} onClick={() => { changeTab("client") }}>I'm a client</button>

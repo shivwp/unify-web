@@ -73,7 +73,7 @@ const Bsize = () => {
                         </Row>
                     </div>
                     <div className="btn_foot_sec flex-wrap d-flex no-border mt-2 pt-0">
-                        <div className='fo_btn_c next_b_btn_c'><button className="f-size-to">Continue</button></div>
+                        <div className='fo_btn_c next_b_btn_c'><button className="f-size-to active_btn_blue">Continue</button></div>
                     </div>
                 </div>
             </Container>

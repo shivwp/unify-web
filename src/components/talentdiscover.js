@@ -30,14 +30,16 @@ const Screen = () => {
                     <div className="propt_head_n"><h2>Promoted</h2></div>
                     <div>
                         <Row>
-                            <Col lg={3}>
+                            <Col xlg={4} lg={4} md={6} sm={12}>
                                 <div className="promo_box_a">
                                     <div className="d-flex justify-content-between">
+                                        <div className='d-flex'>
                                         <div className='discover_prof_us'><img src="/assets/PRO-2.png" alt="" /></div>
-                                        <div>
+                                            <div className='ml-10-n'>
                                             <div className='propmo_u_name'>Mario Speedwagon</div>
                                             <div className='promo_exper'>Expert in Mobile App</div>
                                             <div className='avai_btn_promo'><button>Available</button></div>
+                                            </div>
                                         </div>
                                         <div className='heart_btn_promo'>
                                             <button>

@@ -19,28 +19,28 @@ const Skill = () => {
                                     <div className="s_b_r mrr_riii d-block mt-0">
                                         <div className="flex_aling">
                                             <input type="radio" id="r_2" name="g" />
-                                            <label htmlFor="r_2"> <p><b className="text-black">Large</b></p></label>
+                                            <label htmlFor="r_2"> <p className='font-20'><b className="text-black">Large</b></p></label>
                                         </div>
                                         <div className="label_apra">
-                                            <p className="litt_sm_para">Longer term or complex initiatives (ex. design and build a full website)</p>
+                                            <p className="litt_sm_para f-16">Longer term or complex initiatives (ex. design and build a full website)</p>
                                         </div>
                                     </div>
                                     <div className="s_b_r mrr_riii d-block">
                                         <div className="flex_aling">
                                             <input type="radio" id="r_1" name="g" />
-                                            <label htmlFor="r_1"> <p><b className="text-black">Medium</b></p></label>
+                                            <label htmlFor="r_1"> <p className='font-20'><b className="text-black">Medium</b></p></label>
                                         </div>
                                         <div className="label_apra">
-                                            <p className="litt_sm_para">Well-defined projects (ex. a landing page)</p>
+                                            <p className="litt_sm_para f-16">Well-defined projects (ex. a landing page)</p>
                                         </div>
                                     </div>
                                     <div className="s_b_r mrr_riii d-block">
                                         <div className="flex_aling">
                                             <input type="radio" id="r_4" name="g" />
-                                            <label htmlFor="r_4"> <p><b className="text-black">Small</b></p></label>
+                                            <label htmlFor="r_4"> <p className='font-20'><b className="text-black">Small</b></p></label>
                                         </div>
                                         <div className="label_apra">
-                                            <p className="litt_sm_para">Quick and straightforward tasks (ex. update text and images on a webpage)</p>
+                                            <p className="litt_sm_para f-16">Quick and straightforward tasks (ex. update text and images on a webpage)</p>
                                         </div>
                                     </div>
                                 </div>

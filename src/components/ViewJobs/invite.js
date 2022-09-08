@@ -28,11 +28,13 @@ const JonComponent = () => {
         <Row>
             <Col lg={12}>
                 <div className="box_vs_m">
-                    <div className="d-flex flex-wrap tab_m_nodea">
+                    <div className='overflow-scroll'>
+                    <div className="d-flex flex-wrap tab_m_nodea tab_scroll_cont">
                         <button className={`tab_btn_vs w-auto ${TabActive === 'search' ? 'active_bvs' : ''}`} onClick={() => { changeTab("search") }}>Search</button>
                         <button className={`tab_btn_vs w-auto ${TabActive === 'invite' ? 'active_bvs' : ''}`} onClick={() => { changeTab("invite") }}>Invite freelancers</button>
                         <button className={`tab_btn_vs w-auto ${TabActive === 'hires' ? 'active_bvs' : ''}`} onClick={() => { changeTab("hires") }}>My Hires</button>
                         <button className={`tab_btn_vs w-auto ${TabActive === 'saved' ? 'active_bvs' : ''}`} onClick={() => { changeTab("saved") }}>Saved Talent</button>
+                    </div>
                     </div>
                     {Tab}
                 </div>

@@ -14,8 +14,8 @@ function ListCard() {
                     <Row>
                         <Col lg={12}>
                             <div className="freelancer_box_area_in">
-                                <div className='d-flex justify-content-between'>
-                                    <div className='d-flex'>
+                                <div className='d-flex justify-content-between flex-wrap'>
+                                    <div className='d-flex flex-wrap'>
                                         <div className='freelancer_img_in_r'>
                                             <img src="/assets/PRO-2.png" alt='' />
                                         </div>
@@ -256,7 +256,7 @@ const Project_Search = () => {
                         </div>
                     </Col>
                     <Col lg={9} className="top_main_c_job">
-                        <div className='d-flex align-items-center'>
+                        <div className='d-flex align-items-center flex-wrap'>
                             <div className='search_input_in selec_inp_ful_w'>
                                 <div className='search_icon_in'>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-search" viewBox="0 0 16 16">
