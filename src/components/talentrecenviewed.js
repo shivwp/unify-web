@@ -21,8 +21,8 @@ const Screen = () => {
                             </Col>
                             <Col lg={9}>
                                 <div className="freelancer_box_area_in">
-                                    <div className='d-flex justify-content-between'>
-                                        <div className='d-flex'>
+                                    <div className='d-flex justify-content-between flex-wrap'>
+                                        <div className='d-flex flex-wrap'>
                                             <div className='freelancer_img_in_r'>
                                                 <img src="/assets/PRO-2.png" alt='' />
                                             </div>

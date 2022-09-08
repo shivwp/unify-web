@@ -36,7 +36,7 @@ const NavbarHeader = (props) => {
           <button>Logout</button>
         </div>
       </div>
-      <Navbar collapseOnSelect expand="md" className={`nav_realat ${props.nonavbg === true ? 'no-bg-image' : ''}`}>
+      <Navbar collapseOnSelect expand="md" className={`nav_realat external_nav_padding ${props.nonavbg === true ? 'no-bg-image' : ''}`}>
         <Container>
           <div className='w-100 d-flex justify-content-between align-items-center flex_rev'>
             <div className="width_100_sm">

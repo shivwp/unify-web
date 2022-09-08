@@ -114,20 +114,26 @@ const Screen = () => {
             <>
                 <div className='mt-3'>
                     <div className='sort_by_pa'>Sort By</div>
-                    <div className="d-flex justify-content-between align-items-center">
-                        <div className="d-flex justify-content-between align-items-center contract_sel">
+                    <div className="d-flex flex-wrap justify-content-between align-items-center">
+                        <div className="d-flex flex-wrap justify-content-between align-items-center contract_sel">
+                            <Row>
+                                <Col>
                             <div className='select_inp_in filter_select_m'>
                                 <Select
                                     className="custom_css_select"
                                     options={options}
                                 />
                             </div>
+                                </Col>
+                                <Col>
                             <div className='select_inp_in filter_select_m'>
                                 <Select
                                     className="custom_css_select"
                                     options={optionsne}
                                 />
                             </div>
+                                </Col>
+                            </Row>
                             <div className='sort_by_pa'>0 toal</div>
                         </div>
                         <div className='download_lnk_csx'>

@@ -14,7 +14,7 @@ const Screen = () => {
                     </div>
                 </div>
                 <Row>
-                    <Col lg={4}>
+                    <Col lg={4} sm={10} className="mb-3">
                         <div className="hire_box_yh">
                             <div>
                                 <div className="hire_b_im">
@@ -24,7 +24,7 @@ const Screen = () => {
                             </div>
                         </div>
                     </Col>
-                    <Col lg={4}>
+                    <Col lg={4} sm={10} className="mb-3">
                         <div className="hire_box_yh">
                             <div>
                                 <div className="hire_b_im">
@@ -34,7 +34,7 @@ const Screen = () => {
                             </div>
                         </div>
                     </Col>
-                    <Col lg={4}>
+                    <Col lg={4} sm={10} className="mb-3">
                         <div className="hire_box_yh">
                             <div>
                                 <div className="hire_b_im">
@@ -47,7 +47,7 @@ const Screen = () => {
                 </Row>
                 <div className="d_pbtn_as">
                     <div className='disc_para_h'>Already working with freelancers outside of Unify? Simplify things by inviting them to join and use Unify collaboration, time tracking, and payment tools. <a href="#0">See how it works</a></div>
-                    <button className="find_tal_btn">
+                    <button className="find_tal_btn font-weight-500">
                     <svg fill="#fff" height={20} width={20} class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  css-w2bhrx" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="AddIcon" aria-label="fontSize medium"><path 
     stroke={`#fff`} d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"></path></svg>
                         Invite Talent</button>

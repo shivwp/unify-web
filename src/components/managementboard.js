@@ -7,7 +7,7 @@ const Screen = () => {
         <Container>
             <div className='blue_bg_mb'>
                 <Row>
-                    <Col lg={3} className="pr-0">   
+                    <Col lg={3} className="mb-4">   
                         <div className='box_board_sli_mb'>
                             <div className='bb_s_mb_flex'>
                                 <div>Epics</div>
@@ -153,7 +153,7 @@ const Screen = () => {
                             </div>
                         </div>
                     </Col>
-                    <Col lg={2} className="pr-0">
+                    <Col lg={2} className="mb-4">
                         <div className='box_board_sli_mb'>
                             <div className='bb_s_mb_flex'>
                                 <div>Backlog</div>
@@ -198,7 +198,7 @@ const Screen = () => {
                             </div>
                         </div>
                     </Col>
-                    <Col lg={2} className="pr-0">
+                    <Col lg={2} className="mb-4">
                         <div className='box_board_sli_mb'>
                             <div className='bb_s_mb_flex'>
                                 <div>Sprint Backlog</div>
@@ -243,7 +243,7 @@ const Screen = () => {
                             </div>
                         </div>
                     </Col>
-                    <Col lg={2} className="pr-0">
+                    <Col lg={2} className="mb-4">
                         <div className='box_board_sli_mb'>
                             <div className='bb_s_mb_flex'>
                                 <div>To do</div>

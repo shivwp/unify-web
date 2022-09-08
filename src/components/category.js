@@ -1,4 +1,4 @@
-import Navbarlogin from "./navbarlogin";
+import Navbarlogin from "./navbar";
 import Container from 'react-bootstrap/Container';
 import { Col, Row } from 'react-bootstrap';
 import Footer from './footer';
