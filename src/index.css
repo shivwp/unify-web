@@ -8,16 +8,16 @@ body {
 
 .navbar_btn, .navbar_btn .dropdown-toggle {
   background-color: transparent;
-  margin: 0px 11px;
+  margin: -5px 8px;
   font-weight: 600;
   color: #fff;
   font-weight: 700;
   font-family: "Poppins-Bold", "Poppins";
 }
 
-.navbar_btn .dropdown-toggle {
+/* .navbar_btn .dropdown-toggle {
   margin: 0 !important;
-}
+} */
 
 .navbar_btn .dropdown-menu {
   left: -50% !important;
@@ -33,6 +33,24 @@ body {
 
 .external_nav_padding{
   padding: 25px 35px !important;
+  z-index: auto !important;
+}
+.b_job_l_sx .dropdown-menu::before{
+    content: "\25BA";
+    color: #fff;
+    position: absolute;
+    top: 0;
+    font-size: 20px;
+    margin-top: -19px;
+    right: 5px;
+    transform: rotate(270deg);
+    -webkit-transform: rotate(270deg);
+    -moz-transform: rotate(270deg);
+    -ms-transform: rotate(270deg);
+    -o-transform: rotate(270deg);
+}
+.b_job_l_sx .dropdown-menu{
+  left: -60% !important;
 }
 .ml-10-n{
   margin-left: 10px;
@@ -57,11 +75,15 @@ body {
   color: #fff;
   font-weight: 600;
   padding: 10px 20px !important;
-  border-radius: 25px;
-  -webkit-border-radius: 25px;
-  -moz-border-radius: 25px;
-  -ms-border-radius: 25px;
-  -o-border-radius: 25px;
+  border-radius: 30px;
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  -ms-border-radius: 30px;
+  -o-border-radius: 30px;
+}
+.logout_btn_nav{
+  font-weight: 700 !important;
+  margin: 0px 20px !important;
 }
 
 .active_btn:hover {
@@ -106,7 +128,7 @@ body {
   .mn_six_hun{
     min-width: auto !important;
   }
-  .side_nav {
+  /* .side_nav {
     position: fixed;
     left: 0;
     background-color: #fff;
@@ -115,7 +137,7 @@ body {
 
   .s_nav_title {
     display: none !important;
-  }
+  } */
 
   .border_bx_sec {
     border: none !important;
@@ -544,6 +566,11 @@ body {
 
 .box_area_freelanec {
   background-color: #2b397b;
+  margin-top: calc(var(--bs-gutter-y)*-.5);
+  margin-right: calc(var(--bs-gutter-y)*6.5);
+  margin-left: calc(var(--bs-gutter-y)*-1);
+  margin: 0 0 0 13px !important;
+  width: 90% !important;
 }
 
 .box_area_border {
@@ -2701,18 +2728,51 @@ body {
   color: #170048;
   width: 100%;
 }
+@media only screen and (min-width:1440px ) and (max-width:1920px) {
+  .slider_headin{
+    font-size: 50px;
+  }
+}
 @media only screen and (min-width:992px ) and (max-width:1200px) {
   .inpu_date select{
       min-width: 200px !important;
   }
 }
-
-@media only screen and (max-width:1024px) {
+@media only screen and (max-width:670px) {
+  .freelance_section{
+    margin-top: 0px;
+  }
+}
+@media only screen and (max-width:768px) {
   .service_icon img{
     height: 90%;
+    width: 85px;
+  }
+  .navbar_btn, .navbar_btn .dropdown-toggle {
+    /* margin: -5px 8px !important; */
   }
 }
 
+
+@media screen and (min-width:768px) and (max-width:992px) {
+  .navbar_btn, .navbar_btn .dropdown-toggle{
+    margin-left: 2px !important;
+    margin-right: 2px !important;
+  }
+}
+
+
+@media only screen and (min-width:768px) and (max-width:1024px) {
+  .service_icon img{
+    width: 90px;
+  }
+}
+
+@media only screen and (min-width:1024px) and (max-width:1440px) {
+  .service_icon img{
+    width: 100px;
+  }
+}
 @media only screen and (max-width:640px) {
   .help_swip .swiper-slide-active .acc_bxo_h{
     margin-right: 15px !important;
@@ -4211,6 +4271,7 @@ a {
   color: #fff;
   font-weight: 700;
   width: 75%;
+  border: none !important;
   margin-top: 5px;
   text-transform: uppercase;
   font-size: 22px;
@@ -4234,13 +4295,15 @@ a {
 .blue_ater_h_min::before{
   height: 20px !important;
 }
+@media only screen and (min-width:500px) and (max-width:768px) {
+  .shuuter_man{
+    width: 105%;
+  }
+}
 @media only screen and (max-width:768px) {
   .slider_headin{
     font-size: 35px;
     font-weight: 800;
-  }
-  .shuuter_man{
-    width: 105%;
   }
   .free_sec_para{
     padding-left: 10px;
@@ -4274,7 +4337,7 @@ a {
 }
 @media only screen and (max-width:670px) {
   .freelance_section {
-    z-index: -1 !important;
+    /* z-index: -1 !important; */
     /* z-index: auto !important; */
   }
   .services_sec_heading h2{
@@ -4484,3 +4547,67 @@ a {
 .tab_scroll_cont .tab_btn_vs{
   min-width: max-content;
 }
+.text-transform-cap{
+  text-transform: capitalize !important;
+}
+.mr_sign_in_n{
+  margin-left: 20px !important;
+  margin-right: 20px !important;
+}
+.signup_social_btn_n button{
+  max-width: 100% !important;
+}
+.nbox_area_border{
+  margin: 0 0 0 13px !important;
+  width: 90% !important;
+}
+
+.css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root{
+margin: -4px 0px !important;    
+}
+
+@media only screen and (max-width:550px) {
+  .sme_next_bbtn button{
+    height:40px !important;
+    max-width: 360px !important;
+  }
+  .mob_jus_cent{
+    display: flex;
+    justify-content: center !important;
+  }
+}
+@media only screen and (max-width:992px) {
+  .box_area_freelanec , .nbox_area_border{
+    margin: auto !important;
+    width: 100% !important;
+  }
+  }
+  .rs-picker-date .rs-picker-toggle.rs-btn .rs-picker-toggle-caret, .rs-picker-daterange .rs-picker-toggle.rs-btn .rs-picker-toggle-caret{
+    fill: #6D2EF1;
+  }
+  .signup_custom_select .css-1s2u09g-control{
+    border: none !important;
+    background-color: transparent !important;
+  }
+  .signup_custom_select .css-1okebmr-indicatorSeparator{
+    display: none;
+  }
+  .signup_custom_select .css-tlfecz-indicatorContainer{
+    color: #170048;
+  }
+  .signup_custom_select .css-1pahdxg-control{
+    border: none !important;
+    background-color: transparent;
+    box-shadow: none;
+  }
+  .signup_custom_select .css-1pahdxg-control:hover{
+    border: none !important;
+    background-color: transparent;
+    box-shadow: none;
+  }
+  .signup_custom_select .css-6j8wv5-Input{
+    padding: 0 !important;
+  }
+  .selec_n_cs{
+    padding: 7px 15px;
+  }

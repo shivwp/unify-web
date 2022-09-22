@@ -33,6 +33,9 @@ const NavbarHeader = (props) => {
         <div className='navdata_li'><a href="#0">HOW IT WORKS</a></div>
         <div className='navdata_li'><a href="#0">BROWSE JOBS</a></div>
         <div className='logout_btn_mob'>
+          <button>Login</button>
+        </div>
+        <div className='logout_btn_mob'>
           <button>Logout</button>
         </div>
       </div>

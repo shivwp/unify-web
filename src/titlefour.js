@@ -1,7 +1,7 @@
 import NavbarLogin from './components/navbarlogin';
 import TitleFourteen from './components/title1';
 
-const titleScreen = ()=>{
+const TitleScreen = ()=>{
     return (
         <div>
             <div className='slider_pos nin_vh'>
@@ -11,4 +11,4 @@ const titleScreen = ()=>{
         </div>
     )
 }
-export default titleScreen
+export default TitleScreen

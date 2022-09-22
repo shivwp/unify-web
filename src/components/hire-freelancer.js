@@ -3,15 +3,16 @@ import { Container } from "react-bootstrap";
 import DatePicker from "react-datepicker";
 import "./job.css";
 import "react-datepicker/dist/react-datepicker.css";
+import { Link } from 'react-router-dom';
 
 const Screen = () => {
-  const [startDate, setStartDate] = useState(new Date());
+  const [startDate, setStartDate] = useState();
 
   return (
     <Container>
       <div className="fire_headin">Hire</div>
       <div className="main_box_descr main_hirefreelancer_bx">
-        <div className="d-flex b-bottom-gr pb-3">
+        <div className="d-flex flex-wrap b-bottom-gr pb-3">
           <div className="freelancer_img_in_r online_profile">
             <img src="/assets/PRO-2.png" alt="" />
           </div>
@@ -20,8 +21,8 @@ const Screen = () => {
             <div className="freelancer_exp_in">
               Expert in Mobile and Web Development.
             </div>
-            <div className="freelancer_exp_in freelancer_loc_in d-flex">
-              Kharkov, Ukraine
+            <div className="freelancer_exp_in freelancer_loc_in d-flex flex-wrap sm_amhir_no_mar">
+              <div>Kharkov, Ukraine</div>
               <div className="amount_hir_in p-0">
                 <b>100%</b> Job Success
               </div>
@@ -154,12 +155,14 @@ const Screen = () => {
             </div>
           </div>
         </div>
-        <div className="allow_freel_che">
+        <div className="allow_freel_che flex-wrap">
+          <label>
           <input type="checkbox" />
           Allow freelancer to log time manually if needed.{" "}
+          </label>
           <a href="#0">Learn more</a>
         </div>
-        <div className="d-flex align-items-center pt-3 pb-4 b-bottom-gr">
+        <div className="d-flex align-items-center flex-wrap pt-3 pb-4 b-bottom-gr">
           <div className="start_d_headin">
             Start Date <span>(Optional)</span>
             <span className="no_verify_icon">
@@ -178,8 +181,9 @@ const Screen = () => {
           <div className="inpu_date d-flex psr-relative">
             <DatePicker
               dateFormat="yyyy/MM/dd"
-              className="custom_date_picker"
+              placeholderText="yyyy/MM/dd"
               selected={startDate}
+              className="custom_date_picker"
               onChange={(date: Date) => setStartDate(date)}
             />
             <div className="psr_abs_c_icon">
@@ -262,7 +266,7 @@ const Screen = () => {
           <div className="sm_label_inp">Max file size: 100 MB</div>
         </div>
       </div>
-      <div className="allow_freel_che black_a_inp">
+      <div className="allow_freel_che flex-wrap black_a_inp">
         <input type="checkbox" />
         Yes, I understand and agree to the{" "}
         <a href="#0"> Unify Terms of Service </a>, including the User{" "}
@@ -270,8 +274,8 @@ const Screen = () => {
       </div>
       <div className="d-flex justify-content-between mt-4 mb-5">
         <div className="btn_job_back">
-          <button>Cancel</button>
-          <button className="post_job_btn blue_ac_btn ml-5">Continue</button>
+          <Link to="/view-job"><button className="fo_btn_c next_b_btn_c mb-2">Cancel</button></Link>
+          <Link to="/"><button className="fo_btn_c next_b_btn_c mb-2 post_job_btn blue_ac_btn">Continue</button></Link>
         </div>
       </div>
     </Container>

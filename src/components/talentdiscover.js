@@ -58,7 +58,7 @@ const Screen = () => {
                             </Col>
                         </Row>
                         <div className='d-flex justify-content-center align-items-center mt-4'>
-                            <button className='blue_btn_pro'>See More</button>
+                            <button className='blue_btn_pro font-weight-500'>See More</button>
                         </div>
                     </div>
                 </div>
@@ -67,6 +67,166 @@ const Screen = () => {
                     <div className='s_slides'>
                         <div className="flex_slide_ta toggle_shutter" onClick={(e) => hanDleSlide(e)}>
                             <div className='sli_ta_name'>Accounting & Consulting</div>
+                            <div>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-chevron-down" viewBox="0 0 16 16">
+                                    <path fillRule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
+                                </svg>
+                            </div>
+                        </div>
+                        <div className='slide_btnss slider_shutter'>
+                            <button>Mobile App Design
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#393939" className="bi bi-plus" viewBox="0 0 16 16">
+                                    <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                                </svg>
+                            </button>
+                            <button>User Experience Design
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#393939" className="bi bi-plus" viewBox="0 0 16 16">
+                                    <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                                </svg>
+                            </button>
+                            <button>User Interface Design
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#393939" className="bi bi-plus" viewBox="0 0 16 16">
+                                    <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                                </svg>
+                            </button>
+                            <button>Graphic Design
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#393939" className="bi bi-plus" viewBox="0 0 16 16">
+                                    <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div className='s_slides'>
+                        <div className="flex_slide_ta toggle_shutter" onClick={(e) => hanDleSlide(e)}>
+                            <div className='sli_ta_name'>Admin Support</div>
+                            <div>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-chevron-down" viewBox="0 0 16 16">
+                                    <path fillRule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
+                                </svg>
+                            </div>
+                        </div>
+                        <div className='slide_btnss slider_shutter'>
+                            <button>Mobile App Design
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#393939" className="bi bi-plus" viewBox="0 0 16 16">
+                                    <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                                </svg>
+                            </button>
+                            <button>User Experience Design
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#393939" className="bi bi-plus" viewBox="0 0 16 16">
+                                    <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                                </svg>
+                            </button>
+                            <button>User Interface Design
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#393939" className="bi bi-plus" viewBox="0 0 16 16">
+                                    <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                                </svg>
+                            </button>
+                            <button>Graphic Design
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#393939" className="bi bi-plus" viewBox="0 0 16 16">
+                                    <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>   
+                    <div className='s_slides'>
+                        <div className="flex_slide_ta toggle_shutter" onClick={(e) => hanDleSlide(e)}>
+                            <div className='sli_ta_name'>Customer Service</div>
+                            <div>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-chevron-down" viewBox="0 0 16 16">
+                                    <path fillRule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
+                                </svg>
+                            </div>
+                        </div>
+                        <div className='slide_btnss slider_shutter'>
+                            <button>Mobile App Design
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#393939" className="bi bi-plus" viewBox="0 0 16 16">
+                                    <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                                </svg>
+                            </button>
+                            <button>User Experience Design
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#393939" className="bi bi-plus" viewBox="0 0 16 16">
+                                    <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                                </svg>
+                            </button>
+                            <button>User Interface Design
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#393939" className="bi bi-plus" viewBox="0 0 16 16">
+                                    <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                                </svg>
+                            </button>
+                            <button>Graphic Design
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#393939" className="bi bi-plus" viewBox="0 0 16 16">
+                                    <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>   
+                    <div className='s_slides'>
+                        <div className="flex_slide_ta toggle_shutter" onClick={(e) => hanDleSlide(e)}>
+                            <div className='sli_ta_name'>Data Science & Analytics</div>
+                            <div>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-chevron-down" viewBox="0 0 16 16">
+                                    <path fillRule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
+                                </svg>
+                            </div>
+                        </div>
+                        <div className='slide_btnss slider_shutter'>
+                            <button>Mobile App Design
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#393939" className="bi bi-plus" viewBox="0 0 16 16">
+                                    <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                                </svg>
+                            </button>
+                            <button>User Experience Design
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#393939" className="bi bi-plus" viewBox="0 0 16 16">
+                                    <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                                </svg>
+                            </button>
+                            <button>User Interface Design
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#393939" className="bi bi-plus" viewBox="0 0 16 16">
+                                    <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                                </svg>
+                            </button>
+                            <button>Graphic Design
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#393939" className="bi bi-plus" viewBox="0 0 16 16">
+                                    <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div> 
+                    <div className='s_slides'>
+                        <div className="flex_slide_ta toggle_shutter" onClick={(e) => hanDleSlide(e)}>
+                            <div className='sli_ta_name'>Design & Creative</div>
+                            <div>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-chevron-down" viewBox="0 0 16 16">
+                                    <path fillRule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
+                                </svg>
+                            </div>
+                        </div>
+                        <div className='slide_btnss slider_shutter'>
+                            <button>Mobile App Design
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#393939" className="bi bi-plus" viewBox="0 0 16 16">
+                                    <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                                </svg>
+                            </button>
+                            <button>User Experience Design
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#393939" className="bi bi-plus" viewBox="0 0 16 16">
+                                    <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                                </svg>
+                            </button>
+                            <button>User Interface Design
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#393939" className="bi bi-plus" viewBox="0 0 16 16">
+                                    <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                                </svg>
+                            </button>
+                            <button>Graphic Design
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#393939" className="bi bi-plus" viewBox="0 0 16 16">
+                                    <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div className='s_slides'>
+                        <div className="flex_slide_ta toggle_shutter" onClick={(e) => hanDleSlide(e)}>
+                            <div className='sli_ta_name'>It & Networking</div>
                             <div>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-chevron-down" viewBox="0 0 16 16">
                                     <path fillRule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />

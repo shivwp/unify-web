@@ -3,9 +3,13 @@ import ViewJob from './ViewJobs/jobpost';
 import InviteFreelancer from './ViewJobs/invite';
 import ReviewProposal from './ReviewProposal/all';
 import Hire from './Hire/all';
-import { useState } from 'react';
+import { useState , useEffect } from 'react';
+import {
+    useParams
+  } from "react-router-dom";
 
 const ViewScreen = () => {
+    let { screen } = useParams();
     const [Tab, SetTab] = useState(<ViewJob />);
     const [TabActive, SetTabActive] = useState("view_job");
     function changeTab(componentName) {
@@ -23,6 +27,12 @@ const ViewScreen = () => {
             SetTabActive("hire")
         }
     }
+    
+    useEffect(() => {
+        if(screen === "review"){
+        changeTab("review")
+        }
+      },[screen]);
     return (
         <Container>
             <div className="view_job_box">

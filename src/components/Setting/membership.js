@@ -20,7 +20,7 @@ const Screen = () => {
                                         <div className='setting_b_head_s'>Company Plan</div>
                                     </div>
                                 </div>
-                                <div className="d-flex justify-content-between b-bottom-gr align-items-center pt-2 pb-3">
+                                <div className="d-flex justify-content-between b-bottom-gr align-items-center flex-wrap pt-2 pb-3">
                                     <div>
                                         <div className='setting_b_head_s'>Plan</div>
                                         <div className='sett_y_b'>Unify Basic (Free)</div>

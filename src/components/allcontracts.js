@@ -17,7 +17,7 @@ const Screen = () => {
                                 <div>Contract Start Dates</div>
                                 <div className="reset_link_con"><a href="#0">Reset</a></div>
                             </div>
-                            <div className='select_inp_in filter_select_m flex-wrap  justify-content-between d-flex align-items-center w-100'>
+                            <div className='select_inp_in st_med_umecw filter_select_m flex-wrap  justify-content-between d-flex align-items-center w-100'>
                                 <div className="inpu_date m-0">
                                     <input type="date" />
                                 </div>
@@ -58,7 +58,7 @@ const Screen = () => {
                                 <div>Contract End Dates</div>
                                 <div className="reset_link_con"><a href="#0">Reset</a></div>
                             </div>
-                            <div className='select_inp_in filter_select_m  justify-content-between flex-wrap d-flex align-items-center w-100'>
+                            <div className='select_inp_in st_med_umecw filter_select_m  justify-content-between flex-wrap d-flex align-items-center w-100'>
                                 <div className="inpu_date m-0">
                                     <input type="date" />
                                 </div>

@@ -1,12 +1,14 @@
+import { useState } from 'react';
 import Container from 'react-bootstrap/Container';
 import { Row, Col } from 'react-bootstrap';
-import star from '../icons/star.svg';
-import heart from '../icons/heart.svg';
-import Footer from './footer';
-import React from 'react';
+import star from '../../icons/star.svg';
+import heart from '../../icons/heart.svg';
+import Footer from '../../components/footer';
+import Title from '../../components/title';
+import $ from 'jquery';
+import '../freelancer.css'
 
-
-function ListCard() {
+const ListCard = () => {
     const card = [1, 2, 3, 4, 5, 6];
     return (
         <>
@@ -69,15 +71,33 @@ function ListCard() {
 }
 
 const Project_Search = () => {
+    Title(" | Project Search");
+    const hanDleSlide = (e) => {
+        $(e.target.nextSibling).slideToggle();
+    }
+    $(".slider_shutter").slideDown()
+
+    const [Tab, SetTab] = useState(<ListCard />)
+    const [TabActive, SetTabActive] = useState("search")
+    function changeTab(componentName) {
+        if (componentName === "search") {
+            SetTab(<ListCard />)
+            SetTabActive("search")
+        } else if (componentName === "saved") {
+            SetTab(<ListCard />)
+            SetTabActive("saved")
+        }
+    }
+
     return (
-        <React.Fragment>
+        <>
             <Container>
                 <Row>
                     <Col lg={3}>
                         <div className="filter_area">
                             <div className="sef_box">
-                                <div className="sef_na_ea"><h3>Search Filters</h3></div>
-                                <div className="sef_p_c"><p>Clear all</p></div>
+                                <div className="sef_na_ea ps_n_sef"><h3>Search Filters</h3></div>
+                                <div className="sef_p_c ps_n_sefp"><p>Clear all</p></div>
                             </div>
                             <div className="s_cat_bo">
                                 <div className='s_na_box'>
@@ -120,17 +140,26 @@ const Project_Search = () => {
                                 </div>
                             </div>
 
-                            <div className='s_na_box s_cat_bo'>
+                            <div className='s_na_box s_cat_bo mb-0'>
                                 <div className="s_na_h4"><h4>English Level</h4></div>
                                 <div className="s_na_categ"><input type="checkbox" /><label>Bilingual (1)</label></div>
                                 <div className="s_na_categ"><input type="checkbox" /><label>Fluent (4)</label></div>
                                 <div className="s_na_categ"><input type="checkbox" /><label>Native (3)</label></div>
                                 <div className="s_na_categ"><input type="checkbox" /><label>Professional (1)</label></div>
                             </div>
-                            <div className='s_na_box s_cat_bo'>
-                                <div className="s_na_h4"><h4>Languages</h4></div>
-                                <div className="s_na_categ"><input type="checkbox" /><label>English (1)</label></div>
-                                <div className="s_na_categ"><input type="checkbox" /><label>Japinese (4)</label></div>
+                            <div className='s_na_box s_cat_bo mt-0'>
+                                <div className="flex_slide_ta toggle_shutter p-0" onClick={(e) => hanDleSlide(e)}>
+                                    <div className="s_na_h4"><h4>Languages</h4></div>
+                                    <div>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-chevron-down" viewBox="0 0 16 16">
+                                            <path fillRule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div className='slide_btnss slider_shutter'>
+                                    <div className="s_na_categ"><input type="checkbox" /><label>English (1)</label></div>
+                                    <div className="s_na_categ"><input type="checkbox" /><label>Japinese (4)</label></div>
+                                </div>
                             </div>
                             <div className="desc_hin">
                                 <p>Select the options and press the Filter Result button to apply the changes</p>
@@ -141,7 +170,13 @@ const Project_Search = () => {
                         </div>
                     </Col>
                     <Col lg={9} className="top_main_c_job">
-                        {ListCard()}
+                        <div className='overflow-scroll'>
+                            <div className="d-flex flex-wrap tab_m_nodea mb-4 tab_scroll_cont">
+                                <button className={`tab_btn_vs ${TabActive === 'search' ? 'active_bvs' : ''}`} onClick={() => { changeTab("search") }}>SEARCH</button>
+                                <button className={`tab_btn_vs ${TabActive === 'saved' ? 'active_bvs' : ''}`} onClick={() => { changeTab("saved") }}>SAVED JOB(3)</button>
+                            </div>
+                        </div>
+                        {Tab}
                     </Col>
                     <Col lg={12}>
                         <div className='pagiantion_node'>
@@ -155,7 +190,7 @@ const Project_Search = () => {
                 </Row>
             </Container>
             <Footer />
-        </React.Fragment>
+        </>
     )
 }
 export default Project_Search

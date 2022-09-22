@@ -2,6 +2,7 @@ import Container from 'react-bootstrap/Container';
 import { Row, Col } from 'react-bootstrap';
 import SideNav from './site_nav';
 import Title from './title'
+import { Link } from "react-router-dom";
 
 const JobPosting = () => {
     Title(' | Getting Started')
@@ -59,8 +60,8 @@ const JobPosting = () => {
                                 </select>
                             </div>
                             <div className="btn_foot_sec flex-wrap d-flex"> 
-                                <div className='fo_btn_c next_b_btn_c'><button>Cancel</button></div>
-                                <div className='fo_btn_c next_b_btn_c'><button className="active_btn_blue">Continue</button></div>
+                                <div className='fo_btn_c next_b_btn_c'><Link to="/dashboard"><button>Cancel</button></Link></div>
+                                <div className='fo_btn_c next_b_btn_c'><Link to="/title"><button className="active_btn_blue">Continue</button></Link></div>
                             </div>
                         </div>
                     </Col>

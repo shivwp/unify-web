@@ -1,6 +1,6 @@
-import NavbarLogin from './components/navbarlogin';
+import NavbarLogin from './components/header';
 import JobPortal from './components/job-portal';
-import Footer from './components/footer';
+import Footer from '../components/footer';
 
 const portalScreen = ()=>{
     return (

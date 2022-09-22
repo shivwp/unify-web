@@ -12,7 +12,7 @@ const Screen = () => {
             <div>
                 <Row>
                     <Col lg={12}>
-                        <Row>
+                        <Row className="mr-righht-10">
                             <Col lg={4}>
                                 <div>
                                     <div className='tm_s_s_name'>Team</div>
@@ -87,28 +87,25 @@ const Screen = () => {
                         </Row>
                     </Col>
                 </Row>
-                <div className='d-flex justify-content-between flex-wrap'>
-                <div className='d-flex'>
-                <div className='fo_btn_c next_b_btn_c'><button className="blue_btn_smm ml-0">Apply Filters</button></div>
-                    <div className='fo_btn_c next_b_btn_c'><button >Clear</button></div>
+                <div className='d-flex justify-content-between mob_jus_cent flex-wrap'>
+                <div className='d-flex flex-wrap mob_jus_cent'>
+                <div className='fo_btn_c sme_next_bbtn next_b_btn_c'><button className="blue_btn_smm ml-0">Apply Filters</button></div>
+                <div className='fo_btn_c sme_next_bbtn next_b_btn_c'><button >Clear</button></div>
                 </div>
-                <div className='fo_btn_c next_b_btn_c'>
+                <div className='fo_btn_c sme_next_bbtn next_b_btn_c mob_jus_cent'>
                 <button>Close</button>
                 </div>
                 </div>
             </div>
         )
     };
-    const [Tab, SetTab] = useState(<Active />)
     const [TabActive, SetTabActive] = useState("offers")
     const [open, Setopen] = useState(<Active />);
     const [active, SetActive] = useState(0);
     function changeTab(componentName) {
         if (componentName === "offers") {
-            SetTab("")
             SetTabActive("offers")
         } else if (componentName === "hired") {
-            SetTab("")
             SetTabActive("hired")
         }
     }

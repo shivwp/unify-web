@@ -3,7 +3,7 @@ import Container from 'react-bootstrap/Container';
 import { Col, Row } from 'react-bootstrap';
 import Footer from './footer';
 import Title from './title';
-
+import { Link } from "react-router-dom";
 
 const Screen = () => {
     Title(" | Expand Team");
@@ -23,7 +23,7 @@ const Screen = () => {
                                 <div className="input_bg_i"><textarea placeholder="Enter your email"></textarea></div>
                                 <div className="inp_agree_che"><label><input type="checkbox" /><p>Also allow these coworkers to hire and pay with this account.</p></label></div>
                                 <div className="btn_foot_sec flex-wrap d-flex no-border">
-                                    <div className='fo_btn_c next_b_btn_c'><button>Cancel</button></div>
+                                    <div className='fo_btn_c next_b_btn_c'><Link to="/dashboard"><button>Cancel</button></Link></div>
                                     <div className='fo_btn_c next_b_btn_c'><button className="active_btn_blue">Invite</button></div>
                                 </div>
                             </div>

@@ -1,6 +1,6 @@
-import NavbarLogin from './components/navbarlogin';
+import NavbarLogin from './components/header';
 import UnifyFreelancer from './components/unify_freelancer';
-import Footer from './components/footer';
+import Footer from '../components/footer';
 
 const FDetail = () => {
     return (

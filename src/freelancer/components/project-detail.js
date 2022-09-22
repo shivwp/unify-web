@@ -1,7 +1,8 @@
 import Container from 'react-bootstrap/Container';
 import { Row, Col } from 'react-bootstrap';
-import star from '../icons/star.svg';
-import Footer from './footer';
+import star from '../../icons/star.svg';
+import Footer from '../../components/footer';
+import '../freelancer.css'
 
 function ListProposals() {
     const card = [1, 2, 3];
@@ -76,16 +77,16 @@ const projectdetail = () => {
 
                         <div className="s_trans_bos s_nav_body box_web_req">
                             <div className='fl_end_b abso_cen'>
-                                <div className="fb_btns_s_pro">
+                                <div className="fb_btns_s_pro pd_n_fbspro">
                                     <button className='bg-trans_s_pro bg_li_grey'>
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-heart-fill heart_btn" viewBox="0 0 16 16">
                                             <path fillRule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z" />
                                         </svg>
                                     </button>
-                                    <button>Send Proposal</button>
+                                    <button className="pd_n_sendp">Send Proposal</button>
                                 </div>
                             </div>
-                            <div className='pd_head_on'><h1>Website Designer Required For Directory Theme</h1></div>
+                            <div className='pd_head_on pd_head_h1'><h1>Website Designer Required For Directory Theme</h1></div>
                             <div className='over_s_wor_area'>
                                 <div className='fle_wor_box'>
                                     <div className='wor_svg'>
@@ -94,7 +95,7 @@ const projectdetail = () => {
                                             <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
                                         </svg>
                                     </div>
-                                    <div className='wor_name'>Digital Marketing</div>
+                                    <div className='wor_name wn_freelancer'>Digital Marketing</div>
                                 </div>
                                 <div className='fle_wor_box'>
                                     <div className='wor_svg'>
@@ -103,7 +104,7 @@ const projectdetail = () => {
                                             <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
                                         </svg>
                                     </div>
-                                    <div className='wor_name'>Remote</div>
+                                    <div className='wor_name wn_freelancer'>Remote</div>
                                 </div>
                                 <div className='fle_wor_box'>
                                     <div className='wor_svg'>
@@ -112,38 +113,38 @@ const projectdetail = () => {
                                             <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z" />
                                         </svg>
                                     </div>
-                                    <div className='wor_name'>January 15, 2021</div>
+                                    <div className='wor_name wn_freelancer'>January 15, 2021</div>
                                 </div>
                             </div>
                             <div className='proj_det_li'>
                                 <div className='flex_itm'>
                                     <div className="f_b_obx">
                                         <div className="ex_name_fb">Freelancer Type</div>
-                                        <div className="ex_val_f">Individual</div>
+                                        <div className="ex_val_f pd_evf_n">Individual</div>
                                     </div>
                                     <div className="f_b_obx">
                                         <div className="ex_name_fb">Project Duration</div>
-                                        <div className="ex_val_f">1-5 Days</div>
+                                        <div className="ex_val_f pd_evf_n">1-5 Days</div>
                                     </div>
                                     <div className="f_b_obx">
                                         <div className="ex_name_fb">Level</div>
-                                        <div className="ex_val_f">Moderate </div>
+                                        <div className="ex_val_f pd_evf_n">Moderate </div>
                                     </div>
                                     <div className="f_b_obx">
                                         <div className="ex_name_fb">English Level</div>
-                                        <div className="ex_val_f">Native</div>
+                                        <div className="ex_val_f pd_evf_n">Native</div>
                                     </div>
                                     <div className="f_b_obx">
                                         <div className="ex_name_fb">Languages</div>
-                                        <div className="ex_val_f">Arabic English </div>
+                                        <div className="ex_val_f pd_evf_n">Arabic English </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
                         <div className="s_nav_body mt-4 s_trans_bos">
-                            <div className="bl_head"><h3>Description</h3></div>
-                            <div className="bl_apra">
+                            <div className="bl_head pd_n_bh"><h3>Description</h3></div>
+                            <div className="bl_apra pd_n_blpara">
                                 <p>
                                     This is a Great  Moment for us to announce a designer job for our company, The candidate who falls in the criteria can apply. We'll call the candidates who are eligible for an interview.
 
@@ -166,7 +167,7 @@ const projectdetail = () => {
                             </div>
                             <div className="btn_foot_sec d-block"><br />
                                 <div className="bl_head"><h3>Skills Required</h3></div><br />
-                                <div className='dlex_sk_block m-0'>
+                                <div className='dlex_sk_block m-0 pd_n_bss'>
                                     <div className="b_skil">Backend Developer</div>
                                     <div className="b_skil">Designer</div>
                                     <div className="b_skil">Support Agent</div>
@@ -212,13 +213,13 @@ const projectdetail = () => {
                                     <div className='inp_input'><textarea></textarea></div>
                                 </div>
                             </div>
-                            <div className='f_agre_fot'>
-                                <div className='agree_term_b'>
+                            <div className='f_agre_fot mt-2'>
+                                <div className='agree_term_b align-items-center'>
                                     <input type="checkbox" /><label>I agree to the Terms And Conditions</label>
                                 </div>
                                 <div>
                                     <div className="fb_btns_s_pro">
-                                        <button>Send Proposal</button>
+                                        <button className="pd_n_sendp pad_n_pdd">Send Proposal</button>
                                     </div>
                                 </div>
                             </div>
@@ -237,7 +238,7 @@ const projectdetail = () => {
                                     <h1>$140.00</h1>
                                     <span>(Hourly)</span>
                                 </div>
-                                <div className="wallet_icon">
+                                <div className="wallet_icon pd_n_wii">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-wallet2" viewBox="0 0 16 16">
                                         <path d="M12.136.326A1.5 1.5 0 0 1 14 1.78V3h.5A1.5 1.5 0 0 1 16 4.5v9a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 13.5v-9a1.5 1.5 0 0 1 1.432-1.499L12.136.326zM5.562 3H13V1.78a.5.5 0 0 0-.621-.484L5.562 3zM1.5 4a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-13z" />
                                     </svg>
@@ -248,7 +249,7 @@ const projectdetail = () => {
                             <div className='fle_xent_p'><div className="mak_prof_img"><img src="/assets/crampfix-e.jpg" alt="" /></div></div>
                             <div className="comp_name_h"><h3>HRM Recruitment Center</h3></div>
                             <div className="comp_name_p"><p>We are a computerized wellbeing startup with a spry and high-speed climate. We are searching for a Senior, RELIABLE portable application…</p></div>
-                            <div className="view-p_btn">
+                            <div className="view-p_btn pd_n_vbbtn">
                                 <button>View profile</button>
                             </div>
                             <div className="comp_name_p"><p>We are a computerized wellbeing startup with a spry and high-speed climate. We are searching for a Senior, RELIABLE portable application…</p></div>

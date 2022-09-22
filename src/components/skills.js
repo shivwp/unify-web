@@ -3,6 +3,7 @@ import { Row, Col } from 'react-bootstrap';
 import SideNav from './site_nav';
 import Title from './title';
 import $ from 'jquery';
+import { Link } from 'react-router-dom';
 
 const Skill = () => {
     Title(' | Skills')
@@ -192,8 +193,8 @@ const Skill = () => {
                             </div>
                             <div className="see_cat_link">Change your skill category</div>
                             <div className="btn_foot_sec no-border flex-wrap d-flex">
-                                <div className='fo_btn_c next_b_btn_c'><button>Back</button></div>
-                                <div className='fo_btn_c next_b_btn_c'><button className="active_btn_blue">Next</button></div>
+                                <div className='fo_btn_c next_b_btn_c'><Link to="/title14"><button>Back</button></Link></div>
+                                <div className='fo_btn_c next_b_btn_c'><Link to="/scope"><button className="active_btn_blue">Next</button></Link></div>
                             </div>
                         </div>
                     </Col>

@@ -68,7 +68,7 @@ const FreelanceWorld = () => {
                             </SwiperSlide>
                         </Swiper>
                     </div>
-                    <div className="row box_area_border"></div>
+                    <div className="row box_area_border nbox_area_border"></div>
                 </div>
             </div>
         </div>

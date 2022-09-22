@@ -7,11 +7,12 @@ import Archived from './archive';
 import { useState } from 'react';
 
 const JonComponent = () => {
-    const [Tab, SetTab] = useState(<AllProposals />)
+    const [Tab, SetTab] = useState(<AllProposals changetab={changeTab}/>)
     const [TabActive, SetTabActive] = useState("all")
+
     function changeTab(componentName) {
         if (componentName === "all") {
-            SetTab(<AllProposals />)
+            SetTab(<AllProposals changetab={changeTab}/>)
             SetTabActive("all")
         } else if (componentName === "satisfied") {
             SetTab(<Satisfied />)

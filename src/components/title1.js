@@ -2,6 +2,7 @@ import Container from 'react-bootstrap/Container';
 import { Row, Col } from 'react-bootstrap';
 import SideNav from './site_nav';
 import Title from './title';
+import { Link } from 'react-router-dom';
 
 const TitleBody = () => {
     Title(' | Title Screen 14')
@@ -42,8 +43,8 @@ const TitleBody = () => {
                                 </div>
                             </div>
                             <div className="btn_foot_sec flex-wrap d-flex"> 
-                                <div className='fo_btn_c next_b_btn_c'><button>Back</button></div>
-                                <div className='fo_btn_c next_b_btn_c'><button className="active_btn_blue">Next</button></div>
+                                <div className='fo_btn_c next_b_btn_c'><Link to="/title"><button>Back</button></Link></div>
+                                <div className='fo_btn_c next_b_btn_c'><Link to="/skills"><button className="active_btn_blue">Next</button></Link></div>
                             </div>
                         </div>
                     </Col>

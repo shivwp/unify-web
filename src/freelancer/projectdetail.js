@@ -1,4 +1,4 @@
-import NavbarLogin from './components/navbarlogin';
+import NavbarLogin from './components/header';
 import ProjectDetai from './components/project-detail';
 
 const Projectdetail= () => {

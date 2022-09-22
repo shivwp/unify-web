@@ -1,6 +1,6 @@
 import Question from './components/question';
 
-const questionScreen = ()=>{
+const QuestionScreen = ()=>{
     return <Question />
 }
-export default questionScreen
+export default QuestionScreen

@@ -1,17 +1,18 @@
-import NavbarHeader from "./navbar";
+import NavbarHeader from "./navbarlogin";
 import Container from 'react-bootstrap/Container';
 import Footer from './footer';
 import Title from './title';
+import { Link } from "react-router-dom";
 
 
-const question = () => {
+const Question = () => {
     Title(" | question 2");
     return (
         <>
             <NavbarHeader />
             <Container>
                 <div className="question_box box_border">
-                    <div className="questio_heading"><h1>Try estimating the scope of your work</h1></div>
+                    <div className="questio_heading"><h1 className='cewfoueqjs'>Try estimating the scope of your work</h1></div>
                     <div className="on_time_h3">
                         <h3>One-time</h3>
                         <button className="round_b_btn">
@@ -40,7 +41,7 @@ const question = () => {
                     </div>
                     <div className="on_time_h3 d-block padd_fou">
                         <h3>What level of experience will it need?</h3>
-                        <p className="litt_sm_para">This won't restrict any proposals, but helps match expertise to your budget.</p>
+                        <p className="litt_sm_para cewuohq">This won't restrict any proposals, but helps match expertise to your budget.</p>
                         <div className="d-flex flex-wrap">
                             <div className="s_b_r mrr_riii d-block">
                                 <div className="flex_aling">
@@ -48,7 +49,7 @@ const question = () => {
                                     <label htmlFor="r_2"> <p><b className="text-black">Entry</b></p></label>
                                 </div>
                                 <div className="label_apra">
-                                    <p className="litt_sm_para">Looking for someone relatively new to this field</p>
+                                    <p className="litt_sm_para cewuohq">Looking for someone relatively new to this field</p>
                                 </div>
                             </div>
                             <div className="s_b_r mrr_riii d-block">
@@ -57,7 +58,7 @@ const question = () => {
                                     <label htmlFor="r_1"> <p><b className="text-black">Intermediate</b></p></label>
                                 </div>
                                 <div className="label_apra">
-                                    <p className="litt_sm_para">Looking for someone relatively new to this field</p>
+                                    <p className="litt_sm_para cewuohq">Looking for someone relatively new to this field</p>
                                 </div>
                             </div>
                             <div className="s_b_r mrr_riii d-block">
@@ -66,14 +67,14 @@ const question = () => {
                                     <label htmlFor="r_4"> <p><b className="text-black">Expert</b></p></label>
                                 </div>
                                 <div className="label_apra">
-                                    <p className="litt_sm_para">Looking for someone relatively new to this field</p>
+                                    <p className="litt_sm_para cewuohq">Looking for someone relatively new to this field</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div className="btn_foot_sec flex-wrap d-flex no-border mt-2">
-                        <div className='fo_btn_c next_b_btn_c'><button>Back</button></div>
-                        <div className='fo_btn_c next_b_btn_c'><button className="active_btn_blue">Next</button></div>
+                        <Link to="/question1"><div className='fo_btn_c next_b_btn_c'><button>Back</button></div></Link>
+                        <Link to="/businesssize"><div className='fo_btn_c next_b_btn_c'><button className="active_btn_blue">Next</button></div></Link>
                     </div>
                 </div>
             </Container>
@@ -81,4 +82,4 @@ const question = () => {
         </>
     )
 }
-export default question
+export default Question

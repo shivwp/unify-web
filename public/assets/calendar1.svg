@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="21.332" height="23.479" viewBox="0 0 21.332 23.479">
+  <g id="calendar" transform="translate(1 1)">
+    <line id="Line_380" data-name="Line 380" x2="19.143" transform="translate(0.1 7.952)" fill="none" stroke="#6d2ef1" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+    <line id="Line_381" data-name="Line 381" x2="0.01" transform="translate(14.436 12.147)" fill="none" stroke="#6d2ef1" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+    <line id="Line_382" data-name="Line 382" x2="0.01" transform="translate(9.671 12.147)" fill="none" stroke="#6d2ef1" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+    <line id="Line_383" data-name="Line 383" x2="0.01" transform="translate(4.895 12.147)" fill="none" stroke="#6d2ef1" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+    <line id="Line_384" data-name="Line 384" x2="0.01" transform="translate(14.436 16.32)" fill="none" stroke="#6d2ef1" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+    <line id="Line_385" data-name="Line 385" x2="0.01" transform="translate(9.671 16.32)" fill="none" stroke="#6d2ef1" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+    <line id="Line_386" data-name="Line 386" x2="0.01" transform="translate(4.895 16.32)" fill="none" stroke="#6d2ef1" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+    <line id="Line_387" data-name="Line 387" y2="3.534" transform="translate(14.009)" fill="none" stroke="#6d2ef1" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+    <line id="Line_388" data-name="Line 388" y2="3.534" transform="translate(5.333)" fill="none" stroke="#6d2ef1" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+    <path id="Path_4608" data-name="Path 4608" d="M14.218,1.579H5.124C1.97,1.579,0,3.336,0,6.566v9.719c0,3.28,1.97,5.078,5.124,5.078h9.084c3.164,0,5.124-1.767,5.124-5v-9.8C19.341,3.336,17.381,1.579,14.218,1.579Z" transform="translate(0 0.117)" fill="none" stroke="#6d2ef1" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" fill-rule="evenodd"/>
+  </g>
+</svg>

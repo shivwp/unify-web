@@ -1,6 +1,6 @@
 import Container from 'react-bootstrap/Container';
 import { Row, Col } from 'react-bootstrap';
-import heart from '../icons/heart.svg';
+import heart from '../../icons/heart.svg';
 
 function Listaward() {
     const card = [1, 2, 3, 4];
@@ -27,14 +27,24 @@ function Listaward() {
     );
 }
 function ListService() {
-    const card = [1, 2, 3];
+    const card = [
+        {
+            image:"../../../assets/Magdiel-Lopez-3.jpg"
+        },
+        {
+            image:"../../../assets/Magdiel-Lopez-6.jpg"
+        },
+        {
+            image:"../../../assets/Magdiel-Lopez-5.jpg"
+        }
+    ];
     return (
         <>
             {card.map((person, index) => (
                 <Col md={4} xs="0" key={index}>
                     <div className='servi_box'>
-                        <div class="heat_lef"> <img src={heart} alt="" /></div>
-                        <div className='ser_hei'><img src="assets/Magdiel-Lopez-3.jpg" alt="" /></div>
+                        <div className="heat_lef"> <img src={heart} alt="" /></div>
+                        <div className='ser_hei'><img src={person.image} alt="" /></div>
                         <div className='flex_f_pro'>
                             <div className='mar_min'>
                                 <div className="profile_box">
@@ -145,21 +155,21 @@ const UnifyFreelancer = () => {
                                 <div className='pd_flex'>
                                     <div className='flex_pt'>
                                         <div className='pt_title'>Ongoing <br />Projects</div>
-                                        <div className='pt_num'>206</div>
+                                        <div className='pt_num pt_n1'>206</div>
                                     </div>
                                     <div className='flex_pt'>
                                         <div className='pt_title'>Services in <br />Queue</div>
-                                        <div className='pt_num'>08</div>
+                                        <div className='pt_num pt_n2'>08</div>
                                     </div>
                                 </div>
                                 <div className='pd_flex'>
                                     <div className='flex_pt no-border'>
                                         <div className='pt_title'>Completed <br />Projects</div>
-                                        <div className='pt_num'>196</div>
+                                        <div className='pt_num pt_n3'>196</div>
                                     </div>
                                     <div className='flex_pt no-border'>
                                         <div className='pt_title'>Completed <br />Services</div>
-                                        <div className='pt_num'>120</div>
+                                        <div className='pt_num pt_n4'>120</div>
                                     </div>
                                 </div>
                             </div>
@@ -197,7 +207,7 @@ const UnifyFreelancer = () => {
                     </Col>
                     <Col lg={9}>
                         <div className="border_bx_sec">
-                            <div className='about_head_ma'><h1>About Me</h1></div>
+                            <div className='about_head_ma uf_n_abh'><h1>About Me</h1></div>
                             <div className='about_et'>
                                 <div className='flex_ab_et'>
                                     <div className='ab_icon'>
@@ -248,7 +258,7 @@ const UnifyFreelancer = () => {
                                 </div>
                             </div>
                             <div className='featured_serv hid_f_serv'>
-                                <div className='my_skil_head'><h3>Featured Services</h3></div>
+                                <div className='my_skil_head uf_n_msh'><h3>Featured Services</h3></div>
                                 <Row>
                                     {ListService()}
                                 </Row>
@@ -256,7 +266,7 @@ const UnifyFreelancer = () => {
 
                             <div className='featured_serv'>
                                 <div className='my_skil_head'><h3>Description</h3></div>
-                                <div className='description_my_p'>
+                                <div className='description_my_p uf_dmpn'>
                                     We are a group of Print Media Experts with over 9 years of involvement. We can offer pixel-ideal plans for your Brand/Products. We do all sort of illustrations related work. Brand Logo, Product Labels, Product Packaging, Stickers, Business Cards, Brochures, Flyer, Web Banners and Ads, E-Books Covers, Flex/Hoarding, and App Icons.
 
                                     On the off chance that you need HIGH-QUALITY work with a FAST TURNAROUND, reach me. 100% fulfillment Guaranteed.

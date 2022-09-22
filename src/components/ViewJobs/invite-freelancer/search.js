@@ -1,4 +1,5 @@
 import { Col, Row } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 const Screen = () => {
     return (
@@ -47,7 +48,7 @@ const Screen = () => {
                                         </svg>
                                     </button>
                                     <div className='ts_btn attach_f_btn wid_30_in d-flex flex-wrap'>
-                                    <button className="transp_fil_btn mt-2 font-weight-500">Hire</button>
+                                    <Link to="/hire-freelancer"><button className="transp_fil_btn mt-2 font-weight-500">Hire</button></Link>
                                     <button className='mt-2 font-weight-500'>Invite to Job</button>
                                     </div>
                                 </div>

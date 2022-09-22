@@ -14,10 +14,10 @@ const Screen = () => {
                         <h1>Talent Saved</h1>
                         <p className='dis_t_pra_s'>Look up people you've saved</p>
                     </div>
-                    <div className='post_job_btn_m'><button>Message All</button></div>
+                    <div className='post_job_btn_m'><button className='plr-35px'>Message All</button></div>
                 </div>
                 <div className="box_vs_m">
-                    <div className='search_area_in'>
+                    <div className='search_area_in mob_ele_wfull'>
                         <div className='select_inp_in prof_saved_chck_s'>
                             <Checkbox
                                 icon={<Icon.FiCheck color="#D8D7D7" size={14} />}
@@ -40,7 +40,7 @@ const Screen = () => {
                     </div>
                     <div className='freelancer_box_in mt-0 pt-4 pb-5'>
                         <Row>
-                            <Col lg={1}>
+                            <Col lg={1} sm={1}>
                                 <div className='profile_sel_ceck_alne'>
                                     <Checkbox
                                         icon={<Icon.FiCheck color="#D8D7D7" size={17} />}
@@ -52,11 +52,11 @@ const Screen = () => {
                                     />
                                 </div>
                             </Col>
-                            <Col lg={11}>
+                            <Col lg={11} sm={11}>
                                 <div className="freelancer_box_area_in">
                                     <div className='d-flex justify-content-between flex-wrap'>
                                         <div className='d-flex flex-wrap'>
-                                            <div className='freelancer_img_in_r'>
+                                            <div className='freelancer_img_in_r online_profile'>
                                                 <img src="/assets/PRO-2.png" alt='' />
                                             </div>
                                             <div className='freel_det_bin'>
@@ -83,7 +83,7 @@ const Screen = () => {
                                         </div>
                                     </div>
                                     <div className='freelancer_compl_in'>
-                                        Hello! I am a professional UI/UX Designer. There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour...View more</div>
+                                        Hello! I am a professional UI/UX Designer. There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour... <a href='#0' className='text-decoration-none'>View more</a></div>
                                 </div>
                             </Col>
                         </Row>

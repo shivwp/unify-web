@@ -1,6 +1,6 @@
 import Container from 'react-bootstrap/Container';
 import { Row, Col } from 'react-bootstrap';
-import star from '../icons/star.svg';
+import star from '../../icons/star.svg';
 
 const JobPortal = () => {
     return (

@@ -3,6 +3,7 @@ import Container from 'react-bootstrap/Container';
 import { Col, Row } from 'react-bootstrap';
 import Footer from './footer';
 import Title from './title';
+import { Link } from "react-router-dom";
 
 
 const Subscriptionplan = () => {
@@ -31,7 +32,7 @@ const Subscriptionplan = () => {
                                         <li>Additional freelancer invites, report & tracking capabilities</li>
                                     </ul>
                                     <div>
-                                        <button className="btn_chose_pl">CHOOSE PLAN</button>
+                                    <Link to="/dashboard"><button className="btn_chose_pl">CHOOSE PLAN</button></Link>
                                     </div>
                                 </div>
                             </label>
@@ -51,7 +52,7 @@ const Subscriptionplan = () => {
                                         <li>Additional freelancer invites, report & tracking capabilities</li>
                                     </ul>
                                     <div>
-                                        <button className="btn_chose_pl">CHOOSE PLAN</button>
+                                    <Link to="/dashboard"><button className="btn_chose_pl">CHOOSE PLAN</button></Link>
                                     </div>
                                 </div>
                             </label>

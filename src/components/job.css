@@ -585,15 +585,59 @@
 .wid_30_in {
     padding-top: 0 !important;
 }
-
+@media only screen and (max-width:480px) {
+    .sm_amhir_no_mar .amount_hir_in{
+        margin-left: 0 !important;
+        width: 100%;
+        }
+}
+@media only screen and (max-width:767px) {
+.mob_ele_wfull .select_inp_in , .mob_ele_wfull .search_input_in {
+    width: 100% !important;
+}
+}
+.talent_dropdown_cs{
+    position: relative;
+}
+.talent_dropdown_cs .dropdown-menu{
+    left: -160% !important;
+}
+.font-weight-600{
+    font-weight: 600 !important;
+}
+.new_w_pad_fl{
+    min-width:100px !important;
+    padding-left: 45px;
+    padding-right: 45px !important;
+}
+.width-max-content{
+    width: max-content;
+}
+.new_w_pad_fl::nth-child(1){
+    padding-left: 0px !important;
+}
+.talent_dropdown_cs .dropdown-menu::before{
+    content: "\25BA";
+    color: #fff;
+    position: absolute;
+    top: 0;
+    font-size: 20px;
+    margin-top: -19px;
+    right: 5px;
+    transform: rotate(270deg);
+    -webkit-transform: rotate(270deg);
+    -moz-transform: rotate(270deg);
+    -ms-transform: rotate(270deg);
+    -o-transform: rotate(270deg);
+}
 .search_input_in input {
     color: #B7B7B7;
     font-family: "Poppins-Bold", "Poppins";
-    font-size: 15px;
+    font-size: 14px;
     background-color: transparent;
-    font-weight: 400;
+    font-weight: 300;
     width: 100%;
-    padding: 0px 5px;
+    padding: 0px 7px;
     height: 100%;
     border: none;
     outline: none;
@@ -695,14 +739,17 @@
 
 .heart_roun_btn svg {
     fill: #00065A !important;
-    height: 20px !important;
-    width: 20px !important;
+    height: 19px !important;
+    width: 19px !important;
     margin: 0;
 }
-
+.plr-35px{
+    padding-left: 35px !important;
+    padding-right: 35px !important;
+}
 .heart_roun_btn {
-    height: 50px !important;
-    width: 50px !important;
+    height: 45px !important;
+    width: 45px !important;
     display: flex;
     text-align: center;
     padding: 0 !important;
@@ -1001,8 +1048,13 @@
     color: #828282;
     font-family: "Poppins-Bold", "Poppins";
     font-size: 14px;
+    border-radius: 0px !important;
     font-weight: 500;
     min-width: 250px;
+    -webkit-border-radius: 0px !important;
+    -moz-border-radius: 0px !important;
+    -ms-border-radius: 0px !important;
+    -o-border-radius: 0px !important;
 }
 .inpu_date select {
     border: #E8E7E7 solid 1px;
@@ -1455,6 +1507,10 @@
     padding: 15px 12px 12px 12px;
     margin-bottom: 15px;
 }
+
+.width-max-content{
+    width: max-content !important;
+}
 .setting_b_head_s{
     font-family: "Poppins-Bold", "Poppins";
     font-weight: 700;
@@ -1550,6 +1606,10 @@
     justify-content: space-between;
     border-bottom: #DEDEDE solid 1px;
     padding-bottom: 7px;
+    overflow: scroll;
+}
+.s_tble_s::-webkit-scrollbar{
+    display: none;
 }
 .blue_trans_btn{
     border: #6D2EF1 solid 1px !important;
@@ -1577,6 +1637,19 @@
 }
 .w-20{
     width: 20% !important;
+}
+@media only screen and (max-width:768px) {
+.cewfoueqjs{
+    font-size: 30px !important;
+}
+.cewuohq{
+    font-size: 16px !important;
+}
+}
+@media only screen and (max-width:483px) {
+.sm_serch_fll_n .select_inp_in , .sm_serch_fll_n .selec_inp_ful_w{
+    width: 100% !important;
+}
 }
 @media only screen and (max-width:770px) {
     .inp_w_haf{
@@ -1937,4 +2010,80 @@
 }
 .help_swip .acc_bxo_h{
     min-height: 128px;
+}
+.a25_px_oxpm{
+    margin: 10px 10px 10px 0px;   
+    height: 22px;
+    width: 22px;
+    display: flex;
+}
+.a25_px_oxpm img{
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+}
+.mr-righht-10{
+    margin-right: 10px;
+}
+@media screen and (min-width: 992px) and (max-width:1200px) {
+    .st_med_umecw .inpu_date{
+        width: 100%;
+    }    
+}
+
+@media only screen and (max-width:768px) {
+  .mob_60_rr{
+    width: 60px !important;
+  }
+}
+
+.ew_cstom_inp_dat{
+    border: hsl(0, 0%, 80%) solid 1px;
+}
+.ew_cstom_inp_dat input{
+    border: none !important;
+    padding: 10px 15px;
+    font-size: 13px;
+    width: 100%;
+    outline: none;
+}
+.ew_cstom_inp_dat .first_chi{
+    padding-right: 0 !important;
+}
+.ew_cstom_inp_dat .secon_chi{
+    padding-left: 0 !important;
+}
+.ew_cstom_inp_dat .first_chi::-webkit-calendar-picker-indicator {
+    opacity: 0;
+}
+.date_range_nod input{
+    border: #E8E7E7 solid 1px;
+    padding: 10px 20px;
+    outline: none;
+    color: #828282;
+    font-family: "Poppins-Bold", "Poppins";
+    font-size: 14px;
+    font-weight: 500;
+    min-width: 250px;
+}
+.psr-relative{
+    position: relative;
+}
+.cal_icon_psr_abs{
+    position: absolute;
+    padding: 7px 10px;
+    right: 0;
+    top: 0;
+    pointer-events: none;
+    cursor: pointer;
+}
+.cal_icon_psr_abs:hover{
+    cursor: pointer;
+}
+.border_blue_wwifth{
+    border: #6D2EF1 solid 1px !important;
+    min-width: 200px;
+}
+.report_left_caewe .dropdown-menu{
+    left: -125px !important;
 }

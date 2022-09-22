@@ -8,20 +8,16 @@ import "./job.css";
 import { Navigation } from "swiper";
 
 const Screen = () => {
-    const [Tab, SetTab] = useState()
+    
     const [TabActive, SetTabActive] = useState("client")
     function changeTab(componentName) {
         if (componentName === "all") {
-            SetTab()
             SetTabActive("all")
         } else if (componentName === "satisfied") {
-            SetTab()
             SetTabActive("satisfied")
         } else if (componentName === "message") {
-            SetTab()
             SetTabActive("message")
         } else if (componentName === "archive") {
-            SetTab()
             SetTabActive("archive")
         }
     }

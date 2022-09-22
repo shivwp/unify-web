@@ -3,13 +3,13 @@ import { Col, Row } from 'react-bootstrap';
 const Screen = () => {
     return (
         <>
-            <div className='search_area_in'>
-                <div className='select_inp_in'>
+            <div className='search_area_in sm_serch_fll_n'>
+                <div className='select_inp_in mt-2'>
                     <select>
                         <option>All</option>
                     </select>
                 </div>
-                <div className='search_input_in selec_inp_ful_w'>
+                <div className='search_input_in selec_inp_ful_w mt-2 mb-0'>
                     <div className='search_icon_in'>
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-search" viewBox="0 0 16 16">
                             <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />

@@ -2,6 +2,7 @@ import { Container } from "react-bootstrap"
 import "./job.css";
 import $ from 'jquery';
 import Title from './title';
+import { Link } from "react-router-dom";
 
 const Description = () => {
 
@@ -15,7 +16,7 @@ const Description = () => {
             <div className="main_box_descr mbd_n_pd">
                 <div className="top_sec_bb">
                     <div className="ts_h1"><h1>Now just finish and review your job post.</h1></div>
-                    <div className="ts_btn"><button className="font-weight-500">Post Your Job Now</button></div>
+                    <div className="ts_btn"><Link to="/view-job"><button className="font-weight-500">Post Your Job Now</button></Link></div>
                 </div>
                 <div className="b_bot_inp">
                     <div className="input_t_lab">Title</div>
@@ -149,7 +150,7 @@ const Description = () => {
                 <div className='slide_btnss slider_shutter'><div className="sm_label_inp">Adjust visibility and add coworkers</div></div>
 
                 <div className="d-flex justify-content-between flex-wrap mt-5 mb-3">
-                    <div className="btn_job_back no-border fo_btn_c next_b_btn_c"><button className="mt-2">Back</button></div>
+                    <div className="btn_job_back no-border fo_btn_c next_b_btn_c"><Link to="/budget"><button className="mt-2">Back</button></Link></div>
                     <div className="d-flex flex-wrap no-border mt-0 pt-0 btn_foot_sec">
                     <div className='fo_btn_c next_b_btn_c'><button className="draf_jo_btnbn mt-2">Save as a draft</button></div>
                     <div className='fo_btn_c next_b_btn_c'><button className="post_job_btn mt-2">Post Your Job Now</button></div>

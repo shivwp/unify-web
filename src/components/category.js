@@ -1,8 +1,9 @@
-import Navbarlogin from "./navbar";
+import Navbarlogin from "./navbarlogin";
 import Container from 'react-bootstrap/Container';
 import { Col, Row } from 'react-bootstrap';
 import Footer from './footer';
 import Title from './title';
+import { Link } from "react-router-dom";
 
 
 const Category = () => {
@@ -119,8 +120,8 @@ const Category = () => {
                     </Row>
                     <div className="some_el_cr">Looking for something else? <a href="/">See more skills</a></div>
                     <div className="btn_foot_sec no-border d-flex flex-wrap">
-                        <div className='fo_btn_c next_b_btn_c'><button>Back</button></div>
-                        <div className='fo_btn_c next_b_btn_c'><button className="active_btn_blue">Next</button></div>
+                        <Link to="/create-category"><div className='fo_btn_c next_b_btn_c'><button>Back</button></div></Link>
+                        <Link to="/question1"><div className='fo_btn_c next_b_btn_c'><button className="active_btn_blue">Next</button></div></Link>
                     </div>
                 </div>
             </Container>

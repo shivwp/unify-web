@@ -2,8 +2,9 @@ import NavbarHeader from "./navbarlogin";
 import Container from 'react-bootstrap/Container';
 import Footer from './footer';
 import Title from './title';
+import { Link } from "react-router-dom";
 
-const createcategory = () => {
+const Createcategory = () => {
     Title(" | create category");
     return (
         <>
@@ -57,11 +58,11 @@ const createcategory = () => {
                         </div>
                     </div>
                     <div className="show_less_likn"><a href="/">Show less</a></div>
-                    <div className='fo_btn_c ccb_next_btn'><button>Next</button></div>
+                    <Link to="/category"><div className='fo_btn_c ccb_next_btn'><button>Next</button></div></Link>
                 </div>
             </Container>
             <Footer />
         </>
     )
 }
-export default createcategory
+export default Createcategory

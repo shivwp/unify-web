@@ -2,6 +2,7 @@ import Container from 'react-bootstrap/Container';
 import { Row, Col } from 'react-bootstrap';
 import SideNav from './site_nav';
 import Title from './title'
+import { Link } from 'react-router-dom';
 
 const Budget = () => {
     Title(' | Budget')
@@ -68,8 +69,8 @@ const Budget = () => {
                             <div className="mt-4 bud_news_para">Professionals tend to charge <span>$15 - $35/hour (USD)</span> for UI/UX design projects like yours. Experts may charge higher rates.</div>
                             <div className="ft_form_linki">Not ready to set an hourly rate?</div>
                             <div className="btn_foot_sec flex-wrap no-border mt-2">
-                                <div className='fo_btn_c next_b_btn_c'><button>Back</button></div>
-                                <div className='fo_btn_c next_b_btn_c'><button className="active_btn_blue">Review Job Post</button></div>
+                                <div className='fo_btn_c next_b_btn_c'><Link to="/scope"><button>Back</button></Link></div>
+                                <div className='fo_btn_c next_b_btn_c'><Link to="/job-description"><button className="active_btn_blue">Review Job Post</button></Link></div>
                             </div>
                         </div>
                     </Col>

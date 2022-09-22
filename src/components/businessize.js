@@ -3,6 +3,7 @@ import Container from 'react-bootstrap/Container';
 import { Col, Row } from 'react-bootstrap';
 import Footer from './footer';
 import Title from './title';
+import { Link } from "react-router-dom";
 
 
 const Bsize = () => {
@@ -73,7 +74,7 @@ const Bsize = () => {
                         </Row>
                     </div>
                     <div className="btn_foot_sec flex-wrap d-flex no-border mt-2 pt-0">
-                        <div className='fo_btn_c next_b_btn_c'><button className="f-size-to active_btn_blue">Continue</button></div>
+                        <Link to="/subscription"><div className='fo_btn_c next_b_btn_c'><button className="f-size-to active_btn_blue">Continue</button></div></Link>
                     </div>
                 </div>
             </Container>

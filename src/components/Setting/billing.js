@@ -15,7 +15,7 @@ const Screen = () => {
                         <div className="s_nav_body">
                             <div className="s_b_head no-border"><h2>Billing & Payment</h2></div>
                             <div className="r-box_setting">
-                                <div className="d-flex justify-content-between align-items-center pt-1 pb-3">
+                                <div className="d-flex justify-content-between align-items-center flex-wrap pt-1 pb-3">
                                     <div>
                                         <div className='setting_b_head_s'>Balance Due</div>
                                         <div className='sett_y_b'>Your balance due is $0.00</div>
@@ -26,7 +26,7 @@ const Screen = () => {
                                 </div>
                             </div>
                             <div className="r-box_setting">
-                                <div className="d-flex justify-content-between align-items-center pt-1 pb-3 b-bottom-gr">
+                                <div className="d-flex justify-content-between align-items-center pt-1 pb-3 flex-wrap b-bottom-gr">
                                     <div>
                                         <div className='setting_b_head_s'>Billing Methods</div>
                                         <div className='sett_y_b'>Your balance due is $0.00</div>
@@ -43,7 +43,7 @@ const Screen = () => {
                                 </div>
                             </div>
                             <div className="r-box_setting">
-                                <div className="d-flex justify-content-between align-items-center pt-1 pb-3 b-bottom-gr">
+                                <div className="d-flex justify-content-between align-items-center flex-wrap pt-1 pb-3 b-bottom-gr">
                                     <div>
                                         <div className='setting_b_head_s'>Subscriptions</div>
                                         <div className='sett_y_b'>$0.00/month</div>
