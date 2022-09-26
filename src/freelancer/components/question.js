@@ -18,7 +18,7 @@ const Screen = () => {
                     <Col lg={4} sm={10} className="mb-3">
                     <Link to="/freelancer/question2">
                         <div className="hire_box_yh new_hbyh">
-                        <div class="sub_radio"><input type="radio" name="s" /></div>
+                        <div className="sub_radio"><input type="radio" name="s" /></div>
                             <div>
                                 <div className="hire_b_im">
                                     <img src="/assets/sprout.svg" alt="" />
@@ -31,7 +31,7 @@ const Screen = () => {
                     
                     <Col lg={4} sm={10} className="mb-3">
                         <div className="hire_box_yh new_hbyh">
-                        <div class="sub_radio"><input type="radio" name="s" /></div>
+                        <div className="sub_radio"><input type="radio" name="s" /></div>
                             <div>
                                 <div className="hire_b_im">
                                     <img src="/assets/help-file.svg" alt="" />
@@ -42,7 +42,7 @@ const Screen = () => {
                     </Col>
                     <Col lg={4} sm={10} className="mb-3">
                         <div className="hire_box_yh new_hbyh">
-                        <div class="sub_radio"><input type="radio" name="s" /></div>
+                        <div className="sub_radio"><input type="radio" name="s" /></div>
                             <div>
                                 <div className="hire_b_im">
                                     <img src="/assets/star.svg" alt="" />
