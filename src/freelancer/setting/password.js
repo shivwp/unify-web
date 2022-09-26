@@ -1,4 +1,4 @@
-import NavbarLogin from '../../components/navbarlogin';
+import NavbarLogin from '../components/header';
 import Password from './tab/password';
 import Footer from '../../components/footer';
 

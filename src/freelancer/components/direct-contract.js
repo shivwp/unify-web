@@ -37,7 +37,7 @@ const Popup = (props) => {
                                 <label className="popup_radio_element"><input type="radio" />Hourly</label>
                             </div>
                         </div>
-                        <div className="popup_btns_new">
+                        <div className="popup_btns_new flex-wrap">
                             <button onClick={() => { props.Popup(<AmountPopup Popup={props.Popup} />) }}>NEXT</button>
                         </div>
                     </div>
@@ -87,9 +87,9 @@ const AmountPopup = (props) => {
                                 <div>$0.00</div>
                             </div>
                         </div>
-                        <div className="popup_btns_new">
+                        <div className="popup_btns_new flex-wrap">
                             <button className="trans_btn" onClick={() => { props.Popup(<Popup Popup={props.Popup} />) }}>BACK</button>
-                            <button>NEXT</button>
+                            <Link to="/freelancer/project-detail"><button>NEXT</button></Link>
                         </div>
                     </div>
                 </div>
@@ -109,7 +109,7 @@ const Screen = () => {
                     <div className="question_img_br"><img src="/assets/Group 2802.svg" alt="" /></div>
                     <div className="questopn_h1"><h1 className="no_sudo">Direct Contracts</h1></div>
                     <div className="question_p"><p>Securely create contracts and quickly collect payment for non-Unify projects.</p></div>
-                    <div className="btn_foot_sec justify-content-center flex-wrap no-border mt-2">
+                    <div className="btn_foot_sec justify-content-center flex-wrap no-border mt-2 a_fl_with_css">
                         <Link to="/category"><div className='fo_btn_c next_b_btn_c'><button>INVITE CLIENTS</button></div></Link>
                         <div className='fo_btn_c next_b_btn_c'><button className="active_btn_blue" onClick={() => SetPopup(<Popup Popup={SetPopup} />)}>CREATE A CONTRACT</button></div>
                     </div>

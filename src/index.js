@@ -81,6 +81,8 @@ import FreelanceBillingEarn from "./freelancer/billing-erning";
 import FreelanceProposal from "./freelancer/sendproposal";
 import FreelanceTimeTracker from './freelancer/time-tracker'
 
+import FreelancerChat from './freelancer/chat'
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
@@ -139,6 +141,7 @@ root.render(
 
       <Route path="/freelancer/project-detail" element={<ProjectDetail />} />
       <Route path="/freelancer/project-search" element={<ProjectSearch />} />
+      <Route path="/freelancer/project-search/:saved" element={<ProjectSearch />} />
       <Route
         path="/freelancer/freelancer-detail"
         element={<FreelancerDetail />}
@@ -213,6 +216,7 @@ root.render(
       />
       <Route path="/freelancer/send-proposal" element={<FreelanceProposal />} />
       <Route path="/freelancer/time-tracker" element={<FreelanceTimeTracker />} />
+      <Route path="/freelancer/chat" element={<FreelancerChat />} />
     </Routes>
   </BrowserRouter>
 );

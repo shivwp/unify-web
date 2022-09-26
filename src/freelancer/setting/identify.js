@@ -1,4 +1,4 @@
-import NavbarLogin from '../../components/navbarlogin';
+import NavbarLogin from '../components/header';
 import Identify from './tab/identify';
 
 const Screen = () => {

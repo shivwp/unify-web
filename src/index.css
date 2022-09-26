@@ -1600,11 +1600,13 @@ body {
 .bl_apra {
   padding: 15px 0px;
 }
-
+.no_juscenter_inmob{
+  justify-content: flex-start !important;
+}
 .s_nav_body {
   background-color: #fff;
   padding: 30px 25px;
-  margin-top: 10px;
+  /* margin-top: 10px; */
 }
 
 .s_b_head {
@@ -1972,7 +1974,7 @@ body {
 .abso_cen {
   position: absolute;
   right: 0;
-  top: -20px;
+  top: -25px;
 }
 
 .s_na_inpu input, .s_na_inpu select {
@@ -2088,6 +2090,7 @@ body {
   background-color: #fff;
   padding: 8px 13px;
   font-size: 9px;
+  margin-top: 5px;
   line-height: 13px;
   color: #6d2ef1;
   font-weight: 500;
@@ -2240,7 +2243,7 @@ body {
 .pd_head_on h1 {
   font-size: 21px;
   letter-spacing: 0px;
-  line-height: 15px;
+  line-height: 26px;
   color: #170048;
   font-weight: 600;
   font-family: "Poppins";
@@ -2603,7 +2606,7 @@ body {
 .jp_h3_no h3 {
   font-size: 30px;
   letter-spacing: -1px;
-  line-height: 30px;
+  line-height: 37px;
   color: #170048;
   font-weight: 600;
   font-family: "Poppins";
@@ -2619,6 +2622,7 @@ body {
   background-color: transparent;
   border: 2px solid #6d2ef1;
   margin: 0px 5px;
+  margin-top: 5px;
   border-radius: 25px;
   -webkit-border-radius: 25px;
   -moz-border-radius: 25px;
@@ -2799,6 +2803,13 @@ body {
 
   .next_b_btn_c button {
     width: 100% !important;
+  }
+  .a_fl_with_css a{
+    width: 100% !important;
+  }
+  .a_fl_with_css .fo_btn_c{
+    margin-left: 0 !important;
+    margin-right: 0 !important;
   }
 
   .fo_btn_c {

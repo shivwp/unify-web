@@ -274,6 +274,7 @@
     border-radius: 60px !important;
     text-transform: uppercase;
     padding: 11px 45px;
+    margin-top: 5px;
     margin-right: 15px;
     border: #6D2EF1 solid 1px;
     -webkit-border-radius: 60px !important;
@@ -423,7 +424,11 @@
 .form_goals .formg_inp {
     width: calc(100% - 200px);
 }
-
+@media only screen and (max-width:550px) {
+    .form_goals .formg_inp{
+        width: 100% !important;
+    }
+}
 .form_goals .formg_inp input,
 .form_goals .formg_inp select {
     padding: 9px 20px;
@@ -959,7 +964,7 @@
 }
 
 .label_cnwy {
-    font: normal normal 400 15px/35px Poppins !important;
+    font: normal normal 400 15px/17px Poppins !important;
     color: #393939;
     min-height: 30px;
 }
@@ -990,6 +995,7 @@
     display: flex;
     margin: 5px 0px;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 .mys_stst_flex {
@@ -1293,6 +1299,7 @@
 .pbx_pdd_sp {
     padding: 15px 0px;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     border-bottom: #C2D4E9 solid 1px;
 }
@@ -1375,7 +1382,7 @@
 }
 
 .tracker_header {
-    padding: 20px 0px;
+    padding: 15px 0px;
     box-shadow: rgb(33 35 38 / 10%) 0px 10px 10px -10px;
     margin-bottom: 20px;
 }
@@ -1439,7 +1446,7 @@
 
 .th_bthns_tracker button {
     background-color: transparent;
-    margin: 0px 10px;
+    margin: 10px 10px;
     border-radius: 50px;
     border: none;
     display: flex;

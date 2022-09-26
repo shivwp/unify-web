@@ -1,4 +1,4 @@
-import NavbarLogin from '../../components/navbarlogin';
+import NavbarLogin from '../components/header';
 import MyStats from './tab/my-stats';
 
 const Screen = () => {

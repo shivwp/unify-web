@@ -68,7 +68,7 @@ const Screen = () => {
                                         </div>
                                     </Col>
                                     <Col lg={12} className="d-flex justify-content-between flex-wrap">
-                                        <div className='d-flex mb-2 mt-3 justify-content-between w-100'>
+                                        <div className='d-flex mb-2 mt-3 justify-content-between w-100 flex-wrap'>
                                             <div className="w-55">
                                                 <div className='c_name_s_v'>Agency Account</div>
                                                 <div className="c_name_sett pt-0 font-color-light">Find jobs and earn money as manager of a team of freelancers.</div>

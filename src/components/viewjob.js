@@ -3,7 +3,7 @@ import ViewJob from './ViewJobs/jobpost';
 import InviteFreelancer from './ViewJobs/invite';
 import ReviewProposal from './ReviewProposal/all';
 import Hire from './Hire/all';
-import { useState , useEffect } from 'react';
+import { useState , useEffect } from 'react'; 
 import {
     useParams
   } from "react-router-dom";

@@ -2,6 +2,7 @@ import Container from 'react-bootstrap/Container';
 import { Col, Row } from 'react-bootstrap';
 import Title from '../../components/title';
 import '../freelancer.css'
+import { Link } from 'react-router-dom';
 
 const Screen = () => {
     Title(" | Question 1");
@@ -13,7 +14,9 @@ const Screen = () => {
                 <div className="question_p"><p>This lets us know how much help to give you along the way. <br />( We won't share you answer with anyone else, including potestial clients.)</p></div>
                 </div>
                 <Row className="justify-content-center">
+                    
                     <Col lg={4} sm={10} className="mb-3">
+                    <Link to="/freelancer/question2">
                         <div className="hire_box_yh new_hbyh">
                         <div class="sub_radio"><input type="radio" name="s" /></div>
                             <div>
@@ -23,7 +26,9 @@ const Screen = () => {
                                 <div className="hi_bx_head2">Nope: it's new to me</div>
                             </div>
                         </div>
+                        </Link>
                     </Col>
+                    
                     <Col lg={4} sm={10} className="mb-3">
                         <div className="hire_box_yh new_hbyh">
                         <div class="sub_radio"><input type="radio" name="s" /></div>

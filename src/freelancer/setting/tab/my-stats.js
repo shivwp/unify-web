@@ -82,18 +82,18 @@ const Screen = () => {
                                 <div className='head_mystat_h2 mb-0'><h2 className='mb-0'>Communication</h2></div>
                                 <div className='mystst_sm_ceq mb-0 mt-2'>You <b>replied to 223 fo 234 invitations to apply</b> in the past 90 days</div>
                                 <div>
-                                    <div className="mys_stst_flex mt-2 mb-3">
+                                    <div className="mys_stst_flex mt-2 mb-3 flex-wrap">
                                         <div className='mstat_lbel'>Responsiveness</div>
                                         <div className='mstat_bxsal'>&lt; 24 hour response time</div>
                                     </div>
-                                    <div className="mys_stst_flex mt-2 mb-3">
+                                    <div className="mys_stst_flex mt-2 mb-3 flex-wrap">
                                         <div className='mstat_lbel'>you reply within a day</div>
                                         <div className='mstat_bxsal w-100'>
                                             <div className='d-flex justify-content-between w-100'><div>Never</div><div>Always</div></div>
                                             <div className='success_progrss_msts'></div>
                                         </div>
                                     </div>
-                                    <div className="mys_stst_flex mt-2 mb-3">
+                                    <div className="mys_stst_flex mt-2 mb-3 flex-wrap">
                                         <div className='mstat_lbel'>you reply every time</div>
                                         <div className='mstat_bxsal w-100'>
                                             <div className='d-flex justify-content-between w-100'><div>Never</div><div>Always</div></div>

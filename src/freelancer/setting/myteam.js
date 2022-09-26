@@ -1,4 +1,4 @@
-import NavbarLogin from '../../components/navbarlogin';
+import NavbarLogin from '../components/header';
 import MyTeam from './tab/my-team';
 import Footer from '../../components/footer';
 

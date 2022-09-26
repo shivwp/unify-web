@@ -3,6 +3,7 @@ import Container from "react-bootstrap/Container";
 import { Col, Row } from "react-bootstrap";
 import Title from "../../components/title";
 import Select from "react-select";
+import { Link } from 'react-router-dom';
 
 const Screen = () => {
     Title(" | Add Work Diary");
@@ -58,7 +59,7 @@ const Screen = () => {
                     </div>
                     <div>
                         <div className="fo_btn_c next_b_btn_c">
-                            <button className="active_btn_blue">ADD MANUAL TIME</button>
+                           <Link to="/freelancer/time-tracker"><button className="active_btn_blue">ADD MANUAL TIME</button></Link>
                         </div>
                     </div>
                 </div>

@@ -134,7 +134,7 @@ const Screen = () => {
               <div className="min_width_inp_nie m-0 date_range_nod psr-relativ">
                 <input type="date" />
               </div>
-              <div className="btn_group_be">
+              <div className="btn_group_be mt-2">
                 <button
                   className={`st_bgbe ${tabActive === "tblscreen" ? "active_btn_be" : ""}`}
                   onClick={() => {

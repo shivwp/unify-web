@@ -52,7 +52,7 @@ const Screen = () => {
               <div className="send_propo_hdsp">
                 Graphic Design Logo design for companies and the brand
               </div>
-              <div className="d-flex mt-3 mb-3">
+              <div className="d-flex mt-3 mb-3 flex-wrap">
                 <div className="blue_bx_sp_ct">Graphic Design</div>
                 <div className="trs_css-76">Posted Aug 3, 2022</div>
               </div>

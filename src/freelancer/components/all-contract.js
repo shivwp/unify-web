@@ -2,7 +2,7 @@ import Container from 'react-bootstrap/Container';
 import { Col, Row } from 'react-bootstrap';
 import Title from '../../components/title';
 import Select from 'react-select';
-
+import { Link } from 'react-router-dom';
 
 const Screen = () => {
     Title(" | All Contracts");
@@ -71,7 +71,7 @@ const Screen = () => {
                     </div>
                     <div className="no_found_cen justify-content-start">
                         <div>
-                            <div className="no_foun_para_ce text-left">Contracts you're actively working on will appear here. <a href='#0'>Start searching for new projects now!</a></div>
+                            <div className="no_foun_para_ce text-left">Contracts you're actively working on will appear here. <Link to="/freelancer/milestone-earning">Start searching for new projects now!</Link></div>
                         </div>
                     </div>
                 </div>

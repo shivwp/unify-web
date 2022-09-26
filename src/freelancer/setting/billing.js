@@ -1,4 +1,4 @@
-import NavbarLogin from '../../components/navbarlogin';
+import NavbarLogin from '../components/header';
 import BilingTab from './tab/billing-tab';
 import Footer from '../../components/footer';
 

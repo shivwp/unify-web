@@ -3,6 +3,7 @@ import { Row, Col } from 'react-bootstrap';
 import star from '../../icons/star.svg';
 import Footer from '../../components/footer';
 import '../freelancer.css'
+import { Link } from 'react-router-dom';
 
 function ListProposals() {
     const card = [1, 2, 3];
@@ -18,7 +19,7 @@ function ListProposals() {
                                     <div className='pro_cli_det'>
                                         <div>
                                             <h3>Hannah Finn</h3>
-                                            <div className='pro_cli_sm_te'>
+                                            <div className='pro_cli_sm_te flex-wrap'>
                                                 <span className='space_wa'>
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-clock" viewBox="0 0 16 16">
                                                         <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z" />
@@ -73,8 +74,8 @@ const projectdetail = () => {
         <>
             <Container className="mt-5">
                 <Row>
-                    <Col lg={9}>
-
+                    <Col lg={9} md={12}>
+ 
                         <div className="s_trans_bos s_nav_body box_web_req">
                             <div className='fl_end_b abso_cen'>
                                 <div className="fb_btns_s_pro pd_n_fbspro">
@@ -83,11 +84,11 @@ const projectdetail = () => {
                                             <path fillRule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z" />
                                         </svg>
                                     </button>
-                                    <button className="pd_n_sendp">Send Proposal</button>
+                                    <Link to="/freelancer/send-proposal"><button className="pd_n_sendp">Send Proposal</button></Link>
                                 </div>
                             </div>
                             <div className='pd_head_on pd_head_h1'><h1>Website Designer Required For Directory Theme</h1></div>
-                            <div className='over_s_wor_area'>
+                            <div className='over_s_wor_area flex-wrap'>
                                 <div className='fle_wor_box'>
                                     <div className='wor_svg'>
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-geo-alt" viewBox="0 0 16 16">
@@ -117,7 +118,7 @@ const projectdetail = () => {
                                 </div>
                             </div>
                             <div className='proj_det_li'>
-                                <div className='flex_itm'>
+                                <div className='flex_itm flex-wrap'>
                                     <div className="f_b_obx">
                                         <div className="ex_name_fb">Freelancer Type</div>
                                         <div className="ex_val_f pd_evf_n">Individual</div>
@@ -167,7 +168,7 @@ const projectdetail = () => {
                             </div>
                             <div className="btn_foot_sec d-block"><br />
                                 <div className="bl_head"><h3>Skills Required</h3></div><br />
-                                <div className='dlex_sk_block m-0 pd_n_bss'>
+                                <div className='dlex_sk_block m-0 pd_n_bss flex-wrap'>
                                     <div className="b_skil">Backend Developer</div>
                                     <div className="b_skil">Designer</div>
                                     <div className="b_skil">Support Agent</div>
@@ -182,7 +183,7 @@ const projectdetail = () => {
                                 {ListProposals()}
                             </div>
                             <div className='phead_h3'><h3>Send Your Proposal</h3></div>
-                            <div className="flex_inp_b">
+                            <div className="flex_inp_b flex-wrap">
                                 <div className="inp_box">
                                     <div className='inp_label'>your hourly price</div>
                                     <div className='d-flex'>
@@ -213,26 +214,26 @@ const projectdetail = () => {
                                     <div className='inp_input'><textarea></textarea></div>
                                 </div>
                             </div>
-                            <div className='f_agre_fot mt-2'>
+                            <div className='f_agre_fot mt-2 flex-wrap'>
                                 <div className='agree_term_b align-items-center'>
                                     <input type="checkbox" /><label>I agree to the Terms And Conditions</label>
                                 </div>
                                 <div>
                                     <div className="fb_btns_s_pro">
-                                        <button className="pd_n_sendp pad_n_pdd">Send Proposal</button>
+                                    <Link to="/freelancer/send-proposal"><button className="pd_n_sendp pad_n_pdd">Send Proposal</button></Link>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </Col>
-                    <Col lg={3}>
+                    <Col lg={3} md={12}>
 
                         <div className="border_bx_sec no_pad">
 
                             <div className='heat_lef'>
                                 <img src={star} alt="" />
                             </div>
-                            <div className='hourly_amout_node asxee_pad justify-content-between'>
+                            <div className='hourly_amout_node asxee_pad justify-content-between flex-wrap'>
                                 <div className='hourly_am'>
                                     <div className="hm_bud">Budget</div>
                                     <h1>$140.00</h1>

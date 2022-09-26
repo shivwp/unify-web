@@ -1,4 +1,4 @@
-import NavbarLogin from '../../components/navbarlogin';
+import NavbarLogin from '../components/header';
 import GetPaid from './tab/get-paid';
 import Footer from '../../components/footer';
 

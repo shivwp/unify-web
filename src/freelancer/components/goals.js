@@ -13,7 +13,7 @@ const Screen = () => {
                     <div className='my_jo_headin freelancer_all_contract text-transform-uppercase'>Goals</div>
                 </div>
                 <div className="main_hirefreelancer_bx main_box_descr">
-                    <div className='form_goals'>
+                    <div className='form_goals flex-wrap'>
                         <div className='formg_label'>KPI Name</div>
                         <div className='formg_inp'><input type="text" placeholder='Example: New leads, Revenue, Traffic, etc' /></div>
                     </div>
@@ -27,7 +27,7 @@ const Screen = () => {
                     </div>
                     <div className='form_goals'>
                         <div className='formg_label'>Visualization</div>
-                        <div className='formg_inp d-flex'>
+                        <div className='formg_inp d-flex flex-wrap'>
                             <label><input type="radio" name="g" />Growing</label>
                             <label><input type="radio" name="g" />Horizontal</label>
                         </div>

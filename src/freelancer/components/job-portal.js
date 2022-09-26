@@ -9,7 +9,7 @@ const JobPortal = () => {
                 <Row>
                     <Col lg={6}><div className="jp_h3_no"><h3 className="f-ffive">HRM Recruitment Center</h3></div></Col>
                     <Col lg={6}>
-                        <div className='jp_btn_m_no'>
+                        <div className='jp_btn_m_no flex-wrap'>
                             <button>Browse Project Catelog</button>
                             <button>Post a Job</button>
                         </div>
@@ -18,17 +18,17 @@ const JobPortal = () => {
                 <Row className="mt-4">
                     <Col lg={8}>
                         <div className="s_nav_body mt-4 s_trans_bos">
-                            <div className="d-flex justify-content-between snb_heading kwxnow">
+                            <div className="d-flex justify-content-between snb_heading kwxnow flex-wrap">
                                 <h1>My Postings</h1>
                                 <div className="all_pos_tex">All Posting</div>
                             </div>
-                            <div className="tabs_v_one">
+                            <div className="tabs_v_one flex-wrap">
                                 <div className='v_tab_btn v_on_tab_active'>Active (20)</div>
                                 <div className='v_tab_btn'>Recently filled</div>
                             </div>
                             <div className="tab_data_li">
                                 <div className="post_head_h1"><h1>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</h1></div>
-                                <div className="pos_fle_ni">
+                                <div className="pos_fle_ni flex-wrap">
                                     <div>
                                         <div className="post_pric">Fixed Price</div>
                                         <div className='post_uptime'>Public - Created 23 days ago</div>
@@ -51,7 +51,7 @@ const JobPortal = () => {
                             </div>
                             <div className="tab_data_li">
                                 <div className="post_head_h1"><h1>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</h1></div>
-                                <div className="pos_fle_ni">
+                                <div className="pos_fle_ni flex-wrap">
                                     <div>
                                         <div className="post_pric">Fixed Price</div>
                                         <div className='post_uptime'>Public - Created 23 days ago</div>
@@ -74,7 +74,7 @@ const JobPortal = () => {
                             </div>
                         </div>
                         <div className="s_nav_body mt-4 s_trans_bos">
-                            <div className="d-flex justify-content-between snb_heading kwxnow">
+                            <div className="d-flex justify-content-between snb_heading kwxnow flex-wrap">
                                 <h1>My Drafts</h1>
                                 <div className="all_pos_tex">All drafts</div>
                             </div>
@@ -93,7 +93,7 @@ const JobPortal = () => {
                             </div>
                         </div>
                         <div className="s_nav_body mt-4 s_trans_bos">
-                            <div className="d-flex justify-content-between snb_heading kwxnow">
+                            <div className="d-flex justify-content-between snb_heading kwxnow flex-wrap">
                                 <h1>My Pending Contracts</h1>
                                 <div className="all_pos_tex">All Pending Contracts</div>
                             </div>
@@ -119,11 +119,11 @@ const JobPortal = () => {
                             </div>
                         </div>
                         <div className="s_nav_body mt-4 s_trans_bos">
-                            <div className="d-flex justify-content-between snb_heading kwxnow">
+                            <div className="d-flex justify-content-between snb_heading kwxnow flex-wrap">
                                 <h1>My Contracts</h1>
                                 <div className="all_pos_tex">All Contracts</div>
                             </div>
-                            <div className="tabs_v_one">
+                            <div className="tabs_v_one flex-wrap">
                                 <div className='v_tab_btn v_on_tab_active'>All</div>
                                 <div className='v_tab_btn'>Awaiting Funding (20)</div>
                             </div>

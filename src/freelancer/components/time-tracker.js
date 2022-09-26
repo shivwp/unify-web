@@ -207,7 +207,7 @@ const Screen = () => {
           <div className="inpptracker w-40">
             <input type="text" placeholder="What are you working on?" />
           </div>
-          <div className="d-flex align-items-center th_bthns_tracker">
+          <div className="d-flex align-items-center th_bthns_tracker flex-wrap">
             <div>
               <button>
                 <svg

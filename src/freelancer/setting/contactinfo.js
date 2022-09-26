@@ -1,4 +1,4 @@
-import NavbarLogin from '../../components/navbarlogin';
+import NavbarLogin from '../components/header';
 import ContactTab from './tab/contact-info';
 import Footer from '../../components/footer';
 

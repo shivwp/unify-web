@@ -20,7 +20,7 @@ const Screen = () => {
 
                                 <Row>
                                     <Col lg={12} className="d-flex justify-content-between flex-wrap">
-                                        <div className='d-flex mb-2 mt-3 justify-content-between w-100'>
+                                        <div className='d-flex mb-2 mt-3 justify-content-between w-100 flex-wrap'>
                                             <div className="w-55">
                                                 <div className='c_name_s_v'>Manage billing methods</div>
                                                 <div className="c_name_sett pt-0 font-color-light">Add, update, or remove your billing methods</div>

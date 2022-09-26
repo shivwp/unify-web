@@ -139,7 +139,7 @@ const UnifyFreelancer = () => {
                             <div className='hire_now_node'>
                                 <button>Hire Now</button>
                             </div>
-                            <div className='hourly_amout_node'>
+                            <div className='hourly_amout_node flex-wrap'>
                                 <div className="wallet_icon">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-wallet2" viewBox="0 0 16 16">
                                         <path d="M12.136.326A1.5 1.5 0 0 1 14 1.78V3h.5A1.5 1.5 0 0 1 16 4.5v9a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 13.5v-9a1.5 1.5 0 0 1 1.432-1.499L12.136.326zM5.562 3H13V1.78a.5.5 0 0 0-.621-.484L5.562 3zM1.5 4a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-13z" />
@@ -152,7 +152,7 @@ const UnifyFreelancer = () => {
                             </div>
 
                             <div className='profile_detail'>
-                                <div className='pd_flex'>
+                                <div className='pd_flex flex-wrap'>
                                     <div className='flex_pt'>
                                         <div className='pt_title'>Ongoing <br />Projects</div>
                                         <div className='pt_num pt_n1'>206</div>
@@ -162,7 +162,7 @@ const UnifyFreelancer = () => {
                                         <div className='pt_num pt_n2'>08</div>
                                     </div>
                                 </div>
-                                <div className='pd_flex'>
+                                <div className='pd_flex flex-wrap'>
                                     <div className='flex_pt no-border'>
                                         <div className='pt_title'>Completed <br />Projects</div>
                                         <div className='pt_num pt_n3'>196</div>
@@ -209,7 +209,7 @@ const UnifyFreelancer = () => {
                         <div className="border_bx_sec">
                             <div className='about_head_ma uf_n_abh'><h1>About Me</h1></div>
                             <div className='about_et'>
-                                <div className='flex_ab_et'>
+                                <div className='flex_ab_et no_juscenter_inmob'>
                                     <div className='ab_icon'>
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-person-badge" viewBox="0 0 16 16">
                                             <path d="M6.5 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1h-3zM11 8a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
@@ -221,7 +221,7 @@ const UnifyFreelancer = () => {
                                         <div className='ab_et_val'>Male</div>
                                     </div>
                                 </div>
-                                <div className='flex_ab_et'>
+                                <div className='flex_ab_et no_juscenter_inmob'>
                                     <div className='ab_icon'>
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-person-workspace" viewBox="0 0 16 16">
                                             <path d="M4 16s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H4Zm4-5.95a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z" />
@@ -233,7 +233,7 @@ const UnifyFreelancer = () => {
                                         <div className='ab_et_val'>Individual</div>
                                     </div>
                                 </div>
-                                <div className='flex_ab_et'>
+                                <div className='flex_ab_et no_juscenter_inmob'>
                                     <div className='ab_icon'>
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-gem" viewBox="0 0 16 16">
                                             <path d="M3.1.7a.5.5 0 0 1 .4-.2h9a.5.5 0 0 1 .4.2l2.976 3.974c.149.185.156.45.01.644L8.4 15.3a.5.5 0 0 1-.8 0L.1 5.3a.5.5 0 0 1 0-.6l3-4zm11.386 3.785-1.806-2.41-.776 2.413 2.582-.003zm-3.633.004.961-2.989H4.186l.963 2.995 5.704-.006zM5.47 5.495 8 13.366l2.532-7.876-5.062.005zm-1.371-.999-.78-2.422-1.818 2.425 2.598-.003zM1.499 5.5l5.113 6.817-2.192-6.82L1.5 5.5zm7.889 6.817 5.123-6.83-2.928.002-2.195 6.828z" />
@@ -244,7 +244,7 @@ const UnifyFreelancer = () => {
                                         <div className='ab_et_val'>Professional</div>
                                     </div>
                                 </div>
-                                <div className='flex_ab_et'>
+                                <div className='flex_ab_et no_juscenter_inmob'>
                                     <div className='ab_icon'>
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-translate" viewBox="0 0 16 16">
                                             <path d="M4.545 6.714 4.11 8H3l1.862-5h1.284L8 8H6.833l-.435-1.286H4.545zm1.634-.736L5.5 3.956h-.049l-.679 2.022H6.18z" />
