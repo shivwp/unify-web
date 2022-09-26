@@ -13,7 +13,7 @@ const Screen = () => {
                         <div className="pst_earning_hdd_free">Earning available now: <span>$0.00</span></div>
                         <Link to="/expandteam">
                             <button className="ml_btn trans_btn_myjo blue_coloe_brn mt-2 color_gray">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#707070" class="bi bi-three-dots-vertical" viewBox="0 0 16 16"><path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"></path></svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#707070" className="bi bi-three-dots-vertical" viewBox="0 0 16 16"><path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"></path></svg>
                             </button>
                         </Link>
                     </div>

@@ -123,7 +123,7 @@ const Description = () => {
                         <div className="sm_label_inp">Narrow down your candidates</div>
                     </div>
                     <div className="pr-10">
-                        <svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiBox-root css-1om0hkc" width="24" height="24" fill="#393939" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="KeyboardArrowDownIcon"><path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"></path></svg>
+                        <svg className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiBox-root css-1om0hkc" width="24" height="24" fill="#393939" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="KeyboardArrowDownIcon"><path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"></path></svg>
                     </div>
                 </div>
                 <div className='slide_btnss slider_shutter'><div className="sm_label_inp">Narrow down your candidates</div></div>
@@ -133,7 +133,7 @@ const Description = () => {
                         <div className="sm_label_inp">Hours per week, hire date, and more</div>
                     </div>
                     <div className="pr-10">
-                        <svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiBox-root css-1om0hkc" width="24" height="24" fill="#393939" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="KeyboardArrowDownIcon"><path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"></path></svg>
+                        <svg className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiBox-root css-1om0hkc" width="24" height="24" fill="#393939" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="KeyboardArrowDownIcon"><path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"></path></svg>
                     </div>
                 </div>
                 <div className='slide_btnss slider_shutter'><div className="sm_label_inp">Hours per week, hire date, and more</div></div>
@@ -144,7 +144,7 @@ const Description = () => {
                         <div className="sm_label_inp">Adjust visibility and add coworkers</div>
                     </div>
                     <div className="pr-10">
-                        <svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiBox-root css-1om0hkc" width="24" height="24" fill="#393939" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="KeyboardArrowDownIcon"><path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"></path></svg>
+                        <svg className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiBox-root css-1om0hkc" width="24" height="24" fill="#393939" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="KeyboardArrowDownIcon"><path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"></path></svg>
                     </div>
                 </div>
                 <div className='slide_btnss slider_shutter'><div className="sm_label_inp">Adjust visibility and add coworkers</div></div>
