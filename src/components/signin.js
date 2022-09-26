@@ -1,7 +1,11 @@
 import Title from "./title";
 import { Link } from "react-router-dom";
 
+<<<<<<< Updated upstream
 const Signin = ({ onInputChange, submitForm }) => {
+=======
+const Signin = () => {
+>>>>>>> Stashed changes
   Title(" | signin");
   return (
     <>
@@ -51,12 +55,16 @@ const Signin = ({ onInputChange, submitForm }) => {
                 </svg>
               </div>
               <div className="input_nodxq">
+<<<<<<< Updated upstream
                 <input
                   onChange={(e) => onInputChange(e)}
                   type="text"
                   name="email"
                   placeholder="Username or Email"
                 />
+=======
+                <input type="text" placeholder="Username or Email" />
+>>>>>>> Stashed changes
               </div>
             </div>
           </div>
@@ -80,6 +88,7 @@ const Signin = ({ onInputChange, submitForm }) => {
                 </svg>
               </div>
               <div className="input_nodxq">
+<<<<<<< Updated upstream
                 <input
                   onChange={(e) => onInputChange(e)}
                   type="password"
@@ -94,6 +103,17 @@ const Signin = ({ onInputChange, submitForm }) => {
               CONTINUE WITH EMAIL
             </button>
           </div>
+=======
+                <input type="password" placeholder="Password" />
+              </div>
+            </div>
+          </div>
+          <Link to="/dashboard">
+            <div className="sign_form_btn_subm sign_w_full">
+              <button className="mr_sign_in_n">CONTINUE WITH EMAIL</button>
+            </div>
+          </Link>
+>>>>>>> Stashed changes
           <div className="sign_in_or">or</div>
           <div className="sign_form_btn_subm sign_in_social_btn mr_sign_in_n">
             <button className="apple_btn mr_sign_in_n">
