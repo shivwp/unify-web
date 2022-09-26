@@ -4673,3 +4673,7 @@ a {
 .selec_n_cs {
   padding: 7px 15px;
 }
+
+.input_nodxq input::-webkit-input-placeholder{
+  color: hsl(0, 0%, 50%);
+}
