@@ -55,7 +55,7 @@ const NavbarHeader = () => {
                     <div className='navabr_t_li'><Link to="/freelancer/project-search">Find Work</Link></div>
                     <div className='navabr_t_li'><Link to="/freelancer/project-search/saved">Saved Jobs</Link></div>
                     <div className='navabr_t_li'><Link to="/freelancer/active-contract">Proposals</Link></div>
-                    <div className='navabr_t_li'><Link to="/dashboard">Profile</Link></div>
+                    <div className='navabr_t_li'><Link to="/freelancer/profile">Profile</Link></div>
                     <div className='navabr_t_li'><Link to="/dashboard">My Stats</Link></div>
                     <div className='navabr_t_li'><Link to="/dashboard">My Project Dashboard</Link></div>
                   </NavDropdown>
