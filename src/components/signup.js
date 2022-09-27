@@ -9,6 +9,9 @@ const Signup = ({
   selectUserType,
   userType,
   setCountry,
+  values,
+  errors,
+  selectCountry,
 }) => {
   Title(" | signup");
 
@@ -55,166 +58,232 @@ const Signup = ({
               Continue with Google
             </button>
           </div>
-          <div className="input_group">
-            <div className="input_bo">
-              <div className="input_icoa">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  fill="currentColor"
-                  className="bi bi-person"
-                  viewBox="0 0 16 16"
-                >
-                  <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z" />
-                </svg>
-              </div>
-              <div className="input_nodxq">
-                <input
-                  type="text"
-                  onChange={(e) => onInputChange(e)}
-                  name="first_name"
-                  placeholder="First Name"
-                />
-              </div>
-            </div>
-            <div className="input_bo">
-              <div className="input_icoa">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  fill="currentColor"
-                  className="bi bi-person"
-                  viewBox="0 0 16 16"
-                >
-                  <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z" />
-                </svg>
-              </div>
-              <div className="input_nodxq">
-                <input
-                  type="text"
-                  placeholder="Last Name"
-                  name="last_name"
-                  onChange={(e) => onInputChange(e)}
-                />
-              </div>
-            </div>
-          </div>
-          <div className="input_group">
-            <div className="input_bo">
-              <div className="input_icoa">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  fill="currentColor"
-                  class="bi bi-envelope"
-                  viewBox="0 0 16 16"
-                >
-                  <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z" />
-                </svg>
-              </div>
-              <div className="input_nodxq">
-                <input
-                  type="text"
-                  name="email"
-                  onChange={(e) => onInputChange(e)}
-                  placeholder="Email"
-                />
-              </div>
-            </div>
-          </div>
-          <div className="input_group">
-            <div className="input_bo">
-              <div className="input_icoa">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="14.449"
-                  height="18.965"
-                  viewBox="0 0 14.449 18.965"
-                >
-                  <path
-                    id="Icon_material-lock-open"
-                    data-name="Icon material-lock-open"
-                    d="M13.225,15.949a1.806,1.806,0,1,0-1.806-1.806A1.811,1.811,0,0,0,13.225,15.949Zm5.418-8.128h-.9V6.015a4.515,4.515,0,0,0-9.031,0h1.716a2.8,2.8,0,1,1,5.6,0V7.822H7.806A1.811,1.811,0,0,0,6,9.628v9.031a1.811,1.811,0,0,0,1.806,1.806H18.643a1.811,1.811,0,0,0,1.806-1.806V9.628A1.811,1.811,0,0,0,18.643,7.822Zm0,10.837H7.806V9.628H18.643Z"
-                    transform="translate(-6 -1.5)"
-                    fill="#170048"
+          <form onSubmit={(e) => submitForm(e)}>
+            <div className="input_group">
+              {/* <div className={errors.first_name ? "borderError input_bo" : "input_bo"}> */}
+              <div className="input_bo">
+                <div className="input_icoa">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    className="bi bi-person"
+                    viewBox="0 0 16 16"
+                  >
+                    <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z" />
+                  </svg>
+                </div>
+                <div className="input_nodxq">
+                  <input
+                    type="text"
+                    value={values.first_name}
+                    onChange={(e) => onInputChange(e)}
+                    name="first_name"
+                    placeholder="First Name"
                   />
-                </svg>
+                  <span className="signInError">
+                    {errors.first_name && (
+                      <>
+                        <i
+                          class="fa fa-exclamation-circle"
+                          aria-hidden="true"
+                        ></i>{" "}
+                        Please enter your First Name
+                      </>
+                    )}
+                  </span>
+                </div>
               </div>
-              <div className="input_nodxq">
-                <input
-                  name="password"
-                  onChange={(e) => onInputChange(e)}
-                  type="password"
-                  placeholder="Create a Password"
-                />
+              <div className="input_bo">
+                <div className="input_icoa">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    className="bi bi-person"
+                    viewBox="0 0 16 16"
+                  >
+                    <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z" />
+                  </svg>
+                </div>
+                <div className="input_nodxq">
+                  <input
+                    type="text"
+                    placeholder="Last Name"
+                    name="last_name"
+                    value={values.last_name}
+                    onChange={(e) => onInputChange(e)}
+                  />
+                  <span className="signInError">
+                    {errors.last_name && (
+                      <>
+                        <i
+                          class="fa fa-exclamation-circle"
+                          aria-hidden="true"
+                        ></i>{" "}
+                        Please enter your Last Name
+                      </>
+                    )}
+                  </span>
+                </div>
               </div>
             </div>
-          </div>
-          <div className="input_group">
-            <div className="input_bo selec_n_cs">
-              <div className="input_nodxq signup_custom_select">
-                <Select
-                  className="custom_css_select"
-                  placeholder="Select a country"
-                  onChange={setCountry}
-                  options={options1}
-                />
+            <div className="input_group">
+              <div className="input_bo">
+                <div className="input_icoa">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    class="bi bi-envelope"
+                    viewBox="0 0 16 16"
+                  >
+                    <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z" />
+                  </svg>
+                </div>
+                <div className="input_nodxq">
+                  <input
+                    type="text"
+                    name="email"
+                    value={values.email}
+                    onChange={(e) => onInputChange(e)}
+                    placeholder="Email"
+                  />
+                  <span className="signInError">
+                    {errors.email && (
+                      <>
+                        <i
+                          class="fa fa-exclamation-circle"
+                          aria-hidden="true"
+                        ></i>{" "}
+                        Please enter your email
+                      </>
+                    )}
+                  </span>
+                </div>
               </div>
             </div>
-          </div>
-          <div className="input_group">
-            <div className="input_bo">
-              <div className="input_icoa"></div>
-              <div className="input_nodxq">
-                <input type="text" placeholder="invitation code" />
+            <div className="input_group">
+              <div className="input_bo">
+                <div className="input_icoa">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="14.449"
+                    height="18.965"
+                    viewBox="0 0 14.449 18.965"
+                  >
+                    <path
+                      id="Icon_material-lock-open"
+                      data-name="Icon material-lock-open"
+                      d="M13.225,15.949a1.806,1.806,0,1,0-1.806-1.806A1.811,1.811,0,0,0,13.225,15.949Zm5.418-8.128h-.9V6.015a4.515,4.515,0,0,0-9.031,0h1.716a2.8,2.8,0,1,1,5.6,0V7.822H7.806A1.811,1.811,0,0,0,6,9.628v9.031a1.811,1.811,0,0,0,1.806,1.806H18.643a1.811,1.811,0,0,0,1.806-1.806V9.628A1.811,1.811,0,0,0,18.643,7.822Zm0,10.837H7.806V9.628H18.643Z"
+                      transform="translate(-6 -1.5)"
+                      fill="#170048"
+                    />
+                  </svg>
+                </div>
+                <div className="input_nodxq">
+                  <input
+                    name="password"
+                    onChange={(e) => onInputChange(e)}
+                    type="password"
+                    value={values.password}
+                    placeholder="Create a Password"
+                  />
+                  <span className="signInError">
+                    {errors.password && (
+                      <>
+                        <i
+                          class="fa fa-exclamation-circle"
+                          aria-hidden="true"
+                        ></i>{" "}
+                        Please enter your email
+                      </>
+                    )}
+                  </span>
+                </div>
               </div>
             </div>
-          </div>
-          <div className="sign_form_sm_head">
-            <h3>I Want to:</h3>
-          </div>
-          <div className="sign_buttons_group sign_upbtn_heffect">
-            <button
-              onClick={(e) => selectUserType(e)}
-              className={userType === "client" ? "userTypeActive" : "userType"}
-              value="client"
-            >
-              Hire for a Project
-            </button>
-            <button
-              onClick={(e) => selectUserType(e)}
-              className={
-                userType === "freelancer" ? "userTypeActive" : "userType"
-              }
-              value="freelancer"
-            >
-              Work as a freelancer
-            </button>
-          </div>
-          <div className="sign_legal_not">
-            <div className="sign_l_n_text">
-              <input type="checkbox" />
-              <label>
-                yes! Send me genuinely useful emails every now and then to help
-                me get the most out of Unify
-              </label>
+            <div className="input_group">
+              <div className="input_bo selec_n_cs">
+                <div className="input_nodxq signup_custom_select">
+                  <Select
+                    className="custom_css_select"
+                    placeholder="Select a country"
+                    onChange={selectCountry}
+                    options={options1}
+                  />
+                  <span className="signInError">
+                    {errors.country && (
+                      <>
+                        <i
+                          class="fa fa-exclamation-circle"
+                          aria-hidden="true"
+                        ></i>{" "}
+                        Please Select your Country
+                      </>
+                    )}
+                  </span>
+                </div>
+              </div>
             </div>
-            <div className="sign_l_n_text">
-              <input type="checkbox" />
-              <label>
-                yes! I understand and agree to the{" "}
-                <span>UnifyTerms of Service</span>, including the{" "}
-                <span>User Agreement</span> and <span>Privacy Policy</span>
-              </label>
+            <div className="input_group">
+              <div className="input_bo">
+                <div className="input_icoa"></div>
+                <div className="input_nodxq">
+                  <input type="text" placeholder="invitation code" />
+                </div>
+              </div>
             </div>
-          </div>
+            <div className="sign_form_sm_head">
+              <h3>I Want to:</h3>
+            </div>
+            <div className="sign_buttons_group sign_upbtn_heffect">
+              <button
+                onClick={(e) => selectUserType(e)}
+                type="button"
+                className={
+                  userType === "client" ? "userTypeActive" : "userType"
+                }
+                value="client"
+              >
+                Hire for a Project
+              </button>
+              <button
+                type="button"
+                onClick={(e) => selectUserType(e)}
+                className={
+                  userType === "freelancer" ? "userTypeActive" : "userType"
+                }
+                value="freelancer"
+              >
+                Work as a freelancer
+              </button>
+            </div>
+            <div className="sign_legal_not">
+              <div className="sign_l_n_text">
+                <input type="checkbox" />
+                <label>
+                  yes! Send me genuinely useful emails every now and then to
+                  help me get the most out of Unify
+                </label>
+              </div>
+              <div className="sign_l_n_text">
+                <input type="checkbox" />
+                <label>
+                  yes! I understand and agree to the{" "}
+                  <span>UnifyTerms of Service</span>, including the{" "}
+                  <span>User Agreement</span> and <span>Privacy Policy</span>
+                </label>
+              </div>
+            </div>
 
-          <div className="sign_form_btn_subm">
-            <button onClick={submitForm}>CREATE MY ACCOUNT</button>
-          </div>
+            <div className="sign_form_btn_subm">
+              <button type="submit">CREATE MY ACCOUNT</button>
+            </div>
+          </form>
 
           <div className="sin_dont_accou">
             Already have an account?{" "}
