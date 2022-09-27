@@ -2108,3 +2108,217 @@
   margin: 0 10px 0 -12px;
   font-size: 13px;
 }
+
+.edit_posting_box {
+  margin: 10px;
+}
+
+.edit_posting_box .form_box_bor {
+  padding: 0px 20px;
+}
+
+.edit-posting-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.btn-save_post {
+  background-color: #6d2ef1;
+  padding: 12px 25px;
+  color: #fff;
+  border: none;
+  border-radius: 30px;
+  font-family: "Poppins-Bold", "Poppins";
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 20px;
+  -webkit-border-radius: 30px;
+}
+
+.edit-posting-heading .heading {
+  color: #170048;
+  font-family: "Poppins";
+  font-weight: 600;
+  font-size: 22px;
+}
+
+.edit-posting-heading {
+  padding-bottom: 15px;
+  border-bottom: #cbcaca solid 1px;
+  margin: 20px 0;
+}
+
+.title-edit_posting .title {
+  font-weight: 600 !important;
+  color: #1f1f1f !important;
+  font-family: "Poppins";
+  font-size: 18px !important;
+  margin: 10px 0;
+}
+.title-edit_posting .title_content {
+  font-weight: 600 !important;
+  color: #1f1f1f !important;
+  font-family: "Poppins";
+  font-size: 18px !important;
+  margin: 10px 0;
+  border: #cbcaca solid 1px;
+  padding: 10px 15px;
+}
+
+.title-edit_posting > p {
+  font-size: 12px;
+  color: #838383;
+}
+.title-edit_posting {
+  border-bottom: #cbcaca solid 1px;
+  padding: 10px 0 15px 0;
+  margin: 10px 0;
+}
+
+.describe_edit_posting {
+  margin: 20px 0 5px 0;
+}
+.describe_edit_posting .header {
+  font-weight: 600 !important;
+  color: #1f1f1f !important;
+  font-family: "Poppins";
+  font-size: 18px !important;
+  margin: 10px 0;
+}
+.describe_edit_posting > p {
+  font-size: 12px;
+  color: #838383;
+  font-family: "Poppins";
+}
+.describe_edit_posting > p > span {
+  font-weight: 600;
+  color: #6d2ef1;
+  text-decoration: underline;
+  font-family: "Poppins";
+}
+
+.describe_edit_posting textarea {
+  resize: none;
+  width: 100%;
+  height: 150px;
+  border: #cbcaca solid 1px;
+  outline: none;
+  padding: 14px;
+}
+.describe_edit_posting textarea::placeholder {
+  font-size: 12px;
+  color: #838383;
+  font-family: "Poppins";
+}
+
+.describe_edit_posting .why_textarea {
+  display: flex;
+  justify-content: space-between;
+}
+
+.describe_edit_posting .why_textarea p {
+  font-size: 12px;
+  color: #838383;
+  font-family: "Poppins";
+}
+.describe_edit_posting .why_textarea p > i {
+  font-size: 12px;
+  color: #6d2ef1;
+  cursor: pointer;
+}
+
+.edit_posting-attach-file {
+  border-bottom: #cbcaca solid 1px;
+  padding-bottom: 20px;
+  margin: 10px 0 10px 0;
+}
+
+.edit-posting-category .heading {
+  font-weight: 600 !important;
+  color: #1f1f1f !important;
+  font-family: "Poppins";
+  font-size: 20px !important;
+  margin: 10px 0 5px 0;
+}
+.edit-posting-category .category {
+  font-weight: 600 !important;
+  color: #1f1f1f !important;
+  font-family: "Poppins";
+  font-size: 16px !important;
+}
+.edit-posting-category .category > i {
+  border: 1px solid #cbcaca;
+  padding: 10px;
+  border-radius: 50%;
+  color: #cbcaca;
+  cursor: pointer;
+}
+
+.edit-posting-category {
+  border-bottom: #cbcaca 1px solid;
+  margin: 10px 0 10px 0;
+  padding: 15px 0;
+}
+
+.edit-posting-skills .heading {
+  font-weight: 600 !important;
+  color: #1f1f1f !important;
+  font-family: "Poppins";
+  font-size: 20px !important;
+}
+
+.edit-posting-skills .skills {
+  font-weight: 600 !important;
+  color: #1f1f1f !important;
+  font-family: "Poppins";
+  font-size: 16px !important;
+}
+.edit-posting-category .skills > i {
+  border: 1px solid #cbcaca;
+  padding: 10px;
+  border-radius: 50%;
+  color: #cbcaca;
+}
+
+.edit-posting-skills {
+  margin: 10px 0 10px 0;
+  padding: 10px 0;
+}
+
+.edit_posting_save_btn {
+  display: flex;
+  justify-content: flex-end;
+  margin: 25px 0;
+  padding: 5px 15px;
+}
+.edit_posting_save_btn button {
+  background-color: #6d2ef1;
+  padding: 15px 40px;
+  color: #fff;
+  border: none;
+  border-radius: 30px;
+  font-family: "Poppins-Bold", "Poppins";
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 20px;
+  -webkit-border-radius: 30px;
+}
+
+/* menu_bar */
+
+.menu_btn {
+  position: relative;
+}
+.menu_btn .menu_bar {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  background-color: white;
+  border: 1px solid rgb(217 217 217);
+  align-items: flex-start;
+  padding: 10px 10px;
+  width: 200px;
+  top: 0;
+  right: 50px;
+}
