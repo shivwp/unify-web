@@ -82,7 +82,6 @@ import FreelanceProposal from "./freelancer/sendproposal";
 import FreelanceTimeTracker from "./freelancer/time-tracker";
 
 import FreelancerChat from "./freelancer/chat";
-import Freelancerprofile from "./freelancer/profile";
 import { Provider } from "react-redux";
 import store from "./redux/store";
 
@@ -236,7 +235,6 @@ root.render(
           element={<FreelanceTimeTracker />}
         />
         <Route path="/freelancer/chat" element={<FreelancerChat />} />
-        <Route path="/freelancer/profile" element={<Freelancerprofile />} />
       </Routes>
     </BrowserRouter>
   </Provider>

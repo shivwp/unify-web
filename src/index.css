@@ -1604,7 +1604,7 @@ body {
 .bl_apra {
   padding: 15px 0px;
 }
-.no_juscenter_inmob{
+.no_juscenter_inmob {
   justify-content: flex-start !important;
 }
 .s_nav_body {
@@ -2714,6 +2714,7 @@ body {
 }
 
 .input_nodxq {
+  position: relative;
   width: 100%;
 }
 
@@ -2814,10 +2815,10 @@ body {
   .next_b_btn_c button {
     width: 100% !important;
   }
-  .a_fl_with_css a{
+  .a_fl_with_css a {
     width: 100% !important;
   }
-  .a_fl_with_css .fo_btn_c{
+  .a_fl_with_css .fo_btn_c {
     margin-left: 0 !important;
     margin-right: 0 !important;
   }
@@ -2863,7 +2864,7 @@ body {
 
 .sign_buttons_group .userTypeActive {
   border: 1px solid #9ba0f161;
-  background-color: #170048;
+  background-color: #6d2ef1;
   padding: 13px 20px;
   text-align: center;
   font: normal normal normal 16px/30px Poppins;
@@ -4673,7 +4674,11 @@ a {
 .selec_n_cs {
   padding: 7px 15px;
 }
+.signup_custom_select .signInError {
+  left: -3px;
+  top: 46px;
+}
 
-.input_nodxq input::-webkit-input-placeholder{
-  color: hsl(0, 0%, 50%);
+.borderError {
+  border: 1px solid #ea2121;
 }
