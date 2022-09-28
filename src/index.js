@@ -84,6 +84,7 @@ import FreelancerDashboard from './freelancer/dashboard';
 
 import { Provider } from "react-redux";
 import store from "./redux/store";
+import EditPosting from "./components/EditPosting";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -141,6 +142,7 @@ root.render(
         <Route path="/management-board" element={<ManagementBoard />} />
         <Route path="/transaction-history" element={<TransactionHistory />} />
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/dashboard/edit-posting" element={<EditPosting />} />
 
         <Route path="/freelancer/project-detail" element={<ProjectDetail />} />
         <Route path="/freelancer/project-search" element={<ProjectSearch />} />
