@@ -32,7 +32,7 @@ const Signin = ({ onInputChange, submitForm, errors }) => {
                         d="M20.449,27.918V26.112A3.612,3.612,0,0,0,16.837,22.5H9.612A3.612,3.612,0,0,0,6,26.112v1.806"
                         transform="translate(0 -7.163)"
                         fill="none"
-                        stroke="#170048"
+                        stroke="#808080"
                         stroke-linecap="round"
                         stroke-linejoin="round"
                         stroke-width="2"
@@ -43,7 +43,7 @@ const Signin = ({ onInputChange, submitForm, errors }) => {
                         d="M19.225,8.112A3.612,3.612,0,1,1,15.612,4.5,3.612,3.612,0,0,1,19.225,8.112Z"
                         transform="translate(-2.388)"
                         fill="none"
-                        stroke="#170048"
+                        stroke="#808080"
                         stroke-linecap="round"
                         stroke-linejoin="round"
                         stroke-width="2"
@@ -87,7 +87,7 @@ const Signin = ({ onInputChange, submitForm, errors }) => {
                       data-name="Icon material-lock-open"
                       d="M13.225,15.949a1.806,1.806,0,1,0-1.806-1.806A1.811,1.811,0,0,0,13.225,15.949Zm5.418-8.128h-.9V6.015a4.515,4.515,0,0,0-9.031,0h1.716a2.8,2.8,0,1,1,5.6,0V7.822H7.806A1.811,1.811,0,0,0,6,9.628v9.031a1.811,1.811,0,0,0,1.806,1.806H18.643a1.811,1.811,0,0,0,1.806-1.806V9.628A1.811,1.811,0,0,0,18.643,7.822Zm0,10.837H7.806V9.628H18.643Z"
                       transform="translate(-6 -1.5)"
-                      fill="#170048"
+                      fill="#808080"
                     />
                   </svg>
                 </div>

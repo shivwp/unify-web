@@ -8,6 +8,7 @@ import Footer from "../../components/footer";
 import Title from "../../components/title";
 import $ from "jquery";
 import "../freelancer.css";
+import Select from "react-select";
 import { useParams, Link } from "react-router-dom";
 
 const ListCard = () => {
@@ -134,6 +135,9 @@ const Project_Search = () => {
       SetTabActive("saved");
     }
   }, [saved]);
+  const options1 = [{
+    name:'what are you looking for',label:'what are you looking for'
+  }]
   return (
     <>
       <Container>
@@ -162,9 +166,11 @@ const Project_Search = () => {
                     <h4>Job type</h4>
                   </div>
                   <div className="s_na_inpu">
-                    <select>
-                      <option val="">what are you looking for</option>
-                    </select>
+                  <Select
+                    className="custom_css_select smtxt_selct_newug"
+                    placeholder="what are you looking for"
+                    options={options1}
+                  />
                   </div>
                 </div>
                 <div className="s_na_box">

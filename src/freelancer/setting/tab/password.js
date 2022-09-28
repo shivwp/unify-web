@@ -18,7 +18,7 @@ const Screen = () => {
                     <SideNav />
                     <Col lg={9}>
                         <div className="s_nav_body">
-                            <div className="s_b_head no-border"><h2>Password & Security</h2></div>
+                            <div className="s_b_head no-border"><h2 className='f-size-35'>Password & Security</h2></div>
                             <div className="r-box_setting">
                                 <div className="d-flex justify-content-between align-items-center b-bottom-gr pt-1 pb-3">
                                     <div className='setting_b_head_s'>Password</div>

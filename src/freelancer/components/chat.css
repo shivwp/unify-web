@@ -577,7 +577,7 @@
 
 .ms_hdsmall {
     margin: 5px 0px !important;
-    font-size: 16px !important;
+    font-size: 15px !important;
     font-weight: 400 !important;
 }
 
@@ -592,7 +592,6 @@
     margin-bottom: 30px;
     position: relative;
 }
-
 .imgbox_bccp {
     height: 250px;
     width: 300px;
@@ -1032,4 +1031,7 @@
     color: #fff;
     min-width: 160px;
     border-radius: 45px;
+}
+.smtxt_selct_newug{
+    font-size: 12px !important;
 }

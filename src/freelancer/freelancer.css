@@ -1610,3 +1610,23 @@
     cursor: pointer;
     user-select: none;
 }
+.font-12-px{
+    font-size: 12px !important;
+}
+
+.font-14-px{
+    font-size: 14px !important;
+}
+.font-size-15px{
+    font-size: 15px !important;
+}
+.font-size-20px{
+    font-size: 20px !important;
+}
+.sflex_spance li{
+    margin-right:50px;
+}
+.select_no_bder .css-1s2u09g-control{
+    background-color: transparent !important;
+    border: none !important;
+}

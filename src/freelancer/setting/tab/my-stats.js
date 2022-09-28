@@ -12,7 +12,7 @@ const Screen = () => {
                     <SideNav />
                     <Col lg={9}>
                         <div className="s_nav_body">
-                            <div className="s_b_head no-border"><h2>My Stats</h2></div>
+                            <div className="s_b_head no-border"><h2 className='f-size-35'>My Stats</h2></div>
                             <div className="r-box_setting">
                                 <div className='head_mystat_h2'><h2>Client satisfaction</h2></div>
                                 <Row>

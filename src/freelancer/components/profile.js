@@ -159,28 +159,12 @@ const UnifyFreelancer = () => {
                 </div>
               </div>
               <div className="myskill_prof_node">
-                <div className="myskill_hdingn">
+                <div className="myskill_hdingn font-size-20px font-weight-600">
                   My Skills
-                  <button>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="15.709"
-                      height="15.715"
-                      viewBox="0 0 15.709 15.715"
-                    >
-                      <path
-                        id="_8665767_pen_icon"
-                        data-name="8665767_pen_icon"
-                        d="M15.327,2.274,13.482.429a1.475,1.475,0,0,0-2.085,0L9.662,2.165l3.9,3.929L15.3,4.358A1.447,1.447,0,0,0,15.327,2.274Zm-6.356.585L1,10.83a.491.491,0,0,0-.134.251L.057,15.123a.491.491,0,0,0,.576.58l4.042-.808a.491.491,0,0,0,.251-.134L12.9,6.789Z"
-                        transform="translate(-0.047 0.003)"
-                        fill="#6d2ef1"
-                      />
-                    </svg>
-                  </button>
                 </div>
-                <div className="myskill_hdingn">Mobile App Development</div>
-                <div className="myskill_hdingn">Full Stack Development</div>
-                <div className="myskill_hdingn">All Work</div>
+                <div className="myskill_hdingn font-size-15px">Mobile App Development</div>
+                <div className="myskill_hdingn font-size-15px">Full Stack Development</div>
+                <div className="myskill_hdingn font-size-15px">All Work</div>
               </div>
               <div className="profile_detail">
                 <div className="pd_flex flex-wrap">
@@ -293,10 +277,10 @@ const UnifyFreelancer = () => {
                     </svg>
                   </button>
                 </div>
-                <div className="myskill_hdingn ms_hdsmall">
+                <div className="myskill_hdingn ms_hdsmall font-size-15px">
                   As Needed - Open to Offers
                 </div>
-                <div className="myskill_hdingn ms_hdsmall">
+                <div className="myskill_hdingn ms_hdsmall font-size-15px">
                   3+ days response time
                 </div>
                 <div className="myskill_hdingn">
@@ -337,7 +321,7 @@ const UnifyFreelancer = () => {
                   </div>
                 </div>
                 <div className="myskill_hdingn">Verification</div>
-                <div className="myskill_hdingn ms_hdsmall">
+                <div className="myskill_hdingn ms_hdsmall font-size-15px">
                   ID: Verified{" "}
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -355,7 +339,7 @@ const UnifyFreelancer = () => {
                     />
                   </svg>
                 </div>
-                <div className="myskill_hdingn ms_hdsmall">Hannah Finn</div>
+                <div className="myskill_hdingn ms_hdsmall font-size-15px">Hannah Finn</div>
                 <div className="myskill_hdingn">
                   Education
                   <div className="d-flex justify-content-start">
@@ -393,7 +377,7 @@ const UnifyFreelancer = () => {
                     </button>
                   </div>
                 </div>
-                <div className="myskill_hdingn ms_hdsmall">
+                <div className="myskill_hdingn ms_hdsmall font-size-15px">
                   Tallinna University Bachelor or Engineering (BEng), Computer
                   science 2016-2017
                   <div className="d-flex justify-content-start">

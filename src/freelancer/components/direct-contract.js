@@ -5,7 +5,8 @@ import Footer from '../../components/footer';
 import Title from '../../components/title';
 import { Link } from "react-router-dom";
 import '../freelancer.css'
-
+import Select from "react-select";
+  
 const Popup = (props) => {
     return (
         <>
@@ -47,6 +48,9 @@ const Popup = (props) => {
     )
 }
 const AmountPopup = (props) => {
+    const options1 = [{
+        name:'Milestone',label:'Milestone'
+    }]
     return (
         <>
             <div className="bg_wrapper_popup_new">
@@ -60,9 +64,11 @@ const AmountPopup = (props) => {
                     <div className="popup_body_bpn amount_popup_body">
                         <div className="mile_sutone_amoun"><h2>$0.00</h2></div>
                         <div className="popup_form_element">
-                            <select>
-                                <option>Milestone</option>
-                            </select>
+                  <Select
+                    className="custom_css_select"
+                    placeholder="Milestone"
+                    options={options1}
+                  />
                         </div>
                         <div className="popup_form_element">
                             <label>Milestone 1</label>

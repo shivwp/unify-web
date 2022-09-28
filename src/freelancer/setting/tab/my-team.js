@@ -13,7 +13,7 @@ const Screen = () => {
                     <Col lg={9}>
                         <div className="s_nav_body">
                             <div className="d-flex justify-content-between">
-                                <div className="s_b_head no-border"><h2>My Teams</h2></div>
+                                <div className="s_b_head no-border"><h2 className='f-size-35'>My Teams</h2></div>
                                 <div>
                                     <button className="round_b_btn blue_trans_btn">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-plus-lg" viewBox="0 0 16 16">

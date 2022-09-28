@@ -42,7 +42,7 @@ const PopupContact = (props) => {
       <div className="bg_wrap_chat">
         <div className="popup_boxwchat">
           <div className="header_pbcht">
-            <div className="hding_cbox">Add People</div>
+            <div className="hding_cbox font-weight-600">Add People</div>
             <div className="close_btnchatpoup">
               <button
                 onClick={() => {
@@ -70,13 +70,13 @@ const PopupContact = (props) => {
             <div className="htname_inp">
               <input type="text" placeholder="Start typing names" />
             </div>
-            <div className="bht_headingchat">Permissions</div>
+            <div className="bht_headingchat font-weight-600">Permissions</div>
             <div className="prmision_rinput d-flex">
               <div className="pri_radiocwiu">
                 <input type="radio" name="p" />
               </div>
               <div className="pri_name_desc">
-                <div className="head_priname">Room admin</div>
+                <div className="head_priname font-weight-500 font-size-15px">Room admin</div>
                 <div className="hp_desc">
                   Add as a participant who can also add and remove other
                   participants.
@@ -88,7 +88,7 @@ const PopupContact = (props) => {
                 <input type="radio" name="p" />
               </div>
               <div className="pri_name_desc">
-                <div className="head_priname">Room member</div>
+                <div className="head_priname font-weight-500 font-size-15px">Room member</div>
                 <div className="hp_desc">
                   Add as a participant in this conversation
                 </div>
@@ -130,7 +130,8 @@ const Screen = () => {
       <div className="chat-bg mt-2">
         <Container>
           <div class="chat-header align-items-center">
-            <div className="chat_header_buttons">
+            <div className="chat_header_buttons align-items-center w-50 justify-content-between">
+              <div className="d-flex">
               <button>
                 <svg
                   id="tools"
@@ -342,7 +343,7 @@ const Screen = () => {
                   />
                 </svg>
               </button>
-            </div>
+              </div>
             <div className="d-flex justify-content-between align-items-center w-50">
               <div>
                 <div className="chat_p_name ml_svg_cpn">Alex K.  
@@ -355,7 +356,11 @@ const Screen = () => {
                   <div className="chat_status_date">Friday, July 20, 2020</div>
                 </div>
               </div>
-              <div className="chat_header_buttons">
+            </div>
+            </div>
+            <div className="chat_header_buttons chb_fill_gray">
+              
+            <div className="chat_header_buttons">
                 <div className="vpropo_cbrntn">
                 <button>VIEW PROPOSAL</button>
                 </div>
@@ -438,8 +443,6 @@ const Screen = () => {
                   </svg>
                 </button>
               </div>
-            </div>
-            <div className="chat_header_buttons chb_fill_gray">
               <button>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
