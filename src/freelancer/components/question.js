@@ -15,7 +15,7 @@ const Screen = () => {
                 </div>
                 <Row className="justify-content-center">
                     
-                    <Col lg={4} sm={10} className="mb-3">
+                    <Col lg={3} sm={10} className="mb-3">
                     <Link to="/freelancer/question2">
                         <div className="hire_box_yh new_hbyh">
                         <div className="sub_radio"><input type="radio" name="s" /></div>
@@ -29,7 +29,7 @@ const Screen = () => {
                         </Link>
                     </Col>
                     
-                    <Col lg={4} sm={10} className="mb-3">
+                    <Col lg={3} sm={10} className="mb-3">
                         <div className="hire_box_yh new_hbyh">
                         <div className="sub_radio"><input type="radio" name="s" /></div>
                             <div>
@@ -40,7 +40,7 @@ const Screen = () => {
                             </div>
                         </div>
                     </Col>
-                    <Col lg={4} sm={10} className="mb-3">
+                    <Col lg={3} sm={10} className="mb-3">
                         <div className="hire_box_yh new_hbyh">
                         <div className="sub_radio"><input type="radio" name="s" /></div>
                             <div>

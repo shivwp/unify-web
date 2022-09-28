@@ -93,7 +93,7 @@ const Screen = () => {
                                 <Col className="mt-2">
                                     <div>
                                         <div className="ts_btn attach_f_btn wid_30_in mt-0 mb-0">
-                                            <button className="only_textstyle">
+                                            <button className="only_textstyle font-weight-600">
                                                 <svg
                                                     xmlns="http://www.w3.org/2000/svg"
                                                     width="16"

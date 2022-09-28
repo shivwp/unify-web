@@ -12,7 +12,7 @@ const Screen = () => {
                     <SideNav />
                     <Col lg={9}>
                         <div className="s_nav_body">
-                            <div className="s_b_head no-border"><h2>Contact info</h2></div>
+                            <div className="s_b_head no-border"><h2 className='f-size-35'>Contact info</h2></div>
                             <div className="r-box_setting">
                                 <div className="d-flex justify-content-between align-items-center pt-1 pb-0">
                                     <div className='setting_b_head_s'>Account</div>
@@ -63,7 +63,7 @@ const Screen = () => {
                                                     freelancers, payment methods and reports.</div>
                                             </div>
                                             <div className="btn_foot_sec flex-wrap d-flex pt-0 pb-0 m-0 no-border">
-                                                <div className='fo_btn_c d-flex align-items-center width-max-content next_b_btn_c'><button>New Client Account</button></div>
+                                                <div className='fo_btn_c d-flex align-items-center width-max-content next_b_btn_c '><button className='min-width-226'>New Client Account</button></div>
                                             </div>
                                         </div>
                                     </Col>
@@ -74,7 +74,7 @@ const Screen = () => {
                                                 <div className="c_name_sett pt-0 font-color-light">Find jobs and earn money as manager of a team of freelancers.</div>
                                             </div>
                                             <div className="btn_foot_sec flex-wrap d-flex pt-0 pb-0 m-0 no-border">
-                                                <div className='fo_btn_c d-flex align-items-end width-max-content next_b_btn_c'><button>New Agency Account</button></div>
+                                                <div className='fo_btn_c d-flex align-items-end width-max-content next_b_btn_c'><button className='min-width-226'>New Agency Account</button></div>
                                             </div>
                                         </div>
                                     </Col>

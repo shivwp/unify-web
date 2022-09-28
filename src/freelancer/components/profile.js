@@ -1,6 +1,6 @@
 import Container from "react-bootstrap/Container";
 import { Row, Col } from "react-bootstrap";
-import heart from "../../icons/heart.svg";
+import { Link } from "react-router-dom";
 
 function Listaward() {
   const card = [1, 2, 3, 4];
@@ -90,7 +90,7 @@ const UnifyFreelancer = () => {
                   </div>
                 </div>
                 <div className="han_oad">
-                  <div className="freelancer_name">Hannah Finn</div>
+                  <div className="freelancer_name font-size-20px">Hannah Finn</div>
                   <div className="freelancer_work">Website Designer</div>
                   <div className="freelance_map">Victoria, Australia</div>
                   <div className="flex_stars">
@@ -138,7 +138,7 @@ const UnifyFreelancer = () => {
               </div>
               <div className="profile_pf_btn">
                 <button>See Public View</button>
-                <button>Profile Setting</button>
+                <Link to="/freelancer/contact-info"><button>Profile Setting</button></Link>
               </div>
               <div className="hourly_amout_node flex-wrap">
                 <div className="wallet_icon">
@@ -622,7 +622,7 @@ const UnifyFreelancer = () => {
                   Showcase your skills with non-Unify client testimonials
                 </div>
                 <div className="bpck_sm_txt_a">
-                  <a href="">Request a testimonial</a>
+                  <Link to="">Request a testimonial</Link>
                 </div>
               </div>
             </div>
@@ -659,13 +659,13 @@ const UnifyFreelancer = () => {
                   You can add them manually
                 </div>
                 <div className="bpck_sm_txt_a">
-                  <a href="">Add manually</a>
+                  <Link to="">Add manually</Link>
                 </div>
               </div>
             </div>
             <Row>
               <Col md={6}>
-                <div className="box-profile-bck">
+                <div className="box-profile-bck minei400">
                   <div className="d-flex justify-content-end myskill_hdingn">
                     <button>
                       <svg
@@ -708,7 +708,7 @@ const UnifyFreelancer = () => {
                 </div>
               </Col>
               <Col md={6}>
-                <div className="box-profile-bck">
+                <div className="box-profile-bck minei400">
                   <div className="d-flex justify-content-end myskill_hdingn">
                     <button>
                       <svg
@@ -735,7 +735,7 @@ const UnifyFreelancer = () => {
                       <img src="/assets/files.png" alt="" />
                     </div>
                     <div className="bpck_sm_txt_a font-weight-500">
-                      <a href="">Add an experience</a>
+                      <Link to="">Add an experience</Link>
                     </div>
                   </div>
                 </div>

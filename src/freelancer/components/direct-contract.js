@@ -34,7 +34,7 @@ const Popup = (props) => {
                             <label>Contract Type</label>
                             <div className="d-flex align-items-center">
                                 <label className="popup_radio_element"><input type="radio" />Hourly</label>
-                                <label className="popup_radio_element"><input type="radio" />Hourly</label>
+                                <label className="popup_radio_element"><input type="radio" />Fixed Price</label>
                             </div>
                         </div>
                         <div className="popup_btns_new flex-wrap">
@@ -74,7 +74,10 @@ const AmountPopup = (props) => {
                         </div>
                         <div className="popup_form_element">
                             <label>Amount</label>
+                            <div className='ps-relative'>
                             <input type="text" />
+                            <div className='ipdlar_sign'>$</div>
+                            </div>
                             <label className="add_miestone_lbel"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" className="bi bi-plus-lg" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"></path></svg> Add milestone</label>
                         </div>
                         <div className="total_box_oioup">

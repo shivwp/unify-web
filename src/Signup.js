@@ -68,7 +68,7 @@ const Signupscreen = () => {
       errorsObject.last_name = true;
       errorExist = true;
     }
-    if (country == undefined || country == null || country == "") {
+    if (country === undefined || country === null || country === "") {
       errorsObject.country = true;
       errorExist = true;
     }

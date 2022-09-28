@@ -48,12 +48,12 @@ const Screen = () => {
             </tr>
           </thead>
           <tbody>
-            <tr>
+            <tr className='active_trlight'>
               <td className=''>
                 <div className='d-flex justify-content-center cewi_trak align-items-center'>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-arrow-right-short" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z" />
-                  </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="11.787" height="6.894" viewBox="0 0 11.787 6.894">
+  <path id="arrow" d="M17.459,11.5l-4.479,4.479L8.5,11.5" transform="translate(-7.086 -10.086)" fill="none" stroke="#221d2d" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2" opacity="0.66"/>
+</svg>
                 </div>
               </td>
               <td className='d-flex align-items-center'>
@@ -139,9 +139,9 @@ const Screen = () => {
             <tr>
               <td className=''>
                 <div className='d-flex justify-content-center cewi_trak align-items-center'>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-arrow-right-short" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z" />
-                  </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="6.894" height="11.787" viewBox="0 0 6.894 11.787">
+  <path id="arrow" d="M8.959,4.479,4.479,0,0,4.479" transform="translate(5.894 1.414) rotate(90)" fill="none" stroke="#221d2d" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2" opacity="0.66"/>
+</svg>
                 </div>
               </td>
               <td className='d-flex align-items-center'>
@@ -168,9 +168,9 @@ const Screen = () => {
             <tr>
               <td className=''>
                 <div className='d-flex justify-content-center cewi_trak align-items-center'>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-arrow-right-short" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z" />
-                  </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="6.894" height="11.787" viewBox="0 0 6.894 11.787">
+  <path id="arrow" d="M8.959,4.479,4.479,0,0,4.479" transform="translate(5.894 1.414) rotate(90)" fill="none" stroke="#221d2d" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2" opacity="0.66"/>
+</svg>
                 </div>
               </td>
               <td className='d-flex align-items-center'>

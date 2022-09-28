@@ -19,17 +19,26 @@ const Screen = () => {
                         <div className="w-100 d-flex justify-content-between align-items-center contract_sel flex-wrap">
                             <Row className="w-100">
                                 <Col sm={12} lg={6} md={6}>
-                                    <label></label>
+                                    <label className='awd_label'>Select Date</label>
                                     <div className="filter_select_m">
                                         <div className="min_width_inp_nie m-0 date_range_nod psr-relative">
                                             <input type="date" className='w-100'/>
                                         </div>
                                     </div>
                                 </Col>
-                                <Col sm={12} lg={6} md={6}>
+                                <Col sm={12} lg={6} md={6} className=''>
                                     <label className='awd_label'>Project name</label>
+                                    <div className='d-flex align-items-center'>
                                     <div className="select_inp_in filter_select_m w-100">
                                         <Select className="custom_css_select w-100" options={options1} />
+                                    </div>
+                                    <div className='awd_btnrnd'>
+                                        <button>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="23.296" height="23.296" viewBox="0 0 23.296 23.296">
+  <path id="watch" d="M17.257,14.386l-2.444-1.411V7.824a1.165,1.165,0,1,0-2.33,0v5.824a1.165,1.165,0,0,0,.582,1.009L16.092,16.4a1.165,1.165,0,0,0,1.165-2.018ZM13.648,2A11.648,11.648,0,1,0,25.3,13.648,11.648,11.648,0,0,0,13.648,2Zm0,20.967a9.318,9.318,0,1,1,9.318-9.318A9.318,9.318,0,0,1,13.648,22.967Z" transform="translate(-2 -2)" fill="#828282"/>
+</svg>
+                                        </button>
+                                    </div>
                                     </div>
                                 </Col>
                             </Row>

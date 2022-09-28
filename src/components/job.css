@@ -1518,9 +1518,15 @@
   font-family: "Poppins-Bold", "Poppins";
   font-weight: 700;
   padding: 5px 0px;
-  font-size: 22px;
+  font-size: 20px;
   line-height: 23px;
   color: #1f1f1f;
+}
+.min-width-226{
+  min-width: 226px !important;
+}
+.f-size-35{
+  font-size: 35px !important;
 }
 .setting_pro_r_big {
   height: 65px;

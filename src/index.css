@@ -1981,7 +1981,7 @@ body {
 .abso_cen {
   position: absolute;
   right: 0;
-  top: -25px;
+  top: -23px;
 }
 
 .s_na_inpu input,
@@ -4681,4 +4681,7 @@ a {
 
 .borderError {
   border: 1px solid #ea2121;
+}
+.input_nodxq input::-webkit-input-placeholder{
+  color: #808080;
 }

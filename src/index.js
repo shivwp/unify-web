@@ -62,7 +62,6 @@ import FreelancerGoals from "./freelancer/goals";
 import FreelancerTransaction from "./freelancer/transaction";
 import FreelancerAddWorkDiary from "./freelancer/addworkdiary";
 import FreelancerOverview from "./freelancer/overview";
-
 import FreelancerProgress from "./freelancer/progress";
 import FreelancerObjective from "./freelancer/objective";
 import FreelancerReports from "./freelancer/myreports";
@@ -72,7 +71,6 @@ import FreelancerContactInfo from "./freelancer/setting/contactinfo";
 import FreelancerBiling from "./freelancer/setting/billing";
 import FreelanceGetPaid from "./freelancer/setting/getpaid";
 import FreelanceMyTeams from "./freelancer/setting/myteam";
-
 import FreelancePasswordSecurity from "./freelancer/setting/password";
 import FreelanceNotification from "./freelancer/setting/notification";
 import FreelanceIdentify from "./freelancer/setting/identify";
@@ -80,8 +78,10 @@ import FreelanceMyStats from "./freelancer/setting/my-stats";
 import FreelanceBillingEarn from "./freelancer/billing-erning";
 import FreelanceProposal from "./freelancer/sendproposal";
 import FreelanceTimeTracker from "./freelancer/time-tracker";
-
+import FreelancerProfile from './freelancer/profile'
 import FreelancerChat from "./freelancer/chat";
+import FreelancerDashboard from './freelancer/dashboard';
+
 import { Provider } from "react-redux";
 import store from "./redux/store";
 
@@ -235,6 +235,8 @@ root.render(
           element={<FreelanceTimeTracker />}
         />
         <Route path="/freelancer/chat" element={<FreelancerChat />} />
+        <Route path="/freelancer/profile" element={<FreelancerProfile />} />
+        <Route path="/freelancer/dashboard" element={<FreelancerDashboard />} />
       </Routes>
     </BrowserRouter>
   </Provider>

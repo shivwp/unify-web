@@ -40,9 +40,20 @@
 }
 
 .pd_n_fbspro button {
-    padding: 14px 20px !important;
+    padding: 14px 20px;
 }
-
+.ps-relative{
+    position: relative;
+}
+.ipdlar_sign{
+    position: absolute;
+    right: 10px;
+    font-family: 'poppins';
+    font-size: 17px;
+    top: 7px;
+    font-weight: 700;
+    color: #6D2EF1;
+}
 .pd_n_sendp {
     min-width: 170px;
     font-size: 13px !important;
@@ -238,9 +249,12 @@
 .popup_form_element select {
     border-color: #6D2EF1;
     color: #6D2EF1;
+    padding-left: 10px !important;
     padding-right: 20px !important;
 }
-
+.font-weight-400{
+    font-weight: 400 !important;
+}
 .popup_form_element textarea {
     height: 100px;
 }
@@ -356,7 +370,7 @@
 }
 
 .new_hbyh {
-    min-height: 225px !important;
+    min-height: 250px !important;
     margin-top: 20px;
     margin-bottom: 20px;
 }
@@ -442,11 +456,16 @@
 .form_goals .formg_inp label input {
     width: 14px;
     height: 14px;
-    margin: 0px 10px 0px 0px;
+    margin: 0px 10px 1px 0px;
+}
+.iclosed_ctract{
+    margin-left: 30px;
+    text-indent: 7px;
+    font-size: 14px !important;
 }
 
 .form_goals .formg_inp label {
-    font: normal normal 600 16px/26px Poppins;
+    font: normal normal 600 16px/30px Poppins;
     letter-spacing: 0px;
     color: #0E1F3E;
     margin-right: 15px;
@@ -560,7 +579,8 @@
 .report_tbl_frl thead tr th {
     padding: 12px 20px;
     color: #1F1F1F;
-    font: normal normal 500 15px/26px Poppins !important;
+    font: normal normal 600 15px/26px Poppins !important;
+    border-right: #E2E2E2 solid 1px;
 }
 
 .report_tbl_frl tbody tr {
@@ -581,6 +601,7 @@
     padding: 18px 20px;
     color: #1F1F1F;
     font: normal normal 400 15px/26px Poppins;
+    border-right: #E2E2E2 solid 1px;
 }
 
 .amount_tr_frl {
@@ -591,12 +612,12 @@
     background-color: #F9F9F9;
     padding: 12px 0px;
     color: #1F1F1F;
-    font: normal normal 500 15px/26px Poppins !important;
+    font: normal normal 600 15px/26px Poppins !important;
 }
 
 .p_my_report32 {
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: 30px;
+    padding-right: 30px;
 }
 
 .tbl_profile_frl {
@@ -619,7 +640,7 @@
 
 .tbl_pfrl_name {
     color: #000;
-    font: normal normal 500 13px/26px Poppins !important;
+    font: normal normal 600 13px/26px Poppins !important;
 }
 
 .tb_prl_des_res {
@@ -680,7 +701,7 @@
 }
 
 .name_bgmn {
-    font: normal normal 400 15px/20px Poppins !important;
+    font: normal normal 500 15px/20px Poppins !important;
     color: #1F1F1F;
 }
 
@@ -1502,6 +1523,25 @@
 }
 .timerackbox table tbody tr td{
     height: 75px;
+    border-right: #E2E2E2 solid 1px;
+}
+.active_trlight{
+    background-color: #F6F6F6;
+}
+.awd_btnrnd button{
+    background-color: white;
+    padding: 11px;
+    height: 45px;
+    width: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: #E8E7E7 solid 1px;
+    border-radius: 50px;
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    -ms-border-radius: 50px;
+    -o-border-radius: 50px;
 }
 .timerackbox table tbody{
     margin: 2px 0px !important;
@@ -1547,4 +1587,26 @@
 .thh_smheading{
     color: #000000;
     font: normal normal 300 11px/15px Poppins !important;   
+}
+.s_na_inpu{
+    position: relative;
+}
+.pls_s_na_input{
+    position: absolute;
+    right: 12px;
+    height: 25px;
+    width: 25px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Poppins';
+    font-size: 20px;
+    top: 7px;
+    color: #fff;
+    line-height: 20px;
+    background-color: #6D2EF1;
+    font-weight: 500;
+    cursor: pointer;
+    user-select: none;
 }

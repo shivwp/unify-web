@@ -2,10 +2,13 @@ import Container from 'react-bootstrap/Container';
 import Title from '../../components/title';
 import '../freelancer.css'
 import {Link} from 'react-router-dom'
+import Select from "react-select";
 
 const Screen = () => {
     Title(" | Goals");
-
+    const options1 = [{
+        label:'%',name:'%'
+    }]
     return (
         <>
             <Container>
@@ -20,9 +23,11 @@ const Screen = () => {
                     <div className='form_goals'>
                         <div className='formg_label'>Metric</div>
                         <div className='formg_inp'>
-                            <select>
-                                <option>%</option>
-                            </select>
+                  <Select
+                    className="custom_css_select"
+                    placeholder=""
+                    options={options1}
+                  />
                         </div>
                     </div>
                     <div className='form_goals'>
@@ -37,12 +42,12 @@ const Screen = () => {
                         <div className='formg_inp half_width_fi'><input type="text" placeholder='0' /></div>
                     </div>
                     <div className='form_goals'>
-                        <div className='formg_label'>Start Value</div>
+                        <div className='formg_label'>Target Value</div>
                         <div className='formg_inp half_width_fi'><input type="text" placeholder='100' /></div>
                     </div>
                     <div className='form_goals'>
                         <div className='formg_label'>Decimals</div>
-                        <div className='formg_inp d-flex'>
+                        <div className='formg_inp d-flex align-items-center'>
                             <label><input type="radio" name="n" />0</label>
                             <label><input type="radio" name="n" />1</label>
                             <label><input type="radio" name="n" />2</label>

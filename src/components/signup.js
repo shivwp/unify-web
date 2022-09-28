@@ -65,13 +65,38 @@ const Signup = ({
                 <div className="input_icoa">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    fill="currentColor"
-                    className="bi bi-person"
-                    viewBox="0 0 16 16"
+                    width="16.449"
+                    height="18.255"
+                    viewBox="0 0 16.449 18.255"
                   >
-                    <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z" />
+                    <g
+                      id="Icon_feather-user"
+                      data-name="Icon feather-user"
+                      transform="translate(-5 -3.5)"
+                    >
+                      <path
+                        id="Path_4542"
+                        data-name="Path 4542"
+                        d="M20.449,27.918V26.112A3.612,3.612,0,0,0,16.837,22.5H9.612A3.612,3.612,0,0,0,6,26.112v1.806"
+                        transform="translate(0 -7.163)"
+                        fill="none"
+                        stroke="#170048"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                      />
+                      <path
+                        id="Path_4543"
+                        data-name="Path 4543"
+                        d="M19.225,8.112A3.612,3.612,0,1,1,15.612,4.5,3.612,3.612,0,0,1,19.225,8.112Z"
+                        transform="translate(-2.388)"
+                        fill="none"
+                        stroke="#170048"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                      />
+                    </g>
                   </svg>
                 </div>
                 <div className="input_nodxq">
@@ -99,13 +124,38 @@ const Signup = ({
                 <div className="input_icoa">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    fill="currentColor"
-                    className="bi bi-person"
-                    viewBox="0 0 16 16"
+                    width="16.449"
+                    height="18.255"
+                    viewBox="0 0 16.449 18.255"
                   >
-                    <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z" />
+                    <g
+                      id="Icon_feather-user"
+                      data-name="Icon feather-user"
+                      transform="translate(-5 -3.5)"
+                    >
+                      <path
+                        id="Path_4542"
+                        data-name="Path 4542"
+                        d="M20.449,27.918V26.112A3.612,3.612,0,0,0,16.837,22.5H9.612A3.612,3.612,0,0,0,6,26.112v1.806"
+                        transform="translate(0 -7.163)"
+                        fill="none"
+                        stroke="#170048"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                      />
+                      <path
+                        id="Path_4543"
+                        data-name="Path 4543"
+                        d="M19.225,8.112A3.612,3.612,0,1,1,15.612,4.5,3.612,3.612,0,0,1,19.225,8.112Z"
+                        transform="translate(-2.388)"
+                        fill="none"
+                        stroke="#170048"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                      />
+                    </g>
                   </svg>
                 </div>
                 <div className="input_nodxq">
@@ -251,16 +301,18 @@ const Signup = ({
               >
                 Hire for a Project
               </button>
-              <button
-                type="button"
-                onClick={(e) => selectUserType(e)}
-                className={
-                  userType === "freelancer" ? "userTypeActive" : "userType"
-                }
-                value="freelancer"
-              >
-                Work as a freelancer
-              </button>
+              <Link to={`/freelancer/question1`}>
+                <button
+                  type="button"
+                  onClick={(e) => selectUserType(e)}
+                  className={
+                    userType === "freelancer" ? "userTypeActive" : "userType"
+                  }
+                  value="freelancer"
+                >
+                  Work as a freelancer
+                </button>
+              </Link>
             </div>
             <div className="sign_legal_not">
               <div className="sign_l_n_text">

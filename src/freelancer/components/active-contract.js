@@ -5,7 +5,7 @@ const Screen = () => {
     Title(" | Active Contract");
     return (
         <>
-            <Container>
+            <Container className='mb-5 pb-3'>
                 <div className='flex_m_j_t pt-4 flex-wrap'>
                     <div className='my_jo_headin freelancer_all_contract text-transform-uppercase'>MY Proposals</div>
                 </div>

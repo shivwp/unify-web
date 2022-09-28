@@ -69,6 +69,7 @@ function ListProposals() {
     );
 }
 
+
 const projectdetail = () => {
     return (
         <>
@@ -79,7 +80,7 @@ const projectdetail = () => {
                         <div className="s_trans_bos s_nav_body box_web_req">
                             <div className='fl_end_b abso_cen'>
                                 <div className="fb_btns_s_pro pd_n_fbspro">
-                                    <button className='bg-trans_s_pro bg_li_grey'>
+                                    <button className='bg-trans_s_pro bg_li_grey wlistbtn_xe'>
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-heart-fill heart_btn" viewBox="0 0 16 16">
                                             <path fillRule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z" />
                                         </svg>

@@ -3,6 +3,8 @@ import Container from "react-bootstrap/Container";
 import { Col, Row } from "react-bootstrap";
 import Title from "../../components/title";
 import { useState } from "react";
+import DateRangePicker from "react-bootstrap-daterangepicker";
+import "bootstrap-daterangepicker/daterangepicker.css";
 
 const TBLScreen = () => {
   return (
@@ -97,9 +99,11 @@ const LifeBilledScreen = () => {
               <img src="/assets/dollar.png" alt="" />
             </div>
             <div className="no_foun_head_ce">
-              <h1>Your lifetime billed amount is $4320.00</h1>
+              <h1 className="font-weight-500">
+                Your lifetime billed amount is $4320.00
+              </h1>
             </div>
-            <div className="no_foun_para_ce bee_lgtext">
+            <div className="no_foun_para_ce bee_lgtext font-weight-400">
               This is a total sum of invoices (paid or pending to be paid),
               excluding taxes and feed.
             </div>
@@ -132,22 +136,48 @@ const Screen = () => {
             </div>
             <div className="d-flex flex-wrap justify-content-between align-items-center w-100 mt-3 mb-3">
               <div className="min_width_inp_nie m-0 date_range_nod psr-relativ">
-                <input type="date" />
+                <div className="min_width_inp_nie m-0 date_range_nod psr-relative">
+                  <DateRangePicker
+                    initialSettings={{
+                      startDate: "11/12/2014",
+                      endDate: "3/1/2014",
+                    }}
+                  >
+                    <input />
+                  </DateRangePicker>
+                  <div className="cal_icon_psr_abs">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      fill="#6D2EF1"
+                      className="bi bi-calendar-range"
+                      viewBox="0 0 16 16"
+                    >
+                      <path d="M9 7a1 1 0 0 1 1-1h5v2h-5a1 1 0 0 1-1-1zM1 9h4a1 1 0 0 1 0 2H1V9z" />
+                      <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z" />
+                    </svg>
+                  </div>
+                </div>
               </div>
               <div className="btn_group_be mt-2">
                 <button
-                  className={`st_bgbe ${tabActive === "tblscreen" ? "active_btn_be" : ""}`}
+                  className={`st_bgbe ${
+                    tabActive === "tblscreen" ? "active_btn_be" : ""
+                  }`}
                   onClick={() => {
-                    SetTabActive("tblscreen")
+                    SetTabActive("tblscreen");
                     SetTab(<TBLScreen />);
                   }}
                 >
                   Billings & Earnings
                 </button>
                 <button
-                  className={`sec_bgbe ${tabActive === "earning" ? "active_btn_be" : ""}`}
+                  className={`sec_bgbe ${
+                    tabActive === "earning" ? "active_btn_be" : ""
+                  }`}
                   onClick={() => {
-                    SetTabActive("earning")
+                    SetTabActive("earning");
                     SetTab(<LifeBilledScreen />);
                   }}
                 >

@@ -5,7 +5,7 @@ import Title from "./title";
 import Select from "react-select";
 import DateRangePicker from 'react-bootstrap-daterangepicker';
 import 'bootstrap-daterangepicker/daterangepicker.css';
-
+  
 const Screen = () => {
   Title(" | Transaction History");
 

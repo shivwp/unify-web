@@ -6,7 +6,7 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import { Link } from "react-router-dom";
 import { useState } from 'react';
 
-const NavbarHeader = () => {
+const NavbarHeader = (props) => {
   const [navOpen,SetnavOpen] = useState(false);
   const [activeNav,SetactiveNav] = useState("");
 
@@ -37,7 +37,7 @@ const NavbarHeader = () => {
           <button>Logout</button>
         </div>
       </div>
-      <Navbar collapseOnSelect expand="md" className="nav_realat external_nav_padding">
+      <Navbar collapseOnSelect expand="md" className={`nav_realat external_nav_padding ${props.dashboardBgNav}`}>
         <Container>
           <div className='w-100 d-flex justify-content-between align-items-center flex_rev'>
             <div className="width_100_sm">
@@ -56,32 +56,29 @@ const NavbarHeader = () => {
                     <div className='navabr_t_li'><Link to="/freelancer/project-search/saved">Saved Jobs</Link></div>
                     <div className='navabr_t_li'><Link to="/freelancer/active-contract">Proposals</Link></div>
                     <div className='navabr_t_li'><Link to="/freelancer/profile">Profile</Link></div>
-                    <div className='navabr_t_li'><Link to="/dashboard">My Stats</Link></div>
-                    <div className='navabr_t_li'><Link to="/dashboard">My Project Dashboard</Link></div>
                   </NavDropdown>
                   <NavDropdown className="navbar_btn b_job_l_sx" title="Browse Jobs" id="navbarScrollingDropdown">
-                    <div className='navabr_t_li'><Link to="">My Jobs</Link></div>
-                    <div className='navabr_t_li'><Link to="/freelancer/active-contract">Active Contracts</Link></div>
+                    <div className='navabr_t_li'><Link to="/freelancer/my-contract">My Jobs</Link></div>
                     <div className='navabr_t_li'><Link to="/freelancer/all-contracts">All Contracts</Link></div>
                     <div className='navabr_t_li'><Link to="/freelancer/work-diary">Management Board</Link></div>
                     <div className='navabr_t_li'><Link to="/freelancer/goals">Goals</Link></div>
-                    <div className='navabr_t_li'><Link to="/freelancer/work-diary">Work Diary</Link></div>
+                    <div className='navabr_t_li'><Link to="/freelancer/add-work-diary">Work Diary</Link></div>
                   </NavDropdown>
                   <div>
                   <NavDropdown flip={true} className="navbar_btn talent_dropdown_cs report_left_caewe" title="Reports" id="navbarScrollingDropdown">
                     <div className='navabr_t_li'><Link to="/freelancer/overview">Overview</Link></div>
                     <div className='navabr_t_li'><Link to="/freelancer/my-reports">My Reports</Link></div>
-                    <div className='navabr_t_li'><Link to="/message">Billings & Earnings</Link></div>
-                    <div className='navabr_t_li'><Link to="/message">Connects History</Link></div>
+                    <div className='navabr_t_li'><Link to="/freelancer/billing-earning">Billings & Earnings</Link></div>
+                    <div className='navabr_t_li'><Link to="#0">Connects History</Link></div>
                     <div className='navabr_t_li'><Link to="/freelancer/transaction-history">Transaction History</Link></div>
                   </NavDropdown>
                   </div>
                   <Nav.Link className="active_btn logout_btn_nav"><Link to="/Signin">Logout</Link></Nav.Link>
-                  <Nav.Link href="/freelancer/chat" className="navbar_btn p-0">
+                  <Link to="/freelancer/chat" className="navbar_btn p-0">
                     <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" fill="currentColor" className="bi bi-envelope" viewBox="0 0 16 16">
                       <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z" />
                     </svg>
-                  </Nav.Link>
+                  </Link>
                   
                   <Nav.Link className="navbar_btn">
                   <Link to="/freelancer/notification">

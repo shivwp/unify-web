@@ -2,13 +2,14 @@ import Container from "react-bootstrap/Container";
 import Title from "../../components/title";
 import { Row, Col } from "react-bootstrap";
 import "./chat.css";
+import Select from "react-select";
 import { useState } from "react";
 
 const Contact = () => {
   return (
     <>
       <div className="contact-box-chat">
-        <div className="cbc_profile_img">
+        <div className="cbc_profile_img online_profile">
           <img src="/assets/PRO-2.png" alt="" />
         </div>
         <div className="cbc_lft">
@@ -121,6 +122,9 @@ const PopupContact = (props) => {
 const Screen = () => {
   Title(" | Chat");
   const [Popup, SetPopup] = useState();
+  const options1 = [{
+    label:'All Recent',name:'All Recent'
+  }]
   return (
     <>
       <div className="chat-bg mt-2">
@@ -341,13 +345,20 @@ const Screen = () => {
             </div>
             <div className="d-flex justify-content-between align-items-center w-50">
               <div>
-                <div className="chat_p_name">Alex K.</div>
+                <div className="chat_p_name ml_svg_cpn">Alex K.  
+                <svg xmlns="http://www.w3.org/2000/svg" width="15.972" height="15.264" viewBox="0 0 16.972 16.264">
+  <path id="star" d="M16.927,6.642a.9.9,0,0,0-.776-.619l-4.9-.445L9.316,1.044a.9.9,0,0,0-1.66,0L5.72,5.577l-4.9.445A.9.9,0,0,0,.307,7.6l3.7,3.247L2.919,15.657a.9.9,0,0,0,1.342.975l4.225-2.526,4.224,2.526a.9.9,0,0,0,1.343-.975l-1.092-4.809,3.7-3.247a.9.9,0,0,0,.263-.959Zm-8.36,7.416" transform="translate(0 -0.496)" fill="#ff88fe"/>
+</svg>
+</div>
                 <div className="d-flex">
                   <div className="chat_ucountry">Derby, United Kingdom</div>
                   <div className="chat_status_date">Friday, July 20, 2020</div>
                 </div>
               </div>
               <div className="chat_header_buttons">
+                <div className="vpropo_cbrntn">
+                <button>VIEW PROPOSAL</button>
+                </div>
                 <button>
                   <svg
                     id="video-camera"
@@ -648,6 +659,39 @@ const Screen = () => {
           </div>
           <Row className="mt-3">
             <Col lg={3}>
+              <div className="mt-1 mb-4">
+                <div className="searchbox_hat">
+                  <div className='bxshat_svg'>
+                <svg xmlns="http://www.w3.org/2000/svg" width="33.5" height="33.667" viewBox="0 0 33.5 33.667">
+                <g id="magnifying-glass" transform="translate(-0.898)">
+                  <g id="Group_2490" data-name="Group 2490" transform="translate(22.524 21.681)">
+                    <g id="Group_2489" data-name="Group 2489">
+                      <path id="Path_4513" data-name="Path 4513" d="M236.069,232.949a15.981,15.981,0,0,1-2.814,2.8l9.044,9.184,2.829-2.786Z" transform="translate(-233.255 -232.949)" fill="#6d2ef1"/>
+                    </g>
+                  </g>
+                  <g id="Group_2492" data-name="Group 2492" transform="translate(0.898)">
+                    <g id="Group_2491" data-name="Group 2491" transform="translate(0)">
+                      <path id="Path_4514" data-name="Path 4514" d="M12.811,0A11.913,11.913,0,1,0,24.725,11.913,11.913,11.913,0,0,0,12.811,0Zm0,19.856a7.942,7.942,0,1,1,7.942-7.942A7.942,7.942,0,0,1,12.811,19.856Z" transform="translate(-0.898)" fill="#6d2ef1"/>
+                    </g>
+                  </g>
+                </g>
+                </svg>
+                  </div>
+            <input type='text' placeholder="Search"/>
+                </div>
+                <div className="searchbox_hat select_box_hat">
+                  <div className='bxshat_svg'>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="13.414" height="8.121" viewBox="0 0 13.414 8.121">
+                    <path id="Path_4512" data-name="Path 4512" d="M7948-1915.291l6,6,6-6" transform="translate(-7947.293 1915.998)" fill="none" stroke="#fff" stroke-width="2"/>
+                  </svg>
+                  </div>
+                  <Select
+                    className="custom_css_select"
+                    placeholder="All Recent"
+                    options={options1}
+                  />
+                </div>
+              </div>
               <Contact />
               <Contact />
               <Contact />
@@ -665,7 +709,7 @@ const Screen = () => {
             <Col lg={3}>
               <div className="profile-bx-whte">
                 <div className="d-flex justify-content-center">
-                  <div className="pimg_big">
+                  <div className="pimg_big online_profile_chat">
                     <img src="/assets/PRO-2.png" />
                   </div>
                 </div>

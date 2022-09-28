@@ -3,6 +3,7 @@ import Container from "react-bootstrap/Container";
 import { Row, Col } from "react-bootstrap";
 import star from "../../icons/star.svg";
 import heart from "../../icons/heart.svg";
+import like from "../../icons/like.svg";
 import Footer from "../../components/footer";
 import Title from "../../components/title";
 import $ from "jquery";
@@ -10,6 +11,14 @@ import "../freelancer.css";
 import { useParams, Link } from "react-router-dom";
 
 const ListCard = () => {
+  const [dDown,Setddown] = useState(0)
+  function TogglePopup(){
+      if(dDown === 1){
+          Setddown(0)
+      } else{
+          Setddown(1)
+      }
+  }
   const card = [1, 2, 3, 4, 5, 6];
   return (
     <>
@@ -60,12 +69,18 @@ const ListCard = () => {
                 <div className="ex_val_f">Hamburg</div>
               </div>
             </div>
-            <div>
+            <div className='ps-relative'>
+              {dDown === 1 ? <Popup /> : ''}
               <div className="fb_btns_s_pro">
-                <button className="bg-trans_s_pro">
+                <button className="bg-trans_s_pro btn_psnewrb" onClick={()=>{TogglePopup()}}>
+                  <img src={like} alt="" className="heart_btn" />
+                </button>
+                <button className="bg-trans_s_pro btn_psnewrb">
                   <img src={heart} alt="" className="heart_btn" />
                 </button>
-                <Link to="/freelancer/project-detail"><button>Send Proposal</button></Link>
+                <Link to="/freelancer/project-detail">
+                  <button>Send Proposal</button>
+                </Link>
               </div>
             </div>
           </div>
@@ -75,6 +90,22 @@ const ListCard = () => {
   );
 };
 
+const Popup = () =>{
+  return(
+      <>
+      <div className="ddown_psr ps-absolute">
+      <div className='ddown_mcotrct psearch-pnpou'>
+          <Link to='/freelancer/getpaid'><div className='ddwon_lis'>Just not interested</div></Link>
+          <Link to='/freelancer/transaction-history'><div className='ddwon_lis'>Vague Description</div></Link>
+          <Link to='/freelancer/overview'><div className='ddwon_lis'>Unrealistic Expectations</div></Link>
+          <Link to='/freelancer/overview'><div className='ddwon_lis'>Too Many Applicants</div></Link>
+          <Link to='/freelancer/overview'><div className='ddwon_lis'>Job posted too long ago</div></Link>
+          <Link to='/freelancer/overview'><div className='ddwon_lis'>Doesn't Match Skills</div></Link>
+      </div>
+      </div>
+      </>
+  )
+}
 const Project_Search = () => {
   let { saved } = useParams();
   const hanDleSlide = (e) => {
@@ -142,6 +173,7 @@ const Project_Search = () => {
                   </div>
                   <div className="s_na_inpu">
                     <input type="text" placeholder="Search skills" />
+                    <div className="pls_s_na_input">+</div>
                   </div>
                 </div>
               </div>
@@ -297,6 +329,8 @@ const Project_Search = () => {
               <button className="pagi_butt">3</button>
               <button className="pagi_butt">4</button>
               <button className="pagi_butt">5</button>
+              <div className="pagination_dots">...</div>
+              <button className="pagi_butt">10</button>
             </div>
           </Col>
         </Row>

@@ -3,9 +3,13 @@ import Container from "react-bootstrap/Container";
 import { Col, Row } from "react-bootstrap";
 import Title from "../../components/title";
 import star from "../../icons/star.svg";
+import Select from "react-select";
 
 const Screen = () => {
   Title(" | Send Proposal");
+  const options1 = [{
+    name:'General Profile',label:'General Profile'
+  }]
 
   return (
     <>
@@ -18,9 +22,11 @@ const Screen = () => {
                 Propose with a Specialized profile
               </div>
               <div className="sm_select_hdsp">
-                <select>
-                  <option>General Profile</option>
-                </select>
+                <Select
+                    className="custom_css_select sendpro_select"
+                    placeholder="Select Profile"
+                    options={options1}
+                  />
               </div>
               <div className="ssmtxto_hdsp">
                 This proposal requires 4 Connects

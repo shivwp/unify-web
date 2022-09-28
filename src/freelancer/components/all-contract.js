@@ -3,6 +3,8 @@ import { Col, Row } from 'react-bootstrap';
 import Title from '../../components/title';
 import Select from 'react-select';
 import { Link } from 'react-router-dom';
+import * as Icon from "react-icons/fi";
+import Checkbox from "react-custom-checkbox";
 
 const Screen = () => {
     Title(" | All Contracts");
@@ -57,6 +59,18 @@ const Screen = () => {
                                     </Col>
                                 </Row>
                                 <div className='sort_by_pa'>0 toal</div>
+                                <div className='sort_by_pa iclosed_ctract d-flex align-items-center'>
+                                <Checkbox
+                                            icon={<Icon.FiCheck color="#fff" size={14} />}
+                                            name="my-input"
+                                            borderRadius={0}
+                                            checked={true}
+                                            borderWidth={1}
+                                            borderColor="#6D2EF1"
+                                            style={{ cursor: "pointer", backgroundColor: "#6D2EF1" }}
+                                        />
+                                         Include closed contracts
+                                </div>
                             </div>
                             <div className='download_lnk_csx'>
                                 <a href="#0">
