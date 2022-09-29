@@ -1054,7 +1054,7 @@
   -o-border-radius: 50px;
   background-color: #3dd419;
   content: " ";
-  z-index: 9999;
+  z-index: 10;
 }
 .inpu_date input {
   border: #e8e7e7 solid 1px;

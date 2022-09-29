@@ -248,6 +248,7 @@
 .profile-bx-whte {
     background-color: #fff;
     padding: 35px 60px;
+    text-align: -webkit-center;
 }
 
 .pimg_big {
@@ -302,6 +303,11 @@
     line-height: 30px;
 }
 
+.CHATPROFbox_min230px{
+    max-width: 200px;
+    text-align: left;
+}
+
 .fnt_prof_sde {
     font-size: 18px;
     color: #8F8F8F;
@@ -317,7 +323,7 @@
     color: #8F8F8F;
     font-weight: 400;
     font-family: 'poppins';
-    line-height: 30px;
+    line-height: 20px;
 }
 
 .fny_flag_flex svg {
@@ -1254,4 +1260,97 @@
     font-family: 'poppins';
     font-weight: 800;
     font-size: 16px;
+}
+
+@media only screen and (max-width: 768px) {
+    .popup_boxwchat{
+        margin: 0px 10px;
+    }
+    .flex_reverse_768{
+        flex-flow: column-reverse;
+    }
+    .signup_social_btn_n button{
+        max-width: 90% !important;
+        margin: 5px 13px !important;
+        font-size: 15px !important;
+        padding: 5px 0px !important;
+    }
+    .sign_u_head h1{
+        font-size: 35px;
+    }
+    .tb_mob_f12px{
+        font-size: 12px !important;
+    }
+    .questopn_h1 h1{
+        font-size: 35px;
+        line-height: 50px;
+    }
+    .new_hbyh{
+        margin-bottom: 0;
+        margin-top: 10px;
+    }
+    .question_p p{
+        font-size: 15px;
+    }
+    .footer-head h3{
+        font-weight: 500;
+    }
+    .cewbrteve{
+        flex-wrap: wrap;
+    }
+}
+@media only screen and (max-width: 520px) {
+
+    .round_b_btn{
+        height: 40px;
+        width: 40px;
+    }
+    .s_b_head h2{
+        font-size: 30px !important;
+    }
+
+}
+@media only screen and (max-width: 430px) {
+    .mstat_lbel{
+        min-width: 100%;
+    }
+    .select_fex_lbelx{
+        width: 100%;
+    }
+    .inp_w_haf{
+        font-size: 14px;
+    }
+    .sign_form_btn_subm button{
+    line-height: 37px !important;
+    font-size: 18px !important;
+    max-width: 318px;
+    padding: 10px 0px;
+    }
+    .cewbrteve .chat_status_date{
+        margin-left: 0;
+    }
+}
+@media only screen and (max-width: 320px) {
+    .fo_btn_c button{
+        font-size: 13px;
+    }
+}
+@media only screen and (min-width: 1024px) {
+    .new_hbyh{
+        min-height: 230px !important;
+    }
+}
+
+@media only screen and (max-width: 991px) {
+    .cewbrteve{
+        width: 100% !important;
+    }
+}
+@media only screen and (max-width: 991px) {
+    .cewbrtever{
+        width: 100% !important;
+    }
+}
+.chat-ul-area{
+    padding: 0px 15px;
 }

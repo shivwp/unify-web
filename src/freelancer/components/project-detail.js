@@ -74,7 +74,7 @@ const projectdetail = () => {
     return (
         <>
             <Container className="mt-5">
-                <Row>
+                <Row className='flex_reverse_768'>
                     <Col lg={9} md={12}>
  
                         <div className="s_trans_bos s_nav_body box_web_req">
@@ -229,7 +229,7 @@ const projectdetail = () => {
                     </Col>
                     <Col lg={3} md={12}>
 
-                        <div className="border_bx_sec no_pad">
+                        <div className="border_bx_sec no_pad mb-5">
 
                             <div className='heat_lef'>
                                 <img src={star} alt="" />

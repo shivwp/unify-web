@@ -183,7 +183,7 @@
 
 .popup_box_bpn {
     max-width: 500px;
-    width: 80%;
+    width: 95%;
     padding: 0px 20px;
     background: #FFFFFF 0% 0% no-repeat padding-box;
     opacity: 1;
@@ -1336,7 +1336,7 @@
 }
 
 .tamoun_pdd_sp {
-    font: normal normal 400 14px/30px Poppins !important;
+    font: normal normal 400 13px/30px Poppins !important;
     color: #170048;
 }
 

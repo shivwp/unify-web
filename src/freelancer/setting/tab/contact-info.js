@@ -56,7 +56,7 @@ const Screen = () => {
                                 </div>
                                 <Row>
                                     <Col lg={12} className="d-flex justify-content-between flex-wrap">
-                                        <div className='d-flex mb-2 mt-3 justify-content-between w-100'>
+                                        <div className='d-flex mb-2 mt-3 flex-wrap justify-content-between w-100'>
                                             <div className="w-55">
                                                 <div className='c_name_s_v'>Client Account</div>
                                                 <div className="c_name_sett pt-0 font-color-light">Hire, manage and pay as a different company. Each client company has its own

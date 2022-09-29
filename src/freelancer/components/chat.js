@@ -129,9 +129,9 @@ const Screen = () => {
     <>
       <div className="chat-bg mt-2">
         <Container>
-          <div class="chat-header align-items-center">
-            <div className="chat_header_buttons align-items-center w-50 justify-content-between">
-              <div className="d-flex">
+          <div class="chat-header align-items-center flex-wrap">
+            <div className="chat_header_buttons align-items-center w-50 justify-content-between cewbrteve">
+              <div className="d-flex cewbrtever">
               <button>
                 <svg
                   id="tools"
@@ -344,23 +344,23 @@ const Screen = () => {
                 </svg>
               </button>
               </div>
-            <div className="d-flex justify-content-between align-items-center w-50">
+            <div className="d-flex justify-content-between align-items-center w-50  flex-wrap cewbrtever">
               <div>
                 <div className="chat_p_name ml_svg_cpn">Alex K.  
                 <svg xmlns="http://www.w3.org/2000/svg" width="15.972" height="15.264" viewBox="0 0 16.972 16.264">
   <path id="star" d="M16.927,6.642a.9.9,0,0,0-.776-.619l-4.9-.445L9.316,1.044a.9.9,0,0,0-1.66,0L5.72,5.577l-4.9.445A.9.9,0,0,0,.307,7.6l3.7,3.247L2.919,15.657a.9.9,0,0,0,1.342.975l4.225-2.526,4.224,2.526a.9.9,0,0,0,1.343-.975l-1.092-4.809,3.7-3.247a.9.9,0,0,0,.263-.959Zm-8.36,7.416" transform="translate(0 -0.496)" fill="#ff88fe"/>
 </svg>
 </div>
-                <div className="d-flex">
+                <div className="d-flex cewbrteve">
                   <div className="chat_ucountry">Derby, United Kingdom</div>
                   <div className="chat_status_date">Friday, July 20, 2020</div>
                 </div>
               </div>
             </div>
             </div>
-            <div className="chat_header_buttons chb_fill_gray">
+            <div className="chat_header_buttons chb_fill_gray  flex-wrap">
               
-            <div className="chat_header_buttons">
+            <div className="chat_header_buttons flex-wrap">
                 <div className="vpropo_cbrntn">
                 <button>VIEW PROPOSAL</button>
                 </div>
@@ -716,6 +716,7 @@ const Screen = () => {
                     <img src="/assets/PRO-2.png" />
                   </div>
                 </div>
+                <div className="CHATPROFbox_min230px">
                 <div className="fnt-prof-sde mt-3">Allen Growd</div>
                 <div className="fnt_prof_sde">Website Designer</div>
                 <div className="fny_flag_flex">
@@ -922,6 +923,7 @@ const Screen = () => {
                   </svg>
                   <div>Reviews</div>
                 </div>
+                </div>
                 <div className="prf_dise_btns">
                   <button>
                     <svg
@@ -1001,7 +1003,7 @@ const Screen = () => {
           <Row className="mt-5">
             <Col lg={3}></Col>
             <Col lg={9} sm={12}>
-              <div className="d-flex flex-wrap align-items-center">
+              <div className="d-flex align-items-center">
                 <div className="file_link_cbtn">
                   <button>
                     <svg

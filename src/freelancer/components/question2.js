@@ -13,7 +13,7 @@ const Screen = () => {
                     <div className="question_p"><p>Different people come to Unify for different reasons. We want to highlight the opportunities that fit your goals <br /> best - while still showing you all the possibilities. Which of these feels most right for you?</p></div>
                 </div>
                 <Row className="justify-content-center">
-                    <Col lg={3} sm={10} className="mb-3">
+                    <Col lg={3} md={6} sm={10} className="mb-3">
                         <div className="hire_box_yh new_hbyh">
                             <div className="sub_radio"><input type="radio" name="s" /></div>
                             <div>
@@ -24,7 +24,7 @@ const Screen = () => {
                             </div>
                         </div>
                     </Col>
-                    <Col lg={3} sm={10} className="mb-3">
+                    <Col lg={3} md={6} sm={10} className="mb-3">
                         <div className="hire_box_yh new_hbyh">
                             <div className="sub_radio"><input type="radio" name="s" /></div>
                             <div>
@@ -35,7 +35,7 @@ const Screen = () => {
                             </div>
                         </div>
                     </Col>
-                    <Col lg={3} sm={10} className="mb-3">
+                    <Col lg={3} md={6} sm={10} className="mb-3">
                         <div className="hire_box_yh new_hbyh">
                             <div className="sub_radio"><input type="radio" name="s" /></div>
                             <div>
@@ -46,7 +46,7 @@ const Screen = () => {
                             </div>
                         </div>
                     </Col>
-                    <Col lg={3} sm={10} className="mb-3">
+                    <Col lg={3} md={6} sm={10} className="mb-3">
                         <div className="hire_box_yh new_hbyh">
                             <div className="sub_radio"><input type="radio" name="s" /></div>
                             <div>

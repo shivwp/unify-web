@@ -27,7 +27,7 @@ const Screen = () => {
     }
     return (
         <>
-            <Container>
+            <Container className='mb-5 pb-3'>
                 <div className="d-flex justify-content-between align-items-center flex-wrap me_haeder_sections">
                     <div>
                         <div className="me_hed_h2_new"><h2>Experienced Developer for Wellness App</h2></div>

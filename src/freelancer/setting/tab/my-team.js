@@ -12,7 +12,7 @@ const Screen = () => {
                     <SideNav />
                     <Col lg={9}>
                         <div className="s_nav_body">
-                            <div className="d-flex justify-content-between">
+                            <div className="d-flex justify-content-between " >
                                 <div className="s_b_head no-border"><h2 className='f-size-35'>My Teams</h2></div>
                                 <div>
                                     <button className="round_b_btn blue_trans_btn">

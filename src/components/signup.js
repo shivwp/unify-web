@@ -317,14 +317,14 @@ const Signup = ({
             <div className="sign_legal_not">
               <div className="sign_l_n_text">
                 <input type="checkbox" />
-                <label>
+                <label className='tb_mob_f12px'>
                   yes! Send me genuinely useful emails every now and then to
                   help me get the most out of Unify
                 </label>
               </div>
               <div className="sign_l_n_text">
                 <input type="checkbox" />
-                <label>
+                <label className='tb_mob_f12px'>
                   yes! I understand and agree to the{" "}
                   <span>UnifyTerms of Service</span>, including the{" "}
                   <span>User Agreement</span> and <span>Privacy Policy</span>
