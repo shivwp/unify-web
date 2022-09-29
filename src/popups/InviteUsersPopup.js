@@ -110,7 +110,11 @@ const InviteUsersPopup = ({ open, onCloseModal }) => {
           <div className="invite_users">
             <h6>Wiew work Diaries</h6>
             <div>
-                <p>Those with team access can log time (with an active contract) and view Work Diaries and hours-only reports for all team members</p>
+              <p>
+                Those with team access can log time (with an active contract)
+                and view Work Diaries and hours-only reports for all team
+                members
+              </p>
               <ul className="popup-radio">
                 <li>
                   <label htmlFor="diaries_op_1">
@@ -121,16 +125,15 @@ const InviteUsersPopup = ({ open, onCloseModal }) => {
                   <label htmlFor="diaries_op_2">
                     <input type="radio" name="p" id="diaries_op_2" /> Team
                   </label>
-                  <p>
-                    Can see and chat with anyone on the team.
-                  </p>
+                  <p>Can see and chat with anyone on the team.</p>
                 </li>
                 <li>
                   <label htmlFor="diaries_op_3">
                     <input type="radio" name="p" id="diaries_op_3" /> Company
                   </label>
                   <p>
-                    Can see and chat with everyone in the company, across all teams.
+                    Can see and chat with everyone in the company, across all
+                    teams.
                   </p>
                 </li>
               </ul>
@@ -139,7 +142,9 @@ const InviteUsersPopup = ({ open, onCloseModal }) => {
 
           <div className="btn_foot_sec no-border flex-wrap d-flex">
             <div className="fo_btn_c next_b_btn_c">
-              <button className="remove-posting-btns">CANCEL</button>
+              <button className="remove-posting-btns" onClick={onCloseModal}>
+                CANCEL
+              </button>
             </div>
             <div className="fo_btn_c next_b_btn_c">
               <button className="active_btn_blue">SAVE</button>

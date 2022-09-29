@@ -36,6 +36,7 @@ const Screen = () => {
                     <div>
                       <button
                         className="round_b_btn"
+                        type="button"
                         onClick={() => {
                           setOpenChangePass(true);
                         }}
@@ -288,14 +289,18 @@ const Screen = () => {
           </Row>
         </Container>
       </div>
-      <ChangePasswordPopup
-        open={openChangePass}
-        onCloseModal={() => setOpenChangePass(false)}
-      />
-      <SetYourVerification
-        open={openVerification}
-        onCloseModal={() => setOpenVerification(false)}
-      />
+      {openChangePass && (
+        <ChangePasswordPopup
+          open={openChangePass}
+          onCloseModal={() => setOpenChangePass(!openChangePass)}
+        />
+      )}
+      {openVerification && (
+        <SetYourVerification
+          open={openVerification}
+          onCloseModal={() => setOpenVerification(false)}
+        />
+      )}
     </>
   );
 };
