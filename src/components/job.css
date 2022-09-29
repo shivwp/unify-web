@@ -2322,3 +2322,279 @@
   top: 0;
   right: 50px;
 }
+
+/* Add Company Address */
+
+.add_comp_address {
+  font-family: "Poppins";
+  margin: 30px auto;
+}
+.add_comp_address .comp_address_title {
+  font-size: 25px;
+  width: 100%;
+  letter-spacing: -1px;
+  color: #00065a;
+  font-weight: bold;
+  margin: 20px 0px 0 0;
+  padding-top: 10px;
+  padding-bottom: 0;
+}
+.add_comp_address .back_to_offer {
+  font-size: 12px;
+  width: 100%;
+  font-weight: 600;
+  color: #6d2ef1;
+  margin: 6px 0px 10px 0;
+  padding-bottom: 0;
+}
+
+/* col_left */
+
+.add_comp_address .col_left {
+  padding: 35px;
+  height: 100%;
+}
+
+.add_comp_address .col_left .page_title {
+  font-weight: 700;
+}
+
+.add_comp_address .add_address_inp .css-1okebmr-indicatorSeparator {
+  display: none;
+}
+
+.add_comp_address .add_address_inp {
+  display: flex;
+  flex-direction: column;
+}
+.add_comp_address .add_address_inp span {
+  font-size: 15px;
+  font-weight: 600;
+  margin: 30px 0 10px 0;
+}
+.add_comp_address .add_address_inp > input {
+  width: 100%;
+  height: 40px;
+  border: #cbcaca solid 1px;
+  outline: none;
+  padding: 7px;
+  border-radius: 2px;
+}
+
+.add_comp_address .add_address_inp .custom_css_select {
+  border: #cbcaca solid 1px !important;
+  border-radius: 2px !important;
+}
+
+.add_comp_address .add_address_inp .custom_css_select div {
+  border: none !important;
+  border-radius: 2px !important;
+}
+.add_comp_address .add_details .save_Address {
+  background-color: #6d2ef1;
+  margin: 40px 0;
+  padding: 15px 95px;
+  color: #fff;
+  border: none;
+  border-radius: 30px;
+  font-family: "Poppins-Bold", "Poppins";
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 20px;
+  -webkit-border-radius: 30px;
+}
+
+/* col-right */
+._col_right {
+  height: 100%;
+}
+
+._col_right .Add_Address_profile {
+  padding: 5px 0;
+  border-bottom: #cbcaca solid 1px;
+}
+
+._col_right .Add_Address_profile {
+  display: flex;
+  align-items: center;
+}
+._col_right .Add_Address_profile img {
+  width: 50px;
+  height: auto;
+}
+
+._col_right .Add_Address_profile p {
+  font-size: 12px;
+  color: #777474;
+  margin-bottom: 10px;
+}
+
+._col_right .Escrow_deposit_box {
+  padding: 10px 0;
+  border-bottom: #cbcaca solid 1px;
+}
+._col_right .Escrow_deposit_box .Escrow_deposit {
+  font-size: 15px;
+  font-weight: 700;
+  margin: 5px 0;
+}
+
+._col_right .Escrow_deposit_box .Escrow_deposit > span {
+  border-radius: 50%;
+  font-size: 9px;
+  padding: 0px 4px !important;
+  color: white;
+  background-color: #b5b5b5;
+}
+
+._col_right .Escrow_deposit_box .subtotal {
+  display: flex;
+  margin: 5px 0;
+
+  justify-content: space-between;
+  font-size: 14px;
+  color: #a1a1a1;
+}
+._col_right .Escrow_deposit_box .subtotal ._amount {
+  font-weight: 700;
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  color: black;
+}
+
+._col_right .market_place_fee_box {
+  padding: 10px 0;
+  /* border-bottom: #cbcaca solid 1px; */
+}
+._col_right .market_place_fee_box .market_place {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  margin: 5px 0;
+}
+._col_right .market_place_fee_box .market_place ._amount {
+  font-weight: 700;
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  color: black;
+}
+._col_right .market_place_fee_box .see_more {
+  font-weight: 700;
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: #6d2ef1;
+  margin: 5px 0;
+}
+
+._col_right .Estimated_taxes_box {
+  padding: 10px 0;
+  border-bottom: #cbcaca solid 1px;
+}
+._col_right .Estimated_taxes_box .Estimated_taxes {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  margin: 0 0 5px 0;
+}
+._col_right .Estimated_taxes_box .Estimated_taxes ._amount {
+  font-weight: 700;
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  color: black;
+}
+
+._col_right .Estimated_taxes_box .see_more {
+  font-weight: 700;
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: #6d2ef1;
+}
+
+._col_right .Estimated_total_box {
+  padding: 10px 0;
+}
+._col_right .Estimated_total_box .Estimated_total {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+._col_right .find_and_hire_button {
+  display: flex;
+  justify-content: center;
+}
+._col_right .find_contact {
+  background-color: #f8f8f8;
+  margin: 20px auto;
+  padding: 15px 20px;
+  color: rgb(181, 181, 181);
+  border: none;
+  border-radius: 30px;
+  font-family: "Poppins-Bold", "Poppins";
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 20px;
+  -webkit-border-radius: 30px;
+}
+
+/* Edit company Address */
+.Edit_comp_address .page_title {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.Edit_comp_address .col_left .Edit_details {
+  margin: 2px 0;
+  padding: 2px 0;
+  border-bottom: #e2e0e0 solid 1px;
+}
+.Edit_comp_address .col_left .Edit_details ._edit {
+  display: flex;
+  justify-content: space-between;
+  margin: 2px 0;
+  padding: 2px 0;
+}
+.Edit_comp_address .col_left .Edit_details ._edit > ._edit_btn {
+  font-weight: 700;
+  font-size: 15px;
+  color: #6d2ef1;
+}
+
+.Select_payment_method_box {
+  margin: 20px 0;
+  padding: 2px 0;
+  border-bottom: #e2e0e0 solid 1px;
+}
+.Select_payment_method_box ._payment_methods .setting_pay_inp {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 40%;
+}
+.Select_payment_method_box .payment_btn .pay_with_btn {
+  border: 2px solid #6d2ef1;
+  margin: 0 0 25px 0;
+  padding: 10px 40px;
+  color: #6d2ef1;
+  border-radius: 30px;
+  font-family: "Poppins-Bold", "Poppins";
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 20px;
+  -webkit-border-radius: 30px;
+}
+.Select_payment_method_box .payment_btn .pay_with_btn:hover {
+  background-color: #6d2ef1;
+  font-weight: 500;
+  color: #fff;
+}
+.Edit_comp_address ._payment_alert {
+  font-size: 12px;
+  color: #a4a3a3;
+}

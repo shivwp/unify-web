@@ -143,3 +143,44 @@
 .set-varification-popup .when-confirm .popup-radio label span {
   margin: 0 5px;
 }
+
+.team_name label{
+  display: flex;
+  flex-direction: column;
+  font-weight: 700;
+  font-size: 15px;
+}
+.team_name label > input{
+  outline: none;
+  border: none;
+  border: 1px solid #cbcaca;
+  width: 100%;
+  height: 42px;
+  margin: 5px 0;
+  padding: 3px 38px 3px 10px;
+}
+
+.create_new_team_popup h5 {
+  color: #6d2ef1;
+  font-weight: 600;
+}
+
+.create_new_team_popup > p {
+  font-size: 12px;
+  font-weight: 500;
+  color: rgb(128 123 123);
+  margin: 20px 0;
+}
+.create_new_team_popup > p > span {
+  font-size: 12px;
+  color: #6d2ef1;
+}
+.edit_team_popup h5 {
+  color: #6d2ef1;
+  font-weight: 600;
+}
+
+.edit_team_popup label {
+  margin: 20px 0;
+}
+

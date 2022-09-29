@@ -3,7 +3,7 @@ import { Container } from "react-bootstrap";
 import DatePicker from "react-datepicker";
 import "./job.css";
 import "react-datepicker/dist/react-datepicker.css";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 const Screen = () => {
   const [startDate, setStartDate] = useState();
@@ -157,8 +157,8 @@ const Screen = () => {
         </div>
         <div className="allow_freel_che flex-wrap">
           <label>
-          <input type="checkbox" />
-          Allow freelancer to log time manually if needed.{" "}
+            <input type="checkbox" />
+            Allow freelancer to log time manually if needed.{" "}
           </label>
           <a href="#0">Learn more</a>
         </div>
@@ -274,8 +274,14 @@ const Screen = () => {
       </div>
       <div className="d-flex justify-content-between mt-4 mb-5">
         <div className="btn_job_back">
-          <Link to="/view-job"><button className="fo_btn_c next_b_btn_c mb-2">Cancel</button></Link>
-          <Link to="/"><button className="fo_btn_c next_b_btn_c mb-2 post_job_btn blue_ac_btn">Continue</button></Link>
+          <Link to="/view-job">
+            <button className="fo_btn_c next_b_btn_c mb-2">Cancel</button>
+          </Link>
+          <Link to="/hire-freelancer/addAddress">
+            <button className="fo_btn_c next_b_btn_c mb-2 post_job_btn blue_ac_btn">
+              Continue
+            </button>
+          </Link>
         </div>
       </div>
     </Container>

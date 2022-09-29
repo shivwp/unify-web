@@ -85,6 +85,8 @@ import FreelancerChat from "./freelancer/chat";
 import { Provider } from "react-redux";
 import store from "./redux/store";
 import EditPosting from "./components/EditPosting";
+import AddCompanyAddress from "./AddCompanyAddress";
+import EditCompanyAddress from "./EditCompanyAddress";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -112,6 +114,8 @@ root.render(
         <Route path="/view-job" element={<ViewJob />} />
         <Route path="/view-job/:screen" element={<ViewJob />} />
         <Route path="/hire-freelancer" element={<HireFreelancer />} />
+        <Route path="/hire-freelancer/addAddress" element={<AddCompanyAddress />} />
+        <Route path="/hire-freelancer/edit-address" element={<EditCompanyAddress />} />
         <Route path="/my-jobs" element={<MyJobs />} />
         <Route path="/all-contracts" element={<AllContracts />} />
         <Route path="/talent-discover" element={<TalentDiscover />} />
