@@ -10,7 +10,7 @@ const ChagePasswordPopup = ({ onCloseModal, open }) => {
   const [hideConfPass, setHideConfPass] = useState(true);
 
   return (
-    <div>
+    <>
       <Modal
         open={open}
         onClose={onCloseModal}
@@ -95,7 +95,7 @@ const ChagePasswordPopup = ({ onCloseModal, open }) => {
           </div>
         </div>
       </Modal>
-    </div>
+    </>
   );
 };
 
