@@ -54,8 +54,8 @@ const Screen = () => {
                         </div>
                     </div>
                         <div className="btn_foot_sec flex-wrap d-flex no-border">
-                            <div className='fo_btn_c next_b_btn_c'><Link to="/dashboard"><button>Cancel</button></Link></div>
-                            <div className='fo_btn_c next_b_btn_c'><Link to="/title"><button className="active_btn_blue">Continue</button></Link></div>
+                            <div className='fo_btn_c next_b_btn_c'><Link to="/freelancer/dashboard"><button>Cancel</button></Link></div>
+                            <div className='fo_btn_c next_b_btn_c'><Link to="/freelancer/dashboard"><button className="active_btn_blue">Continue</button></Link></div>
                         </div>
                 </div>
             </Container>

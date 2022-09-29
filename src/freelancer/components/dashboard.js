@@ -3,8 +3,150 @@ import { Row, Col } from "react-bootstrap";
 import Title from "../../components/title";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import Select from "react-select";
 import Switch from "react-switch";
 
+
+const Profile = () => {
+  return (
+    <>
+      <div className="card_pcwuguoequ d-flex justify-content-between">
+        <div className="d-flex">
+          <div className="profile_crign">
+            <img src="/assets/PRO-2.png" alt="" />
+          </div>
+          <div className="pcrign_name">
+            <div className="rign_nem">Lauren Palmer</div>
+            <div className="rign_mali">laurenpalmera@gmx.com</div>
+          </div>
+        </div>
+        <div className="d-flex align-items-center">
+          <svg
+            id="chat"
+            xmlns="http://www.w3.org/2000/svg"
+            width="35.789"
+            height="35.839"
+            viewBox="0 0 35.789 35.839"
+          >
+            <g id="Group_2437" data-name="Group 2437" transform="translate(0)">
+              <g
+                id="Group_2436"
+                data-name="Group 2436"
+                transform="translate(0)"
+              >
+                <path
+                  id="Path_4494"
+                  data-name="Path 4494"
+                  d="M32.092,0H4.237A3.969,3.969,0,0,0,.27,3.973V23.862a3.973,3.973,0,0,0,3.967,3.973H17.115l9.451,7.646c.846.684,1.54.358,1.54-.737V27.836h3.986a3.969,3.969,0,0,0,3.967-3.973V3.973A3.973,3.973,0,0,0,32.092,0Zm-.01,23.859H24.129V28.4l-5.607-4.536H4.247V3.977H32.082V23.859Z"
+                  transform="translate(-0.27)"
+                  fill="#adbbc7"
+                />
+              </g>
+            </g>
+            <g
+              id="Group_2439"
+              data-name="Group 2439"
+              transform="translate(7.953 11.93)"
+            >
+              <g id="Group_2438" data-name="Group 2438">
+                <rect
+                  id="Rectangle_632"
+                  data-name="Rectangle 632"
+                  width="3.977"
+                  height="3.977"
+                  fill="#adbbc7"
+                />
+              </g>
+            </g>
+            <g
+              id="Group_2441"
+              data-name="Group 2441"
+              transform="translate(15.906 11.93)"
+            >
+              <g id="Group_2440" data-name="Group 2440">
+                <rect
+                  id="Rectangle_633"
+                  data-name="Rectangle 633"
+                  width="3.977"
+                  height="3.977"
+                  fill="#adbbc7"
+                />
+              </g>
+            </g>
+            <g
+              id="Group_2443"
+              data-name="Group 2443"
+              transform="translate(23.859 11.93)"
+            >
+              <g id="Group_2442" data-name="Group 2442">
+                <rect
+                  id="Rectangle_634"
+                  data-name="Rectangle 634"
+                  width="3.977"
+                  height="3.977"
+                  fill="#adbbc7"
+                />
+              </g>
+            </g>
+          </svg>
+        </div>
+      </div>
+    </>
+  );
+};
+const ProfilePayment = () => {
+  return (
+    <>
+      <div className="card_pcwuguoequ d-flex justify-content-between">
+        <div className="d-flex">
+          <div className="profile_crign">
+            <img src="/assets/PRO-2.png" alt="" />
+          </div>
+          <div className="pcrign_name">
+            <div className="rign_nem">Lauren Palmer</div>
+            <div className="rign_mali">laurenpalmera@gmx.com</div>
+          </div>
+        </div>
+        <div className="d-flex align-items-center flex-column">
+          <div className="efty_smtxt">850</div>
+          <div className="eedy_smtxt">AED</div>
+        </div>
+      </div>
+    </>
+  );
+};
+const RecomendedProject = () => {
+  return (
+    <>
+      <div className="card_pcwuguoequ d-flex justify-content-between no-border">
+        <div className="d-flex">
+          <div className="profile_crign rcomend_proj_pfile"></div>
+          <div className="pcrign_name wwbkit-avaol">
+            <div className="rign_nem font_recomproject">Stay on top of your messages</div>
+            <div className="rign_mali font_rec_ldesc">Looking for a talented UI/UX designer to create all the branding material for my new startup.</div>
+          </div>
+        </div>
+        <div className="d-flex flex-column">
+          <div className="efty_smtxt tblew_bbltr">90%</div>
+          <div className="eedy_smtxt progress_w10px"></div>
+        </div>
+      </div>
+    </>
+  );
+};
+const Pdata = () => {
+  return (
+    <>
+      <div className="d-flex box_bbl_data">
+        <div className="w-20 tr_bblhead tblew_bbltr">IBM</div>
+        <div className="w-20 tr_bblhead">Design</div>
+        <div className="w-20 tr_bblhead">AED 300.00</div>
+        <div className="w-20 tr_bblhead">Pending</div>
+        <div className="w-20 tr_bblhead">Pending</div>
+      </div>
+    </>
+  );
+};
 const Screen = () => {
   const [active, Setactive] = useState(
     window.location.pathname.replace("/", "")
@@ -14,6 +156,12 @@ const Screen = () => {
   const handleChange = (nextChecked) => {
     setChecked(nextChecked);
   };
+  const options1 = [
+    {
+      name: "Month",
+      label: "Month",
+    },
+  ];
   return (
     <div className="min_pad_m mt-min180px">
       <Container>
@@ -551,23 +699,210 @@ const Screen = () => {
                   </div>
                   <div className="hourly_am">
                     <span>Total Earnings</span>
-                    <h1 className="line-hei-1">640<sup>00</sup></h1>
+                    <h1 className="line-hei-1">
+                      640<sup>00</sup>
+                    </h1>
                   </div>
                 </div>
                 <div className="pd_flex flex-wrap hrly_dboard_ntxt">
                   <div className="flex_pt no-border pt-3">
-                    <div className="pt_title">
-                      Total projects
+                    <div className="pt_title">Total projects</div>
+                    <div className="pt_num pt_n1 color-red font-weight-600">
+                      109
                     </div>
-                    <div className="pt_num pt_n1 color-red font-weight-600">109</div>
                   </div>
                   <div className="flex_pt no-border pt-3">
                     <div className="pt_title">Rank</div>
-                    <div className="pt_num pt_n2 font-weight-600 color-blew">609</div>
+                    <div className="pt_num pt_n2 font-weight-600 color-blew">
+                      609
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
+            <Row>
+              <Col lg={4}>
+                <div>
+                  <div className="d-flex justify-content-between">
+                    <div className="dcard_htext">Total Projects</div>
+                    <div className="dcard_htext">105</div>
+                  </div>
+
+                  <div className="d-flex justify-content-between mt-2">
+                    <div className="dcard_lghthead">
+                      <span>20</span> projects in this month
+                    </div>
+                    <div className="ps-relative select_drd_mth">
+                      <Select
+                        className="custom_css_select"
+                        placeholder="Month"
+                        options={options1}
+                      />
+                      <div className="pls_s_na_input">+</div>
+                    </div>
+                  </div>
+                    <div>
+                    </div>
+                </div>
+              </Col>
+              <Col lg={4}>
+                <div>
+                  <div className="d-flex justify-content-between mb-3">
+                    <div className="dcard_htext">Clients</div>
+                    <div className="dcard_ltxt">
+                      <Link to="/">View All</Link>
+                    </div>
+                  </div>
+                  <Profile />
+                  <Profile />
+                  <Profile />
+                </div>
+              </Col>
+              <Col lg={4}>
+                <div>
+                  <div className="d-flex justify-content-between mb-3">
+                    <div className="dcard_htext">Recent Payments</div>
+                    <div className="dcard_ltxt cpink_ltxt">
+                      <Link to="/">View All</Link>
+                    </div>
+                  </div>
+                  <ProfilePayment />
+                  <ProfilePayment />
+                  <ProfilePayment />
+                </div>
+              </Col>
+            </Row>
+            <div className="d-flex box_ylow_dboard flex-wrap mt-5 pt-3 mb-5">
+              <div className="bylow_iconbox">
+                <svg
+                  id="flag"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="50.5"
+                  height="59.331"
+                  viewBox="0 0 50.5 59.331"
+                >
+                  <g id="Group_2566" data-name="Group 2566">
+                    <g id="Group_2565" data-name="Group 2565">
+                      <rect
+                        id="Rectangle_716"
+                        data-name="Rectangle 716"
+                        width="5.951"
+                        height="59.331"
+                        fill="#ffd500"
+                      />
+                    </g>
+                  </g>
+                  <g
+                    id="Group_2568"
+                    data-name="Group 2568"
+                    transform="translate(3.74 5.951)"
+                  >
+                    <g id="Group_2567" data-name="Group 2567">
+                      <path
+                        id="Path_4519"
+                        data-name="Path 4519"
+                        d="M58.465,42.667v5.951H78.586V66.472H66.628v5.951H84.537V42.667Z"
+                        transform="translate(-58.465 -42.667)"
+                        fill="#ffd500"
+                      />
+                    </g>
+                  </g>
+                  <g
+                    id="Group_2570"
+                    data-name="Group 2570"
+                    transform="translate(23.806 11.903)"
+                  >
+                    <g id="Group_2569" data-name="Group 2569">
+                      <path
+                        id="Path_4520"
+                        data-name="Path 4520"
+                        d="M229.016,85.333H202.322V115.08h26.694L217.9,100.206Zm-11.876,23.8h-8.867V91.284h8.867l-6.667,8.922Z"
+                        transform="translate(-202.322 -85.333)"
+                        fill="#ffd500"
+                      />
+                    </g>
+                  </g>
+                </svg>
+              </div>
+              <div>
+                <div className="blow_hoen">
+                  Your availability is set to vacation mode
+                </div>
+                <div className="bwos_heon">
+                  Your profile ill not be visible to clients on the platform
+                  until you switch off the vacation mode.
+                </div>
+              </div>
+            </div>
+            <Row>
+              <Col lg={8}>
+                <div>
+                  <div className="d-flex justify-content-between mb-3">
+                    <div className="dcard_htext">Projects</div>
+                    <div className="dcard_ltxt">
+                      <Link to="/">Manage Projects</Link>
+                    </div>
+                  </div>
+                  <div className="d-flex bbl_head_gay">
+                    <div className="w-20 tr_bblhead">Project Name</div>
+                    <div className="w-20 tr_bblhead">Work Assigned</div>
+                    <div className="w-20 tr_bblhead">Project Cost</div>
+                    <div className="w-20 tr_bblhead">Status</div>
+                    <div className="w-20 tr_bblhead">Payment</div>
+                  </div>
+                  <Pdata />
+                  <Pdata />
+                  <Pdata />
+                  <Pdata />
+                </div>
+              </Col>
+              <Col lg={4}>
+                <div>
+                  <div className="d-flex justify-content-between mb-3">
+                    <div className="dcard_htext">Recommended</div>
+                    <div className="dcard_ltxt">
+                      <Link to="/">View All</Link>
+                    </div>
+                  </div>
+                  <div className="d-flex mt-4 mb-3">
+                    <div className="profile_crign">
+                      <img src="/assets/PRO-2.png" alt="" />
+                    </div>
+                    <div className="pcrign_name">
+                      <div className="rign_nem">Lauren Palmer</div>
+                      <div className="rign_mali">laurenpalmera@gmx.com</div>
+                    </div>
+                  </div>
+                  <div className="recome_blextxt">
+                    Need a designer to from branding essentials for my business.
+                  </div>
+                  <div className="recome_ltctx">
+                    Looking for a talented UI/UX designer to create all the
+                    branding material for my new startup.
+                  </div>
+                  <div className="d-flex justify-content-between recomen_bgraybox align-items-center mt-4">
+                    <div className="fname_recm_txe">
+                      AED 345 <span>/ month</span>
+                    </div>
+                    <div>
+                      <button>FULL TIME</button>
+                    </div>
+                  </div>
+                </div>
+              </Col>
+            </Row>
+            <Row>
+              <Col lg={8}>
+                <div className="mt-3">
+                  <div className="d-flex justify-content-between mb-3">
+                    <div className="dcard_htext">Recommended Project</div>
+                  </div>
+                  <RecomendedProject />
+                  <RecomendedProject />
+                  <RecomendedProject />
+                </div>
+              </Col>
+            </Row>
           </Col>
         </Row>
       </Container>
