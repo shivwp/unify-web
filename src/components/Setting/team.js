@@ -9,9 +9,8 @@ import EditTeamPopup from "../../popups/EditTeamPopup";
 
 const Screen = () => {
   Title(" | Setting - Team");
-  const [openNewTeam, setOpenNewTeam] = useState(false)
-  const [openEditTeam, setOpenEditTeam] = useState(false)
-
+  const [openNewTeam, setOpenNewTeam] = useState(false);
+  const [openEditTeam, setOpenEditTeam] = useState(false);
 
   return (
     <>
@@ -26,7 +25,10 @@ const Screen = () => {
                     <h2>Teams</h2>
                   </div>
                   <div>
-                    <button className="round_b_btn blue_trans_btn" onClick={()=>setOpenNewTeam(true)}>
+                    <button
+                      className="round_b_btn blue_trans_btn"
+                      onClick={() => setOpenNewTeam(true)}
+                    >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="16"
@@ -60,7 +62,10 @@ const Screen = () => {
                     <div className="s_th_s s_td_s w-20">John Doe (123456)</div>
                     <div className="s_th_s s_td_s w-20">AK24#7777</div>
                     <div className="w-15 mob_60_rr">
-                      <button className="round_b_btn bg-transparent" onClick={()=>setOpenEditTeam(true)} >
+                      <button
+                        className="round_b_btn bg-transparent"
+                        onClick={() => setOpenEditTeam(true)}
+                      >
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="16"
@@ -137,14 +142,18 @@ const Screen = () => {
           </Row>
         </Container>
       </div>
-      <CreateNewTeam
-        open={openNewTeam}
-        onCloseModal={() => setOpenNewTeam(false)}
-      />
-      <EditTeamPopup
-        open={openEditTeam}
-        onCloseModal={() => setOpenEditTeam(false)}
-      />
+      {openNewTeam && (
+        <CreateNewTeam
+          open={openNewTeam}
+          onCloseModal={() => setOpenNewTeam(false)}
+        />
+      )}
+      {openEditTeam && (
+        <EditTeamPopup
+          open={openEditTeam}
+          onCloseModal={() => setOpenEditTeam(false)}
+        />
+      )}
     </>
   );
 };

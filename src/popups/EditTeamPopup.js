@@ -14,11 +14,16 @@ const EditTeamPopup = ({ open, onCloseModal }) => {
         center
       >
         <h5>Edit Team Ankita Kumavat</h5>
-        
+
         <div className="team_name">
           <label>
             <span>Name</span>
-            <input type="text" name="name" placeholder="Ankita Kumavat" disabled />
+            <input
+              type="text"
+              name="name"
+              placeholder="Ankita Kumavat"
+              disabled
+            />
           </label>
         </div>
         <div className="team_name">
@@ -30,7 +35,9 @@ const EditTeamPopup = ({ open, onCloseModal }) => {
 
         <div className="btn_foot_sec no-border flex-wrap d-flex">
           <div className="fo_btn_c next_b_btn_c">
-            <button className="remove-posting-btns">CANCEL</button>
+            <button className="remove-posting-btns" onClick={onCloseModal}>
+              CANCEL
+            </button>
           </div>
           <div className="fo_btn_c next_b_btn_c">
             <button className="active_btn_blue">SAVE</button>

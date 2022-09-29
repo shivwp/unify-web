@@ -5,7 +5,7 @@ import CloseAccountPopup from "../popups/CloseAccountPopup";
 import "./job.css";
 
 const MyInfo = ({ setOpen }) => {
-  const [openCloseAccount, setOpenCloseAccount] = useState(false)
+  const [openCloseAccount, setOpenCloseAccount] = useState(false);
 
   return (
     <>
@@ -172,13 +172,20 @@ const MyInfo = ({ setOpen }) => {
           <button>Create New Account</button>
         </div>
         <div className="fo_btn_c next_b_btn_c">
-          <button className="active_btn_blue" onClick={() => setOpenCloseAccount(true)}>Close Account</button>
+          <button
+            className="active_btn_blue"
+            onClick={() => setOpenCloseAccount(true)}
+          >
+            Close Account
+          </button>
         </div>
       </div>
-      <CloseAccountPopup
-        open={openCloseAccount}
-        onCloseModal={() => setOpenCloseAccount(false)}
-      />
+      {openCloseAccount && (
+        <CloseAccountPopup
+          open={openCloseAccount}
+          onCloseModal={() => setOpenCloseAccount(false)}
+        />
+      )}
     </>
   );
 };

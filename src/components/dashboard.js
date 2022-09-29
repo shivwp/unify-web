@@ -266,14 +266,18 @@ const Screen = () => {
           </div>
         </div>
       </Container>
-      <RemovePostingPopup
-        open={removePosting}
-        onCloseModal={(e) => setRemovePosting(false)}
-      />
-      <RemoveDraftPopup
-        open={removeDraft}
-        onCloseModal={(e) => setRemoveDraft(false)}
-      />
+      {removePosting && (
+        <RemovePostingPopup
+          open={removePosting}
+          onCloseModal={(e) => setRemovePosting(false)}
+        />
+      )}
+      {removeDraft && (
+        <RemoveDraftPopup
+          open={removeDraft}
+          onCloseModal={(e) => setRemoveDraft(false)}
+        />
+      )}
     </>
   );
 };
