@@ -875,7 +875,7 @@
   position: relative;
 }
 
-.Filter_Popup{
+.Filter_Popup {
   position: absolute;
   background-color: white;
   border: 1px solid rgb(224, 224, 224);
@@ -883,6 +883,25 @@
   padding: 10px 20px;
   top: 0px;
   right: 0px;
+}
+
+.popup_up_arrow {
+  position: absolute;
+  top: -25px;
+  color: #c7c7c7;
+  transform: rotate(90deg);
+  right: 153px;
+  font-weight: 100;
+  font-size: 25px;
+}
+
+.popup_border_none {
+  position: absolute;
+  top: -27px;
+  right: 158px;
+  color: white;
+  font-size: 30px;
+  font-weight: 600;
 }
 
 .no_found_img_cen {
@@ -1533,10 +1552,10 @@
   line-height: 23px;
   color: #1f1f1f;
 }
-.min-width-226{
+.min-width-226 {
   min-width: 226px !important;
 }
-.f-size-35{
+.f-size-35 {
   font-size: 35px !important;
 }
 .setting_pro_r_big {
@@ -2336,8 +2355,17 @@
   align-items: flex-start;
   padding: 10px 10px;
   width: 200px;
-  top: 0;
-  right: 50px;
+  top: 7px;
+  right: 55px;
+}
+
+.menu_btn_arrow {
+  position: absolute;
+  top: -5px;
+  color: #cacaca;
+  font-size: 23px;
+  right: -13px;
+  font-weight: 100;
 }
 
 /* Add Company Address */
