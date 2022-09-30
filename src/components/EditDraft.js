@@ -4,15 +4,8 @@ import Footer from "./footer";
 import Container from "react-bootstrap/Container";
 import { Col, Row } from "react-bootstrap";
 import $ from "jquery";
-
-
-const EditPosting = () => {
-  const hanDleSlide = (e) => {
-    $(e.target.nextSibling).slideToggle();
-  };
-  $(".slider_shutter").slideDown();
-
-
+import { Link } from "react-router-dom";
+const EditDraft = () => {
   return (
     <>
       <NavbarLogin />
@@ -22,9 +15,14 @@ const EditPosting = () => {
             <Col lg={12}>
               <div className="form_box_bor mt-2">
                 <div className="edit-posting-heading">
-                  <div className="heading">Review</div>
-                  <button className="mt-2 btn-save_post border_blue_wwifth" style={{ fontSize:16, fontWeight:500 }}>
-                    Save Job Post
+                  <div className="heading">
+                    Now Just finish and review your job post.
+                  </div>
+                  <button
+                    className="mt-2 btn-save_post border_blue_wwifth"
+                    style={{ fontSize: 16, fontWeight: 500 }}
+                  >
+                    Post Your Job Now
                   </button>
                 </div>
                 <div className="title-edit_posting">
@@ -45,8 +43,7 @@ const EditPosting = () => {
                   <p>
                     Include your expectations about the task or deliverable,
                     what you're looking for in a work relationship, and anything
-                    unique about your project, team, or company.{" "}
-                    <span></span> 
+                    unique about your project, team, or company. <span></span>
                   </p>
                   <div className="description-textarea">
                     <textarea placeholder='The standard chunk of used since the 1500s is reprodced below for those intrested. Section 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exace original form, accompanied by English versions from the 1914 translation by H. Rackham.'></textarea>
@@ -60,8 +57,15 @@ const EditPosting = () => {
                   </div>
                 </div>
                 <div className="ts_btn attach_f_btn edit_posting-attach-file">
-                  <button className="rot_svg_oety" style={{position: "relative", fontSize:16, fontWeight:500 }}>
-                  <input type="file" style={{ cursor: "pointer" }} />
+                  <button
+                    className="rot_svg_oety"
+                    style={{
+                      position: "relative",
+                      fontSize: 16,
+                      fontWeight: 500,
+                    }}
+                  >
+                    <input type="file" style={{ cursor: "pointer" }} />
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="18"
@@ -181,106 +185,110 @@ const EditPosting = () => {
                 </div>
                 {/* screening questions  */}
                 {/* <div
-                  className="p-0 flex_slide_ta toggle_shutter b-bottom-b"
-                  onClick={(e) => hanDleSlide(e)}
-                >
-                  <div className="">
-                    <div className="input_t_lab pb-0">
-                      Screening questions (optional)
-                    </div>
-                    <div className="sm_label_inp">
-                      Narrow down your candidates
-                    </div>
+                className="p-0 flex_slide_ta toggle_shutter b-bottom-b"
+                onClick={(e) => hanDleSlide(e)}
+              >
+                <div className="">
+                  <div className="input_t_lab pb-0">
+                    Screening questions (optional)
                   </div>
-                  <div className="pr-10">
-                    <svg
-                      className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiBox-root css-1om0hkc"
-                      width="24"
-                      height="24"
-                      fill="#393939"
-                      focusable="false"
-                      aria-hidden="true"
-                      viewBox="0 0 24 24"
-                      data-testid="KeyboardArrowDownIcon"
-                    >
-                      <path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"></path>
-                    </svg>
-                  </div>
-                </div>
-                <div className="slide_btnss slider_shutter">
                   <div className="sm_label_inp">
                     Narrow down your candidates
                   </div>
                 </div>
-                <div
-                  className="p-0 flex_slide_ta toggle_shutter b-bottom-b"
-                  onClick={(e) => hanDleSlide(e)}
-                >
-                  <div className="">
-                    <div className="input_t_lab pb-0">
-                      Advanced preferences (optional)
-                    </div>
-                    <div className="sm_label_inp">
-                      Hours per week, hire date, and more
-                    </div>
-                  </div>
-                  <div className="pr-10">
-                    <svg
-                      className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiBox-root css-1om0hkc"
-                      width="24"
-                      height="24"
-                      fill="#393939"
-                      focusable="false"
-                      aria-hidden="true"
-                      viewBox="0 0 24 24"
-                      data-testid="KeyboardArrowDownIcon"
-                    >
-                      <path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"></path>
-                    </svg>
-                  </div>
+                <div className="pr-10">
+                  <svg
+                    className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiBox-root css-1om0hkc"
+                    width="24"
+                    height="24"
+                    fill="#393939"
+                    focusable="false"
+                    aria-hidden="true"
+                    viewBox="0 0 24 24"
+                    data-testid="KeyboardArrowDownIcon"
+                  >
+                    <path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"></path>
+                  </svg>
                 </div>
-                <div className="slide_btnss slider_shutter">
+              </div>
+              <div className="slide_btnss slider_shutter">
+                <div className="sm_label_inp">
+                  Narrow down your candidates
+                </div>
+              </div>
+              <div
+                className="p-0 flex_slide_ta toggle_shutter b-bottom-b"
+                onClick={(e) => hanDleSlide(e)}
+              >
+                <div className="">
+                  <div className="input_t_lab pb-0">
+                    Advanced preferences (optional)
+                  </div>
                   <div className="sm_label_inp">
                     Hours per week, hire date, and more
                   </div>
                 </div>
-
-                <div
-                  className="p-0 flex_slide_ta toggle_shutter b-bottom-b"
-                  onClick={(e) => hanDleSlide(e)}
-                >
-                  <div className="">
-                    <div className="input_t_lab pb-0">
-                      Job post preferences (optional)
-                    </div>
-                    <div className="sm_label_inp">
-                      Adjust visibility and add coworkers
-                    </div>
-                  </div>
-                  <div className="pr-10">
-                    <svg
-                      className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiBox-root css-1om0hkc"
-                      width="24"
-                      height="24"
-                      fill="#393939"
-                      focusable="false"
-                      aria-hidden="true"
-                      viewBox="0 0 24 24"
-                      data-testid="KeyboardArrowDownIcon"
-                    >
-                      <path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"></path>
-                    </svg>
-                  </div>
+                <div className="pr-10">
+                  <svg
+                    className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiBox-root css-1om0hkc"
+                    width="24"
+                    height="24"
+                    fill="#393939"
+                    focusable="false"
+                    aria-hidden="true"
+                    viewBox="0 0 24 24"
+                    data-testid="KeyboardArrowDownIcon"
+                  >
+                    <path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"></path>
+                  </svg>
                 </div>
-                <div className="slide_btnss slider_shutter">
+              </div>
+              <div className="slide_btnss slider_shutter">
+                <div className="sm_label_inp">
+                  Hours per week, hire date, and more
+                </div>
+              </div>
+
+              <div
+                className="p-0 flex_slide_ta toggle_shutter b-bottom-b"
+                onClick={(e) => hanDleSlide(e)}
+              >
+                <div className="">
+                  <div className="input_t_lab pb-0">
+                    Job post preferences (optional)
+                  </div>
                   <div className="sm_label_inp">
                     Adjust visibility and add coworkers
                   </div>
-                </div> */}
+                </div>
+                <div className="pr-10">
+                  <svg
+                    className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiBox-root css-1om0hkc"
+                    width="24"
+                    height="24"
+                    fill="#393939"
+                    focusable="false"
+                    aria-hidden="true"
+                    viewBox="0 0 24 24"
+                    data-testid="KeyboardArrowDownIcon"
+                  >
+                    <path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"></path>
+                  </svg>
+                </div>
+              </div>
+              <div className="slide_btnss slider_shutter">
+                <div className="sm_label_inp">
+                  Adjust visibility and add coworkers
+                </div>
+              </div> */}
 
-                <div className=" edit_posting_save_btn ">
-                  <div>
-                    <button>Save Job Post</button>
+                <div className="draft_btns">
+                  <div className="cancle_post_draft">
+                    <button className="draft_back_btn">Back</button>
+                  </div>
+                  <div style={{display: 'flex', alignItems: 'center', flexWrap: "wrap"}}>
+                    <Link className="save_as_draft" to="#">Save as a draft</Link>
+                    <button className="draft_save_btn">Post Your Job Now</button>
                   </div>
                 </div>
               </div>
@@ -293,4 +301,4 @@ const EditPosting = () => {
   );
 };
 
-export default EditPosting;
+export default EditDraft;

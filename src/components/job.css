@@ -2179,6 +2179,29 @@
   font-size: 22px;
 }
 
+@media screen and (max-width: 386px) {
+  .edit-posting-heading .heading {
+    font-weight: 600;
+    font-size: 18px;
+  }
+  .btn-save_post {
+    background-color: #6d2ef1;
+    padding: 12px 19px;
+    color: #fff;
+    border: none;
+    border-radius: 30px;
+    font-family: "Poppins-Bold", "Poppins";
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 16px;
+    -webkit-border-radius: 30px;
+  }
+  .border_blue_wwifth {
+    border: #6d2ef1 solid 1px !important;
+    min-width: 160px;
+  }
+}
+
 .edit-posting-heading {
   padding-bottom: 15px;
   border-bottom: #cbcaca solid 1px;
@@ -2328,6 +2351,59 @@
   margin: 25px 0;
   padding: 5px 15px;
 }
+
+.draft_btns {
+  display: flex;
+  margin: 25px 0;
+  padding: 5px 15px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.draft_btns .save_as_draft {
+  color: #00065A;
+  cursor: pointer;
+  margin: 10px 15px;
+  font-weight: 700;
+}
+.draft_btns .draft_back_btn {
+  background-color: white;
+  padding: 15px 60px;
+  color: #6d2ef1;
+  border: 1px solid #6d2ef1;
+  border-radius: 30px;
+  font-family: "Poppins-Bold", "Poppins";
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 20px;
+  -webkit-border-radius: 30px;
+}
+.draft_btns .draft_back_btn:hover {
+  background-color: #6d2ef1;
+  padding: 15px 60px;
+  color: #fff;
+  border: 1px solid #6d2ef1;
+  border-radius: 30px;
+  font-family: "Poppins-Bold", "Poppins";
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 20px;
+  -webkit-border-radius: 30px;
+}
+
+.draft_btns button {
+  background-color: #6d2ef1;
+  padding: 15px 40px;
+  color: #fff;
+  border: none;
+  border-radius: 30px;
+  font-family: "Poppins-Bold", "Poppins";
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 20px;
+  -webkit-border-radius: 30px;
+}
+
 .edit_posting_save_btn button {
   background-color: #6d2ef1;
   padding: 15px 40px;
@@ -2376,7 +2452,7 @@
   top: -5px;
   color: #cacaca;
   font-size: 23px;
-  right: -13px;
+  right: -9px;
   font-weight: 100;
 }
 

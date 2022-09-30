@@ -1,5 +1,5 @@
 .remove-posting-popup {
-  width: 35% !important;
+  max-width: 500px !important;
   font-family: "Poppins-Bold", "Poppins";
 }
 
@@ -30,10 +30,17 @@
   font-weight: 600;
   font-size: 1.1em;
 }
+.remove-posting-popup .reason-to-remove-posting .popup-radio label {
+  display: flex;
+  align-items: center;
+}
+.remove-posting-popup .reason-to-remove-posting .popup-radio label span {
+  margin: 0 4px;
+}
 
 .remove-posting-popup .reason-to-remove-posting li {
   font-size: 14px;
-  color: rgb(128 123 123);
+  color: #000000;
   padding: 5px 0;
 }
 
@@ -45,6 +52,7 @@
 
 .change-password-popup {
   font-family: "Poppins-Bold", "Poppins";
+  min-width: 600px;
 }
 
 .change-password-popup h5 {
@@ -52,10 +60,17 @@
   font-weight: 700;
 }
 
+@media screen and (max-width: 644px) {
+  .change-password-popup {
+    font-family: "Poppins-Bold", "Poppins";
+    min-width: 200px;
+  }
+}
+
 .change-password-popup .password-inp .inp-label {
   font-size: 14px;
   color: black;
-  font-weight: 700;
+  font-weight: 600;
   padding: 5px 0;
 }
 .change-password-popup .password-inp .input-grp input {
@@ -185,7 +200,7 @@
 }
 
 /* invite user */
-.invite_user_popup{
+.invite_user_popup {
   padding: 30px;
 }
 .invite_user_popup h5 {
@@ -193,23 +208,23 @@
   font-weight: 600;
 }
 
-.invite_user_popup .invite_users{
+.invite_user_popup .invite_users {
   margin: 20px 0;
 }
 
-.invite_user_popup .invite_users > label{
+.invite_user_popup .invite_users > label {
   display: flex;
   flex-direction: column;
 }
-.invite_user_popup .invite_users > label span{
+.invite_user_popup .invite_users > label span {
   font-weight: 700;
   font-size: 15px;
 }
-.invite_user_popup .invite_users  h6{
+.invite_user_popup .invite_users h6 {
   font-weight: 700;
   font-size: 15px;
 }
-.invite_user_popup .invite_users > label input{
+.invite_user_popup .invite_users > label input {
   outline: none;
   border: none;
   border: 1px solid #cbcaca;
@@ -218,7 +233,7 @@
   margin: 5px 0;
   padding: 3px 38px 3px 10px;
 }
-.invite_user_popup .invite_users > label textarea{
+.invite_user_popup .invite_users > label textarea {
   resize: none;
   outline: none;
   border: none;
@@ -229,12 +244,12 @@
   padding: 3px 38px 3px 10px;
 }
 
-.invite_user_popup .invite_users p{
+.invite_user_popup .invite_users p {
   font-size: 12px;
   font-weight: 400;
   color: rgb(121 121 121);
   margin: 0;
 }
-.invite_user_popup .invite_users li p{
+.invite_user_popup .invite_users li p {
   margin: 0 0 0 18px;
 }
