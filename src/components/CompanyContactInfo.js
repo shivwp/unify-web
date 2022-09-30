@@ -79,9 +79,9 @@ const CompanyContactInfo = () => {
           <div className="account_type_alert">
             This is a <span>Client</span> account
           </div>
-          <div className="acc_btn">
+          {/* <div className="acc_btn">
             <button className="cls_acc_btn">Close Account</button>
-          </div>
+          </div> */}
         </div>
       </div>
     </>
