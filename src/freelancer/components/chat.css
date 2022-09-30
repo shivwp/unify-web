@@ -1161,7 +1161,10 @@
     font-size: 13px;
     font-weight: 600;
 }
-
+.css-9gakcf-option{
+    background-color: transparent !important;
+    color: inherit !important;
+}
 .eedy_smtxt {
     font-family: 'poppins';
     line-height: 10px;
@@ -1426,6 +1429,13 @@
 @media only screen and (max-width: 991px) {
     .cewbrtever{
         width: 100% !important;
+    }
+    .btn_group_be{
+        margin: 5px 0px !important;
+    }
+    .vrerev3rwvry{
+        justify-content: center !important;
+        flex-flow: column;
     }
 }
 .chat-ul-area{

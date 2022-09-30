@@ -134,8 +134,8 @@ const Screen = () => {
                 <a href="#0">transaction history</a>
               </div>
             </div>
-            <div className="d-flex flex-wrap justify-content-between align-items-center w-100 mt-3 mb-3">
-              <div className="min_width_inp_nie m-0 date_range_nod psr-relativ">
+            <div className="d-flex flex-wrap justify-content-between align-items-center w-100 mt-3 mb-3 vrerev3rwvry">
+              <div className="min_width_inp_nie m-0 date_range_nod psr-relativ btn_group_be">
                 <div className="min_width_inp_nie m-0 date_range_nod psr-relative">
                   <DateRangePicker
                     initialSettings={{
@@ -159,8 +159,8 @@ const Screen = () => {
                     </svg>
                   </div>
                 </div>
-              </div>
-              <div className="btn_group_be mt-2">
+              </div> 
+              <div className="btn_group_be">
                 <button
                   className={`st_bgbe ${
                     tabActive === "tblscreen" ? "active_btn_be" : ""
