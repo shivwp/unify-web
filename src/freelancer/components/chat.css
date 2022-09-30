@@ -534,6 +534,7 @@
 }
 
 .profile_pf_btn button {
+    min-width: max-content;
     border: #6D2EF1 solid 1px;
     border-radius: 4px;
     margin-bottom: 5px;
@@ -1263,6 +1264,24 @@
 }
 
 @media only screen and (max-width: 768px) {
+    .seitsix_mtab_margin{
+        margin: 10px 0px;
+    }
+    .wdewcpo39wdbi{
+        margin-top: 4px;
+    }
+    .img_min_bpck{
+        margin-top: 15px;
+    }
+    .bpck_sm_txt_a , .bpck_sm_txt_a a {
+        font-size: 15px !important;
+    }
+    .bpck_head{
+        font-size: 20px;
+    }
+    .mt-sesix-5{
+        margin-top: 15px;
+    }
     .popup_boxwchat{
         margin: 0px 10px;
     }
@@ -1328,6 +1347,21 @@
     }
     .cewbrteve .chat_status_date{
         margin-left: 0;
+    }
+    .fpx_tright{
+        width: 100%;
+        text-align: -webkit-right;  
+    }
+    .mjh_new_smtext{
+        font-size: 22px !important;
+        padding-bottom: 0 !important;
+    }
+    .f_sm_small_euvw{
+        font-size: 14px !important;
+        padding: 8px 20px !important;
+    }
+    .f_sm_min-w150px{
+        min-width: 150px !important;
     }
 }
 @media only screen and (max-width: 320px) {

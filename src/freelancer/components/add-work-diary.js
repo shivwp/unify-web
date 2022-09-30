@@ -30,7 +30,7 @@ const Screen = () => {
                                     <label className='awd_label'>Project name</label>
                                     <div className='d-flex align-items-center'>
                                     <div className="select_inp_in filter_select_m w-100">
-                                        <Select className="custom_css_select w-100" options={options1} />
+                                        <Select className=" w-100" options={options1} />
                                     </div>
                                     <div className='awd_btnrnd'>
                                         <button>
@@ -68,7 +68,7 @@ const Screen = () => {
                     </div>
                     <div>
                         <div className="fo_btn_c next_b_btn_c">
-                           <Link to="/freelancer/time-tracker"><button className="active_btn_blue">ADD MANUAL TIME</button></Link>
+                           <Link to="/freelancer/time-tracker"><button className="active_btn_blue f_sm_small_euvw ">ADD MANUAL TIME</button></Link>
                         </div>
                     </div>
                 </div>

@@ -182,9 +182,9 @@
 }
 
 .popup_box_bpn {
-    max-width: 500px;
+    max-width: 470px;
     width: 95%;
-    padding: 0px 20px;
+    padding: 0px 15px;
     background: #FFFFFF 0% 0% no-repeat padding-box;
     opacity: 1;
     min-height: 200px;

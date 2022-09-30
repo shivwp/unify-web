@@ -65,7 +65,7 @@ const AmountPopup = (props) => {
                         <div className="mile_sutone_amoun"><h2>$0.00</h2></div>
                         <div className="popup_form_element">
                   <Select
-                    className="custom_css_select"
+                    className=""
                     placeholder="Milestone"
                     options={options1}
                   />

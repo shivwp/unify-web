@@ -70,7 +70,7 @@ const ListCard = () => {
                 <div className="ex_val_f">Hamburg</div>
               </div>
             </div>
-            <div className='ps-relative'>
+            <div className='ps-relative mt-sesix-5'>
               {dDown === 1 ? <Popup /> : ''}
               <div className="fb_btns_s_pro">
                 <button className="bg-trans_s_pro btn_psnewrb" onClick={()=>{TogglePopup()}}>
@@ -167,7 +167,7 @@ const Project_Search = () => {
                   </div>
                   <div className="s_na_inpu">
                   <Select
-                    className="custom_css_select smtxt_selct_newug"
+                    className=" smtxt_selct_newug"
                     placeholder="what are you looking for"
                     options={options1}
                   />

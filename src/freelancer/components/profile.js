@@ -560,9 +560,9 @@ const UnifyFreelancer = () => {
                 </div>
                 <div className="mt-4">
                   <div className="heading_pcatlog">UI/UX And Graphic Design</div>
-                  <div className="d-flex mt-2">
-                    <div className="catactive_box">From $40</div>
-                    <div className="delivery_time_bckp">
+                  <div className="d-flex mt-2 flex-wrap">
+                    <div className="catactive_box mt-2">From $40</div>
+                    <div className="delivery_time_bckp mt-2">
                       <svg xmlns="http://www.w3.org/2000/svg" width="20.75" height="20.75" viewBox="0 0 20.75 20.75">
                         <g id="Icon_ionic-md-time" data-name="Icon ionic-md-time" transform="translate(-3.375 -3.375)" opacity="0.56">
                           <path id="Path_4754" data-name="Path 4754" d="M13.74,3.375A10.375,10.375,0,1,0,24.125,13.75,10.371,10.371,0,0,0,13.74,3.375Zm.01,18.675a8.3,8.3,0,1,1,8.3-8.3A8.3,8.3,0,0,1,13.75,22.05Z" fill="rgba(0,0,0,0.9)" />
