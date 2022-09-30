@@ -37,7 +37,7 @@ const RemovePostingPopup = ({ open, onCloseModal }) => {
               <li>
                 <label htmlFor="reason-3">
                   <input type="radio" name="p" id="reason-3" /> Filled by
-                  alternate source 
+                  alternate source
                 </label>
               </li>
               <li>
@@ -57,14 +57,12 @@ const RemovePostingPopup = ({ open, onCloseModal }) => {
         </div>
         <div className="btn_foot_sec no-border flex-wrap d-flex">
           <div className="fo_btn_c next_b_btn_c">
-            <Link to="/title14">
-              <button className="remove-posting-btns">CANCEL</button>
-            </Link>
+            <button className="remove-posting-btns" onClick={onCloseModal}>
+              CANCEL
+            </button>
           </div>
           <div className="fo_btn_c next_b_btn_c">
-            <Link to="/scope">
-              <button className="active_btn_blue">YES, CLOSE JOB</button>
-            </Link>
+            <button className="active_btn_blue">YES, CLOSE JOB</button>
           </div>
         </div>
       </Modal>
