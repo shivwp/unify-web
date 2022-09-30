@@ -120,6 +120,8 @@ const Screen = ({ setOpen }) => {
             <button>Close</button>
           </div>
         </div>
+        <span className="popup_up_arrow"> &#60; </span>
+        <span className="popup_border_none"> - </span>
       </div>
     );
   };

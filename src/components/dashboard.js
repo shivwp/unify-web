@@ -117,6 +117,7 @@ const Screen = () => {
                   <div className="navabr_t_li">View Proposals</div>
                   <div className="navabr_t_li">View Job Post</div>
                   <div className="navabr_t_li">Reuse Postings</div>
+                  <span className="menu_btn_arrow"> &#62; </span>
                 </div>
               )}
             </div>
@@ -160,6 +161,7 @@ const Screen = () => {
                   >
                     Remove Draft
                   </div>
+                  <span className="menu_btn_arrow"> &#62; </span>
                 </div>
               )}
             </div>
