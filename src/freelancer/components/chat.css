@@ -1408,8 +1408,13 @@
     }
 }
 @media only screen and (min-width: 1024px) {
-    .new_hbyh{
-        min-height: 230px !important;
+    .new_hbyh{    
+        min-height: 220px !important;
+        min-width: 230px !important;
+    }
+    .row_quexenwt{
+      margin-right: calc(-1.5 * var(--bs-gutter-x));
+      margin-left: calc(-1.5 * var(--bs-gutter-x));
     }
 }
 

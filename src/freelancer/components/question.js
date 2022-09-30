@@ -13,7 +13,7 @@ const Screen = () => {
                 <div className="questopn_h1"><h1>A few quick questions: First, have <br/> you freelanced before?</h1></div>
                 <div className="question_p"><p>This lets us know how much help to give you along the way. <br />( We won't share you answer with anyone else, including potestial clients.)</p></div>
                 </div>
-                <Row className="justify-content-center">
+                <Row className="justify-content-center row_quexenwt">
                     
                     <Col lg={3} md={6} sm={10} className="mb-3">
                     <Link to="/freelancer/question2">
