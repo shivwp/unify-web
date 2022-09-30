@@ -6,11 +6,13 @@ import "../job.css";
 import CreateNewTeam from "../../popups/CreateNewTeamPupup";
 import { useState } from "react";
 import EditTeamPopup from "../../popups/EditTeamPopup";
+import { Link } from "react-router-dom";
 
 const Screen = () => {
   Title(" | Setting - Team");
   const [openNewTeam, setOpenNewTeam] = useState(false);
   const [openEditTeam, setOpenEditTeam] = useState(false);
+  const [menuBarTeams, setMenuBarTeams] = useState(false);
 
   return (
     <>
@@ -57,14 +59,14 @@ const Screen = () => {
                     <div className="s_th_s w-20">PO Number</div>
                     <div className="s_th_s w-15"></div>
                   </div>
-                  <div className="s_tble_s width-max-content-s">
+                  <div className="s_tble_s width-max-content-s menu_btn">
                     <div className="s_th_s s_td_s w-20">John Doe</div>
                     <div className="s_th_s s_td_s w-20">John Doe (123456)</div>
                     <div className="s_th_s s_td_s w-20">AK24#7777</div>
                     <div className="w-15 mob_60_rr">
                       <button
                         className="round_b_btn bg-transparent"
-                        onClick={() => setOpenEditTeam(true)}
+                        onClick={() => setMenuBarTeams(!menuBarTeams)}
                       >
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -78,6 +80,18 @@ const Screen = () => {
                         </svg>
                       </button>
                     </div>
+                    {menuBarTeams && (
+                      <div className="menu_bar_teams">
+                        <div
+                          className="navabr_t_li"
+                          onClick={() => setOpenEditTeam(true)}
+                        >
+                          Edit Team Info
+                        </div>
+
+                        <span className="menu_btn_arrow"> &#62; </span>
+                      </div>
+                    )}
                   </div>
                   <div className="s_tble_s width-max-content-s">
                     <div className="s_th_s s_td_s w-20">John Doe</div>

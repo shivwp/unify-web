@@ -2358,6 +2358,18 @@
   top: 7px;
   right: 55px;
 }
+.menu_btn .menu_bar_teams {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  background-color: white;
+  border: 1px solid rgb(217 217 217);
+  align-items: flex-start;
+  padding: 3px 10px;
+  width: 200px;
+  top: 1px;
+  right: 73px;
+}
 
 .menu_btn_arrow {
   position: absolute;
@@ -2419,7 +2431,7 @@
 }
 .add_comp_address .add_address_inp > input {
   width: 100%;
-  height: 40px;
+  height: 42px;
   border: #cbcaca solid 1px;
   outline: none;
   padding: 7px;
