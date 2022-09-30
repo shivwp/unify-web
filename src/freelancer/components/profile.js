@@ -484,7 +484,7 @@ const UnifyFreelancer = () => {
                 </div>
               </div>
               <div className="d-flex justify-content-center flex-column text-center">
-                <div className="d-flex justify-content-center align-items-center">
+                <div className="d-flex justify-content-center ertr4h6j65esdv align-items-center">
                   <div className="imgbox_bccp">
                     <img src="/assets/123.png" alt="" />
                   </div>

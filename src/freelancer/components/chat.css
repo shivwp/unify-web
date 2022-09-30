@@ -1262,8 +1262,17 @@
     font-weight: 800;
     font-size: 16px;
 }
+.smtxt_selct_newug .css-14el2xx-placeholder{
+    width: max-content;
+}
 
 @media only screen and (max-width: 768px) {
+    .ertr4h6j65esdv{
+        flex-wrap: wrap;
+    }
+    .imgbox_bccp{
+        height: 200px;
+    }
     .seitsix_mtab_margin{
         margin: 10px 0px;
     }
@@ -1363,6 +1372,11 @@
     .f_sm_min-w150px{
         min-width: 150px !important;
     }
+}
+@media only screen and (max-width: 425px) {
+.fb_btns_s_pro button {
+    margin-top: 7px;   
+}
 }
 @media only screen and (max-width: 320px) {
     .fo_btn_c button{
