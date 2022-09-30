@@ -184,7 +184,7 @@
 .popup_box_bpn {
     max-width: 470px;
     width: 95%;
-    padding: 0px 15px;
+    padding: 0px 30px;
     background: #FFFFFF 0% 0% no-repeat padding-box;
     opacity: 1;
     min-height: 200px;
@@ -227,7 +227,7 @@
 
 .popup_form_element label {
     text-align: left;
-    font: normal normal normal 16px/30px Poppins;
+    font: normal normal normal 15px/30px Poppins;
     letter-spacing: 0.2px;
     color: #828282;
 }
@@ -1493,6 +1493,7 @@
 }
 .timerackbox table thead tr th{
     height: 58px;
+    min-width: 75px;
     border-right:#E2E2E2 solid 1px;
 }
 .nme_profe_track{
@@ -1514,7 +1515,7 @@
     padding-top: 20px;
 }
 .ewon_track_rc{
-    font: normal normal 400 15px/20px Poppins !important;
+    font: normal normal 400 14px/20px Poppins !important;
     padding-left: 25px;   
     text-transform: uppercase;
 }

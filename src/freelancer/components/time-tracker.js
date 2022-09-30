@@ -8,12 +8,12 @@ const Screen = () => {
 
   const TimeTable = () => {
     return <>
-      <div className='timerackbox'>
-        <Table>
+      <div className='timerackbox tbl_overflos_cewuw'>
+        <Table> 
           <thead>
             <tr>
               <th className='w-4 border-r-none'></th>
-              <th className="track_th_hme d-flex align-items-center">Members</th>
+              <th className="track_th_hme d-flex align-items-center minwidth210px_ttracker">Members</th>
               <th className='w-8'>
                 <div className='tth_bgheading'>MON</div>
                 <div className='thh_smheading'>MAN 25</div>
@@ -56,7 +56,7 @@ const Screen = () => {
 </svg>
                 </div>
               </td>
-              <td className='d-flex align-items-center'>
+              <td className='d-flex align-items-center minwidth210px_ttracker'>
                 <div className="d-flex justify-content-between align-items-center">
                   <div className="profle_tbls"><img src="/assets/PRO-2.png" alt=""/></div>
                   <div>
@@ -81,7 +81,7 @@ const Screen = () => {
             </tr>
             <tr className='slide_box_tracker_tbl'>
               <td></td>
-              <td className='d-flex align-items-center'>
+              <td className='d-flex align-items-center minwidth210px_ttracker'>
                 <div>
                   <div className='nme_profe_track'>Meetings</div>
                   <div className='nme_pero_tranes'>Mobile App</div>
@@ -151,7 +151,10 @@ const Screen = () => {
                     <div className='nme_profe_track'>Steve Thomas</div>
                     <div className='nme_pero_tranes'>Sr. Developer</div>
                   </div>
-                  <div className='ewon_track_rc'>pending</div>
+                  <div className='ewon_track_rc'> <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15">
+  <path id="Icon_ionic-ios-checkmark-circle" data-name="Icon ionic-ios-checkmark-circle" d="M10.875,3.375a7.5,7.5,0,1,0,7.5,7.5A7.5,7.5,0,0,0,10.875,3.375ZM14.715,8.8,9.894,13.644h0a.651.651,0,0,1-.418.2.631.631,0,0,1-.422-.206L7.031,11.618a.144.144,0,0,1,0-.206l.642-.642a.139.139,0,0,1,.2,0l1.6,1.6,4.4-4.431a.142.142,0,0,1,.1-.043h0a.131.131,0,0,1,.1.043l.631.653A.142.142,0,0,1,14.715,8.8Z" transform="translate(-3.375 -3.375)" fill="#3ae980"/>
+</svg>
+ pending</div>
                 </div>
               </td>
               <td className='cewoh_ew'>7:00</td>
@@ -180,7 +183,10 @@ const Screen = () => {
                     <div className='nme_profe_track'>Steve Thomas</div>
                     <div className='nme_pero_tranes'>Sr. Developer</div>
                   </div>
-                  <div className='ewon_track_rc'>pending</div>
+                  <div className='ewon_track_rc'> <svg xmlns="http://www.w3.org/2000/svg" width="15.5" height="15.5" viewBox="0 0 15.5 15.5">
+  <path id="Icon_material-cancel" data-name="Icon material-cancel" d="M10.75,3a7.75,7.75,0,1,0,7.75,7.75A7.743,7.743,0,0,0,10.75,3Zm3.875,10.532-1.093,1.093L10.75,11.843,7.968,14.625,6.875,13.532,9.657,10.75,6.875,7.968,7.968,6.875,10.75,9.657l2.782-2.782,1.093,1.093L11.843,10.75Z" transform="translate(-3 -3)" fill="#e93a46"/>
+</svg>
+ pending</div>
                 </div>
               </td>
               <td className='cewoh_ew'>7:00</td>

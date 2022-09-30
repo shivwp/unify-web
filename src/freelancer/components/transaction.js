@@ -124,7 +124,9 @@ const Screen = () => {
                             </div>
                         </div>
                     </div>
+                    <div className='tbl_overflos_cewuw'>
                     {Transactions()}
+                    </div>
                 </div>
             </Container>
         </>

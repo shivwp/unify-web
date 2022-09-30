@@ -291,6 +291,7 @@ const Signup = ({
               <h3>I Want to:</h3>
             </div>
             <div className="sign_buttons_group sign_upbtn_heffect">
+            <Link to={`/question1`}>
               <button
                 onClick={(e) => selectUserType(e)}
                 type="button"
@@ -301,6 +302,7 @@ const Signup = ({
               >
                 Hire for a Project
               </button>
+              </Link>
               <Link to={`/freelancer/question1`}>
                 <button
                   type="button"
