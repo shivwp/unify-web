@@ -1,5 +1,6 @@
 body {
   overflow-x: hidden;
+  font-family: "Poppins-Bold", "Poppins";
 }
 
 .navbar {
@@ -4683,6 +4684,6 @@ a {
 .borderError {
   border: 1px solid #ea2121;
 }
-.input_nodxq input::-webkit-input-placeholder{
+.input_nodxq input::-webkit-input-placeholder {
   color: #808080;
 }

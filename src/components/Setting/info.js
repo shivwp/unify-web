@@ -16,7 +16,7 @@ const Screen = () => {
 
   return (
     <>
-      <div className="bg-f2f8ff min_pad_m">
+      <div className="bg-f2f8ff min_pad_m" style={{ fontFamily: "Poppins" }}>
         <Container>
           <Row>
             <SideNav />

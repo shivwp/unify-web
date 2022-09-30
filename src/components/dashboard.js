@@ -106,7 +106,7 @@ const Screen = () => {
               {menuBarPosting && (
                 <div className="menu_bar">
                   <div className="navabr_t_li">
-                    <Link to="edit-posting">Edit Posting</Link>
+                    <Link to="/dashboard/edit-posting">Edit Posting</Link>
                   </div>
                   <div
                     className="navabr_t_li"
@@ -153,7 +153,7 @@ const Screen = () => {
               {menuBarDraft && (
                 <div className="menu_bar">
                   <div className="navabr_t_li">
-                    <Link to="edit-posting">Edit Draft</Link>
+                    <Link to="/dashboard/edit-draft">Edit Draft</Link>
                   </div>
                   <div
                     className="navabr_t_li"

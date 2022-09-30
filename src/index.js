@@ -87,6 +87,7 @@ import store from "./redux/store";
 import EditPosting from "./components/EditPosting";
 import AddCompanyAddress from "./AddCompanyAddress";
 import EditCompanyAddress from "./EditCompanyAddress";
+import EditDraft from "./components/EditDraft";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -147,6 +148,7 @@ root.render(
         <Route path="/transaction-history" element={<TransactionHistory />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/dashboard/edit-posting" element={<EditPosting />} />
+        <Route path="/dashboard/edit-draft" element={<EditDraft />} />
 
         <Route path="/freelancer/project-detail" element={<ProjectDetail />} />
         <Route path="/freelancer/project-search" element={<ProjectSearch />} />
