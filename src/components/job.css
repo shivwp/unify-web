@@ -885,6 +885,12 @@
   right: 0px;
 }
 
+@media screen and ( max-width: 1024px) {
+  .Filter_Popup {
+    width: 80vw !important;
+  }
+}
+
 .popup_up_arrow {
   position: absolute;
   top: -25px;
@@ -2264,6 +2270,7 @@
   border: #cbcaca solid 1px;
   outline: none;
   padding: 14px;
+  font-size: 12px;
 }
 .describe_edit_posting textarea::placeholder {
   font-size: 12px;
@@ -2361,7 +2368,7 @@
 }
 
 .draft_btns .save_as_draft {
-  color: #00065A;
+  color: #00065a;
   cursor: pointer;
   margin: 10px 15px;
   font-weight: 700;
