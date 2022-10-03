@@ -1,6 +1,7 @@
 import Container from 'react-bootstrap/Container';
 import { Col, Row } from 'react-bootstrap';
 import Title from '../../components/title';
+import { Link } from 'react-router-dom';
 import '../freelancer.css'
 
 const Screen = () => {
@@ -59,7 +60,7 @@ const Screen = () => {
                     </Col>
                 </Row>
                 <div className="skip_question_btn_frel">
-                    <button>Skip for now &gt;&gt;</button>
+                   <Link to="/freelancer/dashboard"><button>Skip for now &gt;&gt;</button></Link>
                 </div>
             </Container>
         </>

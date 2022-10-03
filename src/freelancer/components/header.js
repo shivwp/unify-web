@@ -98,7 +98,7 @@ const NavbarHeader = (props) => {
                         </div>
                       </div>
                       <div className="pro_name_drop_u">John Doe</div>
-                      <div className='pro_o_nme'>Client</div>
+                      <div className='pro_o_nme'>Freelancer</div>
                       <div className='drop_p_o_i'>
                         <button className='active_drop_poi'>Online</button>
                         <button>Invisible</button>
