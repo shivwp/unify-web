@@ -58,6 +58,10 @@
 
 .remove-posting-popup .remove-posting-btns {
   border: 1px solid rgb(155, 151, 151);
+  font-weight: 500;
+}
+.remove-posting-popup .active_btn_blue {
+  font-weight: 500 !important;
 }
 
 /* change passsword */
