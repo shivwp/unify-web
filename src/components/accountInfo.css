@@ -3,6 +3,14 @@
   padding: 20px;
   margin: 10px 0;
 }
+.account_info .css-14el2xx-placeholder {
+  font-size: 14px;
+}
+
+.custom_css_select {
+  width: 100%;
+  min-width: 205px;
+}
 .account_info .comp_title {
   border-bottom: #e2e0e0 solid 1px;
   margin: 5px 0;
@@ -10,6 +18,7 @@
 .account_info .account_prof {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin: 15px 0;
 }
 .account_info .account_prof .profile_img {
@@ -23,6 +32,38 @@
   object-fit: cover;
   border-radius: 50%;
 }
+
+@media screen and (max-width: 1024px) {
+  .account_info .acc_form .acc_btn {
+    width: 45% !important;
+    margin: 10px 0;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .account_info .inp_fields .emp_radio_inputs label {
+    width: 100%;
+  }
+  .account_info .inp_fields {
+    margin: 10px 0 !important;
+  }
+  .account_info .acc_form .acc_btn {
+    width: 100% !important;
+    margin: 10px 0;
+  }
+  .account_info .acc_form .acc_btn button {
+    min-width: 100px !important;
+    padding: 8px 15px !important;
+  }
+  .account_info .account_prof {
+    flex-direction: column;
+  }
+  .account_info .account_prof .change_prof_btn button {
+    padding: 8px 15px !important;
+    margin-top: 10px;
+  }
+}
+
 
 .account_info .account_prof .change_prof_btn button {
   background-color: #fff;
@@ -69,7 +110,7 @@
   border-radius: 4px;
 }
 .account_info .acc_form .acc_btn {
-  width: 40%;
+  width: 31%;
   display: flex;
   justify-content: space-between;
 }
@@ -121,6 +162,7 @@
 .account_info .inp_fields .emp_radio_inputs {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
 }
 .account_info .inp_fields .emp_radio_inputs label {
   display: flex;
@@ -143,8 +185,7 @@
   color: #fff !important;
 }
 
-
-.select-reason label > span{
+.select-reason label > span {
   font-size: 11px;
   margin: 0 0 0 5px;
 }
@@ -152,4 +193,4 @@
   display: flex;
   align-items: center;
   margin: 7px 0;
-  }
+}

@@ -88,6 +88,7 @@ import EditPosting from "./components/EditPosting";
 import AddCompanyAddress from "./AddCompanyAddress";
 import EditCompanyAddress from "./EditCompanyAddress";
 import EditDraft from "./components/EditDraft";
+import MakePrivate from "./components/MakePrivate";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -113,6 +114,7 @@ root.render(
         <Route path="/budget" element={<Budget />} />
         <Route path="/job-description" element={<JobDescription />} />
         <Route path="/view-job" element={<ViewJob />} />
+        <Route path="/view-job/private" element={<MakePrivate />} />
         <Route path="/view-job/:screen" element={<ViewJob />} />
         <Route path="/hire-freelancer" element={<HireFreelancer />} />
         <Route path="/hire-freelancer/addAddress" element={<AddCompanyAddress />} />

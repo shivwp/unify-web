@@ -19,6 +19,7 @@
 
 .remove-posting-popup > p {
   font-size: 12px;
+  margin-top: 10px;
   color: rgb(128 123 123);
 }
 .remove-posting-popup > p > span {
@@ -42,6 +43,17 @@
   font-size: 14px;
   color: #000000;
   padding: 5px 0;
+}
+
+.remove-draft-popup .btn_foot_sec{
+  padding: 12px 0px;
+  margin: 0px;
+}
+.remove-draft-popup > p{
+  margin: 2rem 0 3rem 0;
+}
+.remove-draft-popup .react-responsive-modal-closeButton{
+  fill: #b2b2b2
 }
 
 .remove-posting-popup .remove-posting-btns {
@@ -93,6 +105,16 @@
   accent-color: #6d2ef1;
   margin-right: 4px;
 }
+
+@media screen and (max-width: 424px) {
+  .change-password-popup .alert-inp {
+    align-items: flex-start;
+  }
+  .change-password-popup .alert-inp input {
+    margin-top: 3px;
+  }
+}
+
 .change-password-popup .password-inp .input-grp {
   position: relative;
 }
@@ -146,8 +168,8 @@
 }
 
 .set-varification-popup .when-confirm .popup-radio {
-  color: #9b9696;
-  font-weight: 300;
+  color: #535252;
+  font-weight: 500;
   font-size: 13px;
 }
 .set-varification-popup .when-confirm .popup-radio label {
@@ -253,3 +275,6 @@
 .invite_user_popup .invite_users li p {
   margin: 0 0 0 18px;
 }
+
+
+

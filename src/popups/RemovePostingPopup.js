@@ -13,7 +13,7 @@ const RemovePostingPopup = ({ open, onCloseModal }) => {
         classNames={{ modal: "remove-posting-popup" }}
         center
       >
-        <h5 style={{fontWeight: '700'}}>Close Jobs</h5>
+        <h5 style={{fontWeight: '700'}}>Close Job</h5>
         <p>
           Use this to close your job to new applicants and notify current
           applicants.Those you have hired will not be affected.

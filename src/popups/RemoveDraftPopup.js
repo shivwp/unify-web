@@ -10,7 +10,7 @@ const RemoveDraftPopup = ({ open, onCloseModal }) => {
       <Modal
         open={open}
         onClose={onCloseModal}
-        classNames={{ modal: "remove-posting-popup" }}
+        classNames={{ modal: "remove-posting-popup remove-draft-popup" }}
         center
       >
         <h5>Delete Job Post Draft</h5>
