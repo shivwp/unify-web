@@ -847,7 +847,7 @@
 }
 
 .des_para_dboadr {
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 300;
     font-family: 'poppins';
     color: #6B6B6B;
@@ -862,7 +862,7 @@
 
 .vmode_heading {
     font-size: 16px;
-    font-weight: 500;
+    font-weight: 600;
     font-family: 'poppins';
     color: #000;
     line-height: 22px;
@@ -900,8 +900,8 @@
 }
 
 .welcome_ax_dboard {
-    font-size: 26px;
-    font-weight: 600;
+    font-size: 25px;
+    font-weight: 700;
     font-family: 'poppins';
     color: #000;
     line-height: 35px;
@@ -1200,7 +1200,7 @@
     border-radius: 4px;
     font-family: 'poppins';
     font-size: 16px;
-    font-weight: 400;
+    font-weight: 600;
 }
 
 .w-20 {
@@ -1240,14 +1240,32 @@
     color: #0777FD;
     font-family: 'poppins';
     font-weight: 700;
-    font-size: 18px;
+    font-size: 17px;
 }
 
 .recome_ltctx {
     color: #6B6B6B;
     font-family: 'poppins';
     font-weight: 400;
-    font-size: 16px;
+    font-size: 15px;
+}
+.dotround_bbl{
+    position: relative;
+    display: flex;
+    align-items: center;
+    text-indent: 6px;
+}
+.dotround_bbl:before{
+    position: absolute;
+    left: 0;
+    content: ' ';
+    height: 10px;
+    width: 10px;
+    border-radius: 50px;
+    background-color: #FFCC33;
+}
+.dotround_bbl_success:before{
+    background-color: #09E28B !important;
 }
 .recomen_bgraybox{
     background-color: #F2F8FF;
@@ -1266,7 +1284,7 @@
 }
 .font_recomproject{
     font-size: 18px;
-    font-weight: 400;
+    font-weight: 600;
 }
 .font_rec_ldesc{
     font-size: 15px;
@@ -1351,8 +1369,33 @@
         flex-wrap: wrap;
     }
 }
+@media only screen and (max-width: 550px) {
+    .no-mar-mob-mrep{
+        margin-bottom: 10px;
+        margin-left: 0 !important;
+    }
+    .trx_tbl_freelancer tbody tr td{
+        font-size: 14px !important;
+    }
+    .dromw_320px_pr>*{
+        padding-right: calc(var(--bs-gutter-x) * .8) !important;
+        padding-left: calc(var(--bs-gutter-x) * .8) !important;
+    } 
+    .dboard_box_mr_mbo{
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    .bbl_head_gay{
+        width: max-content;
+    }
+    .box_bbl_data{
+        width: max-content;
+    }
+    .card_rpeoject_iw{
+        flex-wrap: wrap;
+    }
+}
 @media only screen and (max-width: 520px) {
-
     .round_b_btn{
         height: 40px;
         width: 40px;
@@ -1404,11 +1447,46 @@
 .fb_btns_s_pro button {
     margin-top: 7px;   
 }
+.imgbox_bccp img{
+    width: 85%;
+}
 }
 @media only screen and (max-width: 320px) {
     .fo_btn_c button{
         font-size: 13px;
     }
+}
+@media only screen and (min-width: 1024px) and (max-width:1349px){
+    .des_para_dboadr , .rign_nem{
+        font-size: 14px;
+    }
+    .rign_mali{
+        font-size: 12px;
+    }
+    .profile_crign{
+        height: 45px;
+        width: 45px;
+    }
+    .wwbkit-avaol{
+        width: 90%;
+    }
+    .svgciweyiviw{
+        margin-top: 15px;
+    }
+    .card_pcwuguoequ{
+        height: 120px;
+    }
+    .cwig9weioioi{
+        justify-content: flex-start !important;
+    }
+    .svgciweyiviw svg{
+        height: 24px;
+        width: 24px;
+    }
+    .card_pcwuguoequ{
+        flex-wrap: wrap;
+    }
+
 }
 @media only screen and (min-width: 1024px) {
     .new_hbyh{    
@@ -1440,4 +1518,29 @@
 }
 .chat-ul-area{
     padding: 0px 15px;
+}
+.ewliywbwe{
+    border-bottom: #E6E6E6 solid 2px;
+}
+.ewliywbwe button{
+    background-color: transparent;
+    border: none;
+    padding-bottom: 14px;
+    margin-right: 20px;
+    border-bottom: #fff0 8px solid;
+}
+.bt-ecnolwniweo{
+    border-top: #E6E6E6 solid 1px;
+}
+.cwulqeoi{
+    font-family: 'poppins';
+    font-size: 15px;
+    font-weight: 600;
+    padding-bottom: 4px;
+}
+.mr-none-mrpo{
+    margin-right: 0 !important;
+}
+.ewliywbwe .active_ewliy{
+    border-bottom-color: #6D2EF1 !important;
 }

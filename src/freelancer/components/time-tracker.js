@@ -307,7 +307,7 @@ const Screen = () => {
       </div>
       <Container>
         <div className="wm_3_hdr">
-          <div className="wod_hding">Week of 25 March-31</div>
+          <div className="wod_hding font-weight-600">Week of 25 March-31</div>
           <div className="d-flex flex-wrap bnt_trackre">
             <button className="active_bnt_trak">Timesheet</button>
             <button>Timecard</button>

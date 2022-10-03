@@ -15,7 +15,7 @@ import {
   Legend,
 } from "chart.js";
 import { Bar } from "react-chartjs-2";
-import {faker} from "@faker-js/faker";
+import { faker } from "@faker-js/faker";
 
 const Profile = () => {
   return (
@@ -30,7 +30,7 @@ const Profile = () => {
             <div className="rign_mali">laurenpalmera@gmx.com</div>
           </div>
         </div>
-        <div className="d-flex align-items-center">
+        <div className="d-flex align-items-center svgciweyiviw">
           <svg
             id="chat"
             xmlns="http://www.w3.org/2000/svg"
@@ -128,7 +128,7 @@ const ProfilePayment = () => {
 const RecomendedProject = () => {
   return (
     <>
-      <div className="card_pcwuguoequ d-flex justify-content-between no-border">
+      <div className="card_pcwuguoequ card_rpeoject_iw d-flex justify-content-between no-border">
         <div className="d-flex">
           <div className="profile_crign rcomend_proj_pfile"></div>
           <div className="pcrign_name wwbkit-avaol">
@@ -150,6 +150,7 @@ const RecomendedProject = () => {
   );
 };
 const Pdata = () => {
+  // add this class <| dotround_bbl_success |> on success
   return (
     <>
       <div className="d-flex box_bbl_data">
@@ -157,7 +158,7 @@ const Pdata = () => {
         <div className="w-20 tr_bblhead">Design</div>
         <div className="w-20 tr_bblhead">AED 300.00</div>
         <div className="w-20 tr_bblhead">Pending</div>
-        <div className="w-20 tr_bblhead">Pending</div>
+        <div className="w-20 tr_bblhead dotround_bbl">Pending</div>
       </div>
     </>
   );
@@ -188,59 +189,64 @@ const Screen = () => {
   );
   const options = {
     responsive: false,
-    scales: {
-    },
+    scales: {},
     plugins: {
       legend: {
         position: "top",
-        display:false,
-        maxHeight:210,
-        fullSize:true,
-        labels:{
-          boxWidth:0,
-        }
+        display: false,
+        maxHeight: 210,
+        fullSize: true,
+        labels: {
+          boxWidth: 0,
+        },
       },
       title: {},
     },
-    layout:{
-      autoPadding:true,
+    layout: {
+      autoPadding: true,
     },
-    elements:{
-      bar:{
-        backgroundColor:'#000'
+    elements: {
+      bar: {
+        backgroundColor: "#000",
       },
-      point:{
-        borderWidth:0
+      point: {
+        borderWidth: 0,
       },
-      line:{
-        borderWidth:0
+      line: {
+        borderWidth: 0,
       },
-      arc:{
-        borderWidth:1,
-        borderColor:'#000'
-      }
-    }
+      arc: {
+        borderWidth: 1,
+        borderColor: "#000",
+      },
+    },
   };
 
   const labels = ["Jan", "Feb", "Mar", "Apr", "May"];
   // add +10 on each data to view graph line accurate
-  const addition = 9; 
+  const addition = 9;
   const data = {
     labels,
     datasets: [
       {
         label: "Projects",
-        data: [(20+addition ),(15+addition),(60+addition),(80+addition),(40+addition)],
+        data: [
+          20 + addition,
+          15 + addition,
+          60 + addition,
+          80 + addition,
+          40 + addition,
+        ],
         backgroundColor: "#0777FD",
-        borderWidth:17,
-        borderColor:'#fff0'
+        borderWidth: 17,
+        borderColor: "#fff0",
       },
     ],
   };
   return (
     <div className="min_pad_m mt-min180px">
       <Container>
-        <Row>
+        <Row className="dromw_320px_pr">
           <Col lg={3}>
             <div className="side_nav nav_box_mone">
               <div className={`nav_box active_s_nav`}>
@@ -394,31 +400,7 @@ const Screen = () => {
                   </svg>
                 </div>
                 <div className="s_nav_title">
-                  <Link to="/freelancer/profile">Dashboard</Link>
-                </div>
-              </div>
-              <div className={`nav_box`}>
-                <div className="s_nav_icon">
-                  <svg
-                    id="folder"
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="37.141"
-                    height="29.624"
-                    viewBox="0 0 37.141 29.624"
-                  >
-                    <g id="Group_2478" data-name="Group 2478">
-                      <path
-                        id="Path_4509"
-                        data-name="Path 4509"
-                        d="M31.567,46.965H15.88l.017.028c.011.016.024.04.046.076l-.046-.076a.056.056,0,0,0-.051-.028h-.083c.04,0,.065,0,.083,0h.033l-1.291-2.137a3.672,3.672,0,0,0-3-1.691H5.572A5.57,5.57,0,0,0,0,48.708V67.192a5.57,5.57,0,0,0,5.579,5.57H31.562a5.575,5.575,0,0,0,5.579-5.579V52.544A5.572,5.572,0,0,0,31.567,46.965Zm1.857,20.218a1.858,1.858,0,0,1-1.862,1.862H5.579a1.852,1.852,0,0,1-1.862-1.853V48.708a1.853,1.853,0,0,1,1.855-1.853h5.9l-.016-.027c-.011-.016-.024-.04-.047-.078l.047.078a.055.055,0,0,0,.047.027H11.47l1.291,2.137a3.67,3.67,0,0,0,3,1.691h15.8a1.855,1.855,0,0,1,1.857,1.862V67.183Z"
-                        transform="translate(0 -43.138)"
-                        fill="#bec7cf"
-                      />
-                    </g>
-                  </svg>
-                </div>
-                <div className="s_nav_title">
-                  <Link to="/freelancer/contact-info">Projects</Link>
+                  <Link to="/freelancer/dashboard">Dashboard</Link>
                 </div>
               </div>
 
@@ -529,7 +511,7 @@ const Screen = () => {
                   </svg>
                 </div>
                 <div className="s_nav_title">
-                  <Link to="/freelancer/billing-payment">Clients</Link>
+                  <Link to="/freelancer/chat">Clients</Link>
                 </div>
               </div>
               <div className={`nav_box`}>
@@ -570,7 +552,7 @@ const Screen = () => {
                   </svg>
                 </div>
                 <div className="s_nav_title">
-                  <Link to="/freelancer/billing-payment">Payments</Link>
+                  <Link to="/freelancer/transaction-history">Payments</Link>
                 </div>
               </div>
               <div className={`nav_box`}>
@@ -638,7 +620,7 @@ const Screen = () => {
                   </svg>
                 </div>
                 <div className="s_nav_title">
-                  <Link to="/freelancer/billing-payment">Settings</Link>
+                  <Link to="/freelancer/contact-info">Settings</Link>
                 </div>
               </div>
             </div>
@@ -665,6 +647,8 @@ const Screen = () => {
                   onHandleColor={`#006DF5`}
                   offHandleColor={`#E2E2E2`}
                   checkedIcon={false}
+                  height={21}
+                  width={50}
                   uncheckedIcon={false}
                   onChange={handleChange}
                   checked={checked}
@@ -718,10 +702,10 @@ const Screen = () => {
                 for your business today
               </div>
               <div className="dbaors_btn">
-                <button>Find new Project</button>
+                <Link to='/freelancer/project-search'><button>Find new Project</button></Link>
               </div>
             </div>
-            <div className="mt-4 mb-4 d-flex justify-content-between">
+            <div className="mt-4 mb-4 d-flex justify-content-between flex-wrap">
               <div>
                 <div className="welcome_ax_dboard">Welcome to Alex K!</div>
                 <div className="wdesc_ax_dboard mt-3">
@@ -796,7 +780,7 @@ const Screen = () => {
               </div>
             </div>
             <Row>
-              <Col lg={4} md={6}>
+              <Col lg={4} md={6} className="dboard_box_mr_mbo mb-3">
                 <div>
                   <div className="d-flex justify-content-between">
                     <div className="dcard_htext">Total Projects</div>
@@ -816,13 +800,16 @@ const Screen = () => {
                       <div className="pls_s_na_input">+</div>
                     </div>
                   </div>
-                  <div className="d-flex justify-content-center" style={{height:'210px'}}>
+                  <div
+                    className="d-flex overflow-scroll cwig9weioioi justify-content-center"
+                    style={{ height: "210px" }}
+                  >
                     <Bar options={options} height={200} data={data} />
                   </div>
                   <div></div>
                 </div>
               </Col>
-              <Col lg={4} md={6}>
+              <Col lg={4} md={6} className="dboard_box_mr_mbo mb-3">
                 <div>
                   <div className="d-flex justify-content-between mb-3">
                     <div className="dcard_htext">Clients</div>
@@ -835,7 +822,7 @@ const Screen = () => {
                   <Profile />
                 </div>
               </Col>
-              <Col lg={4} md={6}>
+              <Col lg={4} md={6} className="dboard_box_mr_mbo mb-3">
                 <div>
                   <div className="d-flex justify-content-between mb-3">
                     <div className="dcard_htext">Recent Payments</div>
@@ -912,7 +899,7 @@ const Screen = () => {
               </div>
             </div>
             <Row>
-              <Col lg={8}>
+              <Col lg={8} className="mt-2 mb-4">
                 <div>
                   <div className="d-flex justify-content-between mb-3">
                     <div className="dcard_htext">Projects</div>
@@ -920,20 +907,22 @@ const Screen = () => {
                       <Link to="/">Manage Projects</Link>
                     </div>
                   </div>
-                  <div className="d-flex bbl_head_gay">
-                    <div className="w-20 tr_bblhead">Project Name</div>
-                    <div className="w-20 tr_bblhead">Work Assigned</div>
-                    <div className="w-20 tr_bblhead">Project Cost</div>
-                    <div className="w-20 tr_bblhead">Status</div>
-                    <div className="w-20 tr_bblhead">Payment</div>
+                  <div className="overflow-scroll">
+                    <div className="d-flex bbl_head_gay">
+                      <div className="w-20 tr_bblhead">Project Name</div>
+                      <div className="w-20 tr_bblhead">Work Assigned</div>
+                      <div className="w-20 tr_bblhead">Project Cost</div>
+                      <div className="w-20 tr_bblhead">Status</div>
+                      <div className="w-20 tr_bblhead">Payment</div>
+                    </div>
+                    <Pdata />
+                    <Pdata />
+                    <Pdata />
+                    <Pdata />
                   </div>
-                  <Pdata />
-                  <Pdata />
-                  <Pdata />
-                  <Pdata />
                 </div>
               </Col>
-              <Col lg={4}>
+              <Col lg={4} className="mt-2 mb-4">
                 <div>
                   <div className="d-flex justify-content-between mb-3">
                     <div className="dcard_htext">Recommended</div>

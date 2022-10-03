@@ -69,7 +69,7 @@ const NavbarHeader = (props) => {
                     <div className='navabr_t_li'><Link to="/freelancer/overview">Overview</Link></div>
                     <div className='navabr_t_li'><Link to="/freelancer/my-reports">My Reports</Link></div>
                     <div className='navabr_t_li'><Link to="/freelancer/billing-earning">Billings & Earnings</Link></div>
-                    <div className='navabr_t_li'><Link to="#0">Connects History</Link></div>
+                    <div className='navabr_t_li'><Link to="/freelancer/project-detail">Direct Contracts</Link></div>
                     <div className='navabr_t_li'><Link to="/freelancer/transaction-history">Transaction History</Link></div>
                   </NavDropdown>
                   </div>

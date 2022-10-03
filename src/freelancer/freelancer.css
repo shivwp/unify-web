@@ -1596,6 +1596,7 @@
     position: absolute;
     right: 12px;
     height: 25px;
+    pointer-events: none;
     width: 25px;
     border-radius: 5px;
     display: flex;
