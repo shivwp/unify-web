@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import "../components/accountInfo.css";
 import { Row, Col } from "react-bootstrap";
 import Select from "react-select";
+import CloseAccountPopup from "../popups/CloseAccountPopup";
 
 const CompanyContactInfo = () => {
   const options1 = [{ name: "india", label: "india" }];
+  const [openCloseAccount, setOpenCloseAccount] = useState(false);
 
   return (
     <>
@@ -14,7 +16,7 @@ const CompanyContactInfo = () => {
         </div>
         <div className="acc_form">
           <Row>
-            <Col lg-6>
+            <Col lg-6 sm-12 md-12>
               <div className="inp_fields">
                 <span>Owner Email</span>
                 <input
@@ -49,7 +51,7 @@ const CompanyContactInfo = () => {
                 />
               </div>
             </Col>
-            <Col lg-6>
+            <Col lg-6 sm-12 md-12>
               <div className="inp_fields">
                 <span>Phone</span>
                 <input type="text" name="phone" id="phone" placeholder="" />
@@ -79,11 +81,22 @@ const CompanyContactInfo = () => {
           <div className="account_type_alert">
             This is a <span>Client</span> account
           </div>
-          {/* <div className="acc_btn">
-            <button className="cls_acc_btn">Close Account</button>
-          </div> */}
+          <div className="acc_btn">
+            <button
+              className="cls_acc_btn"
+              onClick={() => setOpenCloseAccount(true)}
+            >
+              Close Account
+            </button>
+          </div>
         </div>
       </div>
+      {openCloseAccount && (
+        <CloseAccountPopup
+          open={openCloseAccount}
+          onCloseModal={() => setOpenCloseAccount(false)}
+        />
+      )}
     </>
   );
 };

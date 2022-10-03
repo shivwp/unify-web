@@ -10,11 +10,11 @@ const CompnyDetailsInfo = () => {
     <>
       <div className="account_info">
         <div className="comp_title">
-          <h5>Compnay Details</h5>
+          <h5>Company Details</h5>
         </div>
         <div className="acc_form">
           <Row>
-            <Col lg-6>
+            <Col lg-6 md-12 sm-12>
               <div className="inp_fields">
                 <span>Company Name</span>
                 <input
@@ -33,7 +33,7 @@ const CompnyDetailsInfo = () => {
                 />
               </div>
             </Col>
-            <Col lg-6>
+            <Col lg-6 md-12 sm-12>
               <div className="inp_fields">
                 <span>Website</span>
                 <input type="text" name="website" id="website" placeholder="" />

@@ -24,7 +24,7 @@ const AccountInfo = () => {
         </div>
         <div className="acc_form">
           <Row>
-            <Col lg-6>
+            <Col lg={6} md={6} sm={12}>
               <div className="inp_fields">
                 <span>First Name</span>
                 <input
@@ -44,7 +44,7 @@ const AccountInfo = () => {
                 />
               </div>
             </Col>
-            <Col lg-6>
+            <Col lg={6} md={6} sm={12}>
               <div className="inp_fields">
                 <span>Last Name</span>
                 <input

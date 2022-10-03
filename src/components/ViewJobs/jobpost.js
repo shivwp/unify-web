@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { Col, Row } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
 const JonComponent = () => {
   const [privateAcc, setPrivateAcc] = useState(false);
+  const navigate = useNavigate()
 
   return (
     <Row>
@@ -211,7 +213,10 @@ const JonComponent = () => {
             <h1>Remove Posting</h1>
           </div>
           <div className="r_in_tab_h">
-            <button className="round_b_btn" onClick={() => setPrivateAcc(!privateAcc)}>
+            <button
+              className="round_b_btn"
+              onClick={() => {navigate('/view-job/private')}}
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
@@ -224,7 +229,7 @@ const JonComponent = () => {
                 <path d="M9.5 6.5a1.5 1.5 0 0 1-1 1.415l.385 1.99a.5.5 0 0 1-.491.595h-.788a.5.5 0 0 1-.49-.595l.384-1.99a1.5 1.5 0 1 1 2-1.415z" />
               </svg>
             </button>
-            {privateAcc ? <h1>Make Public</h1>:<h1>Make Private</h1>}
+            {privateAcc ? <h1>Make Public</h1> : <h1>Make Private</h1>}
           </div>
           <div className="about_client_no">
             <div className="d-flex justify-content-between">
