@@ -11,7 +11,7 @@ const Screen = ({ setOpen }) => {
         <Row>
           <Col lg={12}>
             <Row className="mr-righht-10">
-              <Col lg={4}>
+              <Col lg={4} md={6}>
                 <div>
                   <div className="tm_s_s_name">Team</div>
                   <div className="inpu_date m-0 inp_selec_s">
@@ -21,7 +21,7 @@ const Screen = ({ setOpen }) => {
                   </div>
                 </div>
               </Col>
-              <Col lg={4}>
+              <Col lg={4} md={6}>
                 <div>
                   <div className="tm_s_s_name">Sort By</div>
                   <div className="inpu_date m-0 inp_selec_s">
@@ -31,7 +31,7 @@ const Screen = ({ setOpen }) => {
                   </div>
                 </div>
               </Col>
-              <Col lg={4}>
+              <Col lg={4} md={6}>
                 <div>
                   <div className="tm_s_s_name">Contact Person</div>
                   <div className="inpu_date m-0 inp_selec_s">
@@ -43,7 +43,7 @@ const Screen = ({ setOpen }) => {
               </Col>
             </Row>
             <Row>
-              <Col lg={3}>
+              <Col lg={3} md={6}>
                 <div className="mt-4">
                   <div className="filter_headin_m">Admin</div>
                   <ul className="filter_ul_m">
@@ -59,7 +59,7 @@ const Screen = ({ setOpen }) => {
                   </ul>
                 </div>
               </Col>
-              <Col lg={3}>
+              <Col lg={3} md={6}>
                 <div className="mt-4">
                   <div className="filter_headin_m">Hiring</div>
                   <ul className="filter_ul_m">
@@ -75,7 +75,7 @@ const Screen = ({ setOpen }) => {
                   </ul>
                 </div>
               </Col>
-              <Col lg={3}>
+              <Col lg={3} md={6}>
                 <div className="mt-4">
                   <div className="filter_headin_m">Work Diaries</div>
                   <ul className="filter_ul_m">
@@ -88,7 +88,7 @@ const Screen = ({ setOpen }) => {
                   </ul>
                 </div>
               </Col>
-              <Col lg={3}>
+              <Col lg={3} md={6}>
                 <div className="mt-4">
                   <div className="filter_headin_m">Chat</div>
                   <ul className="filter_ul_m">
