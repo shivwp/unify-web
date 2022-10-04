@@ -10,7 +10,7 @@ const TBLScreen = () => {
   return (
     <>
       <Col lg={9}>
-        <table className="report_tbl_frl bill_earn_tbl">
+        <table className="report_tbl_frl bill_earn_tbl report_tbl_frl rtcmwou_be">
           <thead>
             <tr>
               <th className="w-40">Job Name</th>
@@ -18,9 +18,6 @@ const TBLScreen = () => {
               <th className="w-20">Billed</th>
             </tr>
           </thead>
-        </table>
-
-        <table className="report_tbl_frl rtcmwou_be">
           <tbody>
             <tr>
               <td className="w-40">
@@ -44,6 +41,7 @@ const TBLScreen = () => {
             </tr>
           </tbody>
         </table>
+
         <table className="report_tbl_frl rtcmwou_be cemwouu_be">
           <tbody>
             <tr>

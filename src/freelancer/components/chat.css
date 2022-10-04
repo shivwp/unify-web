@@ -129,6 +129,7 @@
     font-weight: 500;
     font-family: 'poppins';
     line-height: 20px;
+    margin-right: 10px;
 }
 
 .chat_status_date {
@@ -1470,6 +1471,12 @@
         font-size: 13px;
     }
 }
+@media only screen and (max-width: 345px) {
+.cewbrteve .chat_status_date{
+    margin-left: 0 !important;
+}
+}
+
 @media only screen and (min-width: 1024px) and (max-width:1349px){
     .des_para_dboadr , .rign_nem{
         font-size: 13px;
@@ -1567,6 +1574,7 @@
     .smbtn_logsignup button{
         background-color: transparent;
         padding: 10px 40px;
+        width: 170px;
         min-width: max-content;
         border: #00065A solid 1px;
         color: #170048;
@@ -1613,7 +1621,7 @@
         padding-right: 15px !important;
     }
 }
-@media only screen and (max-width: 360px) {
+@media only screen and (max-width: 400px) {
     .smbtn_logsignup button , .smbtn_logsignup a{
         width: 100%;
     }
