@@ -98,7 +98,7 @@ const AddCompAddress = () => {
               </div>
               <div className="Estimated_total_box">
                 <div className="Estimated_total">
-                  <span> Estimated Taxes</span>
+                  <span> Estimated Total</span>
                   <span>$ 0.90</span>
                 </div>
               </div>

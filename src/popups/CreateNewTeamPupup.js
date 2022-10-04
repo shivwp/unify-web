@@ -13,10 +13,10 @@ const CreateNewTeam = ({ open, onCloseModal }) => {
         classNames={{ modal: "create_new_team_popup" }}
         center
       >
-        <h5>Create New Team</h5>
+        <h5 style={{fontWeight: 700}}>Create New Team</h5>
         <p>
-          a verified billing method is required before teams can be added.{" "}
-          <span>Add now One!</span>
+          A verified billing method is required before teams can be added.{" "}
+          <span>Add one Now!</span>
         </p>
         <div className="team_name">
           <label>

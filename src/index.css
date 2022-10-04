@@ -4690,3 +4690,15 @@ a {
 .input_nodxq input::-webkit-input-placeholder {
   color: #808080;
 }
+
+
+
+.original_mess .greet, .message_from_client, .client_name_{
+  font-family: "Poppins-Bold", "Poppins";
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 19px;
+  padding-bottom: 15px;
+  padding-top: 10px;
+  color: #545454;
+}

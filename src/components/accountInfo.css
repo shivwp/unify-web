@@ -48,6 +48,7 @@
     margin: 10px 0 !important;
   }
   .account_info .acc_form .acc_btn {
+    justify-content: unset !important;
     width: 100% !important;
     margin: 10px 0;
   }
@@ -61,6 +62,9 @@
   .account_info .account_prof .change_prof_btn button {
     padding: 8px 15px !important;
     margin-top: 10px;
+  }
+  .account_info .acc_form .acc_btn .save_btn{
+    margin-left: 10px;
   }
 }
 
@@ -114,6 +118,7 @@
   display: flex;
   justify-content: space-between;
 }
+
 .account_info .acc_form .acc_btn button {
   background-color: #fff;
   border-radius: 27px;
