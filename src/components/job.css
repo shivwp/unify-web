@@ -2454,6 +2454,34 @@
   right: 73px;
 }
 
+@media screen and (max-width: 1440px) {
+  .menu_btn .menu_bar_teams {
+    top: 1px;
+    right: 85px;
+  }
+}
+
+@media screen and (max-width: 1199px) {
+  .menu_btn .menu_bar_teams {
+    top: 1px;
+    right: 58px;
+  }
+  
+}
+@media screen and (max-width: 1023px) {
+  .menu_btn .menu_bar_teams {
+    top: 1px;
+    right: 56px;
+  }
+  
+}
+@media screen and (max-width: 767px) {
+  
+}
+@media screen and (max-width: 481px) {
+  
+}
+
 .menu_btn_arrow {
   position: absolute;
   top: -5px;

@@ -28,7 +28,7 @@ const EditTeamPopup = ({ open, onCloseModal }) => {
         </div>
         <div className="team_name">
           <label>
-            <span>PO Number (Opetional)</span>
+            <span>PO Number (Optional)</span>
             <input type="text" name="po-no" placeholder="" />
           </label>
         </div>
