@@ -1869,9 +1869,26 @@
 @media screen and (max-width: 768px) {
   .browse_head_h {
     font-size: 30px;
+    justify-content: center !important;
   }
   .swiper-slide{
     width: 100% !important;
+  }
+
+  
+}
+@media screen and (max-width: 426px) {
+  .ImFreelancer_btn{
+    justify-content: center !important;
+  }
+  .ImFreelancer_btn button{
+    width: 170px !important;
+    min-width: 170px !important;
+    font-size: 13px;
+  }
+  .ImFreelancer_btn .fo_btn_c button{
+    width: 170px !important;
+    min-width: 170px !important;
   }
 }
 
@@ -2010,7 +2027,7 @@
   -o-border-radius: 50%;
 }
 .mi-width-2 {
-  min-width: 200px !important;
+  min-width: 160px !important;
 }
 .pnew {
   padding: 12px 30px !important;
