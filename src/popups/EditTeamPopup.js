@@ -17,7 +17,7 @@ const EditTeamPopup = ({ open, onCloseModal }) => {
 
         <div className="team_name">
           <label>
-            <span>Name</span>
+            <span style={{fontSize: '14px', fontWeight: 600}}>Name</span>
             <input
               type="text"
               name="name"
@@ -28,7 +28,7 @@ const EditTeamPopup = ({ open, onCloseModal }) => {
         </div>
         <div className="team_name">
           <label>
-            <span>PO Number (Optional)</span>
+            <span style={{fontSize: '14px', fontWeight: 600}}>PO Number (Optional)</span>
             <input type="text" name="po-no" placeholder="" />
           </label>
         </div>

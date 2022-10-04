@@ -209,10 +209,26 @@ const IAmFreelancer = () => {
               onSlideChange={() => console.log("slide change")}
               onSwiper={(swiper) => console.log(swiper)}
               breakpoints={{
-                1: {
-                  slidesPerView: 3,
+                200: {
+                  slidesPerView: 1,
                   spaceBetween: 10,
                   centeredSlides: true,
+                },
+                500: {
+                  slidesPerView: 1,
+                  spaceBetween: 10,
+                },
+                640: {
+                  slidesPerView: 1,
+                  spaceBetween: 10,
+                },
+                768: {
+                  slidesPerView: 2,
+                  spaceBetween: 10,
+                },
+                900: {
+                  slidesPerView: 3,
+                  spaceBetween: 10,
                 },
               }}
             >
