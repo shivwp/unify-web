@@ -52,7 +52,7 @@ const Screen = () => {
                   them to simplify your reporting, permission, and recruiting
                   management.
                 </div>
-                <div className="scroll_table" style={{overflowX: 'auto'}}>
+                <div className="scroll_table">
                   <div className="r-box_setting">
                     <div className="s_tble_s width-max-content-s">
                       <div className="s_th_s w-20">Team Name</div>
