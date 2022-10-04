@@ -1215,7 +1215,8 @@
 }
 
 .box_bbl_data .tr_bblhead {
-    padding: 0px 15px;
+    padding: 0px 5px;
+    font-size: 15px;
 }
 
 .tblew_bbltr {
@@ -1229,6 +1230,7 @@
 }
 .rcomend_proj_pfile{
     height: 45px !important;
+    width: 45px !important;
     background-color: #0777FD;
     border-radius: 50px;
 }
@@ -1253,7 +1255,7 @@
     position: relative;
     display: flex;
     align-items: center;
-    text-indent: 6px;
+    text-indent: 10px;
 }
 .dotround_bbl:before{
     position: absolute;
@@ -1371,8 +1373,11 @@
 }
 @media only screen and (max-width: 550px) {
     .no-mar-mob-mrep{
-        margin-bottom: 10px;
+        margin-top: 10px;
         margin-left: 0 !important;
+    }
+    .no-mar-mob-mrep .fo_btn_c{
+        margin-left:0;
     }
     .trx_tbl_freelancer tbody tr td{
         font-size: 14px !important;
@@ -1450,6 +1455,15 @@
 .imgbox_bccp img{
     width: 85%;
 }
+.p_header_hding{
+    font-size: 20px;
+}
+.cwiewyehkk button , .cwiewyehkk a{
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 5px;
+}
 }
 @media only screen and (max-width: 320px) {
     .fo_btn_c button{
@@ -1458,30 +1472,37 @@
 }
 @media only screen and (min-width: 1024px) and (max-width:1349px){
     .des_para_dboadr , .rign_nem{
-        font-size: 14px;
+        font-size: 13px;
+    }
+    .dcard_htext{
+        font-size: 16px;
     }
     .rign_mali{
-        font-size: 12px;
+        font-size: 11px;
     }
     .profile_crign{
-        height: 45px;
-        width: 45px;
+        height: 35px;
+        width: 35px;
+    }
+    .pcrign_name{
+        margin-left: 5px;
     }
     .wwbkit-avaol{
         width: 90%;
     }
     .svgciweyiviw{
-        margin-top: 15px;
+        /* margin-top: 15px; */
+        align-items: flex-start !important;
     }
-    .card_pcwuguoequ{
+    /* .card_pcwuguoequ{
         height: 120px;
-    }
+    } */
     .cwig9weioioi{
         justify-content: flex-start !important;
     }
     .svgciweyiviw svg{
-        height: 24px;
-        width: 24px;
+        height: 23px;
+        width: 23px;
     }
     .card_pcwuguoequ{
         flex-wrap: wrap;
@@ -1502,6 +1523,108 @@
 @media only screen and (max-width: 991px) {
     .cewbrteve{
         width: 100% !important;
+    }
+}
+.navv2verso_flxewd{
+    display: none;
+}
+
+@media only screen and (max-width: 767px) {
+    .job_head_s h2{
+        line-height: 20px;
+    }
+    .newnav_v2_flxew{
+        flex-direction: inherit !important;
+        border-bottom: #fff solid 1px;
+        padding-bottom: 10px;
+    }
+    .nenav_bddowniu{
+        padding: 20px 0px 20px 0px;
+         width: 100%;
+    }
+    .nenav_bddowniu #navbarScrollingDropdown{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-left: 0;
+        margin-right: 0;
+    }
+    .nenav_bddowniu .dropdown-menu{
+        left: auto !important;
+        right: 0 !important;
+    }
+    .trytygutf.minheifghtx_smmenu{
+        min-height: 430px;
+    }
+    .active_mmnuckwu{
+        color: #fff !important;
+        background-color: #170048 !important;
+    }
+    .smbtn_logsignup{
+        width: 100%;
+        margin-top: 25px;
+    }
+    .smbtn_logsignup button{
+        background-color: transparent;
+        padding: 10px 40px;
+        min-width: max-content;
+        border: #00065A solid 1px;
+        color: #170048;
+        font-size: 15px;
+        font-weight: 500;
+        border-radius: 30px;
+        -webkit-border-radius: 30px;
+        -moz-border-radius: 30px;
+        -ms-border-radius: 30px;
+        -o-border-radius: 30px;
+}
+    .newnav_v2_wauto{
+        width: max-content !important;
+    }
+    .navv2verso_flxewd{
+        display: flex;
+        align-items: center;
+    }
+    .navv2verso_flxewd .navbar_btn, .navbar_btn .dropdown-toggle{
+        margin-left: 13px;
+        margin-right: 13px;
+    }
+    .navv2verso_flxewd .online_profile::after{
+        right: -3px;
+        bottom: -3px;
+        height: 12px;
+        width: 12px;
+    }
+    .navv2verso_flxewd .navbar-toggler{
+        padding-right: 0;
+    }
+    .navv2verso_flxewd .navbar-toggler-icon{
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba(0, 0, 0, 0.55)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22' style='&%2310; stroke: %23fff;&%2310;'/%3E%3C/svg%3E");
+    }
+    .close_iconsvgciweuw .navbar-toggler-icon{
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' class='MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiBox-root css-1om0hkc' focusable='false' fill='%23fff' height='27' width='27' aria-hidden='true' viewBox='0 0 24 24' data-testid='CloseIcon'%3E%3Cpath d='M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z'%3E%3C/path%3E%3C/svg%3E") !important;
+    }
+    .navv2verso_flxewd .nav_profile{
+        height: 35px;
+        width: 35px;
+    }
+    .navv2padding{
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+    }
+}
+@media only screen and (max-width: 360px) {
+    .smbtn_logsignup button , .smbtn_logsignup a{
+        width: 100%;
+    }
+    .smbtn_logsignup button{
+        margin: 5px 0px;
+    }
+    .trytygutf.minheifghtx_smmenu{
+        min-height: 490px;
+    }
+    .smbtn_logsignup{
+        flex-flow: column;
     }
 }
 @media only screen and (max-width: 991px) {
@@ -1543,4 +1666,7 @@
 }
 .ewliywbwe .active_ewliy{
     border-bottom-color: #6D2EF1 !important;
+}
+.max_height_popucwui{
+    max-height: 460px;
 }

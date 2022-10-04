@@ -811,7 +811,7 @@ const Screen = () => {
               </Col>
               <Col lg={4} md={6} className="dboard_box_mr_mbo mb-3">
                 <div>
-                  <div className="d-flex justify-content-between mb-3">
+                  <div className="d-flex justify-content-between align-items-center mb-3">
                     <div className="dcard_htext">Clients</div>
                     <div className="dcard_ltxt">
                       <Link to="/">View All</Link>
@@ -824,7 +824,7 @@ const Screen = () => {
               </Col>
               <Col lg={4} md={6} className="dboard_box_mr_mbo mb-3">
                 <div>
-                  <div className="d-flex justify-content-between mb-3">
+                  <div className="d-flex justify-content-between align-items-center mb-3">
                     <div className="dcard_htext">Recent Payments</div>
                     <div className="dcard_ltxt cpink_ltxt">
                       <Link to="/">View All</Link>

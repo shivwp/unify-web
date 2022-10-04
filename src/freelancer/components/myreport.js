@@ -271,18 +271,13 @@ const Screen = () => {
       <Container>
         <div className="main_hirefreelancer_bx main_box_descr pl-0 pr-0">
           <div className="d-flex justify-content-between flex-wrap mb-3 mt-3 p_my_report32">
-            <div className="flex_m_j_t pb-0 pt-0 m-0 ewliywbwe flex-wrap justify-content-center">
-              <button
-                className={`my_jo_headin mjh_new_smtext  ${
-                  TBLactive === 0 ? "active_ewliy" : ""
-                }`}
-                onClick={() => {
-                  changeTab(0);
-                }}
+            <div className="flex_m_j_t pb-0 pt-0 m-0  flex-wrap justify-content-center">
+              <div
+                className={`my_jo_headin mjh_new_smtext`}
               >
                 Weekly summary{" "}
-              </button>
-              <button
+              </div>
+              {/* <button
                 className={`my_jo_headin mr-none-mrpo mjh_new_smtext  ${
                   TBLactive === 1 ? "active_ewliy" : ""
                 }`}
@@ -291,10 +286,10 @@ const Screen = () => {
                 }}
               >
                 Weekly summary by client{" "}
-              </button>
+              </button> */}
             </div>
-            <div className="d-flex flex-wrap align-items-center">
-              <div className="fo_btn_c next_b_btn_c no-mar-mob-mrep">
+            <div className="d-flex align-items-center no-mar-mob-mrep">
+              <div className="fo_btn_c next_b_btn_c">
                 <button
                   className="active_btn_blue filter_svg_btnwni f_sm_min-w150px"
                   onClick={() => {
