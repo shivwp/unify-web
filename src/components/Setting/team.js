@@ -52,105 +52,115 @@ const Screen = () => {
                   them to simplify your reporting, permission, and recruiting
                   management.
                 </div>
-                <div className="r-box_setting overflow-scroll">
-                  <div className="s_tble_s width-max-content-s">
-                    <div className="s_th_s w-20">Team Name</div>
-                    <div className="s_th_s w-20">Financial Account</div>
-                    <div className="s_th_s w-20">PO Number</div>
-                    <div className="s_th_s w-15"></div>
-                  </div>
-                  <div className="s_tble_s width-max-content-s menu_btn">
-                    <div className="s_th_s s_td_s w-20">John Doe</div>
-                    <div className="s_th_s s_td_s w-20">John Doe (123456)</div>
-                    <div className="s_th_s s_td_s w-20">AK24#7777</div>
-                    <div
-                      className="w-15 mob_60_rr"
-                      style={{ position: "relative" }}
-                    >
-                      <button
-                        className="round_b_btn bg-transparent"
-                        onClick={() => setMenuBarTeams(!menuBarTeams)}
+                <div className="scroll_table" style={{overflowX: 'auto'}}>
+                  <div className="r-box_setting">
+                    <div className="s_tble_s width-max-content-s">
+                      <div className="s_th_s w-20">Team Name</div>
+                      <div className="s_th_s w-20">Financial Account</div>
+                      <div className="s_th_s w-20">PO Number</div>
+                      <div className="s_th_s w-15"></div>
+                    </div>
+                    <div className="s_tble_s width-max-content-s menu_btn">
+                      <div className="s_th_s s_td_s w-20">John Doe</div>
+                      <div className="s_th_s s_td_s w-20">
+                        John Doe (123456)
+                      </div>
+                      <div className="s_th_s s_td_s w-20">AK24#7777</div>
+                      <div
+                        className="w-15 mob_60_rr"
+                        style={{ position: "relative" }}
                       >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="16"
-                          height="16"
-                          fill="currentColor"
-                          className="bi bi-three-dots-vertical"
-                          viewBox="0 0 16 16"
+                        <button
+                          className="round_b_btn bg-transparent"
+                          onClick={() => setMenuBarTeams(!menuBarTeams)}
                         >
-                          <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
-                        </svg>
-                      </button>
-                      {menuBarTeams && (
-                        <div className="menu_bar_teams">
-                          <div
-                            className="navabr_t_li"
-                            onClick={() => setOpenEditTeam(true)}
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="16"
+                            height="16"
+                            fill="currentColor"
+                            className="bi bi-three-dots-vertical"
+                            viewBox="0 0 16 16"
                           >
-                            Edit Team Info
-                          </div>
+                            <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
+                          </svg>
+                        </button>
+                        {menuBarTeams && (
+                          <div className="menu_bar_teams">
+                            <div
+                              className="navabr_t_li"
+                              onClick={() => setOpenEditTeam(true)}
+                            >
+                              Edit Team Info
+                            </div>
 
-                          <span className="menu_btn_arrow"> &#62; </span>
-                        </div>
-                      )}
+                            <span className="menu_btn_arrow"> &#62; </span>
+                          </div>
+                        )}
+                      </div>
                     </div>
-                  </div>
-                  <div className="s_tble_s width-max-content-s">
-                    <div className="s_th_s s_td_s w-20">John Doe</div>
-                    <div className="s_th_s s_td_s w-20">John Doe (123456)</div>
-                    <div className="s_th_s s_td_s w-20">AK24#7777</div>
-                    <div className="w-15 mob_60_rr">
-                      <button className="round_b_btn bg-transparent">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="16"
-                          height="16"
-                          fill="currentColor"
-                          className="bi bi-three-dots-vertical"
-                          viewBox="0 0 16 16"
-                        >
-                          <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
-                        </svg>
-                      </button>
+                    <div className="s_tble_s width-max-content-s">
+                      <div className="s_th_s s_td_s w-20">John Doe</div>
+                      <div className="s_th_s s_td_s w-20">
+                        John Doe (123456)
+                      </div>
+                      <div className="s_th_s s_td_s w-20">AK24#7777</div>
+                      <div className="w-15 mob_60_rr">
+                        <button className="round_b_btn bg-transparent">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="16"
+                            height="16"
+                            fill="currentColor"
+                            className="bi bi-three-dots-vertical"
+                            viewBox="0 0 16 16"
+                          >
+                            <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
+                          </svg>
+                        </button>
+                      </div>
                     </div>
-                  </div>
-                  <div className="s_tble_s width-max-content-s">
-                    <div className="s_th_s s_td_s w-20">John Doe</div>
-                    <div className="s_th_s s_td_s w-20">John Doe (123456)</div>
-                    <div className="s_th_s s_td_s w-20">AK24#7777</div>
-                    <div className="w-15 mob_60_rr">
-                      <button className="round_b_btn bg-transparent">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="16"
-                          height="16"
-                          fill="currentColor"
-                          className="bi bi-three-dots-vertical"
-                          viewBox="0 0 16 16"
-                        >
-                          <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
-                        </svg>
-                      </button>
+                    <div className="s_tble_s width-max-content-s">
+                      <div className="s_th_s s_td_s w-20">John Doe</div>
+                      <div className="s_th_s s_td_s w-20">
+                        John Doe (123456)
+                      </div>
+                      <div className="s_th_s s_td_s w-20">AK24#7777</div>
+                      <div className="w-15 mob_60_rr">
+                        <button className="round_b_btn bg-transparent">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="16"
+                            height="16"
+                            fill="currentColor"
+                            className="bi bi-three-dots-vertical"
+                            viewBox="0 0 16 16"
+                          >
+                            <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
+                          </svg>
+                        </button>
+                      </div>
                     </div>
-                  </div>
-                  <div className="s_tble_s width-max-content-s">
-                    <div className="s_th_s s_td_s w-20">John Doe</div>
-                    <div className="s_th_s s_td_s w-20">John Doe (123456)</div>
-                    <div className="s_th_s s_td_s w-20">AK24#7777</div>
-                    <div className="w-15 mob_60_rr">
-                      <button className="round_b_btn bg-transparent">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="16"
-                          height="16"
-                          fill="currentColor"
-                          className="bi bi-three-dots-vertical"
-                          viewBox="0 0 16 16"
-                        >
-                          <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
-                        </svg>
-                      </button>
+                    <div className="s_tble_s width-max-content-s">
+                      <div className="s_th_s s_td_s w-20">John Doe</div>
+                      <div className="s_th_s s_td_s w-20">
+                        John Doe (123456)
+                      </div>
+                      <div className="s_th_s s_td_s w-20">AK24#7777</div>
+                      <div className="w-15 mob_60_rr">
+                        <button className="round_b_btn bg-transparent">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="16"
+                            height="16"
+                            fill="currentColor"
+                            className="bi bi-three-dots-vertical"
+                            viewBox="0 0 16 16"
+                          >
+                            <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
+                          </svg>
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>

@@ -885,7 +885,7 @@
   right: 0px;
 }
 
-@media screen and ( max-width: 1024px) {
+@media screen and (max-width: 1024px) {
   .Filter_Popup {
     width: 80vw !important;
   }
@@ -1545,11 +1545,19 @@
   background-color: #f8f8f8;
   padding: 15px 12px 12px 12px;
   margin-bottom: 15px;
+  width: 100%;
+  overflow-x: scroll;
+}
+.scroll_table{
+  overflow-x: auto;
+}
+.scroll_table .r-box_setting {
+  min-width: 450px;
 }
 
-.width-max-content {
+/* .width-max-content {
   width: max-content !important;
-}
+} */
 .setting_b_head_s {
   font-family: "Poppins-Bold", "Poppins";
   font-weight: 700;
@@ -2449,7 +2457,7 @@
   border: 1px solid rgb(217 217 217);
   align-items: flex-start;
   padding: 3px 10px;
-  width: 200px;
+  width: 150px;
   top: 1px;
   right: 73px;
 }
@@ -2457,7 +2465,7 @@
 @media screen and (max-width: 1440px) {
   .menu_btn .menu_bar_teams {
     top: 1px;
-    right: 85px;
+    right: 72px;
   }
 }
 
@@ -2466,20 +2474,16 @@
     top: 1px;
     right: 58px;
   }
-  
 }
 @media screen and (max-width: 1023px) {
   .menu_btn .menu_bar_teams {
     top: 1px;
     right: 56px;
   }
-  
 }
 @media screen and (max-width: 767px) {
-  
 }
 @media screen and (max-width: 481px) {
-  
 }
 
 .menu_btn_arrow {
@@ -2697,7 +2701,7 @@
   display: flex;
   justify-content: center;
 }
-._col_right .find_and_hire_button  button{
+._col_right .find_and_hire_button button {
   background-color: #6d2ef1;
   color: white;
 }
@@ -2739,7 +2743,7 @@
 }
 
 @media screen and (max-width: 1024px) {
-  .Edit_comp_address .Edit_details ._address p{
+  .Edit_comp_address .Edit_details ._address p {
     font-size: 14px !important;
   }
 }
