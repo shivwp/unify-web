@@ -171,21 +171,33 @@ const MakePrivate = () => {
                     <ul className="activite_ul">
                       <li>
                         <div className="au_name">Proposals</div> :{" "}
-                        <span>Less than 5</span>
+                        <span>20 To 50 </span>
                       </li>
                       <li>
                         <div className="au_name">interviewing</div> :{" "}
-                        <span>0</span>
+                        <span>6</span>
                       </li>
-                      <li>
+                      {/* <li>
                         <div className="au_name">invites sents</div> :{" "}
                         <span>0</span>
                       </li>
                       <li>
                         <div className="au_name">unanswered invites</div> :{" "}
                         <span>0</span>
-                      </li>
+                      </li> */}
                     </ul>
+                  </div>
+                  <div className="original_mess">
+                    <div className="input_t_lab">Activity on this job</div>
+                    <div className="greet">Hello</div>
+                    <div className="message_from_client">
+                      I'like to invite you to take a look at the job I've posted
+                      it is a long established fact that a reader will be
+                      distracted by the readable content of a page when looking
+                      at it's layout. The point of using lorem lipsum is that it
+                      has a more-or-less normal distribution of letters .
+                    </div>
+                    <div className="client_name_">John D.</div>
                   </div>
                 </div>
               </Col>

@@ -45,19 +45,21 @@
   padding: 5px 0;
 }
 
-.remove-draft-popup .btn_foot_sec{
+.remove-draft-popup .btn_foot_sec {
   padding: 12px 0px;
   margin: 0px;
 }
-.remove-draft-popup > p{
+.remove-draft-popup > p {
   margin: 2rem 0 3rem 0;
 }
-.remove-draft-popup .react-responsive-modal-closeButton{
-  fill: #b2b2b2
-}
+
 
 .remove-posting-popup .remove-posting-btns {
   border: 1px solid rgb(155, 151, 151);
+  font-weight: 500;
+}
+.remove-posting-popup .active_btn_blue {
+  font-weight: 500 !important;
 }
 
 /* change passsword */
@@ -131,9 +133,13 @@
 .set-varification-popup {
   font-family: "Poppins-Bold", "Poppins";
 }
+.react-responsive-modal-closeButton {
+  fill: #b2b2b2;
+}
 .set-varification-popup h5 {
   color: #6d2ef1;
   font-weight: 700;
+  font-size: 19px;
 }
 .set-varification-popup .varification-first {
   margin: 25px 0;
@@ -172,6 +178,16 @@
   font-weight: 500;
   font-size: 13px;
 }
+
+@media screen and (max-width: 426px) {
+  .set-varification-popup .when-confirm .popup-radio label{
+    align-items: flex-start !important;
+  }
+  .set-varification-popup .when-confirm input{
+    margin-top: 3px !important;
+  }
+}
+
 .set-varification-popup .when-confirm .popup-radio label {
   display: flex;
   align-items: center;
@@ -275,6 +291,3 @@
 .invite_user_popup .invite_users li p {
   margin: 0 0 0 18px;
 }
-
-
-

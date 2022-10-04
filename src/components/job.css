@@ -885,7 +885,7 @@
   right: 0px;
 }
 
-@media screen and ( max-width: 1024px) {
+@media screen and (max-width: 1024px) {
   .Filter_Popup {
     width: 80vw !important;
   }
@@ -1545,11 +1545,19 @@
   background-color: #f8f8f8;
   padding: 15px 12px 12px 12px;
   margin-bottom: 15px;
+  width: 100%;
+  overflow-x: scroll;
+}
+.scroll_table{
+  overflow-x: auto;
+}
+.scroll_table .r-box_setting {
+  min-width: 450px;
 }
 
-.width-max-content {
+/* .width-max-content {
   width: max-content !important;
-}
+} */
 .setting_b_head_s {
   font-family: "Poppins-Bold", "Poppins";
   font-weight: 700;
@@ -2182,7 +2190,7 @@
   color: #170048;
   font-family: "Poppins";
   font-weight: 600;
-  font-size: 22px;
+  font-size: 30px;
 }
 
 @media screen and (max-width: 386px) {
@@ -2449,9 +2457,33 @@
   border: 1px solid rgb(217 217 217);
   align-items: flex-start;
   padding: 3px 10px;
-  width: 200px;
+  width: 150px;
   top: 1px;
   right: 73px;
+}
+
+@media screen and (max-width: 1440px) {
+  .menu_btn .menu_bar_teams {
+    top: 1px;
+    right: 72px;
+  }
+}
+
+@media screen and (max-width: 1199px) {
+  .menu_btn .menu_bar_teams {
+    top: 1px;
+    right: 58px;
+  }
+}
+@media screen and (max-width: 1023px) {
+  .menu_btn .menu_bar_teams {
+    top: 1px;
+    right: 56px;
+  }
+}
+@media screen and (max-width: 767px) {
+}
+@media screen and (max-width: 481px) {
 }
 
 .menu_btn_arrow {
@@ -2533,7 +2565,7 @@
 .add_comp_address .add_details .save_Address {
   background-color: #6d2ef1;
   margin: 40px 0;
-  padding: 15px 95px;
+  padding: 10px 80px;
   color: #fff;
   border: none;
   border-radius: 30px;
@@ -2559,7 +2591,7 @@
   align-items: center;
 }
 ._col_right .Add_Address_profile img {
-  width: 50px;
+  width: 60px;
   height: auto;
 }
 
@@ -2669,6 +2701,10 @@
   display: flex;
   justify-content: center;
 }
+._col_right .find_and_hire_button button {
+  background-color: #6d2ef1;
+  color: white;
+}
 ._col_right .find_contact {
   background-color: #f8f8f8;
   margin: 20px auto;
@@ -2704,6 +2740,12 @@
   font-weight: 700;
   font-size: 15px;
   color: #6d2ef1;
+}
+
+@media screen and (max-width: 1024px) {
+  .Edit_comp_address .Edit_details ._address p {
+    font-size: 14px !important;
+  }
 }
 
 .Select_payment_method_box {
