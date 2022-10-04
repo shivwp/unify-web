@@ -51,7 +51,6 @@ const InviteUsersPopup = ({ open, onCloseModal }) => {
                 <li>
                   <label htmlFor="admin_op_2">
                     <input type="radio" name="p" id="admin_op_2" /> Finance Only
-                    filled
                   </label>
                   <p>
                     Can access Payment tab, managing payment methods, viewing

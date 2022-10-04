@@ -13,6 +13,11 @@
   margin: 0;
   padding: 0%;
 }
+
+.popup-radio label {
+ font-size: 15px;
+ margin: 5px 0;
+}
 .popup-radio input {
   accent-color: #6d2ef1;
 }
@@ -243,7 +248,8 @@
 }
 .invite_user_popup h5 {
   color: #6d2ef1;
-  font-weight: 600;
+  font-weight: 700;
+  font-size: 25px !important;
 }
 
 .invite_user_popup .invite_users {
@@ -259,8 +265,8 @@
   font-size: 15px;
 }
 .invite_user_popup .invite_users h6 {
-  font-weight: 700;
-  font-size: 15px;
+  font-weight: 600;
+  font-size: 17px;
 }
 .invite_user_popup .invite_users > label input {
   outline: none;

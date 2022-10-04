@@ -885,6 +885,11 @@
   right: 0px;
 }
 
+.Filter_Popup .tm_s_s_name, .Filter_Popup .filter_headin_m, .Filter_Popup .fo_btn_c button{
+  font-size: 17px !important;
+  font-weight: 600;
+}
+
 @media screen and (max-width: 1024px) {
   .Filter_Popup {
     width: 80vw !important;
@@ -1102,7 +1107,7 @@
   font-family: "Poppins-Bold", "Poppins";
   font-size: 14px;
   font-weight: 500;
-  min-width: 250px;
+  min-width: 215px;
 }
 .setting_pay_inp {
   list-style: none;
@@ -1548,7 +1553,7 @@
   width: 100%;
   /* overflow-x: scroll; */
 }
-.scroll_table{
+.scroll_table {
   overflow-x: auto;
 }
 .scroll_table .r-box_setting {
@@ -1860,6 +1865,16 @@
   line-height: 40px;
   color: #00065a;
 }
+
+@media screen and (max-width: 768px) {
+  .browse_head_h {
+    font-size: 30px;
+  }
+  .swiper-slide{
+    width: 100% !important;
+  }
+}
+
 .help_icon_rou {
   background-color: #efebf8;
   height: 110px;
