@@ -4702,3 +4702,20 @@ a {
   padding-top: 10px;
   color: #545454;
 }
+
+.my_reports_{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 20px 10px;
+  border-bottom: #ebebed solid 1px;
+}
+.my_reports_ .report_name .report_heading{
+  color: #6d2ef1;
+  font-size: 17px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.my_reports_ .report_name .report_time{
+  font-size: 14px;
+}
