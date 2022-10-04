@@ -1546,13 +1546,13 @@
   padding: 15px 12px 12px 12px;
   margin-bottom: 15px;
   width: 100%;
-  overflow-x: scroll;
+  /* overflow-x: scroll; */
 }
 .scroll_table{
   overflow-x: auto;
 }
 .scroll_table .r-box_setting {
-  min-width: 450px;
+  min-width: 720px;
 }
 
 /* .width-max-content {
