@@ -21,10 +21,10 @@ const RemoveDraftPopup = ({ open, onCloseModal }) => {
 
         <div className="btn_foot_sec no-border flex-wrap d-flex" >
           <div className="fo_btn_c next_b_btn_c">
-            <button className="remove-posting-btns" style={{fontWeight: 600}} onClick={onCloseModal} >CANCEL</button>
+            <button className="remove-posting-btns" style={{fontWeight: 500}} onClick={onCloseModal} >CANCEL</button>
           </div>
           <div className="fo_btn_c next_b_btn_c">
-            <button className="active_btn_blue" style={{fontWeight: 600}}>Delete</button>
+            <button className="active_btn_blue" style={{fontWeight: 500}}>Delete</button>
           </div>
         </div>
       </Modal>

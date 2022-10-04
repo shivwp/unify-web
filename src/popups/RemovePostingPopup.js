@@ -48,7 +48,7 @@ const RemovePostingPopup = ({ open, onCloseModal }) => {
               </li>
               <li>
                 <label htmlFor="reason-5">
-                  <input type="radio" id="reason-5" name="p" /> <span>Porject was
+                  <input type="radio" id="reason-5" name="p" /> <span>Project was
                   cancelled</span>
                 </label>
               </li>

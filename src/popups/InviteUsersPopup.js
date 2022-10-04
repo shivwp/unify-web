@@ -108,7 +108,7 @@ const InviteUsersPopup = ({ open, onCloseModal }) => {
             </div>
           </div>
           <div className="invite_users">
-            <h6>Wiew work Diaries</h6>
+            <h6>View work Diaries</h6>
             <div>
               <p>
                 Those with team access can log time (with an active contract)

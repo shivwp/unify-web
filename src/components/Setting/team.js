@@ -63,7 +63,10 @@ const Screen = () => {
                     <div className="s_th_s s_td_s w-20">John Doe</div>
                     <div className="s_th_s s_td_s w-20">John Doe (123456)</div>
                     <div className="s_th_s s_td_s w-20">AK24#7777</div>
-                    <div className="w-15 mob_60_rr">
+                    <div
+                      className="w-15 mob_60_rr"
+                      style={{ position: "relative" }}
+                    >
                       <button
                         className="round_b_btn bg-transparent"
                         onClick={() => setMenuBarTeams(!menuBarTeams)}
@@ -79,19 +82,19 @@ const Screen = () => {
                           <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
                         </svg>
                       </button>
-                    </div>
-                    {menuBarTeams && (
-                      <div className="menu_bar_teams">
-                        <div
-                          className="navabr_t_li"
-                          onClick={() => setOpenEditTeam(true)}
-                        >
-                          Edit Team Info
-                        </div>
+                      {menuBarTeams && (
+                        <div className="menu_bar_teams">
+                          <div
+                            className="navabr_t_li"
+                            onClick={() => setOpenEditTeam(true)}
+                          >
+                            Edit Team Info
+                          </div>
 
-                        <span className="menu_btn_arrow"> &#62; </span>
-                      </div>
-                    )}
+                          <span className="menu_btn_arrow"> &#62; </span>
+                        </div>
+                      )}
+                    </div>
                   </div>
                   <div className="s_tble_s width-max-content-s">
                     <div className="s_th_s s_td_s w-20">John Doe</div>

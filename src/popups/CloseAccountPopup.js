@@ -21,20 +21,20 @@ const CloseAccountPopup = ({ open, onCloseModal }) => {
           9am-5pm PT Sat-Sun.
         </p>
         <div className="select-reason">
-          <h6>Select a reason for leaving</h6>
+          <h6 style={{fontWeight: 600}}>Select a reason for leaving</h6>
           <div>
             <ul className="popup-radio">
               <li>
                 <label htmlFor="reason-1">
                   <input type="radio" id="reason-1" name="p" />{" "}
-                  <span>When my login or activity seems risky</span>
+                  <span>Closing duplicate account </span>
                 </label>
               </li>
               <li>
                 <label htmlFor="reason-2">
                   <input type="radio" name="p" id="reason-2" />{" "}
                   <span>
-                    At every login and when my login or activity seems risky
+                    I want to change my username
                   </span>
                 </label>
               </li>
@@ -42,7 +42,7 @@ const CloseAccountPopup = ({ open, onCloseModal }) => {
                 <label htmlFor="reason-3">
                   <input type="radio" name="p" id="reason-3" />{" "}
                   <span>
-                    At every login and when my login or activity seems risky
+                    Unify is not easy to use
                   </span>
                 </label>
               </li>
@@ -50,7 +50,7 @@ const CloseAccountPopup = ({ open, onCloseModal }) => {
                 <label htmlFor="reason-4">
                   <input type="radio" name="p" id="reason-4" />{" "}
                   <span>
-                    At every login and when my login or activity seems risky
+                    I am not satisfied with quality of freelancers on Upwork
                   </span>
                 </label>
               </li>
@@ -58,7 +58,7 @@ const CloseAccountPopup = ({ open, onCloseModal }) => {
                 <label htmlFor="reason-5">
                   <input type="radio" name="p" id="reason-5" />{" "}
                   <span>
-                    At every login and when my login or activity seems risky
+                    I signed up for the wrong type of account
                   </span>
                 </label>
               </li>
@@ -66,7 +66,7 @@ const CloseAccountPopup = ({ open, onCloseModal }) => {
                 <label htmlFor="reason-6">
                   <input type="radio" name="p" id="reason-6" />{" "}
                   <span>
-                    At every login and when my login or activity seems risky
+                    The freelancers on Upwork did not fit my needs
                   </span>
                 </label>
               </li>
@@ -74,7 +74,7 @@ const CloseAccountPopup = ({ open, onCloseModal }) => {
                 <label htmlFor="reason-7">
                   <input type="radio" name="p" id="reason-7" />{" "}
                   <span>
-                    At every login and when my login or activity seems risky
+                    I no longer need work done through Unify
                   </span>
                 </label>
               </li>

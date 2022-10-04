@@ -60,7 +60,7 @@ const ChagePasswordPopup = ({ onCloseModal, open }) => {
             </div>
           </div>
           <div className="password-inp">
-            <div className="inp-label">Confirm Password</div>
+            <div className="inp-label">Confirm New Password</div>
             <div className="input-grp">
               <input type={hideConfPass ? "password" : "text"} />
               {hideConfPass ? (
