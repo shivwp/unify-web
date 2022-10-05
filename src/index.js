@@ -89,6 +89,7 @@ import AddCompanyAddress from "./AddCompanyAddress";
 import EditCompanyAddress from "./EditCompanyAddress";
 import EditDraft from "./components/EditDraft";
 import MakePrivate from "./components/MakePrivate";
+import UserReports from "./freelancer/UserReports";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -199,10 +200,14 @@ root.render(
 
         <Route path="/freelancer/progress" element={<FreelancerProgress />} />
         <Route path="/freelancer/objective" element={<FreelancerObjective />} />
-        <Route path="/freelancer/my-reports" element={<FreelancerReports />} />
+        <Route path="/freelancer/my-reports" element={<UserReports />} />
         <Route
           path="/freelancer/report-byclient"
           element={<FreelancerReportByClient />}
+        />
+        <Route
+          path="/freelancer/weekly-report"
+          element={<FreelancerReports />}
         />
         <Route
           path="/freelancer/milestone-earning"
