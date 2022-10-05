@@ -291,7 +291,7 @@ const Screen = () => {
             <div className="d-flex align-items-center no-mar-mob-mrep">
               <div className="fo_btn_c next_b_btn_c">
                 <button
-                  className="active_btn_blue filter_svg_btnwni f_sm_min-w150px"
+                  className="active_btn_blue filter_svg_btnwni f_sm_min-w150px mrright-gppnew"
                   onClick={() => {
                     ToggleFilter();
                   }}

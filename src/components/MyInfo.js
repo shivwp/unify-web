@@ -169,7 +169,7 @@ const MyInfo = ({ setOpen }) => {
       </div>
       <div className="btn_foot_sec flex-wrap d-flex no-border">
         <div className="fo_btn_c next_b_btn_c">
-          <button>Create New Account</button>
+          <button className="mrright-gppnew">Create New Account</button>
         </div>
         <div className="fo_btn_c next_b_btn_c">
           <button

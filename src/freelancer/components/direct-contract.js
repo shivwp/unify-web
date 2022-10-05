@@ -119,7 +119,7 @@ const Screen = () => {
                     <div className="questopn_h1"><h1 className="no_sudo">Direct Contracts</h1></div>
                     <div className="question_p"><p>Securely create contracts and quickly collect payment for non-Unify projects.</p></div>
                     <div className="btn_foot_sec justify-content-center flex-wrap no-border mt-2 a_fl_with_css">
-                        <Link to="/category"><div className='fo_btn_c next_b_btn_c'><button>INVITE CLIENTS</button></div></Link>
+                        <Link to="/category" className="mrright-gppnew"><div className='fo_btn_c next_b_btn_c'><button>INVITE CLIENTS</button></div></Link>
                         <div className='fo_btn_c next_b_btn_c'><button className="active_btn_blue" onClick={() => SetPopup(<Popup Popup={SetPopup} />)}>CREATE A CONTRACT</button></div>
                     </div>
                 </div>

@@ -66,13 +66,13 @@ const Screen = () => {
                 <Col lg={4}>
                     <div className="box_vs_m mt-0">
                         <div className="csai_t text-center">Interested in discussing this job?</div>
-                        <div className="btn_foot_sec justify-content-center flex-wrap no-border mt-0 mb-0 p-0">
+                        <div className="btn_foot_sec justify-content-center flex-wrap no-border mt-0 mb-2 p-0">
                             <div className='fo_btn_c next_b_btn_c'><button className="active_btn_blue m-0">Accept Interview</button></div>
                         </div>
-                        <div className="btn_foot_sec justify-content-center flex-wrap no-border mt-0 mb-0 p-0">
+                        <div className="btn_foot_sec justify-content-center flex-wrap no-border mt-0 mb-2 p-0">
                             <div className='fo_btn_c next_b_btn_c p-0'><button className='m-0'>Decline Interview</button></div>
                         </div>
-                        <div className="btn_foot_sec justify-content-center flex-wrap no-border mt-0 mb-0 p-0">
+                        <div className="btn_foot_sec justify-content-center flex-wrap no-border mt-0 mb-2 p-0">
                             <div className='fo_btn_c next_b_btn_c'><button>Refer a Freelancer</button></div>
                         </div>
                         <div className="about_client_no mb-2">

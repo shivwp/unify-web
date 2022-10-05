@@ -4,6 +4,7 @@ import { Row, Col } from "react-bootstrap";
 import "./chat.css";
 import Select from "react-select";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Contact = () => {
   return (
@@ -98,7 +99,7 @@ const PopupContact = (props) => {
             <div className="btn_foot_sec justify-content-end flex-wrap no-border mt-2">
               <div className="fo_btn_c next_b_btn_c">
                 <button
-                  className="no-border newchat-pad"
+                  className="no-border newchat-pad mrright-gppnew"
                   onClick={() => {
                     props.SetPopup();
                   }}
@@ -132,6 +133,7 @@ const Screen = () => {
           <div class="chat-header align-items-center flex-wrap">
             <div className="chat_header_buttons align-items-center w-50 justify-content-between cewbrteve">
               <div className="d-flex cewbrtever">
+              <Link to='/freelancer/contact-info'>
               <button>
                 <svg
                   id="tools"
@@ -195,6 +197,8 @@ const Screen = () => {
                   </g>
                 </svg>
               </button>
+              </Link>
+              <Link to='/freelancer/chat'>
               <button>
                 <svg
                   id="chat"
@@ -269,6 +273,8 @@ const Screen = () => {
                   </g>
                 </svg>
               </button>
+              </Link>
+              <Link to='/freelancer/profile'>
               <button>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -323,6 +329,7 @@ const Screen = () => {
                   </g>
                 </svg>
               </button>
+              </Link>
               <button
                 className="round-chat-btn"
                 onClick={() => {
@@ -362,7 +369,7 @@ const Screen = () => {
               
             <div className="chat_header_buttons flex-wrap">
                 <div className="vpropo_cbrntn">
-                <button>VIEW PROPOSAL</button>
+                <Link to='/freelancer/active-contract'><button>VIEW PROPOSAL</button></Link>
                 </div>
                 <button>
                   <svg
