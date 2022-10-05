@@ -1,6 +1,8 @@
 import Container from "react-bootstrap/Container";
 import { Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import Select from "react-select";
+import { useState } from 'react'
 
 function Listaward() {
   const card = [1, 2, 3, 4];
@@ -60,8 +62,623 @@ const WorkHistory = () => {
     </>
   )
 }
+const EditSkill = (props) => {
+  return (
+    <>
+      <div className="bg_wrapper_popup_new">
+        <div className="popup_box_bpn pb-4">
+          <div className="popup_header pb-0">
+            <div className="p_header_hding">Edit Skills</div>
+            <div className="close_pp_btn" onClick={() => { props.Popup() }}>
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#B2B2B2" className="bi bi-x-lg" viewBox="0 0 16 16"><path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"></path></svg>
+            </div>
+          </div>
+          <div className="popup_body_bpn amount_popup_body max_height_popucwui overflow-scroll">
+            <div className='mt-4 pt-1'>
+              <div className='pouphed_skll'>Skills</div>
+              <div className='popuphead_smparcr'>Keeping your skills up to date helps you get the jobs you want.</div>
+            </div>
+            <div className='d-flex flex-wrap catbox_rd_ofive mt-3'>
+              <div className='skill_bxr_gry'>Mobile App <button>X</button></div>
+              <div className='skill_bxr_gry'>Website Design <button>X</button></div>
+              <div className='skill_bxr_gry'>Web Development <button>X</button></div>
+              <div className='skill_bxr_gry'>Logo Design <button>X</button></div>
+              <div className='skill_bxr_gry'>Logo Design <button>X</button></div>
+            </div>
+            <div className='maxlabel_atcxt mt-3'>Maximum 15 skills.</div>
+            <div className="popup_btns_new flex-wrap cwiewyehkk">
+              <button className="trans_btn">Cancel</button>
+              <button onClick={() => { props.Popup() }}>Save</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  )
+}
+const EditTitle = (props) => {
+  return (
+    <>
+      <div className="bg_wrapper_popup_new">
+        <div className="popup_box_bpn pb-4">
+          <div className="popup_header pb-0">
+            <div className="p_header_hding">Edit your title</div>
+            <div className="close_pp_btn" onClick={() => { props.Popup() }}>
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#B2B2B2" className="bi bi-x-lg" viewBox="0 0 16 16"><path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"></path></svg>
+            </div>
+          </div>
+          <div className="popup_body_bpn amount_popup_body max_height_popucwui overflow-scroll">
+            <div className='mt-4 pt-1 mb-4'>
+              <div className='pouphed_skll'>Your title</div>
+              <div className='popuphead_smparcr'>Enter a single sentence description of your professional skills/experience (e.g. Expert Web Designer with Ajax experience)</div>
+            </div>
+
+            <div className="popup_form_element mb-5">
+              <input type="text" className='font-size-13px' placeholder="Senior UI/UX, Website Designer And Graphic Designer" />
+            </div>
+
+            <div className="popup_btns_new flex-wrap cwiewyehkk">
+              <button className="trans_btn">Cancel</button>
+              <button onClick={() => { props.Popup() }}>Save</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  )
+}
+const VideoIntro = (props) => {
+  const options1 = [{
+    name: 'me talking about my skills', label: 'me talking about my skills'
+  }, {
+    name: 'visual samples of my works', label: 'visual samples of my works'
+  }, {
+    name: 'something else', label: 'something else'
+  }]
+  return (
+    <>
+      <div className="bg_wrapper_popup_new">
+        <div className="popup_box_bpn pb-4">
+          <div className="popup_header pb-0">
+            <div className="p_header_hding">Add video introduction</div>
+            <div className="close_pp_btn" onClick={() => { props.Popup() }}>
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#B2B2B2" className="bi bi-x-lg" viewBox="0 0 16 16"><path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"></path></svg>
+            </div>
+          </div>
+          <div className="popup_body_bpn amount_popup_body max_height_popucwui overflow-scroll">
+            <div className='mt-4 pt-1 mb-4'></div>
+
+            <div className='mb-5 '>
+              <div className="popup_form_element">
+                <label className='text-black font-size-13px font-weight-500'>Link to your YouTube video</label>
+                <input type="text" className='font-size-13px' placeholder="Ex: https://www.youtube.com/watch?v=dQw4w9WgXcQ" />
+              </div>
+              <div className="popup_form_element">
+                <label className='text-black font-size-13px font-weight-500'>What type of video is this?</label>
+                <Select
+                  className='font-size-13px'
+                  placeholder="What type of video is this?"
+                  options={options1}
+                />
+              </div>
+            </div>
+
+            <div className="popup_btns_new flex-wrap cwiewyehkk">
+              <button className="trans_btn">Cancel</button>
+              <button onClick={() => { props.Popup() }}>Save</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  )
+}
+const AddExperience = (props) => {
+  return (
+    <>
+      <div className="bg_wrapper_popup_new">
+        <div className="popup_box_bpn pb-4">
+          <div className="popup_header pb-0">
+            <div className="p_header_hding">Add other Experiences</div>
+            <div className="close_pp_btn" onClick={() => { props.Popup() }}>
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#B2B2B2" className="bi bi-x-lg" viewBox="0 0 16 16"><path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"></path></svg>
+            </div>
+          </div>
+          <div className="popup_body_bpn amount_popup_body max_height_popucwui overflow-scroll">
+            <div className='mt-2 pt-1 mb-4'></div>
+
+            <div className='mb-4 '>
+              <div className="popup_form_element">
+                <label className='text-black font-size-13px font-weight-500'>Subject</label>
+                <input type="text" className='font-size-13px' placeholder=" " />
+              </div>
+              <div className="popup_form_element">
+                    <label className='text-black font-size-13px font-weight-500'>Description</label>
+                    <textarea className='font-size-13px' placeholder="Enter Here"></textarea>
+                  </div>
+            </div>
+
+            <div className="popup_btns_new flex-wrap cwiewyehkk">
+              <button className="trans_btn">Cancel</button>
+              <button onClick={() => { props.Popup() }}>Save</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  )
+}
+const AddEmployment = (props) => {
+  return (
+    <>
+      <div className="bg_wrapper_popup_new">
+        <div className="popup_box_bpn pb-4">
+          <div className="popup_header pb-0">
+            <div className="p_header_hding">Add Employment</div>
+            <div className="close_pp_btn" onClick={() => { props.Popup() }}>
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#B2B2B2" className="bi bi-x-lg" viewBox="0 0 16 16"><path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"></path></svg>
+            </div>
+          </div>
+          <div className="popup_body_bpn amount_popup_body max_height_popucwui overflow-scroll">
+            <div className='mt-2 pt-1 mb-4'></div>
+
+            <div className='mb-4 '>
+              <Row>
+                <Col md={12}>
+                    <div className="popup_form_element">
+                      <label className='text-black font-size-13px font-weight-500'>Company</label>
+                      <input type="text" className='font-size-13px' placeholder="Ex: Unify" />
+                    </div>
+                </Col>
+                <Col md={6}>
+                    <div className="popup_form_element">
+                      <label className='text-black font-size-13px font-weight-500'>Location</label>
+                      <input type="text" className='font-size-13px' placeholder="City" />
+                    </div>
+                </Col>
+                <Col md={6}>
+                    <div className="popup_form_element">
+                      <label className='text-black font-size-13px font-weight-500'>Country</label>
+                      <input type="text" className='font-size-13px' placeholder="Country" />
+                    </div>
+                </Col>
+                <Col md={12}>
+                    <div className="popup_form_element">
+                      <label className='text-black font-size-13px font-weight-500'>Title</label>
+                      <input type="text" className='font-size-13px' placeholder="Ex: Unify" />
+                    </div>
+                </Col>
+                <Col md={6}>
+                    <div className="popup_form_element">
+                      <label className='text-black font-size-13px font-weight-500'>From Month</label>
+                      <input type="text" className='font-size-13px' placeholder="From Month" />
+                    </div>
+                </Col>
+                <Col md={6}>
+                    <div className="popup_form_element">
+                      <label className='text-black font-size-13px font-weight-500'>From Year</label>
+                      <input type="text" className='font-size-13px' placeholder="From Year" />
+                    </div>
+                </Col>
+                <Col className='text-right'>
+                  <div className="agrement_ineoeu flex-row d-flex justify-content-end mt-1 pt-0">
+                      <label className='text-black text-right font-size-13px font-weight-500'><input type='checkbox' />  I currently work here</label>
+                  </div>
+                </Col>
+                <Col md={12}>
+                  <div className="popup_form_element">
+                    <label className='text-black font-size-13px font-weight-500'>Description (Optional)</label>
+                    <textarea className='font-size-13px' placeholder="Enter Here"></textarea>
+                  </div>
+                </Col>
+              </Row>
+            </div>
+
+            <div className="popup_btns_new flex-wrap cwiewyehkk">
+              <button className="trans_btn">Cancel</button>
+              <button onClick={() => { props.Popup() }}>Save</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  )
+}
+const ChangePassword = (props) => {
+  return (
+    <>
+      <div className="bg_wrapper_popup_new">
+        <div className="popup_box_bpn pb-4">
+          <div className="popup_header pb-0">
+            <div className="p_header_hding">Change Password</div>
+            <div className="close_pp_btn" onClick={() => { props.Popup() }}>
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#B2B2B2" className="bi bi-x-lg" viewBox="0 0 16 16"><path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"></path></svg>
+            </div>
+          </div>
+          <div className="popup_body_bpn amount_popup_body max_height_popucwui overflow-scroll">
+            <div className='mt-2 pt-1 mb-4'></div>
+
+            <div className='mb-4 '>
+              <div className="popup_form_element">
+                <label className='text-black font-size-13px font-weight-500'>Old Password</label>
+                <input type="password" className='font-size-13px' placeholder=" " />
+              </div>
+              <Row className="mt-1">
+                <Col md={6}>
+              <div className="popup_form_element">
+                <label className='text-black font-size-13px font-weight-500'>New password</label>
+                <input type="password" className='font-size-13px' placeholder=" " />
+              </div>
+                </Col>
+                <Col md={6}>
+              <div className="popup_form_element">
+                <label className='text-black font-size-13px font-weight-500'>Confirm New Password</label>
+                <input type="password" className='font-size-13px' placeholder=" " />
+              </div>
+                </Col>
+              </Row>
+              <div className="popup_form_element agrement_ineoeu mt-3 pt-1">
+                   <label className='text-black font-size-13px font-weight-500'><input type='checkbox' />  All devices will be required to sign in with new password</label>
+              </div>
+            </div>
+
+            <div className="popup_btns_new flex-wrap cwiewyehkk">
+              <button className="trans_btn">Cancel</button>
+              <button onClick={() => { props.Popup() }}>Save</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  )
+}
+const VerificationPref = (props) => {
+  return (
+    <>
+      <div className="bg_wrapper_popup_new">
+        <div className="popup_box_bpn pb-4">
+          <div className="popup_header pb-0">
+            <div className="p_header_hding">Set your verification preferences</div>
+            <div className="close_pp_btn" onClick={() => { props.Popup() }}>
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#B2B2B2" className="bi bi-x-lg" viewBox="0 0 16 16"><path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"></path></svg>
+            </div>
+          </div>
+          <div className="popup_body_bpn amount_popup_body max_height_popucwui overflow-scroll">
+            <div className='mt-2 pt-1 mb-4'></div>
+
+            <div className='mb-3'>
+              <div className="popup_form_element agrement_ineoeu mt-3 pt-1">
+                <div className="headiwuewopiu">If we need to confirm it's you, which should we try first?</div>
+                <label className='text-black font-size-13px font-weight-500 mt-3 pb-1 radiolablepopo'><input type='radio' name="g"/>  Authenticator app code</label>
+                <label className='text-black font-size-13px font-weight-500 mt-2 pb-1 radiolablepopo'><input type='radio' name="g"/>  Mobile app prompt</label>
+                <label className='text-black font-size-13px font-weight-500 mt-2 pb-1 radiolablepopo'><input type='radio' name="g"/>  Text message</label>
+              </div>
+            </div>
+            <div className='mb-4'>
+              <div className="popup_form_element agrement_ineoeu mt-3 pt-1">
+                <div className="headiwuewopiu">When should we confirm?</div>
+                <label className='text-black font-size-13px font-weight-500 mt-3 pb-1 radiolablepopo'><input type='radio' name="g"/> When my login or activity seems risky</label>
+                <label className='text-black font-size-13px font-weight-500 mt-2 pb-1 radiolablepopo'><input type='radio' name="g"/>  At every login and when my login or activity seems risky</label>
+              </div>
+            </div>
+
+            <div className="popup_btns_new flex-wrap cwiewyehkk">
+              <button className="trans_btn">Cancel</button>
+              <button onClick={() => { props.Popup() }}>Save</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  )
+}
+const LanguageEdit = (props) => {
+  const options1 = [{
+    name: 'Fluent', label: 'Fluent'
+  }]
+  return (
+    <>
+      <div className="bg_wrapper_popup_new">
+        <div className="popup_box_bpn pb-4">
+          <div className="popup_header pb-0">
+            <div className="p_header_hding">Edit languages</div>
+            <div className="close_pp_btn" onClick={() => { props.Popup() }}>
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#B2B2B2" className="bi bi-x-lg" viewBox="0 0 16 16"><path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"></path></svg>
+            </div>
+          </div>
+          <div className="popup_body_bpn amount_popup_body max_height_popucwui overflow-scroll">
+            <div className='mt-3 pt-1 mb-3'></div>
+
+            <div className='mb-3 '>
+              <Row>
+                <Col md={6}>
+                  <div className="popup_form_element">
+                    <label className='text-black font-size-13px font-weight-500'>Language</label>
+                    <input type="text" className='font-size-13px' placeholder="English" />
+                  </div>
+                </Col>
+                <Col md={6}>
+                  <div className="popup_form_element">
+                    <label className='text-black font-size-13px font-weight-500'>Proficiency level</label>
+                    <Select
+                      className='font-size-13px'
+                      placeholder="Fluent"
+                      options={options1}
+                    />
+                  </div>
+                </Col>
+                <Col md={6}>
+                  <div className="popup_form_element">
+                    <label className='text-black font-size-13px font-weight-500'>Language</label>
+                    <input type="text" className='font-size-13px' placeholder="English" />
+                  </div>
+                </Col>
+                <Col md={6}>
+                  <div className="popup_form_element">
+                    <label className='text-black font-size-13px font-weight-500'>Proficiency level</label>
+                    <Select
+                      className='font-size-13px'
+                      placeholder="Fluent"
+                      options={options1}
+                    />
+                  </div>
+                </Col>
+              </Row>
+            </div>
+
+            <div className="popup_btns_new flex-wrap cwiewyehkk">
+              <button className="trans_btn">Cancel</button>
+              <button onClick={() => { props.Popup() }}>Save</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  )
+}
+const AddEduc = (props) => {
+  const options1 = [{
+    name: 'Fluent', label: 'Fluent'
+  }]
+  return (
+    <>
+      <div className="bg_wrapper_popup_new">
+        <div className="popup_box_bpn pb-4">
+          <div className="popup_header pb-0">
+            <div className="p_header_hding">Add Education</div>
+            <div className="close_pp_btn" onClick={() => { props.Popup() }}>
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#B2B2B2" className="bi bi-x-lg" viewBox="0 0 16 16"><path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"></path></svg>
+            </div>
+          </div>
+          <div className="popup_body_bpn amount_popup_body max_height_popucwui overflow-scroll">
+            <div className='mt-3 pt-1 mb-3'></div>
+
+            <div className='mb-3 '>
+              <Row>
+                <Col md={12}>
+                  <div className="popup_form_element">
+                    <label className='text-black font-size-13px font-weight-500'>School</label>
+                    <input type="text" className='font-size-13px' placeholder="Ex: Northwestern University" />
+                  </div>
+                </Col>
+                <Col md={6}>
+                  <div className="popup_form_element">
+                    <label className='text-black font-size-13px font-weight-500'>Dates Attended (Optional)</label>
+                    <Select
+                      className='font-size-13px'
+                      placeholder="From"
+                      options={options1}
+                    />
+                  </div>
+                </Col>
+                <Col md={6}>
+                  <div className="popup_form_element">
+                    <label className='text-black font-size-13px font-weight-500'>Proficiency level</label>
+                    <Select
+                      className='font-size-13px'
+                      placeholder="Fluent"
+                      options={options1}
+                    />
+                  </div>
+                </Col>
+                <Col md={12}>
+                  <div className="popup_form_element">
+                    <label className='text-black font-size-13px font-weight-500'>Degree (Optional)</label>
+                    <Select
+                      className='font-size-13px'
+                      placeholder="Degree (Optional)"
+                      options={options1}
+                    />
+                  </div>
+                </Col>
+                <Col md={12}>
+                  <div className="popup_form_element">
+                    <label className='text-black font-size-13px font-weight-500'>Area of Study (Optional)</label>
+                    <input type="text" className='font-size-13px' placeholder="Ex: Computer Science" />
+                  </div>
+                </Col>
+                <Col md={12}>
+                  <div className="popup_form_element">
+                    <label className='text-black font-size-13px font-weight-500'>Description (Optional)</label>
+                    <textarea className='font-size-13px' placeholder="Enter Here"></textarea>
+                  </div>
+                </Col>
+              </Row>
+            </div>
+
+            <div className="popup_btns_new flex-wrap cwiewyehkk">
+              <button className="trans_btn">Cancel</button>
+              <button onClick={() => { props.Popup() }}>Save</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  )
+}
+const AddCert = (props) => {
+  const options1 = [{
+    name: 'Adobe Certified Expert', label: 'Adobe Certified Expert'
+  }]
+  return (
+    <>
+      <div className="bg_wrapper_popup_new">
+        <div className="popup_box_bpn pb-4">
+          <div className="popup_header pb-0">
+            <div className="p_header_hding">Add Certification</div>
+            <div className="close_pp_btn" onClick={() => { props.Popup() }}>
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#B2B2B2" className="bi bi-x-lg" viewBox="0 0 16 16"><path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"></path></svg>
+            </div>
+          </div>
+          <div className="popup_body_bpn amount_popup_body max_height_popucwui overflow-scroll">
+            <div className="mt-4">
+              <div className="popup_form_element">
+                <label className='text-black font-size-13px font-weight-500'>Proficiency level</label>
+                <Select
+                  className='font-size-13px'
+                  placeholder="Select Certificate Type"
+                  options={options1}
+                />
+              </div>
+            </div>
+            <div className='mt-3 pt-1 mb-3'>
+              <div className='pouphed_skll'>Adobe Certified Expert</div>
+              <div className='popuphead_smparcr'>If you have earned an <b>official certification </b>from <b>Adobe</b>, paste the verification code displayed on your certificate into the box below. We will confirm your certification and it will appear on your profile within 5 days of submission.</div>
+            </div>
+
+            <div className='mb-3 '>
+              <Row>
+                <Col md={12}>
+                  <div className="popup_form_element">
+                    <input type="text" className='font-size-13px' placeholder="Enter Here" />
+                  </div>
+                </Col>
+              </Row>
+            </div>
+
+            <div className="popup_btns_new flex-wrap cwiewyehkk">
+              <button className="trans_btn">Cancel</button>
+              <button onClick={() => { props.Popup() }}>Save</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  )
+}
+const ReqTestimonial = (props) => {
+  return (
+    <>
+      <div className="bg_wrapper_popup_new">
+        <div className="popup_box_bpn pb-4">
+          <div className="popup_header pb-0">
+            <div className="p_header_hding">Request A Client Testimonial</div>
+            <div className="close_pp_btn" onClick={() => { props.Popup() }}>
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#B2B2B2" className="bi bi-x-lg" viewBox="0 0 16 16"><path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"></path></svg>
+            </div>
+          </div>
+          <div className="popup_body_bpn amount_popup_body max_height_popucwui overflow-scroll">
+            <div className='mt-3 pt-1 mb-3'>
+              <div className='popuphead_smparcr'>Add your client’s contact details. Don’t worry—we’ll only display their first name and last initial.</div>
+            </div>
+
+            <div className='mb-3 '>
+              <Row>
+                <Col md={12}>
+                  <div className="popup_form_element">
+                    <label className='text-black font-size-13px font-weight-500'>First Name</label>
+                    <input type="text" className='font-size-13px' placeholder="Enter First Name" />
+                  </div>
+                </Col>
+                <Col md={6}>
+                  <div className="popup_form_element">
+                    <label className='text-black font-size-13px font-weight-500'>Last name </label>
+                    <input type="text" className='font-size-13px' placeholder="Enter Last name " />
+                  </div>
+                </Col>
+                <Col md={6}>
+                  <div className="popup_form_element">
+                    <label className='text-black font-size-13px font-weight-500'>Business email address</label>
+                    <input type="text" className='font-size-13px' placeholder="" />
+                  </div>
+                </Col>
+                <Col md={12}>
+                  <div className="popup_form_element">
+                    <label className='text-black font-size-13px font-weight-500'>Client's LinkedIn Profile</label>
+                    <input type="text" className='font-size-13px' placeholder="http://" />
+                  </div>
+                </Col>
+                <Col md={6}>
+                  <div className="popup_form_element">
+                    <label className='text-black font-size-13px font-weight-500'>Client's title (Optional)</label>
+                    <input type="text" className='font-size-13px' placeholder=" Degree (Optional)" />
+                  </div>
+                </Col>
+                <Col md={6}>
+                  <div className="popup_form_element">
+                    <label className='text-black font-size-13px font-weight-500'>Project Type (Optional)</label>
+                    <input type="text" className='font-size-13px' placeholder=" Degree (Optional)" />
+                  </div>
+                </Col>
+                <Col md={12}>
+                  <div className="popup_form_element">
+                    <label className='text-black font-size-13px font-weight-500'>Description (Optional)</label>
+                    <textarea className='font-size-13px' placeholder="Enter Here"></textarea>
+                  </div>
+                </Col>
+              </Row>
+            </div>
+
+            <div className="popup_btns_new flex-wrap cwiewyehkk">
+              <button onClick={() => { props.Popup() }}>REQUEST TESTIMONIAL</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  )
+}
+const Overview = (props) => {
+  return (
+    <>
+      <div className="bg_wrapper_popup_new">
+        <div className="popup_box_bpn pb-4">
+          <div className="popup_header pb-0">
+            <div className="p_header_hding">Overview</div>
+            <div className="close_pp_btn" onClick={() => { props.Popup() }}>
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#B2B2B2" className="bi bi-x-lg" viewBox="0 0 16 16"><path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"></path></svg>
+            </div>
+          </div>
+          <div className="popup_body_bpn amount_popup_body max_height_popucwui overflow-scroll">
+            <div className='mt-4 pt-1'>
+              <div className='popuphead_smparcr'>Use this space to show clients you have the skills and experience they're looking for.</div>
+              <ul className='popuphead_smparcr ulist_overpopup mt-1'>
+                <li>Describe your strengths and skills</li>
+                <li>Highlight projects, accomplishments and education</li>
+                <li>Keep it short and make sure it's error-free</li>
+              </ul>
+            </div>
+            <div className='gbxewueyuien'>
+              theDesignerz offers professional and high-quality graphic design services. We have been
+              designing for companies worldwide since 2018. We are a customer service oriented
+              firm, and we will work with you until you are completely satisfied with the outcome of
+              your design projects. We are the most experienced team of designers working on
+              Freelancer since 2017
+            </div>
+            <div className='maxlabel_atcxt mt-2 text-right'>4120 characters left</div>
+            <div className="popup_btns_new flex-wrap cwiewyehkk">
+              <button className="trans_btn">Cancel</button>
+              <button onClick={() => { props.Popup() }}>Save</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  )
+}
 
 const UnifyFreelancer = () => {
+  const [popup, Setpopup] = useState()
   return (
     <div className="mt-5 mb-5">
       <Container>
@@ -241,7 +858,7 @@ const UnifyFreelancer = () => {
               <div className="myskill_prof_node">
                 <div className="myskill_hdingn">
                   Video introduction
-                  <button>
+                  <button onClick={() => { Setpopup(<VideoIntro Popup={Setpopup} />) }}>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="17"
@@ -286,7 +903,7 @@ const UnifyFreelancer = () => {
                 <div className="myskill_hdingn">
                   Languages
                   <div className="d-flex justify-content-start">
-                    <button>
+                    <button onClick={() => { Setpopup(<LanguageEdit Popup={Setpopup} />) }}>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="17"
@@ -343,7 +960,7 @@ const UnifyFreelancer = () => {
                 <div className="myskill_hdingn">
                   Education
                   <div className="d-flex justify-content-start">
-                    <button>
+                    <button onClick={() => { Setpopup(<AddEduc Popup={Setpopup} />) }}>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="17"
@@ -429,7 +1046,7 @@ const UnifyFreelancer = () => {
               <div className="bpbck_txt d-flex mt-0">
                 <div className="bpck_head font-weight-500 line-height-30">Senior UI/UX, Website Designer And Graphic <br /> Designer</div>
                 <div className="myskill_hdingn">
-                  <button>
+                  <button onClick={() => { Setpopup(<EditTitle Popup={Setpopup} />) }}>
                     <svg xmlns="http://www.w3.org/2000/svg" width="15.709" height="15.715" viewBox="0 0 15.709 15.715">
                       <path id="_8665767_pen_icon" data-name="8665767_pen_icon" d="M15.327,2.274,13.482.429a1.475,1.475,0,0,0-2.085,0L9.662,2.165l3.9,3.929L15.3,4.358A1.447,1.447,0,0,0,15.327,2.274Zm-6.356.585L1,10.83a.491.491,0,0,0-.134.251L.057,15.123a.491.491,0,0,0,.576.58l4.042-.808a.491.491,0,0,0,.251-.134L12.9,6.789Z" transform="translate(-0.047 0.003)" fill="#6d2ef1" />
                     </svg>
@@ -441,7 +1058,7 @@ const UnifyFreelancer = () => {
                   the Designerz offers professional and high-quality graphic design services. We have been designing for companies worldwide since 2018. We are a customer service oriented firm, and we will work with you until you are completely satisfied with the outcome of your design projects. We are the most experienced team of designers working on Freelancer since 2017
                 </div>
                 <div className="myskill_hdingn">
-                  <button>
+                  <button onClick={() => { Setpopup(<Overview Popup={Setpopup} />) }}>
                     <svg xmlns="http://www.w3.org/2000/svg" width="15.709" height="15.715" viewBox="0 0 15.709 15.715">
                       <path id="_8665767_pen_icon" data-name="8665767_pen_icon" d="M15.327,2.274,13.482.429a1.475,1.475,0,0,0-2.085,0L9.662,2.165l3.9,3.929L15.3,4.358A1.447,1.447,0,0,0,15.327,2.274Zm-6.356.585L1,10.83a.491.491,0,0,0-.134.251L.057,15.123a.491.491,0,0,0,.576.58l4.042-.808a.491.491,0,0,0,.251-.134L12.9,6.789Z" transform="translate(-0.047 0.003)" fill="#6d2ef1" />
                     </svg>
@@ -501,7 +1118,7 @@ const UnifyFreelancer = () => {
               <div className="bpbck_txt d-flex mt-0">
                 <div className="bpck_head">Skills</div>
                 <div className="myskill_hdingn">
-                  <button>
+                  <button onClick={() => { Setpopup(<EditSkill Popup={Setpopup} />) }}>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="17"
@@ -532,7 +1149,7 @@ const UnifyFreelancer = () => {
             </div>
             <div className="box-profile-bck mb-0">
               <div className="d-flex justify-content-end myskill_hdingn">
-                <button>
+                <button onClick={() => { Setpopup(<Overview Popup={Setpopup} />) }}>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="17"
@@ -577,7 +1194,7 @@ const UnifyFreelancer = () => {
             </div>
             <div className="box-profile-bck">
               <div className="d-flex justify-content-end myskill_hdingn">
-                <button>
+                <button onClick={() => { Setpopup(<ReqTestimonial Popup={Setpopup} />) }}>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="17"
@@ -612,7 +1229,7 @@ const UnifyFreelancer = () => {
             </div>
             <div className="box-profile-bck">
               <div className="d-flex justify-content-end myskill_hdingn">
-                <button>
+                <button onClick={() => { Setpopup(<AddCert Popup={Setpopup} />) }}>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="17"
@@ -651,7 +1268,7 @@ const UnifyFreelancer = () => {
               <Col md={6}>
                 <div className="box-profile-bck minei400">
                   <div className="d-flex justify-content-end myskill_hdingn">
-                    <button>
+                    <button onClick={() => { Setpopup(<AddEmployment Popup={Setpopup} />) }}>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="17"
@@ -694,7 +1311,7 @@ const UnifyFreelancer = () => {
               <Col md={6}>
                 <div className="box-profile-bck minei400">
                   <div className="d-flex justify-content-end myskill_hdingn">
-                    <button>
+                    <button onClick={() => { Setpopup(<AddExperience Popup={Setpopup} />) }}>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="17"
@@ -719,7 +1336,7 @@ const UnifyFreelancer = () => {
                       <img src="/assets/files.png" alt="" />
                     </div>
                     <div className="bpck_sm_txt_a font-weight-500">
-                      <Link to="">Add an experience</Link>
+                      <Link to="" onClick={() => { Setpopup(<AddExperience Popup={Setpopup} />) }}>Add an experience</Link>
                     </div>
                   </div>
                 </div>
@@ -728,6 +1345,7 @@ const UnifyFreelancer = () => {
           </Col>
         </Row>
       </Container>
+      {popup}
     </div>
   );
 };

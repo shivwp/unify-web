@@ -2,8 +2,79 @@ import Container from 'react-bootstrap/Container';
 import { Row, Col } from 'react-bootstrap';
 import SideNav from './site_nav';
 import Title from '../../../components/title'
+import CreditCardInput from 'react-credit-card-input';
+import { useState } from 'react';
 
+const AddPayment = (props) => {
+    return (
+      <>
+        <div className="bg_wrapper_popup_new">
+          <div className="popup_box_bpn paypopradouy pb-4">
+            <div className="popup_header pb-0">
+              <div className="p_header_hding addpay_header_hdin">Add Payment Method</div>
+              <div className="close_pp_btn" onClick={() => { props.Popup() }}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#B2B2B2" className="bi bi-x-lg" viewBox="0 0 16 16"><path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"></path></svg>
+              </div>
+            </div>
+            <div className="popup_body_bpn amount_popup_body max_height_popucwui overflow-scroll">
+  
+              <div className='mb-4 '>
+                <Row>
+                  <Col md={12}>
+                      <div className="popup_form_element payformelent">
+                        <label className='text-black font-size-13px font-weight-500'>Card Number</label>
+<CreditCardInput
+  cardNumberInputProps={{  }}
+  fieldClassName="input tytyrterwqewyi"
+  cardExpiryInputRenderer={({ handleCardExpiryChange, props }) => (<></>)}
+  cardCVCInputRenderer={({ handleCardCVCChange, props }) => (<></>)}
+/>
+                      </div>
+                  </Col>
+                  <Col md={12}>
+                      <div className="popup_form_element payformelent">
+                        <label className='text-black font-size-13px font-weight-500'>First Name</label>
+                        <input type="text" className='font-size-13px' placeholder="Rizwan" />
+                      </div>
+                  </Col>
+                  <Col md={12}>
+                      <div className="popup_form_element payformelent">
+                        <label className='text-black font-size-13px font-weight-500'>Last Name</label>
+                        <input type="text" className='font-size-13px' placeholder="Qureshi" />
+                      </div>
+                  </Col>
+                  <Col md={6}>
+                      <div className="popup_form_element payformelent">
+                        <label className='text-black font-size-13px font-weight-500'>Expires on</label>
+                        <input type="number" className='font-size-13px' placeholder="MM" />
+                      </div>
+                  </Col>
+                  <Col md={6}>
+                      <div className="popup_form_element payformelent">
+                        <label className='text-black font-size-13px font-weight-500'></label>
+                        <input type="text" className='font-size-13px' placeholder="YY" />
+                      </div>
+                  </Col>
+                  <Col md={12}>
+                      <div className="popup_form_element payformelent">
+                        <label className='text-black font-size-13px font-weight-500'>Security Code</label>
+                        <input type="text" className='font-size-13px' placeholder="**********" />
+                      </div>
+                  </Col>
+                </Row>
+              </div>
+  
+              <div className="popup_btns_new flex-wrap getpaidsve_btn">
+                <button onClick={() => { props.Popup() }}>Save</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </>
+    )
+  }
 const Screen = () => {
+    const [popup,SetPopup] = useState()
     Title(' | Get Paid')
     return (
         <div className='bg-f2f8ff min_pad_m'>
@@ -30,7 +101,7 @@ const Screen = () => {
                                         <div className='setting_b_head_s'>Payment Methods</div>
                                     </div>
                                     <div className="btn_foot_sec no-border mt-0 mb-0 p-0 fo_btn_c next_b_btn_c">
-                                        <button className="bg-transparent h-color-b">Add payment method</button>
+                                        <button className="bg-transparent h-color-b" onClick={()=>{SetPopup(<AddPayment Popup={SetPopup}/>)}}>Add payment method</button>
                                     </div>
                                 </div>
                                 <Row>
@@ -48,6 +119,7 @@ const Screen = () => {
                     </Col>
                 </Row>
             </Container>
+        {popup}
         </div>
     );
 }

@@ -1678,3 +1678,121 @@
 .max_height_popucwui{
     max-height: 460px;
 }
+.pouphed_skll{
+    font-family:'poppins';
+    font-size: 18px;
+    color: #000;
+    font-weight:600;
+}
+.popuphead_smparcr{
+    font-family:'poppins';
+    font-size: 13px;
+    color: #4D4D4D;
+    font-weight:400;
+}
+.catbox_rd_ofive{
+    border:#707070 solid 1px;
+    padding:10px 15px;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+.catbox_rd_ofive .skill_bxr_gry{
+    padding-top: 8px;
+    padding-bottom: 8px;
+    font-size: 13px;
+    padding-left: 30px;
+    padding-right: 30px;
+    display: flex;
+    align-items: center;
+    margin-left: 0;
+    margin-right: 5px;
+}
+.font-size-13px{
+    font-size: 13px !important;
+}
+.ulist_overpopup{
+    margin-left: -1rem !important;
+}
+.ulist_overpopup li{
+    padding: 4px 0px;
+}
+.gbxewueyuien{
+    border:#E8E7E7 solid 1px;
+    padding: 15px 15px !important;     
+    font-family: 'poppins';
+    font-size: 14px;
+    color: #4D4D4D;
+    font-weight: 400;
+    padding-bottom: 4px;
+}
+.catbox_rd_ofive .skill_bxr_gry:hover button{
+    color: #fff;
+}
+.maxlabel_atcxt{
+    font-family:'poppins';
+    font-size: 13px;
+    color: #9C9A9F;
+    font-weight:400;
+}
+.catbox_rd_ofive .skill_bxr_gry button{
+    background-color: transparent;
+    border:none;
+    padding-left: 7px;
+    outline:none;
+}
+.agrement_ineoeu label{
+    display: flex;
+    align-items: center;
+}
+.agrement_ineoeu input{
+    margin-right: 8px;
+    height: 15px;
+    width: 15px;
+}
+.headiwuewopiu{
+    font-family: 'poppins';
+    font-size: 16px;
+    color: #4D4D4D;
+    font-weight: 500;
+}
+.radiolablepopo{
+    color: #4D4D4D !important;
+    font-size: 14px !important;
+    line-height: 18px !important;
+}
+.popup_form_element label{
+    min-height: 30px;
+}
+.getpaidsve_btn{
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+.getpaidsve_btn button{
+    width: 100%;
+    text-transform: capitalize;
+    font-weight: 600;
+    margin-right: 0 !important;
+    padding: 10px 45px;
+}
+.payformelent input{
+    padding: 9px 20px;
+    border-radius: 5px !important;
+}
+.addpay_header_hdin{
+    color: #271943;
+    font: normal normal 600 21px/35px Poppins !important;
+}
+.paypopradouy{
+    border-radius: 5px;
+}
+.tytyrterwqewyi .hEfsnR{
+    border: 1px solid #E8E7E7;
+    padding: 6px 20px;
+}
+.tytyrterwqewyi .jQwVxF .credit-card-input{
+    font-size: 13px !important;
+    padding-left: 0 !important;
+}
