@@ -102,7 +102,7 @@ const AddCompAddress = () => {
                   <span>$ 0.90</span>
                 </div>
               </div>
-              <div className="find_and_hire_button">
+              <div className="find_and_hire_button add_Addr">
                 <button type="button" className="find_contact" style={{padding: "10px 20px", fontSize: "13px", fontWeight: 600}}>
                   Find Contact & Hire
                 </button>

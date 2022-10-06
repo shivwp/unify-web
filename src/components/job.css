@@ -2783,16 +2783,26 @@
 ._col_right .find_and_hire_button {
   display: flex;
   justify-content: center;
+  
 }
 ._col_right .find_and_hire_button button {
   background-color: #6d2ef1;
   color: white;
-}
-._col_right .find_contact {
-  background-color: #f8f8f8;
   margin: 20px auto;
   padding: 15px 20px;
-  color: rgb(181, 181, 181);
+  border: 1px solid #6d2ef1;
+  border-radius: 30px;
+  font-family: "Poppins-Bold", "Poppins";
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 20px;
+  -webkit-border-radius: 30px;
+}
+._col_right .Edit_Addr button {
+  background-color: #6d2ef1;
+  color: white;
+  margin: 20px auto;
+  padding: 15px 20px;
   border: none;
   border-radius: 30px;
   font-family: "Poppins-Bold", "Poppins";
@@ -2800,6 +2810,39 @@
   font-size: 15px;
   line-height: 20px;
   -webkit-border-radius: 30px;
+}
+._col_right .add_Addr button {
+  background-color: #F8F8F8;
+  color: #B9BDC1;
+  margin: 20px auto;
+  padding: 15px 20px;
+  border: none;
+  border-radius: 30px;
+  font-family: "Poppins-Bold", "Poppins";
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 20px;
+  -webkit-border-radius: 30px;
+}
+
+
+/* ._col_right .find_and_hire_button button:hover {
+  background-color: #f8f8f8;
+  margin: 20px auto;
+  padding: 15px 20px;
+  color: rgb(181, 181, 181);
+  border: 1px solid #6d2ef1;
+  border-radius: 30px;
+  font-family: "Poppins-Bold", "Poppins";
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 20px;
+  -webkit-border-radius: 30px;
+} */
+
+
+._col_right .find_contact {
+ 
 }
 
 /* Edit company Address */
