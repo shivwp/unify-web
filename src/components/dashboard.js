@@ -156,7 +156,7 @@ const Screen = () => {
                 </svg>
               </button>
               {menuBarDraft && (
-                <div className="menu_bar">
+                <div className="menu_bar" id="menu_bar">
                   <div className="navabr_t_li">
                     <Link to="/dashboard/edit-draft">Edit Draft</Link>
                   </div>
@@ -166,7 +166,7 @@ const Screen = () => {
                   >
                     Remove Draft
                   </div>
-                  <span className="menu_btn_arrow"> &#62; </span>
+                  <span className="menu_btn_arrow" id="menu_btn_arrow"> &#62; </span>
                 </div>
               )}
             </div>
