@@ -238,8 +238,6 @@
   background-color: #fff !important;
 }
 
-
-
 .btn_job_back button {
   background-color: #fff;
   padding: 12px 25px;
@@ -900,6 +898,17 @@
     width: 80vw !important;
   }
 }
+@media screen and (max-width: 426px) {
+  .Filter_Popup {
+    position: absolute;
+    background-color: white;
+    border: 1px solid rgb(224, 224, 224);
+    width: 100% !important;
+    padding: 10px 20px;
+    top: 0px;
+    right: 0px;
+  }
+}
 
 .popup_up_arrow {
   position: absolute;
@@ -1337,7 +1346,15 @@
 .filter_ul_m li input {
   margin: 0px 8px 0px 0px;
 }
+.Filter_Popup .inpu_date select {
+  min-width: 234px !important;
+}
 
+@media screen and (max-width: 320px) {
+  .Filter_Popup .inpu_date select {
+    min-width: 182px !important;
+  }
+}
 .sort_by_pa {
   font-family: "Poppins-Bold", "Poppins";
   font-size: 13px;
@@ -2783,7 +2800,6 @@
 ._col_right .find_and_hire_button {
   display: flex;
   justify-content: center;
-  
 }
 ._col_right .find_and_hire_button button {
   background-color: #6d2ef1;
@@ -2812,8 +2828,8 @@
   -webkit-border-radius: 30px;
 }
 ._col_right .add_Addr button {
-  background-color: #F8F8F8;
-  color: #B9BDC1;
+  background-color: #f8f8f8;
+  color: #b9bdc1;
   margin: 20px auto;
   padding: 15px 20px;
   border: none;
@@ -2824,7 +2840,6 @@
   line-height: 20px;
   -webkit-border-radius: 30px;
 }
-
 
 /* ._col_right .find_and_hire_button button:hover {
   background-color: #f8f8f8;
@@ -2840,9 +2855,7 @@
   -webkit-border-radius: 30px;
 } */
 
-
 ._col_right .find_contact {
- 
 }
 
 /* Edit company Address */
@@ -2906,3 +2919,4 @@
   font-size: 12px;
   color: #a4a3a3;
 }
+
