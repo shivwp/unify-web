@@ -3647,6 +3647,7 @@ body {
 
 .next_b_btn_c button {
   min-width: 170px;
+  margin: 5px 5px 5px 0;
 }
 
 .active_btn_blue {

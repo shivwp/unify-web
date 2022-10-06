@@ -6,8 +6,8 @@ import { useState } from "react";
 
 import RemovePostingPopup from "../popups/RemovePostingPopup";
 import RemoveDraftPopup from "../popups/RemoveDraftPopup";
-
 const Screen = () => {
+
   const [menuBarPosting, setMenuBarPosting] = useState(false);
   const [menuBarDraft, setMenuBarDraft] = useState(false);
 
@@ -22,9 +22,11 @@ const Screen = () => {
 
   const openMenuBarPosting = () => {
     setMenuBarPosting(!menuBarPosting);
+    setMenuBarDraft(!menuBarDraft);
   };
   const openMenuBarDraft = () => {
     setMenuBarDraft(!menuBarDraft);
+    setMenuBarPosting(!menuBarPosting);
   };
 
   return (
@@ -104,7 +106,7 @@ const Screen = () => {
               </button>
 
               {menuBarPosting && (
-                <div className="menu_bar">
+                <div className="menu_bar" id="menu_bar">
                   <div className="navabr_t_li">
                     <Link to="/dashboard/edit-posting">Edit Posting</Link>
                   </div>
@@ -114,10 +116,13 @@ const Screen = () => {
                   >
                     Remove Posting
                   </div>
-                  <div className="navabr_t_li">View Proposals</div>
-                  <div className="navabr_t_li">View Job Post</div>
-                  <div className="navabr_t_li">Reuse Postings</div>
-                  <span className="menu_btn_arrow"> &#62; </span>
+                  <div className="navabr_t_li"><Link to="/view-job/review">View Proposals</Link></div>
+                  <div className="navabr_t_li"><Link to="/view-job/view_job">View Job Post</Link></div>
+                  <div className="navabr_t_li"><Link to="/title">Reuse Postings</Link></div>
+                  <span className="menu_btn_arrow" id="menu_btn_arrow">
+                    {" "}
+                    &#62;{" "}
+                  </span>
                 </div>
               )}
             </div>

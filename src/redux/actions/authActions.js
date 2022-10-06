@@ -7,7 +7,7 @@ const config = {
   },
 };
 
-console.log(localStorage.getItem("unify_Token"));
+// console.log(localStorage.getItem("unify_Token"));
 
 export const onLogin = (data, navigate) => (dispatch) => {
   Axios.post("/login", data)
