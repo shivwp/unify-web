@@ -2862,8 +2862,11 @@ body {
   letter-spacing: 0px;
   color: #170048;
   margin: 5px 20px;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
   max-width: 210px;
   width: 100%;
+  min-width: 210px;
 }
 
 .sign_buttons_group .userTypeActive {
