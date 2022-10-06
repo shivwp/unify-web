@@ -73,7 +73,7 @@ const Question = () => {
                         </div>
                     </div>
                     <div className="btn_foot_sec flex-wrap d-flex no-border mt-2">
-                        <Link to="/question1"><div className='fo_btn_c next_b_btn_c'><button>Back</button></div></Link>
+                        <Link to="/question1"><div className='fo_btn_c next_b_btn_c'><button className='mrright-gppnew'>Back</button></div></Link>
                         <Link to="/businesssize"><div className='fo_btn_c next_b_btn_c'><button className="active_btn_blue">Next</button></div></Link>
                     </div>
                 </div>

@@ -188,6 +188,11 @@
     background: #FFFFFF 0% 0% no-repeat padding-box;
     opacity: 1;
     min-height: 200px;
+    max-height: 95vh;
+    overflow-y: scroll;
+}
+.popup_box_bpn::-webkit-scrollbar{
+    display: none;
 }
 
 .popup_header {

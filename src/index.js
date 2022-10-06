@@ -82,6 +82,8 @@ import FreelancerProfile from './freelancer/profile'
 import FreelancerChat from "./freelancer/chat";
 import FreelancerDashboard from './freelancer/dashboard';
 
+import FreelancerSubscription from './freelancer/subscription'
+
 import { Provider } from "react-redux";
 import store from "./redux/store";
 import EditPosting from "./components/EditPosting";
@@ -252,6 +254,7 @@ root.render(
         <Route path="/freelancer/chat" element={<FreelancerChat />} />
         <Route path="/freelancer/profile" element={<FreelancerProfile />} />
         <Route path="/freelancer/dashboard" element={<FreelancerDashboard />} />
+        <Route path="/freelancer/subscription" element={<FreelancerSubscription />} />
       </Routes>
     </BrowserRouter>
   </Provider>

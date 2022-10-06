@@ -2,6 +2,7 @@ import Container from 'react-bootstrap/Container';
 import { Row, Col } from 'react-bootstrap';
 import SideNav from './site_nav';
 import Title from '../../../components/title'
+import {Link} from 'react-router-dom'
 
 const Screen = () => {
     Title(' | Billing & Payments')
@@ -42,6 +43,17 @@ const Screen = () => {
                                     
                                     <div className="btn_foot_sec no-border mt-0 mb-0 p-0 fo_btn_c next_b_btn_c">
                                         <button className="bg-transparent h-color-b">Pay With PayPal</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="r-box_setting">
+                                <div className="d-flex justify-content-between align-items-center pt-1 pb-3 flex-wrap">
+                                    <div>
+                                        <div className='setting_b_head_s'>Subscriptions</div>
+                                        <div className='sett_y_b'>You don't have any subscription plan</div>
+                                    </div>
+                                    <div className="btn_foot_sec no-border mt-0 mb-0 p-0 fo_btn_c next_b_btn_c">
+                                        <Link to='/freelancer/subscription'><button className="bg-transparent h-color-b">Add Subscription</button></Link>
                                     </div>
                                 </div>
                             </div>

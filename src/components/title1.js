@@ -43,7 +43,7 @@ const TitleBody = () => {
                                 </div>
                             </div>
                             <div className="btn_foot_sec flex-wrap d-flex"> 
-                                <div className='fo_btn_c next_b_btn_c'><Link to="/title"><button>Back</button></Link></div>
+                                <div className='fo_btn_c next_b_btn_c'><Link to="/title"><button className='mrright-gppnew'>Back</button></Link></div>
                                 <div className='fo_btn_c next_b_btn_c'><Link to="/skills"><button className="active_btn_blue">Next</button></Link></div>
                             </div>
                         </div>

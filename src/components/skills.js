@@ -193,7 +193,7 @@ const Skill = () => {
                             </div>
                             <div className="see_cat_link">Change your skill category</div>
                             <div className="btn_foot_sec no-border flex-wrap d-flex">
-                                <div className='fo_btn_c next_b_btn_c'><Link to="/title14"><button>Back</button></Link></div>
+                                <div className='fo_btn_c next_b_btn_c'><Link to="/title14"><button className='mrright-gppnew'>Back</button></Link></div>
                                 <div className='fo_btn_c next_b_btn_c'><Link to="/scope"><button className="active_btn_blue">Next</button></Link></div>
                             </div>
                         </div>

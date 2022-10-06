@@ -1449,7 +1449,14 @@
         width: 250px;
     }
 }
-@media only screen and (max-width: 425px) {
+@media only screen and (max-width: 460px) {
+    .mobfont-600-wei{
+        font-weight: 600 !important;
+    }
+    .nopadmob-newi{
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
 .fb_btns_s_pro button {
     margin-top: 7px;   
 }
@@ -1480,6 +1487,9 @@
 @media only screen and (min-width: 1024px) and (max-width:1349px){
     .des_para_dboadr , .rign_nem{
         font-size: 13px;
+    }
+    .lineheight_142{
+        line-height: 20px;
     }
     .dcard_htext{
         font-size: 16px;
@@ -1788,13 +1798,18 @@
 .paypopradouy{
     border-radius: 5px;
 }
-.tytyrterwqewyi .hEfsnR{
+.tytyrterwqewyi{
     border: 1px solid #E8E7E7;
-    padding: 6px 20px;
+    padding: 6px 20px !important;
+    overflow: hidden !important;
 }
-.tytyrterwqewyi .jQwVxF .credit-card-input{
+.tytyrterwqewyi label{
+    min-width: -webkit-fill-available;
+}
+.tytyrterwqewyi .credit-card-input{
     font-size: 13px !important;
     padding-left: 0 !important;
+    padding-right: 0 !important;
 }
 .search_skilloiouo{
     color: #9C9A9F;
@@ -1820,3 +1835,9 @@
 .mrright-gppnew{
     margin-right: 10px;
 } 
+.text-blue-theme{
+ color: #6D2EF1;   
+}
+.inppadmore-newppup{
+    padding: 11px 20px !important;
+}

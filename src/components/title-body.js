@@ -24,7 +24,7 @@ const TitleBody = () => {
                                 <li className="point_li">Developer needed  for crating a responsive web site</li>
                             </ul>
                             <div className="btn_foot_sec flex-wrap">
-                                <div className='fo_btn_c next_b_btn_c'><Link to="/gettingstarted"><button>Back</button></Link></div>
+                                <div className='fo_btn_c next_b_btn_c'><Link to="/gettingstarted"><button className='mrright-gppnew'>Back</button></Link></div>
                                 <div className='fo_btn_c next_b_btn_c'><Link to="/title14"><button className="active_btn_blue">Next</button></Link></div>
                             </div>
                         </div>

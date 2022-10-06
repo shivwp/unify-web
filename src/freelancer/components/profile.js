@@ -328,6 +328,7 @@ const AddExperience = (props) => {
                 <input type="text" className="font-size-13px" placeholder=" " />
               </div>
               <div className="popup_form_element">
+
                 <label className="text-black font-size-13px font-weight-500">
                   Description
                 </label>
@@ -336,6 +337,7 @@ const AddExperience = (props) => {
                   placeholder="Enter Here"
                 ></textarea>
               </div>
+
             </div>
 
             <div className="popup_btns_new flex-wrap cwiewyehkk">
@@ -482,6 +484,7 @@ const AddEmployment = (props) => {
         </div>
       </div>
     </>
+
   );
 };
 const ChangePassword = (props) => {
@@ -631,6 +634,7 @@ const VerificationPref = (props) => {
     </>
   );
 };
+
 const LanguageEdit = (props) => {
   const options1 = [
     {
@@ -957,7 +961,7 @@ const ReqTestimonial = (props) => {
 
             <div className="mb-3 ">
               <Row>
-                <Col md={12}>
+                <Col md={6}>
                   <div className="popup_form_element">
                     <label className="text-black font-size-13px font-weight-500">
                       First Name
@@ -974,6 +978,7 @@ const ReqTestimonial = (props) => {
                 </Col>
                 <Col md={6}>
                   <div className="popup_form_element">
+
                     <label className="text-black font-size-13px font-weight-500">
                       Last name{" "}
                     </label>
@@ -985,10 +990,12 @@ const ReqTestimonial = (props) => {
                       onChange={(e) => onInputChange(e)}
                       placeholder="Enter Last name "
                     />
+
                   </div>
                 </Col>
                 <Col md={6}>
                   <div className="popup_form_element">
+
                     <label className="text-black font-size-13px font-weight-500">
                       Business email address
                     </label>
@@ -1000,9 +1007,10 @@ const ReqTestimonial = (props) => {
                       onChange={(e) => onInputChange(e)}
                       placeholder=""
                     />
+
                   </div>
                 </Col>
-                <Col md={12}>
+                <Col md={6}>
                   <div className="popup_form_element">
                     <label className="text-black font-size-13px font-weight-500">
                       Client's LinkedIn Profile
@@ -1065,6 +1073,7 @@ const ReqTestimonial = (props) => {
             </div>
 
             <div className="popup_btns_new flex-wrap cwiewyehkk">
+
               <button
                 onClick={() => {
                   testimonialSubmit();
@@ -1073,6 +1082,7 @@ const ReqTestimonial = (props) => {
               >
                 REQUEST TESTIMONIAL
               </button>
+
             </div>
           </div>
         </div>
@@ -1166,9 +1176,11 @@ const UnifyFreelancer = () => {
                   </div>
                 </div>
                 <div className="han_oad">
+
                   <div className="freelancer_name font-size-20px">
                     Hannah Finn
                   </div>
+
                   <div className="freelancer_work">Website Designer</div>
                   <div className="freelance_map">Victoria, Australia</div>
                   <div className="flex_stars">
