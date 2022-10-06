@@ -30,6 +30,9 @@ const ViewScreen = () => {
     if (screen === "review") {
       changeTab("review");
     }
+    if (screen === "view_job") {
+      changeTab("ViewJob");
+    }
   }, [screen]);
   return (
     <Container>
