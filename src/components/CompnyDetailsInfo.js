@@ -51,16 +51,20 @@ const CompnyDetailsInfo = () => {
               <span>How many people are in your company?</span>
               <div className="emp_radio_inputs">
                 <label htmlFor="radio-1">
-                    <input type="radio" id="radio-1" name="empCount" /><span> It Just me</span>
+                  <input type="radio" id="radio-1" name="empCount" />
+                  <span> It Just me</span>
                 </label>
                 <label htmlFor="radio-2">
-                    <input type="radio" id="radio-2"  name="empCount" /><span> 2-9 employees</span>
+                  <input type="radio" id="radio-2" name="empCount" />
+                  <span> 2-9 employees</span>
                 </label>
                 <label htmlFor="radio-3">
-                    <input type="radio" id="radio-3" name="empCount" /><span> 10-99 employees</span>
+                  <input type="radio" id="radio-3" name="empCount" />
+                  <span> 10-99 employees</span>
                 </label>
                 <label htmlFor="radio-4">
-                    <input type="radio" id="radio-4" name="empCount" /><span> more then 100 employees</span>
+                  <input type="radio" id="radio-4" name="empCount" />
+                  <span> more then 100 employees</span>
                 </label>
               </div>
             </div>

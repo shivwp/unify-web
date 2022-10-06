@@ -297,3 +297,17 @@
 .invite_user_popup .invite_users li p {
   margin: 0 0 0 18px;
 }
+
+
+.invite_user_popup .css-1okebmr-indicatorSeparator {
+  display: none;
+}
+
+.invite_user_popup .custom_css_select div {
+  border: none !important;
+  border-radius: 2px !important;
+}
+.invite_user_popup .custom_css_select {
+  border: #cbcaca solid 1px !important;
+  border-radius: 2px !important;
+}
