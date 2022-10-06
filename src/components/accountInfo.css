@@ -14,6 +14,10 @@
 .account_info .comp_title {
   border-bottom: #e2e0e0 solid 1px;
   margin: 5px 0;
+  font-weight: 700;
+}
+.account_info .comp_title h5 {
+  font-weight: 700;
 }
 .account_info .account_prof {
   display: flex;
@@ -63,11 +67,10 @@
     padding: 8px 15px !important;
     margin-top: 10px;
   }
-  .account_info .acc_form .acc_btn .save_btn{
+  .account_info .acc_form .acc_btn .save_btn {
     margin-left: 10px;
   }
 }
-
 
 .account_info .account_prof .change_prof_btn button {
   background-color: #fff;
@@ -93,7 +96,7 @@
 }
 .account_info .inp_fields > span {
   font-size: 14px;
-  font-weight: 700;
+  font-weight: 600;
   margin: 5px 0;
 }
 .account_info .inp_fields > input {

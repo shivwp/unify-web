@@ -22,11 +22,9 @@ const Screen = () => {
 
   const openMenuBarPosting = () => {
     setMenuBarPosting(!menuBarPosting);
-    setMenuBarDraft(menuBarPosting);
   };
   const openMenuBarDraft = () => {
     setMenuBarDraft(!menuBarDraft);
-    setMenuBarPosting(menuBarDraft);
   };
 
   return (
@@ -106,7 +104,7 @@ const Screen = () => {
               </button>
 
               {menuBarPosting && (
-                <div className="menu_bar" id="menu_bar">
+                <div className="menu_bar" id="menu_bar1">
                   <div className="navabr_t_li">
                     <Link to="/dashboard/edit-posting">Edit Posting</Link>
                   </div>
@@ -119,7 +117,7 @@ const Screen = () => {
                   <div className="navabr_t_li"><Link to="/view-job/review">View Proposals</Link></div>
                   <div className="navabr_t_li"><Link to="/view-job/view_job">View Job Post</Link></div>
                   <div className="navabr_t_li"><Link to="/title">Reuse Postings</Link></div>
-                  <span className="menu_btn_arrow" id="menu_btn_arrow">
+                  <span className="menu_btn_arrow" id="menu_btn_arrow1">
                     {" "}
                     &#62;{" "}
                   </span>
@@ -156,7 +154,7 @@ const Screen = () => {
                 </svg>
               </button>
               {menuBarDraft && (
-                <div className="menu_bar">
+                <div className="menu_bar" id="menu_bar2">
                   <div className="navabr_t_li">
                     <Link to="/dashboard/edit-draft">Edit Draft</Link>
                   </div>
@@ -166,7 +164,7 @@ const Screen = () => {
                   >
                     Remove Draft
                   </div>
-                  <span className="menu_btn_arrow"> &#62; </span>
+                  <span className="menu_btn_arrow" id="menu_btn_arrow2"> &#62; </span>
                 </div>
               )}
             </div>

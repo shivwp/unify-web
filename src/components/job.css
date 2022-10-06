@@ -238,10 +238,13 @@
   background-color: #fff !important;
 }
 
+
+
 .btn_job_back button {
   background-color: #fff;
   padding: 12px 25px;
   color: #6d2ef1;
+  margin-left: 5px;
   min-width: 160px;
   border: #6d2ef1 solid 1px;
   border-radius: 30px;
@@ -2515,8 +2518,8 @@
 }
 @media screen and (max-width: 767px) {
 }
-@media screen and (max-width: 481px) {
-  .menu_btn #menu_bar {
+@media screen and (max-width: 425px) {
+  .menu_btn #menu_bar1 {
     display: flex;
     flex-direction: column;
     position: absolute;
@@ -2529,7 +2532,32 @@
     top: 7px;
     left: 53px;
   }
-  .menu_btn #menu_btn_arrow {
+  .menu_btn #menu_btn_arrow1 {
+    position: absolute;
+    top: -5px;
+    color: #cacaca;
+    font-size: 23px;
+    right: unset;
+    left: -9px;
+    transform: rotate(180deg);
+    font-weight: 100;
+  }
+}
+@media screen and (max-width: 375px) {
+  .menu_btn #menu_bar2 {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    background-color: white;
+    border: 1px solid rgb(217 217 217);
+    align-items: flex-start;
+    padding: 10px 10px;
+    width: 200px;
+    right: unset;
+    top: 7px;
+    left: 53px;
+  }
+  .menu_btn #menu_btn_arrow2 {
     position: absolute;
     top: -5px;
     color: #cacaca;
