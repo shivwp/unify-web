@@ -13,8 +13,18 @@ const EditTeamPopup = ({ open, onCloseModal }) => {
         classNames={{ modal: "edit_team_popup" }}
         center
       >
-        <h5>Edit Team Ankita Kumavat</h5>
+        <h5>Edit Account</h5>
 
+        <div className="team_name">
+          <label>
+            <span style={{fontSize: '14px', fontWeight: 600}}>User ID</span>
+            <input
+              type="text"
+              name="name"
+              placeholder=" "
+            />
+          </label>
+        </div>
         <div className="team_name">
           <label>
             <span style={{fontSize: '14px', fontWeight: 600}}>Name</span>
@@ -22,14 +32,13 @@ const EditTeamPopup = ({ open, onCloseModal }) => {
               type="text"
               name="name"
               placeholder="Ankita Kumavat"
-              disabled
             />
           </label>
         </div>
         <div className="team_name">
           <label>
-            <span style={{fontSize: '14px', fontWeight: 600}}>PO Number (Optional)</span>
-            <input type="text" name="po-no" placeholder="" />
+            <span style={{fontSize: '14px', fontWeight: 600}}>Email</span>
+            <input type="email" name="po-no" placeholder="" />
           </label>
         </div>
 

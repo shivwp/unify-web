@@ -202,7 +202,7 @@ const AddExperience = (props) => {
               </div>
               <div className="popup_form_element">
                     <label className='text-black font-size-13px font-weight-500'>Description</label>
-                    <textarea className='font-size-13px' placeholder="Enter Here"></textarea>
+                    <textarea className='font-size-13px' placeholder="Enter text here..."></textarea>
                   </div>
             </div>
 
@@ -280,94 +280,6 @@ const AddEmployment = (props) => {
                   </div>
                 </Col>
               </Row>
-            </div>
-
-            <div className="popup_btns_new flex-wrap cwiewyehkk">
-              <button className="trans_btn">Cancel</button>
-              <button onClick={() => { props.Popup() }}>Save</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </>
-  )
-}
-const ChangePassword = (props) => {
-  return (
-    <>
-      <div className="bg_wrapper_popup_new">
-        <div className="popup_box_bpn profile_nceqoi_popup pb-4">
-          <div className="popup_header pb-0">
-            <div className="p_header_hding">Change Password</div>
-            <div className="close_pp_btn" onClick={() => { props.Popup() }}>
-            <CloseIcon />
-            </div>
-          </div>
-          <div className="popup_body_bpn amount_popup_body max_height_popucwui overflow-scroll">
-            <div className='mt-2 pt-1 mb-4'></div>
-
-            <div className='mb-4 '>
-              <div className="popup_form_element">
-                <label className='text-black font-size-13px font-weight-500'>Old Password</label>
-                <input type="password" className='font-size-13px' placeholder=" " />
-              </div>
-              <Row className="mt-1">
-                <Col md={6}>
-              <div className="popup_form_element">
-                <label className='text-black font-size-13px font-weight-500'>New password</label>
-                <input type="password" className='font-size-13px' placeholder=" " />
-              </div>
-                </Col>
-                <Col md={6}>
-              <div className="popup_form_element">
-                <label className='text-black font-size-13px font-weight-500'>Confirm New Password</label>
-                <input type="password" className='font-size-13px' placeholder=" " />
-              </div>
-                </Col>
-              </Row>
-              <div className="popup_form_element agrement_ineoeu mt-3 pt-1">
-                   <label className='text-black font-size-13px font-weight-500'><input type='checkbox' />  All devices will be required to sign in with new password</label>
-              </div>
-            </div>
-
-            <div className="popup_btns_new flex-wrap cwiewyehkk">
-              <button className="trans_btn">Cancel</button>
-              <button onClick={() => { props.Popup() }}>Save</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </>
-  )
-}
-const VerificationPref = (props) => {
-  return (
-    <>
-      <div className="bg_wrapper_popup_new">
-        <div className="popup_box_bpn profile_nceqoi_popup pb-4">
-          <div className="popup_header pb-0">
-            <div className="p_header_hding">Set your verification preferences</div>
-            <div className="close_pp_btn" onClick={() => { props.Popup() }}>
-            <CloseIcon />
-            </div>
-          </div>
-          <div className="popup_body_bpn amount_popup_body max_height_popucwui overflow-scroll">
-            <div className='mt-2 pt-1 mb-4'></div>
-
-            <div className='mb-3'>
-              <div className="popup_form_element agrement_ineoeu mt-3 pt-1">
-                <div className="headiwuewopiu">If we need to confirm it's you, which should we try first?</div>
-                <label className='text-black font-size-13px font-weight-500 mt-3 pb-1 radiolablepopo'><input type='radio' name="g"/>  Authenticator app code</label>
-                <label className='text-black font-size-13px font-weight-500 mt-2 pb-1 radiolablepopo'><input type='radio' name="g"/>  Mobile app prompt</label>
-                <label className='text-black font-size-13px font-weight-500 mt-2 pb-1 radiolablepopo'><input type='radio' name="g"/>  Text message</label>
-              </div>
-            </div>
-            <div className='mb-4'>
-              <div className="popup_form_element agrement_ineoeu mt-3 pt-1">
-                <div className="headiwuewopiu">When should we confirm?</div>
-                <label className='text-black font-size-13px font-weight-500 mt-3 pb-1 radiolablepopo'><input type='radio' name="g"/> When my login or activity seems risky</label>
-                <label className='text-black font-size-13px font-weight-500 mt-2 pb-1 radiolablepopo'><input type='radio' name="g"/>  At every login and when my login or activity seems risky</label>
-              </div>
             </div>
 
             <div className="popup_btns_new flex-wrap cwiewyehkk">
@@ -592,7 +504,7 @@ const ReqTestimonial = (props) => {
 
             <div className='mb-3 '>
               <Row>
-                <Col md={12}>
+                <Col md={6}>
                   <div className="popup_form_element">
                     <label className='text-black font-size-13px font-weight-500'>First Name</label>
                     <input type="text" className='font-size-13px' placeholder="Enter First Name" />
@@ -600,17 +512,17 @@ const ReqTestimonial = (props) => {
                 </Col>
                 <Col md={6}>
                   <div className="popup_form_element">
-                    <label className='text-black font-size-13px font-weight-500'>Last name </label>
-                    <input type="text" className='font-size-13px' placeholder="Enter Last name " />
+                    <label className='text-black font-size-13px font-weight-500'>Last Name</label>
+                    <input type="text" className='font-size-13px' placeholder="Enter Last Name" />
                   </div>
                 </Col>
                 <Col md={6}>
                   <div className="popup_form_element">
-                    <label className='text-black font-size-13px font-weight-500'>Business email address</label>
-                    <input type="text" className='font-size-13px' placeholder="" />
+                    <label className='text-black font-size-13px font-weight-500'>Business email address </label>
+                    <input type="text" className='font-size-13px' placeholder=" " />
                   </div>
                 </Col>
-                <Col md={12}>
+                <Col md={6}>
                   <div className="popup_form_element">
                     <label className='text-black font-size-13px font-weight-500'>Client's LinkedIn Profile</label>
                     <input type="text" className='font-size-13px' placeholder="http://" />
@@ -638,7 +550,7 @@ const ReqTestimonial = (props) => {
             </div>
 
             <div className="popup_btns_new flex-wrap cwiewyehkk">
-              <button onClick={() => { props.Popup() }}>REQUEST TESTIMONIAL</button>
+              <button className="mobfont-600-wei nopadmob-newi" onClick={() => { props.Popup() }}>REQUEST TESTIMONIAL</button>
             </div>
           </div>
         </div>
@@ -715,7 +627,7 @@ const UnifyFreelancer = () => {
                   </div>
                 </div>
                 <div className="han_oad">
-                  <div className="freelancer_name font-size-20px">Hannah Finn</div>
+                  <div className="freelancer_name font-size-20px lineheight_142">Hannah Finn</div>
                   <div className="freelancer_work">Website Designer</div>
                   <div className="freelance_map">Victoria, Australia</div>
                   <div className="flex_stars">

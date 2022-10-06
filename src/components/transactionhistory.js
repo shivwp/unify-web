@@ -78,7 +78,7 @@ const Screen = () => {
             <div className="download_lnk_csx">
               <div className="btn_foot_sec p-0 justify-content-center flex-wrap no-border mt-2">
                 <div className="fo_btn_c next_b_btn_c">
-                  <button className="hideen_csv_do_btn">Download CSV</button>
+                  <button className="hideen_csv_do_btn mrright-gppnew">Download CSV</button>
                 </div>
                 <div className="fo_btn_c next_b_btn_c">
                   <button className="hideen_csv_do_btn">
