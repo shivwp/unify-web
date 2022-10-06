@@ -1484,6 +1484,13 @@
 }
 }
 
+@media only screen and (max-width: 500px) {
+.close_pp_btn svg{
+    height: 24px;
+    width: 24px;
+}
+}
+
 @media only screen and (min-width: 1024px) and (max-width:1349px){
     .des_para_dboadr , .rign_nem{
         font-size: 13px;
