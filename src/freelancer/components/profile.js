@@ -1075,6 +1075,7 @@ const ReqTestimonial = (props) => {
             <div className="popup_btns_new flex-wrap cwiewyehkk">
 
               <button
+              className="font-weight-600"
                 onClick={() => {
                   testimonialSubmit();
                   props.Popup();

@@ -17,7 +17,7 @@ const Subscriptionplan = () => {
                         <h1 className="text-center font-fiftie">Subscription plan</h1>
                     </div>
                     <Row className="justify-content-center">
-                        <Col lg={6} className="sub_col_c">
+                        <Col lg={6} className="sub_col_c lg-flex-right-subs">
                             <label>
                                 <div className="subscription_box_r">
                                     <div className="sub_radio new_sub_rad"><input type="radio" name="s"/></div>
@@ -37,7 +37,7 @@ const Subscriptionplan = () => {
                                 </div>
                             </label>
                         </Col>
-                        <Col lg={6} className="sub_col_c">
+                        <Col lg={6} className="sub_col_c lg-flex--subs">
                             <label>
                                 <div className="subscription_box_r">
                                     <div className="sub_radio new_sub_rad"><input type="radio"  name="s"/></div>

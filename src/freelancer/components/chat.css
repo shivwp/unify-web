@@ -1527,6 +1527,13 @@
 
 }
 @media only screen and (min-width: 1024px) {
+    .lg-flex-right-subs{
+        display: flex;
+        justify-content: flex-end;
+    }    
+    .lg-flex--subs{
+        display: flex;
+    }
     .new_hbyh{    
         min-height: 220px !important;
         min-width: 230px !important;
@@ -1686,7 +1693,7 @@
     border-bottom-color: #6D2EF1 !important;
 }
 .max_height_popucwui{
-    max-height: 460px;
+    /* max-height: 460px; */
 }
 .pouphed_skll{
     font-family:'poppins';
@@ -1755,7 +1762,8 @@
 }
 .agrement_ineoeu label{
     display: flex;
-    align-items: center;
+    align-items: flex-start;
+    line-height: 16px;
 }
 .agrement_ineoeu input{
     margin-right: 8px;
@@ -1766,12 +1774,13 @@
     font-family: 'poppins';
     font-size: 16px;
     color: #4D4D4D;
-    font-weight: 500;
+    font-weight: 600;
 }
 .radiolablepopo{
     color: #4D4D4D !important;
     font-size: 14px !important;
     line-height: 18px !important;
+    font-weight: 400 !important;
 }
 .popup_form_element label{
     min-height: 30px;

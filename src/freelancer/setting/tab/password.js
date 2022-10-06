@@ -74,15 +74,15 @@ const ChangePassword = (props) => {
                 <div className="popup_form_element agrement_ineoeu mt-3 pt-1">
                   <div className="headiwuewopiu">If we need to confirm it's you, which should we try first?</div>
                   <label className='text-black font-size-13px font-weight-500 mt-3 pb-1 radiolablepopo'><input type='radio' name="g"/>  Authenticator app code</label>
-                  <label className='text-black font-size-13px font-weight-500 mt-2 pb-1 radiolablepopo'><input type='radio' name="g"/>  Mobile app prompt</label>
-                  <label className='text-black font-size-13px font-weight-500 mt-2 pb-1 radiolablepopo'><input type='radio' name="g"/>  Text message</label>
+                  <label className='text-black font-size-13px font-weight-500 mt-1 pb-1 radiolablepopo'><input type='radio' name="g"/>  Mobile app prompt</label>
+                  <label className='text-black font-size-13px font-weight-500 mt-1 pb-1 radiolablepopo'><input type='radio' name="g"/>  Text message</label>
                 </div>
               </div>
               <div className='mb-4'>
                 <div className="popup_form_element agrement_ineoeu mt-3 pt-1">
                   <div className="headiwuewopiu">When should we confirm?</div>
                   <label className='text-black font-size-13px font-weight-500 mt-3 pb-1 radiolablepopo'><input type='radio' name="g"/> When my login or activity seems risky</label>
-                  <label className='text-black font-size-13px font-weight-500 mt-2 pb-1 radiolablepopo'><input type='radio' name="g"/>  At every login and when my login or activity seems risky</label>
+                  <label className='text-black font-size-13px font-weight-500 mt-1 pb-1 radiolablepopo'><input type='radio' name="g"/>  At every login and when my login or activity seems risky</label>
                 </div>
               </div>
   
