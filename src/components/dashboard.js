@@ -22,11 +22,11 @@ const Screen = () => {
 
   const openMenuBarPosting = () => {
     setMenuBarPosting(!menuBarPosting);
-    setMenuBarDraft(!menuBarDraft);
+    setMenuBarDraft(menuBarPosting);
   };
   const openMenuBarDraft = () => {
     setMenuBarDraft(!menuBarDraft);
-    setMenuBarPosting(!menuBarPosting);
+    setMenuBarPosting(menuBarDraft);
   };
 
   return (
