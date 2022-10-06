@@ -52,7 +52,7 @@ const AddCompAddress = () => {
                     </Col>
                   </Row>
                   <Link to="/hire-freelancer/edit-address" >
-                    <button type="button" className="save_Address">
+                    <button type="button" className="save_Address" style={{fontWeight: 600}}>
                       Save
                     </button>
                   </Link>
@@ -103,7 +103,7 @@ const AddCompAddress = () => {
                 </div>
               </div>
               <div className="find_and_hire_button">
-                <button type="button" className="find_contact">
+                <button type="button" className="find_contact" style={{padding: "10px 20px", fontSize: "13px", fontWeight: 600}}>
                   Find Contact & Hire
                 </button>
               </div>

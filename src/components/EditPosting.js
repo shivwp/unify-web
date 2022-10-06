@@ -23,7 +23,7 @@ const EditPosting = () => {
               <div className="form_box_bor mt-2">
                 <div className="edit-posting-heading">
                   <div className="heading">Review</div>
-                  <button className="mt-2 btn-save_post border_blue_wwifth" style={{ fontSize:16, fontWeight:500 }}>
+                  <button className="mt-2 btn-save_post border_blue_wwifth" style={{ fontSize:17, fontWeight:600 }}>
                     Save Job Post
                   </button>
                 </div>

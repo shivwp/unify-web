@@ -188,7 +188,7 @@ const MakePrivate = () => {
                     </ul>
                   </div>
                   <div className="original_mess">
-                    <div className="input_t_lab">Activity on this job</div>
+                    <div className="input_t_lab">Original Message From Client</div>
                     <div className="greet">Hello</div>
                     <div className="message_from_client">
                       I'like to invite you to take a look at the job I've posted
