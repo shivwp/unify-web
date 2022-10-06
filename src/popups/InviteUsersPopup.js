@@ -3,8 +3,12 @@ import { Modal } from "react-responsive-modal";
 import "react-responsive-modal/styles.css";
 import "./popup.css";
 import { Link } from "react-router-dom";
+import Select from "react-select";
+
 
 const InviteUsersPopup = ({ open, onCloseModal }) => {
+  const options1 = [{ name: "Ankita Kumavat", label: "Ankita Kumavat" }];
+
   return (
     <>
       <>
@@ -22,7 +26,12 @@ const InviteUsersPopup = ({ open, onCloseModal }) => {
           <div className="invite_users">
             <label>
               <span>Invite to Team</span>
-              <input type="text" name="name" placeholder="Ankita Kumavat" />
+              <Select
+                  className="custom_css_select"
+                  placeholder="Ankita Kumavat"
+                  options={options1}
+                />
+              {/* <input type="text" name="name" placeholder="Ankita Kumavat" /> */}
             </label>
           </div>
           <div className="invite_users">

@@ -238,10 +238,13 @@
   background-color: #fff !important;
 }
 
+
+
 .btn_job_back button {
   background-color: #fff;
   padding: 12px 25px;
   color: #6d2ef1;
+  margin-left: 5px;
   min-width: 160px;
   border: #6d2ef1 solid 1px;
   border-radius: 30px;
