@@ -261,8 +261,8 @@
   flex-direction: column;
 }
 .invite_user_popup .invite_users > label span {
-  font-weight: 700;
-  font-size: 15px;
+  font-weight: 600;
+  font-size: 17px;
 }
 .invite_user_popup .invite_users h6 {
   font-weight: 600;
