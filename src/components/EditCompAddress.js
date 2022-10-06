@@ -95,8 +95,8 @@ const EditCompAddress = () => {
                   <span>$ 0.90</span>
                 </div>
               </div>
-              <div className="find_and_hire_button">
-                <button type="button" className="find_contact">
+              <div className="find_and_hire_button Edit_Addr">
+                <button type="button" className="find_contact" style={{padding: "10px 20px", fontSize: "13px", fontWeight: 600}}>
                   Find Contact & Hire
                 </button>
               </div>
