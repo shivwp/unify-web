@@ -2926,7 +2926,9 @@
   color: #a4a3a3;
 }
 
-.otp_container {
+.otp_container,
+.forgot_pass_container,
+.reset_pass_container {
   font-family: "Poppins-Bold", "Poppins";
   background-color: #fff;
   display: flex;
@@ -2938,7 +2940,7 @@
   padding: 20px;
   background: #ffffff 0% 0% no-repeat padding-box;
   min-height: 200px;
-  max-height: 95vh;
+  max-height: 98vh;
 }
 .otp_container .heading {
   color: #170048;
@@ -2955,7 +2957,7 @@
   color: #fff;
   border: none;
   border-radius: 30px;
-  font-weight: 600;
+  font-weight: 500;
   font-size: 15px;
   margin: 20px 0;
   -webkit-border-radius: 30px;
@@ -2997,4 +2999,120 @@
   .otp_container .otp_inputs {
     margin: 0;
   }
+}
+
+/* forgot password */
+.forgot_pass_container .heading {
+  color: #170048;
+  font-size: 25px;
+  font-weight: 700;
+  margin: 20px 0;
+}
+.forgot_pass_container .email_input {
+  display: flex;
+  flex-direction: column;
+  margin: 20px 0;
+  width: 95%;
+  color: #170048;
+  font-size: 15px;
+  font-weight: 500;
+}
+.forgot_pass_container .email_input input {
+  outline: none;
+  border: none;
+  background-color: #ebebf7;
+  height: 45px;
+  width: 100%;
+  margin: 10px 0;
+  padding: 0 40px;
+}
+.forgot_pass_container .email_input input::placeholder {
+  color: #170048;
+  font-weight: 500;
+}
+.forgot_pass_container .forgot_pass_btn button {
+  background-color: #170048;
+  padding: 10px 60px;
+  color: #fff;
+  border: none;
+  border-radius: 30px;
+  font-weight: 500;
+  font-size: 15px;
+  margin: 20px 0;
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  -ms-border-radius: 30px;
+  -o-border-radius: 30px;
+}
+.forgot_pass_container .email_input .email_inp {
+  position: relative;
+  height: 45px;
+  width: 100%;
+}
+.forgot_pass_container .email_input .forgot_pass_email_icon {
+  position: absolute;
+  top: 25px;
+  left: 12px;
+  fill: #170048;
+}
+
+/* Reset Password */
+.reset_pass_container .heading {
+  color: #170048;
+  font-size: 25px;
+  font-weight: 700;
+  margin: 10px 0;
+}
+.reset_pass_container .pass_inputs {
+  width: 95%;
+}
+.reset_pass_container .pass_inp {
+  display: flex;
+  flex-direction: column;
+  margin: 10px 0;
+  width: 100%;
+  color: #170048;
+  font-size: 15px;
+  font-weight: 500;
+}
+.reset_pass_container .pass_inp input {
+  width: 100%;
+}
+
+.reset_pass_container .pass_inp {
+  display: flex;
+  flex-direction: column;
+  margin: 20px 0;
+  width: 95%;
+  color: #170048;
+  font-size: 15px;
+  font-weight: 500;
+}
+.reset_pass_container .pass_inp input {
+  outline: none;
+  border: none;
+  background-color: #ebebf7;
+  height: 45px;
+  width: 100%;
+  margin: 10px 0;
+  padding: 0 15px;
+}
+.reset_pass_container .pass_inp input::placeholder {
+  color: #170048;
+  font-weight: 500;
+}
+
+.reset_pass_container .reset_pass_btn button{
+  background-color: #170048;
+  padding: 10px 60px;
+  color: #fff;
+  border: none;
+  border-radius: 30px;
+  font-weight: 500;
+  font-size: 15px;
+  margin: 20px 0; 
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  -ms-border-radius: 30px;
+  -o-border-radius: 30px;
 }

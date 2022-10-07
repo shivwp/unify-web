@@ -1,5 +1,5 @@
-import OTPInput, { ResendOTP } from "otp-input-react";
 import React, { useState } from 'react';
+import OTPInput, { ResendOTP } from "otp-input-react";
 
 const VerifySignUp = () => {
   const [OTP, setOTP] = useState("");
