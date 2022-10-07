@@ -94,6 +94,8 @@ import MakePrivate from "./components/MakePrivate";
 import VerifySignUp from "./components/VerifySignUp";
 import UserReports from "./freelancer/UserReports";
 import VerifyForgotOTP from "./components/VerifyForgotOTP";
+import ForgotPass from "./components/ForgotPass";
+import ResetPass from "./components/ResetPass";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -104,6 +106,8 @@ root.render(
         <Route path="/signup" element={<Signup />} />
         <Route path="/verify-signup" element={<VerifySignUp />} />
         <Route path="/verify-forgot-otp" element={<VerifyForgotOTP />} />
+        <Route path="/forgot-password" element={<ForgotPass />} />
+        <Route path="/reset-password" element={<ResetPass />} />
         <Route path="/signin" element={<Signin />} />
         <Route path="/category" element={<Category />} />
         <Route path="/create-category" element={<Createcategory />} />
