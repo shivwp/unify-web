@@ -2,6 +2,7 @@
   "name": "unify",
   "version": "0.1.0",
   "private": true,
+  "homepage": ".",
   "dependencies": {
     "@emotion/styled": "^11.10.4",
     "@faker-js/faker": "^7.5.0",

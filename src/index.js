@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, HashRouter } from "react-router-dom";
 
 import App from "./App";
 import Signup from "./Signup";
@@ -100,7 +100,7 @@ import ResetPass from "./components/ResetPass";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Provider store={store}>
-    <BrowserRouter>
+    <HashRouter basename="/">
       <Routes>
         <Route path="/" element={<App />} />
         <Route path="/signup" element={<Signup />} />
@@ -264,6 +264,6 @@ root.render(
         <Route path="/freelancer/dashboard" element={<FreelancerDashboard />} />
         <Route path="/freelancer/subscription" element={<FreelancerSubscription />} />
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   </Provider>
 );

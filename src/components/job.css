@@ -3080,6 +3080,7 @@
   width: 95%;
 }
 .reset_pass_container .pass_inp {
+  position: relative;
   display: flex;
   flex-direction: column;
   margin: 10px 0;
@@ -3092,15 +3093,7 @@
   width: 100%;
 }
 
-.reset_pass_container .pass_inp {
-  display: flex;
-  flex-direction: column;
-  margin: 20px 0;
-  width: 95%;
-  color: #170048;
-  font-size: 15px;
-  font-weight: 500;
-}
+
 .reset_pass_container .pass_inp input {
   outline: none;
   border: none;
