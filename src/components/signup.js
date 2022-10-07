@@ -1,6 +1,7 @@
 import Title from "./title";
 import Select from "react-select";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 const Signup = ({
   onInputChange,
@@ -14,6 +15,8 @@ const Signup = ({
   selectCountry,
 }) => {
   Title(" | signup");
+  const [hidePass, setHidePass] = useState(true);
+  const [hideConfPass, setHideConfPass] = useState(true);
 
   const options1 = getCountryList?.map((data) => ({
     name: data.name,
@@ -245,10 +248,25 @@ const Signup = ({
                   <input
                     name="password"
                     onChange={(e) => onInputChange(e)}
-                    type="password"
+                    type={hidePass ? "password" : "text"}
                     value={values.password}
                     placeholder="Create a Password"
                   />
+                  {hidePass ? (
+                    <i
+                      className="fa fa-eye-slash showInpPass"
+                      onClick={() => setHidePass(!hidePass)}
+                      aria-hidden="true"
+                      style={{ top: 9 }}
+                    ></i>
+                  ) : (
+                    <i
+                      className="fa fa-eye showInpPass"
+                      style={{ top: 9 }}
+                      onClick={() => setHidePass(!hidePass)}
+                      aria-hidden="true"
+                    ></i>
+                  )}
                   <span className="signInError">
                     {errors.password && (
                       <>
@@ -285,10 +303,25 @@ const Signup = ({
                   <input
                     name="confirmPassword"
                     onChange={(e) => onInputChange(e)}
-                    type="password"
+                    type={hideConfPass ? "password" : "text"}
                     value={values.confirmPassword}
                     placeholder="Confirm Password"
                   />
+                  {hideConfPass ? (
+                    <i
+                      className="fa fa-eye-slash showInpPass"
+                      onClick={() => setHideConfPass(!hideConfPass)}
+                      aria-hidden="true"
+                      style={{ top: 9 }}
+                    ></i>
+                  ) : (
+                    <i
+                      className="fa fa-eye showInpPass"
+                      style={{ top: 9 }}
+                      onClick={() => setHideConfPass(!hideConfPass)}
+                      aria-hidden="true"
+                    ></i>
+                  )}
                   <span className="signInError">
                     {errors.confirmPassword && (
                       <>

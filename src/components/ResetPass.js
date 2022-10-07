@@ -5,8 +5,10 @@ import { onResetPassword } from "../redux/actions/authActions";
 import { useNavigate } from "react-router-dom";
 
 const ResetPass = () => {
-  const navigate = useNavigate()
-  const dispatch = useDispatch()
+  const [hidePass, setHidePass] = useState(true);
+  const [hideConfPass, setHideConfPass] = useState(true);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [value, setValue] = useState({});
 
   const onInputChange = (e) => {
@@ -19,7 +21,7 @@ const ResetPass = () => {
       password: value.password,
       confirm_password: value.confirm_password,
     };
-    dispatch(onResetPassword(data, navigate))
+    dispatch(onResetPassword(data, navigate));
   };
   return (
     <>
@@ -30,20 +32,50 @@ const ResetPass = () => {
             <div className="pass_inp">
               <label htmlFor="email">Enter New Password</label>
               <input
-                type="password"
+                type={hidePass ? "password" : "text"}
                 name="password"
                 placeholder="********"
                 onChange={(e) => onInputChange(e)}
               />
+              {hidePass ? (
+                <i
+                  className="fa fa-eye-slash showInpPass"
+                  onClick={() => setHidePass(!hidePass)}
+                  aria-hidden="true"
+                  style={{ top: 9 }}
+                ></i>
+              ) : (
+                <i
+                  className="fa fa-eye showInpPass"
+                  style={{ top: 9 }}
+                  onClick={() => setHidePass(!hidePass)}
+                  aria-hidden="true"
+                ></i>
+              )}
             </div>
             <div className="pass_inp">
               <label htmlFor="email">Confirm New Password</label>
               <input
-                type="password"
+                type={hideConfPass ? "password" : "text"}
                 name="confirm_password"
                 placeholder="********"
                 onChange={(e) => onInputChange(e)}
               />
+              {hideConfPass ? (
+                <i
+                  className="fa fa-eye-slash showInpPass"
+                  onClick={() => setHideConfPass(!hideConfPass)}
+                  aria-hidden="true"
+                  style={{ top: 47 }}
+                ></i>
+              ) : (
+                <i
+                  className="fa fa-eye showInpPass"
+                  style={{ top: 47 }}
+                  onClick={() => setHideConfPass(!hideConfPass)}
+                  aria-hidden="true"
+                ></i>
+              )}
             </div>
           </div>
           <div className="reset_pass_btn">

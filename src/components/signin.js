@@ -1,8 +1,11 @@
 import Title from "./title";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 const Signin = ({ onInputChange, submitForm, errors }) => {
   Title(" | signin");
+  const [hidePass, setHidePass] = useState(true);
+
   return (
     <>
       <div className="bg_body">
@@ -58,6 +61,7 @@ const Signin = ({ onInputChange, submitForm, errors }) => {
                     name="email"
                     placeholder="Username or Email"
                   />
+
                   <span className="signInError">
                     {errors.email && (
                       <>
@@ -94,10 +98,25 @@ const Signin = ({ onInputChange, submitForm, errors }) => {
                 <div className="input_nodxq">
                   <input
                     onChange={(e) => onInputChange(e)}
-                    type="password"
+                    type={hidePass ? "password" : "text"}
                     name="password"
                     placeholder="Password"
                   />
+                  {hidePass ? (
+                    <i
+                      className="fa fa-eye-slash showInpPass"
+                      onClick={() => setHidePass(!hidePass)}
+                      aria-hidden="true"
+                      style={{ top: 9 }}
+                    ></i>
+                  ) : (
+                    <i
+                      className="fa fa-eye showInpPass"
+                      style={{ top: 9 }}
+                      onClick={() => setHidePass(!hidePass)}
+                      aria-hidden="true"
+                    ></i>
+                  )}
                   <span className="signInError">
                     {errors.password && (
                       <>
