@@ -112,6 +112,11 @@ const Signin = ({ onInputChange, submitForm, errors }) => {
                 </div>
               </div>
             </div>
+            <div className="forgot_passw">
+              <span>
+                <Link to="/forgot-password">Forgot Password ?</Link>
+              </span>
+            </div>
             <div className="sign_form_btn_subm sign_w_full">
               <button type="submit" className="mr_sign_in_n">
                 CONTINUE WITH EMAIL

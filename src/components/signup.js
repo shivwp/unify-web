@@ -18,15 +18,15 @@ const Signup = ({
   const options1 = getCountryList?.map((data) => ({
     name: data.name,
     label: data.name,
-    color: '#000'
+    color: "#000",
   }));
   const customStyles = {
     option: (provided, state) => ({
       ...provided,
-      color: state.isSelected ? '#000' : '#000',
+      color: state.isSelected ? "#000" : "#000",
       padding: 20,
     }),
-  }
+  };
   return (
     <>
       <div className="bg_body">
@@ -256,7 +256,47 @@ const Signup = ({
                           class="fa fa-exclamation-circle"
                           aria-hidden="true"
                         ></i>{" "}
-                        Please enter your email
+                        Please enter your Password
+                      </>
+                    )}
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div className="input_group">
+              <div className="input_bo">
+                <div className="input_icoa">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="14.449"
+                    height="18.965"
+                    viewBox="0 0 14.449 18.965"
+                  >
+                    <path
+                      id="Icon_material-lock-open"
+                      data-name="Icon material-lock-open"
+                      d="M13.225,15.949a1.806,1.806,0,1,0-1.806-1.806A1.811,1.811,0,0,0,13.225,15.949Zm5.418-8.128h-.9V6.015a4.515,4.515,0,0,0-9.031,0h1.716a2.8,2.8,0,1,1,5.6,0V7.822H7.806A1.811,1.811,0,0,0,6,9.628v9.031a1.811,1.811,0,0,0,1.806,1.806H18.643a1.811,1.811,0,0,0,1.806-1.806V9.628A1.811,1.811,0,0,0,18.643,7.822Zm0,10.837H7.806V9.628H18.643Z"
+                      transform="translate(-6 -1.5)"
+                      fill="#808080"
+                    />
+                  </svg>
+                </div>
+                <div className="input_nodxq">
+                  <input
+                    name="confirmPassword"
+                    onChange={(e) => onInputChange(e)}
+                    type="password"
+                    value={values.confirmPassword}
+                    placeholder="Confirm Password"
+                  />
+                  <span className="signInError">
+                    {errors.confirmPassword && (
+                      <>
+                        <i
+                          class="fa fa-exclamation-circle"
+                          aria-hidden="true"
+                        ></i>{" "}
+                        Please enter your Confirm Password
                       </>
                     )}
                   </span>
@@ -290,7 +330,12 @@ const Signup = ({
               <div className="input_bo">
                 <div className="input_icoa"></div>
                 <div className="input_nodxq">
-                  <input type="text" placeholder="invitation code" />
+                  <input
+                    type="text"
+                    placeholder="invitation code"
+                    name="referal_code"
+                    onChange={(e) => onInputChange(e)}
+                  />
                 </div>
               </div>
             </div>
@@ -298,7 +343,7 @@ const Signup = ({
               <h3>I Want to:</h3>
             </div>
             <div className="sign_buttons_group sign_upbtn_heffect">
-            <Link to={`/question1`} className='signup_mlr_20px_a'>
+              {/* <Link to={`/question1`} className='signup_mlr_20px_a'> */}
               <button
                 onClick={(e) => selectUserType(e)}
                 type="button"
@@ -309,31 +354,39 @@ const Signup = ({
               >
                 Hire for a Project
               </button>
-              </Link>
-              <Link to={`/freelancer/question1`} className='signup_mlr_20px_a'>
-                <button
-                  type="button"
-                  onClick={(e) => selectUserType(e)}
-                  className={
-                    userType === "freelancer" ? "userTypeActive" : "userType"
-                  }
-                  value="freelancer"
-                >
-                  Work as a freelancer
-                </button>
-              </Link>
+              {/* </Link> */}
+              {/* <Link to={`/freelancer/question1`} className='signup_mlr_20px_a'> */}
+              <button
+                type="button"
+                onClick={(e) => selectUserType(e)}
+                className={
+                  userType === "freelancer" ? "userTypeActive" : "userType"
+                }
+                value="freelancer"
+              >
+                Work as a freelancer
+              </button>
+              {/* </Link> */}
             </div>
             <div className="sign_legal_not">
               <div className="sign_l_n_text">
-                <input type="checkbox" />
-                <label className='tb_mob_f12px'>
+                <input
+                  type="checkbox"
+                  name="send_email"
+                  onChange={(e) => onInputChange(e)}
+                />
+                <label className="tb_mob_f12px">
                   yes! Send me genuinely useful emails every now and then to
                   help me get the most out of Unify
                 </label>
               </div>
               <div className="sign_l_n_text">
-                <input type="checkbox" />
-                <label className='tb_mob_f12px'>
+                <input
+                  type="checkbox"
+                  name="agree_terms"
+                  onChange={(e) => onInputChange(e)}
+                />
+                <label className="tb_mob_f12px">
                   yes! I understand and agree to the{" "}
                   <span>UnifyTerms of Service</span>, including the{" "}
                   <span>User Agreement</span> and <span>Privacy Policy</span>
