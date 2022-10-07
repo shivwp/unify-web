@@ -222,8 +222,8 @@ const IAmFreelancer = () => {
                   slidesPerView: 1,
                   spaceBetween: 10,
                 },
-                768: {
-                  slidesPerView: 2,
+                769: {
+                  slidesPerView: 1,
                   spaceBetween: 10,
                 },
                 900: {

@@ -2420,7 +2420,7 @@
 }
 
 @media screen and (max-width: 426px) {
-  .edit_posting_save_btn{
+  .edit_posting_save_btn {
     justify-content: center;
   }
 }
@@ -2926,3 +2926,75 @@
   color: #a4a3a3;
 }
 
+.otp_container {
+  font-family: "Poppins-Bold", "Poppins";
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 650px;
+  width: 95%;
+  padding: 20px;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  min-height: 200px;
+  max-height: 95vh;
+}
+.otp_container .heading {
+  color: #170048;
+  font-size: 25px;
+  font-weight: 700;
+  margin: 20px 0;
+}
+.otp_container .otp_inputs {
+  margin: 15px 0;
+}
+.otp_container .otp_submit_btn button {
+  background-color: #170048;
+  padding: 10px 60px;
+  color: #fff;
+  border: none;
+  border-radius: 30px;
+  font-weight: 600;
+  font-size: 15px;
+  margin: 20px 0;
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  -ms-border-radius: 30px;
+  -o-border-radius: 30px;
+}
+.otp_container .suggetion_resend {
+  color: #170048;
+  font-size: 12px;
+  font-weight: 500;
+}
+.otp_container .suggetion_resend span {
+  color: #b49df4;
+  font-size: 12px;
+}
+
+.otp_container input {
+  outline: none;
+  border: 1px solid #d1d1d1;
+  width: 50px !important;
+  height: 50px !important;
+  border-radius: 5px;
+}
+
+@media screen and (max-width: 425px) {
+  .otp_container {
+    padding: 10px;
+  }
+  .otp_container .heading {
+    color: #170048;
+    font-size: 15px;
+    margin: 20px 0;
+  }
+  .otp_container input {
+    width: 40px !important;
+    height: 40px !important;
+  }
+  .otp_container .otp_inputs {
+    margin: 0;
+  }
+}
