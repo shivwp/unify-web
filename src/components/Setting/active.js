@@ -110,14 +110,14 @@ const Screen = ({ setOpen }) => {
         <div className="d-flex justify-content-between mob_jus_cent flex-wrap">
           <div className="d-flex flex-wrap mob_jus_cent">
             <div className="fo_btn_c sme_next_bbtn next_b_btn_c">
-              <button className="blue_btn_smm ml-0">Apply Filters</button>
+              <button className="blue_btn_smm ml-0" style={{fontSize: 15}}>Apply Filters</button>
             </div>
             <div className="fo_btn_c sme_next_bbtn next_b_btn_c">
-              <button>Clear</button>
+              <button style={{fontSize: 15}}>Clear</button>
             </div>
           </div>
           <div className="fo_btn_c sme_next_bbtn next_b_btn_c mob_jus_cent">
-            <button>Close</button>
+            <button style={{fontSize: 15}}>Close</button>
           </div>
         </div>
         <span className="popup_up_arrow"> &#60; </span>

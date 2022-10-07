@@ -886,12 +886,12 @@
   right: 0px;
 }
 
-.Filter_Popup .tm_s_s_name,
+/* .Filter_Popup .tm_s_s_name,
 .Filter_Popup .filter_headin_m,
 .Filter_Popup .fo_btn_c button {
   font-size: 17px !important;
   font-weight: 600;
-}
+} */
 
 @media screen and (max-width: 1024px) {
   .Filter_Popup {
@@ -1306,9 +1306,9 @@
 .filter_headin_m {
   font-family: "Poppins-Bold", "Poppins";
   padding: 5px 0px 0px 0px;
-  font-size: 18px;
+  font-size: 17px;
   color: #00065a;
-  font-weight: bold;
+  font-weight: 600;
 }
 
 .filter_select_m {
@@ -2417,6 +2417,12 @@
   justify-content: flex-end;
   margin: 25px 0;
   padding: 5px 15px;
+}
+
+@media screen and (max-width: 426px) {
+  .edit_posting_save_btn{
+    justify-content: center;
+  }
 }
 
 .draft_btns {
