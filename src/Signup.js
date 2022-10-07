@@ -11,24 +11,36 @@ const Signupscreen = () => {
   const [errors, setErrors] = useState({});
   const [userType, setUserType] = useState();
   const getCountryList = useSelector((state) => state.auth.getCountryList);
-  const [values, setValues] = useState({});
+  const [values, setValues] = useState({
+    agree_terms: 0,
+    send_email: 0,
+  });
 
   useEffect(() => {
     dispatch(countryList());
   }, []);
 
-  const selectCountry =(e)=>{
-    setCountry(e)
+  const selectCountry = (e) => {
+    setCountry(e);
     setErrors({ ...errors, country: false });
-  }
-  
+  };
+
   const onInputChange = (e) => {
-    setValues({ ...values, [e.target.name]: e.target.value });
-    setErrors({ ...errors, [e.target.name]: false });
+    if (e.target.name === "agree_terms" || e.target.name === "send_email") {
+      e.target.checked
+        ? setValues({ ...values, [e.target.name]: 1 })
+        : setValues({ ...values, [e.target.name]: 0 });
+    } else {
+      setValues({ ...values, [e.target.name]: e.target.value });
+      setErrors({ ...errors, [e.target.name]: false });
+    }
   };
 
   const submitForm = (e) => {
     e.preventDefault();
+
+    localStorage.setItem("unify_email", values?.email);
+
     let errorExist = false;
     let errorsObject = {};
 
@@ -48,6 +60,15 @@ const Signupscreen = () => {
       values.password === undefined
     ) {
       errorsObject.password = true;
+      errorExist = true;
+    }
+    if (
+      (values.confirmPassword && values.confirmPassword.length < 5) ||
+      values.confirmPassword === "" ||
+      values.confirmPassword === null ||
+      values.confirmPassword === undefined
+    ) {
+      errorsObject.confirmPassword = true;
       errorExist = true;
     }
     if (
@@ -84,6 +105,9 @@ const Signupscreen = () => {
       password: values?.password,
       country: country?.name,
       user_type: userType,
+      referal_code: "",
+      agree_terms: values?.agree_terms,
+      send_email: values?.send_email,
     };
 
     dispatch(onRegister(data, navigate));

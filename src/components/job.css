@@ -1754,6 +1754,18 @@
 .inp_w_haf {
   text-indent: 10px;
 }
+
+.forgot_passw{
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 15px;
+
+}
+.forgot_passw span{
+  color: #6D2EF1;
+
+}
+
 .alert_txt_con_serv {
   font-family: "Poppins-Bold", "Poppins";
   font-weight: 300;
@@ -2972,6 +2984,7 @@
 }
 .otp_container .suggetion_resend span {
   color: #b49df4;
+  cursor: pointer;
   font-size: 12px;
 }
 

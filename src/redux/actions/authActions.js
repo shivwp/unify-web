@@ -7,8 +7,6 @@ const config = {
   },
 };
 
-// console.log(localStorage.getItem("unify_Token"));
-
 export const onLogin = (data, navigate) => (dispatch) => {
   Axios.post("/login", data)
     .then((res) => {
@@ -28,9 +26,27 @@ export const onRegister = (data, navigate) => (dispatch) => {
   Axios.post("/signup", data)
     .then((res) => {
       if (res.data.status) {
-        navigate("/create-category");
-        window.location.reload();
+        navigate("/verify-signup");
       }
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+export const onVerifySignup = (data, navigate) => (dispatch) => {
+  Axios.post("/verifysignup", data)
+    .then((res) => {
+      navigate("/create-category");
+      window.location.reload();
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+export const onResendOtp = (data, navigate) => (dispatch) => {
+  Axios.post("/resend-otp", data)
+    .then((res) => {
+      console.log(res);
     })
     .catch((err) => {
       console.log(err);
@@ -44,6 +60,35 @@ export const countryList = (data) => (dispatch) => {
         type: SET_COUNTRY,
         payload: res.data.countrylist,
       });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+export const onForgotPassword = (data, navigate) => (dispatch) => {
+  Axios.post("/forget-password", data)
+    .then((res) => {
+      navigate("/verify-forgot-otp");
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+export const onVerifyForgot = (data, navigate) => (dispatch) => {
+  Axios.post("/verify-forgot-otp", data)
+    .then((res) => {
+      navigate("/reset-password");
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+export const onResetPassword = (data, navigate) => (dispatch) => {
+  Axios.post("/reset-password", data)
+    .then((res) => {
+      navigate("/Signin");
     })
     .catch((err) => {
       console.log(err);
