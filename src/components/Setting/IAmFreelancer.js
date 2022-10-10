@@ -222,12 +222,12 @@ const IAmFreelancer = () => {
                   slidesPerView: 1,
                   spaceBetween: 10,
                 },
-                769: {
-                  slidesPerView: 1,
+                768: {
+                  slidesPerView: 2,
                   spaceBetween: 10,
                 },
                 900: {
-                  slidesPerView: 3,
+                  slidesPerView: 4,
                   spaceBetween: 10,
                 },
               }}
@@ -252,6 +252,12 @@ const IAmFreelancer = () => {
                   </div>
                 </div>
               </SwiperSlide>
+              <SwiperSlide>
+                <div className="acc_bxo_h">
+                  <div className="help_ame_h">Staying Safe On Unify</div>
+                  <div className="help_val_h">Online Safty Best Practice</div>
+                </div>
+              </SwiperSlide>
             </Swiper>
           </Row>
         </Container>
@@ -262,12 +268,12 @@ const IAmFreelancer = () => {
             Learn More About What’s New At Unify
           </div>
           <div className="btn_foot_sec justify-content-center flex-wrap no-border ImFreelancer_btn fo_btn_c mb-0 pb-0 next_b_btn_c">
-            <button className="active_btn_blue mi-width-2 pnew" >
+            <button className="active_btn_blue mi-width-2 pnew">
               Learn More
             </button>
           </div>
           <div className="btn_foot_sec mt-2 justify-content-end flex-wrap no-border p-0 m-0 fo_btn_c next_b_btn_c ImFreelancer_btn">
-            <button className="active_btn_blue m-0 support_d_btn" >
+            <button className="active_btn_blue m-0 support_d_btn">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
