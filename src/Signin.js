@@ -9,7 +9,7 @@ const Signinscreen = () => {
   const [errors, setErrors] = useState({});
   const [values, setValues] = useState({});
   const dispatch = useDispatch();
-  console.log(values);
+  const [userType, setUserType] = useState();
 
   const onInputChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
@@ -47,10 +47,14 @@ const Signinscreen = () => {
     const data = {
       email: values?.email,
       password: values?.password,
-      user_type: ""
+      user_type: userType,
     };
 
     dispatch(onLogin(data, navigate));
+  };
+
+  const selectUserType = (e) => {
+    setUserType(e.target.value);
   };
 
   return (
@@ -58,6 +62,9 @@ const Signinscreen = () => {
       submitForm={submitForm}
       errors={errors}
       onInputChange={onInputChange}
+      setUserType={setUserType}
+      userType={userType}
+      selectUserType={selectUserType}
     />
   );
 };

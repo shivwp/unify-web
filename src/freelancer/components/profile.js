@@ -2,9 +2,12 @@ import Container from "react-bootstrap/Container";
 import { Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Select from "react-select";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { onEditTestimonialInfo } from "../../redux/actions/profileAction";
+import {
+  getFreelancerProfile,
+  onEditTestimonialInfo,
+} from "../../redux/actions/profileAction";
 
 function Listaward() {
   const card = [1, 2, 3, 4];
@@ -328,7 +331,6 @@ const AddExperience = (props) => {
                 <input type="text" className="font-size-13px" placeholder=" " />
               </div>
               <div className="popup_form_element">
-
                 <label className="text-black font-size-13px font-weight-500">
                   Description
                 </label>
@@ -337,7 +339,6 @@ const AddExperience = (props) => {
                   placeholder="Enter Here"
                 ></textarea>
               </div>
-
             </div>
 
             <div className="popup_btns_new flex-wrap cwiewyehkk">
@@ -484,7 +485,6 @@ const AddEmployment = (props) => {
         </div>
       </div>
     </>
-
   );
 };
 const ChangePassword = (props) => {
@@ -932,7 +932,6 @@ const ReqTestimonial = (props) => {
   };
 
   const testimonialSubmit = (e) => {
-    e.preventDefault();
     dispatch(onEditTestimonialInfo(values));
   };
 
@@ -978,7 +977,6 @@ const ReqTestimonial = (props) => {
                 </Col>
                 <Col md={6}>
                   <div className="popup_form_element">
-
                     <label className="text-black font-size-13px font-weight-500">
                       Last name{" "}
                     </label>
@@ -990,12 +988,10 @@ const ReqTestimonial = (props) => {
                       onChange={(e) => onInputChange(e)}
                       placeholder="Enter Last name "
                     />
-
                   </div>
                 </Col>
                 <Col md={6}>
                   <div className="popup_form_element">
-
                     <label className="text-black font-size-13px font-weight-500">
                       Business email address
                     </label>
@@ -1007,7 +1003,6 @@ const ReqTestimonial = (props) => {
                       onChange={(e) => onInputChange(e)}
                       placeholder=""
                     />
-
                   </div>
                 </Col>
                 <Col md={6}>
@@ -1073,9 +1068,8 @@ const ReqTestimonial = (props) => {
             </div>
 
             <div className="popup_btns_new flex-wrap cwiewyehkk">
-
               <button
-              className="font-weight-600"
+                className="font-weight-600"
                 onClick={() => {
                   testimonialSubmit();
                   props.Popup();
@@ -1083,7 +1077,6 @@ const ReqTestimonial = (props) => {
               >
                 REQUEST TESTIMONIAL
               </button>
-
             </div>
           </div>
         </div>
@@ -1149,6 +1142,40 @@ const Overview = (props) => {
 
 const UnifyFreelancer = () => {
   const [popup, Setpopup] = useState();
+  const dispatch = useDispatch();
+  const basicInfo = useSelector(
+    (state) => state?.profile?.freelancerProfileList?.basic_info
+  );
+
+  useEffect(() => {
+    dispatch(getFreelancerProfile());
+  }, []);
+
+  const Rating = ({ rating }) => {
+    const printStars = (number) => {
+      let stars = "";
+
+      for (let i = 0; i < number; i++) {
+        stars = `${stars} <i class="fa fa-star text-primary"></i>`;
+      }
+      for (let j = 0; j < 5 - rating; j++) {
+        stars = `${stars} <i class="fa fa-star text-secondary"></i>`;
+      }
+      return stars;
+    };
+
+    return (
+      rating != 0 && (
+        <span
+          style={{ fontSize: "10px" }}
+          className="my-1"
+          dangerouslySetInnerHTML={{
+            __html: printStars(rating),
+          }}
+        ></span>
+      )
+    );
+  };
   return (
     <div className="mt-5 mb-5">
       <Container>
@@ -1158,10 +1185,7 @@ const UnifyFreelancer = () => {
               <div className="flex_profile_frel">
                 <div className="profile_box">
                   <div className="user_profile_bg">
-                    <img
-                      src="https://images.unsplash.com/photo-1494790108377-be9c29b29330"
-                      alt=""
-                    />
+                    <img src={basicInfo && basicInfo.profile_image} alt="" />
                   </div>
                   <div className="profile_thumb">
                     <svg
@@ -1177,15 +1201,23 @@ const UnifyFreelancer = () => {
                   </div>
                 </div>
                 <div className="han_oad">
-
                   <div className="freelancer_name font-size-20px">
-                    Hannah Finn
+                    {basicInfo && basicInfo.first_name}{" "}
+                    {basicInfo && basicInfo.last_name}
                   </div>
 
-                  <div className="freelancer_work">Website Designer</div>
-                  <div className="freelance_map">Victoria, Australia</div>
+                  <div className="freelancer_work">
+                    {basicInfo && basicInfo.occuption}
+                  </div>
+                  <div className="freelance_map">
+                    {basicInfo && basicInfo.city},{" "}
+                    {basicInfo && basicInfo.country}
+                  </div>
+
                   <div className="flex_stars">
-                    <div className="review_star">
+                    <Rating rating={basicInfo?.rating} />
+
+                    {/* <div className="review_star">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="16"
@@ -1220,7 +1252,7 @@ const UnifyFreelancer = () => {
                       >
                         <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
                       </svg>
-                    </div>
+                    </div> */}
                     <div className="review_par">
                       <p>Reviews</p>
                     </div>
@@ -1270,14 +1302,18 @@ const UnifyFreelancer = () => {
                       Total <br />
                       Earning
                     </div>
-                    <div className="pt_num pt_n1">$100K</div>
+                    <div className="pt_num pt_n1">
+                      ${basicInfo && basicInfo?.total_earning}
+                    </div>
                   </div>
                   <div className="flex_pt">
                     <div className="pt_title">
                       Total <br />
                       Jobs
                     </div>
-                    <div className="pt_num pt_n2">18</div>
+                    <div className="pt_num pt_n2">
+                      {basicInfo && basicInfo?.total_jobs}
+                    </div>
                   </div>
                 </div>
                 <div className="pd_flex flex-wrap">
@@ -1286,14 +1322,18 @@ const UnifyFreelancer = () => {
                       Total <br />
                       Hours
                     </div>
-                    <div className="pt_num pt_n3">2065</div>
+                    <div className="pt_num pt_n3">
+                      {basicInfo && basicInfo?.total_hours}
+                    </div>
                   </div>
                   <div className="flex_pt no-border">
                     <div className="pt_title">
                       Pending <br />
                       Projects
                     </div>
-                    <div className="pt_num pt_n4">05</div>
+                    <div className="pt_num pt_n4">
+                      {basicInfo && basicInfo?.pending_project}
+                    </div>
                   </div>
                 </div>
               </div>

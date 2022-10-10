@@ -11,9 +11,14 @@ export const onLogin = (data, navigate) => (dispatch) => {
   Axios.post("/login", data)
     .then((res) => {
       if (res.data.status) {
-        localStorage.setItem("unify_Token", res.data.token);
-        localStorage.setItem("unify_user", JSON.stringify(res.data.user));
-        navigate("/dashboard");
+        localStorage.setItem("unify_Token", res.data.auth_token);
+        localStorage.setItem("unify_user", JSON.stringify(res.data.data.user));
+        console.log(res);
+        if (res.data.data.user.user_type === "freelancer") {
+          navigate("/freelancer/dashboard");
+        } else if (res.data.data.user.user_type === "client") {
+          navigate("/dashboard");
+        }
         window.location.reload();
       }
     })
@@ -89,6 +94,16 @@ export const onResetPassword = (data, navigate) => (dispatch) => {
   Axios.post("/reset-password", data)
     .then((res) => {
       navigate("/Signin");
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+export const onPasswordChange = (data, navigate) => (dispatch) => {
+  Axios.post("/change-password", data, config)
+    .then((res) => {
+      console.log(res);
     })
     .catch((err) => {
       console.log(err);
