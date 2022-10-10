@@ -1579,7 +1579,7 @@
   overflow-x: auto;
 }
 .scroll_table .r-box_setting {
-  min-width: 670px;
+  min-width: 450px;
 }
 
 /* .width-max-content {
@@ -1755,15 +1755,13 @@
   text-indent: 10px;
 }
 
-.forgot_passw{
+.forgot_passw {
   display: flex;
   justify-content: flex-end;
   padding: 0 15px;
-
 }
-.forgot_passw span{
-  color: #6D2EF1;
-
+.forgot_passw span {
+  color: #6d2ef1;
 }
 
 .alert_txt_con_serv {
@@ -2009,6 +2007,14 @@
   line-height: 20px;
   color: #474747;
 }
+
+@media screen and (max-width: 768px) and (min-width: 600px) {
+  .swiper-slide {
+    width: 48% !important;
+    margin-left: 6px;
+  }
+}
+
 .add_card_ee {
   display: flex;
   align-items: center;
@@ -3093,7 +3099,6 @@
   width: 100%;
 }
 
-
 .reset_pass_container .pass_inp input {
   outline: none;
   border: none;
@@ -3108,7 +3113,7 @@
   font-weight: 500;
 }
 
-.reset_pass_container .reset_pass_btn button{
+.reset_pass_container .reset_pass_btn button {
   background-color: #170048;
   padding: 10px 60px;
   color: #fff;
@@ -3116,7 +3121,7 @@
   border-radius: 30px;
   font-weight: 500;
   font-size: 15px;
-  margin: 20px 0; 
+  margin: 20px 0;
   -webkit-border-radius: 30px;
   -moz-border-radius: 30px;
   -ms-border-radius: 30px;

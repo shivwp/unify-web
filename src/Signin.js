@@ -47,6 +47,7 @@ const Signinscreen = () => {
     const data = {
       email: values?.email,
       password: values?.password,
+      user_type: ""
     };
 
     dispatch(onLogin(data, navigate));
