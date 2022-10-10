@@ -234,6 +234,12 @@ body {
   font-size: 350px !important;
 }
 
+@media screen and (max-width: 480px) {
+  .zero_one {
+    font-size: 300px !important;
+  }
+}
+
 .zero_one,
 .bg_nuum {
   height: 200px;
@@ -350,6 +356,8 @@ body {
 .slider_get_btn {
   padding: 30px 0px;
 }
+
+
 
 .slider_get_btn button {
   width: 179px;
@@ -477,6 +485,26 @@ body {
 .service_icon {
   height: 121px;
   margin: 20px 0px;
+}
+
+@media screen and (max-width: 376px) {
+  .slider_get_btn {
+    padding: 5px 0px;
+  }
+
+  .shuuter_man::after {
+    width: 170px;
+    top: 60%;
+  }
+  .shuuter_man::after {
+    right: -90px !important;
+  }
+  .shuuter_man {
+    min-height: 500px;
+  }
+  .clients_sec {
+    margin-top: -50px;
+  }
 }
 
 .service_icon img {
@@ -4695,9 +4723,9 @@ a {
   color: #808080;
 }
 
-
-
-.original_mess .greet, .message_from_client, .client_name_{
+.original_mess .greet,
+.message_from_client,
+.client_name_ {
   font-family: "Poppins-Bold", "Poppins";
   font-weight: 400;
   font-size: 14px;
@@ -4707,19 +4735,19 @@ a {
   color: #545454;
 }
 
-.my_reports_{
+.my_reports_ {
   display: flex;
   justify-content: space-between;
   width: 100%;
   padding: 20px 10px;
   border-bottom: #ebebed solid 1px;
 }
-.my_reports_ .report_name .report_heading{
+.my_reports_ .report_name .report_heading {
   color: #6d2ef1;
   font-size: 17px;
   font-weight: 700;
   cursor: pointer;
 }
-.my_reports_ .report_name .report_time{
+.my_reports_ .report_name .report_time {
   font-size: 14px;
 }

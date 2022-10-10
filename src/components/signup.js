@@ -376,9 +376,9 @@ const Signup = ({
               <h3>I Want to:</h3>
             </div>
             <div className="sign_buttons_group sign_upbtn_heffect">
-              {/* <Link to={`/question1`} className='signup_mlr_20px_a'> */}
+              <Link to={`/question1`} className='signup_mlr_20px_a'>
               <button
-                onClick={(e) => selectUserType(e)}
+                // onClick={(e) => selectUserType(e)}
                 type="button"
                 className={
                   userType === "client" ? "userTypeActive" : "userType"
@@ -387,11 +387,11 @@ const Signup = ({
               >
                 Hire for a Project
               </button>
-              {/* </Link> */}
-              {/* <Link to={`/freelancer/question1`} className='signup_mlr_20px_a'> */}
+              </Link>
+              <Link to={`/freelancer/question1`} className='signup_mlr_20px_a'>
               <button
                 type="button"
-                onClick={(e) => selectUserType(e)}
+                // onClick={(e) => selectUserType(e)}
                 className={
                   userType === "freelancer" ? "userTypeActive" : "userType"
                 }
@@ -399,7 +399,7 @@ const Signup = ({
               >
                 Work as a freelancer
               </button>
-              {/* </Link> */}
+              </Link>
             </div>
             <div className="sign_legal_not">
               <div className="sign_l_n_text">
