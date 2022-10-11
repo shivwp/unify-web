@@ -130,7 +130,7 @@ const Screen = () => {
     <>
       <div className="chat-bg mt-2">
         <Container>
-          <div class="chat-header align-items-center flex-wrap">
+          <div className="chat-header align-items-center flex-wrap">
             <div className="chat_header_buttons align-items-center w-50 justify-content-between cewbrteve">
               <div className="d-flex cewbrtever">
               <Link to='/freelancer/contact-info'>

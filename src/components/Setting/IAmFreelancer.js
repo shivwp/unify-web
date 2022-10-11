@@ -227,7 +227,7 @@ const IAmFreelancer = () => {
                   spaceBetween: 10,
                 },
                 900: {
-                  slidesPerView: 4,
+                  slidesPerView: 3,
                   spaceBetween: 10,
                 },
               }}

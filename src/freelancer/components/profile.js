@@ -6,8 +6,13 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getFreelancerProfile,
+  getFreelancerSkills,
+  onAddEmployment,
   onEditTestimonialInfo,
+  onDeleteEmployment,
 } from "../../redux/actions/profileAction";
+import Rating from "./rating/Rating";
+import moment from "moment";
 
 function Listaward() {
   const card = [1, 2, 3, 4];
@@ -57,7 +62,7 @@ const CloseIcon = () => {
   return (
     <svg
       fill="#B2B2B2"
-      class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiBox-root css-1om0hkc"
+      className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiBox-root css-1om0hkc"
       focusable="false"
       aria-hidden="true"
       viewBox="0 0 24 24"
@@ -117,6 +122,15 @@ const WorkHistory = () => {
   );
 };
 const EditSkill = (props) => {
+  const dispatch = useDispatch();
+  const getSkillList = useSelector((state) => state?.profile?.getSkillList);
+
+  useEffect(() => {
+    dispatch(getFreelancerSkills());
+  }, []);
+
+  console.log(getSkillList);
+
   return (
     <>
       <div className="bg_wrapper_popup_new">
@@ -141,21 +155,16 @@ const EditSkill = (props) => {
             </div>
             <div className="catbox_rd_ofive mt-3">
               <div className="d-flex flex-wrap">
-                <div className="skill_bxr_gry">
-                  Mobile App <button>X</button>
-                </div>
-                <div className="skill_bxr_gry">
-                  Website Design <button>X</button>
-                </div>
-                <div className="skill_bxr_gry">
-                  Web Development <button>X</button>
-                </div>
-                <div className="skill_bxr_gry">
-                  Logo Design <button>X</button>
-                </div>
-                <div className="skill_bxr_gry">
-                  Logo Design <button>X</button>
-                </div>
+                {getSkillList?.map((skill, key) => (
+                  <div
+                    className="skill_bxr_gry"
+                    key={key}
+                    onClick={() => console.log(skill)}
+                  >
+                    {skill.name}
+                    <button>X</button>
+                  </div>
+                ))}
               </div>
               <div>
                 <input
@@ -358,6 +367,34 @@ const AddExperience = (props) => {
   );
 };
 const AddEmployment = (props) => {
+  const dispatch = useDispatch();
+  const [values, setValues] = useState(
+    props?.experience || { currently_working: 0 }
+  );
+  const onInputChange = (e) => {
+    if (e.target.name == "currently_working") {
+      setValues({ ...values, [e.target.name]: e.target.checked ? 1 : 0 });
+    } else {
+      setValues({ ...values, [e.target.name]: e.target.value });
+    }
+  };
+
+  const onSave = () => {
+    const data = {
+      id: props?.experience?.id,
+      company: values.company,
+      city: values.city,
+      country: values.country,
+      description: values.description,
+      subject: values.subject,
+      currently_working: values.currently_working,
+      start_date: values.start_date,
+      end_date: values.end_date,
+    };
+    dispatch(onAddEmployment(data, props.Popup));
+  };
+  console.log(values);
+
   return (
     <>
       <div className="bg_wrapper_popup_new">
@@ -387,6 +424,9 @@ const AddEmployment = (props) => {
                       type="text"
                       className="font-size-13px"
                       placeholder="Ex: Unify"
+                      name="company"
+                      value={values.company || ""}
+                      onChange={(e) => onInputChange(e)}
                     />
                   </div>
                 </Col>
@@ -397,7 +437,10 @@ const AddEmployment = (props) => {
                     </label>
                     <input
                       type="text"
+                      name="city"
                       className="font-size-13px"
+                      value={values.city || ""}
+                      onChange={(e) => onInputChange(e)}
                       placeholder="City"
                     />
                   </div>
@@ -409,6 +452,9 @@ const AddEmployment = (props) => {
                     </label>
                     <input
                       type="text"
+                      name="country"
+                      onChange={(e) => onInputChange(e)}
+                      value={values.country || ""}
                       className="font-size-13px"
                       placeholder="Country"
                     />
@@ -421,6 +467,9 @@ const AddEmployment = (props) => {
                     </label>
                     <input
                       type="text"
+                      name="subject"
+                      onChange={(e) => onInputChange(e)}
+                      value={values.subject || ""}
                       className="font-size-13px"
                       placeholder="Ex: Unify"
                     />
@@ -429,31 +478,43 @@ const AddEmployment = (props) => {
                 <Col md={6}>
                   <div className="popup_form_element">
                     <label className="text-black font-size-13px font-weight-500">
-                      From Month
+                      Start Date
                     </label>
                     <input
-                      type="text"
+                      type="date"
                       className="font-size-13px"
-                      placeholder="From Month"
+                      placeholder="Start Date"
+                      name="start_date"
+                      value={values.start_date || ""}
+                      onChange={(e) => onInputChange(e)}
                     />
                   </div>
                 </Col>
                 <Col md={6}>
                   <div className="popup_form_element">
                     <label className="text-black font-size-13px font-weight-500">
-                      From Year
+                      End Date
                     </label>
                     <input
-                      type="text"
+                      type="date"
+                      name="end_date"
                       className="font-size-13px"
-                      placeholder="From Year"
+                      value={values.end_date || ""}
+                      placeholder="End Date"
+                      onChange={(e) => onInputChange(e)}
                     />
                   </div>
                 </Col>
                 <Col className="text-right">
                   <div className="agrement_ineoeu flex-row d-flex justify-content-end mt-1 pt-0">
                     <label className="text-black text-right font-size-13px font-weight-500">
-                      <input type="checkbox" /> I currently work here
+                      <input
+                        type="checkbox"
+                        name="currently_working"
+                        onChange={(e) => onInputChange(e)}
+                        defaultChecked={values.currently_working || false}
+                      />{" "}
+                      I currently work here
                     </label>
                   </div>
                 </Col>
@@ -464,6 +525,9 @@ const AddEmployment = (props) => {
                     </label>
                     <textarea
                       className="font-size-13px"
+                      value={values.description || ""}
+                      name="description"
+                      onChange={(e) => onInputChange(e)}
                       placeholder="Enter Here"
                     ></textarea>
                   </div>
@@ -472,14 +536,15 @@ const AddEmployment = (props) => {
             </div>
 
             <div className="popup_btns_new flex-wrap cwiewyehkk">
-              <button className="trans_btn">Cancel</button>
               <button
+                className="trans_btn"
                 onClick={() => {
                   props.Popup();
                 }}
               >
-                Save
+                Cancel
               </button>
+              <button onClick={onSave}>Save</button>
             </div>
           </div>
         </div>
@@ -730,12 +795,17 @@ const LanguageEdit = (props) => {
   );
 };
 const AddEduc = (props) => {
+  const [values, setValues] = useState({})
   const options1 = [
     {
       name: "Fluent",
       label: "Fluent",
     },
   ];
+
+  const handleOnChange =  (e)=>{
+    setValues({...values, [e.target.name]: e.target.value})
+  }
   return (
     <>
       <div className="bg_wrapper_popup_new">
@@ -763,6 +833,8 @@ const AddEduc = (props) => {
                     </label>
                     <input
                       type="text"
+                      name="school"
+                      onChange={(e)=>handleOnChange(e)}
                       className="font-size-13px"
                       placeholder="Ex: Northwestern University"
                     />
@@ -776,6 +848,8 @@ const AddEduc = (props) => {
                     <Select
                       className="font-size-13px"
                       placeholder="From"
+                      name="school"
+                      onChange={(e)=>handleOnChange(e)}
                       options={options1}
                     />
                   </div>
@@ -1146,36 +1220,23 @@ const UnifyFreelancer = () => {
   const basicInfo = useSelector(
     (state) => state?.profile?.freelancerProfileList?.basic_info
   );
+  const freelancerProfileList = useSelector(
+    (state) => state?.profile?.freelancerProfileList
+  );
+  const deleteExprience = useSelector(
+    (state) => state?.profile?.deleteExprience
+  );
+  const addExprience = useSelector((state) => state?.profile?.addExprience);
 
   useEffect(() => {
     dispatch(getFreelancerProfile());
-  }, []);
+  }, [deleteExprience, addExprience]);
 
-  const Rating = ({ rating }) => {
-    const printStars = (number) => {
-      let stars = "";
-
-      for (let i = 0; i < number; i++) {
-        stars = `${stars} <i class="fa fa-star text-primary"></i>`;
-      }
-      for (let j = 0; j < 5 - rating; j++) {
-        stars = `${stars} <i class="fa fa-star text-secondary"></i>`;
-      }
-      return stars;
-    };
-
-    return (
-      rating != 0 && (
-        <span
-          style={{ fontSize: "10px" }}
-          className="my-1"
-          dangerouslySetInnerHTML={{
-            __html: printStars(rating),
-          }}
-        ></span>
-      )
-    );
+  const deleteExp = (id) => {
+    dispatch(onDeleteEmployment({ id }));
   };
+
+  // console.log(freelancerProfileList);
   return (
     <div className="mt-5 mb-5">
       <Container>
@@ -1215,9 +1276,9 @@ const UnifyFreelancer = () => {
                   </div>
 
                   <div className="flex_stars">
-                    <Rating rating={basicInfo?.rating} />
+                    {/* <Rating rating={1} /> */}
 
-                    {/* <div className="review_star">
+                    <div className="review_star">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="16"
@@ -1252,7 +1313,7 @@ const UnifyFreelancer = () => {
                       >
                         <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
                       </svg>
-                    </div> */}
+                    </div>
                     <div className="review_par">
                       <p>Reviews</p>
                     </div>
@@ -1283,7 +1344,7 @@ const UnifyFreelancer = () => {
                   <span>(Per Hourly)</span>
                 </div>
               </div>
-              <div className="myskill_prof_node">
+              {/* <div className="myskill_prof_node">
                 <div className="myskill_hdingn font-size-20px font-weight-600">
                   My Skills
                 </div>
@@ -1294,7 +1355,7 @@ const UnifyFreelancer = () => {
                   Full Stack Development
                 </div>
                 <div className="myskill_hdingn font-size-15px">All Work</div>
-              </div>
+              </div> */}
               <div className="profile_detail">
                 <div className="pd_flex flex-wrap">
                   <div className="flex_pt">
@@ -1337,7 +1398,7 @@ const UnifyFreelancer = () => {
                   </div>
                 </div>
               </div>
-              <div className="my_skill_sec">
+              {/* <div className="my_skill_sec">
                 <div className="my_skil_head">
                   <h3>My Skills</h3>
                 </div>
@@ -1374,7 +1435,7 @@ const UnifyFreelancer = () => {
                   </div>
                   <div className="prr_area_line"></div>
                 </div>
-              </div>
+              </div> */}
               <div className="myskill_prof_node">
                 <div className="myskill_hdingn">
                   Video introduction
@@ -1510,61 +1571,50 @@ const UnifyFreelancer = () => {
                         />
                       </svg>
                     </button>
-                    <button>
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="15.709"
-                        height="15.714"
-                        viewBox="0 0 15.709 15.714"
-                      >
-                        <path
-                          id="_8665767_pen_icon"
-                          data-name="8665767_pen_icon"
-                          d="M15.327,2.274,13.482.429a1.475,1.475,0,0,0-2.085,0L9.662,2.165l3.9,3.929L15.3,4.358A1.447,1.447,0,0,0,15.327,2.274Zm-6.356.585L1,10.83a.491.491,0,0,0-.134.251L.057,15.123a.491.491,0,0,0,.576.58l4.042-.808a.491.491,0,0,0,.251-.134L12.9,6.789Z"
-                          transform="translate(-0.047 0.002)"
-                          fill="#6d2ef1"
-                        />
-                      </svg>
-                    </button>
                   </div>
                 </div>
-                <div className="myskill_hdingn ms_hdsmall font-size-15px">
-                  Tallinna University Bachelor or Engineering (BEng), Computer
-                  science 2016-2017
-                  <div className="d-flex justify-content-start">
-                    <button>
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="17"
-                        height="17"
-                        viewBox="0 0 17 17"
+                <div
+                  className="myskill_hdingn ms_hdsmall font-size-15px"
+                  style={{ flexDirection: "column" }}
+                >
+                  {freelancerProfileList?.education?.map((edu) => (
+                    <>
+                      <div
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          marginBottom: 5,
+                        }}
                       >
-                        <path
-                          id="_134224_add_plus_new_icon_2_"
-                          data-name="134224_add_plus_new_icon (2)"
-                          d="M17.786,9.286H11.714V3.214a1.214,1.214,0,0,0-2.429,0V9.286H3.214a1.214,1.214,0,0,0,0,2.429H9.286v6.071a1.214,1.214,0,1,0,2.429,0V11.714h6.071a1.214,1.214,0,1,0,0-2.429Z"
-                          transform="translate(-2 -2)"
-                          fill="#6d2ef1"
-                        />
-                      </svg>
-                    </button>
-                    <button>
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="15.709"
-                        height="15.714"
-                        viewBox="0 0 15.709 15.714"
-                      >
-                        <path
-                          id="_8665767_pen_icon"
-                          data-name="8665767_pen_icon"
-                          d="M15.327,2.274,13.482.429a1.475,1.475,0,0,0-2.085,0L9.662,2.165l3.9,3.929L15.3,4.358A1.447,1.447,0,0,0,15.327,2.274Zm-6.356.585L1,10.83a.491.491,0,0,0-.134.251L.057,15.123a.491.491,0,0,0,.576.58l4.042-.808a.491.491,0,0,0,.251-.134L12.9,6.789Z"
-                          transform="translate(-0.047 0.002)"
-                          fill="#6d2ef1"
-                        />
-                      </svg>
-                    </button>
-                  </div>
+                        <div>
+                          {edu?.school}, {edu?.area_study}{" "}
+                          {moment(edu.date).format("YYYY")}
+                        </div>
+                        <div className="d-flex justify-content-start">
+                          <figure></figure>
+                          <button>
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="15.709"
+                              height="15.714"
+                              viewBox="0 0 15.709 15.714"
+                            >
+                              <path
+                                id="_8665767_pen_icon"
+                                data-name="8665767_pen_icon"
+                                d="M15.327,2.274,13.482.429a1.475,1.475,0,0,0-2.085,0L9.662,2.165l3.9,3.929L15.3,4.358A1.447,1.447,0,0,0,15.327,2.274Zm-6.356.585L1,10.83a.491.491,0,0,0-.134.251L.057,15.123a.491.491,0,0,0,.576.58l4.042-.808a.491.491,0,0,0,.251-.134L12.9,6.789Z"
+                                transform="translate(-0.047 0.002)"
+                                fill="#6d2ef1"
+                              />
+                            </svg>
+                          </button>
+                        </div>
+                      </div>
+                    </>
+                  ))}
+
+                  {/* Tallinna University Bachelor or Engineering (BEng), Computer
+                  science 2016-2017 */}
                 </div>
               </div>
               <div className="award_sec">
@@ -1717,16 +1767,15 @@ const UnifyFreelancer = () => {
               </div>
               <div className="d-flex justify-content-center flex-column text-center">
                 <div className="d-flex flex-wrap">
-                  <div className="skill_bxr_gry">Mobile App Design</div>
-                  <div className="skill_bxr_gry">Website Design</div>
-                  <div className="skill_bxr_gry">Logo Design</div>
-                  <div className="skill_bxr_gry">Web development</div>
-                  <div className="skill_bxr_gry">Banner Design</div>
-                  <div className="skill_bxr_gry">App Development</div>
+                  {freelancerProfileList?.skills?.map((skill, key) => (
+                    <div className="skill_bxr_gry" key={key}>
+                      {skill.skill_name}
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
-            <div className="box-profile-bck mb-0">
+            {/* <div className="box-profile-bck mb-0">
               <div className="d-flex justify-content-end myskill_hdingn">
                 <button
                   onClick={() => {
@@ -1798,7 +1847,7 @@ const UnifyFreelancer = () => {
                   <div className="catbgwhite_bxo">View Project</div>
                 </div>
               </div>
-            </div>
+            </div> */}
             <div className="box-profile-bck">
               <div className="d-flex justify-content-end myskill_hdingn">
                 <button
@@ -1880,7 +1929,7 @@ const UnifyFreelancer = () => {
               </div>
             </div>
             <Row>
-              <Col md={6}>
+              <Col md={12}>
                 <div className="box-profile-bck minei400">
                   <div className="d-flex justify-content-end myskill_hdingn">
                     <button
@@ -1910,51 +1959,72 @@ const UnifyFreelancer = () => {
                     </div>
                   </div>
                   <div className="d-flex justify-content-center flex-column pl-20">
-                    <div className="bpck_sm_txt_a mt-4 ehistory_uxdes">
-                      UI/UX Designer | Expert Web Technplogies
-                    </div>
-                    <div className="ehitory_dtine">
-                      January 2019 - February 2021
-                    </div>
-                    <div className="bpck_sm_txt_a mt-4 mb-0">
-                      <div className="d-flex myskill_hdingn mb-0">
-                        <button className="m-0">
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="15.709"
-                            height="15.714"
-                            viewBox="0 0 15.709 15.714"
-                          >
-                            <path
-                              id="_8665767_pen_icon"
-                              data-name="8665767_pen_icon"
-                              d="M15.327,2.274,13.482.429a1.475,1.475,0,0,0-2.085,0L9.662,2.165l3.9,3.929L15.3,4.358A1.447,1.447,0,0,0,15.327,2.274Zm-6.356.585L1,10.83a.491.491,0,0,0-.134.251L.057,15.123a.491.491,0,0,0,.576.58l4.042-.808a.491.491,0,0,0,.251-.134L12.9,6.789Z"
-                              transform="translate(-0.047 0.002)"
-                              fill="#6d2ef1"
-                            />
-                          </svg>
-                        </button>
-                        <button>
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="16"
-                            height="16"
-                            viewBox="0 0 16 16"
-                          >
-                            <path
-                              id="_2203546_bin_delete_gabage_trash_icon"
-                              data-name="2203546_bin_delete_gabage_trash_icon"
-                              d="M8,0A1,1,0,0,0,7,1H0V3H1V14a2,2,0,0,0,2,2H13a2,2,0,0,0,2-2V3h1V1H9A1,1,0,0,0,8,0ZM4,14H3V5H4Zm3,0H6V5H7Zm3,0H9V5h1Zm3,0H12V5h1Z"
-                              fill="#6d2ef1"
-                            />
-                          </svg>
-                        </button>
-                      </div>
-                    </div>
+                    {freelancerProfileList?.experiences?.map(
+                      (experience, key) => (
+                        <div key={key}>
+                          <div className="bpck_sm_txt_a mt-4 ehistory_uxdes">
+                            {`${experience.company} | ${experience.description}`}
+                          </div>
+                          <div className="ehitory_dtine">
+                            {`${moment(experience.start_date).format(
+                              "MMM-YYYY"
+                            )} To ${moment(experience.end_date).format(
+                              "MMM-YYYY"
+                            )}`}
+                          </div>
+
+                          <div className="bpck_sm_txt_a mt-4 mb-0">
+                            <div className="d-flex myskill_hdingn mb-0">
+                              <button
+                                className="m-0"
+                                onClick={(e) => {
+                                  Setpopup(
+                                    <AddEmployment
+                                      Popup={Setpopup}
+                                      experience={experience}
+                                    />
+                                  );
+                                }}
+                              >
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  width="15.709"
+                                  height="15.714"
+                                  viewBox="0 0 15.709 15.714"
+                                >
+                                  <path
+                                    id="_8665767_pen_icon"
+                                    data-name="8665767_pen_icon"
+                                    d="M15.327,2.274,13.482.429a1.475,1.475,0,0,0-2.085,0L9.662,2.165l3.9,3.929L15.3,4.358A1.447,1.447,0,0,0,15.327,2.274Zm-6.356.585L1,10.83a.491.491,0,0,0-.134.251L.057,15.123a.491.491,0,0,0,.576.58l4.042-.808a.491.491,0,0,0,.251-.134L12.9,6.789Z"
+                                    transform="translate(-0.047 0.002)"
+                                    fill="#6d2ef1"
+                                  />
+                                </svg>
+                              </button>
+                              <button onClick={() => deleteExp(experience.id)}>
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  width="16"
+                                  height="16"
+                                  viewBox="0 0 16 16"
+                                >
+                                  <path
+                                    id="_2203546_bin_delete_gabage_trash_icon"
+                                    data-name="2203546_bin_delete_gabage_trash_icon"
+                                    d="M8,0A1,1,0,0,0,7,1H0V3H1V14a2,2,0,0,0,2,2H13a2,2,0,0,0,2-2V3h1V1H9A1,1,0,0,0,8,0ZM4,14H3V5H4Zm3,0H6V5H7Zm3,0H9V5h1Zm3,0H12V5h1Z"
+                                    fill="#6d2ef1"
+                                  />
+                                </svg>
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      )
+                    )}
                   </div>
                 </div>
               </Col>
-              <Col md={6}>
+              {/* <Col md={6}>
                 <div className="box-profile-bck minei400">
                   <div className="d-flex justify-content-end myskill_hdingn">
                     <button
@@ -1999,7 +2069,7 @@ const UnifyFreelancer = () => {
                     </div>
                   </div>
                 </div>
-              </Col>
+              </Col> */}
             </Row>
           </Col>
         </Row>

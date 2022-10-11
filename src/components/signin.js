@@ -66,7 +66,7 @@ const Signin = ({ onInputChange, submitForm, errors, selectUserType,userType }) 
                     {errors.email && (
                       <>
                         <i
-                          class="fa fa-exclamation-circle"
+                          className="fa fa-exclamation-circle"
                           aria-hidden="true"
                         ></i>{" "}
                         Please enter your email
@@ -121,7 +121,7 @@ const Signin = ({ onInputChange, submitForm, errors, selectUserType,userType }) 
                     {errors.password && (
                       <>
                         <i
-                          class="fa fa-exclamation-circle"
+                          className="fa fa-exclamation-circle"
                           aria-hidden="true"
                         ></i>{" "}
                         Please enter your password
