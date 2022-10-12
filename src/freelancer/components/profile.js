@@ -13,6 +13,7 @@ import {
 } from "../../redux/actions/profileAction";
 import Rating from "./rating/Rating";
 import moment from "moment";
+import HourPerWeekPopup from "./popups/HourPerWeekPopup";
 
 function Listaward() {
   const card = [1, 2, 3, 4];
@@ -217,12 +218,16 @@ const EditTitle = (props) => {
               </div>
             </div>
 
-            <div className="popup_form_element mb-5">
+            <div className="popup_form_element mb-3">
               <input
                 type="text"
                 className="font-size-13px"
                 placeholder="Senior UI/UX, Website Designer And Graphic Designer"
               />
+            </div>
+            <div className="pouphed_skll">Overview</div>
+            <div className="_profile_overview popup_form_element mb-3">
+              <textarea placeholder="theDesignerz offers professional and high-quality graphic design services. We have been designing for companies worldwide since 2018. We are a customer service oriented firm, and we will workwith you until you are completely satisfied with the outcome of your design projects. We are the most experienced team of designers working on Freelancer since 2017"></textarea>
             </div>
 
             <div className="popup_btns_new flex-wrap cwiewyehkk">
@@ -795,7 +800,7 @@ const LanguageEdit = (props) => {
   );
 };
 const AddEduc = (props) => {
-  const [values, setValues] = useState({})
+  const [values, setValues] = useState({});
   const options1 = [
     {
       name: "Fluent",
@@ -803,9 +808,9 @@ const AddEduc = (props) => {
     },
   ];
 
-  const handleOnChange =  (e)=>{
-    setValues({...values, [e.target.name]: e.target.value})
-  }
+  const handleOnChange = (e) => {
+    setValues({ ...values, [e.target.name]: e.target.value });
+  };
   return (
     <>
       <div className="bg_wrapper_popup_new">
@@ -834,7 +839,7 @@ const AddEduc = (props) => {
                     <input
                       type="text"
                       name="school"
-                      onChange={(e)=>handleOnChange(e)}
+                      onChange={(e) => handleOnChange(e)}
                       className="font-size-13px"
                       placeholder="Ex: Northwestern University"
                     />
@@ -849,7 +854,7 @@ const AddEduc = (props) => {
                       className="font-size-13px"
                       placeholder="From"
                       name="school"
-                      onChange={(e)=>handleOnChange(e)}
+                      onChange={(e) => handleOnChange(e)}
                       options={options1}
                     />
                   </div>
@@ -1216,6 +1221,8 @@ const Overview = (props) => {
 
 const UnifyFreelancer = () => {
   const [popup, Setpopup] = useState();
+  const [hwpPopup, setHwpPopup] = useState(false);
+
   const dispatch = useDispatch();
   const basicInfo = useSelector(
     (state) => state?.profile?.freelancerProfileList?.basic_info
@@ -1462,7 +1469,7 @@ const UnifyFreelancer = () => {
                 </div>
                 <div className="myskill_hdingn">
                   Hours per week
-                  <button>
+                  <button onClick={() => setHwpPopup(true)}>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="15.709"
@@ -2074,6 +2081,12 @@ const UnifyFreelancer = () => {
           </Col>
         </Row>
       </Container>
+      {hwpPopup && (
+        <HourPerWeekPopup
+          open={hwpPopup}
+          onCloseModal={() => setHwpPopup(false)}
+        />
+      )}
       {popup}
     </div>
   );
