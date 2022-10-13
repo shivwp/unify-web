@@ -155,12 +155,12 @@ const VerificationPref = (props) => {
               <div className="popup_form_element agrement_ineoeu mt-3 pt-1">
                 <div className="headiwuewopiu">When should we confirm?</div>
                 <label className="text-black font-size-13px font-weight-500 mt-3 pb-1 radiolablepopo">
-                  <input type="radio" name="g" /> When my login or activity
-                  seems risky
+                  <input type="radio" name="g" /> <span style={{fontWeight: 500}}> When my login or activity
+                  seems risky</span>
                 </label>
                 <label className="text-black font-size-13px font-weight-500 mt-1 pb-1 radiolablepopo">
-                  <input type="radio" name="g" /> At every login and when my
-                  login or activity seems risky
+                  <input type="radio" name="g" /> <span style={{fontWeight: 500}}> At every login and when my
+                  login or activity seems risky</span>
                 </label>
               </div>
             </div>

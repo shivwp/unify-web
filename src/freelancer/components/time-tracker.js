@@ -208,7 +208,7 @@ const Screen = () => {
 
   return (
     <>
-      <div className="tracker_header">
+      {/* <div className="tracker_header">
         <Container className="d-flex justify-content-between align-items-center flex-wrap">
           <div className="inpptracker w-40">
             <input type="text" placeholder="What are you working on?" />
@@ -304,14 +304,14 @@ const Screen = () => {
             </div>
           </div>
         </Container>
-      </div>
+      </div> */}
       <Container>
         <div className="wm_3_hdr">
-          <div className="wod_hding font-weight-600">Week of 25 March-31</div>
-          <div className="d-flex flex-wrap bnt_trackre">
+          <div className="wod_hding font-weight-600 my-3">Week of 25 March-31</div>
+          {/* <div className="d-flex flex-wrap bnt_trackre">
             <button className="active_bnt_trak">Timesheet</button>
             <button>Timecard</button>
-          </div>
+          </div> */}
         </div>
         {TimeTable()}
       </Container>

@@ -49,6 +49,7 @@
   flex-wrap: wrap;
 }
 
+
 .freelancer_popup_btns button {
   min-width: 160px;
   display: flex;
@@ -87,3 +88,76 @@
   -webkit-border-radius: 60px !important;
 }
 
+@media screen and (max-width:425px) {
+  .freelancer_popup_btns {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .freelancer_popup_btns button {
+   width: 220px;
+  }
+}
+
+.freelancer_popup_inps label{
+  display: flex;
+  flex-direction: column;
+  margin: 15px 0;
+}
+
+.freelancer_popup_inps label > span{
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.freelancer_popup_inps .custom_css_select{
+  border: #e8e7e7 solid 1px !important;
+}
+
+.freelancer_popup_inps .custom_css_select div {
+  border: none !important;
+  border-radius: 2px !important;
+}
+
+.freelancer_popups .css-1okebmr-indicatorSeparator{
+  display: none;
+}
+
+@media screen and (min-width: 768px) {
+  .AMT_Popup{
+    min-width: 550px;
+  }
+}
+
+.freelancer_popup_inps .freelancer_popup_textarea textarea{
+  width: 100%;
+  height: 120px;
+  resize: none;
+  font-size: 12px;
+  border: #e8e7e7 solid 1px;
+  outline: none;
+}
+
+.left_Characters{
+  display: flex;
+  justify-content: flex-end;
+  font-size: 12px;
+  color: #9e9d9d;
+}
+.freelancer_popup_inps .freelancer_popup_textarea textarea::placeholder{
+ font-size: 12px;
+}
+
+.freelancer_popups .Popup_note {
+  font-size: 12px;
+  font-weight: 500;
+  margin: 20px 0;
+  color: #838181;
+}
+.freelancer_popups .Popup_note > b {
+  /* color: #6d2ef1; */
+}
+.freelancer_popups .Popup_note > span {
+  color: #6d2ef1;
+  cursor: pointer;
+}

@@ -66,7 +66,7 @@ const Services = () => {
                     <SwiperSlide>
                         <div className="service_box">
                             <div className="service_icon"><img src="/assets/dataentry.svg"  alt=""/></div>
-                            <div className="service_head">Social Media</div>
+                            <div className="service_head">Data Entry</div>
                             <div className="service_para">Reach more customers</div>
                         </div>
                     </SwiperSlide>

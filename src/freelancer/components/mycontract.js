@@ -46,7 +46,7 @@ const Screen = () => {
                     <div className='my_job_flx'>
                         <div>
                             <div className="my_job_a job_na_bol">Active Contracts</div>
-                            <div className="my_job_pos_tme inner_a_sty">Contracts you're actively working on will appear here.<a href="#0" className='text-decoration-none'> Start searching for new projects now!</a></div>
+                            <div className="my_job_pos_tme inner_a_sty">Contracts you're actively working on will appear here.<Link to="/freelancer/project-search" className='text-decoration-none'>Start searching for new projects now!</Link></div>
                         </div>
                     </div>
                 </div>

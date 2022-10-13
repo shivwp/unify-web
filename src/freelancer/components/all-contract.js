@@ -85,7 +85,7 @@ const Screen = () => {
                     </div>
                     <div className="no_found_cen justify-content-start">
                         <div>
-                            <div className="no_foun_para_ce text-left">Contracts you're actively working on will appear here. <Link to="/freelancer/milestone-earning">Start searching for new projects now!</Link></div>
+                            <div className="no_foun_para_ce text-left">Contracts you're actively working on will appear here. <Link to="/freelancer/project-search">Start searching for new projects now!</Link></div>
                         </div>
                     </div>
                 </div>

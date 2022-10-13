@@ -2202,7 +2202,7 @@
   padding: 7px 10px;
   right: 0;
   top: 0;
-  pointer-events: none;
+  /* pointer-events: none; */
   cursor: pointer;
 }
 .cal_icon_psr_abs:hover {

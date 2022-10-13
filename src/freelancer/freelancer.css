@@ -569,6 +569,12 @@
 
 .box_overv_new {
   padding: 25px 20px;
+  width: 25%;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;  
+  justify-content: flex-start;
 }
 
 .box_overv_new.active {
@@ -1087,6 +1093,7 @@
 .bxo_be_nac {
   padding: 15px 0px 15px 10px;
   border-bottom: #f9f6ff solid 1px;
+  cursor: pointer;
   width: 100%;
 }
 

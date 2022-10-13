@@ -17,6 +17,7 @@ import HourPerWeekPopup from "./popups/HourPerWeekPopup";
 
 function Listaward() {
   const card = [1, 2, 3, 4];
+
   return (
     <>
       {card.map((person, index) => (
@@ -198,7 +199,7 @@ const EditTitle = (props) => {
       <div className="bg_wrapper_popup_new">
         <div className="popup_box_bpn profile_nceqoi_popup pb-4">
           <div className="popup_header pb-0">
-            <div className="p_header_hding">Edit your title</div>
+            <div className="p_header_hding">Title And Overview</div>
             <div
               className="close_pp_btn"
               onClick={() => {
@@ -209,7 +210,7 @@ const EditTitle = (props) => {
             </div>
           </div>
           <div className="popup_body_bpn amount_popup_body max_height_popucwui overflow-scroll">
-            <div className="mt-4 pt-1 mb-4">
+            <div className="mt-3 pt-1">
               <div className="pouphed_skll">Your title</div>
               <div className="popuphead_smparcr">
                 Enter a single sentence description of your professional
@@ -225,8 +226,19 @@ const EditTitle = (props) => {
                 placeholder="Senior UI/UX, Website Designer And Graphic Designer"
               />
             </div>
-            <div className="pouphed_skll">Overview</div>
-            <div className="_profile_overview popup_form_element mb-3">
+            <div className="pouphed_skll mt-3">Overview</div>
+            <div>
+              <div className="popuphead_smparcr">
+                Use this space to show clients you have the skills and
+                experience they're looking for.
+              </div>
+              <ul className="popuphead_smparcr ulist_overpopup mt-1">
+                <li>Describe your strengths and skills</li>
+                <li>Highlight projects, accomplishments and education</li>
+                <li>Keep it short and make sure it's error-free</li>
+              </ul>
+            </div>
+            <div className="_profile_overview popup_form_element mb-0">
               <textarea placeholder="theDesignerz offers professional and high-quality graphic design services. We have been designing for companies worldwide since 2018. We are a customer service oriented firm, and we will workwith you until you are completely satisfied with the outcome of your design projects. We are the most experienced team of designers working on Freelancer since 2017"></textarea>
             </div>
 
@@ -848,7 +860,7 @@ const AddEduc = (props) => {
                 <Col md={6}>
                   <div className="popup_form_element">
                     <label className="text-black font-size-13px font-weight-500">
-                      Dates Attended (Optional)
+                      Start Year
                     </label>
                     <Select
                       className="font-size-13px"
@@ -862,11 +874,25 @@ const AddEduc = (props) => {
                 <Col md={6}>
                   <div className="popup_form_element">
                     <label className="text-black font-size-13px font-weight-500">
+                      End Year
+                    </label>
+                    <Select
+                      className="font-size-13px"
+                      placeholder="From"
+                      name="school"
+                      onChange={(e) => handleOnChange(e)}
+                      options={options1}
+                    />
+                  </div>
+                </Col>
+                <Col md={12}>
+                  <div className="popup_form_element">
+                    <label className="text-black font-size-13px font-weight-500">
                       Proficiency level
                     </label>
                     <Select
                       className="font-size-13px"
-                      placeholder="Fluent"
+                      placeholder="Graduation"
                       options={options1}
                     />
                   </div>
@@ -1163,65 +1189,66 @@ const ReqTestimonial = (props) => {
     </>
   );
 };
-const Overview = (props) => {
-  return (
-    <>
-      <div className="bg_wrapper_popup_new">
-        <div className="popup_box_bpn profile_nceqoi_popup pb-4">
-          <div className="popup_header pb-0">
-            <div className="p_header_hding">Overview</div>
-            <div
-              className="close_pp_btn"
-              onClick={() => {
-                props.Popup();
-              }}
-            >
-              <CloseIcon />
-            </div>
-          </div>
-          <div className="popup_body_bpn amount_popup_body max_height_popucwui overflow-scroll">
-            <div className="mt-4 pt-1">
-              <div className="popuphead_smparcr">
-                Use this space to show clients you have the skills and
-                experience they're looking for.
-              </div>
-              <ul className="popuphead_smparcr ulist_overpopup mt-1">
-                <li>Describe your strengths and skills</li>
-                <li>Highlight projects, accomplishments and education</li>
-                <li>Keep it short and make sure it's error-free</li>
-              </ul>
-            </div>
-            <div className="gbxewueyuien">
-              theDesignerz offers professional and high-quality graphic design
-              services. We have been designing for companies worldwide since
-              2018. We are a customer service oriented firm, and we will work
-              with you until you are completely satisfied with the outcome of
-              your design projects. We are the most experienced team of
-              designers working on Freelancer since 2017
-            </div>
-            <div className="maxlabel_atcxt mt-2 text-right">
-              4120 characters left
-            </div>
-            <div className="popup_btns_new flex-wrap cwiewyehkk">
-              <button className="trans_btn">Cancel</button>
-              <button
-                onClick={() => {
-                  props.Popup();
-                }}
-              >
-                Save
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </>
-  );
-};
+// const Overview = (props) => {
+//   return (
+//     <>
+//       <div className="bg_wrapper_popup_new">
+//         <div className="popup_box_bpn profile_nceqoi_popup pb-4">
+//           <div className="popup_header pb-0">
+//             <div className="p_header_hding">Overview</div>
+//             <div
+//               className="close_pp_btn"
+//               onClick={() => {
+//                 props.Popup();
+//               }}
+//             >
+//               <CloseIcon />
+//             </div>
+//           </div>
+//           <div className="popup_body_bpn amount_popup_body max_height_popucwui overflow-scroll">
+//             <div className="mt-4 pt-1">
+//               <div className="popuphead_smparcr">
+//                 Use this space to show clients you have the skills and
+//                 experience they're looking for.
+//               </div>
+//               <ul className="popuphead_smparcr ulist_overpopup mt-1">
+//                 <li>Describe your strengths and skills</li>
+//                 <li>Highlight projects, accomplishments and education</li>
+//                 <li>Keep it short and make sure it's error-free</li>
+//               </ul>
+//             </div>
+//             <div className="gbxewueyuien">
+//               theDesignerz offers professional and high-quality graphic design
+//               services. We have been designing for companies worldwide since
+//               2018. We are a customer service oriented firm, and we will work
+//               with you until you are completely satisfied with the outcome of
+//               your design projects. We are the most experienced team of
+//               designers working on Freelancer since 2017
+//             </div>
+//             <div className="maxlabel_atcxt mt-2 text-right">
+//               4120 characters left
+//             </div>
+//             <div className="popup_btns_new flex-wrap cwiewyehkk">
+//               <button className="trans_btn">Cancel</button>
+//               <button
+//                 onClick={() => {
+//                   props.Popup();
+//                 }}
+//               >
+//                 Save
+//               </button>
+//             </div>
+//           </div>
+//         </div>
+//       </div>
+//     </>
+//   );
+// };
 
 const UnifyFreelancer = () => {
   const [popup, Setpopup] = useState();
   const [hwpPopup, setHwpPopup] = useState(false);
+  const [workHistoryTab, setWorkHistoryTab] = useState("COMPLETED JOBS");
 
   const dispatch = useDispatch();
   const basicInfo = useSelector(
@@ -1670,7 +1697,7 @@ const UnifyFreelancer = () => {
                   with the outcome of your design projects. We are the most
                   experienced team of designers working on Freelancer since 2017
                 </div>
-                <div className="myskill_hdingn">
+                {/* <div className="myskill_hdingn">
                   <button
                     onClick={() => {
                       Setpopup(<Overview Popup={Setpopup} />);
@@ -1691,7 +1718,7 @@ const UnifyFreelancer = () => {
                       />
                     </svg>
                   </button>
-                </div>
+                </div> */}
               </div>
             </div>
             <div className="box-profile-bck mb-0">
@@ -1702,10 +1729,22 @@ const UnifyFreelancer = () => {
               </div>
               <div>
                 <div className="tabbar_profle">
-                  <button className="activetabbar_btn">
+                  <button
+                    onClick={() => setWorkHistoryTab("COMPLETED JOBS")}
+                    className={
+                      workHistoryTab === "COMPLETED JOBS" && "activetabbar_btn"
+                    }
+                  >
                     Commpleted Jobs (2)
                   </button>
-                  <button>In Progress (1)</button>
+                  <button
+                    onClick={() => setWorkHistoryTab("IN PROGRESS")}
+                    className={
+                      workHistoryTab === "IN PROGRESS" && "activetabbar_btn"
+                    }
+                  >
+                    In Progress (1)
+                  </button>
                 </div>
                 <WorkHistory />
               </div>
