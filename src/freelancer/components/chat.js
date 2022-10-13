@@ -77,7 +77,9 @@ const PopupContact = (props) => {
                 <input type="radio" name="p" />
               </div>
               <div className="pri_name_desc">
-                <div className="head_priname font-weight-500 font-size-15px">Room admin</div>
+                <div className="head_priname font-weight-500 font-size-15px">
+                  Room admin
+                </div>
                 <div className="hp_desc">
                   Add as a participant who can also add and remove other
                   participants.
@@ -89,7 +91,9 @@ const PopupContact = (props) => {
                 <input type="radio" name="p" />
               </div>
               <div className="pri_name_desc">
-                <div className="head_priname font-weight-500 font-size-15px">Room member</div>
+                <div className="head_priname font-weight-500 font-size-15px">
+                  Room member
+                </div>
                 <div className="hp_desc">
                   Add as a participant in this conversation
                 </div>
@@ -123,9 +127,12 @@ const PopupContact = (props) => {
 const Screen = () => {
   Title(" | Chat");
   const [Popup, SetPopup] = useState();
-  const options1 = [{
-    label:'All Recent',name:'All Recent'
-  }]
+  const options1 = [
+    {
+      label: "All Recent",
+      name: "All Recent",
+    },
+  ];
   return (
     <>
       <div className="chat-bg mt-2">
@@ -133,243 +140,257 @@ const Screen = () => {
           <div className="chat-header align-items-center flex-wrap">
             <div className="chat_header_buttons align-items-center w-50 justify-content-between cewbrteve">
               <div className="d-flex cewbrtever">
-              <Link to='/freelancer/contact-info'>
-              <button>
-                <svg
-                  id="tools"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="29.934"
-                  height="34.947"
-                  viewBox="0 0 29.934 34.947"
-                >
-                  <g
-                    id="Group_2445"
-                    data-name="Group 2445"
-                    transform="translate(0 19.036)"
-                  >
-                    <g
-                      id="Group_2444"
-                      data-name="Group 2444"
-                      transform="translate(0)"
+                <Link to="/freelancer/contact-info">
+                  <button>
+                    <svg
+                      id="tools"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="29.934"
+                      height="34.947"
+                      viewBox="0 0 29.934 34.947"
                     >
-                      <path
-                        id="Path_4495"
-                        data-name="Path 4495"
-                        d="M33.794,256.668v11.075a4.747,4.747,0,1,0,9.493,0V256.668Zm6.329,11.075a1.582,1.582,0,1,1-3.164,0v-7.91h3.164v7.91Z"
-                        transform="translate(-33.794 -256.668)"
-                        fill="#6d2ef1"
-                      />
-                    </g>
-                  </g>
-                  <g
-                    id="Group_2447"
-                    data-name="Group 2447"
-                    transform="translate(3.164 0.05)"
-                  >
-                    <g id="Group_2446" data-name="Group 2446">
-                      <rect
-                        id="Rectangle_635"
-                        data-name="Rectangle 635"
-                        width="3.164"
-                        height="15.734"
-                        fill="#6d2ef1"
-                      />
-                    </g>
-                  </g>
-                  <g
-                    id="Group_2449"
-                    data-name="Group 2449"
-                    transform="translate(11.217 0)"
-                  >
-                    <g
-                      id="Group_2448"
-                      data-name="Group 2448"
-                      transform="translate(0 0)"
+                      <g
+                        id="Group_2445"
+                        data-name="Group 2445"
+                        transform="translate(0 19.036)"
+                      >
+                        <g
+                          id="Group_2444"
+                          data-name="Group 2444"
+                          transform="translate(0)"
+                        >
+                          <path
+                            id="Path_4495"
+                            data-name="Path 4495"
+                            d="M33.794,256.668v11.075a4.747,4.747,0,1,0,9.493,0V256.668Zm6.329,11.075a1.582,1.582,0,1,1-3.164,0v-7.91h3.164v7.91Z"
+                            transform="translate(-33.794 -256.668)"
+                            fill="#6d2ef1"
+                          />
+                        </g>
+                      </g>
+                      <g
+                        id="Group_2447"
+                        data-name="Group 2447"
+                        transform="translate(3.164 0.05)"
+                      >
+                        <g id="Group_2446" data-name="Group 2446">
+                          <rect
+                            id="Rectangle_635"
+                            data-name="Rectangle 635"
+                            width="3.164"
+                            height="15.734"
+                            fill="#6d2ef1"
+                          />
+                        </g>
+                      </g>
+                      <g
+                        id="Group_2449"
+                        data-name="Group 2449"
+                        transform="translate(11.217 0)"
+                      >
+                        <g
+                          id="Group_2448"
+                          data-name="Group 2448"
+                          transform="translate(0 0)"
+                        >
+                          <path
+                            id="Path_4496"
+                            data-name="Path 4496"
+                            d="M201.11,1.343l-.159-.16c-2.227-2.24-4.939-1.128-4.939,2.028s0,4.75,0,4.75q-3.168,0-3.168-.007V3.211c0-3.157-2.71-4.27-4.945-2.044l-.193.192a8.85,8.85,0,0,0,.338,12.979l.989.887a2.545,2.545,0,0,1,.647,1.463V30.2a4.748,4.748,0,0,0,9.5,0V16.688a2.583,2.583,0,0,1,.658-1.484l.931-.843A8.936,8.936,0,0,0,201.11,1.343Zm-2.469,10.673-.931.843a5.65,5.65,0,0,0-1.7,3.829V30.2a1.584,1.584,0,0,1-3.167,0V16.688a5.609,5.609,0,0,0-1.7-3.819l-.989-.887a5.678,5.678,0,0,1-.477-8.106V7.954a3.169,3.169,0,0,0,3.164,3.171h3.169a3.163,3.163,0,0,0,3.164-3.171V3.91A5.765,5.765,0,0,1,198.642,12.016Z"
+                            transform="translate(-185.039 0)"
+                            fill="#6d2ef1"
+                          />
+                        </g>
+                      </g>
+                    </svg>
+                  </button>
+                </Link>
+                <Link to="/freelancer/chat">
+                  <button>
+                    <svg
+                      id="chat"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="35.789"
+                      height="35.839"
+                      viewBox="0 0 35.789 35.839"
                     >
-                      <path
-                        id="Path_4496"
-                        data-name="Path 4496"
-                        d="M201.11,1.343l-.159-.16c-2.227-2.24-4.939-1.128-4.939,2.028s0,4.75,0,4.75q-3.168,0-3.168-.007V3.211c0-3.157-2.71-4.27-4.945-2.044l-.193.192a8.85,8.85,0,0,0,.338,12.979l.989.887a2.545,2.545,0,0,1,.647,1.463V30.2a4.748,4.748,0,0,0,9.5,0V16.688a2.583,2.583,0,0,1,.658-1.484l.931-.843A8.936,8.936,0,0,0,201.11,1.343Zm-2.469,10.673-.931.843a5.65,5.65,0,0,0-1.7,3.829V30.2a1.584,1.584,0,0,1-3.167,0V16.688a5.609,5.609,0,0,0-1.7-3.819l-.989-.887a5.678,5.678,0,0,1-.477-8.106V7.954a3.169,3.169,0,0,0,3.164,3.171h3.169a3.163,3.163,0,0,0,3.164-3.171V3.91A5.765,5.765,0,0,1,198.642,12.016Z"
-                        transform="translate(-185.039 0)"
-                        fill="#6d2ef1"
-                      />
-                    </g>
-                  </g>
-                </svg>
-              </button>
-              </Link>
-              <Link to='/freelancer/chat'>
-              <button>
-                <svg
-                  id="chat"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="35.789"
-                  height="35.839"
-                  viewBox="0 0 35.789 35.839"
-                >
-                  <g
-                    id="Group_2437"
-                    data-name="Group 2437"
-                    transform="translate(0)"
-                  >
-                    <g
-                      id="Group_2436"
-                      data-name="Group 2436"
-                      transform="translate(0)"
+                      <g
+                        id="Group_2437"
+                        data-name="Group 2437"
+                        transform="translate(0)"
+                      >
+                        <g
+                          id="Group_2436"
+                          data-name="Group 2436"
+                          transform="translate(0)"
+                        >
+                          <path
+                            id="Path_4494"
+                            data-name="Path 4494"
+                            d="M32.092,0H4.237A3.969,3.969,0,0,0,.27,3.973V23.862a3.973,3.973,0,0,0,3.967,3.973H17.115l9.451,7.646c.846.684,1.54.358,1.54-.737V27.836h3.986a3.969,3.969,0,0,0,3.967-3.973V3.973A3.973,3.973,0,0,0,32.092,0Zm-.01,23.859H24.129V28.4l-5.607-4.536H4.247V3.977H32.082V23.859Z"
+                            transform="translate(-0.27)"
+                            fill="#fff"
+                          />
+                        </g>
+                      </g>
+                      <g
+                        id="Group_2439"
+                        data-name="Group 2439"
+                        transform="translate(7.953 11.93)"
+                      >
+                        <g id="Group_2438" data-name="Group 2438">
+                          <rect
+                            id="Rectangle_632"
+                            data-name="Rectangle 632"
+                            width="3.977"
+                            height="3.977"
+                            fill="#fff"
+                          />
+                        </g>
+                      </g>
+                      <g
+                        id="Group_2441"
+                        data-name="Group 2441"
+                        transform="translate(15.906 11.93)"
+                      >
+                        <g id="Group_2440" data-name="Group 2440">
+                          <rect
+                            id="Rectangle_633"
+                            data-name="Rectangle 633"
+                            width="3.977"
+                            height="3.977"
+                            fill="#fff"
+                          />
+                        </g>
+                      </g>
+                      <g
+                        id="Group_2443"
+                        data-name="Group 2443"
+                        transform="translate(23.859 11.93)"
+                      >
+                        <g id="Group_2442" data-name="Group 2442">
+                          <rect
+                            id="Rectangle_634"
+                            data-name="Rectangle 634"
+                            width="3.977"
+                            height="3.977"
+                            fill="#fff"
+                          />
+                        </g>
+                      </g>
+                    </svg>
+                  </button>
+                </Link>
+                <Link to="/freelancer/profile">
+                  <button>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="31.77"
+                      height="34.947"
+                      viewBox="0 0 31.77 34.947"
                     >
-                      <path
-                        id="Path_4494"
-                        data-name="Path 4494"
-                        d="M32.092,0H4.237A3.969,3.969,0,0,0,.27,3.973V23.862a3.973,3.973,0,0,0,3.967,3.973H17.115l9.451,7.646c.846.684,1.54.358,1.54-.737V27.836h3.986a3.969,3.969,0,0,0,3.967-3.973V3.973A3.973,3.973,0,0,0,32.092,0Zm-.01,23.859H24.129V28.4l-5.607-4.536H4.247V3.977H32.082V23.859Z"
-                        transform="translate(-0.27)"
-                        fill="#fff"
-                      />
-                    </g>
-                  </g>
-                  <g
-                    id="Group_2439"
-                    data-name="Group 2439"
-                    transform="translate(7.953 11.93)"
-                  >
-                    <g id="Group_2438" data-name="Group 2438">
-                      <rect
-                        id="Rectangle_632"
-                        data-name="Rectangle 632"
-                        width="3.977"
-                        height="3.977"
-                        fill="#fff"
-                      />
-                    </g>
-                  </g>
-                  <g
-                    id="Group_2441"
-                    data-name="Group 2441"
-                    transform="translate(15.906 11.93)"
-                  >
-                    <g id="Group_2440" data-name="Group 2440">
-                      <rect
-                        id="Rectangle_633"
-                        data-name="Rectangle 633"
-                        width="3.977"
-                        height="3.977"
-                        fill="#fff"
-                      />
-                    </g>
-                  </g>
-                  <g
-                    id="Group_2443"
-                    data-name="Group 2443"
-                    transform="translate(23.859 11.93)"
-                  >
-                    <g id="Group_2442" data-name="Group 2442">
-                      <rect
-                        id="Rectangle_634"
-                        data-name="Rectangle 634"
-                        width="3.977"
-                        height="3.977"
-                        fill="#fff"
-                      />
-                    </g>
-                  </g>
-                </svg>
-              </button>
-              </Link>
-              <Link to='/freelancer/profile'>
-              <button>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="31.77"
-                  height="34.947"
-                  viewBox="0 0 31.77 34.947"
+                      <g
+                        id="Group_2455"
+                        data-name="Group 2455"
+                        transform="translate(11.12 7.942)"
+                      >
+                        <g id="Group_2454" data-name="Group 2454">
+                          <path
+                            id="Path_4499"
+                            data-name="Path 4499"
+                            d="M175.432,106.667a4.77,4.77,0,0,0-4.765,4.768v3.172a4.765,4.765,0,1,0,9.531,0v-3.172A4.762,4.762,0,0,0,175.432,106.667Zm1.588,7.94a1.588,1.588,0,1,1-3.177,0v-3.172a1.588,1.588,0,1,1,3.177,0Z"
+                            transform="translate(-170.667 -106.667)"
+                            fill="#6d2ef1"
+                          />
+                        </g>
+                      </g>
+                      <g
+                        id="Group_2457"
+                        data-name="Group 2457"
+                        transform="translate(4.722 22.261)"
+                      >
+                        <g id="Group_2456" data-name="Group 2456">
+                          <path
+                            id="Path_4500"
+                            data-name="Path 4500"
+                            d="M103.73,300.854l-.191-.07c-.178-.064-.379-.136-.6-.213-.633-.219-1.306-.438-1.993-.643-.608-.181-1.2-.343-1.764-.481a14.513,14.513,0,0,0-3.291-.49,16.254,16.254,0,0,0-3.765.705q-.491.133-1.013.285c-.713.207-1.431.429-2.12.65-.241.078-.462.15-.657.215l-.249.083a4.89,4.89,0,0,0-3.337,4.394h3.177a1.773,1.773,0,0,1,1.154-1.376l.255-.085c.187-.062.4-.131.63-.206.662-.213,1.352-.426,2.034-.624.329-.1.649-.186.957-.269a15.1,15.1,0,0,1,2.934-.595,11.846,11.846,0,0,1,2.54.4c.509.124,1.049.272,1.607.438.64.191,1.27.4,1.862.6.353.122.613.216.751.268a2.01,2.01,0,0,1,1.2,1.448h3.177A5.084,5.084,0,0,0,103.73,300.854Z"
+                            transform="translate(-84.748 -298.957)"
+                            fill="#6d2ef1"
+                          />
+                        </g>
+                      </g>
+                      <g
+                        id="Group_2459"
+                        data-name="Group 2459"
+                        transform="translate(0)"
+                      >
+                        <g id="Group_2458" data-name="Group 2458">
+                          <path
+                            id="Path_4501"
+                            data-name="Path 4501"
+                            d="M49.926,0H24.51a3.177,3.177,0,0,0-3.177,3.177V31.77a3.177,3.177,0,0,0,3.177,3.177H49.926A3.177,3.177,0,0,0,53.1,31.77V3.177A3.177,3.177,0,0,0,49.926,0Zm0,31.77H24.51V3.177H49.926Z"
+                            transform="translate(-21.333)"
+                            fill="#6d2ef1"
+                          />
+                        </g>
+                      </g>
+                    </svg>
+                  </button>
+                </Link>
+                <button
+                  className="round-chat-btn"
+                  onClick={() => {
+                    SetPopup(<PopupContact SetPopup={SetPopup} />);
+                  }}
                 >
-                  <g
-                    id="Group_2455"
-                    data-name="Group 2455"
-                    transform="translate(11.12 7.942)"
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="21.49"
+                    height="21.49"
+                    viewBox="0 0 21.49 21.49"
                   >
-                    <g id="Group_2454" data-name="Group 2454">
-                      <path
-                        id="Path_4499"
-                        data-name="Path 4499"
-                        d="M175.432,106.667a4.77,4.77,0,0,0-4.765,4.768v3.172a4.765,4.765,0,1,0,9.531,0v-3.172A4.762,4.762,0,0,0,175.432,106.667Zm1.588,7.94a1.588,1.588,0,1,1-3.177,0v-3.172a1.588,1.588,0,1,1,3.177,0Z"
-                        transform="translate(-170.667 -106.667)"
-                        fill="#6d2ef1"
-                      />
-                    </g>
-                  </g>
-                  <g
-                    id="Group_2457"
-                    data-name="Group 2457"
-                    transform="translate(4.722 22.261)"
-                  >
-                    <g id="Group_2456" data-name="Group 2456">
-                      <path
-                        id="Path_4500"
-                        data-name="Path 4500"
-                        d="M103.73,300.854l-.191-.07c-.178-.064-.379-.136-.6-.213-.633-.219-1.306-.438-1.993-.643-.608-.181-1.2-.343-1.764-.481a14.513,14.513,0,0,0-3.291-.49,16.254,16.254,0,0,0-3.765.705q-.491.133-1.013.285c-.713.207-1.431.429-2.12.65-.241.078-.462.15-.657.215l-.249.083a4.89,4.89,0,0,0-3.337,4.394h3.177a1.773,1.773,0,0,1,1.154-1.376l.255-.085c.187-.062.4-.131.63-.206.662-.213,1.352-.426,2.034-.624.329-.1.649-.186.957-.269a15.1,15.1,0,0,1,2.934-.595,11.846,11.846,0,0,1,2.54.4c.509.124,1.049.272,1.607.438.64.191,1.27.4,1.862.6.353.122.613.216.751.268a2.01,2.01,0,0,1,1.2,1.448h3.177A5.084,5.084,0,0,0,103.73,300.854Z"
-                        transform="translate(-84.748 -298.957)"
-                        fill="#6d2ef1"
-                      />
-                    </g>
-                  </g>
-                  <g
-                    id="Group_2459"
-                    data-name="Group 2459"
-                    transform="translate(0)"
-                  >
-                    <g id="Group_2458" data-name="Group 2458">
-                      <path
-                        id="Path_4501"
-                        data-name="Path 4501"
-                        d="M49.926,0H24.51a3.177,3.177,0,0,0-3.177,3.177V31.77a3.177,3.177,0,0,0,3.177,3.177H49.926A3.177,3.177,0,0,0,53.1,31.77V3.177A3.177,3.177,0,0,0,49.926,0Zm0,31.77H24.51V3.177H49.926Z"
-                        transform="translate(-21.333)"
-                        fill="#6d2ef1"
-                      />
-                    </g>
-                  </g>
-                </svg>
-              </button>
-              </Link>
-              <button
-                className="round-chat-btn"
-                onClick={() => {
-                  SetPopup(<PopupContact SetPopup={SetPopup} />);
-                }}
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="21.49"
-                  height="21.49"
-                  viewBox="0 0 21.49 21.49"
-                >
-                  <path
-                    id="Path_4508"
-                    data-name="Path 4508"
-                    d="M12.086,9.4V0H9.4V9.4H0v2.682H9.4v9.4h2.682v-9.4h9.4V9.4Z"
-                    fill="#6d2ef1"
-                  />
-                </svg>
-              </button>
+                    <path
+                      id="Path_4508"
+                      data-name="Path 4508"
+                      d="M12.086,9.4V0H9.4V9.4H0v2.682H9.4v9.4h2.682v-9.4h9.4V9.4Z"
+                      fill="#6d2ef1"
+                    />
+                  </svg>
+                </button>
               </div>
-            <div className="d-flex justify-content-between align-items-center w-50 seitsix_mtab_margin  flex-wrap cewbrtever">
-              <div>
-                <div className="chat_p_name ml_svg_cpn">Alex K.  
-                <svg xmlns="http://www.w3.org/2000/svg" width="15.972" height="15.264" viewBox="0 0 16.972 16.264">
-  <path id="star" d="M16.927,6.642a.9.9,0,0,0-.776-.619l-4.9-.445L9.316,1.044a.9.9,0,0,0-1.66,0L5.72,5.577l-4.9.445A.9.9,0,0,0,.307,7.6l3.7,3.247L2.919,15.657a.9.9,0,0,0,1.342.975l4.225-2.526,4.224,2.526a.9.9,0,0,0,1.343-.975l-1.092-4.809,3.7-3.247a.9.9,0,0,0,.263-.959Zm-8.36,7.416" transform="translate(0 -0.496)" fill="#ff88fe"/>
-</svg>
-</div>
-                <div className="d-flex cewbrteve wdewcpo39wdbi">
-                  <div className="chat_ucountry">Derby, United Kingdom</div>
-                  <div className="chat_status_date">Friday, July 20, 2020</div>
+              <div className="d-flex justify-content-between align-items-center w-50 seitsix_mtab_margin  flex-wrap cewbrtever">
+                <div>
+                  <div className="chat_p_name ml_svg_cpn">
+                    Alex K.
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="15.972"
+                      height="15.264"
+                      viewBox="0 0 16.972 16.264"
+                    >
+                      <path
+                        id="star"
+                        d="M16.927,6.642a.9.9,0,0,0-.776-.619l-4.9-.445L9.316,1.044a.9.9,0,0,0-1.66,0L5.72,5.577l-4.9.445A.9.9,0,0,0,.307,7.6l3.7,3.247L2.919,15.657a.9.9,0,0,0,1.342.975l4.225-2.526,4.224,2.526a.9.9,0,0,0,1.343-.975l-1.092-4.809,3.7-3.247a.9.9,0,0,0,.263-.959Zm-8.36,7.416"
+                        transform="translate(0 -0.496)"
+                        fill="#ff88fe"
+                      />
+                    </svg>
+                  </div>
+                  <div className="d-flex cewbrteve wdewcpo39wdbi">
+                    <div className="chat_ucountry">Derby, United Kingdom</div>
+                    <div className="chat_status_date">
+                      Friday, July 20, 2020
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-            </div>
             <div className="chat_header_buttons chb_fill_gray  flex-wrap">
-              
-            <div className="chat_header_buttons flex-wrap">
+              <div className="chat_header_buttons flex-wrap">
                 <div className="vpropo_cbrntn">
-                <Link to='/freelancer/active-contract'><button>VIEW PROPOSAL</button></Link>
+                  <Link to="/freelancer/active-contract">
+                    <button>VIEW PROPOSAL</button>
+                  </Link>
                 </div>
                 <button>
                   <svg
@@ -671,29 +692,71 @@ const Screen = () => {
             <Col lg={3}>
               <div className="mt-1 mb-4">
                 <div className="searchbox_hat">
-                  <div className='bxshat_svg'>
-                <svg xmlns="http://www.w3.org/2000/svg" width="33.5" height="33.667" viewBox="0 0 33.5 33.667">
-                <g id="magnifying-glass" transform="translate(-0.898)">
-                  <g id="Group_2490" data-name="Group 2490" transform="translate(22.524 21.681)">
-                    <g id="Group_2489" data-name="Group 2489">
-                      <path id="Path_4513" data-name="Path 4513" d="M236.069,232.949a15.981,15.981,0,0,1-2.814,2.8l9.044,9.184,2.829-2.786Z" transform="translate(-233.255 -232.949)" fill="#6d2ef1"/>
-                    </g>
-                  </g>
-                  <g id="Group_2492" data-name="Group 2492" transform="translate(0.898)">
-                    <g id="Group_2491" data-name="Group 2491" transform="translate(0)">
-                      <path id="Path_4514" data-name="Path 4514" d="M12.811,0A11.913,11.913,0,1,0,24.725,11.913,11.913,11.913,0,0,0,12.811,0Zm0,19.856a7.942,7.942,0,1,1,7.942-7.942A7.942,7.942,0,0,1,12.811,19.856Z" transform="translate(-0.898)" fill="#6d2ef1"/>
-                    </g>
-                  </g>
-                </g>
-                </svg>
+                  <div className="bxshat_svg">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="33.5"
+                      height="33.667"
+                      viewBox="0 0 33.5 33.667"
+                    >
+                      <g id="magnifying-glass" transform="translate(-0.898)">
+                        <g
+                          id="Group_2490"
+                          data-name="Group 2490"
+                          transform="translate(22.524 21.681)"
+                        >
+                          <g id="Group_2489" data-name="Group 2489">
+                            <path
+                              id="Path_4513"
+                              data-name="Path 4513"
+                              d="M236.069,232.949a15.981,15.981,0,0,1-2.814,2.8l9.044,9.184,2.829-2.786Z"
+                              transform="translate(-233.255 -232.949)"
+                              fill="#6d2ef1"
+                            />
+                          </g>
+                        </g>
+                        <g
+                          id="Group_2492"
+                          data-name="Group 2492"
+                          transform="translate(0.898)"
+                        >
+                          <g
+                            id="Group_2491"
+                            data-name="Group 2491"
+                            transform="translate(0)"
+                          >
+                            <path
+                              id="Path_4514"
+                              data-name="Path 4514"
+                              d="M12.811,0A11.913,11.913,0,1,0,24.725,11.913,11.913,11.913,0,0,0,12.811,0Zm0,19.856a7.942,7.942,0,1,1,7.942-7.942A7.942,7.942,0,0,1,12.811,19.856Z"
+                              transform="translate(-0.898)"
+                              fill="#6d2ef1"
+                            />
+                          </g>
+                        </g>
+                      </g>
+                    </svg>
                   </div>
-            <input type='text' placeholder="Search"/>
+                  <input type="text" placeholder="Search" />
                 </div>
                 <div className="searchbox_hat select_box_hat">
-                  <div className='bxshat_svg'>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="13.414" height="8.121" viewBox="0 0 13.414 8.121">
-                    <path id="Path_4512" data-name="Path 4512" d="M7948-1915.291l6,6,6-6" transform="translate(-7947.293 1915.998)" fill="none" stroke="#fff" stroke-width="2"/>
-                  </svg>
+                  <div className="bxshat_svg">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="13.414"
+                      height="8.121"
+                      viewBox="0 0 13.414 8.121"
+                    >
+                      <path
+                        id="Path_4512"
+                        data-name="Path 4512"
+                        d="M7948-1915.291l6,6,6-6"
+                        transform="translate(-7947.293 1915.998)"
+                        fill="none"
+                        stroke="#fff"
+                        stroke-width="2"
+                      />
+                    </svg>
                   </div>
                   <Select
                     className="custom_css_select"
@@ -724,212 +787,212 @@ const Screen = () => {
                   </div>
                 </div>
                 <div className="CHATPROFbox_min230px">
-                <div className="fnt-prof-sde mt-3">Allen Growd</div>
-                <div className="fnt_prof_sde">Website Designer</div>
-                <div className="fny_flag_flex">
-                  <div>
+                  <div className="fnt-prof-sde mt-3">Allen Growd</div>
+                  <div className="fnt_prof_sde">Website Designer</div>
+                  <div className="fny_flag_flex">
+                    <div>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="29.25"
+                        height="19.5"
+                        viewBox="0 0 29.25 19.5"
+                      >
+                        <g id="australia" transform="translate(0 -85.33)">
+                          <rect
+                            id="Rectangle_617"
+                            data-name="Rectangle 617"
+                            width="29.25"
+                            height="19.5"
+                            transform="translate(0 85.33)"
+                            fill="#0052b4"
+                          />
+                          <g
+                            id="Group_2410"
+                            data-name="Group 2410"
+                            transform="translate(0 85.33)"
+                          >
+                            <path
+                              id="Path_4473"
+                              data-name="Path 4473"
+                              d="M223.39,255.132l.046-.052-.047.052Z"
+                              transform="translate(-210.628 -245.383)"
+                              fill="#f0f0f0"
+                            />
+                            <path
+                              id="Path_4474"
+                              data-name="Path 4474"
+                              d="M147.239,297.923l.626,1.309,1.414-.327-.633,1.306,1.137.9-1.415.319,0,1.451-1.132-.908-1.132.908,0-1.451-1.415-.319,1.137-.9-.633-1.306,1.414.327Z"
+                              transform="translate(-136.43 -285.778)"
+                              fill="#f0f0f0"
+                            />
+                            <path
+                              id="Path_4475"
+                              data-name="Path 4475"
+                              d="M367.054,326.387l.3.624.674-.156-.3.623.542.43-.675.152,0,.692-.54-.433-.54.433,0-.692-.675-.152.542-.43-.3-.623.674.156Z"
+                              transform="translate(-344.941 -312.616)"
+                              fill="#f0f0f0"
+                            />
+                            <path
+                              id="Path_4476"
+                              data-name="Path 4476"
+                              d="M318.43,210.448l.3.624.674-.156-.3.623.542.43-.675.152,0,.692-.54-.433-.54.433,0-.692-.675-.152.542-.43-.3-.623.674.156Z"
+                              transform="translate(-299.095 -203.3)"
+                              fill="#f0f0f0"
+                            />
+                            <path
+                              id="Path_4477"
+                              data-name="Path 4477"
+                              d="M367.054,144.2l.3.624.674-.156-.3.623.542.43-.675.152,0,.692-.54-.433-.54.433,0-.692-.675-.152.542-.43-.3-.623.674.156Z"
+                              transform="translate(-344.941 -140.835)"
+                              fill="#f0f0f0"
+                            />
+                            <path
+                              id="Path_4478"
+                              data-name="Path 4478"
+                              d="M409.525,193.886l.3.624.674-.156-.3.623.542.43-.675.152,0,.692-.54-.433-.54.433,0-.692-.675-.152.542-.43-.3-.623.674.156Z"
+                              transform="translate(-384.986 -187.685)"
+                              fill="#f0f0f0"
+                            />
+                            <path
+                              id="Path_4479"
+                              data-name="Path 4479"
+                              d="M382.758,251.856l.235.723h.76l-.615.447.235.723-.615-.447-.615.447.235-.723-.615-.447h.76Z"
+                              transform="translate(-359.954 -242.343)"
+                              fill="#f0f0f0"
+                            />
+                            <path
+                              id="Path_4480"
+                              data-name="Path 4480"
+                              d="M14.625,85.333v1.745l-2.58,1.434h2.58V91.9H11.248l3.376,1.876v1.3H13.1L8.9,92.75v2.332H5.723V92.308L.728,95.083H0V93.337L2.58,91.9H0V88.512H3.376L0,86.636v-1.3H1.524l4.2,2.332V85.333H8.9v2.775L13.9,85.333Z"
+                              transform="translate(0 -85.333)"
+                              fill="#f0f0f0"
+                            />
+                          </g>
+                          <path
+                            id="Path_4481"
+                            data-name="Path 4481"
+                            d="M8.226,85.33H6.4v3.961H0v1.828H6.4V95.08H8.226V91.119h6.4V89.291h-6.4Z"
+                            fill="#d80027"
+                          />
+                          <path
+                            id="Path_4482"
+                            data-name="Path 4482"
+                            d="M155.826,200.344l5.723,3.179v-.9l-4.1-2.28Z"
+                            transform="translate(-146.924 -108.443)"
+                            fill="#0052b4"
+                          />
+                          <path
+                            id="Path_4483"
+                            data-name="Path 4483"
+                            d="M155.826,200.344l5.723,3.179v-.9l-4.1-2.28Z"
+                            transform="translate(-146.924 -108.443)"
+                            fill="#f0f0f0"
+                          />
+                          <g
+                            id="Group_2411"
+                            data-name="Group 2411"
+                            transform="translate(0 91.901)"
+                          >
+                            <path
+                              id="Path_4484"
+                              data-name="Path 4484"
+                              d="M155.826,200.344l5.723,3.179v-.9l-4.1-2.28Z"
+                              transform="translate(-146.924 -200.344)"
+                              fill="#d80027"
+                            />
+                            <path
+                              id="Path_4485"
+                              data-name="Path 4485"
+                              d="M4.1,200.344,0,202.624v.9H0l5.723-3.179Z"
+                              transform="translate(0 -200.344)"
+                              fill="#d80027"
+                            />
+                          </g>
+                          <path
+                            id="Path_4486"
+                            data-name="Path 4486"
+                            d="M5.723,88.509,0,85.33v.9l4.1,2.28Z"
+                            fill="#0052b4"
+                          />
+                          <path
+                            id="Path_4487"
+                            data-name="Path 4487"
+                            d="M5.723,88.509,0,85.33v.9l4.1,2.28Z"
+                            fill="#f0f0f0"
+                          />
+                          <g
+                            id="Group_2412"
+                            data-name="Group 2412"
+                            transform="translate(0 85.33)"
+                          >
+                            <path
+                              id="Path_4488"
+                              data-name="Path 4488"
+                              d="M5.723,88.509,0,85.33v.9l4.1,2.28Z"
+                              transform="translate(0 -85.33)"
+                              fill="#d80027"
+                            />
+                            <path
+                              id="Path_4489"
+                              data-name="Path 4489"
+                              d="M157.444,88.509l4.1-2.28v-.9h0l-5.723,3.179Z"
+                              transform="translate(-146.924 -85.33)"
+                              fill="#d80027"
+                            />
+                          </g>
+                        </g>
+                      </svg>
+                    </div>
+                    <div>Victoria, Australia</div>
+                  </div>
+                  <div className="review_profile_tx mb-3">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      width="29.25"
-                      height="19.5"
-                      viewBox="0 0 29.25 19.5"
+                      width="24.378"
+                      height="23.437"
+                      viewBox="0 0 24.378 23.437"
                     >
-                      <g id="australia" transform="translate(0 -85.33)">
-                        <rect
-                          id="Rectangle_617"
-                          data-name="Rectangle 617"
-                          width="29.25"
-                          height="19.5"
-                          transform="translate(0 85.33)"
-                          fill="#0052b4"
-                        />
-                        <g
-                          id="Group_2410"
-                          data-name="Group 2410"
-                          transform="translate(0 85.33)"
-                        >
-                          <path
-                            id="Path_4473"
-                            data-name="Path 4473"
-                            d="M223.39,255.132l.046-.052-.047.052Z"
-                            transform="translate(-210.628 -245.383)"
-                            fill="#f0f0f0"
-                          />
-                          <path
-                            id="Path_4474"
-                            data-name="Path 4474"
-                            d="M147.239,297.923l.626,1.309,1.414-.327-.633,1.306,1.137.9-1.415.319,0,1.451-1.132-.908-1.132.908,0-1.451-1.415-.319,1.137-.9-.633-1.306,1.414.327Z"
-                            transform="translate(-136.43 -285.778)"
-                            fill="#f0f0f0"
-                          />
-                          <path
-                            id="Path_4475"
-                            data-name="Path 4475"
-                            d="M367.054,326.387l.3.624.674-.156-.3.623.542.43-.675.152,0,.692-.54-.433-.54.433,0-.692-.675-.152.542-.43-.3-.623.674.156Z"
-                            transform="translate(-344.941 -312.616)"
-                            fill="#f0f0f0"
-                          />
-                          <path
-                            id="Path_4476"
-                            data-name="Path 4476"
-                            d="M318.43,210.448l.3.624.674-.156-.3.623.542.43-.675.152,0,.692-.54-.433-.54.433,0-.692-.675-.152.542-.43-.3-.623.674.156Z"
-                            transform="translate(-299.095 -203.3)"
-                            fill="#f0f0f0"
-                          />
-                          <path
-                            id="Path_4477"
-                            data-name="Path 4477"
-                            d="M367.054,144.2l.3.624.674-.156-.3.623.542.43-.675.152,0,.692-.54-.433-.54.433,0-.692-.675-.152.542-.43-.3-.623.674.156Z"
-                            transform="translate(-344.941 -140.835)"
-                            fill="#f0f0f0"
-                          />
-                          <path
-                            id="Path_4478"
-                            data-name="Path 4478"
-                            d="M409.525,193.886l.3.624.674-.156-.3.623.542.43-.675.152,0,.692-.54-.433-.54.433,0-.692-.675-.152.542-.43-.3-.623.674.156Z"
-                            transform="translate(-384.986 -187.685)"
-                            fill="#f0f0f0"
-                          />
-                          <path
-                            id="Path_4479"
-                            data-name="Path 4479"
-                            d="M382.758,251.856l.235.723h.76l-.615.447.235.723-.615-.447-.615.447.235-.723-.615-.447h.76Z"
-                            transform="translate(-359.954 -242.343)"
-                            fill="#f0f0f0"
-                          />
-                          <path
-                            id="Path_4480"
-                            data-name="Path 4480"
-                            d="M14.625,85.333v1.745l-2.58,1.434h2.58V91.9H11.248l3.376,1.876v1.3H13.1L8.9,92.75v2.332H5.723V92.308L.728,95.083H0V93.337L2.58,91.9H0V88.512H3.376L0,86.636v-1.3H1.524l4.2,2.332V85.333H8.9v2.775L13.9,85.333Z"
-                            transform="translate(0 -85.333)"
-                            fill="#f0f0f0"
-                          />
-                        </g>
-                        <path
-                          id="Path_4481"
-                          data-name="Path 4481"
-                          d="M8.226,85.33H6.4v3.961H0v1.828H6.4V95.08H8.226V91.119h6.4V89.291h-6.4Z"
-                          fill="#d80027"
-                        />
-                        <path
-                          id="Path_4482"
-                          data-name="Path 4482"
-                          d="M155.826,200.344l5.723,3.179v-.9l-4.1-2.28Z"
-                          transform="translate(-146.924 -108.443)"
-                          fill="#0052b4"
-                        />
-                        <path
-                          id="Path_4483"
-                          data-name="Path 4483"
-                          d="M155.826,200.344l5.723,3.179v-.9l-4.1-2.28Z"
-                          transform="translate(-146.924 -108.443)"
-                          fill="#f0f0f0"
-                        />
-                        <g
-                          id="Group_2411"
-                          data-name="Group 2411"
-                          transform="translate(0 91.901)"
-                        >
-                          <path
-                            id="Path_4484"
-                            data-name="Path 4484"
-                            d="M155.826,200.344l5.723,3.179v-.9l-4.1-2.28Z"
-                            transform="translate(-146.924 -200.344)"
-                            fill="#d80027"
-                          />
-                          <path
-                            id="Path_4485"
-                            data-name="Path 4485"
-                            d="M4.1,200.344,0,202.624v.9H0l5.723-3.179Z"
-                            transform="translate(0 -200.344)"
-                            fill="#d80027"
-                          />
-                        </g>
-                        <path
-                          id="Path_4486"
-                          data-name="Path 4486"
-                          d="M5.723,88.509,0,85.33v.9l4.1,2.28Z"
-                          fill="#0052b4"
-                        />
-                        <path
-                          id="Path_4487"
-                          data-name="Path 4487"
-                          d="M5.723,88.509,0,85.33v.9l4.1,2.28Z"
-                          fill="#f0f0f0"
-                        />
-                        <g
-                          id="Group_2412"
-                          data-name="Group 2412"
-                          transform="translate(0 85.33)"
-                        >
-                          <path
-                            id="Path_4488"
-                            data-name="Path 4488"
-                            d="M5.723,88.509,0,85.33v.9l4.1,2.28Z"
-                            transform="translate(0 -85.33)"
-                            fill="#d80027"
-                          />
-                          <path
-                            id="Path_4489"
-                            data-name="Path 4489"
-                            d="M157.444,88.509l4.1-2.28v-.9h0l-5.723,3.179Z"
-                            transform="translate(-146.924 -85.33)"
-                            fill="#d80027"
-                          />
-                        </g>
-                      </g>
+                      <path
+                        id="star"
+                        d="M22.275,8.583a1.185,1.185,0,0,0-1.021-.815l-6.447-.585L12.259,1.217a1.187,1.187,0,0,0-2.184,0L7.527,7.182l-6.448.585A1.188,1.188,0,0,0,.4,9.845l4.873,4.273L3.841,20.447A1.187,1.187,0,0,0,5.607,21.73l5.559-3.324,5.558,3.324a1.188,1.188,0,0,0,1.767-1.283l-1.437-6.329,4.873-4.273a1.188,1.188,0,0,0,.346-1.262Zm-11,9.759"
+                        transform="translate(1.023 0.504)"
+                        fill="#ff88fe"
+                        stroke="#ff88fe"
+                        stroke-width="2"
+                      />
                     </svg>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24.378"
+                      height="23.437"
+                      viewBox="0 0 24.378 23.437"
+                    >
+                      <path
+                        id="star"
+                        d="M22.275,8.583a1.185,1.185,0,0,0-1.021-.815l-6.447-.585L12.259,1.217a1.187,1.187,0,0,0-2.184,0L7.527,7.182l-6.448.585A1.188,1.188,0,0,0,.4,9.845l4.873,4.273L3.841,20.447A1.187,1.187,0,0,0,5.607,21.73l5.559-3.324,5.558,3.324a1.188,1.188,0,0,0,1.767-1.283l-1.437-6.329,4.873-4.273a1.188,1.188,0,0,0,.346-1.262Zm-11,9.759"
+                        transform="translate(1.023 0.504)"
+                        fill="#ff88fe"
+                        stroke="#ff88fe"
+                        stroke-width="2"
+                      />
+                    </svg>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24.378"
+                      height="23.437"
+                      viewBox="0 0 24.378 23.437"
+                    >
+                      <path
+                        id="star"
+                        d="M22.275,8.583a1.185,1.185,0,0,0-1.021-.815l-6.447-.585L12.259,1.217a1.187,1.187,0,0,0-2.184,0L7.527,7.182l-6.448.585A1.188,1.188,0,0,0,.4,9.845l4.873,4.273L3.841,20.447A1.187,1.187,0,0,0,5.607,21.73l5.559-3.324,5.558,3.324a1.188,1.188,0,0,0,1.767-1.283l-1.437-6.329,4.873-4.273a1.188,1.188,0,0,0,.346-1.262Zm-11,9.759"
+                        transform="translate(1.023 0.504)"
+                        fill="#ff88fe"
+                        stroke="#ff88fe"
+                        stroke-width="2"
+                      />
+                    </svg>
+                    <div>Reviews</div>
                   </div>
-                  <div>Victoria, Australia</div>
-                </div>
-                <div className="review_profile_tx mb-3">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24.378"
-                    height="23.437"
-                    viewBox="0 0 24.378 23.437"
-                  >
-                    <path
-                      id="star"
-                      d="M22.275,8.583a1.185,1.185,0,0,0-1.021-.815l-6.447-.585L12.259,1.217a1.187,1.187,0,0,0-2.184,0L7.527,7.182l-6.448.585A1.188,1.188,0,0,0,.4,9.845l4.873,4.273L3.841,20.447A1.187,1.187,0,0,0,5.607,21.73l5.559-3.324,5.558,3.324a1.188,1.188,0,0,0,1.767-1.283l-1.437-6.329,4.873-4.273a1.188,1.188,0,0,0,.346-1.262Zm-11,9.759"
-                      transform="translate(1.023 0.504)"
-                      fill="#ff88fe"
-                      stroke="#ff88fe"
-                      stroke-width="2"
-                    />
-                  </svg>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24.378"
-                    height="23.437"
-                    viewBox="0 0 24.378 23.437"
-                  >
-                    <path
-                      id="star"
-                      d="M22.275,8.583a1.185,1.185,0,0,0-1.021-.815l-6.447-.585L12.259,1.217a1.187,1.187,0,0,0-2.184,0L7.527,7.182l-6.448.585A1.188,1.188,0,0,0,.4,9.845l4.873,4.273L3.841,20.447A1.187,1.187,0,0,0,5.607,21.73l5.559-3.324,5.558,3.324a1.188,1.188,0,0,0,1.767-1.283l-1.437-6.329,4.873-4.273a1.188,1.188,0,0,0,.346-1.262Zm-11,9.759"
-                      transform="translate(1.023 0.504)"
-                      fill="#ff88fe"
-                      stroke="#ff88fe"
-                      stroke-width="2"
-                    />
-                  </svg>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24.378"
-                    height="23.437"
-                    viewBox="0 0 24.378 23.437"
-                  >
-                    <path
-                      id="star"
-                      d="M22.275,8.583a1.185,1.185,0,0,0-1.021-.815l-6.447-.585L12.259,1.217a1.187,1.187,0,0,0-2.184,0L7.527,7.182l-6.448.585A1.188,1.188,0,0,0,.4,9.845l4.873,4.273L3.841,20.447A1.187,1.187,0,0,0,5.607,21.73l5.559-3.324,5.558,3.324a1.188,1.188,0,0,0,1.767-1.283l-1.437-6.329,4.873-4.273a1.188,1.188,0,0,0,.346-1.262Zm-11,9.759"
-                      transform="translate(1.023 0.504)"
-                      fill="#ff88fe"
-                      stroke="#ff88fe"
-                      stroke-width="2"
-                    />
-                  </svg>
-                  <div>Reviews</div>
-                </div>
                 </div>
                 <div className="prf_dise_btns">
                   <button>
@@ -1012,29 +1075,37 @@ const Screen = () => {
             <Col lg={9} sm={12}>
               <div className="d-flex align-items-center">
                 <div className="file_link_cbtn">
-                  <button>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="44.801"
-                      height="64.57"
-                      viewBox="0 0 44.801 64.57"
-                    >
-                      <g id="attachment" transform="translate(-65.607)">
-                        <g
-                          id="Group_2505"
-                          data-name="Group 2505"
-                          transform="translate(65.607)"
-                        >
-                          <path
-                            id="Path_4515"
-                            data-name="Path 4515"
-                            d="M103.98,6.522V42.178a15.972,15.972,0,1,1-31.944-.021V16.082a9.578,9.578,0,1,1,19.156-.014V41.962a3.211,3.211,0,0,1-6.423.007V12.95H78.341V41.968a9.64,9.64,0,0,0,19.28-.007V16.068A16.083,16.083,0,0,0,81.689,0h-.15A16.069,16.069,0,0,0,65.607,16.082V42.157a22.4,22.4,0,1,0,44.8.02V6.522Z"
-                            transform="translate(-65.607)"
-                            fill="#afafaf"
-                          />
+                  <button style={{display:'flex', alignItems: 'center', justifyContent: 'center'}}>
+
+                    <label className="d-flex align-items-center justify-content-center" htmlFor="attact_file_inp">
+                      <input
+                        type="file"
+                        id="attact_file_inp"
+                        style={{ visibility: "hidden", position: 'absolute', width: '1px', height: '1px' }}
+                      />
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="44.801"
+                        height="64.57"
+                        viewBox="0 0 44.801 64.57"
+                      >
+                        <g id="attachment" transform="translate(-65.607)">
+                          <g
+                            id="Group_2505"
+                            data-name="Group 2505"
+                            transform="translate(65.607)"
+                          >
+                            <path
+                              id="Path_4515"
+                              data-name="Path 4515"
+                              d="M103.98,6.522V42.178a15.972,15.972,0,1,1-31.944-.021V16.082a9.578,9.578,0,1,1,19.156-.014V41.962a3.211,3.211,0,0,1-6.423.007V12.95H78.341V41.968a9.64,9.64,0,0,0,19.28-.007V16.068A16.083,16.083,0,0,0,81.689,0h-.15A16.069,16.069,0,0,0,65.607,16.082V42.157a22.4,22.4,0,1,0,44.8.02V6.522Z"
+                              transform="translate(-65.607)"
+                              fill="#afafaf"
+                            />
+                          </g>
                         </g>
-                      </g>
-                    </svg>
+                      </svg>
+                    </label>
                   </button>
                 </div>
                 <div className="fl_input_chat">

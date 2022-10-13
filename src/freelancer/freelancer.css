@@ -270,7 +270,7 @@
   text-align: justify;
 }
 ._profile_overview textarea::-webkit-scrollbar {
-    display: none;
+  display: none;
 }
 
 ._profile_overview textarea::placeholder {
@@ -573,7 +573,7 @@
   cursor: pointer;
   display: flex;
   flex-direction: column;
-  align-items: center;  
+  align-items: center;
   justify-content: flex-start;
 }
 
@@ -873,6 +873,14 @@
   border: #6d2ef1 solid 1px;
 }
 
+.attact_file_inp {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
 .mess_files_g_bx {
   background-color: #f9f9f9;
   padding: 20px 0px;
