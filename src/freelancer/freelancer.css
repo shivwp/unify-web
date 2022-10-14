@@ -251,6 +251,10 @@
   -o-border-radius: 3px;
 }
 
+.popup_form_element > input {
+  height: 40px;
+}
+
 .popup_form_element select {
   border-color: #6d2ef1;
   color: #6d2ef1;
@@ -569,7 +573,7 @@
 
 .box_overv_new {
   padding: 25px 20px;
-  width: 25%;
+  width: 200px;
   cursor: pointer;
   display: flex;
   flex-direction: column;
@@ -579,6 +583,35 @@
 
 .box_overv_new.active {
   border-bottom: #6d2ef1 solid 4px;
+}
+
+@media screen and (max-width: 768px) {
+  .box_overv_new {
+    padding: 10px 10px;
+  }
+  .overv_sm_thead {
+    font: normal normal 600 14px/20px Poppins;
+
+  }
+}
+@media screen and (max-width: 425px) {
+  .box_overv_new {
+    padding: 10px 10px;
+    min-width: 170px;
+  }
+}
+@media screen and (max-width: 375px) {
+  .box_overv_new {
+    padding: 10px 10px;
+    min-width: 170px;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .overv_sm_thead {
+    font: normal normal 600 18px/20px Poppins;
+    color: #1f1f1f;
+    padding-bottom: 5px;
+  }
 }
 
 .overv_lst_nme {

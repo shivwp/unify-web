@@ -49,7 +49,6 @@
   flex-wrap: wrap;
 }
 
-
 .freelancer_popup_btns button {
   min-width: 160px;
   display: flex;
@@ -88,30 +87,33 @@
   -webkit-border-radius: 60px !important;
 }
 
-@media screen and (max-width:425px) {
+@media screen and (max-width: 425px) {
   .freelancer_popup_btns {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
   }
   .freelancer_popup_btns button {
-   width: 220px;
+    width: 220px;
   }
 }
 
-.freelancer_popup_inps label{
+.freelancer_popup_inps label {
   display: flex;
   flex-direction: column;
   margin: 15px 0;
 }
 
-.freelancer_popup_inps label > span{
+.freelancer_popup_inps label > span {
   font-size: 15px;
   font-weight: 600;
 }
 
-.freelancer_popup_inps .custom_css_select{
+.freelancer_popup_inps .custom_css_select {
   border: #e8e7e7 solid 1px !important;
+}
+.freelancer_popup_inps .custom_css_select .css-14el2xx-placeholder {
+  font-size: 12px !important;
 }
 
 .freelancer_popup_inps .custom_css_select div {
@@ -119,17 +121,17 @@
   border-radius: 2px !important;
 }
 
-.freelancer_popups .css-1okebmr-indicatorSeparator{
+.freelancer_popups .css-1okebmr-indicatorSeparator {
   display: none;
 }
 
 @media screen and (min-width: 768px) {
-  .AMT_Popup{
+  .AMT_Popup {
     min-width: 550px;
   }
 }
 
-.freelancer_popup_inps .freelancer_popup_textarea textarea{
+.freelancer_popup_inps .freelancer_popup_textarea textarea {
   width: 100%;
   height: 120px;
   resize: none;
@@ -138,14 +140,14 @@
   outline: none;
 }
 
-.left_Characters{
+.left_Characters {
   display: flex;
   justify-content: flex-end;
   font-size: 12px;
   color: #9e9d9d;
 }
-.freelancer_popup_inps .freelancer_popup_textarea textarea::placeholder{
- font-size: 12px;
+.freelancer_popup_inps .freelancer_popup_textarea textarea::placeholder {
+  font-size: 12px;
 }
 
 .freelancer_popups .Popup_note {
@@ -160,4 +162,45 @@
 .freelancer_popups .Popup_note > span {
   color: #6d2ef1;
   cursor: pointer;
+}
+
+.drag_portfolio {
+  display: flex !important;
+  flex-direction: unset !important;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  
+}
+
+
+.drag_portfolio > input {
+  visibility: hidden;
+  width: 1px;
+  height: 1px;
+}
+
+.portfolio_popup{
+  max-width: 600px;
+}
+
+.addMobPopup_heading{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* color: rgb(94, 94, 94); */
+}
+.addMobPopup_heading h5{
+  font-size: 16px;
+}
+.addMobPopup_heading span{
+  /* color: rgb(151, 151, 151); */
+  font-size: 14px;
+}
+.message_header_img{
+  width: 100px;
+  height: auto;
+  margin: 10px 0;
 }

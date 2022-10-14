@@ -6,6 +6,7 @@ import { useState } from "react";
 import Switch from "react-switch";
 import { onPasswordChange } from "../../../redux/actions/authActions";
 import { useDispatch } from "react-redux";
+import AddMobNoPupup from "../../components/popups/AddMobNoPupup";
 
 const CloseIcon = () => {
   return (
@@ -155,12 +156,18 @@ const VerificationPref = (props) => {
               <div className="popup_form_element agrement_ineoeu mt-3 pt-1">
                 <div className="headiwuewopiu">When should we confirm?</div>
                 <label className="text-black font-size-13px font-weight-500 mt-3 pb-1 radiolablepopo">
-                  <input type="radio" name="g" /> <span style={{fontWeight: 500}}> When my login or activity
-                  seems risky</span>
+                  <input type="radio" name="g" />{" "}
+                  <span style={{ fontWeight: 500 }}>
+                    {" "}
+                    When my login or activity seems risky
+                  </span>
                 </label>
                 <label className="text-black font-size-13px font-weight-500 mt-1 pb-1 radiolablepopo">
-                  <input type="radio" name="g" /> <span style={{fontWeight: 500}}> At every login and when my
-                  login or activity seems risky</span>
+                  <input type="radio" name="g" />{" "}
+                  <span style={{ fontWeight: 500 }}>
+                    {" "}
+                    At every login and when my login or activity seems risky
+                  </span>
                 </label>
               </div>
             </div>
@@ -185,6 +192,7 @@ const Screen = () => {
   Title(" | Password & Security");
   const [popup, Setpopup] = useState();
   const [checked, setChecked] = useState(false);
+  const [messageOn, setMessageOn] = useState(false);
   const handleChange = (nextChecked) => {
     setChecked(nextChecked);
   };
@@ -389,8 +397,8 @@ const Screen = () => {
                       offHandleColor={`#E2E2E2`}
                       checkedIcon={false}
                       uncheckedIcon={false}
-                      onChange={handleChange}
-                      checked={checked}
+                      onChange={() => setMessageOn(!messageOn)}
+                      checked={messageOn}
                       className="react-switch"
                     />
                   </div>
@@ -448,6 +456,9 @@ const Screen = () => {
         </Row>
       </Container>
       {popup}
+      {messageOn && (
+        <AddMobNoPupup open={messageOn} onCloseModal={()=>setMessageOn(false)} />
+      )}
     </div>
   );
 };

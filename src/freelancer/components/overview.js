@@ -17,7 +17,7 @@ const Screen = () => {
             </div>
           </div>
           <div>
-            <div className="transaction_head_n pb-0 d-flex flex-wrap">
+            <div className="transaction_head_n pb-0 d-flex justify-content-around" style={{overflowX: 'auto'}}>
               <div
                 onClick={() => seturrentTab(1)}
                 className={`box_overv_new ${currentTab == 1 && "active"}`}

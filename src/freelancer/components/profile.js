@@ -14,6 +14,7 @@ import {
 import Rating from "./rating/Rating";
 import moment from "moment";
 import HourPerWeekPopup from "./popups/HourPerWeekPopup";
+import PortfolioPupup from "./popups/PortfolioPupup";
 
 function Listaward() {
   const card = [1, 2, 3, 4];
@@ -261,16 +262,16 @@ const EditTitle = (props) => {
 const VideoIntro = (props) => {
   const options1 = [
     {
-      name: "me talking about my skills",
-      label: "me talking about my skills",
+      name: "Me talking about my skills and Exprience",
+      label: "Me talking about my skills and Exprience",
     },
     {
-      name: "visual samples of my works",
-      label: "visual samples of my works",
+      name: "Visual samples of my work",
+      label: "Visual samples of my work",
     },
     {
-      name: "something else",
-      label: "something else",
+      name: "Something else",
+      label: "Something else",
     },
   ];
   return (
@@ -388,6 +389,12 @@ const AddEmployment = (props) => {
   const [values, setValues] = useState(
     props?.experience || { currently_working: 0 }
   );
+  const options1 = [
+    {
+      name: "India",
+      label: "India",
+    },
+  ];
   const onInputChange = (e) => {
     if (e.target.name == "currently_working") {
       setValues({ ...values, [e.target.name]: e.target.checked ? 1 : 0 });
@@ -467,13 +474,12 @@ const AddEmployment = (props) => {
                     <label className="text-black font-size-13px font-weight-500">
                       Country
                     </label>
-                    <input
-                      type="text"
+                    <Select
+                      className="font-size-13px"
+                      placeholder="India"
                       name="country"
                       onChange={(e) => onInputChange(e)}
-                      value={values.country || ""}
-                      className="font-size-13px"
-                      placeholder="Country"
+                      options={options1}
                     />
                   </div>
                 </Col>
@@ -488,7 +494,7 @@ const AddEmployment = (props) => {
                       onChange={(e) => onInputChange(e)}
                       value={values.subject || ""}
                       className="font-size-13px"
-                      placeholder="Ex: Unify"
+                      placeholder="Like: Developer, React"
                     />
                   </div>
                 </Col>
@@ -1249,7 +1255,7 @@ const UnifyFreelancer = () => {
   const [popup, Setpopup] = useState();
   const [hwpPopup, setHwpPopup] = useState(false);
   const [workHistoryTab, setWorkHistoryTab] = useState("COMPLETED JOBS");
-
+  const [portfolioPopup, setPortfolioPopup] = useState(false);
   const dispatch = useDispatch();
   const basicInfo = useSelector(
     (state) => state?.profile?.freelancerProfileList?.basic_info
@@ -1753,7 +1759,7 @@ const UnifyFreelancer = () => {
               <div className="bpbck_txt d-flex mt-0">
                 <div className="bpck_head">Portfolio (2)</div>
                 <div className="myskill_hdingn">
-                  <button>
+                  <button onClick={() => setPortfolioPopup(true)}>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="17"
@@ -2124,6 +2130,13 @@ const UnifyFreelancer = () => {
         <HourPerWeekPopup
           open={hwpPopup}
           onCloseModal={() => setHwpPopup(false)}
+        />
+      )}
+
+      {portfolioPopup && (
+        <PortfolioPupup
+          open={portfolioPopup}
+          onCloseModal={() => setPortfolioPopup(false)}
         />
       )}
       {popup}
