@@ -95,6 +95,7 @@
   }
   .freelancer_popup_btns button {
     width: 220px;
+    margin-top: 10px !important;
   }
 }
 
@@ -199,8 +200,42 @@
   /* color: rgb(151, 151, 151); */
   font-size: 14px;
 }
+.addMobPopup_heading span > span{
+  font-weight: 500;
+  font-size: 12px;
+}
 .message_header_img{
   width: 100px;
   height: auto;
   margin: 10px 0;
+}
+.message_header_img img{
+  width: 100px;
+  height: auto;
+}
+
+.authenticator_verification_popup{
+  min-width: 500px;
+  max-width: 500px;
+}
+
+@media screen and (max-width: 426px) {
+  .authenticator_verification_popup{
+    min-width: 280px;
+  }
+}
+
+.suggest_qr{
+  font-size: 13px;
+  margin-top: 15px;
+  
+}
+.suggest_qr span > span{
+  color: #6d2ef1;
+  cursor: pointer;
+
+}
+
+.popup_padd{
+  padding: 30px;
 }

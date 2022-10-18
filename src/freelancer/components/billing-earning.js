@@ -141,9 +141,14 @@ const Screen = () => {
                       endDate: "3/1/2014",
                     }}
                   >
-                    <input />
+                    <input id="datePickerInp" />
                   </DateRangePicker>
-                  <div className="cal_icon_psr_abs">
+                  <div
+                    className="cal_icon_psr_abs"
+                    onClick={() => {
+                      document.getElementById("datePickerInp").focus();
+                    }}
+                  >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="16"

@@ -595,6 +595,11 @@
   width: 15px;
 }
 
+.profile_icon_25px button{
+  height: 25px;
+  width: 25px;
+}
+
 .ms_hdsmall {
   margin: 5px 0px !important;
   font-size: 15px !important;
@@ -611,6 +616,7 @@
   padding: 20px 10px;
   margin-bottom: 30px;
   position: relative;
+  margin-top: -1px;
 }
 
 .imgbox_bccp {

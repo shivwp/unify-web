@@ -24,13 +24,13 @@ const HourPerWeekPopup = ({ open, onCloseModal }) => {
             <li>
               <label htmlFor="op-1">
                 <input type="radio" id="op-1" name="p" />{" "}
-                <span>More then 3 Hours per week</span>
+                <span>More then 30 Hours per week</span>
               </label>
             </li>
             <li>
               <label htmlFor="op-2">
                 <input type="radio" id="op-2" name="p" />{" "}
-                <span>Less then 3 Hours per week</span>
+                <span>Less then 30 Hours per week</span>
               </label>
             </li>
             <li>

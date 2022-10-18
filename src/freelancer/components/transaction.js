@@ -10,7 +10,7 @@ import { useState } from "react";
 
 const Screen = () => {
   Title(" | Transaction History");
-  const [openFilter, setOpenFilter] = useState(false)
+  const [openFilter, setOpenFilter] = useState(false);
   const options1 = [
     {
       name: "Fluent",
@@ -81,7 +81,7 @@ const Screen = () => {
               options={options1}
             />
           </Col>
-          <Col md={6} sm={12}  className="my-2">
+          <Col md={6} sm={12} className="my-2">
             <Select
               className="font-size-13px"
               placeholder="All Clients"
@@ -127,9 +127,14 @@ const Screen = () => {
                             endDate: "3/1/2014",
                           }}
                         >
-                          <input />
+                          <input id="datePickerInp" />
                         </DateRangePicker>
-                        <div className="cal_icon_psr_abs">
+                        <div
+                          className="cal_icon_psr_abs"
+                          onClick={() => {
+                            document.getElementById("datePickerInp").focus();
+                          }}
+                        >
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="16"
@@ -149,7 +154,10 @@ const Screen = () => {
                 <Col className="mt-2">
                   <div>
                     <div className="ts_btn attach_f_btn wid_30_in mt-0 mb-0">
-                      <button className="only_textstyle font-weight-600" onClick={()=>setOpenFilter(!openFilter)}>
+                      <button
+                        className="only_textstyle font-weight-600"
+                        onClick={() => setOpenFilter(!openFilter)}
+                      >
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="16"
@@ -181,9 +189,7 @@ const Screen = () => {
             </div>
           </div>
           <div className="tbl_overflos_cewuw">{Transactions()}</div>
-          {
-            openFilter && <FilterScr/>
-          }
+          {openFilter && <FilterScr />}
         </div>
       </Container>
     </>

@@ -1302,7 +1302,7 @@ const UnifyFreelancer = () => {
                   </div>
                 </div>
                 <div className="han_oad">
-                  <div className="freelancer_name font-size-20px">
+                  <div className="freelancer_name font-size-20px" style={{lineHeight: '20px'}}>
                     {basicInfo && basicInfo.first_name}{" "}
                     {basicInfo && basicInfo.last_name}
                   </div>
@@ -1477,7 +1477,7 @@ const UnifyFreelancer = () => {
                 </div>
               </div> */}
               <div className="myskill_prof_node">
-                <div className="myskill_hdingn">
+                <div className="myskill_hdingn profile_icon_25px">
                   Video introduction
                   <button
                     onClick={() => {
@@ -1500,7 +1500,7 @@ const UnifyFreelancer = () => {
                     </svg>
                   </button>
                 </div>
-                <div className="myskill_hdingn">
+                <div className="myskill_hdingn profile_icon_25px">
                   Hours per week
                   <button onClick={() => setHwpPopup(true)}>
                     <svg
@@ -1525,7 +1525,7 @@ const UnifyFreelancer = () => {
                 <div className="myskill_hdingn ms_hdsmall font-size-15px">
                   3+ days response time
                 </div>
-                <div className="myskill_hdingn">
+                <div className="myskill_hdingn profile_icon_25px">
                   Languages
                   <div className="d-flex justify-content-start">
                     <button
@@ -1588,7 +1588,7 @@ const UnifyFreelancer = () => {
                 <div className="myskill_hdingn ms_hdsmall font-size-15px">
                   Hannah Finn
                 </div>
-                <div className="myskill_hdingn">
+                <div className="myskill_hdingn profile_icon_25px" >
                   Education
                   <div className="d-flex justify-content-start">
                     <button
@@ -1614,7 +1614,7 @@ const UnifyFreelancer = () => {
                   </div>
                 </div>
                 <div
-                  className="myskill_hdingn ms_hdsmall font-size-15px"
+                  className="myskill_hdingn profile_icon_25px ms_hdsmall font-size-15px"
                   style={{ flexDirection: "column" }}
                 >
                   {freelancerProfileList?.education?.map((edu) => (
@@ -1712,7 +1712,7 @@ const UnifyFreelancer = () => {
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="15.709"
-                      height="15.715"
+                      height="15.715" 
                       viewBox="0 0 15.709 15.715"
                     >
                       <path

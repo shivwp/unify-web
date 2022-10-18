@@ -4,6 +4,7 @@ import "react-responsive-modal/styles.css";
 import "./popup.css";
 import Select from "react-select";
 import { Row, Col } from "react-bootstrap";
+import { padding } from "@mui/system";
 
 const AddMobNoPupup = ({ open, onCloseModal }) => {
   const options1 = [{ name: "india", label: "india" }];
@@ -13,7 +14,7 @@ const AddMobNoPupup = ({ open, onCloseModal }) => {
       <Modal
         open={open}
         onClose={onCloseModal}
-        classNames={{ modal: "freelancer_popups" }}
+        classNames={{ modal: "freelancer_popups popup_padd" }}
         center
       >
         <h5>Add Mobile Number</h5>
@@ -80,7 +81,7 @@ const AddMobNoPupup = ({ open, onCloseModal }) => {
               />
             </svg>
           </div>
-          <h5>Add Your Mobile Number</h5>
+          <h5 style={{marginTop: 15}}>Add Your Mobile Number</h5>
           <span>Phone verification (SMS)</span>
         </div>
         <div className="content">

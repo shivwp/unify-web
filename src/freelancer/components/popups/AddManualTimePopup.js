@@ -6,7 +6,21 @@ import Select from "react-select";
 import { Row, Col } from "react-bootstrap";
 
 const AddManualTimePopup = ({ open, onCloseModal }) => {
-  const options1 = [{ name: "india", label: "india" }];
+  const date = [
+    { name: "10 Oct 2022", label: "10 Oct 2022" },
+    { name: "11 Oct 2022", label: "11 Oct 2022" },
+  ];
+  const timezone = [
+    { name: "Mine", label: "Mine" },
+    { name: "UTC", label: "UTC" },
+  ];
+  const startTime = [
+    { name: "9.10 PM", label: "9.10 PM" },
+    { name: "9.20 PM", label: "9.20 PM" },
+    { name: "9.30 PM", label: "9.30 PM" },
+    { name: "9.40 PM", label: "9.40 PM" },
+    { name: "9.50 PM", label: "9.50 PM" },
+  ];
 
   return (
     <>
@@ -24,7 +38,7 @@ const AddManualTimePopup = ({ open, onCloseModal }) => {
               <Select
                 className="custom_css_select"
                 placeholder="Wed, Oct 12, 2022"
-                options={options1}
+                options={date}
               />
             </label>
             <label htmlFor="date">
@@ -32,7 +46,7 @@ const AddManualTimePopup = ({ open, onCloseModal }) => {
               <Select
                 className="custom_css_select"
                 placeholder="Mine"
-                options={options1}
+                options={timezone}
               />
             </label>
             <Row>
@@ -42,7 +56,7 @@ const AddManualTimePopup = ({ open, onCloseModal }) => {
                   <Select
                     className="custom_css_select"
                     placeholder="Start Time"
-                    options={options1}
+                    options={startTime}
                   />
                 </label>
               </Col>
@@ -52,7 +66,7 @@ const AddManualTimePopup = ({ open, onCloseModal }) => {
                   <Select
                     className="custom_css_select"
                     placeholder="End time"
-                    options={options1}
+                    options={startTime}
                   />
                 </label>
               </Col>
@@ -67,7 +81,10 @@ const AddManualTimePopup = ({ open, onCloseModal }) => {
               </div>
             </label>
           </div>
-          <p className="Popup_note"><b>Note:</b> Menual time does not qualify for Upwork Hourly Protaction. <span>Learn More</span></p>
+          <p className="Popup_note">
+            <b>Note:</b> Menual time does not qualify for Upwork Hourly
+            Protaction. <span>Learn More</span>
+          </p>
         </div>
 
         <div className="freelancer_popup_btns">
