@@ -100,10 +100,11 @@ export const onResetPassword = (data, navigate) => (dispatch) => {
     });
 };
 
-export const onPasswordChange = (data, navigate) => (dispatch) => {
+export const onPasswordChange = (data, popup) => (dispatch) => {
   Axios.post("/change-password", data, config)
     .then((res) => {
       console.log(res);
+      popup();
     })
     .catch((err) => {
       console.log(err);

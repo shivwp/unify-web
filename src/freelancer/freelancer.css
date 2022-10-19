@@ -230,6 +230,7 @@
   margin-top: 20px;
 }
 
+
 .popup_form_element label {
   text-align: left;
   font: normal normal normal 15px/30px Poppins;
@@ -591,7 +592,6 @@
   }
   .overv_sm_thead {
     font: normal normal 600 14px/20px Poppins;
-
   }
 }
 @media screen and (max-width: 425px) {
@@ -787,17 +787,18 @@
 }
 
 .milestone_nbdr_tl thead th {
-  padding-left: 0 !important;
+  padding-left: 10px !important;
 }
 
 .tg_mile_ml_new {
-  padding: 25px 0px;
-  display: flex;
-  justify-content: space-between;
+  padding: 20px 0px;
   align-items: center;
   border-top: #d8d8d8 solid 1px;
   border-bottom: #d8d8d8 solid 1px;
   font: normal normal 500 18px/22px Poppins !important;
+}
+.tg_mile_ml_new p {
+  margin-bottom: 0;
 }
 
 .ad_earning-node {
@@ -810,6 +811,11 @@
 
 .adtime_txtccwd .toggle_btn_dot {
   margin-left: 15px;
+  cursor: pointer;
+}
+
+.mileStone_daterangepicker {
+  top: 617px !important;
 }
 
 .no_txn_box_nwdi {

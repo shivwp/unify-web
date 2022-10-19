@@ -6,12 +6,61 @@ import EditAccountPopup from "../../../popups/EditAccountPopup";
 
 import CreateNewTeam from "../../../popups/CreateNewTeamPupup";
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import {
+  getFreelancerProfile,
+  getTimezoneList,
+  onEditContactInfo,
+  onEditLocationInfo,
+} from "../../../redux/actions/profileAction";
 
 const Screen = () => {
+  const dispatch = useDispatch();
   Title(" | Contact Info");
   const [editAccount, setEditAccount] = useState(false);
   const [editLocation, setEditLocation] = useState(false);
+
+  const basicInfo = useSelector(
+    (state) => state?.profile?.freelancerProfileList?.basic_info
+  );
+  const timezoneList = useSelector((state) => state?.profile?.timezoneList);
+  const editFreelancerInfo = useSelector(
+    (state) => state?.profile?.editFreelancerInfo
+  );
+  const editFreelancerLocation = useSelector(
+    (state) => state?.profile?.editFreelancerLocation
+  );
+
+  useEffect(() => {
+    dispatch(getFreelancerProfile());
+    dispatch(getTimezoneList());
+  }, [editFreelancerInfo, editFreelancerLocation]);
+
   const EditAcc = () => {
+    const [values, setValues] = useState(basicInfo);
+    const email = basicInfo?.email;
+
+    const onInputChange = (e) => {
+      setValues({ ...values, [e.target.name]: e.target.value });
+    };
+
+    const EditContactInfo = () => {
+      const data =
+        email === values.email
+          ? {
+              first_name: values.first_name,
+              last_name: values.last_name,
+            }
+          : {
+              first_name: values.first_name,
+              last_name: values.last_name,
+              email: values.email,
+            };
+
+      dispatch(onEditContactInfo(data, setEditAccount));
+    };
+
     return (
       <>
         <div className="r-box_setting">
@@ -44,13 +93,16 @@ const Screen = () => {
               <Col md={12}>
                 <div className="mb-2 mt-2">
                   <div className="c_name_s_v pb-0 f_new_contact_info">
-                    User ID
+                    First Name
                   </div>
                   <div className="c_name_sett mt-0 pt-0">
                     <div className="edit_contact_inp">
                       <input
+                        name="first_name"
                         type="text"
-                        placeholder="Expert Web Technologies"
+                        value={values.first_name}
+                        placeholder="Shiv"
+                        onChange={(e) => onInputChange(e)}
                       />
                     </div>
                   </div>
@@ -58,10 +110,18 @@ const Screen = () => {
               </Col>
               <Col md={12}>
                 <div className="mb-2 mt-2">
-                  <div className="c_name_s_v pb-0 f_new_contact_info">Name</div>
+                  <div className="c_name_s_v pb-0 f_new_contact_info">
+                    Last Name
+                  </div>
                   <div className="c_name_sett mt-0 pt-0">
                     <div className="edit_contact_inp">
-                      <input type="text" placeholder=" Shiv Kumar Kumawat" />
+                      <input
+                        type="text"
+                        onChange={(e) => onInputChange(e)}
+                        placeholder="Kumar Kumavat"
+                        value={values.last_name}
+                        name="last_name"
+                      />
                     </div>
                   </div>
                 </div>
@@ -73,7 +133,13 @@ const Screen = () => {
                   </div>
                   <div className="c_name_sett mt-0 pt-0">
                     <div className="edit_contact_inp">
-                      <input type="text" placeholder=" shiv.kumar@gmail.com" />
+                      <input
+                        type="text"
+                        name="email"
+                        value={values.email}
+                        onChange={(e) => onInputChange(e)}
+                        placeholder=" shiv.kumar@gmail.com"
+                      />
                     </div>
                   </div>
                 </div>
@@ -81,10 +147,12 @@ const Screen = () => {
               <Col md={12}>
                 <div className="mb-2 mt-2 d-flex flex-wrap">
                   <div className="_cancle_submit">
-                    <button>CANCEL</button>
+                    <button onClick={() => setEditAccount(!editAccount)}>
+                      CANCEL
+                    </button>
                   </div>
                   <div className="_save_submit">
-                    <button>SAVE</button>
+                    <button onClick={EditContactInfo}>SAVE</button>
                   </div>
                 </div>
               </Col>
@@ -96,6 +164,21 @@ const Screen = () => {
   };
 
   const EditLoc = () => {
+    const [values, setValues] = useState(basicInfo);
+
+    const onInputChange = (e) => {
+      setValues({ ...values, [e.target.name]: e.target.value });
+    };
+
+    const EditLocationInfo = () => {
+      const data = {
+        timezone: values.timezone,
+        address: values.address,
+        phone: values.phone,
+      };
+      dispatch(onEditLocationInfo(data, setEditLocation));
+    };
+
     return (
       <>
         <div className="r-box_setting">
@@ -132,10 +215,22 @@ const Screen = () => {
                   </div>
                   <div className="c_name_sett mt-0 pt-0 font-color-light">
                     <div className="edit_contact_inp">
-                      <input
+                      {/* <input
                         type="text"
+                        name="timezone"
+                        value={values.timezone}
+                        onChange={(e) => onInputChange(e)}
                         placeholder="UTC-07:00 Pacific Time (US & Canada); Tijuana"
-                      />
+                      /> */}
+                      <select
+                        name="timezone"
+                        value={values.timezone}
+                        onChange={(e) => onInputChange(e)}
+                      >
+                        {timezoneList.map((item) => (
+                          <option value={item.timezone}>{item.timezone}</option>
+                        ))}
+                      </select>
                     </div>
                   </div>
                 </div>
@@ -148,6 +243,9 @@ const Screen = () => {
                   <div className="c_name_sett mt-0 pt-0 font-color-light">
                     <div className="edit_contact_inp">
                       <input
+                        name="address"
+                        value={values.address}
+                        onChange={(e) => onInputChange(e)}
                         type="text"
                         placeholder=" Address 12 Tiwari ji ka bagh adarsh nagar jaipur Surya Bekri Jaipur, RJ 302004 India"
                       />
@@ -162,7 +260,13 @@ const Screen = () => {
                   </div>
                   <div className="c_name_sett mt-0 pt-0 font-color-light">
                     <div className="edit_contact_inp">
-                      <input type="text" placeholder="987-654-3210" />
+                      <input
+                        type="text"
+                        value={values.phone}
+                        name="phone"
+                        onChange={(e) => onInputChange(e)}
+                        placeholder="987-654-3210"
+                      />
                     </div>
                   </div>
                 </div>
@@ -170,10 +274,12 @@ const Screen = () => {
               <Col md={12}>
                 <div className="mb-2 mt-2 d-flex flex-wrap">
                   <div className="_cancle_submit">
-                    <button>CANCEL</button>
+                    <button onClick={() => setEditLocation(!editLocation)}>
+                      CANCEL
+                    </button>
                   </div>
                   <div className="_save_submit">
-                    <button>SAVE</button>
+                    <button onClick={EditLocationInfo}>SAVE</button>
                   </div>
                 </div>
               </Col>
@@ -228,20 +334,13 @@ const Screen = () => {
                       <Col md={12}>
                         <div className="mb-2 mt-2">
                           <div className="c_name_s_v pb-0 f_new_contact_info">
-                            User ID
-                          </div>
-                          <div className="c_name_sett mt-0 pt-0">
-                            Expert Web Technologies
-                          </div>
-                        </div>
-                      </Col>
-                      <Col md={12}>
-                        <div className="mb-2 mt-2">
-                          <div className="c_name_s_v pb-0 f_new_contact_info">
                             Name
                           </div>
                           <div className="c_name_sett mt-0 pt-0">
-                            Shiv Kumar Ku,awat
+                            {basicInfo?.first_name.charAt(0).toUpperCase() +
+                              basicInfo?.first_name.slice(1)}{" "}
+                            {basicInfo?.last_name.charAt(0).toUpperCase() +
+                              basicInfo?.last_name.slice(1)}
                           </div>
                         </div>
                       </Col>
@@ -251,7 +350,7 @@ const Screen = () => {
                             Email
                           </div>
                           <div className="c_name_sett mt-0 pt-0">
-                            shiv.kumar@gmail.com
+                            {basicInfo?.email}
                           </div>
                         </div>
                       </Col>
@@ -349,7 +448,7 @@ const Screen = () => {
                             Time Zone
                           </div>
                           <div className="c_name_sett mt-0 pt-0 font-color-light">
-                            UTC-07:00 Pacific Time (US & Canada); Tijuana
+                            {basicInfo?.timezone}
                           </div>
                         </div>
                       </Col>
@@ -359,8 +458,7 @@ const Screen = () => {
                             Address
                           </div>
                           <div className="c_name_sett mt-0 pt-0 font-color-light">
-                            Address 12 Tiwari ji ka bagh adarsh nagar jaipur
-                            Surya Bekri Jaipur, RJ 302004 India
+                            {basicInfo?.address}
                           </div>
                         </div>
                       </Col>
@@ -370,7 +468,7 @@ const Screen = () => {
                             Phone
                           </div>
                           <div className="c_name_sett mt-0 pt-0 font-color-light">
-                            987-654-3210
+                            {basicInfo?.phone}
                           </div>
                         </div>
                       </Col>

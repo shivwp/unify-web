@@ -594,8 +594,12 @@
   height: 15px;
   width: 15px;
 }
+.profile_icon_25px button svg {
+  height: 10px !important;
+  width: 10px !important;
+}
 
-.profile_icon_25px button{
+.profile_icon_25px button {
   height: 25px;
   width: 25px;
 }
@@ -1747,6 +1751,9 @@
 .font-size-13px {
   font-size: 13px !important;
 }
+.font-size-11px {
+  font-size: 11px !important;
+}
 .ulist_overpopup {
   margin-left: -1rem !important;
 }
@@ -1866,4 +1873,32 @@
 }
 .inppadmore-newppup {
   padding: 11px 20px !important;
+}
+
+.freelancer_testimonials {
+  padding: 5px 30px;
+}
+.freelancer_testimonials .testimonial_img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.freelancer_testimonials .testimonial_img img {
+  width: 50px;
+  height: auto;
+  border-radius: 50%;
+}
+.freelancer_testimonials .user_details {
+  height: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+.freelancer_testimonials .user_details .f_user_name {
+  font-weight: 600;
+}
+.freelancer_testimonials .user_details .f_user_country {
+  font-weight: 400;
+  font-size: 14px;
 }

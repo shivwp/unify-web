@@ -25,6 +25,9 @@ const CloseIcon = () => {
   );
 };
 const ChangePassword = (props) => {
+  const [hideNewPass, setHideNewPass] = useState(true);
+  const [hideOldPass, setHideOldPass] = useState(true);
+  const [hideConfPass, setHideConfPass] = useState(true);
   const dispatch = useDispatch();
   const [values, setValues] = useState();
 
@@ -35,7 +38,7 @@ const ChangePassword = (props) => {
   console.log(values);
 
   const onSubmit = () => {
-    dispatch(onPasswordChange(values));
+    dispatch(onPasswordChange(values, props.Popup));
   };
 
   return (
@@ -57,45 +60,93 @@ const ChangePassword = (props) => {
             <div className="mt-2 pt-1 mb-4"></div>
 
             <div className="mb-4 ">
-              <div className="popup_form_element">
+              <div
+                className="popup_form_element"
+                style={{ position: "relative" }}
+              >
                 <label className="text-black font-size-13px font-weight-500">
                   Old Password
                 </label>
                 <input
-                  type="password"
+                  type={hideOldPass ? "password" : "text"}
                   className="font-size-13px"
                   onChange={(e) => handleOnChange(e)}
                   name="old_password"
                   placeholder=" "
                 />
+                {hideOldPass ? (
+                  <i
+                    className="fa fa-eye-slash showPassFreelancer"
+                    onClick={() => setHideOldPass(!hideOldPass)}
+                    aria-hidden="true"
+                  ></i>
+                ) : (
+                  <i
+                    className="fa fa-eye showPassFreelancer"
+                    onClick={() => setHideOldPass(!hideOldPass)}
+                    aria-hidden="true"
+                  ></i>
+                )}
               </div>
               <Row className="mt-1">
                 <Col md={6}>
-                  <div className="popup_form_element">
+                  <div
+                    className="popup_form_element"
+                    style={{ position: "relative" }}
+                  >
                     <label className="text-black font-size-13px font-weight-500">
                       New password
                     </label>
                     <input
-                      type="password"
+                      type={hideNewPass ? "password" : "text"}
                       name="new_password"
                       onChange={(e) => handleOnChange(e)}
                       className="font-size-13px"
                       placeholder=" "
                     />
+                    {hideNewPass ? (
+                      <i
+                        className="fa fa-eye-slash showPassFreelancer"
+                        onClick={() => setHideNewPass(!hideNewPass)}
+                        aria-hidden="true"
+                      ></i>
+                    ) : (
+                      <i
+                        className="fa fa-eye showPassFreelancer"
+                        onClick={() => setHideNewPass(!hideNewPass)}
+                        aria-hidden="true"
+                      ></i>
+                    )}
                   </div>
                 </Col>
                 <Col md={6}>
-                  <div className="popup_form_element">
+                  <div
+                    className="popup_form_element"
+                    style={{ position: "relative" }}
+                  >
                     <label className="text-black font-size-13px font-weight-500">
                       Confirm New Password
                     </label>
                     <input
-                      type="password"
+                      type={hideConfPass ? "password" : "text"}
                       name="confirm_password"
                       onChange={(e) => handleOnChange(e)}
                       className="font-size-13px"
                       placeholder=" "
                     />
+                    {hideConfPass ? (
+                      <i
+                        className="fa fa-eye-slash showPassFreelancer"
+                        onClick={() => setHideConfPass(!hideConfPass)}
+                        aria-hidden="true"
+                      ></i>
+                    ) : (
+                      <i
+                        className="fa fa-eye showPassFreelancer"
+                        onClick={() => setHideConfPass(!hideConfPass)}
+                        aria-hidden="true"
+                      ></i>
+                    )}
                   </div>
                 </Col>
               </Row>
@@ -197,7 +248,6 @@ const Screen = () => {
   const [messageOn, setMessageOn] = useState(false);
   const [appCodeOn, setAppCodeOn] = useState(false);
 
- 
   return (
     <div className="bg-f2f8ff min_pad_m">
       <Container>
@@ -459,13 +509,22 @@ const Screen = () => {
       </Container>
       {popup}
       {messageOn && (
-        <AddMobNoPupup open={messageOn} onCloseModal={()=>setMessageOn(false)} />
+        <AddMobNoPupup
+          open={messageOn}
+          onCloseModal={() => setMessageOn(false)}
+        />
       )}
       {appCodeOn && (
-        <AunthenticatorVerificationPopup open={appCodeOn} onCloseModal={()=>setAppCodeOn(false)} />
+        <AunthenticatorVerificationPopup
+          open={appCodeOn}
+          onCloseModal={() => setAppCodeOn(false)}
+        />
       )}
       {mobilePromptOn && (
-        <MobileAppPromptPopup open={mobilePromptOn} onCloseModal={()=>setMobilePromptOn(false)} />
+        <MobileAppPromptPopup
+          open={mobilePromptOn}
+          onCloseModal={() => setMobilePromptOn(false)}
+        />
       )}
     </div>
   );

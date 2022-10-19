@@ -3139,6 +3139,13 @@
   padding: 0 11px;
   height: 40px;
 }
+.edit_contact_inp Select {
+  border: none;
+  width: 100%;
+  outline: none;
+  padding: 0 11px;
+  height: 40px;
+}
 
 ._cancle_submit button {
   min-width: 160px;

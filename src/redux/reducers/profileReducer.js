@@ -8,6 +8,10 @@ import {
   SET_FREELANCER_SKILLS,
   SET_INDUSTRIES_LIST,
   SET_TIMEZONE_LIST,
+  SET_DEGREE_LIST,
+  SET_DELETE_EDUCATION,
+  SET_EDIT_FREELANCER_INFO,
+  SET_EDIT_FREELANCER_LOCATION,
 } from "../types";
 
 const initialState = {};
@@ -61,6 +65,26 @@ const profileReducer = (state = initialState, action) => {
       return {
         ...state,
         closeAccountReasons: action.payload,
+      };
+    case SET_DEGREE_LIST:
+      return {
+        ...state,
+        getDegreeList: action.payload,
+      };
+    case SET_DELETE_EDUCATION:
+      return {
+        ...state,
+        deleteEducation: action.payload,
+      };
+    case SET_EDIT_FREELANCER_INFO:
+      return {
+        ...state,
+        editFreelancerInfo: action.payload,
+      };
+    case SET_EDIT_FREELANCER_LOCATION:
+      return {
+        ...state,
+        editFreelancerLocation: action.payload,
       };
     default:
       return state;

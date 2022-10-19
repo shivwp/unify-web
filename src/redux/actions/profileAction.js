@@ -9,6 +9,10 @@ import {
   SET_FREELANCER_SKILLS,
   SET_INDUSTRIES_LIST,
   SET_TIMEZONE_LIST,
+  SET_DEGREE_LIST,
+  SET_DELETE_EDUCATION,
+  SET_EDIT_FREELANCER_INFO,
+  SET_EDIT_FREELANCER_LOCATION,
 } from "../types";
 
 const config = {
@@ -154,6 +158,73 @@ export const onCloseAccount = (data) => (dispatch) => {
   Axios.post("/close-account", data, config)
     .then((res) => {
       console.log(res);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+export const getFreelancerDegreeList = () => (dispatch) => {
+  Axios.get("/degree-list")
+    .then((res) => {
+      dispatch({
+        type: SET_DEGREE_LIST,
+        payload: res.data.data,
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+export const onAddEducation = (data, popup) => (dispatch) => {
+  Axios.post("/edit-education-info", data, config)
+    .then((res) => {
+      console.log(res);
+      popup();
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+export const onDeleteEducation = (data) => (dispatch) => {
+  Axios.post("/delete-education-info", data, config)
+    .then((res) => {
+      console.log(res);
+      dispatch({
+        type: SET_DELETE_EDUCATION,
+        payload: res.data,
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+export const onEditContactInfo = (data, setEditAccount) => (dispatch) => {
+  Axios.post("/edit-contact-info", data, config)
+    .then((res) => {
+      console.log(res);
+      setEditAccount(false);
+      dispatch({
+        type: SET_EDIT_FREELANCER_INFO,
+        payload: res.data,
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+export const onEditLocationInfo = (data, setEditLocation) => (dispatch) => {
+  Axios.post("/edit-location", data, config)
+    .then((res) => {
+      console.log(res);
+      setEditLocation(false);
+      dispatch({
+        type: SET_EDIT_FREELANCER_LOCATION,
+        payload: res.data,
+      });
     })
     .catch((err) => {
       console.log(err);

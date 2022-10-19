@@ -2117,6 +2117,14 @@ body {
   font-weight: 600;
   font-family: "Poppins";
 }
+.job_head_s h3 {
+  font-size: 15px;
+  letter-spacing: 0px;
+  line-height: 15px;
+  color: #170048;
+  font-weight: 600;
+  font-family: "Poppins";
+}
 
 .dlex_sk_block {
   display: flex;
@@ -2236,6 +2244,42 @@ body {
   line-height: 16px;
   padding: 12px 30px;
   font-size: 14px;
+}
+
+.milestone_btn_s button{
+  border-radius: 6px;
+  background-color: #6d2ef1;
+  border: #6d2ef1 solid 1px;
+  margin: 0px 2px 20px 0;
+  color: #ffffff;
+  font-weight: 700;
+  font-family: "Poppins";
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  -ms-border-radius: 6px;
+  -o-border-radius: 6px;
+  line-height: 16px;
+  padding: 12px 22px;
+  font-size: 14px;
+}
+@media screen and (max-width: 1024px) {
+  .milestone_btn_s button{
+    border-radius: 6px;
+    background-color: #6d2ef1;
+    border: #6d2ef1 solid 1px;
+    margin: 0px 2px 20px 0;
+    color: #ffffff;
+    font-weight: 700;
+    font-family: "Poppins";
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    -ms-border-radius: 6px;
+    -o-border-radius: 6px;
+    line-height: 16px;
+    padding: 12px 12px;
+    font-size: 14px;
+  }
+  
 }
 
 .pagiantion_node {

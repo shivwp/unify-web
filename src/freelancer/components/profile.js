@@ -10,11 +10,15 @@ import {
   onAddEmployment,
   onEditTestimonialInfo,
   onDeleteEmployment,
+  getFreelancerDegreeList,
+  onAddEducation,
+  onDeleteEducation,
 } from "../../redux/actions/profileAction";
 import Rating from "./rating/Rating";
 import moment from "moment";
 import HourPerWeekPopup from "./popups/HourPerWeekPopup";
 import PortfolioPupup from "./popups/PortfolioPupup";
+import { countryList } from "../../redux/actions/authActions";
 
 function Listaward() {
   const card = [1, 2, 3, 4];
@@ -386,15 +390,22 @@ const AddExperience = (props) => {
 };
 const AddEmployment = (props) => {
   const dispatch = useDispatch();
+  const getCountryList = useSelector((state) => state.auth.getCountryList);
+  const [country, setCountry] = useState(null);
   const [values, setValues] = useState(
     props?.experience || { currently_working: 0 }
   );
-  const options1 = [
-    {
-      name: "India",
-      label: "India",
-    },
-  ];
+  console.log(props?.exprience);
+
+  useState(() => {
+    dispatch(countryList());
+  }, []);
+
+  const countryLis = getCountryList?.map((item) => ({
+    name: item.name,
+    label: item.name,
+  }));
+
   const onInputChange = (e) => {
     if (e.target.name == "currently_working") {
       setValues({ ...values, [e.target.name]: e.target.checked ? 1 : 0 });
@@ -402,13 +413,14 @@ const AddEmployment = (props) => {
       setValues({ ...values, [e.target.name]: e.target.value });
     }
   };
+  console.log(country);
 
   const onSave = () => {
     const data = {
       id: props?.experience?.id,
       company: values.company,
       city: values.city,
-      country: values.country,
+      country: props?.experience?.country || country.name,
       description: values.description,
       subject: values.subject,
       currently_working: values.currently_working,
@@ -449,7 +461,7 @@ const AddEmployment = (props) => {
                       className="font-size-13px"
                       placeholder="Ex: Unify"
                       name="company"
-                      value={values.company || ""}
+                      value={values.company}
                       onChange={(e) => onInputChange(e)}
                     />
                   </div>
@@ -463,7 +475,7 @@ const AddEmployment = (props) => {
                       type="text"
                       name="city"
                       className="font-size-13px"
-                      value={values.city || ""}
+                      value={values.city}
                       onChange={(e) => onInputChange(e)}
                       placeholder="City"
                     />
@@ -478,8 +490,13 @@ const AddEmployment = (props) => {
                       className="font-size-13px"
                       placeholder="India"
                       name="country"
-                      onChange={(e) => onInputChange(e)}
-                      options={options1}
+                      defaultValue={
+                        values.country
+                          ? { name: values.country, label: values.country }
+                          : null
+                      }
+                      onChange={setCountry}
+                      options={countryLis}
                     />
                   </div>
                 </Col>
@@ -492,7 +509,7 @@ const AddEmployment = (props) => {
                       type="text"
                       name="subject"
                       onChange={(e) => onInputChange(e)}
-                      value={values.subject || ""}
+                      value={values.subject}
                       className="font-size-13px"
                       placeholder="Like: Developer, React"
                     />
@@ -508,7 +525,7 @@ const AddEmployment = (props) => {
                       className="font-size-13px"
                       placeholder="Start Date"
                       name="start_date"
-                      value={values.start_date || ""}
+                      value={values.start_date}
                       onChange={(e) => onInputChange(e)}
                     />
                   </div>
@@ -522,7 +539,7 @@ const AddEmployment = (props) => {
                       type="date"
                       name="end_date"
                       className="font-size-13px"
-                      value={values.end_date || ""}
+                      value={values.end_date}
                       placeholder="End Date"
                       onChange={(e) => onInputChange(e)}
                     />
@@ -818,17 +835,72 @@ const LanguageEdit = (props) => {
   );
 };
 const AddEduc = (props) => {
-  const [values, setValues] = useState({});
-  const options1 = [
-    {
-      name: "Fluent",
-      label: "Fluent",
-    },
-  ];
+  const [values, setValues] = useState(props.education || {});
+  const [endYear, setEndYear] = useState({
+    label: values.end_year,
+    name: values.end_year,
+  });
+  const [degree, setDegree] = useState({
+    label: values.degree,
+    name: values.degree,
+  });
+  const [startYear, setStartYear] = useState({
+    label: values.start_year,
+    name: values.start_year,
+  });
+  const getDegreeList = useSelector((state) => state.profile.getDegreeList);
+  const dispatch = useDispatch();
+  console.log(values);
+
+  const startYearList = () => {
+    const today = new Date().getFullYear();
+    let arr = [];
+    for (let i = today; i > today - 40; i--) {
+      arr.push({
+        name: i,
+        label: i,
+      });
+    }
+    return arr;
+  };
+  const endYearList = () => {
+    const today = new Date().getFullYear();
+    let arr = [];
+    for (let i = today + 3; i > today - 40; i--) {
+      arr.push({
+        name: i,
+        label: i,
+      });
+    }
+    return arr;
+  };
+
+  useEffect(() => {
+    dispatch(getFreelancerDegreeList());
+  }, []);
+
+  const degreeList = getDegreeList?.map((item) => ({
+    name: item.title,
+    label: item.title,
+  }));
 
   const handleOnChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
   };
+
+  const AddEducation = () => {
+    const data = {
+      id: values.id,
+      school: values?.school,
+      start_year: startYear?.name,
+      end_year: endYear?.name,
+      degree: degree?.name,
+      area_study: values?.area_study,
+      description: values?.description,
+    };
+    dispatch(onAddEducation(data, props.Popup));
+  };
+
   return (
     <>
       <div className="bg_wrapper_popup_new">
@@ -857,8 +929,9 @@ const AddEduc = (props) => {
                     <input
                       type="text"
                       name="school"
+                      value={values?.school}
                       onChange={(e) => handleOnChange(e)}
-                      className="font-size-13px"
+                      className="font-size-11px"
                       placeholder="Ex: Northwestern University"
                     />
                   </div>
@@ -866,40 +939,34 @@ const AddEduc = (props) => {
                 <Col md={6}>
                   <div className="popup_form_element">
                     <label className="text-black font-size-13px font-weight-500">
-                      Start Year
+                      Dates Attended (Optional)
                     </label>
                     <Select
-                      className="font-size-13px"
+                      className="font-size-11px"
                       placeholder="From"
-                      name="school"
-                      onChange={(e) => handleOnChange(e)}
-                      options={options1}
+                      name="start_year"
+                      defaultValue={{
+                        name: values?.start_year,
+                        label: values?.start_year,
+                      }}
+                      onChange={setStartYear}
+                      options={startYearList()}
                     />
                   </div>
                 </Col>
                 <Col md={6}>
                   <div className="popup_form_element">
-                    <label className="text-black font-size-13px font-weight-500">
-                      End Year
-                    </label>
+                    <label className="text-black font-size-13px font-weight-500"></label>
                     <Select
-                      className="font-size-13px"
-                      placeholder="From"
-                      name="school"
-                      onChange={(e) => handleOnChange(e)}
-                      options={options1}
-                    />
-                  </div>
-                </Col>
-                <Col md={12}>
-                  <div className="popup_form_element">
-                    <label className="text-black font-size-13px font-weight-500">
-                      Proficiency level
-                    </label>
-                    <Select
-                      className="font-size-13px"
-                      placeholder="Graduation"
-                      options={options1}
+                      className="font-size-11px"
+                      placeholder="To (or expected gradution year)"
+                      name="end_year"
+                      defaultValue={{
+                        name: values?.end_year,
+                        label: values?.end_year,
+                      }}
+                      onChange={setEndYear}
+                      options={endYearList()}
                     />
                   </div>
                 </Col>
@@ -909,20 +976,28 @@ const AddEduc = (props) => {
                       Degree (Optional)
                     </label>
                     <Select
-                      className="font-size-13px"
+                      className="font-size-11px"
                       placeholder="Degree (Optional)"
-                      options={options1}
+                      defaultValue={{
+                        name: values?.degree,
+                        label: values?.degree,
+                      }}
+                      options={degreeList}
+                      onChange={setDegree}
                     />
                   </div>
                 </Col>
                 <Col md={12}>
                   <div className="popup_form_element">
-                    <label className="text-black font-size-13px font-weight-500">
+                    <label className="text-black font-size-13x font-weight-500">
                       Area of Study (Optional)
                     </label>
                     <input
                       type="text"
-                      className="font-size-13px"
+                      onChange={(e) => handleOnChange(e)}
+                      name="area_study"
+                      value={values?.area_study}
+                      className="font-size-11px"
                       placeholder="Ex: Computer Science"
                     />
                   </div>
@@ -933,7 +1008,10 @@ const AddEduc = (props) => {
                       Description (Optional)
                     </label>
                     <textarea
-                      className="font-size-13px"
+                      onChange={(e) => handleOnChange(e)}
+                      className="font-size-11px"
+                      value={values?.description}
+                      name="description"
                       placeholder="Enter Here"
                     ></textarea>
                   </div>
@@ -943,13 +1021,7 @@ const AddEduc = (props) => {
 
             <div className="popup_btns_new flex-wrap cwiewyehkk">
               <button className="trans_btn">Cancel</button>
-              <button
-                onClick={() => {
-                  props.Popup();
-                }}
-              >
-                Save
-              </button>
+              <button onClick={() => AddEducation()}>Save</button>
             </div>
           </div>
         </div>
@@ -1266,14 +1338,21 @@ const UnifyFreelancer = () => {
   const deleteExprience = useSelector(
     (state) => state?.profile?.deleteExprience
   );
+  const deleteEducation = useSelector(
+    (state) => state?.profile?.deleteEducation
+  );
   const addExprience = useSelector((state) => state?.profile?.addExprience);
 
   useEffect(() => {
     dispatch(getFreelancerProfile());
-  }, [deleteExprience, addExprience]);
+  }, [deleteExprience, addExprience, deleteEducation]);
 
   const deleteExp = (id) => {
     dispatch(onDeleteEmployment({ id }));
+  };
+
+  const deleteEdu = (id) => {
+    dispatch(onDeleteEducation({ id }));
   };
 
   // console.log(freelancerProfileList);
@@ -1302,7 +1381,10 @@ const UnifyFreelancer = () => {
                   </div>
                 </div>
                 <div className="han_oad">
-                  <div className="freelancer_name font-size-20px" style={{lineHeight: '20px'}}>
+                  <div
+                    className="freelancer_name font-size-20px"
+                    style={{ lineHeight: "20px" }}
+                  >
                     {basicInfo && basicInfo.first_name}{" "}
                     {basicInfo && basicInfo.last_name}
                   </div>
@@ -1588,7 +1670,7 @@ const UnifyFreelancer = () => {
                 <div className="myskill_hdingn ms_hdsmall font-size-15px">
                   Hannah Finn
                 </div>
-                <div className="myskill_hdingn profile_icon_25px" >
+                <div className="myskill_hdingn profile_icon_25px">
                   Education
                   <div className="d-flex justify-content-start">
                     <button
@@ -1632,7 +1714,13 @@ const UnifyFreelancer = () => {
                         </div>
                         <div className="d-flex justify-content-start">
                           <figure></figure>
-                          <button>
+                          <button
+                            onClick={() => {
+                              Setpopup(
+                                <AddEduc education={edu} Popup={Setpopup} />
+                              );
+                            }}
+                          >
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
                               width="15.709"
@@ -1644,6 +1732,21 @@ const UnifyFreelancer = () => {
                                 data-name="8665767_pen_icon"
                                 d="M15.327,2.274,13.482.429a1.475,1.475,0,0,0-2.085,0L9.662,2.165l3.9,3.929L15.3,4.358A1.447,1.447,0,0,0,15.327,2.274Zm-6.356.585L1,10.83a.491.491,0,0,0-.134.251L.057,15.123a.491.491,0,0,0,.576.58l4.042-.808a.491.491,0,0,0,.251-.134L12.9,6.789Z"
                                 transform="translate(-0.047 0.002)"
+                                fill="#6d2ef1"
+                              />
+                            </svg>
+                          </button>
+                          <button onClick={() => deleteEdu(edu?.id)}>
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="16"
+                              height="16"
+                              viewBox="0 0 16 16"
+                            >
+                              <path
+                                id="_2203546_bin_delete_gabage_trash_icon"
+                                data-name="2203546_bin_delete_gabage_trash_icon"
+                                d="M8,0A1,1,0,0,0,7,1H0V3H1V14a2,2,0,0,0,2,2H13a2,2,0,0,0,2-2V3h1V1H9A1,1,0,0,0,8,0ZM4,14H3V5H4Zm3,0H6V5H7Zm3,0H9V5h1Zm3,0H12V5h1Z"
                                 fill="#6d2ef1"
                               />
                             </svg>
@@ -1927,7 +2030,7 @@ const UnifyFreelancer = () => {
                 <div className="bpck_head">Testimonials</div>
                 <div className="bpck_para">Endorsements from past clients</div>
               </div>
-              <div className="d-flex justify-content-center flex-column text-center">
+              {/* <div className="d-flex justify-content-center flex-column text-center">
                 <div className="img_min_bpck">
                   <img src="/assets/consumer.png" alt="" />
                 </div>
@@ -1937,6 +2040,116 @@ const UnifyFreelancer = () => {
                 <div className="bpck_sm_txt_a">
                   <Link to="">Request a testimonial</Link>
                 </div>
+              </div> */}
+              <div
+                className="freelancer_testimonials my-2 "
+                style={{ borderBottom: " 1px solid #d5d5d5" }}
+              >
+                <Row>
+                  <Col lg={1}>
+                    <div className="testimonial_img">
+                      <img src="/assets/PRO-2.png" alt="" />
+                    </div>
+                  </Col>
+                  <Col lg={11}>
+                    <div className="user_details">
+                      <div className="f_user_name">Dheeraj Kumar</div>
+                      <div className="f_user_country">India</div>
+                    </div>
+                  </Col>
+                </Row>
+                <Row>
+                  <Col lg={1}></Col>
+                  <Col lg={11}>
+                    <div className="reviews d-flex mb-2 align-items-center">
+                      <Star />
+                      <Star />
+                      <Star />
+                      <Star />
+                      <Star />
+                      <span
+                        style={{
+                          color: "rgb(201 201 201)",
+                          paddingLeft: 2,
+                          fontWeight: 100,
+                        }}
+                      >
+                        {" "}
+                        |{" "}
+                      </span>
+                      <span className="ps-2" style={{ color: "#62646a" }}>
+                        {" "}
+                        2 Weeks ago
+                      </span>
+                    </div>
+                    <div
+                      className="testimonial_description mt-1"
+                      style={{ fontSize: 14 }}
+                    >
+                      Exceptional service, I would give it 7 stars if I could.
+                      Was very responsive, listened intently to each of my
+                      concerns and preferences. I felt like I was the most
+                      difficult client but he was amazing helping me bring my
+                      site to life. I started with an idea and now I have a
+                      whole site design!
+                    </div>
+                  </Col>
+                </Row>
+              </div>
+              <div
+                className="freelancer_testimonials my-2 "
+                style={{ borderBottom: " 1px solid #d5d5d5" }}
+              >
+                <Row>
+                  <Col lg={1}>
+                    <div className="testimonial_img">
+                      <img src="/assets/PRO-2.png" alt="" />
+                    </div>
+                  </Col>
+                  <Col lg={11}>
+                    <div className="user_details">
+                      <div className="f_user_name">Manish Kumar</div>
+                      <div className="f_user_country">India</div>
+                    </div>
+                  </Col>
+                </Row>
+                <Row>
+                  <Col lg={1}></Col>
+                  <Col lg={11}>
+                    <div className="reviews d-flex mb-2 align-items-center">
+                      <Star />
+                      <Star />
+                      <Star />
+                      <Star />
+                      <Star />
+                      <span
+                        style={{
+                          color: "rgb(201 201 201)",
+                          paddingLeft: 2,
+                          fontWeight: 100,
+                        }}
+                      >
+                        {" "}
+                        |{" "}
+                      </span>
+                      <span className="ps-2" style={{ color: "#62646a" }}>
+                        {" "}
+                        2 Weeks ago
+                      </span>
+                    </div>
+                    <div
+                      className="testimonial_description mt-1"
+                      style={{ fontSize: 14 }}
+                    >
+                      Exceptional service, I would give it 7 stars if I could.
+                      Was very responsive, listened intently to each of my
+                      concerns and preferences. I felt like I was the most
+                      difficult client but he was amazing helping me bring my
+                      site to life. I started with an idea and now I have a
+                      whole site design!
+                    </div>
+                  </Col>
+                </Row>
               </div>
             </div>
             <div className="box-profile-bck">
@@ -2010,8 +2223,61 @@ const UnifyFreelancer = () => {
                       Employment history
                     </div>
                   </div>
+                  {freelancerProfileList?.employment?.length == 0 && (
+                    <div className="d-flex justify-content-center align-items-center flex-column pl-20">
+                      <div
+                        style={{
+                          display: "flex",
+                          justifyContent: "center",
+                          alignItems: "center",
+                          width: 80,
+                          height: 80,
+                        }}
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="109.081"
+                          height="96.833"
+                          viewBox="0 0 109.081 96.833"
+                        >
+                          <g id="employee" transform="translate(-8)">
+                            <circle
+                              id="Ellipse_741"
+                              data-name="Ellipse 741"
+                              cx="28.976"
+                              cy="28.976"
+                              r="28.976"
+                              transform="translate(59.128 17.978)"
+                              fill="#6d2ef1"
+                              opacity="0.23"
+                            />
+                            <path
+                              id="Path_4784"
+                              data-name="Path 4784"
+                              d="M8,85.477v19.669a4.544,4.544,0,0,0,4.539,4.539H88.19a4.544,4.544,0,0,0,4.539-4.539V85.477a33.336,33.336,0,0,0-27.069-32.7,24.3,24.3,0,0,1-3.78,2.542A30.3,30.3,0,0,1,89.7,85.477v19.669a1.515,1.515,0,0,1-1.513,1.513H12.539a1.515,1.515,0,0,1-1.513-1.513V85.477A30.3,30.3,0,0,1,38.848,55.323a24.3,24.3,0,0,1-3.78-2.542A33.336,33.336,0,0,0,8,85.476Z"
+                              transform="translate(0 -12.852)"
+                              fill="#25134a"
+                            />
+                            <path
+                              id="Path_4785"
+                              data-name="Path 4785"
+                              d="M78.364,21.182A21.182,21.182,0,1,0,57.182,42.364,21.182,21.182,0,0,0,78.364,21.182ZM57.182,45.39a24.132,24.132,0,0,1-6.511-.9h0L46.6,77.622a1.514,1.514,0,0,0,.725,1.483l9.037,5.409a1.512,1.512,0,0,0,1.549,0l9.119-5.409a1.513,1.513,0,0,0,.73-1.486L63.693,44.494h0a24.133,24.133,0,0,1-6.511.9Z"
+                              transform="translate(-6.818)"
+                              fill="#6d2ef1"
+                            />
+                          </g>
+                        </svg>
+                      </div>
+                      <div className="bpck_sm_txt_a mt-4 ehistory_uxdes">
+                        Eoxys IT | ReactJS Developer`
+                      </div>
+                      <div className="ehitory_dtine">
+                        21-April-2022 To 24-Oct-2022
+                      </div>
+                    </div>
+                  )}
                   <div className="d-flex justify-content-center flex-column pl-20">
-                    {freelancerProfileList?.experiences?.map(
+                    {freelancerProfileList?.employment?.map(
                       (experience, key) => (
                         <div key={key}>
                           <div className="bpck_sm_txt_a mt-4 ehistory_uxdes">
