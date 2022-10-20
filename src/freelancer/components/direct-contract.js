@@ -4,7 +4,6 @@ import Container from 'react-bootstrap/Container';
 import Footer from '../../components/footer';
 import Title from '../../components/title';
 import { Link } from "react-router-dom";
-import '../freelancer.css'
 import Select from "react-select";
   
 const Popup = (props) => {
