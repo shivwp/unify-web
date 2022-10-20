@@ -14,7 +14,7 @@ const AddMobNoPupup = ({ open, onCloseModal }) => {
       <Modal
         open={open}
         onClose={onCloseModal}
-        classNames={{ modal: "freelancer_popups popup_padd" }}
+        classNames={{ modal: "freelancer_popups authenticator_verification_popup popup_padd" }}
         center
       >
         <h5>Add Mobile Number</h5>

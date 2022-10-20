@@ -230,3 +230,34 @@ export const onEditLocationInfo = (data, setEditLocation) => (dispatch) => {
       console.log(err);
     });
 };
+
+export const onEditVideo = (data) => (dispatch) => {
+  Axios.post("/edit-video", data, config)
+    .then((res) => {
+      console.log(res);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+export const onEditDesignation = (data, popup) => (dispatch) => {
+  Axios.post("/edit-designation-info", data, config)
+    .then((res) => {
+      console.log(res);
+      popup();
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+export const onEditPortfolio = (data, popup) => (dispatch) => {
+  Axios.post("/edit-portfolio-info", data, config)
+    .then((res) => {
+      console.log(res);
+      popup();
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};

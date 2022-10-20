@@ -1,19 +1,35 @@
-import React from "react";
+import React, { useState } from "react";
 import { Modal } from "react-responsive-modal";
 import "react-responsive-modal/styles.css";
 import "./popup.css";
-import Select from "react-select";
-import { Row, Col } from "react-bootstrap";
-import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { onEditPortfolio } from "../../../redux/actions/profileAction";
 
 const PortfolioPupup = ({ open, onCloseModal }) => {
-  const options1 = [{ name: "india", label: "india" }];
-  const fileTypes = [".JPG", " .PNG", ".GIF", ".WEBP"];
-  const [file, setFile] = useState('');
+  const dispatch = useDispatch();
+  const [values, setValues] = useState({});
+  const [portfolioImage, setPortfolioImage] = useState("");
+  const [showingImage, setShowingImage] = useState();
 
-  const handleFileChange = (e) => {
-    setFile(file + e.target.files[0].name + " ");
+  const onInputChange = (e) => {
+    setValues({ ...values, [e.target.name]: e.target.value });
   };
+
+  const onImageChange = (e) => {
+    setPortfolioImage(e.target.files[0]);
+    setShowingImage(URL.createObjectURL(e.target.files[0]));
+  };
+
+  const submitPortfolio = (e) => {
+    const formData = new FormData();
+
+    formData.append("title", values?.title);
+    formData.append("description", values?.description);
+    formData.append("image", portfolioImage);
+
+    dispatch(onEditPortfolio(formData, onCloseModal));
+  };
+
   return (
     <>
       <Modal
@@ -34,6 +50,8 @@ const PortfolioPupup = ({ open, onCloseModal }) => {
                 className="font-size-13px"
                 placeholder="Enter Title"
                 name="title"
+                value={values?.title}
+                onChange={(e) => onInputChange(e)}
               />
             </div>
 
@@ -43,16 +61,24 @@ const PortfolioPupup = ({ open, onCloseModal }) => {
               </label>
 
               <div className="freelancer_popup_textarea">
-                <textarea placeholder="Enter here" className="p-2"></textarea>
-                {/* <div className="left_Characters">
-                  <span>140 Characters left</span>
-                </div> */}
+                <textarea
+                  placeholder="Enter here"
+                  className="p-2"
+                  name="description"
+                  value={values.description}
+                  onChange={(e) => onInputChange(e)}
+                ></textarea>
               </div>
             </div>
             <div className="portfolio_attach mb-3">
               <label className="text-black font-size-13px font-weight-500 my-2">
                 Attachments
               </label>
+
+              <div className="portfolio_img_pre">
+                <img src={showingImage} alt="" />
+              </div>
+
               <div
                 className="drag_portfolio d-flex justify-content-center align-items-center"
                 style={{
@@ -63,40 +89,39 @@ const PortfolioPupup = ({ open, onCloseModal }) => {
               >
                 <label htmlFor="drag_portfolio" className="drag_portfolio">
                   <input
-                    accept={fileTypes}
                     type="file"
-                    onChange={(e) => handleFileChange(e)}
                     id="drag_portfolio"
                     name="file"
+                    className="img-fluid"
+                    onChange={(e) => onImageChange(e)}
                     style={{
                       visibility: "hidden",
                       width: "1px",
                       height: "1px",
                     }}
                   />
-                  {file != false ? (
-                    file
-                  ) : (
-                    <>
-                      {" "}
-                      Drag or{" "}
-                      <span
-                        style={{
-                          color: "#6D2EF1",
-                          fontWeight: 600,
-                          cursor: "pointer",
-                          margin: "0 4px ",
-                        }}
-                      >
-                        upload
-                      </span>{" "}
-                      project templates
-                    </>
-                  )}
+                  <>
+                    {" "}
+                    {/* Drag or{" "} */}
+                    <span
+                      style={{
+                        color: "#6D2EF1",
+                        fontWeight: 600,
+                        cursor: "pointer",
+                        margin: "0 4px ",
+                      }}
+                    >
+                      Upload
+                    </span>{" "}
+                    project templates
+                  </>
                 </label>
               </div>
             </div>
-            <p style={{fontSize: 13, color: '#304E71'}}>You may attach up to 10 files under the size of 25MB each. Include work samples or other documents to support your application.</p>
+            <p style={{ fontSize: 13, color: "#304E71" }}>
+              You may attach up to 10 files under the size of 25MB each. Include
+              work samples or other documents to support your application.
+            </p>
           </div>
         </div>
 
@@ -105,7 +130,7 @@ const PortfolioPupup = ({ open, onCloseModal }) => {
             <button onClick={onCloseModal}>CANCEL</button>
           </div> */}
           <div className="_save_submit">
-            <button>UPLOAD</button>
+            <button onClick={submitPortfolio}>UPLOAD</button>
           </div>
         </div>
       </Modal>

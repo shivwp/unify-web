@@ -93,7 +93,7 @@ export const onVerifyForgot = (data, navigate) => (dispatch) => {
 export const onResetPassword = (data, navigate) => (dispatch) => {
   Axios.post("/reset-password", data)
     .then((res) => {
-      navigate("/Signin");
+      navigate("/signin");
     })
     .catch((err) => {
       console.log(err);

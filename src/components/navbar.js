@@ -49,12 +49,12 @@ const NavbarHeader = (props) => {
           <a href="#0">BROWSE JOBS</a>
         </div>
         <div className="logout_btn_mob">
-          <Link to={`/Signin`}>
+          <Link to={`/signin`}>
             <button>Login</button>
           </Link>
         </div>
         <div className="logout_btn_mob">
-          <Link to={`/Signup`}>
+          <Link to={`/signup`}>
             <button>Sign Up</button>
           </Link>
         </div>
@@ -91,10 +91,10 @@ const NavbarHeader = (props) => {
                     <Link to="/">Browse Jobs</Link>
                   </Nav.Link>
                   <Nav.Link className="navbar_btn">
-                    <Link to="/Signin">Login</Link>
+                    <Link to="/signin">Login</Link>
                   </Nav.Link>
                   <Nav.Link className="active_btn">
-                    <Link to="/Signup">Signup now</Link>
+                    <Link to="/signup">Signup now</Link>
                   </Nav.Link>
                 </Nav>
               </Navbar.Collapse>

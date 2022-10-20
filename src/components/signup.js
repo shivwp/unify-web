@@ -435,7 +435,7 @@ const Signup = ({
           <div className="sin_dont_accou">
             Already have an account?{" "}
             <span className="link_don_acc">
-              <Link to="/Signin">Log In</Link>
+              <Link to="/signin">Log In</Link>
             </span>
           </div>
         </div>

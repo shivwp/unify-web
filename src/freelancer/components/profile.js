@@ -13,7 +13,12 @@ import {
   getFreelancerDegreeList,
   onAddEducation,
   onDeleteEducation,
+  onEditVideo,
+  onEditDesignation,
 } from "../../redux/actions/profileAction";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper";
+import Slider from "react-slick";
 import Rating from "./rating/Rating";
 import moment from "moment";
 import HourPerWeekPopup from "./popups/HourPerWeekPopup";
@@ -199,6 +204,20 @@ const EditSkill = (props) => {
   );
 };
 const EditTitle = (props) => {
+  const [values, setValues] = useState(props.data);
+  const dispatch = useDispatch();
+
+  const handleOnChange = (e) => {
+    setValues({ ...values, [e.target.name]: e.target.value });
+  };
+
+  const onSave = () => {
+    const data = {
+      title: values.occuption,
+      description: values.description,
+    };
+    dispatch(onEditDesignation(data, props.Popup));
+  };
   return (
     <>
       <div className="bg_wrapper_popup_new">
@@ -228,6 +247,9 @@ const EditTitle = (props) => {
               <input
                 type="text"
                 className="font-size-13px"
+                name="occuption"
+                onChange={(e) => handleOnChange(e)}
+                value={values?.occuption}
                 placeholder="Senior UI/UX, Website Designer And Graphic Designer"
               />
             </div>
@@ -244,18 +266,24 @@ const EditTitle = (props) => {
               </ul>
             </div>
             <div className="_profile_overview popup_form_element mb-0">
-              <textarea placeholder="theDesignerz offers professional and high-quality graphic design services. We have been designing for companies worldwide since 2018. We are a customer service oriented firm, and we will workwith you until you are completely satisfied with the outcome of your design projects. We are the most experienced team of designers working on Freelancer since 2017"></textarea>
+              <textarea
+                value={values?.description}
+                name="description"
+                onChange={(e) => handleOnChange(e)}
+                placeholder="theDesignerz offers professional and high-quality graphic design services. We have been designing for companies worldwide since 2018. We are a customer service oriented firm, and we will workwith you until you are completely satisfied with the outcome of your design projects. We are the most experienced team of designers working on Freelancer since 2017"
+              ></textarea>
             </div>
 
             <div className="popup_btns_new flex-wrap cwiewyehkk">
-              <button className="trans_btn">Cancel</button>
               <button
+                className="trans_btn"
                 onClick={() => {
                   props.Popup();
                 }}
               >
-                Save
+                Cancel
               </button>
+              <button onClick={onSave}>Save</button>
             </div>
           </div>
         </div>
@@ -264,7 +292,18 @@ const EditTitle = (props) => {
   );
 };
 const VideoIntro = (props) => {
-  const options1 = [
+  const dispatch = useDispatch();
+  const [values, setValues] = useState(props?.data);
+  const [type, setType] = useState({
+    name: props?.video?.type,
+    label: props?.video?.type,
+  });
+
+  const handleOnChange = (e) => {
+    setValues({ ...values, [e.target.name]: e.target.value });
+  };
+
+  const videoTypes = [
     {
       name: "Me talking about my skills and Exprience",
       label: "Me talking about my skills and Exprience",
@@ -278,6 +317,14 @@ const VideoIntro = (props) => {
       label: "Something else",
     },
   ];
+
+  const onSave = () => {
+    const data = {
+      video: values.url,
+      video_type: type.name,
+    };
+    dispatch(onEditVideo(data));
+  };
   return (
     <>
       <div className="bg_wrapper_popup_new">
@@ -304,6 +351,9 @@ const VideoIntro = (props) => {
                 <input
                   type="text"
                   className="font-size-13px"
+                  name="url"
+                  onChange={(e) => handleOnChange(e)}
+                  value={values?.url}
                   placeholder="Ex: https://www.youtube.com/watch?v=dQw4w9WgXcQ"
                 />
               </div>
@@ -314,20 +364,23 @@ const VideoIntro = (props) => {
                 <Select
                   className="font-size-13px"
                   placeholder="What type of video is this?"
-                  options={options1}
+                  onChange={setType}
+                  defaultValue={type}
+                  options={videoTypes}
                 />
               </div>
             </div>
 
             <div className="popup_btns_new flex-wrap cwiewyehkk">
-              <button className="trans_btn">Cancel</button>
               <button
+                className="trans_btn"
                 onClick={() => {
                   props.Popup();
                 }}
               >
-                Save
+                Cancel
               </button>
+              <button onClick={onSave}>Save</button>
             </div>
           </div>
         </div>
@@ -1328,6 +1381,13 @@ const UnifyFreelancer = () => {
   const [hwpPopup, setHwpPopup] = useState(false);
   const [workHistoryTab, setWorkHistoryTab] = useState("COMPLETED JOBS");
   const [portfolioPopup, setPortfolioPopup] = useState(false);
+  const settings = {
+    dots: true,
+    infinite: false,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 3,
+  };
   const dispatch = useDispatch();
   const basicInfo = useSelector(
     (state) => state?.profile?.freelancerProfileList?.basic_info
@@ -1342,7 +1402,7 @@ const UnifyFreelancer = () => {
     (state) => state?.profile?.deleteEducation
   );
   const addExprience = useSelector((state) => state?.profile?.addExprience);
-
+  console.log(basicInfo);
   useEffect(() => {
     dispatch(getFreelancerProfile());
   }, [deleteExprience, addExprience, deleteEducation]);
@@ -1559,28 +1619,54 @@ const UnifyFreelancer = () => {
                 </div>
               </div> */}
               <div className="myskill_prof_node">
-                <div className="myskill_hdingn profile_icon_25px">
-                  Video introduction
-                  <button
-                    onClick={() => {
-                      Setpopup(<VideoIntro Popup={Setpopup} />);
+                <div className="intro_video">
+                  <div className="myskill_hdingn profile_icon_25px">
+                    Video introduction
+                    <button
+                      onClick={() => {
+                        Setpopup(
+                          <VideoIntro
+                            data={freelancerProfileList?.video}
+                            Popup={Setpopup}
+                          />
+                        );
+                      }}
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="17"
+                        height="17"
+                        viewBox="0 0 17 17"
+                      >
+                        <path
+                          id="_134224_add_plus_new_icon_2_"
+                          data-name="134224_add_plus_new_icon (2)"
+                          d="M17.786,9.286H11.714V3.214a1.214,1.214,0,0,0-2.429,0V9.286H3.214a1.214,1.214,0,0,0,0,2.429H9.286v6.071a1.214,1.214,0,1,0,2.429,0V11.714h6.071a1.214,1.214,0,1,0,0-2.429Z"
+                          transform="translate(-2 -2)"
+                          fill="#6d2ef1"
+                        />
+                      </svg>
+                    </button>
+                  </div>
+                  <span
+                    style={{
+                      fontSize: 15,
+                      fontWeight: 400,
                     }}
                   >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="17"
-                      height="17"
-                      viewBox="0 0 17 17"
+                    <a
+                      href={freelancerProfileList?.video?.url}
+                      target="_blank"
+                      style={{ display: "flex", alignItems: "center" }}
                     >
-                      <path
-                        id="_134224_add_plus_new_icon_2_"
-                        data-name="134224_add_plus_new_icon (2)"
-                        d="M17.786,9.286H11.714V3.214a1.214,1.214,0,0,0-2.429,0V9.286H3.214a1.214,1.214,0,0,0,0,2.429H9.286v6.071a1.214,1.214,0,1,0,2.429,0V11.714h6.071a1.214,1.214,0,1,0,0-2.429Z"
-                        transform="translate(-2 -2)"
-                        fill="#6d2ef1"
-                      />
-                    </svg>
-                  </button>
+                      <i
+                        class="fa fa-play"
+                        aria-hidden="true"
+                        style={{ color: "#6610f2", marginRight: 10 }}
+                      ></i>{" "}
+                      {freelancerProfileList?.video?.type}
+                    </a>
+                  </span>
                 </div>
                 <div className="myskill_hdingn profile_icon_25px">
                   Hours per week
@@ -1772,12 +1858,20 @@ const UnifyFreelancer = () => {
             <div className="box-profile-bck mb-0">
               <div className="bpbck_txt d-flex mt-0">
                 <div className="bpck_head font-weight-500 line-height-30">
-                  Senior UI/UX, Website Designer And Graphic <br /> Designer
+                  {basicInfo?.occuption}
                 </div>
                 <div className="myskill_hdingn">
                   <button
                     onClick={() => {
-                      Setpopup(<EditTitle Popup={Setpopup} />);
+                      Setpopup(
+                        <EditTitle
+                          data={{
+                            occuption: basicInfo.occuption,
+                            description: basicInfo.description,
+                          }}
+                          Popup={Setpopup}
+                        />
+                      );
                     }}
                   >
                     <svg
@@ -1798,14 +1892,7 @@ const UnifyFreelancer = () => {
                 </div>
               </div>
               <div className="d-flex mt-3">
-                <div className="descri_pfro">
-                  the Designerz offers professional and high-quality graphic
-                  design services. We have been designing for companies
-                  worldwide since 2018. We are a customer service oriented firm,
-                  and we will work with you until you are completely satisfied
-                  with the outcome of your design projects. We are the most
-                  experienced team of designers working on Freelancer since 2017
-                </div>
+                <div className="descri_pfro">{basicInfo?.description}</div>
                 {/* <div className="myskill_hdingn">
                   <button
                     onClick={() => {
@@ -1880,19 +1967,49 @@ const UnifyFreelancer = () => {
                   </button>
                 </div>
               </div>
-              <div className="d-flex justify-content-center flex-column text-center">
-                <div className="d-flex justify-content-center ertr4h6j65esdv align-items-center">
-                  <div className="imgbox_bccp">
-                    <img src="/assets/123.png" alt="" />
-                  </div>
-                  <div className="imgbox_bccp">
-                    <img src="/assets/1234.png" alt="" />
-                  </div>
-                  <div className="imgbox_bccp">
-                    <img src="/assets/12345.png" alt="" />
-                  </div>
-                </div>
-              </div>
+              {/* <div className="d-flex justify-content-center ertr4h6j65esdv align-items-center"> */}
+              <Swiper
+                spaceBetween={10}
+                slidesPerView={3}
+                className="help_swip"
+                loop="true"
+                modules={[Navigation]}
+                navigation={true}
+                onSlideChange={() => console.log("slide change")}
+                onSwiper={(swiper) => console.log(swiper)}
+                breakpoints={{
+                  200: {
+                    slidesPerView: 1,
+                    spaceBetween: 10,
+                    centeredSlides: true,
+                  },
+                  500: {
+                    slidesPerView: 1,
+                    spaceBetween: 10,
+                  },
+                  640: {
+                    slidesPerView: 1,
+                    spaceBetween: 10,
+                  },
+                  768: {
+                    slidesPerView: 2,
+                    spaceBetween: 10,
+                  },
+                  900: {
+                    slidesPerView: 3,
+                    spaceBetween: 10,
+                  },
+                }}
+              >
+                {freelancerProfileList?.portfolio.map((item) => (
+                  <SwiperSlide>
+                    <div className="imgbox_bccp">
+                      <img src={item.image} alt="" />
+                    </div>
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+              {/* </div> */}
             </div>
             <div className="box-profile-bck mb-0">
               <div className="bpbck_txt d-flex mt-0">

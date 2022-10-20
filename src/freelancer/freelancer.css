@@ -230,7 +230,6 @@
   margin-top: 20px;
 }
 
-
 .popup_form_element label {
   text-align: left;
   font: normal normal normal 15px/30px Poppins;
@@ -272,7 +271,10 @@
 ._profile_overview textarea {
   resize: none;
   padding: 5px !important;
+  font-size: 12px;
+  color: #4d4d4d;
   text-align: justify;
+  font-weight: 400;
 }
 ._profile_overview textarea::-webkit-scrollbar {
   display: none;
@@ -637,8 +639,19 @@
   border-top: #e2e2e2 solid 1px;
 }
 
+.single {
+  right: 10px !important;
+}
+
+.daterangepicker.opensright:before {
+  display: none !important;
+}
+.daterangepicker.opensright::after {
+  display: none !important;
+}
+
 .report_tbl_frl thead tr th {
-  padding: 12px 20px;
+  padding: 12px 12px;
   color: #1f1f1f;
   font: normal normal 600 15px/26px Poppins !important;
   border-right: #e2e2e2 solid 1px;
@@ -787,7 +800,7 @@
 }
 
 .milestone_nbdr_tl thead th {
-  padding-left: 10px !important;
+  padding-left: 5px !important;
 }
 
 .tg_mile_ml_new {
@@ -1707,4 +1720,40 @@
 .select_no_bder .css-1s2u09g-control {
   background-color: transparent !important;
   border: none !important;
+}
+
+.close_account_btn {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.close_account_btn button {
+  background-color: #fff;
+  border-radius: 27px;
+  -webkit-border-radius: 27px;
+  -moz-border-radius: 27px;
+  -ms-border-radius: 27px;
+  -o-border-radius: 27px;
+  border: #0777fd solid 1px;
+  padding: 8px 30px;
+  font-size: 15px;
+  color: #6d2ef1;
+  font-weight: 700;
+  font-family: "Poppins";
+  text-align: center;
+}
+.close_account_btn button:hover {
+  background-color: #6d2ef1;
+  border-radius: 27px;
+  -webkit-border-radius: 27px;
+  -moz-border-radius: 27px;
+  -ms-border-radius: 27px;
+  -o-border-radius: 27px;
+  border: #6d2ef1 solid 1px;
+  padding: 8px 30px;
+  font-size: 15px;
+  color: #fff;
+  font-weight: 700;
+  font-family: "Poppins";
+  text-align: center;
 }

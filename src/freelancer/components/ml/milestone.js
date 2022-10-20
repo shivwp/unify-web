@@ -1,4 +1,6 @@
 import DateRangePicker from "react-bootstrap-daterangepicker";
+import { Col, Row } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 const Screen = () => {
   return (
@@ -26,12 +28,51 @@ const Screen = () => {
         </div>
       </div>
       <div className="tg_mile_ml_new">
-        <div className="job_head_s">
-          <h2>Edit Woocommerce plugin</h2>
-        </div>
-        <div className="job_d_par">
-          <p>Staffed by: Shiv Kumar at Eoxysis IT solution LLP</p>
-        </div>
+      <div>
+            <div
+              className="job_box_card"
+              style={{ border: "none", backgroundColor: "#f5f5f5" }}
+            >
+              <Row style={{ marginTop: 10 }}>
+                <Col lg={10} md={7}>
+                  <div className="job_head_s">
+                    <h2>Edit Woocommerce plugin</h2>
+                  </div>
+                  <div className="job_d_par">
+                    <p>Staffed by: Shiv Kumar at Eoxysis IT solution LLP</p>
+                  </div>
+                </Col>
+                <Col lg={2} md={5} style={{display: 'flex', justifyContent:'center'}} className='p-0'>
+                  <div className="milestone_btn_s">
+                    <Link to="/freelancer/chat">
+                      <button>Message</button>
+                    </Link>
+                  </div>
+                </Col>
+              </Row>
+              <Row>
+                <Col lg={4} md={5}>
+                  <div className="job_head_s">
+                    <h3>Hired By: Ali Almazam</h3>
+                  </div>
+                  <div className="job_d_par">
+                    <p style={{ marginBottom: 0 }}>Ali Elabhm</p>
+                  </div>
+                </Col>
+                <Col lg={6} md={5}>
+                  <div className="job_head_s">
+                    <h3>Active: Milestone 1</h3>
+                  </div>
+                  <div className="job_d_par">
+                    <p style={{ marginBottom: 0 }}>Edit Woocommerce plugin</p>
+                  </div>
+                </Col>
+                <Col lg={2} md={2} style={{ fontSize: 14, color: "#6b6b6b" }}>
+                  Oct 10 - Present
+                </Col>
+              </Row>
+            </div>
+          </div>
       </div>
       <div className="pt-4 pb-2 d-flex justify-content-between align-items-center flex-wrap">
         <div className="ad_earning-node">
@@ -40,7 +81,6 @@ const Screen = () => {
         <div className="d-flex justify-content-between align-items-center flex-wrap adtime_txtccwd">
           Last 30 days:$0.00
           <DateRangePicker
-            className="mileStone_daterangepicker"
             initialSettings={{
               singleDatePicker: true,
             }}

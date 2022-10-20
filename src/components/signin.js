@@ -201,7 +201,7 @@ const Signin = ({ onInputChange, submitForm, errors, selectUserType,userType }) 
           <div className="sin_dont_accou">
             Don't have an Unify account?{" "}
             <span className="link_don_acc">
-              <Link to="/Signup">Signup</Link>
+              <Link to="/signup">Signup</Link>
             </span>
           </div>
         </div>

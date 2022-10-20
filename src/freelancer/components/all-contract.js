@@ -128,7 +128,52 @@ const Screen = () => {
                     <p>Staffed by: Shiv Kumar at Eoxysis IT solution LLP</p>
                   </div>
                 </Col>
-                <Col lg={3} md={5} className='p-0'>
+                <Col lg={3} md={5} className='p-0' style={{display: 'flex', justifyContent:'center'}} >
+                  <div className="milestone_btn_s">
+                    <Link to="/freelancer/milestone-earning">
+                      <button>Submit Work for Payment</button>
+                    </Link>
+                  </div>
+                </Col>
+              </Row>
+              <Row>
+                <Col lg={4} md={5}>
+                  <div className="job_head_s">
+                    <h3>Hired By: Ali Almazam</h3>
+                  </div>
+                  <div className="job_d_par">
+                    <p style={{ marginBottom: 0 }}>Ali Elabhm</p>
+                  </div>
+                </Col>
+                <Col lg={6} md={5}>
+                  <div className="job_head_s">
+                    <h3>Active: Milestone 1</h3>
+                  </div>
+                  <div className="job_d_par">
+                    <p style={{ marginBottom: 0 }}>Edit Woocommerce plugin</p>
+                  </div>
+                </Col>
+                <Col lg={2} md={2} style={{ fontSize: 14, color: "#6b6b6b" }}>
+                  Oct 10 - Present
+                </Col>
+              </Row>
+            </div>
+          </div>
+          <div>
+            <div
+              className="job_box_card"
+              style={{ border: "none", backgroundColor: "#f5f5f5" }}
+            >
+              <Row style={{ marginTop: 10 }}>
+                <Col lg={9} md={7}>
+                  <div className="job_head_s">
+                    <h2>Edit Woocommerce plugin</h2>
+                  </div>
+                  <div className="job_d_par">
+                    <p>Staffed by: Shiv Kumar at Eoxysis IT solution LLP</p>
+                  </div>
+                </Col>
+                <Col lg={3} md={5} className='p-0' style={{display: 'flex', justifyContent:'center'}} >
                   <div className="milestone_btn_s">
                     <Link to="/freelancer/milestone-earning">
                       <button>Submit Work for Payment</button>

@@ -586,6 +586,25 @@
   border: #707070 solid 1px;
 }
 
+.intro_video .myskill_hdingn {
+  display: flex;
+  align-items: center;
+  font-size: 17px;
+  margin-bottom: unset;
+  font-weight: 500;
+  font-family: "poppins";
+}
+
+.intro_video {
+  margin-bottom: 15px;
+}
+.intro_vido_player {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
 .font-size-20px {
   font-size: 20px !important;
 }
@@ -616,7 +635,7 @@
 }
 
 .box-profile-bck {
-  border: #707070 solid 1px;
+  border: #cdcccc solid 1px;
   padding: 20px 10px;
   margin-bottom: 30px;
   position: relative;
@@ -624,10 +643,9 @@
 }
 
 .imgbox_bccp {
-  height: 250px;
-  width: 300px;
-  margin-left: 10px;
-  margin-right: 20px;
+  height: 150px;
+  /* width: 182px; */
+  margin: 0 10px;
 }
 
 .skill_bxr_gry {
@@ -654,7 +672,7 @@
 .imgbox_bccp img {
   height: 100%;
   width: 100%;
-  object-fit: contain;
+  /* object-fit: cover; */
 }
 
 .bpbck_txt {

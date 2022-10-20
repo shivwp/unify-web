@@ -330,7 +330,7 @@ const NavbarHeader = (props) => {
                     </NavDropdown>
                   </div>
                   <Nav.Link className="active_btn logout_btn_nav">
-                    <Link to="/Signin">Logout</Link>
+                    <Link to="/signin">Logout</Link>
                   </Nav.Link>
                   <Link to="/freelancer/chat" className="navbar_btn p-0">
                     <svg

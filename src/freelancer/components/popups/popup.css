@@ -172,9 +172,7 @@
   height: 100%;
   align-items: center;
   justify-content: center;
-  
 }
-
 
 .drag_portfolio > input {
   visibility: hidden;
@@ -182,60 +180,76 @@
   height: 1px;
 }
 
-.portfolio_popup{
+.portfolio_popup {
   max-width: 600px;
 }
 
-.addMobPopup_heading{
+.addMobPopup_heading {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   /* color: rgb(94, 94, 94); */
 }
-.addMobPopup_heading h5{
+.addMobPopup_heading h5 {
   font-size: 16px;
 }
-.addMobPopup_heading span{
+.addMobPopup_heading span {
   /* color: rgb(151, 151, 151); */
   font-size: 14px;
 }
-.addMobPopup_heading span > span{
+.addMobPopup_heading span > span {
   font-weight: 500;
   font-size: 12px;
 }
-.message_header_img{
+.message_header_img {
   width: 100px;
   height: auto;
   margin: 10px 0;
 }
-.message_header_img img{
+.message_header_img img {
   width: 100px;
   height: auto;
 }
 
-.authenticator_verification_popup{
+.authenticator_verification_popup {
   min-width: 500px;
   max-width: 500px;
 }
 
 @media screen and (max-width: 426px) {
-  .authenticator_verification_popup{
+  .authenticator_verification_popup {
     min-width: 280px;
   }
 }
+@media screen and (max-width: 321px) {
+  .authenticator_verification_popup {
+    min-width: 280px;
+    max-width: 282px;
+  }
+}
 
-.suggest_qr{
+.suggest_qr {
   font-size: 13px;
   margin-top: 15px;
-  
 }
-.suggest_qr span > span{
+.suggest_qr span > span {
   color: #6d2ef1;
   cursor: pointer;
-
 }
 
-.popup_padd{
+.popup_padd {
   padding: 30px;
+}
+
+.portfolio_img_pre {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 10px 0;
+}
+.portfolio_img_pre img {
+  width: 100px;
+  height: auto;
+  object-fit: cover;
 }

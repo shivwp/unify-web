@@ -61,45 +61,6 @@ const CloseAccountPopup = ({ open, onCloseModal }) => {
                   </label>
                 </li>
               ))}
-
-              {/* <li>
-                <label htmlFor="reason-2">
-                  <input type="radio" name="p" id="reason-2" />{" "}
-                  <span>I want to change my username</span>
-                </label>
-              </li>
-              <li>
-                <label htmlFor="reason-3">
-                  <input type="radio" name="p" id="reason-3" />{" "}
-                  <span>Unify is not easy to use</span>
-                </label>
-              </li>
-              <li>
-                <label htmlFor="reason-4">
-                  <input type="radio" name="p" id="reason-4" />{" "}
-                  <span>
-                    I am not satisfied with quality of freelancers on Upwork
-                  </span>
-                </label>
-              </li>
-              <li>
-                <label htmlFor="reason-5">
-                  <input type="radio" name="p" id="reason-5" />{" "}
-                  <span>I signed up for the wrong type of account</span>
-                </label>
-              </li>
-              <li>
-                <label htmlFor="reason-6">
-                  <input type="radio" name="p" id="reason-6" />{" "}
-                  <span>The freelancers on Upwork did not fit my needs</span>
-                </label>
-              </li>
-              <li>
-                <label htmlFor="reason-7">
-                  <input type="radio" name="p" id="reason-7" />{" "}
-                  <span>I no longer need work done through Unify</span>
-                </label>
-              </li> */}
             </ul>
           </div>
         </div>
