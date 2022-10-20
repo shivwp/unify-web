@@ -12,6 +12,7 @@ const AccountInfo = ({
   values,
   onSubmitClientData,
   onProfileChange,
+  objectUrlAbc,
 }) => {
   return (
     <>
@@ -21,12 +22,16 @@ const AccountInfo = ({
         </div>
         <div className="account_prof">
           <div className="profile_img">
-            <img src={values?.profile_image} alt="" />
+            <img
+              src={objectUrlAbc ? objectUrlAbc : values?.profile_image}
+              alt=""
+            />
           </div>
           <label htmlFor="uploadProfile" className="change_prof_btn">
             <input
               type="file"
               id="uploadProfile"
+              name="profile_image"
               onChange={(e) => onProfileChange(e)}
             />
             Upload Profile Photo
