@@ -2,7 +2,13 @@ import Title from "./title";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
-const Signin = ({ onInputChange, submitForm, errors, selectUserType,userType }) => {
+const Signin = ({
+  onInputChange,
+  submitForm,
+  errors,
+  selectUserType,
+  userType,
+}) => {
   Title(" | signin");
   const [hidePass, setHidePass] = useState(true);
 
@@ -10,7 +16,7 @@ const Signin = ({ onInputChange, submitForm, errors, selectUserType,userType }) 
     <>
       <div className="bg_body">
         <div className="sign_form_shap"></div>
-        <div className="sign_box">
+        <div className="sign_box sign_in_box">
           <div className="sign_u_head">
             <h1>Log in to Unify</h1>
           </div>
@@ -132,7 +138,7 @@ const Signin = ({ onInputChange, submitForm, errors, selectUserType,userType }) 
               </div>
             </div>
             <div className="forgot_passw">
-              <span>
+              <span style={{ fontSize: "14px", margin: "-15px 0 10px 0" }}>
                 <Link to="/forgot-password">Forgot Password ?</Link>
               </span>
             </div>
@@ -164,7 +170,7 @@ const Signin = ({ onInputChange, submitForm, errors, selectUserType,userType }) 
             </div>
             <div className="sign_form_btn_subm sign_w_full">
               <button type="submit" className="mr_sign_in_n">
-                CONTINUE WITH EMAIL
+                LOGIN
               </button>
             </div>
           </form>

@@ -794,10 +794,43 @@ const VerificationPref = (props) => {
 };
 
 const LanguageEdit = (props) => {
-  const options1 = [
+  const [values, setValues] = useState({});
+  const [inputList, setInputList] = useState([
+    { language: "", proficiency: "" },
+  ]);
+  console.log(inputList);
+
+  const handleInputChange = (e, index) => {
+    const { name, value } = e.target;
+    const list = [...inputList];
+    list[index][name] = value;
+    setInputList(list);
+  };
+
+  const handleAddClick = () => {
+    setInputList([...inputList, { firstName: "", lastName: "" }]);
+  };
+  const proficiencyOptions = [
+    { name: "Fluent" },
+    { name: "Conversational" },
+    { name: "Native" },
+  ];
+  const languageOptions = [
     {
-      name: "Fluent",
-      label: "Fluent",
+      name: "English",
+      label: "English",
+    },
+    {
+      name: "French",
+      label: "French",
+    },
+    {
+      name: "Hindi",
+      label: "Hindi",
+    },
+    {
+      name: "Spanish",
+      label: "Spanish",
     },
   ];
   return (
@@ -820,55 +853,51 @@ const LanguageEdit = (props) => {
 
             <div className="mb-3 ">
               <Row>
-                <Col md={6}>
-                  <div className="popup_form_element">
-                    <label className="text-black font-size-13px font-weight-500">
-                      Language
-                    </label>
-                    <input
-                      type="text"
-                      className="font-size-13px"
-                      placeholder="English"
-                    />
-                  </div>
-                </Col>
-                <Col md={6}>
-                  <div className="popup_form_element">
-                    <label className="text-black font-size-13px font-weight-500">
-                      Proficiency level
-                    </label>
-                    <Select
-                      className="font-size-13px"
-                      placeholder="Fluent"
-                      options={options1}
-                    />
-                  </div>
-                </Col>
-                <Col md={6}>
-                  <div className="popup_form_element">
-                    <label className="text-black font-size-13px font-weight-500">
-                      Language
-                    </label>
-                    <input
-                      type="text"
-                      className="font-size-13px"
-                      placeholder="English"
-                    />
-                  </div>
-                </Col>
-                <Col md={6}>
-                  <div className="popup_form_element">
-                    <label className="text-black font-size-13px font-weight-500">
-                      Proficiency level
-                    </label>
-                    <Select
-                      className="font-size-13px"
-                      placeholder="Fluent"
-                      options={options1}
-                    />
-                  </div>
-                </Col>
+                {inputList.map((x, i) => {
+                  return (
+                    <>
+                      <Col md={6}>
+                        <div className="popup_form_element">
+                          <label className="text-black font-size-13px font-weight-500">
+                            Language
+                          </label>
+
+                          <input
+                            className="font-size-13px"
+                            // options={languageOptions}
+                            placeholder="English"
+                            // onChange={setLanguage}
+                            name="language"
+                            onChange={(e) => handleInputChange(e, i)}
+                          />
+                        </div>
+                      </Col>
+                      <Col md={6}>
+                        <div className="popup_form_element">
+                          <label className="text-black font-size-13px font-weight-500">
+                            Proficiency level
+                          </label>
+                          <select
+                            className="font-size-13px language_sel"
+                            name="proficiency"
+                            placeholder="Fluent"
+                            onChange={(e) => handleInputChange(e, i)}
+                          >
+                            {proficiencyOptions.map((item) => (
+                              <option value={item.name}>{item.name}</option>
+                            ))}
+                          </select>
+                        </div>
+                      </Col>
+                    </>
+                  );
+                })}
               </Row>
+            </div>
+            <div style={{ display: "flex", justifyContent: "flex-end" }}>
+              <button className="addMoreLanguageBtn" onClick={handleAddClick}>
+                Add More
+              </button>
             </div>
 
             <div className="popup_btns_new flex-wrap cwiewyehkk">
@@ -1698,7 +1727,7 @@ const UnifyFreelancer = () => {
                   <div className="d-flex justify-content-start">
                     <button
                       onClick={() => {
-                        Setpopup(<LanguageEdit Popup={Setpopup} />);
+                        Setpopup(<LanguageEdit Popup={Setpopup} name={1} />);
                       }}
                     >
                       <svg
@@ -1716,7 +1745,11 @@ const UnifyFreelancer = () => {
                         />
                       </svg>
                     </button>
-                    <button>
+                    <button
+                      onClick={() => {
+                        Setpopup(<LanguageEdit Popup={Setpopup} />);
+                      }}
+                    >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="15.709"
@@ -1736,22 +1769,30 @@ const UnifyFreelancer = () => {
                 </div>
                 <div className="myskill_hdingn">Verification</div>
                 <div className="myskill_hdingn ms_hdsmall font-size-15px">
-                  ID: Verified{" "}
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="svgverifie"
-                    width="17.079"
-                    height="17.869"
-                    viewBox="0 0 17.079 17.869"
-                  >
-                    <path
-                      id="Path_4727"
-                      data-name="Path 4727"
-                      d="M16.911,10.258a2.235,2.235,0,0,1,0-2.623l.566-.782a.745.745,0,0,0,.1-.671.759.759,0,0,0-.477-.477l-.917-.3a2.226,2.226,0,0,1-1.542-2.124V2.315a.745.745,0,0,0-.976-.708l-.924.3a2.235,2.235,0,0,1-2.5-.812L9.683.311a.772.772,0,0,0-1.207,0l-.566.782a2.235,2.235,0,0,1-2.5.812l-.924-.3a.745.745,0,0,0-.976.708v.969A2.226,2.226,0,0,1,1.971,5.407l-.917.3a.759.759,0,0,0-.477.477.745.745,0,0,0,.1.671l.566.782a2.235,2.235,0,0,1,0,2.623l-.566.782a.745.745,0,0,0-.1.671.759.759,0,0,0,.477.477l.917.3A2.226,2.226,0,0,1,3.513,14.61v.969a.745.745,0,0,0,.976.708l.917-.3a2.231,2.231,0,0,1,2.5.812l.566.782a.749.749,0,0,0,1.207,0l.566-.782a2.235,2.235,0,0,1,2.5-.812l.917.3a.745.745,0,0,0,.976-.708V14.61a2.226,2.226,0,0,1,1.542-2.124l.917-.3a.759.759,0,0,0,.477-.477.745.745,0,0,0-.1-.671ZM12.589,7.983,8.863,11.709a.745.745,0,0,1-1.054,0L5.574,9.474A.745.745,0,1,1,6.628,8.42l1.706,1.709,3.2-3.2a.745.745,0,1,1,1.054,1.054Z"
-                      transform="translate(-0.54 -0.02)"
-                      fill="#6d2ef1"
-                    />
-                  </svg>
+                  ID:{" "}
+                  {basicInfo?.is_verified ? (
+                    <>
+                      {" "}
+                      'Verified '
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="svgverifie"
+                        width="17.079"
+                        height="17.869"
+                        viewBox="0 0 17.079 17.869"
+                      >
+                        <path
+                          id="Path_4727"
+                          data-name="Path 4727"
+                          d="M16.911,10.258a2.235,2.235,0,0,1,0-2.623l.566-.782a.745.745,0,0,0,.1-.671.759.759,0,0,0-.477-.477l-.917-.3a2.226,2.226,0,0,1-1.542-2.124V2.315a.745.745,0,0,0-.976-.708l-.924.3a2.235,2.235,0,0,1-2.5-.812L9.683.311a.772.772,0,0,0-1.207,0l-.566.782a2.235,2.235,0,0,1-2.5.812l-.924-.3a.745.745,0,0,0-.976.708v.969A2.226,2.226,0,0,1,1.971,5.407l-.917.3a.759.759,0,0,0-.477.477.745.745,0,0,0,.1.671l.566.782a2.235,2.235,0,0,1,0,2.623l-.566.782a.745.745,0,0,0-.1.671.759.759,0,0,0,.477.477l.917.3A2.226,2.226,0,0,1,3.513,14.61v.969a.745.745,0,0,0,.976.708l.917-.3a2.231,2.231,0,0,1,2.5.812l.566.782a.749.749,0,0,0,1.207,0l.566-.782a2.235,2.235,0,0,1,2.5-.812l.917.3a.745.745,0,0,0,.976-.708V14.61a2.226,2.226,0,0,1,1.542-2.124l.917-.3a.759.759,0,0,0,.477-.477.745.745,0,0,0-.1-.671ZM12.589,7.983,8.863,11.709a.745.745,0,0,1-1.054,0L5.574,9.474A.745.745,0,1,1,6.628,8.42l1.706,1.709,3.2-3.2a.745.745,0,1,1,1.054,1.054Z"
+                          transform="translate(-0.54 -0.02)"
+                          fill="#6d2ef1"
+                        />
+                      </svg>
+                    </>
+                  ) : (
+                    "Unverified"
+                  )}
                 </div>
                 <div className="myskill_hdingn ms_hdsmall font-size-15px">
                   Hannah Finn

@@ -40,7 +40,7 @@ const Signup = ({
             <h1>Complete Your Free Account Setup</h1>
           </div>
           <div className="sign_form_btn_subm sign_in_social_btn mr_sign_in_n signup_social_btn_n">
-            <button className="apple_btn mr_sign_in_n">
+            <button className="apple_btn mr_sign_in_n" style={{ fontSize: 15 }}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
@@ -54,7 +54,7 @@ const Signup = ({
               </svg>
               Continue with Apple
             </button>
-            <button className="google_btn">
+            <button className="google_btn" style={{ fontSize: 15 }}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"

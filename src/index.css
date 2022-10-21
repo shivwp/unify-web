@@ -357,8 +357,6 @@ body {
   padding: 30px 0px;
 }
 
-
-
 .slider_get_btn button {
   width: 179px;
   height: 47px;
@@ -2246,7 +2244,7 @@ body {
   font-size: 14px;
 }
 
-.milestone_btn_s button{
+.milestone_btn_s button {
   border-radius: 6px;
   background-color: #6d2ef1;
   border: #6d2ef1 solid 1px;
@@ -2263,7 +2261,7 @@ body {
   font-size: 14px;
 }
 @media screen and (max-width: 1024px) {
-  .milestone_btn_s button{
+  .milestone_btn_s button {
     border-radius: 6px;
     background-color: #6d2ef1;
     border: #6d2ef1 solid 1px;
@@ -2279,7 +2277,6 @@ body {
     padding: 12px 12px;
     font-size: 14px;
   }
-  
 }
 
 .pagiantion_node {
@@ -2762,13 +2759,18 @@ body {
   background: #ffffff 0% 0% no-repeat padding-box;
   padding: 25px 20px;
   margin: auto;
-  max-width: 1000px;
+  max-width: 800px;
   width: 100%;
+}
+.sign_in_box {
+  max-width: 700px !important;
+  padding: 25px 30px !important;
+
 }
 
 .sign_u_head h1 {
   text-align: center;
-  font: normal normal bolder 42px/90px "Poppins-Bold", "Poppins";
+  font: normal normal bolder 40px/90px "Poppins-Bold", "Poppins";
   letter-spacing: -1.05px;
   color: #170048;
   line-height: 50px;
@@ -2907,7 +2909,7 @@ body {
 .input_group {
   display: flex;
   justify-content: space-evenly;
-  margin: 15px 0px;
+  margin: 15px 5px;
 }
 
 .sign_form_sm_head h3 {
@@ -2967,11 +2969,15 @@ body {
 }
 
 .sign_l_n_text label {
-  font: normal normal normal 15px/30px Poppins;
+  font: normal normal normal 12px/30px Poppins;
   letter-spacing: 0px;
   color: #170048;
   margin-left: 10px;
   line-height: 16px;
+}
+
+.sign_legal_not {
+  margin-left: 28px;
 }
 
 .sign_l_n_text span {
@@ -3004,7 +3010,7 @@ body {
 }
 
 .sign_w_full button {
-  width: 100% !important;
+  width: 90% !important;
   max-width: 100% !important;
 }
 
@@ -3049,7 +3055,6 @@ body {
   margin: 5px 15px;
   font-weight: 300;
 }
-
 
 .sign_in_social_btn button.apple_btn {
   border: #000 solid;

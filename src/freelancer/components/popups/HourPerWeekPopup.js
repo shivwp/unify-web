@@ -5,6 +5,7 @@ import "./popup.css";
 import { Link } from "react-router-dom";
 
 const HourPerWeekPopup = ({ open, onCloseModal }) => {
+
   return (
     <>
       <Modal
@@ -23,25 +24,25 @@ const HourPerWeekPopup = ({ open, onCloseModal }) => {
           <ul className="popup-radio">
             <li>
               <label htmlFor="op-1">
-                <input type="radio" id="op-1" name="p" />{" "}
+                <input type="radio" id="op-1" name="p"  value={"More then 30 Hours per week"} />{" "}
                 <span>More then 30 Hours per week</span>
               </label>
             </li>
             <li>
               <label htmlFor="op-2">
-                <input type="radio" id="op-2" name="p" />{" "}
+                <input type="radio" id="op-2" value={'Less then 30 Hours per week'} name="p" />{" "}
                 <span>Less then 30 Hours per week</span>
               </label>
             </li>
             <li>
               <label htmlFor="op-3">
-                <input type="radio" id="op-3" name="p" />{" "}
+                <input type="radio" id="op-3" value={"As needed - open to offers"} name="p" />{" "}
                 <span>As needed - open to offers</span>
               </label>
             </li>
             <li>
               <label htmlFor="op-4">
-                <input type="radio" id="op-4" name="p" /> <span> None</span>
+                <input type="radio" id="op-4" name="p" value={"None"} /> <span> None</span>
               </label>
             </li>
           </ul>

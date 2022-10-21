@@ -254,6 +254,16 @@
 .popup_form_element > input {
   height: 40px;
 }
+.popup_form_element > .language_sel {
+  height: 40px;
+  color: #e8e7e7;
+  border: 1px solid #e8e7e7 !important;
+  border-radius: 3px;
+  width: 100%;
+  outline: none;
+  padding: 7px 20px;
+  -webkit-border-radius: 3px;
+}
 
 .popup_form_element select {
   border-color: #6d2ef1;
@@ -378,6 +388,19 @@
 
 .amount_popup_body .popup_form_element {
   margin-top: 10px !important;
+}
+
+.addMoreLanguageBtn {
+  font-weight: 500;
+  text-transform: uppercase;
+  padding: 5px 5px;
+  margin-top: 5px;
+  min-width: 100px;
+  font-size: 12px;
+  margin-right: 15px;
+  border: #6d2ef1 solid 1px;
+  color: #6d2ef1;
+  border-radius: 20px;
 }
 
 .freelancer_all_contract {
