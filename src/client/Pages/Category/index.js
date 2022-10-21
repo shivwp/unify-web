@@ -1,5 +1,5 @@
 import Category from "./components/category";
-import Layout from "../../../components/Layouts/Layout";
+import Layout from "../../Layout/Layout";
 
 const CategoryScreen = () => {
   return (

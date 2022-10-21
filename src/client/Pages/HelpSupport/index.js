@@ -1,5 +1,5 @@
 import HelpSupport from "./components/helpsupport";
-import Layout from "../../../components/Layouts/Layout";
+import Layout from "../../Layout/Layout";
 
 const Screen = () => {
   return (

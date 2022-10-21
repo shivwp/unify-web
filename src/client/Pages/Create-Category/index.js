@@ -1,5 +1,5 @@
 import CreateCategory from "./components/create-category";
-import Layout from "../../../components/Layouts/Layout";
+import Layout from "../../Layout/Layout";
 
 const CreateScreen = () => {
   return (

@@ -1,8 +1,9 @@
 import React from "react";
-import Layout from "./Layouts/Layout";
+import Layout from "../client/Layout/Layout";
 import Container from "react-bootstrap/Container";
 import { Col, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
+
 const EditDraft = () => {
   return (
     <Layout>

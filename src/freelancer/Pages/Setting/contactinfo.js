@@ -1,5 +1,5 @@
 import ContactTab from "./tab/contact-info";
-import Layout from "../../../components/Layouts/Layout";
+import Layout from "../../Layout/Layout";
 
 const Screen = () => {
   return (

@@ -1,5 +1,5 @@
 import Skills from './components/skills';
-import Layout from "../../../components/Layouts/Layout";
+import Layout from "../../Layout/Layout";
 
 const skillScreen = ()=>{
     return (

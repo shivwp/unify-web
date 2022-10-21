@@ -1,5 +1,5 @@
 import MileEarning from "./components/mile-earning";
-import Layout from "../../../components/Layouts/Layout";
+import Layout from "../../Layout/Layout";
 
 const Screen = () => {
   return (

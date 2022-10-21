@@ -1,5 +1,5 @@
 import DirectContract from "../../components/direct-contract";
-import Layout from "../../../components/Layouts/Layout";
+import Layout from "../../Layout/Layout";
 
 const Screen = () => {
   return (

@@ -1,5 +1,5 @@
 import Subscriptionc from "./components/subscription";
-import Layout from "../../../components/Layouts/Layout";
+import Layout from "../../Layout/Layout";
 
 const Subscription = () => {
   return (

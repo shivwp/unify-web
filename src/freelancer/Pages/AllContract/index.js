@@ -1,5 +1,5 @@
 import AllContract from "./components/all-contract";
-import Layout from "../../../components/Layouts/Layout";
+import Layout from "../../Layout/Layout";
 
 const Screen = () => {
   return (

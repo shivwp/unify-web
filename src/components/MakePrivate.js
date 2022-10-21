@@ -3,7 +3,7 @@ import ViewJob from "./ViewJobs/jobpost";
 import { Col, Row } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import Layout from "./Layouts/Layout";
+import Layout from "../client/Layout/Layout";
 
 const MakePrivate = () => {
   let { screen } = useParams();

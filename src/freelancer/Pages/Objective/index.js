@@ -1,5 +1,5 @@
 import Objective from "./components/objective";
-import Layout from "../../../components/Layouts/Layout";
+import Layout from "../../Layout/Layout";
 
 const Screen = () => {
   return (

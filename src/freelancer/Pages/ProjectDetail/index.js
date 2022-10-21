@@ -1,5 +1,5 @@
 import ProjectDetai from "./components/project-detail";
-import Layout from "../../../components/Layouts/Layout";
+import Layout from "../../Layout/Layout";
 
 const Projectdetail = () => {
   return (

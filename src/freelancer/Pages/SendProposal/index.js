@@ -1,5 +1,5 @@
 import SendProposal from "./components/send-proposal";
-import Layout from "../../../components/Layouts/Layout";
+import Layout from "../../Layout/Layout";
 
 const Screen = () => {
   return (

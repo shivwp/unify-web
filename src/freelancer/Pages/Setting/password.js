@@ -1,5 +1,5 @@
 import Password from "./tab/password";
-import Layout from "../../../components/Layouts/Layout";
+import Layout from "../../Layout/Layout";
 
 const Screen = () => {
   return (

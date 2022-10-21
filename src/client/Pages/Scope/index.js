@@ -1,5 +1,5 @@
 import Scope from "./components/scope";
-import Layout from "../../../components/Layouts/Layout";
+import Layout from "../../Layout/Layout";
 
 const scopeScreen = () => {
   return (

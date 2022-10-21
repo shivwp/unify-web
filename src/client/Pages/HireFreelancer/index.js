@@ -1,5 +1,5 @@
 import HireFreelancer from "./components/hire-freelancer";
-import Layout from "../../../components/Layouts/Layout";
+import Layout from "../../Layout/Layout";
 
 const Screen = () => {
   return (

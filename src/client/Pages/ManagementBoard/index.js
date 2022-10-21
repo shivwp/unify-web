@@ -1,5 +1,5 @@
 import ManagementBoard from "./components/managementboard";
-import Layout from "../../../components/Layouts/Layout";
+import Layout from "../../Layout/Layout";
 
 const Screen = () => {
   return (

@@ -1,5 +1,5 @@
 import JobPosting from "./components/job-posting";
-import Layout from "../../../components/Layouts/Layout";
+import Layout from "../../Layout/Layout";
 
 const StartedScreen = () => {
   return (

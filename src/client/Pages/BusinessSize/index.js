@@ -1,5 +1,5 @@
 import BusinessSize from "./components/businessize";
-import Layout from "../../../components/Layouts/Layout";
+import Layout from "../../Layout/Layout";
 
 const BusinessScreen = () => {
   return (

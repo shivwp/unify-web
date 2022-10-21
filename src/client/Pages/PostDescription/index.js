@@ -1,5 +1,5 @@
 import TitleDescription from "./components/job-description";
-import Layout from "../../../components/Layouts/Layout";
+import Layout from "../../Layout/Layout";
 
 const Projectdesc = () => {
   return (

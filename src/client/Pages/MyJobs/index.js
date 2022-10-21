@@ -1,5 +1,5 @@
 import MyJobs from "./components/myjobs";
-import Layout from "../../../components/Layouts/Layout";
+import Layout from "../../Layout/Layout";
 
 const Screen = () => {
   return (

@@ -1,5 +1,5 @@
 import WorkDiary from "./components/workdiary";
-import Layout from "../../../components/Layouts/Layout";
+import Layout from "../../Layout/Layout";
 
 const Screen = () => {
   return (

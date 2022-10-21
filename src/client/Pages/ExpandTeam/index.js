@@ -1,5 +1,5 @@
 import ExpendTeam from "./components/expandteam";
-import Layout from "../../../components/Layouts/Layout";
+import Layout from "../../Layout/Layout";
 
 const Expendscreen = () => {
   return (

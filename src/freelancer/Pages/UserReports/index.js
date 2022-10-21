@@ -1,5 +1,5 @@
 import Reports from "./components/Reports";
-import Layout from "../../../components/Layouts/Layout";
+import Layout from "../../Layout/Layout";
 
 const UserReports = () => {
   return (

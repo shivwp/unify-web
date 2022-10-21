@@ -1,5 +1,5 @@
 import Chat from "./components/chat";
-import Layout from "../../../components/Layouts/Layout";
+import Layout from "../../Layout/Layout";
 
 const Chats = () => {
   return (

@@ -1,5 +1,5 @@
 import Question from "./components/question2";
-import Layout from "../../../components/Layouts/Layout";
+import Layout from "../../Layout/Layout";
 
 const Screen = () => {
   return (

@@ -1,5 +1,5 @@
 import UnifyFreelancer from "./components/unify_freelancer";
-import Layout from "../../../components/Layouts/Layout";
+import Layout from "../../Layout/Layout";
 
 const FDetail = () => {
   return (

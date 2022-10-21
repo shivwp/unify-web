@@ -1,5 +1,5 @@
 import SettingNotification from "./components/Setting/notification";
-import Layout from "../../../components/Layouts/Layout";
+import Layout from "../../Layout/Layout";
 
 const Screen = () => {
   return (

@@ -1,5 +1,5 @@
 import ProjectSearc from "./components/project-search";
-import Layout from "../../../components/Layouts/Layout";
+import Layout from "../../Layout/Layout";
 
 const Projectsscreen = () => {
   return (

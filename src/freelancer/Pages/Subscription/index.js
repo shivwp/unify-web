@@ -2,7 +2,7 @@ import Container from "react-bootstrap/Container";
 import { Col, Row } from "react-bootstrap";
 import Title from "../../../components/title";
 import { Link } from "react-router-dom";
-import Layout from "../../../components/Layouts/Layout";
+import Layout from "../../Layout/Layout";
 
 const Subscriptionplan = () => {
   Title(" | Subscription plan");

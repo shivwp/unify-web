@@ -1,5 +1,5 @@
 import GetPaid from "./tab/get-paid";
-import Layout from "../../../components/Layouts/Layout";
+import Layout from "../../Layout/Layout";
 
 const Screen = () => {
   return (

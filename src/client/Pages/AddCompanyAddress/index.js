@@ -1,6 +1,6 @@
 import React from "react";
 import AddCompAddress from "./components/AddCompAddress";
-import Layout from "../../../components/Layouts/Layout";
+import Layout from "../../Layout/Layout";
 
 const AddCompanyAddress = () => {
   return (

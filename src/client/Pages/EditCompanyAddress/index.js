@@ -1,6 +1,6 @@
 import React from "react";
 import EditCompAddress from "./components/EditCompAddress";
-import Layout from "../../../components/Layouts/Layout";
+import Layout from "../../Layout/Layout";
 
 const EditCompanyAddress = () => {
   return (

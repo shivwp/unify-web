@@ -1,5 +1,5 @@
 import SettingConnectedServices from "./components/Setting/connecteservices";
-import Layout from "../../../components/Layouts/Layout";
+import Layout from "../../Layout/Layout";
 
 const Screen = () => {
   return (
