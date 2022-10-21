@@ -1,6 +1,11 @@
 import Subscriptionc from "./components/subscription";
+import Layout from "../../../components/Layouts/Layout";
 
 const Subscription = () => {
-  return <Subscriptionc />;
+  return (
+    <Layout webtype="client">
+      <Subscriptionc />
+    </Layout>
+  );
 };
 export default Subscription;

@@ -1,7 +1,7 @@
 import Carousel from 'react-bootstrap/Carousel';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
-import Navbar from './navbar';
+import Navbar from './Layouts/Header/HeaderMain';
 
 const slider = (props) => {
     return (

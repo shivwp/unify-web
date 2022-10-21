@@ -1,6 +1,11 @@
-import Category from './components/category';
+import Category from "./components/category";
+import Layout from "../../../components/Layouts/Layout";
 
-const CategoryScreen = ()=>{
-    return <Category />
-}
-export default CategoryScreen
+const CategoryScreen = () => {
+  return (
+    <Layout webtype="client">
+      <Category />
+    </Layout>
+  );
+};
+export default CategoryScreen;

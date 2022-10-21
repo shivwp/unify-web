@@ -1,12 +1,11 @@
-import NavbarLogin from '../../components/header';
-import Overview from './components/overview';
-import Footer from '../../components/footer';
+import Overview from "./components/overview";
+import Layout from "../../../components/Layouts/Layout";
 
 const Screen = () => {
-    return <>
-        <NavbarLogin />
-        <Overview />
-        <Footer />
-    </>
-}
-export default Screen
+  return (
+    <Layout>
+      <Overview />
+    </Layout>
+  );
+};
+export default Screen;

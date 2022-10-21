@@ -1,12 +1,11 @@
-import NavbarLogin from '../../components/header';
-import TimeTracker from './components/time-tracker';
-import Footer from '../../components/footer';
+import TimeTracker from "./components/time-tracker";
+import Layout from "../../../components/Layouts/Layout";
 
 const Screen = () => {
-    return <>
-        <NavbarLogin />
-        <TimeTracker />
-        <Footer />
-    </>
-}
-export default Screen
+  return (
+    <Layout>
+      <TimeTracker />
+    </Layout>
+  );
+};
+export default Screen;

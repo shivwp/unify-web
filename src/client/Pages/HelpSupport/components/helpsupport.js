@@ -1,10 +1,7 @@
 import { Container } from "react-bootstrap";
 import { useState } from "react";
-import { Row, Col } from "react-bootstrap";
-import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
-import { Navigation } from "swiper";
 import IAmClient from "../../Setting/components/Setting/IAmClient";
 import IAmFreelancer from "../../Setting/components/Setting/IAmFreelancer";
 

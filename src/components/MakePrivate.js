@@ -3,8 +3,7 @@ import ViewJob from "./ViewJobs/jobpost";
 import { Col, Row } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import NavbarLogin from "./navbarlogin";
-import Footer from "./footer";
+import Layout from "./Layouts/Layout";
 
 const MakePrivate = () => {
   let { screen } = useParams();
@@ -26,8 +25,7 @@ const MakePrivate = () => {
   }, [screen]);
 
   return (
-    <>
-      <NavbarLogin />
+    <Layout>
       <Container>
         <div className="view_job_box">
           <div className="d-flex justify-content-between">
@@ -355,8 +353,7 @@ const MakePrivate = () => {
           </div>
         </div>
       </Container>
-      <Footer />
-    </>
+    </Layout>
   );
 };
 

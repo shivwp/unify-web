@@ -1,14 +1,11 @@
-import NavbarLogin from "../../components/header";
-import Footer from "../../components/footer";
 import Reports from "./components/Reports";
+import Layout from "../../../components/Layouts/Layout";
 
 const UserReports = () => {
   return (
-    <>
-      <NavbarLogin />
+    <Layout>
       <Reports />
-      <Footer />
-    </>
+    </Layout>
   );
 };
 

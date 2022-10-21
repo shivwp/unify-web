@@ -4,7 +4,6 @@ import { Row, Col } from "react-bootstrap";
 import star from "../../../../icons/star.svg";
 import heart from "../../../../icons/heart.svg";
 import like from "../../../../icons/like.svg";
-import Footer from "../../../../components/footer";
 import Title from "../../../../components/title";
 import $ from "jquery";
 import "../../../../styles/freelancer.css";
@@ -341,7 +340,6 @@ const Project_Search = () => {
           </Col>
         </Row>
       </Container>
-      <Footer />
     </>
   );
 };

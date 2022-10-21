@@ -1,14 +1,13 @@
-import NavbarLogin from "../../../components/navbarlogin";
 import Search from "./components/search";
-import Footer from "../../../components/footer";
+import Layout from "../../../components/Layouts/Layout";
 
 const Screen = () => {
   return (
     <div>
       <div className="slider_pos nin_vh">
-        <NavbarLogin />
-        <Search />
-        <Footer />
+        <Layout webtype="client">
+          <Search />
+        </Layout>
       </div>
     </div>
   );

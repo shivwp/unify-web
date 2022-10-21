@@ -1,6 +1,5 @@
-import React, { useState } from "react";
-import NavbarLogin from "./navbarlogin";
-import Footer from "./footer";
+import React from "react";
+import Layout from "./Layouts/Layout";
 import Container from "react-bootstrap/Container";
 import { Col, Row } from "react-bootstrap";
 import $ from "jquery";
@@ -14,8 +13,7 @@ const EditPosting = () => {
 
 
   return (
-    <>
-      <NavbarLogin />
+    <Layout>
       <Container>
         <div className="edit_posting_box tb_p_none">
           <Row>
@@ -288,8 +286,7 @@ const EditPosting = () => {
           </Row>
         </div>
       </Container>
-      <Footer />
-    </>
+    </Layout>
   );
 };
 

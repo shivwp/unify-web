@@ -67,7 +67,7 @@ const Screen = () => {
                   </div>
                   <div className="main_hirefreelancer_bx main_box_descr no-border mt-0 pl-0 pr-0">
                     <div className="search_area_in"></div>
-                    {tabActive == "active" ? <Active /> : <Invitations />}
+                    {tabActive === "active" ? <Active /> : <Invitations />}
                   </div>
                 </div>
               </div>

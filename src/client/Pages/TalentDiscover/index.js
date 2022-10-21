@@ -1,16 +1,15 @@
-import NavbarLogin from '../../../components/navbarlogin';
-import TalentDiscover from './components/talentdiscover';
-import Footer from '../../../components/footer';
+import TalentDiscover from "./components/talentdiscover";
+import Layout from "../../../components/Layouts/Layout";
 
 const Screen = () => {
-    return (
-        <div>
-            <div className='slider_pos nin_vh'>
-                <NavbarLogin />
-                <TalentDiscover />
-                <Footer />
-            </div>
-        </div>
-    );
-}
+  return (
+    <div>
+      <div className="slider_pos nin_vh">
+        <Layout webtype="client">
+          <TalentDiscover />
+        </Layout>
+      </div>
+    </div>
+  );
+};
 export default Screen;

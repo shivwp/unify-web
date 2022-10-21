@@ -1,14 +1,11 @@
-import React, { useState } from "react";
-import NavbarLogin from "./navbarlogin";
-import Footer from "./footer";
+import React from "react";
+import Layout from "./Layouts/Layout";
 import Container from "react-bootstrap/Container";
 import { Col, Row } from "react-bootstrap";
-import $ from "jquery";
 import { Link } from "react-router-dom";
 const EditDraft = () => {
   return (
-    <>
-      <NavbarLogin />
+    <Layout>
       <Container>
         <div className="edit_posting_box tb_p_none">
           <Row>
@@ -286,9 +283,19 @@ const EditDraft = () => {
                   <div className="cancle_post_draft">
                     <button className="draft_back_btn">Back</button>
                   </div>
-                  <div style={{display: 'flex', alignItems: 'center', flexWrap: "wrap"}}>
-                    <Link className="save_as_draft" to="#">Save as a draft</Link>
-                    <button className="draft_save_btn">Post Your Job Now</button>
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      flexWrap: "wrap",
+                    }}
+                  >
+                    <Link className="save_as_draft" to="#">
+                      Save as a draft
+                    </Link>
+                    <button className="draft_save_btn">
+                      Post Your Job Now
+                    </button>
                   </div>
                 </div>
               </div>
@@ -296,8 +303,7 @@ const EditDraft = () => {
           </Row>
         </div>
       </Container>
-      <Footer />
-    </>
+    </Layout>
   );
 };
 

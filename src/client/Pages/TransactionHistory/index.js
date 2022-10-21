@@ -1,16 +1,15 @@
-import NavbarLogin from '../../../components/navbarlogin';
-import TransactionHistory from './components/transactionhistory';
-import Footer from '../../../components/footer';
+import TransactionHistory from "./components/transactionhistory";
+import Layout from "../../../components/Layouts/Layout";
 
 const Screen = () => {
-    return (
-        <div>
-            <div className='slider_pos nin_vh'>
-                <NavbarLogin />
-                <TransactionHistory />
-                <Footer />
-            </div>
-        </div>
-    );
-}
+  return (
+    <div>
+      <div className="slider_pos nin_vh">
+        <Layout webtype="client">
+          <TransactionHistory />
+        </Layout>
+      </div>
+    </div>
+  );
+};
 export default Screen;

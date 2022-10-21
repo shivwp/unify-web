@@ -5,7 +5,6 @@ import Title from "../../../../../components/title";
 import CreateNewTeam from "../../../../../popups/CreateNewTeamPupup";
 import { useState } from "react";
 import EditTeamPopup from "../../../../../popups/EditTeamPopup";
-import { Link } from "react-router-dom";
 
 const Screen = () => {
   Title(" | Setting - Team");

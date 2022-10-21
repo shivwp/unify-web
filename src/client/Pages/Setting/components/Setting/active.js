@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Row, Col } from "react-bootstrap";
-import Invitations from "./Invitations";
 
 const Screen = ({ setOpen }) => {
   const [filterOpen, setFilterOpen] = useState(false);

@@ -1,14 +1,11 @@
-import NavbarLogin from '../../components/header';
-import BillingEarning from './components/billing-earning';
-import Footer from '../../components/footer';
+import BillingEarning from "./components/billing-earning";
+import Layout from "../../../components/Layouts/Layout";
 
 const FDetail = () => {
-    return (
-        <>
-            <NavbarLogin />
-            <BillingEarning />
-            <Footer />
-        </>
-    );
-}
+  return (
+    <Layout>
+      <BillingEarning />
+    </Layout>
+  );
+};
 export default FDetail;

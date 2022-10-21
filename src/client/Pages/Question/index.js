@@ -1,6 +1,11 @@
-import Question from './components/question';
+import Question from "./components/question";
+import Layout from "../../../components/Layouts/Layout";
 
-const QuestionScreen = ()=>{
-    return <Question />
-}
-export default QuestionScreen
+const QuestionScreen = () => {
+  return (
+    <Layout webtype="client">
+      <Question />
+    </Layout>
+  );
+};
+export default QuestionScreen;

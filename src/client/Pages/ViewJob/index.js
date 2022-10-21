@@ -1,16 +1,15 @@
-import NavbarLogin from '../../../components/navbarlogin';
-import ViewJob from './components/viewjob';
-import Footer from '../../../components/footer';
+import ViewJob from "./components/viewjob";
+import Layout from "../../../components/Layouts/Layout";
 
 const JobDesc = () => {
-    return (
-        <div>
-            <div className='slider_pos nin_vh'>
-                <NavbarLogin />
-                <ViewJob />
-                <Footer />
-            </div>
-        </div>
-    );
-}
+  return (
+    <div>
+      <div className="slider_pos nin_vh">
+        <Layout webtype="client">
+          <ViewJob />
+        </Layout>
+      </div>
+    </div>
+  );
+};
 export default JobDesc;

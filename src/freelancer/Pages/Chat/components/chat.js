@@ -720,7 +720,7 @@ const Screen = () => {
               <div className="profile-bx-whte">
                 <div className="d-flex justify-content-center">
                   <div className="pimg_big online_profile_chat">
-                    <img src="/assets/PRO-2.png" />
+                    <img src="/assets/PRO-2.png" alt=""/>
                   </div>
                 </div>
                 <div className="CHATPROFbox_min230px">

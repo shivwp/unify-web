@@ -1,12 +1,11 @@
-import NavbarLogin from '../../components/header';
-import GetPaid from './tab/get-paid';
-import Footer from '../../../components/footer';
+import GetPaid from "./tab/get-paid";
+import Layout from "../../../components/Layouts/Layout";
 
 const Screen = () => {
-    return <>
-        <NavbarLogin />
-        <GetPaid />
-        <Footer />
-    </>
-}
-export default Screen
+  return (
+    <Layout>
+      <GetPaid />
+    </Layout>
+  );
+};
+export default Screen;

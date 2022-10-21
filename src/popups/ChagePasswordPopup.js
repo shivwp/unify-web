@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Modal } from "react-responsive-modal";
 import "react-responsive-modal/styles.css";
 import "./popup.css";
-import { Link } from "react-router-dom";
 
 const ChagePasswordPopup = ({ onCloseModal, open }) => {
   const [hideNewPass, setHideNewPass] = useState(true);

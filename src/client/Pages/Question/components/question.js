@@ -1,6 +1,4 @@
-import NavbarHeader from "../../../../components/navbarlogin";
 import Container from 'react-bootstrap/Container';
-import Footer from '../../../../components/footer';
 import Title from '../../../../components/title';
 import { Link } from "react-router-dom";
  
@@ -9,7 +7,6 @@ const Question = () => {
     Title(" | question 1");
     return (
         <>
-            <NavbarHeader />
             <Container>
                 <div className="question_box">
                     <div className="question_img_br"><img src="/assets/Group 2851.svg"  alt=""/></div>
@@ -22,7 +19,6 @@ const Question = () => {
                     </div>
                 </div>
             </Container>
-            <Footer />
         </>
     )
 }

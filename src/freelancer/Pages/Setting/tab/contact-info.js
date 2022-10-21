@@ -3,14 +3,11 @@ import { Row, Col } from 'react-bootstrap';
 import SideNav from './site_nav';
 import Title from '../../../../components/title'
 import EditAccountPopup from "../../../../popups/EditAccountPopup";
-import CreateNewTeam from "../../../../popups/CreateNewTeamPupup";
 import { useState } from "react";
 
 const Screen = () => {
     Title(' | Contact Info')
-    const [openNewTeam, setOpenNewTeam] = useState(false);
     const [openEditTeam, setOpenEditTeam] = useState(false);
-    const [menuBarTeams, setMenuBarTeams] = useState(false);
     return (
         <div className='bg-f2f8ff min_pad_m'>
             <Container>

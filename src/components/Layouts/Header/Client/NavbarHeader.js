@@ -1,12 +1,13 @@
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import logo from "../assets/logo.svg";
+import logo from "../../../../assets/logo.svg";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
-const NavbarHeader = (props) => {
+const Header = (props) => {
+  console.log(props)
   const [navOpen, SetnavOpen] = useState(false);
   const [activeNav, SetactiveNav] = useState("");
   const [isDownOpen, SetisDownOpen] = useState(false);
@@ -429,4 +430,4 @@ const NavbarHeader = (props) => {
   );
 };
 
-export default NavbarHeader;
+export default Header;

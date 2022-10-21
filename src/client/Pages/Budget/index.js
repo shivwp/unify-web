@@ -1,14 +1,15 @@
-import Budget from './components/budget';
-import NavbarLogin from '../../../components/navbarlogin';
+import Budget from "./components/budget";
+import Layout from "../../../components/Layouts/Layout";
 
-const BudgetScreen = ()=>{
-    return (
-        <div>
-            <div className='slider_pos nin_vh'>
-                <NavbarLogin />
-                <Budget />
-            </div>
-        </div>
-    )
-}
-export default BudgetScreen
+const BudgetScreen = () => {
+  return (
+    <div>
+      <div className="slider_pos nin_vh">
+        <Layout webtype="client">
+          <Budget />
+        </Layout>
+      </div>
+    </div>
+  );
+};
+export default BudgetScreen;

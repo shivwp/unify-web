@@ -1,16 +1,15 @@
-import NavbarLogin from '../../../components/navbarlogin';
-import MyJobs from './components/myjobs';
-import Footer from '../../../components/footer';
+import MyJobs from "./components/myjobs";
+import Layout from "../../../components/Layouts/Layout";
 
 const Screen = () => {
-    return (
-        <div>
-            <div className='slider_pos nin_vh'>
-                <NavbarLogin />
-                <MyJobs />
-                <Footer />
-            </div>
-        </div>
-    );
-}
+  return (
+    <div>
+      <div className="slider_pos nin_vh">
+        <Layout webtype="client">
+          <MyJobs />
+        </Layout>
+      </div>
+    </div>
+  );
+};
 export default Screen;

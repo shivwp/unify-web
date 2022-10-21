@@ -1,12 +1,11 @@
-import NavbarLogin from '../../components/header';
-import MileEarning from './components/mile-earning';
-import Footer from '../../components/footer';
+import MileEarning from "./components/mile-earning";
+import Layout from "../../../components/Layouts/Layout";
 
 const Screen = () => {
-    return <>
-        <NavbarLogin />
-        <MileEarning />
-        <Footer />
-    </>
-}
-export default Screen
+  return (
+    <Layout>
+      <MileEarning />
+    </Layout>
+  );
+};
+export default Screen;

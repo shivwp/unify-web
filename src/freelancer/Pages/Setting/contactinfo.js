@@ -1,12 +1,11 @@
-import NavbarLogin from '../../components/header';
-import ContactTab from './tab/contact-info';
-import Footer from '../../components/footer';
+import ContactTab from "./tab/contact-info";
+import Layout from "../../../components/Layouts/Layout";
 
 const Screen = () => {
-    return <>
-        <NavbarLogin />
-        <ContactTab />
-        <Footer />
-    </>
-}
-export default Screen
+  return (
+    <Layout>
+      <ContactTab />
+    </Layout>
+  );
+};
+export default Screen;

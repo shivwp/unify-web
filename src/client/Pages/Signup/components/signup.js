@@ -23,13 +23,6 @@ const Signup = ({
     label: data.name,
     color: "#000",
   }));
-  const customStyles = {
-    option: (provided, state) => ({
-      ...provided,
-      color: state.isSelected ? "#000" : "#000",
-      padding: 20,
-    }),
-  };
   return (
     <>
       <div className="bg_body">

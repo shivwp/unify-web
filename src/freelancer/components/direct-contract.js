@@ -1,7 +1,5 @@
 import { useState } from "react";
-import NavbarHeader from "./header";
 import Container from 'react-bootstrap/Container';
-import Footer from '../../components/footer';
 import Title from '../../components/title';
 import { Link } from "react-router-dom";
 import Select from "react-select";
@@ -111,7 +109,6 @@ const Screen = () => {
     const [popup, SetPopup] = useState()
     return (
         <>
-            <NavbarHeader />
             <Container>
                 <div className="question_box">
                     <div className="question_img_br"><img src="/assets/Group 2802.svg" alt="" /></div>
@@ -123,7 +120,6 @@ const Screen = () => {
                     </div>
                 </div>
             </Container>
-            <Footer />
             {popup}
         </>
     )

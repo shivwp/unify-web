@@ -1,12 +1,11 @@
-import NavbarLogin from '../../components/header';
-import Notification from './tab/notification';
-import Footer from '../../components/footer';
+import Notification from "./tab/notification";
+import Layout from "../../../components/Layouts/Layout";
 
 const Screen = () => {
-    return <>
-        <NavbarLogin />
-        <Notification />
-        <Footer />
-    </>
-}
-export default Screen
+  return (
+    <Layout>
+      <Notification />
+    </Layout>
+  );
+};
+export default Screen;

@@ -1,14 +1,15 @@
-import NavbarLogin from '../../../components/navbarlogin';
-import TitleDescription from './components/job-description';
+import TitleDescription from "./components/job-description";
+import Layout from "../../../components/Layouts/Layout";
 
 const Projectdesc = () => {
-    return (
-        <div>
-            <div className='slider_pos nin_vh'>
-                <NavbarLogin />
-                <TitleDescription />
-            </div>
-        </div>
-    );
-}
+  return (
+    <div>
+      <div className="slider_pos nin_vh">
+        <Layout webtype="client">
+          <TitleDescription />
+        </Layout>
+      </div>
+    </div>
+  );
+};
 export default Projectdesc;

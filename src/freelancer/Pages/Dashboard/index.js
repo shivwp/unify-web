@@ -1,13 +1,12 @@
-import NavbarLogin from "../../components/header";
 import Dashboard from "./components/dashboard";
-import Footer from "../../components/footer";
-
+import Layout from "../../../components/Layouts/Layout";
+ 
 const DashboardS = () => {
   return (
     <>
-      <NavbarLogin dashboardBgNav="trytygutf" />
-      <Dashboard />
-      <Footer />
+      <Layout dashboardBgNav="trytygutf">
+        <Dashboard />
+      </Layout>
     </>
   );
 };

@@ -1,7 +1,6 @@
 import Container from 'react-bootstrap/Container';
 import { Row, Col } from 'react-bootstrap';
 import star from '../../../../icons/star.svg';
-import Footer from '../../../../components/footer';
 import '../../../../styles/freelancer.css'
 import { Link } from 'react-router-dom';
 
@@ -260,7 +259,6 @@ const projectdetail = () => {
                 </Row>
             </Container>
             <br />
-            <Footer />
         </>
     )
 }

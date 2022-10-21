@@ -1,14 +1,15 @@
-import NavbarLogin from '../../../components/navbarlogin';
-import Scope from './components/scope';
+import Scope from "./components/scope";
+import Layout from "../../../components/Layouts/Layout";
 
-const scopeScreen = ()=>{
-    return (
-        <div>
-            <div className='slider_pos nin_vh'>
-                <NavbarLogin />
-                <Scope />
-            </div>
-        </div>
-    )
-}
-export default scopeScreen
+const scopeScreen = () => {
+  return (
+    <div>
+      <div className="slider_pos nin_vh">
+        <Layout webtype="client">
+          <Scope />
+        </Layout>
+      </div>
+    </div>
+  );
+};
+export default scopeScreen;

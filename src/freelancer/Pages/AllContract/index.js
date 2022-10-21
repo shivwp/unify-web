@@ -1,12 +1,11 @@
-import NavbarLogin from '../../components/header';
-import AllContract from './components/all-contract';
-import Footer from '../../components/footer';
+import AllContract from "./components/all-contract";
+import Layout from "../../../components/Layouts/Layout";
 
 const Screen = () => {
-    return <>
-        <NavbarLogin />
-        <AllContract />
-        <Footer />
-    </>
-}
-export default Screen
+  return (
+    <Layout>
+      <AllContract />
+    </Layout>
+  );
+};
+export default Screen;

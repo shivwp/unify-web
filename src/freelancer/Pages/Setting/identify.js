@@ -1,10 +1,11 @@
-import NavbarLogin from '../../components/header';
-import Identify from './tab/identify';
+import Identify from "./tab/identify";
+import Layout from "../../../components/Layouts/Layout";
 
 const Screen = () => {
-    return <>
-        <NavbarLogin />
-        <Identify />
-    </>
-}
-export default Screen
+  return (
+    <Layout>
+      <Identify />
+    </Layout>
+  );
+};
+export default Screen;

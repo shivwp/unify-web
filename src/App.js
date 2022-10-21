@@ -2,7 +2,7 @@ import Slider from './components/slider';
 import Services from './components/services';
 import FreelanceWorld from './components/freelace-world';
 import Findfreelance from './components/find-freelance';
-import Footer from './components/footer';
+import Footer from './components/Layouts/Footer/Footer';
 
 function App() {
   return (

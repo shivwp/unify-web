@@ -1,12 +1,11 @@
-import NavbarLogin from '../../components/header';
-import Password from './tab/password';
-import Footer from '../../components/footer';
+import Password from "./tab/password";
+import Layout from "../../../components/Layouts/Layout";
 
 const Screen = () => {
-    return <>
-        <NavbarLogin />
-        <Password />
-        <Footer />
-    </>
-}
-export default Screen
+  return (
+    <Layout>
+      <Password />
+    </Layout>
+  );
+};
+export default Screen;

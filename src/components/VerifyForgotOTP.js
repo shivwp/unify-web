@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import OTPInput, { ResendOTP } from "otp-input-react";
+import OTPInput from "otp-input-react";
 import { useDispatch } from 'react-redux';
 import { onResendOtp, onVerifyForgot } from '../redux/actions/authActions';
 import { useNavigate } from 'react-router-dom';

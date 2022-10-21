@@ -1,12 +1,11 @@
-import NavbarLogin from '../../components/header';
-import Chat from './components/chat';
+import Chat from "./components/chat";
+import Layout from "../../../components/Layouts/Layout";
 
 const Chats = () => {
-    return (
-        <>
-            <NavbarLogin />
-            <Chat />
-        </>
-    );
-}
-export default Chats
+  return (
+    <Layout>
+      <Chat />
+    </Layout>
+  );
+};
+export default Chats;

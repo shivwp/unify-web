@@ -15,7 +15,6 @@ import {
   Legend,
 } from "chart.js";
 import { Bar } from "react-chartjs-2";
-import { faker } from "@faker-js/faker";
 
 const Profile = () => {
   return (
@@ -164,9 +163,6 @@ const Pdata = () => {
   );
 };
 const Screen = () => {
-  const [active, Setactive] = useState(
-    window.location.pathname.replace("/", "")
-  );
   Title(" | Dashboard");
   const [checked, setChecked] = useState(false);
   const handleChange = (nextChecked) => {

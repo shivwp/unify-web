@@ -1,14 +1,15 @@
-import NavbarLogin from '../../../components/navbarlogin';
-import TitleBody from './components/title-body';
+import TitleBody from "./components/title-body";
+import Layout from "../../../components/Layouts/Layout";
 
-const TitleScreen = ()=>{
-    return (
-        <div>
-            <div className='slider_pos nin_vh'>
-                <NavbarLogin />
-                <TitleBody />
-            </div>
-        </div>
-    )
-}
-export default TitleScreen
+const TitleScreen = () => {
+  return (
+    <div>
+      <div className="slider_pos nin_vh">
+        <Layout webtype="client">
+          <TitleBody />
+        </Layout>
+      </div>
+    </div>
+  );
+};
+export default TitleScreen;

@@ -1,12 +1,13 @@
 import JobPosting from "./components/job-posting";
-import NavbarLogin from "../../../components/navbarlogin";
+import Layout from "../../../components/Layouts/Layout";
 
 const StartedScreen = () => {
   return (
     <div>
       <div className="slider_pos nin_vh">
-        <NavbarLogin />
-        <JobPosting />
+        <Layout webtype="client">
+          <JobPosting />
+        </Layout>
       </div>
     </div>
   );
