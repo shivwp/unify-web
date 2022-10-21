@@ -2,7 +2,7 @@ import Container from 'react-bootstrap/Container';
 import { Row, Col } from 'react-bootstrap';
 import SideNav from './site_nav';
 import Title from '../../../../components/title'
-import EditAccountPopup from "../../../../popups/EditAccountPopup";
+import EditAccountPopup from "./popups/EditAccountPopup";
 import { useState } from "react";
 
 const Screen = () => {

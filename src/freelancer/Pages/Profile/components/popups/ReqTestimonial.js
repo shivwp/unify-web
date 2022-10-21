@@ -3,7 +3,7 @@ import {  useState } from "react";
 import { useDispatch } from "react-redux";
 import {
   onEditTestimonialInfo,
-} from "../redux/actions/profileAction";
+} from "../../../../../redux/actions/profileAction";
 
 const CloseIcon = () => {
   return (

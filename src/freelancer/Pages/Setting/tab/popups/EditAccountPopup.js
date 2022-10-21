@@ -1,7 +1,7 @@
 import React from "react";
 import { Modal } from "react-responsive-modal";
 import "react-responsive-modal/styles.css";
-import "./popup.css";
+import "../../../../../popups/popup.css";
 
 const EditTeamPopup = ({ open, onCloseModal }) => {
   return (

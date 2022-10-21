@@ -7,17 +7,17 @@ import {
   getFreelancerProfile,
 } from "../../../../redux/actions/profileAction";
 
-import WorkHistory from '../../../../popups/WorkHistory'
-import EditSkill from '../../../../popups/EditSkill'
-import EditTitle from '../../../../popups/EditTitle'
-import VideoIntro from '../../../../popups/VideoIntro'
-import AddExperience from '../../../../popups/AddExperience'
-import AddEmployment from '../../../../popups/AddEmployment'
-import AddEduc from '../../../../popups/AddEduc'
-import AddCert from '../../../../popups/AddCert'
-import ReqTestimonial from '../../../../popups/ReqTestimonial'
-import LanguageEdit from '../../../../popups/LanguageEdit'
-import Overview  from '../../../../popups/Overview'
+import WorkHistory from './popups/WorkHistory'
+import EditSkill from './popups/EditSkill'
+import EditTitle from './popups/EditTitle'
+import VideoIntro from './popups/VideoIntro'
+import AddExperience from './popups/AddExperience'
+import AddEmployment from './popups/AddEmployment'
+import AddEduc from './popups/AddEduc'
+import AddCert from './popups/AddCert'
+import ReqTestimonial from './popups/ReqTestimonial'
+import LanguageEdit from './popups/LanguageEdit'
+import Overview  from './popups/Overview'
 
 function Listaward() {
   const card = [1, 2, 3, 4];
