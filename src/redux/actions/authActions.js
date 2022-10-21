@@ -110,3 +110,13 @@ export const onPasswordChange = (data, popup) => (dispatch) => {
       console.log(err);
     });
 };
+
+export const onOnlineStatus = (data) => (dispatch) => {
+  Axios.post("/online-status", data, config)
+    .then((res) => {
+      console.log(res);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
