@@ -256,7 +256,7 @@
 }
 .popup_form_element > .language_sel {
   height: 40px;
-  color: #e8e7e7;
+  color: #1e1e1e;
   border: 1px solid #e8e7e7 !important;
   border-radius: 3px;
   width: 100%;
@@ -335,6 +335,20 @@
   -ms-border-radius: 60px !important;
   -o-border-radius: 60px !important;
 }
+.popup_btns_new button:disabled {
+  background-color: #c7c6c9;
+  color: rgb(74 72 72);
+  font: normal normal medium 18px/30px Poppins !important;
+  font-weight: bold;
+  border-radius: 60px !important;
+  text-transform: uppercase;
+  padding: 11px 45px;
+  margin-top: 5px;
+  min-width: 160px;
+  margin-right: 15px;
+  border: #838383 solid 1px;
+  -webkit-border-radius: 60px !important;
+}
 
 .popup_btns_new .trans_btn {
   background-color: transparent !important;
@@ -401,6 +415,11 @@
   border: #6d2ef1 solid 1px;
   color: #6d2ef1;
   border-radius: 20px;
+}
+
+.addMoreLanguageBtn[disabled] {
+  border: #c9c8cb solid 1px;
+  color: #a7a6aa;
 }
 
 .freelancer_all_contract {

@@ -1141,9 +1141,10 @@ body {
 }
 
 .profile_thumb {
+  cursor: pointer;
   position: absolute;
   right: 0;
-  top: 0;
+  top: 60px;
   width: 24px;
   height: 24px;
   border-radius: 50%;
@@ -1151,7 +1152,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #0edf3f;
+  background-color: #fff;
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   -ms-border-radius: 50%;

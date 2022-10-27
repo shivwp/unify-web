@@ -52,6 +52,7 @@ const PortfolioPupup = ({ open, onCloseModal }) => {
                 name="title"
                 value={values?.title}
                 onChange={(e) => onInputChange(e)}
+                style={{ padding: "7px 20px 7px 10px" }}
               />
             </div>
 

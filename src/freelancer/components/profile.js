@@ -3,6 +3,7 @@ import { Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Select from "react-select";
 import { useEffect, useState } from "react";
+import $ from "jquery";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getFreelancerProfile,
@@ -15,6 +16,12 @@ import {
   onDeleteEducation,
   onEditVideo,
   onEditDesignation,
+  onEditLanguage,
+  getLanguageList,
+  onEditSkills,
+  onEditCertificate,
+  onDeleteCertificate,
+  editNameInfo,
 } from "../../redux/actions/profileAction";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper";
@@ -24,6 +31,8 @@ import moment from "moment";
 import HourPerWeekPopup from "./popups/HourPerWeekPopup";
 import PortfolioPupup from "./popups/PortfolioPupup";
 import { countryList } from "../../redux/actions/authActions";
+import { useRef } from "react";
+import { height } from "@mui/system";
 
 function Listaward() {
   const card = [1, 2, 3, 4];
@@ -134,15 +143,55 @@ const WorkHistory = () => {
   );
 };
 const EditSkill = (props) => {
+  const [selectSkills, setSelectSkills] = useState(props?.data);
+  const [skillsIds, setSkillsIds] = useState(
+    selectSkills?.map((item) => item.skill_id)
+  );
   const dispatch = useDispatch();
-  const getSkillList = useSelector((state) => state?.profile?.getSkillList);
+  let getSkillList = useSelector((state) => state?.profile?.getSkillList);
 
-  useEffect(() => {
-    dispatch(getFreelancerSkills());
-  }, []);
+  const removeSkills = (index) => {
+    let updateSkills = [...selectSkills];
+    updateSkills.splice(index, 1);
+    setSelectSkills(updateSkills);
+  };
 
-  console.log(getSkillList);
+  const addSkills = (item) => {
+    if (
+      selectSkills.find((ele) => {
+        return ele.skill_id == item.id;
+      }) == undefined
+    ) {
+      setSelectSkills([
+        ...selectSkills,
+        { skill_id: item.id, skill_name: item.name },
+      ]);
+      setSkillsIds([...skillsIds, item.id]);
+    }
+  };
 
+  const handleOnChange = (e) => {
+    let data;
+    if (e.target.value.length >= 1) {
+      data = { [e.target.name]: e.target.value };
+      dispatch(getFreelancerSkills(data));
+    } else {
+      data = { skill: "undefined" };
+      dispatch(getFreelancerSkills(data));
+    }
+    $("#suggest_skills").show();
+  };
+
+  const onSave = (e) => {
+    const data = { skill_id: skillsIds.toString() };
+    dispatch(onEditSkills(data, props.Popup));
+  };
+
+  $(document).mouseup(function (e) {
+    if ($(e.target).closest("#suggest_skills").length === 0) {
+      $("#suggest_skills").hide();
+    }
+  });
   return (
     <>
       <div className="bg_wrapper_popup_new">
@@ -167,35 +216,52 @@ const EditSkill = (props) => {
             </div>
             <div className="catbox_rd_ofive mt-3">
               <div className="d-flex flex-wrap">
-                {getSkillList?.map((skill, key) => (
-                  <div
-                    className="skill_bxr_gry"
-                    key={key}
-                    onClick={() => console.log(skill)}
-                  >
-                    {skill.name}
-                    <button>X</button>
+                {selectSkills?.map((item, index) => (
+                  <div className="skill_bxr_gry" key={item.skill_id}>
+                    <span>{item.skill_name}</span>
+                    <button onClick={() => removeSkills(index)}>X</button>
                   </div>
                 ))}
               </div>
-              <div>
+              <div style={{ position: "relative" }}>
                 <input
                   type="text"
+                  onChange={(e) => handleOnChange(e)}
+                  name="skill"
+                  autocomplete="off"
                   placeholder="search here skills..."
                   className="no-border font-size-13px search_skilloiouo"
                 />
+                {getSkillList && (
+                  <div
+                    className="suggest_skills"
+                    id="suggest_skills"
+                    style={{ position: "absolute" }}
+                  >
+                    {getSkillList?.map((item) => (
+                      <>
+                        {" "}
+                        <span onClick={() => addSkills(item)}>
+                          {item.name}
+                        </span>{" "}
+                        <br />
+                      </>
+                    ))}
+                  </div>
+                )}
               </div>
             </div>
             <div className="maxlabel_atcxt mt-3">Maximum 15 skills.</div>
             <div className="popup_btns_new flex-wrap cwiewyehkk">
-              <button className="trans_btn">Cancel</button>
               <button
+                className="trans_btn"
                 onClick={() => {
                   props.Popup();
                 }}
               >
-                Save
+                Cancel
               </button>
+              <button onClick={onSave}>Save</button>
             </div>
           </div>
         </div>
@@ -794,11 +860,11 @@ const VerificationPref = (props) => {
 };
 
 const LanguageEdit = (props) => {
-  const [values, setValues] = useState({});
-  const [inputList, setInputList] = useState([
-    { language: "", proficiency: "" },
-  ]);
-  console.log(inputList);
+  const dispatch = useDispatch();
+  const languageList = useSelector((state) => state?.profile?.getLanguageList);
+  const [inputList, setInputList] = useState(
+    props?.data || [{ language: "", level: "" }]
+  );
 
   const handleInputChange = (e, index) => {
     const { name, value } = e.target;
@@ -808,31 +874,33 @@ const LanguageEdit = (props) => {
   };
 
   const handleAddClick = () => {
-    setInputList([...inputList, { firstName: "", lastName: "" }]);
+    setInputList([...inputList, { language: "", level: "" }]);
   };
   const proficiencyOptions = [
     { name: "Fluent" },
     { name: "Conversational" },
     { name: "Native" },
   ];
-  const languageOptions = [
-    {
-      name: "English",
-      label: "English",
-    },
-    {
-      name: "French",
-      label: "French",
-    },
-    {
-      name: "Hindi",
-      label: "Hindi",
-    },
-    {
-      name: "Spanish",
-      label: "Spanish",
-    },
-  ];
+
+  const removeInputFields = (index) => {
+    console.log(index);
+    const rows = [...inputList];
+    rows.splice(index, 1);
+    setInputList(rows);
+  };
+
+  const handleSave = () => {
+    const data = {};
+    inputList.map((ele) => {
+      data[ele.language] = ele.level;
+    });
+    // console.log(data);
+    dispatch(onEditLanguage({ languages: data }, props.Popup));
+  };
+
+  useEffect(() => {
+    dispatch(getLanguageList());
+  }, []);
   return (
     <>
       <div className="bg_wrapper_popup_new">
@@ -853,7 +921,7 @@ const LanguageEdit = (props) => {
 
             <div className="mb-3 ">
               <Row>
-                {inputList.map((x, i) => {
+                {inputList?.map((data, i) => {
                   return (
                     <>
                       <Col md={6}>
@@ -861,51 +929,124 @@ const LanguageEdit = (props) => {
                           <label className="text-black font-size-13px font-weight-500">
                             Language
                           </label>
-
-                          <input
-                            className="font-size-13px"
-                            // options={languageOptions}
-                            placeholder="English"
-                            // onChange={setLanguage}
+                          <select
+                            className="font-size-13px language_sel"
                             name="language"
+                            value={data.language}
                             onChange={(e) => handleInputChange(e, i)}
-                          />
+                          >
+                            <option selected hidden>
+                              Select a Language
+                            </option>
+                            {languageList?.map((item) => (
+                              <option value={item.name}>{item.name}</option>
+                            ))}
+                          </select>
+                          {/* <input
+                            className="font-size-13px"
+                            placeholder="English"
+                            name="language"
+                            value={data.language}
+                            onChange={(e) => handleInputChange(e, i)}
+                          /> */}
                         </div>
                       </Col>
                       <Col md={6}>
                         <div className="popup_form_element">
-                          <label className="text-black font-size-13px font-weight-500">
-                            Proficiency level
+                          <label
+                            className="text-black  font-size-13px font-weight-500"
+                            style={{
+                              display: "flex",
+                              justifyContent: "space-between",
+                            }}
+                          >
+                            <span>Proficiency level</span>{" "}
+                            {inputList?.length !== 1 ? (
+                              <button
+                                onClick={() => removeInputFields(i)}
+                                style={{
+                                  border: "none",
+                                  background: "transparent",
+                                }}
+                              >
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  width="10"
+                                  height="10"
+                                  viewBox="0 0 16 16"
+                                >
+                                  <path
+                                    id="_2203546_bin_delete_gabage_trash_icon"
+                                    data-name="2203546_bin_delete_gabage_trash_icon"
+                                    d="M8,0A1,1,0,0,0,7,1H0V3H1V14a2,2,0,0,0,2,2H13a2,2,0,0,0,2-2V3h1V1H9A1,1,0,0,0,8,0ZM4,14H3V5H4Zm3,0H6V5H7Zm3,0H9V5h1Zm3,0H12V5h1Z"
+                                    fill="#6d2ef1"
+                                  />
+                                </svg>
+                              </button>
+                            ) : null}
                           </label>
                           <select
                             className="font-size-13px language_sel"
-                            name="proficiency"
-                            placeholder="Fluent"
+                            name="level"
+                            value={data.level}
                             onChange={(e) => handleInputChange(e, i)}
                           >
+                            <option selected hidden>
+                              Select a level
+                            </option>
                             {proficiencyOptions.map((item) => (
                               <option value={item.name}>{item.name}</option>
                             ))}
                           </select>
                         </div>
                       </Col>
+                      <div
+                        style={{
+                          display: "flex",
+                          height: "100%",
+                          alignItems: "flex-end",
+                          justifyContent: "center",
+                        }}
+                      ></div>
                     </>
                   );
                 })}
               </Row>
             </div>
+            {/* {inputList.length < 5 && ( */}
             <div style={{ display: "flex", justifyContent: "flex-end" }}>
-              <button className="addMoreLanguageBtn" onClick={handleAddClick}>
+              <button
+                className="addMoreLanguageBtn"
+                disabled={
+                  !(
+                    inputList?.slice(-1)[0].language &&
+                    inputList?.slice(-1)[0].level
+                  )
+                }
+                onClick={handleAddClick}
+              >
                 Add More
               </button>
             </div>
-
+            {/* )} */}
             <div className="popup_btns_new flex-wrap cwiewyehkk">
-              <button className="trans_btn">Cancel</button>
               <button
+                className="trans_btn"
                 onClick={() => {
                   props.Popup();
                 }}
+              >
+                Cancel
+              </button>
+
+              <button
+                disabled={
+                  !(
+                    inputList?.slice(-1)[0].language &&
+                    inputList?.slice(-1)[0].level
+                  )
+                }
+                onClick={handleSave}
               >
                 Save
               </button>
@@ -917,22 +1058,21 @@ const LanguageEdit = (props) => {
   );
 };
 const AddEduc = (props) => {
-  const [values, setValues] = useState(props.education || {});
+  const [values, setValues] = useState(props?.education);
   const [endYear, setEndYear] = useState({
-    label: values.end_year,
-    name: values.end_year,
+    label: values?.end_year,
+    name: values?.end_year,
   });
   const [degree, setDegree] = useState({
-    label: values.degree,
-    name: values.degree,
+    label: values?.degree,
+    name: values?.degree,
   });
   const [startYear, setStartYear] = useState({
-    label: values.start_year,
-    name: values.start_year,
+    label: values?.start_year,
+    name: values?.start_year,
   });
   const getDegreeList = useSelector((state) => state.profile.getDegreeList);
   const dispatch = useDispatch();
-  console.log(values);
 
   const startYearList = () => {
     const today = new Date().getFullYear();
@@ -1005,7 +1145,7 @@ const AddEduc = (props) => {
               <Row>
                 <Col md={12}>
                   <div className="popup_form_element">
-                    <label className="text-black font-size-13px font-weight-500">
+                    <label className="text-black font_size_14px font-weight-500">
                       School
                     </label>
                     <input
@@ -1020,17 +1160,21 @@ const AddEduc = (props) => {
                 </Col>
                 <Col md={6}>
                   <div className="popup_form_element">
-                    <label className="text-black font-size-13px font-weight-500">
+                    <label className="text-black font_size_14px font-weight-500">
                       Dates Attended (Optional)
                     </label>
                     <Select
                       className="font-size-11px"
-                      placeholder="From"
                       name="start_year"
-                      defaultValue={{
-                        name: values?.start_year,
-                        label: values?.start_year,
-                      }}
+                      defaultValue={
+                        values
+                          ? {
+                              name: values?.start_year,
+                              label: values?.start_year,
+                            }
+                          : null
+                      }
+                      placeholder="From"
                       onChange={setStartYear}
                       options={startYearList()}
                     />
@@ -1038,40 +1182,48 @@ const AddEduc = (props) => {
                 </Col>
                 <Col md={6}>
                   <div className="popup_form_element">
-                    <label className="text-black font-size-13px font-weight-500"></label>
+                    <label className="text-black font_size_14px font-weight-500"></label>
                     <Select
                       className="font-size-11px"
-                      placeholder="To (or expected gradution year)"
                       name="end_year"
-                      defaultValue={{
-                        name: values?.end_year,
-                        label: values?.end_year,
-                      }}
+                      defaultValue={
+                        values
+                          ? {
+                              name: values?.end_year,
+                              label: values?.end_year,
+                            }
+                          : null
+                      }
                       onChange={setEndYear}
                       options={endYearList()}
+                      placeholder="To (or expected gradution year)"
                     />
                   </div>
                 </Col>
                 <Col md={12}>
                   <div className="popup_form_element">
-                    <label className="text-black font-size-13px font-weight-500">
+                    <label className="text-black font_size_14px font-weight-500">
                       Degree (Optional)
                     </label>
                     <Select
                       className="font-size-11px"
-                      placeholder="Degree (Optional)"
-                      defaultValue={{
-                        name: values?.degree,
-                        label: values?.degree,
-                      }}
+                      defaultValue={
+                        values
+                          ? {
+                              name: values?.degree,
+                              label: values?.degree,
+                            }
+                          : null
+                      }
                       options={degreeList}
+                      placeholder="Degree (Optional)"
                       onChange={setDegree}
                     />
                   </div>
                 </Col>
                 <Col md={12}>
                   <div className="popup_form_element">
-                    <label className="text-black font-size-13x font-weight-500">
+                    <label className="text-black font_size_14px font-weight-500">
                       Area of Study (Optional)
                     </label>
                     <input
@@ -1086,7 +1238,7 @@ const AddEduc = (props) => {
                 </Col>
                 <Col md={12}>
                   <div className="popup_form_element">
-                    <label className="text-black font-size-13px font-weight-500">
+                    <label className="text-black font_size_14px font-weight-500">
                       Description (Optional)
                     </label>
                     <textarea
@@ -1112,12 +1264,40 @@ const AddEduc = (props) => {
   );
 };
 const AddCert = (props) => {
+  const [certName, setCertName] = useState(props?.certificates || null);
+  const [values, setValues] = useState(props?.certificates);
+  const dispatch = useDispatch();
   const options1 = [
     {
       name: "Adobe Certified Expert",
       label: "Adobe Certified Expert",
     },
+    {
+      name: "ReactJS Developer",
+      label: "ReactJS Developer",
+    },
   ];
+
+  const handleOnChange = (e) => {
+    setValues({ ...values, [e.target.name]: e.target.value });
+  };
+
+  const onSave = () => {
+    let data;
+    if (props?.certificates?.id) {
+      data = {
+        id: props?.certificates?.id,
+        name: certName.name,
+        description: values.description,
+      };
+    } else {
+      data = {
+        name: certName.name,
+        description: values.description,
+      };
+    }
+    dispatch(onEditCertificate(data, props.Popup));
+  };
   return (
     <>
       <div className="bg_wrapper_popup_new">
@@ -1143,6 +1323,12 @@ const AddCert = (props) => {
                   className="font-size-13px"
                   placeholder="Select Certificate Type"
                   options={options1}
+                  onChange={setCertName}
+                  defaultValue={
+                    certName
+                      ? { name: certName.name, label: certName.name }
+                      : null
+                  }
                 />
               </div>
             </div>
@@ -1165,6 +1351,9 @@ const AddCert = (props) => {
                       type="text"
                       className="font-size-13px"
                       placeholder="Enter Here"
+                      name="description"
+                      value={values?.description || null}
+                      onChange={(e) => handleOnChange(e)}
                     />
                   </div>
                 </Col>
@@ -1172,14 +1361,15 @@ const AddCert = (props) => {
             </div>
 
             <div className="popup_btns_new flex-wrap cwiewyehkk">
-              <button className="trans_btn">Cancel</button>
               <button
+                className="trans_btn"
                 onClick={() => {
                   props.Popup();
                 }}
               >
-                Save
+                Cancel
               </button>
+              <button onClick={onSave}>Save</button>
             </div>
           </div>
         </div>
@@ -1406,6 +1596,7 @@ const ReqTestimonial = (props) => {
 // };
 
 const UnifyFreelancer = () => {
+  const [showingProImage, setShowingProImage] = useState();
   const [popup, Setpopup] = useState();
   const [hwpPopup, setHwpPopup] = useState(false);
   const [workHistoryTab, setWorkHistoryTab] = useState("COMPLETED JOBS");
@@ -1427,14 +1618,40 @@ const UnifyFreelancer = () => {
   const deleteExprience = useSelector(
     (state) => state?.profile?.deleteExprience
   );
+  const deleteCertificate = useSelector(
+    (state) => state?.profile?.deleteCertificate
+  );
+  const editLanguage = useSelector(
+    (state) => state?.profile?.editFreelancerLanguage
+  );
+  const editHoursPerWeek = useSelector(
+    (state) => state?.profile?.editHoursPerWeek
+  );
   const deleteEducation = useSelector(
     (state) => state?.profile?.deleteEducation
   );
+  const editCertificate = useSelector(
+    (state) => state?.profile?.editCertificate
+  );
+  const profileImgChange = useSelector(
+    (state) => state?.profile?.profileImgChange
+  );
+  const editSkills = useSelector((state) => state?.profile?.editSkills);
   const addExprience = useSelector((state) => state?.profile?.addExprience);
   console.log(basicInfo);
   useEffect(() => {
     dispatch(getFreelancerProfile());
-  }, [deleteExprience, addExprience, deleteEducation]);
+  }, [
+    deleteExprience,
+    addExprience,
+    deleteEducation,
+    editLanguage,
+    editHoursPerWeek,
+    editSkills,
+    editCertificate,
+    deleteCertificate,
+    profileImgChange,
+  ]);
 
   const deleteExp = (id) => {
     dispatch(onDeleteEmployment({ id }));
@@ -1443,8 +1660,23 @@ const UnifyFreelancer = () => {
   const deleteEdu = (id) => {
     dispatch(onDeleteEducation({ id }));
   };
+  const deleteCert = (id) => {
+    dispatch(onDeleteCertificate({ id }));
+  };
 
-  // console.log(freelancerProfileList);
+  const onProfleImgChange = (e) => {
+    const profileImage = e.target.files[0];
+    setShowingProImage(URL.createObjectURL(e.target.files[0]));
+
+    const formData = new FormData();
+
+    formData.append("first_name", basicInfo?.first_name);
+    formData.append("last_name", basicInfo?.last_name);
+    formData.append("occcuption", basicInfo?.occuption);
+    formData.append("profile_image", profileImage);
+
+    dispatch(editNameInfo(formData));
+  };
   return (
     <div className="mt-5 mb-5">
       <Container>
@@ -1454,20 +1686,56 @@ const UnifyFreelancer = () => {
               <div className="flex_profile_frel">
                 <div className="profile_box">
                   <div className="user_profile_bg">
-                    <img src={basicInfo && basicInfo.profile_image} alt="" />
+                    <img
+                      src={
+                        showingProImage ||
+                        basicInfo?.profile_image ||
+                        "/assets/PRO-2.png"
+                      }
+                    />
                   </div>
-                  <div className="profile_thumb">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      fill="currentColor"
-                      className="bi bi-hand-thumbs-up"
-                      viewBox="0 0 16 16"
-                    >
-                      <path d="M8.864.046C7.908-.193 7.02.53 6.956 1.466c-.072 1.051-.23 2.016-.428 2.59-.125.36-.479 1.013-1.04 1.639-.557.623-1.282 1.178-2.131 1.41C2.685 7.288 2 7.87 2 8.72v4.001c0 .845.682 1.464 1.448 1.545 1.07.114 1.564.415 2.068.723l.048.03c.272.165.578.348.97.484.397.136.861.217 1.466.217h3.5c.937 0 1.599-.477 1.934-1.064a1.86 1.86 0 0 0 .254-.912c0-.152-.023-.312-.077-.464.201-.263.38-.578.488-.901.11-.33.172-.762.004-1.149.069-.13.12-.269.159-.403.077-.27.113-.568.113-.857 0-.288-.036-.585-.113-.856a2.144 2.144 0 0 0-.138-.362 1.9 1.9 0 0 0 .234-1.734c-.206-.592-.682-1.1-1.2-1.272-.847-.282-1.803-.276-2.516-.211a9.84 9.84 0 0 0-.443.05 9.365 9.365 0 0 0-.062-4.509A1.38 1.38 0 0 0 9.125.111L8.864.046zM11.5 14.721H8c-.51 0-.863-.069-1.14-.164-.281-.097-.506-.228-.776-.393l-.04-.024c-.555-.339-1.198-.731-2.49-.868-.333-.036-.554-.29-.554-.55V8.72c0-.254.226-.543.62-.65 1.095-.3 1.977-.996 2.614-1.708.635-.71 1.064-1.475 1.238-1.978.243-.7.407-1.768.482-2.85.025-.362.36-.594.667-.518l.262.066c.16.04.258.143.288.255a8.34 8.34 0 0 1-.145 4.725.5.5 0 0 0 .595.644l.003-.001.014-.003.058-.014a8.908 8.908 0 0 1 1.036-.157c.663-.06 1.457-.054 2.11.164.175.058.45.3.57.65.107.308.087.67-.266 1.022l-.353.353.353.354c.043.043.105.141.154.315.048.167.075.37.075.581 0 .212-.027.414-.075.582-.05.174-.111.272-.154.315l-.353.353.353.354c.047.047.109.177.005.488a2.224 2.224 0 0 1-.505.805l-.353.353.353.354c.006.005.041.05.041.17a.866.866 0 0 1-.121.416c-.165.288-.503.56-1.066.56z" />
-                    </svg>
-                  </div>
+                  <label htmlFor="profile_img_change">
+                    <div className="profile_thumb">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="40"
+                        height="40"
+                        viewBox="0 0 40 40"
+                      >
+                        <g
+                          id="Group_3335"
+                          data-name="Group 3335"
+                          transform="translate(-340 -2040)"
+                        >
+                          <g
+                            id="Ellipse_684"
+                            data-name="Ellipse 684"
+                            transform="translate(340 2040)"
+                            fill="#fff"
+                            stroke="#707070"
+                            stroke-width="1"
+                            opacity="0.43"
+                          >
+                            <circle cx="20" cy="20" r="20" stroke="none" />
+                            <circle cx="20" cy="20" r="19.5" fill="none" />
+                          </g>
+                          <path
+                            id="_8665767_pen_icon"
+                            data-name="8665767_pen_icon"
+                            d="M15.327,2.274,13.482.429a1.475,1.475,0,0,0-2.085,0L9.662,2.165l3.9,3.929L15.3,4.358A1.447,1.447,0,0,0,15.327,2.274Zm-6.356.585L1,10.83a.491.491,0,0,0-.134.251L.057,15.123a.491.491,0,0,0,.576.58l4.042-.808a.491.491,0,0,0,.251-.134L12.9,6.789Z"
+                            transform="translate(353.099 2052.145)"
+                            fill="#6d2ef1"
+                          />
+                        </g>
+                      </svg>
+                    </div>
+                    <input
+                      type="file"
+                      id="profile_img_change"
+                      onChange={(e) => onProfleImgChange(e)}
+                      style={{ width: 0, height: 0, position: "absolute" }}
+                    />
+                  </label>
                 </div>
                 <div className="han_oad">
                   <div
@@ -1532,7 +1800,6 @@ const UnifyFreelancer = () => {
                 </div>
               </div>
               <div className="profile_pf_btn">
-                <button>See Public View</button>
                 <Link to="/freelancer/contact-info">
                   <button>Profile Setting</button>
                 </Link>
@@ -1717,37 +1984,42 @@ const UnifyFreelancer = () => {
                   </button>
                 </div>
                 <div className="myskill_hdingn ms_hdsmall font-size-15px">
-                  As Needed - Open to Offers
+                  {freelancerProfileList?.hours_per_week}
                 </div>
-                <div className="myskill_hdingn ms_hdsmall font-size-15px">
-                  3+ days response time
-                </div>
+
                 <div className="myskill_hdingn profile_icon_25px">
                   Languages
                   <div className="d-flex justify-content-start">
-                    <button
-                      onClick={() => {
-                        Setpopup(<LanguageEdit Popup={Setpopup} name={1} />);
-                      }}
-                    >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="17"
-                        height="17"
-                        viewBox="0 0 17 17"
+                    {!freelancerProfileList?.language?.length && (
+                      <button
+                        onClick={() => {
+                          Setpopup(<LanguageEdit Popup={Setpopup} />);
+                        }}
                       >
-                        <path
-                          id="_134224_add_plus_new_icon_2_"
-                          data-name="134224_add_plus_new_icon (2)"
-                          d="M17.786,9.286H11.714V3.214a1.214,1.214,0,0,0-2.429,0V9.286H3.214a1.214,1.214,0,0,0,0,2.429H9.286v6.071a1.214,1.214,0,1,0,2.429,0V11.714h6.071a1.214,1.214,0,1,0,0-2.429Z"
-                          transform="translate(-2 -2)"
-                          fill="#6d2ef1"
-                        />
-                      </svg>
-                    </button>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="17"
+                          height="17"
+                          viewBox="0 0 17 17"
+                        >
+                          <path
+                            id="_134224_add_plus_new_icon_2_"
+                            data-name="134224_add_plus_new_icon (2)"
+                            d="M17.786,9.286H11.714V3.214a1.214,1.214,0,0,0-2.429,0V9.286H3.214a1.214,1.214,0,0,0,0,2.429H9.286v6.071a1.214,1.214,0,1,0,2.429,0V11.714h6.071a1.214,1.214,0,1,0,0-2.429Z"
+                            transform="translate(-2 -2)"
+                            fill="#6d2ef1"
+                          />
+                        </svg>
+                      </button>
+                    )}
                     <button
                       onClick={() => {
-                        Setpopup(<LanguageEdit Popup={Setpopup} />);
+                        Setpopup(
+                          <LanguageEdit
+                            Popup={Setpopup}
+                            data={freelancerProfileList?.language}
+                          />
+                        );
                       }}
                     >
                       <svg
@@ -1766,6 +2038,20 @@ const UnifyFreelancer = () => {
                       </svg>
                     </button>
                   </div>
+                </div>
+                <div style={{ margin: "0 0 10px 0" }}>
+                  {freelancerProfileList?.language?.map((item) => (
+                    <>
+                      <span style={{ textTransform: "capitalize" }}>
+                        {item.language}
+                      </span>{" "}
+                      :{" "}
+                      <span style={{ textTransform: "capitalize" }}>
+                        {item.level}
+                      </span>
+                      <br />
+                    </>
+                  ))}
                 </div>
                 <div className="myskill_hdingn">Verification</div>
                 <div className="myskill_hdingn ms_hdsmall font-size-15px">
@@ -2058,7 +2344,12 @@ const UnifyFreelancer = () => {
                 <div className="myskill_hdingn">
                   <button
                     onClick={() => {
-                      Setpopup(<EditSkill Popup={Setpopup} />);
+                      Setpopup(
+                        <EditSkill
+                          Popup={Setpopup}
+                          data={freelancerProfileList?.skills}
+                        />
+                      );
                     }}
                   >
                     <svg
@@ -2091,9 +2382,9 @@ const UnifyFreelancer = () => {
             {/* <div className="box-profile-bck mb-0">
               <div className="d-flex justify-content-end myskill_hdingn">
                 <button
-                  onClick={() => {
-                    Setpopup(<Overview Popup={Setpopup} />);
-                  }}
+                  // onClick={() => {
+                  //   Setpopup(<Overview Popup={Setpopup} />);
+                  // }}
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -2311,45 +2602,101 @@ const UnifyFreelancer = () => {
               </div>
             </div>
             <div className="box-profile-bck">
-              <div className="d-flex justify-content-end myskill_hdingn">
-                <button
-                  onClick={() => {
-                    Setpopup(<AddCert Popup={Setpopup} />);
-                  }}
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="17"
-                    height="17"
-                    viewBox="0 0 17 17"
+              <div style={{ display: "flex", justifyContent: "space-between" }}>
+                <div className="bpbck_txt" style={{ marginTop: 0 }}>
+                  <div className="bpck_head">Certifications</div>
+                </div>
+                <div className="myskill_hdingn">
+                  <button
+                    style={{ padding: 0, cursor: "pointer" }}
+                    onClick={() => {
+                      Setpopup(<AddCert Popup={Setpopup} />);
+                    }}
                   >
-                    <path
-                      id="_134224_add_plus_new_icon_2_"
-                      data-name="134224_add_plus_new_icon (2)"
-                      d="M17.786,9.286H11.714V3.214a1.214,1.214,0,0,0-2.429,0V9.286H3.214a1.214,1.214,0,0,0,0,2.429H9.286v6.071a1.214,1.214,0,1,0,2.429,0V11.714h6.071a1.214,1.214,0,1,0,0-2.429Z"
-                      transform="translate(-2 -2)"
-                      fill="#6d2ef1"
-                    />
-                  </svg>
-                </button>
-              </div>
-              <div className="bpbck_txt">
-                <div className="bpck_head">Certifications</div>
-              </div>
-              <div className="d-flex justify-content-center flex-column text-center">
-                <div className="img_min_bpck">
-                  <img src="/assets/Graduate.png" alt="" />
-                </div>
-                <div className="bpck_sm_txt_a mt-4">
-                  Listing your certifications can help prove your specific
-                  knowledge or abilities. (+10%)
-                  <br />
-                  You can add them manually
-                </div>
-                <div className="bpck_sm_txt_a">
-                  <Link to="">Add manually</Link>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="17"
+                      height="17"
+                      viewBox="0 0 17 17"
+                    >
+                      <path
+                        id="_134224_add_plus_new_icon_2_"
+                        data-name="134224_add_plus_new_icon (2)"
+                        d="M17.786,9.286H11.714V3.214a1.214,1.214,0,0,0-2.429,0V9.286H3.214a1.214,1.214,0,0,0,0,2.429H9.286v6.071a1.214,1.214,0,1,0,2.429,0V11.714h6.071a1.214,1.214,0,1,0,0-2.429Z"
+                        transform="translate(-2 -2)"
+                        fill="#6d2ef1"
+                      />
+                    </svg>
+                  </button>
                 </div>
               </div>
+              {freelancerProfileList?.certificates?.map((item, key) => (
+                <div key={key} className="ms-4">
+                  <div className="bpck_sm_txt_a mt-4 ehistory_uxdes">
+                    {item.name}
+                  </div>
+                  <div className="ehitory_dtine">{item.description}</div>
+
+                  <div className="bpck_sm_txt_a mt-4 mb-0">
+                    <div className="d-flex myskill_hdingn mb-0">
+                      <button
+                        className="m-0"
+                        onClick={() => {
+                          Setpopup(
+                            <AddCert certificates={item} Popup={Setpopup} />
+                          );
+                        }}
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="15.709"
+                          height="15.714"
+                          viewBox="0 0 15.709 15.714"
+                        >
+                          <path
+                            id="_8665767_pen_icon"
+                            data-name="8665767_pen_icon"
+                            d="M15.327,2.274,13.482.429a1.475,1.475,0,0,0-2.085,0L9.662,2.165l3.9,3.929L15.3,4.358A1.447,1.447,0,0,0,15.327,2.274Zm-6.356.585L1,10.83a.491.491,0,0,0-.134.251L.057,15.123a.491.491,0,0,0,.576.58l4.042-.808a.491.491,0,0,0,.251-.134L12.9,6.789Z"
+                            transform="translate(-0.047 0.002)"
+                            fill="#6d2ef1"
+                          />
+                        </svg>
+                      </button>
+                      <button onClick={() => deleteCert(item.id)}>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="16"
+                          height="16"
+                          viewBox="0 0 16 16"
+                        >
+                          <path
+                            id="_2203546_bin_delete_gabage_trash_icon"
+                            data-name="2203546_bin_delete_gabage_trash_icon"
+                            d="M8,0A1,1,0,0,0,7,1H0V3H1V14a2,2,0,0,0,2,2H13a2,2,0,0,0,2-2V3h1V1H9A1,1,0,0,0,8,0ZM4,14H3V5H4Zm3,0H6V5H7Zm3,0H9V5h1Zm3,0H12V5h1Z"
+                            fill="#6d2ef1"
+                          />
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              ))}
+              {freelancerProfileList?.certificates?.length == 0 && (
+                <div className="d-flex justify-content-center flex-column text-center">
+                  <div className="img_min_bpck">
+                    <img src="/assets/Graduate.png" alt="" />
+                  </div>
+                  <div className="bpck_sm_txt_a mt-4">
+                    Listing your certifications can help prove your specific
+                    knowledge or abilities. (+10%)
+                    <br />
+                    You can add them manually
+                  </div>
+                  <div className="bpck_sm_txt_a">
+                    <Link to="">Add manually</Link>
+                  </div>
+                </div>
+              )}
             </div>
             <Row>
               <Col md={12}>

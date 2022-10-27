@@ -12,6 +12,14 @@ import {
   SET_DELETE_EDUCATION,
   SET_EDIT_FREELANCER_INFO,
   SET_EDIT_FREELANCER_LOCATION,
+  SET_EDIT_LANGUAGE,
+  SET_LANGUAGE_LIST,
+  SET_HWP_LIST,
+  SET_HOURS_PER_WEEK,
+  SET_EDIT_SKILLS,
+  SET_EDIT_CERTIFICATE,
+  SET_DELETE_CERTIFICATE,
+  SET_PROFILE_IMG_CHANGE,
 } from "../types";
 
 const initialState = {};
@@ -85,6 +93,46 @@ const profileReducer = (state = initialState, action) => {
       return {
         ...state,
         editFreelancerLocation: action.payload,
+      };
+    case SET_EDIT_LANGUAGE:
+      return {
+        ...state,
+        editFreelancerLanguage: action.payload,
+      };
+    case SET_LANGUAGE_LIST:
+      return {
+        ...state,
+        getLanguageList: action.payload,
+      };
+    case SET_HWP_LIST:
+      return {
+        ...state,
+        getHoursPerWeekList: action.payload,
+      };
+    case SET_HOURS_PER_WEEK:
+      return {
+        ...state,
+        editHoursPerWeek: action.payload,
+      };
+    case SET_EDIT_SKILLS:
+      return {
+        ...state,
+        editSkills: action.payload,
+      };
+    case SET_EDIT_CERTIFICATE:
+      return {
+        ...state,
+        editCertificate: action.payload,
+      };
+    case SET_DELETE_CERTIFICATE:
+      return {
+        ...state,
+        deleteCertificate: action.payload,
+      };
+    case SET_PROFILE_IMG_CHANGE:
+      return {
+        ...state,
+        profileImgChange: action.payload,
       };
     default:
       return state;

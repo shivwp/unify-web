@@ -3,9 +3,26 @@ import { Modal } from "react-responsive-modal";
 import "react-responsive-modal/styles.css";
 import "./popup.css";
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  getHoursPerWeekList,
+  onEditHourPerWeek,
+} from "../../../redux/actions/profileAction";
+import { useState } from "react";
 
 const HourPerWeekPopup = ({ open, onCloseModal }) => {
+  const dispatch = useDispatch();
+  const [hpwValue, setHPWValue] = useState();
+  const hwpList = useSelector((state) => state?.profile?.getHoursPerWeekList);
+  useEffect(() => {
+    dispatch(getHoursPerWeekList());
+  }, []);
 
+  const onSave = () => {
+    const data = { hours_id: hpwValue };
+    dispatch(onEditHourPerWeek(data, onCloseModal));
+  };
   return (
     <>
       <Modal
@@ -22,29 +39,20 @@ const HourPerWeekPopup = ({ open, onCloseModal }) => {
         <div className="content">
           <h5>I can currently work</h5>
           <ul className="popup-radio">
-            <li>
-              <label htmlFor="op-1">
-                <input type="radio" id="op-1" name="p"  value={"More then 30 Hours per week"} />{" "}
-                <span>More then 30 Hours per week</span>
-              </label>
-            </li>
-            <li>
-              <label htmlFor="op-2">
-                <input type="radio" id="op-2" value={'Less then 30 Hours per week'} name="p" />{" "}
-                <span>Less then 30 Hours per week</span>
-              </label>
-            </li>
-            <li>
-              <label htmlFor="op-3">
-                <input type="radio" id="op-3" value={"As needed - open to offers"} name="p" />{" "}
-                <span>As needed - open to offers</span>
-              </label>
-            </li>
-            <li>
-              <label htmlFor="op-4">
-                <input type="radio" id="op-4" name="p" value={"None"} /> <span> None</span>
-              </label>
-            </li>
+            {hwpList?.map((item, index) => (
+              <li key={item.id}>
+                <label htmlFor={`op-${index}`}>
+                  <input
+                    type="radio"
+                    id={`op-${index}`}
+                    onClick={() => setHPWValue(item.id)}
+                    name="p"
+                    value={"More then 30 Hours per week"}
+                  />{" "}
+                  <span>{item.title}</span>
+                </label>
+              </li>
+            ))}
           </ul>
         </div>
 
@@ -53,7 +61,7 @@ const HourPerWeekPopup = ({ open, onCloseModal }) => {
             <button onClick={onCloseModal}>CANCEL</button>
           </div>
           <div className="_save_submit">
-            <button>SAVE</button>
+            <button onClick={onSave}>SAVE</button>
           </div>
         </div>
       </Modal>

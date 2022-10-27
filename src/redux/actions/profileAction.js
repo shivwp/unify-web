@@ -13,6 +13,14 @@ import {
   SET_DELETE_EDUCATION,
   SET_EDIT_FREELANCER_INFO,
   SET_EDIT_FREELANCER_LOCATION,
+  SET_EDIT_LANGUAGE,
+  SET_LANGUAGE_LIST,
+  SET_HWP_LIST,
+  SET_HOURS_PER_WEEK,
+  SET_EDIT_SKILLS,
+  SET_EDIT_CERTIFICATE,
+  SET_DELETE_CERTIFICATE,
+  SET_PROFILE_IMG_CHANGE,
 } from "../types";
 
 const config = {
@@ -44,8 +52,8 @@ export const getFreelancerProfile = () => (dispatch) => {
       console.log(err);
     });
 };
-export const getFreelancerSkills = () => (dispatch) => {
-  Axios.get("/skill-list")
+export const getFreelancerSkills = (data) => (dispatch) => {
+  Axios.post("/skill-list", data)
     .then((res) => {
       dispatch({
         type: SET_FREELANCER_SKILLS,
@@ -256,6 +264,108 @@ export const onEditPortfolio = (data, popup) => (dispatch) => {
     .then((res) => {
       console.log(res);
       popup();
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+export const onEditLanguage = (data, popup) => (dispatch) => {
+  Axios.post("/edit-language", data, config)
+    .then((res) => {
+      dispatch({
+        type: SET_EDIT_LANGUAGE,
+        payload: res.data,
+      });
+      popup();
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+export const getLanguageList = () => (dispatch) => {
+  Axios.get("/languages-list")
+    .then((res) => {
+      dispatch({
+        type: SET_LANGUAGE_LIST,
+        payload: res.data.data,
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+export const getHoursPerWeekList = () => (dispatch) => {
+  Axios.get("/hours-per-week")
+    .then((res) => {
+      dispatch({
+        type: SET_HWP_LIST,
+        payload: res.data.data,
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+export const onEditHourPerWeek = (data, popup) => (dispatch) => {
+  Axios.post("/edit-hours-per-week", data, config)
+    .then((res) => {
+      dispatch({
+        type: SET_HOURS_PER_WEEK,
+        payload: res.data,
+      });
+      popup();
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+export const onEditSkills = (data, popup) => (dispatch) => {
+  Axios.post("/edit-skills-info", data, config)
+    .then((res) => {
+      dispatch({
+        type: SET_EDIT_SKILLS,
+        payload: res.data,
+      });
+      popup();
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+export const onEditCertificate = (data, popup) => (dispatch) => {
+  Axios.post("/edit-certificate-info", data, config)
+    .then((res) => {
+      dispatch({
+        type: SET_EDIT_CERTIFICATE,
+        payload: res.data,
+      });
+      popup();
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+export const onDeleteCertificate = (data, popup) => (dispatch) => {
+  Axios.post("/delete-certificate-info", data, config)
+    .then((res) => {
+      dispatch({
+        type: SET_DELETE_CERTIFICATE,
+        payload: res.data,
+      });
+      popup();
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+export const editNameInfo = (data) => (dispatch) => {
+  Axios.post("/edit-name-info", data, config)
+    .then((res) => {
+      dispatch({
+        type: SET_PROFILE_IMG_CHANGE,
+        payload: res.data,
+      });
     })
     .catch((err) => {
       console.log(err);
