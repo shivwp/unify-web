@@ -144,9 +144,7 @@ const WorkHistory = () => {
 };
 const EditSkill = (props) => {
   const [selectSkills, setSelectSkills] = useState(props?.data);
-  const [skillsIds, setSkillsIds] = useState(
-    selectSkills?.map((item) => item.skill_id)
-  );
+  console.log(selectSkills);
   const dispatch = useDispatch();
   let getSkillList = useSelector((state) => state?.profile?.getSkillList);
 
@@ -157,17 +155,19 @@ const EditSkill = (props) => {
   };
 
   const addSkills = (item) => {
-    if (
-      selectSkills.find((ele) => {
-        return ele.skill_id == item.id;
-      }) == undefined
-    ) {
-      setSelectSkills([
-        ...selectSkills,
-        { skill_id: item.id, skill_name: item.name },
-      ]);
-      setSkillsIds([...skillsIds, item.id]);
+    if (selectSkills.length <= 15) {
+      if (
+        selectSkills.find((ele) => {
+          return ele.skill_id == item.id;
+        }) == undefined
+      ) {
+        setSelectSkills([
+          ...selectSkills,
+          { skill_id: item.id, skill_name: item.name },
+        ]);
+      }
     }
+    document.getElementById("search_skill_inp").value = null;
   };
 
   const handleOnChange = (e) => {
@@ -183,7 +183,9 @@ const EditSkill = (props) => {
   };
 
   const onSave = (e) => {
-    const data = { skill_id: skillsIds.toString() };
+    const data = {
+      skill_id: selectSkills?.map((item) => item.skill_id).toString(),
+    };
     dispatch(onEditSkills(data, props.Popup));
   };
 
@@ -228,25 +230,27 @@ const EditSkill = (props) => {
                   type="text"
                   onChange={(e) => handleOnChange(e)}
                   name="skill"
+                  id="search_skill_inp"
                   autocomplete="off"
                   placeholder="search here skills..."
                   className="no-border font-size-13px search_skilloiouo"
                 />
                 {getSkillList && (
-                  <div
-                    className="suggest_skills"
-                    id="suggest_skills"
-                    style={{ position: "absolute" }}
-                  >
-                    {getSkillList?.map((item) => (
-                      <>
-                        {" "}
-                        <span onClick={() => addSkills(item)}>
-                          {item.name}
-                        </span>{" "}
-                        <br />
-                      </>
-                    ))}
+                  <div id="suggest_skills">
+                    <div
+                      className="suggest_skills"
+                      style={{ position: "absolute" }}
+                    >
+                      {getSkillList?.map((item) => (
+                        <>
+                          {" "}
+                          <span onClick={() => addSkills(item)}>
+                            {item.name}
+                          </span>{" "}
+                          <br />
+                        </>
+                      ))}
+                    </div>
                   </div>
                 )}
               </div>
