@@ -20,6 +20,10 @@ import {
   SET_EDIT_CERTIFICATE,
   SET_DELETE_CERTIFICATE,
   SET_PROFILE_IMG_CHANGE,
+  SET_EDIT_TESTIMONIAL,
+  SET_EDIT_EDUCATION,
+  SET_EDIT_DESIGNATION,
+  SET_EDIT_PORTFOLIO,
 } from "../types";
 
 const initialState = {};
@@ -133,6 +137,26 @@ const profileReducer = (state = initialState, action) => {
       return {
         ...state,
         profileImgChange: action.payload,
+      };
+    case SET_EDIT_TESTIMONIAL:
+      return {
+        ...state,
+        edtiTestimonial: action.payload,
+      };
+    case SET_EDIT_EDUCATION:
+      return {
+        ...state,
+        editEducation: action.payload,
+      };
+    case SET_EDIT_DESIGNATION:
+      return {
+        ...state,
+        editDesignation: action.payload,
+      };
+    case SET_EDIT_PORTFOLIO:
+      return {
+        ...state,
+        editPortfolio: action.payload,
       };
     default:
       return state;

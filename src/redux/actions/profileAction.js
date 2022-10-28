@@ -21,6 +21,10 @@ import {
   SET_EDIT_CERTIFICATE,
   SET_DELETE_CERTIFICATE,
   SET_PROFILE_IMG_CHANGE,
+  SET_EDIT_TESTIMONIAL,
+  SET_EDIT_EDUCATION,
+  SET_EDIT_DESIGNATION,
+  SET_EDIT_PORTFOLIO,
 } from "../types";
 
 const config = {
@@ -34,6 +38,10 @@ export const onEditTestimonialInfo = (data) => (dispatch) => {
   Axios.post("/edit-testimonial-info", data, config)
     .then((res) => {
       console.log(res);
+      dispatch({
+        type: SET_EDIT_TESTIMONIAL,
+        payload: res.data.data,
+      });
     })
     .catch((err) => {
       console.log(err);
@@ -189,6 +197,10 @@ export const onAddEducation = (data, popup) => (dispatch) => {
   Axios.post("/edit-education-info", data, config)
     .then((res) => {
       console.log(res);
+      dispatch({
+        type: SET_EDIT_EDUCATION,
+        payload: res.data,
+      });
       popup();
     })
     .catch((err) => {
@@ -253,6 +265,10 @@ export const onEditDesignation = (data, popup) => (dispatch) => {
   Axios.post("/edit-designation-info", data, config)
     .then((res) => {
       console.log(res);
+      dispatch({
+        type: SET_EDIT_DESIGNATION,
+        payload: res.data,
+      });
       popup();
     })
     .catch((err) => {
@@ -263,6 +279,10 @@ export const onEditPortfolio = (data, popup) => (dispatch) => {
   Axios.post("/edit-portfolio-info", data, config)
     .then((res) => {
       console.log(res);
+      dispatch({
+        type: SET_EDIT_PORTFOLIO,
+        payload: res.data,
+      });
       popup();
     })
     .catch((err) => {

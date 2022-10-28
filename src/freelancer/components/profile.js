@@ -1636,8 +1636,19 @@ const UnifyFreelancer = () => {
   const profileImgChange = useSelector(
     (state) => state?.profile?.profileImgChange
   );
+  const edtiTestimonial = useSelector(
+    (state) => state?.profile?.edtiTestimonial
+  );
+  const editDesignation = useSelector(
+    (state) => state?.profile?.editDesignation
+  );
+  const editPortfolio = useSelector((state) => state?.profile?.editPortfolio);
+  const editEducation = useSelector((state) => state?.profile?.editEducation);
+
   const editSkills = useSelector((state) => state?.profile?.editSkills);
+
   const addExprience = useSelector((state) => state?.profile?.addExprience);
+
   console.log(basicInfo);
   useEffect(() => {
     dispatch(getFreelancerProfile());
@@ -1651,6 +1662,10 @@ const UnifyFreelancer = () => {
     editCertificate,
     deleteCertificate,
     profileImgChange,
+    edtiTestimonial,
+    editEducation,
+    editDesignation,
+    editPortfolio,
   ]);
 
   const deleteExp = (id) => {
@@ -1740,7 +1755,7 @@ const UnifyFreelancer = () => {
                 <div className="han_oad">
                   <div
                     className="freelancer_name font-size-20px"
-                    style={{ lineHeight: "20px" }}
+                    style={{ lineHeight: "25px" }}
                   >
                     {basicInfo && basicInfo.first_name}{" "}
                     {basicInfo && basicInfo.last_name}
@@ -2693,7 +2708,14 @@ const UnifyFreelancer = () => {
                     You can add them manually
                   </div>
                   <div className="bpck_sm_txt_a">
-                    <Link to="">Add manually</Link>
+                    <Link
+                      to=""
+                      onClick={() => {
+                        Setpopup(<AddCert Popup={Setpopup} />);
+                      }}
+                    >
+                      Add manually
+                    </Link>
                   </div>
                 </div>
               )}

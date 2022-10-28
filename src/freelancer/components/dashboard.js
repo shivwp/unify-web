@@ -904,7 +904,7 @@ const Screen = () => {
                   <div className="d-flex justify-content-between mb-3">
                     <div className="dcard_htext">Projects</div>
                     <div className="dcard_ltxt">
-                      <Link to="/">Manage Projects</Link>
+                      <Link to="/freelancer/milestone-earning">Manage Projects</Link>
                     </div>
                   </div>
                   <div className="overflow-scroll">

@@ -11,7 +11,7 @@ import "../freelancer.css";
 import Select from "react-select";
 import { useParams, Link } from "react-router-dom";
 
-const ListCard = () => {
+const ProjectSearch = () => {
   const [dDown,Setddown] = useState(0)
   function TogglePopup(){
       if(dDown === 1){
@@ -74,8 +74,87 @@ const ListCard = () => {
               {dDown === 1 ? <Popup /> : ''}
               <div className="fb_btns_s_pro">
                 <button className="bg-trans_s_pro btn_psnewrb" onClick={()=>{TogglePopup()}}>
-                  <img src={like} alt="" className="heart_btn" />
+                  <img src={like} alt="" className="heart_btn" style={{transform: 'rotate(180deg)'}} />
                 </button>
+                <button className="bg-trans_s_pro btn_psnewrb">
+                  <img src={heart} alt="" className="heart_btn" />
+                </button>
+                <Link to="/freelancer/project-detail">
+                  <button>Send Proposal</button>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </>
+  );
+};
+const ProjectSaved = () => {
+  const [dDown,Setddown] = useState(0)
+  function TogglePopup(){
+      if(dDown === 1){
+          Setddown(0)
+      } else{
+          Setddown(1)
+      }
+  }
+  const card = [1, 2, 3, 4, 5, 6];
+  return (
+    <>
+      {card.map((person, index) => (
+        <div className="job_box_card" key={index}>
+          <div className="heat_lef">
+            <img src={star} alt="" />
+          </div>
+          <Row>
+            <Col lg={9}>
+              <div className="com_name_s">VeeGaming Studio</div>
+              <div className="job_head_s">
+                <h2>IOS And Android SENIOR Mobile App Developer</h2>
+              </div>
+              <div className="dlex_sk_block flex-wrap">
+                <div className="b_skil">Backend Developer</div>
+                <div className="b_skil">Designer</div>
+                <div className="b_skil">Support Agent</div>
+                <div className="b_skil">IOS Developer</div>
+              </div>
+              <div className="job_d_par">
+                <p>
+                  We are a computerized wellbeing startup with a spry and
+                  high-speed climate. We are searching for a Senior, RELIABLE
+                  portable application…
+                </p>
+              </div>
+            </Col>
+            <Col lg={3}>
+              <div className="price_ar_jjob">
+                <h1>$140.00</h1>
+                <p>(Hourly)</p>
+              </div>
+            </Col>
+          </Row>
+          <div className="jb_foot flex-wrap">
+            <div className="flex_itm">
+              <div className="f_b_obx">
+                <div className="ex_name_fb">Expiry:</div>
+                <div className="ex_val_f">914 DAYS LEFT</div>
+              </div>
+              <div className="f_b_obx">
+                <div className="ex_name_fb">Proposals:</div>
+                <div className="ex_val_f">9 Received</div>
+              </div>
+              <div className="f_b_obx">
+                <div className="ex_name_fb">Location:</div>
+                <div className="ex_val_f">Hamburg</div>
+              </div>
+            </div>
+            <div className='ps-relative mt-sesix-5'>
+              {dDown === 1 ? <Popup /> : ''}
+              <div className="fb_btns_s_pro">
+                {/* <button className="bg-trans_s_pro btn_psnewrb" onClick={()=>{TogglePopup()}}>
+                  <img src={like} alt="" className="heart_btn" />
+                </button> */}
                 <button className="bg-trans_s_pro btn_psnewrb">
                   <img src={heart} alt="" className="heart_btn" />
                 </button>
@@ -114,16 +193,16 @@ const Project_Search = () => {
   };
   $(".slider_shutter").slideDown();
 
-  const [Tab, SetTab] = useState(<ListCard />);
+  const [Tab, SetTab] = useState(<ProjectSearch />);
   const [TabActive, SetTabActive] = useState("search");
   function changeTab(componentName) {
     if (componentName === "search") {
-      SetTab(<ListCard />);
+      SetTab(<ProjectSearch />);
       Title(" | Project Search");
       SetTabActive("search");
     } else if (componentName === "saved") {
       Title(" | Project Saved");
-      SetTab(<ListCard />);
+      SetTab(<ProjectSaved />);
       SetTabActive("saved");
     }
   }
@@ -131,7 +210,7 @@ const Project_Search = () => {
   useEffect(() => {
     if (saved === "saved") {
       Title(" | Project Saved");
-      SetTab(<ListCard />);
+      SetTab(<ProjectSaved />);
       SetTabActive("saved");
     }
   }, [saved]);
@@ -155,7 +234,7 @@ const Project_Search = () => {
               <div className="s_cat_bo">
                 <div className="s_na_box">
                   <div className="s_na_h4">
-                    <h4>search by keyword</h4>
+                    <h4>Search by keyword</h4>
                   </div>
                   <div className="s_na_inpu">
                     <input type="text" placeholder="what are you looking for" />

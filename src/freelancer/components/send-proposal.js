@@ -289,7 +289,7 @@ const Screen = () => {
                   <div className="d-flex">
                     <div className="inp_bdg_pdsp">
                       $
-                      <input type="text" value={`15.00`} />
+                      <input type="text" placeholder={`15.00`} />
                     </div>
                     <div className="sli_bdg_pddsp d-flex align-items-center slsh_rh">
                       /hr
@@ -305,7 +305,7 @@ const Screen = () => {
                   <div className="d-flex">
                     <div className="inp_bdg_pdsp">
                       $
-                      <input type="text" value={`03.00`} />
+                      <input type="text" placeholder={`03.00`} />
                     </div>
                     <div className="sli_bdg_pddsp d-flex align-items-center slsh_rh">
                       /hr
@@ -324,7 +324,7 @@ const Screen = () => {
                   <div className="d-flex align-items-center">
                     <div className="inp_bdg_pdsp">
                       $
-                      <input type="text" value={`12.00`} />
+                      <input type="text" placeholder={`12.00`} />
                     </div>
                     <div className="sli_bdg_pddsp d-flex align-items-center slsh_rh">
                       /hr
