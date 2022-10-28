@@ -251,10 +251,11 @@ export const onEditLocationInfo = (data, setEditLocation) => (dispatch) => {
     });
 };
 
-export const onEditVideo = (data) => (dispatch) => {
+export const onEditVideo = (data, popup) => (dispatch) => {
   Axios.post("/edit-video", data, config)
     .then((res) => {
       console.log(res);
+      popup();
     })
     .catch((err) => {
       console.log(err);

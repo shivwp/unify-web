@@ -1,6 +1,6 @@
 import Container from "react-bootstrap/Container";
 import { Row, Col } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Select from "react-select";
 import { useEffect, useState } from "react";
 import $ from "jquery";
@@ -33,6 +33,7 @@ import PortfolioPupup from "./popups/PortfolioPupup";
 import { countryList } from "../../redux/actions/authActions";
 import { useRef } from "react";
 import { height } from "@mui/system";
+import IntroVideoPopup from "../../popups/IntroVideoPopup";
 
 function Listaward() {
   const card = [1, 2, 3, 4];
@@ -184,7 +185,7 @@ const EditSkill = (props) => {
 
   const onSave = (e) => {
     const data = {
-      skill_id: selectSkills?.map((item) => item.skill_id).toString(),
+      skill_id: selectSkills?.map((item) => item.skill_id)?.toString(),
     };
     dispatch(onEditSkills(data, props.Popup));
   };
@@ -364,10 +365,7 @@ const EditTitle = (props) => {
 const VideoIntro = (props) => {
   const dispatch = useDispatch();
   const [values, setValues] = useState(props?.data);
-  const [type, setType] = useState({
-    name: props?.video?.type,
-    label: props?.video?.type,
-  });
+  const [type, setType] = useState(props?.data);
 
   const handleOnChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
@@ -393,7 +391,7 @@ const VideoIntro = (props) => {
       video: values.url,
       video_type: type.name,
     };
-    dispatch(onEditVideo(data));
+    dispatch(onEditVideo(data, props.Popup));
   };
   return (
     <>
@@ -435,7 +433,14 @@ const VideoIntro = (props) => {
                   className="font-size-13px"
                   placeholder="What type of video is this?"
                   onChange={setType}
-                  defaultValue={type}
+                  defaultValue={
+                    type
+                      ? {
+                          name: type?.type,
+                          label: type?.type,
+                        }
+                      : null
+                  }
                   options={videoTypes}
                 />
               </div>
@@ -1605,6 +1610,9 @@ const UnifyFreelancer = () => {
   const [hwpPopup, setHwpPopup] = useState(false);
   const [workHistoryTab, setWorkHistoryTab] = useState("COMPLETED JOBS");
   const [portfolioPopup, setPortfolioPopup] = useState(false);
+  const [videoPopup, setVideoPopup] = useState(false);
+  const [videoURL, setVideoURL] = useState(null);
+
   const settings = {
     dots: true,
     infinite: false,
@@ -1696,6 +1704,36 @@ const UnifyFreelancer = () => {
 
     dispatch(editNameInfo(formData));
   };
+
+  const IntroVideoThumb = ({ data }) => {
+    const vidId = data?.url?.split("v=")[1].substring(0, 11);
+    const thumbnail = `https://img.youtube.com/vi/${vidId}/0.jpg`;
+
+    useEffect(() => {
+      setVideoURL(`https://www.youtube.com/embed/${vidId}`);
+    }, [data]);
+
+    return (
+      <>
+        <div
+          className="thumbnail"
+          style={{
+            width: "100%",
+            height: "auto",
+            margin: "10px 0 10px 0",
+            padding: 0,
+          }}
+        >
+          <img
+            src={thumbnail}
+            style={{ width: "100%", height: "auto" }}
+            onClick={() => setVideoPopup(true)}
+          />
+        </div>
+      </>
+    );
+  };
+
   return (
     <div className="mt-5 mb-5">
       <Container>
@@ -1963,25 +2001,31 @@ const UnifyFreelancer = () => {
                       </svg>
                     </button>
                   </div>
-                  <span
-                    style={{
-                      fontSize: 15,
-                      fontWeight: 400,
-                    }}
-                  >
-                    <a
-                      href={freelancerProfileList?.video?.url}
-                      target="_blank"
-                      style={{ display: "flex", alignItems: "center" }}
+                  <div>
+                    <IntroVideoThumb data={freelancerProfileList?.video} />
+                  </div>
+                </div>
+                <div className="myskill_hdingn profile_icon_25px">
+                  Visiblity
+                  <button>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="15.709"
+                      height="15.714"
+                      viewBox="0 0 15.709 15.714"
                     >
-                      <i
-                        class="fa fa-play"
-                        aria-hidden="true"
-                        style={{ color: "#6610f2", marginRight: 10 }}
-                      ></i>{" "}
-                      {freelancerProfileList?.video?.type}
-                    </a>
-                  </span>
+                      <path
+                        id="_8665767_pen_icon"
+                        data-name="8665767_pen_icon"
+                        d="M15.327,2.274,13.482.429a1.475,1.475,0,0,0-2.085,0L9.662,2.165l3.9,3.929L15.3,4.358A1.447,1.447,0,0,0,15.327,2.274Zm-6.356.585L1,10.83a.491.491,0,0,0-.134.251L.057,15.123a.491.491,0,0,0,.576.58l4.042-.808a.491.491,0,0,0,.251-.134L12.9,6.789Z"
+                        transform="translate(-0.047 0.002)"
+                        fill="#6d2ef1"
+                      />
+                    </svg>
+                  </button>
+                </div>
+                <div className="myskill_hdingn ms_hdsmall font-size-15px">
+                  {basicInfo?.visibility}
                 </div>
                 <div className="myskill_hdingn profile_icon_25px">
                   Hours per week
@@ -2934,6 +2978,13 @@ const UnifyFreelancer = () => {
         <PortfolioPupup
           open={portfolioPopup}
           onCloseModal={() => setPortfolioPopup(false)}
+        />
+      )}
+      {videoPopup && (
+        <IntroVideoPopup
+          open={videoPopup}
+          onCloseModal={() => setVideoPopup(false)}
+          videoUrl={videoURL}
         />
       )}
       {popup}

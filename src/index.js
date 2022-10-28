@@ -78,11 +78,11 @@ import FreelanceMyStats from "./freelancer/setting/my-stats";
 import FreelanceBillingEarn from "./freelancer/billing-erning";
 import FreelanceProposal from "./freelancer/sendproposal";
 import FreelanceTimeTracker from "./freelancer/time-tracker";
-import FreelancerProfile from './freelancer/profile'
+import FreelancerProfile from "./freelancer/profile";
 import FreelancerChat from "./freelancer/chat";
-import FreelancerDashboard from './freelancer/dashboard';
+import FreelancerDashboard from "./freelancer/dashboard";
 
-import FreelancerSubscription from './freelancer/subscription'
+import FreelancerSubscription from "./freelancer/subscription";
 
 import { Provider } from "react-redux";
 import store from "./redux/store";
@@ -128,8 +128,14 @@ root.render(
         <Route path="/view-job/private" element={<MakePrivate />} />
         <Route path="/view-job/:screen" element={<ViewJob />} />
         <Route path="/hire-freelancer" element={<HireFreelancer />} />
-        <Route path="/hire-freelancer/addAddress" element={<AddCompanyAddress />} />
-        <Route path="/hire-freelancer/edit-address" element={<EditCompanyAddress />} />
+        <Route
+          path="/hire-freelancer/addAddress"
+          element={<AddCompanyAddress />}
+        />
+        <Route
+          path="/hire-freelancer/edit-address"
+          element={<EditCompanyAddress />}
+        />
         <Route path="/my-jobs" element={<MyJobs />} />
         <Route path="/all-contracts" element={<AllContracts />} />
         <Route path="/talent-discover" element={<TalentDiscover />} />
@@ -262,7 +268,10 @@ root.render(
         <Route path="/freelancer/chat" element={<FreelancerChat />} />
         <Route path="/freelancer/profile" element={<FreelancerProfile />} />
         <Route path="/freelancer/dashboard" element={<FreelancerDashboard />} />
-        <Route path="/freelancer/subscription" element={<FreelancerSubscription />} />
+        <Route
+          path="/freelancer/subscription"
+          element={<FreelancerSubscription />}
+        />
       </Routes>
     </HashRouter>
   </Provider>
