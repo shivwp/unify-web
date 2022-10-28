@@ -3,7 +3,7 @@ import "../../../styles/accountInfo.css";
 import { Row, Col } from "react-bootstrap";
 import Select from "react-select";
 import CloseAccountPopup from "../../../popups/CloseAccountPopup";
-import Form from 'react-bootstrap/Form';
+import Form from "react-bootstrap/Form";
 
 const CompanyContactInfo = () => {
   const options1 = [{ name: "india", label: "india" }];
@@ -17,7 +17,7 @@ const CompanyContactInfo = () => {
         </div>
         <div className="acc_form">
           <Row>
-            <Col lg-6 sm-12 md-12>
+            <Col lg={6} sm={12} md={12}>
               <div className="inp_fields">
                 <span>Owner Email</span>
                 <Form.Control
@@ -52,10 +52,15 @@ const CompanyContactInfo = () => {
                 />
               </div>
             </Col>
-            <Col lg-6 sm-12 md-12>
+            <Col lg={6} sm={12} md={12}>
               <div className="inp_fields">
                 <span>Phone</span>
-                <Form.Control type="text" name="phone" id="phone" placeholder="" />
+                <Form.Control
+                  type="text"
+                  name="phone"
+                  id="phone"
+                  placeholder=""
+                />
               </div>
               <div className="inp_fields">
                 <span>Time Zone</span>
@@ -67,11 +72,21 @@ const CompanyContactInfo = () => {
               </div>
               <div className="inp_fields">
                 <span>Address</span>
-                <Form.Control type="text" name="address" id="address" placeholder="" />
+                <Form.Control
+                  type="text"
+                  name="address"
+                  id="address"
+                  placeholder=""
+                />
               </div>
               <div className="inp_fields">
                 <span>ZIP</span>
-                <Form.Control type="text" name="zip" id="zip" placeholder="zip" />
+                <Form.Control
+                  type="text"
+                  name="zip"
+                  id="zip"
+                  placeholder="zip"
+                />
               </div>
             </Col>
           </Row>

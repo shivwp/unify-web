@@ -20,7 +20,7 @@ const AddCompAddress = () => {
               <div className="add_details">
                 <form>
                   <Row>
-                    <Col lg-6>
+                    <Col lg={6}>
                       <div className="add_address_inp">
                         <span>Country</span>
                         <Select
@@ -38,7 +38,7 @@ const AddCompAddress = () => {
                         />
                       </div>
                     </Col>
-                    <Col lg-6>
+                    <Col lg={6}>
                       <div className="add_address_inp">
                         <span>Address</span>
                         <Form.Control type="text" name="address" id="address" />

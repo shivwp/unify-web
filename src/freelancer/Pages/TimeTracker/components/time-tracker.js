@@ -53,7 +53,7 @@ const Screen = () => {
               <td className=''>
                 <div className='d-flex justify-content-center cewi_trak align-items-center'>
                 <svg xmlns="http://www.w3.org/2000/svg" width="11.787" height="6.894" viewBox="0 0 11.787 6.894">
-  <path id="arrow" d="M17.459,11.5l-4.479,4.479L8.5,11.5" transform="translate(-7.086 -10.086)" fill="none" stroke="#221d2d" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2" opacity="0.66"/>
+  <path id="arrow" d="M17.459,11.5l-4.479,4.479L8.5,11.5" transform="translate(-7.086 -10.086)" fill="none" stroke="#221d2d" strokeLinecap="round" strokeLinejoin="round" stroke-miterlimit="10" strokeWidth="2" opacity="0.66"/>
 </svg>
                 </div>
               </td>
@@ -141,7 +141,7 @@ const Screen = () => {
               <td className=''>
                 <div className='d-flex justify-content-center cewi_trak align-items-center'>
                 <svg xmlns="http://www.w3.org/2000/svg" width="6.894" height="11.787" viewBox="0 0 6.894 11.787">
-  <path id="arrow" d="M8.959,4.479,4.479,0,0,4.479" transform="translate(5.894 1.414) rotate(90)" fill="none" stroke="#221d2d" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2" opacity="0.66"/>
+  <path id="arrow" d="M8.959,4.479,4.479,0,0,4.479" transform="translate(5.894 1.414) rotate(90)" fill="none" stroke="#221d2d" strokeLinecap="round" strokeLinejoin="round" stroke-miterlimit="10" strokeWidth="2" opacity="0.66"/>
 </svg>
                 </div>
               </td>
@@ -173,7 +173,7 @@ const Screen = () => {
               <td className=''>
                 <div className='d-flex justify-content-center cewi_trak align-items-center'>
                 <svg xmlns="http://www.w3.org/2000/svg" width="6.894" height="11.787" viewBox="0 0 6.894 11.787">
-  <path id="arrow" d="M8.959,4.479,4.479,0,0,4.479" transform="translate(5.894 1.414) rotate(90)" fill="none" stroke="#221d2d" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2" opacity="0.66"/>
+  <path id="arrow" d="M8.959,4.479,4.479,0,0,4.479" transform="translate(5.894 1.414) rotate(90)" fill="none" stroke="#221d2d" strokeLinecap="round" strokeLinejoin="round" stroke-miterlimit="10" strokeWidth="2" opacity="0.66"/>
 </svg>
                 </div>
               </td>
@@ -297,7 +297,7 @@ const Screen = () => {
                   viewBox="0 0 16 16"
                 >
                   <path
-                    fill-rule="evenodd"
+                    fillRule="evenodd"
                     d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"
                   />
                 </svg>

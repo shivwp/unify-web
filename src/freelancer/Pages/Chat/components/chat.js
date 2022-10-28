@@ -693,7 +693,7 @@ const Screen = () => {
                 <div className="searchbox_hat select_box_hat">
                   <div className='bxshat_svg'>
                   <svg xmlns="http://www.w3.org/2000/svg" width="13.414" height="8.121" viewBox="0 0 13.414 8.121">
-                    <path id="Path_4512" data-name="Path 4512" d="M7948-1915.291l6,6,6-6" transform="translate(-7947.293 1915.998)" fill="none" stroke="#fff" stroke-width="2"/>
+                    <path id="Path_4512" data-name="Path 4512" d="M7948-1915.291l6,6,6-6" transform="translate(-7947.293 1915.998)" fill="none" stroke="#fff" strokeWidth="2"/>
                   </svg>
                   </div>
                   <Select
@@ -896,7 +896,7 @@ const Screen = () => {
                       transform="translate(1.023 0.504)"
                       fill="#ff88fe"
                       stroke="#ff88fe"
-                      stroke-width="2"
+                      strokeWidth="2"
                     />
                   </svg>
                   <svg
@@ -911,7 +911,7 @@ const Screen = () => {
                       transform="translate(1.023 0.504)"
                       fill="#ff88fe"
                       stroke="#ff88fe"
-                      stroke-width="2"
+                      strokeWidth="2"
                     />
                   </svg>
                   <svg
@@ -926,7 +926,7 @@ const Screen = () => {
                       transform="translate(1.023 0.504)"
                       fill="#ff88fe"
                       stroke="#ff88fe"
-                      stroke-width="2"
+                      strokeWidth="2"
                     />
                   </svg>
                   <div>Reviews</div>

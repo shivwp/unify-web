@@ -42,8 +42,6 @@ const slider = (props) => {
                             <Swiper
                                 spaceBetween={30}
                                 slidesPerView={4}
-                                onSlideChange={() => console.log('slide change')}
-                                onSwiper={(swiper) => console.log(swiper)}
                                 breakpoints={{
                                     200: {
                                         slidesPerView: 1,

@@ -50,7 +50,7 @@ const Budget = () => {
                                     <div className="d-flex">
                                         <div className='input_from_tlab lign_tex'>
                                             <div className="d-flex align-items-center">$</div>
-                                            <Form.Control type="text" value="15" />
+                                            <Form.Control type="text" defaultValue="15" />
                                         </div>
                                         <div className="input_t_lab input_hour lign_tex pl-2">/hour</div>
                                     </div>
@@ -60,7 +60,7 @@ const Budget = () => {
                                     <div className="d-flex">
                                         <div className='input_from_tlab lign_tex'>
                                             <div className="d-flex align-items-center">$</div>
-                                            <Form.Control type="text" value="30" />
+                                            <Form.Control type="text" defaultValue="30" />
                                         </div>
                                         <div className="input_t_lab input_hour lign_tex pl-2">/hour</div>
                                     </div>

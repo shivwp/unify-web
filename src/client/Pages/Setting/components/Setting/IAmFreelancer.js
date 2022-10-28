@@ -206,8 +206,6 @@ const IAmFreelancer = () => {
               loop="true"
               modules={[Navigation]}
               navigation={true}
-              onSlideChange={() => console.log("slide change")}
-              onSwiper={(swiper) => console.log(swiper)}
               breakpoints={{
                 200: {
                   slidesPerView: 1,
