@@ -1,10 +1,11 @@
 import { Row, Col } from "react-bootstrap";
+import Form from 'react-bootstrap/Form'
 
 const CloseIcon = () => {
   return (
     <svg
       fill="#B2B2B2"
-      class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiBox-root css-1om0hkc"
+      className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiBox-root css-1om0hkc"
       focusable="false"
       aria-hidden="true"
       viewBox="0 0 24 24"
@@ -42,7 +43,7 @@ const AddEmployment = (props) => {
                       <label className="text-black font-size-13px font-weight-500">
                         Company
                       </label>
-                      <input
+                      <Form.Control
                         type="text"
                         className="font-size-13px"
                         placeholder="Ex: Unify"
@@ -54,7 +55,7 @@ const AddEmployment = (props) => {
                       <label className="text-black font-size-13px font-weight-500">
                         Location
                       </label>
-                      <input
+                      <Form.Control
                         type="text"
                         className="font-size-13px"
                         placeholder="City"
@@ -66,7 +67,7 @@ const AddEmployment = (props) => {
                       <label className="text-black font-size-13px font-weight-500">
                         Country
                       </label>
-                      <input
+                      <Form.Control
                         type="text"
                         className="font-size-13px"
                         placeholder="Country"
@@ -78,7 +79,7 @@ const AddEmployment = (props) => {
                       <label className="text-black font-size-13px font-weight-500">
                         Title
                       </label>
-                      <input
+                      <Form.Control
                         type="text"
                         className="font-size-13px"
                         placeholder="Ex: Unify"
@@ -90,7 +91,7 @@ const AddEmployment = (props) => {
                       <label className="text-black font-size-13px font-weight-500">
                         From Month
                       </label>
-                      <input
+                      <Form.Control
                         type="text"
                         className="font-size-13px"
                         placeholder="From Month"
@@ -102,7 +103,7 @@ const AddEmployment = (props) => {
                       <label className="text-black font-size-13px font-weight-500">
                         From Year
                       </label>
-                      <input
+                      <Form.Control
                         type="text"
                         className="font-size-13px"
                         placeholder="From Year"
@@ -112,7 +113,7 @@ const AddEmployment = (props) => {
                   <Col className="text-right">
                     <div className="agrement_ineoeu flex-row d-flex justify-content-end mt-1 pt-0">
                       <label className="text-black text-right font-size-13px font-weight-500">
-                        <input type="checkbox" /> I currently work here
+                        <Form.Check type="checkbox" /> I currently work here
                       </label>
                     </div>
                   </Col>

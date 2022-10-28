@@ -9,6 +9,7 @@ import $ from "jquery";
 import "../../../../styles/freelancer.css";
 import Select from "react-select";
 import { useParams, Link } from "react-router-dom";
+import Form from 'react-bootstrap/Form'
 
 const ListCard = () => {
   const [dDown,Setddown] = useState(0)
@@ -157,7 +158,7 @@ const Project_Search = () => {
                     <h4>search by keyword</h4>
                   </div>
                   <div className="s_na_inpu">
-                    <input type="text" placeholder="what are you looking for" />
+                    <Form.Control type="text" placeholder="what are you looking for" />
                   </div>
                 </div>
                 <div className="s_na_box">
@@ -177,7 +178,7 @@ const Project_Search = () => {
                     <h4>Skills</h4>
                   </div>
                   <div className="s_na_inpu">
-                    <input type="text" placeholder="Search skills" />
+                    <Form.Control type="text" placeholder="Search skills" />
                     <div className="pls_s_na_input">+</div>
                   </div>
                 </div>
@@ -187,35 +188,35 @@ const Project_Search = () => {
                   <h4>Category</h4>
                 </div>
                 <div className="s_na_categ">
-                  <input type="checkbox" />
+                  <Form.Check type="checkbox" />
                   <label>Apps Developements (2)</label>
                 </div>
                 <div className="s_na_categ">
-                  <input type="checkbox" />
+                  <Form.Check type="checkbox" />
                   <label>IOS (2)</label>
                 </div>
                 <div className="s_na_categ">
-                  <input type="checkbox" />
+                  <Form.Check type="checkbox" />
                   <label>Business (10)</label>
                 </div>
                 <div className="s_na_categ">
-                  <input type="checkbox" />
+                  <Form.Check type="checkbox" />
                   <label>Services (10)</label>
                 </div>
                 <div className="s_na_categ">
-                  <input type="checkbox" />
+                  <Form.Check type="checkbox" />
                   <label>Digital Marketing (10)</label>
                 </div>
                 <div className="s_na_categ">
-                  <input type="checkbox" />
+                  <Form.Check type="checkbox" />
                   <label>Video & animation (10)</label>
                 </div>
                 <div className="s_na_categ">
-                  <input type="checkbox" />
+                  <Form.Check type="checkbox" />
                   <label>Website Development (10)</label>
                 </div>
                 <div className="s_na_categ">
-                  <input type="checkbox" />
+                  <Form.Check type="checkbox" />
                   <label>writing & Translation (10)</label>
                 </div>
               </div>
@@ -224,8 +225,8 @@ const Project_Search = () => {
                   <h4>Price</h4>
                 </div>
                 <div className="ran_fl_inp">
-                  <input type="num" value="0" placeholder="0" />
-                  <input type="num" value="1,500" placeholder="1,500" />
+                  <Form.Control type="num" value="0" placeholder="0" />
+                  <Form.Control type="num" value="1,500" placeholder="1,500" />
                 </div>
               </div>
 
@@ -234,19 +235,19 @@ const Project_Search = () => {
                   <h4>English Level</h4>
                 </div>
                 <div className="s_na_categ">
-                  <input type="checkbox" />
+                  <Form.Check type="checkbox" />
                   <label>Bilingual (1)</label>
                 </div>
                 <div className="s_na_categ">
-                  <input type="checkbox" />
+                  <Form.Check type="checkbox" />
                   <label>Fluent (4)</label>
                 </div>
                 <div className="s_na_categ">
-                  <input type="checkbox" />
+                  <Form.Check type="checkbox" />
                   <label>Native (3)</label>
                 </div>
                 <div className="s_na_categ">
-                  <input type="checkbox" />
+                  <Form.Check type="checkbox" />
                   <label>Professional (1)</label>
                 </div>
               </div>
@@ -276,11 +277,11 @@ const Project_Search = () => {
                 </div>
                 <div className="slide_btnss slider_shutter">
                   <div className="s_na_categ">
-                    <input type="checkbox" />
+                    <Form.Check type="checkbox" />
                     <label>English (1)</label>
                   </div>
                   <div className="s_na_categ">
-                    <input type="checkbox" />
+                    <Form.Check type="checkbox" />
                     <label>Japinese (4)</label>
                   </div>
                 </div>

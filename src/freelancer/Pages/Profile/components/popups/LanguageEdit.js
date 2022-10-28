@@ -1,10 +1,11 @@
 import { Row, Col } from "react-bootstrap";
+import Form from 'react-bootstrap/Form'
 import Select from "react-select";
 const CloseIcon = () => {
   return (
     <svg
       fill="#B2B2B2"
-      class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiBox-root css-1om0hkc"
+      className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiBox-root css-1om0hkc"
       focusable="false"
       aria-hidden="true"
       viewBox="0 0 24 24"
@@ -48,7 +49,7 @@ const LanguageEdit = (props) => {
                       <label className="text-black font-size-13px font-weight-500">
                         Language
                       </label>
-                      <input
+                      <Form.Control
                         type="text"
                         className="font-size-13px"
                         placeholder="English"
@@ -72,7 +73,7 @@ const LanguageEdit = (props) => {
                       <label className="text-black font-size-13px font-weight-500">
                         Language
                       </label>
-                      <input
+                      <Form.Control
                         type="text"
                         className="font-size-13px"
                         placeholder="English"

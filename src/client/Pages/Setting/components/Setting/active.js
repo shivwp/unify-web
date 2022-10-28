@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Row, Col } from "react-bootstrap";
+import Form from "react-bootstrap/Form";
 
 const Screen = ({ setOpen }) => {
   const [filterOpen, setFilterOpen] = useState(false);
@@ -47,13 +48,13 @@ const Screen = ({ setOpen }) => {
                   <div className="filter_headin_m">Admin</div>
                   <ul className="filter_ul_m">
                     <li>
-                      <input type="checkbox" /> All
+                      <Form.Check type="checkbox" /> All
                     </li>
                     <li>
-                      <input type="checkbox" /> Finance Only
+                      <Form.Check type="checkbox" /> Finance Only
                     </li>
                     <li>
-                      <input type="checkbox" /> Full
+                      <Form.Check type="checkbox" /> Full
                     </li>
                   </ul>
                 </div>
@@ -63,13 +64,13 @@ const Screen = ({ setOpen }) => {
                   <div className="filter_headin_m">Hiring</div>
                   <ul className="filter_ul_m">
                     <li>
-                      <input type="checkbox" /> None
+                      <Form.Check type="checkbox" /> None
                     </li>
                     <li>
-                      <input type="checkbox" /> Source Talent Only
+                      <Form.Check type="checkbox" /> Source Talent Only
                     </li>
                     <li>
-                      <input type="checkbox" /> Manager
+                      <Form.Check type="checkbox" /> Manager
                     </li>
                   </ul>
                 </div>
@@ -79,10 +80,10 @@ const Screen = ({ setOpen }) => {
                   <div className="filter_headin_m">Work Diaries</div>
                   <ul className="filter_ul_m">
                     <li>
-                      <input type="checkbox" /> Individual
+                      <Form.Check type="checkbox" /> Individual
                     </li>
                     <li>
-                      <input type="checkbox" /> Team
+                      <Form.Check type="checkbox" /> Team
                     </li>
                   </ul>
                 </div>
@@ -92,13 +93,13 @@ const Screen = ({ setOpen }) => {
                   <div className="filter_headin_m">Chat</div>
                   <ul className="filter_ul_m">
                     <li>
-                      <input type="checkbox" /> No One
+                      <Form.Check type="checkbox" /> No One
                     </li>
                     <li>
-                      <input type="checkbox" /> Team
+                      <Form.Check type="checkbox" /> Team
                     </li>
                     <li>
-                      <input type="checkbox" /> Company
+                      <Form.Check type="checkbox" /> Company
                     </li>
                   </ul>
                 </div>
@@ -144,7 +145,7 @@ const Screen = ({ setOpen }) => {
                 <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
               </svg>
             </div>
-            <input
+            <Form.Control
               type={`text`}
               placeholder={`Search ...`}
               className="bg-transparent"

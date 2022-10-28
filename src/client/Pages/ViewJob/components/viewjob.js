@@ -5,6 +5,7 @@ import ReviewProposal from "../../../../components/ReviewProposal/all";
 import Hire from "../../../../components/Hire/all";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const ViewScreen = () => {
   let { screen } = useParams();
@@ -43,7 +44,7 @@ const ViewScreen = () => {
           </div>
           <div>
             <div className="vj_r_link">
-              <a href="#0">Reach 6x more Top Rated Talent</a>
+              <Link to="#0">Reach 6x more Top Rated Talent</Link>
             </div>
             <div className="vj_r_sm_t">Upgrade this job</div>
           </div>

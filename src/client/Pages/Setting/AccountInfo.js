@@ -3,6 +3,7 @@ import "../../../styles/accountInfo.css";
 import { Row, Col } from "react-bootstrap";
 import CompanyContactInfo from "./CompanyContactInfo";
 import CompnyDetailsInfo from "./CompnyDetailsInfo";
+import Form from "react-bootstrap/Form";
 
 const AccountInfo = () => {
   return (
@@ -27,7 +28,7 @@ const AccountInfo = () => {
             <Col lg={6} md={6} sm={12}>
               <div className="inp_fields">
                 <span>First Name</span>
-                <input
+                <Form.Control
                   type="text"
                   name="first-name"
                   id="first-name"
@@ -36,7 +37,7 @@ const AccountInfo = () => {
               </div>
               <div className="inp_fields">
                 <span>Email</span>
-                <input
+                <Form.Control
                   type="text"
                   name="email"
                   id="email"
@@ -47,7 +48,7 @@ const AccountInfo = () => {
             <Col lg={6} md={6} sm={12}>
               <div className="inp_fields">
                 <span>Last Name</span>
-                <input
+                <Form.Control
                   type="text"
                   name="last-name"
                   id="last-name"

@@ -2,6 +2,7 @@ import React from "react";
 import { Modal } from "react-responsive-modal";
 import "react-responsive-modal/styles.css";
 import "./popup.css";
+import Form from 'react-bootstrap/Form'
 
 const CloseAccountPopup = ({ open, onCloseModal }) => {
   return (
@@ -26,13 +27,13 @@ const CloseAccountPopup = ({ open, onCloseModal }) => {
             <ul className="popup-radio">
               <li>
                 <label htmlFor="reason-1">
-                  <input type="radio" id="reason-1" name="p" />{" "}
+                  <Form.Check type="radio" id="reason-1" name="p" />{" "}
                   <span>Closing duplicate account </span>
                 </label>
               </li>
               <li>
                 <label htmlFor="reason-2">
-                  <input type="radio" name="p" id="reason-2" />{" "}
+                  <Form.Check type="radio" name="p" id="reason-2" />{" "}
                   <span>
                     I want to change my username
                   </span>
@@ -40,7 +41,7 @@ const CloseAccountPopup = ({ open, onCloseModal }) => {
               </li>
               <li>
                 <label htmlFor="reason-3">
-                  <input type="radio" name="p" id="reason-3" />{" "}
+                  <Form.Check type="radio" name="p" id="reason-3" />{" "}
                   <span>
                     Unify is not easy to use
                   </span>
@@ -48,7 +49,7 @@ const CloseAccountPopup = ({ open, onCloseModal }) => {
               </li>
               <li>
                 <label htmlFor="reason-4">
-                  <input type="radio" name="p" id="reason-4" />{" "}
+                  <Form.Check type="radio" name="p" id="reason-4" />{" "}
                   <span>
                     I am not satisfied with quality of freelancers on Upwork
                   </span>
@@ -56,7 +57,7 @@ const CloseAccountPopup = ({ open, onCloseModal }) => {
               </li>
               <li>
                 <label htmlFor="reason-5">
-                  <input type="radio" name="p" id="reason-5" />{" "}
+                  <Form.Check type="radio" name="p" id="reason-5" />{" "}
                   <span>
                     I signed up for the wrong type of account
                   </span>
@@ -64,7 +65,7 @@ const CloseAccountPopup = ({ open, onCloseModal }) => {
               </li>
               <li>
                 <label htmlFor="reason-6">
-                  <input type="radio" name="p" id="reason-6" />{" "}
+                  <Form.Check type="radio" name="p" id="reason-6" />{" "}
                   <span>
                     The freelancers on Upwork did not fit my needs
                   </span>
@@ -72,7 +73,7 @@ const CloseAccountPopup = ({ open, onCloseModal }) => {
               </li>
               <li>
                 <label htmlFor="reason-7">
-                  <input type="radio" name="p" id="reason-7" />{" "}
+                  <Form.Check type="radio" name="p" id="reason-7" />{" "}
                   <span>
                     I no longer need work done through Unify
                   </span>

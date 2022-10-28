@@ -66,7 +66,7 @@ const Screen = () => {
           <div className="d-flex justify-content-between align-items-center pb-3 b-bottom-gr">
             <div className="headin_yourp_b">Your Postings</div>
             <div className="see_ps_ing">
-              <a href="#0">See all postings</a>
+              <Link to="#0">See all postings</Link>
             </div>
           </div>
           <div className="my_job_flx">
@@ -130,7 +130,7 @@ const Screen = () => {
           <div className="d-flex justify-content-between align-items-center pb-3 b-bottom-gr">
             <div className="headin_yourp_b">Your Drafts</div>
             <div className="see_ps_ing">
-              <a href="#0">See all drafts</a>
+              <Link to="#0">See all drafts</Link>
             </div>
           </div>
           <div className="my_job_flx">
@@ -212,7 +212,7 @@ const Screen = () => {
                   send an invite to reach out to people directly.)
                 </div>
                 <div className="my_job_pos_tme inner_a_sty">
-                  <a href="#0">Check out examples of effective job posts</a>
+                  <Link to="#0">Check out examples of effective job posts</Link>
                 </div>
               </div>
             </div>
@@ -250,10 +250,10 @@ const Screen = () => {
                   relationships with talent in a way that helps you both grow.
                 </div>
                 <div className="my_job_pos_tme inner_a_sty">
-                  <a href="#0">
+                  <Link to="#0">
                     Read about payment protections, billing methods, taxes, and
                     more
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -264,7 +264,7 @@ const Screen = () => {
             <div>
               <div className="my_job_a job_na_bol">Questions?</div>
               <div className="my_job_pos_tme inner_a_sty">
-                Visit our <a href="#0">Help Center</a> to learn more tips for
+                Visit our <Link to="#0">Help Center</Link> to learn more tips for
                 finding the right talent.
               </div>
             </div>

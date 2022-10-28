@@ -2,6 +2,7 @@ import React from "react";
 import { Modal } from "react-responsive-modal";
 import "react-responsive-modal/styles.css";
 import "./popup.css";
+import Form from 'react-bootstrap/Form'
 
 const RemovePostingPopup = ({ open, onCloseModal }) => {
   return (
@@ -23,31 +24,31 @@ const RemovePostingPopup = ({ open, onCloseModal }) => {
             <ul className="popup-radio">
               <li>
                 <label htmlFor="reason-1">
-                  <input type="radio" id="reason-1" name="p" /> <span>Accidental job
+                  <Form.Check type="radio" id="reason-1" name="p" /> <span>Accidental job
                   Posting creation</span>
                 </label>
               </li>
               <li>
                 <label htmlFor="reason-2">
-                  <input type="radio" name="p" id="reason-2" /> <span>All Position
+                  <Form.Check type="radio" name="p" id="reason-2" /> <span>All Position
                   filled</span>
                 </label>
               </li>
               <li>
                 <label htmlFor="reason-3">
-                  <input type="radio" name="p" id="reason-3" /> <span>Filled by
+                  <Form.Check type="radio" name="p" id="reason-3" /> <span>Filled by
                   alternate source</span>
                 </label>
               </li>
               <li>
                 <label htmlFor="reason-4">
-                  <input type="radio" name="p" id="reason-4" /> <span>No freelancer
+                  <Form.Check type="radio" name="p" id="reason-4" /> <span>No freelancer
                   for requested skills</span>
                 </label>
               </li>
               <li>
                 <label htmlFor="reason-5">
-                  <input type="radio" id="reason-5" name="p" /> <span>Project was
+                  <Form.Check type="radio" id="reason-5" name="p" /> <span>Project was
                   cancelled</span>
                 </label>
               </li>

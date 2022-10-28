@@ -1,9 +1,10 @@
+import Form from 'react-bootstrap/Form';
 
 const CloseIcon = () => {
   return (
     <svg
       fill="#B2B2B2"
-      class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiBox-root css-1om0hkc"
+      className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiBox-root css-1om0hkc"
       focusable="false"
       aria-hidden="true"
       viewBox="0 0 24 24"
@@ -57,7 +58,7 @@ const EditSkill = (props) => {
                   </div>
                 </div>
                 <div>
-                  <input
+                  <Form.Control
                     type="text"
                     placeholder="search here skills..."
                     className="no-border font-size-13px search_skilloiouo"

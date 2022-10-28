@@ -4,6 +4,8 @@ import Container from "react-bootstrap/Container";
 import Select from "react-select";
 import { Link } from "react-router-dom";
 
+import Form from "react-bootstrap/Form";
+
 const AddCompAddress = () => {
   const options1 = [{ name: "india", label: "india" }];
   return (
@@ -39,11 +41,11 @@ const AddCompAddress = () => {
                     <Col lg-6>
                       <div className="add_address_inp">
                         <span>Address</span>
-                        <input type="text" name="address" id="address" />
+                        <Form.Control type="text" name="address" id="address" />
                       </div>
                       <div className="add_address_inp">
                         <span>Postal Code(optional)</span>
-                        <input
+                        <Form.Control
                           type="text"
                           name="postal-code"
                           id="postal-code"
@@ -51,8 +53,12 @@ const AddCompAddress = () => {
                       </div>
                     </Col>
                   </Row>
-                  <Link to="/hire-freelancer/edit-address" >
-                    <button type="button" className="save_Address" style={{fontWeight: 600}}>
+                  <Link to="/hire-freelancer/edit-address">
+                    <button
+                      type="button"
+                      className="save_Address"
+                      style={{ fontWeight: 600 }}
+                    >
                       Save
                     </button>
                   </Link>
@@ -103,7 +109,15 @@ const AddCompAddress = () => {
                 </div>
               </div>
               <div className="find_and_hire_button add_Addr">
-                <button type="button" className="find_contact" style={{padding: "10px 20px", fontSize: "13px", fontWeight: 600}}>
+                <button
+                  type="button"
+                  className="find_contact"
+                  style={{
+                    padding: "10px 20px",
+                    fontSize: "13px",
+                    fontWeight: 600,
+                  }}
+                >
                   Find Contact & Hire
                 </button>
               </div>

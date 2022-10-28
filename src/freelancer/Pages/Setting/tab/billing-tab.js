@@ -3,6 +3,7 @@ import { Row, Col } from 'react-bootstrap';
 import SideNav from './site_nav';
 import Title from '../../../../components/title'
 import {Link} from 'react-router-dom'
+import Form from 'react-bootstrap/Form';
 
 const Screen = () => {
     Title(' | Billing & Payments')
@@ -37,8 +38,8 @@ const Screen = () => {
                                 </div>
                                 <div>
                                     <ul className="setting_pay_inp d-flex sflex_spance">
-                                        <li><input type="radio" name="p" /> Payment card</li>
-                                        <li><input type="radio" name="p" /> <img src="/assets/paypal.png" alt="" /></li>
+                                        <li><Form.Check type="radio" name="p" /> Payment card</li>
+                                        <li><Form.Check type="radio" name="p" /> <img src="/assets/paypal.png" alt="" /></li>
                                     </ul>
                                     
                                     <div className="btn_foot_sec no-border mt-0 mb-0 p-0 fo_btn_c next_b_btn_c">

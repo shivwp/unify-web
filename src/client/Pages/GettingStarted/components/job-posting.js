@@ -3,6 +3,7 @@ import { Row, Col } from 'react-bootstrap';
 import SideNav from '../../../../components/site_nav';
 import Title from '../../../../components/title'
 import { Link } from "react-router-dom";
+import Form from 'react-bootstrap/Form';
 
 const JobPosting = () => {
     Title(' | Getting Started')
@@ -16,7 +17,7 @@ const JobPosting = () => {
                             <div className="s_b_head"><h2>Getting Started</h2><div className="s_on">Step 1 of 5</div></div>
                             <div className='my_skil_head mr_2_sm'><h3>What would you like to do?</h3></div>
                             <div className="s_b_r">
-                                <input type="radio" id="r_1" name="g" />
+                                <Form.Check type="radio" id="r_1" name="g" />
                                 <label htmlFor="r_1"> <p>Create a new job post.</p></label>
                             </div>
                             <Row>
@@ -47,11 +48,11 @@ const JobPosting = () => {
                                 </Col>
                             </Row>
                             <div className="s_b_r">
-                                <input type="radio" id="r_2" name="g" />
+                                <Form.Check type="radio" id="r_2" name="g" />
                                 <label htmlFor="r_2"> <p>Edit an existing draft </p></label>
                             </div>
                             <div className="s_b_r">
-                                <input type="radio" id="r_3" name="g" />
+                                <Form.Check type="radio" id="r_3" name="g" />
                                 <label htmlFor="r_3"> <p>Reuse a previous job pst</p></label>
                             </div>
                             <div className="s_select">

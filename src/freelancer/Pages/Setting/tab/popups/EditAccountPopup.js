@@ -2,6 +2,7 @@ import React from "react";
 import { Modal } from "react-responsive-modal";
 import "react-responsive-modal/styles.css";
 import "../../../../../popups/popup.css";
+import Form from 'react-bootstrap/Form'
 
 const EditTeamPopup = ({ open, onCloseModal }) => {
   return (
@@ -17,7 +18,7 @@ const EditTeamPopup = ({ open, onCloseModal }) => {
         <div className="team_name">
           <label>
             <span style={{fontSize: '14px', fontWeight: 600}}>User ID</span>
-            <input
+            <Form.Control
               type="text"
               name="name"
               placeholder=" "
@@ -27,7 +28,7 @@ const EditTeamPopup = ({ open, onCloseModal }) => {
         <div className="team_name">
           <label>
             <span style={{fontSize: '14px', fontWeight: 600}}>Name</span>
-            <input
+            <Form.Control
               type="text"
               name="name"
               placeholder="Ankita Kumavat"
@@ -37,7 +38,7 @@ const EditTeamPopup = ({ open, onCloseModal }) => {
         <div className="team_name">
           <label>
             <span style={{fontSize: '14px', fontWeight: 600}}>Email</span>
-            <input type="email" name="po-no" placeholder="" />
+            <Form.Control type="email" name="po-no" placeholder="" />
           </label>
         </div>
 

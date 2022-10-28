@@ -2,6 +2,7 @@ import Carousel from 'react-bootstrap/Carousel';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import Navbar from './Layouts/Header/HeaderMain';
+import Row from "react-bootstrap/Row";
 
 const slider = (props) => {
     return (
@@ -33,7 +34,7 @@ const slider = (props) => {
             </div>
             <div className="clients_sec">
                 <div className="container">
-                    <div className="row">
+                    <Row>
                         <div className="col-lg-2 col-md-2 d-flex justify-content-center align-items-center">
                             <div className="as_used">As used by</div>
                         </div>
@@ -84,7 +85,7 @@ const slider = (props) => {
                                 </SwiperSlide>
                             </Swiper>
                         </div>
-                    </div>
+                    </Row>
                 </div>
             </div>
         </div>

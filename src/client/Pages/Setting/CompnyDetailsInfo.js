@@ -2,6 +2,7 @@ import React from "react";
 import "../../../styles/accountInfo.css";
 import { Row, Col } from "react-bootstrap";
 import Select from "react-select";
+import Form from 'react-bootstrap/Form';
 
 const CompnyDetailsInfo = () => {
   const options1 = [{ name: "india", label: "india" }];
@@ -17,7 +18,7 @@ const CompnyDetailsInfo = () => {
             <Col lg={6} md={6} sm={12}>
               <div className="inp_fields">
                 <span>Company Name</span>
-                <input
+                <Form.Control
                   type="text"
                   name="company-name"
                   id="company-name"
@@ -36,11 +37,11 @@ const CompnyDetailsInfo = () => {
             <Col lg={6} md={6} sm={12}>
               <div className="inp_fields">
                 <span>Website</span>
-                <input type="text" name="website" id="website" placeholder="" />
+                <Form.Control type="text" name="website" id="website" placeholder="" />
               </div>
               <div className="inp_fields">
                 <span>Tagline</span>
-                <input type="text" name="tagline" id="tagline" placeholder="" />
+                <Form.Control type="text" name="tagline" id="tagline" placeholder="" />
               </div>
             </Col>
             <div className="inp_fields">
@@ -51,19 +52,19 @@ const CompnyDetailsInfo = () => {
               <span>How many people are in your company?</span>
               <div className="emp_radio_inputs">
                 <label htmlFor="radio-1">
-                  <input type="radio" id="radio-1" name="empCount" />
+                  <Form.Check type="radio" id="radio-1" name="empCount" />
                   <span> It Just me</span>
                 </label>
                 <label htmlFor="radio-2">
-                  <input type="radio" id="radio-2" name="empCount" />
+                  <Form.Check type="radio" id="radio-2" name="empCount" />
                   <span> 2-9 employees</span>
                 </label>
                 <label htmlFor="radio-3">
-                  <input type="radio" id="radio-3" name="empCount" />
+                  <Form.Check type="radio" id="radio-3" name="empCount" />
                   <span> 10-99 employees</span>
                 </label>
                 <label htmlFor="radio-4">
-                  <input type="radio" id="radio-4" name="empCount" />
+                  <Form.Check type="radio" id="radio-4" name="empCount" />
                   <span> more then 100 employees</span>
                 </label>
               </div>

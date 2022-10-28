@@ -1,12 +1,13 @@
 import { Row, Col } from "react-bootstrap";
 import { useState } from "react";
 import { onPasswordChange } from "../../../../../redux/actions/authActions";
+import Form from 'react-bootstrap/Form'
 import { useDispatch } from "react-redux";
 const CloseIcon = () => {
   return (
     <svg
       fill="#B2B2B2"
-      class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiBox-root css-1om0hkc"
+      className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiBox-root css-1om0hkc"
       focusable="false"
       aria-hidden="true"
       viewBox="0 0 24 24"
@@ -53,7 +54,7 @@ const ChangePassword = (props) => {
                   <label className="text-black font-size-13px font-weight-500">
                     Old Password
                   </label>
-                  <input
+                  <Form.Control
                     type="password"
                     className="font-size-13px"
                     onChange={(e) => handleOnChange(e)}
@@ -67,7 +68,7 @@ const ChangePassword = (props) => {
                       <label className="text-black font-size-13px font-weight-500">
                         New password
                       </label>
-                      <input
+                      <Form.Control
                         type="password"
                         name="new_password"
                         onChange={(e) => handleOnChange(e)}
@@ -81,7 +82,7 @@ const ChangePassword = (props) => {
                       <label className="text-black font-size-13px font-weight-500">
                         Confirm New Password
                       </label>
-                      <input
+                      <Form.Control
                         type="password"
                         name="confirm_password"
                         onChange={(e) => handleOnChange(e)}
@@ -93,7 +94,7 @@ const ChangePassword = (props) => {
                 </Row>
                 <div className="popup_form_element agrement_ineoeu mt-3 pt-1">
                   <label className="text-black font-size-13px font-weight-500">
-                    <input type="checkbox" /> All devices will be required to sign
+                    <Form.Check type="checkbox" /> All devices will be required to sign
                     in with new password
                   </label>
                 </div>

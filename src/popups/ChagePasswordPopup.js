@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Modal } from "react-responsive-modal";
 import "react-responsive-modal/styles.css";
 import "./popup.css";
+import Form from 'react-bootstrap/Form';
 
 const ChagePasswordPopup = ({ onCloseModal, open }) => {
   const [hideNewPass, setHideNewPass] = useState(true);
@@ -23,7 +24,7 @@ const ChagePasswordPopup = ({ onCloseModal, open }) => {
           <div className="password-inp">
             <div className="inp-label">Old Password</div>
             <div className="input-grp">
-              <input type={hideOldPass ? "password" : "text"} />
+              <Form.Control type={hideOldPass ? "password" : "text"} />
               {hideOldPass ? (
                 <i
                   className="fa fa-eye-slash showInpPass"
@@ -42,7 +43,7 @@ const ChagePasswordPopup = ({ onCloseModal, open }) => {
           <div className="password-inp">
             <div className="inp-label">New Password</div>
             <div className="input-grp">
-              <input type={hideNewPass ? "password" : "text"} />
+              <Form.Control type={hideNewPass ? "password" : "text"} />
               {hideNewPass ? (
                 <i
                   className="fa fa-eye-slash showInpPass"
@@ -61,7 +62,7 @@ const ChagePasswordPopup = ({ onCloseModal, open }) => {
           <div className="password-inp">
             <div className="inp-label">Confirm New Password</div>
             <div className="input-grp">
-              <input type={hideConfPass ? "password" : "text"} />
+              <Form.Control type={hideConfPass ? "password" : "text"} />
               {hideConfPass ? (
                 <i
                   className="fa fa-eye-slash showInpPass"
@@ -78,7 +79,7 @@ const ChagePasswordPopup = ({ onCloseModal, open }) => {
             </div>
           </div>
           <div className="alert-inp">
-            <input type="checkbox" /> {"  "}{" "}
+            <Form.Check type="checkbox" /> {"  "}{" "}
             <span>
               All Device will be required to sign in with new password
             </span>

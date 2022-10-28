@@ -3,6 +3,8 @@ import { Col, Row } from 'react-bootstrap';
 import Title from '../../../../components/title';
 import Checkbox from "react-custom-checkbox";
 import * as Icon from "react-icons/fi";
+import Form from "react-bootstrap/Form";
+import { Link } from 'react-router-dom';
 
 const Screen = () => {
     Title(" | Talent Saved");
@@ -35,7 +37,7 @@ const Screen = () => {
                                     <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
                                 </svg>
                             </div>
-                            <input type={`text`} placeholder={`Search talent names in this list`} />
+                            <Form.Control type={`text`} placeholder={`Search talent names in this list`} />
                         </div>
                     </div>
                     <div className='freelancer_box_in mt-0 pt-4 pb-5'>
@@ -83,7 +85,7 @@ const Screen = () => {
                                         </div>
                                     </div>
                                     <div className='freelancer_compl_in'>
-                                        Hello! I am a professional UI/UX Designer. There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour... <a href='#0' className='text-decoration-none'>View more</a></div>
+                                        Hello! I am a professional UI/UX Designer. There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour... <Link to='#0' className='text-decoration-none'>View more</Link></div>
                                 </div>
                             </Col>
                         </Row>

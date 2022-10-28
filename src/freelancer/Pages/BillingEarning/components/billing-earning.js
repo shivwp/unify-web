@@ -5,6 +5,7 @@ import Title from "../../../../components/title";
 import { useState } from "react";
 import DateRangePicker from "react-bootstrap-daterangepicker";
 import "bootstrap-daterangepicker/daterangepicker.css";
+import { Link } from "react-router-dom";
 
 const TBLScreen = () => {
   return (
@@ -129,7 +130,7 @@ const Screen = () => {
               <div className="be_hed_s_ew">
                 View your earnings and any applicable fees or taxes by client
                 for the past 3 years. for earnings past three years go to{" "}
-                <a href="#0">transaction history</a>
+                <Link to="#0">transaction history</Link>
               </div>
             </div>
             <div className="d-flex flex-wrap justify-content-between align-items-center w-100 mt-3 mb-3 vrerev3rwvry">

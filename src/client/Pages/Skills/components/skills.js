@@ -4,6 +4,7 @@ import SideNav from '../../../../components/site_nav';
 import Title from '../../../../components/title';
 import $ from 'jquery';
 import { Link } from 'react-router-dom';
+import Form from "react-bootstrap/Form";
 
 const Skill = () => {
     Title(' | Skills')
@@ -27,7 +28,7 @@ const Skill = () => {
                                         <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
                                     </svg>
                                 </div>
-                                <input type="text" /></div>
+                                <Form.Control type="text" /></div>
                             <div className="t_inp_bt_text">For the best results, add 3-5 skills</div>
                             <div className="slide_mar">
                             <div className='s_slides'>

@@ -1,5 +1,6 @@
 import { Col, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import Form from 'react-bootstrap/Form'
 
 const Screen = (props) => {
     return (
@@ -17,7 +18,7 @@ const Screen = (props) => {
                             <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
                         </svg>
                     </div>
-                    <input type={`text`} placeholder={`search...`} />
+                    <Form.Control type={`text`} placeholder={`search...`} />
                 </div>
             </div>
             <div className='freelancer_box_in'>

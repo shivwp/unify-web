@@ -3,6 +3,7 @@ import { Row, Col } from 'react-bootstrap';
 import SideNav from '../../../../components/site_nav';
 import Title from '../../../../components/title';
 import { Link } from 'react-router-dom';
+import Form from 'react-bootstrap/Form';
 
 const Skill = () => {
     Title(' | Scope')
@@ -19,7 +20,7 @@ const Skill = () => {
                                 <div className="">
                                     <div className="s_b_r mrr_riii d-block mt-0">
                                         <div className="flex_aling">
-                                            <input type="radio" id="r_2" name="g" />
+                                            <Form.Check type="radio" id="r_2" name="g" />
                                             <label htmlFor="r_2"> <p className='font-20'><b className="text-black">Large</b></p></label>
                                         </div>
                                         <div className="label_apra">
@@ -28,7 +29,7 @@ const Skill = () => {
                                     </div>
                                     <div className="s_b_r mrr_riii d-block">
                                         <div className="flex_aling">
-                                            <input type="radio" id="r_1" name="g" />
+                                            <Form.Check type="radio" id="r_1" name="g" />
                                             <label htmlFor="r_1"> <p className='font-20'><b className="text-black">Medium</b></p></label>
                                         </div>
                                         <div className="label_apra">
@@ -37,7 +38,7 @@ const Skill = () => {
                                     </div>
                                     <div className="s_b_r mrr_riii d-block">
                                         <div className="flex_aling">
-                                            <input type="radio" id="r_4" name="g" />
+                                            <Form.Check type="radio" id="r_4" name="g" />
                                             <label htmlFor="r_4"> <p className='font-20'><b className="text-black">Small</b></p></label>
                                         </div>
                                         <div className="label_apra">
@@ -49,19 +50,19 @@ const Skill = () => {
                                     <div className='scop_head mb-2'><h3>How long will your work take?</h3></div>
                                     <div className="s_b_r mrr_riii d-block">
                                         <div className="flex_aling">
-                                            <input type="radio" id="r_2h" name="a" />
+                                            <Form.Check type="radio" id="r_2h" name="a" />
                                             <label htmlFor="r_2h"> <p className="litt_sm_para">More than 6 months</p></label>
                                         </div>
                                     </div>
                                     <div className="s_b_r mrr_riii d-block">
                                         <div className="flex_aling">
-                                            <input type="radio" id="r_1h" name="a" />
+                                            <Form.Check type="radio" id="r_1h" name="a" />
                                             <label htmlFor="r_1h">  <p className="litt_sm_para">3 to 6 months</p></label>
                                         </div>
                                     </div>
                                     <div className="s_b_r mrr_riii d-block">
                                         <div className="flex_aling">
-                                            <input type="radio" id="r_4h" name="a" />
+                                            <Form.Check type="radio" id="r_4h" name="a" />
                                             <label htmlFor="r_4h"><p className="litt_sm_para">1 to 3 months</p></label>
                                         </div>
                                     </div>
@@ -71,7 +72,7 @@ const Skill = () => {
                                     <p className="litt_sm_para">This won't restrict any proposals, but helps match expertise to your budget.</p>
                                     <div className="s_b_r mrr_riii d-block">
                                         <div className="flex_aling">
-                                            <input type="radio" id="r_2" name="l" />
+                                            <Form.Check type="radio" id="r_2" name="l" />
                                             <label htmlFor="r_2"> <p><b className="text-black">Entry</b></p></label>
                                         </div>
                                         <div className="label_apra">
@@ -80,7 +81,7 @@ const Skill = () => {
                                     </div>
                                     <div className="s_b_r mrr_riii d-block">
                                         <div className="flex_aling">
-                                            <input type="radio" id="r_1" name="l" />
+                                            <Form.Check type="radio" id="r_1" name="l" />
                                             <label htmlFor="r_1"> <p><b className="text-black">Intermediate</b></p></label>
                                         </div>
                                         <div className="label_apra">
@@ -89,7 +90,7 @@ const Skill = () => {
                                     </div>
                                     <div className="s_b_r mrr_riii d-block">
                                         <div className="flex_aling">
-                                            <input type="radio" id="r_4" name="l" />
+                                            <Form.Check type="radio" id="r_4" name="l" />
                                             <label htmlFor="r_4"> <p><b className="text-black">Expert</b></p></label>
                                         </div>
                                         <div className="label_apra">

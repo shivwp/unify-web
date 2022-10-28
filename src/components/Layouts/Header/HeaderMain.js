@@ -43,10 +43,10 @@ const NavbarHeader = (props) => {
           </button>
         </div>
         <div className="navdata_li">
-          <a href="#0">HOW IT WORKS</a>
+          <Link to="#0">HOW IT WORKS</Link>
         </div>
         <div className="navdata_li">
-          <a href="#0">BROWSE JOBS</a>
+          <Link to="#0">BROWSE JOBS</Link>
         </div>
         <div className="logout_btn_mob">
           <Link to={`/Signin`}>

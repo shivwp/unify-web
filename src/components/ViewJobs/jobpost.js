@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Col, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import Form from 'react-bootstrap/Form'
+import { Link } from "react-router-dom";
 
 const JonComponent = () => {
   const [privateAcc, setPrivateAcc] = useState(false);
@@ -287,10 +289,10 @@ const JonComponent = () => {
             <h1>Job Link</h1>
           </div>
           <div className="ab_inpu_cop">
-            <input type="text" />
+            <Form.Control type="text" />
           </div>
           <div className="cp_link">
-            <a href="#0;">copy link</a>
+            <Link to="#0;">copy link</Link>
           </div>
         </div>
       </Col>

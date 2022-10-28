@@ -1,9 +1,10 @@
+import Form from 'react-bootstrap/Form';
 
 const CloseIcon = () => {
   return (
     <svg
       fill="#B2B2B2"
-      class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiBox-root css-1om0hkc"
+      className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiBox-root css-1om0hkc"
       focusable="false"
       aria-hidden="true"
       viewBox="0 0 24 24"
@@ -42,7 +43,7 @@ const EditTitle = (props) => {
               </div>
   
               <div className="popup_form_element mb-5">
-                <input
+                <Form.Control
                   type="text"
                   className="font-size-13px"
                   placeholder="Senior UI/UX, Website Designer And Graphic Designer"

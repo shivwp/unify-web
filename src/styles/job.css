@@ -342,6 +342,7 @@
   background-color: #fff;
   border: none;
   outline: none;
+  border-radius: 0;
   width: 25%;
   font-family: "Poppins-Bold", "Poppins";
   font-weight: 500;

@@ -1,4 +1,5 @@
 import { Row, Col } from 'react-bootstrap'
+import Form from 'react-bootstrap/Form'
 
 const Screen = () => {
     return (
@@ -9,7 +10,7 @@ const Screen = () => {
                         <div className="search_icon_in">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-search" viewBox="0 0 16 16"><path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"></path></svg>
                         </div>
-                        <input type="text" placeholder="Search this conversation" />
+                        <Form.Control type="text" placeholder="Search this conversation" />
                     </div>
                     <div className='mess_dy_albel'>Tuesday, Sep 19, 2021</div>
                     <div className="mess_box_cw">
@@ -41,7 +42,7 @@ const Screen = () => {
                                 <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z" />
                             </svg>
                         </button>
-                        <input type="text" placeholder='Message' />
+                        <Form.Control type="text" placeholder='Message' />
                         <button className='send_btn_mfc'>SEND</button>
                     </div>
                 </Col>

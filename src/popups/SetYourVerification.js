@@ -2,6 +2,7 @@ import React from "react";
 import { Modal } from "react-responsive-modal";
 import "react-responsive-modal/styles.css";
 import "./popup.css";
+import Form from 'react-bootstrap/Form'
 
 const SetYourVerification = ({ open, onCloseModal }) => {
   return (
@@ -19,19 +20,19 @@ const SetYourVerification = ({ open, onCloseModal }) => {
             <ul className="popup-radio">
               <li>
                 <label htmlFor="reason-1">
-                  <input type="radio" id="reason-1" name="p" />{" "}
+                  <Form.Check type="radio" id="reason-1" name="p" />{" "}
                   <span>Authenticator app code</span>
                 </label>
               </li>
               <li>
                 <label htmlFor="reason-2">
-                  <input type="radio" name="p" id="reason-2" />{" "}
+                  <Form.Check type="radio" name="p" id="reason-2" />{" "}
                   <span>Mobile app prompt</span>
                 </label>
               </li>
               <li>
                 <label htmlFor="reason-3">
-                  <input type="radio" name="p" id="reason-3" />{" "}
+                  <Form.Check type="radio" name="p" id="reason-3" />{" "}
                   <span>Text message</span>
                 </label>
               </li>
@@ -44,13 +45,13 @@ const SetYourVerification = ({ open, onCloseModal }) => {
             <ul className="popup-radio">
               <li>
                 <label htmlFor="reason-1">
-                  <input type="radio" id="reason-1" name="p" />{" "}
+                  <Form.Check type="radio" id="reason-1" name="p" />{" "}
                   <span>When my login or activity seems risky</span>
                 </label>
               </li>
               <li>
                 <label htmlFor="reason-2">
-                  <input type="radio" name="p" id="reason-2" />{" "}
+                  <Form.Check type="radio" name="p" id="reason-2" />{" "}
                   <span>
                     At every login and when my login or activity seems risky
                   </span>

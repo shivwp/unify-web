@@ -1,7 +1,7 @@
 import Container from 'react-bootstrap/Container';
 import { Col, Row } from 'react-bootstrap';
 import Title from '../../../../components/title';
-
+import { Link } from 'react-router-dom';
 const Screen = () => {
     Title(" | Talent Recently Viewed");
     return (
@@ -50,7 +50,7 @@ const Screen = () => {
                                         </div>
                                     </div>
                                     <div className='freelancer_compl_in'>
-                                        Hello! I am a professional UI/UX Designer. There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour... <a href='#0'>View more</a></div>
+                                        Hello! I am a professional UI/UX Designer. There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour... <Link to='#0'>View more</Link></div>
                                 </div>
                             </Col>
                         </Row>

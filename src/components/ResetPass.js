@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { onResetPassword } from "../redux/actions/authActions";
 import { useNavigate } from "react-router-dom";
+import Form from 'react-bootstrap/Form'
 
 const ResetPass = () => {
   const [hidePass, setHidePass] = useState(true);
@@ -31,7 +32,7 @@ const ResetPass = () => {
           <div className="pass_inputs">
             <div className="pass_inp">
               <label htmlFor="email">Enter New Password</label>
-              <input
+              <Form.Control
                 type={hidePass ? "password" : "text"}
                 name="password"
                 placeholder="********"
@@ -55,7 +56,7 @@ const ResetPass = () => {
             </div>
             <div className="pass_inp">
               <label htmlFor="email">Confirm New Password</label>
-              <input
+              <Form.Control
                 type={hideConfPass ? "password" : "text"}
                 name="confirm_password"
                 placeholder="********"

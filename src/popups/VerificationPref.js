@@ -1,9 +1,10 @@
+import Form from 'react-bootstrap/Form'
 
 const CloseIcon = () => {
   return (
     <svg
       fill="#B2B2B2"
-      class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiBox-root css-1om0hkc"
+      className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiBox-root css-1om0hkc"
       focusable="false"
       aria-hidden="true"
       viewBox="0 0 24 24"
@@ -42,13 +43,13 @@ const VerificationPref = (props) => {
                     If we need to confirm it's you, which should we try first?
                   </div>
                   <label className="text-black font-size-13px font-weight-500 mt-3 pb-1 radiolablepopo">
-                    <input type="radio" name="g" /> Authenticator app code
+                    <Form.Check type="radio" name="g" /> Authenticator app code
                   </label>
                   <label className="text-black font-size-13px font-weight-500 mt-2 pb-1 radiolablepopo">
-                    <input type="radio" name="g" /> Mobile app prompt
+                    <Form.Check type="radio" name="g" /> Mobile app prompt
                   </label>
                   <label className="text-black font-size-13px font-weight-500 mt-2 pb-1 radiolablepopo">
-                    <input type="radio" name="g" /> Text message
+                    <Form.Check type="radio" name="g" /> Text message
                   </label>
                 </div>
               </div>
@@ -56,11 +57,11 @@ const VerificationPref = (props) => {
                 <div className="popup_form_element agrement_ineoeu mt-3 pt-1">
                   <div className="headiwuewopiu">When should we confirm?</div>
                   <label className="text-black font-size-13px font-weight-500 mt-3 pb-1 radiolablepopo">
-                    <input type="radio" name="g" /> When my login or activity
+                    <Form.Check type="radio" name="g" /> When my login or activity
                     seems risky
                   </label>
                   <label className="text-black font-size-13px font-weight-500 mt-2 pb-1 radiolablepopo">
-                    <input type="radio" name="g" /> At every login and when my
+                    <Form.Check type="radio" name="g" /> At every login and when my
                     login or activity seems risky
                   </label>
                 </div>

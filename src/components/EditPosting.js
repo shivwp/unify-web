@@ -3,6 +3,7 @@ import Layout from "../client/Layout/Layout";
 import Container from "react-bootstrap/Container";
 import { Col, Row } from "react-bootstrap";
 import $ from "jquery";
+import Form from "react-bootstrap/Form";
 
 
 const EditPosting = () => {
@@ -51,7 +52,7 @@ const EditPosting = () => {
                   </div>
                   <div className="why_textarea">
                     <p>
-                      <i class="fa fa-info-circle" aria-hidden="true"></i>{" "}
+                      <i className="fa fa-info-circle" aria-hidden="true"></i>{" "}
                       Please add a job description
                     </p>
                     <p>4717 characters left</p>
@@ -59,7 +60,7 @@ const EditPosting = () => {
                 </div>
                 <div className="ts_btn attach_f_btn edit_posting-attach-file">
                   <button className="rot_svg_oety" style={{position: "relative", fontSize:16, fontWeight:500 }}>
-                  <input type="file" style={{ cursor: "pointer" }} />
+                  <Form.Control type="file" style={{ cursor: "pointer" }} />
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="18"
@@ -79,7 +80,7 @@ const EditPosting = () => {
                 <div className="edit-posting-category">
                   <div className="heading">Categotry</div>
                   <div className="category">
-                    UI/UX Design <i class="fa fa-pencil" aria-hidden="true"></i>
+                    UI/UX Design <i className="fa fa-pencil" aria-hidden="true"></i>
                   </div>
                 </div>
 
@@ -166,7 +167,7 @@ const EditPosting = () => {
                   <div className="heading">Scop</div>
                   <div className="category">
                     Large, More than 6 months, Entry level{" "}
-                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                    <i className="fa fa-pencil" aria-hidden="true"></i>
                   </div>
                 </div>
                 {/* Budget start here */}
@@ -174,7 +175,7 @@ const EditPosting = () => {
                   <div className="heading">Budget</div>
                   <div className="category">
                     $15.00 - $35.00 / hr{" "}
-                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                    <i className="fa fa-pencil" aria-hidden="true"></i>
                   </div>
                 </div>
                 {/* screening questions  */}

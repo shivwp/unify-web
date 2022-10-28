@@ -5,10 +5,10 @@ const Rating = ({ rating }) => {
     let stars = "";
 
     for (let i = 0; i < number; i++) {
-      stars = `${stars} <i class="fa fa-star text-primary"></i>`;
+      stars = `${stars} <i className="fa fa-star text-primary"></i>`;
     }
     for (let j = 0; j < 5 - rating; j++) {
-      stars = `${stars} <i class="fa fa-star text-secondary"></i>`;
+      stars = `${stars} <i className="fa fa-star text-secondary"></i>`;
     }
     return stars;
   };

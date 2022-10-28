@@ -1,11 +1,12 @@
 import { Row, Col } from "react-bootstrap";
 import Select from "react-select";
+import Form from 'react-bootstrap/Form';
 
 const CloseIcon = () => {
   return (
     <svg
       fill="#B2B2B2"
-      class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiBox-root css-1om0hkc"
+      className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiBox-root css-1om0hkc"
       focusable="false"
       aria-hidden="true"
       viewBox="0 0 24 24"
@@ -49,7 +50,7 @@ const AddEduc = (props) => {
                       <label className="text-black font-size-13px font-weight-500">
                         School
                       </label>
-                      <input
+                      <Form.Control
                         type="text"
                         className="font-size-13px"
                         placeholder="Ex: Northwestern University"
@@ -97,7 +98,7 @@ const AddEduc = (props) => {
                       <label className="text-black font-size-13px font-weight-500">
                         Area of Study (Optional)
                       </label>
-                      <input
+                      <Form.Control
                         type="text"
                         className="font-size-13px"
                         placeholder="Ex: Computer Science"
@@ -109,10 +110,11 @@ const AddEduc = (props) => {
                       <label className="text-black font-size-13px font-weight-500">
                         Description (Optional)
                       </label>
-                      <textarea
+                      <Form.Control
+                      as="textarea"
                         className="font-size-13px"
                         placeholder="Enter Here"
-                      ></textarea>
+                      ></Form.Control>
                     </div>
                   </Col>
                 </Row>

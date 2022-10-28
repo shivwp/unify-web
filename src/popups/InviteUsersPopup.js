@@ -3,6 +3,7 @@ import { Modal } from "react-responsive-modal";
 import "react-responsive-modal/styles.css";
 import "./popup.css";
 import Select from "react-select";
+import Form from 'react-bootstrap/Form'
 
 
 const InviteUsersPopup = ({ open, onCloseModal }) => {
@@ -53,12 +54,12 @@ const InviteUsersPopup = ({ open, onCloseModal }) => {
               <ul className="popup-radio">
                 <li>
                   <label htmlFor="admin_op_1">
-                    <input type="radio" id="admin_op_1" name="p" /> None
+                    <Form.Check type="radio" id="admin_op_1" name="p" /> None
                   </label>
                 </li>
                 <li>
                   <label htmlFor="admin_op_2">
-                    <input type="radio" name="p" id="admin_op_2" /> Finance Only
+                    <Form.Check type="radio" name="p" id="admin_op_2" /> Finance Only
                   </label>
                   <p>
                     Can access Payment tab, managing payment methods, viewing
@@ -69,7 +70,7 @@ const InviteUsersPopup = ({ open, onCloseModal }) => {
                 </li>
                 <li>
                   <label htmlFor="admin_op_3">
-                    <input type="radio" name="p" id="admin_op_3" /> Full
+                    <Form.Check type="radio" name="p" id="admin_op_3" /> Full
                   </label>
                   <p>
                     In additional to finance privileges, can invite or remove
@@ -86,12 +87,12 @@ const InviteUsersPopup = ({ open, onCloseModal }) => {
               <ul className="popup-radio">
                 <li>
                   <label htmlFor="hiring_op_1">
-                    <input type="radio" id="hiring_op_1" name="p" /> None
+                    <Form.Check type="radio" id="hiring_op_1" name="p" /> None
                   </label>
                 </li>
                 <li>
                   <label htmlFor="hiring_op_2">
-                    <input type="radio" name="p" id="hiring_op_2" /> Source
+                    <Form.Check type="radio" name="p" id="hiring_op_2" /> Source
                     Talent Only
                   </label>
                   <p>
@@ -102,7 +103,7 @@ const InviteUsersPopup = ({ open, onCloseModal }) => {
                 </li>
                 <li>
                   <label htmlFor="hiring_op_3">
-                    <input type="radio" name="p" id="hiring_op_3" /> Manager
+                    <Form.Check type="radio" name="p" id="hiring_op_3" /> Manager
                   </label>
                   <p>
                     In addition to talent sourcing privileges hiring managers
@@ -125,18 +126,18 @@ const InviteUsersPopup = ({ open, onCloseModal }) => {
               <ul className="popup-radio">
                 <li>
                   <label htmlFor="diaries_op_1">
-                    <input type="radio" id="diaries_op_1" name="p" /> Individual
+                    <Form.Check type="radio" id="diaries_op_1" name="p" /> Individual
                   </label>
                 </li>
                 <li>
                   <label htmlFor="diaries_op_2">
-                    <input type="radio" name="p" id="diaries_op_2" /> Team
+                    <Form.Check type="radio" name="p" id="diaries_op_2" /> Team
                   </label>
                   <p>Can see and chat with anyone on the team.</p>
                 </li>
                 <li>
                   <label htmlFor="diaries_op_3">
-                    <input type="radio" name="p" id="diaries_op_3" /> Company
+                    <Form.Check type="radio" name="p" id="diaries_op_3" /> Company
                   </label>
                   <p>
                     Can see and chat with everyone in the company, across all

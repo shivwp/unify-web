@@ -1,6 +1,7 @@
 import Container from 'react-bootstrap/Container';
 import { Row, Col } from 'react-bootstrap';
 import SideNav from '../../../../components/site_nav';
+import Form from "react-bootstrap/Form";
 
 const titleDescription = () => {
     return (
@@ -23,7 +24,7 @@ const titleDescription = () => {
                             <div className="bl_head"><h3>Additional project files (optional)</h3></div>
                             <div>
                                 <div className="project_f_inpu_box">
-                                    <input type="file" />
+                                    <Form.Control type="file" />
                                     <label>drag or <span>upload</span> project images here</label>
                                 </div>
                             </div>

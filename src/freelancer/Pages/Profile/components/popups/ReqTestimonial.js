@@ -4,12 +4,13 @@ import { useDispatch } from "react-redux";
 import {
   onEditTestimonialInfo,
 } from "../../../../../redux/actions/profileAction";
+import Form from 'react-bootstrap/Form';
 
 const CloseIcon = () => {
   return (
     <svg
       fill="#B2B2B2"
-      class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiBox-root css-1om0hkc"
+      className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiBox-root css-1om0hkc"
       focusable="false"
       aria-hidden="true"
       viewBox="0 0 24 24"
@@ -64,7 +65,7 @@ const ReqTestimonial = (props) => {
                       <label className="text-black font-size-13px font-weight-500">
                         First Name
                       </label>
-                      <input
+                      <Form.Control
                         type="text"
                         name="first_name"
                         className="font-size-13px"
@@ -79,7 +80,7 @@ const ReqTestimonial = (props) => {
                       <label className="text-black font-size-13px font-weight-500">
                         Last name{" "}
                       </label>
-                      <input
+                      <Form.Control
                         type="text"
                         name="last_name"
                         className="font-size-13px"
@@ -94,7 +95,7 @@ const ReqTestimonial = (props) => {
                       <label className="text-black font-size-13px font-weight-500">
                         Business email address
                       </label>
-                      <input
+                      <Form.Control
                         type="text"
                         name="email"
                         className="font-size-13px"
@@ -109,7 +110,7 @@ const ReqTestimonial = (props) => {
                       <label className="text-black font-size-13px font-weight-500">
                         Client's LinkedIn Profile
                       </label>
-                      <input
+                      <Form.Control
                         type="text"
                         name="linkedin_url"
                         className="font-size-13px"
@@ -124,7 +125,7 @@ const ReqTestimonial = (props) => {
                       <label className="text-black font-size-13px font-weight-500">
                         Client's title (Optional)
                       </label>
-                      <input
+                      <Form.Control
                         type="text"
                         name="title"
                         className="font-size-13px"
@@ -139,7 +140,7 @@ const ReqTestimonial = (props) => {
                       <label className="text-black font-size-13px font-weight-500">
                         Project Type (Optional)
                       </label>
-                      <input
+                      <Form.Control
                         type="text"
                         name="type"
                         className="font-size-13px"
@@ -154,13 +155,14 @@ const ReqTestimonial = (props) => {
                       <label className="text-black font-size-13px font-weight-500">
                         Description (Optional)
                       </label>
-                      <textarea
+                      <Form.Control
+                      as="textarea"
                         name="description"
                         className="font-size-13px"
                         value={values?.description}
                         onChange={(e) => onInputChange(e)}
                         placeholder="Enter Here"
-                      ></textarea>
+                      ></Form.Control>
                     </div>
                   </Col>
                 </Row>

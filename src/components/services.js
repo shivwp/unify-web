@@ -2,6 +2,8 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import "swiper/css/navigation";
 import {Navigation } from "swiper";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
 const Services = () => {
     return (
@@ -72,11 +74,11 @@ const Services = () => {
                     </SwiperSlide>
                 </Swiper>
 
-                <div className="row">
-                    <div className="col-lg-12">
+                <Row>
+                    <Col lg={12}>
                         <div className="d-flex justify-content-center btn_services"><button>View All The Services</button></div>
-                    </div>
-                </div>
+                    </Col>
+                </Row>
             </div>
         </div>
     );

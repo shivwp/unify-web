@@ -1,5 +1,7 @@
 import CreditCardInput from "react-credit-card-input";
 import { Row, Col } from "react-bootstrap";
+import Form from 'react-bootstrap/Form'
+
 const AddPayment = (props) => {
   return (
     <>
@@ -17,7 +19,7 @@ const AddPayment = (props) => {
             >
               <svg
                 fill="#B2B2B2"
-                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiBox-root css-1om0hkc"
+                className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiBox-root css-1om0hkc"
                 focusable="false"
                 aria-hidden="true"
                 viewBox="0 0 24 24"
@@ -54,7 +56,7 @@ const AddPayment = (props) => {
                     <label className="text-black font-size-13px font-weight-500">
                       First Name
                     </label>
-                    <input
+                    <Form.Control
                       type="text"
                       className="font-size-13px"
                       placeholder="Rizwan"
@@ -66,7 +68,7 @@ const AddPayment = (props) => {
                     <label className="text-black font-size-13px font-weight-500">
                       Last Name
                     </label>
-                    <input
+                    <Form.Control
                       type="text"
                       className="font-size-13px"
                       placeholder="Qureshi"
@@ -78,7 +80,7 @@ const AddPayment = (props) => {
                     <label className="text-black font-size-13px font-weight-500">
                       Expires on
                     </label>
-                    <input
+                    <Form.Control
                       type="number"
                       className="font-size-13px"
                       placeholder="MM"
@@ -88,7 +90,7 @@ const AddPayment = (props) => {
                 <Col md={6}>
                   <div className="popup_form_element payformelent">
                     <label className="text-black font-size-13px font-weight-500"></label>
-                    <input
+                    <Form.Control
                       type="text"
                       className="font-size-13px"
                       placeholder="YY"
@@ -100,7 +102,7 @@ const AddPayment = (props) => {
                     <label className="text-black font-size-13px font-weight-500">
                       Security Code
                     </label>
-                    <input
+                    <Form.Control
                       type="text"
                       className="font-size-13px"
                       placeholder="**********"

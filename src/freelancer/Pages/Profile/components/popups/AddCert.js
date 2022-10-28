@@ -1,10 +1,12 @@
 import { Row, Col } from "react-bootstrap";
 import Select from "react-select";
+import Form from 'react-bootstrap/Form'
+
 const CloseIcon = () => {
   return (
     <svg
       fill="#B2B2B2"
-      class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiBox-root css-1om0hkc"
+      className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiBox-root css-1om0hkc"
       focusable="false"
       aria-hidden="true"
       viewBox="0 0 24 24"
@@ -66,7 +68,7 @@ const AddCert = (props) => {
                 <Row>
                   <Col md={12}>
                     <div className="popup_form_element">
-                      <input
+                      <Form.Control
                         type="text"
                         className="font-size-13px"
                         placeholder="Enter Here"

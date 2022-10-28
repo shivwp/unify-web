@@ -1,6 +1,7 @@
 import Container from "react-bootstrap/Container";
 import Title from "../../../../components/title";
 import { Link } from "react-router-dom";
+import Form from 'react-bootstrap/Form';
 
 const Question = () => {
   Title(" | question 2");
@@ -36,21 +37,21 @@ const Question = () => {
             <h3>How long will your work take?</h3>
             <div className="d-flex flex-wrap">
               <div className="s_b_r mrr_riii">
-                <input type="radio" id="r_2" name="g" />
+                <Form.Check type="radio" id="r_2" name="g" />
                 <label htmlFor="r_2">
                   {" "}
                   <p>More than 6 months</p>
                 </label>
               </div>
               <div className="s_b_r mrr_riii">
-                <input type="radio" id="r_3" name="g" />
+                <Form.Check type="radio" id="r_3" name="g" />
                 <label htmlFor="r_3">
                   {" "}
                   <p>3 to 6 months</p>
                 </label>
               </div>
               <div className="s_b_r mrr_riii">
-                <input type="radio" id="r_1" name="g" />
+                <Form.Check type="radio" id="r_1" name="g" />
                 <label htmlFor="r_1">
                   {" "}
                   <p>1 to 3 months</p>
@@ -67,7 +68,7 @@ const Question = () => {
             <div className="d-flex flex-wrap">
               <div className="s_b_r mrr_riii d-block">
                 <div className="flex_aling">
-                  <input type="radio" id="r_2" name="g" />
+                  <Form.Check type="radio" id="r_2" name="g" />
                   <label htmlFor="r_2">
                     {" "}
                     <p>
@@ -83,7 +84,7 @@ const Question = () => {
               </div>
               <div className="s_b_r mrr_riii d-block">
                 <div className="flex_aling">
-                  <input type="radio" id="r_1" name="g" />
+                  <Form.Check type="radio" id="r_1" name="g" />
                   <label htmlFor="r_1">
                     {" "}
                     <p>
@@ -99,7 +100,7 @@ const Question = () => {
               </div>
               <div className="s_b_r mrr_riii d-block">
                 <div className="flex_aling">
-                  <input type="radio" id="r_4" name="g" />
+                  <Form.Check type="radio" id="r_4" name="g" />
                   <label htmlFor="r_4">
                     {" "}
                     <p>

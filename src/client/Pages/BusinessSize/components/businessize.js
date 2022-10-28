@@ -2,6 +2,7 @@ import Container from "react-bootstrap/Container";
 import { Col, Row } from "react-bootstrap";
 import Title from "../../../../components/title";
 import { Link } from "react-router-dom";
+import Form from 'react-bootstrap/Form';
 
 const Bsize = () => {
   Title(" | Business Size");
@@ -27,7 +28,7 @@ const Bsize = () => {
                 <div className="bs_s_card">
                   <label className="w-100">
                     <div className="bs_s_inpu bg_hei_n_i">
-                      <input type="radio" name="g" />
+                      <Form.Check type="radio" name="g" />
                     </div>
                     <div>
                       <svg
@@ -51,7 +52,7 @@ const Bsize = () => {
                 <div className="bs_s_card">
                   <label className="w-100">
                     <div className="bs_s_inpu bg_hei_n_i">
-                      <input type="radio" name="g" />
+                      <Form.Check type="radio" name="g" />
                     </div>
                     <div>
                       <svg
@@ -75,7 +76,7 @@ const Bsize = () => {
                 <div className="bs_s_card">
                   <label className="w-100">
                     <div className="bs_s_inpu bg_hei_n_i">
-                      <input type="radio" name="g" />
+                      <Form.Check type="radio" name="g" />
                     </div>
                     <div>
                       <svg
@@ -102,7 +103,7 @@ const Bsize = () => {
                 <div className="bs_s_card">
                   <label className="w-100">
                     <div className="bs_s_inpu bg_hei_n_i">
-                      <input type="radio" name="g" />
+                      <Form.Check type="radio" name="g" />
                     </div>
                     <div>
                       <svg

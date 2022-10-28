@@ -2,6 +2,7 @@ import Container from "react-bootstrap/Container";
 import { Col, Row } from "react-bootstrap";
 import Title from "../../../../components/title";
 import { Link } from "react-router-dom";
+import Form from 'react-bootstrap/Form';
 
 const Subscriptionplan = () => {
   Title(" | Subscription plan");
@@ -17,7 +18,7 @@ const Subscriptionplan = () => {
               <label>
                 <div className="subscription_box_r">
                   <div className="sub_radio new_sub_rad">
-                    <input type="radio" name="s" />
+                    <Form.Check type="radio" name="s" />
                   </div>
                   <div className="sub_sm_tex">BASIC</div>
                   <div className="sub_pric">$0.00 /month</div>
@@ -44,7 +45,7 @@ const Subscriptionplan = () => {
               <label>
                 <div className="subscription_box_r">
                   <div className="sub_radio new_sub_rad">
-                    <input type="radio" name="s" />
+                    <Form.Check type="radio" name="s" />
                   </div>
                   <div className="sub_sm_tex">PLUS</div>
                   <div className="sub_pric">$50.00/year</div>

@@ -2,6 +2,7 @@ import Container from 'react-bootstrap/Container';
 import Title from '../../../../components/title';
 import {Link} from 'react-router-dom'
 import Select from "react-select";
+import Form from 'react-bootstrap/Form'
 
 const Screen = () => {
     Title(" | Goals");
@@ -17,7 +18,7 @@ const Screen = () => {
                 <div className="main_hirefreelancer_bx main_box_descr">
                     <div className='form_goals flex-wrap'>
                         <div className='formg_label'>KPI Name</div>
-                        <div className='formg_inp'><input type="text" placeholder='Example: New leads, Revenue, Traffic, etc' /></div>
+                        <div className='formg_inp'><Form.Control type="text" placeholder='Example: New leads, Revenue, Traffic, etc' /></div>
                     </div>
                     <div className='form_goals'>
                         <div className='formg_label'>Metric</div>
@@ -32,24 +33,24 @@ const Screen = () => {
                     <div className='form_goals'>
                         <div className='formg_label'>Visualization</div>
                         <div className='formg_inp d-flex flex-wrap'>
-                            <label><input type="radio" name="g" />Growing</label>
-                            <label><input type="radio" name="g" />Horizontal</label>
+                            <label><Form.Check type="radio" name="g" />Growing</label>
+                            <label><Form.Check type="radio" name="g" />Horizontal</label>
                         </div>
                     </div>
                     <div className='form_goals'>
                         <div className='formg_label'>Start Value</div>
-                        <div className='formg_inp half_width_fi'><input type="text" placeholder='0' /></div>
+                        <div className='formg_inp half_width_fi'><Form.Control type="text" placeholder='0' /></div>
                     </div>
                     <div className='form_goals'>
                         <div className='formg_label'>Target Value</div>
-                        <div className='formg_inp half_width_fi'><input type="text" placeholder='100' /></div>
+                        <div className='formg_inp half_width_fi'><Form.Control type="text" placeholder='100' /></div>
                     </div>
                     <div className='form_goals'>
                         <div className='formg_label'>Decimals</div>
                         <div className='formg_inp d-flex align-items-center'>
-                            <label><input type="radio" name="n" />0</label>
-                            <label><input type="radio" name="n" />1</label>
-                            <label><input type="radio" name="n" />2</label>
+                            <label><Form.Check type="radio" name="n" />0</label>
+                            <label><Form.Check type="radio" name="n" />1</label>
+                            <label><Form.Check type="radio" name="n" />2</label>
                         </div>
                     </div>
                         <div className="btn_foot_sec flex-wrap d-flex no-border">

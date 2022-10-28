@@ -3,6 +3,7 @@ import { Col, Row } from "react-bootstrap";
 import Title from "../../../../components/title";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import Form from 'react-bootstrap/Form';
 
 const Screen = () => {
   Title(" | My Jobs");
@@ -22,13 +23,13 @@ const Screen = () => {
             <div className="filter_headin_m">Visibility</div>
             <ul className="filter_ul_m">
               <li>
-                <input type="radio" /> All
+                <Form.Check type="radio" /> All
               </li>
               <li>
-                <input type="radio" /> Invite only
+                <Form.Check type="radio" /> Invite only
               </li>
               <li>
-                <input type="radio" /> Public
+                <Form.Check type="radio" /> Public
               </li>
             </ul>
           </Col>
@@ -36,19 +37,19 @@ const Screen = () => {
             <div className="filter_headin_m">Status</div>
             <ul className="filter_ul_m">
               <li>
-                <input type="checkbox" /> All
+                <Form.Check type="checkbox" /> All
               </li>
               <li>
-                <input type="checkbox" /> Draft
+                <Form.Check type="checkbox" /> Draft
               </li>
               <li>
-                <input type="checkbox" /> Open
+                <Form.Check type="checkbox" /> Open
               </li>
               <li>
-                <input type="checkbox" /> Filled
+                <Form.Check type="checkbox" /> Filled
               </li>
               <li>
-                <input type="checkbox" /> Closed
+                <Form.Check type="checkbox" /> Closed
               </li>
             </ul>
           </Col>
@@ -56,13 +57,13 @@ const Screen = () => {
             <div className="filter_headin_m">Type</div>
             <ul className="filter_ul_m">
               <li>
-                <input type="radio" /> All
+                <Form.Check type="radio" /> All
               </li>
               <li>
-                <input type="radio" /> Fixed price
+                <Form.Check type="radio" /> Fixed price
               </li>
               <li>
-                <input type="radio" /> Hourly
+                <Form.Check type="radio" /> Hourly
               </li>
             </ul>
           </Col>
@@ -78,7 +79,7 @@ const Screen = () => {
       <div className="my_job_flx">
         <div className="mb-3">
           <div className="my_job_a">
-            <a href="#0">UI/UX Design</a>
+            <Link to="#0">UI/UX Design</Link>
           </div>
           <div className="my_job_pos_tme">Posted 21 min ago by you</div>
           <div className="my_job_h">Public - Hourly</div>
@@ -165,7 +166,7 @@ const Screen = () => {
                   <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
                 </svg>
               </div>
-              <input type={`text`} placeholder={`Search for freelancer`} />
+              <Form.Control type={`text`} placeholder={`Search for freelancer`} />
             </div>
             <div className="ts_btn attach_f_btn wid_30_in">
               <button

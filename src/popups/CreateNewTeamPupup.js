@@ -2,6 +2,7 @@ import React from "react";
 import { Modal } from "react-responsive-modal";
 import "react-responsive-modal/styles.css";
 import "./popup.css";
+import Form from 'react-bootstrap/Form'
 
 const CreateNewTeam = ({ open, onCloseModal }) => {
   return (
@@ -20,7 +21,7 @@ const CreateNewTeam = ({ open, onCloseModal }) => {
         <div className="team_name">
           <label>
             <span>Name</span>
-            <input type="text" name="name" placeholder="Ankita Kumavat" />
+            <Form.Control type="text" name="name" placeholder="Ankita Kumavat" />
           </label>
         </div>
 

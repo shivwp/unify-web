@@ -2,6 +2,7 @@ import * as React from "react";
 import Container from "react-bootstrap/Container";
 import Title from "../../../../components/title";
 import Table from "react-bootstrap/Table";
+import Form from 'react-bootstrap/Form'
 
 const Screen = () => {
   Title(" | Time Tracker");
@@ -211,7 +212,7 @@ const Screen = () => {
       <div className="tracker_header">
         <Container className="d-flex justify-content-between align-items-center flex-wrap">
           <div className="inpptracker w-40">
-            <input type="text" placeholder="What are you working on?" />
+            <Form.Control type="text" placeholder="What are you working on?" />
           </div>
           <div className="d-flex align-items-center th_bthns_tracker flex-wrap">
             <div>

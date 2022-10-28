@@ -4,6 +4,7 @@ import { Col, Row } from "react-bootstrap";
 import Title from "../../../../components/title";
 import Select from "react-select";
 import { Link } from 'react-router-dom';
+import Form from 'react-bootstrap/Form'
 
 const Screen = () => {
     Title(" | Add Work Diary");
@@ -22,7 +23,7 @@ const Screen = () => {
                                     <label className='awd_label'>Select Date</label>
                                     <div className="filter_select_m">
                                         <div className="min_width_inp_nie m-0 date_range_nod psr-relative">
-                                            <input type="date" className='w-100'/>
+                                            <Form.Control type="date" className='w-100'/>
                                         </div>
                                     </div>
                                 </Col>

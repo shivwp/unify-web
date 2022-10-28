@@ -4,6 +4,7 @@ import { Col, Row } from "react-bootstrap";
 import Title from "../../../../components/title";
 import Select from "react-select";
 import { useState } from "react";
+import Form from 'react-bootstrap/Form'
 
 const FilterNode = () => {
   const options1 = [
@@ -92,7 +93,7 @@ const Tbl = (props) => {
               <Col sm={12} lg={6} md={6}>
                 <div className="filter_select_m">
                   <div className="min_width_inp_nie m-0 date_range_nod psr-relative">
-                    <input type="date" className="w-100" />
+                    <Form.Control type="date" className="w-100" />
                   </div>
                 </div>
               </Col>

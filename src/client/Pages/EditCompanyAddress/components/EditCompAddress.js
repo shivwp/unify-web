@@ -2,6 +2,7 @@ import React from "react";
 import { Col, Row } from "react-bootstrap";
 import Container from "react-bootstrap/Container";
 import { Link } from "react-router-dom";
+import Form from 'react-bootstrap/Form';
 
 const EditCompAddress = () => {
   return (
@@ -32,10 +33,10 @@ const EditCompAddress = () => {
                 <div className="_payment_methods">
                   <ul className="setting_pay_inp">
                     <li>
-                      <input type="radio" name="p" /> Payment card
+                      <Form.Check type="radio" name="p" /> Payment card
                     </li>
                     <li>
-                      <input type="radio" name="p" />{" "}
+                      <Form.Check type="radio" name="p" />{" "}
                       <img src="/assets/paypal.png" alt="" />
                     </li>
                   </ul>

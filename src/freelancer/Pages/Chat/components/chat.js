@@ -5,6 +5,7 @@ import "../../../../styles/chat.css";
 import Select from "react-select";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import Form from 'react-bootstrap/Form'
 
 const Contact = () => {
   return (
@@ -69,12 +70,12 @@ const PopupContact = (props) => {
           </div>
           <div className="cat_popup_boxy">
             <div className="htname_inp">
-              <input type="text" placeholder="Start typing names" />
+              <Form.Control type="text" placeholder="Start typing names" />
             </div>
             <div className="bht_headingchat font-weight-600">Permissions</div>
             <div className="prmision_rinput d-flex">
               <div className="pri_radiocwiu">
-                <input type="radio" name="p" />
+                <Form.Check type="radio" name="p" />
               </div>
               <div className="pri_name_desc">
                 <div className="head_priname font-weight-500 font-size-15px">Room admin</div>
@@ -86,7 +87,7 @@ const PopupContact = (props) => {
             </div>
             <div className="prmision_rinput d-flex">
               <div className="pri_radiocwiu">
-                <input type="radio" name="p" />
+                <Form.Check type="radio" name="p" />
               </div>
               <div className="pri_name_desc">
                 <div className="head_priname font-weight-500 font-size-15px">Room member</div>
@@ -130,7 +131,7 @@ const Screen = () => {
     <>
       <div className="chat-bg mt-2">
         <Container>
-          <div class="chat-header align-items-center flex-wrap">
+          <div className="chat-header align-items-center flex-wrap">
             <div className="chat_header_buttons align-items-center w-50 justify-content-between cewbrteve">
               <div className="d-flex cewbrtever">
               <Link to='/freelancer/contact-info'>
@@ -687,7 +688,7 @@ const Screen = () => {
                 </g>
                 </svg>
                   </div>
-            <input type='text' placeholder="Search"/>
+            <Form.Control type='text' placeholder="Search"/>
                 </div>
                 <div className="searchbox_hat select_box_hat">
                   <div className='bxshat_svg'>
@@ -1038,7 +1039,7 @@ const Screen = () => {
                   </button>
                 </div>
                 <div className="fl_input_chat">
-                  <input type="text" />
+                  <Form.Control type="text" />
                   <button>SEND</button>
                 </div>
               </div>

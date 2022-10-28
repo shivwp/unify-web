@@ -1,9 +1,10 @@
+import Form from 'react-bootstrap/Form'
 
 const CloseIcon = () => {
   return (
     <svg
       fill="#B2B2B2"
-      class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiBox-root css-1om0hkc"
+      className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiBox-root css-1om0hkc"
       focusable="false"
       aria-hidden="true"
       viewBox="0 0 24 24"
@@ -39,7 +40,7 @@ const AddExperience = (props) => {
                   <label className="text-black font-size-13px font-weight-500">
                     Subject
                   </label>
-                  <input type="text" className="font-size-13px" placeholder=" " />
+                  <Form.Control type="text" className="font-size-13px" placeholder=" " />
                 </div>
                 <div className="popup_form_element">
                   <label className="text-black font-size-13px font-weight-500">

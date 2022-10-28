@@ -4,13 +4,12 @@ import Container from 'react-bootstrap/Container';
 import { Row, Col } from 'react-bootstrap';
 import heart from '../../../../icons/heart.svg';
 
-
 function Listaward() {
   const card = [1, 2, 3, 4];
   return (
       <>
           {card.map((person, index) => (
-              <div className='col-12' key={index}>
+              <Col className='col-12' key={index}>
                   <div className='award_box'>
                       <div className="awrd_flex">
                           <div className='award_img'>
@@ -24,7 +23,7 @@ function Listaward() {
                           </div>
                       </div>
                   </div>
-              </div>
+              </Col>
           ))}
       </>
   );
@@ -272,7 +271,7 @@ const Screen = () => {
                   <div className="my_skil_head">
                     <h3>Awards and Certificates</h3>
                   </div>
-                  <div className="row">{Listaward()}</div>
+                  <Row>{Listaward()}</Row>
                 </div>
               </div>
             </Col>

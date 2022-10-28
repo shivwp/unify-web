@@ -3,7 +3,8 @@ import { Col, Row } from 'react-bootstrap';
 import Title from '../../../../components/title';
 import { useState } from 'react';
 import Select from 'react-select';
-
+import Form from 'react-bootstrap/Form';
+import { Link } from 'react-router-dom';
  
 const Screen = () => {
     Title(" | All Contracts");
@@ -15,15 +16,15 @@ const Screen = () => {
                         <div>
                             <div className="filter_headin_m d-flex justify-content-between">
                                 <div>Contract Start Dates</div>
-                                <div className="reset_link_con"><a href="#0">Reset</a></div>
+                                <div className="reset_link_con"><Link to="#0">Reset</Link></div>
                             </div>
                             <div className='select_inp_in st_med_umecw filter_select_m flex-wrap  justify-content-between d-flex align-items-center w-100'>
                                 <div className="inpu_date m-0">
-                                    <input type="date" />
+                                    <Form.Control type="date" />
                                 </div>
                                 <span className="to_date_con">to</span>
                                 <div className="inpu_date m-0">
-                                    <input type="date" />
+                                    <Form.Control type="date" />
                                 </div>
                             </div>
                         </div>
@@ -32,9 +33,9 @@ const Screen = () => {
                                 <div>
                                     <div className="filter_headin_m">Contract Type</div>
                                     <ul className="filter_ul_m">
-                                        <li><input type="radio" /> All</li>
-                                        <li><input type="radio" /> Hourly</li>
-                                        <li><input type="radio" /> Fixed-Price</li>
+                                        <li><Form.Check type="radio" /> All</li>
+                                        <li><Form.Check type="radio" /> Hourly</li>
+                                        <li><Form.Check type="radio" /> Fixed-Price</li>
                                     </ul>
                                 </div>
                             </Col>
@@ -42,11 +43,11 @@ const Screen = () => {
                                 <div>
                                     <div className="filter_headin_m">Contract Status</div>
                                     <ul className="filter_ul_m">
-                                        <li><input type="checkbox" /> All</li>
-                                        <li><input type="checkbox" /> Pending</li>
-                                        <li><input type="checkbox" /> Active</li>
-                                        <li><input type="checkbox" /> Ended</li>
-                                        <li><input type="checkbox" /> Paused</li>
+                                        <li><Form.Check type="checkbox" /> All</li>
+                                        <li><Form.Check type="checkbox" /> Pending</li>
+                                        <li><Form.Check type="checkbox" /> Active</li>
+                                        <li><Form.Check type="checkbox" /> Ended</li>
+                                        <li><Form.Check type="checkbox" /> Paused</li>
                                     </ul>
                                 </div>
                             </Col>
@@ -56,15 +57,15 @@ const Screen = () => {
                         <div>
                             <div className="filter_headin_m d-flex justify-content-between">
                                 <div>Contract End Dates</div>
-                                <div className="reset_link_con"><a href="#0">Reset</a></div>
+                                <div className="reset_link_con"><Link to="#0">Reset</Link></div>
                             </div>
                             <div className='select_inp_in st_med_umecw filter_select_m  justify-content-between flex-wrap d-flex align-items-center w-100'>
                                 <div className="inpu_date m-0">
-                                    <input type="date" />
+                                    <Form.Control type="date" />
                                 </div>
                                 <span className="to_date_con">to</span>
                                 <div className="inpu_date m-0">
-                                    <input type="date" />
+                                    <Form.Control type="date" />
                                 </div>
                             </div>
                         </div>
@@ -73,10 +74,10 @@ const Screen = () => {
                                 <div>
                                     <div className="filter_headin_m">Milestone Status</div>
                                     <ul className="filter_ul_m">
-                                        <li><input type="radio" /> All</li>
-                                        <li><input type="radio" /> Active</li>
-                                        <li><input type="radio" /> Awaiting Funding</li>
-                                        <li><input type="radio" /> Payment Requested</li>
+                                        <li><Form.Check type="radio" /> All</li>
+                                        <li><Form.Check type="radio" /> Active</li>
+                                        <li><Form.Check type="radio" /> Awaiting Funding</li>
+                                        <li><Form.Check type="radio" /> Payment Requested</li>
                                     </ul>
                                 </div>
                             </Col>
@@ -84,10 +85,10 @@ const Screen = () => {
                                 <div>
                                     <div className="filter_headin_m">Escrew Refund Status</div>
                                     <ul className="filter_ul_m">
-                                        <li><input type="checkbox" /> Any</li>
-                                        <li><input type="checkbox" /> Requested</li>
-                                        <li><input type="checkbox" /> Approved</li>
-                                        <li><input type="checkbox" /> Not Approved</li>
+                                        <li><Form.Check type="checkbox" /> Any</li>
+                                        <li><Form.Check type="checkbox" /> Requested</li>
+                                        <li><Form.Check type="checkbox" /> Approved</li>
+                                        <li><Form.Check type="checkbox" /> Not Approved</li>
                                     </ul>
                                 </div>
                             </Col>
@@ -137,13 +138,13 @@ const Screen = () => {
                             <div className='sort_by_pa'>0 toal</div>
                         </div>
                         <div className='download_lnk_csx'>
-                            <a href="#0">
+                            <Link to="#0">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-download" viewBox="0 0 16 16">
                                     <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z" />
                                     <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z" />
                                 </svg>
                                 Download CSV
-                            </a>
+                            </Link>
                         </div>
                     </div>
                 </div>
@@ -154,7 +155,7 @@ const Screen = () => {
                         </div>
                         <div className="no_foun_head_ce"><h1>You don't have any contracts yet</h1></div>
                         <div className="no_foun_para_ce">Your pending and active contracts will be available here when you start hiring talent.</div>
-                        <div className="no_foun_para_ce"><a href='#0'>Post a job</a> or <a href="#0">check out who's applied</a> to your existing job posts.</div>
+                        <div className="no_foun_para_ce"><Link to='#0'>Post a job</Link> or <Link to="#0">check out who's applied</Link> to your existing job posts.</div>
                     </div>
                 </div>
             </>
@@ -186,7 +187,7 @@ const Screen = () => {
                                     <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
                                 </svg>
                             </div>
-                            <input type={`text`} placeholder={`Search by contract, freelancer, or agency name`} />
+                            <Form.Control type={`text`} placeholder={`Search by contract, freelancer, or agency name`} />
                         </div>
                         <div className='ts_btn attach_f_btn wid_30_in'>
                             <button className="transp_fil_btn" onClick={() => { ToggleFilter() }}>

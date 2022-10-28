@@ -209,7 +209,7 @@ const Category = () => {
             </Col>
           </Row>
           <div className="some_el_cr">
-            Looking for something else? <a href="/">See more skills</a>
+            Looking for something else? <Link to="/">See more skills</Link>
           </div>
           <div className="btn_foot_sec no-border d-flex flex-wrap">
             <Link to="/create-category">

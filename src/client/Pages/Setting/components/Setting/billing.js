@@ -2,6 +2,7 @@ import Container from "react-bootstrap/Container";
 import { Row, Col } from "react-bootstrap";
 import SideNav from "./site_nav";
 import Title from "../../../../../components/title";
+import Form from 'react-bootstrap/Form';
 
 const Screen = () => {
   Title(" | Setting - Billing & Payment");
@@ -43,10 +44,10 @@ const Screen = () => {
                 <div>
                   <ul className="setting_pay_inp">
                     <li>
-                      <input type="radio" name="p" /> Payment card
+                      <Form.Check type="radio" name="p" /> Payment card
                     </li>
                     <li>
-                      <input type="radio" name="p" />{" "}
+                      <Form.Check type="radio" name="p" />{" "}
                       <img src="/assets/paypal.png" alt="" />
                     </li>
                   </ul>
