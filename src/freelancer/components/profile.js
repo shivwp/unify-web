@@ -22,6 +22,9 @@ import {
   onEditCertificate,
   onDeleteCertificate,
   editNameInfo,
+  editVisiblity,
+  editExprienceLev,
+  onDeletePortfolio,
 } from "../../redux/actions/profileAction";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper";
@@ -34,6 +37,7 @@ import { countryList } from "../../redux/actions/authActions";
 import { useRef } from "react";
 import { height } from "@mui/system";
 import IntroVideoPopup from "../../popups/IntroVideoPopup";
+import ReactPaginate from "react-paginate";
 
 function Listaward() {
   const card = [1, 2, 3, 4];
@@ -304,7 +308,7 @@ const EditTitle = (props) => {
               <CloseIcon />
             </div>
           </div>
-          <div className="popup_body_bpn amount_popup_body max_height_popucwui overflow-scroll">
+          <div className="popup_body_bpn amount_popup_body max_height_popucwui">
             <div className="mt-3 pt-1">
               <div className="pouphed_skll">Your title</div>
               <div className="popuphead_smparcr">
@@ -365,7 +369,12 @@ const EditTitle = (props) => {
 const VideoIntro = (props) => {
   const dispatch = useDispatch();
   const [values, setValues] = useState(props?.data);
-  const [type, setType] = useState(props?.data);
+  const [type, setType] = useState(
+    props?.data && {
+      name: props.data?.type,
+      label: props.data?.type,
+    }
+  );
 
   const handleOnChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
@@ -408,7 +417,7 @@ const VideoIntro = (props) => {
               <CloseIcon />
             </div>
           </div>
-          <div className="popup_body_bpn amount_popup_body max_height_popucwui overflow-scroll">
+          <div className="popup_body_bpn amount_popup_body max_height_popucwui">
             <div className="mt-4 pt-1 mb-4"></div>
 
             <div className="mb-5 ">
@@ -436,8 +445,8 @@ const VideoIntro = (props) => {
                   defaultValue={
                     type
                       ? {
-                          name: type?.type,
-                          label: type?.type,
+                          name: type?.name,
+                          label: type?.label,
                         }
                       : null
                   }
@@ -479,7 +488,7 @@ const AddExperience = (props) => {
               <CloseIcon />
             </div>
           </div>
-          <div className="popup_body_bpn amount_popup_body max_height_popucwui overflow-scroll">
+          <div className="popup_body_bpn amount_popup_body max_height_popucwui ">
             <div className="mt-2 pt-1 mb-4"></div>
 
             <div className="mb-4 ">
@@ -574,7 +583,7 @@ const AddEmployment = (props) => {
               <CloseIcon />
             </div>
           </div>
-          <div className="popup_body_bpn amount_popup_body max_height_popucwui overflow-scroll">
+          <div className="popup_body_bpn amount_popup_body max_height_popucwui">
             <div className="mt-2 pt-1 mb-4"></div>
 
             <div className="mb-4 ">
@@ -736,7 +745,7 @@ const ChangePassword = (props) => {
               <CloseIcon />
             </div>
           </div>
-          <div className="popup_body_bpn amount_popup_body max_height_popucwui overflow-scroll">
+          <div className="popup_body_bpn amount_popup_body max_height_popucwui ">
             <div className="mt-2 pt-1 mb-4"></div>
 
             <div className="mb-4 ">
@@ -818,7 +827,7 @@ const VerificationPref = (props) => {
               <CloseIcon />
             </div>
           </div>
-          <div className="popup_body_bpn amount_popup_body max_height_popucwui overflow-scroll">
+          <div className="popup_body_bpn amount_popup_body max_height_popucwui ">
             <div className="mt-2 pt-1 mb-4"></div>
 
             <div className="mb-3">
@@ -925,7 +934,7 @@ const LanguageEdit = (props) => {
               <CloseIcon />
             </div>
           </div>
-          <div className="popup_body_bpn amount_popup_body max_height_popucwui overflow-scroll">
+          <div className="popup_body_bpn amount_popup_body max_height_popucwui">
             <div className="mt-3 pt-1 mb-3"></div>
 
             <div className="mb-3 ">
@@ -1147,7 +1156,7 @@ const AddEduc = (props) => {
               <CloseIcon />
             </div>
           </div>
-          <div className="popup_body_bpn amount_popup_body max_height_popucwui overflow-scroll">
+          <div className="popup_body_bpn amount_popup_body max_height_popucwui ">
             <div className="mt-3 pt-1 mb-3"></div>
 
             <div className="mb-3 ">
@@ -1322,7 +1331,7 @@ const AddCert = (props) => {
               <CloseIcon />
             </div>
           </div>
-          <div className="popup_body_bpn amount_popup_body max_height_popucwui overflow-scroll">
+          <div className="popup_body_bpn amount_popup_body max_height_popucwui ">
             <div className="mt-4">
               <div className="popup_form_element">
                 <label className="text-black font-size-13px font-weight-500">
@@ -1414,7 +1423,7 @@ const ReqTestimonial = (props) => {
               <CloseIcon />
             </div>
           </div>
-          <div className="popup_body_bpn amount_popup_body max_height_popucwui overflow-scroll">
+          <div className="popup_body_bpn amount_popup_body max_height_popucwui">
             <div className="mt-3 pt-1 mb-3">
               <div className="popuphead_smparcr">
                 Add your client’s contact details. Don’t worry—we’ll only
@@ -1605,21 +1614,6 @@ const ReqTestimonial = (props) => {
 // };
 
 const UnifyFreelancer = () => {
-  const [showingProImage, setShowingProImage] = useState();
-  const [popup, Setpopup] = useState();
-  const [hwpPopup, setHwpPopup] = useState(false);
-  const [workHistoryTab, setWorkHistoryTab] = useState("COMPLETED JOBS");
-  const [portfolioPopup, setPortfolioPopup] = useState(false);
-  const [videoPopup, setVideoPopup] = useState(false);
-  const [videoURL, setVideoURL] = useState(null);
-
-  const settings = {
-    dots: true,
-    infinite: false,
-    speed: 500,
-    slidesToShow: 3,
-    slidesToScroll: 3,
-  };
   const dispatch = useDispatch();
   const basicInfo = useSelector(
     (state) => state?.profile?.freelancerProfileList?.basic_info
@@ -1627,6 +1621,17 @@ const UnifyFreelancer = () => {
   const freelancerProfileList = useSelector(
     (state) => state?.profile?.freelancerProfileList
   );
+
+  const [showingProImage, setShowingProImage] = useState();
+  const [popup, Setpopup] = useState();
+  const [hwpPopup, setHwpPopup] = useState(false);
+  const [workHistoryTab, setWorkHistoryTab] = useState("COMPLETED JOBS");
+  const [portfolioPopup, setPortfolioPopup] = useState(false);
+  const [videoPopup, setVideoPopup] = useState(false);
+  const [showVisiblityOpt, setShowVisiblityOpt] = useState(false);
+  const [showExprienceLevOpt, setShowExprienceLevOpt] = useState(false);
+  const [videoURL, setVideoURL] = useState(null);
+
   const deleteExprience = useSelector(
     (state) => state?.profile?.deleteExprience
   );
@@ -1636,11 +1641,15 @@ const UnifyFreelancer = () => {
   const editLanguage = useSelector(
     (state) => state?.profile?.editFreelancerLanguage
   );
+  const editVideo = useSelector((state) => state?.profile?.editVideo);
   const editHoursPerWeek = useSelector(
     (state) => state?.profile?.editHoursPerWeek
   );
   const deleteEducation = useSelector(
     (state) => state?.profile?.deleteEducation
+  );
+  const deletePortfolio = useSelector(
+    (state) => state?.profile?.deletePortfolio
   );
   const editCertificate = useSelector(
     (state) => state?.profile?.editCertificate
@@ -1654,6 +1663,12 @@ const UnifyFreelancer = () => {
   const editDesignation = useSelector(
     (state) => state?.profile?.editDesignation
   );
+  const editProfileVisiblity = useSelector(
+    (state) => state?.profile?.editProfileVisiblity
+  );
+  const editExprienceLevel = useSelector(
+    (state) => state?.profile?.editExprienceLevel
+  );
   const editPortfolio = useSelector((state) => state?.profile?.editPortfolio);
   const editEducation = useSelector((state) => state?.profile?.editEducation);
 
@@ -1661,7 +1676,6 @@ const UnifyFreelancer = () => {
 
   const addExprience = useSelector((state) => state?.profile?.addExprience);
 
-  console.log(basicInfo);
   useEffect(() => {
     dispatch(getFreelancerProfile());
   }, [
@@ -1678,6 +1692,10 @@ const UnifyFreelancer = () => {
     editEducation,
     editDesignation,
     editPortfolio,
+    editVideo,
+    editProfileVisiblity,
+    editExprienceLevel,
+    deletePortfolio,
   ]);
 
   const deleteExp = (id) => {
@@ -1710,7 +1728,7 @@ const UnifyFreelancer = () => {
     const thumbnail = `https://img.youtube.com/vi/${vidId}/0.jpg`;
 
     useEffect(() => {
-      setVideoURL(`https://www.youtube.com/embed/${vidId}`);
+      setVideoURL(`https://www.youtube.com/embed/${vidId}?rel=0`);
     }, [data]);
 
     return (
@@ -1733,6 +1751,98 @@ const UnifyFreelancer = () => {
       </>
     );
   };
+
+  const handleVisiblity = (visiblity) => {
+    const data = { visibility: visiblity };
+    dispatch(editVisiblity(data, setShowVisiblityOpt));
+  };
+  const handleExprienceLevel = (level) => {
+    const data = { experience_level: level };
+    dispatch(editExprienceLev(data, setShowExprienceLevOpt));
+  };
+
+  $(document).mouseup(function (e) {
+    if ($(e.target).closest("#visiblity_opts").length === 0) {
+      setShowVisiblityOpt(false);
+    }
+  });
+  $(document).mouseup(function (e) {
+    if ($(e.target).closest("#exprience_level_ops").length === 0) {
+      setShowExprienceLevOpt(false);
+    }
+  });
+
+  const deletePortf = (id) => {
+    dispatch(onDeletePortfolio({ id: id }));
+  };
+
+  function PortfolioPaginate({ itemsPerPage, data }) {
+    const [currentItems, setCurrentItems] = useState(null);
+    const [pageCount, setPageCount] = useState(0);
+    const [itemOffset, setItemOffset] = useState(0);
+
+    useEffect(() => {
+      const endOffset = itemOffset + itemsPerPage;
+      console.log(`Loading items from ${itemOffset} to ${endOffset}`);
+      setCurrentItems(data?.slice(itemOffset, endOffset));
+      setPageCount(Math.ceil(data?.length / itemsPerPage));
+    }, [itemOffset, itemsPerPage]);
+
+    const handlePageClick = (event) => {
+      const newOffset = (event.selected * itemsPerPage) % data?.length;
+      setItemOffset(newOffset);
+    };
+
+    return (
+      <>
+        <div className="d-flex ertr4h6j65esdv align-items-center">
+          {currentItems?.map((item) => (
+            <div className="portfolio">
+              <div className="imgbox_bccp">
+                <img src={item.image} alt="" />
+                <div className="port_folio_icons">
+                  <button onClick={() => deletePortf(item.id)}>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 16 16"
+                    >
+                      <path
+                        id="_2203546_bin_delete_gabage_trash_icon"
+                        data-name="2203546_bin_delete_gabage_trash_icon"
+                        d="M8,0A1,1,0,0,0,7,1H0V3H1V14a2,2,0,0,0,2,2H13a2,2,0,0,0,2-2V3h1V1H9A1,1,0,0,0,8,0ZM4,14H3V5H4Zm3,0H6V5H7Zm3,0H9V5h1Zm3,0H12V5h1Z"
+                        fill="#6d2ef1"
+                      />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              <a href={item.name}>{item.name}</a>
+            </div>
+          ))}
+        </div>
+        <div style={{ display: "flex", width:'100%', height:50, alignItems:'center' }}>
+          <ReactPaginate
+            breakLabel="..."
+            className="portfolioPaginate"
+            pageClassName="portfolioPageCount"
+            nextClassName="paginationNext"
+            previousClassName="paginationPrev"
+            previousLinkClassName="paginationPrevA"
+            nextLinkClassName="paginationNextA"
+            disabledClassName="disablePaginateBtn"
+            nextLabel=">"
+            onPageChange={handlePageClick}
+            pageRangeDisplayed={5}
+            pageCount={pageCount}
+            previousLabel="<"
+            renderOnZeroPageCount={null}
+          />
+        </div>
+      </>
+    );
+  }
 
   return (
     <div className="mt-5 mb-5">
@@ -2005,9 +2115,16 @@ const UnifyFreelancer = () => {
                     <IntroVideoThumb data={freelancerProfileList?.video} />
                   </div>
                 </div>
-                <div className="myskill_hdingn profile_icon_25px">
+                <div
+                  className="myskill_hdingn profile_icon_25px"
+                  style={{ position: "relative" }}
+                >
                   Visiblity
-                  <button>
+                  <button
+                    onClick={() => {
+                      setShowVisiblityOpt(!showVisiblityOpt);
+                    }}
+                  >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="15.709"
@@ -2023,9 +2140,79 @@ const UnifyFreelancer = () => {
                       />
                     </svg>
                   </button>
+                  {showVisiblityOpt && (
+                    <>
+                      <div id="visiblity_opts" className="visiblity_opts">
+                        <span onClick={(e) => handleVisiblity("public")}>
+                          Public
+                        </span>
+                        <span onClick={(e) => handleVisiblity("private")}>
+                          Private
+                        </span>
+                        <span onClick={(e) => handleVisiblity("unify_users")}>
+                          Only to Unify Users
+                        </span>
+                        <div className="visiblity_ops_arrow">&#60;</div>
+                      </div>
+                    </>
+                  )}
                 </div>
-                <div className="myskill_hdingn ms_hdsmall font-size-15px">
+                <div
+                  className="myskill_hdingn ms_hdsmall font-size-15px"
+                  style={{ textTransform: "capitalize" }}
+                >
                   {basicInfo?.visibility}
+                </div>
+                <div
+                  className="myskill_hdingn profile_icon_25px"
+                  style={{ position: "relative" }}
+                >
+                  Exprience
+                  <button
+                    onClick={() => setShowExprienceLevOpt(!showExprienceLevOpt)}
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="15.709"
+                      height="15.714"
+                      viewBox="0 0 15.709 15.714"
+                    >
+                      <path
+                        id="_8665767_pen_icon"
+                        data-name="8665767_pen_icon"
+                        d="M15.327,2.274,13.482.429a1.475,1.475,0,0,0-2.085,0L9.662,2.165l3.9,3.929L15.3,4.358A1.447,1.447,0,0,0,15.327,2.274Zm-6.356.585L1,10.83a.491.491,0,0,0-.134.251L.057,15.123a.491.491,0,0,0,.576.58l4.042-.808a.491.491,0,0,0,.251-.134L12.9,6.789Z"
+                        transform="translate(-0.047 0.002)"
+                        fill="#6d2ef1"
+                      />
+                    </svg>
+                  </button>
+                  {showExprienceLevOpt && (
+                    <>
+                      <div
+                        id="exprience_level_ops"
+                        className="exprience_level_ops"
+                      >
+                        <span onClick={() => handleExprienceLevel("entry")}>
+                          Entry
+                        </span>
+                        <span
+                          onClick={() => handleExprienceLevel("intermediate")}
+                        >
+                          Intermediate
+                        </span>
+                        <span onClick={() => handleExprienceLevel("expert")}>
+                          Expert
+                        </span>
+                        <div className="exprience_level_ops_arrow">&#60;</div>
+                      </div>
+                    </>
+                  )}
+                </div>
+                <div
+                  className="myskill_hdingn ms_hdsmall font-size-15px"
+                  style={{ textTransform: "capitalize" }}
+                >
+                  {basicInfo?.experience_level}
                 </div>
                 <div className="myskill_hdingn profile_icon_25px">
                   Hours per week
@@ -2357,50 +2544,13 @@ const UnifyFreelancer = () => {
                   </button>
                 </div>
               </div>
-              {/* <div className="d-flex justify-content-center ertr4h6j65esdv align-items-center"> */}
-              <Swiper
-                spaceBetween={10}
-                slidesPerView={3}
-                className="help_swip"
-                loop="true"
-                modules={[Navigation]}
-                navigation={true}
-                onSlideChange={() => console.log("slide change")}
-                onSwiper={(swiper) => console.log(swiper)}
-                breakpoints={{
-                  200: {
-                    slidesPerView: 1,
-                    spaceBetween: 10,
-                    centeredSlides: true,
-                  },
-                  500: {
-                    slidesPerView: 1,
-                    spaceBetween: 10,
-                  },
-                  640: {
-                    slidesPerView: 1,
-                    spaceBetween: 10,
-                  },
-                  768: {
-                    slidesPerView: 2,
-                    spaceBetween: 10,
-                  },
-                  900: {
-                    slidesPerView: 3,
-                    spaceBetween: 10,
-                  },
-                }}
-              >
-                {freelancerProfileList?.portfolio.map((item) => (
-                  <SwiperSlide>
-                    <div className="imgbox_bccp">
-                      <img src={item.image} alt="" />
-                    </div>
-                  </SwiperSlide>
-                ))}
-              </Swiper>
-              {/* </div> */}
+
+              <PortfolioPaginate
+                itemsPerPage={3}
+                data={freelancerProfileList?.portfolio}
+              />
             </div>
+
             <div className="box-profile-bck mb-0">
               <div className="bpbck_txt d-flex mt-0">
                 <div className="bpck_head">Skills</div>
@@ -2442,79 +2592,7 @@ const UnifyFreelancer = () => {
                 </div>
               </div>
             </div>
-            {/* <div className="box-profile-bck mb-0">
-              <div className="d-flex justify-content-end myskill_hdingn">
-                <button
-                  // onClick={() => {
-                  //   Setpopup(<Overview Popup={Setpopup} />);
-                  // }}
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="17"
-                    height="17"
-                    viewBox="0 0 17 17"
-                  >
-                    <path
-                      id="_134224_add_plus_new_icon_2_"
-                      data-name="134224_add_plus_new_icon (2)"
-                      d="M17.786,9.286H11.714V3.214a1.214,1.214,0,0,0-2.429,0V9.286H3.214a1.214,1.214,0,0,0,0,2.429H9.286v6.071a1.214,1.214,0,1,0,2.429,0V11.714h6.071a1.214,1.214,0,1,0,0-2.429Z"
-                      transform="translate(-2 -2)"
-                      fill="#6d2ef1"
-                    />
-                  </svg>
-                </button>
-              </div>
-              <div className="bpbck_txt">
-                <div className="bpck_head">Your Project Catalog</div>
-              </div>
-              <div className="d-flex flex-wrap">
-                <div className="d-flex flex-wrap">
-                  <div className="imgbox_bccp">
-                    <img src="/assets/123.png" alt="" />
-                  </div>
-                </div>
-                <div className="mt-4">
-                  <div className="heading_pcatlog">
-                    UI/UX And Graphic Design
-                  </div>
-                  <div className="d-flex mt-2 flex-wrap">
-                    <div className="catactive_box mt-2">From $40</div>
-                    <div className="delivery_time_bckp mt-2">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="20.75"
-                        height="20.75"
-                        viewBox="0 0 20.75 20.75"
-                      >
-                        <g
-                          id="Icon_ionic-md-time"
-                          data-name="Icon ionic-md-time"
-                          transform="translate(-3.375 -3.375)"
-                          opacity="0.56"
-                        >
-                          <path
-                            id="Path_4754"
-                            data-name="Path 4754"
-                            d="M13.74,3.375A10.375,10.375,0,1,0,24.125,13.75,10.371,10.371,0,0,0,13.74,3.375Zm.01,18.675a8.3,8.3,0,1,1,8.3-8.3A8.3,8.3,0,0,1,13.75,22.05Z"
-                            fill="rgba(0,0,0,0.9)"
-                          />
-                          <path
-                            id="Path_4755"
-                            data-name="Path 4755"
-                            d="M18.094,10.688H16.538v6.225l5.447,3.267.778-1.277-4.669-2.768Z"
-                            transform="translate(-3.825 -2.125)"
-                            fill="rgba(0,0,0,0.9)"
-                          />
-                        </g>
-                      </svg>
-                      4 days delivery
-                    </div>
-                  </div>
-                  <div className="catbgwhite_bxo">View Project</div>
-                </div>
-              </div>
-            </div> */}
+
             <div className="box-profile-bck">
               <div className="d-flex justify-content-end myskill_hdingn">
                 <button

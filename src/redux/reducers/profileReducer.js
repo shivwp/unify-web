@@ -24,6 +24,10 @@ import {
   SET_EDIT_EDUCATION,
   SET_EDIT_DESIGNATION,
   SET_EDIT_PORTFOLIO,
+  SET_EDIT_VIDEO,
+  SET_VISIBLITY,
+  SET_EXPRIENCE_LEVEL,
+  SET_DELETE_PORTFOLIO,
 } from "../types";
 
 const initialState = {};
@@ -157,6 +161,26 @@ const profileReducer = (state = initialState, action) => {
       return {
         ...state,
         editPortfolio: action.payload,
+      };
+    case SET_EDIT_VIDEO:
+      return {
+        ...state,
+        editVideo: action.payload,
+      };
+    case SET_VISIBLITY:
+      return {
+        ...state,
+        editProfileVisiblity: action.payload,
+      };
+    case SET_EXPRIENCE_LEVEL:
+      return {
+        ...state,
+        editExprienceLevel: action.payload,
+      };
+    case SET_DELETE_PORTFOLIO:
+      return {
+        ...state,
+        deletePortfolio: action.payload,
       };
     default:
       return state;

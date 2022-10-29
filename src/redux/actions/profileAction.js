@@ -25,6 +25,10 @@ import {
   SET_EDIT_EDUCATION,
   SET_EDIT_DESIGNATION,
   SET_EDIT_PORTFOLIO,
+  SET_EDIT_VIDEO,
+  SET_VISIBLITY,
+  SET_EXPRIENCE_LEVEL,
+  SET_DELETE_PORTFOLIO,
 } from "../types";
 
 const config = {
@@ -255,6 +259,10 @@ export const onEditVideo = (data, popup) => (dispatch) => {
   Axios.post("/edit-video", data, config)
     .then((res) => {
       console.log(res);
+      dispatch({
+        type: SET_EDIT_VIDEO,
+        payload: res.data,
+      });
       popup();
     })
     .catch((err) => {
@@ -391,4 +399,43 @@ export const editNameInfo = (data) => (dispatch) => {
     .catch((err) => {
       console.log(err);
     });
+  };
+  export const editVisiblity = (data, popup) => (dispatch) => {
+    Axios.post("/set-visibility", data, config)
+    .then((res) => {
+      dispatch({
+        type: SET_VISIBLITY,
+        payload: res.data,
+      });
+      popup(false);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 };
+export const editExprienceLev = (data, popup) => (dispatch) => {
+  Axios.post("/edit-experience-level", data, config)
+  .then((res) => {
+    dispatch({
+      type: SET_EXPRIENCE_LEVEL,
+      payload: res.data,
+      });
+      popup(false);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+    export const onDeletePortfolio = (data) => (dispatch) => {
+      Axios.post("/delete-portfolio-info", data, config)
+        .then((res) => {
+          dispatch({
+            type: SET_DELETE_PORTFOLIO,
+            payload: res.data,
+          });
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    };

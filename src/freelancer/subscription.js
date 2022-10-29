@@ -17,7 +17,7 @@ const Subscriptionplan = () => {
                         <h1 className="text-center font-fiftie">Subscription plan</h1>
                     </div>
                     <Row className="justify-content-center">
-                        <Col lg={6} className="sub_col_c lg-flex-right-subs">
+                        <Col lg={4} className="sub_col_c lg-flex-right-subs">
                             <label>
                                 <div className="subscription_box_r">
                                     <div className="sub_radio new_sub_rad"><input type="radio" name="s"/></div>
@@ -37,7 +37,27 @@ const Subscriptionplan = () => {
                                 </div>
                             </label>
                         </Col>
-                        <Col lg={6} className="sub_col_c lg-flex--subs">
+                        <Col lg={4} className="sub_col_c lg-flex-right-subs">
+                            <label>
+                                <div className="subscription_box_r">
+                                    <div className="sub_radio new_sub_rad"><input type="radio" name="s"/></div>
+                                    <div className="sub_sm_tex">BASIC</div>
+                                    <div className="sub_pric">$0.00 /month</div>
+                                    <ul className="sub_list_ul">
+                                        <li>Free job post & verified freelancer work history</li>
+                                        <li>Free proposals from talent</li>
+                                        <li>Unify Payment Protection</li>
+                                        <li>On-demand sourcing services </li>
+                                        <li>Team project tracking & collaboration tools </li>
+                                        <li>Additional freelancer invites, report & tracking capabilities</li>
+                                    </ul>
+                                    <div>
+                                    <Link to="/freelancer/dashboard"><button className="btn_chose_pl">CHOOSE PLAN</button></Link>
+                                    </div>
+                                </div>
+                            </label>
+                        </Col>
+                        <Col lg={4} className="sub_col_c lg-flex--subs">
                             <label>
                                 <div className="subscription_box_r">
                                     <div className="sub_radio new_sub_rad"><input type="radio"  name="s"/></div>

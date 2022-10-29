@@ -645,10 +645,98 @@
   margin-top: -1px;
 }
 
-.imgbox_bccp {
-  height: 150px;
-  /* width: 182px; */
+.portfolio {
+}
+.portfolio a {
   margin: 0 10px;
+}
+
+.imgbox_bccp {
+  position: relative;
+  height: 150px;
+  margin: 0 10px;
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+}
+
+@media screen and (max-width: 1024px) {
+  .imgbox_bccp {
+    position: relative;
+    height: 134px;
+    margin: 0 10px;
+    width: 204px;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .imgbox_bccp {
+    position: relative;
+    height: 218px;
+    margin: 0 10px;
+    width: 357px;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .imgbox_bccp {
+    position: relative;
+    height: 188px;
+    margin: 0 10px;
+    width: 308px;
+    display: flex;
+    flex-direction: column;
+  }
+}
+@media screen and (max-width: 320px) {
+  .imgbox_bccp {
+    position: relative;
+    height: 150px;
+    margin: 0 10px;
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media screen and(max-width: 1441px) and (min-width: 1025px) {
+  .imgbox_bccp {
+    position: relative;
+    height: 197px;
+    margin: 0 10px;
+    width: 294px;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.imgbox_bccp .port_folio_icons {
+  visibility: hidden;
+}
+
+.imgbox_bccp:hover .port_folio_icons {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  visibility: visible;
+}
+
+.port_folio_icons button {
+  border: 1px solid #6610f2;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 35px;
+  height: 35px;
 }
 
 .skill_bxr_gry {
@@ -675,7 +763,7 @@
 .imgbox_bccp img {
   height: 100%;
   width: 100%;
-  /* object-fit: cover; */
+  object-fit: cover;
 }
 
 .bpbck_txt {
@@ -1347,9 +1435,9 @@
   .ertr4h6j65esdv {
     flex-wrap: wrap;
   }
-  .imgbox_bccp {
+  /* .imgbox_bccp {
     height: 200px;
-  }
+  } */
   .seitsix_mtab_margin {
     margin: 10px 0px;
   }
@@ -1492,9 +1580,9 @@
   .fb_btns_s_pro button {
     margin-top: 7px;
   }
-  .imgbox_bccp img {
+  /* .imgbox_bccp img {
     width: 85%;
-  }
+  } */
   .p_header_hding {
     font-size: 20px;
   }
@@ -1961,3 +2049,124 @@
   font-size: 14px;
 }
 
+.visiblity_opts {
+  position: absolute;
+  display: flex;
+  background: #e5e4e4;
+  flex-direction: column;
+  align-items: flex-start;
+  top: 33px;
+  left: 79px;
+  width: 152px;
+  min-width: 152px;
+  z-index: 1;
+  border: 1px solid #dbdbdb;
+}
+.visiblity_opts span {
+  width: 100%;
+  height: 27px;
+  border-bottom: 1px solid #c1c1c1;
+  padding: 3px 10px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 400;
+}
+.visiblity_opts span:hover {
+  background-color: #dedddd;
+}
+.visiblity_opts .visiblity_ops_arrow {
+  display: inline-block;
+  transform: rotate(90deg);
+  position: absolute;
+  top: -18px;
+  font-size: 19px;
+  font-weight: 100;
+  left: 6px;
+}
+.exprience_level_ops {
+  position: absolute;
+  display: flex;
+  background: #e5e4e4;
+  flex-direction: column;
+  align-items: flex-start;
+  top: 33px;
+  left: 89px;
+  width: 134px;
+  min-width: 134px;
+  z-index: 1;
+  border: 1px solid #dbdbdb;
+}
+.exprience_level_ops span {
+  width: 100%;
+  height: 27px;
+  border-bottom: 1px solid #c1c1c1;
+  padding: 3px 10px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 400;
+}
+.exprience_level_ops span:hover {
+  background-color: #dedddd;
+}
+.exprience_level_ops .exprience_level_ops_arrow {
+  display: inline-block;
+  transform: rotate(90deg);
+  position: absolute;
+  top: -18px;
+  font-size: 19px;
+  font-weight: 100;
+  left: 6px;
+}
+
+.portfolioPaginate {
+  display: flex;
+  list-style: none;
+  width: 100%;
+  justify-content: flex-end;
+  margin: 0;
+}
+
+.paginationNext,
+.paginationPrev,
+.portfolioPageCount {
+  margin: 0 10px;
+  background-color: #6610f2;
+  color: white;
+  border: 1px solid #6610f2;
+  width: 40px;
+
+  cursor: pointer;
+}
+.paginationNext:hover,
+.paginationPrev:hover,
+.portfolioPageCount:hover {
+  border: 1px solid #6610f2;
+  background-color: #fff;
+  color: #6610f2 !important;
+}
+
+.portfolioPageCount {
+  display: none;
+}
+.disablePaginateBtn {
+  cursor: not-allowed;
+  background-color: rgb(173, 173, 173);
+  border: rgb(186, 183, 183);
+}
+
+.paginationPrevA,
+.paginationNextA {
+  cursor: inherit;
+  color: inherit;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.disablePaginateBtn:hover {
+  cursor: not-allowed;
+  cursor: not-allowed;
+  background-color: rgb(173, 173, 173);
+  border: rgb(186, 183, 183);
+}
