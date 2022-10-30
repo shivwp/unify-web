@@ -658,8 +658,6 @@
   flex-direction: column;
 }
 
-
-
 @media screen and (max-width: 425px) {
   .portfolio {
     width: 100%;
@@ -669,33 +667,23 @@
 
 @media screen and (max-width: 375px) {
   .imgbox_bccp {
-    position: relative;
     height: 188px;
-    margin: 0 10px;
-    width: 308px;
-    display: flex;
-    flex-direction: column;
   }
 }
 @media screen and (max-width: 320px) {
   .imgbox_bccp {
-    position: relative;
     height: 150px;
-    margin: 0 10px;
-    width: 250px;
-    display: flex;
-    flex-direction: column;
   }
 }
 
-@media screen and(max-width: 1441px) and (min-width: 1025px) {
+@media screen and (max-width: 1024px) and (min-width: 769px) {
   .imgbox_bccp {
-    position: relative;
-    height: 197px;
-    margin: 0 10px;
-    width: 294px;
-    display: flex;
-    flex-direction: column;
+    height: 137px;
+  }
+}
+@media screen and (max-width: 768px) and (min-width: 426px) {
+  .imgbox_bccp {
+    height: 137px;
   }
 }
 
@@ -1325,7 +1313,6 @@
   padding: 0px 5px;
   font-size: 15px;
   padding-left: 10px;
-
 }
 
 .tblew_bbltr {
