@@ -1631,6 +1631,7 @@ const UnifyFreelancer = () => {
   const [showVisiblityOpt, setShowVisiblityOpt] = useState(false);
   const [showExprienceLevOpt, setShowExprienceLevOpt] = useState(false);
   const [videoURL, setVideoURL] = useState(null);
+  const [editPortfoData, setEditPortfoData] = useState([]);
 
   const deleteExprience = useSelector(
     (state) => state?.profile?.deleteExprience
@@ -1797,32 +1798,64 @@ const UnifyFreelancer = () => {
       <>
         <div className="d-flex ertr4h6j65esdv align-items-center">
           {currentItems?.map((item) => (
-            <div className="portfolio">
-              <div className="imgbox_bccp">
-                <img src={item.image} alt="" />
-                <div className="port_folio_icons">
-                  <button onClick={() => deletePortf(item.id)}>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      viewBox="0 0 16 16"
+            <>
+              <div className="portfolio">
+                <div className="imgbox_bccp">
+                  <img src={item.image} alt="" />
+                  <div className="port_folio_icons">
+                    <button onClick={() => deletePortf(item.id)}>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 16 16"
+                      >
+                        <path
+                          id="_2203546_bin_delete_gabage_trash_icon"
+                          data-name="2203546_bin_delete_gabage_trash_icon"
+                          d="M8,0A1,1,0,0,0,7,1H0V3H1V14a2,2,0,0,0,2,2H13a2,2,0,0,0,2-2V3h1V1H9A1,1,0,0,0,8,0ZM4,14H3V5H4Zm3,0H6V5H7Zm3,0H9V5h1Zm3,0H12V5h1Z"
+                          fill="#6d2ef1"
+                        />
+                      </svg>
+                    </button>
+                    <button
+                      onClick={() => {
+                        setPortfolioPopup(true);
+                        setEditPortfoData(item);
+                      }}
                     >
-                      <path
-                        id="_2203546_bin_delete_gabage_trash_icon"
-                        data-name="2203546_bin_delete_gabage_trash_icon"
-                        d="M8,0A1,1,0,0,0,7,1H0V3H1V14a2,2,0,0,0,2,2H13a2,2,0,0,0,2-2V3h1V1H9A1,1,0,0,0,8,0ZM4,14H3V5H4Zm3,0H6V5H7Zm3,0H9V5h1Zm3,0H12V5h1Z"
-                        fill="#6d2ef1"
-                      />
-                    </svg>
-                  </button>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="15.709"
+                        height="15.714"
+                        viewBox="0 0 15.709 15.714"
+                      >
+                        <path
+                          id="_8665767_pen_icon"
+                          data-name="8665767_pen_icon"
+                          d="M15.327,2.274,13.482.429a1.475,1.475,0,0,0-2.085,0L9.662,2.165l3.9,3.929L15.3,4.358A1.447,1.447,0,0,0,15.327,2.274Zm-6.356.585L1,10.83a.491.491,0,0,0-.134.251L.057,15.123a.491.491,0,0,0,.576.58l4.042-.808a.491.491,0,0,0,.251-.134L12.9,6.789Z"
+                          transform="translate(-0.047 0.002)"
+                          fill="#6d2ef1"
+                        />
+                      </svg>
+                    </button>
+                  </div>
                 </div>
+                <a href={item.name}>{item.name}</a>
               </div>
-              <a href={item.name}>{item.name}</a>
-            </div>
+            </>
           ))}
+          {currentItems?.length == 2 && <div style={{ width: "33.3%" }}></div>}
+          {currentItems?.length == 1 && <div style={{ width: "66.6%" }}></div>}
         </div>
-        <div style={{ display: "flex", width:'100%', height:50, alignItems:'center' }}>
+        <div
+          style={{
+            display: "flex",
+            width: "100%",
+            height: 50,
+            alignItems: "center",
+          }}
+        >
           <ReactPaginate
             breakLabel="..."
             className="portfolioPaginate"
@@ -2526,7 +2559,12 @@ const UnifyFreelancer = () => {
               <div className="bpbck_txt d-flex mt-0">
                 <div className="bpck_head">Portfolio (2)</div>
                 <div className="myskill_hdingn">
-                  <button onClick={() => setPortfolioPopup(true)}>
+                  <button
+                    onClick={() => {
+                      setPortfolioPopup(true);
+                      setEditPortfoData([]);
+                    }}
+                  >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="17"
@@ -3056,6 +3094,7 @@ const UnifyFreelancer = () => {
         <PortfolioPupup
           open={portfolioPopup}
           onCloseModal={() => setPortfolioPopup(false)}
+          data={editPortfoData}
         />
       )}
       {videoPopup && (

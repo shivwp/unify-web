@@ -61,7 +61,7 @@ const AunthenticatorVerificationPopup = ({ open, onCloseModal }) => {
             <button onClick={onCloseModal}>CANCEL</button>
           </div>
           <div className="_save_submit">
-            <button>NEXT</button>
+            <button>SAVE</button>
           </div>
         </div>
       </Modal>

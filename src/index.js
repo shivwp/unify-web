@@ -248,10 +248,10 @@ root.render(
           path="/freelancer/notification"
           element={<FreelanceNotification />}
         />
-        <Route
+        {/* <Route
           path="/freelancer/identify-verification"
           element={<FreelanceIdentify />}
-        />
+        /> */}
         <Route path="/freelancer/my-stats" element={<FreelanceMyStats />} />
         <Route
           path="/freelancer/billing-earning"

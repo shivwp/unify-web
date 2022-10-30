@@ -12,6 +12,7 @@ const IntroVideoPopup = ({ open, onCloseModal, videoUrl }) => {
         onClose={onCloseModal}
         classNames={{ modal: "intro_video_popup" }}
         center
+        closeOnOverlayClick={false}
       >
         <h5>Introduction Video</h5>
         <div className="intro_video">

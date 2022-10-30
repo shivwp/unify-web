@@ -4,6 +4,7 @@
 
 .HWP_Popup {
   max-width: 500px;
+  padding: 25px;
 }
 
 .HWP_Popup .content {

@@ -5,11 +5,14 @@ import "./popup.css";
 import { useDispatch } from "react-redux";
 import { onEditPortfolio } from "../../../redux/actions/profileAction";
 
-const PortfolioPupup = ({ open, onCloseModal }) => {
+const PortfolioPupup = ({ open, onCloseModal, data }) => {
   const dispatch = useDispatch();
-  const [values, setValues] = useState({});
-  const [portfolioImage, setPortfolioImage] = useState("");
-  const [showingImage, setShowingImage] = useState();
+  const [values, setValues] = useState({
+    title: data?.name,
+    description: data?.description,
+  });
+  const [portfolioImage, setPortfolioImage] = useState(data?.image);
+  const [showingImage, setShowingImage] = useState(data?.image);
 
   const onInputChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
@@ -26,6 +29,9 @@ const PortfolioPupup = ({ open, onCloseModal }) => {
     formData.append("title", values?.title);
     formData.append("description", values?.description);
     formData.append("image", portfolioImage);
+    if (data) {
+      formData.append("id", data?.id);
+    }
 
     dispatch(onEditPortfolio(formData, onCloseModal));
   };
@@ -66,7 +72,7 @@ const PortfolioPupup = ({ open, onCloseModal }) => {
                   placeholder="Enter here"
                   className="p-2"
                   name="description"
-                  value={values.description}
+                  value={values?.description}
                   onChange={(e) => onInputChange(e)}
                 ></textarea>
               </div>

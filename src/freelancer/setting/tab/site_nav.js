@@ -396,7 +396,7 @@ const SideNav = () => {
             <Link to="/freelancer/notification">Notifications</Link>
           </div>
         </div>
-        <div
+        {/* <div
           className={`nav_box ${
             active === "freelancer/identify-verification" ? "active_s_nav" : ""
           }`}
@@ -428,7 +428,7 @@ const SideNav = () => {
               Identify Verification
             </Link>
           </div>
-        </div>
+        </div> */}
         <div
           className={`nav_box ${
             active === "freelancer/my-stats" ? "active_s_nav" : ""

@@ -2536,13 +2536,13 @@
   padding: 3px 10px;
   width: 150px;
   top: 1px;
-  right: 73px;
+  right: 86px;
 }
 
 @media screen and (max-width: 1440px) {
   .menu_btn .menu_bar_teams {
     top: 1px;
-    right: 72px;
+    right: 86px;
   }
 }
 
