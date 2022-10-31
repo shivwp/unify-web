@@ -1,7 +1,8 @@
 import Container from "react-bootstrap/Container";
 import Title from "../../../../components/title";
 import { Link } from "react-router-dom";
-import Form from 'react-bootstrap/Form';
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
 
 const Question = () => {
   Title(" | question 2");
@@ -16,7 +17,7 @@ const Question = () => {
           </div>
           <div className="on_time_h3">
             <h3>One-time</h3>
-            <button className="round_b_btn">
+            <Button className="round_b_btn">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
@@ -31,32 +32,32 @@ const Question = () => {
                   d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"
                 />
               </svg>
-            </button>
+            </Button>
           </div>
           <div className="on_time_h3 d-block padd_fou">
             <h3>How long will your work take?</h3>
             <div className="d-flex flex-wrap">
-              <div className="s_b_r mrr_riii">
+              <Form.Group className="s_b_r mrr_riii">
                 <Form.Check type="radio" id="r_2" name="g" />
-                <label htmlFor="r_2">
+                <Form.Label htmlFor="r_2">
                   {" "}
                   <p>More than 6 months</p>
-                </label>
-              </div>
-              <div className="s_b_r mrr_riii">
+                </Form.Label>
+              </Form.Group>
+              <Form.Group className="s_b_r mrr_riii">
                 <Form.Check type="radio" id="r_3" name="g" />
-                <label htmlFor="r_3">
+                <Form.Label htmlFor="r_3">
                   {" "}
                   <p>3 to 6 months</p>
-                </label>
-              </div>
-              <div className="s_b_r mrr_riii">
+                </Form.Label>
+              </Form.Group>
+              <Form.Group className="s_b_r mrr_riii">
                 <Form.Check type="radio" id="r_1" name="g" />
-                <label htmlFor="r_1">
+                <Form.Label htmlFor="r_1">
                   {" "}
                   <p>1 to 3 months</p>
-                </label>
-              </div>
+                </Form.Label>
+              </Form.Group>
             </div>
           </div>
           <div className="on_time_h3 d-block padd_fou">
@@ -67,15 +68,15 @@ const Question = () => {
             </p>
             <div className="d-flex flex-wrap">
               <div className="s_b_r mrr_riii d-block">
-                <div className="flex_aling">
+                <Form.Group className="flex_aling">
                   <Form.Check type="radio" id="r_2" name="g" />
-                  <label htmlFor="r_2">
+                  <Form.Label htmlFor="r_2">
                     {" "}
                     <p>
                       <b className="text-black">Entry</b>
                     </p>
-                  </label>
-                </div>
+                  </Form.Label>
+                </Form.Group>
                 <div className="label_apra">
                   <p className="litt_sm_para cewuohq">
                     Looking for someone relatively new to this field
@@ -83,15 +84,15 @@ const Question = () => {
                 </div>
               </div>
               <div className="s_b_r mrr_riii d-block">
-                <div className="flex_aling">
+                <Form.Group className="flex_aling">
                   <Form.Check type="radio" id="r_1" name="g" />
-                  <label htmlFor="r_1">
+                  <Form.Label htmlFor="r_1">
                     {" "}
                     <p>
                       <b className="text-black">Intermediate</b>
                     </p>
-                  </label>
-                </div>
+                  </Form.Label>
+                </Form.Group>
                 <div className="label_apra">
                   <p className="litt_sm_para cewuohq">
                     Looking for someone relatively new to this field
@@ -99,15 +100,15 @@ const Question = () => {
                 </div>
               </div>
               <div className="s_b_r mrr_riii d-block">
-                <div className="flex_aling">
+                <Form.Group className="flex_aling">
                   <Form.Check type="radio" id="r_4" name="g" />
-                  <label htmlFor="r_4">
+                  <Form.Label htmlFor="r_4">
                     {" "}
                     <p>
                       <b className="text-black">Expert</b>
                     </p>
-                  </label>
-                </div>
+                  </Form.Label>
+                </Form.Group>
                 <div className="label_apra">
                   <p className="litt_sm_para cewuohq">
                     Looking for someone relatively new to this field
@@ -119,12 +120,12 @@ const Question = () => {
           <div className="btn_foot_sec flex-wrap d-flex no-border mt-2">
             <Link to="/question1">
               <div className="fo_btn_c next_b_btn_c">
-                <button className="mrright-gppnew">Back</button>
+                <Button className="mrright-gppnew">Back</Button>
               </div>
             </Link>
             <Link to="/businesssize">
               <div className="fo_btn_c next_b_btn_c">
-                <button className="active_btn_blue">Next</button>
+                <Button className="active_btn_blue">Next</Button>
               </div>
             </Link>
           </div>

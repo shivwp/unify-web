@@ -2,7 +2,8 @@ import Container from "react-bootstrap/Container";
 import { Row, Col } from "react-bootstrap";
 import SideNav from "./site_nav";
 import Title from "../../../../../components/title";
-import Form from 'react-bootstrap/Form';
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
 
 const Screen = () => {
   Title(" | Setting - Billing & Payment");
@@ -23,9 +24,9 @@ const Screen = () => {
                     <div className="sett_y_b">Your balance due is $0.00</div>
                   </div>
                   <div className="btn_foot_sec no-border mt-0 mb-0 p-0 fo_btn_c next_b_btn_c">
-                    <button className="bg-transparent h-color-b">
+                    <Button className="bg-transparent h-color-b">
                       Pay Now
-                    </button>
+                    </Button>
                   </div>
                 </div>
               </div>
@@ -36,9 +37,9 @@ const Screen = () => {
                     <div className="sett_y_b">Your balance due is $0.00</div>
                   </div>
                   <div className="btn_foot_sec no-border mt-0 mb-0 p-0 fo_btn_c next_b_btn_c">
-                    <button className="bg-transparent h-color-b">
+                    <Button className="bg-transparent h-color-b">
                       Add a new billing method
-                    </button>
+                    </Button>
                   </div>
                 </div>
                 <div>
@@ -60,7 +61,7 @@ const Screen = () => {
                     <div className="sett_y_b">$0.00/month</div>
                   </div>
                   <div className="btn_foot_sec no-border mt-0 mb-0 p-0 fo_btn_c next_b_btn_c">
-                    <button className="bg-transparent h-color-b">Cancel</button>
+                    <Button className="bg-transparent h-color-b">Cancel</Button>
                   </div>
                 </div>
                 <div className="chan_sub_n_s">Change Subscription</div>

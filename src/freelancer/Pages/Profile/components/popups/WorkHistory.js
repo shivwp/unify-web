@@ -1,3 +1,4 @@
+import Button from 'react-bootstrap/Button'
 const Star = () => {
   return (
     <>
@@ -33,7 +34,7 @@ const WorkHistory = () => {
             <Star />
             <span>5.00 Oct 29, 2021 - Dec 3, 2021</span>
             <div className="myskill_hdingn m-0">
-              <button>
+              <Button>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="18"
@@ -48,7 +49,7 @@ const WorkHistory = () => {
                     fill="#6d2ef1"
                   />
                 </svg>
-              </button>
+              </Button>
             </div>
           </div>
           <div className="whistory_para">

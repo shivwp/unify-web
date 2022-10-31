@@ -20,7 +20,7 @@ const Screen = () => {
               <div className="find_sol_para">
                 Search hundreds of articles on Upwork Help
               </div>
-              <div className="d-flex suppott_inp">
+              <Form.Group className="d-flex suppott_inp">
                 <div className="d-flex align-items-center">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -34,7 +34,7 @@ const Screen = () => {
                   </svg>
                 </div>
                 <Form.Control type={`text`} placeholder={`Search Articles`} />
-              </div>
+              </Form.Group>
             </div>
           </Container>
         </div>

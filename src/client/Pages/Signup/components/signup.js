@@ -63,8 +63,8 @@ const Signup = ({
               Continue with Google
             </Button>
           </div>
-          <form onSubmit={(e) => submitForm(e)}>
-            <div className="input_group">
+          <Form onSubmit={(e) => submitForm(e)}>
+            <Form.Group className="input_group">
               {/* <div className={errors.first_name ? "borderError input_bo" : "input_bo"}> */}
               <div className="input_bo">
                 <div className="input_icoa">
@@ -184,8 +184,8 @@ const Signup = ({
                   </span>
                 </div>
               </div>
-            </div>
-            <div className="input_group">
+            </Form.Group>
+            <Form.Group className="input_group">
               <div className="input_bo">
                 <div className="input_icoa">
                   <svg
@@ -220,8 +220,8 @@ const Signup = ({
                   </span>
                 </div>
               </div>
-            </div>
-            <div className="input_group">
+            </Form.Group>
+            <Form.Group className="input_group">
               <div className="input_bo">
                 <div className="input_icoa">
                   <svg
@@ -275,8 +275,8 @@ const Signup = ({
                   </span>
                 </div>
               </div>
-            </div>
-            <div className="input_group">
+            </Form.Group>
+            <Form.Group className="input_group">
               <div className="input_bo">
                 <div className="input_icoa">
                   <svg
@@ -330,8 +330,8 @@ const Signup = ({
                   </span>
                 </div>
               </div>
-            </div>
-            <div className="input_group">
+            </Form.Group>
+            <Form.Group className="input_group">
               <div className="input_bo selec_n_cs">
                 <div className="input_nodxq signup_custom_select">
                   <Select
@@ -353,8 +353,8 @@ const Signup = ({
                   </span>
                 </div>
               </div>
-            </div>
-            <div className="input_group">
+            </Form.Group>
+            <Form.Group className="input_group">
               <div className="input_bo">
                 <div className="input_icoa"></div>
                 <div className="input_nodxq">
@@ -366,7 +366,7 @@ const Signup = ({
                   />
                 </div>
               </div>
-            </div>
+            </Form.Group>
             <div className="sign_form_sm_head">
               <h3>I Want to:</h3>
             </div>
@@ -403,10 +403,10 @@ const Signup = ({
                   name="send_email"
                   onChange={(e) => onInputChange(e)}
                 />
-                <label className="tb_mob_f12px">
+                <Form.Label className="tb_mob_f12px">
                   yes! Send me genuinely useful emails every now and then to
                   help me get the most out of Unify
-                </label>
+                </Form.Label>
               </div>
               <div className="sign_l_n_text">
                 <Form.Check
@@ -414,18 +414,18 @@ const Signup = ({
                   name="agree_terms"
                   onChange={(e) => onInputChange(e)}
                 />
-                <label className="tb_mob_f12px">
+                <Form.Label className="tb_mob_f12px">
                   yes! I understand and agree to the{" "}
                   <span>UnifyTerms of Service</span>, including the{" "}
                   <span>User Agreement</span> and <span>Privacy Policy</span>
-                </label>
+                </Form.Label>
               </div>
             </div>
 
             <div className="sign_form_btn_subm">
-              <button type="submit">CREATE MY ACCOUNT</button>
+              <Button type="submit">CREATE MY ACCOUNT</Button>
             </div>
-          </form>
+          </Form>
 
           <div className="sin_dont_accou">
             Already have an account?{" "}

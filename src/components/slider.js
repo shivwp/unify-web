@@ -3,6 +3,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import Navbar from './Layouts/Header/HeaderMain';
 import Row from "react-bootstrap/Row";
+import Button from 'react-bootstrap/Button'
 
 const slider = (props) => {
     return (
@@ -16,14 +17,14 @@ const slider = (props) => {
                             <div className="container">
                                 <div className='shuuter_man'>
                                     <div className='slider_get_btn md_btn_getstarted'>
-                                        <button className="active_btn">GET STARTED</button>
+                                        <Button className="active_btn">GET STARTED</Button>
                                     </div>
                                 </div>
                                 <div className='position_ab mr_top'>
                                     <div className='slider_headin slider_center'><div>Hire the best freelancers <br />for any <span className="blue_ater_s">job online</span></div>
                                         <div className='slider_subheadin'>Post a job for free and connect with <br /> independent talent today .</div>
                                         <div className='slider_get_btn mdd-none'>
-                                            <button className="active_btn">GET STARTED</button>
+                                            <Button className="active_btn">GET STARTED</Button>
                                         </div>
                                     </div>
                                 </div>

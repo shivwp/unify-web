@@ -3,7 +3,8 @@ import { Col, Row } from "react-bootstrap";
 import Title from "../../../components/title";
 import { Link } from "react-router-dom";
 import Layout from "../../Layout/Layout";
-import Form from 'react-bootstrap/Form';
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
 
 const Subscriptionplan = () => {
   Title(" | Subscription plan");
@@ -16,7 +17,7 @@ const Subscriptionplan = () => {
           </div>
           <Row className="justify-content-center">
             <Col lg={6} className="sub_col_c lg-flex-right-subs">
-              <label>
+              <Form.Label>
                 <div className="subscription_box_r">
                   <div className="sub_radio new_sub_rad">
                     <Form.Control type="radio" name="s" />
@@ -36,14 +37,14 @@ const Subscriptionplan = () => {
                   </ul>
                   <div>
                     <Link to="/freelancer/dashboard">
-                      <button className="btn_chose_pl">CHOOSE PLAN</button>
+                      <Button className="btn_chose_pl">CHOOSE PLAN</Button>
                     </Link>
                   </div>
                 </div>
-              </label>
+              </Form.Label>
             </Col>
             <Col lg={6} className="sub_col_c lg-flex--subs">
-              <label>
+              <Form.Label>
                 <div className="subscription_box_r">
                   <div className="sub_radio new_sub_rad">
                     <Form.Control type="radio" name="s" />
@@ -63,11 +64,11 @@ const Subscriptionplan = () => {
                   </ul>
                   <div>
                     <Link to="/freelancer/dashboard">
-                      <button className="btn_chose_pl">CHOOSE PLAN</button>
+                      <Button className="btn_chose_pl">CHOOSE PLAN</Button>
                     </Link>
                   </div>
                 </div>
-              </label>
+              </Form.Label>
             </Col>
           </Row>
         </div>

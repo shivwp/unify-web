@@ -6,6 +6,7 @@ import { useState } from "react";
 import Active from "./active";
 import Invitations from "./Invitations";
 import InviteUsersPopup from "../../../../../popups/InviteUsersPopup";
+import Button from 'react-bootstrap/Button'
 
 const Screen = () => {
   const [openInviteUser, setOpenInviteUser] = useState(false);
@@ -31,18 +32,18 @@ const Screen = () => {
                       <div className="sett_y_b">John Doe (Me)</div>
                     </div>
                     <div className="btn_foot_sec no-border mt-0 mb-0 p-0 fo_btn_c next_b_btn_c">
-                      <button
+                      <Button
                         onClick={() => setOpenInviteUser(true)}
                         className="bg-transparent h-color-b"
                       >
                         Invite New User
-                      </button>
+                      </Button>
                     </div>
                   </div>
                 </div>
                 <div className="r-box_setting">
                   <div className="d-flex flex-wrap tab_m_nodea">
-                    <button
+                    <Button
                       className={`tab_btn_vs bg-transparent s_btn_ns w-auto ${
                         tabActive === "active" ? "active_bvs active_bvss" : ""
                       }`}
@@ -51,8 +52,8 @@ const Screen = () => {
                       }}
                     >
                       Active Members
-                    </button>
-                    <button
+                    </Button>
+                    <Button
                       className={`tab_btn_vs bg-transparent s_btn_ns w-auto ${
                         tabActive === "invitation"
                           ? "active_bvs active_bvss"
@@ -63,7 +64,7 @@ const Screen = () => {
                       }}
                     >
                       Invitations
-                    </button>
+                    </Button>
                   </div>
                   <div className="main_hirefreelancer_bx main_box_descr no-border mt-0 pl-0 pr-0">
                     <div className="search_area_in"></div>

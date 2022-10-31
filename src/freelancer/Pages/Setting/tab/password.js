@@ -6,6 +6,7 @@ import { useState } from "react";
 import Switch from "react-switch";
 import VerificationPref from "./popups/VerificationPref";
 import ChangePassword from "./popups/ChangePassword";
+import Button from 'react-bootstrap/Button'
 
 const Screen = () => {
   Title(" | Password & Security");
@@ -28,7 +29,7 @@ const Screen = () => {
                 <div className="d-flex justify-content-between align-items-center b-bottom-gr pt-1 pb-3">
                   <div className="setting_b_head_s">Password</div>
                   <div>
-                    <button
+                    <Button
                       className="round_b_btn"
                       onClick={() => {
                         Setpopup(<ChangePassword Popup={Setpopup} />);
@@ -48,7 +49,7 @@ const Screen = () => {
                           d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"
                         />
                       </svg>
-                    </button>
+                    </Button>
                   </div>
                 </div>
                 <div className="d-flex justify-content-between">
@@ -77,7 +78,7 @@ const Screen = () => {
                     </div>
                   </div>
                   <div>
-                    <button
+                    <Button
                       className="round_b_btn"
                       onClick={() => {
                         Setpopup(<VerificationPref Popup={Setpopup} />);
@@ -97,7 +98,7 @@ const Screen = () => {
                           d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"
                         />
                       </svg>
-                    </button>
+                    </Button>
                   </div>
                 </div>
                 <div className="d-flex justify-content-between b-bottom-gr pb-2">
@@ -249,7 +250,7 @@ const Screen = () => {
                   </div>
                   <div className="d-flex justify-content-center align-items-center">
                     <div>
-                      <button className="round_b_btn">
+                      <Button className="round_b_btn">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="16"
@@ -264,7 +265,7 @@ const Screen = () => {
                             d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"
                           />
                         </svg>
-                      </button>
+                      </Button>
                     </div>
                   </div>
                 </div>

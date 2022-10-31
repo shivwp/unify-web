@@ -6,6 +6,7 @@ import { useState } from "react";
 import DateRangePicker from "react-bootstrap-daterangepicker";
 import "bootstrap-daterangepicker/daterangepicker.css";
 import { Link } from "react-router-dom";
+import Button from 'react-bootstrap/Button'
 
 const TBLScreen = () => {
   return (
@@ -160,7 +161,7 @@ const Screen = () => {
                 </div>
               </div> 
               <div className="btn_group_be">
-                <button
+                <Button
                   className={`st_bgbe ${
                     tabActive === "tblscreen" ? "active_btn_be" : ""
                   }`}
@@ -170,8 +171,8 @@ const Screen = () => {
                   }}
                 >
                   Billings & Earnings
-                </button>
-                <button
+                </Button>
+                <Button
                   className={`sec_bgbe ${
                     tabActive === "earning" ? "active_btn_be" : ""
                   }`}
@@ -181,12 +182,12 @@ const Screen = () => {
                   }}
                 >
                   Lifetime Billed
-                </button>
+                </Button>
               </div>
               <div className="fo_btn_c next_b_btn_c">
-                <button className="active_btn_blue filter_svg_btnwni">
+                <Button className="active_btn_blue filter_svg_btnwni">
                   Download CSV
-                </button>
+                </Button>
               </div>
             </div>
             <Row className="w-100">

@@ -4,6 +4,7 @@ import star from '../../../../icons/star.svg';
 import '../../../../styles/freelancer.css'
 import { Link } from 'react-router-dom';
 import Form from 'react-bootstrap/Form'
+import { Button } from "react-bootstrap";
 
 function ListProposals() {
     const card = [1, 2, 3];
@@ -80,12 +81,12 @@ const projectdetail = () => {
                         <div className="s_trans_bos s_nav_body box_web_req">
                             <div className='fl_end_b abso_cen'>
                                 <div className="fb_btns_s_pro pd_n_fbspro">
-                                    <button className='bg-trans_s_pro bg_li_grey wlistbtn_xe'>
+                                    <Button className='bg-trans_s_pro bg_li_grey wlistbtn_xe'>
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-heart-fill heart_btn" viewBox="0 0 16 16">
                                             <path fillRule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z" />
                                         </svg>
-                                    </button>
-                                    <Link to="/freelancer/send-proposal"><button className="pd_n_sendp">Send Proposal</button></Link>
+                                    </Button>
+                                    <Link to="/freelancer/send-proposal"><Button className="pd_n_sendp">Send Proposal</Button></Link>
                                 </div>
                             </div>
                             <div className='pd_head_on pd_head_h1'><h1>Website Designer Required For Directory Theme</h1></div>
@@ -217,11 +218,11 @@ const projectdetail = () => {
                             </div>
                             <div className='f_agre_fot mt-2 flex-wrap'>
                                 <div className='agree_term_b align-items-center'>
-                                    <Form.Check type="checkbox" /><label>I agree to the Terms And Conditions</label>
+                                    <Form.Check type="checkbox" /><Form.Label>I agree to the Terms And Conditions</Form.Label>
                                 </div>
                                 <div>
                                     <div className="fb_btns_s_pro">
-                                    <Link to="/freelancer/send-proposal"><button className="pd_n_sendp pad_n_pdd">Send Proposal</button></Link>
+                                    <Link to="/freelancer/send-proposal"><Button className="pd_n_sendp pad_n_pdd">Send Proposal</Button></Link>
                                     </div>
                                 </div>
                             </div>
@@ -252,7 +253,7 @@ const projectdetail = () => {
                             <div className="comp_name_h"><h3>HRM Recruitment Center</h3></div>
                             <div className="comp_name_p"><p>We are a computerized wellbeing startup with a spry and high-speed climate. We are searching for a Senior, RELIABLE portable application…</p></div>
                             <div className="view-p_btn pd_n_vbbtn">
-                                <button>View profile</button>
+                                <Button>View profile</Button>
                             </div>
                             <div className="comp_name_p"><p>We are a computerized wellbeing startup with a spry and high-speed climate. We are searching for a Senior, RELIABLE portable application…</p></div>
                         </div>

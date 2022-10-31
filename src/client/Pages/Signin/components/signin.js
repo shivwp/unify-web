@@ -22,8 +22,8 @@ const Signin = ({
           <div className="sign_u_head">
             <h1>Log in to Unify</h1>
           </div>
-          <form onSubmit={(e) => submitForm(e)}>
-            <div className="input_group">
+          <Form onSubmit={(e) => submitForm(e)}>
+            <Form.Group className="input_group">
               <div className="input_bo">
                 <div className="input_icoa">
                   <svg
@@ -82,9 +82,9 @@ const Signin = ({
                   </span>
                 </div>
               </div>
-            </div>
+            </Form.Group>
 
-            <div className="input_group">
+            <Form.Group className="input_group">
               <div className="input_bo">
                 <div className="input_icoa">
                   <svg
@@ -137,7 +137,7 @@ const Signin = ({
                   </span>
                 </div>
               </div>
-            </div>
+            </Form.Group>
             <div className="forgot_passw">
               <span>
                 <Link to="/forgot-password">Forgot Password ?</Link>
@@ -174,7 +174,7 @@ const Signin = ({
                 CONTINUE WITH EMAIL
               </Button>
             </div>
-          </form>
+          </Form>
           <div className="sign_in_or">or</div>
           <div className="sign_form_btn_subm sign_in_social_btn mr_sign_in_n">
             <Button className="apple_btn mr_sign_in_n">

@@ -5,6 +5,7 @@ import Title from "../../../../../components/title";
 import CreateNewTeam from "../../../../../popups/CreateNewTeamPupup";
 import { useState } from "react";
 import EditTeamPopup from "../../../../../popups/EditTeamPopup";
+import Button from 'react-bootstrap/Button'
 
 const Screen = () => {
   Title(" | Setting - Team");
@@ -25,7 +26,7 @@ const Screen = () => {
                     <h2>Teams</h2>
                   </div>
                   <div>
-                    <button
+                    <Button
                       className="round_b_btn blue_trans_btn"
                       onClick={() => setOpenNewTeam(true)}
                     >
@@ -42,7 +43,7 @@ const Screen = () => {
                           d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"
                         />
                       </svg>
-                    </button>
+                    </Button>
                   </div>
                 </div>
                 <div className="set_tem_para_s">
@@ -68,7 +69,7 @@ const Screen = () => {
                         className="w-15 mob_60_rr"
                         style={{ position: "relative" }}
                       >
-                        <button
+                        <Button
                           className="round_b_btn bg-transparent"
                           onClick={() => setMenuBarTeams(!menuBarTeams)}
                         >
@@ -82,7 +83,7 @@ const Screen = () => {
                           >
                             <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
                           </svg>
-                        </button>
+                        </Button>
                         {menuBarTeams && (
                           <div className="menu_bar_teams">
                             <div
@@ -104,7 +105,7 @@ const Screen = () => {
                       </div>
                       <div className="s_th_s s_td_s w-20">AK24#7777</div>
                       <div className="w-15 mob_60_rr">
-                        <button className="round_b_btn bg-transparent">
+                        <Button className="round_b_btn bg-transparent">
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="16"
@@ -115,7 +116,7 @@ const Screen = () => {
                           >
                             <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
                           </svg>
-                        </button>
+                        </Button>
                       </div>
                     </div>
                     <div className="s_tble_s width-max-content-s">
@@ -125,7 +126,7 @@ const Screen = () => {
                       </div>
                       <div className="s_th_s s_td_s w-20">AK24#7777</div>
                       <div className="w-15 mob_60_rr">
-                        <button className="round_b_btn bg-transparent">
+                        <Button className="round_b_btn bg-transparent">
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="16"
@@ -136,7 +137,7 @@ const Screen = () => {
                           >
                             <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
                           </svg>
-                        </button>
+                        </Button>
                       </div>
                     </div>
                     <div className="s_tble_s width-max-content-s">
@@ -146,7 +147,7 @@ const Screen = () => {
                       </div>
                       <div className="s_th_s s_td_s w-20">AK24#7777</div>
                       <div className="w-15 mob_60_rr">
-                        <button className="round_b_btn bg-transparent">
+                        <Button className="round_b_btn bg-transparent">
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="16"
@@ -157,7 +158,7 @@ const Screen = () => {
                           >
                             <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
                           </svg>
-                        </button>
+                        </Button>
                       </div>
                     </div>
                   </div>

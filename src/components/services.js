@@ -4,6 +4,7 @@ import "swiper/css/navigation";
 import {Navigation } from "swiper";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import Button from 'react-bootstrap/Button'
 
 const Services = () => {
     return (
@@ -74,7 +75,7 @@ const Services = () => {
 
                 <Row>
                     <Col lg={12}>
-                        <div className="d-flex justify-content-center btn_services"><button>View All The Services</button></div>
+                        <div className="d-flex justify-content-center btn_services"><Button>View All The Services</Button></div>
                     </Col>
                 </Row>
             </div>

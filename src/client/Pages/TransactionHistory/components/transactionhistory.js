@@ -5,6 +5,7 @@ import Title from "../../../../components/title";
 import Select from "react-select";
 import DateRangePicker from 'react-bootstrap-daterangepicker';
 import 'bootstrap-daterangepicker/daterangepicker.css';
+import Button from 'react-bootstrap/Button'
   
 const Screen = () => {
   Title(" | Transaction History");
@@ -57,7 +58,7 @@ const Screen = () => {
                 <Col className="mt-2">
                   <div>
                     <div className="ts_btn attach_f_btn wid_30_in mt-0 mb-0">
-                      <button className="transp_fil_btn">
+                      <Button className="transp_fil_btn">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="16"
@@ -69,7 +70,7 @@ const Screen = () => {
                           <path d="M1.5 1.5A.5.5 0 0 1 2 1h12a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.128.334L10 8.692V13.5a.5.5 0 0 1-.342.474l-3 1A.5.5 0 0 1 6 14.5V8.692L1.628 3.834A.5.5 0 0 1 1.5 3.5v-2z" />
                         </svg>
                         Filters
-                      </button>
+                      </Button>
                     </div>
                   </div>
                 </Col>
@@ -78,12 +79,12 @@ const Screen = () => {
             <div className="download_lnk_csx">
               <div className="btn_foot_sec p-0 justify-content-center flex-wrap no-border mt-2">
                 <div className="fo_btn_c next_b_btn_c">
-                  <button className="hideen_csv_do_btn mrright-gppnew">Download CSV</button>
+                  <Button className="hideen_csv_do_btn mrright-gppnew">Download CSV</Button>
                 </div>
                 <div className="fo_btn_c next_b_btn_c">
-                  <button className="hideen_csv_do_btn">
+                  <Button className="hideen_csv_do_btn">
                     Download Invoinces
-                  </button>
+                  </Button>
                 </div>
               </div>
             </div>
@@ -109,7 +110,7 @@ const Screen = () => {
               <div className="download_lnk_csx">
                 <div className="btn_foot_sec justify-content-center flex-wrap no-border m-0 p-0">
                   <div className="fo_btn_c next_b_btn_c">
-                    <button className="active_btn_blue">Apply</button>
+                    <Button className="active_btn_blue">Apply</Button>
                   </div>
                 </div>
               </div>

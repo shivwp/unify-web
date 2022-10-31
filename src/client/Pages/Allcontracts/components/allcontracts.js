@@ -2,6 +2,7 @@ import Container from "react-bootstrap/Container";
 import Title from "../../../../components/title";
 import { useState } from "react";
 import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
 import Filter from "./elements/Filter";
 import Jobs from "./elements/Jobs";
 import { FilterSVG, SearchSVG } from "./icons";
@@ -29,7 +30,7 @@ const Screen = () => {
         </div>
         <div className="main_hirefreelancer_bx main_box_descr">
           <div className="search_area_in">
-            <div className="search_input_in search_reel_9_wi mx_eity">
+            <Form.Group className="search_input_in search_reel_9_wi mx_eity">
               <div className="search_icon_in">
                 <SearchSVG />
               </div>
@@ -37,9 +38,9 @@ const Screen = () => {
                 type={`text`}
                 placeholder={`Search by contract, freelancer, or agency name`}
               />
-            </div>
+            </Form.Group>
             <div className="ts_btn attach_f_btn wid_30_in">
-              <button
+              <Button
                 className="transp_fil_btn"
                 onClick={() => {
                   ToggleFilter();
@@ -47,7 +48,7 @@ const Screen = () => {
               >
                 <FilterSVG />
                 Filters
-              </button>
+              </Button>
             </div>
           </div>
           {open}

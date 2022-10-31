@@ -2,6 +2,7 @@ import Container from 'react-bootstrap/Container';
 import { Col, Row } from 'react-bootstrap';
 import Title from '../../../../components/title';
 import $ from 'jquery';
+import Button from 'react-bootstrap/Button'
 
 const Screen = () => {
     Title(" | Talent Discover");
@@ -38,15 +39,15 @@ const Screen = () => {
                                             <div className='ml-10-n'>
                                             <div className='propmo_u_name'>Mario Speedwagon</div>
                                             <div className='promo_exper'>Expert in Mobile App</div>
-                                            <div className='avai_btn_promo'><button>Available</button></div>
+                                            <div className='avai_btn_promo'><Button>Available</Button></div>
                                             </div>
                                         </div>
                                         <div className='heart_btn_promo'>
-                                            <button>
+                                            <Button>
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-heart" viewBox="0 0 16 16">
                                                     <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
                                                 </svg>
-                                            </button>
+                                            </Button>
                                         </div>
                                     </div>
                                     <div className='d-flex justify-content-between align-items-center'>
@@ -58,7 +59,7 @@ const Screen = () => {
                             </Col>
                         </Row>
                         <div className='d-flex justify-content-center align-items-center mt-4'>
-                            <button className='blue_btn_pro font-weight-500'>See More</button>
+                            <Button className='blue_btn_pro font-weight-500'>See More</Button>
                         </div>
                     </div>
                 </div>
@@ -74,26 +75,26 @@ const Screen = () => {
                             </div>
                         </div>
                         <div className='slide_btnss slider_shutter'>
-                            <button>Mobile App Design
+                            <Button>Mobile App Design
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#393939" className="bi bi-plus" viewBox="0 0 16 16">
                                     <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
                                 </svg>
-                            </button>
-                            <button>User Experience Design
+                            </Button>
+                            <Button>User Experience Design
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#393939" className="bi bi-plus" viewBox="0 0 16 16">
                                     <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
                                 </svg>
-                            </button>
-                            <button>User Interface Design
+                            </Button>
+                            <Button>User Interface Design
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#393939" className="bi bi-plus" viewBox="0 0 16 16">
                                     <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
                                 </svg>
-                            </button>
-                            <button>Graphic Design
+                            </Button>
+                            <Button>Graphic Design
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#393939" className="bi bi-plus" viewBox="0 0 16 16">
                                     <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
                                 </svg>
-                            </button>
+                            </Button>
                         </div>
                     </div>
                     <div className='s_slides'>
@@ -106,26 +107,26 @@ const Screen = () => {
                             </div>
                         </div>
                         <div className='slide_btnss slider_shutter'>
-                            <button>Mobile App Design
+                            <Button>Mobile App Design
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#393939" className="bi bi-plus" viewBox="0 0 16 16">
                                     <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
                                 </svg>
-                            </button>
-                            <button>User Experience Design
+                            </Button>
+                            <Button>User Experience Design
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#393939" className="bi bi-plus" viewBox="0 0 16 16">
                                     <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
                                 </svg>
-                            </button>
-                            <button>User Interface Design
+                            </Button>
+                            <Button>User Interface Design
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#393939" className="bi bi-plus" viewBox="0 0 16 16">
                                     <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
                                 </svg>
-                            </button>
-                            <button>Graphic Design
+                            </Button>
+                            <Button>Graphic Design
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#393939" className="bi bi-plus" viewBox="0 0 16 16">
                                     <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
                                 </svg>
-                            </button>
+                            </Button>
                         </div>
                     </div>   
                     <div className='s_slides'>
@@ -138,26 +139,26 @@ const Screen = () => {
                             </div>
                         </div>
                         <div className='slide_btnss slider_shutter'>
-                            <button>Mobile App Design
+                            <Button>Mobile App Design
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#393939" className="bi bi-plus" viewBox="0 0 16 16">
                                     <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
                                 </svg>
-                            </button>
-                            <button>User Experience Design
+                            </Button>
+                            <Button>User Experience Design
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#393939" className="bi bi-plus" viewBox="0 0 16 16">
                                     <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
                                 </svg>
-                            </button>
-                            <button>User Interface Design
+                            </Button>
+                            <Button>User Interface Design
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#393939" className="bi bi-plus" viewBox="0 0 16 16">
                                     <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
                                 </svg>
-                            </button>
-                            <button>Graphic Design
+                            </Button>
+                            <Button>Graphic Design
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#393939" className="bi bi-plus" viewBox="0 0 16 16">
                                     <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
                                 </svg>
-                            </button>
+                            </Button>
                         </div>
                     </div>   
                     <div className='s_slides'>
@@ -170,26 +171,26 @@ const Screen = () => {
                             </div>
                         </div>
                         <div className='slide_btnss slider_shutter'>
-                            <button>Mobile App Design
+                            <Button>Mobile App Design
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#393939" className="bi bi-plus" viewBox="0 0 16 16">
                                     <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
                                 </svg>
-                            </button>
-                            <button>User Experience Design
+                            </Button>
+                            <Button>User Experience Design
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#393939" className="bi bi-plus" viewBox="0 0 16 16">
                                     <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
                                 </svg>
-                            </button>
-                            <button>User Interface Design
+                            </Button>
+                            <Button>User Interface Design
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#393939" className="bi bi-plus" viewBox="0 0 16 16">
                                     <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
                                 </svg>
-                            </button>
-                            <button>Graphic Design
+                            </Button>
+                            <Button>Graphic Design
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#393939" className="bi bi-plus" viewBox="0 0 16 16">
                                     <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
                                 </svg>
-                            </button>
+                            </Button>
                         </div>
                     </div> 
                     <div className='s_slides'>
@@ -202,26 +203,26 @@ const Screen = () => {
                             </div>
                         </div>
                         <div className='slide_btnss slider_shutter'>
-                            <button>Mobile App Design
+                            <Button>Mobile App Design
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#393939" className="bi bi-plus" viewBox="0 0 16 16">
                                     <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
                                 </svg>
-                            </button>
-                            <button>User Experience Design
+                            </Button>
+                            <Button>User Experience Design
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#393939" className="bi bi-plus" viewBox="0 0 16 16">
                                     <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
                                 </svg>
-                            </button>
-                            <button>User Interface Design
+                            </Button>
+                            <Button>User Interface Design
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#393939" className="bi bi-plus" viewBox="0 0 16 16">
                                     <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
                                 </svg>
-                            </button>
-                            <button>Graphic Design
+                            </Button>
+                            <Button>Graphic Design
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#393939" className="bi bi-plus" viewBox="0 0 16 16">
                                     <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
                                 </svg>
-                            </button>
+                            </Button>
                         </div>
                     </div>
                     <div className='s_slides'>
@@ -234,26 +235,26 @@ const Screen = () => {
                             </div>
                         </div>
                         <div className='slide_btnss slider_shutter'>
-                            <button>Mobile App Design
+                            <Button>Mobile App Design
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#393939" className="bi bi-plus" viewBox="0 0 16 16">
                                     <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
                                 </svg>
-                            </button>
-                            <button>User Experience Design
+                            </Button>
+                            <Button>User Experience Design
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#393939" className="bi bi-plus" viewBox="0 0 16 16">
                                     <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
                                 </svg>
-                            </button>
-                            <button>User Interface Design
+                            </Button>
+                            <Button>User Interface Design
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#393939" className="bi bi-plus" viewBox="0 0 16 16">
                                     <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
                                 </svg>
-                            </button>
-                            <button>Graphic Design
+                            </Button>
+                            <Button>Graphic Design
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#393939" className="bi bi-plus" viewBox="0 0 16 16">
                                     <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
                                 </svg>
-                            </button>
+                            </Button>
                         </div>
                     </div>
                 </div>

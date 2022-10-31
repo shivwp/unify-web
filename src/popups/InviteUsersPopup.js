@@ -3,8 +3,8 @@ import { Modal } from "react-responsive-modal";
 import "react-responsive-modal/styles.css";
 import "./popup.css";
 import Select from "react-select";
-import Form from 'react-bootstrap/Form'
-
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
 
 const InviteUsersPopup = ({ open, onCloseModal }) => {
   const options1 = [{ name: "Ankita Kumavat", label: "Ankita Kumavat" }];
@@ -24,43 +24,52 @@ const InviteUsersPopup = ({ open, onCloseModal }) => {
           <span>Add now One!</span>
         </p> */}
           <div className="invite_users">
-            <label>
+            <Form.Label>
               <span>Invite to Team</span>
               <Select
-                  className="custom_css_select"
-                  placeholder="Ankita Kumavat"
-                  options={options1}
-                />
+                className="custom_css_select"
+                placeholder="Ankita Kumavat"
+                options={options1}
+              />
               {/* <input type="text" name="name" placeholder="Ankita Kumavat" /> */}
-            </label>
+            </Form.Label>
           </div>
           <div className="invite_users">
-            <label>
+            <Form.Label>
               <span>Enter Email Address or UserName</span>
-              <textarea name="mailAndUserName" id=""></textarea>
+              <Form.Control
+                as="textarea"
+                name="mailAndUserName"
+                id=""
+              ></Form.Control>
               <p>Separate email address and username with a comma.</p>
-            </label>
+            </Form.Label>
           </div>
           <div className="invite_users">
-            <label>
+            <Form.Label>
               <span>Message to user (optional)</span>
-              <textarea name="mailAndUserName" id=""></textarea>
+              <Form.Control
+                as="textarea"
+                name="mailAndUserName"
+                id=""
+              ></Form.Control>
               <p>This message will be sent in the invitation email.</p>
-            </label>
+            </Form.Label>
           </div>
           <div className="invite_users">
             <h6>Admin</h6>
             <div>
               <ul className="popup-radio">
                 <li>
-                  <label htmlFor="admin_op_1">
+                  <Form.Label htmlFor="admin_op_1">
                     <Form.Check type="radio" id="admin_op_1" name="p" /> None
-                  </label>
+                  </Form.Label>
                 </li>
                 <li>
-                  <label htmlFor="admin_op_2">
-                    <Form.Check type="radio" name="p" id="admin_op_2" /> Finance Only
-                  </label>
+                  <Form.Label htmlFor="admin_op_2">
+                    <Form.Check type="radio" name="p" id="admin_op_2" /> Finance
+                    Only
+                  </Form.Label>
                   <p>
                     Can access Payment tab, managing payment methods, viewing
                     financial reports, and making deposits, and withdrawals.
@@ -69,9 +78,9 @@ const InviteUsersPopup = ({ open, onCloseModal }) => {
                   </p>
                 </li>
                 <li>
-                  <label htmlFor="admin_op_3">
+                  <Form.Label htmlFor="admin_op_3">
                     <Form.Check type="radio" name="p" id="admin_op_3" /> Full
-                  </label>
+                  </Form.Label>
                   <p>
                     In additional to finance privileges, can invite or remove
                     team members, manage members permissions, and edit
@@ -86,15 +95,15 @@ const InviteUsersPopup = ({ open, onCloseModal }) => {
             <div>
               <ul className="popup-radio">
                 <li>
-                  <label htmlFor="hiring_op_1">
+                  <Form.Label htmlFor="hiring_op_1">
                     <Form.Check type="radio" id="hiring_op_1" name="p" /> None
-                  </label>
+                  </Form.Label>
                 </li>
                 <li>
-                  <label htmlFor="hiring_op_2">
+                  <Form.Label htmlFor="hiring_op_2">
                     <Form.Check type="radio" name="p" id="hiring_op_2" /> Source
                     Talent Only
-                  </label>
+                  </Form.Label>
                   <p>
                     Can post jobs, invite freelancers to interview, and review
                     proposals, Cannot hire, end contracts, give bonuses, or
@@ -102,9 +111,10 @@ const InviteUsersPopup = ({ open, onCloseModal }) => {
                   </p>
                 </li>
                 <li>
-                  <label htmlFor="hiring_op_3">
-                    <Form.Check type="radio" name="p" id="hiring_op_3" /> Manager
-                  </label>
+                  <Form.Label htmlFor="hiring_op_3">
+                    <Form.Check type="radio" name="p" id="hiring_op_3" />{" "}
+                    Manager
+                  </Form.Label>
                   <p>
                     In addition to talent sourcing privileges hiring managers
                     can make contract offers give bonuses, increase rates, end
@@ -125,20 +135,22 @@ const InviteUsersPopup = ({ open, onCloseModal }) => {
               </p>
               <ul className="popup-radio">
                 <li>
-                  <label htmlFor="diaries_op_1">
-                    <Form.Check type="radio" id="diaries_op_1" name="p" /> Individual
-                  </label>
+                  <Form.Label htmlFor="diaries_op_1">
+                    <Form.Check type="radio" id="diaries_op_1" name="p" />{" "}
+                    Individual
+                  </Form.Label>
                 </li>
                 <li>
-                  <label htmlFor="diaries_op_2">
+                  <Form.Label htmlFor="diaries_op_2">
                     <Form.Check type="radio" name="p" id="diaries_op_2" /> Team
-                  </label>
+                  </Form.Label>
                   <p>Can see and chat with anyone on the team.</p>
                 </li>
                 <li>
-                  <label htmlFor="diaries_op_3">
-                    <Form.Check type="radio" name="p" id="diaries_op_3" /> Company
-                  </label>
+                  <Form.Label htmlFor="diaries_op_3">
+                    <Form.Check type="radio" name="p" id="diaries_op_3" />{" "}
+                    Company
+                  </Form.Label>
                   <p>
                     Can see and chat with everyone in the company, across all
                     teams.
@@ -150,12 +162,12 @@ const InviteUsersPopup = ({ open, onCloseModal }) => {
 
           <div className="btn_foot_sec no-border flex-wrap d-flex">
             <div className="fo_btn_c next_b_btn_c">
-              <button className="remove-posting-btns" onClick={onCloseModal}>
+              <Button className="remove-posting-btns" onClick={onCloseModal}>
                 CANCEL
-              </button>
+              </Button>
             </div>
             <div className="fo_btn_c next_b_btn_c">
-              <button className="active_btn_blue">SAVE</button>
+              <Button className="active_btn_blue">SAVE</Button>
             </div>
           </div>
         </Modal>

@@ -1701,7 +1701,9 @@ body {
   align-items: center;
   padding: 12px 0px;
 }
-
+.s_b_r label , .form-label{
+  margin-bottom: auto;
+}
 .s_b_r p {
   font-size: 18px;
   line-height: 18px;

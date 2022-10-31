@@ -1,16 +1,17 @@
 import { Col, Row } from "react-bootstrap";
-import Form from 'react-bootstrap/Form'
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
 
 const Screen = () => {
   return (
     <>
       <div className="search_area_in sm_serch_fll_n">
         <div className="select_inp_in mt-2">
-          <select>
+          <Form.Select>
             <option>All Saved</option>
-          </select>
+          </Form.Select>
         </div>
-        <div className="search_input_in selec_inp_ful_w mt-2 mb-0">
+        <Form.Group className="search_input_in selec_inp_ful_w mt-2 mb-0">
           <div className="search_icon_in">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -24,7 +25,7 @@ const Screen = () => {
             </svg>
           </div>
           <Form.Control type={`text`} placeholder={`search...`} />
-        </div>
+        </Form.Group>
       </div>
       <div className="freelancer_box_in">
         <Row>
@@ -46,7 +47,7 @@ const Screen = () => {
                   </div>
                 </div>
                 <div className="d-flex align-items-center">
-                  <button className="transp_fil_btn heart_roun_btn">
+                  <Button className="transp_fil_btn heart_roun_btn">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="16"
@@ -60,11 +61,11 @@ const Screen = () => {
                         d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"
                       />
                     </svg>
-                  </button>
+                  </Button>
                   <div className="ts_btn attach_f_btn wid_30_in d-flex">
-                    <button className="transp_fil_btn font-weight-500">
+                    <Button className="transp_fil_btn font-weight-500">
                       Hire
-                    </button>
+                    </Button>
                   </div>
                 </div>
               </div>
@@ -88,10 +89,10 @@ const Screen = () => {
               </div>
               <div className="overflow-scroll">
                 <div className="slide_btnss freelancer_skill_sc">
-                  <button>Mobile App Design</button>
-                  <button>User Experience Design</button>
-                  <button>User Interface Design</button>
-                  <button>Graphic Design</button>
+                  <Button>Mobile App Design</Button>
+                  <Button>User Experience Design</Button>
+                  <Button>User Interface Design</Button>
+                  <Button>Graphic Design</Button>
                 </div>
               </div>
             </div>

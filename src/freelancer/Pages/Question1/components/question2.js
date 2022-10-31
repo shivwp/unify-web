@@ -2,6 +2,7 @@ import Container from 'react-bootstrap/Container';
 import { Col, Row } from 'react-bootstrap';
 import Title from '../../../../components/title';
 import { Link } from 'react-router-dom';
+import Button from 'react-bootstrap/Button'
 
 import Form from 'react-bootstrap/Form';
 const Screen = () => {
@@ -60,7 +61,7 @@ const Screen = () => {
                     </Col>
                 </Row>
                 <div className="skip_question_btn_frel">
-                   <Link to="/freelancer/dashboard"><button>Skip for now &gt;&gt;</button></Link>
+                   <Link to="/freelancer/dashboard"><Button>Skip for now &gt;&gt;</Button></Link>
                 </div>
             </Container>
         </>

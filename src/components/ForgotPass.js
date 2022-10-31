@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { onForgotPassword } from "../redux/actions/authActions";
 import { useNavigate } from "react-router-dom";
-import Form from 'react-bootstrap/Form'
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
+
 const ForgotPass = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const [email, setEmail] = useState();
 
@@ -22,8 +24,8 @@ const ForgotPass = () => {
       <div className="bg_body">
         <div className="forgot_pass_container">
           <div className="heading">Forgot Password</div>
-          <div className="email_input">
-            <label htmlFor="email">Enter Email Address</label>
+          <Form.Group className="email_input">
+            <Form.Label htmlFor="email">Enter Email Address</Form.Label>
             <div className="email_inp">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -42,9 +44,9 @@ const ForgotPass = () => {
                 onChange={(e) => setEmail(e.target.value)}
               />
             </div>
-          </div>
+          </Form.Group>
           <div className="forgot_pass_btn">
-            <button onClick={sendEmail}>SEND</button>
+            <Button onClick={sendEmail}>SEND</Button>
           </div>
         </div>
       </div>

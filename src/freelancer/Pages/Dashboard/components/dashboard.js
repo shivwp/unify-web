@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import Select from "react-select";
 import Switch from "react-switch";
+import Button from 'react-bootstrap/Button'
 
 const Profile = () => {
   return (
@@ -628,7 +629,7 @@ const Screen = () => {
               </div>
               <div className="dbaors_btn">
                 <Link to="/freelancer/project-search">
-                  <button>Find new Project</button>
+                  <Button>Find new Project</Button>
                 </Link>
               </div>
             </div>
@@ -876,7 +877,7 @@ const Screen = () => {
                       AED 345 <span>/ month</span>
                     </div>
                     <div>
-                      <button>FULL TIME</button>
+                      <Button>FULL TIME</Button>
                     </div>
                   </div>
                 </div>

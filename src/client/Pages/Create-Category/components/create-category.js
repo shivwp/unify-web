@@ -1,7 +1,8 @@
 import Container from "react-bootstrap/Container";
 import Title from "../../../../components/title";
 import { Link } from "react-router-dom";
-import Form from 'react-bootstrap/Form';
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
 
 const Createcategory = () => {
   Title(" | create category");
@@ -12,7 +13,7 @@ const Createcategory = () => {
           <div className="s_b_head hi_mari">
             <h2>Hi Marina, what do you need done?</h2>
           </div>
-          <div className="input_box_ccb mt-3 mb-4">
+          <Form.Group className="input_box_ccb mt-3 mb-4">
             <div>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -31,66 +32,66 @@ const Createcategory = () => {
                 placeholder="ex. Build responsive WordPress site with booking/payment funvtionality"
               />
             </div>
-          </div>
+          </Form.Group>
           <div className="my_skil_head mr_2_sm get_insp">
             <h3>Get inspired by starting with a category</h3>
           </div>
           <div className="flex_ccb_list">
             <div className="s_b_r">
               <Form.Check type="radio" id="r_1" name="g" />
-              <label htmlFor="r_1">
+              <Form.Label htmlFor="r_1">
                 {" "}
                 <p>Development & IT</p>
-              </label>
+              </Form.Label>
             </div>
             <div className="s_b_r">
               <Form.Check type="radio" id="r_2" name="g" />
-              <label htmlFor="r_2">
+              <Form.Label htmlFor="r_2">
                 {" "}
                 <p>Design & Creative</p>
-              </label>
+              </Form.Label>
             </div>
             <div className="s_b_r">
               <Form.Check type="radio" id="r_3" name="g" />
-              <label htmlFor="r_3">
+              <Form.Label htmlFor="r_3">
                 {" "}
                 <p>Sales & Marketing</p>
-              </label>
+              </Form.Label>
             </div>
             <div className="s_b_r">
               <Form.Check type="radio" id="r_3" name="g" />
-              <label htmlFor="r_3">
+              <Form.Label htmlFor="r_3">
                 {" "}
                 <p>Writing & Translation</p>
-              </label>
+              </Form.Label>
             </div>
             <div className="s_b_r">
               <Form.Check type="radio" id="r_3" name="g" />
-              <label htmlFor="r_3">
+              <Form.Label htmlFor="r_3">
                 {" "}
                 <p>Finance & Accounting</p>
-              </label>
+              </Form.Label>
             </div>
             <div className="s_b_r">
               <Form.Check type="radio" id="r_3" name="g" />
-              <label htmlFor="r_3">
+              <Form.Label htmlFor="r_3">
                 {" "}
                 <p>Engineering & Architecture</p>
-              </label>
+              </Form.Label>
             </div>
             <div className="s_b_r">
               <Form.Check type="radio" id="r_3" name="g" />
-              <label htmlFor="r_3">
+              <Form.Label htmlFor="r_3">
                 {" "}
                 <p>Legal</p>
-              </label>
+              </Form.Label>
             </div>
             <div className="s_b_r">
               <Form.Check type="radio" id="r_3" name="g" />
-              <label htmlFor="r_3">
+              <Form.Label htmlFor="r_3">
                 {" "}
                 <p>Admin & Customer Support</p>
-              </label>
+              </Form.Label>
             </div>
           </div>
           <div className="show_less_likn">
@@ -98,7 +99,7 @@ const Createcategory = () => {
           </div>
           <Link to="/category">
             <div className="fo_btn_c ccb_next_btn">
-              <button>Next</button>
+              <Button>Next</Button>
             </div>
           </Link>
         </div>

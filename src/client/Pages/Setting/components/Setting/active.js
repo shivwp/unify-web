@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Row, Col } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 import Filter from "./popups/Filter";
+import Button from "react-bootstrap/Button";
 
 const Screen = ({ setOpen }) => {
   const [filterOpen, setFilterOpen] = useState(false);
@@ -13,7 +14,7 @@ const Screen = ({ setOpen }) => {
     <>
       <Row className="w-100">
         <Col sm={12} md={8}>
-          <div className="search_input_in search_reel_9_wi bg-transparent w-100 min-width-100">
+          <Form.Group className="search_input_in search_reel_9_wi bg-transparent w-100 min-width-100">
             <div className="search_icon_in">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -31,11 +32,11 @@ const Screen = ({ setOpen }) => {
               placeholder={`Search ...`}
               className="bg-transparent"
             />
-          </div>
+          </Form.Group>
         </Col>
         <Col sm={12} md={4}>
           <div className="ts_btn attach_f_btn wid_30_in d-flex justify-content-right w-20">
-            <button
+            <Button
               className="transp_fil_btn"
               onClick={() => {
                 ToggleFilter();
@@ -52,7 +53,7 @@ const Screen = ({ setOpen }) => {
                 <path d="M1.5 1.5A.5.5 0 0 1 2 1h12a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.128.334L10 8.692V13.5a.5.5 0 0 1-.342.474l-3 1A.5.5 0 0 1 6 14.5V8.692L1.628 3.834A.5.5 0 0 1 1.5 3.5v-2z" />
               </svg>
               Filters
-            </button>
+            </Button>
           </div>
         </Col>
       </Row>

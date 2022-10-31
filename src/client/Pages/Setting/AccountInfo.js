@@ -4,6 +4,7 @@ import { Row, Col } from "react-bootstrap";
 import CompanyContactInfo from "./CompanyContactInfo";
 import CompnyDetailsInfo from "./CompnyDetailsInfo";
 import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
 
 const AccountInfo = () => {
   return (
@@ -20,47 +21,47 @@ const AccountInfo = () => {
             />
           </div>
           <div className="change_prof_btn">
-            <button>Upload Profile Photo</button>
+            <Button>Upload Profile Photo</Button>
           </div>
         </div>
         <div className="acc_form">
           <Row>
             <Col lg={6} md={6} sm={12}>
-              <div className="inp_fields">
-                <span>First Name</span>
+              <Form.Group className="inp_fields">
+                <Form.Label>First Name</Form.Label>
                 <Form.Control
                   type="text"
                   name="first-name"
                   id="first-name"
                   placeholder="Ankita"
                 />
-              </div>
-              <div className="inp_fields">
-                <span>Email</span>
+              </Form.Group>
+              <Form.Group className="inp_fields">
+                <Form.Label>Email</Form.Label>
                 <Form.Control
                   type="text"
                   name="email"
                   id="email"
                   placeholder="ankita@gmail.com"
                 />
-              </div>
+              </Form.Group>
             </Col>
             <Col lg={6} md={6} sm={12}>
-              <div className="inp_fields">
-                <span>Last Name</span>
+              <Form.Group className="inp_fields">
+                <Form.Label>Last Name</Form.Label>
                 <Form.Control
                   type="text"
                   name="last-name"
                   id="last-name"
                   placeholder="Kumavat"
                 />
-              </div>
+              </Form.Group>
             </Col>
           </Row>
-          <div className="acc_btn">
-            <button className="cancel_btn">CANCEL</button>
-            <button className="save_btn">SAVE</button>
-          </div>
+          <Form.Group className="acc_btn">
+            <Button className="cancel_btn">CANCEL</Button>
+            <Button className="save_btn">SAVE</Button>
+          </Form.Group>
         </div>
       </div>
       <CompnyDetailsInfo />

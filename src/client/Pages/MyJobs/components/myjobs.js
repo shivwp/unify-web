@@ -3,7 +3,8 @@ import { Col, Row } from "react-bootstrap";
 import Title from "../../../../components/title";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import Form from 'react-bootstrap/Form';
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
 
 const Screen = () => {
   Title(" | My Jobs");
@@ -14,9 +15,9 @@ const Screen = () => {
           <Col lg={4}>
             <div className="filter_headin_m">Posted by</div>
             <div className="select_inp_in filter_select_m">
-              <select>
+              <Form.Select>
                 <option>All coworkers</option>
-              </select>
+              </Form.Select>
             </div>
           </Col>
           <Col lg={3}>
@@ -69,7 +70,7 @@ const Screen = () => {
           </Col>
         </Row>
         <div>
-          <button className="blue_btn_smm">Close Filters</button>
+          <Button className="blue_btn_smm">Close Filters</Button>
         </div>
       </div>
     );
@@ -105,25 +106,23 @@ const Screen = () => {
           </div>
         </div>
         <div className="text-right d-flex flex-wrap">
-          <Link
-            to='/view-job/review'
-          >
-            <button className="blue_btn_smm font-weight-500">
+          <Link to="/view-job/review">
+            <Button className="blue_btn_smm font-weight-500">
               View Proposals
-            </button>
+            </Button>
           </Link>
-          <button className="toggle_btn_dot">
+          <Button className="toggle_btn_dot">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="16"
               height="16"
-              fill="currentColor"
+              fill="#000"
               className="bi bi-three-dots-vertical"
               viewBox="0 0 16 16"
             >
               <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
             </svg>
-          </button>
+          </Button>
         </div>
       </div>
     );
@@ -147,13 +146,13 @@ const Screen = () => {
           <div className="my_jo_headin">My Jobs</div>
           <div className="post_job_btn_m">
             <Link to="/gettingstarted">
-              <button className="font-weight-600">Post A New Job</button>
+              <Button className="font-weight-600">Post A New Job</Button>
             </Link>
           </div>
         </div>
         <div className="main_hirefreelancer_bx main_box_descr">
           <div className="search_area_in b-bottom-gr pb-2">
-            <div className="search_input_in search_reel_9_wi mx_eity">
+            <Form.Group className="search_input_in search_reel_9_wi mx_eity">
               <div className="search_icon_in">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -166,10 +165,13 @@ const Screen = () => {
                   <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
                 </svg>
               </div>
-              <Form.Control type={`text`} placeholder={`Search for freelancer`} />
-            </div>
+              <Form.Control
+                type={`text`}
+                placeholder={`Search for freelancer`}
+              />
+            </Form.Group>
             <div className="ts_btn attach_f_btn wid_30_in">
-              <button
+              <Button
                 className="transp_fil_btn fif_five"
                 onClick={() => {
                   ToggleFilter();
@@ -186,7 +188,7 @@ const Screen = () => {
                   <path d="M1.5 1.5A.5.5 0 0 1 2 1h12a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.128.334L10 8.692V13.5a.5.5 0 0 1-.342.474l-3 1A.5.5 0 0 1 6 14.5V8.692L1.628 3.834A.5.5 0 0 1 1.5 3.5v-2z" />
                 </svg>
                 Filters
-              </button>
+              </Button>
             </div>
           </div>
           {open}

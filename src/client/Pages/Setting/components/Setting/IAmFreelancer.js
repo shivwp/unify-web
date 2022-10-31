@@ -5,6 +5,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation } from "swiper";
+import Button from 'react-bootstrap/Button'
 
 const IAmFreelancer = () => {
   return (
@@ -266,12 +267,12 @@ const IAmFreelancer = () => {
             Learn More About What’s New At Unify
           </div>
           <div className="btn_foot_sec justify-content-center flex-wrap no-border ImFreelancer_btn fo_btn_c mb-0 pb-0 next_b_btn_c">
-            <button className="active_btn_blue mi-width-2 pnew">
+            <Button className="active_btn_blue mi-width-2 pnew">
               Learn More
-            </button>
+            </Button>
           </div>
           <div className="btn_foot_sec mt-2 justify-content-end flex-wrap no-border p-0 m-0 fo_btn_c next_b_btn_c ImFreelancer_btn">
-            <button className="active_btn_blue m-0 support_d_btn">
+            <Button className="active_btn_blue m-0 support_d_btn">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
@@ -284,7 +285,7 @@ const IAmFreelancer = () => {
                 <path d="M3 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3 6a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 6zm0 2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z" />
               </svg>
               Get Support
-            </button>
+            </Button>
           </div>
         </Container>
       </div>

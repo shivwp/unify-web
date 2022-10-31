@@ -3,6 +3,7 @@ import OTPInput from "otp-input-react";
 import { useDispatch } from "react-redux";
 import { onResendOtp, onVerifySignup } from "../redux/actions/authActions";
 import { useNavigate } from "react-router-dom";
+import Button from 'react-bootstrap/Button'
 
 const VerifySignUp = () => {
   const navigate = useNavigate();
@@ -42,7 +43,7 @@ const VerifySignUp = () => {
             />
           </div>
           <div className="otp_submit_btn">
-            <button onClick={submitVerifyOTP}>VERIFY</button>
+            <Button onClick={submitVerifyOTP}>VERIFY</Button>
           </div>
           <div className="suggetion_resend">
             Don't get the code <span onClick={resendOtp}>Resend</span>

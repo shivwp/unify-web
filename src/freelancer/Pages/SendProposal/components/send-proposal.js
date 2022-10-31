@@ -6,6 +6,7 @@ import star from "../../../../icons/star.svg";
 import Select from "react-select";
 import Form from 'react-bootstrap/Form';
 import { Link } from "react-router-dom";
+import Button from 'react-bootstrap/Button'
 
 const Screen = () => {
   Title(" | Send Proposal");
@@ -367,7 +368,7 @@ const Screen = () => {
           </Row>
         </div>
               <div className="mt-4 mb-4">
-                <button className="send_pros_btn">send proposal</button>
+                <Button className="send_pros_btn">send proposal</Button>
               </div>
       </Container>
     </>

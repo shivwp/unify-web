@@ -3,8 +3,8 @@ import { Col, Row } from "react-bootstrap";
 import Container from "react-bootstrap/Container";
 import Select from "react-select";
 import { Link } from "react-router-dom";
-
 import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
 
 const AddCompAddress = () => {
   const options1 = [{ name: "india", label: "india" }];
@@ -18,51 +18,51 @@ const AddCompAddress = () => {
             <div className="box_vs_m mt-0 col_left">
               <h5 className="page_title">1. Add Company Address</h5>
               <div className="add_details">
-                <form>
+                <Form>
                   <Row>
                     <Col lg={6}>
-                      <div className="add_address_inp">
-                        <span>Country</span>
+                      <Form.Group className="add_address_inp">
+                        <Form.Label>Country</Form.Label>
                         <Select
                           className="custom_css_select"
                           placeholder="India"
                           options={options1}
                         />
-                      </div>
-                      <div className="add_address_inp">
-                        <span>City</span>
+                      </Form.Group>
+                      <Form.Group className="add_address_inp">
+                        <Form.Label>City</Form.Label>
                         <Select
                           className="custom_css_select"
                           placeholder="India"
                           options={options1}
                         />
-                      </div>
+                      </Form.Group>
                     </Col>
                     <Col lg={6}>
-                      <div className="add_address_inp">
-                        <span>Address</span>
+                      <Form.Group className="add_address_inp">
+                        <Form.Label>Address</Form.Label>
                         <Form.Control type="text" name="address" id="address" />
-                      </div>
-                      <div className="add_address_inp">
-                        <span>Postal Code(optional)</span>
+                      </Form.Group>
+                      <Form.Group className="add_address_inp">
+                        <Form.Label>Postal Code(optional)</Form.Label>
                         <Form.Control
                           type="text"
                           name="postal-code"
                           id="postal-code"
                         />
-                      </div>
+                      </Form.Group>
                     </Col>
                   </Row>
                   <Link to="/hire-freelancer/edit-address">
-                    <button
+                    <Button
                       type="button"
                       className="save_Address"
                       style={{ fontWeight: 600 }}
                     >
                       Save
-                    </button>
+                    </Button>
                   </Link>
-                </form>
+                </Form>
               </div>
             </div>
           </Col>

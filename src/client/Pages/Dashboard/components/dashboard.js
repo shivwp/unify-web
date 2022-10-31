@@ -3,6 +3,7 @@ import Title from "../../../../components/title";
 import $ from "jquery";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import Button from 'react-bootstrap/Button'
 
 import RemovePostingPopup from "../../../../popups/RemovePostingPopup";
 import RemoveDraftPopup from "../../../../popups/RemoveDraftPopup";
@@ -36,14 +37,14 @@ const Screen = () => {
             <div className="my_job_sm_text">Marina Pokhilko</div>
           </div>
           <div className="post_job_btn_m d-flex align-items-center flex-wrap">
-            <button className="trans_btn_myjo mr_btn mt-2">
+            <Button className="trans_btn_myjo mr_btn mt-2">
               Browse Project Catalog
-            </button>
+            </Button>
             <Link to="/gettingstarted">
-              <button className="mt-2 border_blue_wwifth">Post A Job</button>
+              <Button className="mt-2 border_blue_wwifth">Post A Job</Button>
             </Link>
             <Link to="/expandteam">
-              <button className="ml_btn trans_btn_myjo blue_coloe_brn mt-2">
+              <Button className="ml_btn trans_btn_myjo blue_coloe_brn mt-2">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"
@@ -58,7 +59,7 @@ const Screen = () => {
                     d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z"
                   />
                 </svg>
-              </button>
+              </Button>
             </Link>
           </div>
         </div>
@@ -90,7 +91,7 @@ const Screen = () => {
               </div>
             </div>
             <div className="text-right d-flex flex-wrap menu_btn">
-              <button className="toggle_btn_dot" onClick={openMenuBarPosting}>
+              <Button className="toggle_btn_dot" onClick={openMenuBarPosting}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"
@@ -101,7 +102,7 @@ const Screen = () => {
                 >
                   <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
                 </svg>
-              </button>
+              </Button>
 
               {menuBarPosting && (
                 <div className="menu_bar" id="menu_bar1">
@@ -141,7 +142,7 @@ const Screen = () => {
               <div className="my_job_pos_tme">Saved 25 min ago</div>
             </div>
             <div className="text-right d-flex flex-wrap menu_btn">
-              <button className="toggle_btn_dot" onClick={openMenuBarDraft}>
+              <Button className="toggle_btn_dot" onClick={openMenuBarDraft}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"
@@ -152,7 +153,7 @@ const Screen = () => {
                 >
                   <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
                 </svg>
-              </button>
+              </Button>
               {menuBarDraft && (
                 <div className="menu_bar" id="menu_bar2">
                   <div className="navabr_t_li">

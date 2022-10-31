@@ -1,4 +1,6 @@
 import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button'
+
 const CloseIcon = () => {
   return (
     <svg
@@ -39,40 +41,40 @@ const VerificationPref = (props) => {
                 <div className="headiwuewopiu">
                   If we need to confirm it's you, which should we try first?
                 </div>
-                <label className="text-black font-size-13px font-weight-500 mt-3 pb-1 radiolablepopo">
+                <Form.Label className="text-black font-size-13px font-weight-500 mt-3 pb-1 radiolablepopo">
                   <Form.Check type="radio" name="g" /> Authenticator app code
-                </label>
-                <label className="text-black font-size-13px font-weight-500 mt-1 pb-1 radiolablepopo">
+                </Form.Label>
+                <Form.Label className="text-black font-size-13px font-weight-500 mt-1 pb-1 radiolablepopo">
                   <Form.Check type="radio" name="g" /> Mobile app prompt
-                </label>
-                <label className="text-black font-size-13px font-weight-500 mt-1 pb-1 radiolablepopo">
+                </Form.Label>
+                <Form.Label className="text-black font-size-13px font-weight-500 mt-1 pb-1 radiolablepopo">
                   <Form.Check type="radio" name="g" /> Text message
-                </label>
+                </Form.Label>
               </div>
             </div>
             <div className="mb-4">
               <div className="popup_form_element agrement_ineoeu mt-3 pt-1">
                 <div className="headiwuewopiu">When should we confirm?</div>
-                <label className="text-black font-size-13px font-weight-500 mt-3 pb-1 radiolablepopo">
+                <Form.Label className="text-black font-size-13px font-weight-500 mt-3 pb-1 radiolablepopo">
                   <Form.Check type="radio" name="g" /> When my login or activity
                   seems risky
-                </label>
-                <label className="text-black font-size-13px font-weight-500 mt-1 pb-1 radiolablepopo">
+                </Form.Label>
+                <Form.Label className="text-black font-size-13px font-weight-500 mt-1 pb-1 radiolablepopo">
                   <Form.Check type="radio" name="g" /> At every login and when my
                   login or activity seems risky
-                </label>
+                </Form.Label>
               </div>
             </div>
 
             <div className="popup_btns_new flex-wrap cwiewyehkk">
-              <button className="trans_btn">Cancel</button>
-              <button
+              <Button className="trans_btn">Cancel</Button>
+              <Button
                 onClick={() => {
                   props.Popup();
                 }}
               >
                 Save
-              </button>
+              </Button>
             </div>
           </div>
         </div>

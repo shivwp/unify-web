@@ -6,6 +6,7 @@ import Switch from "react-switch";
 import { useState } from "react";
 import ChangePasswordPopup from "../../../../../popups/ChagePasswordPopup";
 import SetYourVerification from "../../../../../popups/SetYourVerification";
+import Button from 'react-bootstrap/Button'
 
 const Screen = () => {
   const [checked, setChecked] = useState(false);
@@ -33,7 +34,7 @@ const Screen = () => {
                   <div className="d-flex justify-content-between align-items-center b-bottom-gr pt-1 pb-3">
                     <div className="setting_b_head_s">Password</div>
                     <div>
-                      <button
+                      <Button
                         className="round_b_btn"
                         type="button"
                         onClick={() => {
@@ -54,7 +55,7 @@ const Screen = () => {
                             d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"
                           />
                         </svg>
-                      </button>
+                      </Button>
                     </div>
                   </div>
                   <div className="d-flex justify-content-between">
@@ -83,7 +84,7 @@ const Screen = () => {
                       </div>
                     </div>
                     <div>
-                      <button
+                      <Button
                         className="round_b_btn"
                         onClick={() => {
                           setOpenVerification(true);
@@ -103,7 +104,7 @@ const Screen = () => {
                             d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"
                           />
                         </svg>
-                      </button>
+                      </Button>
                     </div>
                   </div>
                   <div className="d-flex justify-content-between b-bottom-gr pb-2">

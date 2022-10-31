@@ -2,7 +2,8 @@ import Container from "react-bootstrap/Container";
 import { Col, Row } from "react-bootstrap";
 import Title from "../../../../components/title";
 import { Link } from "react-router-dom";
-import Form from 'react-bootstrap/Form';
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
 
 const Bsize = () => {
   Title(" | Business Size");
@@ -25,8 +26,8 @@ const Bsize = () => {
             <div className="b_si_hea">Business Size</div>
             <Row>
               <Col lg={3} md={6} sm={12}>
-                <div className="bs_s_card">
-                  <label className="w-100">
+                <Form.Group className="bs_s_card">
+                  <Form.Label className="w-100">
                     <div className="bs_s_inpu bg_hei_n_i">
                       <Form.Check type="radio" name="g" />
                     </div>
@@ -45,12 +46,12 @@ const Bsize = () => {
                     <div className="bs_s_h4">
                       <h4>1-10 Employees</h4>
                     </div>
-                  </label>
-                </div>
+                  </Form.Label>
+                </Form.Group>
               </Col>
               <Col lg={3} md={6} sm={12}>
-                <div className="bs_s_card">
-                  <label className="w-100">
+                <Form.Group className="bs_s_card">
+                  <Form.Label className="w-100">
                     <div className="bs_s_inpu bg_hei_n_i">
                       <Form.Check type="radio" name="g" />
                     </div>
@@ -69,12 +70,12 @@ const Bsize = () => {
                     <div className="bs_s_h4">
                       <h4>10-100 Employees</h4>
                     </div>
-                  </label>
-                </div>
+                  </Form.Label>
+                </Form.Group>
               </Col>
               <Col lg={3} md={6} sm={12}>
-                <div className="bs_s_card">
-                  <label className="w-100">
+                <Form.Group className="bs_s_card">
+                  <Form.Label className="w-100">
                     <div className="bs_s_inpu bg_hei_n_i">
                       <Form.Check type="radio" name="g" />
                     </div>
@@ -96,12 +97,12 @@ const Bsize = () => {
                     <div className="bs_s_h4">
                       <h4>100-1000 Employees</h4>
                     </div>
-                  </label>
-                </div>
+                  </Form.Label>
+                </Form.Group>
               </Col>
               <Col lg={3} md={6} sm={12}>
-                <div className="bs_s_card">
-                  <label className="w-100">
+                <Form.Group className="bs_s_card">
+                  <Form.Label className="w-100">
                     <div className="bs_s_inpu bg_hei_n_i">
                       <Form.Check type="radio" name="g" />
                     </div>
@@ -124,15 +125,15 @@ const Bsize = () => {
                     <div className="bs_s_h4">
                       <h4>1000+ Employees</h4>
                     </div>
-                  </label>
-                </div>
+                  </Form.Label>
+                </Form.Group>
               </Col>
             </Row>
           </div>
           <div className="btn_foot_sec flex-wrap d-flex no-border mt-2 pt-0">
             <Link to="/subscription">
               <div className="fo_btn_c next_b_btn_c">
-                <button className="f-size-to active_btn_blue">Continue</button>
+                <Button className="f-size-to active_btn_blue">Continue</Button>
               </div>
             </Link>
           </div>

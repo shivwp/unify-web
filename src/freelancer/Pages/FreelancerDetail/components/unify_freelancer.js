@@ -3,6 +3,7 @@ import Title from "../../../../components/title";
 import Container from 'react-bootstrap/Container';
 import { Row, Col } from 'react-bootstrap';
 import heart from '../../../../icons/heart.svg';
+import Button from 'react-bootstrap/Button'
 
 function Listaward() {
   const card = [1, 2, 3, 4];
@@ -174,7 +175,7 @@ const Screen = () => {
                   </div>
                 </div>
                 <div className="hire_now_node">
-                  <button>Hire Now</button>
+                  <Button>Hire Now</Button>
                 </div>
                 <div className="hourly_amout_node flex-wrap">
                   <div className="wallet_icon">

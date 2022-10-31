@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   getFreelancerProfile,
 } from "../../../../redux/actions/profileAction";
-
+import Button from 'react-bootstrap/Button'
 import WorkHistory from './popups/WorkHistory'
 import EditSkill from './popups/EditSkill'
 import EditTitle from './popups/EditTitle'
@@ -165,9 +165,9 @@ const UnifyFreelancer = () => {
                 </div>
               </div>
               <div className="profile_pf_btn">
-                <button>See Public View</button>
+                <Button>See Public View</Button>
                 <Link to="/freelancer/contact-info">
-                  <button>Profile Setting</button>
+                  <Button>Profile Setting</Button>
                 </Link>
               </div>
               <div className="hourly_amout_node flex-wrap">
@@ -283,7 +283,7 @@ const UnifyFreelancer = () => {
               <div className="myskill_prof_node">
                 <div className="myskill_hdingn">
                   Video introduction
-                  <button
+                  <Button
                     onClick={() => {
                       Setpopup(<VideoIntro Popup={Setpopup} />);
                     }}
@@ -302,11 +302,11 @@ const UnifyFreelancer = () => {
                         fill="#6d2ef1"
                       />
                     </svg>
-                  </button>
+                  </Button>
                 </div>
                 <div className="myskill_hdingn">
                   Hours per week
-                  <button>
+                  <Button>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="15.709"
@@ -321,7 +321,7 @@ const UnifyFreelancer = () => {
                         fill="#6d2ef1"
                       />
                     </svg>
-                  </button>
+                  </Button>
                 </div>
                 <div className="myskill_hdingn ms_hdsmall font-size-15px">
                   As Needed - Open to Offers
@@ -332,7 +332,7 @@ const UnifyFreelancer = () => {
                 <div className="myskill_hdingn">
                   Languages
                   <div className="d-flex justify-content-start">
-                    <button
+                    <Button
                       onClick={() => {
                         Setpopup(<LanguageEdit Popup={Setpopup} />);
                       }}
@@ -351,8 +351,8 @@ const UnifyFreelancer = () => {
                           fill="#6d2ef1"
                         />
                       </svg>
-                    </button>
-                    <button>
+                    </Button>
+                    <Button>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="15.709"
@@ -367,7 +367,7 @@ const UnifyFreelancer = () => {
                           fill="#6d2ef1"
                         />
                       </svg>
-                    </button>
+                    </Button>
                   </div>
                 </div>
                 <div className="myskill_hdingn">Verification</div>
@@ -395,7 +395,7 @@ const UnifyFreelancer = () => {
                 <div className="myskill_hdingn">
                   Education
                   <div className="d-flex justify-content-start">
-                    <button
+                    <Button
                       onClick={() => {
                         Setpopup(<AddEduc Popup={Setpopup} />);
                       }}
@@ -414,8 +414,8 @@ const UnifyFreelancer = () => {
                           fill="#6d2ef1"
                         />
                       </svg>
-                    </button>
-                    <button>
+                    </Button>
+                    <Button>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="15.709"
@@ -430,14 +430,14 @@ const UnifyFreelancer = () => {
                           fill="#6d2ef1"
                         />
                       </svg>
-                    </button>
+                    </Button>
                   </div>
                 </div>
                 <div className="myskill_hdingn ms_hdsmall font-size-15px">
                   Tallinna University Bachelor or Engineering (BEng), Computer
                   science 2016-2017
                   <div className="d-flex justify-content-start">
-                    <button>
+                    <Button>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="17"
@@ -452,8 +452,8 @@ const UnifyFreelancer = () => {
                           fill="#6d2ef1"
                         />
                       </svg>
-                    </button>
-                    <button>
+                    </Button>
+                    <Button>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="15.709"
@@ -468,7 +468,7 @@ const UnifyFreelancer = () => {
                           fill="#6d2ef1"
                         />
                       </svg>
-                    </button>
+                    </Button>
                   </div>
                 </div>
               </div>
@@ -487,7 +487,7 @@ const UnifyFreelancer = () => {
                   Senior UI/UX, Website Designer And Graphic <br /> Designer
                 </div>
                 <div className="myskill_hdingn">
-                  <button
+                  <Button
                     onClick={() => {
                       Setpopup(<EditTitle Popup={Setpopup} />);
                     }}
@@ -506,7 +506,7 @@ const UnifyFreelancer = () => {
                         fill="#6d2ef1"
                       />
                     </svg>
-                  </button>
+                  </Button>
                 </div>
               </div>
               <div className="d-flex mt-3">
@@ -519,7 +519,7 @@ const UnifyFreelancer = () => {
                   experienced team of designers working on Freelancer since 2017
                 </div>
                 <div className="myskill_hdingn">
-                  <button
+                  <Button
                     onClick={() => {
                       Setpopup(<Overview Popup={Setpopup} />);
                     }}
@@ -538,7 +538,7 @@ const UnifyFreelancer = () => {
                         fill="#6d2ef1"
                       />
                     </svg>
-                  </button>
+                  </Button>
                 </div>
               </div>
             </div>
@@ -550,10 +550,10 @@ const UnifyFreelancer = () => {
               </div>
               <div>
                 <div className="tabbar_profle">
-                  <button className="activetabbar_btn">
+                  <Button className="activetabbar_btn">
                     Commpleted Jobs (2)
-                  </button>
-                  <button>In Progress (1)</button>
+                  </Button>
+                  <Button>In Progress (1)</Button>
                 </div>
                 <WorkHistory />
               </div>
@@ -562,7 +562,7 @@ const UnifyFreelancer = () => {
               <div className="bpbck_txt d-flex mt-0">
                 <div className="bpck_head">Portfolio (2)</div>
                 <div className="myskill_hdingn">
-                  <button>
+                  <Button>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="17"
@@ -577,7 +577,7 @@ const UnifyFreelancer = () => {
                         fill="#6d2ef1"
                       />
                     </svg>
-                  </button>
+                  </Button>
                 </div>
               </div>
               <div className="d-flex justify-content-center flex-column text-center">
@@ -598,7 +598,7 @@ const UnifyFreelancer = () => {
               <div className="bpbck_txt d-flex mt-0">
                 <div className="bpck_head">Skills</div>
                 <div className="myskill_hdingn">
-                  <button
+                  <Button
                     onClick={() => {
                       Setpopup(<EditSkill Popup={Setpopup} />);
                     }}
@@ -617,7 +617,7 @@ const UnifyFreelancer = () => {
                         fill="#6d2ef1"
                       />
                     </svg>
-                  </button>
+                  </Button>
                 </div>
               </div>
               <div className="d-flex justify-content-center flex-column text-center">
@@ -633,7 +633,7 @@ const UnifyFreelancer = () => {
             </div>
             <div className="box-profile-bck mb-0">
               <div className="d-flex justify-content-end myskill_hdingn">
-                <button
+                <Button
                   onClick={() => {
                     Setpopup(<Overview Popup={Setpopup} />);
                   }}
@@ -652,7 +652,7 @@ const UnifyFreelancer = () => {
                       fill="#6d2ef1"
                     />
                   </svg>
-                </button>
+                </Button>
               </div>
               <div className="bpbck_txt">
                 <div className="bpck_head">Your Project Catalog</div>
@@ -706,7 +706,7 @@ const UnifyFreelancer = () => {
             </div>
             <div className="box-profile-bck">
               <div className="d-flex justify-content-end myskill_hdingn">
-                <button
+                <Button
                   onClick={() => {
                     Setpopup(<ReqTestimonial Popup={Setpopup} />);
                   }}
@@ -725,7 +725,7 @@ const UnifyFreelancer = () => {
                       fill="#6d2ef1"
                     />
                   </svg>
-                </button>
+                </Button>
               </div>
               <div className="bpbck_txt">
                 <div className="bpck_head">Testimonials</div>
@@ -745,7 +745,7 @@ const UnifyFreelancer = () => {
             </div>
             <div className="box-profile-bck">
               <div className="d-flex justify-content-end myskill_hdingn">
-                <button
+                <Button
                   onClick={() => {
                     Setpopup(<AddCert Popup={Setpopup} />);
                   }}
@@ -764,7 +764,7 @@ const UnifyFreelancer = () => {
                       fill="#6d2ef1"
                     />
                   </svg>
-                </button>
+                </Button>
               </div>
               <div className="bpbck_txt">
                 <div className="bpck_head">Certifications</div>
@@ -788,7 +788,7 @@ const UnifyFreelancer = () => {
               <Col md={6}>
                 <div className="box-profile-bck minei400">
                   <div className="d-flex justify-content-end myskill_hdingn">
-                    <button
+                    <Button
                       onClick={() => {
                         Setpopup(<AddEmployment Popup={Setpopup} />);
                       }}
@@ -807,7 +807,7 @@ const UnifyFreelancer = () => {
                           fill="#6d2ef1"
                         />
                       </svg>
-                    </button>
+                    </Button>
                   </div>
                   <div className="bpbck_txt">
                     <div className="bpck_head font-weight-600">
@@ -823,7 +823,7 @@ const UnifyFreelancer = () => {
                     </div>
                     <div className="bpck_sm_txt_a mt-4 mb-0">
                       <div className="d-flex myskill_hdingn mb-0">
-                        <button className="m-0">
+                        <Button className="m-0">
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="15.709"
@@ -838,8 +838,8 @@ const UnifyFreelancer = () => {
                               fill="#6d2ef1"
                             />
                           </svg>
-                        </button>
-                        <button>
+                        </Button>
+                        <Button>
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="16"
@@ -853,7 +853,7 @@ const UnifyFreelancer = () => {
                               fill="#6d2ef1"
                             />
                           </svg>
-                        </button>
+                        </Button>
                       </div>
                     </div>
                   </div>
@@ -862,7 +862,7 @@ const UnifyFreelancer = () => {
               <Col md={6}>
                 <div className="box-profile-bck minei400">
                   <div className="d-flex justify-content-end myskill_hdingn">
-                    <button
+                    <Button
                       onClick={() => {
                         Setpopup(<AddExperience Popup={Setpopup} />);
                       }}
@@ -881,7 +881,7 @@ const UnifyFreelancer = () => {
                           fill="#6d2ef1"
                         />
                       </svg>
-                    </button>
+                    </Button>
                   </div>
                   <div className="bpbck_txt">
                     <div className="bpck_head font-weight-600">

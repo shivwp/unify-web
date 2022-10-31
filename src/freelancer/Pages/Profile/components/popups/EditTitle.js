@@ -1,4 +1,5 @@
 import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button'
 
 const CloseIcon = () => {
   return (
@@ -51,14 +52,14 @@ const EditTitle = (props) => {
               </div>
   
               <div className="popup_btns_new flex-wrap cwiewyehkk">
-                <button className="trans_btn">Cancel</button>
-                <button
+                <Button className="trans_btn">Cancel</Button>
+                <Button
                   onClick={() => {
                     props.Popup();
                   }}
                 >
                   Save
-                </button>
+                </Button>
               </div>
             </div>
           </div>

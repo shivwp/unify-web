@@ -3,6 +3,7 @@ import { Col, Row } from "react-bootstrap";
 import Title from "../../../../components/title";
 import { Link } from "react-router-dom";
 import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
 
 const Screen = () => {
   Title(" | Expand Team");
@@ -31,22 +32,22 @@ const Screen = () => {
                   ></Form.Control>
                 </div>
                 <div className="inp_agree_che">
-                  <label>
+                  <Form.Label>
                     <Form.Check type="checkbox" />
                     <p>
                       Also allow these coworkers to hire and pay with this
                       account.
                     </p>
-                  </label>
+                  </Form.Label>
                 </div>
                 <div className="btn_foot_sec flex-wrap d-flex no-border">
                   <div className="fo_btn_c next_b_btn_c">
                     <Link to="/dashboard">
-                      <button className="mrright-gppnew">Cancel</button>
+                      <Button className="mrright-gppnew">Cancel</Button>
                     </Link>
                   </div>
                   <div className="fo_btn_c next_b_btn_c">
-                    <button className="active_btn_blue">Invite</button>
+                    <Button className="active_btn_blue">Invite</Button>
                   </div>
                 </div>
               </div>

@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { Row, Col } from "react-bootstrap";
 import CloseAccountPopup from "../../../popups/CloseAccountPopup";
+import Button from 'react-bootstrap/Button'
 
 const MyInfo = ({ setOpen }) => {
   const [openCloseAccount, setOpenCloseAccount] = useState(false);
@@ -12,7 +13,7 @@ const MyInfo = ({ setOpen }) => {
         <div className="d-flex justify-content-between align-items-center b-bottom-gr pt-1 pb-3">
           <div className="setting_b_head_s">Account</div>
           <div>
-            <button className="round_b_btn" onClick={setOpen}>
+            <Button className="round_b_btn" onClick={setOpen}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
@@ -27,7 +28,7 @@ const MyInfo = ({ setOpen }) => {
                   d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"
                 />
               </svg>
-            </button>
+            </Button>
           </div>
         </div>
         <div className="d-flex justify-content-between flex-wrap mt-3">
@@ -44,9 +45,9 @@ const MyInfo = ({ setOpen }) => {
             </div>
           </div>
           <div className="btn_foot_sec no-border mt-0 fo_btn_c next_b_btn_c">
-            <button className="bg-transparent h-color-b">
+            <Button className="bg-transparent h-color-b">
               Upload Profile Photo
-            </button>
+            </Button>
           </div>
         </div>
       </div>
@@ -54,7 +55,7 @@ const MyInfo = ({ setOpen }) => {
         <div className="d-flex justify-content-between align-items-center b-bottom-gr pt-1 pb-3">
           <div className="setting_b_head_s">Company Details</div>
           <div>
-            <button className="round_b_btn">
+            <Button className="round_b_btn">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
@@ -69,7 +70,7 @@ const MyInfo = ({ setOpen }) => {
                   d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"
                 />
               </svg>
-            </button>
+            </Button>
           </div>
         </div>
         <Row>
@@ -108,7 +109,7 @@ const MyInfo = ({ setOpen }) => {
         <div className="d-flex justify-content-between align-items-center b-bottom-gr pt-1 pb-3">
           <div className="setting_b_head_s">Company Contacts</div>
           <div>
-            <button className="round_b_btn">
+            <Button className="round_b_btn">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
@@ -123,7 +124,7 @@ const MyInfo = ({ setOpen }) => {
                   d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"
                 />
               </svg>
-            </button>
+            </Button>
           </div>
         </div>
         <Row>
@@ -168,15 +169,15 @@ const MyInfo = ({ setOpen }) => {
       </div>
       <div className="btn_foot_sec flex-wrap d-flex no-border">
         <div className="fo_btn_c next_b_btn_c">
-          <button className="mrright-gppnew">Create New Account</button>
+          <Button className="mrright-gppnew">Create New Account</Button>
         </div>
         <div className="fo_btn_c next_b_btn_c">
-          <button
+          <Button
             className="active_btn_blue"
             onClick={() => setOpenCloseAccount(true)}
           >
             Close Account
-          </button>
+          </Button>
         </div>
       </div>
       {openCloseAccount && (
