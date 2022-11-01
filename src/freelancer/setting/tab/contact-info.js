@@ -15,6 +15,7 @@ import {
   onEditLocationInfo,
 } from "../../../redux/actions/profileAction";
 import CloseAccountPopup from "../../../popups/CloseAccountPopup";
+import { countryList } from "../../../redux/actions/authActions";
 
 const Screen = () => {
   const dispatch = useDispatch();
@@ -27,6 +28,8 @@ const Screen = () => {
     (state) => state?.profile?.freelancerProfileList?.basic_info
   );
   const timezoneList = useSelector((state) => state?.profile?.timezoneList);
+  const CountryList = useSelector((state) => state?.auth?.getCountryList);
+
   const editFreelancerInfo = useSelector(
     (state) => state?.profile?.editFreelancerInfo
   );
@@ -37,6 +40,7 @@ const Screen = () => {
   useEffect(() => {
     dispatch(getFreelancerProfile());
     dispatch(getTimezoneList());
+    dispatch(countryList());
   }, [editFreelancerInfo, editFreelancerLocation]);
 
   const EditAcc = () => {
@@ -169,14 +173,17 @@ const Screen = () => {
     const [values, setValues] = useState(basicInfo);
 
     const onInputChange = (e) => {
+      console.log(e.target.value);
       setValues({ ...values, [e.target.name]: e.target.value });
     };
 
     const EditLocationInfo = () => {
       const data = {
-        timezone: values.timezone,
-        address: values.address,
-        phone: values.phone,
+        timezone: values?.timezone,
+        address: values?.address,
+        phone: values?.phone,
+        city: values?.city,
+        country: values?.country,
       };
       dispatch(onEditLocationInfo(data, setEditLocation));
     };
@@ -210,7 +217,7 @@ const Screen = () => {
           </div>
           <div className="mt-3">
             <Row>
-              <Col md={12}>
+              <Col md={6}>
                 <div className="mb-2 mt-2">
                   <div className="c_name_s_v pb-0 f_new_contact_info">
                     Time Zone
@@ -229,7 +236,7 @@ const Screen = () => {
                         value={values.timezone}
                         onChange={(e) => onInputChange(e)}
                       >
-                        {timezoneList.map((item) => (
+                        {timezoneList?.map((item) => (
                           <option value={item.timezone}>{item.timezone}</option>
                         ))}
                       </select>
@@ -237,7 +244,44 @@ const Screen = () => {
                   </div>
                 </div>
               </Col>
-              <Col md={12}>
+              <Col md={6}>
+                <div className="mb-2 mt-2">
+                  <div className="c_name_s_v pb-0 f_new_contact_info">City</div>
+                  <div className="c_name_sett mt-0 pt-0 font-color-light">
+                    <div className="edit_contact_inp">
+                      <input
+                        name="city"
+                        value={values.city}
+                        onChange={(e) => onInputChange(e)}
+                        type="text"
+                        placeholder="Jaipur"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </Col>
+              <Col md={6}>
+                <div className="mb-2 mt-2">
+                  <div className="c_name_s_v pb-0 f_new_contact_info">
+                    Country
+                  </div>
+                  <div className="c_name_sett mt-0 pt-0 font-color-light">
+                    <div className="edit_contact_inp">
+                      <select
+                        name="country"
+                        value={values?.country}
+                        onChange={(e) => onInputChange(e)}
+                      >
+                        {CountryList?.map((item) => (
+                          <option value={item.name}>{item.name}</option>
+                        ))}
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </Col>
+
+              <Col md={6}>
                 <div className="mb-2 mt-2">
                   <div className="c_name_s_v pb-0 f_new_contact_info">
                     Address
@@ -249,13 +293,13 @@ const Screen = () => {
                         value={values.address}
                         onChange={(e) => onInputChange(e)}
                         type="text"
-                        placeholder=" Address 12 Tiwari ji ka bagh adarsh nagar jaipur Surya Bekri Jaipur, RJ 302004 India"
+                        placeholder="12 Tiwari ji ka bagh adarsh nagar jaipur Surya Bekri Jaipur, RJ 302004 "
                       />
                     </div>
                   </div>
                 </div>
               </Col>
-              <Col md={12}>
+              <Col md={6}>
                 <div className="mb-2 mt-2">
                   <div className="c_name_s_v pb-0 f_new_contact_info">
                     Phone
@@ -445,7 +489,7 @@ const Screen = () => {
                     </div>
                     <div className="mt-3">
                       <Row>
-                        <Col md={12}>
+                        <Col md={6}>
                           <div className="mb-2 mt-2">
                             <div className="c_name_s_v pb-0 f_new_contact_info">
                               Time Zone
@@ -455,7 +499,28 @@ const Screen = () => {
                             </div>
                           </div>
                         </Col>
-                        <Col md={12}>
+                        <Col md={6}>
+                          <div className="mb-2 mt-2">
+                            <div className="c_name_s_v pb-0 f_new_contact_info">
+                              City
+                            </div>
+                            <div className="c_name_sett mt-0 pt-0 font-color-light">
+                              {basicInfo?.city}
+                            </div>
+                          </div>
+                        </Col>
+                        <Col md={6}>
+                          <div className="mb-2 mt-2">
+                            <div className="c_name_s_v pb-0 f_new_contact_info">
+                              Country
+                            </div>
+                            <div className="c_name_sett mt-0 pt-0 font-color-light">
+                              {basicInfo?.country}
+                            </div>
+                          </div>
+                        </Col>
+
+                        <Col md={6}>
                           <div className="mb-2 mt-2">
                             <div className="c_name_s_v pb-0 f_new_contact_info">
                               Address
@@ -465,7 +530,7 @@ const Screen = () => {
                             </div>
                           </div>
                         </Col>
-                        <Col md={12}>
+                        <Col md={6}>
                           <div className="mb-2 mt-2">
                             <div className="c_name_s_v pb-0 f_new_contact_info">
                               Phone

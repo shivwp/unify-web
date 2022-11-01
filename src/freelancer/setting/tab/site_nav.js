@@ -1,8 +1,10 @@
 import { Col } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
 
 const SideNav = () => {
+  const location = useLocation();
+  console.log(location);
   const [active, Setactive] = useState(
     window.location.pathname.replace("/", "")
   );
@@ -52,6 +54,10 @@ const SideNav = () => {
               ? "active_s_nav"
               : active === "freelancer/contact-info"
               ? "active_s_nav"
+              : ""
+          } ${
+            location?.pathname == "/freelancer/contact-info"
+              ? "side_nav_active_tab"
               : ""
           }`}
         >
@@ -161,6 +167,10 @@ const SideNav = () => {
         <div
           className={`nav_box ${
             active === "freelancer/billing-payment" ? "active_s_nav" : ""
+          } ${
+            location?.pathname == "/freelancer/billing-payment"
+              ? "side_nav_active_tab"
+              : ""
           }`}
         >
           <div className="s_nav_icon">
@@ -211,6 +221,10 @@ const SideNav = () => {
         <div
           className={`nav_box ${
             active === "freelancer/getpaid" ? "active_s_nav" : ""
+          } ${
+            location?.pathname == "/freelancer/getpaid"
+              ? "side_nav_active_tab"
+              : ""
           }`}
         >
           <div className="s_nav_icon">
@@ -261,6 +275,10 @@ const SideNav = () => {
         <div
           className={`nav_box ${
             active === "freelancer/my-teams" ? "active_s_nav" : ""
+          }  ${
+            location?.pathname == "/freelancer/my-teams"
+              ? "side_nav_active_tab"
+              : ""
           }`}
         >
           <div className="s_nav_icon">
@@ -327,6 +345,10 @@ const SideNav = () => {
         <div
           className={`nav_box ${
             active === "freelancer/password-security" ? "active_s_nav" : ""
+          }  ${
+            location?.pathname == "/freelancer/password-security"
+              ? "side_nav_active_tab"
+              : ""
           }`}
         >
           <div className="s_nav_icon">
@@ -367,6 +389,10 @@ const SideNav = () => {
         <div
           className={`nav_box ${
             active === "freelancer/notification" ? "active_s_nav" : ""
+          }  ${
+            location?.pathname == "/freelancer/notification"
+              ? "side_nav_active_tab"
+              : ""
           }`}
         >
           <div className="s_nav_icon">
@@ -432,6 +458,10 @@ const SideNav = () => {
         <div
           className={`nav_box ${
             active === "freelancer/my-stats" ? "active_s_nav" : ""
+          }  ${
+            location?.pathname == "/freelancer/my-stats"
+              ? "side_nav_active_tab"
+              : ""
           }`}
         >
           <div className="s_nav_icon">

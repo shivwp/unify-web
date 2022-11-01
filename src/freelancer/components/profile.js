@@ -1075,6 +1075,158 @@ const LanguageEdit = (props) => {
     </>
   );
 };
+const UserVerification = (props) => {
+  const [values, setValues] = useState({});
+  const options1 = [
+    { name: "Passport", label: "Passport" },
+    { name: "Driving Licence", label: "Driving Licence" },
+    { name: "Other", label: "Other" },
+  ];
+  const handleOnChange = (e) => {
+    setValues({ ...values, [e.target.name]: e.target.value });
+  };
+
+  return (
+    <>
+      <div className="bg_wrapper_popup_new">
+        <div className="popup_box_bpn profile_nceqoi_popup pb-4">
+          <div className="popup_header pb-0">
+            <div className="p_header_hding">User Verification</div>
+            <div
+              className="close_pp_btn"
+              onClick={() => {
+                props.Popup();
+              }}
+            >
+              <CloseIcon />
+            </div>
+          </div>
+          <div className="popup_body_bpn amount_popup_body max_height_popucwui ">
+            <div className="mt-3 mb-3"></div>
+
+            <div className="mb-3 ">
+              <div className="mt-4">
+                <div className="popup_form_element">
+                  <label className="text-black font-size-13px font-weight-500">
+                    ID Proof
+                  </label>
+                  <Select
+                    className="font-size-13px"
+                    placeholder="Select ID"
+                    options={options1}
+                  />
+                </div>
+              </div>
+              <Row>
+                <Col md={6}>
+                  <div
+                    className="popup_form_element"
+                    style={{ position: "relative" }}
+                  >
+                    <label className="text-black font_size_14px font-weight-500">
+                      Upload Document
+                    </label>
+                    <label htmlFor="attach-doc-front" style={{ minHeight: 0 }}>
+                      <div
+                        style={{
+                          border: "1px solid #e8e7e7",
+                          height: 40,
+                          display: "flex",
+                          alignItems: "center",
+                          fontSize: 11,
+                          paddingLeft: 10,
+                        }}
+                      >
+                        Upload Document Front Image
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="18"
+                          height="15.05"
+                          viewBox="0 0 20 17.05"
+                          style={{
+                            position: "absolute",
+                            top: 42,
+                            right: 8,
+                            cursor: "pointer",
+                          }}
+                        >
+                          <path
+                            id="_0294701bfa3b26cfab404696f6cf4390"
+                            data-name="0294701bfa3b26cfab404696f6cf4390"
+                            d="M19,6.5H17.72l-.32-1a3,3,0,0,0-2.84-2H9.44A3,3,0,0,0,6.6,5.55l-.32,1H5a3,3,0,0,0-3,3v8a3,3,0,0,0,3,3H19a3,3,0,0,0,3-3v-8A3,3,0,0,0,19,6.5Zm1,11a1,1,0,0,1-1,1H5a1,1,0,0,1-1-1v-8a1,1,0,0,1,1-1H7a1,1,0,0,0,1-.68l.54-1.64a1,1,0,0,1,.95-.68h5.12a1,1,0,0,1,.95.68l.54,1.64a1,1,0,0,0,.9.68h2a1,1,0,0,1,1,1Zm-8-9a4,4,0,1,0,4,4A4,4,0,0,0,12,8.5Zm0,6a2,2,0,1,1,2-2A2,2,0,0,1,12,14.5Z"
+                            transform="translate(-2 -3.5)"
+                            fill="#828282"
+                          />
+                        </svg>
+                      </div>
+                      <input
+                        type="file"
+                        id="attach-doc-front"
+                        style={{ display: "none" }}
+                      />
+                    </label>
+                  </div>
+                </Col>
+                <Col md={6}>
+                  <div
+                    className="popup_form_element"
+                    style={{ position: "relative" }}
+                  >
+                    <label className="text-black font_size_14px font-weight-500"></label>
+                    <label htmlFor="attach-doc-back" style={{ minHeight: 0 }}>
+                      <div
+                        style={{
+                          border: "1px solid #e8e7e7",
+                          height: 40,
+                          display: "flex",
+                          alignItems: "center",
+                          fontSize: 11,
+                          paddingLeft: 10,
+                        }}
+                      >
+                        Upload Document Front Image
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="18"
+                          height="15.05"
+                          viewBox="0 0 20 17.05"
+                          style={{
+                            position: "absolute",
+                            top: 42,
+                            right: 8,
+                            cursor: "pointer",
+                          }}
+                        >
+                          <path
+                            id="_0294701bfa3b26cfab404696f6cf4390"
+                            data-name="0294701bfa3b26cfab404696f6cf4390"
+                            d="M19,6.5H17.72l-.32-1a3,3,0,0,0-2.84-2H9.44A3,3,0,0,0,6.6,5.55l-.32,1H5a3,3,0,0,0-3,3v8a3,3,0,0,0,3,3H19a3,3,0,0,0,3-3v-8A3,3,0,0,0,19,6.5Zm1,11a1,1,0,0,1-1,1H5a1,1,0,0,1-1-1v-8a1,1,0,0,1,1-1H7a1,1,0,0,0,1-.68l.54-1.64a1,1,0,0,1,.95-.68h5.12a1,1,0,0,1,.95.68l.54,1.64a1,1,0,0,0,.9.68h2a1,1,0,0,1,1,1Zm-8-9a4,4,0,1,0,4,4A4,4,0,0,0,12,8.5Zm0,6a2,2,0,1,1,2-2A2,2,0,0,1,12,14.5Z"
+                            transform="translate(-2 -3.5)"
+                            fill="#828282"
+                          />
+                        </svg>
+                      </div>
+                      <input
+                        type="file"
+                        id="attach-doc-back"
+                        style={{ display: "none" }}
+                      />
+                    </label>
+                  </div>
+                </Col>
+              </Row>
+            </div>
+
+            <div className="popup_btns_new flex-wrap cwiewyehkk">
+              <button className="trans_btn">Cancel</button>
+              <button>Submit</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
 const AddEduc = (props) => {
   const [values, setValues] = useState(props?.education);
   const [endYear, setEndYear] = useState({
@@ -1179,7 +1331,7 @@ const AddEduc = (props) => {
                 <Col md={6}>
                   <div className="popup_form_element">
                     <label className="text-black font_size_14px font-weight-500">
-                      Dates Attended (Optional)
+                      Dates Attended
                     </label>
                     <Select
                       className="font-size-11px"
@@ -1221,7 +1373,7 @@ const AddEduc = (props) => {
                 <Col md={12}>
                   <div className="popup_form_element">
                     <label className="text-black font_size_14px font-weight-500">
-                      Degree (Optional)
+                      Degree
                     </label>
                     <Select
                       className="font-size-11px"
@@ -1234,7 +1386,7 @@ const AddEduc = (props) => {
                           : null
                       }
                       options={degreeList}
-                      placeholder="Degree (Optional)"
+                      placeholder="Degree "
                       onChange={setDegree}
                     />
                   </div>
@@ -1242,7 +1394,7 @@ const AddEduc = (props) => {
                 <Col md={12}>
                   <div className="popup_form_element">
                     <label className="text-black font_size_14px font-weight-500">
-                      Area of Study (Optional)
+                      Area of Study
                     </label>
                     <input
                       type="text"
@@ -1475,21 +1627,6 @@ const ReqTestimonial = (props) => {
                       value={values?.email}
                       onChange={(e) => onInputChange(e)}
                       placeholder=""
-                    />
-                  </div>
-                </Col>
-                <Col md={6}>
-                  <div className="popup_form_element">
-                    <label className="text-black font-size-13px font-weight-500">
-                      Client's LinkedIn Profile
-                    </label>
-                    <input
-                      type="text"
-                      name="linkedin_url"
-                      className="font-size-13px"
-                      value={values?.linkedin_url}
-                      onChange={(e) => onInputChange(e)}
-                      placeholder="http://"
                     />
                   </div>
                 </Col>
@@ -1784,10 +1921,10 @@ const UnifyFreelancer = () => {
 
     useEffect(() => {
       const endOffset = itemOffset + itemsPerPage;
-      console.log(`Loading items from ${itemOffset} to ${endOffset}`);
       setCurrentItems(data?.slice(itemOffset, endOffset));
+      console.log("hello");
       setPageCount(Math.ceil(data?.length / itemsPerPage));
-    }, [itemOffset, itemsPerPage]);
+    }, [itemsPerPage]);
 
     const handlePageClick = (event) => {
       const newOffset = (event.selected * itemsPerPage) % data?.length;
@@ -2149,7 +2286,7 @@ const UnifyFreelancer = () => {
                   </div>
                 </div>
                 <div
-                  className="myskill_hdingn profile_icon_25px"
+                  className="myskill_hdingn profile_icon_25px profile_heading_mb"
                   style={{ position: "relative" }}
                 >
                   Visiblity
@@ -2197,10 +2334,10 @@ const UnifyFreelancer = () => {
                   {basicInfo?.visibility}
                 </div>
                 <div
-                  className="myskill_hdingn profile_icon_25px"
+                  className="myskill_hdingn profile_icon_25px profile_heading_mb"
                   style={{ position: "relative" }}
                 >
-                  Exprience
+                  Exprience Level
                   <button
                     onClick={() => setShowExprienceLevOpt(!showExprienceLevOpt)}
                   >
@@ -2242,12 +2379,12 @@ const UnifyFreelancer = () => {
                   )}
                 </div>
                 <div
-                  className="myskill_hdingn ms_hdsmall font-size-15px"
+                  className="myskill_hdingn ms_hdsmall font-size-15px "
                   style={{ textTransform: "capitalize" }}
                 >
                   {basicInfo?.experience_level}
                 </div>
-                <div className="myskill_hdingn profile_icon_25px">
+                <div className="myskill_hdingn profile_icon_25px profile_heading_mb">
                   Hours per week
                   <button onClick={() => setHwpPopup(true)}>
                     <svg
@@ -2270,7 +2407,7 @@ const UnifyFreelancer = () => {
                   {freelancerProfileList?.hours_per_week}
                 </div>
 
-                <div className="myskill_hdingn profile_icon_25px">
+                <div className="myskill_hdingn profile_icon_25px profile_heading_mb">
                   Languages
                   <div className="d-flex justify-content-start">
                     {!freelancerProfileList?.language?.length && (
@@ -2322,7 +2459,7 @@ const UnifyFreelancer = () => {
                     </button>
                   </div>
                 </div>
-                <div style={{ margin: "0 0 10px 0" }}>
+                <div style={{ margin: "0 0 10px 0" }} className="ms_hdsmall">
                   {freelancerProfileList?.language?.map((item) => (
                     <>
                       <span style={{ textTransform: "capitalize" }}>
@@ -2336,7 +2473,31 @@ const UnifyFreelancer = () => {
                     </>
                   ))}
                 </div>
-                <div className="myskill_hdingn">Verification</div>
+                <div className="myskill_hdingn profile_icon_25px profile_heading_mb">
+                  Verification
+                  <div className="d-flex justify-content-start">
+                    <button
+                      onClick={() => {
+                        Setpopup(<UserVerification Popup={Setpopup} />);
+                      }}
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="17"
+                        height="17"
+                        viewBox="0 0 17 17"
+                      >
+                        <path
+                          id="_134224_add_plus_new_icon_2_"
+                          data-name="134224_add_plus_new_icon (2)"
+                          d="M17.786,9.286H11.714V3.214a1.214,1.214,0,0,0-2.429,0V9.286H3.214a1.214,1.214,0,0,0,0,2.429H9.286v6.071a1.214,1.214,0,1,0,2.429,0V11.714h6.071a1.214,1.214,0,1,0,0-2.429Z"
+                          transform="translate(-2 -2)"
+                          fill="#6d2ef1"
+                        />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
                 <div className="myskill_hdingn ms_hdsmall font-size-15px">
                   ID:{" "}
                   {basicInfo?.is_verified ? (
@@ -2366,7 +2527,7 @@ const UnifyFreelancer = () => {
                 <div className="myskill_hdingn ms_hdsmall font-size-15px">
                   Hannah Finn
                 </div>
-                <div className="myskill_hdingn profile_icon_25px">
+                <div className="myskill_hdingn profile_icon_25px profile_heading_mb">
                   Education
                   <div className="d-flex justify-content-start">
                     <button
@@ -2582,7 +2743,6 @@ const UnifyFreelancer = () => {
                   </button>
                 </div>
               </div>
-
               <PortfolioPaginate
                 itemsPerPage={3}
                 data={freelancerProfileList?.portfolio}

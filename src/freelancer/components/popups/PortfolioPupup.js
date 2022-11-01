@@ -11,7 +11,7 @@ const PortfolioPupup = ({ open, onCloseModal, data }) => {
     title: data?.name,
     description: data?.description,
   });
-  const [portfolioImage, setPortfolioImage] = useState(data?.image);
+  const [portfolioImage, setPortfolioImage] = useState(null);
   const [showingImage, setShowingImage] = useState(data?.image);
 
   const onInputChange = (e) => {
@@ -25,10 +25,16 @@ const PortfolioPupup = ({ open, onCloseModal, data }) => {
 
   const submitPortfolio = (e) => {
     const formData = new FormData();
-
     formData.append("title", values?.title);
     formData.append("description", values?.description);
-    formData.append("image", portfolioImage);
+    if (data?.id) {
+      if (portfolioImage) {
+        formData.append("image", portfolioImage);
+      }
+    } else {
+      formData.append("image", portfolioImage);
+    }
+
     if (data) {
       formData.append("id", data?.id);
     }

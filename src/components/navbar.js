@@ -84,18 +84,18 @@ const NavbarHeader = (props) => {
               />
               <Navbar.Collapse id="responsive-navbar-nav">
                 <Nav>
-                  <Nav.Link className="navbar_btn">
-                    <Link to="/">How it works</Link>
-                  </Nav.Link>
-                  <Nav.Link className="navbar_btn">
-                    <Link to="/">Browse Jobs</Link>
-                  </Nav.Link>
-                  <Nav.Link className="navbar_btn">
-                    <Link to="/signin">Login</Link>
-                  </Nav.Link>
-                  <Nav.Link className="active_btn">
-                    <Link to="/signup">Signup now</Link>
-                  </Nav.Link>
+                  <Link className="navbar_btn nav-link" to="/">
+                    How it works
+                  </Link>
+                  <Link to="/" className="navbar_btn nav-link">
+                    Browse Jobs
+                  </Link>
+                  <Link className="navbar_btn nav-link" to="/signin">
+                    Login
+                  </Link>
+                  <Link className="active_btn nav-link" to="/signup">
+                    Signup now
+                  </Link>
                 </Nav>
               </Navbar.Collapse>
             </div>

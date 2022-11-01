@@ -117,6 +117,17 @@ body {
 .side_nav {
   margin-top: 10px;
 }
+
+.side_nav_active_tab {
+  color: #6d2ef1;
+  border-right: 6px solid #fa61ff !important;
+}
+.side_nav_active_tab a {
+  color: #6d2ef1;
+}
+.side_nav_active_tab svg path {
+  fill: #6d2ef1 !important;
+}
 .font-20 {
   font-size: 20px !important;
 }
@@ -2766,7 +2777,6 @@ body {
 .sign_in_box {
   max-width: 700px !important;
   padding: 25px 30px !important;
-
 }
 
 .sign_u_head h1 {

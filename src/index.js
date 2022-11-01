@@ -162,7 +162,6 @@ root.render(
           element={<SettingPasswordSecurity />}
         />
         <Route path="/help-support" element={<HelpSupport />} />
-        <Route path="/message" element={<Message />} />
         <Route path="/management-board" element={<ManagementBoard />} />
         <Route path="/transaction-history" element={<TransactionHistory />} />
         <Route path="/dashboard" element={<Dashboard />} />
@@ -213,6 +212,7 @@ root.render(
           path="/freelancer/transaction-history"
           element={<FreelancerTransaction />}
         />
+        <Route path="/freelancer/message" element={<Message />} />
 
         <Route path="/freelancer/progress" element={<FreelancerProgress />} />
         <Route path="/freelancer/objective" element={<FreelancerObjective />} />

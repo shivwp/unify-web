@@ -575,6 +575,9 @@
   font-weight: 500;
   font-family: "poppins";
 }
+.profile_heading_mb {
+  margin-bottom: 0px !important;
+}
 
 .myskill_hdingn button {
   margin-left: 10px;
@@ -627,8 +630,8 @@
 }
 
 .ms_hdsmall {
-  margin: 5px 0px !important;
-  font-size: 15px !important;
+  margin: 5px 0px 10px 0 !important;
+  font-size: 14px !important;
   font-weight: 400 !important;
 }
 
