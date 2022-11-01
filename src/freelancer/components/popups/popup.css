@@ -254,3 +254,23 @@
   height: auto;
   object-fit: cover;
 }
+.varifyDocs_pre_img {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 10px 0;
+}
+.varifyDocs_pre_img > div {
+  margin-right: 15px;
+  display: flex;
+  flex-direction: column;
+}
+.varifyDocs_pre_img > div span {
+  margin: 10px 0 5px 0;
+  font-size: 14px;
+}
+.varifyDocs_pre_img img {
+  width: 110px;
+  height: 82px;
+  object-fit: cover;
+}

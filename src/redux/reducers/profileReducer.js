@@ -28,6 +28,8 @@ import {
   SET_VISIBLITY,
   SET_EXPRIENCE_LEVEL,
   SET_DELETE_PORTFOLIO,
+  SET_ADDITIONAL_ACCOUNT,
+  SET_SUBMIT_VERIF_DOCS,
 } from "../types";
 
 const initialState = {};
@@ -181,6 +183,16 @@ const profileReducer = (state = initialState, action) => {
       return {
         ...state,
         deletePortfolio: action.payload,
+      };
+    case SET_ADDITIONAL_ACCOUNT:
+      return {
+        ...state,
+        additionAccount: action.payload,
+      };
+    case SET_SUBMIT_VERIF_DOCS:
+      return {
+        ...state,
+        verifyDocs: action.payload,
       };
     default:
       return state;

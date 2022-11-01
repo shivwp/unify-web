@@ -2959,7 +2959,7 @@
   padding: 20px;
   background: #ffffff 0% 0% no-repeat padding-box;
   min-height: 200px;
-  max-height: 98vh;
+  /* max-height: 98vh; */
 }
 .otp_container .heading {
   color: #170048;

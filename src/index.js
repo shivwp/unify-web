@@ -96,6 +96,7 @@ import UserReports from "./freelancer/UserReports";
 import VerifyForgotOTP from "./components/VerifyForgotOTP";
 import ForgotPass from "./components/ForgotPass";
 import ResetPass from "./components/ResetPass";
+import Testimonial from "./components/Testimonial";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -271,6 +272,10 @@ root.render(
         <Route
           path="/freelancer/subscription"
           element={<FreelancerSubscription />}
+        />
+        <Route
+          path="/freelancer/submit-testimonial"
+          element={<Testimonial />}
         />
       </Routes>
     </HashRouter>

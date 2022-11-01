@@ -11,11 +11,13 @@ import { useEffect } from "react";
 import {
   getFreelancerProfile,
   getTimezoneList,
+  onAdditionalAccount,
   onEditContactInfo,
   onEditLocationInfo,
 } from "../../../redux/actions/profileAction";
 import CloseAccountPopup from "../../../popups/CloseAccountPopup";
 import { countryList } from "../../../redux/actions/authActions";
+import { data } from "jquery";
 
 const Screen = () => {
   const dispatch = useDispatch();
@@ -42,6 +44,12 @@ const Screen = () => {
     dispatch(getTimezoneList());
     dispatch(countryList());
   }, [editFreelancerInfo, editFreelancerLocation]);
+
+  const onCreateAdditionalAccount = (value) => {
+    console.log(value);
+    const data = { user_type: value };
+    dispatch(onAdditionalAccount(data));
+  };
 
   const EditAcc = () => {
     const [values, setValues] = useState(basicInfo);
@@ -429,7 +437,12 @@ const Screen = () => {
                         </div>
                         <div className="btn_foot_sec flex-wrap d-flex pt-0 pb-0 m-0 no-border">
                           <div className="fo_btn_c d-flex align-items-center width-max-content next_b_btn_c ">
-                            <button className="min-width-226">
+                            <button
+                              className="min-width-226"
+                              onClick={() =>
+                                onCreateAdditionalAccount("client")
+                              }
+                            >
                               New Client Account
                             </button>
                           </div>
@@ -450,7 +463,12 @@ const Screen = () => {
                         </div>
                         <div className="btn_foot_sec flex-wrap d-flex pt-0 pb-0 m-0 no-border">
                           <div className="fo_btn_c d-flex align-items-end width-max-content next_b_btn_c">
-                            <button className="min-width-226">
+                            <button
+                              className="min-width-226"
+                              onClick={() =>
+                                onCreateAdditionalAccount("agency")
+                              }
+                            >
                               New Agency Account
                             </button>
                           </div>

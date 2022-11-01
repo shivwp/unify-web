@@ -25,6 +25,7 @@ import {
   editVisiblity,
   editExprienceLev,
   onDeletePortfolio,
+  onSubmitVerificationDocs,
 } from "../../redux/actions/profileAction";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper";
@@ -64,6 +65,115 @@ function Listaward() {
     </>
   );
 }
+
+function PortfolioPaginate({
+  itemsPerPage,
+  data,
+  setPortfolioPopup,
+  setEditPortfoData,
+}) {
+  const dispatch = useDispatch();
+  const [currentItems, setCurrentItems] = useState(null);
+  const [pageCount, setPageCount] = useState(0);
+  const [itemOffset, setItemOffset] = useState(0);
+
+  useEffect(() => {
+    const endOffset = itemOffset + itemsPerPage;
+    setCurrentItems(data?.slice(itemOffset, endOffset));
+    setPageCount(Math.ceil(data?.length / itemsPerPage));
+  }, [itemOffset, data]);
+
+  const handlePageClick = (event) => {
+    const newOffset = (event.selected * itemsPerPage) % data?.length;
+    setItemOffset(newOffset);
+  };
+  const deletePortf = (id) => {
+    dispatch(onDeletePortfolio({ id: id }));
+  };
+
+  return (
+    <>
+      <div className="d-flex ertr4h6j65esdv align-items-center">
+        {currentItems?.map((item) => (
+          <>
+            <div className="portfolio">
+              <div className="imgbox_bccp">
+                <img src={item.image} alt="" />
+                <div className="port_folio_icons">
+                  <button onClick={() => deletePortf(item.id)}>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 16 16"
+                    >
+                      <path
+                        id="_2203546_bin_delete_gabage_trash_icon"
+                        data-name="2203546_bin_delete_gabage_trash_icon"
+                        d="M8,0A1,1,0,0,0,7,1H0V3H1V14a2,2,0,0,0,2,2H13a2,2,0,0,0,2-2V3h1V1H9A1,1,0,0,0,8,0ZM4,14H3V5H4Zm3,0H6V5H7Zm3,0H9V5h1Zm3,0H12V5h1Z"
+                        fill="#6d2ef1"
+                      />
+                    </svg>
+                  </button>
+                  <button
+                    onClick={() => {
+                      setPortfolioPopup(true);
+                      setEditPortfoData(item);
+                    }}
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="15.709"
+                      height="15.714"
+                      viewBox="0 0 15.709 15.714"
+                    >
+                      <path
+                        id="_8665767_pen_icon"
+                        data-name="8665767_pen_icon"
+                        d="M15.327,2.274,13.482.429a1.475,1.475,0,0,0-2.085,0L9.662,2.165l3.9,3.929L15.3,4.358A1.447,1.447,0,0,0,15.327,2.274Zm-6.356.585L1,10.83a.491.491,0,0,0-.134.251L.057,15.123a.491.491,0,0,0,.576.58l4.042-.808a.491.491,0,0,0,.251-.134L12.9,6.789Z"
+                        transform="translate(-0.047 0.002)"
+                        fill="#6d2ef1"
+                      />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              <a href={item.name}>{item.name}</a>
+            </div>
+          </>
+        ))}
+        {currentItems?.length == 2 && <div style={{ width: "33.3%" }}></div>}
+        {currentItems?.length == 1 && <div style={{ width: "66.6%" }}></div>}
+      </div>
+      <div
+        style={{
+          display: "flex",
+          width: "100%",
+          height: 50,
+          alignItems: "center",
+        }}
+      >
+        <ReactPaginate
+          breakLabel="..."
+          className="portfolioPaginate"
+          pageClassName="portfolioPageCount"
+          nextClassName="paginationNext"
+          previousClassName="paginationPrev"
+          previousLinkClassName="paginationPrevA"
+          nextLinkClassName="paginationNextA"
+          disabledClassName="disablePaginateBtn"
+          nextLabel=">"
+          onPageChange={handlePageClick}
+          pageRangeDisplayed={5}
+          pageCount={pageCount}
+          previousLabel="<"
+          renderOnZeroPageCount={null}
+        />
+      </div>
+    </>
+  );
+}
+
 const Star = () => {
   return (
     <>
@@ -1076,14 +1186,36 @@ const LanguageEdit = (props) => {
   );
 };
 const UserVerification = (props) => {
-  const [values, setValues] = useState({});
-  const options1 = [
-    { name: "Passport", label: "Passport" },
-    { name: "Driving Licence", label: "Driving Licence" },
-    { name: "Other", label: "Other" },
+  const dispatch = useDispatch();
+  const [docType, setDocType] = useState({});
+  const [frontImg, setFrontImg] = useState(null);
+  const [showingFontImg, setShowingFrontImg] = useState();
+  const [backImg, setBackImg] = useState(null);
+  const [showingBackImg, setShowingBackImg] = useState();
+
+  const onFrontImgChange = (e) => {
+    setFrontImg(e.target.files[0]);
+    setShowingFrontImg(URL.createObjectURL(e.target.files[0]));
+  };
+  const onBackImgChange = (e) => {
+    setBackImg(e.target.files[0]);
+    setShowingBackImg(URL.createObjectURL(e.target.files[0]));
+  };
+  console.log(docType);
+
+  const documentOptions = [
+    { name: "passport", label: "Passport" },
+    { name: "driving_license", label: "Driving Licence" },
+    { name: "other", label: "Other" },
   ];
-  const handleOnChange = (e) => {
-    setValues({ ...values, [e.target.name]: e.target.value });
+
+  const onSave = () => {
+    const formData = new FormData();
+    formData.append("type", docType?.name);
+    formData.append("document_front", frontImg);
+    formData.append("document_back", backImg);
+
+    dispatch(onSubmitVerificationDocs(formData));
   };
 
   return (
@@ -1113,9 +1245,24 @@ const UserVerification = (props) => {
                   <Select
                     className="font-size-13px"
                     placeholder="Select ID"
-                    options={options1}
+                    options={documentOptions}
+                    onChange={setDocType}
                   />
                 </div>
+              </div>
+              <div className="varifyDocs_pre_img ">
+                {showingFontImg ? (
+                  <div>
+                    <span>Front Image</span>
+                    <img src={showingFontImg} alt="" />
+                  </div>
+                ) : null}
+                {showingBackImg ? (
+                  <div>
+                    <span> Back Image</span>
+                    <img src={showingBackImg} alt="" />
+                  </div>
+                ) : null}
               </div>
               <Row>
                 <Col md={6}>
@@ -1163,6 +1310,7 @@ const UserVerification = (props) => {
                         type="file"
                         id="attach-doc-front"
                         style={{ display: "none" }}
+                        onChange={(e) => onFrontImgChange(e)}
                       />
                     </label>
                   </div>
@@ -1210,6 +1358,7 @@ const UserVerification = (props) => {
                         type="file"
                         id="attach-doc-back"
                         style={{ display: "none" }}
+                        onChange={(e) => onBackImgChange(e)}
                       />
                     </label>
                   </div>
@@ -1219,7 +1368,95 @@ const UserVerification = (props) => {
 
             <div className="popup_btns_new flex-wrap cwiewyehkk">
               <button className="trans_btn">Cancel</button>
-              <button>Submit</button>
+              <button onClick={onSave}>Submit</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
+const VisiblityPopup = (props) => {
+  const dispatch = useDispatch();
+  const [projectPref, setProjectPref] = useState();
+  const [visiblity, setVisiblity] = useState();
+
+  const visiblityOps = [
+    { name: "public", label: "Public" },
+    { name: "private", label: "Private" },
+    { name: "unify_users", label: "Unify Users Only" },
+  ];
+  const projPrefrenceOps = [
+    { name: "long_term", label: "Long Term" },
+    { name: "short_term", label: "Short Term" },
+    { name: "both", label: "Both" },
+  ];
+
+  const onSave = () => {
+    const data = {
+      visibility: visiblity?.name,
+      project_preference: projectPref.name,
+    };
+    console.log(data);
+    dispatch(editVisiblity(data, props.Popup));
+  };
+  return (
+    <>
+      <div className="bg_wrapper_popup_new">
+        <div className="popup_box_bpn profile_nceqoi_popup pb-4">
+          <div className="popup_header pb-0">
+            <div className="p_header_hding">Visiblity</div>
+            <div
+              className="close_pp_btn"
+              onClick={() => {
+                props.Popup();
+              }}
+            >
+              <CloseIcon />
+            </div>
+          </div>
+          <div className="popup_body_bpn amount_popup_body max_height_popucwui ">
+            <div className="mt-3 mb-3"></div>
+
+            <div className="mb-3 ">
+              <div className="mt-4">
+                <div className="popup_form_element">
+                  <label className="text-black font-size-13px font-weight-500">
+                    Visiblity
+                  </label>
+                  <Select
+                    className="font-size-13px"
+                    placeholder="Select Visiblity"
+                    options={visiblityOps}
+                    onChange={setVisiblity}
+                  />
+                </div>
+              </div>
+              <div className="mt-4">
+                <div className="popup_form_element">
+                  <label className="text-black font-size-13px font-weight-500">
+                    Project Prefrence
+                  </label>
+                  <Select
+                    className="font-size-13px"
+                    placeholder="Select Project Prefrance"
+                    options={projPrefrenceOps}
+                    onChange={setProjectPref}
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div className="popup_btns_new flex-wrap cwiewyehkk">
+              <button
+                className="trans_btn"
+                onClick={() => {
+                  props.Popup();
+                }}
+              >
+                Cancel
+              </button>
+              <button onClick={onSave}>Submit</button>
             </div>
           </div>
         </div>
@@ -1765,7 +2002,6 @@ const UnifyFreelancer = () => {
   const [workHistoryTab, setWorkHistoryTab] = useState("COMPLETED JOBS");
   const [portfolioPopup, setPortfolioPopup] = useState(false);
   const [videoPopup, setVideoPopup] = useState(false);
-  const [showVisiblityOpt, setShowVisiblityOpt] = useState(false);
   const [showExprienceLevOpt, setShowExprienceLevOpt] = useState(false);
   const [videoURL, setVideoURL] = useState(null);
   const [editPortfoData, setEditPortfoData] = useState([]);
@@ -1792,6 +2028,7 @@ const UnifyFreelancer = () => {
   const editCertificate = useSelector(
     (state) => state?.profile?.editCertificate
   );
+  const verifyDocs = useSelector((state) => state?.profile?.verifyDocs);
   const profileImgChange = useSelector(
     (state) => state?.profile?.profileImgChange
   );
@@ -1834,6 +2071,7 @@ const UnifyFreelancer = () => {
     editProfileVisiblity,
     editExprienceLevel,
     deletePortfolio,
+    verifyDocs,
   ]);
 
   const deleteExp = (id) => {
@@ -1890,129 +2128,16 @@ const UnifyFreelancer = () => {
     );
   };
 
-  const handleVisiblity = (visiblity) => {
-    const data = { visibility: visiblity };
-    dispatch(editVisiblity(data, setShowVisiblityOpt));
-  };
   const handleExprienceLevel = (level) => {
     const data = { experience_level: level };
     dispatch(editExprienceLev(data, setShowExprienceLevOpt));
   };
 
   $(document).mouseup(function (e) {
-    if ($(e.target).closest("#visiblity_opts").length === 0) {
-      setShowVisiblityOpt(false);
-    }
-  });
-  $(document).mouseup(function (e) {
     if ($(e.target).closest("#exprience_level_ops").length === 0) {
       setShowExprienceLevOpt(false);
     }
   });
-
-  const deletePortf = (id) => {
-    dispatch(onDeletePortfolio({ id: id }));
-  };
-
-  function PortfolioPaginate({ itemsPerPage, data }) {
-    const [currentItems, setCurrentItems] = useState(null);
-    const [pageCount, setPageCount] = useState(0);
-    const [itemOffset, setItemOffset] = useState(0);
-
-    useEffect(() => {
-      const endOffset = itemOffset + itemsPerPage;
-      setCurrentItems(data?.slice(itemOffset, endOffset));
-      console.log("hello");
-      setPageCount(Math.ceil(data?.length / itemsPerPage));
-    }, [itemsPerPage]);
-
-    const handlePageClick = (event) => {
-      const newOffset = (event.selected * itemsPerPage) % data?.length;
-      setItemOffset(newOffset);
-    };
-
-    return (
-      <>
-        <div className="d-flex ertr4h6j65esdv align-items-center">
-          {currentItems?.map((item) => (
-            <>
-              <div className="portfolio">
-                <div className="imgbox_bccp">
-                  <img src={item.image} alt="" />
-                  <div className="port_folio_icons">
-                    <button onClick={() => deletePortf(item.id)}>
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
-                        viewBox="0 0 16 16"
-                      >
-                        <path
-                          id="_2203546_bin_delete_gabage_trash_icon"
-                          data-name="2203546_bin_delete_gabage_trash_icon"
-                          d="M8,0A1,1,0,0,0,7,1H0V3H1V14a2,2,0,0,0,2,2H13a2,2,0,0,0,2-2V3h1V1H9A1,1,0,0,0,8,0ZM4,14H3V5H4Zm3,0H6V5H7Zm3,0H9V5h1Zm3,0H12V5h1Z"
-                          fill="#6d2ef1"
-                        />
-                      </svg>
-                    </button>
-                    <button
-                      onClick={() => {
-                        setPortfolioPopup(true);
-                        setEditPortfoData(item);
-                      }}
-                    >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="15.709"
-                        height="15.714"
-                        viewBox="0 0 15.709 15.714"
-                      >
-                        <path
-                          id="_8665767_pen_icon"
-                          data-name="8665767_pen_icon"
-                          d="M15.327,2.274,13.482.429a1.475,1.475,0,0,0-2.085,0L9.662,2.165l3.9,3.929L15.3,4.358A1.447,1.447,0,0,0,15.327,2.274Zm-6.356.585L1,10.83a.491.491,0,0,0-.134.251L.057,15.123a.491.491,0,0,0,.576.58l4.042-.808a.491.491,0,0,0,.251-.134L12.9,6.789Z"
-                          transform="translate(-0.047 0.002)"
-                          fill="#6d2ef1"
-                        />
-                      </svg>
-                    </button>
-                  </div>
-                </div>
-                <a href={item.name}>{item.name}</a>
-              </div>
-            </>
-          ))}
-          {currentItems?.length == 2 && <div style={{ width: "33.3%" }}></div>}
-          {currentItems?.length == 1 && <div style={{ width: "66.6%" }}></div>}
-        </div>
-        <div
-          style={{
-            display: "flex",
-            width: "100%",
-            height: 50,
-            alignItems: "center",
-          }}
-        >
-          <ReactPaginate
-            breakLabel="..."
-            className="portfolioPaginate"
-            pageClassName="portfolioPageCount"
-            nextClassName="paginationNext"
-            previousClassName="paginationPrev"
-            previousLinkClassName="paginationPrevA"
-            nextLinkClassName="paginationNextA"
-            disabledClassName="disablePaginateBtn"
-            nextLabel=">"
-            onPageChange={handlePageClick}
-            pageRangeDisplayed={5}
-            pageCount={pageCount}
-            previousLabel="<"
-            renderOnZeroPageCount={null}
-          />
-        </div>
-      </>
-    );
-  }
 
   return (
     <div className="mt-5 mb-5">
@@ -2292,7 +2417,7 @@ const UnifyFreelancer = () => {
                   Visiblity
                   <button
                     onClick={() => {
-                      setShowVisiblityOpt(!showVisiblityOpt);
+                      Setpopup(<VisiblityPopup Popup={Setpopup} />);
                     }}
                   >
                     <svg
@@ -2310,22 +2435,6 @@ const UnifyFreelancer = () => {
                       />
                     </svg>
                   </button>
-                  {showVisiblityOpt && (
-                    <>
-                      <div id="visiblity_opts" className="visiblity_opts">
-                        <span onClick={(e) => handleVisiblity("public")}>
-                          Public
-                        </span>
-                        <span onClick={(e) => handleVisiblity("private")}>
-                          Private
-                        </span>
-                        <span onClick={(e) => handleVisiblity("unify_users")}>
-                          Only to Unify Users
-                        </span>
-                        <div className="visiblity_ops_arrow">&#60;</div>
-                      </div>
-                    </>
-                  )}
                 </div>
                 <div
                   className="myskill_hdingn ms_hdsmall font-size-15px"
@@ -2500,10 +2609,9 @@ const UnifyFreelancer = () => {
                 </div>
                 <div className="myskill_hdingn ms_hdsmall font-size-15px">
                   ID:{" "}
-                  {basicInfo?.is_verified ? (
+                  {basicInfo?.is_verified == "approve" ? (
                     <>
-                      {" "}
-                      'Verified '
+                      <span> Verified</span>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         className="svgverifie"
@@ -2520,9 +2628,11 @@ const UnifyFreelancer = () => {
                         />
                       </svg>
                     </>
-                  ) : (
-                    "Unverified"
-                  )}
+                  ) : basicInfo?.is_verified == "pending" ? (
+                    "pending"
+                  ) : basicInfo?.is_verified == "reject" ? (
+                    "reject"
+                  ) : null}
                 </div>
                 <div className="myskill_hdingn ms_hdsmall font-size-15px">
                   Hannah Finn
@@ -2745,6 +2855,8 @@ const UnifyFreelancer = () => {
               </div>
               <PortfolioPaginate
                 itemsPerPage={3}
+                setEditPortfoData={setEditPortfoData}
+                setPortfolioPopup={setPortfolioPopup}
                 data={freelancerProfileList?.portfolio}
               />
             </div>
