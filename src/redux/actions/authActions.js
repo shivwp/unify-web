@@ -4,7 +4,7 @@ import {
   googleAuthProvider,
   signInWithPopup,
   signOut,
-} from "../../firebase/Firebase";
+} from "../../firebase/firebase";
 import Axios from "../axios";
 import { GOOGLE_SIGN_IN_FAIL, APPLE_SIGN_IN_FAIL, SET_COUNTRY } from "../types";
 import { GoogleAuthProvider, OAuthProvider } from "firebase/auth";
@@ -15,138 +15,120 @@ const config = {
   },
 };
 
-export const onLogin = (data, navigate) => (dispatch) => {
-  Axios.post("/login", data)
-    .then((res) => {
-      if (res.data.status) {
-        localStorage.setItem("unify_Token", res.data.auth_token);
-        localStorage.setItem("unify_user", JSON.stringify(res.data.data.user));
-        console.log(res);
-        if (res.data.data.user.user_type === "freelancer") {
-          navigate("/freelancer/dashboard");
-        } else if (res.data.data.user.user_type === "client") {
-          navigate("/dashboard");
-        }
-        window.location.reload();
+export const onLogin = (data, navigate) => async (dispatch) => {
+  try {
+    const res = await Axios.post(`/login`, data);
+    if (res.data.status) {
+      localStorage.setItem("unify_Token", res.data.auth_token);
+      localStorage.setItem("unify_user", JSON.stringify(res.data.data.user));
+      if (res.data.data.user.user_type === "freelancer") {
+        navigate("/freelancer/dashboard");
+      } else if (res.data.data.user.user_type === "client") {
+        navigate("/dashboard");
       }
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-};
-
-export const onRegister = (data, navigate) => (dispatch) => {
-  Axios.post("/signup", data)
-    .then((res) => {
-      if (res.data.status) {
-        navigate("/verify-signup");
-      }
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-};
-export const onVerifySignup = (data, navigate) => (dispatch) => {
-  Axios.post("/verifysignup", data)
-    .then((res) => {
-      navigate("/create-category");
       window.location.reload();
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-};
-export const onResendOtp = (data, navigate) => (dispatch) => {
-  Axios.post("/resend-otp", data)
-    .then((res) => {
-      console.log(res);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+    }
+  } catch (err) {}
 };
 
-export const countryList = (data) => (dispatch) => {
-  Axios.get("/coutrylist", data)
-    .then((res) => {
+export const onRegister = (data, navigate) => async (dispatch) => {
+  try {
+    const res = await Axios.post(`/signup`, data);
+    if (res.data.status) {
+      navigate("/verify-signup");
+    }
+  } catch (err) {}
+};
+
+export const onVerifySignup = (data, navigate) => async (dispatch) => {
+  try {
+    const res = await Axios.post(`/verifysignup`, data);
+    if (res.data.status) {
+      navigate("/businesssize");
+      window.location.reload();
+    }
+  } catch (err) {}
+};
+
+export const onResendOtp = (data) => async (dispatch) => {
+  try {
+    const res = await Axios.post(`/resend-otp`, data);
+    console.log(res);
+  } catch (err) {}
+};
+
+export const countryList = (data) => async (dispatch) => {
+  try {
+    const res = await Axios.post(`/coutrylist`, data);
+    if (res.data.status) {
       dispatch({
         type: SET_COUNTRY,
         payload: res.data.countrylist,
       });
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+    }
+  } catch (err) {}
 };
 
-export const onForgotPassword = (data, navigate) => (dispatch) => {
-  Axios.post("/forget-password", data)
-    .then((res) => {
+export const onForgotPassword = (data, navigate) => async (dispatch) => {
+  try {
+    const res = await Axios.post(`/forget-password`, data);
+    if (res.data.status) {
       navigate("/verify-forgot-otp");
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+    }
+  } catch (err) {}
 };
 
-export const onVerifyForgot = (data, navigate) => (dispatch) => {
-  Axios.post("/verify-forgot-otp", data)
-    .then((res) => {
+export const onVerifyForgot = (data, navigate) => async (dispatch) => {
+  try {
+    const res = await Axios.post(`/verify-forgot-otp`, data);
+    if (res.data.status) {
       navigate("/reset-password");
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-};
-export const onResetPassword = (data, navigate) => (dispatch) => {
-  Axios.post("/reset-password", data)
-    .then((res) => {
-      navigate("/signin");
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+    }
+  } catch (err) {}
 };
 
-export const onPasswordChange = (data, popup) => (dispatch) => {
-  Axios.post("/change-password", data, config)
-    .then((res) => {
+export const onResetPassword = (data, navigate) => async (dispatch) => {
+  try {
+    const res = await Axios.post(`/reset-password`, data);
+    if (res.data.status) {
+      navigate("/signin");
+    }
+  } catch (err) {}
+};
+
+export const onPasswordChange = (data, popup) => async (dispatch) => {
+  try {
+    const res = await Axios.post(`/change-password`, data, config);
+    if (res.data.status) {
       console.log(res);
       popup();
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+    }
+  } catch (err) {}
 };
 
-export const onOnlineStatus = (data) => (dispatch) => {
-  Axios.post("/online-status", data, config)
-    .then((res) => {
-      console.log(res);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+export const onOnlineStatus = (data, navigate) => async (dispatch) => {
+  try {
+    const res = await Axios.post(`/online-status`, data, config);
+    if (res.data.status) {
+      window.location.reload();
+    }
+  } catch (err) {}
 };
 
-export const googleSignInSuccess = (data, navigate) => (dispatch) => {
-  Axios.post("/social-login", data)
-    .then((res) => {
-      if (res.data.status) {
-        localStorage.setItem("unify_Token", res.data.auth_token);
-        localStorage.setItem("unify_user", JSON.stringify(res.data.data.user));
-        console.log(res);
-        if (res.data.data.user.user_type === "freelancer") {
-          navigate("/freelancer/dashboard");
-        } else if (res.data.data.user.user_type === "client") {
-          navigate("/dashboard");
-        }
-        window.location.reload();
+export const googleSignInSuccess = (data, navigate) => async (dispatch) => {
+  try {
+    const res = await Axios.post(`/social-login`, data);
+    if (res.data.status) {
+      localStorage.setItem("unify_Token", res.data.auth_token);
+      localStorage.setItem("unify_user", JSON.stringify(res.data.data.user));
+      if (res.data.data.user.user_type === "freelancer") {
+        navigate("/freelancer/dashboard");
+      } else if (res.data.data.user.user_type === "client") {
+        navigate("/dashboard");
       }
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+      window.location.reload();
+    }
+  } catch (err) {}
 };
 
 export const googleSignInFail = (error) => ({
@@ -185,24 +167,21 @@ export const googleSignInInitiate = (userType, navigate) => {
   };
 };
 
-export const appleSignInSuccess = (data, navigate) => (dispatch) => {
-  Axios.post("/social-login", data)
-    .then((res) => {
-      if (res.data.status) {
-        localStorage.setItem("unify_Token", res.data.auth_token);
-        localStorage.setItem("unify_user", JSON.stringify(res.data.data.user));
-        console.log(res);
-        if (res.data.data.user.user_type === "freelancer") {
-          navigate("/freelancer/dashboard");
-        } else if (res.data.data.user.user_type === "client") {
-          navigate("/dashboard");
-        }
-        window.location.reload();
+export const appleSignInSuccess = (data, navigate) => async (dispatch) => {
+  try {
+    const res = await Axios.post(`/social-login`, data, config);
+    if (res.data.status) {
+      localStorage.setItem("unify_Token", res.data.auth_token);
+      localStorage.setItem("unify_user", JSON.stringify(res.data.data.user));
+      console.log(res);
+      if (res.data.data.user.user_type === "freelancer") {
+        navigate("/freelancer/dashboard");
+      } else if (res.data.data.user.user_type === "client") {
+        navigate("/dashboard");
       }
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+      window.location.reload();
+    }
+  } catch (err) {}
 };
 
 export const appleSignInFail = (error) => ({

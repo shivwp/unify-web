@@ -4,13 +4,18 @@ import Navbar from "react-bootstrap/Navbar";
 import logo from "../logo.svg";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { onOnlineStatus } from "../redux/actions/authActions";
 
 const NavbarHeader = (props) => {
+  const dispatch = useDispatch();
   const [navOpen, SetnavOpen] = useState(false);
   const [activeNav, SetactiveNav] = useState("");
   const [isDownOpen, SetisDownOpen] = useState(false);
+  let userDetails = JSON.parse(localStorage.getItem("unify_user"));
 
+  console.log(userDetails);
   function ToggleNav() {
     SetnavOpen(!navOpen);
     if (!navOpen) {
@@ -22,6 +27,18 @@ const NavbarHeader = (props) => {
   function ToggleDown() {
     SetisDownOpen(!isDownOpen);
   }
+
+  const handleOnlineStatus = (e) => {
+    const data = {
+      online_status: e.target.value,
+    };
+
+    userDetails.online_status = e.target.value;
+    localStorage.setItem("unify_user", JSON.stringify(userDetails));
+
+    dispatch(onOnlineStatus(data));
+  };
+
   const MenuDown = () => {
     return (
       <>
@@ -199,8 +216,28 @@ const NavbarHeader = (props) => {
                     <div className="pro_name_drop_u">John Doe</div>
                     <div className="pro_o_nme">Client</div>
                     <div className="drop_p_o_i">
-                      <button className="active_drop_poi">Online</button>
-                      <button>Invisible</button>
+                      <button
+                        className={
+                          userDetails.online_status === "online"
+                            ? "active_drop_poi"
+                            : ""
+                        }
+                        value="online"
+                        onClick={handleOnlineStatus}
+                      >
+                        Online
+                      </button>
+                      <button
+                        className={
+                          userDetails.online_status === "invincible"
+                            ? "active_drop_poi"
+                            : ""
+                        }
+                        value="invincible"
+                        onClick={handleOnlineStatus}
+                      >
+                        Invisible
+                      </button>
                     </div>
                     <div className="drop_li_poi">
                       <svg
@@ -379,8 +416,28 @@ const NavbarHeader = (props) => {
                       <div className="pro_name_drop_u">John Doe</div>
                       <div className="pro_o_nme">Client</div>
                       <div className="drop_p_o_i">
-                        <button className="active_drop_poi">Online</button>
-                        <button>Invisible</button>
+                        <button
+                          className={
+                            userDetails.online_status === "online"
+                              ? "active_drop_poi"
+                              : ""
+                          }
+                          value={"online"}
+                          onClick={handleOnlineStatus}
+                        >
+                          Online
+                        </button>
+                        <button
+                          className={
+                            userDetails.online_status === "invisible"
+                              ? "active_drop_poi"
+                              : ""
+                          }
+                          onClick={handleOnlineStatus}
+                          value={"invisible"}
+                        >
+                          Invisible
+                        </button>
                       </div>
                       <div className="drop_li_poi">
                         <svg
