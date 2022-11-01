@@ -1,7 +1,7 @@
 import NavbarLogin from "./components/navbarlogin";
 import Container from "react-bootstrap/Container";
 import { Row, Col } from "react-bootstrap";
-import SideNav from "./components/site_nav";
+import SideNav from "./components/Setting/site_nav";
 import Title from "./title";
 import { useEffect, useState } from "react";
 import MyInfo from "./components/MyInfo";

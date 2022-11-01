@@ -15,7 +15,6 @@ const NavbarHeader = (props) => {
   const [isDownOpen, SetisDownOpen] = useState(false);
   let userDetails = JSON.parse(localStorage.getItem("unify_user"));
 
-  console.log(userDetails);
   function ToggleNav() {
     SetnavOpen(!navOpen);
     if (!navOpen) {
