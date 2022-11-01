@@ -52,7 +52,7 @@ export const onEditTestimonialInfo = (data, navigate) => async (dispatch) => {
 
 export const getFreelancerProfile = () => async (dispatch) => {
   try {
-    const res = await Axios.post(`/get-freelancer-profile`, config);
+    const res = await Axios.get(`/get-freelancer-profile`, config);
     if (res.data.status) {
       dispatch({
         type: SET_FREELANCER_PROFILE,
@@ -102,7 +102,7 @@ export const onDeleteEmployment = (data) => async (dispatch) => {
 // CLIENT
 export const getClientInfoDetails = (data) => async (dispatch) => {
   try {
-    const res = await Axios.post(`/get-client-info`, config);
+    const res = await Axios.get(`/get-client-info`, config);
     if (res.data.status) {
       dispatch({
         type: SET_CLIENT_INFO_DETAILS,

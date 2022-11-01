@@ -57,9 +57,9 @@ export const onResendOtp = (data) => async (dispatch) => {
   } catch (err) {}
 };
 
-export const countryList = (data) => async (dispatch) => {
+export const countryList = () => async (dispatch) => {
   try {
-    const res = await Axios.post(`/coutrylist`, data);
+    const res = await Axios.get(`/coutrylist`);
     if (res.data.status) {
       dispatch({
         type: SET_COUNTRY,
