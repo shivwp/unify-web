@@ -754,7 +754,7 @@ const Screen = () => {
                         transform="translate(-7947.293 1915.998)"
                         fill="none"
                         stroke="#fff"
-                        stroke-width="2"
+                        strokeWidth="2"
                       />
                     </svg>
                   </div>
@@ -1020,7 +1020,7 @@ const Screen = () => {
                         transform="translate(1.023 0.504)"
                         fill="#ff88fe"
                         stroke="#ff88fe"
-                        stroke-width="2"
+                        strokeWidth="2"
                       />
                     </svg>
                     <svg
@@ -1035,7 +1035,7 @@ const Screen = () => {
                         transform="translate(1.023 0.504)"
                         fill="#ff88fe"
                         stroke="#ff88fe"
-                        stroke-width="2"
+                        strokeWidth="2"
                       />
                     </svg>
                     <svg
@@ -1050,7 +1050,7 @@ const Screen = () => {
                         transform="translate(1.023 0.504)"
                         fill="#ff88fe"
                         stroke="#ff88fe"
-                        stroke-width="2"
+                        strokeWidth="2"
                       />
                     </svg>
                     <div>Reviews</div>

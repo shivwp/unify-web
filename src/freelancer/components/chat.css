@@ -654,11 +654,12 @@
 }
 
 .imgbox_bccp {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   position: relative;
   height: 166px;
   width: 100%;
-  display: flex;
-  flex-direction: column;
 }
 
 @media screen and (max-width: 425px) {
@@ -691,7 +692,7 @@
 }
 
 .imgbox_bccp .port_folio_icons {
-  visibility: hidden;
+  display: none;
 }
 
 .imgbox_bccp:hover .port_folio_icons {
@@ -702,7 +703,6 @@
   width: 100%;
   height: 100%;
   background-color: transparent;
-  visibility: visible;
 }
 
 .port_folio_icons button {

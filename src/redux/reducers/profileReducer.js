@@ -20,7 +20,6 @@ import {
   SET_EDIT_CERTIFICATE,
   SET_DELETE_CERTIFICATE,
   SET_PROFILE_IMG_CHANGE,
-  SET_EDIT_TESTIMONIAL,
   SET_EDIT_EDUCATION,
   SET_EDIT_DESIGNATION,
   SET_EDIT_PORTFOLIO,
@@ -30,6 +29,8 @@ import {
   SET_DELETE_PORTFOLIO,
   SET_ADDITIONAL_ACCOUNT,
   SET_SUBMIT_VERIF_DOCS,
+  REQUEST_TESTIMONIAL,
+  GET_TESTIMONIAL,
 } from "../types";
 
 const initialState = {};
@@ -144,11 +145,7 @@ const profileReducer = (state = initialState, action) => {
         ...state,
         profileImgChange: action.payload,
       };
-    case SET_EDIT_TESTIMONIAL:
-      return {
-        ...state,
-        edtiTestimonial: action.payload,
-      };
+
     case SET_EDIT_EDUCATION:
       return {
         ...state,
@@ -193,6 +190,16 @@ const profileReducer = (state = initialState, action) => {
       return {
         ...state,
         verifyDocs: action.payload,
+      };
+    case REQUEST_TESTIMONIAL:
+      return {
+        ...state,
+        requestTestimonial: action.payload,
+      };
+    case GET_TESTIMONIAL:
+      return {
+        ...state,
+        getTestimonial: action.payload,
       };
     default:
       return state;

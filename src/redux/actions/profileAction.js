@@ -21,7 +21,6 @@ import {
   SET_EDIT_CERTIFICATE,
   SET_DELETE_CERTIFICATE,
   SET_PROFILE_IMG_CHANGE,
-  SET_EDIT_TESTIMONIAL,
   SET_EDIT_EDUCATION,
   SET_EDIT_DESIGNATION,
   SET_EDIT_PORTFOLIO,
@@ -31,7 +30,10 @@ import {
   SET_DELETE_PORTFOLIO,
   SET_ADDITIONAL_ACCOUNT,
   SET_SUBMIT_VERIF_DOCS,
+  REQUEST_TESTIMONIAL,
+  GET_TESTIMONIAL,
 } from "../types";
+let userDetails = JSON.parse(localStorage.getItem("unify_user"));
 
 const config = {
   headers: {
@@ -40,16 +42,6 @@ const config = {
 };
 
 // FREELANCER
-export const onEditTestimonialInfo = (data, navigate) => async (dispatch) => {
-  try {
-    await Axios.post(`/edit-testimonial-info`, data, config).then((res) => {
-      dispatch({
-        type: SET_EDIT_TESTIMONIAL,
-        payload: res.data.data,
-      });
-    });
-  } catch (err) {}
-};
 
 export const getFreelancerProfile = () => async (dispatch) => {
   try {
@@ -345,6 +337,8 @@ export const editNameInfo = (data) => async (dispatch) => {
         type: SET_PROFILE_IMG_CHANGE,
         payload: res.data,
       });
+      userDetails.profile_image = res?.data?.basic_info?.profile_image;
+      localStorage.setItem("unify_user", JSON.stringify(userDetails));
     });
   } catch (err) {}
 };
@@ -383,13 +377,19 @@ export const onDeletePortfolio = (data) => async (dispatch) => {
     });
   } catch (err) {}
 };
-export const onAdditionalAccount = (data) => async (dispatch) => {
+export const onAdditionalAccount = (data, navigate) => async (dispatch) => {
   try {
     Axios.post("/additional-account", data, config).then((res) => {
       dispatch({
         type: SET_ADDITIONAL_ACCOUNT,
         payload: res.data,
       });
+      if (data.user_type == "agency") {
+        navigate("/agency/dashboard");
+      }
+      if (data.user_type == "client") {
+        navigate("/dashboard");
+      }
     });
   } catch (err) {}
 };
@@ -403,3 +403,39 @@ export const onSubmitVerificationDocs = (data) => async (dispatch) => {
     });
   } catch (err) {}
 };
+export const onRequestTestimonial = (data) => async (dispatch) => {
+  try {
+    Axios.post("/edit-testimonial-info", data, config).then((res) => {
+      dispatch({
+        type: REQUEST_TESTIMONIAL,
+        payload: res.data,
+      });
+    });
+  } catch (err) {}
+};
+export const onSubmitTestimonial = (data) => async (dispatch) => {
+  try {
+    Axios.post("/client-testimonial", data, config).then((res) => {
+      console.log(res);
+    });
+  } catch (err) {}
+};
+export const onGetTestmonial = (data, setValues) => async (dispatch) => {
+  try {
+    Axios.post("/get-testimonial", data, config).then((res) => {
+      dispatch({
+        type: GET_TESTIMONIAL,
+        payload: res.data.data,
+      });
+      setValues(res.data.data);
+    });
+  } catch (err) {}
+};
+export const getCertificationList =
+  (setCertificateList) => async (dispatch) => {
+    try {
+      Axios.get("/certificate-list", config).then((res) => {
+        setCertificateList(res.data.data);
+      });
+    } catch (err) {}
+  };

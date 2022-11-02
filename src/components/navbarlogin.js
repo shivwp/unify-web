@@ -179,20 +179,18 @@ const NavbarHeader = (props) => {
                   </svg>
                 </Link>
 
-                <Nav.Link className="navbar_btn">
-                  <Link to="/notification">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="21"
-                      height="21"
-                      fill="currentColor"
-                      className="bi bi-bell"
-                      viewBox="0 0 16 16"
-                    >
-                      <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zM8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z" />
-                    </svg>
-                  </Link>
-                </Nav.Link>
+                <Link className="navbar_btn" to="/notification">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="21"
+                    height="21"
+                    fill="currentColor"
+                    className="bi bi-bell"
+                    viewBox="0 0 16 16"
+                  >
+                    <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zM8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z" />
+                  </svg>
+                </Link>
                 <div className="nav_pro_node">
                   <div className="nav_profile online_profile">
                     <img
@@ -217,7 +215,7 @@ const NavbarHeader = (props) => {
                     <div className="drop_p_o_i">
                       <button
                         className={
-                          userDetails.online_status === "online"
+                          userDetails?.online_status === "online"
                             ? "active_drop_poi"
                             : ""
                         }
@@ -228,7 +226,7 @@ const NavbarHeader = (props) => {
                       </button>
                       <button
                         className={
-                          userDetails.online_status === "invincible"
+                          userDetails?.online_status === "invincible"
                             ? "active_drop_poi"
                             : ""
                         }
@@ -349,23 +347,21 @@ const NavbarHeader = (props) => {
                   {/* <Nav.Link className="active_btn logout_btn_nav">
                     <Link to="/signin">Logout</Link>
                   </Nav.Link> */}
-                  <Nav.Link className="navbar_btn">
-                    <Link to="/help-support">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="21"
-                        height="21"
-                        fill="currentColor"
-                        className="bi bi-question-lg"
-                        viewBox="0 0 16 16"
-                      >
-                        <path
-                          fillRule="evenodd"
-                          d="M4.475 5.458c-.284 0-.514-.237-.47-.517C4.28 3.24 5.576 2 7.825 2c2.25 0 3.767 1.36 3.767 3.215 0 1.344-.665 2.288-1.79 2.973-1.1.659-1.414 1.118-1.414 2.01v.03a.5.5 0 0 1-.5.5h-.77a.5.5 0 0 1-.5-.495l-.003-.2c-.043-1.221.477-2.001 1.645-2.712 1.03-.632 1.397-1.135 1.397-2.028 0-.979-.758-1.698-1.926-1.698-1.009 0-1.71.529-1.938 1.402-.066.254-.278.461-.54.461h-.777ZM7.496 14c.622 0 1.095-.474 1.095-1.09 0-.618-.473-1.092-1.095-1.092-.606 0-1.087.474-1.087 1.091S6.89 14 7.496 14Z"
-                        />
-                      </svg>
-                    </Link>
-                  </Nav.Link>
+                  <Link to="/help-support" className="navbar_btn">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="21"
+                      height="21"
+                      fill="currentColor"
+                      className="bi bi-question-lg"
+                      viewBox="0 0 16 16"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M4.475 5.458c-.284 0-.514-.237-.47-.517C4.28 3.24 5.576 2 7.825 2c2.25 0 3.767 1.36 3.767 3.215 0 1.344-.665 2.288-1.79 2.973-1.1.659-1.414 1.118-1.414 2.01v.03a.5.5 0 0 1-.5.5h-.77a.5.5 0 0 1-.5-.495l-.003-.2c-.043-1.221.477-2.001 1.645-2.712 1.03-.632 1.397-1.135 1.397-2.028 0-.979-.758-1.698-1.926-1.698-1.009 0-1.71.529-1.938 1.402-.066.254-.278.461-.54.461h-.777ZM7.496 14c.622 0 1.095-.474 1.095-1.09 0-.618-.473-1.092-1.095-1.092-.606 0-1.087.474-1.087 1.091S6.89 14 7.496 14Z"
+                      />
+                    </svg>
+                  </Link>
                   <Link to="#" className="navbar_btn p-0">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -379,20 +375,18 @@ const NavbarHeader = (props) => {
                     </svg>
                   </Link>
 
-                  <Nav.Link className="navbar_btn">
-                    <Link to="/notification">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="21"
-                        height="21"
-                        fill="currentColor"
-                        className="bi bi-bell"
-                        viewBox="0 0 16 16"
-                      >
-                        <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zM8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z" />
-                      </svg>
-                    </Link>
-                  </Nav.Link>
+                  <Link to="/notification" className="navbar_btn">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="21"
+                      height="21"
+                      fill="currentColor"
+                      className="bi bi-bell"
+                      viewBox="0 0 16 16"
+                    >
+                      <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zM8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z" />
+                    </svg>
+                  </Link>
                   <div className="nav_pro_node">
                     <div className="nav_profile">
                       <img
@@ -417,7 +411,7 @@ const NavbarHeader = (props) => {
                       <div className="drop_p_o_i">
                         <button
                           className={
-                            userDetails.online_status === "online"
+                            userDetails?.online_status === "online"
                               ? "active_drop_poi"
                               : ""
                           }
@@ -428,7 +422,7 @@ const NavbarHeader = (props) => {
                         </button>
                         <button
                           className={
-                            userDetails.online_status === "invisible"
+                            userDetails?.online_status === "invisible"
                               ? "active_drop_poi"
                               : ""
                           }

@@ -2204,7 +2204,6 @@
   top: 0;
   /* pointer-events: none; */
   cursor: pointer;
-  
 }
 .cal_icon_psr_abs:hover {
   cursor: pointer;
@@ -3219,5 +3218,11 @@
 @media screen and (max-width: 321px) {
   .filter_scr {
     width: 269px;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .addition_acc_media {
+    flex-wrap: wrap;
   }
 }

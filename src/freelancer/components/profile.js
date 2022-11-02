@@ -9,7 +9,6 @@ import {
   getFreelancerProfile,
   getFreelancerSkills,
   onAddEmployment,
-  onEditTestimonialInfo,
   onDeleteEmployment,
   getFreelancerDegreeList,
   onAddEducation,
@@ -26,6 +25,8 @@ import {
   editExprienceLev,
   onDeletePortfolio,
   onSubmitVerificationDocs,
+  onRequestTestimonial,
+  getCertificationList,
 } from "../../redux/actions/profileAction";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper";
@@ -1673,17 +1674,16 @@ const AddEduc = (props) => {
 const AddCert = (props) => {
   const [certName, setCertName] = useState(props?.certificates || null);
   const [values, setValues] = useState(props?.certificates);
+  const [certificateList, setCertificateList] = useState([]);
   const dispatch = useDispatch();
-  const options1 = [
-    {
-      name: "Adobe Certified Expert",
-      label: "Adobe Certified Expert",
-    },
-    {
-      name: "ReactJS Developer",
-      label: "ReactJS Developer",
-    },
-  ];
+  const options1 = certificateList?.map((data) => ({
+    name: data.name,
+    label: data.name,
+  }));
+
+  useEffect(() => {
+    dispatch(getCertificationList(setCertificateList));
+  }, []);
 
   const handleOnChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
@@ -1790,11 +1790,18 @@ const ReqTestimonial = (props) => {
 
   const onInputChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
-    console.log(values);
   };
 
   const testimonialSubmit = (e) => {
-    dispatch(onEditTestimonialInfo(values));
+    const data = {
+      first_name: values?.first_name,
+      last_name: values?.last_name,
+      email: values?.email,
+      title: values?.title,
+      type: values?.type,
+      description: values?.description,
+    };
+    dispatch(onRequestTestimonial(data));
   };
 
   return (
@@ -1863,7 +1870,7 @@ const ReqTestimonial = (props) => {
                       className="font-size-13px"
                       value={values?.email}
                       onChange={(e) => onInputChange(e)}
-                      placeholder=""
+                      placeholder="Enter Your Business Email"
                     />
                   </div>
                 </Col>
@@ -1878,7 +1885,7 @@ const ReqTestimonial = (props) => {
                       className="font-size-13px"
                       value={values?.title}
                       onChange={(e) => onInputChange(e)}
-                      placeholder=" Degree (Optional)"
+                      placeholder="Enter Client's Title"
                     />
                   </div>
                 </Col>
@@ -1893,7 +1900,7 @@ const ReqTestimonial = (props) => {
                       className="font-size-13px"
                       value={values?.type}
                       onChange={(e) => onInputChange(e)}
-                      placeholder=" Degree (Optional)"
+                      placeholder="Enter Project Type"
                     />
                   </div>
                 </Col>
@@ -2044,6 +2051,9 @@ const UnifyFreelancer = () => {
   const editExprienceLevel = useSelector(
     (state) => state?.profile?.editExprienceLevel
   );
+  const requestTestimonial = useSelector(
+    (state) => state?.profile?.requestTestimonial
+  );
   const editPortfolio = useSelector((state) => state?.profile?.editPortfolio);
   const editEducation = useSelector((state) => state?.profile?.editEducation);
 
@@ -2072,6 +2082,7 @@ const UnifyFreelancer = () => {
     editExprienceLevel,
     deletePortfolio,
     verifyDocs,
+    requestTestimonial,
   ]);
 
   const deleteExp = (id) => {
@@ -2101,7 +2112,9 @@ const UnifyFreelancer = () => {
 
   const IntroVideoThumb = ({ data }) => {
     const vidId = data?.url?.split("v=")[1].substring(0, 11);
-    const thumbnail = `https://img.youtube.com/vi/${vidId}/0.jpg`;
+    const thumbnail = data
+      ? `https://img.youtube.com/vi/${vidId}/0.jpg`
+      : `https://img.youtube.com/vi/0.jpg`;
 
     useEffect(() => {
       setVideoURL(`https://www.youtube.com/embed/${vidId}?rel=0`);
@@ -2175,7 +2188,7 @@ const UnifyFreelancer = () => {
                             transform="translate(340 2040)"
                             fill="#fff"
                             stroke="#707070"
-                            stroke-width="1"
+                            strokeWidth="1"
                             opacity="0.43"
                           >
                             <circle cx="20" cy="20" r="20" stroke="none" />
@@ -2585,26 +2598,28 @@ const UnifyFreelancer = () => {
                 <div className="myskill_hdingn profile_icon_25px profile_heading_mb">
                   Verification
                   <div className="d-flex justify-content-start">
-                    <button
-                      onClick={() => {
-                        Setpopup(<UserVerification Popup={Setpopup} />);
-                      }}
-                    >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="17"
-                        height="17"
-                        viewBox="0 0 17 17"
+                    {basicInfo?.is_verified != "approve" && (
+                      <button
+                        onClick={() => {
+                          Setpopup(<UserVerification Popup={Setpopup} />);
+                        }}
                       >
-                        <path
-                          id="_134224_add_plus_new_icon_2_"
-                          data-name="134224_add_plus_new_icon (2)"
-                          d="M17.786,9.286H11.714V3.214a1.214,1.214,0,0,0-2.429,0V9.286H3.214a1.214,1.214,0,0,0,0,2.429H9.286v6.071a1.214,1.214,0,1,0,2.429,0V11.714h6.071a1.214,1.214,0,1,0,0-2.429Z"
-                          transform="translate(-2 -2)"
-                          fill="#6d2ef1"
-                        />
-                      </svg>
-                    </button>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="17"
+                          height="17"
+                          viewBox="0 0 17 17"
+                        >
+                          <path
+                            id="_134224_add_plus_new_icon_2_"
+                            data-name="134224_add_plus_new_icon (2)"
+                            d="M17.786,9.286H11.714V3.214a1.214,1.214,0,0,0-2.429,0V9.286H3.214a1.214,1.214,0,0,0,0,2.429H9.286v6.071a1.214,1.214,0,1,0,2.429,0V11.714h6.071a1.214,1.214,0,1,0,0-2.429Z"
+                            transform="translate(-2 -2)"
+                            fill="#6d2ef1"
+                          />
+                        </svg>
+                      </button>
+                    )}
                   </div>
                 </div>
                 <div className="myskill_hdingn ms_hdsmall font-size-15px">
@@ -2809,7 +2824,9 @@ const UnifyFreelancer = () => {
                   <button
                     onClick={() => setWorkHistoryTab("COMPLETED JOBS")}
                     className={
-                      workHistoryTab === "COMPLETED JOBS" && "activetabbar_btn"
+                      workHistoryTab === "COMPLETED JOBS"
+                        ? "activetabbar_btn"
+                        : ""
                     }
                   >
                     Commpleted Jobs (2)
@@ -2817,7 +2834,7 @@ const UnifyFreelancer = () => {
                   <button
                     onClick={() => setWorkHistoryTab("IN PROGRESS")}
                     className={
-                      workHistoryTab === "IN PROGRESS" && "activetabbar_btn"
+                      workHistoryTab === "IN PROGRESS" ? "activetabbar_btn" : ""
                     }
                   >
                     In Progress (1)
@@ -2941,116 +2958,106 @@ const UnifyFreelancer = () => {
                   <Link to="">Request a testimonial</Link>
                 </div>
               </div> */}
-              <div
-                className="freelancer_testimonials my-2 "
-                style={{ borderBottom: " 1px solid #d5d5d5" }}
-              >
-                <Row>
-                  <Col lg={1}>
-                    <div className="testimonial_img">
-                      <img src="/assets/PRO-2.png" alt="" />
-                    </div>
-                  </Col>
-                  <Col lg={11}>
-                    <div className="user_details">
-                      <div className="f_user_name">Dheeraj Kumar</div>
-                      <div className="f_user_country">India</div>
-                    </div>
-                  </Col>
-                </Row>
-                <Row>
-                  <Col lg={1}></Col>
-                  <Col lg={11}>
-                    <div className="reviews d-flex mb-2 align-items-center">
-                      <Star />
-                      <Star />
-                      <Star />
-                      <Star />
-                      <Star />
-                      <span
+              {freelancerProfileList?.testimonial?.map((item) => (
+                <>
+                  {item.status == "approve" && (
+                    <div className="freelancer_testimonials my-2 ">
+                      <div
                         style={{
-                          color: "rgb(201 201 201)",
-                          paddingLeft: 2,
-                          fontWeight: 100,
+                          borderBottom: " 1px solid #d5d5d5",
+                          marginBottom: 5,
                         }}
                       >
-                        {" "}
-                        |{" "}
-                      </span>
-                      <span className="ps-2" style={{ color: "#62646a" }}>
-                        {" "}
-                        2 Weeks ago
-                      </span>
+                        <Row>
+                          <Col lg={1}>
+                            <div className="testimonial_img">
+                              <img src="/assets/PRO-2.png" alt="" />
+                            </div>
+                          </Col>
+                          <Col lg={11}>
+                            <div className="user_details">
+                              <div
+                                className="f_user_name"
+                                style={{ textTransform: "capitalize" }}
+                              >{`${item.first_name} ${item.last_name}`}</div>
+                              <div className="f_user_country">India</div>
+                            </div>
+                          </Col>
+                        </Row>
+                        <Row>
+                          <Col lg={1}></Col>
+                          <Col lg={11}>
+                            <div className="reviews d-flex mb-2 align-items-center">
+                              <Star />
+                              <Star />
+                              <Star />
+                              <Star />
+                              <Star />
+                              <span
+                                style={{
+                                  color: "rgb(201 201 201)",
+                                  paddingLeft: 2,
+                                  fontWeight: 100,
+                                }}
+                              >
+                                {" "}
+                                |{" "}
+                              </span>
+                              <span
+                                className="ps-2"
+                                style={{ color: "#62646a" }}
+                              >
+                                {" "}
+                                {moment
+                                  .utc(item.request_sent)
+                                  .local()
+                                  .startOf("seconds")
+                                  .fromNow()}
+                              </span>
+                            </div>
+                            <div
+                              className="testimonial_description mt-1"
+                              style={{ fontSize: 14 }}
+                            >
+                              {item.description}
+                            </div>
+                          </Col>
+                        </Row>
+                      </div>
                     </div>
-                    <div
-                      className="testimonial_description mt-1"
-                      style={{ fontSize: 14 }}
-                    >
-                      Exceptional service, I would give it 7 stars if I could.
-                      Was very responsive, listened intently to each of my
-                      concerns and preferences. I felt like I was the most
-                      difficult client but he was amazing helping me bring my
-                      site to life. I started with an idea and now I have a
-                      whole site design!
-                    </div>
-                  </Col>
-                </Row>
-              </div>
-              <div
-                className="freelancer_testimonials my-2 "
-                style={{ borderBottom: " 1px solid #d5d5d5" }}
-              >
-                <Row>
-                  <Col lg={1}>
-                    <div className="testimonial_img">
-                      <img src="/assets/PRO-2.png" alt="" />
-                    </div>
-                  </Col>
-                  <Col lg={11}>
-                    <div className="user_details">
-                      <div className="f_user_name">Manish Kumar</div>
-                      <div className="f_user_country">India</div>
-                    </div>
-                  </Col>
-                </Row>
-                <Row>
-                  <Col lg={1}></Col>
-                  <Col lg={11}>
-                    <div className="reviews d-flex mb-2 align-items-center">
-                      <Star />
-                      <Star />
-                      <Star />
-                      <Star />
-                      <Star />
-                      <span
+                  )}
+                  {item.status == "pending" && (
+                    <div className="freelancer_testimonials my-2 ">
+                      <div
                         style={{
-                          color: "rgb(201 201 201)",
-                          paddingLeft: 2,
-                          fontWeight: 100,
+                          display: "flex",
+                          justifyContent: "space-between",
+                          borderBottom: " 1px solid #d5d5d5",
+                          marginBottom: 5,
                         }}
                       >
-                        {" "}
-                        |{" "}
-                      </span>
-                      <span className="ps-2" style={{ color: "#62646a" }}>
-                        {" "}
-                        2 Weeks ago
-                      </span>
+                        <div
+                          className="testimonial_description my-1"
+                          style={{ fontSize: 14 }}
+                        >
+                          <i class="fa fa-history" aria-hidden="true"></i>
+                          {` ${item.message}`}
+                        </div>
+                        <div>
+                          <span className="ps-2" style={{ color: "#62646a" }}>
+                            {" "}
+                            {moment
+                              .utc(item.request_sent)
+                              .local()
+                              .startOf("seconds")
+                              .fromNow()}
+                          </span>
+                        </div>
+                      </div>
                     </div>
-                    <div
-                      className="testimonial_description mt-1"
-                      style={{ fontSize: 14 }}
-                    >
-                      Exceptional service, I would give it 7 stars if I could.
-                      Was very responsive, listened intently to each of my
-                      concerns and preferences. I felt like I was the most
-                      difficult client but he was amazing helping me bring my
-                      site to life. I started with an idea and now I have a
-                      whole site design!
-                    </div>
-                  </Col>
-                </Row>
-              </div>
+                  )}
+                </>
+              ))}
             </div>
             <div className="box-profile-bck">
               <div style={{ display: "flex", justifyContent: "space-between" }}>
@@ -3059,7 +3066,7 @@ const UnifyFreelancer = () => {
                 </div>
                 <div className="myskill_hdingn">
                   <button
-                    style={{ padding: 0, cursor: "pointer" }}
+                    style={{ width: "100%", height: "100%", cursor: "pointer" }}
                     onClick={() => {
                       Setpopup(<AddCert Popup={Setpopup} />);
                     }}

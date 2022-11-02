@@ -4,28 +4,12 @@ import "react-responsive-modal/styles.css";
 import "./popup.css";
 import Select from "react-select";
 import { Row, Col } from "react-bootstrap";
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { countryList } from "../../../redux/actions/authActions";
-import { useState } from "react";
 
-const AddMobNoPupup = ({ open, onCloseModal }) => {
-  const options1 = useSelector((state) => state.auth.getCountryList)?.map(
-    (data) => ({
-      name: data.country_code,
-      label: `${data.country_code}`,
-      color: "#000",
-    })
-  );
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(countryList());
-  }, []);
+const ConfirmationPopup = ({open, onCloseModal}) => {
 
   return (
     <>
-      <Modal
+        <Modal
         open={open}
         onClose={onCloseModal}
         classNames={{
@@ -139,7 +123,7 @@ const AddMobNoPupup = ({ open, onCloseModal }) => {
         </div>
       </Modal>
     </>
-  );
-};
+  )
+}
 
-export default AddMobNoPupup;
+export default ConfirmationPopup

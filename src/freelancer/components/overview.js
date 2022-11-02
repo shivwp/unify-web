@@ -20,28 +20,28 @@ const Screen = () => {
             <div className="transaction_head_n pb-0 d-flex justify-content-around" style={{overflowX: 'auto'}}>
               <div
                 onClick={() => seturrentTab(1)}
-                className={`box_overv_new ${currentTab == 1 && "active"}`}
+                className={`box_overv_new ${currentTab == 1 ? "active": ''}`}
               >
                 <div className="overv_sm_thead">Work in Progress</div>
                 <div className="overv_number">$0.00</div>
               </div>
               <div
                 onClick={() => seturrentTab(2)}
-                className={`box_overv_new ${currentTab == 2 && "active"}`}
+                className={`box_overv_new ${currentTab == 2 ? "active":''}`}
               >
                 <div className="overv_sm_thead">In review</div>
                 <div className="overv_number">$0.00</div>
               </div>
               <div
                 onClick={() => seturrentTab(3)}
-                className={`box_overv_new ${currentTab == 3 && "active"}`}
+                className={`box_overv_new ${currentTab == 3 ? "active":''}`}
               >
                 <div className="overv_sm_thead">Pending</div>
                 <div className="overv_number">$0.00</div>
               </div>
               <div
                 onClick={() => seturrentTab(4)}
-                className={`box_overv_new ${currentTab == 4 && "active"}`}
+                className={`box_overv_new ${currentTab == 4 ? "active":''}`}
               >
                 <div className="overv_sm_thead">Available</div>
                 <div className="overv_number">$0.00</div>

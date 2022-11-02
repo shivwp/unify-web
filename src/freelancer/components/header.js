@@ -5,11 +5,15 @@ import logo from "../../logo.svg";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { onOnlineStatus } from "../../redux/actions/authActions";
+import { useDispatch } from "react-redux";
 
 const NavbarHeader = (props) => {
+  const dispatch = useDispatch();
   const [navOpen, SetnavOpen] = useState(false);
   const [activeNav, SetactiveNav] = useState("");
   const [isDownOpen, SetisDownOpen] = useState(false);
+  let userDetails = JSON.parse(localStorage.getItem("unify_user"));
 
   function ToggleNav() {
     SetnavOpen(!navOpen);
@@ -22,6 +26,17 @@ const NavbarHeader = (props) => {
   function ToggleDown() {
     SetisDownOpen(!isDownOpen);
   }
+
+  const handleOnlineStatus = (e) => {
+    const data = {
+      online_status: e.target.value,
+    };
+
+    userDetails.online_status = e.target.value;
+    localStorage.setItem("unify_user", JSON.stringify(userDetails));
+
+    dispatch(onOnlineStatus(data));
+  };
   const MenuDown = () => {
     return (
       <>
@@ -171,26 +186,21 @@ const NavbarHeader = (props) => {
                   </svg>
                 </Link>
 
-                <Nav.Link className="navbar_btn">
-                  <Link to="/freelancer/notification">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="21"
-                      height="21"
-                      fill="currentColor"
-                      className="bi bi-bell"
-                      viewBox="0 0 16 16"
-                    >
-                      <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zM8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z" />
-                    </svg>
-                  </Link>
-                </Nav.Link>
+                <Link to="/freelancer/notification" className="navbar_btn">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="21"
+                    height="21"
+                    fill="currentColor"
+                    className="bi bi-bell"
+                    viewBox="0 0 16 16"
+                  >
+                    <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zM8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z" />
+                  </svg>
+                </Link>
                 <div className="nav_pro_node">
                   <div className="nav_profile online_profile">
-                    <img
-                      src="https://images.unsplash.com/photo-1494790108377-be9c29b29330"
-                      alt=""
-                    />
+                    <img src={userDetails?.profile_image} alt="" />
                   </div>
                   <NavDropdown
                     className=" text-center nav_dropdown_profile custom_nav_profile_drp"
@@ -198,17 +208,34 @@ const NavbarHeader = (props) => {
                   >
                     <div className="d-flex justify-content-center">
                       <div className="nav_p_d_profil">
-                        <img
-                          src="https://images.unsplash.com/photo-1494790108377-be9c29b29330"
-                          alt=""
-                        />
+                        <img src={userDetails?.profile_image} alt="" />
                       </div>
                     </div>
                     <div className="pro_name_drop_u">John Doe</div>
                     <div className="pro_o_nme">Freelancer</div>
                     <div className="drop_p_o_i">
-                      <button className="active_drop_poi">Online</button>
-                      <button>Invisible</button>
+                      <button
+                        className={
+                          userDetails?.online_status === "online"
+                            ? "active_drop_poi"
+                            : ""
+                        }
+                        value="online"
+                        onClick={handleOnlineStatus}
+                      >
+                        Online
+                      </button>
+                      <button
+                        className={
+                          userDetails?.online_status === "invisible"
+                            ? "active_drop_poi"
+                            : ""
+                        }
+                        value="invisible"
+                        onClick={handleOnlineStatus}
+                      >
+                        Invisible
+                      </button>
                     </div>
                     <div className="drop_li_poi">
                       <svg
@@ -329,9 +356,9 @@ const NavbarHeader = (props) => {
                       </div>
                     </NavDropdown>
                   </div>
-                  <Nav.Link className="active_btn logout_btn_nav">
-                    <Link to="/signin">Logout</Link>
-                  </Nav.Link>
+                  <Link className="active_btn logout_btn_nav" to="/signin">
+                    Logout
+                  </Link>
                   <Link to="/freelancer/chat" className="navbar_btn p-0">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -345,26 +372,21 @@ const NavbarHeader = (props) => {
                     </svg>
                   </Link>
 
-                  <Nav.Link className="navbar_btn">
-                    <Link to="/freelancer/notification">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="21"
-                        height="21"
-                        fill="currentColor"
-                        className="bi bi-bell"
-                        viewBox="0 0 16 16"
-                      >
-                        <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zM8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z" />
-                      </svg>
-                    </Link>
-                  </Nav.Link>
+                  <Link to="/freelancer/notification" className="navbar_btn">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="21"
+                      height="21"
+                      fill="currentColor"
+                      className="bi bi-bell"
+                      viewBox="0 0 16 16"
+                    >
+                      <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zM8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z" />
+                    </svg>
+                  </Link>
                   <div className="nav_pro_node">
                     <div className="nav_profile">
-                      <img
-                        src="https://images.unsplash.com/photo-1494790108377-be9c29b29330"
-                        alt=""
-                      />
+                      <img src={userDetails?.profile_image} alt="" />
                     </div>
                     <NavDropdown
                       className=" text-center nav_dropdown_profile custom_nav_profile_drp"
@@ -372,17 +394,34 @@ const NavbarHeader = (props) => {
                     >
                       <div className="d-flex justify-content-center">
                         <div className="nav_p_d_profil">
-                          <img
-                            src="https://images.unsplash.com/photo-1494790108377-be9c29b29330"
-                            alt=""
-                          />
+                          <img src={userDetails?.profile_image} alt="" />
                         </div>
                       </div>
                       <div className="pro_name_drop_u">John Doe</div>
                       <div className="pro_o_nme">Freelancer</div>
                       <div className="drop_p_o_i">
-                        <button className="active_drop_poi">Online</button>
-                        <button>Invisible</button>
+                        <button
+                          className={
+                            userDetails?.online_status === "online"
+                              ? "active_drop_poi"
+                              : ""
+                          }
+                          value="online"
+                          onClick={handleOnlineStatus}
+                        >
+                          Online
+                        </button>
+                        <button
+                          className={
+                            userDetails?.online_status === "invisible"
+                              ? "active_drop_poi"
+                              : ""
+                          }
+                          value="invisible"
+                          onClick={handleOnlineStatus}
+                        >
+                          Invisible
+                        </button>
                       </div>
                       <div className="drop_li_poi">
                         <svg

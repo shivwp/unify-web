@@ -18,9 +18,11 @@ import {
 import CloseAccountPopup from "../../../popups/CloseAccountPopup";
 import { countryList } from "../../../redux/actions/authActions";
 import { data } from "jquery";
+import { useNavigate } from "react-router-dom";
 
 const Screen = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   Title(" | Contact Info");
   const [editAccount, setEditAccount] = useState(false);
   const [editLocation, setEditLocation] = useState(false);
@@ -46,9 +48,8 @@ const Screen = () => {
   }, [editFreelancerInfo, editFreelancerLocation]);
 
   const onCreateAdditionalAccount = (value) => {
-    console.log(value);
     const data = { user_type: value };
-    dispatch(onAdditionalAccount(data));
+    dispatch(onAdditionalAccount(data, navigate));
   };
 
   const EditAcc = () => {
@@ -422,11 +423,8 @@ const Screen = () => {
                     </div>
                   </div>
                   <Row>
-                    <Col
-                      lg={12}
-                      className="d-flex justify-content-between flex-wrap"
-                    >
-                      <div className="d-flex mb-2 mt-3 flex-wrap justify-content-between w-100">
+                    <Col lg={12} className="d-flex justify-content-between ">
+                      <div className="d-flex mb-2 mt-3 addition_acc_media justify-content-between w-100">
                         <div className="w-55">
                           <div className="c_name_s_v">Client Account</div>
                           <div className="c_name_sett pt-0 font-color-light">
@@ -435,7 +433,7 @@ const Screen = () => {
                             methods and reports.
                           </div>
                         </div>
-                        <div className="btn_foot_sec flex-wrap d-flex pt-0 pb-0 m-0 no-border">
+                        <div className="btn_foot_sec addition_acc_media d-flex pt-0 pb-0 m-0 no-border">
                           <div className="fo_btn_c d-flex align-items-center width-max-content next_b_btn_c ">
                             <button
                               className="min-width-226"
@@ -443,7 +441,7 @@ const Screen = () => {
                                 onCreateAdditionalAccount("client")
                               }
                             >
-                              New Client Account
+                              Create Client Account
                             </button>
                           </div>
                         </div>
@@ -451,9 +449,9 @@ const Screen = () => {
                     </Col>
                     <Col
                       lg={12}
-                      className="d-flex justify-content-between flex-wrap"
+                      className="d-flex justify-content-between addition_acc_media"
                     >
-                      <div className="d-flex mb-2 mt-3 justify-content-between w-100 flex-wrap">
+                      <div className="d-flex mb-2 mt-3 justify-content-between w-100 addition_acc_media">
                         <div className="w-55">
                           <div className="c_name_s_v">Agency Account</div>
                           <div className="c_name_sett pt-0 font-color-light">
@@ -469,7 +467,7 @@ const Screen = () => {
                                 onCreateAdditionalAccount("agency")
                               }
                             >
-                              New Agency Account
+                              Create Agency Account
                             </button>
                           </div>
                         </div>

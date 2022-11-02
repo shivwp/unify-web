@@ -672,7 +672,7 @@ const Screen = () => {
                     transform="translate(-7947.646 1915.645)"
                     fill="none"
                     stroke="#707070"
-                    stroke-width="1"
+                    strokeWidth="1"
                   />
                 </svg>
               </div>

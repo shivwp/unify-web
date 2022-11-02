@@ -107,9 +107,9 @@ const Signup = ({
                             transform="translate(0 -7.163)"
                             fill="none"
                             stroke="#808080"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
                           />
                           <path
                             id="Path_4543"
@@ -118,9 +118,9 @@ const Signup = ({
                             transform="translate(-2.388)"
                             fill="none"
                             stroke="#808080"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
                           />
                         </g>
                       </svg>
@@ -166,9 +166,9 @@ const Signup = ({
                             transform="translate(0 -7.163)"
                             fill="none"
                             stroke="#808080"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
                           />
                           <path
                             id="Path_4543"
@@ -177,9 +177,9 @@ const Signup = ({
                             transform="translate(-2.388)"
                             fill="none"
                             stroke="#808080"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
                           />
                         </g>
                       </svg>
