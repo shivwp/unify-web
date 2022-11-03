@@ -2,11 +2,15 @@ import Container from "react-bootstrap/Container";
 import { Row, Col } from "react-bootstrap";
 import SideNav from "./site_nav";
 import Title from "./title";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { SET_JOB_DATA_LISTING } from "../redux/types";
+import { useDispatch } from "react-redux";
 
 const JobPosting = () => {
   Title(" | Getting Started");
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [jobPosting, setJobPosting] = useState();
   const [jobType, setJobType] = useState();
 
@@ -15,7 +19,16 @@ const JobPosting = () => {
   };
 
   const handleJobTypeChange = (e) => {
-    console.log(e.target.value);
+    setJobType(e.target.value);
+  };
+
+  const saveButton = () => {
+    dispatch({
+      type: SET_JOB_DATA_LISTING,
+      payload: { jobType },
+    });
+
+    navigate("/title");
   };
 
   return (
@@ -160,9 +173,11 @@ const JobPosting = () => {
                   </Link>
                 </div>
                 <div className="fo_btn_c next_b_btn_c">
-                  <Link to="/title">
-                    <button className="active_btn_blue">Continue</button>
-                  </Link>
+                  {/* <Link to="/title"> */}
+                  <button className="active_btn_blue" onClick={saveButton}>
+                    Continue
+                  </button>
+                  {/* </Link> */}
                 </div>
               </div>
             </div>

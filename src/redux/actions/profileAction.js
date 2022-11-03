@@ -32,6 +32,7 @@ import {
   SET_SUBMIT_VERIF_DOCS,
   REQUEST_TESTIMONIAL,
   GET_TESTIMONIAL,
+  SET_CATEGORY_LIST,
 } from "../types";
 let userDetails = JSON.parse(localStorage.getItem("unify_user"));
 
@@ -377,6 +378,7 @@ export const onDeletePortfolio = (data) => async (dispatch) => {
     });
   } catch (err) {}
 };
+
 export const onAdditionalAccount = (data, navigate) => async (dispatch) => {
   try {
     Axios.post("/additional-account", data, config).then((res) => {
@@ -393,6 +395,7 @@ export const onAdditionalAccount = (data, navigate) => async (dispatch) => {
     });
   } catch (err) {}
 };
+
 export const onSubmitVerificationDocs = (data) => async (dispatch) => {
   try {
     Axios.post("/user-document-verify", data, config).then((res) => {
@@ -403,6 +406,7 @@ export const onSubmitVerificationDocs = (data) => async (dispatch) => {
     });
   } catch (err) {}
 };
+
 export const onRequestTestimonial = (data) => async (dispatch) => {
   try {
     Axios.post("/edit-testimonial-info", data, config).then((res) => {
@@ -413,6 +417,7 @@ export const onRequestTestimonial = (data) => async (dispatch) => {
     });
   } catch (err) {}
 };
+
 export const onSubmitTestimonial = (data) => async (dispatch) => {
   try {
     Axios.post("/client-testimonial", data, config).then((res) => {
@@ -420,6 +425,7 @@ export const onSubmitTestimonial = (data) => async (dispatch) => {
     });
   } catch (err) {}
 };
+
 export const onGetTestmonial = (data, setValues) => async (dispatch) => {
   try {
     Axios.post("/get-testimonial", data, config).then((res) => {
@@ -431,6 +437,7 @@ export const onGetTestmonial = (data, setValues) => async (dispatch) => {
     });
   } catch (err) {}
 };
+
 export const getCertificationList =
   (setCertificateList) => async (dispatch) => {
     try {
@@ -439,3 +446,14 @@ export const getCertificationList =
       });
     } catch (err) {}
   };
+
+export const getCategoryList = () => async (dispatch) => {
+  try {
+    Axios.get("/category-list").then((res) => {
+      dispatch({
+        type: SET_CATEGORY_LIST,
+        payload: res.data.data,
+      });
+    });
+  } catch (err) {}
+};

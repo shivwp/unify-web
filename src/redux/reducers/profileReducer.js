@@ -31,6 +31,8 @@ import {
   SET_SUBMIT_VERIF_DOCS,
   REQUEST_TESTIMONIAL,
   GET_TESTIMONIAL,
+  SET_JOB_DATA_LISTING,
+  SET_CATEGORY_LIST,
 } from "../types";
 
 const initialState = {};
@@ -200,6 +202,16 @@ const profileReducer = (state = initialState, action) => {
       return {
         ...state,
         getTestimonial: action.payload,
+      };
+    case SET_JOB_DATA_LISTING:
+      return {
+        ...state,
+        jobListingData: action.payload,
+      };
+    case SET_CATEGORY_LIST:
+      return {
+        ...state,
+        categoryList: action.payload,
       };
     default:
       return state;

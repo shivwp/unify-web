@@ -1698,6 +1698,14 @@ body {
   font-family: "Poppins";
 }
 
+.label_apra .litt_sm_para {
+  font-size: 16px;
+}
+
+.s_b_r .months_6 {
+  font-size: 15px;
+}
+
 .btn_foot_sec {
   margin-top: 15px;
   border-top: #cbcaca solid 1px;
@@ -1772,7 +1780,7 @@ body {
   -ms-border-radius: 27px;
   -o-border-radius: 27px;
   border: #0777fd solid 1px;
-  padding: 8px 30px;
+  padding: 6px 30px;
   font-size: 15px;
   color: #6d2ef1;
   font-weight: 700;
@@ -3338,12 +3346,12 @@ body {
   margin: 0px 10px;
   background-color: transparent;
   border-radius: 50px;
-  height: 45px;
+  height: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
   border: 1px solid #d4d4d5;
-  width: 45px;
+  width: 40px;
   -webkit-border-radius: 50px;
   -moz-border-radius: 50px;
   -ms-border-radius: 50px;
@@ -3759,7 +3767,7 @@ body {
   background-color: #eaeef2;
   border-radius: 60px;
   border: #eaeef2 solid;
-  padding: 9px 12px;
+  padding: 2px 12px;
   margin-top: 5px;
   margin-bottom: 5px;
   -webkit-border-radius: 60px;
@@ -3825,6 +3833,16 @@ body {
   font-size: 18px;
   width: 100%;
   text-align: right;
+}
+
+.input_from_tlab input::-webkit-outer-spin-button,
+.input_from_tlab input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.input_from_tlab input[type="number"] {
+  -moz-appearance: textfield;
 }
 
 .ft_form_linki {

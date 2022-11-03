@@ -5,13 +5,11 @@ import Container from "react-bootstrap/Container";
 import { Col, Row } from "react-bootstrap";
 import $ from "jquery";
 
-
 const EditPosting = () => {
   const hanDleSlide = (e) => {
     $(e.target.nextSibling).slideToggle();
   };
   $(".slider_shutter").slideDown();
-
 
   return (
     <>
@@ -23,7 +21,10 @@ const EditPosting = () => {
               <div className="form_box_bor mt-2">
                 <div className="edit-posting-heading">
                   <div className="heading">Review</div>
-                  <button className="mt-2 btn-save_post border_blue_wwifth" style={{ fontSize:17, fontWeight:600 }}>
+                  <button
+                    className="mt-2 btn-save_post border_blue_wwifth"
+                    style={{ fontSize: 17, fontWeight: 600 }}
+                  >
                     Save Job Post
                   </button>
                 </div>
@@ -45,8 +46,7 @@ const EditPosting = () => {
                   <p>
                     Include your expectations about the task or deliverable,
                     what you're looking for in a work relationship, and anything
-                    unique about your project, team, or company.{" "}
-                    <span></span> 
+                    unique about your project, team, or company. <span></span>
                   </p>
                   <div className="description-textarea">
                     <textarea placeholder='The standard chunk of used since the 1500s is reprodced below for those intrested. Section 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exace original form, accompanied by English versions from the 1914 translation by H. Rackham.'></textarea>
@@ -60,8 +60,15 @@ const EditPosting = () => {
                   </div>
                 </div>
                 <div className="ts_btn attach_f_btn edit_posting-attach-file">
-                  <button className="rot_svg_oety" style={{position: "relative", fontSize:16, fontWeight:500 }}>
-                  <input type="file" style={{ cursor: "pointer" }} />
+                  <button
+                    className="rot_svg_oety"
+                    style={{
+                      position: "relative",
+                      fontSize: 16,
+                      fontWeight: 500,
+                    }}
+                  >
+                    <input type="file" style={{ cursor: "pointer" }} />
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="18"
@@ -79,9 +86,10 @@ const EditPosting = () => {
 
                 {/* catagory start */}
                 <div className="edit-posting-category">
-                  <div className="heading">Categotry</div>
+                  <div className="heading">Category</div>
                   <div className="category">
-                    UI/UX Design <i className="fa fa-pencil" aria-hidden="true"></i>
+                    UI/UX Design{" "}
+                    <i className="fa fa-pencil" aria-hidden="true"></i>
                   </div>
                 </div>
 
@@ -165,7 +173,7 @@ const EditPosting = () => {
                 </div>
                 {/* Scop start here */}
                 <div className="edit-posting-category">
-                  <div className="heading">Scop</div>
+                  <div className="heading">Scope</div>
                   <div className="category">
                     Large, More than 6 months, Entry level{" "}
                     <i className="fa fa-pencil" aria-hidden="true"></i>

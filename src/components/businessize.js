@@ -131,10 +131,24 @@ const Bsize = () => {
               </Col>
             </Row>
           </div>
-          <div className="btn_foot_sec flex-wrap d-flex no-border mt-2 pt-0">
+          <div className="justify-content-between btn_foot_sec flex-wrap d-flex no-border mt-2 pt-0">
             <Link to="/subscription">
               <div className="fo_btn_c next_b_btn_c">
                 <button className="f-size-to active_btn_blue">Continue</button>
+              </div>
+            </Link>
+            <Link to="/dashboard">
+              <div
+                className="fo_btn_c next_b_btn_c"
+                style={{
+                  color: "#6d2ef1",
+                  fontWeight: "600",
+                  fontSize: "16px",
+                }}
+              >
+                {/* <button className="f-size-to active_btn_blue"> */}
+                Skip For Now
+                {/* </button> */}
               </div>
             </Link>
           </div>

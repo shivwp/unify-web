@@ -106,7 +106,7 @@
   margin: 20px 0;
 }
 .account_info .inp_fields > span {
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 600;
   margin: 5px 0;
 }
@@ -133,6 +133,7 @@
   outline: none;
   border: 1px solid #e2e0e0;
   padding: 0 10px;
+  font-size: 14px;
   border-radius: 4px;
 }
 .account_info .acc_form .acc_btn {
