@@ -158,9 +158,7 @@ const Screen = () => {
                     </div>
                     <div className="sett_y_b">Your balance due is $0.00</div>
                   </div>
-                  <div className="btn_foot_sec no-border mt-0 mb-0 p-0 fo_btn_c next_b_btn_c">
-                    <button className="bg-transparent h-color-b">Cancel</button>
-                  </div>
+                 
                 </div>
                 <div>
                   <ul className="setting_pay_inp d-flex sflex_spance">
