@@ -1,11 +1,11 @@
 import { useState } from "react";
-import NavbarHeader from "./header";
 import Container from "react-bootstrap/Container";
-import Footer from "../../components/footer";
 import Title from "../../components/title";
 import { Link } from "react-router-dom";
-import "../freelancer.css";
+import "../../styles/freelancer.css";
 import Select from "react-select";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
 
 const Popup = (props) => {
   return (
@@ -34,44 +34,49 @@ const Popup = (props) => {
           </div>
           <div className="popup_body_bpn">
             <div className="popup_form_element">
-              <label style={{ color: "#000" }}>Client's Email Address</label>
-              <input style={{ fontSize: 14 }} type="email" />
+              <Form.Label style={{ color: "#000" }}>
+                Client's Email Address
+              </Form.Label>
+              <Form.Control style={{ fontSize: 14 }} type="email" />
             </div>
             <div className="popup_form_element">
-              <label style={{ color: "#000" }}>Contract Name</label>
-              <input style={{ fontSize: 14 }} type="text" />
+              <Form.Label style={{ color: "#000" }}>Contract Name</Form.Label>
+              <Form.Control style={{ fontSize: 14 }} type="text" />
             </div>
             <div className="popup_form_element">
-              <label style={{ color: "#000" }}>Description</label>
-              <textarea style={{ fontSize: 14 }}></textarea>
+              <Form.Label style={{ color: "#000" }}>Description</Form.Label>
+              <Form.Control
+                as="textarea"
+                style={{ fontSize: 14 }}
+              ></Form.Control>
             </div>
             <div className="popup_form_element">
-              <label style={{ color: "#000" }}>Contract Type</label>
+              <Form.Label style={{ color: "#000" }}>Contract Type</Form.Label>
               <div className="d-flex align-items-center">
-                <label
+                <Form.Label
                   style={{ color: "#000" }}
                   className="popup_radio_element"
                 >
-                  <input type="radio" />
+                  <Form.Check type="radio" />
                   Hourly
-                </label>
-                <label
+                </Form.Label>
+                <Form.Label
                   style={{ color: "#000" }}
                   className="popup_radio_element"
                 >
-                  <input type="radio" />
+                  <Form.Check type="radio" />
                   Fixed Price
-                </label>
+                </Form.Label>
               </div>
             </div>
             <div className="popup_btns_new flex-wrap">
-              <button
+              <Button
                 onClick={() => {
                   props.Popup(<AmountPopup Popup={props.Popup} />);
                 }}
               >
                 NEXT
-              </button>
+              </Button>
             </div>
           </div>
         </div>
@@ -118,20 +123,20 @@ const AmountPopup = (props) => {
               <Select className="" placeholder="Milestone" options={options1} />
             </div>
             <div className="popup_form_element">
-              <label>Milestone 1</label>
-              <input type="text" placeholder="Name of milestone" />
+              <Form.Label>Milestone 1</Form.Label>
+              <Form.Control type="text" placeholder="Name of milestone" />
             </div>
             <div className="popup_form_element">
-              <label>Milestone 2</label>
-              <input type="text" placeholder="Name of milestone" />
+              <Form.Label>Milestone 2</Form.Label>
+              <Form.Control type="text" placeholder="Name of milestone" />
             </div>
             <div className="popup_form_element">
-              <label>Amount</label>
+              <Form.Label>Amount</Form.Label>
               <div className="ps-relative">
-                <input type="text" />
+                <Form.Control type="text" />
                 <div className="ipdlar_sign">$</div>
               </div>
-              <label className="add_miestone_lbel">
+              <Form.Label className="add_miestone_lbel">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="14"
@@ -146,7 +151,7 @@ const AmountPopup = (props) => {
                   ></path>
                 </svg>{" "}
                 Add milestone
-              </label>
+              </Form.Label>
             </div>
             <div className="total_box_oioup">
               <div className="flex_jus_cen_new free_unofy_smtext">
@@ -159,7 +164,7 @@ const AmountPopup = (props) => {
               </div>
             </div>
             <div className="popup_btns_new flex-wrap cwiewyehkk">
-              <button
+              <Button
                 style={{ padding: "11px 35px" }}
                 className="trans_btn"
                 onClick={() => {
@@ -167,9 +172,9 @@ const AmountPopup = (props) => {
                 }}
               >
                 BACK
-              </button>
+              </Button>
               <Link to="/freelancer/project-detail">
-                <button style={{ padding: "11px 35px" }}>SEND CONTRACT</button>
+                <Button style={{ padding: "11px 35px" }}>SEND CONTRACT</Button>
               </Link>
             </div>
           </div>
@@ -184,7 +189,6 @@ const Screen = () => {
   const [popup, SetPopup] = useState();
   return (
     <>
-      <NavbarHeader />
       <Container>
         <div className="question_box">
           <div className="question_img_br">
@@ -202,21 +206,20 @@ const Screen = () => {
           <div className="btn_foot_sec justify-content-center flex-wrap no-border mt-2 a_fl_with_css">
             <Link to="/category" className="mrright-gppnew">
               <div className="fo_btn_c next_b_btn_c">
-                <button>INVITE CLIENTS</button>
+                <Button>INVITE CLIENTS</Button>
               </div>
             </Link>
             <div className="fo_btn_c next_b_btn_c">
-              <button
+              <Button
                 className="active_btn_blue"
                 onClick={() => SetPopup(<Popup Popup={SetPopup} />)}
               >
                 CREATE A CONTRACT
-              </button>
+              </Button>
             </div>
           </div>
         </div>
       </Container>
-      <Footer />
       {popup}
     </>
   );

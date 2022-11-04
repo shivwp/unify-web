@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import OTPInput, { ResendOTP } from "otp-input-react";
+import OTPInput from "otp-input-react";
 import { useDispatch } from 'react-redux';
 import { onResendOtp, onVerifyForgot } from '../redux/actions/authActions';
 import { useNavigate } from 'react-router-dom';
+import Button from 'react-bootstrap/Button'
 
 const VerifyForgotOTP = () => {
   const dispatch = useDispatch()
@@ -35,7 +36,7 @@ const VerifyForgotOTP = () => {
             <OTPInput value={OTP} onChange={setOTP} autoFocus OTPLength={4} otpType="number" disabled={false}  />
           </div>
           <div className="otp_submit_btn">
-            <button onClick={onVerify}>VERIFY</button>
+            <Button onClick={onVerify}>VERIFY</Button>
           </div>
           <div className="suggetion_resend">
             Don't get the code <span onClick={resendOtp}>Resend</span>

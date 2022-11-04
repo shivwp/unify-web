@@ -2,7 +2,8 @@ import React from "react";
 import { Modal } from "react-responsive-modal";
 import "react-responsive-modal/styles.css";
 import "./popup.css";
-import { Link } from "react-router-dom";
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
 
 const EditTeamPopup = ({ open, onCloseModal }) => {
   return (
@@ -16,31 +17,36 @@ const EditTeamPopup = ({ open, onCloseModal }) => {
         <h5>Edit Team Ankita Kumavat</h5>
 
         <div className="team_name">
-          <label>
-            <span style={{fontSize: '14px', fontWeight: 600}}>Name</span>
-            <input
+          <Form.Label>
+            <span style={{ fontSize: "14px", fontWeight: 600 }}>Name</span>
+            <Form.Control
               type="text"
               name="name"
               placeholder="Ankita Kumavat"
               disabled
             />
-          </label>
+          </Form.Label>
         </div>
         <div className="team_name">
-          <label>
-            <span style={{fontSize: '14px', fontWeight: 600}}>PO Number (Optional)</span>
-            <input type="text" name="po-no" placeholder="" />
-          </label>
+          <Form.Label>
+            <span style={{ fontSize: "14px", fontWeight: 600 }}>
+              PO Number (Optional)
+            </span>
+            <Form.Control type="text" name="po-no" placeholder="" />
+          </Form.Label>
         </div>
 
         <div className="btn_foot_sec no-border flex-wrap d-flex">
           <div className="fo_btn_c next_b_btn_c">
-            <button className="remove-posting-btns mrright-gppnew" onClick={onCloseModal}>
+            <Button
+              className="remove-posting-btns mrright-gppnew"
+              onClick={onCloseModal}
+            >
               CANCEL
-            </button>
+            </Button>
           </div>
           <div className="fo_btn_c next_b_btn_c">
-            <button className="active_btn_blue">SAVE</button>
+            <Button className="active_btn_blue">SAVE</Button>
           </div>
         </div>
       </Modal>

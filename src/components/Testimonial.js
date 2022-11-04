@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import Button from 'react-bootstrap/Button';
 import { onForgotPassword } from "../redux/actions/authActions";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import {
@@ -8,6 +9,7 @@ import {
 } from "../redux/actions/profileAction";
 import { useEffect } from "react";
 import { Row, Col } from "react-bootstrap";
+import Form from 'react-bootstrap/Form';
 
 const Testimonial = () => {
   const dispatch = useDispatch();
@@ -64,18 +66,19 @@ const Testimonial = () => {
             </div>
           </div>
           <div className="submit_testimo_inp">
-            <label>
+            <Form.Label>
               <span style={{ marginRight: 10 }}> Enter your testimonial </span>
               <span style={{ color: "#6d2ef1", fontSize: 12 }}>
                 {" "}
                 Tip: Showcase their expertise, project results or soft skills.
               </span>
-            </label>
-            <textarea
+            </Form.Label>
+            <Form.Control
+              as="textarea"
               onChange={(e) => handleOnChange(e)}
               name="description"
               placeholder="I hired Kartik G to help with our company's re branding effort. he was reliable, and very responsive, Highly posses knowledge, excellence in skills. Highly recommend !"
-            ></textarea>
+            ></Form.Control>
           </div>
           <div className="your_info">
             <div className="heading">
@@ -100,8 +103,8 @@ const Testimonial = () => {
                 <Row>
                   <Col md={6} sm={12}>
                     <div className="edit_name">
-                      <label htmlFor="first_name">First Name</label>
-                      <input
+                      <Form.Label htmlFor="first_name">First Name</Form.Label>
+                      <Form.Control
                         type="text"
                         id="first_name"
                         value={values?.first_name}
@@ -112,8 +115,8 @@ const Testimonial = () => {
                   </Col>
                   <Col md={6} sm={12}>
                     <div className="edit_title">
-                      <label htmlFor="last_name">Last Name</label>
-                      <input
+                      <Form.Label htmlFor="last_name">Last Name</Form.Label>
+                      <Form.Control
                         type="text"
                         id="last_name"
                         value={values?.last_name}
@@ -124,8 +127,8 @@ const Testimonial = () => {
                   </Col>
                   <Col md={6} sm={12}>
                     <div className="edit_title">
-                      <label htmlFor="title">Title</label>
-                      <input
+                      <Form.Label htmlFor="title">Title</Form.Label>
+                      <Form.Control
                         type="text"
                         id="title"
                         name="title"
@@ -136,13 +139,13 @@ const Testimonial = () => {
                   </Col>
                 </Row>
                 <div className="testimonial_info_btn">
-                  <button onClick={(e) => setEditDetails(false)}>Save</button>
+                  <Button onClick={(e) => setEditDetails(false)}>Save</Button>
                 </div>
               </>
             )}
           </div>
           <div className="testimonial_btn">
-            <button onClick={onSave}>Submit Testimonial</button>
+            <Button onClick={onSave}>Submit Testimonial</Button>
           </div>
         </div>
         <div className="testimonial_info">

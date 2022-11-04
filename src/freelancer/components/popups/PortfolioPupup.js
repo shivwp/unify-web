@@ -3,6 +3,8 @@ import { Modal } from "react-responsive-modal";
 import "react-responsive-modal/styles.css";
 import "./popup.css";
 import { useDispatch } from "react-redux";
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
 import { onEditPortfolio } from "../../../redux/actions/profileAction";
 
 const PortfolioPupup = ({ open, onCloseModal, data }) => {
@@ -54,10 +56,10 @@ const PortfolioPupup = ({ open, onCloseModal, data }) => {
         <div className="content">
           <div className="freelancer_popup_inps">
             <div className="popup_form_element">
-              <label className="text-black font-size-13px font-weight-500 mb-1 mt-0">
+              <Form.Label className="text-black font-size-13px font-weight-500 mb-1 mt-0">
                 Project Title
-              </label>
-              <input
+              </Form.Label>
+              <Form.Control
                 type="text"
                 className="font-size-13px"
                 placeholder="Enter Title"
@@ -69,24 +71,25 @@ const PortfolioPupup = ({ open, onCloseModal, data }) => {
             </div>
 
             <div>
-              <label className="text-black font-size-13px font-weight-500 my-2">
+              <Form.Label className="text-black font-size-13px font-weight-500 my-2">
                 Description
-              </label>
+              </Form.Label>
 
               <div className="freelancer_popup_textarea">
-                <textarea
+                <Form.Control
+              as="textarea"
                   placeholder="Enter here"
                   className="p-2"
                   name="description"
                   value={values?.description}
                   onChange={(e) => onInputChange(e)}
-                ></textarea>
+                ></Form.Control>
               </div>
             </div>
             <div className="portfolio_attach mb-3">
-              <label className="text-black font-size-13px font-weight-500 my-2">
+              <Form.Label className="text-black font-size-13px font-weight-500 my-2">
                 Attachments
-              </label>
+              </Form.Label>
 
               <div className="portfolio_img_pre">
                 <img src={showingImage} alt="" />
@@ -100,8 +103,8 @@ const PortfolioPupup = ({ open, onCloseModal, data }) => {
                   fontSize: 13,
                 }}
               >
-                <label htmlFor="drag_portfolio" className="drag_portfolio">
-                  <input
+                <Form.Label htmlFor="drag_portfolio" className="drag_portfolio">
+                  <Form.Control
                     type="file"
                     id="drag_portfolio"
                     name="file"
@@ -128,7 +131,7 @@ const PortfolioPupup = ({ open, onCloseModal, data }) => {
                     </span>{" "}
                     project templates
                   </>
-                </label>
+                </Form.Label>
               </div>
             </div>
             <p style={{ fontSize: 13, color: "#304E71" }}>
@@ -143,7 +146,7 @@ const PortfolioPupup = ({ open, onCloseModal, data }) => {
             <button onClick={onCloseModal}>CANCEL</button>
           </div> */}
           <div className="_save_submit">
-            <button onClick={submitPortfolio}>UPLOAD</button>
+            <Button onClick={submitPortfolio}>UPLOAD</Button>
           </div>
         </div>
       </Modal>

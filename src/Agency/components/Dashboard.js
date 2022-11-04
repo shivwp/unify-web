@@ -5,17 +5,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import Select from "react-select";
 import Switch from "react-switch";
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title as Titlee,
-  Tooltip,
-  Legend,
-} from "chart.js";
-import { Bar } from "react-chartjs-2";
-import { faker } from "@faker-js/faker";
+
 
 const Profile = () => {
   return (
@@ -160,70 +150,12 @@ const Dashboard = () => {
     },
   ];
 
-  ChartJS.register(
-    CategoryScale,
-    LinearScale,
-    BarElement,
-    Titlee,
-    Tooltip,
-    Legend
-  );
-  const options = {
-    responsive: false,
-    scales: {},
-    plugins: {
-      legend: {
-        position: "top",
-        display: false,
-        maxHeight: 210,
-        fullSize: true,
-        labels: {
-          boxWidth: 0,
-        },
-      },
-      title: {},
-    },
-    layout: {
-      autoPadding: true,
-    },
-    elements: {
-      bar: {
-        backgroundColor: "#000",
-      },
-      point: {
-        borderWidth: 0,
-      },
-      line: {
-        borderWidth: 0,
-      },
-      arc: {
-        borderWidth: 1,
-        borderColor: "#000",
-      },
-    },
-  };
+
 
   const labels = ["Jan", "Feb", "Mar", "Apr", "May"];
   // add +10 on each data to view graph line accurate
   const addition = 9;
-  const data = {
-    labels,
-    datasets: [
-      {
-        label: "Projects",
-        data: [
-          20 + addition,
-          15 + addition,
-          60 + addition,
-          80 + addition,
-          40 + addition,
-        ],
-        backgroundColor: "#0777FD",
-        borderWidth: 17,
-        borderColor: "#fff0",
-      },
-    ],
-  };
+
   return (
     <>
       <div className="min_pad_m mt-min180px">

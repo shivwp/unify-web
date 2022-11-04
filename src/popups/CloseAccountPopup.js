@@ -7,7 +7,8 @@ import {
   closeAccountReasonList,
   onCloseAccount,
 } from "../redux/actions/profileAction";
-
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
 const CloseAccountPopup = ({ open, onCloseModal }) => {
   const dispatch = useDispatch();
   const [reasonId, setReasonId] = useState("");
@@ -49,8 +50,8 @@ const CloseAccountPopup = ({ open, onCloseModal }) => {
             <ul className="popup-radio">
               {closeAccountReasons?.map((data, key) => (
                 <li key={key}>
-                  <label htmlFor={data.id}>
-                    <input
+                  <Form.Label htmlFor={data.id}>
+                    <Form.Check
                       type="radio"
                       id={data.id}
                       name="p"
@@ -58,7 +59,7 @@ const CloseAccountPopup = ({ open, onCloseModal }) => {
                       onChange={(e) => setReasonId(e.target.value)}
                     />{" "}
                     <span>{data.title}</span>
-                  </label>
+                  </Form.Label>
                 </li>
               ))}
             </ul>
@@ -67,12 +68,12 @@ const CloseAccountPopup = ({ open, onCloseModal }) => {
 
         <div className="btn_foot_sec no-border flex-wrap d-flex">
           <div className="fo_btn_c next_b_btn_c">
-            <button className="remove-posting-btns" onClick={onCloseModal}>
+            <Button className="remove-posting-btns" onClick={onCloseModal}>
               CANCEL
-            </button>
+            </Button>
           </div>
           <div className="fo_btn_c next_b_btn_c" onClick={handleCloseAccount}>
-            <button className="active_btn_blue">CLOSE ACCOUNT</button>
+            <Button className="active_btn_blue">CLOSE ACCOUNT</Button>
           </div>
         </div>
       </Modal>

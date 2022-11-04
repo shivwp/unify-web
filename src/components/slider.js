@@ -1,8 +1,12 @@
 import Carousel from "react-bootstrap/Carousel";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-import Navbar from "./navbar";
+import Navbar from "./Layouts/Header/HeaderMain";
 import { Link } from "react-router-dom";
+
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Button from "react-bootstrap/Button";
 
 const slider = (props) => {
   return (
@@ -17,7 +21,7 @@ const slider = (props) => {
                 <div className="shuuter_man">
                   <div className="slider_get_btn md_btn_getstarted">
                     <Link to="/signup">
-                      <button className="active_btn">GET STARTED</button>
+                      <Button className="active_btn">GET STARTED</Button>
                     </Link>
                   </div>
                 </div>
@@ -33,7 +37,7 @@ const slider = (props) => {
                     </div>
                     <div className="slider_get_btn mdd-none">
                       <Link to="/signup">
-                        <button className="active_btn">GET STARTED</button>
+                        <Button className="active_btn">GET STARTED</Button>
                       </Link>
                     </div>
                   </div>
@@ -45,11 +49,15 @@ const slider = (props) => {
       </div>
       <div className="clients_sec">
         <div className="container">
-          <div className="row">
-            <div className="col-lg-2 col-md-2 d-flex justify-content-center align-items-center">
+          <Row className="row">
+            <Col
+              lg={2}
+              md={2}
+              className="d-flex justify-content-center align-items-center"
+            >
               <div className="as_used">As used by</div>
-            </div>
-            <div className="col-lg-10 col-md-10 flex_client">
+            </Col>
+            <Col lg={10} md={10} className="flex_client">
               <Swiper
                 spaceBetween={30}
                 slidesPerView={4}
@@ -105,8 +113,8 @@ const slider = (props) => {
                   </div>
                 </SwiperSlide>
               </Swiper>
-            </div>
-          </div>
+            </Col>
+          </Row>
         </div>
       </div>
     </div>
