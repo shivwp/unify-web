@@ -2,9 +2,6 @@ import Container from "react-bootstrap/Container";
 import { Row, Col } from "react-bootstrap";
 import SideNav from "./site_nav";
 import Title from "../../../components/title";
-import EditAccountPopup from "../../../popups/EditAccountPopup";
-
-import CreateNewTeam from "../../../popups/CreateNewTeamPupup";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
@@ -17,7 +14,6 @@ import {
 } from "../../../redux/actions/profileAction";
 import CloseAccountPopup from "../../../popups/CloseAccountPopup";
 import { countryList } from "../../../redux/actions/authActions";
-import { data } from "jquery";
 import { useNavigate } from "react-router-dom";
 
 const Screen = () => {
@@ -30,6 +26,9 @@ const Screen = () => {
 
   const basicInfo = useSelector(
     (state) => state?.profile?.freelancerProfileList?.basic_info
+  );
+  const freelancerProfileList = useSelector(
+    (state) => state?.profile?.freelancerProfileList
   );
   const timezoneList = useSelector((state) => state?.profile?.timezoneList);
   const CountryList = useSelector((state) => state?.auth?.getCountryList);
@@ -414,67 +413,84 @@ const Screen = () => {
                     </div>
                   </div>
                 )}
-                <div className="r-box_setting">
-                  <div className="b-bottom-gr pt-1 pb-3">
-                    <div className="setting_b_head_s">Additional accounts</div>
-                    <div className="c_name_sett mt-0 pt-0">
-                      Creating a new account allows you to use Upwork in
-                      different ways, while still having just one login.
+                {!(
+                  freelancerProfileList?.is_agency &&
+                  freelancerProfileList?.is_client
+                ) && (
+                  <>
+                    <div className="r-box_setting">
+                      <div className="b-bottom-gr pt-1 pb-3">
+                        <div className="setting_b_head_s">
+                          Additional accounts
+                        </div>
+                        <div className="c_name_sett mt-0 pt-0">
+                          Creating a new account allows you to use Upwork in
+                          different ways, while still having just one login.
+                        </div>
+                      </div>
+                      <Row>
+                        {!freelancerProfileList?.is_client && (
+                          <Col
+                            lg={12}
+                            className="d-flex justify-content-between "
+                          >
+                            <div className="d-flex mb-2 mt-3 addition_acc_media justify-content-between w-100">
+                              <div className="w-55">
+                                <div className="c_name_s_v">Client Account</div>
+                                <div className="c_name_sett pt-0 font-color-light">
+                                  Hire, manage and pay as a different company.
+                                  Each client company has its own freelancers,
+                                  payment methods and reports.
+                                </div>
+                              </div>
+
+                              <div className="btn_foot_sec addition_acc_media d-flex pt-0 pb-0 m-0 no-border">
+                                <div className="fo_btn_c d-flex align-items-center width-max-content next_b_btn_c ">
+                                  <button
+                                    className="min-width-226"
+                                    onClick={() =>
+                                      onCreateAdditionalAccount("client")
+                                    }
+                                  >
+                                    Create Client Account
+                                  </button>
+                                </div>
+                              </div>
+                            </div>
+                          </Col>
+                        )}
+                        {!freelancerProfileList?.is_agency && (
+                          <Col
+                            lg={12}
+                            className="d-flex justify-content-between addition_acc_media"
+                          >
+                            <div className="d-flex mb-2 mt-3 justify-content-between w-100 addition_acc_media">
+                              <div className="w-55">
+                                <div className="c_name_s_v">Agency Account</div>
+                                <div className="c_name_sett pt-0 font-color-light">
+                                  Find jobs and earn money as manager of a team
+                                  of freelancers.
+                                </div>
+                              </div>
+                              <div className="btn_foot_sec flex-wrap d-flex pt-0 pb-0 m-0 no-border">
+                                <div className="fo_btn_c d-flex align-items-end width-max-content next_b_btn_c">
+                                  <button
+                                    className="min-width-226"
+                                    onClick={() =>
+                                      onCreateAdditionalAccount("agency")
+                                    }
+                                  >
+                                    Create Agency Account
+                                  </button>
+                                </div>
+                              </div>
+                            </div>
+                          </Col>
+                        )}
+                      </Row>
                     </div>
-                  </div>
-                  <Row>
-                    <Col lg={12} className="d-flex justify-content-between ">
-                      <div className="d-flex mb-2 mt-3 addition_acc_media justify-content-between w-100">
-                        <div className="w-55">
-                          <div className="c_name_s_v">Client Account</div>
-                          <div className="c_name_sett pt-0 font-color-light">
-                            Hire, manage and pay as a different company. Each
-                            client company has its own freelancers, payment
-                            methods and reports.
-                          </div>
-                        </div>
-                        <div className="btn_foot_sec addition_acc_media d-flex pt-0 pb-0 m-0 no-border">
-                          <div className="fo_btn_c d-flex align-items-center width-max-content next_b_btn_c ">
-                            <button
-                              className="min-width-226"
-                              onClick={() =>
-                                onCreateAdditionalAccount("client")
-                              }
-                            >
-                              Create Client Account
-                            </button>
-                          </div>
-                        </div>
-                      </div>
-                    </Col>
-                    <Col
-                      lg={12}
-                      className="d-flex justify-content-between addition_acc_media"
-                    >
-                      <div className="d-flex mb-2 mt-3 justify-content-between w-100 addition_acc_media">
-                        <div className="w-55">
-                          <div className="c_name_s_v">Agency Account</div>
-                          <div className="c_name_sett pt-0 font-color-light">
-                            Find jobs and earn money as manager of a team of
-                            freelancers.
-                          </div>
-                        </div>
-                        <div className="btn_foot_sec flex-wrap d-flex pt-0 pb-0 m-0 no-border">
-                          <div className="fo_btn_c d-flex align-items-end width-max-content next_b_btn_c">
-                            <button
-                              className="min-width-226"
-                              onClick={() =>
-                                onCreateAdditionalAccount("agency")
-                              }
-                            >
-                              Create Agency Account
-                            </button>
-                          </div>
-                        </div>
-                      </div>
-                    </Col>
-                  </Row>
-                </div>
+                  </>
+                )}
                 {editLocation ? (
                   <EditLoc />
                 ) : (

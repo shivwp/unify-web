@@ -2598,28 +2598,29 @@ const UnifyFreelancer = () => {
                 <div className="myskill_hdingn profile_icon_25px profile_heading_mb">
                   Verification
                   <div className="d-flex justify-content-start">
-                    {basicInfo?.is_verified != "approve" && (
-                      <button
-                        onClick={() => {
-                          Setpopup(<UserVerification Popup={Setpopup} />);
-                        }}
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="17"
-                          height="17"
-                          viewBox="0 0 17 17"
+                    {basicInfo?.is_verified != "approve" &&
+                      basicInfo?.is_verified != "pending" && (
+                        <button
+                          onClick={() => {
+                            Setpopup(<UserVerification Popup={Setpopup} />);
+                          }}
                         >
-                          <path
-                            id="_134224_add_plus_new_icon_2_"
-                            data-name="134224_add_plus_new_icon (2)"
-                            d="M17.786,9.286H11.714V3.214a1.214,1.214,0,0,0-2.429,0V9.286H3.214a1.214,1.214,0,0,0,0,2.429H9.286v6.071a1.214,1.214,0,1,0,2.429,0V11.714h6.071a1.214,1.214,0,1,0,0-2.429Z"
-                            transform="translate(-2 -2)"
-                            fill="#6d2ef1"
-                          />
-                        </svg>
-                      </button>
-                    )}
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="17"
+                            height="17"
+                            viewBox="0 0 17 17"
+                          >
+                            <path
+                              id="_134224_add_plus_new_icon_2_"
+                              data-name="134224_add_plus_new_icon (2)"
+                              d="M17.786,9.286H11.714V3.214a1.214,1.214,0,0,0-2.429,0V9.286H3.214a1.214,1.214,0,0,0,0,2.429H9.286v6.071a1.214,1.214,0,1,0,2.429,0V11.714h6.071a1.214,1.214,0,1,0,0-2.429Z"
+                              transform="translate(-2 -2)"
+                              fill="#6d2ef1"
+                            />
+                          </svg>
+                        </button>
+                      )}
                   </div>
                 </div>
                 <div className="myskill_hdingn ms_hdsmall font-size-15px">
@@ -2845,7 +2846,9 @@ const UnifyFreelancer = () => {
             </div>
             <div className="box-profile-bck mb-0">
               <div className="bpbck_txt d-flex mt-0">
-                <div className="bpck_head">Portfolio (2)</div>
+                <div className="bpck_head">
+                  Portfolio ({freelancerProfileList?.portfolio.length})
+                </div>
                 <div className="myskill_hdingn">
                   <button
                     onClick={() => {

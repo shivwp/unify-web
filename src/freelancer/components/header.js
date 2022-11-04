@@ -356,7 +356,7 @@ const NavbarHeader = (props) => {
                       </div>
                     </NavDropdown>
                   </div>
-                  <Link className="active_btn logout_btn_nav" to="/signin">
+                  <Link className="logout_btn_nav" to="/signin">
                     Logout
                   </Link>
                   <Link to="/freelancer/chat" className="navbar_btn p-0">
