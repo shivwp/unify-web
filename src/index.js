@@ -46,7 +46,7 @@ import SettingConnectedServices from "./settingservices";
 import SettingMembershipPerm from "./settingmemberperm";
 import SettingPasswordSecurity from "./settingpassword";
 import HelpSupport from "./helpsupport";
-import Message from "./message";
+import Message from "./freelancer/message";
 import ManagementBoard from "./managementb";
 import TransactionHistory from "./transactionhistory";
 import Dashboard from "./dashboard";
@@ -274,14 +274,8 @@ root.render(
           path="/freelancer/subscription"
           element={<FreelancerSubscription />}
         />
-        <Route
-          path="/submit-testimonial/:id"
-          element={<Testimonial />}
-        />
-        <Route
-          path="/agency/dashboard"
-          element={<AgencyDashboard />}
-        />
+        <Route path="/submit-testimonial/:id" element={<Testimonial />} />
+        <Route path="/agency/dashboard" element={<AgencyDashboard />} />
       </Routes>
     </HashRouter>
   </Provider>

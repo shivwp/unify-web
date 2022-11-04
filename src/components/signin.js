@@ -14,6 +14,7 @@ const Signin = ({
   errors,
   selectUserType,
   userType,
+  loginError,
 }) => {
   Title(" | signin");
   const [hidePass, setHidePass] = useState(true);
@@ -113,15 +114,7 @@ const Signin = ({
                       />
 
                       <span className="signInError">
-                        {errors.email && (
-                          <>
-                            <i
-                              className="fa fa-exclamation-circle"
-                              aria-hidden="true"
-                            ></i>{" "}
-                            Please enter your email
-                          </>
-                        )}
+                        {errors.email && <>Please enter your email</>}
                       </span>
                     </div>
                   </div>
@@ -168,14 +161,10 @@ const Signin = ({
                         ></i>
                       )}
                       <span className="signInError">
-                        {errors.password && (
-                          <>
-                            <i
-                              className="fa fa-exclamation-circle"
-                              aria-hidden="true"
-                            ></i>{" "}
-                            Please enter your password
-                          </>
+                        {errors.password ? (
+                          <>Please enter your password</>
+                        ) : (
+                          loginError && loginError
                         )}
                       </span>
                     </div>

@@ -11,11 +11,14 @@ const Signupscreen = () => {
   const [errors, setErrors] = useState({});
   const [userType, setUserType] = useState(null);
   const getCountryList = useSelector((state) => state.auth.getCountryList);
+  const signupError = useSelector((state) => state?.auth?.signupError?.data.message);
+
   const [values, setValues] = useState({
     agree_terms: 0,
     send_email: 0,
   });
 
+ 
   useEffect(() => {
     dispatch(countryList());
   }, []);
@@ -27,6 +30,7 @@ const Signupscreen = () => {
 
   const onInputChange = (e) => {
     if (e.target.name === "agree_terms" || e.target.name === "send_email") {
+      setErrors({ ...errors, [e.target.name]: false });
       e.target.checked
         ? setValues({ ...values, [e.target.name]: 1 })
         : setValues({ ...values, [e.target.name]: 0 });
@@ -89,6 +93,11 @@ const Signupscreen = () => {
       errorsObject.last_name = true;
       errorExist = true;
     }
+    if (values.agree_terms == 0) {
+      errorsObject.agree_terms = true;
+      errorExist = true;
+    }
+
     if (country === undefined || country === null || country === "") {
       errorsObject.country = true;
       errorExist = true;
@@ -128,6 +137,7 @@ const Signupscreen = () => {
       errors={errors}
       setCountry={setCountry}
       selectCountry={selectCountry}
+      signupError={signupError}
     />
   );
 };

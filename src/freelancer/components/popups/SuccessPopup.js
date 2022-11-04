@@ -15,7 +15,7 @@ const CloseIcon = () => {
     </svg>
   );
 };
-const ConfirmationPopup = ({ Popup, confirm }) => {
+const SuccessPopup = ({ Popup }) => {
   return (
     <>
       <div className="bg_wrapper_popup_new">
@@ -26,20 +26,16 @@ const ConfirmationPopup = ({ Popup, confirm }) => {
               <CloseIcon />
             </div>
           </div>
-          <h2 className="conf-heading">Are You Sure?</h2>
-          <h6 className="conf-desc">You Won't able to revert this file!</h6>
+          <h2 className="abc">success</h2>
+          <h6 className="acd">
+            <div>Thanks for subscribing we're sending</div>
 
-          <div className="confirmation_popup_btns ">
-            <div>
-              <button className="confirm_no_btn" onClick={() => Popup()}>
-                No
-              </button>
-            </div>
+            <div> confirmation</div>
+          </h6>
 
-            <div>
-              <button className="confirm_yes_btn" onClick={confirm}>
-                yes
-              </button>
+          <div className="freelancer_popup_btns ">
+            <div className="_cancle_submit">
+              <button>Ok</button>
             </div>
           </div>
         </div>
@@ -48,4 +44,4 @@ const ConfirmationPopup = ({ Popup, confirm }) => {
   );
 };
 
-export default ConfirmationPopup;
+export default SuccessPopup;

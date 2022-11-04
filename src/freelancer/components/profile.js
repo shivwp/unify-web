@@ -40,6 +40,8 @@ import { useRef } from "react";
 import { height } from "@mui/system";
 import IntroVideoPopup from "../../popups/IntroVideoPopup";
 import ReactPaginate from "react-paginate";
+import ConfirmationPopup from "./popups/ConfirmationPopup";
+import SuccessPopup from "./popups/SuccessPopup";
 
 function Listaward() {
   const card = [1, 2, 3, 4];
@@ -72,6 +74,8 @@ function PortfolioPaginate({
   data,
   setPortfolioPopup,
   setEditPortfoData,
+  setConfirmPopup,
+  confirmPopup,
 }) {
   const dispatch = useDispatch();
   const [currentItems, setCurrentItems] = useState(null);
@@ -89,7 +93,7 @@ function PortfolioPaginate({
     setItemOffset(newOffset);
   };
   const deletePortf = (id) => {
-    dispatch(onDeletePortfolio({ id: id }));
+    dispatch(onDeletePortfolio({ id: id }, setConfirmPopup));
   };
 
   return (
@@ -101,7 +105,16 @@ function PortfolioPaginate({
               <div className="imgbox_bccp">
                 <img src={item.image} alt="" />
                 <div className="port_folio_icons">
-                  <button onClick={() => deletePortf(item.id)}>
+                  <button
+                    onClick={() =>
+                      setConfirmPopup(
+                        <ConfirmationPopup
+                          Popup={() => setConfirmPopup(!confirmPopup)}
+                          confirm={() => deletePortf(item?.id)}
+                        />
+                      )
+                    }
+                  >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="16"
@@ -2012,6 +2025,9 @@ const UnifyFreelancer = () => {
   const [showExprienceLevOpt, setShowExprienceLevOpt] = useState(false);
   const [videoURL, setVideoURL] = useState(null);
   const [editPortfoData, setEditPortfoData] = useState([]);
+  const [confirmPopup, setConfirmPopup] = useState(false);
+  const [successPopup, setSuccessPopup] = useState(false);
+  const [confirm, setConfirm] = useState(false);
 
   const deleteExprience = useSelector(
     (state) => state?.profile?.deleteExprience
@@ -2086,14 +2102,14 @@ const UnifyFreelancer = () => {
   ]);
 
   const deleteExp = (id) => {
-    dispatch(onDeleteEmployment({ id }));
+    dispatch(onDeleteEmployment({ id }, setConfirmPopup));
   };
 
   const deleteEdu = (id) => {
-    dispatch(onDeleteEducation({ id }));
+    dispatch(onDeleteEducation({ id }, setConfirmPopup));
   };
   const deleteCert = (id) => {
-    dispatch(onDeleteCertificate({ id }));
+    dispatch(onDeleteCertificate({ id }, setConfirmPopup));
   };
 
   const onProfleImgChange = (e) => {
@@ -2719,7 +2735,16 @@ const UnifyFreelancer = () => {
                               />
                             </svg>
                           </button>
-                          <button onClick={() => deleteEdu(edu?.id)}>
+                          <button
+                            onClick={() =>
+                              setConfirmPopup(
+                                <ConfirmationPopup
+                                  Popup={() => setConfirmPopup(!confirmPopup)}
+                                  confirm={() => deleteEdu(edu?.id)}
+                                />
+                              )
+                            }
+                          >
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
                               width="16"
@@ -2877,6 +2902,8 @@ const UnifyFreelancer = () => {
                 itemsPerPage={3}
                 setEditPortfoData={setEditPortfoData}
                 setPortfolioPopup={setPortfolioPopup}
+                confirmPopup={confirmPopup}
+                setConfirmPopup={setConfirmPopup}
                 data={freelancerProfileList?.portfolio}
               />
             </div>
@@ -3123,7 +3150,16 @@ const UnifyFreelancer = () => {
                           />
                         </svg>
                       </button>
-                      <button onClick={() => deleteCert(item.id)}>
+                      <button
+                        onClick={() =>
+                          setConfirmPopup(
+                            <ConfirmationPopup
+                              Popup={() => setConfirmPopup(!confirmPopup)}
+                              confirm={() => deleteCert(item.id)}
+                            />
+                          )
+                        }
+                      >
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="16"
@@ -3192,7 +3228,16 @@ const UnifyFreelancer = () => {
                     </button>
                   </div>
                   <div className="bpbck_txt">
-                    <div className="bpck_head font-weight-600">
+                    <div
+                      className="bpck_head font-weight-600"
+                      onClick={() =>
+                        setConfirmPopup(
+                          <SuccessPopup
+                            Popup={() => setSuccessPopup(!successPopup)}
+                          />
+                        )
+                      }
+                    >
                       Employment history
                     </div>
                   </div>
@@ -3292,7 +3337,18 @@ const UnifyFreelancer = () => {
                                   />
                                 </svg>
                               </button>
-                              <button onClick={() => deleteExp(experience.id)}>
+                              <button
+                                onClick={() =>
+                                  setConfirmPopup(
+                                    <ConfirmationPopup
+                                      Popup={() =>
+                                        setConfirmPopup(!confirmPopup)
+                                      }
+                                      confirm={() => deleteExp(experience.id)}
+                                    />
+                                  )
+                                }
+                              >
                                 <svg
                                   xmlns="http://www.w3.org/2000/svg"
                                   width="16"
@@ -3371,7 +3427,6 @@ const UnifyFreelancer = () => {
           onCloseModal={() => setHwpPopup(false)}
         />
       )}
-
       {portfolioPopup && (
         <PortfolioPupup
           open={portfolioPopup}
@@ -3387,6 +3442,8 @@ const UnifyFreelancer = () => {
         />
       )}
       {popup}
+      {confirmPopup}
+      {successPopup}
     </div>
   );
 };

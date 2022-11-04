@@ -1,6 +1,6 @@
 import Signin from "./components/signin";
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { onLogin } from "./redux/actions/authActions";
 import { useNavigate } from "react-router-dom";
 
@@ -16,6 +16,8 @@ const Signinscreen = () => {
     setErrors({ ...errors, [e.target.name]: false });
   };
 
+  const loginError = useSelector((state) => state?.auth?.loginError?.data.message);
+  
   const submitForm = (e) => {
     e.preventDefault();
     let errorExist = false;
@@ -65,6 +67,7 @@ const Signinscreen = () => {
       setUserType={setUserType}
       userType={userType}
       selectUserType={selectUserType}
+      loginError={loginError}
     />
   );
 };
