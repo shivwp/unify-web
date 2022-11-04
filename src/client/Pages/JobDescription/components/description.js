@@ -2,16 +2,73 @@ import { Container } from "react-bootstrap";
 import "../../../../styles/job.css";
 import $ from "jquery";
 import Title from "../../../../components/title";
-import { Link } from "react-router-dom";
-import Form from "react-bootstrap/Form";
+import { Link, useNavigate } from "react-router-dom";
 import Button from "react-bootstrap/Button";
+import { useDispatch, useSelector } from "react-redux";
+import { useState, useEffect } from "react";
+import {
+  getCategoryList,
+  getFreelancerSkills,
+} from "../../../../redux/actions/profileAction";
+import Form from "react-bootstrap/Form";
 
 const Description = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const [values, setValues] = useState({});
+  const [filteredSkills, setFilteredSkills] = useState();
+  const [hgghgghghgh, setHgghgghghgh] = useState();
+  const jobListingData = useSelector((state) => state.profile.jobListingData);
+  const categoryList = useSelector((state) => state.profile.categoryList);
+  const getSkillList = useSelector((state) => state.profile.getSkillList);
+
+  useEffect(() => {
+    dispatch(getCategoryList());
+    dispatch(getFreelancerSkills());
+  }, []);
+
+  useEffect(() => {
+    if (jobListingData === undefined) {
+      navigate("/gettingstarted");
+    }
+  }, []);
+
+  useEffect(() => {
+    if (categoryList) {
+      for (let i = 0; i < categoryList.length; i++) {
+        if (jobListingData?.job_category == categoryList[i].id) {
+          setHgghgghghgh(categoryList[i]);
+        }
+      }
+    }
+  }, []);
+
+  useEffect(() => {
+    if (getSkillList) {
+      var asdfad = jobListingData?.skills?.split(",");
+      asdfad = asdfad?.map((adf) => Number(adf));
+      setFilteredSkills(
+        getSkillList?.filter((item) => asdfad?.indexOf(item.id) != -1)
+      );
+    }
+  }, []);
+
+  useEffect(() => {
+    if (jobListingData) {
+      setValues(jobListingData);
+    }
+  }, [jobListingData]);
+
+  const onInputChange = (e) => {
+    setValues({ ...values, [e.target.name]: e.target.value });
+  };
+
   Title(" | Description");
   const hanDleSlide = (e) => {
     $(e.target.nextSibling).slideToggle();
   };
   $(".slider_shutter").slideDown();
+
   return (
     <Container>
       <div className="main_box_descr mbd_n_pd">
@@ -28,7 +85,12 @@ const Description = () => {
         <div className="b_bot_inp">
           <div className="input_t_lab">Title</div>
           <div className="job_t_inp">
-            <Form.Control type="text" value="UI/UX Design" />
+            <Form.Control
+              type="text"
+              name="job_title"
+              value={values?.job_title}
+              onChange={(e) => onInputChange(e)}
+            />
           </div>
           <div className="sm_label_inp">
             That looks a little short. A descriptive headline will help
@@ -44,9 +106,14 @@ const Description = () => {
             about your project, team, or company. Here are several examples that
             illustrate best practices for effective job posts.
           </div>
-          <Form.Group className="job_t_inp">
-            <Form.Control as="textarea"></Form.Control>
-          </Form.Group>
+          <div className="job_t_inp">
+            <Form.Control
+              as="textarea"
+              name="description"
+              value={values?.description}
+              onChange={(e) => onInputChange(e)}
+            ></Form.Control>
+          </div>
           <div className="d-flex justify-content-between">
             <div className="sm_label_inp">
               <span className="sm_span_icon">
@@ -87,7 +154,7 @@ const Description = () => {
         <div className="b_bot_inp">
           <div className="input_t_lab">Category</div>
           <div className="job_t_inp cat_inp_j d-flex flex-wrap">
-            <Form.Control type="text" value="UI/UX Design" />
+            <Form.Control type="text" value={hgghgghghgh?.name} />
             <Button className="round_b_btn">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -109,20 +176,23 @@ const Description = () => {
         <div className="b_bot_inp">
           <div className="input_t_lab">Skills</div>
           <div className="slide_btnss">
-            <Button>
-              Mobile App Design
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                fill="#393939"
-                className="bi bi-plus"
-                viewBox="0 0 16 16"
-              >
-                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
-              </svg>
-            </Button>
-            <Button>
+            {filteredSkills?.map((item) => (
+              <Button>
+                {item.name}
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="#393939"
+                  className="bi bi-plus"
+                  viewBox="0 0 16 16"
+                >
+                  <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                </svg>
+              </Button>
+            ))}
+
+            {/* <button>
               User Experience Design
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -134,8 +204,8 @@ const Description = () => {
               >
                 <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
               </svg>
-            </Button>
-            <Button>
+            </button>
+            <button>
               User Interface Design
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -147,8 +217,8 @@ const Description = () => {
               >
                 <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
               </svg>
-            </Button>
-            <Button>
+            </button>
+            <button>
               Graphic Design
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -160,7 +230,7 @@ const Description = () => {
               >
                 <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
               </svg>
-            </Button>
+            </button> */}
             <Button className="round_b_btn">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -224,99 +294,6 @@ const Description = () => {
                 />
               </svg>
             </Button>
-          </div>
-        </div>
-        <div
-          className="p-0 flex_slide_ta toggle_shutter b-bottom-b"
-          onClick={(e) => hanDleSlide(e)}
-        >
-          <div className="">
-            <div className="input_t_lab pb-0">
-              Screening questions (optional)
-            </div>
-            <div className="sm_label_inp">Narrow down your candidates</div>
-          </div>
-          <div className="pr-10">
-            <svg
-              className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiBox-root css-1om0hkc"
-              width="24"
-              height="24"
-              fill="#393939"
-              focusable="false"
-              aria-hidden="true"
-              viewBox="0 0 24 24"
-              data-testid="KeyboardArrowDownIcon"
-            >
-              <path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"></path>
-            </svg>
-          </div>
-        </div>
-        <div className="slide_btnss slider_shutter">
-          <div className="sm_label_inp">Narrow down your candidates</div>
-        </div>
-        <div
-          className="p-0 flex_slide_ta toggle_shutter b-bottom-b"
-          onClick={(e) => hanDleSlide(e)}
-        >
-          <div className="">
-            <div className="input_t_lab pb-0">
-              Advanced preferences (optional)
-            </div>
-            <div className="sm_label_inp">
-              Hours per week, hire date, and more
-            </div>
-          </div>
-          <div className="pr-10">
-            <svg
-              className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiBox-root css-1om0hkc"
-              width="24"
-              height="24"
-              fill="#393939"
-              focusable="false"
-              aria-hidden="true"
-              viewBox="0 0 24 24"
-              data-testid="KeyboardArrowDownIcon"
-            >
-              <path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"></path>
-            </svg>
-          </div>
-        </div>
-        <div className="slide_btnss slider_shutter">
-          <div className="sm_label_inp">
-            Hours per week, hire date, and more
-          </div>
-        </div>
-
-        <div
-          className="p-0 flex_slide_ta toggle_shutter b-bottom-b"
-          onClick={(e) => hanDleSlide(e)}
-        >
-          <div className="">
-            <div className="input_t_lab pb-0">
-              Job post preferences (optional)
-            </div>
-            <div className="sm_label_inp">
-              Adjust visibility and add coworkers
-            </div>
-          </div>
-          <div className="pr-10">
-            <svg
-              className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiBox-root css-1om0hkc"
-              width="24"
-              height="24"
-              fill="#393939"
-              focusable="false"
-              aria-hidden="true"
-              viewBox="0 0 24 24"
-              data-testid="KeyboardArrowDownIcon"
-            >
-              <path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"></path>
-            </svg>
-          </div>
-        </div>
-        <div className="slide_btnss slider_shutter">
-          <div className="sm_label_inp">
-            Adjust visibility and add coworkers
           </div>
         </div>
 

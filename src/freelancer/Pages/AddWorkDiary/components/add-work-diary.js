@@ -4,10 +4,13 @@ import { Col, Row } from "react-bootstrap";
 import Title from "../../../../components/title";
 import Select from "react-select";
 import { Link } from "react-router-dom";
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
+import AddManualTimePopup from "../../../components/popups/AddManualTimePopup";
+import { useState } from "react";
+import Form from 'react-bootstrap/Form';
 
 const Screen = () => {
+  const [amtPopup, setAmtPopup] = useState(false);
+
   Title(" | Add Work Diary");
 
   const Jobs = () => {
@@ -34,23 +37,13 @@ const Screen = () => {
                     <div className="select_inp_in filter_select_m w-100">
                       <Select className=" w-100" options={options1} />
                     </div>
-                    <div className="awd_btnrnd">
-                      <Button>
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="23.296"
-                          height="23.296"
-                          viewBox="0 0 23.296 23.296"
-                        >
-                          <path
-                            id="watch"
-                            d="M17.257,14.386l-2.444-1.411V7.824a1.165,1.165,0,1,0-2.33,0v5.824a1.165,1.165,0,0,0,.582,1.009L16.092,16.4a1.165,1.165,0,0,0,1.165-2.018ZM13.648,2A11.648,11.648,0,1,0,25.3,13.648,11.648,11.648,0,0,0,13.648,2Zm0,20.967a9.318,9.318,0,1,1,9.318-9.318A9.318,9.318,0,0,1,13.648,22.967Z"
-                            transform="translate(-2 -2)"
-                            fill="#828282"
-                          />
-                        </svg>
-                      </Button>
-                    </div>
+                    {/* <div className='awd_btnrnd'>
+                                        <button>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="23.296" height="23.296" viewBox="0 0 23.296 23.296">
+  <path id="watch" d="M17.257,14.386l-2.444-1.411V7.824a1.165,1.165,0,1,0-2.33,0v5.824a1.165,1.165,0,0,0,.582,1.009L16.092,16.4a1.165,1.165,0,0,0,1.165-2.018ZM13.648,2A11.648,11.648,0,1,0,25.3,13.648,11.648,11.648,0,0,0,13.648,2Zm0,20.967a9.318,9.318,0,1,1,9.318-9.318A9.318,9.318,0,0,1,13.648,22.967Z" transform="translate(-2 -2)" fill="#828282"/>
+</svg>
+                                        </button>
+                                    </div> */}
                   </div>
                 </Col>
               </Row>
@@ -81,15 +74,30 @@ const Screen = () => {
           <div>
             <div className="fo_btn_c next_b_btn_c">
               <Link to="/freelancer/time-tracker">
-                <Button className="active_btn_blue f_sm_small_euvw ">
-                  ADD MANUAL TIME
-                </Button>
+                <button
+                  style={{ border: "1px solid #6d2ef1" }}
+                  className="f_sm_small_euvw "
+                >
+                  TIMESHEET
+                </button>
               </Link>
+              <button
+                className="active_btn_blue f_sm_small_euvw "
+                onClick={() => setAmtPopup(true)}
+              >
+                ADD MANUAL TIME
+              </button>
             </div>
           </div>
         </div>
         <div className="main_hirefreelancer_bx main_box_descr">{Jobs()}</div>
       </Container>
+      {amtPopup && (
+        <AddManualTimePopup
+          open={amtPopup}
+          onCloseModal={() => setAmtPopup(false)}
+        />
+      )}
     </>
   );
 };

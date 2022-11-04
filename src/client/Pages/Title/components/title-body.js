@@ -1,13 +1,39 @@
 import Container from "react-bootstrap/Container";
+import Button from 'react-bootstrap/Button';
 import { Row, Col } from "react-bootstrap";
 import SideNav from "../../../../components/site_nav";
 import Title from "../../../../components/title";
-import { Link } from "react-router-dom";
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import Form from 'react-bootstrap/Form';
+import { SET_JOB_DATA_LISTING } from "../../../../redux/types";
 
 const TitleBody = () => {
   Title(" | Title");
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const [jobTitle, setJobTitle] = useState();
+  const jobListingData = useSelector((state) => state.profile.jobListingData);
+
+  useEffect(() => {
+    if (jobListingData === undefined) {
+      navigate("/gettingstarted");
+    }
+  }, []);
+
+  const nextButton = () => {
+    dispatch({
+      type: SET_JOB_DATA_LISTING,
+      payload: {
+        ...jobListingData,
+        job_title: jobTitle,
+      },
+    });
+
+    navigate("/title14");
+  };
+
   return (
     <div className="bg-f2f8ff min_pad_m">
       <Container>
@@ -24,7 +50,12 @@ const TitleBody = () => {
                 <h3>Write a title for your job post</h3>
               </div>
               <div className="t_area_ob mb-3">
-                <Form.Control type="text" />
+                <Form.Control
+                  type="text"
+                  name="title"
+                  value={jobTitle}
+                  onChange={(e) => setJobTitle(e.target.value)}
+                />
               </div>
               <div className="bl_head mt-4 mb-3">
                 <h3>Example titles</h3>
@@ -47,9 +78,11 @@ const TitleBody = () => {
                   </Link>
                 </div>
                 <div className="fo_btn_c next_b_btn_c">
-                  <Link to="/title14">
-                    <Button className="active_btn_blue">Next</Button>
-                  </Link>
+                  {/* <Link to="/title14"> */}
+                  <Button className="active_btn_blue" onClick={nextButton}>
+                    Next
+                  </Button>
+                  {/* </Link> */}
                 </div>
               </div>
             </div>

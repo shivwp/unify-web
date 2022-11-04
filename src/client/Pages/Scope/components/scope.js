@@ -2,12 +2,46 @@ import Container from "react-bootstrap/Container";
 import { Row, Col } from "react-bootstrap";
 import SideNav from "../../../../components/site_nav";
 import Title from "../../../../components/title";
-import { Link } from "react-router-dom";
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import { SET_JOB_DATA_LISTING } from "../../../../redux/types";
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
 
 const Skill = () => {
   Title(" | Scope");
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const [scope, setScope] = useState();
+  const [workTime, setWorkTime] = useState();
+  const [level, setLevel] = useState();
+  const jobListingData = useSelector((state) => state.profile.jobListingData);
+
+  useEffect(() => {
+    if (jobListingData === undefined) {
+      navigate("/gettingstarted");
+    }
+  }, []);
+
+  const handleScopeChange = (e) => setScope(e.target.value);
+  const handleWorkChange = (e) => setWorkTime(e.target.value);
+  const handleLevelChange = (e) => setLevel(e.target.value);
+
+  const nextButton = () => {
+    dispatch({
+      type: SET_JOB_DATA_LISTING,
+      payload: {
+        ...jobListingData,
+        scop: scope,
+        project_duration: workTime,
+        experience_level: level,
+      },
+    });
+
+    navigate("/budget");
+  };
+
   return (
     <div className="bg-f2f8ff min_pad_m">
       <Container>
@@ -16,22 +50,27 @@ const Skill = () => {
           <Col lg={9}>
             <div className="s_nav_body">
               <div className="s_b_head">
-                <h2>Scop</h2>
+                <h2>Scope</h2>
                 <div className="s_on">Step 4 of 5</div>
               </div>
               <br />
               <div className="on_time_h3 d-block no-border pt-0 pb-0">
                 <div className="">
                   <div className="s_b_r mrr_riii d-block mt-0">
-                    <Form.Group className="flex_aling">
-                      <Form.Check type="radio" id="r_2" name="g" />
-                      <Form.Label htmlFor="r_2">
-                        {" "}
+                    <div className="flex_aling">
+                      <Form.Check
+                        type="radio"
+                        id="scope-one"
+                        name="scope"
+                        value="large"
+                        onChange={handleScopeChange}
+                      />
+                      <Form.Label htmlFor="scope-one">
                         <p className="font-20">
                           <b className="text-black">Large</b>
                         </p>
                       </Form.Label>
-                    </Form.Group>
+                    </div>
                     <div className="label_apra">
                       <p className="litt_sm_para f-16">
                         Longer term or complex initiatives (ex. design and build
@@ -41,9 +80,14 @@ const Skill = () => {
                   </div>
                   <div className="s_b_r mrr_riii d-block">
                     <div className="flex_aling">
-                      <Form.Check type="radio" id="r_1" name="g" />
-                      <Form.Label htmlFor="r_1">
-                        {" "}
+                      <Form.Check
+                        type="radio"
+                        id="scope-two"
+                        name="scope"
+                        value="medium"
+                        onChange={handleScopeChange}
+                      />
+                      <Form.Label htmlFor="scope-two">
                         <p className="font-20">
                           <b className="text-black">Medium</b>
                         </p>
@@ -57,9 +101,14 @@ const Skill = () => {
                   </div>
                   <div className="s_b_r mrr_riii d-block">
                     <div className="flex_aling">
-                      <Form.Check type="radio" id="r_4" name="g" />
-                      <Form.Label htmlFor="r_4">
-                        {" "}
+                      <Form.Check
+                        type="radio"
+                        id="scope-three"
+                        name="scope"
+                        value="small"
+                        onChange={handleScopeChange}
+                      />
+                      <Form.Label htmlFor="scope-three">
                         <p className="font-20">
                           <b className="text-black">Small</b>
                         </p>
@@ -78,30 +127,46 @@ const Skill = () => {
                     <h3>How long will your work take?</h3>
                   </div>
                   <div className="s_b_r mrr_riii d-block">
-                    <Form.Group className="flex_aling">
-                      <Form.Check type="radio" id="r_2h" name="a" />
-                      <Form.Label htmlFor="r_2h">
-                        {" "}
+                    <div className="flex_aling">
+                      <Form.Check
+                        type="radio"
+                        id="work-take-one"
+                        name="work"
+                        value="6"
+                        onChange={handleWorkChange}
+                      />
+                      <Form.Label htmlFor="work-take-one">
                         <p className="litt_sm_para">More than 6 months</p>
                       </Form.Label>
-                    </Form.Group>
+                    </div>
                   </div>
                   <div className="s_b_r mrr_riii d-block">
-                    <Form.Group className="flex_aling">
-                      <Form.Check type="radio" id="r_1h" name="a" />
-                      <Form.Label htmlFor="r_1h">
-                        {" "}
+                    <div className="flex_aling">
+                      <Form.Check
+                        type="radio"
+                        id="work-take-two"
+                        name="work"
+                        value="3"
+                        onChange={handleWorkChange}
+                      />
+                      <Form.Label htmlFor="work-take-two">
                         <p className="litt_sm_para">3 to 6 months</p>
                       </Form.Label>
-                    </Form.Group>
+                    </div>
                   </div>
                   <div className="s_b_r mrr_riii d-block">
-                    <Form.Group className="flex_aling">
-                      <Form.Check type="radio" id="r_4h" name="a" />
-                      <Form.Label htmlFor="r_4h">
+                    <div className="flex_aling">
+                      <Form.Check
+                        type="radio"
+                        id="work-take-three"
+                        name="work"
+                        value="1"
+                        onChange={handleWorkChange}
+                      />
+                      <Form.Label htmlFor="work-take-three">
                         <p className="litt_sm_para">1 to 3 months</p>
                       </Form.Label>
-                    </Form.Group>
+                    </div>
                   </div>
                 </div>
                 <div className="">
@@ -114,9 +179,14 @@ const Skill = () => {
                   </p>
                   <div className="s_b_r mrr_riii d-block">
                     <div className="flex_aling">
-                      <Form.Check type="radio" id="r_2" name="l" />
-                      <Form.Label htmlFor="r_2">
-                        {" "}
+                      <Form.Check
+                        type="radio"
+                        id="level-one"
+                        name="level"
+                        value="entry"
+                        onChange={handleLevelChange}
+                      />
+                      <Form.Label htmlFor="level-one">
                         <p>
                           <b className="text-black">Entry</b>
                         </p>
@@ -129,15 +199,20 @@ const Skill = () => {
                     </div>
                   </div>
                   <div className="s_b_r mrr_riii d-block">
-                    <Form.Group className="flex_aling">
-                      <Form.Check type="radio" id="r_1" name="l" />
-                      <Form.Label htmlFor="r_1">
-                        {" "}
+                    <div className="flex_aling">
+                      <Form.Check
+                        type="radio"
+                        id="level-two"
+                        name="level"
+                        value="intermediate"
+                        onChange={handleLevelChange}
+                      />
+                      <Form.Label htmlFor="level-two">
                         <p>
                           <b className="text-black">Intermediate</b>
                         </p>
                       </Form.Label>
-                    </Form.Group>
+                    </div>
                     <div className="label_apra">
                       <p className="litt_sm_para">
                         Looking for someone relatively new to this field
@@ -145,15 +220,20 @@ const Skill = () => {
                     </div>
                   </div>
                   <div className="s_b_r mrr_riii d-block">
-                    <Form.Group className="flex_aling">
-                      <Form.Check type="radio" id="r_4" name="l" />
-                      <Form.Label htmlFor="r_4">
-                        {" "}
+                    <div className="flex_aling">
+                      <Form.Check
+                        type="radio"
+                        id="lavel-three"
+                        name="level"
+                        value="expert"
+                        onChange={handleLevelChange}
+                      />
+                      <Form.Label htmlFor="lavel-three">
                         <p>
                           <b className="text-black">Expert</b>
                         </p>
                       </Form.Label>
-                    </Form.Group>
+                    </div>
                     <div className="label_apra">
                       <p className="litt_sm_para">
                         Looking for someone relatively new to this field
@@ -169,9 +249,11 @@ const Skill = () => {
                   </Link>
                 </div>
                 <div className="fo_btn_c next_b_btn_c">
-                  <Link to="/budget">
-                    <Button className="active_btn_blue">Next</Button>
-                  </Link>
+                  {/* <Link to="/budget"> */}
+                  <Button className="active_btn_blue" onClick={nextButton}>
+                    Next
+                  </Button>
+                  {/* </Link> */}
                 </div>
               </div>
             </div>

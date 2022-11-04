@@ -2,12 +2,49 @@ import Container from "react-bootstrap/Container";
 import { Row, Col } from "react-bootstrap";
 import SideNav from "../../../../components/site_nav";
 import Title from "../../../../components/title";
-import { Link } from "react-router-dom";
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import { SET_JOB_DATA_LISTING } from "../../../../redux/types";
+import Form from 'react-bootstrap/Form'
+import Button from 'react-bootstrap/Button';
 
 const Budget = () => {
   Title(" | Budget");
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const [price, setPrice] = useState();
+  const [minPrice, setMinPrice] = useState();
+  const [budgetType, setBudgetType] = useState();
+  const jobListingData = useSelector((state) => state.profile.jobListingData);
+
+  useEffect(() => {
+    if (jobListingData === undefined) {
+      navigate("/gettingstarted");
+    }
+  }, []);
+
+  const handleBudgetTypeChange = (e) => {
+    setBudgetType(e.target.value);
+  };
+
+  const handlePriceChange = (e) => {
+    setPrice(e.target.value);
+  };
+
+  const nextButton = (e) => {
+    dispatch({
+      type: SET_JOB_DATA_LISTING,
+      payload: {
+        ...jobListingData,
+        budget_type: budgetType,
+        price: price,
+      },
+    });
+
+    navigate("/job-description");
+  };
+
   return (
     <div className="bg-f2f8ff min_pad_m">
       <Container>
@@ -24,7 +61,12 @@ const Budget = () => {
                   <Form.Label className="form_card_label">
                     <div className="select_card subscription_box_r pnew_bud">
                       <div className="sub_radio">
-                        <Form.Check type="radio" name="s" />
+                        <Form.Check
+                          type="radio"
+                          name="budget_type"
+                          value="hourly"
+                          onChange={handleBudgetTypeChange}
+                        />
                       </div>
                       <div className="sel_icon">
                         <svg
@@ -47,7 +89,12 @@ const Budget = () => {
                   <Form.Label className="form_card_label">
                     <div className="select_card subscription_box_r pnew_bud">
                       <div className="sub_radio">
-                        <Form.Check type="radio" name="s" />
+                        <Form.Check
+                          type="radio"
+                          name="budget_type"
+                          value="fixed"
+                          onChange={handleBudgetTypeChange}
+                        />
                       </div>
                       <div className="sel_icon">
                         <svg
@@ -66,32 +113,54 @@ const Budget = () => {
                   </Form.Label>
                 </Col>
               </Row>
-              <div className="d-flex">
-                <div className="input_ft">
-                  <div className="input_t_lab bud_new_l_tex">From</div>
-                  <div className="d-flex">
-                    <div className="input_from_tlab lign_tex">
-                      <div className="d-flex align-items-center">$</div>
-                      <Form.Control type="text" defaultValue="15" />
+              {budgetType === "hourly" ? (
+                <div className="d-flex">
+                  <div className="input_ft">
+                    <div className="input_t_lab bud_new_l_tex">From</div>
+                    <div className="d-flex">
+                      <div className="input_from_tlab lign_tex">
+                        <div className="d-flex align-items-center">$</div>
+                        <Form.Control type="number" />
+                      </div>
+                      <div className="input_t_lab input_hour lign_tex pl-2">
+                        /hour
+                      </div>
                     </div>
-                    <div className="input_t_lab input_hour lign_tex pl-2">
-                      /hour
+                  </div>
+                  <div className="input_ft">
+                    <div className="input_t_lab bud_new_l_tex">To</div>
+                    <div className="d-flex">
+                      <div className="input_from_tlab lign_tex">
+                        <div className="d-flex align-items-center">$</div>
+                        <Form.Control type="number" />
+                      </div>
+                      <div className="input_t_lab input_hour lign_tex pl-2">
+                        /hour
+                      </div>
                     </div>
                   </div>
                 </div>
-                <div className="input_ft">
-                  <div className="input_t_lab bud_new_l_tex">To</div>
-                  <div className="d-flex">
-                    <div className="input_from_tlab lign_tex">
-                      <div className="d-flex align-items-center">$</div>
-                      <Form.Control type="text" defaultValue="30" />
-                    </div>
-                    <div className="input_t_lab input_hour lign_tex pl-2">
-                      /hour
+              ) : budgetType === "fixed" ? (
+                <div className="d-flex">
+                  <div className="input_ft">
+                    <div className="input_t_lab bud_new_l_tex">To</div>
+                    <div className="d-flex">
+                      <div className="input_from_tlab lign_tex">
+                        <div className="d-flex align-items-center">$</div>
+                        <Form.Control
+                          type="number"
+                          value={price}
+                          onChange={handlePriceChange}
+                          onWheel={(e) => e.target.blur()}
+                        />
+                      </div>
+                      <div className="input_t_lab input_hour lign_tex pl-2">
+                        /hour
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
+              ) : null}
               <div className="ft_par">
                 This is the average rate for similar projects.
               </div>
@@ -110,9 +179,11 @@ const Budget = () => {
                   </Link>
                 </div>
                 <div className="fo_btn_c next_b_btn_c">
-                  <Link to="/job-description">
-                    <Button className="active_btn_blue">Review Job Post</Button>
-                  </Link>
+                  {/* <Link to="/job-description"> */}
+                  <Button className="active_btn_blue" onClick={nextButton}>
+                    Review Job Post
+                  </Button>
+                  {/* </Link> */}
                 </div>
               </div>
             </div>

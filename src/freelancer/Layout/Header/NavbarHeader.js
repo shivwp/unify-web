@@ -5,7 +5,7 @@ import logo from "../../../assets/logo.svg";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import { onOnlineStatus } from "../../redux/actions/authActions";
+import { onOnlineStatus } from "../../../redux/actions/authActions";
 import { useDispatch } from "react-redux";
 
 const NavbarHeader = (props) => {

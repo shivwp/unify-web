@@ -18,7 +18,11 @@ const CloseIcon = () => {
     </svg>
   );
 };
+
 const ChangePassword = (props) => {
+  const [hideNewPass, setHideNewPass] = useState(true);
+  const [hideOldPass, setHideOldPass] = useState(true);
+  const [hideConfPass, setHideConfPass] = useState(true);
   const dispatch = useDispatch();
   const [values, setValues] = useState();
 
@@ -29,7 +33,7 @@ const ChangePassword = (props) => {
   console.log(values);
 
   const onSubmit = () => {
-    dispatch(onPasswordChange(values));
+    dispatch(onPasswordChange(values, props.Popup));
   };
 
   return (
@@ -51,54 +55,102 @@ const ChangePassword = (props) => {
             <div className="mt-2 pt-1 mb-4"></div>
 
             <div className="mb-4 ">
-              <Form.Group className="popup_form_element">
+              <div
+                className="popup_form_element"
+                style={{ position: "relative" }}
+              >
                 <Form.Label className="text-black font-size-13px font-weight-500">
                   Old Password
                 </Form.Label>
                 <Form.Control
-                  type="password"
+                  type={hideOldPass ? "password" : "text"}
                   className="font-size-13px"
                   onChange={(e) => handleOnChange(e)}
                   name="old_password"
                   placeholder=" "
                 />
-              </Form.Group>
+                {hideOldPass ? (
+                  <i
+                    className="fa fa-eye-slash showPassFreelancer"
+                    onClick={() => setHideOldPass(!hideOldPass)}
+                    aria-hidden="true"
+                  ></i>
+                ) : (
+                  <i
+                    className="fa fa-eye showPassFreelancer"
+                    onClick={() => setHideOldPass(!hideOldPass)}
+                    aria-hidden="true"
+                  ></i>
+                )}
+              </div>
               <Row className="mt-1">
                 <Col md={6}>
-                  <Form.Group className="popup_form_element">
+                  <div
+                    className="popup_form_element"
+                    style={{ position: "relative" }}
+                  >
                     <Form.Label className="text-black font-size-13px font-weight-500">
                       New password
                     </Form.Label>
                     <Form.Control
-                      type="password"
+                      type={hideNewPass ? "password" : "text"}
                       name="new_password"
                       onChange={(e) => handleOnChange(e)}
                       className="font-size-13px"
                       placeholder=" "
                     />
-                  </Form.Group>
+                    {hideNewPass ? (
+                      <i
+                        className="fa fa-eye-slash showPassFreelancer"
+                        onClick={() => setHideNewPass(!hideNewPass)}
+                        aria-hidden="true"
+                      ></i>
+                    ) : (
+                      <i
+                        className="fa fa-eye showPassFreelancer"
+                        onClick={() => setHideNewPass(!hideNewPass)}
+                        aria-hidden="true"
+                      ></i>
+                    )}
+                  </div>
                 </Col>
                 <Col md={6}>
-                  <Form.Group className="popup_form_element">
+                  <div
+                    className="popup_form_element"
+                    style={{ position: "relative" }}
+                  >
                     <Form.Label className="text-black font-size-13px font-weight-500">
                       Confirm New Password
                     </Form.Label>
                     <Form.Control
-                      type="password"
+                      type={hideConfPass ? "password" : "text"}
                       name="confirm_password"
                       onChange={(e) => handleOnChange(e)}
                       className="font-size-13px"
                       placeholder=" "
                     />
-                  </Form.Group>
+                    {hideConfPass ? (
+                      <i
+                        className="fa fa-eye-slash showPassFreelancer"
+                        onClick={() => setHideConfPass(!hideConfPass)}
+                        aria-hidden="true"
+                      ></i>
+                    ) : (
+                      <i
+                        className="fa fa-eye showPassFreelancer"
+                        onClick={() => setHideConfPass(!hideConfPass)}
+                        aria-hidden="true"
+                      ></i>
+                    )}
+                  </div>
                 </Col>
               </Row>
-              <Form.Group className="popup_form_element agrement_ineoeu mt-3 pt-1">
+              <div className="popup_form_element agrement_ineoeu mt-3 pt-1">
                 <Form.Label className="text-black font-size-13px font-weight-500">
                   <Form.Check type="checkbox" /> All devices will be required to
                   sign in with new password
                 </Form.Label>
-              </Form.Group>
+              </div>
             </div>
 
             <div className="popup_btns_new flex-wrap cwiewyehkk">

@@ -519,20 +519,20 @@ const Project_Search = () => {
                 <Form.Control type={`text`} placeholder={`Search`} />
               </div>
               <div className="post_job_btn_m in_btn_p_sm">
-                <button className="fw-500">Advanced Search</button>
+                <Button className="fw-500">Advanced Search</Button>
               </div>
             </div>
             {ListCard()}
           </Col>
           <Col lg={12}>
             <div className="pagiantion_node">
-              <button className="pagi_butt">1</button>
-              <button className="pagi_butt">2</button>
-              <button className="pagi_butt">3</button>
-              <button className="pagi_butt">4</button>
-              <button className="pagi_butt">5</button>
+              <Button className="pagi_butt">1</Button>
+              <Button className="pagi_butt">2</Button>
+              <Button className="pagi_butt">3</Button>
+              <Button className="pagi_butt">4</Button>
+              <Button className="pagi_butt">5</Button>
               <div className="pagination_dots">...</div>
-              <button className="pagi_butt">10</button>
+              <Button className="pagi_butt">10</Button>
             </div>
           </Col>
         </Row>

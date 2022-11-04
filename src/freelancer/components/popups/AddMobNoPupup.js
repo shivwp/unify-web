@@ -2,12 +2,14 @@ import React from "react";
 import { Modal } from "react-responsive-modal";
 import "react-responsive-modal/styles.css";
 import "./popup.css";
+import Button from 'react-bootstrap/Button';
 import Select from "react-select";
 import { Row, Col } from "react-bootstrap";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { countryList } from "../../../redux/actions/authActions";
 import { useState } from "react";
+import Form from 'react-bootstrap/Form';
 
 const AddMobNoPupup = ({ open, onCloseModal }) => {
   const options1 = useSelector((state) => state.auth.getCountryList)?.map(
@@ -115,7 +117,7 @@ const AddMobNoPupup = ({ open, onCloseModal }) => {
               </Col>
               <Col md={6} sm={12} lg={6}>
                 <div className="popup_form_element">
-                  <input
+                  <Form.Control
                     type="text"
                     className="font-size-13px"
                     placeholder="Mobile Number"
@@ -131,10 +133,10 @@ const AddMobNoPupup = ({ open, onCloseModal }) => {
         </div>
         <div className="freelancer_popup_btns">
           <div className="_cancle_submit">
-            <button onClick={onCloseModal}>CANCEL</button>
+            <Button onClick={onCloseModal}>CANCEL</Button>
           </div>
           <div className="_save_submit">
-            <button>NEXT</button>
+            <Button>NEXT</Button>
           </div>
         </div>
       </Modal>

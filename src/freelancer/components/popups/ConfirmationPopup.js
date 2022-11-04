@@ -99,7 +99,7 @@ const ConfirmationPopup = ({open, onCloseModal}) => {
               </Col>
               <Col md={6} sm={12} lg={6}>
                 <div className="popup_form_element">
-                  <input
+                  <Form.Control
                     type="text"
                     className="font-size-13px"
                     placeholder="Mobile Number"
@@ -115,10 +115,10 @@ const ConfirmationPopup = ({open, onCloseModal}) => {
         </div>
         <div className="freelancer_popup_btns">
           <div className="_cancle_submit">
-            <button onClick={onCloseModal}>CANCEL</button>
+            <Button onClick={onCloseModal}>CANCEL</Button>
           </div>
           <div className="_save_submit">
-            <button>NEXT</button>
+            <Button>NEXT</Button>
           </div>
         </div>
       </Modal>

@@ -1,5 +1,5 @@
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button'
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
 
 const CloseIcon = () => {
   return (
@@ -56,12 +56,18 @@ const VerificationPref = (props) => {
               <div className="popup_form_element agrement_ineoeu mt-3 pt-1">
                 <div className="headiwuewopiu">When should we confirm?</div>
                 <Form.Label className="text-black font-size-13px font-weight-500 mt-3 pb-1 radiolablepopo">
-                  <Form.Check type="radio" name="g" /> When my login or activity
-                  seems risky
+                  <Form.Check type="radio" name="g" />{" "}
+                  <span style={{ fontWeight: 500 }}>
+                    {" "}
+                    When my login or activity seems risky
+                  </span>
                 </Form.Label>
                 <Form.Label className="text-black font-size-13px font-weight-500 mt-1 pb-1 radiolablepopo">
-                  <Form.Check type="radio" name="g" /> At every login and when my
-                  login or activity seems risky
+                  <Form.Check type="radio" name="g" />{" "}
+                  <span style={{ fontWeight: 500 }}>
+                    {" "}
+                    At every login and when my login or activity seems risky
+                  </span>
                 </Form.Label>
               </div>
             </div>

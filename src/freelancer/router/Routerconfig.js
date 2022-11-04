@@ -36,12 +36,22 @@ import FreelancerChat from "../Pages/Chat";
 import FreelancerDashboard from "../Pages/Dashboard";
 import FreelancerSubscription from "../Pages/Subscription";
 import UserReports from "../Pages/UserReports";
+import VerifyForgotOTP from "../../components/VerifyForgotOTP";
+import ForgotPass from "../../components/ForgotPass";
+import ResetPass from "../../components/ResetPass";
+import Testimonial from "../../components/Testimonial";
+import AgencyDashboard from "../../Agency/Pages/Dashboard";
 
 const RouterConfig = () => {
   return (
     <Routes>
       <Route path="/freelancer/project-detail" element={<ProjectDetail />} />
       <Route path="/freelancer/project-search" element={<ProjectSearch />} />
+      <Route path="/verify-forgot-otp" element={<VerifyForgotOTP />} />
+      <Route path="/forgot-password" element={<ForgotPass />} />
+      <Route path="/reset-password" element={<ResetPass />} />
+      <Route path="/submit-testimonial/:id" element={<Testimonial />} />
+      <Route path="/agency/dashboard" element={<AgencyDashboard />} />
       <Route
         path="/freelancer/project-search/:saved"
         element={<ProjectSearch />}

@@ -1,9 +1,8 @@
 import Container from "react-bootstrap/Container";
 import Title from "../../../../components/title";
 import { Link } from "react-router-dom";
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
 
+import Form from 'react-bootstrap/Form';
 const Createcategory = () => {
   Title(" | create category");
   return (
@@ -13,7 +12,7 @@ const Createcategory = () => {
           <div className="s_b_head hi_mari">
             <h2>Hi Marina, what do you need done?</h2>
           </div>
-          <Form.Group className="input_box_ccb mt-3 mb-4">
+          <div className="input_box_ccb mt-3 mb-4">
             <div>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -32,7 +31,7 @@ const Createcategory = () => {
                 placeholder="ex. Build responsive WordPress site with booking/payment funvtionality"
               />
             </div>
-          </Form.Group>
+          </div>
           <div className="my_skil_head mr_2_sm get_insp">
             <h3>Get inspired by starting with a category</h3>
           </div>
@@ -95,11 +94,11 @@ const Createcategory = () => {
             </div>
           </div>
           <div className="show_less_likn">
-            <Link to="/">Show less</Link>
+            <a href="/">Show less</a>
           </div>
           <Link to="/category">
             <div className="fo_btn_c ccb_next_btn">
-              <Button>Next</Button>
+              <button>Next</button>
             </div>
           </Link>
         </div>

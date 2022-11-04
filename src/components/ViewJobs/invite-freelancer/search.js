@@ -79,9 +79,9 @@ const Screen = () => {
                   </Button>
                   <div className="ts_btn attach_f_btn wid_30_in d-flex flex-wrap">
                     <Link to="/hire-freelancer">
-                      <button className="transp_fil_btn mt-2 font-weight-500">
+                      <Button className="transp_fil_btn mt-2 font-weight-500">
                         Hire
-                      </button>
+                      </Button>
                     </Link>
                     <Button className="mt-2 font-weight-500">
                       Invite to Job
