@@ -52,7 +52,7 @@ const Screen = () => {
               <td className=''>
                 <div className='d-flex justify-content-center cewi_trak align-items-center'>
                 <svg xmlns="http://www.w3.org/2000/svg" width="11.787" height="6.894" viewBox="0 0 11.787 6.894">
-  <path id="arrow" d="M17.459,11.5l-4.479,4.479L8.5,11.5" transform="translate(-7.086 -10.086)" fill="none" stroke="#221d2d" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2" opacity="0.66"/>
+  <path id="arrow" d="M17.459,11.5l-4.479,4.479L8.5,11.5" transform="translate(-7.086 -10.086)" fill="none" stroke="#221d2d" strokeLinecap="round" strokeLinejoin="round" stroke-miterlimit="10" strokeWidth="2" opacity="0.66"/>
 </svg>
                 </div>
               </td>
@@ -140,7 +140,7 @@ const Screen = () => {
               <td className=''>
                 <div className='d-flex justify-content-center cewi_trak align-items-center'>
                 <svg xmlns="http://www.w3.org/2000/svg" width="6.894" height="11.787" viewBox="0 0 6.894 11.787">
-  <path id="arrow" d="M8.959,4.479,4.479,0,0,4.479" transform="translate(5.894 1.414) rotate(90)" fill="none" stroke="#221d2d" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2" opacity="0.66"/>
+  <path id="arrow" d="M8.959,4.479,4.479,0,0,4.479" transform="translate(5.894 1.414) rotate(90)" fill="none" stroke="#221d2d" strokeLinecap="round" strokeLinejoin="round" stroke-miterlimit="10" strokeWidth="2" opacity="0.66"/>
 </svg>
                 </div>
               </td>
@@ -172,7 +172,7 @@ const Screen = () => {
               <td className=''>
                 <div className='d-flex justify-content-center cewi_trak align-items-center'>
                 <svg xmlns="http://www.w3.org/2000/svg" width="6.894" height="11.787" viewBox="0 0 6.894 11.787">
-  <path id="arrow" d="M8.959,4.479,4.479,0,0,4.479" transform="translate(5.894 1.414) rotate(90)" fill="none" stroke="#221d2d" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2" opacity="0.66"/>
+  <path id="arrow" d="M8.959,4.479,4.479,0,0,4.479" transform="translate(5.894 1.414) rotate(90)" fill="none" stroke="#221d2d" strokeLinecap="round" strokeLinejoin="round" stroke-miterlimit="10" strokeWidth="2" opacity="0.66"/>
 </svg>
                 </div>
               </td>
@@ -208,7 +208,7 @@ const Screen = () => {
 
   return (
     <>
-      <div className="tracker_header">
+      {/* <div className="tracker_header">
         <Container className="d-flex justify-content-between align-items-center flex-wrap">
           <div className="inpptracker w-40">
             <input type="text" placeholder="What are you working on?" />
@@ -304,14 +304,14 @@ const Screen = () => {
             </div>
           </div>
         </Container>
-      </div>
+      </div> */}
       <Container>
         <div className="wm_3_hdr">
-          <div className="wod_hding font-weight-600">Week of 25 March-31</div>
-          <div className="d-flex flex-wrap bnt_trackre">
+          <div className="wod_hding font-weight-600 my-3">Week of 25 March-31</div>
+          {/* <div className="d-flex flex-wrap bnt_trackre">
             <button className="active_bnt_trak">Timesheet</button>
             <button>Timecard</button>
-          </div>
+          </div> */}
         </div>
         {TimeTable()}
       </Container>

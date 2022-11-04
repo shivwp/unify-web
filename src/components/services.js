@@ -2,6 +2,9 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import "swiper/css/navigation";
 import {Navigation } from "swiper";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Button from 'react-bootstrap/Button'
 
 const Services = () => {
     return (
@@ -16,8 +19,6 @@ const Services = () => {
                     loop="true"
                     modules={[Navigation]}
                     navigation={true}
-                    onSlideChange={() => console.log('slide change')}
-                    onSwiper={(swiper) => console.log(swiper)}
                     breakpoints={{
                         200: {
                             slidesPerView: 1,
@@ -66,17 +67,17 @@ const Services = () => {
                     <SwiperSlide>
                         <div className="service_box">
                             <div className="service_icon"><img src="/assets/dataentry.svg"  alt=""/></div>
-                            <div className="service_head">Social Media</div>
+                            <div className="service_head">Data Entry</div>
                             <div className="service_para">Reach more customers</div>
                         </div>
                     </SwiperSlide>
                 </Swiper>
 
-                <div className="row">
-                    <div className="col-lg-12">
-                        <div className="d-flex justify-content-center btn_services"><button>View All The Services</button></div>
-                    </div>
-                </div>
+                <Row>
+                    <Col lg={12}>
+                        <div className="d-flex justify-content-center btn_services"><Button>View All The Services</Button></div>
+                    </Col>
+                </Row>
             </div>
         </div>
     );

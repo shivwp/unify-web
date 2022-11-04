@@ -2,7 +2,8 @@ import React from "react";
 import { Modal } from "react-responsive-modal";
 import "react-responsive-modal/styles.css";
 import "./popup.css";
-import { Link } from "react-router-dom";
+import Form from 'react-bootstrap/Form'
+import Button from 'react-bootstrap/Button'
 
 const CreateNewTeam = ({ open, onCloseModal }) => {
   return (
@@ -19,18 +20,18 @@ const CreateNewTeam = ({ open, onCloseModal }) => {
           <span>Add one Now!</span>
         </p>
         <div className="team_name">
-          <label>
+          <Form.Label>
             <span>Name</span>
-            <input type="text" name="name" placeholder="Ankita Kumavat" />
-          </label>
+            <Form.Control type="text" name="name" placeholder="Ankita Kumavat" />
+          </Form.Label>
         </div>
 
         <div className="btn_foot_sec no-border flex-wrap d-flex">
           <div className="fo_btn_c next_b_btn_c">
-            <button className="remove-posting-btns mrright-gppnew" onClick={onCloseModal} >CANCEL</button>
+            <Button className="remove-posting-btns mrright-gppnew" onClick={onCloseModal} >CANCEL</Button>
           </div>
           <div className="fo_btn_c next_b_btn_c">
-            <button className="active_btn_blue">SAVE</button>
+            <Button className="active_btn_blue">SAVE</Button>
           </div>
         </div>
       </Modal>
