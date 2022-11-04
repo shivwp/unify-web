@@ -773,12 +773,74 @@ const Screen = () => {
               <Contact />
               <Contact />
             </Col>
-            <Col lg={6}>
+            <Col
+              lg={6}
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "space-between",
+              }}
+            >
               <div className="chat-ul-area">
                 <Message dir={`left`} />
                 <Message dir={`right`} />
                 <Message dir={`left`} />
                 <Message dir={`right`} />
+              </div>
+              <div>
+                <div className="d-flex align-items-center">
+                  <div className="file_link_cbtn">
+                    <button
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                      }}
+                    >
+                      <Form.Label
+                        className="d-flex align-items-center justify-content-center"
+                        htmlFor="attact_file_inp"
+                      >
+                        <Form.Control
+                          type="file"
+                          id="attact_file_inp"
+                          style={{
+                            visibility: "hidden",
+                            position: "absolute",
+                            width: "1px",
+                            height: "1px",
+                          }}
+                        />
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="34.801"
+                          height="54.57"
+                          viewBox="0 0 44.801 64.57"
+                        >
+                          <g id="attachment" transform="translate(-65.607)">
+                            <g
+                              id="Group_2505"
+                              data-name="Group 2505"
+                              transform="translate(65.607)"
+                            >
+                              <path
+                                id="Path_4515"
+                                data-name="Path 4515"
+                                d="M103.98,6.522V42.178a15.972,15.972,0,1,1-31.944-.021V16.082a9.578,9.578,0,1,1,19.156-.014V41.962a3.211,3.211,0,0,1-6.423.007V12.95H78.341V41.968a9.64,9.64,0,0,0,19.28-.007V16.068A16.083,16.083,0,0,0,81.689,0h-.15A16.069,16.069,0,0,0,65.607,16.082V42.157a22.4,22.4,0,1,0,44.8.02V6.522Z"
+                                transform="translate(-65.607)"
+                                fill="#afafaf"
+                              />
+                            </g>
+                          </g>
+                        </svg>
+                      </Form.Label>
+                    </button>
+                  </div>
+                  <div className="fl_input_chat">
+                    <Form.Control type="text" />
+                    <button>SEND</button>
+                  </div>
+                </div>
               </div>
             </Col>
             <Col lg={3}>

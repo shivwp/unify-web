@@ -88,8 +88,7 @@ const EditDraft = () => {
                 <div className="edit-posting-category">
                   <div className="heading">Categotry</div>
                   <div className="category">
-                    UI/UX Design{" "}
-                    <i className="fa fa-pencil" aria-hidden="true"></i>
+                    UI/UX Design <i className="fa fa-pencil" aria-hidden="true"></i>
                   </div>
                 </div>
 

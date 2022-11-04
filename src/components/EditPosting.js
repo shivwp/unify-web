@@ -89,7 +89,7 @@ const EditPosting = () => {
 
                 {/* catagory start */}
                 <div className="edit-posting-category">
-                  <div className="heading">Categotry</div>
+                  <div className="heading">Category</div>
                   <div className="category">
                     UI/UX Design{" "}
                     <i className="fa fa-pencil" aria-hidden="true"></i>
@@ -176,7 +176,7 @@ const EditPosting = () => {
                 </div>
                 {/* Scop start here */}
                 <div className="edit-posting-category">
-                  <div className="heading">Scop</div>
+                  <div className="heading">Scope</div>
                   <div className="category">
                     Large, More than 6 months, Entry level{" "}
                     <i className="fa fa-pencil" aria-hidden="true"></i>

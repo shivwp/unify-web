@@ -124,6 +124,16 @@ body {
   margin-top: 10px;
 }
 
+.side_nav_active_tab {
+  color: #6d2ef1;
+  border-right: 6px solid #fa61ff !important;
+}
+.side_nav_active_tab a {
+  color: #6d2ef1;
+}
+.side_nav_active_tab svg path {
+  fill: #6d2ef1 !important;
+}
 .font-20 {
   font-size: 20px !important;
 }
@@ -367,8 +377,6 @@ body {
 .slider_get_btn {
   padding: 30px 0px;
 }
-
-
 
 .slider_get_btn button {
   width: 179px;
@@ -1086,7 +1094,7 @@ body {
 }
 
 .border_bx_sec {
-  border: #707070 solid 1px;
+  border: #cdcccc solid 1px;
   padding: 0px 12px;
   margin: 10px 0px;
   margin-top: 0 !important;
@@ -1159,9 +1167,10 @@ body {
 }
 
 .profile_thumb {
+  cursor: pointer;
   position: absolute;
   right: 0;
-  top: 0;
+  top: 60px;
   width: 24px;
   height: 24px;
   border-radius: 50%;
@@ -1169,7 +1178,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #0edf3f;
+  background-color: #fff;
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   -ms-border-radius: 50%;
@@ -1714,6 +1723,14 @@ body {
   font-family: "Poppins";
 }
 
+.label_apra .litt_sm_para {
+  font-size: 16px;
+}
+
+.s_b_r .months_6 {
+  font-size: 15px;
+}
+
 .btn_foot_sec {
   margin-top: 15px;
   border-top: #cbcaca solid 1px;
@@ -1790,7 +1807,7 @@ body {
   -ms-border-radius: 27px;
   -o-border-radius: 27px;
   border: #0777fd solid 1px;
-  padding: 8px 30px;
+  padding: 6px 30px;
   font-size: 15px;
   color: #6d2ef1;
   font-weight: 700;
@@ -2009,10 +2026,10 @@ body {
   border: #6d2ef1 solid 1px;
   width: 100%;
   max-width: 200px;
-  font-size: 10px;
+  font-size: 13px;
   line-height: 13px;
   color: #ffffff;
-  font-weight: 700;
+  font-weight: 600;
   font-family: "Poppins";
 }
 
@@ -2145,6 +2162,14 @@ body {
   font-weight: 600;
   font-family: "Poppins";
 }
+.job_head_s h3 {
+  font-size: 15px;
+  letter-spacing: 0px;
+  line-height: 15px;
+  color: #170048;
+  font-weight: 600;
+  font-family: "Poppins";
+}
 
 .dlex_sk_block {
   display: flex;
@@ -2264,6 +2289,41 @@ body {
   line-height: 16px;
   padding: 12px 30px;
   font-size: 14px;
+}
+
+.milestone_btn_s button {
+  border-radius: 6px;
+  background-color: #6d2ef1;
+  border: #6d2ef1 solid 1px;
+  margin: 0px 2px 20px 0;
+  color: #ffffff;
+  font-weight: 700;
+  font-family: "Poppins";
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  -ms-border-radius: 6px;
+  -o-border-radius: 6px;
+  line-height: 16px;
+  padding: 12px 22px;
+  font-size: 14px;
+}
+@media screen and (max-width: 1024px) {
+  .milestone_btn_s button {
+    border-radius: 6px;
+    background-color: #6d2ef1;
+    border: #6d2ef1 solid 1px;
+    margin: 0px 2px 20px 0;
+    color: #ffffff;
+    font-weight: 700;
+    font-family: "Poppins";
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    -ms-border-radius: 6px;
+    -o-border-radius: 6px;
+    line-height: 16px;
+    padding: 12px 12px;
+    font-size: 14px;
+  }
 }
 
 .pagiantion_node {
@@ -2746,13 +2806,17 @@ body {
   background: #ffffff 0% 0% no-repeat padding-box;
   padding: 25px 20px;
   margin: auto;
-  max-width: 1000px;
+  max-width: 800px;
   width: 100%;
+}
+.sign_in_box {
+  max-width: 700px !important;
+  padding: 25px 30px !important;
 }
 
 .sign_u_head h1 {
   text-align: center;
-  font: normal normal bolder 42px/90px "Poppins-Bold", "Poppins";
+  font: normal normal bolder 40px/90px "Poppins-Bold", "Poppins";
   letter-spacing: -1.05px;
   color: #170048;
   line-height: 50px;
@@ -2904,7 +2968,7 @@ body {
 .input_group {
   display: flex;
   justify-content: space-evenly;
-  margin: 15px 0px;
+  margin: 15px 5px;
 }
 
 .sign_form_sm_head h3 {
@@ -2934,7 +2998,7 @@ body {
 .sign_buttons_group .userType {
   border: 1px solid #9ba0f161;
   background-color: transparent;
-  padding: 13px 20px;
+  padding: 10px 20px;
   text-align: center;
   font: normal normal normal 16px/30px Poppins;
   letter-spacing: 0px;
@@ -2950,7 +3014,7 @@ body {
 .sign_buttons_group .userTypeActive {
   border: 1px solid #9ba0f161;
   background-color: #6d2ef1;
-  padding: 13px 20px;
+  padding: 10px 20px;
   text-align: center;
   font: normal normal normal 16px/30px Poppins;
   letter-spacing: 0px;
@@ -2972,11 +3036,15 @@ body {
 }
 
 .sign_l_n_text label {
-  font: normal normal normal 15px/30px Poppins;
+  font: normal normal normal 12px/30px Poppins;
   letter-spacing: 0px;
   color: #170048;
   margin-left: 10px;
   line-height: 16px;
+}
+
+.sign_legal_not {
+  margin-left: 28px;
 }
 
 .sign_l_n_text span {
@@ -2999,7 +3067,7 @@ body {
   border-radius: 47px;
   border: #170048;
   line-height: 40px !important;
-  padding: 12px 0px;
+  padding: 8px 0px;
   max-width: 320px;
   width: 100%;
   -webkit-border-radius: 47px;
@@ -3009,7 +3077,7 @@ body {
 }
 
 .sign_w_full button {
-  width: 100% !important;
+  width: 90% !important;
   max-width: 100% !important;
 }
 
@@ -3043,15 +3111,16 @@ body {
 }
 
 .sign_in_social_btn button {
-  font: normal normal normal 16px/30px Poppins;
+  font: normal normal normal 15px/30px Poppins;
   letter-spacing: 0px;
   color: #ffffff;
-  padding: 8px 0px;
+  padding: 0px 0px;
   display: flex;
   align-items: center;
   justify-content: center;
   text-transform: capitalize;
   margin: 5px 15px;
+  font-weight: 300;
 }
 
 .sign_in_social_btn button.apple_btn {
@@ -3327,12 +3396,12 @@ body {
   margin: 0px 10px;
   background-color: transparent;
   border-radius: 50px;
-  height: 45px;
+  height: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
   border: 1px solid #d4d4d5;
-  width: 45px;
+  width: 40px;
   -webkit-border-radius: 50px;
   -moz-border-radius: 50px;
   -ms-border-radius: 50px;
@@ -3442,7 +3511,7 @@ body {
 .subscription_box_r {
   border: 1px solid #6d2ef1;
   border-radius: 20px;
-  padding: 45px 30px;
+  padding: 45px 30px 20px 30px;
   position: relative;
   text-align: left;
   -webkit-border-radius: 20px;
@@ -3499,17 +3568,18 @@ body {
 .sub_list_ul {
   list-style: none;
   padding: 0;
-  padding: 15px 0px;
+  /* padding: 15px 0px; */
 }
 
 .sub_list_ul li {
-  font: normal normal normal 16px/22px Poppins;
+  font: normal normal normal 13px/22px Poppins;
   letter-spacing: 0px;
   color: #9c9c9c;
-  padding: 5px 0px;
+  padding: 2px 0px;
   position: relative;
   padding-left: 25px;
   display: flex;
+  line-height: 17px;
   align-items: center;
 }
 
@@ -3526,7 +3596,7 @@ body {
 .btn_chose_pl {
   background: #6d2ef1;
   border-radius: 60px;
-  padding: 18px 0px;
+  padding: 12px 0px;
   width: 230px;
   border: #6d2ef1 solid;
   -webkit-border-radius: 60px;
@@ -3535,7 +3605,7 @@ body {
   -o-border-radius: 60px;
   color: #ffffff;
   text-transform: uppercase;
-  font: normal normal 800 20px/20px Poppins;
+  font: normal normal 600 20px/20px Poppins;
 }
 
 .form_box_bor {
@@ -3754,7 +3824,7 @@ body {
   background-color: #eaeef2;
   border-radius: 60px;
   border: #eaeef2 solid;
-  padding: 9px 12px;
+  padding: 2px 12px;
   margin-top: 5px;
   margin-bottom: 5px;
   -webkit-border-radius: 60px;
@@ -3820,6 +3890,16 @@ body {
   font-size: 18px;
   width: 100%;
   text-align: right;
+}
+
+.input_from_tlab input::-webkit-outer-spin-button,
+.input_from_tlab input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.input_from_tlab input[type="number"] {
+  -moz-appearance: textfield;
 }
 
 .ft_form_linki {
@@ -4853,4 +4933,201 @@ a {
 
 .my_reports_ .report_name .report_time {
   font-size: 14px;
+}
+
+.testimonial_bg {
+  font-family: "Poppins-Bold", "Poppins";
+}
+.testimonial_container {
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 650px;
+  width: 95%;
+  padding: 20px;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  min-height: 200px;
+  /* max-height: 98vh; */
+}
+.testimonial_bg .testimonial_heading {
+  max-width: 650px;
+  width: 95%;
+  display: flex;
+  justify-content: center;
+}
+
+@media screen and (max-width: 425px) {
+  .testimonial_heading h2 {
+    font-size: 20px;
+  }
+}
+
+.testimonial_container {
+  display: unset;
+}
+.testimonial_container .about_requester {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.testimonial_container .testimonial_about {
+  font-size: 14px;
+  font-weight: 500;
+  margin-left: 10px;
+}
+.testimonial_container .testimonial_about .test_name {
+  color: #6d2ef1;
+}
+.testimonial_container .testimonial_about .test_designation {
+  color: rgb(55, 54, 54);
+}
+
+.testimonial_container .about_requester .testimonial_img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50px;
+  overflow: hidden;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  -ms-border-radius: 50px;
+  -o-border-radius: 50px;
+}
+
+.testimonial_container .about_requester .testimonial_img img {
+  height: 100%;
+  border: 1px solid #707070;
+  width: 100%;
+  border-radius: 50px;
+  object-fit: cover;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  -ms-border-radius: 50px;
+  -o-border-radius: 50px;
+}
+
+.submit_testimo_inp {
+  margin-top: 25px;
+}
+.submit_testimo_inp label {
+  font-size: 13px;
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 6px;
+}
+
+.submit_testimo_inp textarea {
+  width: 100%;
+  height: 110px;
+  resize: none;
+  border: 1px solid rgb(190, 190, 190);
+  outline: none;
+  font-size: 12px;
+  padding: 10px;
+}
+.submit_testimo_inp textarea::placeholder {
+  font-size: 12px;
+}
+.your_info {
+  margin: 35px 0;
+}
+
+.your_info .heading {
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+.your_info .name,
+.your_info .title {
+  display: flex;
+  font-size: 14px;
+  align-items: center;
+  justify-content: space-between;
+}
+.your_info .edit_name,
+.your_info .edit_title {
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  width: 100%;
+}
+.your_info .name span,
+.your_info .title span {
+  width: 50%;
+}
+
+.your_info .edit_name input,
+.your_info .edit_title input {
+  border: 1px solid #c9c8c8;
+  outline: none;
+  margin: 5px 0;
+  height: 40px;
+  padding: 0 10px;
+}
+
+.your_info .heading a {
+  font-weight: 500;
+  color: #6d2ef1;
+  margin-left: 10px;
+}
+.your_info .heading a:hover {
+  color: #2e72f1;
+}
+.testimonial_btn {
+  margin: 10px 0;
+}
+.testimonial_btn button {
+  min-width: 160px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  background-color: #6d2ef1;
+  font-weight: 600;
+  border-radius: 20px !important;
+  text-transform: uppercase;
+  padding: 8px 40px;
+  margin-top: 5px;
+  margin-right: 15px;
+  border: #6d2ef1 solid 1px;
+  -webkit-border-radius: 60px !important;
+}
+.testimonial_info_btn button {
+  min-width: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #6d2ef1;
+  background-color: #fff;
+  font-weight: 600;
+  border-radius: 20px !important;
+  text-transform: uppercase;
+  padding: 6px 45px;
+  margin-top: 5px;
+  margin-right: 15px;
+  border: #6d2ef1 solid 1px;
+  -webkit-border-radius: 60px !important;
+}
+.testimonial_info_btn button:hover {
+  min-width: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  background-color: #6d2ef1;
+  font-weight: 600;
+  border-radius: 20px !important;
+  text-transform: uppercase;
+  padding: 6px 45px;
+  margin-top: 5px;
+  margin-right: 15px;
+  border: #6d2ef1 solid 1px;
+  -webkit-border-radius: 60px !important;
+}
+
+.testimonial_info {
+  font-size: 12px;
+  max-width: 650px;
+  width: 95%;
+  margin-top: 6px;
 }

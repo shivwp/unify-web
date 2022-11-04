@@ -2,7 +2,6 @@ import { Col, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-
 const Screen = (props) => {
   return (
     <>
@@ -12,7 +11,12 @@ const Screen = (props) => {
             Sort By
           </div>
           <Form.Select>
-            <option>All</option>
+            <option>Best match</option>
+            <option>Newest applicants</option>
+            <option>Oldest applicants</option>
+            <option>Highest hourly rate</option>
+            <option>Lowest hourly rate</option>
+            <option>Highest earnings</option>
           </Form.Select>
         </div>
         <div className="search_input_in selec_inp_ful_w">

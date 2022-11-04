@@ -49,12 +49,12 @@ const NavbarHeader = (props) => {
           <Link to="/">BROWSE JOBS</Link>
         </div>
         <div className="logout_btn_mob">
-          <Link to={`/Signin`}>
+          <Link to={`/signin`}>
             <button>Login</button>
           </Link>
         </div>
         <div className="logout_btn_mob">
-          <Link to={`/Signup`}>
+          <Link to={`/signup`}>
             <button>Sign Up</button>
           </Link>
         </div>

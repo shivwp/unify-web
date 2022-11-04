@@ -707,7 +707,7 @@ const Screen = () => {
                 </div>
               </div>
             </div>
-            <Row>
+            {/* <Row>
               <Col lg={4} md={6} className="dboard_box_mr_mbo mb-3">
                 <div>
                   <div className="d-flex justify-content-between">
@@ -761,7 +761,7 @@ const Screen = () => {
                   <ProfilePayment />
                 </div>
               </Col>
-            </Row>
+            </Row> */}
             <div className="d-flex box_ylow_dboard flex-wrap mt-5 pt-3 mb-5">
               <div className="bylow_iconbox">
                 <svg
@@ -830,7 +830,7 @@ const Screen = () => {
                   <div className="d-flex justify-content-between mb-3">
                     <div className="dcard_htext">Projects</div>
                     <div className="dcard_ltxt">
-                      <Link to="/">Manage Projects</Link>
+                      <Link to="/freelancer/milestone-earning">Manage Projects</Link>
                     </div>
                   </div>
                   <div className="overflow-scroll">

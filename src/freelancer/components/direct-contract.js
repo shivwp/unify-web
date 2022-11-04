@@ -2,6 +2,7 @@ import { useState } from "react";
 import Container from "react-bootstrap/Container";
 import Title from "../../components/title";
 import { Link } from "react-router-dom";
+import "../../styles/freelancer.css";
 import Select from "react-select";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
@@ -32,31 +33,42 @@ const Popup = (props) => {
             </div>
           </div>
           <div className="popup_body_bpn">
-            <Form.Group className="popup_form_element">
-              <Form.Label>Client's Email Address</Form.Label>
-              <Form.Control type="email" />
-            </Form.Group>
-            <Form.Group className="popup_form_element">
-              <Form.Label>Contract Name</Form.Label>
-              <Form.Control type="text" />
-            </Form.Group>
-            <Form.Group className="popup_form_element">
-              <Form.Label>Description</Form.Label>
-              <Form.Control as="textarea"></Form.Control>
-            </Form.Group>
-            <Form.Group className="popup_form_element">
-              <Form.Label>Contract Type</Form.Label>
+            <div className="popup_form_element">
+              <Form.Label style={{ color: "#000" }}>
+                Client's Email Address
+              </Form.Label>
+              <Form.Control style={{ fontSize: 14 }} type="email" />
+            </div>
+            <div className="popup_form_element">
+              <Form.Label style={{ color: "#000" }}>Contract Name</Form.Label>
+              <Form.Control style={{ fontSize: 14 }} type="text" />
+            </div>
+            <div className="popup_form_element">
+              <Form.Label style={{ color: "#000" }}>Description</Form.Label>
+              <Form.Control
+                as="textarea"
+                style={{ fontSize: 14 }}
+              ></Form.Control>
+            </div>
+            <div className="popup_form_element">
+              <Form.Label style={{ color: "#000" }}>Contract Type</Form.Label>
               <div className="d-flex align-items-center">
-                <Form.Label className="popup_radio_element">
+                <Form.Label
+                  style={{ color: "#000" }}
+                  className="popup_radio_element"
+                >
                   <Form.Check type="radio" />
                   Hourly
                 </Form.Label>
-                <Form.Label className="popup_radio_element">
+                <Form.Label
+                  style={{ color: "#000" }}
+                  className="popup_radio_element"
+                >
                   <Form.Check type="radio" />
                   Fixed Price
                 </Form.Label>
               </div>
-            </Form.Group>
+            </div>
             <div className="popup_btns_new flex-wrap">
               <Button
                 onClick={() => {
@@ -110,15 +122,15 @@ const AmountPopup = (props) => {
             <div className="popup_form_element">
               <Select className="" placeholder="Milestone" options={options1} />
             </div>
-            <Form.Group className="popup_form_element">
+            <div className="popup_form_element">
               <Form.Label>Milestone 1</Form.Label>
               <Form.Control type="text" placeholder="Name of milestone" />
-            </Form.Group>
-            <Form.Group className="popup_form_element">
+            </div>
+            <div className="popup_form_element">
               <Form.Label>Milestone 2</Form.Label>
               <Form.Control type="text" placeholder="Name of milestone" />
-            </Form.Group>
-            <Form.Group className="popup_form_element">
+            </div>
+            <div className="popup_form_element">
               <Form.Label>Amount</Form.Label>
               <div className="ps-relative">
                 <Form.Control type="text" />
@@ -134,13 +146,13 @@ const AmountPopup = (props) => {
                   viewBox="0 0 16 16"
                 >
                   <path
-                    fillRule="evenodd"
+                    fill-rule="evenodd"
                     d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"
                   ></path>
                 </svg>{" "}
                 Add milestone
               </Form.Label>
-            </Form.Group>
+            </div>
             <div className="total_box_oioup">
               <div className="flex_jus_cen_new free_unofy_smtext">
                 <div>3.4% Unify Fee</div>
@@ -153,6 +165,7 @@ const AmountPopup = (props) => {
             </div>
             <div className="popup_btns_new flex-wrap cwiewyehkk">
               <Button
+                style={{ padding: "11px 35px" }}
                 className="trans_btn"
                 onClick={() => {
                   props.Popup(<Popup Popup={props.Popup} />);
@@ -161,7 +174,7 @@ const AmountPopup = (props) => {
                 BACK
               </Button>
               <Link to="/freelancer/project-detail">
-                <Button>NEXT</Button>
+                <Button style={{ padding: "11px 35px" }}>SEND CONTRACT</Button>
               </Link>
             </div>
           </div>

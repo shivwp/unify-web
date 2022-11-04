@@ -44,12 +44,12 @@ const ResetPass = () => {
                   className="fa fa-eye-slash showInpPass"
                   onClick={() => setHidePass(!hidePass)}
                   aria-hidden="true"
-                  style={{ top: 9 }}
+                  style={{ top: 48 }}   
                 ></i>
               ) : (
                 <i
                   className="fa fa-eye showInpPass"
-                  style={{ top: 9 }}
+                  style={{ top: 48 }}   
                   onClick={() => setHidePass(!hidePass)}
                   aria-hidden="true"
                 ></i>

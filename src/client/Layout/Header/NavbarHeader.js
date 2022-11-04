@@ -4,12 +4,17 @@ import Navbar from "react-bootstrap/Navbar";
 import logo from "../../../assets/logo.svg";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
+import Button from 'react-bootstrap/Button';
+import { onOnlineStatus } from "../../../redux/actions/authActions";
 
 const Header = (props) => {
+  const dispatch = useDispatch();
   const [navOpen, SetnavOpen] = useState(false);
   const [activeNav, SetactiveNav] = useState("");
   const [isDownOpen, SetisDownOpen] = useState(false);
+  let userDetails = JSON.parse(localStorage.getItem("unify_user"));
 
   function ToggleNav() {
     SetnavOpen(!navOpen);
@@ -22,6 +27,18 @@ const Header = (props) => {
   function ToggleDown() {
     SetisDownOpen(!isDownOpen);
   }
+
+  const handleOnlineStatus = (e) => {
+    const data = {
+      online_status: e.target.value,
+    };
+
+    userDetails.online_status = e.target.value;
+    localStorage.setItem("unify_user", JSON.stringify(userDetails));
+
+    dispatch(onOnlineStatus(data));
+  };
+
   const MenuDown = () => {
     return (
       <>
@@ -163,18 +180,18 @@ const Header = (props) => {
                   </svg>
                 </Link>
 
-                <Nav.Link as={Link} to="/notification" className="navbar_btn">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="21"
-                      height="21"
-                      fill="currentColor"
-                      className="bi bi-bell"
-                      viewBox="0 0 16 16"
-                    >
-                      <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zM8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z" />
-                    </svg>
-                </Nav.Link>
+                <Link className="navbar_btn" to="/notification">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="21"
+                    height="21"
+                    fill="currentColor"
+                    className="bi bi-bell"
+                    viewBox="0 0 16 16"
+                  >
+                    <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zM8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z" />
+                  </svg>
+                </Link>
                 <div className="nav_pro_node">
                   <div className="nav_profile online_profile">
                     <img
@@ -197,8 +214,28 @@ const Header = (props) => {
                     <div className="pro_name_drop_u">John Doe</div>
                     <div className="pro_o_nme">Client</div>
                     <div className="drop_p_o_i">
-                      <button className="active_drop_poi">Online</button>
-                      <button>Invisible</button>
+                      <button
+                        className={
+                          userDetails?.online_status === "online"
+                            ? "active_drop_poi"
+                            : ""
+                        }
+                        value="online"
+                        onClick={handleOnlineStatus}
+                      >
+                        Online
+                      </button>
+                      <button
+                        className={
+                          userDetails?.online_status === "invincible"
+                            ? "active_drop_poi"
+                            : ""
+                        }
+                        value="invincible"
+                        onClick={handleOnlineStatus}
+                      >
+                        Invisible
+                      </button>
                     </div>
                     <div className="drop_li_poi">
                       <svg
@@ -309,7 +346,7 @@ const Header = (props) => {
                     </NavDropdown>
                   </div>
                   {/* <Nav.Link className="active_btn logout_btn_nav">
-                    <Link to="/Signin">Logout</Link>
+                    <Link to="/signin">Logout</Link>
                   </Nav.Link> */}
                   <Nav.Link as={Link} to="/help-support" className="navbar_btn">
                       <svg
@@ -373,8 +410,28 @@ const Header = (props) => {
                       <div className="pro_name_drop_u">John Doe</div>
                       <div className="pro_o_nme">Client</div>
                       <div className="drop_p_o_i">
-                        <button className="active_drop_poi">Online</button>
-                        <button>Invisible</button>
+                        <button
+                          className={
+                            userDetails?.online_status === "online"
+                              ? "active_drop_poi"
+                              : ""
+                          }
+                          value={"online"}
+                          onClick={handleOnlineStatus}
+                        >
+                          Online
+                        </button>
+                        <button
+                          className={
+                            userDetails?.online_status === "invisible"
+                              ? "active_drop_poi"
+                              : ""
+                          }
+                          onClick={handleOnlineStatus}
+                          value={"invisible"}
+                        >
+                          Invisible
+                        </button>
                       </div>
                       <div className="drop_li_poi">
                         <svg

@@ -116,7 +116,7 @@ const LifeBilledScreen = () => {
 
 const Screen = () => {
   Title(" | Billings & Earnings");
-  const [tab, SetTab] = useState(<TBLScreen />);
+  const [tab, setTab] = useState(1);
   const [tabActive, SetTabActive] = useState("tblscreen");
 
   return (
@@ -143,9 +143,14 @@ const Screen = () => {
                       endDate: "3/1/2014",
                     }}
                   >
-                    <input />
+                    <input id="datePickerInp" />
                   </DateRangePicker>
-                  <div className="cal_icon_psr_abs">
+                  <div
+                    className="cal_icon_psr_abs"
+                    onClick={() => {
+                      document.getElementById("datePickerInp").focus();
+                    }}
+                  >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="16"
@@ -159,7 +164,7 @@ const Screen = () => {
                     </svg>
                   </div>
                 </div>
-              </div> 
+              </div>
               <div className="btn_group_be">
                 <Button
                   className={`st_bgbe ${
@@ -167,7 +172,6 @@ const Screen = () => {
                   }`}
                   onClick={() => {
                     SetTabActive("tblscreen");
-                    SetTab(<TBLScreen />);
                   }}
                 >
                   Billings & Earnings
@@ -178,7 +182,6 @@ const Screen = () => {
                   }`}
                   onClick={() => {
                     SetTabActive("earning");
-                    SetTab(<LifeBilledScreen />);
                   }}
                 >
                   Lifetime Billed
@@ -192,32 +195,45 @@ const Screen = () => {
             </div>
             <Row className="w-100">
               <Col lg={3}>
-                <div className="bxo_be_nac active_bxo_nxc">
+                <div
+                  onClick={() => setTab(1)}
+                  className={`bxo_be_nac ${tab == 1 && "active_bxo_nxc"}`}
+                >
+                  <div className="bxo_be_nam">
+                    UI / UX Bord Design And Wireframe
+                  </div>
+                  <div className="bxo_be_pri ">$100.00</div>
+                </div>
+                <div
+                  onClick={() => setTab(2)}
+                  className={`bxo_be_nac ${tab == 2 && "active_bxo_nxc"}`}
+                >
                   <div className="bxo_be_nam">
                     UI / UX Bord Design And Wireframe
                   </div>
                   <div className="bxo_be_pri">$100.00</div>
                 </div>
-                <div className="bxo_be_nac">
+                <div
+                  onClick={() => setTab(3)}
+                  className={`bxo_be_nac ${tab == 3 && "active_bxo_nxc"}`}
+                >
                   <div className="bxo_be_nam">
                     UI / UX Bord Design And Wireframe
                   </div>
                   <div className="bxo_be_pri">$100.00</div>
                 </div>
-                <div className="bxo_be_nac">
-                  <div className="bxo_be_nam">
-                    UI / UX Bord Design And Wireframe
-                  </div>
-                  <div className="bxo_be_pri">$100.00</div>
-                </div>
-                <div className="bxo_be_nac">
+                <div
+                  onClick={() => setTab(4)}
+                  className={`bxo_be_nac ${tab == 4 && "active_bxo_nxc"}`}
+                >
                   <div className="bxo_be_nam">
                     UI / UX Bord Design And Wireframe
                   </div>
                   <div className="bxo_be_pri">$100.00</div>
                 </div>
               </Col>
-              {tab}
+              {tabActive == "tblscreen" && <TBLScreen />}
+              {tabActive == "earning" && <LifeBilledScreen />}
             </Row>
           </div>
         </div>
