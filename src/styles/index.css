@@ -87,10 +87,19 @@ body {
   -ms-border-radius: 30px;
   -o-border-radius: 30px;
 }
-
-.logout_btn_nav {
-  font-weight: 700 !important;
+.logout_btn_nav{
+  font-weight: 500 !important;
   margin: 0px 20px !important;
+  background-color: #170048;
+  color: #fff;
+  font-weight: 600;
+  padding: 8px 20px;
+  border-radius: 30px;
+  -webkit-border-radius: 30px;
+}
+.logout_btn_nav:hover {
+  background-color: #fff !important;
+  color: #170048 !important;
 }
 
 .active_btn:hover {
