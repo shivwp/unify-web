@@ -5,6 +5,8 @@ import ReviewProposal from "../../../../components/ReviewProposal/all";
 import Hire from "../../../../components/Hire/all";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
+import Button from 'react-bootstrap/Button'
 
 const ViewScreen = () => {
   let { screen } = useParams();
@@ -43,14 +45,14 @@ const ViewScreen = () => {
           </div>
           <div>
             <div className="vj_r_link">
-              <a href="#0">Reach 6x more Top Rated Talent</a>
+              <Link to="#0">Reach 6x more Top Rated Talent</Link>
             </div>
             <div className="vj_r_sm_t">Upgrade this job</div>
           </div>
         </div>
         <div className="overflow-scroll">
           <div className="d-flex flex-wrap tab_m_nodea mt-4 tab_scroll_cont">
-            <button
+            <Button
               className={`tab_btn_vs ${
                 TabActive === "view_job" ? "active_bvs" : ""
               }`}
@@ -59,8 +61,8 @@ const ViewScreen = () => {
               }}
             >
               View Job Post
-            </button>
-            <button
+            </Button>
+            <Button
               className={`tab_btn_vs ${
                 TabActive === "invite" ? "active_bvs" : ""
               }`}
@@ -69,8 +71,8 @@ const ViewScreen = () => {
               }}
             >
               Invite freelancers
-            </button>
-            <button
+            </Button>
+            <Button
               className={`tab_btn_vs ${
                 TabActive === "review" ? "active_bvs" : ""
               }`}
@@ -79,8 +81,8 @@ const ViewScreen = () => {
               }}
             >
               Review proposals
-            </button>
-            <button
+            </Button>
+            <Button
               className={`tab_btn_vs ${
                 TabActive === "hire" ? "active_bvs" : ""
               }`}
@@ -89,7 +91,7 @@ const ViewScreen = () => {
               }}
             >
               Hire
-            </button>
+            </Button>
           </div>
         </div>
         {Tab}

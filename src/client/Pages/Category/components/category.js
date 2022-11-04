@@ -2,6 +2,7 @@ import Container from "react-bootstrap/Container";
 import { Col, Row } from "react-bootstrap";
 import Title from "../../../../components/title";
 import { Link } from "react-router-dom";
+import Button from 'react-bootstrap/Button'
 
 const Category = () => {
   Title(" | category");
@@ -209,17 +210,17 @@ const Category = () => {
             </Col>
           </Row>
           <div className="some_el_cr">
-            Looking for something else? <a href="/">See more skills</a>
+            Looking for something else? <Link to="/">See more skills</Link>
           </div>
           <div className="btn_foot_sec no-border d-flex flex-wrap">
             <Link to="/create-category">
               <div className="fo_btn_c next_b_btn_c">
-                <button>Back</button>
+                <Button>Back</Button>
               </div>
             </Link>
             <Link to="/question1">
               <div className="fo_btn_c next_b_btn_c">
-                <button className="active_btn_blue">Next</button>
+                <Button className="active_btn_blue">Next</Button>
               </div>
             </Link>
           </div>

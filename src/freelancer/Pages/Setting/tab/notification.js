@@ -5,12 +5,16 @@ import Title from "../../../../components/title";
 import Checkbox from "react-custom-checkbox";
 import * as Icon from "react-icons/fi";
 import Select from "react-select";
+import Form from "react-bootstrap/Form";
 
 const Screen = () => {
   Title(" | Notification Setting");
-  const options1 = [{
-    name:'All Activity',label:'All Activity'
-  }]
+  const options1 = [
+    {
+      name: "All Activity",
+      label: "All Activity",
+    },
+  ];
   return (
     <div className="bg-f2f8ff min_pad_m">
       <Container>
@@ -30,9 +34,9 @@ const Screen = () => {
                 <div className="w-100 mt-3 mb-2">
                   <div className="d-flex flex-wrap justify-content-between w-100">
                     <div className="select_fex_lbelx select_no_bder">
-                      <label className="label_cnwy">
+                      <Form.Label className="label_cnwy">
                         Show notifications for
-                      </label>
+                      </Form.Label>
                       <Select
                         className="select_cscew p-0"
                         placeholder="All Activity"
@@ -40,9 +44,9 @@ const Screen = () => {
                       />
                     </div>
                     <div className="select_fex_lbelx select_no_bder">
-                      <label className="label_cnwy">
+                      <Form.Label className="label_cnwy">
                         Show notifications for
-                      </label>
+                      </Form.Label>
                       <Select
                         className="select_cscew p-0"
                         placeholder="All Activity"
@@ -78,9 +82,9 @@ const Screen = () => {
                 <div className="w-100 mt-3 mb-2">
                   <div className="d-flex flex-wrap justify-content-between w-100">
                     <div className="select_fex_lbelx select_no_bder">
-                      <label className="label_cnwy">
+                      <Form.Label className="label_cnwy">
                         Send an email with unread activity for
-                      </label>
+                      </Form.Label>
                       <Select
                         className="select_cscew p-0"
                         placeholder="All Activity"
@@ -88,7 +92,7 @@ const Screen = () => {
                       />
                     </div>
                     <div className="select_fex_lbelx select_no_bder">
-                      <label className="label_cnwy"></label>
+                      <Form.Label className="label_cnwy"></Form.Label>
                       <Select
                         className="select_cscew p-0"
                         placeholder="Every 15 minutes"

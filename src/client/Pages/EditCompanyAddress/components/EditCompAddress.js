@@ -2,6 +2,8 @@ import React from "react";
 import { Col, Row } from "react-bootstrap";
 import Container from "react-bootstrap/Container";
 import { Link } from "react-router-dom";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
 
 const EditCompAddress = () => {
   return (
@@ -32,18 +34,18 @@ const EditCompAddress = () => {
                 <div className="_payment_methods">
                   <ul className="setting_pay_inp">
                     <li>
-                      <input type="radio" name="p" /> Payment card
+                      <Form.Check type="radio" name="p" /> Payment card
                     </li>
                     <li>
-                      <input type="radio" name="p" />{" "}
+                      <Form.Check type="radio" name="p" />{" "}
                       <img src="/assets/paypal.png" alt="" />
                     </li>
                   </ul>
                 </div>
                 <div className="payment_btn">
-                  <button type="button" className="pay_with_btn">
+                  <Button type="button" className="pay_with_btn">
                     Pay With PayPal
-                  </button>
+                  </Button>
                 </div>
               </div>
               <p className="_payment_alert">
@@ -95,9 +97,17 @@ const EditCompAddress = () => {
                 </div>
               </div>
               <div className="find_and_hire_button Edit_Addr">
-                <button type="button" className="find_contact" style={{padding: "10px 20px", fontSize: "13px", fontWeight: 600}}>
+                <Button
+                  type="button"
+                  className="find_contact"
+                  style={{
+                    padding: "10px 20px",
+                    fontSize: "13px",
+                    fontWeight: 600,
+                  }}
+                >
                   Find Contact & Hire
-                </button>
+                </Button>
               </div>
             </div>
           </Col>

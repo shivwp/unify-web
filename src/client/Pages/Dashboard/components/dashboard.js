@@ -3,6 +3,7 @@ import Title from "../../../../components/title";
 import $ from "jquery";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import Button from 'react-bootstrap/Button'
 
 import RemovePostingPopup from "../../../../popups/RemovePostingPopup";
 import RemoveDraftPopup from "../../../../popups/RemoveDraftPopup";
@@ -36,14 +37,14 @@ const Screen = () => {
             <div className="my_job_sm_text">Marina Pokhilko</div>
           </div>
           <div className="post_job_btn_m d-flex align-items-center flex-wrap">
-            <button className="trans_btn_myjo mr_btn mt-2">
+            <Button className="trans_btn_myjo mr_btn mt-2">
               Browse Project Catalog
-            </button>
+            </Button>
             <Link to="/gettingstarted">
-              <button className="mt-2 border_blue_wwifth">Post A Job</button>
+              <Button className="mt-2 border_blue_wwifth">Post A Job</Button>
             </Link>
             <Link to="/expandteam">
-              <button className="ml_btn trans_btn_myjo blue_coloe_brn mt-2">
+              <Button className="ml_btn trans_btn_myjo blue_coloe_brn mt-2">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"
@@ -58,7 +59,7 @@ const Screen = () => {
                     d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z"
                   />
                 </svg>
-              </button>
+              </Button>
             </Link>
           </div>
         </div>
@@ -66,7 +67,7 @@ const Screen = () => {
           <div className="d-flex justify-content-between align-items-center pb-3 b-bottom-gr">
             <div className="headin_yourp_b">Your Postings</div>
             <div className="see_ps_ing">
-              <a href="#0">See all postings</a>
+              <Link to="#0">See all postings</Link>
             </div>
           </div>
           <div className="my_job_flx">
@@ -90,7 +91,7 @@ const Screen = () => {
               </div>
             </div>
             <div className="text-right d-flex flex-wrap menu_btn">
-              <button className="toggle_btn_dot" onClick={openMenuBarPosting}>
+              <Button className="toggle_btn_dot" onClick={openMenuBarPosting}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"
@@ -101,7 +102,7 @@ const Screen = () => {
                 >
                   <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
                 </svg>
-              </button>
+              </Button>
 
               {menuBarPosting && (
                 <div className="menu_bar" id="menu_bar1">
@@ -130,7 +131,7 @@ const Screen = () => {
           <div className="d-flex justify-content-between align-items-center pb-3 b-bottom-gr">
             <div className="headin_yourp_b">Your Drafts</div>
             <div className="see_ps_ing">
-              <a href="#0">See all drafts</a>
+              <Link to="#0">See all drafts</Link>
             </div>
           </div>
           <div className="my_job_flx">
@@ -141,7 +142,7 @@ const Screen = () => {
               <div className="my_job_pos_tme">Saved 25 min ago</div>
             </div>
             <div className="text-right d-flex flex-wrap menu_btn">
-              <button className="toggle_btn_dot" onClick={openMenuBarDraft}>
+              <Button className="toggle_btn_dot" onClick={openMenuBarDraft}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"
@@ -152,7 +153,7 @@ const Screen = () => {
                 >
                   <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
                 </svg>
-              </button>
+              </Button>
               {menuBarDraft && (
                 <div className="menu_bar" id="menu_bar2">
                   <div className="navabr_t_li">
@@ -193,7 +194,7 @@ const Screen = () => {
                   viewBox="0 0 16 16"
                 >
                   <path
-                    fill-rule="evenodd"
+                    fillRule="evenodd"
                     d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"
                   ></path>
                 </svg>
@@ -212,7 +213,7 @@ const Screen = () => {
                   send an invite to reach out to people directly.)
                 </div>
                 <div className="my_job_pos_tme inner_a_sty">
-                  <a href="#0">Check out examples of effective job posts</a>
+                  <Link to="#0">Check out examples of effective job posts</Link>
                 </div>
               </div>
             </div>
@@ -250,10 +251,10 @@ const Screen = () => {
                   relationships with talent in a way that helps you both grow.
                 </div>
                 <div className="my_job_pos_tme inner_a_sty">
-                  <a href="#0">
+                  <Link to="#0">
                     Read about payment protections, billing methods, taxes, and
                     more
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -264,7 +265,7 @@ const Screen = () => {
             <div>
               <div className="my_job_a job_na_bol">Questions?</div>
               <div className="my_job_pos_tme inner_a_sty">
-                Visit our <a href="#0">Help Center</a> to learn more tips for
+                Visit our <Link to="#0">Help Center</Link> to learn more tips for
                 finding the right talent.
               </div>
             </div>

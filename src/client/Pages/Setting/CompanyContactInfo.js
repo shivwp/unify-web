@@ -3,6 +3,8 @@ import "../../../styles/accountInfo.css";
 import { Row, Col } from "react-bootstrap";
 import Select from "react-select";
 import CloseAccountPopup from "../../../popups/CloseAccountPopup";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
 
 const CompanyContactInfo = () => {
   const options1 = [{ name: "india", label: "india" }];
@@ -16,78 +18,93 @@ const CompanyContactInfo = () => {
         </div>
         <div className="acc_form">
           <Row>
-            <Col lg-6 sm-12 md-12>
-              <div className="inp_fields">
-                <span>Owner Email</span>
-                <input
+            <Col lg={6} sm={12} md={12}>
+              <Form.Group className="inp_fields">
+                <Form.Label>Owner Email</Form.Label>
+                <Form.Control
                   type="text"
                   name="owner-email"
                   id="owner-email"
                   placeholder="Ankita Kumavat"
                 />
-              </div>
-              <div className="inp_fields">
-                <span>VAT ID</span>
+              </Form.Group>
+              <Form.Group className="inp_fields">
+                <Form.Label>VAT ID</Form.Label>
                 <Select
                   className="custom_css_select"
                   placeholder=""
                   options={options1}
                 />
-              </div>
-              <div className="inp_fields">
-                <span>Country</span>
+              </Form.Group>
+              <Form.Group className="inp_fields">
+                <Form.Label>Country</Form.Label>
                 <Select
                   className="custom_css_select"
                   placeholder="india"
                   options={options1}
                 />
-              </div>
-              <div className="inp_fields">
-                <span>City</span>
+              </Form.Group>
+              <Form.Group className="inp_fields">
+                <Form.Label>City</Form.Label>
                 <Select
                   className="custom_css_select"
                   placeholder=""
                   options={options1}
                 />
-              </div>
+              </Form.Group>
             </Col>
-            <Col lg-6 sm-12 md-12>
-              <div className="inp_fields">
-                <span>Phone</span>
-                <input type="text" name="phone" id="phone" placeholder="" />
-              </div>
-              <div className="inp_fields">
-                <span>Time Zone</span>
+            <Col lg={6} sm={12} md={12}>
+              <Form.Group className="inp_fields">
+                <Form.Label>Phone</Form.Label>
+                <Form.Control
+                  type="text"
+                  name="phone"
+                  id="phone"
+                  placeholder=""
+                />
+              </Form.Group>
+              <Form.Group className="inp_fields">
+                <Form.Label>Time Zone</Form.Label>
                 <Select
                   className="custom_css_select"
                   placeholder=""
                   options={options1}
                 />
-              </div>
-              <div className="inp_fields">
-                <span>Address</span>
-                <input type="text" name="address" id="address" placeholder="" />
-              </div>
-              <div className="inp_fields">
-                <span>ZIP</span>
-                <input type="text" name="zip" id="zip" placeholder="zip" />
-              </div>
+              </Form.Group>
+              <Form.Group className="inp_fields">
+                <Form.Label>Address</Form.Label>
+                <Form.Control
+                  type="text"
+                  name="address"
+                  id="address"
+                  placeholder=""
+                />
+              </Form.Group>
+              <Form.Group className="inp_fields">
+                <Form.Label>ZIP</Form.Label>
+                <Form.Control
+                  type="text"
+                  name="zip"
+                  id="zip"
+                  placeholder="zip"
+                />
+              </Form.Group>
             </Col>
           </Row>
           <div className="acc_btn">
-            <button className="cancel_btn">CANCEL</button>
-            <button className="save_btn">SAVE</button>
+            <Button className="cancel_btn">CANCEL</Button>
+            <Button className="save_btn">SAVE</Button>
           </div>
           <div className="account_type_alert">
             This is a <span>Client</span> account
           </div>
           <div className="acc_btn">
-            <button
+            <Button
               className="cls_acc_btn"
               onClick={() => setOpenCloseAccount(true)}
             >
               Close Account
-            </button>
+            </Button>
           </div>
         </div>
       </div>

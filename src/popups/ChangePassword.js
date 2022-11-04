@@ -1,11 +1,12 @@
 import { Row, Col } from "react-bootstrap";
-
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
 
 const CloseIcon = () => {
   return (
     <svg
       fill="#B2B2B2"
-      class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiBox-root css-1om0hkc"
+      className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiBox-root css-1om0hkc"
       focusable="false"
       aria-hidden="true"
       viewBox="0 0 24 24"
@@ -16,85 +17,84 @@ const CloseIcon = () => {
   );
 };
 
-
 const ChangePassword = (props) => {
-    return (
-      <>
-        <div className="bg_wrapper_popup_new">
-          <div className="popup_box_bpn profile_nceqoi_popup pb-4">
-            <div className="popup_header pb-0">
-              <div className="p_header_hding">Change Password</div>
-              <div
-                className="close_pp_btn"
+  return (
+    <>
+      <div className="bg_wrapper_popup_new">
+        <div className="popup_box_bpn profile_nceqoi_popup pb-4">
+          <div className="popup_header pb-0">
+            <div className="p_header_hding">Change Password</div>
+            <div
+              className="close_pp_btn"
+              onClick={() => {
+                props.Popup();
+              }}
+            >
+              <CloseIcon />
+            </div>
+          </div>
+          <div className="popup_body_bpn amount_popup_body max_height_popucwui overflow-scroll">
+            <div className="mt-2 pt-1 mb-4"></div>
+
+            <div className="mb-4 ">
+              <div className="popup_form_element">
+                <Form.Label className="text-black font-size-13px font-weight-500">
+                  Old Password
+                </Form.Label>
+                <Form.Control
+                  type="password"
+                  className="font-size-13px"
+                  placeholder=" "
+                />
+              </div>
+              <Row className="mt-1">
+                <Col md={6}>
+                  <Form.Group className="popup_form_element">
+                    <Form.Label className="text-black font-size-13px font-weight-500">
+                      New password
+                    </Form.Label>
+                    <Form.Control
+                      type="password"
+                      className="font-size-13px"
+                      placeholder=" "
+                    />
+                  </Form.Group>
+                </Col>
+                <Col md={6}>
+                  <Form.Group className="popup_form_element">
+                    <Form.Label className="text-black font-size-13px font-weight-500">
+                      Confirm New Password
+                    </Form.Label>
+                    <Form.Control
+                      type="password"
+                      className="font-size-13px"
+                      placeholder=" "
+                    />
+                  </Form.Group>
+                </Col>
+              </Row>
+              <div className="popup_form_element agrement_ineoeu mt-3 pt-1">
+                <Form.Label className="text-black font-size-13px font-weight-500">
+                  <Form.Check type="checkbox" /> All devices will be required to
+                  sign in with new password
+                </Form.Label>
+              </div>
+            </div>
+
+            <div className="popup_btns_new flex-wrap cwiewyehkk">
+              <Button className="trans_btn">Cancel</Button>
+              <Button
                 onClick={() => {
                   props.Popup();
                 }}
               >
-                <CloseIcon />
-              </div>
-            </div>
-            <div className="popup_body_bpn amount_popup_body max_height_popucwui overflow-scroll">
-              <div className="mt-2 pt-1 mb-4"></div>
-  
-              <div className="mb-4 ">
-                <div className="popup_form_element">
-                  <label className="text-black font-size-13px font-weight-500">
-                    Old Password
-                  </label>
-                  <input
-                    type="password"
-                    className="font-size-13px"
-                    placeholder=" "
-                  />
-                </div>
-                <Row className="mt-1">
-                  <Col md={6}>
-                    <div className="popup_form_element">
-                      <label className="text-black font-size-13px font-weight-500">
-                        New password
-                      </label>
-                      <input
-                        type="password"
-                        className="font-size-13px"
-                        placeholder=" "
-                      />
-                    </div>
-                  </Col>
-                  <Col md={6}>
-                    <div className="popup_form_element">
-                      <label className="text-black font-size-13px font-weight-500">
-                        Confirm New Password
-                      </label>
-                      <input
-                        type="password"
-                        className="font-size-13px"
-                        placeholder=" "
-                      />
-                    </div>
-                  </Col>
-                </Row>
-                <div className="popup_form_element agrement_ineoeu mt-3 pt-1">
-                  <label className="text-black font-size-13px font-weight-500">
-                    <input type="checkbox" /> All devices will be required to sign
-                    in with new password
-                  </label>
-                </div>
-              </div>
-  
-              <div className="popup_btns_new flex-wrap cwiewyehkk">
-                <button className="trans_btn">Cancel</button>
-                <button
-                  onClick={() => {
-                    props.Popup();
-                  }}
-                >
-                  Save
-                </button>
-              </div>
+                Save
+              </Button>
             </div>
           </div>
         </div>
-      </>
-    );
-  };
-  export default ChangePassword
+      </div>
+    </>
+  );
+};
+export default ChangePassword;

@@ -43,18 +43,18 @@ const NavbarHeader = (props) => {
           </button>
         </div>
         <div className="navdata_li">
-          <a href="#0">HOW IT WORKS</a>
+          <Link to="/">HOW IT WORKS</Link>
         </div>
         <div className="navdata_li">
-          <a href="#0">BROWSE JOBS</a>
+          <Link to="/">BROWSE JOBS</Link>
         </div>
         <div className="logout_btn_mob">
-          <Link to={`/Signin`}>
+          <Link to={`/signin`}>
             <button>Login</button>
           </Link>
         </div>
         <div className="logout_btn_mob">
-          <Link to={`/Signup`}>
+          <Link to={`/signup`}>
             <button>Sign Up</button>
           </Link>
         </div>
@@ -84,17 +84,17 @@ const NavbarHeader = (props) => {
               />
               <Navbar.Collapse id="responsive-navbar-nav">
                 <Nav>
-                  <Nav.Link className="navbar_btn">
-                    <Link to="/">How it works</Link>
+                  <Nav.Link as={Link} to="/" className="navbar_btn">
+                    How it works
                   </Nav.Link>
-                  <Nav.Link className="navbar_btn">
-                    <Link to="/">Browse Jobs</Link>
+                  <Nav.Link as={Link} to="/" className="navbar_btn">
+                    Browse Jobs
                   </Nav.Link>
-                  <Nav.Link className="navbar_btn">
-                    <Link to="/Signin">Login</Link>
+                  <Nav.Link as={Link} to="/Signin" className="navbar_btn">
+                    Login
                   </Nav.Link>
-                  <Nav.Link className="active_btn">
-                    <Link to="/Signup">Signup now</Link>
+                  <Nav.Link as={Link} to="/Signup" className="active_btn">
+                    Signup now
                   </Nav.Link>
                 </Nav>
               </Navbar.Collapse>

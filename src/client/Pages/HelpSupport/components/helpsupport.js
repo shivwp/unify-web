@@ -4,6 +4,8 @@ import "swiper/css";
 import "swiper/css/navigation";
 import IAmClient from "../../Setting/components/Setting/IAmClient";
 import IAmFreelancer from "../../Setting/components/Setting/IAmFreelancer";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
 
 const Screen = () => {
   const [TabActive, SetTabActive] = useState("FREELANCER");
@@ -18,7 +20,7 @@ const Screen = () => {
               <div className="find_sol_para">
                 Search hundreds of articles on Upwork Help
               </div>
-              <div className="d-flex suppott_inp">
+              <Form.Group className="d-flex suppott_inp">
                 <div className="d-flex align-items-center">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -31,8 +33,8 @@ const Screen = () => {
                     <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
                   </svg>
                 </div>
-                <input type={`text`} placeholder={`Search Articles`} />
-              </div>
+                <Form.Control type={`text`} placeholder={`Search Articles`} />
+              </Form.Group>
             </div>
           </Container>
         </div>
@@ -42,7 +44,7 @@ const Screen = () => {
           Choose An Account Type For Personalized Service
         </div>
         <div className="d-flex flex-wrap tab_m_nodea all_bt_fif tab_scroll_cont">
-          <button
+          <Button
             className={`tab_btn_vs w-auto ${
               TabActive === "FREELANCER" ? "active_bvs" : ""
             }`}
@@ -51,8 +53,8 @@ const Screen = () => {
             }}
           >
             I'm a Freelancer
-          </button>
-          <button
+          </Button>
+          <Button
             className={`tab_btn_vs w-auto ${
               TabActive === "CLIENT" ? "active_bvs" : ""
             }`}
@@ -61,11 +63,10 @@ const Screen = () => {
             }}
           >
             I'm a client
-          </button>
+          </Button>
         </div>
       </Container>
       {TabActive === "CLIENT" ? <IAmClient /> : <IAmFreelancer />}
-      
     </>
   );
 };

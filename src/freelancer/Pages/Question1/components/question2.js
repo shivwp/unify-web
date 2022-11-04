@@ -2,7 +2,9 @@ import Container from 'react-bootstrap/Container';
 import { Col, Row } from 'react-bootstrap';
 import Title from '../../../../components/title';
 import { Link } from 'react-router-dom';
+import Button from 'react-bootstrap/Button'
 
+import Form from 'react-bootstrap/Form';
 const Screen = () => {
     Title(" | Question 2");
     return (
@@ -15,7 +17,7 @@ const Screen = () => {
                 <Row className="justify-content-center">
                     <Col lg={3} md={6} sm={10} className="mb-3">
                         <div className="hire_box_yh new_hbyh">
-                            <div className="sub_radio"><input type="radio" name="s" /></div>
+                            <div className="sub_radio"><Form.Check type="radio" name="s" /></div>
                             <div>
                                 <div className="hire_b_im">
                                     <img src="/assets/diamond.svg" alt="" />
@@ -26,7 +28,7 @@ const Screen = () => {
                     </Col>
                     <Col lg={3} md={6} sm={10} className="mb-3">
                         <div className="hire_box_yh new_hbyh">
-                            <div className="sub_radio"><input type="radio" name="s" /></div>
+                            <div className="sub_radio"><Form.Check type="radio" name="s" /></div>
                             <div>
                                 <div className="hire_b_im">
                                     <img src="/assets/invoice.svg" alt="" />
@@ -37,7 +39,7 @@ const Screen = () => {
                     </Col>
                     <Col lg={3} md={6} sm={10} className="mb-3">
                         <div className="hire_box_yh new_hbyh">
-                            <div className="sub_radio"><input type="radio" name="s" /></div>
+                            <div className="sub_radio"><Form.Check type="radio" name="s" /></div>
                             <div>
                                 <div className="hire_b_im">
                                     <img src="/assets/top-rated.svg" alt="" />
@@ -48,7 +50,7 @@ const Screen = () => {
                     </Col>
                     <Col lg={3} md={6} sm={10} className="mb-3">
                         <div className="hire_box_yh new_hbyh">
-                            <div className="sub_radio"><input type="radio" name="s" /></div>
+                            <div className="sub_radio"><Form.Check type="radio" name="s" /></div>
                             <div>
                                 <div className="hire_b_im">
                                     <img src="/assets/search.svg" alt="" />
@@ -59,7 +61,7 @@ const Screen = () => {
                     </Col>
                 </Row>
                 <div className="skip_question_btn_frel">
-                   <Link to="/freelancer/dashboard"><button>Skip for now &gt;&gt;</button></Link>
+                   <Link to="/freelancer/dashboard"><Button>Skip for now &gt;&gt;</Button></Link>
                 </div>
             </Container>
         </>

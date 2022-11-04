@@ -4,16 +4,22 @@ import SideNav from "./site_nav";
 import Title from "../../../../components/title";
 import { useState } from "react";
 import Switch from "react-switch";
+import { onPasswordChange } from "../../../../redux/actions/authActions";
+import { useDispatch } from "react-redux";
+import AddMobNoPupup from "../../../components/popups/AddMobNoPupup";
+import AunthenticatorVerificationPopup from "../../../components/popups/AunthenticatorVerificationPopup";
+import MobileAppPromptPopup from "../../../components/popups/MobileAppPromptPopup";
 import VerificationPref from "./popups/VerificationPref";
 import ChangePassword from "./popups/ChangePassword";
+import Button from "react-bootstrap/Button";
 
 const Screen = () => {
   Title(" | Password & Security");
   const [popup, Setpopup] = useState();
-  const [checked, setChecked] = useState(false);
-  const handleChange = (nextChecked) => {
-    setChecked(nextChecked);
-  };
+  const [mobilePromptOn, setMobilePromptOn] = useState(false);
+  const [messageOn, setMessageOn] = useState(false);
+  const [appCodeOn, setAppCodeOn] = useState(false);
+
   return (
     <div className="bg-f2f8ff min_pad_m">
       <Container>
@@ -28,7 +34,7 @@ const Screen = () => {
                 <div className="d-flex justify-content-between align-items-center b-bottom-gr pt-1 pb-3">
                   <div className="setting_b_head_s">Password</div>
                   <div>
-                    <button
+                    <Button
                       className="round_b_btn"
                       onClick={() => {
                         Setpopup(<ChangePassword Popup={Setpopup} />);
@@ -48,7 +54,7 @@ const Screen = () => {
                           d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"
                         />
                       </svg>
-                    </button>
+                    </Button>
                   </div>
                 </div>
                 <div className="d-flex justify-content-between">
@@ -77,7 +83,7 @@ const Screen = () => {
                     </div>
                   </div>
                   <div>
-                    <button
+                    <Button
                       className="round_b_btn"
                       onClick={() => {
                         Setpopup(<VerificationPref Popup={Setpopup} />);
@@ -97,7 +103,7 @@ const Screen = () => {
                           d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"
                         />
                       </svg>
-                    </button>
+                    </Button>
                   </div>
                 </div>
                 <div className="d-flex justify-content-between b-bottom-gr pb-2">
@@ -135,8 +141,8 @@ const Screen = () => {
                       offHandleColor={`#E2E2E2`}
                       checkedIcon={false}
                       uncheckedIcon={false}
-                      onChange={handleChange}
-                      checked={checked}
+                      onChange={setAppCodeOn}
+                      checked={appCodeOn}
                       className="react-switch"
                     />
                   </div>
@@ -175,8 +181,8 @@ const Screen = () => {
                       offHandleColor={`#E2E2E2`}
                       checkedIcon={false}
                       uncheckedIcon={false}
-                      onChange={handleChange}
-                      checked={checked}
+                      onChange={setMobilePromptOn}
+                      checked={mobilePromptOn}
                       className="react-switch"
                     />
                   </div>
@@ -215,8 +221,8 @@ const Screen = () => {
                       offHandleColor={`#E2E2E2`}
                       checkedIcon={false}
                       uncheckedIcon={false}
-                      onChange={handleChange}
-                      checked={checked}
+                      onChange={() => setMessageOn(!messageOn)}
+                      checked={messageOn}
                       className="react-switch"
                     />
                   </div>
@@ -249,7 +255,7 @@ const Screen = () => {
                   </div>
                   <div className="d-flex justify-content-center align-items-center">
                     <div>
-                      <button className="round_b_btn">
+                      <Button className="round_b_btn">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="16"
@@ -264,7 +270,7 @@ const Screen = () => {
                             d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"
                           />
                         </svg>
-                      </button>
+                      </Button>
                     </div>
                   </div>
                 </div>
@@ -274,6 +280,24 @@ const Screen = () => {
         </Row>
       </Container>
       {popup}
+      {messageOn && (
+        <AddMobNoPupup
+          open={messageOn}
+          onCloseModal={() => setMessageOn(false)}
+        />
+      )}
+      {appCodeOn && (
+        <AunthenticatorVerificationPopup
+          open={appCodeOn}
+          onCloseModal={() => setAppCodeOn(false)}
+        />
+      )}
+      {mobilePromptOn && (
+        <MobileAppPromptPopup
+          open={mobilePromptOn}
+          onCloseModal={() => setMobilePromptOn(false)}
+        />
+      )}
     </div>
   );
 };

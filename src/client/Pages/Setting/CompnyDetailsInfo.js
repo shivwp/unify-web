@@ -2,6 +2,8 @@ import React from "react";
 import "../../../styles/accountInfo.css";
 import { Row, Col } from "react-bootstrap";
 import Select from "react-select";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
 
 const CompnyDetailsInfo = () => {
   const options1 = [{ name: "india", label: "india" }];
@@ -15,63 +17,77 @@ const CompnyDetailsInfo = () => {
         <div className="acc_form">
           <Row>
             <Col lg={6} md={6} sm={12}>
-              <div className="inp_fields">
-                <span>Company Name</span>
-                <input
+              <Form.Group className="inp_fields">
+                <Form.Label>Company Name</Form.Label>
+                <Form.Control
                   type="text"
                   name="company-name"
                   id="company-name"
                   placeholder="Ankita Kumavat"
                 />
-              </div>
-              <div className="inp_fields">
-                <span>Add your industry</span>
+              </Form.Group>
+              <Form.Group className="inp_fields">
+                <Form.Label>Add your industry</Form.Label>
                 <Select
                   className="custom_css_select"
                   placeholder="Selece your Industry"
                   options={options1}
                 />
-              </div>
+              </Form.Group>
             </Col>
             <Col lg={6} md={6} sm={12}>
-              <div className="inp_fields">
-                <span>Website</span>
-                <input type="text" name="website" id="website" placeholder="" />
-              </div>
-              <div className="inp_fields">
-                <span>Tagline</span>
-                <input type="text" name="tagline" id="tagline" placeholder="" />
-              </div>
+              <Form.Group className="inp_fields">
+                <Form.Label>Website</Form.Label>
+                <Form.Control
+                  type="text"
+                  name="website"
+                  id="website"
+                  placeholder=""
+                />
+              </Form.Group>
+              <Form.Group className="inp_fields">
+                <Form.Label>Tagline</Form.Label>
+                <Form.Control
+                  type="text"
+                  name="tagline"
+                  id="tagline"
+                  placeholder=""
+                />
+              </Form.Group>
             </Col>
+            <Form.Group className="inp_fields">
+              <Form.Label>Description</Form.Label>
+              <Form.Control
+                as="textarea"
+                name="description"
+                id="descr"
+              ></Form.Control>
+            </Form.Group>
             <div className="inp_fields">
-              <span>Description</span>
-              <textarea name="description" id="descr"></textarea>
-            </div>
-            <div className="inp_fields">
-              <span>How many people are in your company?</span>
+              <Form.Label>How many people are in your company?</Form.Label>
               <div className="emp_radio_inputs">
-                <label htmlFor="radio-1">
-                  <input type="radio" id="radio-1" name="empCount" />
+                <Form.Label htmlFor="radio-1">
+                  <Form.Check type="radio" id="radio-1" name="empCount" />
                   <span> It Just me</span>
-                </label>
-                <label htmlFor="radio-2">
-                  <input type="radio" id="radio-2" name="empCount" />
+                </Form.Label>
+                <Form.Label htmlFor="radio-2">
+                  <Form.Check type="radio" id="radio-2" name="empCount" />
                   <span> 2-9 employees</span>
-                </label>
-                <label htmlFor="radio-3">
-                  <input type="radio" id="radio-3" name="empCount" />
+                </Form.Label>
+                <Form.Label htmlFor="radio-3">
+                  <Form.Check type="radio" id="radio-3" name="empCount" />
                   <span> 10-99 employees</span>
-                </label>
-                <label htmlFor="radio-4">
-                  <input type="radio" id="radio-4" name="empCount" />
+                </Form.Label>
+                <Form.Label htmlFor="radio-4">
+                  <Form.Check type="radio" id="radio-4" name="empCount" />
                   <span> more then 100 employees</span>
-                </label>
+                </Form.Label>
               </div>
             </div>
           </Row>
           <div className="acc_btn">
-            <button className="cancel_btn">CANCEL</button>
-            <button className="save_btn">SAVE</button>
+            <Button className="cancel_btn">CANCEL</Button>
+            <Button className="save_btn">SAVE</Button>
           </div>
         </div>
       </div>

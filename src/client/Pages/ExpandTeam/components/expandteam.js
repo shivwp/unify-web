@@ -2,6 +2,8 @@ import Container from "react-bootstrap/Container";
 import { Col, Row } from "react-bootstrap";
 import Title from "../../../../components/title";
 import { Link } from "react-router-dom";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
 
 const Screen = () => {
   Title(" | Expand Team");
@@ -17,32 +19,35 @@ const Screen = () => {
               <div className="form_box_bor">
                 <div className="input_bg_labe mb-3 pb-0">Email Addresses</div>
                 <div className="input_bg_i">
-                  <input type="text" placeholder="Enter your email" />
+                  <Form.Control type="text" placeholder="Enter your email" />
                 </div>
                 <div className="inport_lin">+ Import contacts</div>
                 <div className="input_bg_labe mb-3 pb-0">
                   Add a personal message (optional)
                 </div>
                 <div className="input_bg_i">
-                  <textarea placeholder="Enter your email"></textarea>
+                  <Form.Control
+                    as="textarea"
+                    placeholder="Enter your message"
+                  ></Form.Control>
                 </div>
                 <div className="inp_agree_che">
-                  <label>
-                    <input type="checkbox" />
+                  <Form.Label>
+                    <Form.Check type="checkbox" />
                     <p>
                       Also allow these coworkers to hire and pay with this
                       account.
                     </p>
-                  </label>
+                  </Form.Label>
                 </div>
                 <div className="btn_foot_sec flex-wrap d-flex no-border">
                   <div className="fo_btn_c next_b_btn_c">
                     <Link to="/dashboard">
-                      <button className="mrright-gppnew">Cancel</button>
+                      <Button className="mrright-gppnew">Cancel</Button>
                     </Link>
                   </div>
                   <div className="fo_btn_c next_b_btn_c">
-                    <button className="active_btn_blue">Invite</button>
+                    <Button className="active_btn_blue">Invite</Button>
                   </div>
                 </div>
               </div>

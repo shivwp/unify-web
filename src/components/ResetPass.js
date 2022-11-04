@@ -3,6 +3,8 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { onResetPassword } from "../redux/actions/authActions";
 import { useNavigate } from "react-router-dom";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
 
 const ResetPass = () => {
   const [hidePass, setHidePass] = useState(true);
@@ -29,9 +31,9 @@ const ResetPass = () => {
         <div className="reset_pass_container">
           <div className="heading">New Password</div>
           <div className="pass_inputs">
-            <div className="pass_inp">
-              <label htmlFor="email">Enter New Password</label>
-              <input
+            <Form.Group className="pass_inp">
+              <Form.Label htmlFor="email">Enter New Password</Form.Label>
+              <Form.Control
                 type={hidePass ? "password" : "text"}
                 name="password"
                 placeholder="********"
@@ -42,20 +44,20 @@ const ResetPass = () => {
                   className="fa fa-eye-slash showInpPass"
                   onClick={() => setHidePass(!hidePass)}
                   aria-hidden="true"
-                  style={{ top: 9 }}
+                  style={{ top: 48 }}   
                 ></i>
               ) : (
                 <i
                   className="fa fa-eye showInpPass"
-                  style={{ top: 9 }}
+                  style={{ top: 48 }}   
                   onClick={() => setHidePass(!hidePass)}
                   aria-hidden="true"
                 ></i>
               )}
-            </div>
-            <div className="pass_inp">
-              <label htmlFor="email">Confirm New Password</label>
-              <input
+            </Form.Group>
+            <Form.Group className="pass_inp">
+              <Form.Label htmlFor="email">Confirm New Password</Form.Label>
+              <Form.Control
                 type={hideConfPass ? "password" : "text"}
                 name="confirm_password"
                 placeholder="********"
@@ -76,10 +78,10 @@ const ResetPass = () => {
                   aria-hidden="true"
                 ></i>
               )}
-            </div>
+            </Form.Group>
           </div>
           <div className="reset_pass_btn">
-            <button onClick={onUpdate}>UPDATE</button>
+            <Button onClick={onUpdate}>UPDATE</Button>
           </div>
         </div>
       </div>

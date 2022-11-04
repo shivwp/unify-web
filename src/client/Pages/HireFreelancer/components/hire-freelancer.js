@@ -4,6 +4,8 @@ import DatePicker from "react-datepicker";
 import "../../../../styles/job.css";
 import "react-datepicker/dist/react-datepicker.css";
 import { Link } from "react-router-dom";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
 
 const Screen = () => {
   const [startDate, setStartDate] = useState();
@@ -33,8 +35,8 @@ const Screen = () => {
         <div className="b-bottom-gr">
           <div className="contrc_ter_head">Contract Terms</div>
           <div className="pay_pro_par">
-            You’re protected by <a href="#0">Unify Payment Protection.</a> Only
-            pay for the work you authorize.
+            You’re protected by <Link to="#0">Unify Payment Protection.</Link>{" "}
+            Only pay for the work you authorize.
           </div>
           <div className="d-flex justify-content-between flex-wrap pt-4 pb-3">
             <div>
@@ -55,7 +57,7 @@ const Screen = () => {
               </div>
               <div className="hourly_headin d-flex align-items-center">
                 Hourly
-                <button className="round_b_btn">
+                <Button className="round_b_btn">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="16"
@@ -70,7 +72,7 @@ const Screen = () => {
                       d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"
                     />
                   </svg>
-                </button>
+                </Button>
               </div>
             </div>
             <div>
@@ -91,7 +93,7 @@ const Screen = () => {
               </div>
               <div className="hourly_headin d-flex align-items-center">
                 $30.00 /hr
-                <button className="round_b_btn">
+                <Button className="round_b_btn">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="16"
@@ -106,7 +108,7 @@ const Screen = () => {
                       d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"
                     />
                   </svg>
-                </button>
+                </Button>
               </div>
               <div className="max_prof_rt">
                 Max Mario's profile rate is $30.00 /hr
@@ -134,7 +136,7 @@ const Screen = () => {
               </div>
               <div className="hourly_headin d-flex align-items-center">
                 40 hrs/week
-                <button className="round_b_btn">
+                <Button className="round_b_btn">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="16"
@@ -149,18 +151,18 @@ const Screen = () => {
                       d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"
                     />
                   </svg>
-                </button>
+                </Button>
               </div>
               <div className="max_prof_rt">$1,200.00 max/week</div>
             </div>
           </div>
         </div>
-        <div className="allow_freel_che flex-wrap">
-          <label>
-            <input type="checkbox" />
-            Allow freelancer to log time manually if needed.{" "}
-          </label>
-          <a href="#0">Learn more</a>
+        <div className="d-flex allow_freel_che flex-wrap">
+          <Form.Label className="d-flex">
+            <Form.Check type="checkbox"></Form.Check>
+            Allow freelancer to log time manually if needed.
+          </Form.Label>
+          <Link to="#0">Learn more</Link>
         </div>
         <div className="d-flex align-items-center flex-wrap pt-3 pb-4 b-bottom-gr">
           <div className="start_d_headin">
@@ -245,12 +247,12 @@ const Screen = () => {
       <div className="main_box_descr main_hirefreelancer_bx">
         <div className="contrc_ter_head mb-2">Work Description</div>
         <div className="pay_pro_par p-0 m-0">Add a description of the work</div>
-        <div className="description_text_h">
-          <textarea></textarea>
-        </div>
+        <Form.Group className="description_text_h">
+          <Form.Control as="textarea" rows={3}></Form.Control>
+        </Form.Group>
         <div className="ts_btn attach_f_btn mt-0">
-          <input type="file" />
-          <button>
+          <Form.Control type="file" />
+          <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="16"
@@ -262,25 +264,26 @@ const Screen = () => {
               <path d="M4.5 3a2.5 2.5 0 0 1 5 0v9a1.5 1.5 0 0 1-3 0V5a.5.5 0 0 1 1 0v7a.5.5 0 0 0 1 0V3a1.5 1.5 0 1 0-3 0v9a2.5 2.5 0 0 0 5 0V5a.5.5 0 0 1 1 0v7a3.5 3.5 0 1 1-7 0V3z" />
             </svg>
             Attach File
-          </button>
+          </Button>
           <div className="sm_label_inp">Max file size: 100 MB</div>
         </div>
       </div>
       <div className="allow_freel_che flex-wrap black_a_inp">
-        <input type="checkbox" />
+        <Form.Check type="checkbox" />
         Yes, I understand and agree to the{" "}
-        <a href="#0"> Unify Terms of Service </a>, including the User{" "}
-        <a href="#0"> Agreement </a> and <a href="#0"> Privacy Policy </a>.
+        <Link to="#0"> Unify Terms of Service </Link>, including the User{" "}
+        <Link to="#0"> Agreement </Link> and{" "}
+        <Link to="#0"> Privacy Policy </Link>.
       </div>
       <div className="d-flex justify-content-between mt-4 mb-5">
         <div className="btn_job_back">
           <Link to="/view-job">
-            <button className="fo_btn_c next_b_btn_c mb-2">Cancel</button>
+            <Button className="fo_btn_c next_b_btn_c mb-2">Cancel</Button>
           </Link>
           <Link to="/hire-freelancer/addAddress">
-            <button className="fo_btn_c next_b_btn_c mb-2 post_job_btn blue_ac_btn">
+            <Button className="fo_btn_c next_b_btn_c mb-2 post_job_btn blue_ac_btn">
               Continue
-            </button>
+            </Button>
           </Link>
         </div>
       </div>

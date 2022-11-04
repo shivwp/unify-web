@@ -1,6 +1,6 @@
 import Container from 'react-bootstrap/Container'
 import { useState } from 'react'
-
+import Button from 'react-bootstrap/Button'
 import ME from '../../../components/ml/milestone'
 import MF from '../../../components/ml/message-file'
 import TS from '../../../components/ml/term-setting'
@@ -50,10 +50,10 @@ const Screen = () => {
                 <div>
                     <div className='overflow-scroll'>
                         <div className="d-flex tab_m_nodea tab_scroll_cont">
-                            <button className={`text-capitalize tab_btn_vs w-auto ${TabActive === 'me' ? 'active_bvs' : ''}`} onClick={() => { changeTab("me") }}>Milestones & Earnings</button>
-                            <button className={`text-capitalize tab_btn_vs w-auto ${TabActive === 'mf' ? 'active_bvs' : ''}`} onClick={() => { changeTab("mf") }}>Messages & Files</button>
-                            <button className={`text-capitalize tab_btn_vs w-auto ${TabActive === 'ts' ? 'active_bvs' : ''}`} onClick={() => { changeTab("ts") }}>Terms & Settings</button>
-                            <button className={`text-capitalize tab_btn_vs w-auto ${TabActive === 'fe' ? 'active_bvs' : ''}`} onClick={() => { changeTab("fe") }}>Feedback</button>
+                            <Button className={`text-capitalize tab_btn_vs w-auto ${TabActive === 'me' ? 'active_bvs' : ''}`} onClick={() => { changeTab("me") }}>Milestones & Earnings</Button>
+                            <Button className={`text-capitalize tab_btn_vs w-auto ${TabActive === 'mf' ? 'active_bvs' : ''}`} onClick={() => { changeTab("mf") }}>Messages & Files</Button>
+                            <Button className={`text-capitalize tab_btn_vs w-auto ${TabActive === 'ts' ? 'active_bvs' : ''}`} onClick={() => { changeTab("ts") }}>Terms & Settings</Button>
+                            <Button className={`text-capitalize tab_btn_vs w-auto ${TabActive === 'fe' ? 'active_bvs' : ''}`} onClick={() => { changeTab("fe") }}>Feedback</Button>
                         </div>
                     </div>
                 </div>

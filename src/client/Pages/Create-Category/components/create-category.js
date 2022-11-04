@@ -2,6 +2,7 @@ import Container from "react-bootstrap/Container";
 import Title from "../../../../components/title";
 import { Link } from "react-router-dom";
 
+import Form from 'react-bootstrap/Form';
 const Createcategory = () => {
   Title(" | create category");
   return (
@@ -25,7 +26,7 @@ const Createcategory = () => {
               </svg>
             </div>
             <div className="ccb_inp">
-              <input
+              <Form.Control
                 type="text"
                 placeholder="ex. Build responsive WordPress site with booking/payment funvtionality"
               />
@@ -36,60 +37,60 @@ const Createcategory = () => {
           </div>
           <div className="flex_ccb_list">
             <div className="s_b_r">
-              <input type="radio" id="r_1" name="g" />
-              <label htmlFor="r_1">
+              <Form.Check type="radio" id="r_1" name="g" />
+              <Form.Label htmlFor="r_1">
                 {" "}
                 <p>Development & IT</p>
-              </label>
+              </Form.Label>
             </div>
             <div className="s_b_r">
-              <input type="radio" id="r_2" name="g" />
-              <label htmlFor="r_2">
+              <Form.Check type="radio" id="r_2" name="g" />
+              <Form.Label htmlFor="r_2">
                 {" "}
                 <p>Design & Creative</p>
-              </label>
+              </Form.Label>
             </div>
             <div className="s_b_r">
-              <input type="radio" id="r_3" name="g" />
-              <label htmlFor="r_3">
+              <Form.Check type="radio" id="r_3" name="g" />
+              <Form.Label htmlFor="r_3">
                 {" "}
                 <p>Sales & Marketing</p>
-              </label>
+              </Form.Label>
             </div>
             <div className="s_b_r">
-              <input type="radio" id="r_3" name="g" />
-              <label htmlFor="r_3">
+              <Form.Check type="radio" id="r_3" name="g" />
+              <Form.Label htmlFor="r_3">
                 {" "}
                 <p>Writing & Translation</p>
-              </label>
+              </Form.Label>
             </div>
             <div className="s_b_r">
-              <input type="radio" id="r_3" name="g" />
-              <label htmlFor="r_3">
+              <Form.Check type="radio" id="r_3" name="g" />
+              <Form.Label htmlFor="r_3">
                 {" "}
                 <p>Finance & Accounting</p>
-              </label>
+              </Form.Label>
             </div>
             <div className="s_b_r">
-              <input type="radio" id="r_3" name="g" />
-              <label htmlFor="r_3">
+              <Form.Check type="radio" id="r_3" name="g" />
+              <Form.Label htmlFor="r_3">
                 {" "}
                 <p>Engineering & Architecture</p>
-              </label>
+              </Form.Label>
             </div>
             <div className="s_b_r">
-              <input type="radio" id="r_3" name="g" />
-              <label htmlFor="r_3">
+              <Form.Check type="radio" id="r_3" name="g" />
+              <Form.Label htmlFor="r_3">
                 {" "}
                 <p>Legal</p>
-              </label>
+              </Form.Label>
             </div>
             <div className="s_b_r">
-              <input type="radio" id="r_3" name="g" />
-              <label htmlFor="r_3">
+              <Form.Check type="radio" id="r_3" name="g" />
+              <Form.Label htmlFor="r_3">
                 {" "}
                 <p>Admin & Customer Support</p>
-              </label>
+              </Form.Label>
             </div>
           </div>
           <div className="show_less_likn">

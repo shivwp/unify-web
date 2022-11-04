@@ -2,8 +2,9 @@ import React from "react";
 import { useState } from "react";
 import { Row, Col } from "react-bootstrap";
 import CloseAccountPopup from "../../../popups/CloseAccountPopup";
+import Button from "react-bootstrap/Button";
 
-const MyInfo = ({ setOpen }) => {
+const MyInfo = ({ setOpen, getClientDetails }) => {
   const [openCloseAccount, setOpenCloseAccount] = useState(false);
 
   return (
@@ -12,7 +13,7 @@ const MyInfo = ({ setOpen }) => {
         <div className="d-flex justify-content-between align-items-center b-bottom-gr pt-1 pb-3">
           <div className="setting_b_head_s">Account</div>
           <div>
-            <button className="round_b_btn" onClick={setOpen}>
+            <Button className="round_b_btn" onClick={setOpen}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
@@ -27,33 +28,32 @@ const MyInfo = ({ setOpen }) => {
                   d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"
                 />
               </svg>
-            </button>
+            </Button>
           </div>
         </div>
         <div className="d-flex justify-content-between flex-wrap mt-3">
           <div className="d-flex">
             <div className="setting_pro_r_big">
-              <img
-                src="https://images.unsplash.com/photo-1494790108377-be9c29b29330"
-                alt=""
-              />
+              <img src={getClientDetails?.profile_image} alt="" />
             </div>
             <div>
-              <div className="user_nme_set">John Doe</div>
-              <div className="user_mal_set">johndoe123@gmail.com</div>
+              <div className="user_nme_set">
+                {getClientDetails?.first_name} {getClientDetails?.last_name}
+              </div>
+              <div className="user_mal_set">{getClientDetails?.email}</div>
             </div>
           </div>
-          <div className="btn_foot_sec no-border mt-0 fo_btn_c next_b_btn_c">
+          {/* <div className="btn_foot_sec no-border mt-0 fo_btn_c next_b_btn_c">
             <button className="bg-transparent h-color-b">
               Upload Profile Photo
             </button>
-          </div>
+          </div> */}
         </div>
       </div>
       <div className="r-box_setting">
         <div className="d-flex justify-content-between align-items-center b-bottom-gr pt-1 pb-3">
           <div className="setting_b_head_s">Company Details</div>
-          <div>
+          {/* <div>
             <button className="round_b_btn">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -70,36 +70,31 @@ const MyInfo = ({ setOpen }) => {
                 />
               </svg>
             </button>
-          </div>
+          </div> */}
         </div>
         <Row>
           <Col lg={4}>
             <div className="mb-2 mt-1">
               <div className="c_name_sett">Company name</div>
-              <div className="c_name_s_v">Riztech info solution</div>
+              <div className="c_name_s_v">{getClientDetails?.company_name}</div>
             </div>
           </Col>
           <Col lg={4}>
             <div className="mb-2 mt-1">
               <div className="c_name_sett">Website</div>
-              <div className="c_name_s_v">www.riztech.com</div>
+              <div className="c_name_s_v">{getClientDetails?.website}</div>
             </div>
           </Col>
           <Col lg={4}>
             <div className="mb-2 mt-1">
               <div className="c_name_sett">Tagline</div>
-              <div className="c_name_s_v">Expert in Web & App Design</div>
+              <div className="c_name_s_v">{getClientDetails?.tagline}</div>
             </div>
           </Col>
           <Col>
             <div className="mb-2 mt-2">
               <div className="c_name_sett">Description</div>
-              <div className="c_name_s_v">
-                It is a long established fact that a reader will be distracted
-                by the readable content of a page when looking at its layout.
-                The point of using Lorem Ipsum is that it has a more-or-less
-                normal distribution of letters.
-              </div>
+              <div className="c_name_s_v">{getClientDetails?.description}</div>
             </div>
           </Col>
         </Row>
@@ -107,7 +102,7 @@ const MyInfo = ({ setOpen }) => {
       <div className="r-box_setting">
         <div className="d-flex justify-content-between align-items-center b-bottom-gr pt-1 pb-3">
           <div className="setting_b_head_s">Company Contacts</div>
-          <div>
+          {/* <div>
             <button className="round_b_btn">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -124,19 +119,21 @@ const MyInfo = ({ setOpen }) => {
                 />
               </svg>
             </button>
-          </div>
+          </div> */}
         </div>
         <Row>
           <Col lg={4}>
             <div className="mb-2 mt-1">
-              <div className="c_name_sett">Owner email</div>
-              <div className="c_name_s_v">johndoe123@gmail.com</div>
+              <div className="c_name_sett">Owner name</div>
+              <div className="c_name_s_v">{`${getClientDetails?.first_name} ${getClientDetails?.last_name}`}</div>
             </div>
           </Col>
           <Col lg={4}>
             <div className="mb-2 mt-1">
               <div className="c_name_sett">Phone</div>
-              <div className="c_name_s_v">+91 98-76-54-3210</div>
+              <div className="c_name_s_v">
+                {getClientDetails?.company_phone}
+              </div>
             </div>
           </Col>
           <Col lg={4}>
@@ -147,18 +144,18 @@ const MyInfo = ({ setOpen }) => {
               </div>
             </div>
           </Col>
-          <Col lg={7}>
+          <Col lg={8}>
             <div className="mb-2 mt-2">
               <div className="c_name_sett">Time Zone</div>
-              <div className="c_name_s_v">
-                UTC+05:30 Mumbai, Kolkata, Chennai, New Delhi
-              </div>
+              <div className="c_name_s_v">{getClientDetails?.timezone}</div>
             </div>
           </Col>
-          <Col lg={5}>
+          <Col lg={4}>
             <div className="mb-2 mt-2">
               <div className="c_name_sett">Address</div>
-              <div className="c_name_s_v">India</div>
+              <div className="c_name_s_v">
+                {getClientDetails?.company_address}
+              </div>
             </div>
           </Col>
         </Row>
@@ -168,15 +165,15 @@ const MyInfo = ({ setOpen }) => {
       </div>
       <div className="btn_foot_sec flex-wrap d-flex no-border">
         <div className="fo_btn_c next_b_btn_c">
-          <button className="mrright-gppnew">Create New Account</button>
+          <Button className="mrright-gppnew">Create New Account</Button>
         </div>
         <div className="fo_btn_c next_b_btn_c">
-          <button
+          <Button
             className="active_btn_blue"
             onClick={() => setOpenCloseAccount(true)}
           >
             Close Account
-          </button>
+          </Button>
         </div>
       </div>
       {openCloseAccount && (

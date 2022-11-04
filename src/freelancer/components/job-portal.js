@@ -1,6 +1,7 @@
 import Container from 'react-bootstrap/Container';
 import { Row, Col } from 'react-bootstrap';
 import star from '../../icons/star.svg';
+import Button from 'react-bootstrap/Button'
 
 const JobPortal = () => {
     return (
@@ -10,8 +11,8 @@ const JobPortal = () => {
                     <Col lg={6}><div className="jp_h3_no"><h3 className="f-ffive">HRM Recruitment Center</h3></div></Col>
                     <Col lg={6}>
                         <div className='jp_btn_m_no flex-wrap'>
-                            <button>Browse Project Catelog</button>
-                            <button>Post a Job</button>
+                            <Button>Browse Project Catelog</Button>
+                            <Button>Post a Job</Button>
                         </div>
                     </Col>
                 </Row>
@@ -113,7 +114,7 @@ const JobPortal = () => {
                                     </div>
                                 </div>
                                 <div>
-                                    <button className="viewoffbtn">view offer</button>
+                                    <Button className="viewoffbtn">view offer</Button>
                                     <div className="offertime_sen">offer sent 5 minutes ago</div>
                                 </div>
                             </div>
@@ -147,7 +148,7 @@ const JobPortal = () => {
                                 <div>
                                     <div>
                                         <div className="d-flex justify-content-end">
-                                            <button className="viewoffbtn pay_now_btn">Pay Now</button>
+                                            <Button className="viewoffbtn pay_now_btn">Pay Now</Button>
                                             <div className="draf_menu_icon">
                                                 <span></span>
                                                 <span></span>
@@ -173,7 +174,7 @@ const JobPortal = () => {
                             <div className='port_para'>
                                 We are a computerized wellbeing startup with a spry and high-speed climate. We are searching for a Senior, RELIABLE portable application…
                             </div>
-                            <div className='d-flex justify-content-center pt-2 pb-5'><button className='port_lern_btn'>Learn More</button></div>
+                            <div className='d-flex justify-content-center pt-2 pb-5'><Button className='port_lern_btn'>Learn More</Button></div>
                         </div>
                         <div className='side_box_port mt-2'>
                             <div className="port_name p-1 p_lef_20 text-left"> Job Templates</div>

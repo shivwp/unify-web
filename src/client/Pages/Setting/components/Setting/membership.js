@@ -2,6 +2,7 @@ import Container from 'react-bootstrap/Container';
 import { Row, Col } from 'react-bootstrap';
 import SideNav from './site_nav';
 import Title from '../../../../../components/title'
+import Button from 'react-bootstrap/Button'
 
 const Screen = () => {
     Title(' | Setting - Membership')
@@ -25,7 +26,7 @@ const Screen = () => {
                                         <div className='sett_y_b'>Unify Basic (Free)</div>
                                     </div>
                                     <div className="btn_foot_sec no-border mt-0 mb-0 p-0 fo_btn_c next_b_btn_c">
-                                        <button className="bg-transparent h-color-b">Change Plan</button>
+                                        <Button className="bg-transparent h-color-b">Change Plan</Button>
                                     </div>
                                 </div>
                                 <div className="d-flex justify-content-between align-items-center pt-2 pb-3">

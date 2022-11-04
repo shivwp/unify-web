@@ -3,14 +3,14 @@ import Layout from "../client/Layout/Layout";
 import Container from "react-bootstrap/Container";
 import { Col, Row } from "react-bootstrap";
 import $ from "jquery";
-
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
 
 const EditPosting = () => {
   const hanDleSlide = (e) => {
     $(e.target.nextSibling).slideToggle();
   };
   $(".slider_shutter").slideDown();
-
 
   return (
     <Layout>
@@ -21,9 +21,12 @@ const EditPosting = () => {
               <div className="form_box_bor mt-2">
                 <div className="edit-posting-heading">
                   <div className="heading">Review</div>
-                  <button className="mt-2 btn-save_post border_blue_wwifth" style={{ fontSize:17, fontWeight:600 }}>
+                  <Button
+                    className="mt-2 btn-save_post border_blue_wwifth"
+                    style={{ fontSize: 17, fontWeight: 600 }}
+                  >
                     Save Job Post
-                  </button>
+                  </Button>
                 </div>
                 <div className="title-edit_posting">
                   <div className="title">Title</div>
@@ -43,23 +46,32 @@ const EditPosting = () => {
                   <p>
                     Include your expectations about the task or deliverable,
                     what you're looking for in a work relationship, and anything
-                    unique about your project, team, or company.{" "}
-                    <span></span> 
+                    unique about your project, team, or company. <span></span>
                   </p>
                   <div className="description-textarea">
-                    <textarea placeholder='The standard chunk of used since the 1500s is reprodced below for those intrested. Section 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exace original form, accompanied by English versions from the 1914 translation by H. Rackham.'></textarea>
+                    <Form.Control
+                      as="textarea"
+                      placeholder='The standard chunk of used since the 1500s is reprodced below for those intrested. Section 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exace original form, accompanied by English versions from the 1914 translation by H. Rackham.'
+                    ></Form.Control>
                   </div>
                   <div className="why_textarea">
                     <p>
-                      <i class="fa fa-info-circle" aria-hidden="true"></i>{" "}
+                      <i className="fa fa-info-circle" aria-hidden="true"></i>{" "}
                       Please add a job description
                     </p>
                     <p>4717 characters left</p>
                   </div>
                 </div>
                 <div className="ts_btn attach_f_btn edit_posting-attach-file">
-                  <button className="rot_svg_oety" style={{position: "relative", fontSize:16, fontWeight:500 }}>
-                  <input type="file" style={{ cursor: "pointer" }} />
+                  <Button
+                    className="rot_svg_oety"
+                    style={{
+                      position: "relative",
+                      fontSize: 16,
+                      fontWeight: 500,
+                    }}
+                  >
+                    <Form.Control type="file" style={{ cursor: "pointer" }} />
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="18"
@@ -71,15 +83,16 @@ const EditPosting = () => {
                       <path d="M4.5 3a2.5 2.5 0 0 1 5 0v9a1.5 1.5 0 0 1-3 0V5a.5.5 0 0 1 1 0v7a.5.5 0 0 0 1 0V3a1.5 1.5 0 1 0-3 0v9a2.5 2.5 0 0 0 5 0V5a.5.5 0 0 1 1 0v7a3.5 3.5 0 1 1-7 0V3z" />
                     </svg>
                     Attach File
-                  </button>
+                  </Button>
                   <div className="sm_label_inp">Max file size: 100 MB</div>
                 </div>
 
                 {/* catagory start */}
                 <div className="edit-posting-category">
-                  <div className="heading">Categotry</div>
+                  <div className="heading">Category</div>
                   <div className="category">
-                    UI/UX Design <i class="fa fa-pencil" aria-hidden="true"></i>
+                    UI/UX Design{" "}
+                    <i className="fa fa-pencil" aria-hidden="true"></i>
                   </div>
                 </div>
 
@@ -89,7 +102,7 @@ const EditPosting = () => {
                     <div className="b_bot_inp">
                       <div className="heading">Skills</div>
                       <div className="slide_btnss">
-                        <button>
+                        <Button>
                           Mobile App Design
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -101,8 +114,8 @@ const EditPosting = () => {
                           >
                             <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
                           </svg>
-                        </button>
-                        <button>
+                        </Button>
+                        <Button>
                           User Experience Design
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -114,8 +127,8 @@ const EditPosting = () => {
                           >
                             <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
                           </svg>
-                        </button>
-                        <button>
+                        </Button>
+                        <Button>
                           User Interface Design
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -127,8 +140,8 @@ const EditPosting = () => {
                           >
                             <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
                           </svg>
-                        </button>
-                        <button>
+                        </Button>
+                        <Button>
                           Graphic Design
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -140,8 +153,8 @@ const EditPosting = () => {
                           >
                             <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
                           </svg>
-                        </button>
-                        <button className="round_b_btn">
+                        </Button>
+                        <Button className="round_b_btn">
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="16"
@@ -156,17 +169,17 @@ const EditPosting = () => {
                               d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"
                             />
                           </svg>
-                        </button>
+                        </Button>
                       </div>
                     </div>
                   </div>
                 </div>
                 {/* Scop start here */}
                 <div className="edit-posting-category">
-                  <div className="heading">Scop</div>
+                  <div className="heading">Scope</div>
                   <div className="category">
                     Large, More than 6 months, Entry level{" "}
-                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                    <i className="fa fa-pencil" aria-hidden="true"></i>
                   </div>
                 </div>
                 {/* Budget start here */}
@@ -174,7 +187,7 @@ const EditPosting = () => {
                   <div className="heading">Budget</div>
                   <div className="category">
                     $15.00 - $35.00 / hr{" "}
-                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                    <i className="fa fa-pencil" aria-hidden="true"></i>
                   </div>
                 </div>
                 {/* screening questions  */}
@@ -278,7 +291,7 @@ const EditPosting = () => {
 
                 <div className=" edit_posting_save_btn ">
                   <div>
-                    <button>Save Job Post</button>
+                    <Button>Save Job Post</Button>
                   </div>
                 </div>
               </div>

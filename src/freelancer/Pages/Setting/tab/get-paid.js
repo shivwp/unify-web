@@ -4,6 +4,7 @@ import SideNav from "./site_nav";
 import Title from "../../../../components/title";
 import { useState } from "react";
 import AddPayment from "./popups/AddPayment";
+import Button from 'react-bootstrap/Button'
 
 const Screen = () => {
   const [popup, SetPopup] = useState();
@@ -25,9 +26,9 @@ const Screen = () => {
                     <div className="sett_y_b">Your balance due is $0.00</div>
                   </div>
                   <div className="btn_foot_sec no-border mt-0 mb-0 p-0 fo_btn_c next_b_btn_c">
-                    <button className="bg-transparent h-color-b">
+                    <Button className="bg-transparent h-color-b">
                       Get Paid Now
-                    </button>
+                    </Button>
                   </div>
                 </div>
               </div>
@@ -37,14 +38,14 @@ const Screen = () => {
                     <div className="setting_b_head_s">Payment Methods</div>
                   </div>
                   <div className="btn_foot_sec no-border mt-0 mb-0 p-0 fo_btn_c next_b_btn_c">
-                    <button
+                    <Button
                       className="bg-transparent h-color-b"
                       onClick={() => {
                         SetPopup(<AddPayment Popup={SetPopup} />);
                       }}
                     >
                       Add payment method
-                    </button>
+                    </Button>
                   </div>
                 </div>
                 <Row>

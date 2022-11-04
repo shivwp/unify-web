@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import Select from "react-select";
 import Switch from "react-switch";
+import Button from 'react-bootstrap/Button'
 
 const Profile = () => {
   return (
@@ -597,7 +598,7 @@ const Screen = () => {
                     transform="translate(-7947.646 1915.645)"
                     fill="none"
                     stroke="#707070"
-                    stroke-width="1"
+                    strokeWidth="1"
                   />
                 </svg>
               </div>
@@ -628,7 +629,7 @@ const Screen = () => {
               </div>
               <div className="dbaors_btn">
                 <Link to="/freelancer/project-search">
-                  <button>Find new Project</button>
+                  <Button>Find new Project</Button>
                 </Link>
               </div>
             </div>
@@ -706,7 +707,7 @@ const Screen = () => {
                 </div>
               </div>
             </div>
-            <Row>
+            {/* <Row>
               <Col lg={4} md={6} className="dboard_box_mr_mbo mb-3">
                 <div>
                   <div className="d-flex justify-content-between">
@@ -760,7 +761,7 @@ const Screen = () => {
                   <ProfilePayment />
                 </div>
               </Col>
-            </Row>
+            </Row> */}
             <div className="d-flex box_ylow_dboard flex-wrap mt-5 pt-3 mb-5">
               <div className="bylow_iconbox">
                 <svg
@@ -829,7 +830,7 @@ const Screen = () => {
                   <div className="d-flex justify-content-between mb-3">
                     <div className="dcard_htext">Projects</div>
                     <div className="dcard_ltxt">
-                      <Link to="/">Manage Projects</Link>
+                      <Link to="/freelancer/milestone-earning">Manage Projects</Link>
                     </div>
                   </div>
                   <div className="overflow-scroll">
@@ -876,7 +877,7 @@ const Screen = () => {
                       AED 345 <span>/ month</span>
                     </div>
                     <div>
-                      <button>FULL TIME</button>
+                      <Button>FULL TIME</Button>
                     </div>
                   </div>
                 </div>

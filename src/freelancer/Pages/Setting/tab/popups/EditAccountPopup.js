@@ -2,6 +2,8 @@ import React from "react";
 import { Modal } from "react-responsive-modal";
 import "react-responsive-modal/styles.css";
 import "../../../../../popups/popup.css";
+import Form from 'react-bootstrap/Form'
+import Button from 'react-bootstrap/Button'
 
 const EditTeamPopup = ({ open, onCloseModal }) => {
   return (
@@ -15,40 +17,40 @@ const EditTeamPopup = ({ open, onCloseModal }) => {
         <h5>Edit Account</h5>
 
         <div className="team_name">
-          <label>
+          <Form.Label>
             <span style={{fontSize: '14px', fontWeight: 600}}>User ID</span>
-            <input
+            <Form.Control
               type="text"
               name="name"
               placeholder=" "
             />
-          </label>
+          </Form.Label>
         </div>
         <div className="team_name">
-          <label>
+          <Form.Label>
             <span style={{fontSize: '14px', fontWeight: 600}}>Name</span>
-            <input
+            <Form.Control
               type="text"
               name="name"
               placeholder="Ankita Kumavat"
             />
-          </label>
+          </Form.Label>
         </div>
         <div className="team_name">
-          <label>
+          <Form.Label>
             <span style={{fontSize: '14px', fontWeight: 600}}>Email</span>
-            <input type="email" name="po-no" placeholder="" />
-          </label>
+            <Form.Control type="email" name="po-no" placeholder="" />
+          </Form.Label>
         </div>
 
         <div className="btn_foot_sec no-border flex-wrap d-flex">
           <div className="fo_btn_c next_b_btn_c mb-1">
-            <button className="remove-posting-btns mrright-gppnew" onClick={onCloseModal}>
+            <Button className="remove-posting-btns mrright-gppnew" onClick={onCloseModal}>
               CANCEL
-            </button>
+            </Button>
           </div>
           <div className="fo_btn_c next_b_btn_c mb-1">
-            <button className="active_btn_blue">SAVE</button>
+            <Button className="active_btn_blue">SAVE</Button>
           </div>
         </div>
       </Modal>

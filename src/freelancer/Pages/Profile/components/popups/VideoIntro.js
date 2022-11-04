@@ -1,12 +1,13 @@
-
 import Select from "react-select";
 
+import Form from "react-bootstrap/Form";
+import { Button } from "react-bootstrap";
 
 const CloseIcon = () => {
   return (
     <svg
       fill="#B2B2B2"
-      class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiBox-root css-1om0hkc"
+      className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiBox-root css-1om0hkc"
       focusable="false"
       aria-hidden="true"
       viewBox="0 0 24 24"
@@ -17,77 +18,76 @@ const CloseIcon = () => {
   );
 };
 
-
 const VideoIntro = (props) => {
-    const options1 = [
-      {
-        name: "me talking about my skills",
-        label: "me talking about my skills",
-      },
-      {
-        name: "visual samples of my works",
-        label: "visual samples of my works",
-      },
-      {
-        name: "something else",
-        label: "something else",
-      },
-    ];
-    return (
-      <>
-        <div className="bg_wrapper_popup_new">
-          <div className="popup_box_bpn profile_nceqoi_popup pb-4">
-            <div className="popup_header pb-0">
-              <div className="p_header_hding">Add video introduction</div>
-              <div
-                className="close_pp_btn"
+  const options1 = [
+    {
+      name: "me talking about my skills",
+      label: "me talking about my skills",
+    },
+    {
+      name: "visual samples of my works",
+      label: "visual samples of my works",
+    },
+    {
+      name: "something else",
+      label: "something else",
+    },
+  ];
+  return (
+    <>
+      <div className="bg_wrapper_popup_new">
+        <div className="popup_box_bpn profile_nceqoi_popup pb-4">
+          <div className="popup_header pb-0">
+            <div className="p_header_hding">Add video introduction</div>
+            <div
+              className="close_pp_btn"
+              onClick={() => {
+                props.Popup();
+              }}
+            >
+              <CloseIcon />
+            </div>
+          </div>
+          <div className="popup_body_bpn amount_popup_body max_height_popucwui overflow-scroll">
+            <div className="mt-4 pt-1 mb-4"></div>
+
+            <div className="mb-5 ">
+              <Form.Group className="popup_form_element">
+                <Form.Label className="text-black font-size-13px font-weight-500">
+                  Link to your YouTube video
+                </Form.Label>
+                <Form.Control
+                  type="text"
+                  className="font-size-13px"
+                  placeholder="Ex: https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+                />
+              </Form.Group>
+              <Form.Group className="popup_form_element">
+                <Form.Label className="text-black font-size-13px font-weight-500">
+                  What type of video is this?
+                </Form.Label>
+                <Select
+                  className="font-size-13px"
+                  placeholder="What type of video is this?"
+                  options={options1}
+                />
+              </Form.Group>
+            </div>
+
+            <div className="popup_btns_new flex-wrap cwiewyehkk">
+              <Button className="trans_btn">Cancel</Button>
+              <Button
                 onClick={() => {
                   props.Popup();
                 }}
               >
-                <CloseIcon />
-              </div>
-            </div>
-            <div className="popup_body_bpn amount_popup_body max_height_popucwui overflow-scroll">
-              <div className="mt-4 pt-1 mb-4"></div>
-  
-              <div className="mb-5 ">
-                <div className="popup_form_element">
-                  <label className="text-black font-size-13px font-weight-500">
-                    Link to your YouTube video
-                  </label>
-                  <input
-                    type="text"
-                    className="font-size-13px"
-                    placeholder="Ex: https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-                  />
-                </div>
-                <div className="popup_form_element">
-                  <label className="text-black font-size-13px font-weight-500">
-                    What type of video is this?
-                  </label>
-                  <Select
-                    className="font-size-13px"
-                    placeholder="What type of video is this?"
-                    options={options1}
-                  />
-                </div>
-              </div>
-  
-              <div className="popup_btns_new flex-wrap cwiewyehkk">
-                <button className="trans_btn">Cancel</button>
-                <button
-                  onClick={() => {
-                    props.Popup();
-                  }}
-                >
-                  Save
-                </button>
-              </div>
+                Save
+              </Button>
             </div>
           </div>
         </div>
-      </>
-    );
-  };
-  export default VideoIntro
+      </div>
+    </>
+  );
+};
+export default VideoIntro;

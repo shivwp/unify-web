@@ -1,5 +1,8 @@
 import CreditCardInput from "react-credit-card-input";
 import { Row, Col } from "react-bootstrap";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
+
 const AddPayment = (props) => {
   return (
     <>
@@ -17,7 +20,7 @@ const AddPayment = (props) => {
             >
               <svg
                 fill="#B2B2B2"
-                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiBox-root css-1om0hkc"
+                className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiBox-root css-1om0hkc"
                 focusable="false"
                 aria-hidden="true"
                 viewBox="0 0 24 24"
@@ -32,9 +35,9 @@ const AddPayment = (props) => {
               <Row>
                 <Col md={12}>
                   <div className="popup_form_element payformelent">
-                    <label className="text-black font-size-13px font-weight-500">
+                    <Form.Label className="text-black font-size-13px font-weight-500">
                       Card Number
-                    </label>
+                    </Form.Label>
                     <CreditCardInput
                       cardNumberInputProps={{}}
                       fieldClassName="input tytyrterwqewyi"
@@ -50,74 +53,74 @@ const AddPayment = (props) => {
                   </div>
                 </Col>
                 <Col md={12}>
-                  <div className="popup_form_element payformelent">
-                    <label className="text-black font-size-13px font-weight-500">
+                  <Form.Group className="popup_form_element payformelent">
+                    <Form.Label className="text-black font-size-13px font-weight-500">
                       First Name
-                    </label>
-                    <input
+                    </Form.Label>
+                    <Form.Control
                       type="text"
                       className="font-size-13px"
                       placeholder="Rizwan"
                     />
-                  </div>
+                  </Form.Group>
                 </Col>
                 <Col md={12}>
-                  <div className="popup_form_element payformelent">
-                    <label className="text-black font-size-13px font-weight-500">
+                  <Form.Group className="popup_form_element payformelent">
+                    <Form.Label className="text-black font-size-13px font-weight-500">
                       Last Name
-                    </label>
-                    <input
+                    </Form.Label>
+                    <Form.Control
                       type="text"
                       className="font-size-13px"
                       placeholder="Qureshi"
                     />
-                  </div>
+                  </Form.Group>
                 </Col>
                 <Col md={6}>
-                  <div className="popup_form_element payformelent">
-                    <label className="text-black font-size-13px font-weight-500">
+                  <Form.Group className="popup_form_element payformelent">
+                    <Form.Label className="text-black font-size-13px font-weight-500">
                       Expires on
-                    </label>
-                    <input
+                    </Form.Label>
+                    <Form.Control
                       type="number"
                       className="font-size-13px"
                       placeholder="MM"
                     />
-                  </div>
+                  </Form.Group>
                 </Col>
                 <Col md={6}>
-                  <div className="popup_form_element payformelent">
-                    <label className="text-black font-size-13px font-weight-500"></label>
-                    <input
+                  <Form.Group className="popup_form_element payformelent">
+                    <Form.Label className="text-black font-size-13px font-weight-500"></Form.Label>
+                    <Form.Control
                       type="text"
                       className="font-size-13px"
                       placeholder="YY"
                     />
-                  </div>
+                  </Form.Group>
                 </Col>
                 <Col md={12}>
-                  <div className="popup_form_element payformelent">
-                    <label className="text-black font-size-13px font-weight-500">
+                  <Form.Group className="popup_form_element payformelent">
+                    <Form.Label className="text-black font-size-13px font-weight-500">
                       Security Code
-                    </label>
-                    <input
+                    </Form.Label>
+                    <Form.Control
                       type="text"
                       className="font-size-13px"
                       placeholder="**********"
                     />
-                  </div>
+                  </Form.Group>
                 </Col>
               </Row>
             </div>
 
             <div className="popup_btns_new flex-wrap getpaidsve_btn">
-              <button
+              <Button
                 onClick={() => {
                   props.Popup();
                 }}
               >
                 Save
-              </button>
+              </Button>
             </div>
           </div>
         </div>

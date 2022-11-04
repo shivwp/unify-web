@@ -37,7 +37,7 @@ const Reports = () => {
                     transform="translate(1560 287)"
                     fill="#fff"
                     stroke="#707070"
-                    stroke-width="1"
+                    strokeWidth="1"
                     opacity="0.43"
                   >
                     <circle cx="30" cy="30" r="30" stroke="none" />
@@ -82,7 +82,7 @@ const Reports = () => {
                     transform="translate(1560 287)"
                     fill="#fff"
                     stroke="#707070"
-                    stroke-width="1"
+                    strokeWidth="1"
                     opacity="0.43"
                   >
                     <circle cx="30" cy="30" r="30" stroke="none" />

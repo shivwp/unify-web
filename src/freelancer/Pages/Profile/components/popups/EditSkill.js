@@ -1,9 +1,11 @@
+import Form from 'react-bootstrap/Form';
+import { Button } from 'react-bootstrap';
 
 const CloseIcon = () => {
   return (
     <svg
       fill="#B2B2B2"
-      class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiBox-root css-1om0hkc"
+      className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiBox-root css-1om0hkc"
       focusable="false"
       aria-hidden="true"
       viewBox="0 0 24 24"
@@ -41,23 +43,23 @@ const EditSkill = (props) => {
               <div className="catbox_rd_ofive mt-3">
                 <div className="d-flex flex-wrap">
                   <div className="skill_bxr_gry">
-                    Mobile App <button>X</button>
+                    Mobile App <Button>X</Button>
                   </div>
                   <div className="skill_bxr_gry">
-                    Website Design <button>X</button>
+                    Website Design <Button>X</Button>
                   </div>
                   <div className="skill_bxr_gry">
-                    Web Development <button>X</button>
+                    Web Development <Button>X</Button>
                   </div>
                   <div className="skill_bxr_gry">
-                    Logo Design <button>X</button>
+                    Logo Design <Button>X</Button>
                   </div>
                   <div className="skill_bxr_gry">
-                    Logo Design <button>X</button>
+                    Logo Design <Button>X</Button>
                   </div>
                 </div>
                 <div>
-                  <input
+                  <Form.Control
                     type="text"
                     placeholder="search here skills..."
                     className="no-border font-size-13px search_skilloiouo"
@@ -66,14 +68,14 @@ const EditSkill = (props) => {
               </div>
               <div className="maxlabel_atcxt mt-3">Maximum 15 skills.</div>
               <div className="popup_btns_new flex-wrap cwiewyehkk">
-                <button className="trans_btn">Cancel</button>
-                <button
+                <Button className="trans_btn">Cancel</Button>
+                <Button
                   onClick={() => {
                     props.Popup();
                   }}
                 >
                   Save
-                </button>
+                </Button>
               </div>
             </div>
           </div>

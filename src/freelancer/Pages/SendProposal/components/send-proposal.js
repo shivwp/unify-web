@@ -4,6 +4,9 @@ import { Col, Row } from "react-bootstrap";
 import Title from "../../../../components/title";
 import star from "../../../../icons/star.svg";
 import Select from "react-select";
+import Form from 'react-bootstrap/Form';
+import { Link } from "react-router-dom";
+import Button from 'react-bootstrap/Button'
 
 const Screen = () => {
   Title(" | Send Proposal");
@@ -74,7 +77,7 @@ const Screen = () => {
                 Message the project supervisor on telegram @Michellewilliams460
               </div>
               <div className="bbsp_linkn">
-                <a href="#0">View job posting</a>
+                <Link to="#0">View job posting</Link>
               </div>
             </Col>
             <Col lg={3}>
@@ -289,7 +292,7 @@ const Screen = () => {
                   <div className="d-flex">
                     <div className="inp_bdg_pdsp">
                       $
-                      <input type="text" value={`15.00`} />
+                      <Form.Control type="text" placeholder={`15.00`} />
                     </div>
                     <div className="sli_bdg_pddsp d-flex align-items-center slsh_rh">
                       /hr
@@ -305,7 +308,7 @@ const Screen = () => {
                   <div className="d-flex">
                     <div className="inp_bdg_pdsp">
                       $
-                      <input type="text" value={`03.00`} />
+                      <Form.Control type="text" placeholder={`03.00`} />
                     </div>
                     <div className="sli_bdg_pddsp d-flex align-items-center slsh_rh">
                       /hr
@@ -324,7 +327,7 @@ const Screen = () => {
                   <div className="d-flex align-items-center">
                     <div className="inp_bdg_pdsp">
                       $
-                      <input type="text" value={`12.00`} />
+                      <Form.Control type="text" placeholder={`12.00`} />
                     </div>
                     <div className="sli_bdg_pddsp d-flex align-items-center slsh_rh">
                       /hr
@@ -351,10 +354,10 @@ const Screen = () => {
             <Col lg={12}>
               <div className="skll_hding">Cover Letter</div>
               <div className="cvr_ltr_textbox">
-                <textarea></textarea>
+                <Form.Control as="textarea"></Form.Control>
               </div>
               <div className="skll_hding mt-4">Attachments</div>
-              <div className="skll_hding mt-4 drag_file_bx"><input type="file"   />Drag or <span>upload</span> project files</div>
+              <div className="skll_hding mt-4 drag_file_bx"><Form.Control type="file"   />Drag or <span>upload</span> project files</div>
               <div className="tamoun_pdd_sp mt-4">
                 You may attach up to 10 files under the size of 25MB each.
                 Include work samples or other documents to support your
@@ -365,7 +368,7 @@ const Screen = () => {
           </Row>
         </div>
               <div className="mt-4 mb-4">
-                <button className="send_pros_btn">send proposal</button>
+                <Button className="send_pros_btn">send proposal</Button>
               </div>
       </Container>
     </>

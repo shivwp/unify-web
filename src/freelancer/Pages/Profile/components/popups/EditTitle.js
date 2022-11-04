@@ -1,9 +1,11 @@
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button'
 
 const CloseIcon = () => {
   return (
     <svg
       fill="#B2B2B2"
-      class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiBox-root css-1om0hkc"
+      className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiBox-root css-1om0hkc"
       focusable="false"
       aria-hidden="true"
       viewBox="0 0 24 24"
@@ -42,7 +44,7 @@ const EditTitle = (props) => {
               </div>
   
               <div className="popup_form_element mb-5">
-                <input
+                <Form.Control
                   type="text"
                   className="font-size-13px"
                   placeholder="Senior UI/UX, Website Designer And Graphic Designer"
@@ -50,14 +52,14 @@ const EditTitle = (props) => {
               </div>
   
               <div className="popup_btns_new flex-wrap cwiewyehkk">
-                <button className="trans_btn">Cancel</button>
-                <button
+                <Button className="trans_btn">Cancel</Button>
+                <Button
                   onClick={() => {
                     props.Popup();
                   }}
                 >
                   Save
-                </button>
+                </Button>
               </div>
             </div>
           </div>

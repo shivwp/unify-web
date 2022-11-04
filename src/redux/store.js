@@ -9,7 +9,7 @@ let middleware = [thunk];
 
 const rootReducer = combineReducers({
   auth: authReducer,
-  profile : profileReducer
+  profile: profileReducer,
 });
 
 const store = createStore(

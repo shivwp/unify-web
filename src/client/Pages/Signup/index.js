@@ -9,7 +9,7 @@ const Signupscreen = () => {
   const dispatch = useDispatch();
   const [country, setCountry] = useState();
   const [errors, setErrors] = useState({});
-  const [userType, setUserType] = useState();
+  const [userType, setUserType] = useState(null);
   const getCountryList = useSelector((state) => state.auth.getCountryList);
   const [values, setValues] = useState({
     agree_terms: 0,

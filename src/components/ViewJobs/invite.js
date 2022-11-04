@@ -3,7 +3,7 @@ import Search from './invite-freelancer/search';
 import Invite from './invite-freelancer/invite';
 import Hires from './invite-freelancer/hires';
 import Saved from './invite-freelancer/saved';
-
+import Button from 'react-bootstrap/Button'
 import { useState } from 'react';
 
 const JonComponent = () => {
@@ -30,10 +30,10 @@ const JonComponent = () => {
                 <div className="box_vs_m">
                     <div className='overflow-scroll'>
                     <div className="d-flex flex-wrap tab_m_nodea tab_scroll_cont">
-                        <button className={`tab_btn_vs text-transform-cap w-auto ${TabActive === 'search' ? 'active_bvs' : ''}`} onClick={() => { changeTab("search") }}>Search</button>
-                        <button className={`tab_btn_vs text-transform-cap w-auto ${TabActive === 'invite' ? 'active_bvs' : ''}`} onClick={() => { changeTab("invite") }}>Invited freelancers</button>
-                        <button className={`tab_btn_vs text-transform-cap w-auto ${TabActive === 'hires' ? 'active_bvs' : ''}`} onClick={() => { changeTab("hires") }}>My Hires</button>
-                        <button className={`tab_btn_vs text-transform-cap w-auto ${TabActive === 'saved' ? 'active_bvs' : ''}`} onClick={() => { changeTab("saved") }}>Saved Talent</button>
+                        <Button className={`tab_btn_vs text-transform-cap w-auto ${TabActive === 'search' ? 'active_bvs' : ''}`} onClick={() => { changeTab("search") }}>Search</Button>
+                        <Button className={`tab_btn_vs text-transform-cap w-auto ${TabActive === 'invite' ? 'active_bvs' : ''}`} onClick={() => { changeTab("invite") }}>Invited freelancers</Button>
+                        <Button className={`tab_btn_vs text-transform-cap w-auto ${TabActive === 'hires' ? 'active_bvs' : ''}`} onClick={() => { changeTab("hires") }}>My Hires</Button>
+                        <Button className={`tab_btn_vs text-transform-cap w-auto ${TabActive === 'saved' ? 'active_bvs' : ''}`} onClick={() => { changeTab("saved") }}>Saved Talent</Button>
                     </div>
                     </div>
                     {Tab}
