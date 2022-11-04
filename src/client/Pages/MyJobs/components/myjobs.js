@@ -146,7 +146,7 @@ const Screen = () => {
           <div className="my_jo_headin">My Jobs</div>
           <div className="post_job_btn_m">
             <Link to="/gettingstarted">
-              <Button className="font-weight-600">Post A New Job</Button>
+              <Button className="font-weight-600 borderonh_blew">Post A New Job</Button>
             </Link>
           </div>
         </div>

@@ -36,7 +36,7 @@ const Screen = () => {
             </svg>
             Filters
           </Button>
-          <Button className="fif_five mt-2">Advanced Search</Button>
+          <Button className="fif_five mt-2 hovbord-blew">Advanced Search</Button>
         </div>
       </div>
       <div className="freelancer_box_in">
