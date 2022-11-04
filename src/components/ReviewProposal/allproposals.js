@@ -84,7 +84,7 @@ const Screen = (props) => {
                       Message
                     </Button>
                     <Link to="/hire-freelancer">
-                      <Button className="mt-2 font-weight-500">Hire</Button>
+                      <Button className="mt-2 font-weight-500 hover_white_io">Hire</Button>
                     </Link>
                   </div>
                 </div>

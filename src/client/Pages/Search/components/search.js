@@ -519,7 +519,7 @@ const Project_Search = () => {
                 <Form.Control type={`text`} placeholder={`Search`} />
               </div>
               <div className="post_job_btn_m in_btn_p_sm">
-                <Button className="fw-500">Advanced Search</Button>
+                <Button className="fw-500 hovbord-blew">Advanced Search</Button>
               </div>
             </div>
             {ListCard()}

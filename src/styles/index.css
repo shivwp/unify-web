@@ -3,6 +3,40 @@ body {
   font-family: "Poppins-Bold", "Poppins";
 }
 
+.btn:hover {
+  border-color: inherit;
+  color: inherit;
+}
+
+.post_job_btn_m button:hover {
+  color: #6d2ef1;
+  background-color: #fff;
+  border-color: #6d2ef1;
+}
+
+.post_job_btn_m button {
+  border: #6d2ef1 solid 1px;
+}
+.borderonh_blew{
+  border: #6d2ef1 solid 1px !important;
+}
+.hover_white_io:hover{
+  color: #fff;
+}
+
+.toggle_btn_dot:hover {
+  border-color: #6d2ef1;
+  background-color: #fff;
+}
+
+.toggle_btn_dot:hover svg {
+  fill: #6d2ef1;
+}
+
+.toggle_btn_dot svg {
+  fill: #6d2ef1;
+}
+
 .navbar {
   padding: 35px !important;
 }
@@ -87,7 +121,8 @@ body {
   -ms-border-radius: 30px;
   -o-border-radius: 30px;
 }
-.logout_btn_nav{
+
+.logout_btn_nav {
   font-weight: 500 !important;
   margin: 0px 20px !important;
   background-color: #170048;
@@ -137,12 +172,15 @@ body {
   color: #6d2ef1;
   border-right: 6px solid #fa61ff !important;
 }
+
 .side_nav_active_tab a {
   color: #6d2ef1;
 }
+
 .side_nav_active_tab svg path {
   fill: #6d2ef1 !important;
 }
+
 .font-20 {
   font-size: 20px !important;
 }
@@ -392,6 +430,7 @@ body {
   height: 47px;
   border-radius: 23px;
   font-size: 18px;
+  border-color: #170048;
   color: #ffffff;
   line-height: 24px;
   font-weight: 800;
@@ -579,7 +618,10 @@ body {
   -ms-border-radius: 30px;
   -o-border-radius: 30px;
 }
-
+.btn_services button:hover{
+  background-color: transparent;
+  color: #180095;
+}
 .flex_cen {
   display: flex;
   justify-content: center;
@@ -1719,9 +1761,12 @@ body {
   align-items: center;
   padding: 12px 0px;
 }
-.s_b_r label , .form-label{
-  margin-bottom: auto;
+
+.s_b_r label,
+.form-label {
+  margin-bottom: inherit;
 }
+
 .s_b_r p {
   font-size: 18px;
   line-height: 18px;
@@ -2101,6 +2146,7 @@ body {
   color: #9c9c9c;
   font-weight: 400;
   font-family: "Poppins";
+  margin-bottom: 0 !important;
 }
 
 .ran_fl_inp {
@@ -2171,6 +2217,15 @@ body {
   font-weight: 600;
   font-family: "Poppins";
 }
+.job_head_s h3 {
+  font-size: 15px;
+  letter-spacing: 0px;
+  line-height: 15px;
+  color: #170048;
+  font-weight: 600;
+  font-family: "Poppins";
+}
+
 .job_head_s h3 {
   font-size: 15px;
   letter-spacing: 0px;
@@ -2823,6 +2878,11 @@ body {
   padding: 25px 30px !important;
 }
 
+.sign_in_box {
+  max-width: 700px !important;
+  padding: 25px 30px !important;
+}
+
 .sign_u_head h1 {
   text-align: center;
   font: normal normal bolder 40px/90px "Poppins-Bold", "Poppins";
@@ -3004,6 +3064,18 @@ body {
   border-radius: 0;
 }
 
+.form-check-input {
+  vertical-align: inherit;
+}
+
+.form-control:focus {
+  box-shadow: none;
+}
+
+.sign_buttons_group button {
+  border-radius: 0;
+}
+
 .sign_buttons_group .userType {
   border: 1px solid #9ba0f161;
   background-color: transparent;
@@ -3037,7 +3109,6 @@ body {
   display: flex;
   align-items: center;
   margin-bottom: 10px;
-  
 }
 
 .sign_l_n_text input {
@@ -3401,7 +3472,12 @@ body {
   color: #170048;
   margin: 0;
 }
-
+.hovbord-blew{
+  border: #6d2ef1 solid 1px !important;
+}
+.round_b_btn:hover{
+  border-color: #d4d4d5;
+}
 .round_b_btn {
   margin: 0px 10px;
   background-color: transparent;
@@ -3845,7 +3921,10 @@ body {
   letter-spacing: 0px;
   color: #393939;
 }
-
+.slide_btnss button:hover{
+  background-color: transparent;
+  border-color: #eaeef2;
+}
 .slider_shutter {
   display: none;
 }
@@ -4815,7 +4894,10 @@ a {
 .tab_scroll_cont::-webkit-scrollbar {
   display: none;
 }
-
+.tab_scroll_cont .tab_btn_vs:hover , .tab_btn_vs:hover{
+  background-color: #fff;
+  border-bottom-color: #6d2ef1;
+}
 .tab_scroll_cont .tab_btn_vs {
   min-width: max-content;
 }
@@ -4987,9 +5069,11 @@ a {
   font-weight: 500;
   margin-left: 10px;
 }
+
 .testimonial_container .testimonial_about .test_name {
   color: #6d2ef1;
 }
+
 .testimonial_container .testimonial_about .test_designation {
   color: rgb(55, 54, 54);
 }
@@ -5036,9 +5120,11 @@ a {
   font-size: 12px;
   padding: 10px;
 }
+
 .submit_testimo_inp textarea::placeholder {
   font-size: 12px;
 }
+
 .your_info {
   margin: 35px 0;
 }
@@ -5080,12 +5166,15 @@ a {
   color: #6d2ef1;
   margin-left: 10px;
 }
+
 .your_info .heading a:hover {
   color: #2e72f1;
 }
+
 .testimonial_btn {
   margin: 10px 0;
 }
+
 .testimonial_btn button {
   min-width: 160px;
   display: flex;
