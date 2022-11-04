@@ -274,3 +274,102 @@
   height: 82px;
   object-fit: cover;
 }
+
+/* ================================ confirmation popup ================================== */
+.confirmation_popup {
+  max-width: 400px;
+
+  position: relative;
+  top: -15%;
+}
+.conf-heading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #6d2ef1;
+  margin-top: -25px;
+}
+
+.conf-desc {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #8d8d8d;
+  padding: 5px;
+}
+.text-cent,
+.text-cent button {
+  background-color: #6d2ef1;
+  color: #fff;
+}
+
+.confirmation_popup_btns {
+  display: flex;
+  margin: 35px 0 5px 0;
+  justify-content: center;
+}
+
+.confirmation_popup_btns .confirm_no_btn {
+  background-color: #fff;
+  color: #6d2ef1;
+  font: normal normal medium 18px/30px Poppins !important;
+  font-weight: bold;
+  border-radius: 60px !important;
+  text-transform: uppercase;
+  padding: 8px 39px;
+  margin-top: 5px;
+  min-width: 133px;
+  margin-right: 15px;
+  border: #6d2ef1 solid 1px;
+  -webkit-border-radius: 60px !important;
+}
+.confirmation_popup_btns .confirm_yes_btn {
+  background-color: #6d2ef1;
+  color: #fff;
+  font: normal normal medium 18px/30px Poppins !important;
+  font-weight: bold;
+  border-radius: 60px !important;
+  text-transform: uppercase;
+  padding: 8px 39px;
+  margin-top: 5px;
+  min-width: 133px;
+  margin-right: 15px;
+  border: #6d2ef1 solid 1px;
+  -webkit-border-radius: 60px !important;
+}
+
+/* ================ successs popup ======================== */
+/* .abc {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #6d2ef1;
+  font-weight: bold;
+}
+
+.acd {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  color: black;
+  padding: 5px;
+  opacity: 0.4;
+}
+
+._cancle_submit {
+  padding-top: 30px;
+  color: white;
+}
+._cancle_submit button {
+  background-color: #6d2ef1;
+  color: white;
+} */
+
+/* .freelancer_popups {
+  padding-top: 20px;
+  position: absolute;
+  left: 610px;
+  top: 87px;
+  border-radius: 5px;
+} */

@@ -1,8 +1,4 @@
-import {
-  GOOGLE_SIGN_IN_FAIL,
-  APPLE_SIGN_IN_FAIL,
-  SET_COUNTRY,
-} from "../types";
+import { GOOGLE_SIGN_IN_FAIL, APPLE_SIGN_IN_FAIL, SET_COUNTRY, LOGIN_ERROR, SIGNUP_ERROR } from "../types";
 
 const initialState = {};
 
@@ -22,6 +18,16 @@ const authReducer = (state = initialState, action) => {
       return {
         ...state,
         googleLoginFailError: action.payload,
+      };
+    case LOGIN_ERROR:
+      return {
+        ...state,
+        loginError: action.payload,
+      };
+    case SIGNUP_ERROR:
+      return {
+        ...state,
+        signupError: action.payload,
       };
     default:
       return state;

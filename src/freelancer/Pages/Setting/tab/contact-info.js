@@ -1,7 +1,7 @@
 import Container from "react-bootstrap/Container";
 import { Row, Col } from "react-bootstrap";
 import SideNav from "./site_nav";
-import Title from "../../../components/title";
+import Title from "../../../../components/title";
 import { useState } from "react";
 import Form from 'react-bootstrap/Form';
 import { useDispatch, useSelector } from "react-redux";
@@ -13,9 +13,9 @@ import {
   onAdditionalAccount,
   onEditContactInfo,
   onEditLocationInfo,
-} from "../../../redux/actions/profileAction";
-import CloseAccountPopup from "../../../popups/CloseAccountPopup";
-import { countryList } from "../../../redux/actions/authActions";
+} from "../../../../redux/actions/profileAction";
+import CloseAccountPopup from "../../../../popups/CloseAccountPopup";
+import { countryList } from "../../../../redux/actions/authActions";
 import { data } from "jquery";
 import { useNavigate } from "react-router-dom";
 
