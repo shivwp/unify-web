@@ -2,15 +2,15 @@ import React, { useState } from "react";
 import { Modal } from "react-responsive-modal";
 import "react-responsive-modal/styles.css";
 import "./popup.css";
-import { Link } from "react-router-dom";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
 
 const ChagePasswordPopup = ({ onCloseModal, open }) => {
   const [hideNewPass, setHideNewPass] = useState(true);
   const [hideOldPass, setHideOldPass] = useState(true);
   const [hideConfPass, setHideConfPass] = useState(true);
 
-
-  console.log(open)
+  console.log(open);
   return (
     <>
       <Modal
@@ -20,11 +20,11 @@ const ChagePasswordPopup = ({ onCloseModal, open }) => {
         center
       >
         <h5 style={{ marginBottom: "25px" }}>Change Password</h5>
-        <form>
+        <Form>
           <div className="password-inp">
-            <div className="inp-label">Old Password</div>
+            <Form.Label className="inp-label">Old Password</Form.Label>
             <div className="input-grp">
-              <input type={hideOldPass ? "password" : "text"} />
+              <Form.Control type={hideOldPass ? "password" : "text"} />
               {hideOldPass ? (
                 <i
                   className="fa fa-eye-slash showInpPass"
@@ -41,9 +41,9 @@ const ChagePasswordPopup = ({ onCloseModal, open }) => {
             </div>
           </div>
           <div className="password-inp">
-            <div className="inp-label">New Password</div>
+            <Form.Label className="inp-label">New Password</Form.Label>
             <div className="input-grp">
-              <input type={hideNewPass ? "password" : "text"} />
+              <Form.Control type={hideNewPass ? "password" : "text"} />
               {hideNewPass ? (
                 <i
                   className="fa fa-eye-slash showInpPass"
@@ -60,9 +60,9 @@ const ChagePasswordPopup = ({ onCloseModal, open }) => {
             </div>
           </div>
           <div className="password-inp">
-            <div className="inp-label">Confirm New Password</div>
+            <Form.Label className="inp-label">Confirm New Password</Form.Label>
             <div className="input-grp">
-              <input type={hideConfPass ? "password" : "text"} />
+              <Form.Control type={hideConfPass ? "password" : "text"} />
               {hideConfPass ? (
                 <i
                   className="fa fa-eye-slash showInpPass"
@@ -79,21 +79,23 @@ const ChagePasswordPopup = ({ onCloseModal, open }) => {
             </div>
           </div>
           <div className="alert-inp">
-            <input type="checkbox" /> {"  "}{" "}
+            <Form.Check type="checkbox" /> {"  "}{" "}
             <span>
               All Device will be required to sign in with new password
             </span>
           </div>
-        </form>
+        </Form>
 
         <div className="btn_foot_sec no-border flex-wrap d-flex">
           <div className="fo_btn_c next_b_btn_c">
-            <button className="remove-posting-btns" onClick={onCloseModal}>CANCEL</button>
+            <Button className="remove-posting-btns" onClick={onCloseModal}>
+              CANCEL
+            </Button>
           </div>
           <div className="fo_btn_c next_b_btn_c">
-            <button type="submit" className="active_btn_blue">
+            <Button type="submit" className="active_btn_blue">
               SAVE
-            </button>
+            </Button>
           </div>
         </div>
       </Modal>

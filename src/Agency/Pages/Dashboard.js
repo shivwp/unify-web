@@ -1,13 +1,12 @@
-import NavbarLogin from "../../freelancer/components/header";
 import Dashboard from "../components/Dashboard";
-import Footer from "../../components/footer";
+import Layout from "../../freelancer/Layout/Layout";
 
 const AgencyDashboard = () => {
   return (
     <>
-      <NavbarLogin dashboardBgNav="trytygutf" />
-      <Dashboard />
-      <Footer />
+      <Layout dashboardBgNav="trytygutf">
+        <Dashboard />
+      </Layout>
     </>
   );
 };

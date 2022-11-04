@@ -3,6 +3,7 @@ import AllProposals from './allproposals';
 import Satisfied from './satisfied';
 import Messaged from './messaged';
 import Archived from './archive';
+import Button from 'react-bootstrap/Button'
 
 import { useState } from 'react';
 
@@ -31,10 +32,10 @@ const JonComponent = () => {
                 <div className="box_vs_m">
                     <div className='overflow-scroll'>
                     <div className="d-flex tab_m_nodea tab_scroll_cont">
-                        <button className={`text-capitalize tab_btn_vs w-auto ${TabActive === 'all' ? 'active_bvs' : ''}`} onClick={() => { changeTab("all") }}>All Proposals</button>
-                        <button className={`text-capitalize tab_btn_vs w-auto ${TabActive === 'satisfied' ? 'active_bvs' : ''}`} onClick={() => { changeTab("satisfied") }}>Shortlisted</button>
-                        <button className={`text-capitalize tab_btn_vs w-auto ${TabActive === 'message' ? 'active_bvs' : ''}`} onClick={() => { changeTab("message") }}>Messaged</button>
-                        <button className={`text-capitalize tab_btn_vs w-auto ${TabActive === 'archive' ? 'active_bvs' : ''}`} onClick={() => { changeTab("archive") }}>Archived</button>
+                        <Button className={`text-capitalize tab_btn_vs w-auto ${TabActive === 'all' ? 'active_bvs' : ''}`} onClick={() => { changeTab("all") }}>All Proposals</Button>
+                        <Button className={`text-capitalize tab_btn_vs w-auto ${TabActive === 'satisfied' ? 'active_bvs' : ''}`} onClick={() => { changeTab("satisfied") }}>Shortlisted</Button>
+                        <Button className={`text-capitalize tab_btn_vs w-auto ${TabActive === 'message' ? 'active_bvs' : ''}`} onClick={() => { changeTab("message") }}>Messaged</Button>
+                        <Button className={`text-capitalize tab_btn_vs w-auto ${TabActive === 'archive' ? 'active_bvs' : ''}`} onClick={() => { changeTab("archive") }}>Archived</Button>
                     </div>
                     </div>
                     {Tab}

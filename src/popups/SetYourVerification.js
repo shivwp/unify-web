@@ -2,7 +2,8 @@ import React from "react";
 import { Modal } from "react-responsive-modal";
 import "react-responsive-modal/styles.css";
 import "./popup.css";
-import { Link } from "react-router-dom";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
 
 const SetYourVerification = ({ open, onCloseModal }) => {
   return (
@@ -19,22 +20,22 @@ const SetYourVerification = ({ open, onCloseModal }) => {
           <div>
             <ul className="popup-radio">
               <li>
-                <label htmlFor="reason-1">
-                  <input type="radio" id="reason-1" name="p" />{" "}
+                <Form.Label htmlFor="reason-1">
+                  <Form.Check type="radio" id="reason-1" name="p" />{" "}
                   <span>Authenticator app code</span>
-                </label>
+                </Form.Label>
               </li>
               <li>
-                <label htmlFor="reason-2">
-                  <input type="radio" name="p" id="reason-2" />{" "}
+                <Form.Label htmlFor="reason-2">
+                  <Form.Check type="radio" name="p" id="reason-2" />{" "}
                   <span>Mobile app prompt</span>
-                </label>
+                </Form.Label>
               </li>
               <li>
-                <label htmlFor="reason-3">
-                  <input type="radio" name="p" id="reason-3" />{" "}
+                <Form.Label htmlFor="reason-3">
+                  <Form.Check type="radio" name="p" id="reason-3" />{" "}
                   <span>Text message</span>
-                </label>
+                </Form.Label>
               </li>
             </ul>
           </div>
@@ -44,30 +45,30 @@ const SetYourVerification = ({ open, onCloseModal }) => {
           <div>
             <ul className="popup-radio">
               <li>
-                <label htmlFor="reason-1">
-                  <input type="radio" id="reason-1" name="p" />{" "}
+                <Form.Label htmlFor="reason-1">
+                  <Form.Check type="radio" id="reason-1" name="p" />{" "}
                   <span>When my login or activity seems risky</span>
-                </label>
+                </Form.Label>
               </li>
               <li>
-                <label htmlFor="reason-2">
-                  <input type="radio" name="p" id="reason-2" />{" "}
+                <Form.Label htmlFor="reason-2">
+                  <Form.Check type="radio" name="p" id="reason-2" />{" "}
                   <span>
                     At every login and when my login or activity seems risky
                   </span>
-                </label>
+                </Form.Label>
               </li>
             </ul>
           </div>
         </div>
         <div className="btn_foot_sec no-border flex-wrap d-flex">
           <div className="fo_btn_c next_b_btn_c">
-            <button className="remove-posting-btns" onClick={onCloseModal}>
+            <Button className="remove-posting-btns" onClick={onCloseModal}>
               CANCEL
-            </button>
+            </Button>
           </div>
           <div className="fo_btn_c next_b_btn_c">
-            <button className="active_btn_blue">SAVE</button>
+            <Button className="active_btn_blue">SAVE</Button>
           </div>
         </div>
       </Modal>

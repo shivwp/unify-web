@@ -1,6 +1,7 @@
 import { Col, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
-
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
 const Screen = (props) => {
   return (
     <>
@@ -9,14 +10,14 @@ const Screen = (props) => {
           <div className="sort_by_pa width-inherit d-flex align-items-center">
             Sort By
           </div>
-          <select>
+          <Form.Select>
             <option>Best match</option>
             <option>Newest applicants</option>
             <option>Oldest applicants</option>
             <option>Highest hourly rate</option>
             <option>Lowest hourly rate</option>
             <option>Highest earnings</option>
-          </select>
+          </Form.Select>
         </div>
         <div className="search_input_in selec_inp_ful_w">
           <div className="search_icon_in">
@@ -31,7 +32,7 @@ const Screen = (props) => {
               <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
             </svg>
           </div>
-          <input type={`text`} placeholder={`search...`} />
+          <Form.Control type={`text`} placeholder={`search...`} />
         </div>
       </div>
       <div className="freelancer_box_in">
@@ -54,7 +55,7 @@ const Screen = (props) => {
                   </div>
                 </div>
                 <div className="d-flex align-items-center flex-wrap">
-                  <button
+                  <Button
                     className="transp_fil_btn heart_roun_btn mt-2"
                     onClick={() => {
                       props.changetab("archive");
@@ -77,13 +78,13 @@ const Screen = (props) => {
                         d="M7.646 15.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 14.293V5.5a.5.5 0 0 0-1 0v8.793l-2.146-2.147a.5.5 0 0 0-.708.708l3 3z"
                       />
                     </svg>
-                  </button>
+                  </Button>
                   <div className="ts_btn attach_f_btn wid_30_in d-flex flex-wrap">
-                    <button className="transp_fil_btn mt-2 font-weight-500">
+                    <Button className="transp_fil_btn mt-2 font-weight-500">
                       Message
-                    </button>
+                    </Button>
                     <Link to="/hire-freelancer">
-                      <button className="mt-2 font-weight-500">Hire</button>
+                      <Button className="mt-2 font-weight-500">Hire</Button>
                     </Link>
                   </div>
                 </div>

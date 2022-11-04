@@ -5,6 +5,8 @@ import "./popup.css";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
 import {
   getHoursPerWeekList,
   onEditHourPerWeek,
@@ -41,8 +43,8 @@ const HourPerWeekPopup = ({ open, onCloseModal }) => {
           <ul className="popup-radio">
             {hwpList?.map((item, index) => (
               <li key={item.id}>
-                <label htmlFor={`op-${index}`}>
-                  <input
+                <Form.Label htmlFor={`op-${index}`}>
+                  <Form.Check
                     type="radio"
                     id={`op-${index}`}
                     onClick={() => setHPWValue(item.id)}
@@ -50,7 +52,7 @@ const HourPerWeekPopup = ({ open, onCloseModal }) => {
                     value={"More then 30 Hours per week"}
                   />{" "}
                   <span>{item.title}</span>
-                </label>
+                </Form.Label>
               </li>
             ))}
           </ul>
@@ -58,10 +60,10 @@ const HourPerWeekPopup = ({ open, onCloseModal }) => {
 
         <div className="freelancer_popup_btns">
           <div className="_cancle_submit">
-            <button onClick={onCloseModal}>CANCEL</button>
+            <Button onClick={onCloseModal}>CANCEL</Button>
           </div>
           <div className="_save_submit">
-            <button onClick={onSave}>SAVE</button>
+            <Button onClick={onSave}>SAVE</Button>
           </div>
         </div>
       </Modal>

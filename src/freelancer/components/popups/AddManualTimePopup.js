@@ -3,7 +3,9 @@ import { Modal } from "react-responsive-modal";
 import "react-responsive-modal/styles.css";
 import "./popup.css";
 import Select from "react-select";
+import Button from 'react-bootstrap/Button';
 import { Row, Col } from "react-bootstrap";
+import Form from 'react-bootstrap/Form';
 
 const AddManualTimePopup = ({ open, onCloseModal }) => {
   const date = [
@@ -33,53 +35,54 @@ const AddManualTimePopup = ({ open, onCloseModal }) => {
         <h5>Add Manual Time</h5>
         <div className="content">
           <div className="freelancer_popup_inps">
-            <label htmlFor="date">
+            <Form.Label htmlFor="date">
               <span>Date</span>
               <Select
                 className="custom_css_select"
                 placeholder="Wed, Oct 12, 2022"
                 options={date}
               />
-            </label>
-            <label htmlFor="date">
+            </Form.Label>
+            <Form.Label htmlFor="date">
               <span>Time Zone</span>
               <Select
                 className="custom_css_select"
                 placeholder="Mine"
                 options={timezone}
               />
-            </label>
+            </Form.Label>
             <Row>
               <Col md={6} sm={12} lg={6}>
-                <label htmlFor="date">
+                <Form.Label htmlFor="date">
                   <span>Start Time</span>
                   <Select
                     className="custom_css_select"
                     placeholder="Start Time"
                     options={startTime}
                   />
-                </label>
+                </Form.Label>
               </Col>
               <Col md={6} sm={12} lg={6}>
-                <label htmlFor="date">
+                <Form.Label htmlFor="date">
                   <span>End Time</span>
                   <Select
                     className="custom_css_select"
                     placeholder="End time"
                     options={startTime}
                   />
-                </label>
+                </Form.Label>
               </Col>
             </Row>
-            <label htmlFor="date">
+            <Form.Label htmlFor="date">
               <span>Memo </span>
               <div className="freelancer_popup_textarea">
-                <textarea placeholder="Short description of the work done"></textarea>
+                <Form.Control
+              as="textarea" placeholder="Short description of the work done"></Form.Control>
                 <div className="left_Characters">
                   <span>140 Characters left</span>
                 </div>
               </div>
-            </label>
+            </Form.Label>
           </div>
           <p className="Popup_note">
             <b>Note:</b> Menual time does not qualify for Upwork Hourly
@@ -89,10 +92,10 @@ const AddManualTimePopup = ({ open, onCloseModal }) => {
 
         <div className="freelancer_popup_btns">
           <div className="_cancle_submit">
-            <button onClick={onCloseModal}>CANCEL</button>
+            <Button onClick={onCloseModal}>CANCEL</Button>
           </div>
           <div className="_save_submit">
-            <button>SAVE</button>
+            <Button>SAVE</Button>
           </div>
         </div>
       </Modal>

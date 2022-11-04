@@ -3,6 +3,7 @@ import { Modal } from "react-responsive-modal";
 import "react-responsive-modal/styles.css";
 import "./popup.css";
 import Select from "react-select";
+import Button from 'react-bootstrap/Button';
 import { Row, Col } from "react-bootstrap";
 
 const MobileAppPromptPopup = ({onCloseModal, open}) => {
@@ -32,10 +33,10 @@ const MobileAppPromptPopup = ({onCloseModal, open}) => {
      
         <div className="freelancer_popup_btns ">
           <div className="_cancle_submit">
-            <button onClick={onCloseModal}>CANCEL</button>
+            <Button onClick={onCloseModal}>CANCEL</Button>
           </div>
           <div className="_save_submit">
-            <button>SEND</button>
+            <Button>SEND</Button>
           </div>
         </div>
       </Modal>

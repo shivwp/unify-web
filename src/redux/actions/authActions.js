@@ -4,15 +4,9 @@ import {
   googleAuthProvider,
   signInWithPopup,
   signOut,
-} from "../../firebase/firebase";
+} from "../../firebase/Firebase";
 import Axios from "../axios";
-import {
-  GOOGLE_SIGN_IN_FAIL,
-  APPLE_SIGN_IN_FAIL,
-  SET_COUNTRY,
-  LOGIN_ERROR,
-  SIGNUP_ERROR,
-} from "../types";
+import { GOOGLE_SIGN_IN_FAIL, APPLE_SIGN_IN_FAIL, SET_COUNTRY } from "../types";
 import { GoogleAuthProvider, OAuthProvider } from "firebase/auth";
 
 const config = {
@@ -34,12 +28,7 @@ export const onLogin = (data, navigate) => async (dispatch) => {
       }
       window.location.reload();
     }
-  } catch (err) {
-    dispatch({
-      type: LOGIN_ERROR,
-      payload: err.response,
-    });
-  }
+  } catch (err) {}
 };
 
 export const onRegister = (data, navigate) => async (dispatch) => {
@@ -48,12 +37,7 @@ export const onRegister = (data, navigate) => async (dispatch) => {
     if (res.data.status) {
       navigate("/verify-signup");
     }
-  } catch (err) {
-    dispatch({
-      type: SIGNUP_ERROR,
-      payload: err.response,
-    });
-  }
+  } catch (err) {}
 };
 
 export const onVerifySignup = (data, navigate) => async (dispatch) => {
