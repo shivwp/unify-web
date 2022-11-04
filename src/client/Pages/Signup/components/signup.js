@@ -17,6 +17,7 @@ const Signup = ({
   selectUserType,
   userType,
   setCountry,
+  signupError,
   values,
   errors,
   selectCountry,
@@ -136,15 +137,7 @@ const Signup = ({
                         placeholder="First Name"
                       />
                       <span className="signInError">
-                        {errors.first_name && (
-                          <>
-                            <i
-                              className="fa fa-exclamation-circle"
-                              aria-hidden="true"
-                            ></i>{" "}
-                            Please enter your First Name
-                          </>
-                        )}
+                        {errors.first_name && <>Please enter your First Name</>}
                       </span>
                     </div>
                   </div>
@@ -195,15 +188,7 @@ const Signup = ({
                         onChange={(e) => onInputChange(e)}
                       />
                       <span className="signInError">
-                        {errors.last_name && (
-                          <>
-                            <i
-                              className="fa fa-exclamation-circle"
-                              aria-hidden="true"
-                            ></i>{" "}
-                            Please enter your Last Name
-                          </>
-                        )}
+                        {errors.last_name && <>Please enter your Last Name</>}
                       </span>
                     </div>
                   </div>
@@ -231,14 +216,10 @@ const Signup = ({
                         placeholder="Email"
                       />
                       <span className="signInError">
-                        {errors.email && (
-                          <>
-                            <i
-                              className="fa fa-exclamation-circle"
-                              aria-hidden="true"
-                            ></i>{" "}
-                            Please enter your email
-                          </>
+                        {errors.email ? (
+                          <>Please enter your email</>
+                        ) : (
+                          signupError && signupError
                         )}
                       </span>
                     </div>
@@ -286,15 +267,7 @@ const Signup = ({
                         ></i>
                       )}
                       <span className="signInError">
-                        {errors.password && (
-                          <>
-                            <i
-                              className="fa fa-exclamation-circle"
-                              aria-hidden="true"
-                            ></i>{" "}
-                            Please enter your Password
-                          </>
-                        )}
+                        {errors.password && <>Please enter your Password</>}
                       </span>
                     </div>
                   </div>
@@ -342,13 +315,7 @@ const Signup = ({
                       )}
                       <span className="signInError">
                         {errors.confirmPassword && (
-                          <>
-                            <i
-                              className="fa fa-exclamation-circle"
-                              aria-hidden="true"
-                            ></i>{" "}
-                            Please enter your Confirm Password
-                          </>
+                          <>Please enter your Confirm Password</>
                         )}
                       </span>
                     </div>
@@ -364,15 +331,7 @@ const Signup = ({
                         options={options1}
                       />
                       <span className="signInError">
-                        {errors.country && (
-                          <>
-                            <i
-                              className="fa fa-exclamation-circle"
-                              aria-hidden="true"
-                            ></i>{" "}
-                            Please Select your Country
-                          </>
-                        )}
+                        {errors.country && <>Please Select your Country</>}
                       </span>
                     </div>
                   </div>
@@ -392,29 +351,38 @@ const Signup = ({
                 </div>
 
                 <div className="sign_legal_not">
-                  <div className="sign_l_n_text">
-                    <Form.Check
-                      type="checkbox"
-                      name="send_email"
-                      onChange={(e) => onInputChange(e)}
-                    />
-                    <Form.Label className="tb_mob_f12px">
-                      yes! Send me genuinely useful emails every now and then to
-                      help me get the most out of Unify
-                    </Form.Label>
+                  <div>
+                    <div className="sign_l_n_text">
+                      <Form.Check
+                        type="checkbox"
+                        name="send_email"
+                        onChange={(e) => onInputChange(e)}
+                      />
+                      <Form.Label className="tb_mob_f12px">
+                        yes! Send me genuinely useful emails every now and then
+                        to help me get the most out of Unify
+                      </Form.Label>
+                    </div>
                   </div>
-                  <div className="sign_l_n_text">
-                    <Form.Check
-                      type="checkbox"
-                      name="agree_terms"
-                      onChange={(e) => onInputChange(e)}
-                    />
-                    <Form.Label className="tb_mob_f12px">
-                      yes! I understand and agree to the{" "}
-                      <span>UnifyTerms of Service</span>, including the{" "}
-                      <span>User Agreement</span> and{" "}
-                      <span>Privacy Policy</span>
-                    </Form.Label>
+                  <div style={{ position: "relative" }}>
+                    <div className="sign_l_n_text">
+                      <Form.Check
+                        type="checkbox"
+                        name="agree_terms"
+                        onChange={(e) => onInputChange(e)}
+                      />
+                      <Form.Label className="tb_mob_f12px">
+                        yes! I understand and agree to the{" "}
+                        <span>UnifyTerms of Service</span>, including the{" "}
+                        <span>User Agreement</span> and{" "}
+                        <span>Privacy Policy</span>
+                      </Form.Label>
+                    </div>
+                    <span className="signInError" style={{ top: 16, left: 12 }}>
+                      {errors.agree_terms && (
+                        <>Please Agree Terms and Conditions</>
+                      )}
+                    </span>
                   </div>
                 </div>
 

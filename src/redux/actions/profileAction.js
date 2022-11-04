@@ -78,16 +78,18 @@ export const onAddEmployment = (data, popup) => async (dispatch) => {
   } catch (err) {}
 };
 
-export const onDeleteEmployment = (data) => async (dispatch) => {
-  try {
-    await Axios.post(`/delete-employment-info`, data, config).then((res) => {
-      dispatch({
-        type: SET_DELETE_EXPRIENCE,
-        payload: res.data,
+export const onDeleteEmployment =
+  (data, setConfirmPopup) => async (dispatch) => {
+    try {
+      await Axios.post(`/delete-employment-info`, data, config).then((res) => {
+        dispatch({
+          type: SET_DELETE_EXPRIENCE,
+          payload: res.data,
+        });
+        setConfirmPopup(false);
       });
-    });
-  } catch (err) {}
-};
+    } catch (err) {}
+  };
 
 // CLIENT
 export const getClientInfoDetails = (data) => async (dispatch) => {
@@ -177,16 +179,18 @@ export const onAddEducation = (data, popup) => async (dispatch) => {
   } catch (err) {}
 };
 
-export const onDeleteEducation = (data) => async (dispatch) => {
-  try {
-    Axios.post("/delete-education-info", data, config).then((res) => {
-      dispatch({
-        type: SET_DELETE_EDUCATION,
-        payload: res.data,
+export const onDeleteEducation =
+  (data, setConfirmPopup) => async (dispatch) => {
+    try {
+      Axios.post("/delete-education-info", data, config).then((res) => {
+        dispatch({
+          type: SET_DELETE_EDUCATION,
+          payload: res.data,
+        });
+        setConfirmPopup(false);
       });
-    });
-  } catch (err) {}
-};
+    } catch (err) {}
+  };
 
 export const onEditContactInfo = (data, setEditAccount) => async (dispatch) => {
   try {
@@ -319,17 +323,18 @@ export const onEditCertificate = (data, popup) => async (dispatch) => {
   } catch (err) {}
 };
 
-export const onDeleteCertificate = (data, popup) => async (dispatch) => {
-  try {
-    Axios.post("/delete-certificate-info", data, config).then((res) => {
-      dispatch({
-        type: SET_DELETE_CERTIFICATE,
-        payload: res.data,
+export const onDeleteCertificate =
+  (data, setConfirmPopup) => async (dispatch) => {
+    try {
+      Axios.post("/delete-certificate-info", data, config).then((res) => {
+        dispatch({
+          type: SET_DELETE_CERTIFICATE,
+          payload: res.data,
+        });
+        setConfirmPopup();
       });
-      popup();
-    });
-  } catch (err) {}
-};
+    } catch (err) {}
+  };
 
 export const editNameInfo = (data) => async (dispatch) => {
   try {
@@ -368,13 +373,14 @@ export const editExprienceLev = (data, popup) => async (dispatch) => {
   } catch (err) {}
 };
 
-export const onDeletePortfolio = (data) => async (dispatch) => {
+export const onDeletePortfolio = (data, setConfirmPopup) => async (dispatch) => {
   try {
     Axios.post("/delete-portfolio-info", data, config).then((res) => {
       dispatch({
         type: SET_DELETE_PORTFOLIO,
         payload: res.data,
       });
+      setConfirmPopup(false)
     });
   } catch (err) {}
 };
