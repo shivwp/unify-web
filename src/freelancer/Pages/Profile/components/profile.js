@@ -8,22 +8,34 @@ import $ from "jquery";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getFreelancerProfile,
+  getFreelancerSkills,
+  onAddEmployment,
   onDeleteEmployment,
+  getFreelancerDegreeList,
+  onAddEducation,
   onDeleteEducation,
+  onEditVideo,
+  onEditDesignation,
+  onEditLanguage,
+  getLanguageList,
+  onEditSkills,
+  onEditCertificate,
   onDeleteCertificate,
   editNameInfo,
   editVisiblity,
   editExprienceLev,
   onDeletePortfolio,
   onSubmitVerificationDocs,
+  onRequestTestimonial,
+  getCertificationList,
 } from "../../../../redux/actions/profileAction";
-
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper";
 import Slider from "react-slick";
 import moment from "moment";
 import HourPerWeekPopup from "../../../components/popups/HourPerWeekPopup";
 import PortfolioPupup from "../../../components/popups/PortfolioPupup";
+import { countryList } from "../../../../redux/actions/authActions";
 import { useRef } from "react";
 import { height } from "@mui/system";
 import IntroVideoPopup from "../../../../popups/IntroVideoPopup";
@@ -31,17 +43,6 @@ import ReactPaginate from "react-paginate";
 import ConfirmationPopup from "../../../components/popups/ConfirmationPopup";
 import SuccessPopup from "../../../components/popups/SuccessPopup";
 import Form from "react-bootstrap/Form";
-
-import AddExperience from './popups/AddExperience'
-import WorkHistory from './popups/WorkHistory'
-import EditSkill from './popups/EditSkill'
-import EditTitle from './popups/EditTitle'
-import VideoIntro from './popups/VideoIntro'
-import AddEmployment from './popups/AddEmployment'
-import LanguageEdit from './popups/LanguageEdit'
-import AddEduc from './popups/AddEduc'
-import AddCert from './popups/AddCert'
-import ReqTestimonial from './popups/ReqTestimonial'
 
 function Listaward() {
   const card = [1, 2, 3, 4];
@@ -222,7 +223,66 @@ const CloseIcon = () => {
     </svg>
   );
 };
+const WorkHistory = () => {
+  return (
+    <>
+      <div className="work_historycard">
+        <div className="whtroy_head">
+          Experienced Developer for Wellenss App
+        </div>
+        <div className="d-flex star_wbtn_whistory">
+          <Star />
+          <Star />
+          <Star />
+          <Star />
+          <span>5.00 Oct 29, 2021 - Dec 3, 2021</span>
+          <div className="myskill_hdingn m-0">
+            <button>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="18"
+                height="18"
+                viewBox="0 0 18 18"
+              >
+                <path
+                  id="_3180660_share_sharing_social_icon"
+                  data-name="3180660_share_sharing_social_icon"
+                  d="M15.906,6.906a3.08,3.08,0,0,0-2.458,1.236l-6.395-3.2a3.051,3.051,0,0,0,.134-.851,3.126,3.126,0,1,0-.636,1.858l6.395,3.2a2.769,2.769,0,0,0,0,1.7l-6.395,3.2a3.078,3.078,0,1,0,.636,1.858,3.052,3.052,0,0,0-.134-.851l6.395-3.2a3.088,3.088,0,1,0,2.458-4.951ZM4.094,6.063A1.969,1.969,0,1,1,6.063,4.094,1.971,1.971,0,0,1,4.094,6.063Zm0,11.813a1.969,1.969,0,1,1,1.969-1.969A1.971,1.971,0,0,1,4.094,17.875Zm11.813-5.906A1.969,1.969,0,1,1,17.875,10,1.971,1.971,0,0,1,15.906,11.969Z"
+                  transform="translate(-1 -1)"
+                  fill="#6d2ef1"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+        <div className="whistory_para">
+          Lorem Ipsum is simply dummy text of the printing and typesetting
+          industry. Lorem Ipsum has been the industry's standard dummy text ever
+          since the 1500s, when an unknown printer took a galley of type and
+          scrambled it to make a type specimen book. It has survived not only
+          five centuries, but also the leap into electronic typesetting,
+          remaining essentially unchanged. It was popularised in the 1960s with
+          the release of Letraset sheets containing
+        </div>
+        <div className="d-flex">
+          <div className="italic_whistry">$3.000</div>
+          <div className="italic_whistry">Fixed Price</div>
+        </div>
+      </div>
+    </>
+  );
+};
+const EditSkill = (props) => {
+  const [selectSkills, setSelectSkills] = useState(props?.data);
+  console.log(selectSkills);
+  const dispatch = useDispatch();
+  let getSkillList = useSelector((state) => state?.profile?.getSkillList);
 
+  const removeSkills = (index) => {
+    let updateSkills = [...selectSkills];
+    updateSkills.splice(index, 1);
+    setSelectSkills(updateSkills);
+  };
 
   const addSkills = (item) => {
     if (selectSkills.length <= 15) {
@@ -250,13 +310,13 @@ const CloseIcon = () => {
       dispatch(getFreelancerSkills(data));
     }
     $("#suggest_skills").show();
-    return(<></>)
   };
 
   const onSave = (e) => {
     const data = {
       skill_id: selectSkills?.map((item) => item.skill_id)?.toString(),
     };
+    dispatch(onEditSkills(data, props.Popup));
     dispatch(
       onEditSkills(data, props.Popup, props.successPopup, props.setSuccessPopup)
     );
@@ -346,9 +406,484 @@ const CloseIcon = () => {
     </>
   );
 };
+const EditTitle = (props) => {
+  const [values, setValues] = useState(props.data);
+  const dispatch = useDispatch();
 
+  const handleOnChange = (e) => {
+    setValues({ ...values, [e.target.name]: e.target.value });
+  };
 
+  const onSave = () => {
+    const data = {
+      title: values.occuption,
+      description: values.description,
+    };
+    dispatch(onEditDesignation(data, props.Popup));
 
+    dispatch(
+      onEditDesignation(
+        data,
+        props.Popup,
+        props.successPopup,
+        props.setSuccessPopup
+      )
+    );
+  };
+  return (
+    <>
+      <div className="bg_wrapper_popup_new">
+        <div className="popup_box_bpn profile_nceqoi_popup pb-4">
+          <div className="popup_header pb-0">
+            <div className="p_header_hding">Title And Overview</div>
+            <div
+              className="close_pp_btn"
+              onClick={() => {
+                props.Popup();
+              }}
+            >
+              <CloseIcon />
+            </div>
+          </div>
+          <div className="popup_body_bpn amount_popup_body max_height_popucwui">
+            <div className="mt-3 pt-1">
+              <div className="pouphed_skll">Your title</div>
+              <div className="popuphead_smparcr">
+                Enter a single sentence description of your professional
+                skills/experience (e.g. Expert Web Designer with Ajax
+                experience)
+              </div>
+            </div>
+
+            <div className="popup_form_element mb-3">
+              <Form.Control
+                type="text"
+                className="font-size-13px"
+                name="occuption"
+                onChange={(e) => handleOnChange(e)}
+                value={values?.occuption}
+                placeholder="Senior UI/UX, Website Designer And Graphic Designer"
+              />
+            </div>
+            <div className="pouphed_skll mt-3">Overview</div>
+            <div>
+              <div className="popuphead_smparcr">
+                Use this space to show clients you have the skills and
+                experience they're looking for.
+              </div>
+              <ul className="popuphead_smparcr ulist_overpopup mt-1">
+                <li>Describe your strengths and skills</li>
+                <li>Highlight projects, accomplishments and education</li>
+                <li>Keep it short and make sure it's error-free</li>
+              </ul>
+            </div>
+            <div className="_profile_overview popup_form_element mb-0">
+              <Form.Control
+                as="textarea"
+                value={values?.description}
+                name="description"
+                onChange={(e) => handleOnChange(e)}
+                placeholder="theDesignerz offers professional and high-quality graphic design services. We have been designing for companies worldwide since 2018. We are a customer service oriented firm, and we will workwith you until you are completely satisfied with the outcome of your design projects. We are the most experienced team of designers working on Freelancer since 2017"
+              ></Form.Control>
+            </div>
+
+            <div className="popup_btns_new flex-wrap cwiewyehkk">
+              <Button
+                className="trans_btn"
+                onClick={() => {
+                  props.Popup();
+                }}
+              >
+                Cancel
+              </Button>
+              <Button onClick={onSave}>Save</Button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
+const VideoIntro = (props) => {
+  const dispatch = useDispatch();
+  const [values, setValues] = useState(props?.data);
+  const [type, setType] = useState(
+    props?.data && {
+      name: props.data?.type,
+      label: props.data?.type,
+    }
+  );
+
+  const handleOnChange = (e) => {
+    setValues({ ...values, [e.target.name]: e.target.value });
+  };
+
+  const videoTypes = [
+    {
+      name: "Me talking about my skills and Exprience",
+      label: "Me talking about my skills and Exprience",
+    },
+    {
+      name: "Visual samples of my work",
+      label: "Visual samples of my work",
+    },
+    {
+      name: "Something else",
+      label: "Something else",
+    },
+  ];
+
+  const onSave = () => {
+    const data = {
+      video: values.url,
+      video_type: type.name,
+    };
+    dispatch(onEditVideo(data, props.Popup));
+    dispatch(
+      onEditVideo(data, props.Popup, props.successPopup, props.setSuccessPopup)
+    );
+  };
+  return (
+    <>
+      <div className="bg_wrapper_popup_new">
+        <div className="popup_box_bpn profile_nceqoi_popup pb-4">
+          <div className="popup_header pb-0">
+            <div className="p_header_hding">Add video introduction</div>
+            <div
+              className="close_pp_btn"
+              onClick={() => {
+                props.Popup();
+              }}
+            >
+              <CloseIcon />
+            </div>
+          </div>
+          <div className="popup_body_bpn amount_popup_body max_height_popucwui">
+            <div className="mt-4 pt-1 mb-4"></div>
+
+            <div className="mb-5 ">
+              <div className="popup_form_element">
+                <Form.Label className="text-black font-size-13px font-weight-500">
+                  Link to your YouTube video
+                </Form.Label>
+                <Form.Control
+                  type="text"
+                  className="font-size-13px"
+                  name="url"
+                  onChange={(e) => handleOnChange(e)}
+                  value={values?.url}
+                  placeholder="Ex: https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+                />
+              </div>
+              <div className="popup_form_element">
+                <Form.Label className="text-black font-size-13px font-weight-500">
+                  What type of video is this?
+                </Form.Label>
+                <Select
+                  className="font-size-13px"
+                  placeholder="What type of video is this?"
+                  onChange={setType}
+                  defaultValue={
+                    type
+                      ? {
+                          name: type?.name,
+                          label: type?.label,
+                        }
+                      : null
+                  }
+                  options={videoTypes}
+                />
+              </div>
+            </div>
+
+            <div className="popup_btns_new flex-wrap cwiewyehkk">
+              <Button
+                className="trans_btn"
+                onClick={() => {
+                  props.Popup();
+                }}
+              >
+                Cancel
+              </Button>
+              <Button onClick={onSave}>Save</Button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
+const AddExperience = (props) => {
+  return (
+    <>
+      <div className="bg_wrapper_popup_new">
+        <div className="popup_box_bpn profile_nceqoi_popup pb-4">
+          <div className="popup_header pb-0">
+            <div className="p_header_hding">Add other Experiences</div>
+            <div
+              className="close_pp_btn"
+              onClick={() => {
+                props.Popup();
+              }}
+            >
+              <CloseIcon />
+            </div>
+          </div>
+          <div className="popup_body_bpn amount_popup_body max_height_popucwui ">
+            <div className="mt-2 pt-1 mb-4"></div>
+
+            <div className="mb-4 ">
+              <div className="popup_form_element">
+                <Form.Label className="text-black font-size-13px font-weight-500">
+                  Subject
+                </Form.Label>
+                <Form.Control
+                  type="text"
+                  className="font-size-13px"
+                  placeholder=" "
+                />
+              </div>
+              <div className="popup_form_element">
+                <Form.Label className="text-black font-size-13px font-weight-500">
+                  Description
+                </Form.Label>
+                <Form.Control
+                  as="textarea"
+                  className="font-size-13px"
+                  placeholder="Enter Here"
+                ></Form.Control>
+              </div>
+            </div>
+
+            <div className="popup_btns_new flex-wrap cwiewyehkk">
+              <button className="trans_btn">Cancel</button>
+              <button
+                onClick={() => {
+                  props.Popup();
+                }}
+              >
+                Save
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
+const AddEmployment = (props) => {
+  const dispatch = useDispatch();
+  const getCountryList = useSelector((state) => state.auth.getCountryList);
+  const [country, setCountry] = useState(null);
+  const [values, setValues] = useState(
+    props?.experience || { currently_working: 0 }
+  );
+  console.log(props?.exprience);
+
+  useState(() => {
+    dispatch(countryList());
+  }, []);
+
+  const countryLis = getCountryList?.map((item) => ({
+    name: item.name,
+    label: item.name,
+  }));
+
+  const onInputChange = (e) => {
+    if (e.target.name == "currently_working") {
+      setValues({ ...values, [e.target.name]: e.target.checked ? 1 : 0 });
+    } else {
+      setValues({ ...values, [e.target.name]: e.target.value });
+    }
+  };
+  console.log(country);
+
+  const onSave = () => {
+    const data = {
+      id: props?.experience?.id,
+      company: values.company,
+      city: values.city,
+      country: props?.experience?.country || country.name,
+      description: values.description,
+      subject: values.subject,
+      currently_working: values.currently_working,
+      start_date: values.start_date,
+      end_date: values.end_date,
+    };
+    dispatch(onAddEmployment(data, props.Popup));
+    dispatch(
+      onAddEmployment(
+        data,
+        props.Popup,
+        props.successPopup,
+        props.setSuccessPopup
+      )
+    );
+  };
+  console.log(values);
+
+  return (
+    <>
+      <div className="bg_wrapper_popup_new">
+        <div className="popup_box_bpn profile_nceqoi_popup pb-4">
+          <div className="popup_header pb-0">
+            <div className="p_header_hding">Add Employment</div>
+            <div
+              className="close_pp_btn"
+              onClick={() => {
+                props.Popup();
+              }}
+            >
+              <CloseIcon />
+            </div>
+          </div>
+          <div className="popup_body_bpn amount_popup_body max_height_popucwui">
+            <div className="mt-2 pt-1 mb-4"></div>
+
+            <div className="mb-4 ">
+              <Row>
+                <Col md={12}>
+                  <div className="popup_form_element">
+                    <Form.Label className="text-black font-size-13px font-weight-500">
+                      Company
+                    </Form.Label>
+                    <Form.Control
+                      type="text"
+                      className="font-size-13px"
+                      placeholder="Ex: Unify"
+                      name="company"
+                      value={values.company}
+                      onChange={(e) => onInputChange(e)}
+                    />
+                  </div>
+                </Col>
+                <Col md={6}>
+                  <div className="popup_form_element">
+                    <Form.Label className="text-black font-size-13px font-weight-500">
+                      Location
+                    </Form.Label>
+                    <Form.Control
+                      type="text"
+                      name="city"
+                      className="font-size-13px"
+                      value={values.city}
+                      onChange={(e) => onInputChange(e)}
+                      placeholder="City"
+                    />
+                  </div>
+                </Col>
+                <Col md={6}>
+                  <div className="popup_form_element">
+                    <Form.Label className="text-black font-size-13px font-weight-500">
+                      Country
+                    </Form.Label>
+                    <Select
+                      className="font-size-13px"
+                      placeholder="India"
+                      name="country"
+                      defaultValue={
+                        values.country
+                          ? { name: values.country, label: values.country }
+                          : null
+                      }
+                      onChange={setCountry}
+                      options={countryLis}
+                    />
+                  </div>
+                </Col>
+                <Col md={12}>
+                  <div className="popup_form_element">
+                    <Form.Label className="text-black font-size-13px font-weight-500">
+                      Title
+                    </Form.Label>
+                    <Form.Control
+                      type="text"
+                      name="subject"
+                      onChange={(e) => onInputChange(e)}
+                      value={values.subject}
+                      className="font-size-13px"
+                      placeholder="Like: Developer, React"
+                    />
+                  </div>
+                </Col>
+                <Col md={6}>
+                  <div className="popup_form_element">
+                    <Form.Label className="text-black font-size-13px font-weight-500">
+                      Start Date
+                    </Form.Label>
+                    <Form.Control
+                      type="date"
+                      className="font-size-13px"
+                      placeholder="Start Date"
+                      name="start_date"
+                      value={values.start_date}
+                      onChange={(e) => onInputChange(e)}
+                    />
+                  </div>
+                </Col>
+                <Col md={6}>
+                  <div className="popup_form_element">
+                    <Form.Label className="text-black font-size-13px font-weight-500">
+                      End Date
+                    </Form.Label>
+                    <Form.Control
+                      type="date"
+                      name="end_date"
+                      className="font-size-13px"
+                      value={values.end_date}
+                      placeholder="End Date"
+                      onChange={(e) => onInputChange(e)}
+                    />
+                  </div>
+                </Col>
+                <Col className="text-right">
+                  <div className="agrement_ineoeu flex-row d-flex justify-content-end mt-1 pt-0">
+                    <Form.Label className="text-black text-right font-size-13px font-weight-500">
+                      <Form.Check
+                        type="checkbox"
+                        name="currently_working"
+                        onChange={(e) => onInputChange(e)}
+                        defaultChecked={values.currently_working || false}
+                      />{" "}
+                      I currently work here
+                    </Form.Label>
+                  </div>
+                </Col>
+                <Col md={12}>
+                  <div className="popup_form_element">
+                    <Form.Label className="text-black font-size-13px font-weight-500">
+                      Description (Optional)
+                    </Form.Label>
+                    <Form.Control
+                      as="textarea"
+                      className="font-size-13px"
+                      value={values.description || ""}
+                      name="description"
+                      onChange={(e) => onInputChange(e)}
+                      placeholder="Enter Here"
+                    ></Form.Control>
+                  </div>
+                </Col>
+              </Row>
+            </div>
+
+            <div className="popup_btns_new flex-wrap cwiewyehkk">
+              <Button
+                className="trans_btn"
+                onClick={() => {
+                  props.Popup();
+                }}
+              >
+                Cancel
+              </Button>
+              <Button onClick={onSave}>Save</Button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
 const ChangePassword = (props) => {
   return (
     <>
@@ -497,8 +1032,16 @@ const VerificationPref = (props) => {
   );
 };
 
+const LanguageEdit = (props) => {
+  const dispatch = useDispatch();
+  const languageList = useSelector((state) => state?.profile?.getLanguageList);
+  const [inputList, setInputList] = useState(
+    props?.data || [{ language: "", level: "" }]
+  );
 
   const handleInputChange = (e, index) => {
+    const { name, value } = e.target;
+    const list = [...inputList];
     list[index][name] = value;
     setInputList(list);
   };
@@ -525,6 +1068,7 @@ const VerificationPref = (props) => {
       data[ele.language] = ele.level;
     });
     // console.log(data);
+    dispatch(onEditLanguage({ languages: data }, props.Popup));
     dispatch(
       onEditLanguage(
         { languages: data },
@@ -696,6 +1240,7 @@ const VerificationPref = (props) => {
 };
 const UserVerification = (props) => {
   const dispatch = useDispatch();
+  const [docType, setDocType] = useState({});
   const [frontImg, setFrontImg] = useState(null);
   const [showingFontImg, setShowingFrontImg] = useState();
   const [backImg, setBackImg] = useState(null);
@@ -916,6 +1461,7 @@ const VisiblityPopup = (props) => {
       project_preference: projectPref.name,
     };
     console.log(data);
+    dispatch(editVisiblity(data, props.Popup));
     dispatch(
       editVisiblity(
         data,
@@ -930,6 +1476,7 @@ const VisiblityPopup = (props) => {
       <div className="bg_wrapper_popup_new">
         <div className="popup_box_bpn profile_nceqoi_popup pb-4">
           <div className="popup_header pb-0">
+            <div className="p_header_hding">Visiblity</div>
             <div className="p_header_hding">Visibility</div>
             <div
               className="close_pp_btn"
@@ -947,7 +1494,7 @@ const VisiblityPopup = (props) => {
               <div className="mt-4">
                 <div className="popup_form_element">
                   <Form.Label className="text-black font-size-13px font-weight-500">
-                    Visibility
+                    Visiblity Visibility
                   </Form.Label>
                   <Select
                     className="font-size-13px"
@@ -968,7 +1515,7 @@ const VisiblityPopup = (props) => {
               <div className="mt-4">
                 <div className="popup_form_element">
                   <Form.Label className="text-black font-size-13px font-weight-500">
-                    Project Preference
+                    Project Prefrence Project Preference
                   </Form.Label>
                   <Select
                     className="font-size-13px"
@@ -1005,8 +1552,49 @@ const VisiblityPopup = (props) => {
     </>
   );
 };
+const AddEduc = (props) => {
+  const [values, setValues] = useState(props?.education);
+  const [endYear, setEndYear] = useState({
+    label: values?.end_year,
+    name: values?.end_year,
+  });
+  const [degree, setDegree] = useState({
+    label: values?.degree,
+    name: values?.degree,
+  });
+  const [startYear, setStartYear] = useState({
+    label: values?.start_year,
+    name: values?.start_year,
+  });
+  const getDegreeList = useSelector((state) => state.profile.getDegreeList);
+  const dispatch = useDispatch();
 
+  const startYearList = () => {
+    const today = new Date().getFullYear();
+    let arr = [];
+    for (let i = today; i > today - 40; i--) {
+      arr.push({
+        name: i,
+        label: i,
+      });
+    }
+    return arr;
+  };
+  const endYearList = () => {
+    const today = new Date().getFullYear();
+    let arr = [];
+    for (let i = today + 3; i > today - 40; i--) {
+      arr.push({
+        name: i,
+        label: i,
+      });
+    }
+    return arr;
+  };
 
+  useEffect(() => {
+    dispatch(getFreelancerDegreeList());
+  }, []);
 
   const degreeList = getDegreeList?.map((item) => ({
     name: item.title,
@@ -1027,6 +1615,7 @@ const VisiblityPopup = (props) => {
       area_study: values?.area_study,
       description: values?.description,
     };
+    dispatch(onAddEducation(data, props.Popup));
     dispatch(
       onAddEducation(
         data,
@@ -1210,6 +1799,7 @@ const AddCert = (props) => {
         description: values.description,
       };
     }
+    dispatch(onEditCertificate(data, props.Popup));
     dispatch(
       onEditCertificate(
         data,
@@ -1315,6 +1905,7 @@ const ReqTestimonial = (props) => {
       type: values?.type,
       description: values?.description,
     };
+    dispatch(onRequestTestimonial(data));
     dispatch(
       onRequestTestimonial(
         data,
@@ -1448,6 +2039,7 @@ const ReqTestimonial = (props) => {
                 className="font-weight-600"
                 onClick={() => {
                   testimonialSubmit();
+                  props.Popup();
                 }}
               >
                 REQUEST TESTIMONIAL
@@ -1534,8 +2126,8 @@ const UnifyFreelancer = () => {
   const [videoURL, setVideoURL] = useState(null);
   const [editPortfoData, setEditPortfoData] = useState([]);
   const [confirmPopup, setConfirmPopup] = useState(false);
-  const [confirm, setConfirm] = useState(false);
   const [successPopup, setSuccessPopup] = useState(false);
+  const [confirm, setConfirm] = useState(false);
 
   const deleteExprience = useSelector(
     (state) => state?.profile?.deleteExprience
@@ -1667,7 +2259,15 @@ const UnifyFreelancer = () => {
 
   const handleExprienceLevel = (level) => {
     const data = { experience_level: level };
-    dispatch(editExprienceLev(data, setShowExprienceLevOpt, successPopup, setSuccessPopup));
+    dispatch(editExprienceLev(data, setShowExprienceLevOpt));
+    dispatch(
+      editExprienceLev(
+        data,
+        setShowExprienceLevOpt,
+        successPopup,
+        setSuccessPopup
+      )
+    );
   };
 
   $(document).mouseup(function (e) {
@@ -1958,9 +2558,10 @@ const UnifyFreelancer = () => {
                   className="myskill_hdingn profile_icon_25px profile_heading_mb"
                   style={{ position: "relative" }}
                 >
-                  Visibility
+                  Visiblity Visibility
                   <Button
                     onClick={() => {
+                      Setpopup(<VisiblityPopup Popup={Setpopup} />);
                       Setpopup(
                         <VisiblityPopup
                           Popup={Setpopup}
@@ -2076,6 +2677,7 @@ const UnifyFreelancer = () => {
                     {!freelancerProfileList?.language?.length && (
                       <Button
                         onClick={() => {
+                          Setpopup(<LanguageEdit Popup={Setpopup} />);
                           Setpopup(
                             <LanguageEdit
                               Popup={Setpopup}
@@ -2209,6 +2811,7 @@ const UnifyFreelancer = () => {
                   <div className="d-flex justify-content-start">
                     <Button
                       onClick={() => {
+                        Setpopup(<AddEduc Popup={Setpopup} />);
                         Setpopup(
                           <AddEduc
                             Popup={Setpopup}
@@ -2504,6 +3107,7 @@ const UnifyFreelancer = () => {
               <div className="d-flex justify-content-end myskill_hdingn">
                 <Button
                   onClick={() => {
+                    Setpopup(<ReqTestimonial Popup={Setpopup} />);
                     Setpopup(
                       <ReqTestimonial
                         Popup={Setpopup}
@@ -2654,6 +3258,7 @@ const UnifyFreelancer = () => {
                   <Button
                     style={{ width: "100%", height: "100%", cursor: "pointer" }}
                     onClick={() => {
+                      Setpopup(<AddCert Popup={Setpopup} />);
                       Setpopup(
                         <AddCert
                           Popup={Setpopup}
@@ -2775,6 +3380,7 @@ const UnifyFreelancer = () => {
                   <div className="d-flex justify-content-end myskill_hdingn">
                     <Button
                       onClick={() => {
+                        Setpopup(<AddEmployment Popup={Setpopup} />);
                         Setpopup(
                           <AddEmployment
                             Popup={Setpopup}
@@ -2801,139 +3407,150 @@ const UnifyFreelancer = () => {
                     </Button>
                   </div>
                   <div className="bpbck_txt">
-                    <div className="bpck_head font-weight-600">
-                      Employment history
+                    <div
+                      className="bpck_head font-weight-600"
+                      onClick={() =>
+                        setConfirmPopup(
+                          <SuccessPopup
+                            Popup={() => setSuccessPopup(!successPopup)}
+                          />
+                        )
+                      }
+                    >
+                      <div className="bpck_head font-weight-600">
+                        Employment history
+                      </div>
                     </div>
-                  </div>
-                  {freelancerProfileList?.employment?.length == 0 && (
-                    <div className="d-flex justify-content-center align-items-center flex-column pl-20">
-                      <div
-                        style={{
-                          display: "flex",
-                          justifyContent: "center",
-                          alignItems: "center",
-                          width: 80,
-                          height: 80,
-                        }}
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="109.081"
-                          height="96.833"
-                          viewBox="0 0 109.081 96.833"
+                    {freelancerProfileList?.employment?.length == 0 && (
+                      <div className="d-flex justify-content-center align-items-center flex-column pl-20">
+                        <div
+                          style={{
+                            display: "flex",
+                            justifyContent: "center",
+                            alignItems: "center",
+                            width: 80,
+                            height: 80,
+                          }}
                         >
-                          <g id="employee" transform="translate(-8)">
-                            <circle
-                              id="Ellipse_741"
-                              data-name="Ellipse 741"
-                              cx="28.976"
-                              cy="28.976"
-                              r="28.976"
-                              transform="translate(59.128 17.978)"
-                              fill="#6d2ef1"
-                              opacity="0.23"
-                            />
-                            <path
-                              id="Path_4784"
-                              data-name="Path 4784"
-                              d="M8,85.477v19.669a4.544,4.544,0,0,0,4.539,4.539H88.19a4.544,4.544,0,0,0,4.539-4.539V85.477a33.336,33.336,0,0,0-27.069-32.7,24.3,24.3,0,0,1-3.78,2.542A30.3,30.3,0,0,1,89.7,85.477v19.669a1.515,1.515,0,0,1-1.513,1.513H12.539a1.515,1.515,0,0,1-1.513-1.513V85.477A30.3,30.3,0,0,1,38.848,55.323a24.3,24.3,0,0,1-3.78-2.542A33.336,33.336,0,0,0,8,85.476Z"
-                              transform="translate(0 -12.852)"
-                              fill="#25134a"
-                            />
-                            <path
-                              id="Path_4785"
-                              data-name="Path 4785"
-                              d="M78.364,21.182A21.182,21.182,0,1,0,57.182,42.364,21.182,21.182,0,0,0,78.364,21.182ZM57.182,45.39a24.132,24.132,0,0,1-6.511-.9h0L46.6,77.622a1.514,1.514,0,0,0,.725,1.483l9.037,5.409a1.512,1.512,0,0,0,1.549,0l9.119-5.409a1.513,1.513,0,0,0,.73-1.486L63.693,44.494h0a24.133,24.133,0,0,1-6.511.9Z"
-                              transform="translate(-6.818)"
-                              fill="#6d2ef1"
-                            />
-                          </g>
-                        </svg>
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="109.081"
+                            height="96.833"
+                            viewBox="0 0 109.081 96.833"
+                          >
+                            <g id="employee" transform="translate(-8)">
+                              <circle
+                                id="Ellipse_741"
+                                data-name="Ellipse 741"
+                                cx="28.976"
+                                cy="28.976"
+                                r="28.976"
+                                transform="translate(59.128 17.978)"
+                                fill="#6d2ef1"
+                                opacity="0.23"
+                              />
+                              <path
+                                id="Path_4784"
+                                data-name="Path 4784"
+                                d="M8,85.477v19.669a4.544,4.544,0,0,0,4.539,4.539H88.19a4.544,4.544,0,0,0,4.539-4.539V85.477a33.336,33.336,0,0,0-27.069-32.7,24.3,24.3,0,0,1-3.78,2.542A30.3,30.3,0,0,1,89.7,85.477v19.669a1.515,1.515,0,0,1-1.513,1.513H12.539a1.515,1.515,0,0,1-1.513-1.513V85.477A30.3,30.3,0,0,1,38.848,55.323a24.3,24.3,0,0,1-3.78-2.542A33.336,33.336,0,0,0,8,85.476Z"
+                                transform="translate(0 -12.852)"
+                                fill="#25134a"
+                              />
+                              <path
+                                id="Path_4785"
+                                data-name="Path 4785"
+                                d="M78.364,21.182A21.182,21.182,0,1,0,57.182,42.364,21.182,21.182,0,0,0,78.364,21.182ZM57.182,45.39a24.132,24.132,0,0,1-6.511-.9h0L46.6,77.622a1.514,1.514,0,0,0,.725,1.483l9.037,5.409a1.512,1.512,0,0,0,1.549,0l9.119-5.409a1.513,1.513,0,0,0,.73-1.486L63.693,44.494h0a24.133,24.133,0,0,1-6.511.9Z"
+                                transform="translate(-6.818)"
+                                fill="#6d2ef1"
+                              />
+                            </g>
+                          </svg>
+                        </div>
+                        <div className="bpck_sm_txt_a mt-4 ehistory_uxdes">
+                          Eoxys IT | ReactJS Developer`
+                        </div>
+                        <div className="ehitory_dtine">
+                          21-April-2022 To 24-Oct-2022
+                        </div>
                       </div>
-                      <div className="bpck_sm_txt_a mt-4 ehistory_uxdes">
-                        Eoxys IT | ReactJS Developer`
-                      </div>
-                      <div className="ehitory_dtine">
-                        21-April-2022 To 24-Oct-2022
-                      </div>
-                    </div>
-                  )}
-                  <div className="d-flex justify-content-center flex-column pl-20">
-                    {freelancerProfileList?.employment?.map(
-                      (experience, key) => (
-                        <div key={key}>
-                          <div className="bpck_sm_txt_a mt-4 ehistory_uxdes">
-                            {`${experience.company} | ${experience.description}`}
-                          </div>
-                          <div className="ehitory_dtine">
-                            {`${moment(experience.start_date).format(
-                              "MMM-YYYY"
-                            )} To ${moment(experience.end_date).format(
-                              "MMM-YYYY"
-                            )}`}
-                          </div>
+                    )}
+                    <div className="d-flex justify-content-center flex-column pl-20">
+                      {freelancerProfileList?.employment?.map(
+                        (experience, key) => (
+                          <div key={key}>
+                            <div className="bpck_sm_txt_a mt-4 ehistory_uxdes">
+                              {`${experience.company} | ${experience.description}`}
+                            </div>
+                            <div className="ehitory_dtine">
+                              {`${moment(experience.start_date).format(
+                                "MMM-YYYY"
+                              )} To ${moment(experience.end_date).format(
+                                "MMM-YYYY"
+                              )}`}
+                            </div>
 
-                          <div className="bpck_sm_txt_a mt-4 mb-0">
-                            <div className="d-flex myskill_hdingn mb-0">
-                              <Button
-                                className="m-0"
-                                onClick={(e) => {
-                                  Setpopup(
-                                    <AddEmployment
-                                      Popup={Setpopup}
-                                      experience={experience}
-                                      successPopup={successPopup}
-                                      setSuccessPopup={setSuccessPopup}
-                                    />
-                                  );
-                                }}
-                              >
-                                <svg
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  width="15.709"
-                                  height="15.714"
-                                  viewBox="0 0 15.709 15.714"
+                            <div className="bpck_sm_txt_a mt-4 mb-0">
+                              <div className="d-flex myskill_hdingn mb-0">
+                                <Button
+                                  className="m-0"
+                                  onClick={(e) => {
+                                    Setpopup(
+                                      <AddEmployment
+                                        Popup={Setpopup}
+                                        experience={experience}
+                                        successPopup={successPopup}
+                                        setSuccessPopup={setSuccessPopup}
+                                      />
+                                    );
+                                  }}
                                 >
-                                  <path
-                                    id="_8665767_pen_icon"
-                                    data-name="8665767_pen_icon"
-                                    d="M15.327,2.274,13.482.429a1.475,1.475,0,0,0-2.085,0L9.662,2.165l3.9,3.929L15.3,4.358A1.447,1.447,0,0,0,15.327,2.274Zm-6.356.585L1,10.83a.491.491,0,0,0-.134.251L.057,15.123a.491.491,0,0,0,.576.58l4.042-.808a.491.491,0,0,0,.251-.134L12.9,6.789Z"
-                                    transform="translate(-0.047 0.002)"
-                                    fill="#6d2ef1"
-                                  />
-                                </svg>
-                              </Button>
-                              <Button
-                                onClick={() =>
-                                  setConfirmPopup(
-                                    <ConfirmationPopup
-                                      Popup={() =>
-                                        setConfirmPopup(!confirmPopup)
-                                      }
-                                      confirm={() => deleteExp(experience.id)}
+                                  <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="15.709"
+                                    height="15.714"
+                                    viewBox="0 0 15.709 15.714"
+                                  >
+                                    <path
+                                      id="_8665767_pen_icon"
+                                      data-name="8665767_pen_icon"
+                                      d="M15.327,2.274,13.482.429a1.475,1.475,0,0,0-2.085,0L9.662,2.165l3.9,3.929L15.3,4.358A1.447,1.447,0,0,0,15.327,2.274Zm-6.356.585L1,10.83a.491.491,0,0,0-.134.251L.057,15.123a.491.491,0,0,0,.576.58l4.042-.808a.491.491,0,0,0,.251-.134L12.9,6.789Z"
+                                      transform="translate(-0.047 0.002)"
+                                      fill="#6d2ef1"
                                     />
-                                  )
-                                }
-                              >
-                                <svg
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  width="16"
-                                  height="16"
-                                  viewBox="0 0 16 16"
+                                  </svg>
+                                </Button>
+                                <Button
+                                  onClick={() =>
+                                    setConfirmPopup(
+                                      <ConfirmationPopup
+                                        Popup={() =>
+                                          setConfirmPopup(!confirmPopup)
+                                        }
+                                        confirm={() => deleteExp(experience.id)}
+                                      />
+                                    )
+                                  }
                                 >
-                                  <path
-                                    id="_2203546_bin_delete_gabage_trash_icon"
-                                    data-name="2203546_bin_delete_gabage_trash_icon"
-                                    d="M8,0A1,1,0,0,0,7,1H0V3H1V14a2,2,0,0,0,2,2H13a2,2,0,0,0,2-2V3h1V1H9A1,1,0,0,0,8,0ZM4,14H3V5H4Zm3,0H6V5H7Zm3,0H9V5h1Zm3,0H12V5h1Z"
-                                    fill="#6d2ef1"
-                                  />
-                                </svg>
-                              </Button>
+                                  <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="16"
+                                    height="16"
+                                    viewBox="0 0 16 16"
+                                  >
+                                    <path
+                                      id="_2203546_bin_delete_gabage_trash_icon"
+                                      data-name="2203546_bin_delete_gabage_trash_icon"
+                                      d="M8,0A1,1,0,0,0,7,1H0V3H1V14a2,2,0,0,0,2,2H13a2,2,0,0,0,2-2V3h1V1H9A1,1,0,0,0,8,0ZM4,14H3V5H4Zm3,0H6V5H7Zm3,0H9V5h1Zm3,0H12V5h1Z"
+                                      fill="#6d2ef1"
+                                    />
+                                  </svg>
+                                </Button>
+                              </div>
                             </div>
                           </div>
-                        </div>
-                      )
-                    )}
+                        )
+                      )}
+                    </div>
                   </div>
                 </div>
               </Col>
