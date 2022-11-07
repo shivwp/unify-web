@@ -7,7 +7,9 @@ body {
   border-color: inherit;
   color: inherit;
 }
-
+.sign_in_social_btn button:hover{
+  color: #fff !important;
+}
 /* .btn:focus-visible {
   background-color: inherit;
   color: inherit;
@@ -3165,6 +3167,7 @@ body {
   color: #170048;
   margin-left: 10px;
   line-height: 16px;
+  margin-bottom: 4px;
 }
 
 .sign_legal_not {
@@ -3202,7 +3205,11 @@ body {
 
 .sign_w_full button {
   width: 90% !important;
+  border: #170048 solid 1px;
   max-width: 100% !important;
+}
+.sign_w_full button:hover{
+  border: #170048 solid 1px;
 }
 
 .sign_in_or {
@@ -4947,8 +4954,12 @@ a {
 .tab_btn_vs:hover {
   background-color: #fff;
   border-bottom-color: #6d2ef1;
+  color: #6d2ef1;
 }
-
+.hovbgblew:hover{
+  background-color: #170048;
+  color: #fff;
+}
 .tab_scroll_cont .tab_btn_vs {
   min-width: max-content;
 }
