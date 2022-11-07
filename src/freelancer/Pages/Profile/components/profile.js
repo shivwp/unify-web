@@ -2240,7 +2240,12 @@ const UnifyFreelancer = () => {
                       type="file"
                       id="profile_img_change"
                       onChange={(e) => onProfleImgChange(e)}
-                      style={{ width: 0, height: 0, position: "absolute" }}
+                      style={{
+                        width: 0,
+                        height: 0,
+                        position: "absolute",
+                        padding: 0,
+                      }}
                     />
                   </Form.Label>
                 </div>

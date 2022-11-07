@@ -154,7 +154,7 @@ const IAmClient = () => {
           </Row>
         </Container>
       </div>
-      <div>
+      <div> 
         <Container>
           <div className="browse_head_h pt-4 pb-2">Access Your Account</div>
           <Row>

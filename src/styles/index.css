@@ -17,11 +17,17 @@ body {
 .post_job_btn_m button {
   border: #6d2ef1 solid 1px;
 }
-.borderonh_blew{
+
+.borderonh_blew {
   border: #6d2ef1 solid 1px !important;
 }
-.hover_white_io:hover{
+
+.hover_white_io:hover {
   color: #fff;
+}
+
+.toggle_btn_dot:active{
+  background-color: transparent !important;
 }
 
 .toggle_btn_dot:hover {
@@ -132,6 +138,7 @@ body {
   border-radius: 30px;
   -webkit-border-radius: 30px;
 }
+
 .logout_btn_nav:hover {
   background-color: #fff !important;
   color: #170048 !important;
@@ -618,10 +625,12 @@ body {
   -ms-border-radius: 30px;
   -o-border-radius: 30px;
 }
-.btn_services button:hover{
+
+.btn_services button:hover {
   background-color: transparent;
   color: #180095;
 }
+
 .flex_cen {
   display: flex;
   justify-content: center;
@@ -1578,7 +1587,11 @@ body {
   font-family: "Poppins";
   text-align: center;
 }
-
+.hire_now_node button:hover{
+  background-color: #fff;
+  color: #6d2ef1;
+  border-color: #6d2ef1;
+}
 .servi_box {
   margin: 10px 0px;
   background-color: #fff;
@@ -2086,7 +2099,10 @@ body {
   font-weight: 600;
   font-family: "Poppins";
 }
-
+.fr_btn button:hover{
+  background-color: #fff;
+  color: #6d2ef1;
+}
 .s_na_h4 h4 {
   padding: 10px 0px 0px 0px;
   font-size: 12px;
@@ -2217,6 +2233,7 @@ body {
   font-weight: 600;
   font-family: "Poppins";
 }
+
 .job_head_s h3 {
   font-size: 15px;
   letter-spacing: 0px;
@@ -2330,11 +2347,16 @@ body {
   background-color: transparent !important;
   border-color: transparent !important;
 }
-
+.inp_0_radio input{
+  padding: 0 !important;
+}
 .heart_btn path {
   fill: #fff;
 }
-
+.fb_btns_s_pro button:hover{
+  background-color: #6d2ef1;
+  color: #fff;
+}
 .fb_btns_s_pro button {
   border-radius: 6px;
   background-color: #6d2ef1;
@@ -2371,6 +2393,7 @@ body {
   padding: 12px 22px;
   font-size: 14px;
 }
+
 @media screen and (max-width: 1024px) {
   .milestone_btn_s button {
     border-radius: 6px;
@@ -2403,6 +2426,9 @@ body {
 }
 
 .pagi_butt {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 35px;
   height: 35px;
   border-radius: 6px;
@@ -2873,6 +2899,7 @@ body {
   max-width: 800px;
   width: 100%;
 }
+
 .sign_in_box {
   max-width: 700px !important;
   padding: 25px 30px !important;
@@ -3054,12 +3081,15 @@ body {
   justify-content: center;
   margin-bottom: 10px;
 }
-.form-check-input{
+
+.form-check-input {
   vertical-align: inherit;
 }
-.form-control:focus{
+
+.form-control:focus {
   box-shadow: none;
 }
+
 .sign_buttons_group button {
   border-radius: 0;
 }
@@ -3472,12 +3502,15 @@ body {
   color: #170048;
   margin: 0;
 }
-.hovbord-blew{
+
+.hovbord-blew {
   border: #6d2ef1 solid 1px !important;
 }
-.round_b_btn:hover{
+
+.round_b_btn:hover {
   border-color: #d4d4d5;
 }
+
 .round_b_btn {
   margin: 0px 10px;
   background-color: transparent;
@@ -3921,10 +3954,12 @@ body {
   letter-spacing: 0px;
   color: #393939;
 }
-.slide_btnss button:hover{
+
+.slide_btnss button:hover {
   background-color: transparent;
   border-color: #eaeef2;
 }
+
 .slider_shutter {
   display: none;
 }
@@ -4894,18 +4929,28 @@ a {
 .tab_scroll_cont::-webkit-scrollbar {
   display: none;
 }
-.tab_scroll_cont .tab_btn_vs:hover , .tab_btn_vs:hover{
+
+.tab_scroll_cont .tab_btn_vs:hover,
+.tab_btn_vs:hover {
   background-color: #fff;
   border-bottom-color: #6d2ef1;
 }
+
 .tab_scroll_cont .tab_btn_vs {
   min-width: max-content;
+}
+
+.tab_scroll_cont .tab_btn_vs:active{
+  background-color: transparent !important;
+  color: inherit !important;
 }
 
 .text-transform-cap {
   text-transform: capitalize !important;
 }
-
+.fill-black-imp{
+  fill: #000 !important;
+}
 .mr_sign_in_n {
   margin-left: 20px !important;
   margin-right: 20px !important;
@@ -5030,6 +5075,7 @@ a {
 .testimonial_bg {
   font-family: "Poppins-Bold", "Poppins";
 }
+
 .testimonial_container {
   background-color: #fff;
   display: flex;
@@ -5043,6 +5089,7 @@ a {
   min-height: 200px;
   /* max-height: 98vh; */
 }
+
 .testimonial_bg .testimonial_heading {
   max-width: 650px;
   width: 95%;
@@ -5059,11 +5106,13 @@ a {
 .testimonial_container {
   display: unset;
 }
+
 .testimonial_container .about_requester {
   display: flex;
   flex-direction: row;
   align-items: center;
 }
+
 .testimonial_container .testimonial_about {
   font-size: 14px;
   font-weight: 500;
@@ -5104,6 +5153,7 @@ a {
 .submit_testimo_inp {
   margin-top: 25px;
 }
+
 .submit_testimo_inp label {
   font-size: 13px;
   display: flex;
@@ -5133,6 +5183,7 @@ a {
   font-weight: 500;
   margin-bottom: 10px;
 }
+
 .your_info .name,
 .your_info .title {
   display: flex;
@@ -5140,6 +5191,7 @@ a {
   align-items: center;
   /* justify-content: space-between; */
 }
+
 .your_info .edit_name,
 .your_info .edit_title {
   display: flex;
@@ -5147,6 +5199,7 @@ a {
   font-size: 14px;
   width: 100%;
 }
+
 .your_info .name span,
 .your_info .title span {
   width: 50%;
@@ -5191,6 +5244,7 @@ a {
   border: #6d2ef1 solid 1px;
   -webkit-border-radius: 60px !important;
 }
+
 .testimonial_info_btn button {
   min-width: 120px;
   display: flex;
@@ -5207,6 +5261,7 @@ a {
   border: #6d2ef1 solid 1px;
   -webkit-border-radius: 60px !important;
 }
+
 .testimonial_info_btn button:hover {
   min-width: 120px;
   display: flex;
@@ -5229,4 +5284,13 @@ a {
   max-width: 650px;
   width: 95%;
   margin-top: 6px;
+}
+
+.btn-check:checked+.btn,
+.btn.active,
+.btn.show,
+.btn:first-child:active,
+:not(.btn-check)+.btn:active {
+  background-color: #39478f;
+  color: #fff;
 }

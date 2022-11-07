@@ -42,9 +42,11 @@
 .pd_n_fbspro button {
   padding: 14px 20px;
 }
+
 .ps-relative {
   position: relative;
 }
+
 .ipdlar_sign {
   position: absolute;
   right: 10px;
@@ -54,6 +56,7 @@
   font-weight: 700;
   color: #6d2ef1;
 }
+
 .pd_n_sendp {
   min-width: 170px;
   font-size: 13px !important;
@@ -191,6 +194,7 @@
   max-height: 95vh;
   overflow-y: scroll;
 }
+
 .popup_box_bpn::-webkit-scrollbar {
   display: none;
 }
@@ -251,10 +255,11 @@
   -o-border-radius: 3px;
 }
 
-.popup_form_element > input {
+.popup_form_element>input {
   height: 40px;
 }
-.popup_form_element > .language_sel {
+
+.popup_form_element>.language_sel {
   height: 40px;
   color: #1e1e1e;
   border: 1px solid #e8e7e7 !important;
@@ -271,9 +276,11 @@
   padding-left: 10px !important;
   padding-right: 20px !important;
 }
+
 .font-weight-400 {
   font-weight: 400 !important;
 }
+
 .popup_form_element textarea {
   height: 100px;
 }
@@ -286,6 +293,7 @@
   text-align: justify;
   font-weight: 400;
 }
+
 ._profile_overview textarea::-webkit-scrollbar {
   display: none;
 }
@@ -335,6 +343,12 @@
   -ms-border-radius: 60px !important;
   -o-border-radius: 60px !important;
 }
+
+.popup_btns_new button:hover {
+  background-color: #fff;
+  color: #6d2ef1;
+}
+
 .popup_btns_new button:disabled {
   background-color: #c7c6c9;
   color: rgb(74 72 72);
@@ -509,11 +523,13 @@
 .form_goals .formg_inp {
   width: calc(100% - 200px);
 }
+
 @media only screen and (max-width: 550px) {
   .form_goals .formg_inp {
     width: 100% !important;
   }
 }
+
 .form_goals .formg_inp input,
 .form_goals .formg_inp select {
   padding: 9px 20px;
@@ -529,6 +545,7 @@
   height: 14px;
   margin: 0px 10px 1px 0px;
 }
+
 .iclosed_ctract {
   margin-left: 30px;
   text-indent: 7px;
@@ -594,7 +611,7 @@
   color: #6d2ef1;
 }
 
-.table > :not(caption) > * > * {
+.table> :not(caption)>*>* {
   padding: 0.7rem 0.5rem !important;
 }
 
@@ -634,22 +651,26 @@
   .box_overv_new {
     padding: 10px 10px;
   }
+
   .overv_sm_thead {
     font: normal normal 600 14px/20px Poppins;
   }
 }
+
 @media screen and (max-width: 425px) {
   .box_overv_new {
     padding: 10px 10px;
     min-width: 170px;
   }
 }
+
 @media screen and (max-width: 375px) {
   .box_overv_new {
     padding: 10px 10px;
     min-width: 170px;
   }
 }
+
 @media screen and (min-width: 1440px) {
   .overv_sm_thead {
     font: normal normal 600 18px/20px Poppins;
@@ -688,6 +709,7 @@
 .daterangepicker.opensright:before {
   display: none !important;
 }
+
 .daterangepicker.opensright::after {
   display: none !important;
 }
@@ -852,6 +874,7 @@
   border-bottom: #d8d8d8 solid 1px;
   font: normal normal 500 18px/22px Poppins !important;
 }
+
 .tg_mile_ml_new p {
   margin-bottom: 0;
 }
@@ -975,6 +998,7 @@
   height: 100%;
   cursor: pointer;
 }
+
 .mess_files_g_bx {
   background-color: #f9f9f9;
   padding: 20px 0px;
@@ -1185,6 +1209,10 @@
   font: normal normal 600 14px/30px Poppins;
   border: none;
   padding: 8px 20px;
+}
+
+.btn_group_be button:hover {
+  background-color: #fff;
 }
 
 .active_btn_be {
@@ -1499,6 +1527,11 @@
   opacity: 0;
 }
 
+.send_pros_btn:hover {
+  background-color: #fff;
+  color: #0e1f3e;
+}
+
 .send_pros_btn {
   background-color: #0e1f3e;
   padding: 12px 40px;
@@ -1528,6 +1561,7 @@
   outline: none;
   text-align: right;
 }
+
 .inp_bdg_pdsp input::placeholder {
   color: #000;
 }
@@ -1614,55 +1648,69 @@
   height: 22px;
   width: 22px;
 }
+
 .timerackbox {
   border: #e2e2e2 solid 1px;
 }
+
 .track_th_hme {
   color: #000000;
   font: normal normal 600 14px/20px Poppins !important;
 }
+
 .tth_bgheading {
   color: #000000;
   font: normal normal 600 14px/20px Poppins !important;
 }
+
 .timerackbox table thead tr th {
   height: 58px;
   min-width: 75px;
   border-right: #e2e2e2 solid 1px;
 }
+
 .nme_profe_track {
   font: normal normal 600 14px/20px Poppins !important;
   padding-left: 10px;
 }
+
 .nme_pero_tranes {
   font: normal normal 300 13px/20px Poppins !important;
   padding-left: 10px;
 }
+
 .ewon_track_rc {
   display: flex;
   align-items: center;
 }
+
 .ewon_track_rc svg {
   margin: -1px 7px;
 }
+
 .cewi_trak {
   padding-top: 20px;
 }
+
 .ewon_track_rc {
   font: normal normal 400 14px/20px Poppins !important;
   padding-left: 25px;
   text-transform: uppercase;
 }
+
 .cewoh_ew {
   font: normal normal 400 15px/30px Poppins !important;
 }
+
 .timerackbox table tbody tr td {
   height: 75px;
   border-right: #e2e2e2 solid 1px;
 }
+
 .active_trlight {
   background-color: #f6f6f6;
 }
+
 .awd_btnrnd button {
   background-color: white;
   padding: 11px;
@@ -1678,18 +1726,23 @@
   -ms-border-radius: 50px;
   -o-border-radius: 50px;
 }
+
 .timerackbox table tbody {
   margin: 2px 0px !important;
 }
+
 .slide_box_tracker_tbl td {
   height: 60px !important;
 }
+
 .timerackbox table tbody tr {
   border-color: transparent;
 }
+
 .timerackbox table tbody tr:hover {
   background-color: #f6f6f6;
 }
+
 .profle_tbls {
   height: 50px;
   width: 50px;
@@ -1700,32 +1753,41 @@
   -ms-border-radius: 50px;
   -o-border-radius: 50px;
 }
+
 .profle_tbls img {
   height: 100%;
   width: 100%;
 }
-.timerackbox table > :not(caption) > * > * {
+
+.timerackbox table> :not(caption)>*>* {
   padding: 0.7rem 1rem !important;
 }
+
 .border-r-none {
   border-right: none !important;
 }
+
 .w-4 {
   width: 4% !important;
 }
+
 .w-30 {
   width: 30% !important;
 }
+
 .w-8 {
   width: 8% !important;
 }
+
 .thh_smheading {
   color: #000000;
   font: normal normal 300 11px/15px Poppins !important;
 }
+
 .s_na_inpu {
   position: relative;
 }
+
 .pls_s_na_input {
   position: absolute;
   right: 12px;
@@ -1746,6 +1808,7 @@
   cursor: pointer;
   user-select: none;
 }
+
 .font-12-px {
   font-size: 12px !important;
 }
@@ -1753,15 +1816,19 @@
 .font-14-px {
   font-size: 14px !important;
 }
+
 .font-size-15px {
   font-size: 15px !important;
 }
+
 .font-size-20px {
   font-size: 20px !important;
 }
+
 .sflex_spance li {
   margin-right: 50px;
 }
+
 .select_no_bder .css-1s2u09g-control {
   background-color: transparent !important;
   border: none !important;
@@ -1787,6 +1854,7 @@
   font-family: "Poppins";
   text-align: center;
 }
+
 .close_account_btn button:hover {
   background-color: #6d2ef1;
   border-radius: 27px;

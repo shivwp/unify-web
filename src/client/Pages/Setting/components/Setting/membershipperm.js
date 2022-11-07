@@ -44,7 +44,7 @@ const Screen = () => {
                 <div className="r-box_setting">
                   <div className="d-flex flex-wrap tab_m_nodea">
                     <Button
-                      className={`tab_btn_vs bg-transparent s_btn_ns w-auto ${
+                      className={`tab_btn_vs bg-transparent s_btn_ns active_c_ch w-auto ${
                         tabActive === "active" ? "active_bvs active_bvss" : ""
                       }`}
                       onClick={() => {
@@ -54,7 +54,7 @@ const Screen = () => {
                       Active Members
                     </Button>
                     <Button
-                      className={`tab_btn_vs bg-transparent s_btn_ns w-auto ${
+                      className={`tab_btn_vs bg-transparent active_c_ch s_btn_ns w-auto ${
                         tabActive === "invitation"
                           ? "active_bvs active_bvss"
                           : ""
