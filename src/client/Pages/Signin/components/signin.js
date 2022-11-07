@@ -163,11 +163,9 @@ const Signin = ({
                         ></i>
                       )}
                       <span className="signInError">
-                        {errors.password ? (
-                          <>Please enter your password</>
-                        ) : (
-                          loginError && loginError
-                        )}
+                        {errors.password
+                          ? errors.password
+                          : loginError && loginError}
                       </span>
                     </div>
                   </div>

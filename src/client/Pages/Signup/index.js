@@ -11,14 +11,15 @@ const Signupscreen = () => {
   const [errors, setErrors] = useState({});
   const [userType, setUserType] = useState(null);
   const getCountryList = useSelector((state) => state.auth.getCountryList);
-  const signupError = useSelector((state) => state?.auth?.signupError?.data.message);
+  const signupError = useSelector(
+    (state) => state?.auth?.signupError?.data.message
+  );
 
   const [values, setValues] = useState({
     agree_terms: 0,
     send_email: 0,
   });
 
- 
   useEffect(() => {
     dispatch(countryList());
   }, []);
@@ -57,22 +58,37 @@ const Signupscreen = () => {
       errorExist = true;
     }
 
+    if (values.password !== values.confirmPassword) {
+      errorsObject.confirmPassword =
+        "Confirm password should be match with password";
+      errorExist = true;
+    }
+
     if (
-      (values.password && values.password.length < 5) ||
       values.password === "" ||
       values.password === null ||
       values.password === undefined
     ) {
-      errorsObject.password = true;
+      errorsObject.password = "Please Enter Your Password";
       errorExist = true;
     }
+
+    if (values.password && values.password.length < 8) {
+      errorsObject.password = "Password must be at least 8 digit long";
+      errorExist = true;
+    }
+
     if (
-      (values.confirmPassword && values.confirmPassword.length < 5) ||
       values.confirmPassword === "" ||
       values.confirmPassword === null ||
       values.confirmPassword === undefined
     ) {
-      errorsObject.confirmPassword = true;
+      errorsObject.confirmPassword = "Please Enter Your Password";
+      errorExist = true;
+    }
+
+    if (values.confirmPassword && values.confirmPassword.length < 8) {
+      errorsObject.confirmPassword = "Password must be at least 8 digit long";
       errorExist = true;
     }
     if (

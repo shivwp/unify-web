@@ -3,7 +3,7 @@ import { Row, Col } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import Select from "react-select";
 import { useEffect, useState } from "react";
-import Button from 'react-bootstrap/Button';
+import Button from "react-bootstrap/Button";
 import $ from "jquery";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -42,7 +42,7 @@ import IntroVideoPopup from "../../../../popups/IntroVideoPopup";
 import ReactPaginate from "react-paginate";
 import ConfirmationPopup from "../../../components/popups/ConfirmationPopup";
 import SuccessPopup from "../../../components/popups/SuccessPopup";
-import Form from 'react-bootstrap/Form';
+import Form from "react-bootstrap/Form";
 
 function Listaward() {
   const card = [1, 2, 3, 4];
@@ -467,7 +467,7 @@ const EditTitle = (props) => {
             </div>
             <div className="_profile_overview popup_form_element mb-0">
               <Form.Control
-              as="textarea"
+                as="textarea"
                 value={values?.description}
                 name="description"
                 onChange={(e) => handleOnChange(e)}
@@ -622,14 +622,18 @@ const AddExperience = (props) => {
                 <Form.Label className="text-black font-size-13px font-weight-500">
                   Subject
                 </Form.Label>
-                <Form.Control type="text" className="font-size-13px" placeholder=" " />
+                <Form.Control
+                  type="text"
+                  className="font-size-13px"
+                  placeholder=" "
+                />
               </div>
               <div className="popup_form_element">
                 <Form.Label className="text-black font-size-13px font-weight-500">
                   Description
                 </Form.Label>
                 <Form.Control
-              as="textarea"
+                  as="textarea"
                   className="font-size-13px"
                   placeholder="Enter Here"
                 ></Form.Control>
@@ -828,7 +832,7 @@ const AddEmployment = (props) => {
                       Description (Optional)
                     </Form.Label>
                     <Form.Control
-              as="textarea"
+                      as="textarea"
                       className="font-size-13px"
                       value={values.description || ""}
                       name="description"
@@ -915,8 +919,8 @@ const ChangePassword = (props) => {
               </Row>
               <div className="popup_form_element agrement_ineoeu mt-3 pt-1">
                 <Form.Label className="text-black font-size-13px font-weight-500">
-                  <Form.Check type="checkbox" /> All devices will be required to sign
-                  in with new password
+                  <Form.Check type="checkbox" /> All devices will be required to
+                  sign in with new password
                 </Form.Label>
               </div>
             </div>
@@ -982,8 +986,8 @@ const VerificationPref = (props) => {
                   seems risky
                 </Form.Label>
                 <Form.Label className="text-black font-size-13px font-weight-500 mt-2 pb-1 radiolablepopo">
-                  <Form.Check type="radio" name="g" /> At every login and when my
-                  login or activity seems risky
+                  <Form.Check type="radio" name="g" /> At every login and when
+                  my login or activity seems risky
                 </Form.Label>
               </div>
             </div>
@@ -1291,7 +1295,10 @@ const UserVerification = (props) => {
                     <Form.Label className="text-black font_size_14px font-weight-500">
                       Upload Document
                     </Form.Label>
-                    <Form.Label htmlFor="attach-doc-front" style={{ minHeight: 0 }}>
+                    <Form.Label
+                      htmlFor="attach-doc-front"
+                      style={{ minHeight: 0 }}
+                    >
                       <div
                         style={{
                           border: "1px solid #e8e7e7",
@@ -1339,7 +1346,10 @@ const UserVerification = (props) => {
                     style={{ position: "relative" }}
                   >
                     <Form.Label className="text-black font_size_14px font-weight-500"></Form.Label>
-                    <Form.Label htmlFor="attach-doc-back" style={{ minHeight: 0 }}>
+                    <Form.Label
+                      htmlFor="attach-doc-back"
+                      style={{ minHeight: 0 }}
+                    >
                       <div
                         style={{
                           border: "1px solid #e8e7e7",
@@ -1667,7 +1677,7 @@ const AddEduc = (props) => {
                       Description (Optional)
                     </Form.Label>
                     <Form.Control
-              as="textarea"
+                      as="textarea"
                       onChange={(e) => handleOnChange(e)}
                       className="font-size-11px"
                       value={values?.description}
@@ -1928,7 +1938,7 @@ const ReqTestimonial = (props) => {
                       Description (Optional)
                     </Form.Label>
                     <Form.Control
-              as="textarea"
+                      as="textarea"
                       name="description"
                       className="font-size-13px"
                       value={values?.description}
@@ -2133,7 +2143,7 @@ const UnifyFreelancer = () => {
   };
 
   const IntroVideoThumb = ({ data }) => {
-    const vidId = data?.url?.split("v=")[1].substring(0, 11);
+    const vidId = data?.url?.split("v=")[1]?.substring(0, 11);
     const thumbnail = data
       ? `https://img.youtube.com/vi/${vidId}/0.jpg`
       : `https://img.youtube.com/vi/0.jpg`;
@@ -2621,7 +2631,7 @@ const UnifyFreelancer = () => {
                   Verification
                   <div className="d-flex justify-content-start">
                     {basicInfo?.is_verified != "approve" &&
-                      basicInfo?.is_verified != "pending" && (
+                      basicInfo?.is_verified != "requested" && (
                         <Button
                           onClick={() => {
                             Setpopup(<UserVerification Popup={Setpopup} />);
@@ -2667,10 +2677,12 @@ const UnifyFreelancer = () => {
                       </svg>
                     </>
                   ) : basicInfo?.is_verified == "pending" ? (
-                    "pending"
+                    "Pending"
                   ) : basicInfo?.is_verified == "reject" ? (
-                    "reject"
-                  ) : null}
+                    "Rejected"
+                  ) : (
+                    "Requested"
+                  )}
                 </div>
                 <div className="myskill_hdingn ms_hdsmall font-size-15px">
                   Hannah Finn

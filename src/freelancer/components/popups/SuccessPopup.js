@@ -15,7 +15,7 @@ const CloseIcon = () => {
     </svg>
   );
 };
-const SuccessPopup = ({ Popup }) => {
+const SuccessPopup = ({ Popup, message }) => {
   return (
     <>
       <div className="bg_wrapper_popup_new">
@@ -30,7 +30,6 @@ const SuccessPopup = ({ Popup }) => {
           <h6 className="acd">
             <div>Thanks for subscribing we're sending</div>
 
-            <div> confirmation</div>
           </h6>
 
           <div className="freelancer_popup_btns ">

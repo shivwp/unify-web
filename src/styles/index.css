@@ -5138,7 +5138,7 @@ a {
   display: flex;
   font-size: 14px;
   align-items: center;
-  justify-content: space-between;
+  /* justify-content: space-between; */
 }
 .your_info .edit_name,
 .your_info .edit_title {

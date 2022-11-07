@@ -267,7 +267,7 @@ const Signup = ({
                         ></i>
                       )}
                       <span className="signInError">
-                        {errors.password && <>Please enter your Password</>}
+                        {errors.password && errors.password}
                       </span>
                     </div>
                   </div>
@@ -314,9 +314,7 @@ const Signup = ({
                         ></i>
                       )}
                       <span className="signInError">
-                        {errors.confirmPassword && (
-                          <>Please enter your Confirm Password</>
-                        )}
+                        {errors.confirmPassword && errors.confirmPassword}
                       </span>
                     </div>
                   </div>

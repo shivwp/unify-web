@@ -16,8 +16,10 @@ const Signinscreen = () => {
     setErrors({ ...errors, [e.target.name]: false });
   };
 
-  const loginError = useSelector((state) => state?.auth?.loginError?.data.message);
-  
+  const loginError = useSelector(
+    (state) => state?.auth?.loginError?.data.message
+  );
+
   const submitForm = (e) => {
     e.preventDefault();
     let errorExist = false;
@@ -33,12 +35,15 @@ const Signinscreen = () => {
     }
 
     if (
-      (values.password && values.password.length < 6) ||
       values.password === "" ||
       values.password === null ||
       values.password === undefined
     ) {
-      errorsObject.password = true;
+      errorsObject.password = "Please Enter Your Password";
+      errorExist = true;
+    }
+    if (values.password && values.password.length < 8) {
+      errorsObject.password = "Password must be at least 8 digit long";
       errorExist = true;
     }
 

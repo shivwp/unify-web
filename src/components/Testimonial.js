@@ -88,14 +88,16 @@ const Testimonial = () => {
               </Link>
             </div>
             {!editDetails ? (
-              <div style={{ width: "250px", marginTop: 8 }}>
+              <div style={{ marginTop: 8 }}>
                 <div className="name">
-                  <span>Name</span>
-                  <span>{`${testimonialData?.first_name} ${testimonialData?.last_name}`}</span>
+                  <span style={{ width: "20%" }}>Name</span>
+                  <span
+                    style={{ width: "80%" }}
+                  >{`${values?.first_name} ${values?.last_name}`}</span>
                 </div>
                 <div className="title">
-                  <span>Title</span>
-                  <span>{`${testimonialData?.title}`}</span>
+                  <span style={{ width: "20%" }}>Title</span>
+                  <span style={{ width: "80%" }}>{`${values?.title}`}</span>
                 </div>
               </div>
             ) : (
