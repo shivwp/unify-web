@@ -4,7 +4,7 @@ import {
   googleAuthProvider,
   signInWithPopup,
   signOut,
-} from "../../firebase/Firebase";
+} from "../../firebase/firebase";
 import Axios from "../axios";
 import {
   GOOGLE_SIGN_IN_FAIL,
@@ -60,7 +60,7 @@ export const onVerifySignup = (data, navigate) => async (dispatch) => {
   try {
     const res = await Axios.post(`/verifysignup`, data);
     if (res.data.status) {
-      navigate("/businesssize");
+      navigate("/signin");
       window.location.reload();
     }
   } catch (err) {}

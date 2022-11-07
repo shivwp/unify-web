@@ -397,7 +397,11 @@
   padding: 3px 20px;
   align-items: center;
 }
-.input_houry_price  input{
+.input_houry_price input {
   border: none;
   outline: none;
+}
+.hourly_price label {
+  font-weight: 600;
+  margin-bottom: 6px;
 }
