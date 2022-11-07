@@ -8,6 +8,11 @@ body {
   color: inherit;
 }
 
+.btn:focus-visible {
+  background-color: inherit;
+  color: inherit;
+}
+
 .post_job_btn_m button:hover {
   color: #6d2ef1;
   background-color: #fff;
@@ -26,7 +31,7 @@ body {
   color: #fff;
 }
 
-.toggle_btn_dot:active{
+.toggle_btn_dot:active {
   background-color: transparent !important;
 }
 
@@ -1587,11 +1592,13 @@ body {
   font-family: "Poppins";
   text-align: center;
 }
-.hire_now_node button:hover{
+
+.hire_now_node button:hover {
   background-color: #fff;
   color: #6d2ef1;
   border-color: #6d2ef1;
 }
+
 .servi_box {
   margin: 10px 0px;
   background-color: #fff;
@@ -2099,10 +2106,12 @@ body {
   font-weight: 600;
   font-family: "Poppins";
 }
-.fr_btn button:hover{
+
+.fr_btn button:hover {
   background-color: #fff;
   color: #6d2ef1;
 }
+
 .s_na_h4 h4 {
   padding: 10px 0px 0px 0px;
   font-size: 12px;
@@ -2347,16 +2356,20 @@ body {
   background-color: transparent !important;
   border-color: transparent !important;
 }
-.inp_0_radio input{
+
+.inp_0_radio input {
   padding: 0 !important;
 }
+
 .heart_btn path {
   fill: #fff;
 }
-.fb_btns_s_pro button:hover{
+
+.fb_btns_s_pro button:hover {
   background-color: #6d2ef1;
   color: #fff;
 }
+
 .fb_btns_s_pro button {
   border-radius: 6px;
   background-color: #6d2ef1;
@@ -4940,7 +4953,7 @@ a {
   min-width: max-content;
 }
 
-.tab_scroll_cont .tab_btn_vs:active{
+.tab_scroll_cont .tab_btn_vs:active {
   background-color: transparent !important;
   color: inherit !important;
 }
@@ -4948,9 +4961,11 @@ a {
 .text-transform-cap {
   text-transform: capitalize !important;
 }
-.fill-black-imp{
+
+.fill-black-imp {
   fill: #000 !important;
 }
+
 .mr_sign_in_n {
   margin-left: 20px !important;
   margin-right: 20px !important;
