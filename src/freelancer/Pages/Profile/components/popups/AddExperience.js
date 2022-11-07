@@ -32,7 +32,7 @@ const AddExperience = (props) => {
               <CloseIcon />
             </div>
           </div>
-          <div className="popup_body_bpn amount_popup_body max_height_popucwui overflow-scroll">
+          <div className="popup_body_bpn amount_popup_body max_height_popucwui ">
             <div className="mt-2 pt-1 mb-4"></div>
 
             <div className="mb-4 ">
@@ -59,14 +59,14 @@ const AddExperience = (props) => {
             </div>
 
             <div className="popup_btns_new flex-wrap cwiewyehkk">
-              <Button className="trans_btn">Cancel</Button>
-              <Button
+              <button className="trans_btn">Cancel</button>
+              <button
                 onClick={() => {
                   props.Popup();
                 }}
               >
                 Save
-              </Button>
+              </button>
             </div>
           </div>
         </div>

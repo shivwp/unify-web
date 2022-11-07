@@ -57,7 +57,9 @@ const VideoIntro = (props) => {
       video: values.url,
       video_type: type.name,
     };
-    dispatch(onEditVideo(data, props.Popup));
+    dispatch(
+      onEditVideo(data, props.Popup, props.successPopup, props.setSuccessPopup)
+    );
   };
   return (
     <>

@@ -24,6 +24,7 @@ const CloseIcon = () => {
   );
 };
 
+
 const AddEmployment = (props) => {
   const dispatch = useDispatch();
   const getCountryList = useSelector((state) => state.auth.getCountryList);
@@ -63,7 +64,14 @@ const AddEmployment = (props) => {
       start_date: values.start_date,
       end_date: values.end_date,
     };
-    dispatch(onAddEmployment(data, props.Popup));
+    dispatch(
+      onAddEmployment(
+        data,
+        props.Popup,
+        props.successPopup,
+        props.setSuccessPopup
+      )
+    );
   };
   console.log(values);
 
@@ -183,7 +191,7 @@ const AddEmployment = (props) => {
                 </Col>
                 <Col className="text-right">
                   <div className="agrement_ineoeu flex-row d-flex justify-content-end mt-1 pt-0">
-                    <Form.Label className="text-black text-right font-size-13px font-weight-500 align-items-center">
+                    <Form.Label className="text-black text-right font-size-13px font-weight-500">
                       <Form.Check
                         type="checkbox"
                         name="currently_working"

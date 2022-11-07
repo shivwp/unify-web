@@ -36,7 +36,15 @@ const EditTitle = (props) => {
       title: values.occuption,
       description: values.description,
     };
-    dispatch(onEditDesignation(data, props.Popup));
+
+    dispatch(
+      onEditDesignation(
+        data,
+        props.Popup,
+        props.successPopup,
+        props.setSuccessPopup
+      )
+    );
   };
   return (
     <>
