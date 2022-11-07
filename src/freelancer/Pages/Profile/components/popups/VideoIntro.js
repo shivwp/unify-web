@@ -1,7 +1,12 @@
 import Select from "react-select";
-
 import Form from "react-bootstrap/Form";
 import { Button } from "react-bootstrap";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  onEditVideo,
+} from "../../../../../redux/actions/profileAction";
+
 
 const CloseIcon = () => {
   return (
@@ -19,20 +24,41 @@ const CloseIcon = () => {
 };
 
 const VideoIntro = (props) => {
-  const options1 = [
+  const dispatch = useDispatch();
+  const [values, setValues] = useState(props?.data);
+  const [type, setType] = useState(
+    props?.data && {
+      name: props.data?.type,
+      label: props.data?.type,
+    }
+  );
+
+  const handleOnChange = (e) => {
+    setValues({ ...values, [e.target.name]: e.target.value });
+  };
+
+  const videoTypes = [
     {
-      name: "me talking about my skills",
-      label: "me talking about my skills",
+      name: "Me talking about my skills and Exprience",
+      label: "Me talking about my skills and Exprience",
     },
     {
-      name: "visual samples of my works",
-      label: "visual samples of my works",
+      name: "Visual samples of my work",
+      label: "Visual samples of my work",
     },
     {
-      name: "something else",
-      label: "something else",
+      name: "Something else",
+      label: "Something else",
     },
   ];
+
+  const onSave = () => {
+    const data = {
+      video: values.url,
+      video_type: type.name,
+    };
+    dispatch(onEditVideo(data, props.Popup));
+  };
   return (
     <>
       <div className="bg_wrapper_popup_new">
@@ -48,41 +74,54 @@ const VideoIntro = (props) => {
               <CloseIcon />
             </div>
           </div>
-          <div className="popup_body_bpn amount_popup_body max_height_popucwui overflow-scroll">
+          <div className="popup_body_bpn amount_popup_body max_height_popucwui">
             <div className="mt-4 pt-1 mb-4"></div>
 
             <div className="mb-5 ">
-              <Form.Group className="popup_form_element">
+              <div className="popup_form_element">
                 <Form.Label className="text-black font-size-13px font-weight-500">
                   Link to your YouTube video
                 </Form.Label>
                 <Form.Control
                   type="text"
                   className="font-size-13px"
+                  name="url"
+                  onChange={(e) => handleOnChange(e)}
+                  value={values?.url}
                   placeholder="Ex: https://www.youtube.com/watch?v=dQw4w9WgXcQ"
                 />
-              </Form.Group>
-              <Form.Group className="popup_form_element">
+              </div>
+              <div className="popup_form_element">
                 <Form.Label className="text-black font-size-13px font-weight-500">
                   What type of video is this?
                 </Form.Label>
                 <Select
                   className="font-size-13px"
                   placeholder="What type of video is this?"
-                  options={options1}
+                  onChange={setType}
+                  defaultValue={
+                    type
+                      ? {
+                          name: type?.name,
+                          label: type?.label,
+                        }
+                      : null
+                  }
+                  options={videoTypes}
                 />
-              </Form.Group>
+              </div>
             </div>
 
             <div className="popup_btns_new flex-wrap cwiewyehkk">
-              <Button className="trans_btn">Cancel</Button>
               <Button
+                className="trans_btn"
                 onClick={() => {
                   props.Popup();
                 }}
               >
-                Save
+                Cancel
               </Button>
+              <Button onClick={onSave}>Save</Button>
             </div>
           </div>
         </div>

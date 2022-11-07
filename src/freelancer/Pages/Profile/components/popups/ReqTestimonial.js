@@ -2,8 +2,8 @@ import { Row, Col } from "react-bootstrap";
 import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import { useDispatch } from "react-redux";
-import { onEditTestimonialInfo } from "../../../../../redux/actions/profileAction";
 import Form from "react-bootstrap/Form";
+import { onRequestTestimonial } from "../../../../../redux/actions/profileAction";
 
 const CloseIcon = () => {
   return (
@@ -26,11 +26,18 @@ const ReqTestimonial = (props) => {
 
   const onInputChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
-    console.log(values);
   };
 
   const testimonialSubmit = (e) => {
-    dispatch(onEditTestimonialInfo(values));
+    const data = {
+      first_name: values?.first_name,
+      last_name: values?.last_name,
+      email: values?.email,
+      title: values?.title,
+      type: values?.type,
+      description: values?.description,
+    };
+    dispatch(onRequestTestimonial(data));
   };
 
   return (
@@ -48,7 +55,7 @@ const ReqTestimonial = (props) => {
               <CloseIcon />
             </div>
           </div>
-          <div className="popup_body_bpn amount_popup_body max_height_popucwui overflow-scroll">
+          <div className="popup_body_bpn amount_popup_body max_height_popucwui">
             <div className="mt-3 pt-1 mb-3">
               <div className="popuphead_smparcr">
                 Add your client’s contact details. Don’t worry—we’ll only
@@ -59,7 +66,7 @@ const ReqTestimonial = (props) => {
             <div className="mb-3 ">
               <Row>
                 <Col md={6}>
-                  <Form.Group className="popup_form_element">
+                  <div className="popup_form_element">
                     <Form.Label className="text-black font-size-13px font-weight-500">
                       First Name
                     </Form.Label>
@@ -71,10 +78,10 @@ const ReqTestimonial = (props) => {
                       onChange={(e) => onInputChange(e)}
                       placeholder="Enter First Name"
                     />
-                  </Form.Group>
+                  </div>
                 </Col>
                 <Col md={6}>
-                  <Form.Group className="popup_form_element">
+                  <div className="popup_form_element">
                     <Form.Label className="text-black font-size-13px font-weight-500">
                       Last name{" "}
                     </Form.Label>
@@ -86,10 +93,10 @@ const ReqTestimonial = (props) => {
                       onChange={(e) => onInputChange(e)}
                       placeholder="Enter Last name "
                     />
-                  </Form.Group>
+                  </div>
                 </Col>
                 <Col md={6}>
-                  <Form.Group className="popup_form_element">
+                  <div className="popup_form_element">
                     <Form.Label className="text-black font-size-13px font-weight-500">
                       Business email address
                     </Form.Label>
@@ -99,27 +106,12 @@ const ReqTestimonial = (props) => {
                       className="font-size-13px"
                       value={values?.email}
                       onChange={(e) => onInputChange(e)}
-                      placeholder=""
+                      placeholder="Enter Your Business Email"
                     />
-                  </Form.Group>
+                  </div>
                 </Col>
                 <Col md={6}>
-                  <Form.Group className="popup_form_element">
-                    <Form.Label className="text-black font-size-13px font-weight-500">
-                      Client's LinkedIn Profile
-                    </Form.Label>
-                    <Form.Control
-                      type="text"
-                      name="linkedin_url"
-                      className="font-size-13px"
-                      value={values?.linkedin_url}
-                      onChange={(e) => onInputChange(e)}
-                      placeholder="http://"
-                    />
-                  </Form.Group>
-                </Col>
-                <Col md={6}>
-                  <Form.Group className="popup_form_element">
+                  <div className="popup_form_element">
                     <Form.Label className="text-black font-size-13px font-weight-500">
                       Client's title (Optional)
                     </Form.Label>
@@ -129,12 +121,12 @@ const ReqTestimonial = (props) => {
                       className="font-size-13px"
                       value={values?.title}
                       onChange={(e) => onInputChange(e)}
-                      placeholder=" Degree (Optional)"
+                      placeholder="Enter Client's Title"
                     />
-                  </Form.Group>
+                  </div>
                 </Col>
                 <Col md={6}>
-                  <Form.Group className="popup_form_element">
+                  <div className="popup_form_element">
                     <Form.Label className="text-black font-size-13px font-weight-500">
                       Project Type (Optional)
                     </Form.Label>
@@ -144,12 +136,12 @@ const ReqTestimonial = (props) => {
                       className="font-size-13px"
                       value={values?.type}
                       onChange={(e) => onInputChange(e)}
-                      placeholder=" Degree (Optional)"
+                      placeholder="Enter Project Type"
                     />
-                  </Form.Group>
+                  </div>
                 </Col>
                 <Col md={12}>
-                  <Form.Group className="popup_form_element">
+                  <div className="popup_form_element">
                     <Form.Label className="text-black font-size-13px font-weight-500">
                       Description (Optional)
                     </Form.Label>
@@ -161,7 +153,7 @@ const ReqTestimonial = (props) => {
                       onChange={(e) => onInputChange(e)}
                       placeholder="Enter Here"
                     ></Form.Control>
-                  </Form.Group>
+                  </div>
                 </Col>
               </Row>
             </div>

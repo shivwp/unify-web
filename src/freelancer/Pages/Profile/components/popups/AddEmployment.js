@@ -1,6 +1,13 @@
 import { Row, Col } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  onAddEmployment,
+} from "../../../../../redux/actions/profileAction";
+import Select from "react-select";
+import { countryList } from "../../../../../redux/actions/authActions";
 
 const CloseIcon = () => {
   return (
@@ -18,6 +25,48 @@ const CloseIcon = () => {
 };
 
 const AddEmployment = (props) => {
+  const dispatch = useDispatch();
+  const getCountryList = useSelector((state) => state.auth.getCountryList);
+  const [country, setCountry] = useState(null);
+  const [values, setValues] = useState(
+    props?.experience || { currently_working: 0 }
+  );
+  console.log(props?.exprience);
+
+  useState(() => {
+    dispatch(countryList());
+  }, []);
+
+  const countryLis = getCountryList?.map((item) => ({
+    name: item.name,
+    label: item.name,
+  }));
+
+  const onInputChange = (e) => {
+    if (e.target.name == "currently_working") {
+      setValues({ ...values, [e.target.name]: e.target.checked ? 1 : 0 });
+    } else {
+      setValues({ ...values, [e.target.name]: e.target.value });
+    }
+  };
+  console.log(country);
+
+  const onSave = () => {
+    const data = {
+      id: props?.experience?.id,
+      company: values.company,
+      city: values.city,
+      country: props?.experience?.country || country.name,
+      description: values.description,
+      subject: values.subject,
+      currently_working: values.currently_working,
+      start_date: values.start_date,
+      end_date: values.end_date,
+    };
+    dispatch(onAddEmployment(data, props.Popup));
+  };
+  console.log(values);
+
   return (
     <>
       <div className="bg_wrapper_popup_new">
@@ -33,7 +82,7 @@ const AddEmployment = (props) => {
               <CloseIcon />
             </div>
           </div>
-          <div className="popup_body_bpn amount_popup_body max_height_popucwui overflow-scroll">
+          <div className="popup_body_bpn amount_popup_body max_height_popucwui">
             <div className="mt-2 pt-1 mb-4"></div>
 
             <div className="mb-4 ">
@@ -47,6 +96,9 @@ const AddEmployment = (props) => {
                       type="text"
                       className="font-size-13px"
                       placeholder="Ex: Unify"
+                      name="company"
+                      value={values.company}
+                      onChange={(e) => onInputChange(e)}
                     />
                   </div>
                 </Col>
@@ -57,7 +109,10 @@ const AddEmployment = (props) => {
                     </Form.Label>
                     <Form.Control
                       type="text"
+                      name="city"
                       className="font-size-13px"
+                      value={values.city}
+                      onChange={(e) => onInputChange(e)}
                       placeholder="City"
                     />
                   </div>
@@ -67,10 +122,17 @@ const AddEmployment = (props) => {
                     <Form.Label className="text-black font-size-13px font-weight-500">
                       Country
                     </Form.Label>
-                    <Form.Control
-                      type="text"
+                    <Select
                       className="font-size-13px"
-                      placeholder="Country"
+                      placeholder="India"
+                      name="country"
+                      defaultValue={
+                        values.country
+                          ? { name: values.country, label: values.country }
+                          : null
+                      }
+                      onChange={setCountry}
+                      options={countryLis}
                     />
                   </div>
                 </Col>
@@ -81,39 +143,54 @@ const AddEmployment = (props) => {
                     </Form.Label>
                     <Form.Control
                       type="text"
+                      name="subject"
+                      onChange={(e) => onInputChange(e)}
+                      value={values.subject}
                       className="font-size-13px"
-                      placeholder="Ex: Unify"
+                      placeholder="Like: Developer, React"
                     />
                   </div>
                 </Col>
                 <Col md={6}>
                   <div className="popup_form_element">
                     <Form.Label className="text-black font-size-13px font-weight-500">
-                      From Month
+                      Start Date
                     </Form.Label>
                     <Form.Control
-                      type="text"
+                      type="date"
                       className="font-size-13px"
-                      placeholder="From Month"
+                      placeholder="Start Date"
+                      name="start_date"
+                      value={values.start_date}
+                      onChange={(e) => onInputChange(e)}
                     />
                   </div>
                 </Col>
                 <Col md={6}>
                   <div className="popup_form_element">
                     <Form.Label className="text-black font-size-13px font-weight-500">
-                      From Year
+                      End Date
                     </Form.Label>
                     <Form.Control
-                      type="text"
+                      type="date"
+                      name="end_date"
                       className="font-size-13px"
-                      placeholder="From Year"
+                      value={values.end_date}
+                      placeholder="End Date"
+                      onChange={(e) => onInputChange(e)}
                     />
                   </div>
                 </Col>
                 <Col className="text-right">
                   <div className="agrement_ineoeu flex-row d-flex justify-content-end mt-1 pt-0">
-                    <Form.Label className="text-black text-right font-size-13px font-weight-500">
-                      <Form.Check type="checkbox" /> I currently work here
+                    <Form.Label className="text-black text-right font-size-13px font-weight-500 align-items-center">
+                      <Form.Check
+                        type="checkbox"
+                        name="currently_working"
+                        onChange={(e) => onInputChange(e)}
+                        defaultChecked={values.currently_working || false}
+                      />{" "}
+                      I currently work here
                     </Form.Label>
                   </div>
                 </Col>
@@ -125,6 +202,9 @@ const AddEmployment = (props) => {
                     <Form.Control
                       as="textarea"
                       className="font-size-13px"
+                      value={values.description || ""}
+                      name="description"
+                      onChange={(e) => onInputChange(e)}
                       placeholder="Enter Here"
                     ></Form.Control>
                   </div>
@@ -133,14 +213,15 @@ const AddEmployment = (props) => {
             </div>
 
             <div className="popup_btns_new flex-wrap cwiewyehkk">
-              <Button className="trans_btn">Cancel</Button>
               <Button
+                className="trans_btn"
                 onClick={() => {
                   props.Popup();
                 }}
               >
-                Save
+                Cancel
               </Button>
+              <Button onClick={onSave}>Save</Button>
             </div>
           </div>
         </div>

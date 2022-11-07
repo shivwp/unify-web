@@ -719,6 +719,7 @@
 }
 
 .port_folio_icons button {
+  background-color: #fff;
   border: 1px solid #6610f2;
   border-radius: 50%;
   display: flex;
@@ -727,6 +728,11 @@
   width: 35px;
   height: 35px;
   margin: 5px;
+}
+
+.port_folio_icons button:hover,
+.port_folio_icons button:active {
+  background-color: #fff !important;
 }
 
 .skill_bxr_gry {
@@ -871,6 +877,7 @@
   line-height: 23px;
   outline: none;
   border: none;
+  box-shadow: none !important;
   color: #000;
 }
 
@@ -881,7 +888,7 @@
   outline: none;
 }
 
-.tabbar_profle button:hover{
+.tabbar_profle button:hover {
   background-color: #fff !important;
   color: #6d2ef1 !important;
 }
@@ -2036,6 +2043,8 @@
   border: none;
   padding-left: 7px;
   outline: none;
+  padding-top: 0;
+  padding-bottom: 0;
 }
 
 .agrement_ineoeu label {

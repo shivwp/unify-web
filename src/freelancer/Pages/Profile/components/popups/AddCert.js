@@ -2,6 +2,12 @@ import { Row, Col } from "react-bootstrap";
 import Select from "react-select";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  onEditCertificate,
+  getCertificationList,
+} from "../../../../../redux/actions/profileAction";
 
 const CloseIcon = () => {
   return (
@@ -17,14 +23,40 @@ const CloseIcon = () => {
     </svg>
   );
 };
-
 const AddCert = (props) => {
-  const options1 = [
-    {
-      name: "Adobe Certified Expert",
-      label: "Adobe Certified Expert",
-    },
-  ];
+  const [certName, setCertName] = useState(props?.certificates || null);
+  const [values, setValues] = useState(props?.certificates);
+  const [certificateList, setCertificateList] = useState([]);
+  const dispatch = useDispatch();
+  const options1 = certificateList?.map((data) => ({
+    name: data.name,
+    label: data.name,
+  }));
+
+  useEffect(() => {
+    dispatch(getCertificationList(setCertificateList));
+  }, []);
+
+  const handleOnChange = (e) => {
+    setValues({ ...values, [e.target.name]: e.target.value });
+  };
+
+  const onSave = () => {
+    let data;
+    if (props?.certificates?.id) {
+      data = {
+        id: props?.certificates?.id,
+        name: certName.name,
+        description: values.description,
+      };
+    } else {
+      data = {
+        name: certName.name,
+        description: values.description,
+      };
+    }
+    dispatch(onEditCertificate(data, props.Popup));
+  };
   return (
     <>
       <div className="bg_wrapper_popup_new">
@@ -40,7 +72,7 @@ const AddCert = (props) => {
               <CloseIcon />
             </div>
           </div>
-          <div className="popup_body_bpn amount_popup_body max_height_popucwui overflow-scroll">
+          <div className="popup_body_bpn amount_popup_body max_height_popucwui ">
             <div className="mt-4">
               <div className="popup_form_element">
                 <Form.Label className="text-black font-size-13px font-weight-500">
@@ -50,6 +82,12 @@ const AddCert = (props) => {
                   className="font-size-13px"
                   placeholder="Select Certificate Type"
                   options={options1}
+                  onChange={setCertName}
+                  defaultValue={
+                    certName
+                      ? { name: certName.name, label: certName.name }
+                      : null
+                  }
                 />
               </div>
             </div>
@@ -72,6 +110,9 @@ const AddCert = (props) => {
                       type="text"
                       className="font-size-13px"
                       placeholder="Enter Here"
+                      name="description"
+                      value={values?.description || null}
+                      onChange={(e) => handleOnChange(e)}
                     />
                   </div>
                 </Col>
@@ -79,14 +120,15 @@ const AddCert = (props) => {
             </div>
 
             <div className="popup_btns_new flex-wrap cwiewyehkk">
-              <Button className="trans_btn">Cancel</Button>
               <Button
+                className="trans_btn"
                 onClick={() => {
                   props.Popup();
                 }}
               >
-                Save
+                Cancel
               </Button>
+              <Button onClick={onSave}>Save</Button>
             </div>
           </div>
         </div>

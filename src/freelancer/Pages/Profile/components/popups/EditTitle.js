@@ -1,5 +1,11 @@
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button'
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  onEditDesignation,
+} from "../../../../../redux/actions/profileAction";
+
 
 const CloseIcon = () => {
   return (
@@ -18,53 +24,92 @@ const CloseIcon = () => {
 
 
 const EditTitle = (props) => {
-    return (
-      <>
-        <div className="bg_wrapper_popup_new">
-          <div className="popup_box_bpn profile_nceqoi_popup pb-4">
-            <div className="popup_header pb-0">
-              <div className="p_header_hding">Edit your title</div>
-              <div
-                className="close_pp_btn"
+  const [values, setValues] = useState(props.data);
+  const dispatch = useDispatch();
+
+  const handleOnChange = (e) => {
+    setValues({ ...values, [e.target.name]: e.target.value });
+  };
+
+  const onSave = () => {
+    const data = {
+      title: values.occuption,
+      description: values.description,
+    };
+    dispatch(onEditDesignation(data, props.Popup));
+  };
+  return (
+    <>
+      <div className="bg_wrapper_popup_new">
+        <div className="popup_box_bpn profile_nceqoi_popup pb-4">
+          <div className="popup_header pb-0">
+            <div className="p_header_hding">Title And Overview</div>
+            <div
+              className="close_pp_btn"
+              onClick={() => {
+                props.Popup();
+              }}
+            >
+              <CloseIcon />
+            </div>
+          </div>
+          <div className="popup_body_bpn amount_popup_body max_height_popucwui">
+            <div className="mt-3 pt-1">
+              <div className="pouphed_skll">Your title</div>
+              <div className="popuphead_smparcr">
+                Enter a single sentence description of your professional
+                skills/experience (e.g. Expert Web Designer with Ajax
+                experience)
+              </div>
+            </div>
+
+            <div className="popup_form_element mb-3">
+              <Form.Control
+                type="text"
+                className="font-size-13px"
+                name="occuption"
+                onChange={(e) => handleOnChange(e)}
+                value={values?.occuption}
+                placeholder="Senior UI/UX, Website Designer And Graphic Designer"
+              />
+            </div>
+            <div className="pouphed_skll mt-3">Overview</div>
+            <div>
+              <div className="popuphead_smparcr">
+                Use this space to show clients you have the skills and
+                experience they're looking for.
+              </div>
+              <ul className="popuphead_smparcr ulist_overpopup mt-1">
+                <li>Describe your strengths and skills</li>
+                <li>Highlight projects, accomplishments and education</li>
+                <li>Keep it short and make sure it's error-free</li>
+              </ul>
+            </div>
+            <div className="_profile_overview popup_form_element mb-0">
+              <Form.Control
+                as="textarea"
+                value={values?.description}
+                name="description"
+                onChange={(e) => handleOnChange(e)}
+                placeholder="theDesignerz offers professional and high-quality graphic design services. We have been designing for companies worldwide since 2018. We are a customer service oriented firm, and we will workwith you until you are completely satisfied with the outcome of your design projects. We are the most experienced team of designers working on Freelancer since 2017"
+              ></Form.Control>
+            </div>
+
+            <div className="popup_btns_new flex-wrap cwiewyehkk">
+              <Button
+                className="trans_btn"
                 onClick={() => {
                   props.Popup();
                 }}
               >
-                <CloseIcon />
-              </div>
-            </div>
-            <div className="popup_body_bpn amount_popup_body max_height_popucwui overflow-scroll">
-              <div className="mt-4 pt-1 mb-4">
-                <div className="pouphed_skll">Your title</div>
-                <div className="popuphead_smparcr">
-                  Enter a single sentence description of your professional
-                  skills/experience (e.g. Expert Web Designer with Ajax
-                  experience)
-                </div>
-              </div>
-  
-              <div className="popup_form_element mb-5">
-                <Form.Control
-                  type="text"
-                  className="font-size-13px"
-                  placeholder="Senior UI/UX, Website Designer And Graphic Designer"
-                />
-              </div>
-  
-              <div className="popup_btns_new flex-wrap cwiewyehkk">
-                <Button className="trans_btn">Cancel</Button>
-                <Button
-                  onClick={() => {
-                    props.Popup();
-                  }}
-                >
-                  Save
-                </Button>
-              </div>
+                Cancel
+              </Button>
+              <Button onClick={onSave}>Save</Button>
             </div>
           </div>
         </div>
-      </>
-    );
-  };
+      </div>
+    </>
+  );
+};
   export default EditTitle
