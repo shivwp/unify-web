@@ -1476,7 +1476,6 @@ const VisiblityPopup = (props) => {
       <div className="bg_wrapper_popup_new">
         <div className="popup_box_bpn profile_nceqoi_popup pb-4">
           <div className="popup_header pb-0">
-            <div className="p_header_hding">Visiblity</div>
             <div className="p_header_hding">Visibility</div>
             <div
               className="close_pp_btn"
@@ -1494,7 +1493,7 @@ const VisiblityPopup = (props) => {
               <div className="mt-4">
                 <div className="popup_form_element">
                   <Form.Label className="text-black font-size-13px font-weight-500">
-                    Visiblity Visibility
+                    Visibility
                   </Form.Label>
                   <Select
                     className="font-size-13px"
@@ -2558,8 +2557,8 @@ const UnifyFreelancer = () => {
                   className="myskill_hdingn profile_icon_25px profile_heading_mb"
                   style={{ position: "relative" }}
                 >
-                  Visiblity Visibility
-                  <Button variant=""
+                  Visibility
+                  <Button
                     onClick={() => {
                       Setpopup(<VisiblityPopup Popup={Setpopup} />);
                       Setpopup(

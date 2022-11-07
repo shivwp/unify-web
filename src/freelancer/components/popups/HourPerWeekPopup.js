@@ -45,7 +45,7 @@ const HourPerWeekPopup = ({
           Knowing how much you can work helps Unify find the right jobs for you.{" "}
           <span>How we can use this info.</span>
         </p>
-        <div className="content" style={{ marginBottem: 10 }}>
+        <div className="content" style={{ marginBottom: 10 }}>
           <h5>I can currently work</h5>
           <ul className="popup-radio">
             {hwpList?.map((item, index) => (
@@ -69,11 +69,12 @@ const HourPerWeekPopup = ({
           <div className="d-flex">
             <div className="input_houry_price">
               $
-              <input
+              <Form.Control
                 placeholder="03.00"
                 id="hourly_price"
                 type="text"
                 className="form-control"
+                validated={true}
               />
             </div>
             <div className="hourly-price_rsph">/hr</div>
@@ -82,10 +83,14 @@ const HourPerWeekPopup = ({
 
         <div className="freelancer_popup_btns">
           <div className="_cancle_submit">
-            <Button variant="" onClick={onCloseModal}>CANCEL</Button>
+            <Button variant="" onClick={onCloseModal}>
+              CANCEL
+            </Button>
           </div>
           <div className="_save_submit">
-            <Button variant="" onClick={onSave}>SAVE</Button>
+            <Button type="submit" onClick={onSave}>
+              SAVE
+            </Button>
           </div>
         </div>
       </Modal>
