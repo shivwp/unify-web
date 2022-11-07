@@ -3,9 +3,9 @@ import { Row, Col } from "react-bootstrap";
 import SideNav from "./site_nav";
 import Title from "../../../../components/title";
 import { useState } from "react";
-import Form from 'react-bootstrap/Form';
+import Form from "react-bootstrap/Form";
 import { useDispatch, useSelector } from "react-redux";
-import Button from 'react-bootstrap/Button';
+import Button from "react-bootstrap/Button";
 import { useEffect } from "react";
 import {
   getFreelancerProfile,
@@ -26,6 +26,7 @@ const Screen = () => {
   const [editAccount, setEditAccount] = useState(false);
   const [editLocation, setEditLocation] = useState(false);
   const [openCloseAcc, seOpenCloseAcc] = useState(false);
+  const [successPopup, setSuccessPopup] = useState(false);
 
   const basicInfo = useSelector(
     (state) => state?.profile?.freelancerProfileList?.basic_info
@@ -75,7 +76,9 @@ const Screen = () => {
               email: values.email,
             };
 
-      dispatch(onEditContactInfo(data, setEditAccount));
+      dispatch(
+        onEditContactInfo(data, setEditAccount, successPopup, setSuccessPopup)
+      );
     };
 
     return (
@@ -195,8 +198,9 @@ const Screen = () => {
         phone: values?.phone,
         city: values?.city,
         country: values?.country,
+        zip_code: values?.zip_code,
       };
-      dispatch(onEditLocationInfo(data, setEditLocation));
+      dispatch(onEditLocationInfo(data, setEditLocation, successPopup, setSuccessPopup));
     };
 
     return (
@@ -323,6 +327,24 @@ const Screen = () => {
                         name="phone"
                         onChange={(e) => onInputChange(e)}
                         placeholder="987-654-3210"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </Col>
+              <Col md={6}>
+                <div className="mb-2 mt-2">
+                  <div className="c_name_s_v pb-0 f_new_contact_info">
+                    Zip Code
+                  </div>
+                  <div className="c_name_sett mt-0 pt-0 font-color-light">
+                    <div className="edit_contact_inp">
+                      <Form.Control
+                        type="number"
+                        value={values.zip_code}
+                        name="zip_code"
+                        onChange={(e) => onInputChange(e)}
+                        placeholder="301405"
                       />
                     </div>
                   </div>
@@ -575,6 +597,16 @@ const Screen = () => {
                             </div>
                           </div>
                         </Col>
+                        <Col md={6}>
+                          <div className="mb-2 mt-2">
+                            <div className="c_name_s_v pb-0 f_new_contact_info">
+                              Zip Code
+                            </div>
+                            <div className="c_name_sett mt-0 pt-0 font-color-light">
+                              {basicInfo?.zip_code}
+                            </div>
+                          </div>
+                        </Col>
                       </Row>
                     </div>
                   </div>
@@ -595,6 +627,7 @@ const Screen = () => {
           onCloseModal={() => seOpenCloseAcc(false)}
         />
       )}
+      {successPopup}
     </>
   );
 };

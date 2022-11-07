@@ -3,11 +3,17 @@ import { Modal } from "react-responsive-modal";
 import "react-responsive-modal/styles.css";
 import "./popup.css";
 import { useDispatch } from "react-redux";
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
 import { onEditPortfolio } from "../../../redux/actions/profileAction";
 
-const PortfolioPupup = ({ open, onCloseModal, data }) => {
+const PortfolioPupup = ({
+  open,
+  onCloseModal,
+  data,
+  successPopup,
+  setSuccessPopup,
+}) => {
   const dispatch = useDispatch();
   const [values, setValues] = useState({
     title: data?.name,
@@ -41,7 +47,7 @@ const PortfolioPupup = ({ open, onCloseModal, data }) => {
       formData.append("id", data?.id);
     }
 
-    dispatch(onEditPortfolio(formData, onCloseModal));
+    dispatch(onEditPortfolio(formData, onCloseModal, successPopup, setSuccessPopup));
   };
 
   return (
@@ -77,7 +83,7 @@ const PortfolioPupup = ({ open, onCloseModal, data }) => {
 
               <div className="freelancer_popup_textarea">
                 <Form.Control
-              as="textarea"
+                  as="textarea"
                   placeholder="Enter here"
                   className="p-2"
                   name="description"

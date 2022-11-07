@@ -15,27 +15,36 @@ const CloseIcon = () => {
     </svg>
   );
 };
-const SuccessPopup = ({ Popup, message }) => {
+const SuccessPopup = ({ Popup, message, navigate }) => {
   return (
     <>
       <div className="bg_wrapper_popup_new">
-        <div className="popup_box_bpn confirmation_popup pb-4">
+        <div className="popup_box_bpn success_popup pb-4">
           <div className="popup_header pb-0">
             <div className="p_header_hding"></div>
             <div className="close_pp_btn" onClick={() => Popup()}>
               <CloseIcon />
             </div>
           </div>
-          <h2 className="abc">success</h2>
-          <h6 className="acd">
-            <div>Thanks for subscribing we're sending</div>
+          <div className="success_heading">
+            <h2>Success</h2>
+          </div>
+          <div className="sucess_message">
+            <div>{message}</div>
+          </div>
 
-          </h6>
-
-          <div className="freelancer_popup_btns ">
-            <div className="_cancle_submit">
-              <button>Ok</button>
-            </div>
+          <div className="success_popup_btn ">
+            {navigate ? (
+              <button
+                onClick={() => {
+                  navigate("/");
+                }}
+              >
+                Ok
+              </button>
+            ) : (
+              <button onClick={() => Popup()}>Ok</button>
+            )}
           </div>
         </div>
       </div>

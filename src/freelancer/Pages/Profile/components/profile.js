@@ -224,6 +224,131 @@ const CloseIcon = () => {
 };
 
 
+  const addSkills = (item) => {
+    if (selectSkills.length <= 15) {
+      if (
+        selectSkills.find((ele) => {
+          return ele.skill_id == item.id;
+        }) == undefined
+      ) {
+        setSelectSkills([
+          ...selectSkills,
+          { skill_id: item.id, skill_name: item.name },
+        ]);
+      }
+    }
+    document.getElementById("search_skill_inp").value = null;
+  };
+
+  const handleOnChange = (e) => {
+    let data;
+    if (e.target.value.length >= 1) {
+      data = { [e.target.name]: e.target.value };
+      dispatch(getFreelancerSkills(data));
+    } else {
+      data = { skill: "undefined" };
+      dispatch(getFreelancerSkills(data));
+    }
+    $("#suggest_skills").show();
+    return(<></>)
+  };
+
+  const onSave = (e) => {
+    const data = {
+      skill_id: selectSkills?.map((item) => item.skill_id)?.toString(),
+    };
+    dispatch(
+      onEditSkills(data, props.Popup, props.successPopup, props.setSuccessPopup)
+    );
+  };
+
+  $(document).mouseup(function (e) {
+    if ($(e.target).closest("#suggest_skills").length === 0) {
+      $("#suggest_skills").hide();
+    }
+  });
+  return (
+    <>
+      <div className="bg_wrapper_popup_new">
+        <div className="popup_box_bpn profile_nceqoi_popup pb-4">
+          <div className="popup_header pb-0">
+            <div className="p_header_hding">Edit Skills</div>
+            <div
+              className="close_pp_btn"
+              onClick={() => {
+                props.Popup();
+              }}
+            >
+              <CloseIcon />
+            </div>
+          </div>
+          <div className="popup_body_bpn amount_popup_body max_height_popucwui overflow-scroll">
+            <div className="mt-4 pt-1">
+              <div className="pouphed_skll">Skills</div>
+              <div className="popuphead_smparcr">
+                Keeping your skills up to date helps you get the jobs you want.
+              </div>
+            </div>
+            <div className="catbox_rd_ofive mt-3">
+              <div className="d-flex flex-wrap">
+                {selectSkills?.map((item, index) => (
+                  <div className="skill_bxr_gry" key={item.skill_id}>
+                    <span>{item.skill_name}</span>
+                    <Button onClick={() => removeSkills(index)}>X</Button>
+                  </div>
+                ))}
+              </div>
+              <div style={{ position: "relative" }}>
+                <Form.Control
+                  type="text"
+                  onChange={(e) => handleOnChange(e)}
+                  name="skill"
+                  id="search_skill_inp"
+                  autocomplete="off"
+                  placeholder="search here skills..."
+                  className="no-border font-size-13px search_skilloiouo"
+                />
+                {getSkillList && (
+                  <div id="suggest_skills">
+                    <div
+                      className="suggest_skills"
+                      style={{ position: "absolute" }}
+                    >
+                      {getSkillList?.map((item) => (
+                        <>
+                          {" "}
+                          <span onClick={() => addSkills(item)}>
+                            {item.name}
+                          </span>{" "}
+                          <br />
+                        </>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
+            <div className="maxlabel_atcxt mt-3">Maximum 15 skills.</div>
+            <div className="popup_btns_new flex-wrap cwiewyehkk">
+              <button
+                className="trans_btn"
+                onClick={() => {
+                  props.Popup();
+                }}
+              >
+                Cancel
+              </button>
+              <Button onClick={onSave}>Save</Button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
+
+
+
 const ChangePassword = (props) => {
   return (
     <>
@@ -373,9 +498,204 @@ const VerificationPref = (props) => {
 };
 
 
+  const handleInputChange = (e, index) => {
+    list[index][name] = value;
+    setInputList(list);
+  };
+
+  const handleAddClick = () => {
+    setInputList([...inputList, { language: "", level: "" }]);
+  };
+  const proficiencyOptions = [
+    { name: "Fluent" },
+    { name: "Conversational" },
+    { name: "Native" },
+  ];
+
+  const removeInputFields = (index) => {
+    console.log(index);
+    const rows = [...inputList];
+    rows.splice(index, 1);
+    setInputList(rows);
+  };
+
+  const handleSave = () => {
+    const data = {};
+    inputList.map((ele) => {
+      data[ele.language] = ele.level;
+    });
+    // console.log(data);
+    dispatch(
+      onEditLanguage(
+        { languages: data },
+        props.Popup,
+        props.successPopup,
+        props.setSuccessPopup
+      )
+    );
+  };
+
+  useEffect(() => {
+    dispatch(getLanguageList());
+  }, []);
+  return (
+    <>
+      <div className="bg_wrapper_popup_new">
+        <div className="popup_box_bpn profile_nceqoi_popup pb-4">
+          <div className="popup_header pb-0">
+            <div className="p_header_hding">Edit languages</div>
+            <div
+              className="close_pp_btn"
+              onClick={() => {
+                props.Popup();
+              }}
+            >
+              <CloseIcon />
+            </div>
+          </div>
+          <div className="popup_body_bpn amount_popup_body max_height_popucwui">
+            <div className="mt-3 pt-1 mb-3"></div>
+
+            <div className="mb-3 ">
+              <Row>
+                {inputList?.map((data, i) => {
+                  return (
+                    <>
+                      <Col md={6}>
+                        <div className="popup_form_element">
+                          <Form.Label className="text-black font-size-13px font-weight-500">
+                            Language
+                          </Form.Label>
+                          <select
+                            className="font-size-13px language_sel"
+                            name="language"
+                            value={data.language}
+                            onChange={(e) => handleInputChange(e, i)}
+                          >
+                            <option selected hidden>
+                              Select a Language
+                            </option>
+                            {languageList?.map((item) => (
+                              <option value={item.name}>{item.name}</option>
+                            ))}
+                          </select>
+                          {/* <input
+                            className="font-size-13px"
+                            placeholder="English"
+                            name="language"
+                            value={data.language}
+                            onChange={(e) => handleInputChange(e, i)}
+                          /> */}
+                        </div>
+                      </Col>
+                      <Col md={6}>
+                        <div className="popup_form_element">
+                          <Form.Label
+                            className="text-black  font-size-13px font-weight-500"
+                            style={{
+                              display: "flex",
+                              justifyContent: "space-between",
+                            }}
+                          >
+                            <span>Proficiency level</span>{" "}
+                            {inputList?.length !== 1 ? (
+                              <button
+                                onClick={() => removeInputFields(i)}
+                                style={{
+                                  border: "none",
+                                  background: "transparent",
+                                }}
+                              >
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  width="10"
+                                  height="10"
+                                  viewBox="0 0 16 16"
+                                >
+                                  <path
+                                    id="_2203546_bin_delete_gabage_trash_icon"
+                                    data-name="2203546_bin_delete_gabage_trash_icon"
+                                    d="M8,0A1,1,0,0,0,7,1H0V3H1V14a2,2,0,0,0,2,2H13a2,2,0,0,0,2-2V3h1V1H9A1,1,0,0,0,8,0ZM4,14H3V5H4Zm3,0H6V5H7Zm3,0H9V5h1Zm3,0H12V5h1Z"
+                                    fill="#6d2ef1"
+                                  />
+                                </svg>
+                              </button>
+                            ) : null}
+                          </Form.Label>
+                          <select
+                            className="font-size-13px language_sel"
+                            name="level"
+                            value={data.level}
+                            onChange={(e) => handleInputChange(e, i)}
+                          >
+                            <option selected hidden>
+                              Select a level
+                            </option>
+                            {proficiencyOptions.map((item) => (
+                              <option value={item.name}>{item.name}</option>
+                            ))}
+                          </select>
+                        </div>
+                      </Col>
+                      <div
+                        style={{
+                          display: "flex",
+                          height: "100%",
+                          alignItems: "flex-end",
+                          justifyContent: "center",
+                        }}
+                      ></div>
+                    </>
+                  );
+                })}
+              </Row>
+            </div>
+            {/* {inputList.length < 5 && ( */}
+            <div style={{ display: "flex", justifyContent: "flex-end" }}>
+              <button
+                className="addMoreLanguageBtn"
+                disabled={
+                  !(
+                    inputList?.slice(-1)[0].language &&
+                    inputList?.slice(-1)[0].level
+                  )
+                }
+                onClick={handleAddClick}
+              >
+                Add More
+              </button>
+            </div>
+            {/* )} */}
+            <div className="popup_btns_new flex-wrap cwiewyehkk">
+              <button
+                className="trans_btn"
+                onClick={() => {
+                  props.Popup();
+                }}
+              >
+                Cancel
+              </button>
+
+              <button
+                disabled={
+                  !(
+                    inputList?.slice(-1)[0].language &&
+                    inputList?.slice(-1)[0].level
+                  )
+                }
+                onClick={handleSave}
+              >
+                Save
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
 const UserVerification = (props) => {
   const dispatch = useDispatch();
-  const [docType, setDocType] = useState({});
   const [frontImg, setFrontImg] = useState(null);
   const [showingFontImg, setShowingFrontImg] = useState();
   const [backImg, setBackImg] = useState(null);
@@ -572,8 +892,12 @@ const UserVerification = (props) => {
 };
 const VisiblityPopup = (props) => {
   const dispatch = useDispatch();
-  const [projectPref, setProjectPref] = useState();
-  const [visiblity, setVisiblity] = useState();
+  const [projectPref, setProjectPref] = useState({
+    name: props?.data?.project_preference,
+  });
+  const [visiblity, setVisiblity] = useState({
+    name: props?.data?.visibility,
+  });
 
   const visiblityOps = [
     { name: "public", label: "Public" },
@@ -592,14 +916,21 @@ const VisiblityPopup = (props) => {
       project_preference: projectPref.name,
     };
     console.log(data);
-    dispatch(editVisiblity(data, props.Popup));
+    dispatch(
+      editVisiblity(
+        data,
+        props.Popup,
+        props.successPopup,
+        props.setSuccessPopup
+      )
+    );
   };
   return (
     <>
       <div className="bg_wrapper_popup_new">
         <div className="popup_box_bpn profile_nceqoi_popup pb-4">
           <div className="popup_header pb-0">
-            <div className="p_header_hding">Visiblity</div>
+            <div className="p_header_hding">Visibility</div>
             <div
               className="close_pp_btn"
               onClick={() => {
@@ -616,26 +947,42 @@ const VisiblityPopup = (props) => {
               <div className="mt-4">
                 <div className="popup_form_element">
                   <Form.Label className="text-black font-size-13px font-weight-500">
-                    Visiblity
+                    Visibility
                   </Form.Label>
                   <Select
                     className="font-size-13px"
                     placeholder="Select Visiblity"
                     options={visiblityOps}
                     onChange={setVisiblity}
+                    defaultValue={
+                      props?.data
+                        ? {
+                            name: props?.data?.visibility,
+                            label: props?.data?.visibility,
+                          }
+                        : null
+                    }
                   />
                 </div>
               </div>
               <div className="mt-4">
                 <div className="popup_form_element">
                   <Form.Label className="text-black font-size-13px font-weight-500">
-                    Project Prefrence
+                    Project Preference
                   </Form.Label>
                   <Select
                     className="font-size-13px"
                     placeholder="Select Project Prefrance"
                     options={projPrefrenceOps}
                     onChange={setProjectPref}
+                    defaultValue={
+                      props?.data
+                        ? {
+                            name: props?.data?.project_preference,
+                            label: props?.data?.project_preference,
+                          }
+                        : null
+                    }
                   />
                 </div>
               </div>
@@ -661,6 +1008,457 @@ const VisiblityPopup = (props) => {
 
 
 
+  const degreeList = getDegreeList?.map((item) => ({
+    name: item.title,
+    label: item.title,
+  }));
+
+  const handleOnChange = (e) => {
+    setValues({ ...values, [e.target.name]: e.target.value });
+  };
+
+  const AddEducation = () => {
+    const data = {
+      id: values.id,
+      school: values?.school,
+      start_year: startYear?.name,
+      end_year: endYear?.name,
+      degree: degree?.name,
+      area_study: values?.area_study,
+      description: values?.description,
+    };
+    dispatch(
+      onAddEducation(
+        data,
+        props.Popup,
+        props.successPopup,
+        props.setSuccessPopup
+      )
+    );
+  };
+
+  return (
+    <>
+      <div className="bg_wrapper_popup_new">
+        <div className="popup_box_bpn profile_nceqoi_popup pb-4">
+          <div className="popup_header pb-0">
+            <div className="p_header_hding">Add Education</div>
+            <div
+              className="close_pp_btn"
+              onClick={() => {
+                props.Popup();
+              }}
+            >
+              <CloseIcon />
+            </div>
+          </div>
+          <div className="popup_body_bpn amount_popup_body max_height_popucwui ">
+            <div className="mt-3 pt-1 mb-3"></div>
+
+            <div className="mb-3 ">
+              <Row>
+                <Col md={12}>
+                  <div className="popup_form_element">
+                    <Form.Label className="text-black font_size_14px font-weight-500">
+                      School
+                    </Form.Label>
+                    <Form.Control
+                      type="text"
+                      name="school"
+                      value={values?.school}
+                      onChange={(e) => handleOnChange(e)}
+                      className="font-size-11px"
+                      placeholder="Ex: Northwestern University"
+                    />
+                  </div>
+                </Col>
+                <Col md={6}>
+                  <div className="popup_form_element">
+                    <Form.Label className="text-black font_size_14px font-weight-500">
+                      Dates Attended
+                    </Form.Label>
+                    <Select
+                      className="font-size-11px"
+                      name="start_year"
+                      defaultValue={
+                        values
+                          ? {
+                              name: values?.start_year,
+                              label: values?.start_year,
+                            }
+                          : null
+                      }
+                      placeholder="From"
+                      onChange={setStartYear}
+                      options={startYearList()}
+                    />
+                  </div>
+                </Col>
+                <Col md={6}>
+                  <div className="popup_form_element">
+                    <Form.Label className="text-black font_size_14px font-weight-500"></Form.Label>
+                    <Select
+                      className="font-size-11px"
+                      name="end_year"
+                      defaultValue={
+                        values
+                          ? {
+                              name: values?.end_year,
+                              label: values?.end_year,
+                            }
+                          : null
+                      }
+                      onChange={setEndYear}
+                      options={endYearList()}
+                      placeholder="To (or expected gradution year)"
+                    />
+                  </div>
+                </Col>
+                <Col md={12}>
+                  <div className="popup_form_element">
+                    <Form.Label className="text-black font_size_14px font-weight-500">
+                      Degree
+                    </Form.Label>
+                    <Select
+                      className="font-size-11px"
+                      defaultValue={
+                        values
+                          ? {
+                              name: values?.degree,
+                              label: values?.degree,
+                            }
+                          : null
+                      }
+                      options={degreeList}
+                      placeholder="Degree "
+                      onChange={setDegree}
+                    />
+                  </div>
+                </Col>
+                <Col md={12}>
+                  <div className="popup_form_element">
+                    <Form.Label className="text-black font_size_14px font-weight-500">
+                      Area of Study
+                    </Form.Label>
+                    <Form.Control
+                      type="text"
+                      onChange={(e) => handleOnChange(e)}
+                      name="area_study"
+                      value={values?.area_study}
+                      className="font-size-11px"
+                      placeholder="Ex: Computer Science"
+                    />
+                  </div>
+                </Col>
+                <Col md={12}>
+                  <div className="popup_form_element">
+                    <Form.Label className="text-black font_size_14px font-weight-500">
+                      Description (Optional)
+                    </Form.Label>
+                    <Form.Control
+                      as="textarea"
+                      onChange={(e) => handleOnChange(e)}
+                      className="font-size-11px"
+                      value={values?.description}
+                      name="description"
+                      placeholder="Enter Here"
+                    ></Form.Control>
+                  </div>
+                </Col>
+              </Row>
+            </div>
+
+            <div className="popup_btns_new flex-wrap cwiewyehkk">
+              <Button className="trans_btn">Cancel</Button>
+              <Button onClick={() => AddEducation()}>Save</Button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
+const AddCert = (props) => {
+  const [certName, setCertName] = useState(props?.certificates || null);
+  const [values, setValues] = useState(props?.certificates);
+  const [certificateList, setCertificateList] = useState([]);
+  const dispatch = useDispatch();
+  const options1 = certificateList?.map((data) => ({
+    name: data.name,
+    label: data.name,
+  }));
+
+  useEffect(() => {
+    dispatch(getCertificationList(setCertificateList));
+  }, []);
+
+  const handleOnChange = (e) => {
+    setValues({ ...values, [e.target.name]: e.target.value });
+  };
+
+  const onSave = () => {
+    let data;
+    if (props?.certificates?.id) {
+      data = {
+        id: props?.certificates?.id,
+        name: certName.name,
+        description: values.description,
+      };
+    } else {
+      data = {
+        name: certName.name,
+        description: values.description,
+      };
+    }
+    dispatch(
+      onEditCertificate(
+        data,
+        props.Popup,
+        props.successPopup,
+        props.setSuccessPopup
+      )
+    );
+  };
+  return (
+    <>
+      <div className="bg_wrapper_popup_new">
+        <div className="popup_box_bpn profile_nceqoi_popup pb-4">
+          <div className="popup_header pb-0">
+            <div className="p_header_hding">Add Certification</div>
+            <div
+              className="close_pp_btn"
+              onClick={() => {
+                props.Popup();
+              }}
+            >
+              <CloseIcon />
+            </div>
+          </div>
+          <div className="popup_body_bpn amount_popup_body max_height_popucwui ">
+            <div className="mt-4">
+              <div className="popup_form_element">
+                <Form.Label className="text-black font-size-13px font-weight-500">
+                  Proficiency level
+                </Form.Label>
+                <Select
+                  className="font-size-13px"
+                  placeholder="Select Certificate Type"
+                  options={options1}
+                  onChange={setCertName}
+                  defaultValue={
+                    certName
+                      ? { name: certName.name, label: certName.name }
+                      : null
+                  }
+                />
+              </div>
+            </div>
+            <div className="mt-3 pt-1 mb-3">
+              <div className="pouphed_skll">Adobe Certified Expert</div>
+              <div className="popuphead_smparcr">
+                If you have earned an <b>official certification </b>from{" "}
+                <b>Adobe</b>, paste the verification code displayed on your
+                certificate into the box below. We will confirm your
+                certification and it will appear on your profile within 5 days
+                of submission.
+              </div>
+            </div>
+
+            <div className="mb-3 ">
+              <Row>
+                <Col md={12}>
+                  <div className="popup_form_element">
+                    <Form.Control
+                      type="text"
+                      className="font-size-13px"
+                      placeholder="Enter Here"
+                      name="description"
+                      value={values?.description || null}
+                      onChange={(e) => handleOnChange(e)}
+                    />
+                  </div>
+                </Col>
+              </Row>
+            </div>
+
+            <div className="popup_btns_new flex-wrap cwiewyehkk">
+              <button
+                className="trans_btn"
+                onClick={() => {
+                  props.Popup();
+                }}
+              >
+                Cancel
+              </button>
+              <button onClick={onSave}>Save</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
+const ReqTestimonial = (props) => {
+  const dispatch = useDispatch();
+  const [values, setValues] = useState({});
+
+  const onInputChange = (e) => {
+    setValues({ ...values, [e.target.name]: e.target.value });
+  };
+
+  const testimonialSubmit = (e) => {
+    const data = {
+      first_name: values?.first_name,
+      last_name: values?.last_name,
+      email: values?.email,
+      title: values?.title,
+      type: values?.type,
+      description: values?.description,
+    };
+    dispatch(
+      onRequestTestimonial(
+        data,
+        props.Popup,
+        props.successPopup,
+        props.setSuccessPopup
+      )
+    );
+  };
+
+  return (
+    <>
+      <div className="bg_wrapper_popup_new">
+        <div className="popup_box_bpn profile_nceqoi_popup pb-4">
+          <div className="popup_header pb-0">
+            <div className="p_header_hding">Request A Client Testimonial</div>
+            <div
+              className="close_pp_btn"
+              onClick={() => {
+                props.Popup();
+              }}
+            >
+              <CloseIcon />
+            </div>
+          </div>
+          <div className="popup_body_bpn amount_popup_body max_height_popucwui">
+            <div className="mt-3 pt-1 mb-3">
+              <div className="popuphead_smparcr">
+                Add your client’s contact details. Don’t worry—we’ll only
+                display their first name and last initial.
+              </div>
+            </div>
+
+            <div className="mb-3 ">
+              <Row>
+                <Col md={6}>
+                  <div className="popup_form_element">
+                    <Form.Label className="text-black font-size-13px font-weight-500">
+                      First Name
+                    </Form.Label>
+                    <Form.Control
+                      type="text"
+                      name="first_name"
+                      className="font-size-13px"
+                      value={values?.first_name}
+                      onChange={(e) => onInputChange(e)}
+                      placeholder="Enter First Name"
+                    />
+                  </div>
+                </Col>
+                <Col md={6}>
+                  <div className="popup_form_element">
+                    <Form.Label className="text-black font-size-13px font-weight-500">
+                      Last name{" "}
+                    </Form.Label>
+                    <Form.Control
+                      type="text"
+                      name="last_name"
+                      className="font-size-13px"
+                      value={values?.last_name}
+                      onChange={(e) => onInputChange(e)}
+                      placeholder="Enter Last name "
+                    />
+                  </div>
+                </Col>
+                <Col md={6}>
+                  <div className="popup_form_element">
+                    <Form.Label className="text-black font-size-13px font-weight-500">
+                      Business email address
+                    </Form.Label>
+                    <Form.Control
+                      type="text"
+                      name="email"
+                      className="font-size-13px"
+                      value={values?.email}
+                      onChange={(e) => onInputChange(e)}
+                      placeholder="Enter Your Business Email"
+                    />
+                  </div>
+                </Col>
+                <Col md={6}>
+                  <div className="popup_form_element">
+                    <Form.Label className="text-black font-size-13px font-weight-500">
+                      Client's title (Optional)
+                    </Form.Label>
+                    <Form.Control
+                      type="text"
+                      name="title"
+                      className="font-size-13px"
+                      value={values?.title}
+                      onChange={(e) => onInputChange(e)}
+                      placeholder="Enter Client's Title"
+                    />
+                  </div>
+                </Col>
+                <Col md={6}>
+                  <div className="popup_form_element">
+                    <Form.Label className="text-black font-size-13px font-weight-500">
+                      Project Type (Optional)
+                    </Form.Label>
+                    <Form.Control
+                      type="text"
+                      name="type"
+                      className="font-size-13px"
+                      value={values?.type}
+                      onChange={(e) => onInputChange(e)}
+                      placeholder="Enter Project Type"
+                    />
+                  </div>
+                </Col>
+                <Col md={12}>
+                  <div className="popup_form_element">
+                    <Form.Label className="text-black font-size-13px font-weight-500">
+                      Description (Optional)
+                    </Form.Label>
+                    <Form.Control
+                      as="textarea"
+                      name="description"
+                      className="font-size-13px"
+                      value={values?.description}
+                      onChange={(e) => onInputChange(e)}
+                      placeholder="Enter Here"
+                    ></Form.Control>
+                  </div>
+                </Col>
+              </Row>
+            </div>
+
+            <div className="popup_btns_new flex-wrap cwiewyehkk">
+              <button
+                className="font-weight-600"
+                onClick={() => {
+                  testimonialSubmit();
+                }}
+              >
+                REQUEST TESTIMONIAL
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
 // const Overview = (props) => {
 //   return (
 //     <>
@@ -736,8 +1534,8 @@ const UnifyFreelancer = () => {
   const [videoURL, setVideoURL] = useState(null);
   const [editPortfoData, setEditPortfoData] = useState([]);
   const [confirmPopup, setConfirmPopup] = useState(false);
-  const [successPopup, setSuccessPopup] = useState(false);
   const [confirm, setConfirm] = useState(false);
+  const [successPopup, setSuccessPopup] = useState(false);
 
   const deleteExprience = useSelector(
     (state) => state?.profile?.deleteExprience
@@ -869,7 +1667,7 @@ const UnifyFreelancer = () => {
 
   const handleExprienceLevel = (level) => {
     const data = { experience_level: level };
-    dispatch(editExprienceLev(data, setShowExprienceLevOpt));
+    dispatch(editExprienceLev(data, setShowExprienceLevOpt, successPopup, setSuccessPopup));
   };
 
   $(document).mouseup(function (e) {
@@ -1130,6 +1928,8 @@ const UnifyFreelancer = () => {
                           <VideoIntro
                             data={freelancerProfileList?.video}
                             Popup={Setpopup}
+                            successPopup={successPopup}
+                            setSuccessPopup={setSuccessPopup}
                           />
                         );
                       }}
@@ -1158,10 +1958,20 @@ const UnifyFreelancer = () => {
                   className="myskill_hdingn profile_icon_25px profile_heading_mb"
                   style={{ position: "relative" }}
                 >
-                  Visiblity
+                  Visibility
                   <Button
                     onClick={() => {
-                      Setpopup(<VisiblityPopup Popup={Setpopup} />);
+                      Setpopup(
+                        <VisiblityPopup
+                          Popup={Setpopup}
+                          data={{
+                            visibility: basicInfo?.visibility,
+                            project_preference: basicInfo?.project_preference,
+                          }}
+                          successPopup={successPopup}
+                          setSuccessPopup={setSuccessPopup}
+                        />
+                      );
                     }}
                   >
                     <svg
@@ -1266,7 +2076,13 @@ const UnifyFreelancer = () => {
                     {!freelancerProfileList?.language?.length && (
                       <Button
                         onClick={() => {
-                          Setpopup(<LanguageEdit Popup={Setpopup} />);
+                          Setpopup(
+                            <LanguageEdit
+                              Popup={Setpopup}
+                              successPopup={successPopup}
+                              setSuccessPopup={setSuccessPopup}
+                            />
+                          );
                         }}
                       >
                         <svg
@@ -1291,6 +2107,8 @@ const UnifyFreelancer = () => {
                           <LanguageEdit
                             Popup={Setpopup}
                             data={freelancerProfileList?.language}
+                            successPopup={successPopup}
+                            setSuccessPopup={setSuccessPopup}
                           />
                         );
                       }}
@@ -1391,7 +2209,13 @@ const UnifyFreelancer = () => {
                   <div className="d-flex justify-content-start">
                     <Button
                       onClick={() => {
-                        Setpopup(<AddEduc Popup={Setpopup} />);
+                        Setpopup(
+                          <AddEduc
+                            Popup={Setpopup}
+                            successPopup={successPopup}
+                            setSuccessPopup={setSuccessPopup}
+                          />
+                        );
                       }}
                     >
                       <svg
@@ -1433,7 +2257,12 @@ const UnifyFreelancer = () => {
                           <Button
                             onClick={() => {
                               Setpopup(
-                                <AddEduc education={edu} Popup={Setpopup} />
+                                <AddEduc
+                                  education={edu}
+                                  Popup={Setpopup}
+                                  successPopup={successPopup}
+                                  setSuccessPopup={setSuccessPopup}
+                                />
                               );
                             }}
                           >
@@ -1509,6 +2338,8 @@ const UnifyFreelancer = () => {
                             description: basicInfo.description,
                           }}
                           Popup={Setpopup}
+                          successPopup={successPopup}
+                          setSuccessPopup={setSuccessPopup}
                         />
                       );
                     }}
@@ -1635,6 +2466,8 @@ const UnifyFreelancer = () => {
                         <EditSkill
                           Popup={Setpopup}
                           data={freelancerProfileList?.skills}
+                          setSuccessPopup={setSuccessPopup}
+                          successPopup={successPopup}
                         />
                       );
                     }}
@@ -1671,7 +2504,13 @@ const UnifyFreelancer = () => {
               <div className="d-flex justify-content-end myskill_hdingn">
                 <Button
                   onClick={() => {
-                    Setpopup(<ReqTestimonial Popup={Setpopup} />);
+                    Setpopup(
+                      <ReqTestimonial
+                        Popup={Setpopup}
+                        successPopup={successPopup}
+                        setSuccessPopup={setSuccessPopup}
+                      />
+                    );
                   }}
                 >
                   <svg
@@ -1815,7 +2654,13 @@ const UnifyFreelancer = () => {
                   <Button
                     style={{ width: "100%", height: "100%", cursor: "pointer" }}
                     onClick={() => {
-                      Setpopup(<AddCert Popup={Setpopup} />);
+                      Setpopup(
+                        <AddCert
+                          Popup={Setpopup}
+                          successPopup={successPopup}
+                          setSuccessPopup={setSuccessPopup}
+                        />
+                      );
                     }}
                   >
                     <svg
@@ -1848,7 +2693,12 @@ const UnifyFreelancer = () => {
                         className="m-0"
                         onClick={() => {
                           Setpopup(
-                            <AddCert certificates={item} Popup={Setpopup} />
+                            <AddCert
+                              certificates={item}
+                              Popup={Setpopup}
+                              successPopup={successPopup}
+                              setSuccessPopup={setSuccessPopup}
+                            />
                           );
                         }}
                       >
@@ -1925,7 +2775,13 @@ const UnifyFreelancer = () => {
                   <div className="d-flex justify-content-end myskill_hdingn">
                     <Button
                       onClick={() => {
-                        Setpopup(<AddEmployment Popup={Setpopup} />);
+                        Setpopup(
+                          <AddEmployment
+                            Popup={Setpopup}
+                            successPopup={successPopup}
+                            setSuccessPopup={setSuccessPopup}
+                          />
+                        );
                       }}
                     >
                       <svg
@@ -1945,16 +2801,7 @@ const UnifyFreelancer = () => {
                     </Button>
                   </div>
                   <div className="bpbck_txt">
-                    <div
-                      className="bpck_head font-weight-600"
-                      onClick={() =>
-                        setConfirmPopup(
-                          <SuccessPopup
-                            Popup={() => setSuccessPopup(!successPopup)}
-                          />
-                        )
-                      }
-                    >
+                    <div className="bpck_head font-weight-600">
                       Employment history
                     </div>
                   </div>
@@ -2035,6 +2882,8 @@ const UnifyFreelancer = () => {
                                     <AddEmployment
                                       Popup={Setpopup}
                                       experience={experience}
+                                      successPopup={successPopup}
+                                      setSuccessPopup={setSuccessPopup}
                                     />
                                   );
                                 }}
@@ -2142,6 +2991,8 @@ const UnifyFreelancer = () => {
         <HourPerWeekPopup
           open={hwpPopup}
           onCloseModal={() => setHwpPopup(false)}
+          setSuccessPopup={setSuccessPopup}
+          successPopup={successPopup}
         />
       )}
       {portfolioPopup && (
@@ -2149,6 +3000,8 @@ const UnifyFreelancer = () => {
           open={portfolioPopup}
           onCloseModal={() => setPortfolioPopup(false)}
           data={editPortfoData}
+          setSuccessPopup={setSuccessPopup}
+          successPopup={successPopup}
         />
       )}
       {videoPopup && (

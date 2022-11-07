@@ -278,7 +278,6 @@
 /* ================================ confirmation popup ================================== */
 .confirmation_popup {
   max-width: 400px;
-
   position: relative;
   top: -15%;
 }
@@ -339,37 +338,66 @@
 }
 
 /* ================ successs popup ======================== */
-/* .abc {
+
+.success_popup {
+  max-width: 400px;
+  position: relative;
+  top: -15%;
+}
+
+.success_popup .success_heading {
   display: flex;
   justify-content: center;
-  align-items: center;
+  position: relative;
+  top: -15px;
   color: #6d2ef1;
-  font-weight: bold;
+  font-weight: 600;
 }
 
-.acd {
+.success_popup .sucess_message {
   display: flex;
   justify-content: center;
-  flex-direction: column;
-  align-items: center;
-  color: black;
-  padding: 5px;
-  opacity: 0.4;
+  font-weight: 400;
+  color: #000;
 }
-
-._cancle_submit {
-  padding-top: 30px;
-  color: white;
+.success_popup .success_popup_btn {
+  display: flex;
+  justify-content: center;
 }
-._cancle_submit button {
+.success_popup .success_popup_btn button {
   background-color: #6d2ef1;
-  color: white;
-} */
+  color: #fff;
+  font: normal normal medium 18px/30px Poppins !important;
+  font-weight: bold;
+  border-radius: 60px !important;
+  text-transform: uppercase;
+  padding: 8px 34px;
+  margin-top: 30px;
+  min-width: 129px;
+  margin-right: 15px;
+  border: #6d2ef1 solid 1px;
+  -webkit-border-radius: 60px !important;
+}
 
-/* .freelancer_popups {
-  padding-top: 20px;
-  position: absolute;
-  left: 610px;
-  top: 87px;
-  border-radius: 5px;
-} */
+.hourly_price {
+  margin-bottom: 30px;
+}
+.hourly-price_rsph {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+}
+
+.input_houry_price {
+  border: #b9c9dc solid 1px;
+  display: flex;
+  font: normal normal 600 18px/30px Poppins !important;
+  color: #8f8f8f;
+  padding: 3px 20px;
+  align-items: center;
+}
+.input_houry_price  input{
+  border: none;
+  outline: none;
+}
