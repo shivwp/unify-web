@@ -8,10 +8,10 @@ body {
   color: inherit;
 }
 
-.btn:focus-visible {
+/* .btn:focus-visible {
   background-color: inherit;
   color: inherit;
-}
+} */
 
 .post_job_btn_m button:hover {
   color: #6d2ef1;
@@ -4954,8 +4954,8 @@ a {
 }
 
 .tab_scroll_cont .tab_btn_vs:active {
-  background-color: transparent !important;
-  color: inherit !important;
+  background-color: #fff !important;
+  color: #6d2ef1 !important;
 }
 
 .text-transform-cap {
