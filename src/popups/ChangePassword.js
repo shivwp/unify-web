@@ -74,7 +74,7 @@ const ChangePassword = (props) => {
                 </Col>
               </Row>
               <div className="popup_form_element agrement_ineoeu mt-3 pt-1">
-                <Form.Label className="text-black font-size-13px font-weight-500">
+                <Form.Label className="text-black font-size-13px font-weight-500 radiolablepopo ">
                   <Form.Check type="checkbox" /> All devices will be required to
                   sign in with new password
                 </Form.Label>
