@@ -1551,7 +1551,7 @@
 }
 
 .heart_btn_promo button:active {
-  background-color: #6d2ef1;
+  background-color: #6d2ef1 !important;
 }
 
 .heart_btn_promo button:active svg {
@@ -1599,10 +1599,14 @@
   -o-border-radius: 30px;
 }
 
-.blue_btn_pro:hover {
+.blue_btn_pro:hover{
+  background-color: #6d2ef1;
   color: #fff;
 }
-
+.blue_btn_pro:active{
+  background-color: #6d2ef1 !important;
+  color: #fff !important;
+}
 .hire_box_yh {
   min-height: 200px;
   height: auto;
@@ -3512,4 +3516,8 @@
 .ts_btn button:hover {
   color: #fff;
   background-color: #39478f;
+}
+.find_tal_btn:active{
+  color: #fff !important;
+  background-color: #39478f !important;
 }
