@@ -5317,6 +5317,6 @@ a {
 .btn.show,
 .btn:first-child:active,
 :not(.btn-check)+.btn:active {
-  background-color: #39478f;
-  color: #fff;
+  background-color: #fff;
+  color: #6d2ef1;
 }
