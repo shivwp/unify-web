@@ -2106,6 +2106,10 @@
   font-weight: 400 !important;
 }
 
+.radiolablepopo input{
+  padding: 0;
+}
+
 .popup_form_element label {
   min-height: 30px;
 }
