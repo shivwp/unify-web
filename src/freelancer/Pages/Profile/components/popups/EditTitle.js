@@ -36,6 +36,7 @@ const EditTitle = (props) => {
       title: values.occuption,
       description: values.description,
     };
+    dispatch(onEditDesignation(data, props.Popup));
 
     dispatch(
       onEditDesignation(
@@ -104,7 +105,8 @@ const EditTitle = (props) => {
             </div>
 
             <div className="popup_btns_new flex-wrap cwiewyehkk">
-              <Button variant=""
+              <Button
+                variant=""
                 className="trans_btn"
                 onClick={() => {
                   props.Popup();
@@ -112,7 +114,9 @@ const EditTitle = (props) => {
               >
                 Cancel
               </Button>
-              <Button variant="" onClick={onSave}>Save</Button>
+              <Button variant="" onClick={onSave}>
+                Save
+              </Button>
             </div>
           </div>
         </div>

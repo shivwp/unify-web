@@ -57,6 +57,7 @@ const VideoIntro = (props) => {
       video: values.url,
       video_type: type.name,
     };
+    dispatch(onEditVideo(data, props.Popup));
     dispatch(
       onEditVideo(data, props.Popup, props.successPopup, props.setSuccessPopup)
     );
@@ -115,7 +116,8 @@ const VideoIntro = (props) => {
             </div>
 
             <div className="popup_btns_new flex-wrap cwiewyehkk">
-              <Button variant=""
+              <Button
+                variant=""
                 className="trans_btn"
                 onClick={() => {
                   props.Popup();
@@ -123,7 +125,9 @@ const VideoIntro = (props) => {
               >
                 Cancel
               </Button>
-              <Button variant="" onClick={onSave}>Save</Button>
+              <Button variant="" onClick={onSave}>
+                Save
+              </Button>
             </div>
           </div>
         </div>

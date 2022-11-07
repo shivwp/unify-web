@@ -64,6 +64,7 @@ const AddEmployment = (props) => {
       start_date: values.start_date,
       end_date: values.end_date,
     };
+    dispatch(onAddEmployment(data, props.Popup));
     dispatch(
       onAddEmployment(
         data,
@@ -221,7 +222,8 @@ const AddEmployment = (props) => {
             </div>
 
             <div className="popup_btns_new flex-wrap cwiewyehkk">
-              <Button variant=""
+              <Button
+                variant=""
                 className="trans_btn"
                 onClick={() => {
                   props.Popup();
@@ -229,7 +231,9 @@ const AddEmployment = (props) => {
               >
                 Cancel
               </Button>
-              <Button variant="" onClick={onSave}>Save</Button>
+              <Button variant="" onClick={onSave}>
+                Save
+              </Button>
             </div>
           </div>
         </div>

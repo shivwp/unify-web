@@ -4,7 +4,7 @@ import {
   googleAuthProvider,
   signInWithPopup,
   signOut,
-} from "../../firebase/firebase";
+} from "../../firebase/Firebase";
 import Axios from "../axios";
 import {
   GOOGLE_SIGN_IN_FAIL,

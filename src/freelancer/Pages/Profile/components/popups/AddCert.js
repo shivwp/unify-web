@@ -56,6 +56,14 @@ const AddCert = (props) => {
       };
     }
     dispatch(onEditCertificate(data, props.Popup));
+    dispatch(
+      onEditCertificate(
+        data,
+        props.Popup,
+        props.successPopup,
+        props.setSuccessPopup
+      )
+    );
   };
   return (
     <>
@@ -120,15 +128,15 @@ const AddCert = (props) => {
             </div>
 
             <div className="popup_btns_new flex-wrap cwiewyehkk">
-              <Button variant=""
+              <button
                 className="trans_btn"
                 onClick={() => {
                   props.Popup();
                 }}
               >
                 Cancel
-              </Button>
-              <Button variant="" onClick={onSave}>Save</Button>
+              </button>
+              <button onClick={onSave}>Save</button>
             </div>
           </div>
         </div>

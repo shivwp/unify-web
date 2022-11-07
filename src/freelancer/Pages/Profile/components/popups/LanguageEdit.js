@@ -61,6 +61,14 @@ const LanguageEdit = (props) => {
     });
     // console.log(data);
     dispatch(onEditLanguage({ languages: data }, props.Popup));
+    dispatch(
+      onEditLanguage(
+        { languages: data },
+        props.Popup,
+        props.successPopup,
+        props.setSuccessPopup
+      )
+    );
   };
 
   useEffect(() => {
@@ -127,7 +135,7 @@ const LanguageEdit = (props) => {
                           >
                             <span>Proficiency level</span>{" "}
                             {inputList?.length !== 1 ? (
-                              <Button variant=""
+                              <button
                                 onClick={() => removeInputFields(i)}
                                 style={{
                                   border: "none",
@@ -147,7 +155,7 @@ const LanguageEdit = (props) => {
                                     fill="#6d2ef1"
                                   />
                                 </svg>
-                              </Button>
+                              </button>
                             ) : null}
                           </Form.Label>
                           <select
@@ -180,7 +188,7 @@ const LanguageEdit = (props) => {
             </div>
             {/* {inputList.length < 5 && ( */}
             <div style={{ display: "flex", justifyContent: "flex-end" }}>
-              <Button variant=""
+              <button
                 className="addMoreLanguageBtn"
                 disabled={
                   !(
@@ -191,20 +199,20 @@ const LanguageEdit = (props) => {
                 onClick={handleAddClick}
               >
                 Add More
-              </Button>
+              </button>
             </div>
             {/* )} */}
             <div className="popup_btns_new flex-wrap cwiewyehkk">
-              <Button variant=""
+              <button
                 className="trans_btn"
                 onClick={() => {
                   props.Popup();
                 }}
               >
                 Cancel
-              </Button>
+              </button>
 
-              <Button variant=""
+              <button
                 disabled={
                   !(
                     inputList?.slice(-1)[0].language &&
@@ -214,7 +222,7 @@ const LanguageEdit = (props) => {
                 onClick={handleSave}
               >
                 Save
-              </Button>
+              </button>
             </div>
           </div>
         </div>

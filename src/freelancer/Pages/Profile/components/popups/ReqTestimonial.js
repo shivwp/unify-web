@@ -38,6 +38,14 @@ const ReqTestimonial = (props) => {
       description: values?.description,
     };
     dispatch(onRequestTestimonial(data));
+    dispatch(
+      onRequestTestimonial(
+        data,
+        props.Popup,
+        props.successPopup,
+        props.setSuccessPopup
+      )
+    );
   };
 
   return (
@@ -159,7 +167,7 @@ const ReqTestimonial = (props) => {
             </div>
 
             <div className="popup_btns_new flex-wrap cwiewyehkk">
-              <Button variant=""
+              <button
                 className="font-weight-600"
                 onClick={() => {
                   testimonialSubmit();
@@ -167,7 +175,7 @@ const ReqTestimonial = (props) => {
                 }}
               >
                 REQUEST TESTIMONIAL
-              </Button>
+              </button>
             </div>
           </div>
         </div>

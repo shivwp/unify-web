@@ -69,6 +69,9 @@ const EditSkill = (props) => {
       skill_id: selectSkills?.map((item) => item.skill_id)?.toString(),
     };
     dispatch(onEditSkills(data, props.Popup));
+    dispatch(
+      onEditSkills(data, props.Popup, props.successPopup, props.setSuccessPopup)
+    );
   };
 
   $(document).mouseup(function (e) {
@@ -103,7 +106,9 @@ const EditSkill = (props) => {
                 {selectSkills?.map((item, index) => (
                   <div className="skill_bxr_gry" key={item.skill_id}>
                     <span>{item.skill_name}</span>
-                    <Button variant="" onClick={() => removeSkills(index)}>X</Button>
+                    <Button variant="" onClick={() => removeSkills(index)}>
+                      X
+                    </Button>
                   </div>
                 ))}
               </div>
@@ -139,15 +144,17 @@ const EditSkill = (props) => {
             </div>
             <div className="maxlabel_atcxt mt-3">Maximum 15 skills.</div>
             <div className="popup_btns_new flex-wrap cwiewyehkk">
-              <Button variant=""
+              <button
                 className="trans_btn"
                 onClick={() => {
                   props.Popup();
                 }}
               >
                 Cancel
+              </button>
+              <Button variant="" onClick={onSave}>
+                Save
               </Button>
-              <Button variant="" onClick={onSave}>Save</Button>
             </div>
           </div>
         </div>
