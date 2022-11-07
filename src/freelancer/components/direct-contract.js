@@ -55,16 +55,16 @@ const Popup = (props) => {
               <div className="d-flex align-items-center">
                 <Form.Label
                   style={{ color: "#000" }}
-                  className="popup_radio_element"
+                  className="popup_radio_element inp_0_radio"
                 >
                   <Form.Check type="radio" />
                   Hourly
                 </Form.Label>
                 <Form.Label
                   style={{ color: "#000" }}
-                  className="popup_radio_element"
+                  className="popup_radio_element inp_0_radio"
                 >
-                  <Form.Check type="radio" />
+                  <Form.Check type="radio"/>
                   Fixed Price
                 </Form.Label>
               </div>

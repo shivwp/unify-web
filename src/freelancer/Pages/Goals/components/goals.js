@@ -44,11 +44,11 @@ const Screen = () => {
           <div className="form_goals">
             <div className="formg_label">Visualization</div>
             <div className="formg_inp d-flex flex-wrap">
-              <Form.Label>
+              <Form.Label className="inp_0_radio">
                 <Form.Check type="radio" name="g" />
                 Growing
               </Form.Label>
-              <Form.Label>
+              <Form.Label className="inp_0_radio">
                 <Form.Check type="radio" name="g" />
                 Horizontal
               </Form.Label>
@@ -69,13 +69,13 @@ const Screen = () => {
           <div className="form_goals">
             <div className="formg_label">Decimals</div>
             <div className="formg_inp d-flex align-items-center">
-              <Form.Label>
+              <Form.Label className="inp_0_radio">
                 <Form.Check type="radio" name="n" />0
               </Form.Label>
-              <Form.Label>
+              <Form.Label className="inp_0_radio">
                 <Form.Check type="radio" name="n" />1
               </Form.Label>
-              <Form.Label>
+              <Form.Label className="inp_0_radio">
                 <Form.Check type="radio" name="n" />2
               </Form.Label>
             </div>

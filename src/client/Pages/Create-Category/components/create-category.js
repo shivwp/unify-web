@@ -2,7 +2,7 @@ import Container from "react-bootstrap/Container";
 import Title from "../../../../components/title";
 import { Link } from "react-router-dom";
 
-import Form from 'react-bootstrap/Form';
+import Form from "react-bootstrap/Form";
 const Createcategory = () => {
   Title(" | create category");
   return (
@@ -94,7 +94,7 @@ const Createcategory = () => {
             </div>
           </div>
           <div className="show_less_likn">
-            <a href="/">Show less</a>
+            <Link to="/">Show less</Link>
           </div>
           <Link to="/category">
             <div className="fo_btn_c ccb_next_btn">

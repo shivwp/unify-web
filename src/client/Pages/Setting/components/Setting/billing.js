@@ -4,6 +4,7 @@ import SideNav from "./site_nav";
 import Title from "../../../../../components/title";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import { Link } from "react-router-dom";
 
 const Screen = () => {
   Title(" | Setting - Billing & Payment");
@@ -64,7 +65,9 @@ const Screen = () => {
                     <Button className="bg-transparent h-color-b">Cancel</Button>
                   </div>
                 </div>
-                <div className="chan_sub_n_s">Change Subscription</div>
+                <div className="chan_sub_n_s">
+                  <Link className="mt-2">Change Subscription</Link>
+                </div>
               </div>
             </div>
           </Col>
