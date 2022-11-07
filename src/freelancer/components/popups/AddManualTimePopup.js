@@ -92,10 +92,10 @@ const AddManualTimePopup = ({ open, onCloseModal }) => {
 
         <div className="freelancer_popup_btns">
           <div className="_cancle_submit">
-            <Button onClick={onCloseModal}>CANCEL</Button>
+            <Button variant="" onClick={onCloseModal}>CANCEL</Button>
           </div>
           <div className="_save_submit">
-            <Button>SAVE</Button>
+            <Button variant="">SAVE</Button>
           </div>
         </div>
       </Modal>

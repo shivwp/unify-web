@@ -133,7 +133,7 @@ const Bsize = () => {
           <div className="justify-content-between btn_foot_sec flex-wrap d-flex no-border mt-2 pt-0">
             <Link to="/subscription">
               <div className="fo_btn_c next_b_btn_c">
-                <Button className="f-size-to active_btn_blue">Continue</Button>
+                <Button  variant="" className="f-size-to active_btn_blue">Continue</Button>
               </div>
             </Link>
             <Link to="/dashboard">

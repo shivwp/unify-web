@@ -71,6 +71,7 @@ const Popup = (props) => {
             </div>
             <div className="popup_btns_new flex-wrap">
               <Button
+               variant=""
                 onClick={() => {
                   props.Popup(<AmountPopup Popup={props.Popup} />);
                 }}
@@ -165,6 +166,7 @@ const AmountPopup = (props) => {
             </div>
             <div className="popup_btns_new flex-wrap cwiewyehkk">
               <Button
+               variant=""
                 style={{ padding: "11px 35px" }}
                 className="trans_btn"
                 onClick={() => {
@@ -174,7 +176,7 @@ const AmountPopup = (props) => {
                 BACK
               </Button>
               <Link to="/freelancer/project-detail">
-                <Button style={{ padding: "11px 35px" }}>SEND CONTRACT</Button>
+                <Button variant="" style={{ padding: "11px 35px" }}>SEND CONTRACT</Button>
               </Link>
             </div>
           </div>
@@ -206,11 +208,12 @@ const Screen = () => {
           <div className="btn_foot_sec justify-content-center flex-wrap no-border mt-2 a_fl_with_css">
             <Link to="/category" className="mrright-gppnew">
               <div className="fo_btn_c next_b_btn_c">
-                <Button>INVITE CLIENTS</Button>
+                <Button variant="">INVITE CLIENTS</Button>
               </div>
             </Link>
             <div className="fo_btn_c next_b_btn_c">
               <Button
+               variant=""
                 className="active_btn_blue"
                 onClick={() => SetPopup(<Popup Popup={SetPopup} />)}
               >

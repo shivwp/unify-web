@@ -27,6 +27,7 @@ const Screen = () => {
                   </div>
                   <div>
                     <Button
+                     variant=""
                       className="round_b_btn blue_trans_btn"
                       onClick={() => setOpenNewTeam(true)}
                     >
@@ -70,6 +71,7 @@ const Screen = () => {
                         style={{ position: "relative" }}
                       >
                         <Button
+                         variant=""
                           className="round_b_btn bg-transparent"
                           onClick={() => setMenuBarTeams(!menuBarTeams)}
                         >
@@ -105,7 +107,7 @@ const Screen = () => {
                       </div>
                       <div className="s_th_s s_td_s w-20">AK24#7777</div>
                       <div className="w-15 mob_60_rr">
-                        <Button className="round_b_btn bg-transparent">
+                        <Button variant="" className="round_b_btn bg-transparent">
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="16"
@@ -126,7 +128,7 @@ const Screen = () => {
                       </div>
                       <div className="s_th_s s_td_s w-20">AK24#7777</div>
                       <div className="w-15 mob_60_rr">
-                        <Button className="round_b_btn bg-transparent">
+                        <Button variant="" className="round_b_btn bg-transparent">
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="16"
@@ -147,7 +149,7 @@ const Screen = () => {
                       </div>
                       <div className="s_th_s s_td_s w-20">AK24#7777</div>
                       <div className="w-15 mob_60_rr">
-                        <Button className="round_b_btn bg-transparent">
+                        <Button variant="" className="round_b_btn bg-transparent">
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="16"

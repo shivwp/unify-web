@@ -629,7 +629,7 @@ const Screen = () => {
               </div>
               <div className="dbaors_btn">
                 <Link to="/freelancer/project-search">
-                  <Button>Find new Project</Button>
+                  <Button variant="">Find new Project</Button>
                 </Link>
               </div>
             </div>
@@ -877,7 +877,7 @@ const Screen = () => {
                       AED 345 <span>/ month</span>
                     </div>
                     <div>
-                      <Button>FULL TIME</Button>
+                      <Button variant="">FULL TIME</Button>
                     </div>
                   </div>
                 </div>

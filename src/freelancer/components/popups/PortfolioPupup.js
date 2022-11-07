@@ -152,7 +152,7 @@ const PortfolioPupup = ({
             <button onClick={onCloseModal}>CANCEL</button>
           </div> */}
           <div className="_save_submit">
-            <Button onClick={submitPortfolio}>UPLOAD</Button>
+            <Button variant="" onClick={submitPortfolio}>UPLOAD</Button>
           </div>
         </div>
       </Modal>

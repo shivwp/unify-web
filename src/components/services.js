@@ -75,7 +75,7 @@ const Services = () => {
 
                 <Row>
                     <Col lg={12}>
-                        <div className="d-flex justify-content-center btn_services"><Button>View All The Services</Button></div>
+                        <div className="d-flex justify-content-center btn_services"><Button variant="">View All The Services</Button></div>
                     </Col>
                 </Row>
             </div>

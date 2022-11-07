@@ -22,6 +22,7 @@ const EditPosting = () => {
                 <div className="edit-posting-heading">
                   <div className="heading">Review</div>
                   <Button
+                   variant=""
                     className="mt-2 btn-save_post border_blue_wwifth"
                     style={{ fontSize: 17, fontWeight: 600 }}
                   >
@@ -64,6 +65,7 @@ const EditPosting = () => {
                 </div>
                 <div className="ts_btn attach_f_btn edit_posting-attach-file">
                   <Button
+                   variant=""
                     className="rot_svg_oety"
                     style={{
                       position: "relative",
@@ -102,7 +104,7 @@ const EditPosting = () => {
                     <div className="b_bot_inp">
                       <div className="heading">Skills</div>
                       <div className="slide_btnss">
-                        <Button>
+                        <Button variant="">
                           Mobile App Design
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -115,7 +117,7 @@ const EditPosting = () => {
                             <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
                           </svg>
                         </Button>
-                        <Button>
+                        <Button variant="">
                           User Experience Design
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -128,7 +130,7 @@ const EditPosting = () => {
                             <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
                           </svg>
                         </Button>
-                        <Button>
+                        <Button variant="">
                           User Interface Design
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -141,7 +143,7 @@ const EditPosting = () => {
                             <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
                           </svg>
                         </Button>
-                        <Button>
+                        <Button variant="">
                           Graphic Design
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -154,7 +156,7 @@ const EditPosting = () => {
                             <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
                           </svg>
                         </Button>
-                        <Button className="round_b_btn">
+                        <Button variant="" className="round_b_btn">
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="16"
@@ -291,7 +293,7 @@ const EditPosting = () => {
 
                 <div className=" edit_posting_save_btn ">
                   <div>
-                    <Button>Save Job Post</Button>
+                    <Button variant="">Save Job Post</Button>
                   </div>
                 </div>
               </div>

@@ -23,7 +23,7 @@ const Screen = () => {
           <Form.Control type={`text`} placeholder={`search...`} />
         </Form.Group>
         <div className="ts_btn attach_f_btn wid_30_in mt-0">
-          <Button className="transp_fil_btn fif_five mt-2">
+          <Button variant="" className="transp_fil_btn fif_five mt-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="16"
@@ -36,7 +36,7 @@ const Screen = () => {
             </svg>
             Filters
           </Button>
-          <Button className="fif_five mt-2 hovbord-blew">Advanced Search</Button>
+          <Button variant="" className="fif_five mt-2 hovbord-blew">Advanced Search</Button>
         </div>
       </div>
       <div className="freelancer_box_in">
@@ -65,7 +65,7 @@ const Screen = () => {
                   </div>
                 </div>
                 <div className="d-flex align-items-center flex-wrap">
-                  <Button className="transp_fil_btn heart_roun_btn mt-2">
+                  <Button variant="" className="transp_fil_btn heart_roun_btn mt-2">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="16"
@@ -79,11 +79,11 @@ const Screen = () => {
                   </Button>
                   <div className="ts_btn attach_f_btn wid_30_in d-flex flex-wrap">
                     <Link to="/hire-freelancer">
-                      <Button className="transp_fil_btn mt-2 font-weight-500">
+                      <Button variant="" className="transp_fil_btn mt-2 font-weight-500">
                         Hire
                       </Button>
                     </Link>
-                    <Button className="mt-2 font-weight-500">
+                    <Button variant="" className="mt-2 font-weight-500">
                       Invite to Job
                     </Button>
                   </div>
@@ -120,10 +120,10 @@ const Screen = () => {
               </div>
               <div className="overflow-scroll">
                 <div className="slide_btnss freelancer_skill_sc">
-                  <Button>Mobile App Design</Button>
-                  <Button>User Experience Design</Button>
-                  <Button>User Interface Design</Button>
-                  <Button>Graphic Design</Button>
+                  <Button variant="">Mobile App Design</Button>
+                  <Button variant="">User Experience Design</Button>
+                  <Button variant="">User Interface Design</Button>
+                  <Button variant="">Graphic Design</Button>
                 </div>
               </div>
             </div>

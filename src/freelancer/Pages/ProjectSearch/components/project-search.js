@@ -84,7 +84,7 @@ const ProjectSearch = () => {
             <div className="ps-relative mt-sesix-5">
               {dDown === 1 ? <Popup /> : ""}
               <div className="fb_btns_s_pro">
-                <Button
+                <Button variant=""
                   className="bg-trans_s_pro btn_psnewrb"
                   onClick={() => {
                     TogglePopup();
@@ -97,11 +97,11 @@ const ProjectSearch = () => {
                     style={{ transform: "rotate(180deg)" }}
                   />
                 </Button>
-                <Button className="bg-trans_s_pro btn_psnewrb">
+                <Button variant="" className="bg-trans_s_pro btn_psnewrb">
                   <img src={heart} alt="" className="heart_btn" />
                 </Button>
                 <Link to="/freelancer/project-detail">
-                  <Button>Send Proposal</Button>
+                  <Button variant="">Send Proposal</Button>
                 </Link>
               </div>
             </div>
@@ -411,7 +411,7 @@ const Project_Search = () => {
                 </p>
               </div>
               <div className="fr_btn">
-                <Button>Filter Result</Button>
+                <Button variant="">Filter Result</Button>
               </div>
             </div>
           </Col>
@@ -419,7 +419,7 @@ const Project_Search = () => {
             <div className="overflow-scroll">
               <div className="d-flex flex-wrap tab_m_nodea mb-4 tab_scroll_cont">
                 <Link to="/freelancer/project-search">
-                  <Button
+                  <Button variant=""
                     className={`tab_btn_vs ${
                       TabActive === "search" ? "active_bvs" : ""
                     }`}
@@ -431,7 +431,7 @@ const Project_Search = () => {
                   </Button>
                 </Link>
                 <Link to="/freelancer/project-search/saved">
-                  <Button
+                  <Button variant=""
                     className={`tab_btn_vs ${
                       TabActive === "saved" ? "active_bvs" : ""
                     }`}
@@ -448,13 +448,13 @@ const Project_Search = () => {
           </Col>
           <Col lg={12}>
             <div className="pagiantion_node">
-              <Button className="pagi_butt">1</Button>
-              <Button className="pagi_butt">2</Button>
-              <Button className="pagi_butt">3</Button>
-              <Button className="pagi_butt">4</Button>
-              <Button className="pagi_butt">5</Button>
+              <Button variant="" className="pagi_butt">1</Button>
+              <Button variant="" className="pagi_butt">2</Button>
+              <Button variant="" className="pagi_butt">3</Button>
+              <Button variant="" className="pagi_butt">4</Button>
+              <Button variant="" className="pagi_butt">5</Button>
               <div className="pagination_dots">...</div>
-              <Button className="pagi_butt">10</Button>
+              <Button variant="" className="pagi_butt">10</Button>
             </div>
           </Col>
         </Row>

@@ -48,7 +48,7 @@ const Screen = () => {
                 </Row>
                 <div className="d_pbtn_as">
                     <div className='disc_para_h'>Already working with freelancers outside of Unify? Simplify things by inviting them to join and use Unify collaboration, time tracking, and payment tools. <Link to="#0">See how it works</Link></div>
-                    <Button className="find_tal_btn font-weight-500">
+                    <Button variant="" className="find_tal_btn font-weight-500">
                     <svg fill="#fff" height={20} width={20} className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  css-w2bhrx" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="AddIcon" aria-label="fontSize medium"><path 
     stroke={`#fff`} d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"></path></svg>
                         Invite Talent</Button>

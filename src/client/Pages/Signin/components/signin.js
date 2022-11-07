@@ -44,6 +44,7 @@ const Signin = ({
           <div className="sign_buttons_group sign_upbtn_heffect">
             {/* <Link to={`/question1`} className="signup_mlr_20px_a"> */}
             <Button
+             variant=""
               onClick={(e) => selectUserType(e)}
               type="button"
               className={userType === "client" ? "userTypeActive" : "userType"}
@@ -54,6 +55,7 @@ const Signin = ({
             {/* </Link> */}
             {/* <Link to={`/freelancer/question1`} className="signup_mlr_20px_a"> */}
             <Button
+             variant=""
               type="button"
               onClick={(e) => selectUserType(e)}
               className={
@@ -177,7 +179,7 @@ const Signin = ({
                 </div>
 
                 <div className="sign_form_btn_subm sign_w_full">
-                  <Button type="submit" className="mr_sign_in_n">
+                  <Button variant="" type="submit" className="mr_sign_in_n">
                     LOGIN
                   </Button>
                 </div>
@@ -185,6 +187,7 @@ const Signin = ({
               <div className="sign_in_or">or</div>
               <div className="sign_form_btn_subm sign_in_social_btn mr_sign_in_n">
                 <Button
+                 variant=""
                   className="apple_btn mr_sign_in_n"
                   onClick={handleAppleSignIn}
                 >
@@ -201,7 +204,7 @@ const Signin = ({
                   </svg>
                   Continue with Apple
                 </Button>
-                <Button className="google_btn" onClick={handleGoogleSignIn}>
+                <Button variant="" className="google_btn" onClick={handleGoogleSignIn}>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="16"

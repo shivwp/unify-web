@@ -50,10 +50,10 @@ const titleDescription = () => {
               </div>
               <div className="btn_foot_sec flex-wrap no-border mt-2">
                 <div className="fo_btn_c next_b_btn_c">
-                  <Button>Cancel</Button>
+                  <Button variant="">Cancel</Button>
                 </div>
                 <div className="fo_btn_c next_b_btn_c">
-                  <Button className="active_btn_blue">Next</Button>
+                  <Button variant="" className="active_btn_blue">Next</Button>
                 </div>
               </div>
             </div>

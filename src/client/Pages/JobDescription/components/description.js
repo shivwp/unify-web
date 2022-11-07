@@ -78,7 +78,7 @@ const Description = () => {
           </div>
           <div className="ts_btn">
             <Link to="/view-job">
-              <Button className="font-weight-500">Post Your Job Now</Button>
+              <Button variant="" className="font-weight-500">Post Your Job Now</Button>
             </Link>
           </div>
         </div>
@@ -135,7 +135,7 @@ const Description = () => {
 
           <div className="ts_btn attach_f_btn">
             <Form.Control type="file" />
-            <Button className="rot_svg_oety">
+            <Button variant="" className="rot_svg_oety">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
@@ -155,7 +155,7 @@ const Description = () => {
           <div className="input_t_lab">Category</div>
           <div className="job_t_inp cat_inp_j d-flex flex-wrap">
             <Form.Control type="text" value={hgghgghghgh?.name} />
-            <Button className="round_b_btn">
+            <Button variant="" className="round_b_btn">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
@@ -177,7 +177,7 @@ const Description = () => {
           <div className="input_t_lab">Skills</div>
           <div className="slide_btnss">
             {filteredSkills?.map((item) => (
-              <Button>
+              <Button variant="">
                 {item.name}
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -231,7 +231,7 @@ const Description = () => {
                 <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
               </svg>
             </button> */}
-            <Button className="round_b_btn">
+            <Button variant="" className="round_b_btn">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
@@ -256,7 +256,7 @@ const Description = () => {
               type="text"
               value="Large, More than 6 months, Entry level"
             />
-            <Button className="round_b_btn">
+            <Button variant="" className="round_b_btn">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
@@ -278,7 +278,7 @@ const Description = () => {
           <div className="input_t_lab">Budget</div>
           <div className="job_t_inp cat_inp_j d-flex flex-wrap">
             <Form.Control type="text" value="$15.00 - $35.00 / hr" />
-            <Button className="round_b_btn">
+            <Button variant="" className="round_b_btn">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
@@ -300,15 +300,15 @@ const Description = () => {
         <div className="d-flex justify-content-between flex-wrap mt-5 mb-3">
           <div className="btn_job_back no-border fo_btn_c next_b_btn_c">
             <Link to="/budget">
-              <Button className="mt-2">Back</Button>
+              <Button variant="" className="mt-2">Back</Button>
             </Link>
           </div>
           <div className="d-flex flex-wrap no-border mt-0 pt-0 btn_foot_sec">
             <div className="fo_btn_c next_b_btn_c">
-              <Button className="draf_jo_btnbn mt-2">Save as a draft</Button>
+              <Button variant="" className="draf_jo_btnbn mt-2">Save as a draft</Button>
             </div>
             <div className="fo_btn_c next_b_btn_c">
-              <Button className="post_job_btn mt-2">Post Your Job Now</Button>
+              <Button variant="" className="post_job_btn mt-2">Post Your Job Now</Button>
             </div>
           </div>
         </div>

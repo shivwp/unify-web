@@ -312,12 +312,12 @@ const IAmClient = () => {
             Learn More About What’s New At Unify
           </div>
           <div className="btn_foot_sec justify-content-center flex-wrap no-border fo_btn_c mb-0 pb-0 next_b_btn_c">
-            <Button className="active_btn_blue mi-width-2 pnew">
+            <Button variant="" className="active_btn_blue mi-width-2 pnew">
               Learn More
             </Button>
           </div>
           <div className="btn_foot_sec mt-2 justify-content-end flex-wrap no-border p-0 m-0 fo_btn_c next_b_btn_c">
-            <Button className="active_btn_blue m-0 support_d_btn">
+            <Button variant="" className="active_btn_blue m-0 support_d_btn">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"

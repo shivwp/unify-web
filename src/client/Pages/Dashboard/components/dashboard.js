@@ -37,14 +37,14 @@ const Screen = () => {
             <div className="my_job_sm_text">Marina Pokhilko</div>
           </div>
           <div className="post_job_btn_m d-flex align-items-center flex-wrap">
-            <Button className="trans_btn_myjo mr_btn mt-2">
+            <Button variant="" className="trans_btn_myjo mr_btn mt-2">
               Browse Project Catalog
             </Button>
             <Link to="/gettingstarted">
-              <Button className="mt-2 border_blue_wwifth">Post A Job</Button>
+              <Button variant="" className="mt-2 border_blue_wwifth">Post A Job</Button>
             </Link>
             <Link to="/expandteam">
-              <Button className="ml_btn trans_btn_myjo blue_coloe_brn mt-2">
+              <Button variant="" className="ml_btn trans_btn_myjo blue_coloe_brn mt-2">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"
@@ -91,7 +91,7 @@ const Screen = () => {
               </div>
             </div>
             <div className="text-right d-flex flex-wrap menu_btn">
-              <Button className="toggle_btn_dot" onClick={openMenuBarPosting}>
+              <Button variant="" className="toggle_btn_dot" onClick={openMenuBarPosting}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"
@@ -142,7 +142,7 @@ const Screen = () => {
               <div className="my_job_pos_tme">Saved 25 min ago</div>
             </div>
             <div className="text-right d-flex flex-wrap menu_btn">
-              <Button className="toggle_btn_dot" onClick={openMenuBarDraft}>
+              <Button variant="" className="toggle_btn_dot" onClick={openMenuBarDraft}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"

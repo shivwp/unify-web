@@ -81,7 +81,7 @@ const ResetPass = () => {
             </Form.Group>
           </div>
           <div className="reset_pass_btn">
-            <Button onClick={onUpdate}>UPDATE</Button>
+            <Button variant="" onClick={onUpdate}>UPDATE</Button>
           </div>
         </div>
       </div>

@@ -41,6 +41,7 @@ const Screen = () => {
             </Form.Group>
             <div className="ts_btn attach_f_btn wid_30_in">
               <Button
+               variant=""
                 className="transp_fil_btn"
                 onClick={() => {
                   ToggleFilter();

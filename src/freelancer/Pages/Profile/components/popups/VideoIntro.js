@@ -115,7 +115,7 @@ const VideoIntro = (props) => {
             </div>
 
             <div className="popup_btns_new flex-wrap cwiewyehkk">
-              <Button
+              <Button variant=""
                 className="trans_btn"
                 onClick={() => {
                   props.Popup();
@@ -123,7 +123,7 @@ const VideoIntro = (props) => {
               >
                 Cancel
               </Button>
-              <Button onClick={onSave}>Save</Button>
+              <Button variant="" onClick={onSave}>Save</Button>
             </div>
           </div>
         </div>

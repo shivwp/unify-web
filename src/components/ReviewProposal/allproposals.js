@@ -56,6 +56,7 @@ const Screen = (props) => {
                 </div>
                 <div className="d-flex align-items-center flex-wrap">
                   <Button
+                   variant=""
                     className="transp_fil_btn heart_roun_btn mt-2"
                     onClick={() => {
                       props.changetab("archive");
@@ -80,11 +81,11 @@ const Screen = (props) => {
                     </svg>
                   </Button>
                   <div className="ts_btn attach_f_btn wid_30_in d-flex flex-wrap">
-                    <Button className="transp_fil_btn mt-2 font-weight-500">
+                    <Button variant="" className="transp_fil_btn mt-2 font-weight-500">
                       Message
                     </Button>
                     <Link to="/hire-freelancer">
-                      <Button className="mt-2 font-weight-500 hover_white_io">Hire</Button>
+                      <Button variant="" className="mt-2 font-weight-500 hover_white_io">Hire</Button>
                     </Link>
                   </div>
                 </div>

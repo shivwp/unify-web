@@ -86,8 +86,8 @@ const CompnyDetailsInfo = () => {
             </div>
           </Row>
           <div className="acc_btn">
-            <Button className="cancel_btn">CANCEL</Button>
-            <Button className="save_btn">SAVE</Button>
+            <Button variant="" className="cancel_btn">CANCEL</Button>
+            <Button variant="" className="save_btn">SAVE</Button>
           </div>
         </div>
       </div>

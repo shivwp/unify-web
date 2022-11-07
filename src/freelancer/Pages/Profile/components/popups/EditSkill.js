@@ -103,7 +103,7 @@ const EditSkill = (props) => {
                 {selectSkills?.map((item, index) => (
                   <div className="skill_bxr_gry" key={item.skill_id}>
                     <span>{item.skill_name}</span>
-                    <Button onClick={() => removeSkills(index)}>X</Button>
+                    <Button variant="" onClick={() => removeSkills(index)}>X</Button>
                   </div>
                 ))}
               </div>
@@ -139,7 +139,7 @@ const EditSkill = (props) => {
             </div>
             <div className="maxlabel_atcxt mt-3">Maximum 15 skills.</div>
             <div className="popup_btns_new flex-wrap cwiewyehkk">
-              <Button
+              <Button variant=""
                 className="trans_btn"
                 onClick={() => {
                   props.Popup();
@@ -147,7 +147,7 @@ const EditSkill = (props) => {
               >
                 Cancel
               </Button>
-              <Button onClick={onSave}>Save</Button>
+              <Button variant="" onClick={onSave}>Save</Button>
             </div>
           </div>
         </div>

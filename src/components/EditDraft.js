@@ -19,6 +19,7 @@ const EditDraft = () => {
                     Now Just finish and review your job post.
                   </div>
                   <Button
+                   variant=""
                     className="mt-2 btn-save_post border_blue_wwifth"
                     style={{ fontSize: 16, fontWeight: 500 }}
                   >
@@ -61,6 +62,7 @@ const EditDraft = () => {
                 </div>
                 <div className="ts_btn attach_f_btn edit_posting-attach-file">
                   <Button
+                   variant=""
                     className="rot_svg_oety"
                     style={{
                       position: "relative",
@@ -98,7 +100,7 @@ const EditDraft = () => {
                     <div className="b_bot_inp">
                       <div className="heading">Skills</div>
                       <div className="slide_btnss">
-                        <Button>
+                        <Button variant="">
                           Mobile App Design
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -111,7 +113,7 @@ const EditDraft = () => {
                             <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
                           </svg>
                         </Button>
-                        <Button>
+                        <Button variant="">
                           User Experience Design
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -124,7 +126,7 @@ const EditDraft = () => {
                             <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
                           </svg>
                         </Button>
-                        <Button>
+                        <Button variant="">
                           User Interface Design
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -137,7 +139,7 @@ const EditDraft = () => {
                             <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
                           </svg>
                         </Button>
-                        <Button>
+                        <Button variant="">
                           Graphic Design
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -150,7 +152,7 @@ const EditDraft = () => {
                             <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
                           </svg>
                         </Button>
-                        <Button className="round_b_btn">
+                        <Button variant="" className="round_b_btn">
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="16"
@@ -287,7 +289,7 @@ const EditDraft = () => {
 
                 <div className="draft_btns">
                   <div className="cancle_post_draft">
-                    <Button className="draft_back_btn">Back</Button>
+                    <Button variant="" className="draft_back_btn">Back</Button>
                   </div>
                   <div
                     style={{
@@ -299,7 +301,7 @@ const EditDraft = () => {
                     <Link className="save_as_draft" to="#">
                       Save as a draft
                     </Link>
-                    <Button className="draft_save_btn">
+                    <Button variant="" className="draft_save_btn">
                       Post Your Job Now
                     </Button>
                   </div>

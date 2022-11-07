@@ -107,16 +107,16 @@ const Filter = () => {
       <div className="d-flex justify-content-between mob_jus_cent flex-wrap">
         <div className="d-flex flex-wrap mob_jus_cent">
           <div className="fo_btn_c sme_next_bbtn next_b_btn_c">
-            <Button className="blue_btn_smm ml-0" style={{ fontSize: 15 }}>
+            <Button variant="" className="blue_btn_smm ml-0" style={{ fontSize: 15 }}>
               Apply Filters
             </Button>
           </div>
           <div className="fo_btn_c sme_next_bbtn next_b_btn_c">
-            <Button style={{ fontSize: 15 }}>Clear</Button>
+            <Button variant="" style={{ fontSize: 15 }}>Clear</Button>
           </div>
         </div>
         <div className="fo_btn_c sme_next_bbtn next_b_btn_c mob_jus_cent">
-          <Button style={{ fontSize: 15 }}>Close</Button>
+          <Button variant="" style={{ fontSize: 15 }}>Close</Button>
         </div>
       </div>
       <span className="popup_up_arrow"> &#60; </span>

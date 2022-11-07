@@ -50,10 +50,10 @@ const Screen = () => {
                 <div>
                     <div className='overflow-scroll'>
                         <div className="d-flex tab_m_nodea tab_scroll_cont">
-                            <Button className={`text-capitalize tab_btn_vs w-auto ${TabActive === 'me' ? 'active_bvs' : ''}`} onClick={() => { changeTab("me") }}>Milestones & Earnings</Button>
-                            <Button className={`text-capitalize tab_btn_vs w-auto ${TabActive === 'mf' ? 'active_bvs' : ''}`} onClick={() => { changeTab("mf") }}>Messages & Files</Button>
-                            <Button className={`text-capitalize tab_btn_vs w-auto ${TabActive === 'ts' ? 'active_bvs' : ''}`} onClick={() => { changeTab("ts") }}>Terms & Settings</Button>
-                            <Button className={`text-capitalize tab_btn_vs w-auto ${TabActive === 'fe' ? 'active_bvs' : ''}`} onClick={() => { changeTab("fe") }}>Feedback</Button>
+                            <Button variant="" className={`text-capitalize tab_btn_vs w-auto ${TabActive === 'me' ? 'active_bvs' : ''}`} onClick={() => { changeTab("me") }}>Milestones & Earnings</Button>
+                            <Button  variant=""className={`text-capitalize tab_btn_vs w-auto ${TabActive === 'mf' ? 'active_bvs' : ''}`} onClick={() => { changeTab("mf") }}>Messages & Files</Button>
+                            <Button  variant=""className={`text-capitalize tab_btn_vs w-auto ${TabActive === 'ts' ? 'active_bvs' : ''}`} onClick={() => { changeTab("ts") }}>Terms & Settings</Button>
+                            <Button variant="" className={`text-capitalize tab_btn_vs w-auto ${TabActive === 'fe' ? 'active_bvs' : ''}`} onClick={() => { changeTab("fe") }}>Feedback</Button>
                         </div>
                     </div>
                 </div>

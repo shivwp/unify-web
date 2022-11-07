@@ -143,13 +143,13 @@ const Testimonial = () => {
                   </Col>
                 </Row>
                 <div className="testimonial_info_btn">
-                  <Button onClick={(e) => setEditDetails(false)}>Save</Button>
+                  <Button variant="" onClick={(e) => setEditDetails(false)}>Save</Button>
                 </div>
               </>
             )}
           </div>
           <div className="testimonial_btn">
-            <Button onClick={onSave}>Submit Testimonial</Button>
+            <Button variant="" onClick={onSave}>Submit Testimonial</Button>
           </div>
         </div>
         <div className="testimonial_info">

@@ -74,12 +74,12 @@ const TitleBody = () => {
               <div className="btn_foot_sec flex-wrap">
                 <div className="fo_btn_c next_b_btn_c">
                   <Link to="/gettingstarted">
-                    <Button className="mrright-gppnew">Back</Button>
+                    <Button variant="" className="mrright-gppnew">Back</Button>
                   </Link>
                 </div>
                 <div className="fo_btn_c next_b_btn_c">
                   {/* <Link to="/title14"> */}
-                  <Button className="active_btn_blue" onClick={nextButton}>
+                  <Button variant="" className="active_btn_blue" onClick={nextButton}>
                     Next
                   </Button>
                   {/* </Link> */}

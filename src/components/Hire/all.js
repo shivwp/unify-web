@@ -21,8 +21,8 @@ const JonComponent = () => {
             <Col lg={12}>
                 <div className="box_vs_m">
                     <div className="d-flex flex-wrap tab_m_nodea">
-                        <Button className={`tab_btn_vs w-auto ${TabActive === 'offers' ? 'active_bvs' : ''}`} onClick={() => { changeTab("offers") }}>Offers</Button>
-                        <Button className={`tab_btn_vs w-auto ${TabActive === 'hired' ? 'active_bvs' : ''}`} onClick={() => { changeTab("hired") }}>Hired</Button>
+                        <Button variant="" className={`tab_btn_vs w-auto ${TabActive === 'offers' ? 'active_bvs' : ''}`} onClick={() => { changeTab("offers") }}>Offers</Button>
+                        <Button variant="" className={`tab_btn_vs w-auto ${TabActive === 'hired' ? 'active_bvs' : ''}`} onClick={() => { changeTab("hired") }}>Hired</Button>
                     </div>
                     {Tab}
                 </div>

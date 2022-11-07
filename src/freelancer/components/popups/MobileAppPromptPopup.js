@@ -33,10 +33,10 @@ const MobileAppPromptPopup = ({onCloseModal, open}) => {
      
         <div className="freelancer_popup_btns ">
           <div className="_cancle_submit">
-            <Button onClick={onCloseModal}>CANCEL</Button>
+            <Button variant="" onClick={onCloseModal}>CANCEL</Button>
           </div>
           <div className="_save_submit">
-            <Button>SEND</Button>
+            <Button variant="">SEND</Button>
           </div>
         </div>
       </Modal>

@@ -368,7 +368,7 @@ const Screen = () => {
           </Row>
         </div>
               <div className="mt-4 mb-4">
-                <Button className="send_pros_btn">send proposal</Button>
+                <Button variant="" className="send_pros_btn">send proposal</Button>
               </div>
       </Container>
     </>

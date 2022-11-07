@@ -70,7 +70,7 @@ const Screen = () => {
           </Col>
         </Row>
         <div>
-          <Button className="blue_btn_smm">Close Filters</Button>
+          <Button variant="" className="blue_btn_smm">Close Filters</Button>
         </div>
       </div>
     );
@@ -107,11 +107,11 @@ const Screen = () => {
         </div>
         <div className="text-right d-flex flex-wrap">
           <Link to="/view-job/review">
-            <Button className="blue_btn_smm font-weight-500">
+            <Button variant="" className="blue_btn_smm font-weight-500">
               View Proposals
             </Button>
           </Link>
-          <Button className="toggle_btn_dot">
+          <Button variant="" className="toggle_btn_dot">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="16"
@@ -146,7 +146,7 @@ const Screen = () => {
           <div className="my_jo_headin">My Jobs</div>
           <div className="post_job_btn_m">
             <Link to="/gettingstarted">
-              <Button className="font-weight-600 borderonh_blew">Post A New Job</Button>
+              <Button variant="" className="font-weight-600 borderonh_blew">Post A New Job</Button>
             </Link>
           </div>
         </div>
@@ -172,6 +172,7 @@ const Screen = () => {
             </Form.Group>
             <div className="ts_btn attach_f_btn wid_30_in">
               <Button
+               variant=""
                 className="transp_fil_btn fif_five"
                 onClick={() => {
                   ToggleFilter();

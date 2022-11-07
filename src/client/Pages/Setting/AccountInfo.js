@@ -295,10 +295,11 @@ const AccountInfo = ({
             This is a <span>Client</span> account
           </div>
           <div className="acc_btn">
-            <Button className="mrright-gppnew" onClick={setOpen}>
+            <Button  variant="" className="mrright-gppnew" onClick={setOpen}>
               Cancel
             </Button>
             <Button
+             variant=""
               type="button"
               className="cls_acc_btn"
               onClick={(e) => onSubmitClientData(e)}

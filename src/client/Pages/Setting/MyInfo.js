@@ -13,7 +13,7 @@ const MyInfo = ({ setOpen, getClientDetails }) => {
         <div className="d-flex justify-content-between align-items-center b-bottom-gr pt-1 pb-3">
           <div className="setting_b_head_s">Account</div>
           <div>
-            <Button className="round_b_btn" onClick={setOpen}>
+            <Button variant="" className="round_b_btn" onClick={setOpen}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
@@ -165,10 +165,11 @@ const MyInfo = ({ setOpen, getClientDetails }) => {
       </div>
       <div className="btn_foot_sec flex-wrap d-flex no-border">
         <div className="fo_btn_c next_b_btn_c">
-          <Button className="mrright-gppnew">Create New Account</Button>
+          <Button variant="" className="mrright-gppnew">Create New Account</Button>
         </div>
         <div className="fo_btn_c next_b_btn_c">
           <Button
+           variant=""
             className="active_btn_blue"
             onClick={() => setOpenCloseAccount(true)}
           >

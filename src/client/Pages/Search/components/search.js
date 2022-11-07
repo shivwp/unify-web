@@ -32,7 +32,7 @@ function ListCard() {
                   </div>
                   <div className="d-flex align-items-center">
                     <div>
-                      <Button className="transp_fil_btn heart_roun_btn btn-hf m-0 round_b_btn">
+                      <Button variant="" className="transp_fil_btn heart_roun_btn btn-hf m-0 round_b_btn">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="16"
@@ -46,7 +46,7 @@ function ListCard() {
                       </Button>
                     </div>
                     <div className="ts_btn attach_f_btn wid_30_in">
-                      <Button className="transp_fil_btn blue_btn_smm fw-500">
+                      <Button variant="" className="transp_fil_btn blue_btn_smm fw-500">
                         Invite To Job
                       </Button>
                     </div>
@@ -68,10 +68,10 @@ function ListCard() {
                 </div>
                 <div className="r_scroll_w_10">
                   <div className="slide_btnss freelancer_skill_sc flex_over_scrll">
-                    <Button>Mobile App Design</Button>
-                    <Button>User Experience Design</Button>
-                    <Button>User Interface Design</Button>
-                    <Button>Graphic Design</Button>
+                    <Button variant="">Mobile App Design</Button>
+                    <Button variant="">User Experience Design</Button>
+                    <Button variant="">User Interface Design</Button>
+                    <Button variant="">Graphic Design</Button>
                   </div>
                 </div>
               </div>
@@ -519,20 +519,20 @@ const Project_Search = () => {
                 <Form.Control type={`text`} placeholder={`Search`} />
               </div>
               <div className="post_job_btn_m in_btn_p_sm">
-                <Button className="fw-500 hovbord-blew">Advanced Search</Button>
+                <Button variant="" className="fw-500 hovbord-blew">Advanced Search</Button>
               </div>
             </div>
             {ListCard()}
           </Col>
           <Col lg={12}>
             <div className="pagiantion_node">
-              <Button className="pagi_butt">1</Button>
-              <Button className="pagi_butt">2</Button>
-              <Button className="pagi_butt">3</Button>
-              <Button className="pagi_butt">4</Button>
-              <Button className="pagi_butt">5</Button>
+              <Button  variant=""className="pagi_butt">1</Button>
+              <Button variant="" className="pagi_butt">2</Button>
+              <Button variant="" className="pagi_butt">3</Button>
+              <Button variant="" className="pagi_butt">4</Button>
+              <Button variant="" className="pagi_butt">5</Button>
               <div className="pagination_dots">...</div>
-              <Button className="pagi_butt">10</Button>
+              <Button variant="" className="pagi_butt">10</Button>
             </div>
           </Col>
         </Row>

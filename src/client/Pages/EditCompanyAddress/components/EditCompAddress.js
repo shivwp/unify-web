@@ -43,7 +43,7 @@ const EditCompAddress = () => {
                   </ul>
                 </div>
                 <div className="payment_btn">
-                  <Button type="button" className="pay_with_btn">
+                  <Button variant="" type="button" className="pay_with_btn">
                     Pay With PayPal
                   </Button>
                 </div>
@@ -98,6 +98,7 @@ const EditCompAddress = () => {
               </div>
               <div className="find_and_hire_button Edit_Addr">
                 <Button
+                 variant=""
                   type="button"
                   className="find_contact"
                   style={{

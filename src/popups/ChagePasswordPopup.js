@@ -88,12 +88,12 @@ const ChagePasswordPopup = ({ onCloseModal, open }) => {
 
         <div className="btn_foot_sec no-border flex-wrap d-flex">
           <div className="fo_btn_c next_b_btn_c">
-            <Button className="remove-posting-btns" onClick={onCloseModal}>
+            <Button variant="" className="remove-posting-btns" onClick={onCloseModal}>
               CANCEL
             </Button>
           </div>
           <div className="fo_btn_c next_b_btn_c">
-            <Button type="submit" className="active_btn_blue">
+            <Button variant="" type="submit" className="active_btn_blue">
               SAVE
             </Button>
           </div>

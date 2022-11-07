@@ -43,11 +43,11 @@ const Screen = () => {
                 <div className="btn_foot_sec flex-wrap d-flex no-border">
                   <div className="fo_btn_c next_b_btn_c">
                     <Link to="/dashboard">
-                      <Button className="mrright-gppnew">Cancel</Button>
+                      <Button  variant="" className="mrright-gppnew">Cancel</Button>
                     </Link>
                   </div>
                   <div className="fo_btn_c next_b_btn_c">
-                    <Button className="active_btn_blue">Invite</Button>
+                    <Button variant="" className="active_btn_blue">Invite</Button>
                   </div>
                 </div>
               </div>

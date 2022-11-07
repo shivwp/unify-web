@@ -43,7 +43,7 @@ const VerifySignUp = () => {
             />
           </div>
           <div className="otp_submit_btn">
-            <Button onClick={submitVerifyOTP}>VERIFY</Button>
+            <Button variant="" onClick={submitVerifyOTP}>VERIFY</Button>
           </div>
           <div className="suggetion_resend">
             Don't get the code <span onClick={resendOtp}>Resend</span>

@@ -48,7 +48,7 @@ const Screen = () => {
                   </div>
                 </div>
                 <div className="d-flex align-items-center">
-                  <Button className="transp_fil_btn heart_roun_btn">
+                  <Button variant="" className="transp_fil_btn heart_roun_btn">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="16"
@@ -61,7 +61,7 @@ const Screen = () => {
                     </svg>
                   </Button>
                   <div className="ts_btn attach_f_btn wid_30_in d-flex">
-                    <Button className="transp_fil_btn font-weight-500">
+                    <Button variant="" className="transp_fil_btn font-weight-500">
                       Hire
                     </Button>
                   </div>
@@ -98,10 +98,10 @@ const Screen = () => {
               </div>
               <div className="overflow-scroll">
                 <div className="slide_btnss freelancer_skill_sc">
-                  <Button>Mobile App Design</Button>
-                  <Button>User Experience Design</Button>
-                  <Button>User Interface Design</Button>
-                  <Button>Graphic Design</Button>
+                  <Button variant="">Mobile App Design</Button>
+                  <Button variant="">User Experience Design</Button>
+                  <Button variant="">User Interface Design</Button>
+                  <Button variant="">Graphic Design</Button>
                 </div>
               </div>
             </div>

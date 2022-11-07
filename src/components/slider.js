@@ -21,7 +21,7 @@ const slider = (props) => {
                 <div className="shuuter_man">
                   <div className="slider_get_btn md_btn_getstarted">
                     <Link to="/signup">
-                      <Button className="active_btn">GET STARTED</Button>
+                      <Button variant="" className="active_btn">GET STARTED</Button>
                     </Link>
                   </div>
                 </div>
@@ -37,7 +37,7 @@ const slider = (props) => {
                     </div>
                     <div className="slider_get_btn mdd-none">
                       <Link to="/signup">
-                        <Button className="active_btn">GET STARTED</Button>
+                        <Button variant="" className="active_btn">GET STARTED</Button>
                       </Link>
                     </div>
                   </div>

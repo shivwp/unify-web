@@ -133,10 +133,10 @@ const AddMobNoPupup = ({ open, onCloseModal }) => {
         </div>
         <div className="freelancer_popup_btns">
           <div className="_cancle_submit">
-            <Button onClick={onCloseModal}>CANCEL</Button>
+            <Button variant="" onClick={onCloseModal}>CANCEL</Button>
           </div>
           <div className="_save_submit">
-            <Button>NEXT</Button>
+            <Button variant="">NEXT</Button>
           </div>
         </div>
       </Modal>

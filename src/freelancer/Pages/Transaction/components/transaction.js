@@ -155,7 +155,7 @@ const Screen = () => {
                 <Col className="mt-2">
                   <div>
                     <div className="ts_btn attach_f_btn wid_30_in mt-0 mb-0">
-                      <Button
+                      <Button variant=""
                         className="only_textstyle font-weight-600"
                         onClick={() => setOpenFilter(!openFilter)}
                       >
@@ -179,10 +179,10 @@ const Screen = () => {
             <div className="download_lnk_csx">
               <div className="btn_foot_sec p-0 justify-content-center flex-wrap no-border mt-2">
                 <div className="fo_btn_c next_b_btn_c">
-                  <Button className="mrright-gppnew">Download CSV</Button>
+                  <Button variant="" className="mrright-gppnew">Download CSV</Button>
                 </div>
                 <div className="fo_btn_c next_b_btn_c">
-                  <Button className="active_btn_blue">
+                  <Button  variant="" className="active_btn_blue">
                     Download Invoinces
                   </Button>
                 </div>

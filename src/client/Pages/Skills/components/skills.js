@@ -152,9 +152,9 @@ const Skill = () => {
                   </div>
                   <div className="slide_btnss slider_shutter">
                     {selectSkills?.map((item, index) => (
-                      <Button key={item.id}>
+                      <Button variant="" key={item.id}>
                         {item.name}
-                        <Button onClick={() => removeSkills(index)}>X</Button>
+                        <Button variant="" onClick={() => removeSkills(index)}>X</Button>
                       </Button>
                     ))}
 
@@ -191,12 +191,12 @@ const Skill = () => {
               <div className="btn_foot_sec no-border flex-wrap d-flex">
                 <div className="fo_btn_c next_b_btn_c">
                   <Link to="/title14">
-                    <Button className="mrright-gppnew">Back</Button>
+                    <Button variant="" className="mrright-gppnew">Back</Button>
                   </Link>
                 </div>
                 <div className="fo_btn_c next_b_btn_c">
                   {/* <Link to="/scope"> */}
-                  <Button className="active_btn_blue" onClick={nextButton}>
+                  <Button variant="" className="active_btn_blue" onClick={nextButton}>
                     Next
                   </Button>
                   {/* </Link> */}

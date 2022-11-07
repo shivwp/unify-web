@@ -245,12 +245,12 @@ const Skill = () => {
               <div className="btn_foot_sec no-border mt-0 flex-wrap d-flex">
                 <div className="fo_btn_c next_b_btn_c">
                   <Link to="/skills">
-                    <Button className="mrright-gppnew">Back</Button>
+                    <Button variant="" className="mrright-gppnew">Back</Button>
                   </Link>
                 </div>
                 <div className="fo_btn_c next_b_btn_c">
                   {/* <Link to="/budget"> */}
-                  <Button className="active_btn_blue" onClick={nextButton}>
+                  <Button variant="" className="active_btn_blue" onClick={nextButton}>
                     Next
                   </Button>
                   {/* </Link> */}

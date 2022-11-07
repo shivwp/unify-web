@@ -17,7 +17,7 @@ const Question = () => {
           </div>
           <div className="on_time_h3">
             <h3>One-time</h3>
-            <Button className="round_b_btn">
+            <Button variant="" className="round_b_btn">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
@@ -114,12 +114,12 @@ const Question = () => {
           <div className="btn_foot_sec flex-wrap d-flex no-border mt-2">
             <Link to="/question1">
               <div className="fo_btn_c next_b_btn_c">
-                <Button className="mrright-gppnew">Back</Button>
+                <Button variant="" className="mrright-gppnew">Back</Button>
               </div>
             </Link>
             <Link to="/businesssize">
               <div className="fo_btn_c next_b_btn_c">
-                <Button className="active_btn_blue">Next</Button>
+                <Button variant="" className="active_btn_blue">Next</Button>
               </div>
             </Link>
           </div>

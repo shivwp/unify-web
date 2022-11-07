@@ -26,7 +26,7 @@ const Screen = () => {
                                         <div className='sett_y_b'>Unify Basic (Free)</div>
                                     </div>
                                     <div className="btn_foot_sec no-border mt-0 mb-0 p-0 fo_btn_c next_b_btn_c">
-                                        <Button className="bg-transparent h-color-b">Change Plan</Button>
+                                        <Button variant="" className="bg-transparent h-color-b">Change Plan</Button>
                                     </div>
                                 </div>
                                 <div className="d-flex justify-content-between align-items-center pt-2 pb-3">

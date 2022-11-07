@@ -57,7 +57,7 @@ const Screen = () => {
               </div>
               <div className="hourly_headin d-flex align-items-center">
                 Hourly
-                <Button className="round_b_btn">
+                <Button variant="" className="round_b_btn">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="16"
@@ -93,7 +93,7 @@ const Screen = () => {
               </div>
               <div className="hourly_headin d-flex align-items-center">
                 $30.00 /hr
-                <Button className="round_b_btn">
+                <Button variant="" className="round_b_btn">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="16"
@@ -136,7 +136,7 @@ const Screen = () => {
               </div>
               <div className="hourly_headin d-flex align-items-center">
                 40 hrs/week
-                <Button className="round_b_btn">
+                <Button variant="" className="round_b_btn">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="16"
@@ -252,7 +252,7 @@ const Screen = () => {
         </Form.Group>
         <div className="ts_btn attach_f_btn mt-0">
           <Form.Control type="file" />
-          <Button>
+          <Button variant="">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="16"
@@ -278,10 +278,10 @@ const Screen = () => {
       <div className="d-flex justify-content-between mt-4 mb-5">
         <div className="btn_job_back">
           <Link to="/view-job">
-            <Button className="fo_btn_c next_b_btn_c mb-2">Cancel</Button>
+            <Button variant="" className="fo_btn_c next_b_btn_c mb-2">Cancel</Button>
           </Link>
           <Link to="/hire-freelancer/addAddress">
-            <Button className="fo_btn_c next_b_btn_c mb-2 post_job_btn blue_ac_btn">
+            <Button variant="" className="fo_btn_c next_b_btn_c mb-2 post_job_btn blue_ac_btn">
               Continue
             </Button>
           </Link>

@@ -221,8 +221,8 @@ const AddEduc = (props) => {
             </div>
 
             <div className="popup_btns_new flex-wrap cwiewyehkk">
-              <Button className="trans_btn">Cancel</Button>
-              <Button onClick={() => AddEducation()}>Save</Button>
+              <Button variant="" className="trans_btn">Cancel</Button>
+              <Button variant="" onClick={() => AddEducation()}>Save</Button>
             </div>
           </div>
         </div>

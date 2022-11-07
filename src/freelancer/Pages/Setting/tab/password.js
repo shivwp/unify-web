@@ -34,7 +34,7 @@ const Screen = () => {
                 <div className="d-flex justify-content-between align-items-center b-bottom-gr pt-1 pb-3">
                   <div className="setting_b_head_s">Password</div>
                   <div>
-                    <Button
+                    <Button variant=""
                       className="round_b_btn"
                       onClick={() => {
                         Setpopup(<ChangePassword Popup={Setpopup} />);
@@ -83,7 +83,7 @@ const Screen = () => {
                     </div>
                   </div>
                   <div>
-                    <Button
+                    <Button variant=""
                       className="round_b_btn"
                       onClick={() => {
                         Setpopup(<VerificationPref Popup={Setpopup} />);
@@ -255,7 +255,7 @@ const Screen = () => {
                   </div>
                   <div className="d-flex justify-content-center align-items-center">
                     <div>
-                      <Button className="round_b_btn">
+                      <Button  variant="" className="round_b_btn">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="16"

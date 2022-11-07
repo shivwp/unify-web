@@ -167,12 +167,12 @@ const Screen = () => {
               <Col md={12}>
                 <div className="mb-2 mt-2 d-flex flex-wrap">
                   <div className="_cancle_submit">
-                    <Button onClick={() => setEditAccount(!editAccount)}>
+                    <Button variant="" onClick={() => setEditAccount(!editAccount)}>
                       CANCEL
                     </Button>
                   </div>
                   <div className="_save_submit">
-                    <Button onClick={EditContactInfo}>SAVE</Button>
+                    <Button variant="" onClick={EditContactInfo}>SAVE</Button>
                   </div>
                 </div>
               </Col>
@@ -353,12 +353,12 @@ const Screen = () => {
               <Col md={12}>
                 <div className="mb-2 mt-2 d-flex flex-wrap">
                   <div className="_cancle_submit">
-                    <Button onClick={() => setEditLocation(!editLocation)}>
+                    <Button variant="" onClick={() => setEditLocation(!editLocation)}>
                       CANCEL
                     </Button>
                   </div>
                   <div className="_save_submit">
-                    <Button onClick={EditLocationInfo}>SAVE</Button>
+                    <Button variant="" onClick={EditLocationInfo}>SAVE</Button>
                   </div>
                 </div>
               </Col>
@@ -612,7 +612,7 @@ const Screen = () => {
                   </div>
                 )}
                 <div className="close_account_btn">
-                  <Button onClick={() => seOpenCloseAcc(true)}>
+                  <Button variant="" onClick={() => seOpenCloseAcc(true)}>
                     Close Account
                   </Button>
                 </div>

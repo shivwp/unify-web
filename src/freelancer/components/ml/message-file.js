@@ -65,7 +65,7 @@ const Screen = () => {
             </div>
           </div>
           <div className="mess_footer_cm">
-            <Button className="link_btn_mfc">
+            <Button variant="" className="link_btn_mfc">
               <Form.Label className="attact_file_inp" htmlFor="attact_file_inp">
                 <Form.Control
                   type="file"
@@ -91,7 +91,7 @@ const Screen = () => {
               </Form.Label>
             </Button>
             <Form.Control type="text" placeholder="Message" />
-            <Button className="send_btn_mfc">SEND</Button>
+            <Button variant="" className="send_btn_mfc">SEND</Button>
           </div>
         </Col>
         <Col md={4}>

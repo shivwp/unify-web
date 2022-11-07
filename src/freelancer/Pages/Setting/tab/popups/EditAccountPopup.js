@@ -45,12 +45,12 @@ const EditTeamPopup = ({ open, onCloseModal }) => {
 
         <div className="btn_foot_sec no-border flex-wrap d-flex">
           <div className="fo_btn_c next_b_btn_c mb-1">
-            <Button className="remove-posting-btns mrright-gppnew" onClick={onCloseModal}>
+            <Button variant="" className="remove-posting-btns mrright-gppnew" onClick={onCloseModal}>
               CANCEL
             </Button>
           </div>
           <div className="fo_btn_c next_b_btn_c mb-1">
-            <Button className="active_btn_blue">SAVE</Button>
+            <Button variant="" className="active_btn_blue">SAVE</Button>
           </div>
         </div>
       </Modal>

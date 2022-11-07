@@ -61,7 +61,7 @@ const Screen = () => {
                     </Col>
                 </Row>
                 <div className="skip_question_btn_frel">
-                   <Link to="/freelancer/dashboard"><Button>Skip for now &gt;&gt;</Button></Link>
+                   <Link to="/freelancer/dashboard"><Button variant="">Skip for now &gt;&gt;</Button></Link>
                 </div>
             </Container>
         </>

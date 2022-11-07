@@ -46,7 +46,7 @@ const ForgotPass = () => {
             </div>
           </Form.Group>
           <div className="forgot_pass_btn">
-            <Button onClick={sendEmail}>SEND</Button>
+            <Button variant="" onClick={sendEmail}>SEND</Button>
           </div>
         </div>
       </div>

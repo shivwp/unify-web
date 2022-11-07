@@ -50,7 +50,7 @@ const Screen = () => {
                   </div>
                 </div>
                 <div className="ts_btn attach_f_btn wid_30_in d-flex">
-                  <Button className="fw-500">unarchive</Button>
+                  <Button variant="" className="fw-500">unarchive</Button>
                 </div>
               </div>
               <div className="freelancer_timin d-flex">

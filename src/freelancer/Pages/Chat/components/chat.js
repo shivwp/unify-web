@@ -48,6 +48,7 @@ const PopupContact = (props) => {
             <div className="hding_cbox font-weight-600">Add People</div>
             <div className="close_btnchatpoup">
               <Button
+               variant=""
                 onClick={() => {
                   props.SetPopup();
                 }}
@@ -104,7 +105,7 @@ const PopupContact = (props) => {
 
             <div className="btn_foot_sec justify-content-end flex-wrap no-border mt-2">
               <div className="fo_btn_c next_b_btn_c">
-                <Button
+                <Button variant=""
                   className="no-border newchat-pad mrright-gppnew"
                   onClick={() => {
                     props.SetPopup();
@@ -114,7 +115,7 @@ const PopupContact = (props) => {
                 </Button>
               </div>
               <div className="fo_btn_c next_b_btn_c">
-                <Button className="active_btn_blue newchat-pad bgcolor-dark">
+                <Button variant="" className="active_btn_blue newchat-pad bgcolor-dark">
                   Invite
                 </Button>
               </div>
@@ -143,7 +144,7 @@ const Screen = () => {
             <div className="chat_header_buttons align-items-center w-50 justify-content-between cewbrteve">
               <div className="d-flex cewbrtever">
                 <Link to="/freelancer/contact-info">
-                  <Button>
+                  <Button variant="">
                     <svg
                       id="tools"
                       xmlns="http://www.w3.org/2000/svg"
@@ -208,7 +209,7 @@ const Screen = () => {
                   </Button>
                 </Link>
                 <Link to="/freelancer/chat">
-                  <Button>
+                  <Button variant="">
                     <svg
                       id="chat"
                       xmlns="http://www.w3.org/2000/svg"
@@ -284,7 +285,7 @@ const Screen = () => {
                   </Button>
                 </Link>
                 <Link to="/freelancer/profile">
-                  <Button>
+                  <Button variant="">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="31.77"
@@ -339,7 +340,7 @@ const Screen = () => {
                     </svg>
                   </Button>
                 </Link>
-                <Button
+                <Button variant=""
                   className="round-chat-btn"
                   onClick={() => {
                     SetPopup(<PopupContact SetPopup={SetPopup} />);
@@ -391,10 +392,10 @@ const Screen = () => {
               <div className="chat_header_buttons flex-wrap">
                 <div className="vpropo_cbrntn">
                   <Link to="/freelancer/active-contract">
-                    <Button>VIEW PROPOSAL</Button>
+                    <Button variant="">VIEW PROPOSAL</Button>
                   </Link>
                 </div>
-                <Button>
+                <Button variant="">
                   <svg
                     id="video-camera"
                     xmlns="http://www.w3.org/2000/svg"
@@ -449,7 +450,7 @@ const Screen = () => {
                     </g>
                   </svg>
                 </Button>
-                <Button>
+                <Button variant="">
                   <svg
                     id="phone-call"
                     xmlns="http://www.w3.org/2000/svg"
@@ -473,7 +474,7 @@ const Screen = () => {
                   </svg>
                 </Button>
               </div>
-              <Button>
+              <Button variant="">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="40.136"
@@ -567,7 +568,7 @@ const Screen = () => {
                   </g>
                 </svg>
               </Button>
-              <Button>
+              <Button variant="">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="45.713"
@@ -591,7 +592,7 @@ const Screen = () => {
                   </g>
                 </svg>
               </Button>
-              <Button>
+              <Button variant="">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="29.144"
@@ -632,7 +633,7 @@ const Screen = () => {
                   </g>
                 </svg>
               </Button>
-              <Button>
+              <Button variant="">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="27.207"
@@ -1059,7 +1060,7 @@ const Screen = () => {
                   </div>
                 </div>
                 <div className="prf_dise_btns">
-                  <Button>
+                  <Button variant="">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="85.817"
@@ -1107,7 +1108,7 @@ const Screen = () => {
                       </g>
                     </svg>
                   </Button>
-                  <Button>
+                  <Button variant="">
                     <svg
                       id="phone-call"
                       xmlns="http://www.w3.org/2000/svg"
@@ -1139,7 +1140,7 @@ const Screen = () => {
             <Col lg={9} sm={12}>
               <div className="d-flex align-items-center">
                 <div className="file_link_cbtn">
-                  <Button>
+                  <Button variant="">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="44.801"
@@ -1166,7 +1167,7 @@ const Screen = () => {
                 </div>
                 <div className="fl_input_chat">
                   <Form.Control type="text" />
-                  <Button>SEND</Button>
+                  <Button variant="">SEND</Button>
                 </div>
               </div>
             </Col>

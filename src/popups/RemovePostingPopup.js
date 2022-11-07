@@ -60,12 +60,12 @@ const RemovePostingPopup = ({ open, onCloseModal }) => {
         </div>
         <div className="btn_foot_sec no-border flex-wrap d-flex">
           <div className="fo_btn_c next_b_btn_c">
-            <Button className="remove-posting-btns" onClick={onCloseModal}>
+            <Button variant="" className="remove-posting-btns" onClick={onCloseModal}>
               CANCEL
             </Button>
           </div>
           <div className="fo_btn_c next_b_btn_c">
-            <Button className="active_btn_blue" style={{ fontWeight: 600 }}>
+            <Button  variant="" className="active_btn_blue" style={{ fontWeight: 600 }}>
               YES, CLOSE JOB
             </Button>
           </div>

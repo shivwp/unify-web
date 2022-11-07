@@ -122,10 +122,10 @@ const JonComponent = () => {
           <div className="b_bot_inp pt-0">
             <div className="input_t_lab">Skills</div>
             <div className="slide_btnss">
-              <Button>Mobile App Design</Button>
-              <Button>User Experience Design</Button>
-              <Button>User Interface Design</Button>
-              <Button>Graphic Design</Button>
+              <Button variant="">Mobile App Design</Button>
+              <Button variant="">User Experience Design</Button>
+              <Button variant="">User Interface Design</Button>
+              <Button variant="">Graphic Design</Button>
             </div>
           </div>
           <div className="b_bot_inp pt-0">
@@ -152,7 +152,7 @@ const JonComponent = () => {
       <Col lg={4}>
         <div className="box_vs_m">
           <div className="r_in_tab_h">
-            <Button className="round_b_btn">
+            <Button  variant="" className="round_b_btn">
               <svg
                 width="16"
                 height="16"
@@ -169,7 +169,7 @@ const JonComponent = () => {
             <h1>Edit Posting</h1>
           </div>
           <div className="r_in_tab_h">
-            <Button className="round_b_btn">
+            <Button variant="" className="round_b_btn">
               <svg
                 width="16"
                 height="16"
@@ -186,7 +186,7 @@ const JonComponent = () => {
             <h1>View Posting</h1>
           </div>
           <div className="r_in_tab_h">
-            <Button className="round_b_btn">
+            <Button  variant="" className="round_b_btn">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
@@ -201,7 +201,7 @@ const JonComponent = () => {
             <h1>Reuse Posting</h1>
           </div>
           <div className="r_in_tab_h">
-            <Button className="round_b_btn">
+            <Button variant=""  className="round_b_btn">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="20"
@@ -217,6 +217,7 @@ const JonComponent = () => {
           </div>
           <div className="r_in_tab_h">
             <Button
+             variant=""
               className="round_b_btn"
               onClick={() => {
                 navigate("/view-job/private");
@@ -259,7 +260,7 @@ const JonComponent = () => {
                 </div>
               </div>
               <div>
-                <Button className="round_b_btn">
+                <Button variant="" className="round_b_btn">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="16"

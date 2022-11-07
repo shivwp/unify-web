@@ -92,14 +92,15 @@ const CompanyContactInfo = () => {
             </Col>
           </Row>
           <div className="acc_btn">
-            <Button className="cancel_btn">CANCEL</Button>
-            <Button className="save_btn">SAVE</Button>
+            <Button variant="" className="cancel_btn">CANCEL</Button>
+            <Button variant="" className="save_btn">SAVE</Button>
           </div>
           <div className="account_type_alert">
             This is a <span>Client</span> account
           </div>
           <div className="acc_btn">
             <Button
+             variant=""
               className="cls_acc_btn"
               onClick={() => setOpenCloseAccount(true)}
             >

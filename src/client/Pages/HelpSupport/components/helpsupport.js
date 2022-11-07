@@ -45,6 +45,7 @@ const Screen = () => {
         </div>
         <div className="d-flex flex-wrap tab_m_nodea all_bt_fif tab_scroll_cont">
           <Button
+           variant=""
             className={`tab_btn_vs w-auto ${
               TabActive === "FREELANCER" ? "active_bvs" : ""
             }`}
@@ -55,6 +56,7 @@ const Screen = () => {
             I'm a Freelancer
           </Button>
           <Button
+           variant=""
             className={`tab_btn_vs w-auto ${
               TabActive === "CLIENT" ? "active_bvs" : ""
             }`}

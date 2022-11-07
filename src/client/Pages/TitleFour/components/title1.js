@@ -101,12 +101,12 @@ const TitleBody = () => {
               <div className="btn_foot_sec flex-wrap d-flex">
                 <div className="fo_btn_c next_b_btn_c">
                   <Link to="/title">
-                    <Button className="mrright-gppnew">Back</Button>
+                    <Button variant="" className="mrright-gppnew">Back</Button>
                   </Link>
                 </div>
                 <div className="fo_btn_c next_b_btn_c">
                   {/* <Link to="/skills"> */}
-                  <Button className="active_btn_blue" onClick={nextButton}>
+                  <Button variant="" className="active_btn_blue" onClick={nextButton}>
                     Next
                   </Button>
                   {/* </Link> */}

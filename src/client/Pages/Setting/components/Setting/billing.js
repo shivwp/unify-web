@@ -25,7 +25,7 @@ const Screen = () => {
                     <div className="sett_y_b">Your balance due is $0.00</div>
                   </div>
                   <div className="btn_foot_sec no-border mt-0 mb-0 p-0 fo_btn_c next_b_btn_c">
-                    <Button className="bg-transparent h-color-b">
+                    <Button variant="" className="bg-transparent h-color-b">
                       Pay Now
                     </Button>
                   </div>
@@ -38,7 +38,7 @@ const Screen = () => {
                     <div className="sett_y_b">Your balance due is $0.00</div>
                   </div>
                   <div className="btn_foot_sec no-border mt-0 mb-0 p-0 fo_btn_c next_b_btn_c">
-                    <Button className="bg-transparent h-color-b">
+                    <Button variant="" className="bg-transparent h-color-b">
                       Add a new billing method
                     </Button>
                   </div>
@@ -62,7 +62,7 @@ const Screen = () => {
                     <div className="sett_y_b">$0.00/month</div>
                   </div>
                   <div className="btn_foot_sec no-border mt-0 mb-0 p-0 fo_btn_c next_b_btn_c">
-                    <Button className="bg-transparent h-color-b">Cancel</Button>
+                    <Button variant="" className="bg-transparent h-color-b">Cancel</Button>
                   </div>
                 </div>
                 <div className="chan_sub_n_s">

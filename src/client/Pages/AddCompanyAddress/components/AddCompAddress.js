@@ -55,6 +55,7 @@ const AddCompAddress = () => {
                   </Row>
                   <Link to="/hire-freelancer/edit-address">
                     <Button
+                      variant=""
                       type="button"
                       className="save_Address"
                       style={{ fontWeight: 600 }}

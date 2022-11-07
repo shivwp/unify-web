@@ -126,7 +126,7 @@ const Filter = () => {
         </Col>
       </Row>
       <div>
-        <Button className="blue_btn_smm">Apply Filters</Button>
+        <Button  variant="" className="blue_btn_smm">Apply Filters</Button>
       </div>
     </div>
   );

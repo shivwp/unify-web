@@ -64,6 +64,7 @@ const Signup = ({
           <div className="sign_buttons_group sign_upbtn_heffect">
             {/* <Link to={`/question1`} className='signup_mlr_20px_a'> */}
             <Button
+             variant=""
               onClick={(e) => selectUserType(e)}
               type="button"
               className={userType === "client" ? "userTypeActive" : "userType"}
@@ -74,6 +75,7 @@ const Signup = ({
             {/* </Link> */}
             {/* <Link to={`/freelancer/question1`} className='signup_mlr_20px_a'> */}
             <Button
+             variant=""
               type="button"
               onClick={(e) => selectUserType(e)}
               className={
@@ -385,12 +387,13 @@ const Signup = ({
                 </div>
 
                 <div className="sign_form_btn_subm">
-                  <Button type="submit">CREATE MY ACCOUNT</Button>
+                  <Button variant="" type="submit">CREATE MY ACCOUNT</Button>
                 </div>
               </Form>
 
               <div className="sign_form_btn_subm sign_in_social_btn mr_sign_in_n signup_social_btn_n">
                 <Button
+                 variant=""
                   className="apple_btn mr_sign_in_n"
                   style={{ fontSize: 15 }}
                   onClick={handleAppleSignIn}
@@ -409,6 +412,7 @@ const Signup = ({
                   Continue with Apple
                 </Button>
                 <Button
+                 variant=""
                   className="google_btn"
                   style={{ fontSize: 15 }}
                   onClick={handleGoogleSignIn}

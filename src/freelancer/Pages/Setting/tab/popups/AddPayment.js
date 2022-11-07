@@ -114,7 +114,7 @@ const AddPayment = (props) => {
             </div>
 
             <div className="popup_btns_new flex-wrap getpaidsve_btn">
-              <Button
+              <Button variant=""
                 onClick={() => {
                   props.Popup();
                 }}

@@ -215,12 +215,12 @@ const Category = () => {
           <div className="btn_foot_sec no-border d-flex flex-wrap">
             <Link to="/create-category">
               <div className="fo_btn_c next_b_btn_c">
-                <Button>Back</Button>
+                <Button variant="">Back</Button>
               </div>
             </Link>
             <Link to="/question1">
               <div className="fo_btn_c next_b_btn_c">
-                <Button className="active_btn_blue">Next</Button>
+                <Button variant="" className="active_btn_blue">Next</Button>
               </div>
             </Link>
           </div>

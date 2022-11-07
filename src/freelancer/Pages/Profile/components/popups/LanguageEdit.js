@@ -127,7 +127,7 @@ const LanguageEdit = (props) => {
                           >
                             <span>Proficiency level</span>{" "}
                             {inputList?.length !== 1 ? (
-                              <Button
+                              <Button variant=""
                                 onClick={() => removeInputFields(i)}
                                 style={{
                                   border: "none",
@@ -180,7 +180,7 @@ const LanguageEdit = (props) => {
             </div>
             {/* {inputList.length < 5 && ( */}
             <div style={{ display: "flex", justifyContent: "flex-end" }}>
-              <Button
+              <Button variant=""
                 className="addMoreLanguageBtn"
                 disabled={
                   !(
@@ -195,7 +195,7 @@ const LanguageEdit = (props) => {
             </div>
             {/* )} */}
             <div className="popup_btns_new flex-wrap cwiewyehkk">
-              <Button
+              <Button variant=""
                 className="trans_btn"
                 onClick={() => {
                   props.Popup();
@@ -204,7 +204,7 @@ const LanguageEdit = (props) => {
                 Cancel
               </Button>
 
-              <Button
+              <Button variant=""
                 disabled={
                   !(
                     inputList?.slice(-1)[0].language &&

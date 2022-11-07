@@ -36,7 +36,7 @@ const VerifyForgotOTP = () => {
             <OTPInput value={OTP} onChange={setOTP} autoFocus OTPLength={4} otpType="number" disabled={false}  />
           </div>
           <div className="otp_submit_btn">
-            <Button onClick={onVerify}>VERIFY</Button>
+            <Button variant="" onClick={onVerify}>VERIFY</Button>
           </div>
           <div className="suggetion_resend">
             Don't get the code <span onClick={resendOtp}>Resend</span>

@@ -179,7 +179,7 @@ const Screen = () => {
             </div>
             <div className="d-flex flex-wrap align-items-center">
               <div className="fo_btn_c next_b_btn_c">
-                <Button className="active_btn_blue filter_svg_btnwni">
+                <Button variant="" className="active_btn_blue filter_svg_btnwni">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="20"
@@ -194,7 +194,7 @@ const Screen = () => {
                 </Button>
               </div>
               <div className="toggle_btn_dot">
-                <Button className="toggle_btn_dot">
+                <Button variant="" className="toggle_btn_dot">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="16"

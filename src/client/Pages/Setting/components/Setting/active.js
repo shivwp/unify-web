@@ -37,6 +37,7 @@ const Screen = ({ setOpen }) => {
         <Col sm={12} md={4}>
           <div className="ts_btn attach_f_btn wid_30_in d-flex justify-content-right w-20">
             <Button
+             variant=""
               className="transp_fil_btn"
               onClick={() => {
                 ToggleFilter();

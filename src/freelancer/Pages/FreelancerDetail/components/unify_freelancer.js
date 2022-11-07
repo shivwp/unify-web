@@ -175,7 +175,7 @@ const Screen = () => {
                   </div>
                 </div>
                 <div className="hire_now_node">
-                  <Button>Hire Now</Button>
+                  <Button variant="">Hire Now</Button>
                 </div>
                 <div className="hourly_amout_node flex-wrap">
                   <div className="wallet_icon">

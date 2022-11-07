@@ -171,12 +171,12 @@ const JobPosting = () => {
               <div className="btn_foot_sec flex-wrap d-flex">
                 <div className="fo_btn_c next_b_btn_c">
                   <Link to="/dashboard">
-                    <Button className="mrright-gppnew">Cancel</Button>
+                    <Button variant="" className="mrright-gppnew">Cancel</Button>
                   </Link>
                 </div>
                 <div className="fo_btn_c next_b_btn_c">
                   {/* <Link to="/title"> */}
-                  <Button className="active_btn_blue" onClick={saveButton}>
+                  <Button variant="" className="active_btn_blue" onClick={saveButton}>
                     Continue
                   </Button>
                   {/* </Link> */}

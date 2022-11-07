@@ -167,6 +167,7 @@ const Screen = () => {
               </div>
               <div className="btn_group_be">
                 <Button
+                 variant=""
                   className={`st_bgbe ${
                     tabActive === "tblscreen" ? "active_btn_be" : ""
                   }`}
@@ -177,6 +178,7 @@ const Screen = () => {
                   Billings & Earnings
                 </Button>
                 <Button
+                 variant=""
                   className={`sec_bgbe ${
                     tabActive === "earning" ? "active_btn_be" : ""
                   }`}
@@ -188,7 +190,7 @@ const Screen = () => {
                 </Button>
               </div>
               <div className="fo_btn_c next_b_btn_c">
-                <Button className="active_btn_blue filter_svg_btnwni">
+                <Button variant="" className="active_btn_blue filter_svg_btnwni">
                   Download CSV
                 </Button>
               </div>

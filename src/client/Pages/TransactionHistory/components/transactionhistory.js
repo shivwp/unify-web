@@ -58,7 +58,7 @@ const Screen = () => {
                 <Col className="mt-2">
                   <div>
                     <div className="ts_btn attach_f_btn wid_30_in mt-0 mb-0">
-                      <Button className="transp_fil_btn">
+                      <Button variant="" className="transp_fil_btn">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="16"
@@ -79,10 +79,10 @@ const Screen = () => {
             <div className="download_lnk_csx">
               <div className="btn_foot_sec p-0 justify-content-center flex-wrap no-border mt-2">
                 <div className="fo_btn_c next_b_btn_c">
-                  <Button className="hideen_csv_do_btn mrright-gppnew">Download CSV</Button>
+                  <Button variant="" className="hideen_csv_do_btn mrright-gppnew">Download CSV</Button>
                 </div>
                 <div className="fo_btn_c next_b_btn_c">
-                  <Button className="hideen_csv_do_btn">
+                  <Button variant="" className="hideen_csv_do_btn">
                     Download Invoinces
                   </Button>
                 </div>
@@ -110,7 +110,7 @@ const Screen = () => {
               <div className="download_lnk_csx">
                 <div className="btn_foot_sec justify-content-center flex-wrap no-border m-0 p-0">
                   <div className="fo_btn_c next_b_btn_c">
-                    <Button className="active_btn_blue">Apply</Button>
+                    <Button variant="" className="active_btn_blue">Apply</Button>
                   </div>
                 </div>
               </div>

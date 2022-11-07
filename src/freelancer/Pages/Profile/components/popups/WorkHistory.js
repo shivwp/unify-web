@@ -34,7 +34,7 @@ const WorkHistory = () => {
             <Star />
             <span>5.00 Oct 29, 2021 - Dec 3, 2021</span>
             <div className="myskill_hdingn m-0">
-              <Button>
+              <Button variant="">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="18"

@@ -35,6 +35,7 @@ const Screen = () => {
                     <div className="setting_b_head_s">Password</div>
                     <div>
                       <Button
+                       variant=""
                         className="round_b_btn"
                         type="button"
                         onClick={() => {
@@ -85,6 +86,7 @@ const Screen = () => {
                     </div>
                     <div>
                       <Button
+                       variant=""
                         className="round_b_btn"
                         onClick={() => {
                           setOpenVerification(true);

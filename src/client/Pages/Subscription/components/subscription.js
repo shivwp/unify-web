@@ -36,7 +36,7 @@ const Subscriptionplan = () => {
                   </ul>
                   <div>
                     <Link to="/dashboard">
-                      <Button className="btn_chose_pl">CHOOSE PLAN</Button>
+                      <Button variant="" className="btn_chose_pl">CHOOSE PLAN</Button>
                     </Link>
                   </div>
                 </div>
@@ -63,7 +63,7 @@ const Subscriptionplan = () => {
                   </ul>
                   <div>
                     <Link to="/dashboard">
-                      <Button className="btn_chose_pl">CHOOSE PLAN</Button>
+                      <Button variant="" className="btn_chose_pl">CHOOSE PLAN</Button>
                     </Link>
                   </div>
                 </div>
@@ -90,7 +90,7 @@ const Subscriptionplan = () => {
                   </ul>
                   <div>
                     <Link to="/dashboard">
-                      <Button className="btn_chose_pl">CHOOSE PLAN</Button>
+                      <Button variant="" className="btn_chose_pl">CHOOSE PLAN</Button>
                     </Link>
                   </div>
                 </div>

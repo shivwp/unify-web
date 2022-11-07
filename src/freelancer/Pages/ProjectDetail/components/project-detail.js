@@ -81,12 +81,12 @@ const projectdetail = () => {
                         <div className="s_trans_bos s_nav_body box_web_req">
                             <div className='fl_end_b abso_cen'>
                                 <div className="fb_btns_s_pro pd_n_fbspro">
-                                    <Button className='bg-trans_s_pro bg_li_grey' style={{margin: '0 3px', padding: '12px 20px'}}>
+                                    <Button variant="" className='bg-trans_s_pro bg_li_grey' style={{margin: '0 3px', padding: '12px 20px'}}>
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-heart-fill heart_btn" viewBox="0 0 16 16">
                                             <path fillRule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z" />
                                         </svg>
                                     </Button>
-                                    <Link to="/freelancer/send-proposal"><Button className="pd_n_sendp">Send Proposal</Button></Link>
+                                    <Link to="/freelancer/send-proposal"><Button variant="" className="pd_n_sendp">Send Proposal</Button></Link>
                                 </div>
                             </div>
                             <div className='pd_head_on pd_head_h1'><h1>Website Designer Required For Directory Theme</h1></div>
@@ -222,7 +222,7 @@ const projectdetail = () => {
                                 </div>
                                 <div>
                                     <div className="fb_btns_s_pro">
-                                    <Link to="/freelancer/send-proposal"><Button className="pd_n_sendp pad_n_pdd">Send Proposal</Button></Link>
+                                    <Link to="/freelancer/send-proposal"><Button variant="" className="pd_n_sendp pad_n_pdd">Send Proposal</Button></Link>
                                     </div>
                                 </div>
                             </div>
@@ -253,7 +253,7 @@ const projectdetail = () => {
                             <div className="comp_name_h"><h3>HRM Recruitment Center</h3></div>
                             <div className="comp_name_p"><p>We are a computerized wellbeing startup with a spry and high-speed climate. We are searching for a Senior, RELIABLE portable application…</p></div>
                             <div className="view-p_btn pd_n_vbbtn">
-                                <Button>View profile</Button>
+                                <Button variant="">View profile</Button>
                             </div>
                             <div className="comp_name_p"><p>We are a computerized wellbeing startup with a spry and high-speed climate. We are searching for a Senior, RELIABLE portable application…</p></div>
                         </div>
