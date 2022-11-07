@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import Button from 'react-bootstrap/Button';
+import Button from "react-bootstrap/Button";
 import { onForgotPassword } from "../redux/actions/authActions";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import {
@@ -9,13 +9,15 @@ import {
 } from "../redux/actions/profileAction";
 import { useEffect } from "react";
 import { Row, Col } from "react-bootstrap";
-import Form from 'react-bootstrap/Form';
+import Form from "react-bootstrap/Form";
 
 const Testimonial = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [values, setValues] = useState({});
   const [editDetails, setEditDetails] = useState(false);
+  const [successPopup, setSuccessPopup] = useState(false);
+
   const id = useParams();
 
   const handleOnChange = (e) => {
@@ -38,7 +40,7 @@ const Testimonial = () => {
       last_name: values?.last_name,
       title: values.title,
     };
-    dispatch(onSubmitTestimonial(data));
+    dispatch(onSubmitTestimonial(data, successPopup, setSuccessPopup, navigate));
   };
 
   return (
@@ -157,6 +159,7 @@ const Testimonial = () => {
           </span>
         </div>
       </div>
+      {successPopup}
     </>
   );
 };

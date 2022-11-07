@@ -316,7 +316,9 @@ const EditSkill = (props) => {
     const data = {
       skill_id: selectSkills?.map((item) => item.skill_id)?.toString(),
     };
-    dispatch(onEditSkills(data, props.Popup));
+    dispatch(
+      onEditSkills(data, props.Popup, props.successPopup, props.setSuccessPopup)
+    );
   };
 
   $(document).mouseup(function (e) {
@@ -416,7 +418,15 @@ const EditTitle = (props) => {
       title: values.occuption,
       description: values.description,
     };
-    dispatch(onEditDesignation(data, props.Popup));
+
+    dispatch(
+      onEditDesignation(
+        data,
+        props.Popup,
+        props.successPopup,
+        props.setSuccessPopup
+      )
+    );
   };
   return (
     <>
@@ -526,7 +536,9 @@ const VideoIntro = (props) => {
       video: values.url,
       video_type: type.name,
     };
-    dispatch(onEditVideo(data, props.Popup));
+    dispatch(
+      onEditVideo(data, props.Popup, props.successPopup, props.setSuccessPopup)
+    );
   };
   return (
     <>
@@ -695,7 +707,14 @@ const AddEmployment = (props) => {
       start_date: values.start_date,
       end_date: values.end_date,
     };
-    dispatch(onAddEmployment(data, props.Popup));
+    dispatch(
+      onAddEmployment(
+        data,
+        props.Popup,
+        props.successPopup,
+        props.setSuccessPopup
+      )
+    );
   };
   console.log(values);
 
@@ -1045,7 +1064,14 @@ const LanguageEdit = (props) => {
       data[ele.language] = ele.level;
     });
     // console.log(data);
-    dispatch(onEditLanguage({ languages: data }, props.Popup));
+    dispatch(
+      onEditLanguage(
+        { languages: data },
+        props.Popup,
+        props.successPopup,
+        props.setSuccessPopup
+      )
+    );
   };
 
   useEffect(() => {
@@ -1406,8 +1432,12 @@ const UserVerification = (props) => {
 };
 const VisiblityPopup = (props) => {
   const dispatch = useDispatch();
-  const [projectPref, setProjectPref] = useState();
-  const [visiblity, setVisiblity] = useState();
+  const [projectPref, setProjectPref] = useState({
+    name: props?.data?.project_preference,
+  });
+  const [visiblity, setVisiblity] = useState({
+    name: props?.data?.visibility,
+  });
 
   const visiblityOps = [
     { name: "public", label: "Public" },
@@ -1426,14 +1456,21 @@ const VisiblityPopup = (props) => {
       project_preference: projectPref.name,
     };
     console.log(data);
-    dispatch(editVisiblity(data, props.Popup));
+    dispatch(
+      editVisiblity(
+        data,
+        props.Popup,
+        props.successPopup,
+        props.setSuccessPopup
+      )
+    );
   };
   return (
     <>
       <div className="bg_wrapper_popup_new">
         <div className="popup_box_bpn profile_nceqoi_popup pb-4">
           <div className="popup_header pb-0">
-            <div className="p_header_hding">Visiblity</div>
+            <div className="p_header_hding">Visibility</div>
             <div
               className="close_pp_btn"
               onClick={() => {
@@ -1450,26 +1487,42 @@ const VisiblityPopup = (props) => {
               <div className="mt-4">
                 <div className="popup_form_element">
                   <Form.Label className="text-black font-size-13px font-weight-500">
-                    Visiblity
+                    Visibility
                   </Form.Label>
                   <Select
                     className="font-size-13px"
                     placeholder="Select Visiblity"
                     options={visiblityOps}
                     onChange={setVisiblity}
+                    defaultValue={
+                      props?.data
+                        ? {
+                            name: props?.data?.visibility,
+                            label: props?.data?.visibility,
+                          }
+                        : null
+                    }
                   />
                 </div>
               </div>
               <div className="mt-4">
                 <div className="popup_form_element">
                   <Form.Label className="text-black font-size-13px font-weight-500">
-                    Project Prefrence
+                    Project Preference
                   </Form.Label>
                   <Select
                     className="font-size-13px"
                     placeholder="Select Project Prefrance"
                     options={projPrefrenceOps}
                     onChange={setProjectPref}
+                    defaultValue={
+                      props?.data
+                        ? {
+                            name: props?.data?.project_preference,
+                            label: props?.data?.project_preference,
+                          }
+                        : null
+                    }
                   />
                 </div>
               </div>
@@ -1555,7 +1608,14 @@ const AddEduc = (props) => {
       area_study: values?.area_study,
       description: values?.description,
     };
-    dispatch(onAddEducation(data, props.Popup));
+    dispatch(
+      onAddEducation(
+        data,
+        props.Popup,
+        props.successPopup,
+        props.setSuccessPopup
+      )
+    );
   };
 
   return (
@@ -1731,7 +1791,14 @@ const AddCert = (props) => {
         description: values.description,
       };
     }
-    dispatch(onEditCertificate(data, props.Popup));
+    dispatch(
+      onEditCertificate(
+        data,
+        props.Popup,
+        props.successPopup,
+        props.setSuccessPopup
+      )
+    );
   };
   return (
     <>
@@ -1829,7 +1896,14 @@ const ReqTestimonial = (props) => {
       type: values?.type,
       description: values?.description,
     };
-    dispatch(onRequestTestimonial(data));
+    dispatch(
+      onRequestTestimonial(
+        data,
+        props.Popup,
+        props.successPopup,
+        props.setSuccessPopup
+      )
+    );
   };
 
   return (
@@ -1955,7 +2029,6 @@ const ReqTestimonial = (props) => {
                 className="font-weight-600"
                 onClick={() => {
                   testimonialSubmit();
-                  props.Popup();
                 }}
               >
                 REQUEST TESTIMONIAL
@@ -2042,8 +2115,8 @@ const UnifyFreelancer = () => {
   const [videoURL, setVideoURL] = useState(null);
   const [editPortfoData, setEditPortfoData] = useState([]);
   const [confirmPopup, setConfirmPopup] = useState(false);
-  const [successPopup, setSuccessPopup] = useState(false);
   const [confirm, setConfirm] = useState(false);
+  const [successPopup, setSuccessPopup] = useState(false);
 
   const deleteExprience = useSelector(
     (state) => state?.profile?.deleteExprience
@@ -2175,7 +2248,7 @@ const UnifyFreelancer = () => {
 
   const handleExprienceLevel = (level) => {
     const data = { experience_level: level };
-    dispatch(editExprienceLev(data, setShowExprienceLevOpt));
+    dispatch(editExprienceLev(data, setShowExprienceLevOpt, successPopup, setSuccessPopup));
   };
 
   $(document).mouseup(function (e) {
@@ -2436,6 +2509,8 @@ const UnifyFreelancer = () => {
                           <VideoIntro
                             data={freelancerProfileList?.video}
                             Popup={Setpopup}
+                            successPopup={successPopup}
+                            setSuccessPopup={setSuccessPopup}
                           />
                         );
                       }}
@@ -2464,10 +2539,20 @@ const UnifyFreelancer = () => {
                   className="myskill_hdingn profile_icon_25px profile_heading_mb"
                   style={{ position: "relative" }}
                 >
-                  Visiblity
+                  Visibility
                   <Button
                     onClick={() => {
-                      Setpopup(<VisiblityPopup Popup={Setpopup} />);
+                      Setpopup(
+                        <VisiblityPopup
+                          Popup={Setpopup}
+                          data={{
+                            visibility: basicInfo?.visibility,
+                            project_preference: basicInfo?.project_preference,
+                          }}
+                          successPopup={successPopup}
+                          setSuccessPopup={setSuccessPopup}
+                        />
+                      );
                     }}
                   >
                     <svg
@@ -2572,7 +2657,13 @@ const UnifyFreelancer = () => {
                     {!freelancerProfileList?.language?.length && (
                       <Button
                         onClick={() => {
-                          Setpopup(<LanguageEdit Popup={Setpopup} />);
+                          Setpopup(
+                            <LanguageEdit
+                              Popup={Setpopup}
+                              successPopup={successPopup}
+                              setSuccessPopup={setSuccessPopup}
+                            />
+                          );
                         }}
                       >
                         <svg
@@ -2597,6 +2688,8 @@ const UnifyFreelancer = () => {
                           <LanguageEdit
                             Popup={Setpopup}
                             data={freelancerProfileList?.language}
+                            successPopup={successPopup}
+                            setSuccessPopup={setSuccessPopup}
                           />
                         );
                       }}
@@ -2697,7 +2790,13 @@ const UnifyFreelancer = () => {
                   <div className="d-flex justify-content-start">
                     <Button
                       onClick={() => {
-                        Setpopup(<AddEduc Popup={Setpopup} />);
+                        Setpopup(
+                          <AddEduc
+                            Popup={Setpopup}
+                            successPopup={successPopup}
+                            setSuccessPopup={setSuccessPopup}
+                          />
+                        );
                       }}
                     >
                       <svg
@@ -2739,7 +2838,12 @@ const UnifyFreelancer = () => {
                           <Button
                             onClick={() => {
                               Setpopup(
-                                <AddEduc education={edu} Popup={Setpopup} />
+                                <AddEduc
+                                  education={edu}
+                                  Popup={Setpopup}
+                                  successPopup={successPopup}
+                                  setSuccessPopup={setSuccessPopup}
+                                />
                               );
                             }}
                           >
@@ -2815,6 +2919,8 @@ const UnifyFreelancer = () => {
                             description: basicInfo.description,
                           }}
                           Popup={Setpopup}
+                          successPopup={successPopup}
+                          setSuccessPopup={setSuccessPopup}
                         />
                       );
                     }}
@@ -2941,6 +3047,8 @@ const UnifyFreelancer = () => {
                         <EditSkill
                           Popup={Setpopup}
                           data={freelancerProfileList?.skills}
+                          setSuccessPopup={setSuccessPopup}
+                          successPopup={successPopup}
                         />
                       );
                     }}
@@ -2977,7 +3085,13 @@ const UnifyFreelancer = () => {
               <div className="d-flex justify-content-end myskill_hdingn">
                 <Button
                   onClick={() => {
-                    Setpopup(<ReqTestimonial Popup={Setpopup} />);
+                    Setpopup(
+                      <ReqTestimonial
+                        Popup={Setpopup}
+                        successPopup={successPopup}
+                        setSuccessPopup={setSuccessPopup}
+                      />
+                    );
                   }}
                 >
                   <svg
@@ -3121,7 +3235,13 @@ const UnifyFreelancer = () => {
                   <Button
                     style={{ width: "100%", height: "100%", cursor: "pointer" }}
                     onClick={() => {
-                      Setpopup(<AddCert Popup={Setpopup} />);
+                      Setpopup(
+                        <AddCert
+                          Popup={Setpopup}
+                          successPopup={successPopup}
+                          setSuccessPopup={setSuccessPopup}
+                        />
+                      );
                     }}
                   >
                     <svg
@@ -3154,7 +3274,12 @@ const UnifyFreelancer = () => {
                         className="m-0"
                         onClick={() => {
                           Setpopup(
-                            <AddCert certificates={item} Popup={Setpopup} />
+                            <AddCert
+                              certificates={item}
+                              Popup={Setpopup}
+                              successPopup={successPopup}
+                              setSuccessPopup={setSuccessPopup}
+                            />
                           );
                         }}
                       >
@@ -3231,7 +3356,13 @@ const UnifyFreelancer = () => {
                   <div className="d-flex justify-content-end myskill_hdingn">
                     <Button
                       onClick={() => {
-                        Setpopup(<AddEmployment Popup={Setpopup} />);
+                        Setpopup(
+                          <AddEmployment
+                            Popup={Setpopup}
+                            successPopup={successPopup}
+                            setSuccessPopup={setSuccessPopup}
+                          />
+                        );
                       }}
                     >
                       <svg
@@ -3251,16 +3382,7 @@ const UnifyFreelancer = () => {
                     </Button>
                   </div>
                   <div className="bpbck_txt">
-                    <div
-                      className="bpck_head font-weight-600"
-                      onClick={() =>
-                        setConfirmPopup(
-                          <SuccessPopup
-                            Popup={() => setSuccessPopup(!successPopup)}
-                          />
-                        )
-                      }
-                    >
+                    <div className="bpck_head font-weight-600">
                       Employment history
                     </div>
                   </div>
@@ -3341,6 +3463,8 @@ const UnifyFreelancer = () => {
                                     <AddEmployment
                                       Popup={Setpopup}
                                       experience={experience}
+                                      successPopup={successPopup}
+                                      setSuccessPopup={setSuccessPopup}
                                     />
                                   );
                                 }}
@@ -3448,6 +3572,8 @@ const UnifyFreelancer = () => {
         <HourPerWeekPopup
           open={hwpPopup}
           onCloseModal={() => setHwpPopup(false)}
+          setSuccessPopup={setSuccessPopup}
+          successPopup={successPopup}
         />
       )}
       {portfolioPopup && (
@@ -3455,6 +3581,8 @@ const UnifyFreelancer = () => {
           open={portfolioPopup}
           onCloseModal={() => setPortfolioPopup(false)}
           data={editPortfoData}
+          setSuccessPopup={setSuccessPopup}
+          successPopup={successPopup}
         />
       )}
       {videoPopup && (

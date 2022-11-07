@@ -5,15 +5,20 @@ import "./popup.css";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
 import {
   getHoursPerWeekList,
   onEditHourPerWeek,
 } from "../../../redux/actions/profileAction";
 import { useState } from "react";
 
-const HourPerWeekPopup = ({ open, onCloseModal }) => {
+const HourPerWeekPopup = ({
+  open,
+  onCloseModal,
+  successPopup,
+  setSuccessPopup,
+}) => {
   const dispatch = useDispatch();
   const [hpwValue, setHPWValue] = useState();
   const hwpList = useSelector((state) => state?.profile?.getHoursPerWeekList);
@@ -23,7 +28,9 @@ const HourPerWeekPopup = ({ open, onCloseModal }) => {
 
   const onSave = () => {
     const data = { hours_id: hpwValue };
-    dispatch(onEditHourPerWeek(data, onCloseModal));
+    dispatch(
+      onEditHourPerWeek(data, onCloseModal, successPopup, setSuccessPopup)
+    );
   };
   return (
     <>
@@ -38,7 +45,7 @@ const HourPerWeekPopup = ({ open, onCloseModal }) => {
           Knowing how much you can work helps Unify find the right jobs for you.{" "}
           <span>How we can use this info.</span>
         </p>
-        <div className="content">
+        <div className="content" style={{ marginBottem: 10 }}>
           <h5>I can currently work</h5>
           <ul className="popup-radio">
             {hwpList?.map((item, index) => (
@@ -56,6 +63,21 @@ const HourPerWeekPopup = ({ open, onCloseModal }) => {
               </li>
             ))}
           </ul>
+        </div>
+        <div className="hourly_price">
+          <label htmlFor="hourly_price">Hourly Rate</label>
+          <div className="d-flex">
+            <div className="input_houry_price">
+              $
+              <input
+                placeholder="03.00"
+                id="hourly_price"
+                type="text"
+                className="form-control"
+              />
+            </div>
+            <div className="hourly-price_rsph">/hr</div>
+          </div>
         </div>
 
         <div className="freelancer_popup_btns">

@@ -1,3 +1,4 @@
+import SuccessPopup from "../../freelancer/components/popups/SuccessPopup";
 import Axios from "../axios";
 import {
   SET_ADD_EXPRIENCE,
@@ -66,17 +67,24 @@ export const getFreelancerSkills = (data) => async (dispatch) => {
   } catch (err) {}
 };
 
-export const onAddEmployment = (data, popup) => async (dispatch) => {
-  try {
-    await Axios.post(`/edit-employment-info`, data, config).then((res) => {
-      dispatch({
-        type: SET_ADD_EXPRIENCE,
-        payload: res.data,
+export const onAddEmployment =
+  (data, popup, successPopup, setSuccessPopup) => async (dispatch) => {
+    try {
+      await Axios.post(`/edit-employment-info`, data, config).then((res) => {
+        dispatch({
+          type: SET_ADD_EXPRIENCE,
+          payload: res.data,
+        });
+        popup();
+        setSuccessPopup(
+          <SuccessPopup
+            Popup={() => setSuccessPopup(!successPopup)}
+            message="Employment History Added Sucessfully"
+          />
+        );
       });
-      popup();
-    });
-  } catch (err) {}
-};
+    } catch (err) {}
+  };
 
 export const onDeleteEmployment =
   (data, setConfirmPopup) => async (dispatch) => {
@@ -167,17 +175,24 @@ export const getFreelancerDegreeList = (data) => async (dispatch) => {
   } catch (err) {}
 };
 
-export const onAddEducation = (data, popup) => async (dispatch) => {
-  try {
-    Axios.post("/edit-education-info", data, config).then((res) => {
-      dispatch({
-        type: SET_EDIT_EDUCATION,
-        payload: res.data,
+export const onAddEducation =
+  (data, popup, successPopup, setSuccessPopup) => async (dispatch) => {
+    try {
+      Axios.post("/edit-education-info", data, config).then((res) => {
+        dispatch({
+          type: SET_EDIT_EDUCATION,
+          payload: res.data,
+        });
+        popup();
+        setSuccessPopup(
+          <SuccessPopup
+            Popup={() => setSuccessPopup(!successPopup)}
+            message="Education Added Successfully"
+          />
+        );
       });
-      popup();
-    });
-  } catch (err) {}
-};
+    } catch (err) {}
+  };
 
 export const onDeleteEducation =
   (data, setConfirmPopup) => async (dispatch) => {
@@ -192,20 +207,28 @@ export const onDeleteEducation =
     } catch (err) {}
   };
 
-export const onEditContactInfo = (data, setEditAccount) => async (dispatch) => {
-  try {
-    Axios.post("/edit-contact-info", data, config).then((res) => {
-      setEditAccount(false);
-      dispatch({
-        type: SET_EDIT_FREELANCER_INFO,
-        payload: res.data,
+export const onEditContactInfo =
+  (data, setEditAccount, successPopup, setSuccessPopup) => async (dispatch) => {
+    try {
+      Axios.post("/edit-contact-info", data, config).then((res) => {
+        setEditAccount(false);
+        dispatch({
+          type: SET_EDIT_FREELANCER_INFO,
+          payload: res.data,
+        });
+        setSuccessPopup(
+          <SuccessPopup
+            Popup={() => setSuccessPopup(!successPopup)}
+            message="Details Added Successfully"
+          />
+        );
       });
-    });
-  } catch (err) {}
-};
+    } catch (err) {}
+  };
 
 export const onEditLocationInfo =
-  (data, setEditLocation) => async (dispatch) => {
+  (data, setEditLocation, successPopup, setSuccessPopup) =>
+  async (dispatch) => {
     try {
       Axios.post("/edit-location", data, config).then((res) => {
         setEditLocation(false);
@@ -213,57 +236,91 @@ export const onEditLocationInfo =
           type: SET_EDIT_FREELANCER_LOCATION,
           payload: res.data,
         });
+        setSuccessPopup(
+          <SuccessPopup
+            Popup={() => setSuccessPopup(!successPopup)}
+            message="Details Added Successfully"
+          />
+        );
       });
     } catch (err) {}
   };
 
-export const onEditVideo = (data, popup) => async (dispatch) => {
-  try {
-    Axios.post("/edit-video", data, config).then((res) => {
-      dispatch({
-        type: SET_EDIT_VIDEO,
-        payload: res.data,
+export const onEditVideo =
+  (data, popup, successPopup, setSuccessPopup) => async (dispatch) => {
+    try {
+      Axios.post("/edit-video", data, config).then((res) => {
+        dispatch({
+          type: SET_EDIT_VIDEO,
+          payload: res.data,
+        });
+        popup();
+        setSuccessPopup(
+          <SuccessPopup
+            Popup={() => setSuccessPopup(!successPopup)}
+            message="Introduction Video Added Successfully"
+          />
+        );
       });
-      popup();
-    });
-  } catch (err) {}
-};
+    } catch (err) {}
+  };
 
-export const onEditDesignation = (data, popup) => async (dispatch) => {
-  try {
-    Axios.post("/edit-designation-info", data, config).then((res) => {
-      dispatch({
-        type: SET_EDIT_DESIGNATION,
-        payload: res.data,
+export const onEditDesignation =
+  (data, popup, successPopup, setSuccessPopup) => async (dispatch) => {
+    try {
+      Axios.post("/edit-designation-info", data, config).then((res) => {
+        dispatch({
+          type: SET_EDIT_DESIGNATION,
+          payload: res.data,
+        });
+        popup();
+        setSuccessPopup(
+          <SuccessPopup
+            Popup={() => setSuccessPopup(!successPopup)}
+            message="Title and Designation saved successfully."
+          />
+        );
       });
-      popup();
-    });
-  } catch (err) {}
-};
+    } catch (err) {}
+  };
 
-export const onEditPortfolio = (data, popup) => async (dispatch) => {
-  try {
-    Axios.post("/edit-portfolio-info", data, config).then((res) => {
-      dispatch({
-        type: SET_EDIT_PORTFOLIO,
-        payload: res.data,
+export const onEditPortfolio =
+  (data, popup, successPopup, setSuccessPopup) => async (dispatch) => {
+    try {
+      Axios.post("/edit-portfolio-info", data, config).then((res) => {
+        dispatch({
+          type: SET_EDIT_PORTFOLIO,
+          payload: res.data,
+        });
+        popup();
+        setSuccessPopup(
+          <SuccessPopup
+            Popup={() => setSuccessPopup(!successPopup)}
+            message="Portfolio Added Successfully"
+          />
+        );
       });
-      popup();
-    });
-  } catch (err) {}
-};
+    } catch (err) {}
+  };
 
-export const onEditLanguage = (data, popup) => async (dispatch) => {
-  try {
-    Axios.post("/edit-language", data, config).then((res) => {
-      dispatch({
-        type: SET_EDIT_LANGUAGE,
-        payload: res.data,
+export const onEditLanguage =
+  (data, popup, successPopup, setSuccessPopup) => async (dispatch) => {
+    try {
+      Axios.post("/edit-language", data, config).then((res) => {
+        dispatch({
+          type: SET_EDIT_LANGUAGE,
+          payload: res.data,
+        });
+        popup();
+        setSuccessPopup(
+          <SuccessPopup
+            Popup={() => setSuccessPopup(!successPopup)}
+            message="Language Added Successfully"
+          />
+        );
       });
-      popup();
-    });
-  } catch (err) {}
-};
+    } catch (err) {}
+  };
 
 export const getLanguageList = () => async (dispatch) => {
   try {
@@ -287,41 +344,62 @@ export const getHoursPerWeekList = () => async (dispatch) => {
   } catch (err) {}
 };
 
-export const onEditHourPerWeek = (data, popup) => async (dispatch) => {
-  try {
-    Axios.post("/edit-hours-per-week", data, config).then((res) => {
-      dispatch({
-        type: SET_HOURS_PER_WEEK,
-        payload: res.data,
+export const onEditHourPerWeek =
+  (data, popup, successPopup, setSuccessPopup) => async (dispatch) => {
+    try {
+      Axios.post("/edit-hours-per-week", data, config).then((res) => {
+        dispatch({
+          type: SET_HOURS_PER_WEEK,
+          payload: res.data,
+        });
+        popup();
+        setSuccessPopup(
+          <SuccessPopup
+            Popup={() => setSuccessPopup(!successPopup)}
+            message="Hours Per Week set Successfully"
+          />
+        );
       });
-      popup();
-    });
-  } catch (err) {}
-};
+    } catch (err) {}
+  };
 
-export const onEditSkills = (data, popup) => async (dispatch) => {
-  try {
-    Axios.post("/edit-skills-info", data, config).then((res) => {
-      dispatch({
-        type: SET_EDIT_SKILLS,
-        payload: res.data,
+export const onEditSkills =
+  (data, popup, successPopup, setSuccessPopup) => async (dispatch) => {
+    try {
+      Axios.post("/edit-skills-info", data, config).then((res) => {
+        dispatch({
+          type: SET_EDIT_SKILLS,
+          payload: res.data,
+        });
+        popup();
+        setSuccessPopup(
+          <SuccessPopup
+            Popup={() => setSuccessPopup(!successPopup)}
+            message="Skills Added Successfully"
+          />
+        );
       });
-      popup();
-    });
-  } catch (err) {}
-};
+    } catch (err) {}
+  };
 
-export const onEditCertificate = (data, popup) => async (dispatch) => {
-  try {
-    Axios.post("/edit-certificate-info", data, config).then((res) => {
-      dispatch({
-        type: SET_EDIT_CERTIFICATE,
-        payload: res.data,
+export const onEditCertificate =
+  (data, popup, successPopup, setSuccessPopup) => async (dispatch) => {
+    try {
+      Axios.post("/edit-certificate-info", data, config).then((res) => {
+        dispatch({
+          type: SET_EDIT_CERTIFICATE,
+          payload: res.data,
+        });
+        popup();
+        setSuccessPopup(
+          <SuccessPopup
+            Popup={() => setSuccessPopup(!successPopup)}
+            message="Certificate Added Successfully"
+          />
+        );
       });
-      popup();
-    });
-  } catch (err) {}
-};
+    } catch (err) {}
+  };
 
 export const onDeleteCertificate =
   (data, setConfirmPopup) => async (dispatch) => {
@@ -349,41 +427,56 @@ export const editNameInfo = (data) => async (dispatch) => {
   } catch (err) {}
 };
 
-export const editVisiblity = (data, popup) => async (dispatch) => {
-  try {
-    Axios.post("/set-visibility", data, config).then((res) => {
-      dispatch({
-        type: SET_VISIBLITY,
-        payload: res.data,
+export const editVisiblity =
+  (data, popup, successPopup, setSuccessPopup) => async (dispatch) => {
+    try {
+      Axios.post("/set-visibility", data, config).then((res) => {
+        dispatch({
+          type: SET_VISIBLITY,
+          payload: res.data,
+        });
+        popup(false);
+        setSuccessPopup(
+          <SuccessPopup
+            Popup={() => setSuccessPopup(!successPopup)}
+            message="Visibility Change Successfully"
+          />
+        );
       });
-      popup(false);
-    });
-  } catch (err) {}
-};
+    } catch (err) {}
+  };
 
-export const editExprienceLev = (data, popup) => async (dispatch) => {
-  try {
-    Axios.post("/edit-experience-level", data, config).then((res) => {
-      dispatch({
-        type: SET_EXPRIENCE_LEVEL,
-        payload: res.data,
+export const editExprienceLev =
+  (data, popup, successPopup, setSuccessPopup) => async (dispatch) => {
+    try {
+      Axios.post("/edit-experience-level", data, config).then((res) => {
+        dispatch({
+          type: SET_EXPRIENCE_LEVEL,
+          payload: res.data,
+        });
+        popup(false);
+        setSuccessPopup(
+          <SuccessPopup
+            Popup={() => setSuccessPopup(!successPopup)}
+            message="Exprience Level Changed Successfully"
+          />
+        );
       });
-      popup(false);
-    });
-  } catch (err) {}
-};
+    } catch (err) {}
+  };
 
-export const onDeletePortfolio = (data, setConfirmPopup) => async (dispatch) => {
-  try {
-    Axios.post("/delete-portfolio-info", data, config).then((res) => {
-      dispatch({
-        type: SET_DELETE_PORTFOLIO,
-        payload: res.data,
+export const onDeletePortfolio =
+  (data, setConfirmPopup) => async (dispatch) => {
+    try {
+      Axios.post("/delete-portfolio-info", data, config).then((res) => {
+        dispatch({
+          type: SET_DELETE_PORTFOLIO,
+          payload: res.data,
+        });
+        setConfirmPopup(false);
       });
-      setConfirmPopup(false)
-    });
-  } catch (err) {}
-};
+    } catch (err) {}
+  };
 
 export const onAdditionalAccount = (data, navigate) => async (dispatch) => {
   try {
@@ -413,24 +506,40 @@ export const onSubmitVerificationDocs = (data) => async (dispatch) => {
   } catch (err) {}
 };
 
-export const onRequestTestimonial = (data) => async (dispatch) => {
-  try {
-    Axios.post("/edit-testimonial-info", data, config).then((res) => {
-      dispatch({
-        type: REQUEST_TESTIMONIAL,
-        payload: res.data,
+export const onRequestTestimonial =
+  (data, popup, successPopup, setSuccessPopup) => async (dispatch) => {
+    try {
+      Axios.post("/edit-testimonial-info", data, config).then((res) => {
+        dispatch({
+          type: REQUEST_TESTIMONIAL,
+          payload: res.data,
+        });
+        popup();
+        setSuccessPopup(
+          <SuccessPopup
+            Popup={() => setSuccessPopup(!successPopup)}
+            message="Testimonial Request sent successfully"
+          />
+        );
       });
-    });
-  } catch (err) {}
-};
+    } catch (err) {}
+  };
 
-export const onSubmitTestimonial = (data) => async (dispatch) => {
-  try {
-    Axios.post("/client-testimonial", data, config).then((res) => {
-      console.log(res);
-    });
-  } catch (err) {}
-};
+export const onSubmitTestimonial =
+  (data, successPopup, setSuccessPopup, navigate) => async (dispatch) => {
+    try {
+      Axios.post("/client-testimonial", data, config).then((res) => {
+        console.log(res);
+        setSuccessPopup(
+          <SuccessPopup
+            Popup={() => setSuccessPopup(!successPopup)}
+            message="Testimonial Submited Successfully"
+            navigate={navigate}
+          />
+        );
+      });
+    } catch (err) {}
+  };
 
 export const onGetTestmonial = (data, setValues) => async (dispatch) => {
   try {

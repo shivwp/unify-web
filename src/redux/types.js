@@ -77,3 +77,16 @@ export const SET_CATEGORY_LIST = "SET_CATEGORY_LIST";
 export const LOGIN_ERROR = "LOGIN_ERROR";
 
 export const SIGNUP_ERROR = "SIGNUP_ERROR";
+
+
+
+// JOB Types ----------------------------------------
+
+
+export const JOBS_LIST = "JOBS_LIST";
+
+
+
+
+
+
