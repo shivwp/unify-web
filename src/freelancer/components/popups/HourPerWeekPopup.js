@@ -18,16 +18,25 @@ const HourPerWeekPopup = ({
   onCloseModal,
   successPopup,
   setSuccessPopup,
+  amount,
 }) => {
   const dispatch = useDispatch();
+
+  const [hourlyPrice, setHourlyPrice] = useState({ hours_price: amount });
   const [hpwValue, setHPWValue] = useState();
   const hwpList = useSelector((state) => state?.profile?.getHoursPerWeekList);
+
+  console.log(amount);
+  const handleOnChange = (e) => {
+    setHourlyPrice({ ...hourlyPrice, [e.target.name]: e.target.value });
+  };
+
   useEffect(() => {
     dispatch(getHoursPerWeekList());
   }, []);
 
   const onSave = () => {
-    const data = { hours_id: hpwValue };
+    const data = { hours_id: hpwValue, hours_price: hourlyPrice?.hours_price };
     dispatch(
       onEditHourPerWeek(data, onCloseModal, successPopup, setSuccessPopup)
     );
@@ -73,8 +82,11 @@ const HourPerWeekPopup = ({
                 placeholder="03.00"
                 id="hourly_price"
                 type="text"
+                name="hours_price"
+                value={hourlyPrice?.hours_price}
                 className="form-control"
                 validated={true}
+                onChange={(e) => handleOnChange(e)}
               />
             </div>
             <div className="hourly-price_rsph">/hr</div>

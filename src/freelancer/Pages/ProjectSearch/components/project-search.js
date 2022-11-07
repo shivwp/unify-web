@@ -16,14 +16,14 @@ import { getJobsList } from "../../../../redux/actions/jobActions";
 
 const ProjectSearch = () => {
   const dispatch = useDispatch();
-
-  const jobsList = useSelector((state) => state?.job?.jobsList);
+  const [page, setPage] = useState(1);
+  const jobsList = useSelector((state) => state?.job?.jobsList?.data);
+  const jobsPagination = useSelector((state) => state?.job?.jobsList?.meta);
 
   useEffect(() => {
-    dispatch(getJobsList());
-  }, []);
+    dispatch(getJobsList({ pagination: page }));
+  }, [page]);
 
-  console.log(jobsList);
   const [dDown, Setddown] = useState(0);
   function TogglePopup() {
     if (dDown === 1) {
@@ -84,7 +84,8 @@ const ProjectSearch = () => {
             <div className="ps-relative mt-sesix-5">
               {dDown === 1 ? <Popup /> : ""}
               <div className="fb_btns_s_pro">
-                <Button variant=""
+                <Button
+                  variant=""
                   className="bg-trans_s_pro btn_psnewrb"
                   onClick={() => {
                     TogglePopup();
@@ -108,6 +109,29 @@ const ProjectSearch = () => {
           </div>
         </div>
       ))}
+      <Col lg={12}>
+        <div className="pagiantion_node">
+          <Button variant="" className="pagi_butt">
+            1
+          </Button>
+          <Button variant="" className="pagi_butt">
+            2
+          </Button>
+          <Button variant="" className="pagi_butt">
+            3
+          </Button>
+          <Button variant="" className="pagi_butt">
+            4
+          </Button>
+          <Button variant="" className="pagi_butt">
+            5
+          </Button>
+          <div className="pagination_dots">...</div>
+          <Button variant="" className="pagi_butt">
+            10
+          </Button>
+        </div>
+      </Col>
     </>
   );
 };
@@ -419,7 +443,8 @@ const Project_Search = () => {
             <div className="overflow-scroll">
               <div className="d-flex flex-wrap tab_m_nodea mb-4 tab_scroll_cont">
                 <Link to="/freelancer/project-search">
-                  <Button variant=""
+                  <Button
+                    variant=""
                     className={`tab_btn_vs ${
                       TabActive === "search" ? "active_bvs" : ""
                     }`}
@@ -431,7 +456,8 @@ const Project_Search = () => {
                   </Button>
                 </Link>
                 <Link to="/freelancer/project-search/saved">
-                  <Button variant=""
+                  <Button
+                    variant=""
                     className={`tab_btn_vs ${
                       TabActive === "saved" ? "active_bvs" : ""
                     }`}
@@ -445,17 +471,6 @@ const Project_Search = () => {
               </div>
             </div>
             {Tab}
-          </Col>
-          <Col lg={12}>
-            <div className="pagiantion_node">
-              <Button variant="" className="pagi_butt">1</Button>
-              <Button variant="" className="pagi_butt">2</Button>
-              <Button variant="" className="pagi_butt">3</Button>
-              <Button variant="" className="pagi_butt">4</Button>
-              <Button variant="" className="pagi_butt">5</Button>
-              <div className="pagination_dots">...</div>
-              <Button variant="" className="pagi_butt">10</Button>
-            </div>
           </Col>
         </Row>
       </Container>

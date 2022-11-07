@@ -9,10 +9,10 @@ const config = {
   
   export const getJobsList = () => async (dispatch) => {
     try {
-      Axios.get("/jobs-list").then((res) => {
+      Axios.post("/jobs-list").then((res) => {
         dispatch({
           type: JOBS_LIST,
-          payload: res.data.data,
+          payload: res.data,
         });
       });
     } catch (err) {}

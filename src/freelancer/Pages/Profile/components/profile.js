@@ -106,7 +106,8 @@ function PortfolioPaginate({
               <div className="imgbox_bccp">
                 <img src={item.image} alt="" />
                 <div className="port_folio_icons">
-                  <Button variant=""
+                  <Button
+                    variant=""
                     onClick={() =>
                       setConfirmPopup(
                         <ConfirmationPopup
@@ -130,7 +131,8 @@ function PortfolioPaginate({
                       />
                     </svg>
                   </Button>
-                  <Button variant=""
+                  <Button
+                    variant=""
                     onClick={() => {
                       setPortfolioPopup(true);
                       setEditPortfoData(item);
@@ -354,7 +356,9 @@ const EditSkill = (props) => {
                 {selectSkills?.map((item, index) => (
                   <div className="skill_bxr_gry" key={item.skill_id}>
                     <span>{item.skill_name}</span>
-                    <Button  variant=""onClick={() => removeSkills(index)}>X</Button>
+                    <Button variant="" onClick={() => removeSkills(index)}>
+                      X
+                    </Button>
                   </div>
                 ))}
               </div>
@@ -398,7 +402,9 @@ const EditSkill = (props) => {
               >
                 Cancel
               </button>
-              <Button variant="" onClick={onSave}>Save</Button>
+              <Button variant="" onClick={onSave}>
+                Save
+              </Button>
             </div>
           </div>
         </div>
@@ -488,7 +494,8 @@ const EditTitle = (props) => {
             </div>
 
             <div className="popup_btns_new flex-wrap cwiewyehkk">
-              <Button variant=""
+              <Button
+                variant=""
                 className="trans_btn"
                 onClick={() => {
                   props.Popup();
@@ -496,7 +503,9 @@ const EditTitle = (props) => {
               >
                 Cancel
               </Button>
-              <Button variant="" onClick={onSave}>Save</Button>
+              <Button variant="" onClick={onSave}>
+                Save
+              </Button>
             </div>
           </div>
         </div>
@@ -597,7 +606,8 @@ const VideoIntro = (props) => {
             </div>
 
             <div className="popup_btns_new flex-wrap cwiewyehkk">
-              <Button variant=""
+              <Button
+                variant=""
                 className="trans_btn"
                 onClick={() => {
                   props.Popup();
@@ -605,7 +615,9 @@ const VideoIntro = (props) => {
               >
                 Cancel
               </Button>
-              <Button  variant=""onClick={onSave}>Save</Button>
+              <Button variant="" onClick={onSave}>
+                Save
+              </Button>
             </div>
           </div>
         </div>
@@ -868,7 +880,8 @@ const AddEmployment = (props) => {
             </div>
 
             <div className="popup_btns_new flex-wrap cwiewyehkk">
-              <Button variant=""
+              <Button
+                variant=""
                 className="trans_btn"
                 onClick={() => {
                   props.Popup();
@@ -876,7 +889,9 @@ const AddEmployment = (props) => {
               >
                 Cancel
               </Button>
-              <Button variant="" onClick={onSave}>Save</Button>
+              <Button variant="" onClick={onSave}>
+                Save
+              </Button>
             </div>
           </div>
         </div>
@@ -949,8 +964,11 @@ const ChangePassword = (props) => {
             </div>
 
             <div className="popup_btns_new flex-wrap cwiewyehkk">
-              <Button variant="" className="trans_btn">Cancel</Button>
-              <Button variant=""
+              <Button variant="" className="trans_btn">
+                Cancel
+              </Button>
+              <Button
+                variant=""
                 onClick={() => {
                   props.Popup();
                 }}
@@ -1016,8 +1034,11 @@ const VerificationPref = (props) => {
             </div>
 
             <div className="popup_btns_new flex-wrap cwiewyehkk">
-              <Button variant="" className="trans_btn">Cancel</Button>
-              <Button variant=""
+              <Button variant="" className="trans_btn">
+                Cancel
+              </Button>
+              <Button
+                variant=""
                 onClick={() => {
                   props.Popup();
                 }}
@@ -1426,8 +1447,12 @@ const UserVerification = (props) => {
             </div>
 
             <div className="popup_btns_new flex-wrap cwiewyehkk">
-              <Button variant="" className="trans_btn">Cancel</Button>
-              <Button variant="" onClick={onSave}>Submit</Button>
+              <Button variant="" className="trans_btn">
+                Cancel
+              </Button>
+              <Button variant="" onClick={onSave}>
+                Submit
+              </Button>
             </div>
           </div>
         </div>
@@ -1535,7 +1560,8 @@ const VisiblityPopup = (props) => {
             </div>
 
             <div className="popup_btns_new flex-wrap cwiewyehkk">
-              <Button variant=""
+              <Button
+                variant=""
                 className="trans_btn"
                 onClick={() => {
                   props.Popup();
@@ -1543,7 +1569,9 @@ const VisiblityPopup = (props) => {
               >
                 Cancel
               </Button>
-              <Button  variant="" onClick={onSave}>Submit</Button>
+              <Button variant="" onClick={onSave}>
+                Submit
+              </Button>
             </div>
           </div>
         </div>
@@ -1757,8 +1785,12 @@ const AddEduc = (props) => {
             </div>
 
             <div className="popup_btns_new flex-wrap cwiewyehkk">
-              <Button variant="" className="trans_btn">Cancel</Button>
-              <Button variant="" onClick={() => AddEducation()}>Save</Button>
+              <Button variant="" className="trans_btn">
+                Cancel
+              </Button>
+              <Button variant="" onClick={() => AddEducation()}>
+                Save
+              </Button>
             </div>
           </div>
         </div>
@@ -2421,7 +2453,7 @@ const UnifyFreelancer = () => {
                   </svg>
                 </div>
                 <div className="hourly_am">
-                  <h1>$140.00</h1>
+                  <h1>${basicInfo?.amount}</h1>
                   <span>(Per Hourly)</span>
                 </div>
               </div>
@@ -2521,7 +2553,8 @@ const UnifyFreelancer = () => {
                 <div className="intro_video">
                   <div className="myskill_hdingn profile_icon_25px">
                     Video introduction
-                    <Button variant=""
+                    <Button
+                      variant=""
                       onClick={() => {
                         Setpopup(
                           <VideoIntro
@@ -2601,7 +2634,8 @@ const UnifyFreelancer = () => {
                   style={{ position: "relative" }}
                 >
                   Exprience Level
-                  <Button variant=""
+                  <Button
+                    variant=""
                     onClick={() => setShowExprienceLevOpt(!showExprienceLevOpt)}
                   >
                     <svg
@@ -2674,7 +2708,8 @@ const UnifyFreelancer = () => {
                   Languages
                   <div className="d-flex justify-content-start">
                     {!freelancerProfileList?.language?.length && (
-                      <Button variant=""
+                      <Button
+                        variant=""
                         onClick={() => {
                           Setpopup(<LanguageEdit Popup={Setpopup} />);
                           Setpopup(
@@ -2702,7 +2737,8 @@ const UnifyFreelancer = () => {
                         </svg>
                       </Button>
                     )}
-                    <Button variant=""
+                    <Button
+                      variant=""
                       onClick={() => {
                         Setpopup(
                           <LanguageEdit
@@ -2750,7 +2786,8 @@ const UnifyFreelancer = () => {
                   <div className="d-flex justify-content-start">
                     {basicInfo?.is_verified != "approve" &&
                       basicInfo?.is_verified != "requested" && (
-                        <Button variant=""
+                        <Button
+                          variant=""
                           onClick={() => {
                             Setpopup(<UserVerification Popup={Setpopup} />);
                           }}
@@ -2808,7 +2845,8 @@ const UnifyFreelancer = () => {
                 <div className="myskill_hdingn profile_icon_25px profile_heading_mb">
                   Education
                   <div className="d-flex justify-content-start">
-                    <Button variant=""
+                    <Button
+                      variant=""
                       onClick={() => {
                         Setpopup(<AddEduc Popup={Setpopup} />);
                         Setpopup(
@@ -2856,7 +2894,8 @@ const UnifyFreelancer = () => {
                         </div>
                         <div className="d-flex justify-content-start">
                           <figure></figure>
-                          <Button variant=""
+                          <Button
+                            variant=""
                             onClick={() => {
                               Setpopup(
                                 <AddEduc
@@ -2883,7 +2922,8 @@ const UnifyFreelancer = () => {
                               />
                             </svg>
                           </Button>
-                          <Button variant=""
+                          <Button
+                            variant=""
                             onClick={() =>
                               setConfirmPopup(
                                 <ConfirmationPopup
@@ -2931,7 +2971,8 @@ const UnifyFreelancer = () => {
                   {basicInfo?.occuption}
                 </div>
                 <div className="myskill_hdingn">
-                  <Button variant=""
+                  <Button
+                    variant=""
                     onClick={() => {
                       Setpopup(
                         <EditTitle
@@ -2997,7 +3038,8 @@ const UnifyFreelancer = () => {
               </div>
               <div>
                 <div className="tabbar_profle">
-                  <Button variant=""
+                  <Button
+                    variant=""
                     onClick={() => setWorkHistoryTab("COMPLETED JOBS")}
                     className={
                       workHistoryTab === "COMPLETED JOBS"
@@ -3007,7 +3049,8 @@ const UnifyFreelancer = () => {
                   >
                     Commpleted Jobs (2)
                   </Button>
-                  <Button variant=""
+                  <Button
+                    variant=""
                     onClick={() => setWorkHistoryTab("IN PROGRESS")}
                     className={
                       workHistoryTab === "IN PROGRESS" ? "activetabbar_btn" : ""
@@ -3025,7 +3068,8 @@ const UnifyFreelancer = () => {
                   Portfolio ({freelancerProfileList?.portfolio.length})
                 </div>
                 <div className="myskill_hdingn">
-                  <Button variant=""
+                  <Button
+                    variant=""
                     onClick={() => {
                       setPortfolioPopup(true);
                       setEditPortfoData([]);
@@ -3062,7 +3106,8 @@ const UnifyFreelancer = () => {
               <div className="bpbck_txt d-flex mt-0">
                 <div className="bpck_head">Skills</div>
                 <div className="myskill_hdingn">
-                  <Button variant=""
+                  <Button
+                    variant=""
                     onClick={() => {
                       Setpopup(
                         <EditSkill
@@ -3104,7 +3149,8 @@ const UnifyFreelancer = () => {
 
             <div className="box-profile-bck">
               <div className="d-flex justify-content-end myskill_hdingn">
-                <Button variant=""
+                <Button
+                  variant=""
                   onClick={() => {
                     Setpopup(<ReqTestimonial Popup={Setpopup} />);
                     Setpopup(
@@ -3254,7 +3300,8 @@ const UnifyFreelancer = () => {
                   <div className="bpck_head">Certifications</div>
                 </div>
                 <div className="myskill_hdingn">
-                  <Button variant=""
+                  <Button
+                    variant=""
                     style={{ width: "100%", height: "100%", cursor: "pointer" }}
                     onClick={() => {
                       Setpopup(<AddCert Popup={Setpopup} />);
@@ -3293,7 +3340,8 @@ const UnifyFreelancer = () => {
 
                   <div className="bpck_sm_txt_a mt-4 mb-0">
                     <div className="d-flex myskill_hdingn mb-0">
-                      <Button variant=""
+                      <Button
+                        variant=""
                         className="m-0"
                         onClick={() => {
                           Setpopup(
@@ -3321,7 +3369,8 @@ const UnifyFreelancer = () => {
                           />
                         </svg>
                       </Button>
-                      <Button variant=""
+                      <Button
+                        variant=""
                         onClick={() =>
                           setConfirmPopup(
                             <ConfirmationPopup
@@ -3377,7 +3426,8 @@ const UnifyFreelancer = () => {
               <Col md={12}>
                 <div className="box-profile-bck minei400">
                   <div className="d-flex justify-content-end myskill_hdingn">
-                    <Button variant=""
+                    <Button
+                      variant=""
                       onClick={() => {
                         Setpopup(<AddEmployment Popup={Setpopup} />);
                         Setpopup(
@@ -3490,7 +3540,8 @@ const UnifyFreelancer = () => {
 
                             <div className="bpck_sm_txt_a mt-4 mb-0">
                               <div className="d-flex myskill_hdingn mb-0">
-                                <Button variant=""
+                                <Button
+                                  variant=""
                                   className="m-0"
                                   onClick={(e) => {
                                     Setpopup(
@@ -3518,7 +3569,8 @@ const UnifyFreelancer = () => {
                                     />
                                   </svg>
                                 </Button>
-                                <Button variant=""
+                                <Button
+                                  variant=""
                                   onClick={() =>
                                     setConfirmPopup(
                                       <ConfirmationPopup
@@ -3609,6 +3661,7 @@ const UnifyFreelancer = () => {
           onCloseModal={() => setHwpPopup(false)}
           setSuccessPopup={setSuccessPopup}
           successPopup={successPopup}
+          amount={basicInfo?.amount}
         />
       )}
       {portfolioPopup && (
