@@ -3177,7 +3177,9 @@ body {
   border: 1px solid #f3a2cf;
   border-radius: 2px;
 }
-
+.form-check-input:focus{
+  box-shadow: none !important;
+}
 .sign_l_n_text label {
   font: normal normal normal 12px/30px Poppins;
   letter-spacing: 0px;
