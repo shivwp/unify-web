@@ -348,6 +348,10 @@
   background-color: #fff;
   color: #6d2ef1;
 }
+.blue_btncb {
+  background-color: #6d2ef1 !important;
+  color: #fff !important;
+}
 .btnhovpple:hover {
   background-color: #6d2ef1 !important;
   color: #fff !important;

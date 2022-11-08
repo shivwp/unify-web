@@ -612,7 +612,7 @@ const Screen = () => {
                   </div>
                 )}
                 <div className="close_account_btn">
-                  <Button variant="" className="hov_whitepple" onClick={() => seOpenCloseAcc(true)}>
+                  <Button variant="" className="blue_btncb" onClick={() => seOpenCloseAcc(true)}>
                     Close Account
                   </Button>
                 </div>
