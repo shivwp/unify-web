@@ -6,8 +6,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { SET_JOB_DATA_LISTING } from "../../../../redux/types";
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
 
 const Skill = () => {
   Title(" | Scope");
@@ -132,7 +132,7 @@ const Skill = () => {
                         type="radio"
                         id="work-take-one"
                         name="work"
-                        value="6"
+                        value="More than 6 months"
                         onChange={handleWorkChange}
                       />
                       <Form.Label htmlFor="work-take-one">
@@ -146,7 +146,7 @@ const Skill = () => {
                         type="radio"
                         id="work-take-two"
                         name="work"
-                        value="3"
+                        value="3 to 6 months"
                         onChange={handleWorkChange}
                       />
                       <Form.Label htmlFor="work-take-two">
@@ -160,7 +160,7 @@ const Skill = () => {
                         type="radio"
                         id="work-take-three"
                         name="work"
-                        value="1"
+                        value="1 to 3 months"
                         onChange={handleWorkChange}
                       />
                       <Form.Label htmlFor="work-take-three">
@@ -245,12 +245,18 @@ const Skill = () => {
               <div className="btn_foot_sec no-border mt-0 flex-wrap d-flex">
                 <div className="fo_btn_c next_b_btn_c">
                   <Link to="/skills">
-                    <Button variant="" className="mrright-gppnew">Back</Button>
+                    <Button variant="" className="mrright-gppnew">
+                      Back
+                    </Button>
                   </Link>
                 </div>
                 <div className="fo_btn_c next_b_btn_c">
                   {/* <Link to="/budget"> */}
-                  <Button variant="" className="hov_ttransp active_btn_blue" onClick={nextButton}>
+                  <Button
+                    variant=""
+                    className="hov_ttransp active_btn_blue"
+                    onClick={nextButton}
+                  >
                     Next
                   </Button>
                   {/* </Link> */}

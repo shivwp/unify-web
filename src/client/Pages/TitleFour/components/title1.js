@@ -3,12 +3,12 @@ import { Row, Col } from "react-bootstrap";
 import SideNav from "../../../../components/site_nav";
 import Title from "../../../../components/title";
 import { Link, useNavigate } from "react-router-dom";
-import Button from 'react-bootstrap/Button';
+import Button from "react-bootstrap/Button";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { getCategoryList } from "../../../../redux/actions/profileAction";
 import { SET_JOB_DATA_LISTING } from "../../../../redux/types";
-import Form from 'react-bootstrap/Form';
+import Form from "react-bootstrap/Form";
 
 const TitleBody = () => {
   Title(" | Title Screen 14");
@@ -56,7 +56,11 @@ const TitleBody = () => {
                 <h3>Write a title for your job post</h3>
               </div>
               <div className="t_area_ob">
-                <Form.Control type="text" value={jobListingData?.job_title} />
+                <Form.Control
+                  disabled
+                  type="text"
+                  value={jobListingData?.job_title}
+                />
               </div>
               <div className="t_inp_bt_text mt-1 mb-2">
                 We’ll match you with candidates that specialize in{" "}
@@ -67,13 +71,16 @@ const TitleBody = () => {
                 {categoryList?.map((item, key) => (
                   <div className="s_b_r mrr_riiis d-block" key={key}>
                     <div className="flex_aling">
-                      <Form.Check
-                        type="radio"
-                        id={key}
-                        name="g"
-                        onChange={(e) => setJobCategory(item.id)}
-                      />
-                      <Form.Label htmlFor={key}>
+                      <Form.Label
+                        htmlFor={key}
+                        className="d-flex align-items-center"
+                      >
+                        <Form.Check
+                          type="radio"
+                          id={key}
+                          name="g"
+                          onChange={(e) => setJobCategory(item.id)}
+                        />
                         <p className="litt_sm_para">{item.name}</p>
                       </Form.Label>
                     </div>
@@ -101,12 +108,18 @@ const TitleBody = () => {
               <div className="btn_foot_sec flex-wrap d-flex">
                 <div className="fo_btn_c next_b_btn_c">
                   <Link to="/title">
-                    <Button variant="" className="mrright-gppnew">Back</Button>
+                    <Button variant="" className="mrright-gppnew">
+                      Back
+                    </Button>
                   </Link>
                 </div>
                 <div className="fo_btn_c next_b_btn_c">
                   {/* <Link to="/skills"> */}
-                  <Button variant="" className="hov_ttransp active_btn_blue" onClick={nextButton}>
+                  <Button
+                    variant=""
+                    className="hov_ttransp active_btn_blue"
+                    onClick={nextButton}
+                  >
                     Next
                   </Button>
                   {/* </Link> */}

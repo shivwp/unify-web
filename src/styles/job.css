@@ -12,6 +12,16 @@
   text-align: right !important;
 }
 
+.category-popup-select {
+  width: 100%;
+  margin-top: 20px;
+  height: 40px;
+  border-radius: 3px;
+  padding: 0px 10px;
+  border: 1px solid #b5b5b5;
+  outline: none;
+}
+
 .top_sec_bb {
   display: flex;
   align-items: center;
@@ -622,7 +632,6 @@
 }
 
 @media only screen and (max-width: 767px) {
-
   .mob_ele_wfull .select_inp_in,
   .mob_ele_wfull .search_input_in {
     width: 100% !important;
@@ -1560,7 +1569,6 @@
 
 .heart_btn_promo button:hover {
   background-color: transparent;
-
 }
 
 .heart_btn_promo button svg {
@@ -1599,11 +1607,11 @@
   -o-border-radius: 30px;
 }
 
-.blue_btn_pro:hover{
+.blue_btn_pro:hover {
   background-color: #6d2ef1;
   color: #fff;
 }
-.blue_btn_pro:active{
+.blue_btn_pro:active {
   background-color: #6d2ef1 !important;
   color: #fff !important;
 }
@@ -1854,7 +1862,6 @@
 }
 
 @media only screen and (max-width: 483px) {
-
   .sm_serch_fll_n .select_inp_in,
   .sm_serch_fll_n .selec_inp_ful_w {
     width: 100% !important;
@@ -2524,7 +2531,7 @@
   padding: 10px 15px;
 }
 
-.title-edit_posting>p {
+.title-edit_posting > p {
   font-size: 12px;
   color: #838383;
 }
@@ -2547,13 +2554,13 @@
   margin: 10px 0;
 }
 
-.describe_edit_posting>p {
+.describe_edit_posting > p {
   font-size: 12px;
   color: #838383;
   font-family: "Poppins";
 }
 
-.describe_edit_posting>p>span {
+.describe_edit_posting > p > span {
   font-weight: 600;
   color: #6d2ef1;
   text-decoration: underline;
@@ -2587,7 +2594,7 @@
   font-family: "Poppins";
 }
 
-.describe_edit_posting .why_textarea p>i {
+.describe_edit_posting .why_textarea p > i {
   font-size: 12px;
   color: #6d2ef1;
   cursor: pointer;
@@ -2614,7 +2621,7 @@
   font-size: 16px !important;
 }
 
-.edit-posting-category .category>i {
+.edit-posting-category .category > i {
   border: 1px solid #cbcaca;
   padding: 10px;
   border-radius: 50%;
@@ -2642,7 +2649,7 @@
   font-size: 16px !important;
 }
 
-.edit-posting-category .skills>i {
+.edit-posting-category .skills > i {
   border: 1px solid #cbcaca;
   padding: 10px;
   border-radius: 50%;
@@ -2787,7 +2794,8 @@
   }
 }
 
-@media screen and (max-width: 767px) {}
+@media screen and (max-width: 767px) {
+}
 
 @media screen and (max-width: 425px) {
   .menu_btn #menu_bar1 {
@@ -2911,7 +2919,7 @@
   margin: 30px 0 10px 0;
 }
 
-.add_comp_address .add_address_inp>input {
+.add_comp_address .add_address_inp > input {
   width: 100%;
   height: 42px;
   border: #cbcaca solid 1px;
@@ -2981,7 +2989,7 @@
   margin: 5px 0;
 }
 
-._col_right .Escrow_deposit_box .Escrow_deposit>span {
+._col_right .Escrow_deposit_box .Escrow_deposit > span {
   border-radius: 50%;
   font-size: 9px;
   padding: 0px 4px !important;
@@ -3135,7 +3143,8 @@
   -webkit-border-radius: 30px;
 } */
 
-._col_right .find_contact {}
+._col_right .find_contact {
+}
 
 /* Edit company Address */
 .Edit_comp_address .page_title {
@@ -3156,7 +3165,7 @@
   padding: 2px 0;
 }
 
-.Edit_comp_address .col_left .Edit_details ._edit>._edit_btn {
+.Edit_comp_address .col_left .Edit_details ._edit > ._edit_btn {
   font-weight: 700;
   font-size: 15px;
   color: #6d2ef1;
@@ -3517,7 +3526,7 @@
   color: #fff;
   background-color: #39478f;
 }
-.find_tal_btn:active{
+.find_tal_btn:active {
   color: #fff !important;
   background-color: #39478f !important;
 }

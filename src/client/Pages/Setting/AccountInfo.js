@@ -106,7 +106,7 @@ const AccountInfo = ({
                   onChange={(e) => onInputChange(e)}
                 >
                   {getIndustries?.map((item, key) => (
-                    <option key={key} value={item.id}>
+                    <option key={key} value={item.title}>
                       {item.title}
                     </option>
                   ))}
@@ -138,7 +138,7 @@ const AccountInfo = ({
             <div className="inp_fields">
               <span>Description</span>
               <Form.Control
-              as="textarea"
+                as="textarea"
                 name="description"
                 value={values?.description}
                 onChange={(e) => onInputChange(e)}
@@ -239,9 +239,14 @@ const AccountInfo = ({
               </div>
               <div className="inp_fields">
                 <span>City</span>
-                <select>
-                  <option value="">Jaipur</option>
-                </select>
+
+                <Form.Control
+                  type="text"
+                  name="city"
+                  value={values?.city}
+                  onChange={(e) => onInputChange(e)}
+                  placeholder="City"
+                />
               </div>
             </Col>
             <Col lg-6 sm-12 md-12>
@@ -295,11 +300,11 @@ const AccountInfo = ({
             This is a <span>Client</span> account
           </div>
           <div className="acc_btn">
-            <Button  variant="" className="mrright-gppnew" onClick={setOpen}>
+            <Button variant="" className="mrright-gppnew" onClick={setOpen}>
               Cancel
             </Button>
             <Button
-             variant=""
+              variant=""
               type="button"
               className="cls_acc_btn"
               onClick={(e) => onSubmitClientData(e)}

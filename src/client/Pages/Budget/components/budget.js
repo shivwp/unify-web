@@ -6,8 +6,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { SET_JOB_DATA_LISTING } from "../../../../redux/types";
-import Form from 'react-bootstrap/Form'
-import Button from 'react-bootstrap/Button';
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
 
 const Budget = () => {
   Title(" | Budget");
@@ -17,6 +17,8 @@ const Budget = () => {
   const [minPrice, setMinPrice] = useState();
   const [budgetType, setBudgetType] = useState();
   const jobListingData = useSelector((state) => state.profile.jobListingData);
+
+  console.log(jobListingData);
 
   useEffect(() => {
     if (jobListingData === undefined) {
@@ -180,7 +182,11 @@ const Budget = () => {
                 </div>
                 <div className="fo_btn_c next_b_btn_c">
                   {/* <Link to="/job-description"> */}
-                  <Button  variant="" className="active_btn_blue" onClick={nextButton}>
+                  <Button
+                    variant=""
+                    className="active_btn_blue"
+                    onClick={nextButton}
+                  >
                     Review Job Post
                   </Button>
                   {/* </Link> */}

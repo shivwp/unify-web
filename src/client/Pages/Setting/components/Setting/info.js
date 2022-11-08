@@ -4,14 +4,85 @@ import SideNav from "./site_nav";
 import Title from "../../../../../components/title";
 import MyInfo from "../../MyInfo";
 import AccountInfo from "../../AccountInfo";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CompnyDetailsInfo from "../../CompnyDetailsInfo";
 import CompanyContactInfo from "../../CompanyContactInfo";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  addEditClientInfo,
+  getClientInfoDetails,
+  getIndustriesList,
+  getTimezoneList,
+} from "../../../../../redux/actions/profileAction";
+import { countryList } from "../../../../../redux/actions/authActions";
 
 const Screen = () => {
   Title(" | Setting - Myinfo");
+  const [open, setOpen] = useState(false);
+  const [values, setValues] = useState({});
+  const [imageFile, setImageFile] = useState();
+  const [objectUrlAbc, setObjectUrlAbc] = useState();
+  const dispatch = useDispatch();
+  const getClientDetails = useSelector(
+    (state) => state.profile.getClientDetails
+  );
+  const getIndustries = useSelector((state) => state.profile.getIndustries);
+  const timezoneList = useSelector((state) => state.profile.timezoneList);
+  const editClientProfile = useSelector(
+    (state) => state.profile.editClientProfile
+  );
+  const getCountryList = useSelector((state) => state.auth.getCountryList);
 
-  const [open, setOpen] = useState(true);
+  useEffect(() => {
+    dispatch(getClientInfoDetails());
+  }, [editClientProfile]);
+
+  useEffect(() => {
+    dispatch(getIndustriesList());
+    dispatch(countryList());
+    dispatch(getTimezoneList());
+  }, []);
+
+  useEffect(() => {
+    if (getClientDetails) {
+      setValues(getClientDetails);
+    }
+  }, [getClientDetails]);
+
+  const onInputChange = (e) => {
+    setValues({ ...values, [e.target.name]: e.target.value });
+  };
+
+  const onProfileChange = (e) => {
+    setImageFile(e.target.files[0]);
+    setObjectUrlAbc(URL.createObjectURL(e.target.files[0]));
+  };
+
+  const onSubmitClientData = (e) => {
+    const formData = new FormData();
+
+    if (imageFile) {
+      formData.append("profile_image", imageFile);
+    }
+    formData.append("first_name", values?.first_name);
+    formData.append("last_name", values?.last_name);
+    formData.append("email", values?.email);
+    formData.append("company_name", values?.company_name);
+    formData.append("website", values?.website);
+    formData.append("tagline", values?.tagline);
+    formData.append("industry", values?.industry);
+    formData.append("employee_no", values?.employee_no);
+    formData.append("description", values?.description);
+    formData.append("company_phone", values?.company_phone);
+    formData.append("vat_id", values?.vat_id);
+    formData.append("timezone", values?.timezone);
+    formData.append("company_address", values?.company_address);
+    formData.append("zip_code", values?.zip_code);
+    formData.append("city", values?.city);
+    formData.append("country", values?.country);
+
+    dispatch(addEditClientInfo(formData, setOpen));
+  };
 
   return (
     <>
@@ -25,13 +96,24 @@ const Screen = () => {
                   <h2>My Info</h2>
                 </div>
 
-                {open ? (
-                  <MyInfo setOpen={() => setOpen(false)} />
+                {open === true ? (
+                  <AccountInfo
+                    setOpen={() => setOpen(false)}
+                    getIndustries={getIndustries}
+                    getCountryList={getCountryList}
+                    timezoneList={timezoneList}
+                    onInputChange={onInputChange}
+                    values={values}
+                    onSubmitClientData={onSubmitClientData}
+                    onProfileChange={onProfileChange}
+                    objectUrlAbc={objectUrlAbc}
+                  />
                 ) : (
-                  <AccountInfo />
+                  <MyInfo
+                    setOpen={() => setOpen(true)}
+                    getClientDetails={getClientDetails}
+                  />
                 )}
-                {/* {open ? <MyInfo /> : <CompnyDetailsInfo />} */}
-                {/* {open ? <MyInfo /> : <CompanyContactInfo />} */}
               </div>
             </Col>
           </Row>

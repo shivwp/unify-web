@@ -6,14 +6,14 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { SET_JOB_DATA_LISTING } from "../../../../redux/types";
 import { useDispatch } from "react-redux";
-import Button from 'react-bootstrap/Button'
+import Button from "react-bootstrap/Button";
 
-import Form from 'react-bootstrap/Form';
+import Form from "react-bootstrap/Form";
 const JobPosting = () => {
   Title(" | Getting Started");
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [jobPosting, setJobPosting] = useState();
+  const [jobPosting, setJobPosting] = useState("createNewJob");
   const [jobType, setJobType] = useState();
 
   const handleJobChange = (e) => {
@@ -53,6 +53,7 @@ const JobPosting = () => {
                   id="r_1"
                   name="g"
                   value="createNewJob"
+                  checked={jobPosting === "createNewJob" ? true : false}
                   onChange={(e) => handleJobChange(e)}
                 />
                 <Form.Label htmlFor="r_1">
@@ -171,12 +172,18 @@ const JobPosting = () => {
               <div className="btn_foot_sec flex-wrap d-flex">
                 <div className="fo_btn_c next_b_btn_c">
                   <Link to="/dashboard">
-                    <Button variant="" className="mrright-gppnew">Cancel</Button>
+                    <Button variant="" className="mrright-gppnew">
+                      Cancel
+                    </Button>
                   </Link>
                 </div>
                 <div className="fo_btn_c next_b_btn_c">
                   {/* <Link to="/title"> */}
-                  <Button variant="" className="active_btn_blue" onClick={saveButton}>
+                  <Button
+                    variant=""
+                    className="active_btn_blue"
+                    onClick={saveButton}
+                  >
                     Continue
                   </Button>
                   {/* </Link> */}
