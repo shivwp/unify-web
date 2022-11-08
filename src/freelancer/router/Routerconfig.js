@@ -45,7 +45,10 @@ import AgencyDashboard from "../../Agency/Pages/Dashboard";
 const RouterConfig = () => {
   return (
     <Routes>
-      <Route path="/freelancer/project-detail" element={<ProjectDetail />} />
+      <Route
+        path="/freelancer/project-detail/:id"
+        element={<ProjectDetail />}
+      />
       <Route path="/freelancer/project-search" element={<ProjectSearch />} />
       <Route path="/verify-forgot-otp" element={<VerifyForgotOTP />} />
       <Route path="/forgot-password" element={<ForgotPass />} />

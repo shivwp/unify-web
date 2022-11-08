@@ -23,7 +23,7 @@ body {
   background-color: inherit;
   color: inherit;
 } */
-.next_b_btn_c button:hover{
+.next_b_btn_c button:hover {
   background-color: #fff;
   color: #6d2ef1;
 }
@@ -515,6 +515,10 @@ body {
 
 .top_main_c_job {
   margin-top: 40px;
+}
+.top_main_c_job a {
+  margin-top: 40px;
+  color: #6610f2;
 }
 
 .client_imag img {
@@ -1152,7 +1156,7 @@ body {
 }
 
 .navbar-nav .nav-link.active,
-.navbar-nav .show>.nav-link {
+.navbar-nav .show > .nav-link {
   color: #fff;
   font-weight: bold;
 }
@@ -1575,10 +1579,10 @@ body {
 }
 
 .hourly_am h1 {
-  font-size: 35px;
+  font-size: 32px;
   margin: 0;
   letter-spacing: -2px;
-  line-height: 15px;
+  line-height: 35px;
   color: #3b3b3b;
   font-weight: 700;
   font-family: "Poppins";
@@ -2304,6 +2308,10 @@ body {
   color: #6b6b6b;
   font-weight: 400;
   font-family: "Poppins";
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  display: -webkit-box;
+  overflow: hidden;
 }
 
 .price_ar_jjob {
@@ -3023,7 +3031,6 @@ body {
 }
 
 @media screen and (min-width: 768px) and (max-width: 992px) {
-
   .navbar_btn,
   .navbar_btn .dropdown-toggle {
     margin-left: 2px !important;
@@ -3050,7 +3057,6 @@ body {
 }
 
 @media only screen and (max-width: 570px) {
-
   .input_group,
   .sign_form_btn_subm {
     flex-wrap: wrap;
@@ -3178,7 +3184,7 @@ body {
   border: 1px solid #f3a2cf;
   border-radius: 2px;
 }
-.form-check-input:focus{
+.form-check-input:focus {
   box-shadow: none !important;
 }
 .sign_l_n_text label {
@@ -3228,7 +3234,6 @@ body {
   border: #170048 solid 1px;
   max-width: 100% !important;
 }
-
 .sign_w_full button:hover {
   border: #170048 solid 1px;
 }
@@ -4702,7 +4707,6 @@ a {
 }
 
 @media only screen and (max-width: 800px) {
-
   .fworld_swip .swiper-button-prev,
   .fworld_swip .swiper-rtl .swiper-button-next {
     left: 25px;
@@ -4977,7 +4981,6 @@ a {
   border-bottom-color: #6d2ef1;
   color: #6d2ef1;
 }
-
 .hovbgblew:hover {
   background-color: #170048;
   color: #fff;
@@ -5031,7 +5034,6 @@ a {
 }
 
 @media only screen and (max-width: 992px) {
-
   .box_area_freelanec,
   .nbox_area_border {
     margin: auto !important;
@@ -5335,11 +5337,11 @@ a {
   margin-top: 6px;
 }
 
-.btn-check:checked+.btn,
+.btn-check:checked + .btn,
 .btn.active,
 .btn.show,
 .btn:first-child:active,
-:not(.btn-check)+.btn:active {
+:not(.btn-check) + .btn:active {
   background-color: #fff;
   color: #6d2ef1;
 }
@@ -5382,4 +5384,10 @@ a {
 
 .min-w-2hpx {
   min-width: 200px !important;
+}
+/* job post pagination */
+
+.PageActive {
+  background-color: #6610f2 !important;
+  color: white !important;
 }

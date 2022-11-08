@@ -78,15 +78,14 @@ export const LOGIN_ERROR = "LOGIN_ERROR";
 
 export const SIGNUP_ERROR = "SIGNUP_ERROR";
 
-
-
 // JOB Types ----------------------------------------
-
 
 export const JOBS_LIST = "JOBS_LIST";
 
+export const SAVED_JOBS_LIST = "SAVED_JOBS_LIST";
 
+export const SAVE_JOB_POST = "SAVE_JOB_POST";
 
+export const UNSAVE_JOB_POST = "UNSAVE_JOB_POST";
 
-
-
+export const JOB_POST_DETAILS = "JOB_POST_DETAILS";
