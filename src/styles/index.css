@@ -3116,6 +3116,7 @@ body {
 
 .form-check-input {
   vertical-align: inherit;
+  box-shadow: none !important;
 }
 
 .form-control:focus {
