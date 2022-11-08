@@ -113,7 +113,7 @@ const EditTitle = (props) => {
               >
                 Cancel
               </Button>
-              <Button variant="" onClick={onSave}>
+              <Button variant="" className='btnhovpple' onClick={onSave}>
                 Save
               </Button>
             </div>

@@ -75,6 +75,7 @@ const VerificationPref = (props) => {
             <div className="popup_btns_new flex-wrap cwiewyehkk">
               <Button variant="" className="trans_btn">Cancel</Button>
               <Button variant=""
+              className="btnhovpple"
                 onClick={() => {
                   props.Popup();
                 }}

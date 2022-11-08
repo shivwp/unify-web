@@ -66,6 +66,7 @@ const VerificationPref = (props) => {
               </Button>
               <Button
                 variant=""
+                className="btnhovpple"
                 onClick={() => {
                   props.Popup();
                 }}

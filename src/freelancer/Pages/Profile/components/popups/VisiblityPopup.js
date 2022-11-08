@@ -122,7 +122,7 @@ const VisiblityPopup = (props) => {
               >
                 Cancel
               </Button>
-              <Button variant="" onClick={onSave}>
+              <Button variant="" className="btnhovpple" onClick={onSave}>
                 Submit
               </Button>
             </div>

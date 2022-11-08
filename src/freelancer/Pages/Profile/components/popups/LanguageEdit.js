@@ -201,16 +201,19 @@ const LanguageEdit = (props) => {
             </div>
             {/* )} */}
             <div className="popup_btns_new flex-wrap cwiewyehkk">
-              <button
+              <Button
+                variant=""
                 className="trans_btn"
                 onClick={() => {
                   props.Popup();
                 }}
               >
                 Cancel
-              </button>
+              </Button>
 
-              <button
+              <Button
+                variant=""
+                className="btnhovpple"
                 disabled={
                   !(
                     inputList?.slice(-1)[0].language &&
@@ -220,7 +223,7 @@ const LanguageEdit = (props) => {
                 onClick={handleSave}
               >
                 Save
-              </button>
+              </Button>
             </div>
           </div>
         </div>

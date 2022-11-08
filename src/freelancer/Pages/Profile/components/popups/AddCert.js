@@ -135,7 +135,7 @@ const AddCert = (props) => {
               >
                 Cancel
               </button>
-              <button onClick={onSave}>Save</button>
+              <button className="btnhovpple" onClick={onSave}>Save</button>
             </div>
           </div>
         </div>
