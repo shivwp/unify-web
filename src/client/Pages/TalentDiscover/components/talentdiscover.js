@@ -59,7 +59,7 @@ const Screen = () => {
                             </Col>
                         </Row>
                         <div className='d-flex justify-content-center align-items-center mt-4'>
-                            <Button variant="" className='blue_btn_pro font-weight-500'>See More</Button>
+                            <Button variant="" className='blue_btn_pro font-weight-500 hov_ttransp b-blew-bnt'>See More</Button>
                         </div>
                     </div>
                 </div>

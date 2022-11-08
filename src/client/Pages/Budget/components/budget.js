@@ -180,7 +180,7 @@ const Budget = () => {
                 </div>
                 <div className="fo_btn_c next_b_btn_c">
                   {/* <Link to="/job-description"> */}
-                  <Button  variant="" className="active_btn_blue" onClick={nextButton}>
+                  <Button  variant="" className="hov_ttransp active_btn_blue" onClick={nextButton}>
                     Review Job Post
                   </Button>
                   {/* </Link> */}

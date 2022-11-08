@@ -83,7 +83,7 @@ const Screen = () => {
                 </div>
                 <div className="fo_btn_c next_b_btn_c">
                   <Button variant="" className="hideen_csv_do_btn">
-                    Download Invoinces
+                    Download Invoices
                   </Button>
                 </div>
               </div>

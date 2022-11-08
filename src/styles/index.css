@@ -7,9 +7,11 @@ body {
   border-color: inherit;
   color: inherit;
 }
-.sign_in_social_btn button:hover{
+
+.sign_in_social_btn button:hover {
   color: #fff !important;
 }
+
 /* .btn:focus-visible {
   background-color: inherit;
   color: inherit;
@@ -3208,7 +3210,8 @@ body {
   border: #170048 solid 1px;
   max-width: 100% !important;
 }
-.sign_w_full button:hover{
+
+.sign_w_full button:hover {
   border: #170048 solid 1px;
 }
 
@@ -3686,9 +3689,9 @@ body {
   border-radius: 50%;
 }
 
-.sub_radio input:checked {
+/* .sub_radio input:checked {
   border: 6px solid #6d2ef1;
-}
+} */
 
 .sub_sm_tex {
   font: normal normal medium 20px/20px Poppins;
@@ -4956,10 +4959,12 @@ a {
   border-bottom-color: #6d2ef1;
   color: #6d2ef1;
 }
-.hovbgblew:hover{
+
+.hovbgblew:hover {
   background-color: #170048;
   color: #fff;
 }
+
 .tab_scroll_cont .tab_btn_vs {
   min-width: max-content;
 }
@@ -5319,4 +5324,39 @@ a {
 :not(.btn-check)+.btn:active {
   background-color: #fff;
   color: #6d2ef1;
+}
+
+.hov_pple:hover,
+.popup_btns_new .trans_btn:hover {
+  background-color: #6d2ef1 !important;
+  color: #fff !important;
+}
+
+.hov_ttransp:hover {
+  background-color: #fff !important;
+  color: #6d2ef1 !important;
+  border: #6d2ef1 solid 1px !important;
+}
+
+.b-blew-bnt {
+  border: transparent solid 1px !important;
+}
+
+.btn_group_be button {
+  border: transparent solid 1px !important;
+}
+
+.btn_group_be button:hover {
+  background-color: #6d2ef1 !important;
+  border: #6d2ef1 solid 1px;
+  color: #fff !important;
+}
+
+.btn_group_be .active_btn_be:hover {
+  background-color: #fff !important;
+  color: #000 !important;
+}
+
+.min-w-2hpx{
+  min-width: 200px !important;
 }

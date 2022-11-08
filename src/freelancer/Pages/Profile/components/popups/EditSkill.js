@@ -143,14 +143,15 @@ const EditSkill = (props) => {
             </div>
             <div className="maxlabel_atcxt mt-3">Maximum 15 skills.</div>
             <div className="popup_btns_new flex-wrap cwiewyehkk">
-              <button
-                className="trans_btn"
+              <Button
+                variant=""
+                className="trans_btn hov_pple"
                 onClick={() => {
                   props.Popup();
                 }}
               >
                 Cancel
-              </button>
+              </Button>
               <Button variant="" onClick={onSave}>
                 Save
               </Button>

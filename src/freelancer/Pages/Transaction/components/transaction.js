@@ -183,7 +183,7 @@ const Screen = () => {
                 </div>
                 <div className="fo_btn_c next_b_btn_c">
                   <Button  variant="" className="active_btn_blue">
-                    Download Invoinces
+                    Download Invoices
                   </Button>
                 </div>
               </div>

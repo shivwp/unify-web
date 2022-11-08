@@ -68,13 +68,13 @@ const Screen = () => {
                     <div className="box_vs_m mt-0">
                         <div className="csai_t text-center">Interested in discussing this job?</div>
                         <div className="btn_foot_sec justify-content-center flex-wrap no-border mt-0 mb-2 p-0">
-                            <div className='fo_btn_c next_b_btn_c'><Button variant="" className="active_btn_blue m-0">Accept Interview</Button></div>
+                            <div className='fo_btn_c next_b_btn_c'><Button variant="" className="active_btn_blue hov_ttransp mt-0 min-w-2hpx">Accept Interview</Button></div>
                         </div>
                         <div className="btn_foot_sec justify-content-center flex-wrap no-border mt-0 mb-2 p-0">
-                            <div className='fo_btn_c next_b_btn_c p-0'><Button variant="" className='m-0'>Decline Interview</Button></div>
+                            <div className='fo_btn_c next_b_btn_c p-0'><Button variant="" className='min-w-2hpx'>Decline Interview</Button></div>
                         </div>
                         <div className="btn_foot_sec justify-content-center flex-wrap no-border mt-0 mb-2 p-0">
-                            <div className='fo_btn_c next_b_btn_c'><Button variant="">Refer a Freelancer</Button></div>
+                            <div className='fo_btn_c next_b_btn_c'><Button variant="" className="min-w-2hpx">Refer a Freelancer</Button></div>
                         </div>
                         <div className="about_client_no mb-2">
                             <div className="d-flex justify-content-between">

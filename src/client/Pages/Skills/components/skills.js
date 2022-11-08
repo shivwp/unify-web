@@ -196,7 +196,7 @@ const Skill = () => {
                 </div>
                 <div className="fo_btn_c next_b_btn_c">
                   {/* <Link to="/scope"> */}
-                  <Button variant="" className="active_btn_blue" onClick={nextButton}>
+                  <Button variant="" className="hov_ttransp active_btn_blue" onClick={nextButton}>
                     Next
                   </Button>
                   {/* </Link> */}

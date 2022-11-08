@@ -190,7 +190,7 @@ const AddEmployment = (props) => {
                 </Col>
                 <Col className="text-right">
                   <div className="agrement_ineoeu flex-row d-flex justify-content-end mt-1 pt-0">
-                    <Form.Label className="text-black text-right font-size-13px font-weight-500">
+                    <Form.Label className="text-black text-right font-size-13px font-weight-500 align-items-center">
                       <Form.Check
                         type="checkbox"
                         name="currently_working"
