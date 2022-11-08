@@ -55,7 +55,6 @@ const AddCert = (props) => {
         description: values.description,
       };
     }
-    dispatch(onEditCertificate(data, props.Popup));
     dispatch(
       onEditCertificate(
         data,

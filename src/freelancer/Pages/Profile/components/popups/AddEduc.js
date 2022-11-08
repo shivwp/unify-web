@@ -86,7 +86,6 @@ const AddEduc = (props) => {
       area_study: values?.area_study,
       description: values?.description,
     };
-    dispatch(onAddEducation(data, props.Popup));
     dispatch(
       onAddEducation(
         data,

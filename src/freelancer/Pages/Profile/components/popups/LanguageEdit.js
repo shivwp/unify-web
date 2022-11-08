@@ -59,8 +59,6 @@ const LanguageEdit = (props) => {
     inputList.map((ele) => {
       data[ele.language] = ele.level;
     });
-    // console.log(data);
-    dispatch(onEditLanguage({ languages: data }, props.Popup));
     dispatch(
       onEditLanguage(
         { languages: data },

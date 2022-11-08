@@ -68,7 +68,6 @@ const EditSkill = (props) => {
     const data = {
       skill_id: selectSkills?.map((item) => item.skill_id)?.toString(),
     };
-    dispatch(onEditSkills(data, props.Popup));
     dispatch(
       onEditSkills(data, props.Popup, props.successPopup, props.setSuccessPopup)
     );

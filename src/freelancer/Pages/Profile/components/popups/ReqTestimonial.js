@@ -37,7 +37,6 @@ const ReqTestimonial = (props) => {
       type: values?.type,
       description: values?.description,
     };
-    dispatch(onRequestTestimonial(data));
     dispatch(
       onRequestTestimonial(
         data,

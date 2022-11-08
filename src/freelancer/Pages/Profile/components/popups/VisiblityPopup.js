@@ -31,7 +31,6 @@ const VisiblityPopup = (props) => {
       project_preference: projectPref.name,
     };
     console.log(data);
-    dispatch(editVisiblity(data, props.Popup));
     dispatch(
       editVisiblity(
         data,

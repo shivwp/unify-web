@@ -64,7 +64,6 @@ const AddEmployment = (props) => {
       start_date: values.start_date,
       end_date: values.end_date,
     };
-    dispatch(onAddEmployment(data, props.Popup));
     dispatch(
       onAddEmployment(
         data,
@@ -74,7 +73,6 @@ const AddEmployment = (props) => {
       )
     );
   };
-  console.log(values);
 
   return (
     <>
