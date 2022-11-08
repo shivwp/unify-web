@@ -1392,7 +1392,6 @@ const UnifyFreelancer = () => {
                 <Button
                   variant=""
                   onClick={() => {
-                    Setpopup(<ReqTestimonial Popup={Setpopup} />);
                     Setpopup(
                       <ReqTestimonial
                         Popup={Setpopup}

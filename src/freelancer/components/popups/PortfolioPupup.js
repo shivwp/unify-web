@@ -47,7 +47,9 @@ const PortfolioPupup = ({
       formData.append("id", data?.id);
     }
 
-    dispatch(onEditPortfolio(formData, onCloseModal, successPopup, setSuccessPopup));
+    dispatch(
+      onEditPortfolio(formData, onCloseModal, successPopup, setSuccessPopup)
+    );
   };
 
   return (
@@ -152,7 +154,9 @@ const PortfolioPupup = ({
             <button onClick={onCloseModal}>CANCEL</button>
           </div> */}
           <div className="_save_submit">
-            <Button variant="" onClick={submitPortfolio}>UPLOAD</Button>
+            <Button variant="" onClick={submitPortfolio}>
+              UPLOAD
+            </Button>
           </div>
         </div>
       </Modal>
