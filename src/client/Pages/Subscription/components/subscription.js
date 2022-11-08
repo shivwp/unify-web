@@ -34,9 +34,9 @@ const Subscriptionplan = () => {
                       capabilities
                     </li>
                   </ul>
-                  <div>
+                  <div> 
                     <Link to="/dashboard">
-                      <Button variant="" className="btn_chose_pl">CHOOSE PLAN</Button>
+                      <Button variant="" className="btn_chose_pl btnhovpple">CHOOSE PLAN</Button>
                     </Link>
                   </div>
                 </div>
@@ -63,7 +63,7 @@ const Subscriptionplan = () => {
                   </ul>
                   <div>
                     <Link to="/dashboard">
-                      <Button variant="" className="btn_chose_pl">CHOOSE PLAN</Button>
+                      <Button variant="" className="btn_chose_pl btnhovpple">CHOOSE PLAN</Button>
                     </Link>
                   </div>
                 </div>
@@ -90,7 +90,7 @@ const Subscriptionplan = () => {
                   </ul>
                   <div>
                     <Link to="/dashboard">
-                      <Button variant="" className="btn_chose_pl">CHOOSE PLAN</Button>
+                      <Button variant="" className="btn_chose_pl btnhovpple">CHOOSE PLAN</Button>
                     </Link>
                   </div>
                 </div>

@@ -72,6 +72,7 @@ const Popup = (props) => {
             <div className="popup_btns_new flex-wrap">
               <Button
                variant=""
+               className="btnhovpple"
                 onClick={() => {
                   props.Popup(<AmountPopup Popup={props.Popup} />);
                 }}
@@ -176,7 +177,7 @@ const AmountPopup = (props) => {
                 BACK
               </Button>
               <Link to="/freelancer/project-detail">
-                <Button variant="" style={{ padding: "11px 35px" }}>SEND CONTRACT</Button>
+                <Button variant="" className="btnhovpple" style={{ padding: "11px 35px" }}>SEND CONTRACT</Button>
               </Link>
             </div>
           </div>

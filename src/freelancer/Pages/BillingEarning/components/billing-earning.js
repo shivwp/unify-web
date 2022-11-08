@@ -166,7 +166,7 @@ const Screen = () => {
                 </div>
               </div>
               <div className="btn_group_be">
-                <Button
+                <Button 
                  variant=""
                   className={`st_bgbe ${
                     tabActive === "tblscreen" ? "active_btn_be" : ""

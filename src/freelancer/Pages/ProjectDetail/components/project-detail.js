@@ -253,7 +253,7 @@ const projectdetail = () => {
                             <div className="comp_name_h"><h3>HRM Recruitment Center</h3></div>
                             <div className="comp_name_p"><p>We are a computerized wellbeing startup with a spry and high-speed climate. We are searching for a Senior, RELIABLE portable application…</p></div>
                             <div className="view-p_btn pd_n_vbbtn">
-                                <Button variant="">View profile</Button>
+                                <Button variant="" className='hov_whitepple'>View profile</Button>
                             </div>
                             <div className="comp_name_p"><p>We are a computerized wellbeing startup with a spry and high-speed climate. We are searching for a Senior, RELIABLE portable application…</p></div>
                         </div>

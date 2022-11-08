@@ -113,7 +113,7 @@ const Screen = () => {
                     className="navabr_t_li"
                     onClick={() => setRemovePosting(true)}
                   >
-                    Remove Posting
+                     <Link to="#">Remove Posting</Link>
                   </div>
                   <div className="navabr_t_li"><Link to="/view-job/review">View Proposals</Link></div>
                   <div className="navabr_t_li"><Link to="/view-job/view_job">View Job Post</Link></div>

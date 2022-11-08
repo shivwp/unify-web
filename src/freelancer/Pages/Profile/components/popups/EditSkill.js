@@ -152,9 +152,9 @@ const EditSkill = (props) => {
               >
                 Cancel
               </Button>
-              <Button variant="" onClick={onSave}>
+              <Button className="btnhovpple" variant="" onClick={onSave}>
                 Save
-              </Button>
+              </Button> 
             </div>
           </div>
         </div>

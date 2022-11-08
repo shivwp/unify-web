@@ -392,7 +392,7 @@ const Screen = () => {
               <div className="chat_header_buttons flex-wrap">
                 <div className="vpropo_cbrntn">
                   <Link to="/freelancer/active-contract">
-                    <Button variant="">VIEW PROPOSAL</Button>
+                    <Button variant="" className="btnhovpple">VIEW PROPOSAL</Button>
                   </Link>
                 </div>
                 <Button variant="">

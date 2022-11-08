@@ -58,13 +58,13 @@ const Screen = () => {
                 <div>
                   <div className="inp_w_haf font-size-15px">
                     <Checkbox
-                      icon={<Icon.FiCheck color="#fff" size={14} />}
+                      icon={<Icon.FiCheck color="#6D2EF1" size={14} />}
                       name="my-input"
                       borderRadius={0}
                       checked={true}
                       borderWidth={1}
                       borderColor="#6D2EF1"
-                      style={{ cursor: "pointer", backgroundColor: "#6D2EF1" }}
+                      style={{ cursor: "pointer", backgroundColor: "#fff" }}
                     />
                     Also play a sound
                   </div>
@@ -104,13 +104,13 @@ const Screen = () => {
                 <div>
                   <div className="inp_w_haf font-size-15px">
                     <Checkbox
-                      icon={<Icon.FiCheck color="#fff" size={14} />}
+                      icon={<Icon.FiCheck color="#6D2EF1" size={14} />}
                       name="my-input"
                       borderRadius={0}
                       checked={true}
                       borderWidth={1}
                       borderColor="#6D2EF1"
-                      style={{ cursor: "pointer", backgroundColor: "#6D2EF1" }}
+                      style={{ cursor: "pointer", backgroundColor: "#fff" }}
                     />
                     Only send when offline or idle
                   </div>

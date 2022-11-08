@@ -1,3 +1,10 @@
+:root {
+  --theme-color-unify: #6d2ef1;
+  --bs-link-hover-color: var(--theme-color-unify) !important;
+  --swiper-theme-color: var(--theme-color-unify) !important;
+  --bs-link-color: var(--theme-color-unify) !important;
+}
+
 body {
   overflow-x: hidden;
   font-family: "Poppins-Bold", "Poppins";
@@ -16,10 +23,13 @@ body {
   background-color: inherit;
   color: inherit;
 } */
-
-.post_job_btn_m button:hover {
-  color: #6d2ef1;
+.next_b_btn_c button:hover{
   background-color: #fff;
+  color: #6d2ef1;
+}
+.post_job_btn_m button:hover {
+  color: #fff;
+  background-color: #6d2ef1;
   border-color: #6d2ef1;
 }
 
@@ -1884,7 +1894,7 @@ body {
   -moz-border-radius: 27px;
   -ms-border-radius: 27px;
   -o-border-radius: 27px;
-  border: #0777fd solid 1px;
+  border: #6d2ef1 solid 1px;
   padding: 6px 30px;
   font-size: 15px;
   color: #6d2ef1;
@@ -1893,10 +1903,10 @@ body {
   text-align: center;
 }
 
-.fo_btn_c button:hover {
+/* .fo_btn_c button:hover {
   background-color: #6d2ef1;
   color: #fff;
-}
+} */
 
 .s_select {
   margin: 5px 0px;
@@ -3097,6 +3107,11 @@ body {
   flex-wrap: wrap;
   justify-content: center;
   margin-bottom: 10px;
+}
+
+.sign_buttons_group button:hover {
+  background-color: #6d2ef1;
+  color: #fff;
 }
 
 .form-check-input {
@@ -5326,17 +5341,22 @@ a {
   color: #6d2ef1;
 }
 
-.hov_pple:hover,
+/* .hov_pple:hover,
 .popup_btns_new .trans_btn:hover {
   background-color: #6d2ef1 !important;
   color: #fff !important;
+} */
+
+.form-check-input:checked {
+  background-color: #6d2ef1 !important;
+  border-color: #6d2ef1 !important;
 }
 
-.hov_ttransp:hover {
+/* .hov_ttransp:hover {
   background-color: #fff !important;
   color: #6d2ef1 !important;
   border: #6d2ef1 solid 1px !important;
-}
+} */
 
 .b-blew-bnt {
   border: transparent solid 1px !important;
@@ -5346,17 +5366,17 @@ a {
   border: transparent solid 1px !important;
 }
 
-.btn_group_be button:hover {
+/* .btn_group_be button:hover {
   background-color: #6d2ef1 !important;
   border: #6d2ef1 solid 1px;
   color: #fff !important;
-}
+} */
 
 .btn_group_be .active_btn_be:hover {
-  background-color: #fff !important;
-  color: #000 !important;
+  background-color: #6d2ef1 !important;
+  color: #fff !important;
 }
 
-.min-w-2hpx{
+.min-w-2hpx {
   min-width: 200px !important;
 }

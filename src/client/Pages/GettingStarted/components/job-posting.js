@@ -176,7 +176,7 @@ const JobPosting = () => {
                 </div>
                 <div className="fo_btn_c next_b_btn_c">
                   {/* <Link to="/title"> */}
-                  <Button variant="" className="hov_ttransp active_btn_blue" onClick={saveButton}>
+                  <Button variant="" className="active_btn_blue" onClick={saveButton}>
                     Continue
                   </Button>
                   {/* </Link> */}

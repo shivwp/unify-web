@@ -435,7 +435,7 @@ const Project_Search = () => {
                 </p>
               </div>
               <div className="fr_btn">
-                <Button variant="">Filter Result</Button>
+                <Button variant="" className="btnhovpple">Filter Result</Button>
               </div>
             </div>
           </Col>

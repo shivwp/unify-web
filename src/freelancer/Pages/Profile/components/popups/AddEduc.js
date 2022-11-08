@@ -231,7 +231,7 @@ const AddEduc = (props) => {
               <Button variant="" className="trans_btn">
                 Cancel
               </Button>
-              <Button variant="" onClick={() => AddEducation()}>
+              <Button variant="" className="btnhovpple" onClick={() => AddEducation()}>
                 Save
               </Button>
             </div>

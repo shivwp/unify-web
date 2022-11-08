@@ -552,10 +552,10 @@
   width: 100%;
 }
 
-.profile_pf_btn button:hover {
+/* .profile_pf_btn button:hover {
   background-color: #6d2ef1;
   color: #fff;
-}
+} */
 
 .pd_flex .flex_pt {
   min-width: 45% !important;

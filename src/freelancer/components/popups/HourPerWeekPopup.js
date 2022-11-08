@@ -95,7 +95,7 @@ const HourPerWeekPopup = ({
 
         <div className="freelancer_popup_btns">
           <div className="_cancle_submit">
-            <Button variant="" className="hov_pple" onClick={onCloseModal}>
+            <Button variant="" className="hov_whitepple" onClick={onCloseModal}>
               CANCEL
             </Button>
           </div>

@@ -91,7 +91,7 @@ const Screen = () => {
               </Form.Label>
             </Button>
             <Form.Control type="text" placeholder="Message" />
-            <Button variant="" className="send_btn_mfc">SEND</Button>
+            <Button variant="" className="send_btn_mfc btnhovpple">SEND</Button>
           </div>
         </Col>
         <Col md={4}>

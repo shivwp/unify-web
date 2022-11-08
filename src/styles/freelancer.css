@@ -348,6 +348,16 @@
   background-color: #fff;
   color: #6d2ef1;
 }
+.btnhovpple:hover {
+  background-color: #6d2ef1 !important;
+  color: #fff !important;
+  border-color: #6d2ef1 !important;
+}
+.hov_whitepple:hover{
+  background-color: #fff !important;
+  color: #6d2ef1 !important;
+  border-color: #6d2ef1 !important;
+}
 
 .popup_btns_new button:disabled {
   background-color: #c7c6c9;
@@ -1211,9 +1221,9 @@
   padding: 8px 20px;
 }
 
-.btn_group_be button:hover {
+/* .btn_group_be button:hover {
   background-color: #fff;
-}
+} */
 
 .active_btn_be {
   background-color: #6d2ef1;
