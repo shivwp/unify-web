@@ -170,7 +170,6 @@ const ReqTestimonial = (props) => {
                 className="font-weight-600"
                 onClick={() => {
                   testimonialSubmit();
-                  props.Popup();
                 }}
               >
                 REQUEST TESTIMONIAL
