@@ -131,7 +131,10 @@ const RouterConfig = () => {
         path="/freelancer/billing-earning"
         element={<FreelanceBillingEarn />}
       />
-      <Route path="/freelancer/send-proposal" element={<FreelanceProposal />} />
+      <Route
+        path="/freelancer/send-proposal/:id"
+        element={<FreelanceProposal />}
+      />
       <Route
         path="/freelancer/time-tracker"
         element={<FreelanceTimeTracker />}

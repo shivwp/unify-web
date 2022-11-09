@@ -2,29 +2,30 @@ import Container from "react-bootstrap/Container";
 import { Row, Col } from "react-bootstrap";
 import star from "../../../../icons/star.svg";
 import "../../../../styles/freelancer.css";
-import { Link, useParams } from "react-router-dom";
+import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import { Button } from "react-bootstrap";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { SingleJobPostDetails } from "../../../../redux/actions/jobActions";
+import { singleJobPostDetails } from "../../../../redux/actions/jobActions";
+import { SEND_PROPOSAL_DATA } from "../../../../redux/types";
 
-function ListProposals() {
-  const card = [1, 2, 3];
+function ListProposals({ project_type, data }) {
+  console.log(data);
   return (
     <>
-      {card.map((person, index) => (
+      {data?.map((item, index) => (
         <div className="propo_box" key={index}>
           <Row className="bo_bot_pad">
             <Col lg={9}>
               <div>
                 <div className="flex_pro_bo">
                   <div className="projec_cli_prof">
-                    <img src="/assets/PRO-2.png" alt="" />
+                    <img src={item.profile_image} alt="" />
                   </div>
                   <div className="pro_cli_det">
                     <div>
-                      <h3>Hannah Finn</h3>
+                      <h3>{item.freelancer_name}</h3>
                       <div className="pro_cli_sm_te flex-wrap">
                         <span className="space_wa">
                           <svg
@@ -39,8 +40,8 @@ function ListProposals() {
                             <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z" />
                           </svg>
                         </span>
-                        3 months ago
-                        <div className="rev_aox">
+                        {item.time}
+                        {/* <div className="rev_aox">
                           <span>
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
@@ -78,7 +79,7 @@ function ListProposals() {
                             </svg>
                           </span>
                           <p>Reviews</p>
-                        </div>
+                        </div> */}
                       </div>
                     </div>
                   </div>
@@ -87,17 +88,13 @@ function ListProposals() {
             </Col>
             <Col>
               <div className="price_ar_jjob pt-0">
-                <h1>$140.00</h1>
-                <p>(Hourly)</p>
+                <h1>${item.bid_amount}</h1>
+                <p>({project_type})</p>
               </div>
             </Col>
           </Row>
           <div className="pd_par_for">
-            <p>
-              Hello, I am attaching my portfolio with this cover letter. If you
-              need anything else regarding my portfolio or against my jobs? Do
-              let me know. Hope you have a project from you. Regards
-            </p>
+            <p>{item.proposal_description}</p>
           </div>
         </div>
       ))}
@@ -108,11 +105,39 @@ function ListProposals() {
 const Projectdetail = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
+  const navigate = useNavigate();
+  const [values, setValues] = useState();
+  const [disableSubmitBtn, setDisableSubmitBtn] = useState(false);
   const singleJobDetails = useSelector((state) => state?.job?.singleJobDetails);
-  console.log(singleJobDetails);
+  const [errors, setErrors] = useState({});
+
   useEffect(() => {
-    dispatch(SingleJobPostDetails({ job_id: id }));
+    dispatch(singleJobPostDetails({ job_id: id }));
   }, []);
+
+  const handleOnChange = (e) => {
+    let errorsObject = {};
+    if (e.target.name == "bid_amount") {
+      if (Number(e.target.value) > singleJobDetails?.price) {
+        errorsObject.bid_amount = `Cannot be more than $${singleJobDetails?.price}`;
+      } else {
+        errorsObject.bid_amount = false;
+      }
+      setErrors(errorsObject);
+      setValues({ ...values, [e.target.name]: Number(e.target.value) });
+    } else if (e.target.name == "agree_terms") {
+      setValues({ ...values, [e.target.name]: e.target.checked });
+      setDisableSubmitBtn(e.target.checked);
+    } else {
+      setValues({ ...values, [e.target.name]: e.target.value });
+    }
+  };
+
+  const sendProposal = () => {
+    dispatch({ type: SEND_PROPOSAL_DATA, payload: values });
+    navigate(`/freelancer/send-proposal/${id}`);
+  };
+
   return (
     <>
       <Container className="mt-5">
@@ -140,14 +165,18 @@ const Projectdetail = () => {
                       />
                     </svg>
                   </Button>
-                  <Link
-                    // to={`/freelancer/send-proposal/${singleJobDetails?.id}`}
-                    to={`/freelancer/send-proposal`}
+
+                  <Button
+                    variant=""
+                    className="pd_n_sendp"
+                    onClick={() => {
+                      document
+                        .getElementById("send_proposal_form")
+                        .scrollIntoView({ behavior: "smooth" });
+                    }}
                   >
-                    <Button variant="" className="pd_n_sendp">
-                      Send Proposal
-                    </Button>
-                  </Link>
+                    Send Proposal
+                  </Button>
                 </div>
               </div>
               <div className="pd_head_on pd_head_h1">
@@ -258,10 +287,19 @@ const Projectdetail = () => {
 
             <div className="proj_proposal_box">
               <div className="phead_h3">
-                <h3>Project Proposals (3)</h3>
+                <h3>
+                  Project Proposals ({singleJobDetails?.proposal_list?.length})
+                </h3>
               </div>
-              <div className="proposal_boxes">{ListProposals()}</div>
-              <div className="phead_h3">
+              <div className="proposal_boxes">
+                {
+                  <ListProposals
+                    project_type={singleJobDetails?.budget_type}
+                    data={singleJobDetails?.proposal_list}
+                  />
+                }
+              </div>
+              <div className="phead_h3" id="send_proposal_form">
                 <h3>Send Your Proposal</h3>
               </div>
               <div className="flex_inp_b flex-wrap">
@@ -269,7 +307,21 @@ const Projectdetail = () => {
                   <div className="inp_label">Your hourly price</div>
                   <div className="d-flex">
                     <div className="inp_input">
-                      <Form.Control type="text" />
+                      <Form.Control
+                        name="bid_amount"
+                        className="project_details_Num_inp"
+                        type="number"
+                        isInvalid={errors?.bid_amount}
+                        feedback={errors?.bid_amount}
+                        onChange={(e) => handleOnChange(e)}
+                        onWheel={(e) => e.target.blur()}
+                      />
+                      <Form.Control.Feedback
+                        type="invalid"
+                        style={{ position: "absolute" }}
+                      >
+                        {errors?.bid_amount}
+                      </Form.Control.Feedback>
                     </div>
                     <div className="p_inp_icon">
                       <svg
@@ -289,7 +341,11 @@ const Projectdetail = () => {
                   <div className="inp_label">Estimated Hours</div>
                   <div className="d-flex">
                     <div className="inp_input">
-                      <Form.Control type="text" />
+                      <Form.Control
+                        type="text"
+                        name="project_duration"
+                        onChange={(e) => handleOnChange(e)}
+                      />
                     </div>
                     <div className="p_inp_icon">
                       <svg
@@ -311,22 +367,46 @@ const Projectdetail = () => {
                 <div className="inp_box">
                   <div className="inp_label">Cover Letter</div>
                   <div className="inp_input">
-                    <Form.Control as="textarea"></Form.Control>
+                    <Form.Control
+                      as="textarea"
+                      name="cover_letter"
+                      onChange={(e) => handleOnChange(e)}
+                    ></Form.Control>
                   </div>
                 </div>
               </div>
               <div className="f_agre_fot mt-2 flex-wrap">
                 <div className="agree_term_b align-items-center">
-                  <Form.Check type="checkbox" />
+                  <Form.Check
+                    type="checkbox"
+                    name="agree_terms"
+                    feedback="You must agree before submitting."
+                    required
+                    onChange={(e) => handleOnChange(e)}
+                  />
                   <Form.Label>I agree to the Terms And Conditions</Form.Label>
                 </div>
                 <div>
                   <div className="fb_btns_s_pro">
-                    <Link to="/freelancer/send-proposal">
-                      <Button variant="" className="pd_n_sendp pad_n_pdd">
-                        Send Proposal
-                      </Button>
-                    </Link>
+                    {/* <Link
+                      to="/freelancer/send-proposal"
+                      style={disableSubmitBtn ? { pointerEvents: "none" } : {}}
+                    > */}
+                    <Button
+                      type="submit"
+                      variant=""
+                      className="pd_n_sendp pad_n_pdd"
+                      disabled={
+                        !(
+                          disableSubmitBtn &&
+                          (errors?.bid_amount ? false : true)
+                        )
+                      }
+                      onClick={() => sendProposal()}
+                    >
+                      Send Proposal
+                    </Button>
+                    {/* </Link> */}
                   </div>
                 </div>
               </div>

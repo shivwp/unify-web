@@ -1,8 +1,12 @@
 import {
+  DISLIKE_POST_REASONS,
   JOBS_LIST,
   JOB_POST_DETAILS,
+  ON_DISLIKE_JOB_POST,
   SAVED_JOBS_LIST,
   SAVE_JOB_POST,
+  SEND_JOB_PROPOSAL,
+  SEND_PROPOSAL_DATA,
   UNSAVE_JOB_POST,
 } from "../types";
 
@@ -34,6 +38,26 @@ const jobReducer = (state = initialState, action) => {
       return {
         ...state,
         singleJobDetails: action.payload,
+      };
+    case SEND_JOB_PROPOSAL:
+      return {
+        ...state,
+        sendJobProposal: action.payload,
+      };
+    case SEND_PROPOSAL_DATA:
+      return {
+        ...state,
+        proposalData: action.payload,
+      };
+    case DISLIKE_POST_REASONS:
+      return {
+        ...state,
+        dislikeJobReasons: action.payload,
+      };
+    case ON_DISLIKE_JOB_POST:
+      return {
+        ...state,
+        onDislikeJobPost: action.payload,
       };
 
     default:

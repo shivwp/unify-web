@@ -13,40 +13,72 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  onDislikePostReasons,
   getJobsList,
   getSavedJobsList,
-  RemoveSaveJob,
-  SaveJobs,
+  onDislikeJobPost,
+  removeSaveJob,
+  saveJobs,
 } from "../../../../redux/actions/jobActions";
 
+const ReasonsList = ({ jobId, data, setDropdownOpen }) => {
+  const dispatch = useDispatch();
+
+  const dislikeJobPost = (id) => {
+    dispatch(
+      onDislikeJobPost({ job_id: jobId, reason_id: id }, setDropdownOpen)
+    );
+  };
+  return (
+    <>
+      <div className="ddown_psr ps-absolute">
+        <div className="ddown_mcotrct psearch-pnpou">
+          {data?.map((item) => (
+            <div
+              key={item.id}
+              className="ddwon_lis"
+              onClick={() => dislikeJobPost(item.id)}
+              style={{ cursor: "pointer" }}
+            >
+              {item.name}
+            </div>
+          ))}
+        </div>
+      </div>
+    </>
+  );
+};
+
 const ProjectSearch = () => {
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const totalPages = [];
   const dispatch = useDispatch();
   const [page, setPage] = useState(1);
   const jobsList = useSelector((state) => state?.job?.jobsList?.data);
   const jobsPagination = useSelector((state) => state?.job?.jobsList?.meta);
   const savedJobsList = useSelector((state) => state?.job?.savedJobsList?.data);
+  const onDislikeJobPost = useSelector((state) => state?.job?.onDislikeJobPost);
 
-  const totalPages = [];
+  const dislikeJobReasons = useSelector(
+    (state) => state?.job?.dislikeJobReasons
+  );
+
   useEffect(() => {
     dispatch(getJobsList({ pagination: 10, page }));
-  }, [page]);
+  }, [page, onDislikeJobPost]);
+
+  useEffect(() => {
+    dispatch(onDislikePostReasons());
+  }, []);
 
   for (let i = 1; i < jobsPagination?.total_page + 1; i++) {
     totalPages.push(i);
   }
 
   const SaveJob = (id) => {
-    dispatch(SaveJobs({ job_id: id }));
+    dispatch(saveJobs({ job_id: id }));
   };
 
-  const [dDown, Setddown] = useState(0);
-  function TogglePopup() {
-    if (dDown === 1) {
-      Setddown(0);
-    } else {
-      Setddown(1);
-    }
-  }
   return (
     <>
       {jobsList?.map((item, index) => (
@@ -102,14 +134,22 @@ const ProjectSearch = () => {
               </div>
             </div>
             <div className="ps-relative mt-sesix-5">
-              {dDown === 1 ? <Popup /> : ""}
+              {dropdownOpen == item.id ? (
+                <ReasonsList
+                  jobId={item.id}
+                  data={dislikeJobReasons}
+                  setDropdownOpen={setDropdownOpen}
+                />
+              ) : (
+                ""
+              )}
               <div className="fb_btns_s_pro">
                 <Button
                   variant=""
                   className="bg-trans_s_pro btn_psnewrb"
-                  onClick={() => {
-                    TogglePopup();
-                  }}
+                  onClick={() =>
+                    setDropdownOpen(dropdownOpen ? false : item.id)
+                  }
                 >
                   <img
                     src={like}
@@ -125,7 +165,7 @@ const ProjectSearch = () => {
                 >
                   <img src={heart} alt="" className="heart_btn" />
                 </Button>
-                <Link to={`/freelancer/project-detail/${item.id}`} >
+                <Link to={`/freelancer/project-detail/${item.id}`}>
                   <Button variant="">Send Proposal</Button>
                 </Link>
               </div>
@@ -155,7 +195,7 @@ const ProjectSearch = () => {
   );
 };
 const ProjectSaved = () => {
-  const [dDown, Setddown] = useState(0);
+  const [dropdownOpen, setDropdownOpen] = useState(0);
   const dispatch = useDispatch();
   const [page, setPage] = useState(1);
   const savedJobsList = useSelector((state) => state?.job?.savedJobsList?.data);
@@ -164,14 +204,18 @@ const ProjectSaved = () => {
   const savedjobsPagination = useSelector(
     (state) => state?.job?.savedJobsList?.meta
   );
-  console.log(savedJobsList);
+
+  const totalPages = [];
+  for (let i = 1; i < savedjobsPagination?.total_page + 1; i++) {
+    totalPages.push(i);
+  }
 
   const UnSaveJob = (id) => {
-    dispatch(RemoveSaveJob({ job_id: id }));
+    dispatch(removeSaveJob({ job_id: id }));
   };
 
   useEffect(() => {
-    dispatch(getSavedJobsList());
+    dispatch(getSavedJobsList({ pagination: 10, page }));
   }, [page, unSaveJobsPost]);
 
   return (
@@ -226,7 +270,7 @@ const ProjectSaved = () => {
               </div> */}
             </div>
             <div className="ps-relative mt-sesix-5">
-              {dDown === 1 ? <Popup /> : ""}
+              {/* {dropdownOpen ? <ReasonsList id={item.id} /> : ""} */}
               <div className="fb_btns_s_pro">
                 {/* <button className="bg-trans_s_pro btn_psnewrb" onClick={()=>{TogglePopup()}}>
                   <img src={like} alt="" className="heart_btn" />
@@ -249,59 +293,28 @@ const ProjectSaved = () => {
       ))}
       <Col lg={12}>
         <div className="pagiantion_node">
-          <Button variant="" className="pagi_butt">
-            1
-          </Button>
-          <Button variant="" className="pagi_butt">
-            2
-          </Button>
-          <Button variant="" className="pagi_butt">
-            3
-          </Button>
-          <Button variant="" className="pagi_butt">
-            4
-          </Button>
-          <Button variant="" className="pagi_butt">
-            5
-          </Button>
-          <div className="pagination_dots">...</div>
-          <Button variant="" className="pagi_butt">
-            10
-          </Button>
+          {totalPages.map((number) => (
+            <>
+              <Button
+                variant=""
+                className={`pagi_butt ${
+                  savedjobsPagination?.current_page == number
+                    ? "PageActive"
+                    : ""
+                }`}
+                key={number}
+                onClick={() => setPage(number)}
+              >
+                {number}
+              </Button>
+            </>
+          ))}
         </div>
       </Col>
     </>
   );
 };
 
-const Popup = () => {
-  return (
-    <>
-      <div className="ddown_psr ps-absolute">
-        <div className="ddown_mcotrct psearch-pnpou">
-          <Link to="/freelancer/getpaid">
-            <div className="ddwon_lis">Just not interested</div>
-          </Link>
-          <Link to="/freelancer/transaction-history">
-            <div className="ddwon_lis">Vague Description</div>
-          </Link>
-          <Link to="/freelancer/overview">
-            <div className="ddwon_lis">Unrealistic Expectations</div>
-          </Link>
-          <Link to="/freelancer/overview">
-            <div className="ddwon_lis">Too Many Applicants</div>
-          </Link>
-          <Link to="/freelancer/overview">
-            <div className="ddwon_lis">Job posted too long ago</div>
-          </Link>
-          <Link to="/freelancer/overview">
-            <div className="ddwon_lis">Doesn't Match Skills</div>
-          </Link>
-        </div>
-      </div>
-    </>
-  );
-};
 const Project_Search = () => {
   let { saved } = useParams();
   const hanDleSlide = (e) => {
@@ -494,7 +507,9 @@ const Project_Search = () => {
                 </p>
               </div>
               <div className="fr_btn">
-                <Button variant="" className="btnhovpple">Filter Result</Button>
+                <Button variant="" className="btnhovpple">
+                  Filter Result
+                </Button>
               </div>
             </div>
           </Col>

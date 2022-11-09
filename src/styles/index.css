@@ -2662,6 +2662,42 @@ body {
   padding-bottom: 20px;
 }
 
+.send_proposal_num_inp.is-invalid {
+  border: none !important;
+  padding: 0.375rem 0.75rem;
+  background-image: unset !important;
+}
+.send_proposal_num_inp.is-invalid:focus {
+  box-shadow: unset !important;
+}
+
+
+
+.sent_proposal_pre_img {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 10px 0;
+}
+.sent_proposal_pre_img img {
+  width: 100px;
+  height: auto;
+  object-fit: cover;
+}
+.invalid-feedback {
+  font-weight: 400 !important;
+}
+
+.project_details_Num_inp::-webkit-outer-spin-button,
+.project_details_Num_inp::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.input_from_tlab input[type="number"] {
+  -moz-appearance: textfield;
+}
+
 .pd_par_for p {
   margin-top: 10px;
   font-size: 11px;

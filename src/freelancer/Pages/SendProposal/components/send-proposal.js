@@ -1,19 +1,76 @@
-import * as React from "react";
+import { useState } from "react";
 import Container from "react-bootstrap/Container";
 import { Col, Row } from "react-bootstrap";
 import Title from "../../../../components/title";
 import star from "../../../../icons/star.svg";
 import Select from "react-select";
-import Form from 'react-bootstrap/Form';
-import { Link } from "react-router-dom";
-import Button from 'react-bootstrap/Button'
+import Form from "react-bootstrap/Form";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import Button from "react-bootstrap/Button";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import {
+  onSendJobProposal,
+  singleJobPostDetails,
+} from "../../../../redux/actions/jobActions";
 
 const Screen = () => {
   Title(" | Send Proposal");
-  const options1 = [{
-    name:'General Profile',label:'General Profile'
-  }]
+  const { id } = useParams();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const proposalData = useSelector((state) => state.job.proposalData);
+  const [values, setValues] = useState(proposalData);
+  const singleJobDetails = useSelector((state) => state?.job?.singleJobDetails);
+  const [disableSubmitBtn, setDisableSubmitBtn] = useState(true);
+  const [portfolioImage, setPortfolioImage] = useState(null);
+  const [showingImage, setShowingImage] = useState();
+  const percent = 20;
+  const [errors, setErrors] = useState({});
 
+  useEffect(() => {
+    if (!proposalData) {
+      navigate(`/freelancer/project-detail/${id}`);
+    }
+  }, []);
+  useEffect(() => {
+    dispatch(singleJobPostDetails({ job_id: id }));
+  }, [id]);
+
+  const handleOnChange = (e) => {
+    let errorsObject = {};
+
+    if (e.target.name == "bid_amount") {
+      if (Number(e.target.value) > singleJobDetails?.price) {
+        errorsObject.bid_amount = `Cannot be more than $${singleJobDetails?.price}`;
+        setDisableSubmitBtn(false);
+      } else {
+        errorsObject.bid_amount = false;
+        setDisableSubmitBtn(true);
+      }
+      setErrors(errorsObject);
+      setValues({ ...values, [e.target.name]: Number(e.target.value) });
+    } else {
+      setValues({ ...values, [e.target.name]: e.target.value });
+    }
+  };
+
+  const onImageChange = (e) => {
+    setPortfolioImage(e.target.files[0]);
+    setShowingImage(URL.createObjectURL(e.target.files[0]));
+  };
+
+  const onSendProposal = () => {
+    const formData = new FormData();
+    formData.append("job_id", id);
+    formData.append("bid_amount", values?.bid_amount);
+    formData.append("cover_letter", values?.cover_letter);
+    formData.append("project_duration", values?.project_duration);
+    formData.append("image", portfolioImage);
+    dispatch(onSendJobProposal(formData));
+  };
+
+  console.log(singleJobDetails);
   return (
     <>
       <Container>
@@ -21,16 +78,16 @@ const Screen = () => {
           <Row>
             <Col lg={5}>
               <div className="send_propo_hdsp">Submit a proposal</div>
-              <div className="ssmtxto_hdsp mt-2">
+              {/* <div className="ssmtxto_hdsp mt-2">
                 Propose with a Specialized profile
               </div>
               <div className="sm_select_hdsp">
                 <Select
-                    className="custom_css_select sendpro_select"
-                    placeholder="Select Profile"
-                    options={options1}
-                  />
-              </div>
+                  className="custom_css_select sendpro_select"
+                  placeholder="Select Profile"
+                  options={options1}
+                />
+              </div> */}
               <div className="ssmtxto_hdsp">
                 This proposal requires 4 Connects
                 <svg
@@ -58,18 +115,13 @@ const Screen = () => {
           <Row className="bbtm_gay mt-3">
             <Col lg={9} className="bright_gay">
               <div className="send_prp_blew_hsp">Job Details</div>
-              <div className="send_propo_hdsp">
-                Graphic Design Logo design for companies and the brand
-              </div>
+              <div className="send_propo_hdsp">{singleJobDetails?.name}</div>
               <div className="d-flex mt-3 mb-3 flex-wrap">
                 <div className="blue_bx_sp_ct">Graphic Design</div>
                 <div className="trs_css-76">Posted Aug 3, 2022</div>
               </div>
-              <div className="pbsp_prs">
-                Logo design for companies and the brand Choosing the idea of his
-                design for the company's name and content
-              </div>
-              <div className="pbsp_prs">
+              <div className="pbsp_prs">{singleJobDetails?.description}</div>
+              {/* <div className="pbsp_prs">
                 The design will be similar in name or contain abbreviated
                 letters of the name
               </div>
@@ -78,7 +130,7 @@ const Screen = () => {
               </div>
               <div className="bbsp_linkn">
                 <Link to="#0">View job posting</Link>
-              </div>
+              </div> */}
             </Col>
             <Col lg={3}>
               <div className="box_bgay">
@@ -127,7 +179,12 @@ const Screen = () => {
                     </svg>
                   </div>
                   <div>
-                    <div className="br_sec_name_cwss">Expert</div>
+                    <div
+                      className="br_sec_name_cwss"
+                      style={{ textTransform: "capitalize" }}
+                    >
+                      {singleJobDetails?.experience_level}
+                    </div>
                     <div className="br_sec_val_cwss">Experience Level</div>
                   </div>
                 </div>
@@ -164,8 +221,22 @@ const Screen = () => {
                     </svg>
                   </div>
                   <div>
-                    <div className="br_sec_name_cwss">$25.00-$45.00</div>
-                    <div className="br_sec_val_cwss">Hourly Range</div>
+                    {singleJobDetails?.budget_type === "fixed" ? (
+                      <>
+                        <div className="br_sec_name_cwss">
+                          ${singleJobDetails?.price}
+                        </div>
+                        <div className="br_sec_val_cwss">Fixed</div>
+                      </>
+                    ) : singleJobDetails?.budget_type === "hourly" ? (
+                      <>
+                        <div className="br_sec_name_cwss">
+                          ${singleJobDetails?.min_price} - $
+                          {singleJobDetails?.price} /hr
+                        </div>
+                        <div className="br_sec_val_cwss">Hourly Range</div>
+                      </>
+                    ) : null}
                   </div>
                 </div>
                 <div className="d-flex br_sc_gay">
@@ -251,7 +322,13 @@ const Screen = () => {
                     </svg>
                   </div>
                   <div>
-                    <div className="br_sec_name_cwss">1 to 3 months</div>
+                    <div
+                      className="br_sec_name_cwss"
+                      style={{ textTransform: "capitalize" }}
+                    >
+                      {" "}
+                      {singleJobDetails?.project_duration}
+                    </div>
                     <div className="br_sec_val_cwss">Project Length</div>
                   </div>
                 </div>
@@ -261,10 +338,11 @@ const Screen = () => {
           <div className="mt-3">
             <div className="skll_hding">Skills and expertise</div>
             <div className="d-flex flex-wrap cwcss_cw">
-              <div className="blue_bx_sp_ct">Backend Developer</div>
-              <div className="blue_bx_sp_ct">Designer</div>
-              <div className="blue_bx_sp_ct">Support Agent</div>
-              <div className="blue_bx_sp_ct">IOS Developer</div>
+              {singleJobDetails?.skills?.map((skill) => (
+                <>
+                  <div className="blue_bx_sp_ct">{skill.name}</div>
+                </>
+              ))}
             </div>
           </div>
         </div>
@@ -275,9 +353,9 @@ const Screen = () => {
               <div className="send_propo_hdsp mt-2">
                 What is the rate you'd like to bid for this job?
               </div>
-              <div className="sphd_btext_protection mt-2">
+              {/* <div className="sphd_btext_protection mt-2">
                 Your profile rate: $15.00/hr
-              </div>
+              </div> */}
               <div className="pbx_pdd_sp">
                 <div className="mt-2">
                   <div className="hraet_pdd_sp">Hourly Rate</div>
@@ -287,12 +365,36 @@ const Screen = () => {
                 </div>
                 <div>
                   <div className="sli_bdg_pddsp">
-                    Client’s budget: $25.00 - $45.00/hr
+                    Client’s budget:
+                    {singleJobDetails?.budget_type === "fixed"
+                      ? ` $${singleJobDetails?.price}`
+                      : singleJobDetails?.budget_type === "hourly"
+                      ? ` $${singleJobDetails?.min_price} - $${singleJobDetails?.price} /hr`
+                      : null}
                   </div>
                   <div className="d-flex">
-                    <div className="inp_bdg_pdsp">
+                    <div
+                      className="inp_bdg_pdsp"
+                      style={{ position: "relative", marginBottom: 10 }}
+                    >
                       $
-                      <Form.Control type="text" placeholder={`15.00`} />
+                      <Form.Control
+                        type="number"
+                        placeholder={`15.00`}
+                        name="bid_amount"
+                        className="project_details_Num_inp send_proposal_num_inp"
+                        value={values?.bid_amount}
+                        onChange={(e) => handleOnChange(e)}
+                        isInvalid={errors?.bid_amount}
+                        feedback={errors?.bid_amount}
+                        onWheel={(e) => e.target.blur()}
+                      />
+                      <Form.Control.Feedback
+                        type="invalid"
+                        style={{ position: "absolute", top: 44, left: 0 }}
+                      >
+                        {errors?.bid_amount}
+                      </Form.Control.Feedback>
                     </div>
                     <div className="sli_bdg_pddsp d-flex align-items-center slsh_rh">
                       /hr
@@ -308,7 +410,13 @@ const Screen = () => {
                   <div className="d-flex">
                     <div className="inp_bdg_pdsp">
                       $
-                      <Form.Control type="text" placeholder={`03.00`} />
+                      <Form.Control
+                        type="text"
+                        value={(values?.bid_amount / 100) * percent}
+                        disabled
+                        placeholder={`03.00`}
+                        name="unify_service_fee"
+                      />
                     </div>
                     <div className="sli_bdg_pddsp d-flex align-items-center slsh_rh">
                       /hr
@@ -327,7 +435,16 @@ const Screen = () => {
                   <div className="d-flex align-items-center">
                     <div className="inp_bdg_pdsp">
                       $
-                      <Form.Control type="text" placeholder={`12.00`} />
+                      <Form.Control
+                        type="text"
+                        placeholder={`12.00`}
+                        disabled
+                        value={
+                          values?.bid_amount -
+                          (values?.bid_amount / 100) * percent
+                        }
+                        name="reciving_amt"
+                      />
                     </div>
                     <div className="sli_bdg_pddsp d-flex align-items-center slsh_rh">
                       /hr
@@ -354,22 +471,38 @@ const Screen = () => {
             <Col lg={12}>
               <div className="skll_hding">Cover Letter</div>
               <div className="cvr_ltr_textbox">
-                <Form.Control as="textarea"></Form.Control>
+                <Form.Control
+                  as="textarea"
+                  name="cover_letter"
+                  value={values?.bid_amount}
+                  onChange={(e) => handleOnChange(e)}
+                ></Form.Control>
               </div>
               <div className="skll_hding mt-4">Attachments</div>
-              <div className="skll_hding mt-4 drag_file_bx"><Form.Control type="file"   />Drag or <span>upload</span> project files</div>
+              <div className="sent_proposal_pre_img">
+                <img src={showingImage} alt="" />
+              </div>
+              <div className="skll_hding mt-4 drag_file_bx">
+                <Form.Control type="file" onChange={(e) => onImageChange(e)} />
+                Drag or <span>upload</span> project files
+              </div>
               <div className="tamoun_pdd_sp mt-4">
-                You may attach up to 10 files under the size of 25MB each.
-                Include work samples or other documents to support your
-                application. Do not attach your résumé — your Unify profile is
-                automatically forwarded to the client with your proposal.
+                Do not attach your résumé — your Unify profile is automatically
+                forwarded to the client with your proposal.
               </div>
             </Col>
           </Row>
         </div>
-              <div className="mt-4 mb-4">
-                <Button variant="" className="send_pros_btn">send proposal</Button>
-              </div>
+        <div className="mt-4 mb-4">
+          <Button
+            variant=""
+            className="send_pros_btn"
+            disabled={!disableSubmitBtn}
+            onClick={onSendProposal}
+          >
+            send proposal
+          </Button>
+        </div>
       </Container>
     </>
   );

@@ -19,6 +19,9 @@
 .pad_n_pdd {
   padding: 13px 20px !important;
 }
+.pad_n_pdd a:hover {
+  color: white !important;
+}
 
 .pd_n_bh h3 {
   font-size: 22px;
@@ -255,11 +258,11 @@
   -o-border-radius: 3px;
 }
 
-.popup_form_element>input {
+.popup_form_element > input {
   height: 40px;
 }
 
-.popup_form_element>.language_sel {
+.popup_form_element > .language_sel {
   height: 40px;
   color: #1e1e1e;
   border: 1px solid #e8e7e7 !important;
@@ -357,7 +360,7 @@
   color: #fff !important;
   border-color: #6d2ef1 !important;
 }
-.hov_whitepple:hover{
+.hov_whitepple:hover {
   background-color: #fff !important;
   color: #6d2ef1 !important;
   border-color: #6d2ef1 !important;
@@ -625,7 +628,7 @@
   color: #6d2ef1;
 }
 
-.table> :not(caption)>*>* {
+.table > :not(caption) > * > * {
   padding: 0.7rem 0.5rem !important;
 }
 
@@ -1421,7 +1424,7 @@
 }
 
 .box_bgay {
-  padding: 40px 50px;
+  padding: 40px 20px 40px 20px;
 }
 
 .br_sc_gay {
@@ -1773,7 +1776,7 @@
   width: 100%;
 }
 
-.timerackbox table> :not(caption)>*>* {
+.timerackbox table > :not(caption) > * > * {
   padding: 0.7rem 1rem !important;
 }
 

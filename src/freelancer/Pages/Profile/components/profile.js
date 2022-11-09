@@ -1024,8 +1024,8 @@ const UnifyFreelancer = () => {
                 <div className="myskill_hdingn profile_icon_25px profile_heading_mb">
                   Verification
                   <div className="d-flex justify-content-start">
-                    {basicInfo?.is_verified != "approve" &&
-                      basicInfo?.is_verified != "requested" && (
+                    {/* {basicInfo?.is_verified != "approve" &&
+                      basicInfo?.is_verified != "requested" && ( */}
                         <Button
                           variant=""
                           onClick={() => {
@@ -1047,7 +1047,7 @@ const UnifyFreelancer = () => {
                             />
                           </svg>
                         </Button>
-                      )}
+                      {/* )} */}
                   </div>
                 </div>
                 <div className="myskill_hdingn ms_hdsmall font-size-15px">
