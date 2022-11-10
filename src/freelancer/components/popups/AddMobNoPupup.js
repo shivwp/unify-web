@@ -2,23 +2,17 @@ import React from "react";
 import { Modal } from "react-responsive-modal";
 import "react-responsive-modal/styles.css";
 import "./popup.css";
-import Button from 'react-bootstrap/Button';
+import Button from "react-bootstrap/Button";
 import Select from "react-select";
 import { Row, Col } from "react-bootstrap";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { countryList } from "../../../redux/actions/authActions";
 import { useState } from "react";
-import Form from 'react-bootstrap/Form';
+import Form from "react-bootstrap/Form";
 
 const AddMobNoPupup = ({ open, onCloseModal }) => {
-  const options1 = useSelector((state) => state.auth.getCountryList)?.map(
-    (data) => ({
-      name: data.country_code,
-      label: `${data.country_code}`,
-      color: "#000",
-    })
-  );
+  const getCountryList = useSelector((state) => state.auth.getCountryList);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -108,11 +102,17 @@ const AddMobNoPupup = ({ open, onCloseModal }) => {
             <Row>
               <Col md={6} sm={12} lg={6}>
                 <div className="popup_form_element">
-                  <Select
-                    className="custom_css_select"
+                  <Form.Select
+                    className="custom_css_select font-size-13px"
                     placeholder="IND +91"
-                    options={options1}
-                  />
+                    style={{ color: "#212529", height: 40, boxShadow: "none" }}
+                  >
+                    {getCountryList?.map((item) => (
+                      <option value={item.country_code}>
+                        {item.country_code}
+                      </option>
+                    ))}
+                  </Form.Select>
                 </div>
               </Col>
               <Col md={6} sm={12} lg={6}>
@@ -133,7 +133,9 @@ const AddMobNoPupup = ({ open, onCloseModal }) => {
         </div>
         <div className="freelancer_popup_btns">
           <div className="_cancle_submit">
-            <Button variant="" onClick={onCloseModal}>CANCEL</Button>
+            <Button variant="" onClick={onCloseModal}>
+              CANCEL
+            </Button>
           </div>
           <div className="_save_submit">
             <Button variant="">NEXT</Button>

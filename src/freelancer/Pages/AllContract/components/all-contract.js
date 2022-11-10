@@ -3,7 +3,7 @@ import { Col, Row } from "react-bootstrap";
 import Title from "../../../../components/title";
 import Select from "react-select";
 import { Link } from "react-router-dom";
-import Form from 'react-bootstrap/Form';
+import Form from "react-bootstrap/Form";
 import * as Icon from "react-icons/fi";
 import Checkbox from "react-custom-checkbox";
 
@@ -13,13 +13,6 @@ const Screen = () => {
   const [dDown, Setddown] = useState(false);
 
   Title(" | All Contracts");
-  const options = [
-    { value: "Start date", label: "Start date" },
-    { value: "End date", label: "End date" },
-    { value: "Client name", label: "Client name" },
-    { value: "Contract name", label: "Contract name" },
-  ];
-  const optionsne = [{ value: "Descending", label: "Descending" }, { value: "Ascending", label: "Ascending" }];
 
   return (
     <>
@@ -58,15 +51,42 @@ const Screen = () => {
                 <Row>
                   <Col>
                     <div className="select_inp_in filter_select_m">
-                      <Select className="custom_css_select" options={options} />
+                      <Form.Select
+                        className="custom_css_select"
+                        style={{
+                          boxShadow: "none",
+                          // minWidth: 205,
+                          height: 40,
+                          borderRadius: 0,
+                        }}
+                      >
+                        <option value="" disabled selected hidden>
+                          Select your option
+                        </option>
+                        <option value="start_date">Start Date</option>
+                        <option value="end_date">End Date</option>
+                        <option value="client_name">Client Name</option>
+                        <option value="contract_name">Contract Name</option>
+                      </Form.Select>
                     </div>
                   </Col>
                   <Col>
                     <div className="select_inp_in filter_select_m">
-                      <Select
+                      <Form.Select
                         className="custom_css_select"
-                        options={optionsne}
-                      />
+                        style={{
+                          boxShadow: "none",
+                          // minWidth: 205,
+                          height: 40,
+                          borderRadius: 0,
+                        }}
+                      >
+                        <option value="" disabled selected hidden>
+                          Select your option
+                        </option>
+                        <option value="ascending">Ascending</option>
+                        <option value="descending">Descending</option>
+                      </Form.Select>
                     </div>
                   </Col>
                 </Row>
@@ -113,7 +133,7 @@ const Screen = () => {
               </div>
             </div>
           </div>
-          
+
           <div>
             <div
               className="job_box_card"
@@ -128,7 +148,12 @@ const Screen = () => {
                     <p>Staffed by: Shiv Kumar at Eoxysis IT solution LLP</p>
                   </div>
                 </Col>
-                <Col lg={3} md={5} className='p-0' style={{display: 'flex', justifyContent:'center'}} >
+                <Col
+                  lg={3}
+                  md={5}
+                  className="p-0"
+                  style={{ display: "flex", justifyContent: "center" }}
+                >
                   <div className="milestone_btn_s">
                     <Link to="/freelancer/milestone-earning">
                       <button>Submit Work for Payment</button>
@@ -173,7 +198,12 @@ const Screen = () => {
                     <p>Staffed by: Shiv Kumar at Eoxysis IT solution LLP</p>
                   </div>
                 </Col>
-                <Col lg={3} md={5} className='p-0' style={{display: 'flex', justifyContent:'center'}} >
+                <Col
+                  lg={3}
+                  md={5}
+                  className="p-0"
+                  style={{ display: "flex", justifyContent: "center" }}
+                >
                   <div className="milestone_btn_s">
                     <Link to="/freelancer/milestone-earning">
                       <button>Submit Work for Payment</button>

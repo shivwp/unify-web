@@ -1135,43 +1135,7 @@ const Screen = () => {
               </div>
             </Col>
           </Row>
-          <Row className="mt-5">
-            <Col lg={3}></Col>
-            <Col lg={9} sm={12}>
-              <div className="d-flex align-items-center">
-                <div className="file_link_cbtn">
-                  <Button variant="">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="44.801"
-                      height="64.57"
-                      viewBox="0 0 44.801 64.57"
-                    >
-                      <g id="attachment" transform="translate(-65.607)">
-                        <g
-                          id="Group_2505"
-                          data-name="Group 2505"
-                          transform="translate(65.607)"
-                        >
-                          <path
-                            id="Path_4515"
-                            data-name="Path 4515"
-                            d="M103.98,6.522V42.178a15.972,15.972,0,1,1-31.944-.021V16.082a9.578,9.578,0,1,1,19.156-.014V41.962a3.211,3.211,0,0,1-6.423.007V12.95H78.341V41.968a9.64,9.64,0,0,0,19.28-.007V16.068A16.083,16.083,0,0,0,81.689,0h-.15A16.069,16.069,0,0,0,65.607,16.082V42.157a22.4,22.4,0,1,0,44.8.02V6.522Z"
-                            transform="translate(-65.607)"
-                            fill="#afafaf"
-                          />
-                        </g>
-                      </g>
-                    </svg>
-                  </Button>
-                </div>
-                <div className="fl_input_chat">
-                  <Form.Control type="text" />
-                  <Button variant="">SEND</Button>
-                </div>
-              </div>
-            </Col>
-          </Row>
+          
         </Container>
       </div>
       {Popup}

@@ -347,6 +347,12 @@
   -o-border-radius: 60px !important;
 }
 
+@media screen and (max-width: 321px) {
+  .popup_btns_new button {
+    padding: 11px 30px;
+  }
+}
+
 .popup_btns_new button:hover {
   background-color: #fff;
   color: #6d2ef1;

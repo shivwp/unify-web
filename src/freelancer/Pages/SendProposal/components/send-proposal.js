@@ -27,6 +27,7 @@ const Screen = () => {
   const [showingImage, setShowingImage] = useState();
   const percent = 20;
   const [errors, setErrors] = useState({});
+  const [successPopup, setSuccessPopup] = useState(false);
 
   useEffect(() => {
     if (!proposalData) {
@@ -67,7 +68,7 @@ const Screen = () => {
     formData.append("cover_letter", values?.cover_letter);
     formData.append("project_duration", values?.project_duration);
     formData.append("image", portfolioImage);
-    dispatch(onSendJobProposal(formData));
+    dispatch(onSendJobProposal(formData, successPopup, setSuccessPopup));
   };
 
   console.log(singleJobDetails);
@@ -474,7 +475,7 @@ const Screen = () => {
                 <Form.Control
                   as="textarea"
                   name="cover_letter"
-                  value={values?.bid_amount}
+                  value={values?.cover_letter}
                   onChange={(e) => handleOnChange(e)}
                 ></Form.Control>
               </div>
@@ -504,6 +505,7 @@ const Screen = () => {
           </Button>
         </div>
       </Container>
+      {successPopup}
     </>
   );
 };

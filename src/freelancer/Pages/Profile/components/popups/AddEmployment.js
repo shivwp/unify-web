@@ -3,9 +3,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  onAddEmployment,
-} from "../../../../../redux/actions/profileAction";
+import { onAddEmployment } from "../../../../../redux/actions/profileAction";
 import Select from "react-select";
 import { countryList } from "../../../../../redux/actions/authActions";
 
@@ -23,7 +21,6 @@ const CloseIcon = () => {
     </svg>
   );
 };
-
 
 const AddEmployment = (props) => {
   const dispatch = useDispatch();
@@ -173,22 +170,34 @@ const AddEmployment = (props) => {
                     />
                   </div>
                 </Col>
-                <Col md={6}>
-                  <div className="popup_form_element">
-                    <Form.Label className="text-black font-size-13px font-weight-500">
-                      End Date
-                    </Form.Label>
-                    <Form.Control
-                      type="date"
-                      name="end_date"
-                      className="font-size-13px"
-                      value={values.end_date}
-                      placeholder="End Date"
-                      onChange={(e) => onInputChange(e)}
-                    />
-                  </div>
-                </Col>
-                <Col className="text-right">
+                {values?.currently_working ? (
+                  ""
+                ) : (
+                  <Col md={6}>
+                    <div className="popup_form_element">
+                      <Form.Label className="text-black font-size-13px font-weight-500">
+                        End Date
+                      </Form.Label>
+                      <Form.Control
+                        type="date"
+                        name="end_date"
+                        className="font-size-13px"
+                        value={values.end_date}
+                        placeholder="End Date"
+                        onChange={(e) => onInputChange(e)}
+                      />
+                    </div>
+                  </Col>
+                )}
+
+                <Col
+                  className="text-right"
+                  style={{
+                    display: "flex",
+                    justifyContent: "flex-end",
+                    alignItems: "flex-end",
+                  }}
+                >
                   <div className="agrement_ineoeu flex-row d-flex justify-content-end mt-1 pt-0">
                     <Form.Label className="text-black text-right font-size-13px font-weight-500 align-items-center">
                       <Form.Check

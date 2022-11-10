@@ -607,7 +607,7 @@
 }
 
 .select_inp_in select {
-  color: #505050;
+  color: #828282;
   font-family: "Poppins-Bold", "Poppins";
   border: #e8e7e7 solid 1px;
   font-size: 15px;
@@ -1446,7 +1446,7 @@
 }
 
 .contract_sel .select_inp_in select option {
-  color: #b7b7b7;
+  color: #828282;
   font-family: "Poppins-Bold", "Poppins";
   font-size: 13px;
   background-color: transparent;

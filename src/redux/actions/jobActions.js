@@ -1,3 +1,4 @@
+import SuccessPopup from "../../freelancer/components/popups/SuccessPopup";
 import Axios from "../axios";
 import {
   DISLIKE_POST_REASONS,
@@ -69,16 +70,24 @@ export const singleJobPostDetails = (data) => async (dispatch) => {
     });
   } catch (err) {}
 };
-export const onSendJobProposal = (data) => async (dispatch) => {
-  try {
-    Axios.post("/send-proposal", data, config).then((res) => {
-      dispatch({
-        type: SEND_JOB_PROPOSAL,
-        payload: res.data.data,
+export const onSendJobProposal =
+  (data, successPopup, setSuccessPopup) => async (dispatch) => {
+    try {
+      Axios.post("/send-proposal", data, config).then((res) => {
+        dispatch({
+          type: SEND_JOB_PROPOSAL,
+          payload: res.data.data,
+        });
+        setSuccessPopup(
+          <SuccessPopup
+            Popup={() => setSuccessPopup(!successPopup)}
+            message="Proposal Sent Successfully"
+          />
+        );
+        console.log(successPopup);
       });
-    });
-  } catch (err) {}
-};
+    } catch (err) {}
+  };
 export const onDislikePostReasons = (data) => async (dispatch) => {
   try {
     Axios.get("/dislike-reasons").then((res) => {

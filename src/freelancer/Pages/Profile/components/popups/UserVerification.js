@@ -1,8 +1,5 @@
-import { Select } from "@mui/material";
 import { useState } from "react";
 import { Col, Row } from "react-bootstrap";
-import Button from "react-bootstrap/Button";
-import Form from "react-bootstrap/Form";
 import { useDispatch } from "react-redux";
 import { onSubmitVerificationDocs } from "../../../../../redux/actions/profileAction";
 
@@ -36,20 +33,11 @@ const UserVerification = (props) => {
     setBackImg(e.target.files[0]);
     setShowingBackImg(URL.createObjectURL(e.target.files[0]));
   };
-  console.log(docType);
-
-  const documentOptions = [
-    { name: "passport", label: "Passport" },
-    { name: "driving_license", label: "Driving Licence" },
-    { name: "other", label: "Other" },
-  ];
-
   const onSave = () => {
     const formData = new FormData();
-    formData.append("type", docType?.name);
+    formData.append("type", docType);
     formData.append("document_front", frontImg);
     formData.append("document_back", backImg);
-
     dispatch(onSubmitVerificationDocs(formData));
   };
 
@@ -77,12 +65,22 @@ const UserVerification = (props) => {
                   <label className="text-black font-size-13px font-weight-500">
                     ID Proof
                   </label>
-                  <Select
-                    className="font-size-13px"
+                  <select
+                    style={{
+                      color: "#828282",
+                      border: "1px solid rgb(232, 231, 231)",
+                      height: 40,
+                      borderRadius: 0,
+                    }}
+                    className="font-size-11px"
                     placeholder="Select ID"
-                    options={documentOptions}
-                    onChange={setDocType}
-                  />
+                    onChange={(e) => setDocType(e.target.value)}
+                    name="type"
+                  >
+                    <option value="passport">Passport</option>
+                    <option value="driving_license">Driving Licence</option>
+                    <option value="other">Other</option>
+                  </select>
                 </div>
               </div>
               <div className="varifyDocs_pre_img ">

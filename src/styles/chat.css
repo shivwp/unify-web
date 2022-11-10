@@ -750,7 +750,12 @@
   -ms-border-radius: 45px;
   -o-border-radius: 45px;
 }
-
+@media screen and (max-width: 376px) {
+  .skill_bxr_gry {
+    padding: 10px 35px;
+    font-size: 11px;
+  }
+}
 .skill_bxr_gry:hover {
   background-color: #6d2ef1;
   color: #fff;
@@ -1563,7 +1568,7 @@
     font-size: 14px !important;
   }
 
-  .dromw_320px_pr>* {
+  .dromw_320px_pr > * {
     padding-right: calc(var(--bs-gutter-x) * 0.8) !important;
     padding-left: calc(var(--bs-gutter-x) * 0.8) !important;
   }
@@ -1697,7 +1702,6 @@
 }
 
 @media only screen and (min-width: 1024px) and (max-width: 1349px) {
-
   .des_para_dboadr,
   .rign_nem {
     font-size: 13px;
@@ -1886,7 +1890,6 @@
 }
 
 @media only screen and (max-width: 400px) {
-
   .smbtn_logsignup button,
   .smbtn_logsignup a {
     width: 100%;
@@ -1988,11 +1991,16 @@
   justify-content: space-between;
   padding: 8px 16px;
   font-size: 13px;
-
   display: flex;
   align-items: center;
   margin-left: 0;
   margin-right: 5px;
+}
+
+@media screen and (max-width: 376px) {
+  .catbox_rd_ofive .skill_bxr_gry {
+    font-size: 11px;
+  }
 }
 
 .font-size-13px {
@@ -2106,7 +2114,7 @@
   font-weight: 400 !important;
 }
 
-.radiolablepopo input{
+.radiolablepopo input {
   padding: 0;
 }
 
@@ -2273,7 +2281,7 @@
   flex-direction: column;
   align-items: flex-start;
   top: 33px;
-  left: 89px;
+  left: 139px;
   width: 134px;
   min-width: 134px;
   z-index: 1;
@@ -2361,4 +2369,8 @@
 
 .ertr4h6j65esdv {
   justify-content: space-evenly;
+}
+
+.m_x_13_imp {
+  margin: 0 13px !important;
 }

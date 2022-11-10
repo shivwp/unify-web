@@ -173,7 +173,7 @@ const NavbarHeader = (props) => {
             </div>
             <div>
               <div className="navv2verso_flxewd">
-                <Link to="/freelancer/chat" className="navbar_btn p-0">
+                <Link to="/freelancer/chat" className="navbar_btn p-0" >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="21"
@@ -359,7 +359,7 @@ const NavbarHeader = (props) => {
                   {/* <Link className="logout_btn_nav" to="/signin">
                     Logout
                   </Link> */}
-                  <Link to="/help-support" className="navbar_btn">
+                  <Link to="/help-support" className="navbar_btn m_x_13_imp">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="21"
@@ -374,7 +374,7 @@ const NavbarHeader = (props) => {
                       />
                     </svg>
                   </Link>
-                  <Link to="/freelancer/chat" className="navbar_btn p-0">
+                  <Link to="/freelancer/chat" className="navbar_btn p-0 m_x_13_imp">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="21"
@@ -387,7 +387,7 @@ const NavbarHeader = (props) => {
                     </svg>
                   </Link>
 
-                  <Link to="/freelancer/notification" className="navbar_btn">
+                  <Link to="/freelancer/notification" className="navbar_btn m_x_13_imp">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="21"

@@ -498,7 +498,10 @@ const UnifyFreelancer = () => {
   };
 
   const IntroVideoThumb = ({ data }) => {
-    const vidId = data?.url?.split("v=")[1]?.substring(0, 11);
+    let vidId = data?.url?.split("v=")[1]?.substring(0, 11);
+    vidId = vidId || data?.url?.split("youtu.be/")[1];
+
+    console.log(vidId);
     const thumbnail = data
       ? `https://img.youtube.com/vi/${vidId}/0.jpg`
       : `https://img.youtube.com/vi/0.jpg`;
@@ -1024,8 +1027,8 @@ const UnifyFreelancer = () => {
                 <div className="myskill_hdingn profile_icon_25px profile_heading_mb">
                   Verification
                   <div className="d-flex justify-content-start">
-                    {/* {basicInfo?.is_verified != "approve" &&
-                      basicInfo?.is_verified != "requested" && ( */}
+                    {basicInfo?.is_verified != "approve" &&
+                      basicInfo?.is_verified != "requested" && (
                         <Button
                           variant=""
                           onClick={() => {
@@ -1047,7 +1050,7 @@ const UnifyFreelancer = () => {
                             />
                           </svg>
                         </Button>
-                      {/* )} */}
+                      )}
                   </div>
                 </div>
                 <div className="myskill_hdingn ms_hdsmall font-size-15px">

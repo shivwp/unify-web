@@ -92,7 +92,7 @@ const VisiblityPopup = (props) => {
               <div className="mt-4">
                 <div className="popup_form_element">
                   <Form.Label className="text-black font-size-13px font-weight-500">
-                    Project Prefrence Project Preference
+                    Project Preference
                   </Form.Label>
                   <Select
                     className="font-size-13px"
@@ -123,7 +123,7 @@ const VisiblityPopup = (props) => {
                 Cancel
               </Button>
               <Button variant="" className="btnhovpple" onClick={onSave}>
-                Submit
+                Save
               </Button>
             </div>
           </div>

@@ -24,6 +24,7 @@ import FreelancerContactInfo from "../Pages/Setting/contactinfo";
 import FreelancerBiling from "../Pages/Setting/billing";
 import FreelanceGetPaid from "../Pages/Setting/getpaid";
 import FreelanceMyTeams from "../Pages/Setting/myteam";
+import Message from "../Pages/Message";
 import FreelancePasswordSecurity from "../Pages/Setting/password";
 import FreelanceNotification from "../Pages/Setting/notification";
 import FreelanceIdentify from "../Pages/Setting/identify";
@@ -146,6 +147,7 @@ const RouterConfig = () => {
         path="/freelancer/subscription"
         element={<FreelancerSubscription />}
       />
+      <Route path="/freelancer/message" element={<Message />} />
     </Routes>
   );
 };

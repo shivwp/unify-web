@@ -3,9 +3,9 @@ import { Modal } from "react-responsive-modal";
 import "react-responsive-modal/styles.css";
 import "./popup.css";
 import Select from "react-select";
-import Button from 'react-bootstrap/Button';
+import Button from "react-bootstrap/Button";
 import { Row, Col } from "react-bootstrap";
-import Form from 'react-bootstrap/Form';
+import Form from "react-bootstrap/Form";
 
 const AddManualTimePopup = ({ open, onCloseModal }) => {
   const date = [
@@ -74,10 +74,12 @@ const AddManualTimePopup = ({ open, onCloseModal }) => {
               </Col>
             </Row>
             <Form.Label htmlFor="date">
-              <span>Memo </span>
+              <span>Demo </span>
               <div className="freelancer_popup_textarea">
                 <Form.Control
-              as="textarea" placeholder="Short description of the work done"></Form.Control>
+                  as="textarea"
+                  placeholder="Short description of the work done"
+                ></Form.Control>
                 <div className="left_Characters">
                   <span>140 Characters left</span>
                 </div>
@@ -92,7 +94,9 @@ const AddManualTimePopup = ({ open, onCloseModal }) => {
 
         <div className="freelancer_popup_btns">
           <div className="_cancle_submit">
-            <Button variant="" onClick={onCloseModal}>CANCEL</Button>
+            <Button variant="" onClick={onCloseModal}>
+              CANCEL
+            </Button>
           </div>
           <div className="_save_submit">
             <Button variant="">SAVE</Button>
