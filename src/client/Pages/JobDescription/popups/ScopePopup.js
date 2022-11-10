@@ -2,6 +2,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { SET_JOB_DATA_LISTING } from "../../../../redux/types";
 
 const CloseIcon = () => {
   return (
@@ -18,7 +19,8 @@ const CloseIcon = () => {
   );
 };
 
-const ScopePopup = ({ Popup }) => {
+const ScopePopup = ({ Popup, jobListingData }) => {
+  const dispatch = useDispatch();
   const [scope, setScope] = useState();
   const [workTime, setWorkTime] = useState();
   const [level, setLevel] = useState();
@@ -26,6 +28,20 @@ const ScopePopup = ({ Popup }) => {
   const handleScopeChange = (e) => setScope(e.target.value);
   const handleWorkChange = (e) => setWorkTime(e.target.value);
   const handleLevelChange = (e) => setLevel(e.target.value);
+
+  const saveScope = () => {
+    dispatch({
+      type: SET_JOB_DATA_LISTING,
+      payload: {
+        ...jobListingData,
+        scop: scope,
+        project_duration: workTime,
+        experience_level: level,
+      },
+    });
+
+    Popup();
+  };
 
   return (
     <div className="bg_wrapper_popup_new">
@@ -229,10 +245,10 @@ const ScopePopup = ({ Popup }) => {
           </div>
 
           <div className="popup_btns_new flex-wrap cwiewyehkk">
-            <Button variant="" className="trans_btn" onClick={() => Popup()}>
+            <button className="trans_btn" onClick={() => Popup()}>
               Cancel
-            </Button>
-            <Button variant="">Save</Button>
+            </button>
+            <button onClick={saveScope}>Save</button>
           </div>
         </div>
       </div>

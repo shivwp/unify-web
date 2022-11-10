@@ -100,3 +100,13 @@ export const onDislikeJobPost = (data, setDropdownOpen) => async (dispatch) => {
     });
   } catch (err) {}
 };
+
+export const onPostYourJobNow = (data, navigate) => async (dispatch) => {
+  try {
+    Axios.post("/post-job", data, config).then((res) => {
+      if (res.data.status) {
+        navigate("/dashboard");
+      }
+    });
+  } catch (err) {}
+};

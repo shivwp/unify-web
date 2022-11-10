@@ -14,18 +14,25 @@ import Form from "react-bootstrap/Form";
 import CategoryPopup from "../popups/CategoryPopup";
 import EditSkill from "../../../../freelancer/Pages/Profile/components/popups/EditSkill";
 import ScopePopup from "../popups/ScopePopup";
+import EditSkillsPopup from "../popups/EditSkillsPopup";
+import ProjectBudgetPopup from "../popups/ProjectBudgetPopup";
+import { onPostYourJobNow } from "../../../../redux/actions/jobActions";
 
 const Description = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [values, setValues] = useState({});
   const [filteredSkills, setFilteredSkills] = useState();
   const [filteredCategory, setFilteredCategory] = useState();
   const [popup, setPopup] = useState();
-  const [jobCategory, setJobCategory] = useState();
   const jobListingData = useSelector((state) => state.profile.jobListingData);
+  const [jobTitle, setJobTitle] = useState(jobListingData?.job_title);
+  const [description, setDescription] = useState();
+  const [imageFile, setImageFile] = useState();
+  const [objectUrl, setObjectUrl] = useState();
   const categoryList = useSelector((state) => state.profile.categoryList);
   const getSkillList = useSelector((state) => state.profile.getSkillList);
+
+  console.log(imageFile);
 
   useEffect(() => {
     dispatch(getCategoryList());
@@ -50,33 +57,59 @@ const Description = () => {
 
   useEffect(() => {
     if (getSkillList) {
-      var asdfad = jobListingData?.skills?.split(",");
-      asdfad = asdfad?.map((adf) => Number(adf));
+      var skills = jobListingData?.skills?.split(",");
+      skills = skills?.map((skill) => Number(skill));
       setFilteredSkills(
-        getSkillList?.filter((item) => asdfad?.indexOf(item.id) != -1)
+        getSkillList?.filter((item) => skills?.indexOf(item.id) != -1)
       );
     }
   }, []);
-
-  useEffect(() => {
-    if (jobListingData) {
-      setValues(jobListingData);
-    }
-  }, [jobListingData]);
-
-  const onInputChange = (e) => {
-    setValues({ ...values, [e.target.name]: e.target.value });
-  };
-
-  const handleCategoryChange = (e) => {
-    console.log(e.target.value);
-  };
 
   Title(" | Description");
   const hanDleSlide = (e) => {
     $(e.target.nextSibling).slideToggle();
   };
   $(".slider_shutter").slideDown();
+
+  const postYourJobNow = () => {
+    const formData = new FormData();
+
+    formData.append("job_type", jobListingData?.jobType);
+    formData.append("job_title", jobListingData?.job_title);
+    formData.append("job_category", jobListingData?.job_category);
+    formData.append("skills", jobListingData?.skills);
+    formData.append("scop", jobListingData?.scop);
+    formData.append("project_duration", jobListingData?.project_duration);
+    formData.append("experience_level", jobListingData?.experience_level);
+    formData.append("budget_type", jobListingData?.budget_type);
+    formData.append("min_price", 500);
+    formData.append("price", jobListingData?.price);
+    formData.append("description", description);
+    formData.append("status", "publish");
+    formData.append("image", imageFile);
+
+    dispatch(onPostYourJobNow(formData, navigate));
+  };
+
+  const draftYourJobNow = () => {
+    const formData = new FormData();
+
+    formData.append("job_type", jobListingData?.jobType);
+    formData.append("job_title", jobListingData?.job_title);
+    formData.append("job_category", jobListingData?.job_category);
+    formData.append("skills", jobListingData?.skills);
+    formData.append("scop", jobListingData?.scop);
+    formData.append("project_duration", jobListingData?.project_duration);
+    formData.append("experience_level", jobListingData?.experience_level);
+    formData.append("budget_type", jobListingData?.budget_type);
+    formData.append("min_price", 500);
+    formData.append("price", jobListingData?.price);
+    formData.append("description", description);
+    formData.append("status", "draft");
+    formData.append("image", imageFile);
+
+    dispatch(onPostYourJobNow(formData, navigate));
+  };
 
   return (
     <>
@@ -100,8 +133,8 @@ const Description = () => {
               <Form.Control
                 type="text"
                 name="job_title"
-                value={values?.job_title}
-                onChange={(e) => onInputChange(e)}
+                value={jobTitle}
+                onChange={(e) => setJobTitle(e.target.value)}
               />
             </div>
             <div className="sm_label_inp">
@@ -123,23 +156,14 @@ const Description = () => {
               <Form.Control
                 as="textarea"
                 name="description"
-                value={values?.description}
-                onChange={(e) => onInputChange(e)}
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
               ></Form.Control>
             </div>
             <div className="d-flex justify-content-between">
               <div className="sm_label_inp">
                 <span className="sm_span_icon">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    fill="currentColor"
-                    className="bi bi-info-circle-fill"
-                    viewBox="0 0 16 16"
-                  >
-                    <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z" />
-                  </svg>
+                  <i class="bi bi-info-circle-fill"></i>
                 </span>
                 Please add a job description.
               </div>
@@ -147,9 +171,15 @@ const Description = () => {
                 5000 characters left
               </div>
             </div>
-
+            <img src={objectUrl} alt="" />
             <div className="ts_btn attach_f_btn">
-              <Form.Control type="file" />
+              <Form.Control
+                type="file"
+                onChange={(e) => {
+                  setImageFile(e.target.files[0]);
+                  setObjectUrl(URL.createObjectURL(e.target.files[0]));
+                }}
+              />
               <Button variant="" className="rot_svg_oety">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -177,7 +207,7 @@ const Description = () => {
                     <CategoryPopup
                       Popup={setPopup}
                       categoryList={categoryList}
-                      handleCategoryChange={handleCategoryChange}
+                      jobListingData={jobListingData}
                     />
                   )
                 }
@@ -261,7 +291,10 @@ const Description = () => {
                 className="round_b_btn"
                 onClick={() =>
                   setPopup(
-                    <EditSkill Popup={setPopup} categoryList={categoryList} />
+                    <EditSkillsPopup
+                      Popup={setPopup}
+                      filteredSkills={filteredSkills}
+                    />
                   )
                 }
               >
@@ -289,7 +322,14 @@ const Description = () => {
               <Button
                 variant=""
                 className="round_b_btn"
-                onClick={() => setPopup(<ScopePopup Popup={setPopup} />)}
+                onClick={() =>
+                  setPopup(
+                    <ScopePopup
+                      Popup={setPopup}
+                      jobListingData={jobListingData}
+                    />
+                  )
+                }
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -312,7 +352,18 @@ const Description = () => {
             <div className="input_t_lab">Budget</div>
             <div className="job_t_inp cat_inp_j d-flex flex-wrap align-items-center">
               <span>${parseInt(jobListingData?.price).toFixed(2)}</span>
-              <Button variant="" className="round_b_btn">
+              <Button
+                variant=""
+                className="round_b_btn"
+                onClick={() =>
+                  setPopup(
+                    <ProjectBudgetPopup
+                      Popup={setPopup}
+                      jobListingData={jobListingData}
+                    />
+                  )
+                }
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"
@@ -341,14 +392,17 @@ const Description = () => {
             </div>
             <div className="d-flex flex-wrap no-border mt-0 pt-0 btn_foot_sec">
               <div className="fo_btn_c next_b_btn_c">
-                <Button variant="" className="draf_jo_btnbn mt-2">
+                <button
+                  className="draf_jo_btnbn mt-2"
+                  onClick={draftYourJobNow}
+                >
                   Save as a draft
-                </Button>
+                </button>
               </div>
               <div className="fo_btn_c next_b_btn_c">
-                <Button variant="" className="post_job_btn mt-2">
+                <button className="post_job_btn mt-2" onClick={postYourJobNow}>
                   Post Your Job Now
-                </Button>
+                </button>
               </div>
             </div>
           </div>
