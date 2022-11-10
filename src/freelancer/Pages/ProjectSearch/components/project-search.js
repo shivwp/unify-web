@@ -56,16 +56,23 @@ const ProjectSearch = () => {
   const [page, setPage] = useState(1);
   const jobsList = useSelector((state) => state?.job?.jobsList?.data);
   const jobsPagination = useSelector((state) => state?.job?.jobsList?.meta);
-  const savedJobsList = useSelector((state) => state?.job?.savedJobsList?.data);
   const onDislikeJobPost = useSelector((state) => state?.job?.onDislikeJobPost);
+  const unSaveJobsPost = useSelector((state) => state?.job?.unSaveJobsPost);
+  const saveJobsPost = useSelector((state) => state?.job?.saveJobsPost);
 
   const dislikeJobReasons = useSelector(
     (state) => state?.job?.dislikeJobReasons
   );
 
+  console.log(jobsList);
+
+  const ScrollTop = () => {
+    window.scrollTo(0, 0);
+  };
+
   useEffect(() => {
-    dispatch(getJobsList({ pagination: 10, page }));
-  }, [page, onDislikeJobPost]);
+    dispatch(getJobsList({ pagination: 10, page }, ScrollTop));
+  }, [page, onDislikeJobPost, unSaveJobsPost, saveJobsPost]);
 
   useEffect(() => {
     dispatch(onDislikePostReasons());
@@ -77,6 +84,10 @@ const ProjectSearch = () => {
 
   const SaveJob = (id) => {
     dispatch(saveJobs({ job_id: id }));
+  };
+
+  const UnSaveJob = (id) => {
+    dispatch(removeSaveJob({ job_id: id }));
   };
 
   return (
@@ -150,20 +161,95 @@ const ProjectSearch = () => {
                   onClick={() =>
                     setDropdownOpen(dropdownOpen ? false : item.id)
                   }
+                  style={{ padding: 0 }}
                 >
-                  <img
-                    src={like}
-                    alt=""
-                    className="heart_btn"
-                    style={{ transform: "rotate(180deg)" }}
-                  />
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="42"
+                    height="42"
+                    viewBox="0 0 53 53"
+                  >
+                    <g
+                      id="Group_3306"
+                      data-name="Group 3306"
+                      transform="translate(-1380 -582)"
+                    >
+                      <g
+                        id="Ellipse_620"
+                        data-name="Ellipse 620"
+                        transform="translate(1380 582)"
+                        fill="none"
+                        stroke="#dedede"
+                        stroke-width="1"
+                      >
+                        <circle cx="26.5" cy="26.5" r="26.5" stroke="none" />
+                        <circle cx="26.5" cy="26.5" r="26" fill="none" />
+                      </g>
+                      <g
+                        id="_7830784_like_icon"
+                        data-name="7830784_like_icon"
+                        transform="translate(1395 594.783)"
+                      >
+                        <path
+                          id="Path_4550"
+                          data-name="Path 4550"
+                          d="M24,11.034a2.5,2.5,0,0,0-2.5-2.5H15.189a.25.25,0,0,1-.237-.328,8.684,8.684,0,0,0,.52-4.407c-.588-2.095-1.834-2.7-2.809-2.565A2,2,0,0,0,11,3.284C11,6.03,8.871,9.03,6.966,10.345a.5.5,0,0,0-.216.412V20.873a.5.5,0,0,0,.405.491c.357.069.681.135.987.2a17.309,17.309,0,0,0,4.108.471h6.5c1.957,0,2.25-1.1,2.25-1.75a2.24,2.24,0,0,0-.232-.994,2.248,2.248,0,0,0,1-3A2.252,2.252,0,0,0,23,14.284a2.226,2.226,0,0,0-.273-1.072A2.5,2.5,0,0,0,24,11.034Z"
+                          fill="#dedede"
+                        />
+                        <path
+                          id="Path_4551"
+                          data-name="Path 4551"
+                          d="M5.25,10.784a1,1,0,0,0-1-1H1a1,1,0,0,0-1,1v11a1,1,0,0,0,1,1H4.25a1,1,0,0,0,1-1Zm-1.5,9.25a.75.75,0,1,1-.75-.75A.75.75,0,0,1,3.75,20.034Z"
+                          fill="#dedede"
+                        />
+                      </g>
+                    </g>
+                  </svg>
                 </Button>
                 <Button
                   variant=""
                   className="bg-trans_s_pro btn_psnewrb"
-                  onClick={() => SaveJob(item.id)}
+                  onClick={
+                    item.is_saved
+                      ? () => UnSaveJob(item.id)
+                      : () => SaveJob(item.id)
+                  }
+                  style={{ padding: 0 }}
                 >
-                  <img src={heart} alt="" className="heart_btn" />
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="42"
+                    height="42"
+                    viewBox="0 0 53 53"
+                    className={item.is_saved ? "proposal_saved" : ""}
+                  >
+                    <g
+                      id="Group_3307"
+                      data-name="Group 3307"
+                      transform="translate(-1466 -582)"
+                    >
+                      <g
+                        id="Ellipse_619"
+                        data-name="Ellipse 619"
+                        transform="translate(1466 582)"
+                        fill="none"
+                        stroke="#dedede"
+                        stroke-width="1"
+                      >
+                        <circle cx="26.5" cy="26.5" r="26.5" stroke="none" />
+                        <circle cx="26.5" cy="26.5" r="26" fill="none" />
+                      </g>
+                      <path
+                        id="_3671774_heart_icon"
+                        data-name="3671774_heart_icon"
+                        d="M11.857,3.617,11.132,2.9a6.533,6.533,0,0,0-9.241,9.229L11.857,22.1l9.966-9.977a6.533,6.533,0,0,0-9.241-9.229l-.725.725Z"
+                        transform="translate(1481.031 598.234)"
+                        fill="#dedede"
+                      />
+                    </g>
+                  </svg>
+
+                  {/* <img src={heart} alt="" className="heart_btn" /> */}
                 </Button>
                 <Link to={`/freelancer/project-detail/${item.id}`}>
                   <Button variant="">Send Proposal</Button>
@@ -205,6 +291,10 @@ const ProjectSaved = () => {
     (state) => state?.job?.savedJobsList?.meta
   );
 
+  const ScrollTop = () => {
+    window.scrollTo(0, 0);
+  };
+
   const totalPages = [];
   for (let i = 1; i < savedjobsPagination?.total_page + 1; i++) {
     totalPages.push(i);
@@ -215,7 +305,7 @@ const ProjectSaved = () => {
   };
 
   useEffect(() => {
-    dispatch(getSavedJobsList({ pagination: 10, page }));
+    dispatch(getSavedJobsList({ pagination: 10, page }, ScrollTop));
   }, [page, unSaveJobsPost]);
 
   return (
@@ -275,13 +365,42 @@ const ProjectSaved = () => {
                 {/* <button className="bg-trans_s_pro btn_psnewrb" onClick={()=>{TogglePopup()}}>
                   <img src={like} alt="" className="heart_btn" />
                 </button> */}
-                <button className="bg-trans_s_pro btn_psnewrb">
-                  <img
-                    src={heart}
-                    alt=""
-                    className="heart_btn"
-                    onClick={() => UnSaveJob(item.id)}
-                  />
+                <button
+                  className="bg-trans_s_pro btn_psnewrb "
+                  onClick={() => UnSaveJob(item.id)}
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="42"
+                    height="42"
+                    viewBox="0 0 53 53"
+                    className={"proposal_saved"}
+                  >
+                    <g
+                      id="Group_3307"
+                      data-name="Group 3307"
+                      transform="translate(-1466 -582)"
+                    >
+                      <g
+                        id="Ellipse_619"
+                        data-name="Ellipse 619"
+                        transform="translate(1466 582)"
+                        fill="none"
+                        stroke="#dedede"
+                        stroke-width="1"
+                      >
+                        <circle cx="26.5" cy="26.5" r="26.5" stroke="none" />
+                        <circle cx="26.5" cy="26.5" r="26" fill="none" />
+                      </g>
+                      <path
+                        id="_3671774_heart_icon"
+                        data-name="3671774_heart_icon"
+                        d="M11.857,3.617,11.132,2.9a6.533,6.533,0,0,0-9.241,9.229L11.857,22.1l9.966-9.977a6.533,6.533,0,0,0-9.241-9.229l-.725.725Z"
+                        transform="translate(1481.031 598.234)"
+                        fill="#dedede"
+                      />
+                    </g>
+                  </svg>
                 </button>
                 <Link to={`/freelancer/project-detail/${item.id}`}>
                   <button>Send Proposal</button>

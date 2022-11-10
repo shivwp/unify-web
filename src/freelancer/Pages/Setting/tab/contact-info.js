@@ -18,12 +18,14 @@ import CloseAccountPopup from "../../../../popups/CloseAccountPopup";
 import { countryList } from "../../../../redux/actions/authActions";
 import { data } from "jquery";
 import { useNavigate } from "react-router-dom";
+import AgencyNamePopup from "../../../components/popups/AgencyNamePopup";
 
 const Screen = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   Title(" | Contact Info");
   const [editAccount, setEditAccount] = useState(false);
+  const [popup, setPopup] = useState();
   const [editLocation, setEditLocation] = useState(false);
   const [openCloseAcc, seOpenCloseAcc] = useState(false);
   const [successPopup, setSuccessPopup] = useState(false);
@@ -167,12 +169,17 @@ const Screen = () => {
               <Col md={12}>
                 <div className="mb-2 mt-2 d-flex flex-wrap">
                   <div className="_cancle_submit">
-                    <Button variant="" onClick={() => setEditAccount(!editAccount)}>
+                    <Button
+                      variant=""
+                      onClick={() => setEditAccount(!editAccount)}
+                    >
                       CANCEL
                     </Button>
                   </div>
                   <div className="_save_submit">
-                    <Button variant="" onClick={EditContactInfo}>SAVE</Button>
+                    <Button variant="" onClick={EditContactInfo}>
+                      SAVE
+                    </Button>
                   </div>
                 </div>
               </Col>
@@ -200,7 +207,9 @@ const Screen = () => {
         country: values?.country,
         zip_code: values?.zip_code,
       };
-      dispatch(onEditLocationInfo(data, setEditLocation, successPopup, setSuccessPopup));
+      dispatch(
+        onEditLocationInfo(data, setEditLocation, successPopup, setSuccessPopup)
+      );
     };
 
     return (
@@ -353,12 +362,17 @@ const Screen = () => {
               <Col md={12}>
                 <div className="mb-2 mt-2 d-flex flex-wrap">
                   <div className="_cancle_submit">
-                    <Button variant="" onClick={() => setEditLocation(!editLocation)}>
+                    <Button
+                      variant=""
+                      onClick={() => setEditLocation(!editLocation)}
+                    >
                       CANCEL
                     </Button>
                   </div>
                   <div className="_save_submit">
-                    <Button variant="" onClick={EditLocationInfo}>SAVE</Button>
+                    <Button variant="" onClick={EditLocationInfo}>
+                      SAVE
+                    </Button>
                   </div>
                 </div>
               </Col>
@@ -502,7 +516,9 @@ const Screen = () => {
                                   <button
                                     className="min-width-226"
                                     onClick={() =>
-                                      onCreateAdditionalAccount("agency")
+                                      setPopup(
+                                        <AgencyNamePopup setPopup={setPopup} />
+                                      )
                                     }
                                   >
                                     Create Agency Account
@@ -612,7 +628,11 @@ const Screen = () => {
                   </div>
                 )}
                 <div className="close_account_btn">
-                  <Button variant="" className="blue_btncb" onClick={() => seOpenCloseAcc(true)}>
+                  <Button
+                    variant=""
+                    className="blue_btncb"
+                    onClick={() => seOpenCloseAcc(true)}
+                  >
                     Close Account
                   </Button>
                 </div>
@@ -628,6 +648,7 @@ const Screen = () => {
         />
       )}
       {successPopup}
+      {popup}
     </>
   );
 };

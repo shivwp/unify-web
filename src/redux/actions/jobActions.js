@@ -17,25 +17,27 @@ const config = {
   },
 };
 
-export const getJobsList = (data) => async (dispatch) => {
+export const getJobsList = (data, ScrollTop) => async (dispatch) => {
   try {
-    Axios.post("/jobs-list", data).then((res) => {
+    Axios.post("/jobs-list", data, config).then((res) => {
       dispatch({
         type: JOBS_LIST,
         payload: res.data,
       });
       console.log(res.data);
+      ScrollTop();
     });
   } catch (err) {}
 };
 
-export const getSavedJobsList = (data) => async (dispatch) => {
+export const getSavedJobsList = (data, ScrollTop) => async (dispatch) => {
   try {
     Axios.post("/freelancer-saved-job", data, config).then((res) => {
       dispatch({
         type: SAVED_JOBS_LIST,
         payload: res.data,
       });
+      ScrollTop();
     });
   } catch (err) {}
 };

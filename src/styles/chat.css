@@ -1153,12 +1153,10 @@
 }
 
 .btn_psnewrb {
-  border: #dedede solid 1px !important;
   border-radius: 50px !important;
   height: 42px;
   width: 42px;
   text-align: -webkit-center;
-  padding: 10px !important;
   -webkit-border-radius: 50px !important;
   -moz-border-radius: 50px !important;
   -ms-border-radius: 50px !important;
@@ -1166,10 +1164,23 @@
   margin-right: 15px !important;
 }
 
+.proposal_saved path {
+  fill: #ff88fe !important;
+}
+
 .ps-absolute {
   position: absolute !important;
 }
 
+.why_create_agency_ {
+  margin-top: 10px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.why_create_agency_ span {
+  color: #6610f2;
+}
 .psearch-pnpou {
   top: 45px !important;
   left: -90px;
@@ -1182,11 +1193,6 @@
   color: #170048;
   font-weight: 300;
   font-size: 13px;
-}
-
-.btn_psnewrb img {
-  height: 20px;
-  width: 20px;
 }
 
 .ml_svg_cpn svg {

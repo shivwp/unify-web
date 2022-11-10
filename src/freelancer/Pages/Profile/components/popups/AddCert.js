@@ -33,6 +33,8 @@ const AddCert = (props) => {
     label: data.name,
   }));
 
+  console.log(options1);
+
   useEffect(() => {
     dispatch(getCertificationList(setCertificateList));
   }, []);
@@ -135,7 +137,9 @@ const AddCert = (props) => {
               >
                 Cancel
               </button>
-              <button className="btnhovpple" onClick={onSave}>Save</button>
+              <button className="btnhovpple" onClick={onSave}>
+                Save
+              </button>
             </div>
           </div>
         </div>
