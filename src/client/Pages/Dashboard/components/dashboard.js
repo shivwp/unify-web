@@ -48,9 +48,9 @@ const Screen = () => {
             <div className="my_job_sm_text">Marina Pokhilko</div>
           </div>
           <div className="post_job_btn_m d-flex align-items-center flex-wrap">
-            <Button variant="" className="trans_btn_myjo mr_btn mt-2">
+            {/* <Button variant="" className="trans_btn_myjo mr_btn mt-2">
               Browse Project Catalog
-            </Button>
+            </Button> */}
             <Link to="/gettingstarted">
               <Button variant="" className="mt-2 border_blue_wwifth">
                 Post A Job
@@ -83,7 +83,7 @@ const Screen = () => {
           <div className="d-flex justify-content-between align-items-center pb-3 b-bottom-gr">
             <div className="headin_yourp_b">Your Postings</div>
             <div className="see_ps_ing">
-              <Link to="#0">See all postings</Link>
+              <Link to="/all-job-list">See all postings</Link>
             </div>
           </div>
 
@@ -167,7 +167,7 @@ const Screen = () => {
           <div className="d-flex justify-content-between align-items-center pb-3 b-bottom-gr">
             <div className="headin_yourp_b">Your Drafts</div>
             <div className="see_ps_ing">
-              <Link to="#0">See all drafts</Link>
+              <Link to="/all-draft-job-list">See all drafts</Link>
             </div>
           </div>
           {clientDraftPostingList?.map((item, index) => (
