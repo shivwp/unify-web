@@ -3,30 +3,41 @@ import Title from "../../../../components/title";
 import $ from "jquery";
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import Button from 'react-bootstrap/Button'
+import Button from "react-bootstrap/Button";
 
 import RemovePostingPopup from "../../../../popups/RemovePostingPopup";
 import RemoveDraftPopup from "../../../../popups/RemoveDraftPopup";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import {
+  getAllClientDraftPosting,
+  getAllClientPosting,
+} from "../../../../redux/actions/jobActions";
+
 const Screen = () => {
-
-  const [menuBarPosting, setMenuBarPosting] = useState(false);
-  const [menuBarDraft, setMenuBarDraft] = useState(false);
-
+  const dispatch = useDispatch();
+  const [menuBarPosting, setMenuBarPosting] = useState();
+  const [menuBarDraft, setMenuBarDraft] = useState();
   const [removePosting, setRemovePosting] = useState(false);
   const [removeDraft, setRemoveDraft] = useState(false);
+  const clientPostingList = useSelector(
+    (state) => state?.job?.allClientPosting?.data
+  );
+  const clientDraftPostingList = useSelector(
+    (state) => state?.job?.allClientDraftPosting?.data
+  );
+  const postYourJob = useSelector((state) => state?.job?.postYourJob);
+
+  useEffect(() => {
+    dispatch(getAllClientPosting());
+    dispatch(getAllClientDraftPosting());
+  }, [postYourJob]);
 
   Title(" | Dashboard");
   const hanDleSlide = (e) => {
     $(e.target.nextSibling).slideToggle();
   };
   $(".slider_shutter").slideDown();
-
-  const openMenuBarPosting = () => {
-    setMenuBarPosting(!menuBarPosting);
-  };
-  const openMenuBarDraft = () => {
-    setMenuBarDraft(!menuBarDraft);
-  };
 
   return (
     <>
@@ -41,10 +52,15 @@ const Screen = () => {
               Browse Project Catalog
             </Button>
             <Link to="/gettingstarted">
-              <Button variant="" className="mt-2 border_blue_wwifth">Post A Job</Button>
+              <Button variant="" className="mt-2 border_blue_wwifth">
+                Post A Job
+              </Button>
             </Link>
             <Link to="/expandteam">
-              <Button variant="" className="ml_btn trans_btn_myjo blue_coloe_brn mt-2">
+              <Button
+                variant=""
+                className="ml_btn trans_btn_myjo blue_coloe_brn mt-2"
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"
@@ -70,62 +86,82 @@ const Screen = () => {
               <Link to="#0">See all postings</Link>
             </div>
           </div>
-          <div className="my_job_flx">
-            <div>
-              <div className="my_job_a job_na_bol">UI/UX Design</div>
-              <div className="my_job_h">Invite only - Hourly</div>
-              <div className="my_job_pos_tme">Posted 21 min ago by you</div>
-            </div>
-            <div className="d-flex justify-content-between flex-wrap">
-              <div className="my_job_n_box">
-                <div className="my_job_nm">0</div>
-                <div className="my_job_h pt-0">Proposals</div>
-              </div>
-              <div className="my_job_n_box">
-                <div className="my_job_nm">0</div>
-                <div className="my_job_h pt-0">Messaged</div>
-              </div>
-              <div className="my_job_n_box">
-                <div className="my_job_nm">0</div>
-                <div className="my_job_h pt-0">Hired</div>
-              </div>
-            </div>
-            <div className="text-right d-flex flex-wrap menu_btn">
-              <Button variant="" className="toggle_btn_dot" onClick={openMenuBarPosting}>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  fill="currentColor"
-                  className="bi bi-three-dots-vertical"
-                  viewBox="0 0 16 16"
-                >
-                  <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
-                </svg>
-              </Button>
 
-              {menuBarPosting && (
-                <div className="menu_bar" id="menu_bar1">
-                  <div className="navabr_t_li">
-                    <Link to="/dashboard/edit-posting">Edit Posting</Link>
-                  </div>
-                  <div
-                    className="navabr_t_li"
-                    onClick={() => setRemovePosting(true)}
-                  >
-                     <Link to="#">Remove Posting</Link>
-                  </div>
-                  <div className="navabr_t_li"><Link to="/view-job/review">View Proposals</Link></div>
-                  <div className="navabr_t_li"><Link to="/view-job/view_job">View Job Post</Link></div>
-                  <div className="navabr_t_li"><Link to="/title">Reuse Postings</Link></div>
-                  <span className="menu_btn_arrow" id="menu_btn_arrow1">
-                    {" "}
-                    &#62;{" "}
-                  </span>
+          {clientPostingList?.map((item, index) => (
+            <div
+              key={index}
+              className="my_job_flx"
+              style={{
+                borderBottom: "#cbcaca solid 1px",
+                paddingBottom: "15px",
+              }}
+            >
+              <div>
+                <div className="my_job_a job_na_bol">{item.name}</div>
+                <div className="my_job_h">Invite only - {item.budget_type}</div>
+                <div className="my_job_pos_tme">Posted 21 min ago by you</div>
+              </div>
+              <div className="d-flex justify-content-between flex-wrap">
+                <div className="my_job_n_box">
+                  <div className="my_job_nm">0</div>
+                  <div className="my_job_h pt-0">Proposals</div>
                 </div>
-              )}
+                <div className="my_job_n_box">
+                  <div className="my_job_nm">0</div>
+                  <div className="my_job_h pt-0">Messaged</div>
+                </div>
+                <div className="my_job_n_box">
+                  <div className="my_job_nm">0</div>
+                  <div className="my_job_h pt-0">Hired</div>
+                </div>
+              </div>
+              <div className="text-right d-flex flex-wrap menu_btn">
+                <Button
+                  variant=""
+                  className="toggle_btn_dot"
+                  onClick={() => setMenuBarPosting(item.id)}
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    className="bi bi-three-dots-vertical"
+                    viewBox="0 0 16 16"
+                  >
+                    <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
+                  </svg>
+                </Button>
+
+                {menuBarPosting === item.id && (
+                  <div className="menu_bar" id="menu_bar1">
+                    <div className="navabr_t_li">
+                      <Link to="/dashboard/edit-posting">Edit Posting</Link>
+                    </div>
+                    <div
+                      className="navabr_t_li"
+                      onClick={() => setRemovePosting(true)}
+                    >
+                      <Link to="#">Remove Posting</Link>
+                    </div>
+                    <div className="navabr_t_li">
+                      <Link to="/view-job/review">View Proposals</Link>
+                    </div>
+                    <div className="navabr_t_li">
+                      <Link to="/view-job/view_job">View Job Post</Link>
+                    </div>
+                    <div className="navabr_t_li">
+                      <Link to="/title">Reuse Postings</Link>
+                    </div>
+                    <span className="menu_btn_arrow" id="menu_btn_arrow1">
+                      {" "}
+                      &#62;{" "}
+                    </span>
+                  </div>
+                )}
+              </div>
             </div>
-          </div>
+          ))}
         </div>
         <div className="yourp_box pb-0 pt-3">
           <div className="d-flex justify-content-between align-items-center pb-3 b-bottom-gr">
@@ -134,42 +170,56 @@ const Screen = () => {
               <Link to="#0">See all drafts</Link>
             </div>
           </div>
-          <div className="my_job_flx">
-            <div>
-              <div className="my_job_a job_na_bol">
-                Sales & Business Development
+          {clientDraftPostingList?.map((item, index) => (
+            <div
+              key={index}
+              className="my_job_flx"
+              style={{
+                borderBottom: "#cbcaca solid 1px",
+                paddingBottom: "15px",
+              }}
+            >
+              <div>
+                <div className="my_job_a job_na_bol">{item.name}</div>
+                <div className="my_job_pos_tme">Saved 25 min ago</div>
               </div>
-              <div className="my_job_pos_tme">Saved 25 min ago</div>
-            </div>
-            <div className="text-right d-flex flex-wrap menu_btn">
-              <Button variant="" className="toggle_btn_dot" onClick={openMenuBarDraft}>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  fill="currentColor"
-                  className="bi bi-three-dots-vertical"
-                  viewBox="0 0 16 16"
+              <div className="text-right d-flex flex-wrap menu_btn">
+                <Button
+                  variant=""
+                  className="toggle_btn_dot"
+                  onClick={() => setMenuBarDraft(item.id)}
                 >
-                  <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
-                </svg>
-              </Button>
-              {menuBarDraft && (
-                <div className="menu_bar" id="menu_bar2">
-                  <div className="navabr_t_li">
-                    <Link to="/dashboard/edit-draft">Edit Draft</Link>
-                  </div>
-                  <div
-                    className="navabr_t_li"
-                    onClick={() => setRemoveDraft(true)}
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    className="bi bi-three-dots-vertical"
+                    viewBox="0 0 16 16"
                   >
-                    Remove Draft
+                    <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
+                  </svg>
+                </Button>
+                {menuBarDraft === item.id && (
+                  <div className="menu_bar" id="menu_bar2">
+                    <div className="navabr_t_li">
+                      <Link to="/dashboard/edit-draft">Edit Draft</Link>
+                    </div>
+                    <div
+                      className="navabr_t_li"
+                      onClick={() => setRemoveDraft(true)}
+                    >
+                      Remove Draft
+                    </div>
+                    <span className="menu_btn_arrow" id="menu_btn_arrow2">
+                      {" "}
+                      &#62;{" "}
+                    </span>
                   </div>
-                  <span className="menu_btn_arrow" id="menu_btn_arrow2"> &#62; </span>
-                </div>
-              )}
+                )}
+              </div>
             </div>
-          </div>
+          ))}
         </div>
         <div className="yourp_box pb-0 pt-3">
           <div
@@ -265,8 +315,8 @@ const Screen = () => {
             <div>
               <div className="my_job_a job_na_bol">Questions?</div>
               <div className="my_job_pos_tme inner_a_sty">
-                Visit our <Link to="#0">Help Center</Link> to learn more tips for
-                finding the right talent.
+                Visit our <Link to="#0">Help Center</Link> to learn more tips
+                for finding the right talent.
               </div>
             </div>
           </div>

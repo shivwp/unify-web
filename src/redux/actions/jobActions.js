@@ -8,6 +8,9 @@ import {
   SAVED_JOBS_LIST,
   SAVE_JOB_POST,
   SEND_JOB_PROPOSAL,
+  SET_ALL_CLIENT_DRAFT_POSTING,
+  SET_ALL_CLIENT_POSTING,
+  SET_POST_YOUR_JOB_NOW,
   UNSAVE_JOB_POST,
 } from "../types";
 
@@ -117,7 +120,34 @@ export const onPostYourJobNow = (data, navigate) => async (dispatch) => {
     Axios.post("/post-job", data, config).then((res) => {
       if (res.data.status) {
         navigate("/dashboard");
+
+        dispatch({
+          type: SET_POST_YOUR_JOB_NOW,
+          payload: res.data,
+        });
       }
+    });
+  } catch (err) {}
+};
+
+export const getAllClientPosting = (data) => async (dispatch) => {
+  try {
+    Axios.post("/client-all-posting", data, config).then((res) => {
+      dispatch({
+        type: SET_ALL_CLIENT_POSTING,
+        payload: res.data,
+      });
+    });
+  } catch (err) {}
+};
+
+export const getAllClientDraftPosting = (data) => async (dispatch) => {
+  try {
+    Axios.post("/client-draft-posting", data, config).then((res) => {
+      dispatch({
+        type: SET_ALL_CLIENT_DRAFT_POSTING,
+        payload: res.data,
+      });
     });
   } catch (err) {}
 };

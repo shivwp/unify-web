@@ -29,10 +29,9 @@ const Description = () => {
   const [description, setDescription] = useState();
   const [imageFile, setImageFile] = useState();
   const [objectUrl, setObjectUrl] = useState();
+  const [jobCategory, setJobCategory] = useState(jobListingData?.job_category);
   const categoryList = useSelector((state) => state.profile.categoryList);
   const getSkillList = useSelector((state) => state.profile.getSkillList);
-
-  console.log(imageFile);
 
   useEffect(() => {
     dispatch(getCategoryList());
@@ -48,12 +47,12 @@ const Description = () => {
   useEffect(() => {
     if (categoryList) {
       for (let i = 0; i < categoryList.length; i++) {
-        if (jobListingData?.job_category == categoryList[i].id) {
+        if (parseInt(jobCategory) === categoryList[i].id) {
           setFilteredCategory(categoryList[i]);
         }
       }
     }
-  }, [categoryList]);
+  }, [jobCategory]);
 
   useEffect(() => {
     if (getSkillList) {
@@ -82,8 +81,14 @@ const Description = () => {
     formData.append("project_duration", jobListingData?.project_duration);
     formData.append("experience_level", jobListingData?.experience_level);
     formData.append("budget_type", jobListingData?.budget_type);
-    formData.append("min_price", 500);
-    formData.append("price", jobListingData?.price);
+
+    if (jobListingData?.budget_type === "hourly") {
+      formData.append("price", jobListingData?.minPrice);
+      formData.append("min_price", jobListingData?.maxPrice);
+    } else if (jobListingData?.budget_type === "fixed") {
+      formData.append("price", jobListingData?.price);
+    }
+
     formData.append("description", description);
     formData.append("status", "publish");
     formData.append("image", imageFile);
@@ -102,7 +107,12 @@ const Description = () => {
     formData.append("project_duration", jobListingData?.project_duration);
     formData.append("experience_level", jobListingData?.experience_level);
     formData.append("budget_type", jobListingData?.budget_type);
-    formData.append("min_price", 500);
+    if (jobListingData?.budget_type === "hourly") {
+      formData.append("price", jobListingData?.minPrice);
+      formData.append("min_price", jobListingData?.maxPrice);
+    } else if (jobListingData?.budget_type === "fixed") {
+      formData.append("price", jobListingData?.price);
+    }
     formData.append("price", jobListingData?.price);
     formData.append("description", description);
     formData.append("status", "draft");
@@ -208,6 +218,8 @@ const Description = () => {
                       Popup={setPopup}
                       categoryList={categoryList}
                       jobListingData={jobListingData}
+                      setJobCategory={setJobCategory}
+                      jobCategory={jobCategory}
                     />
                   )
                 }
@@ -294,6 +306,7 @@ const Description = () => {
                     <EditSkillsPopup
                       Popup={setPopup}
                       filteredSkills={filteredSkills}
+                      jobListingData={jobListingData}
                     />
                   )
                 }
@@ -351,7 +364,17 @@ const Description = () => {
           <div className="b_bot_inp">
             <div className="input_t_lab">Budget</div>
             <div className="job_t_inp cat_inp_j d-flex flex-wrap align-items-center">
-              <span>${parseInt(jobListingData?.price).toFixed(2)}</span>
+              {jobListingData?.budget_type === "hourly" ? (
+                <span>
+                  {`${parseInt(jobListingData?.minPrice).toFixed(
+                    2
+                  )} - ${parseInt(jobListingData?.maxPrice).toFixed(2)}`}
+                  /hr
+                </span>
+              ) : jobListingData?.budget_type === "fixed" ? (
+                <span>${parseInt(jobListingData?.price).toFixed(2)}</span>
+              ) : null}
+
               <Button
                 variant=""
                 className="round_b_btn"

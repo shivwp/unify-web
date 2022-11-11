@@ -23,11 +23,9 @@ const CloseIcon = () => {
 const ProjectBudgetPopup = ({ Popup, jobListingData }) => {
   const dispatch = useDispatch();
   const [budgetType, setBudgetType] = useState();
-  const [price, setPrice] = useState();
-
-  const handleBudgetTypeChange = (e) => {
-    setBudgetType(e.target.value);
-  };
+  const [price, setPrice] = useState(jobListingData?.price);
+  const [minPrice, setMinPrice] = useState(jobListingData?.minPrice);
+  const [maxPrice, setMaxPrice] = useState(jobListingData?.maxPrice);
 
   const saveProjectBudget = () => {
     dispatch({
@@ -36,6 +34,8 @@ const ProjectBudgetPopup = ({ Popup, jobListingData }) => {
         ...jobListingData,
         budget_type: budgetType,
         price: price,
+        minPrice: minPrice,
+        maxPrice: maxPrice,
       },
     });
 
@@ -61,7 +61,7 @@ const ProjectBudgetPopup = ({ Popup, jobListingData }) => {
                       type="radio"
                       name="budget_type"
                       value="hourly"
-                      onChange={handleBudgetTypeChange}
+                      onChange={(e) => setBudgetType(e.target.value)}
                     />
                   </div>
                   <div className="sel_icon">
@@ -89,7 +89,7 @@ const ProjectBudgetPopup = ({ Popup, jobListingData }) => {
                       type="radio"
                       name="budget_type"
                       value="fixed"
-                      onChange={handleBudgetTypeChange}
+                      onChange={(e) => setBudgetType(e.target.value)}
                     />
                   </div>
                   <div className="sel_icon">
@@ -116,7 +116,12 @@ const ProjectBudgetPopup = ({ Popup, jobListingData }) => {
                 <div className="d-flex">
                   <div className="input_from_tlab lign_tex">
                     <div className="d-flex align-items-center">$</div>
-                    <Form.Control type="number" />
+                    <Form.Control
+                      type="number"
+                      value={minPrice}
+                      onChange={(e) => setMinPrice(e.target.value)}
+                      onWheel={(e) => e.target.blur()}
+                    />
                   </div>
                   <div className="input_t_lab input_hour lign_tex pl-2">
                     /hour
@@ -128,7 +133,12 @@ const ProjectBudgetPopup = ({ Popup, jobListingData }) => {
                 <div className="d-flex">
                   <div className="input_from_tlab lign_tex">
                     <div className="d-flex align-items-center">$</div>
-                    <Form.Control type="number" />
+                    <Form.Control
+                      type="number"
+                      value={maxPrice}
+                      onChange={(e) => setMaxPrice(e.target.value)}
+                      onWheel={(e) => e.target.blur()}
+                    />
                   </div>
                   <div className="input_t_lab input_hour lign_tex pl-2">
                     /hour

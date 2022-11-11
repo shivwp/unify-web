@@ -2,6 +2,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { SET_JOB_DATA_LISTING } from "../../../../redux/types";
 
 const CloseIcon = () => {
   return (
@@ -18,7 +19,27 @@ const CloseIcon = () => {
   );
 };
 
-const CategoryPopup = ({ categoryList, Popup, handleCategoryChange }) => {
+const CategoryPopup = ({
+  categoryList,
+  Popup,
+  jobListingData,
+  setJobCategory,
+  jobCategory,
+}) => {
+  const dispatch = useDispatch();
+
+  const saveCategory = () => {
+    dispatch({
+      type: SET_JOB_DATA_LISTING,
+      payload: {
+        ...jobListingData,
+        job_category: parseInt(jobCategory),
+      },
+    });
+
+    Popup();
+  };
+
   return (
     <div className="bg_wrapper_popup_new">
       <div className="popup_box_bpn profile_nceqoi_popup pb-4">
@@ -33,10 +54,14 @@ const CategoryPopup = ({ categoryList, Popup, handleCategoryChange }) => {
             <div className="pouphed_skll">Category</div>
             <select
               className="category-popup-select"
-              onChange={handleCategoryChange}
+              onChange={(e) => setJobCategory(e.target.value)}
             >
               {categoryList?.map((item, key) => (
-                <option key={key} value={item.id}>
+                <option
+                  key={key}
+                  value={item.id}
+                  selected={parseInt(jobCategory) === item.id ? true : false}
+                >
                   {item.name}
                 </option>
               ))}
@@ -47,7 +72,9 @@ const CategoryPopup = ({ categoryList, Popup, handleCategoryChange }) => {
             <Button variant="" className="trans_btn" onClick={() => Popup()}>
               Cancel
             </Button>
-            <Button variant="">Save</Button>
+            <Button variant="" onClick={saveCategory}>
+              Save
+            </Button>
           </div>
         </div>
       </div>

@@ -7,6 +7,9 @@ import {
   SAVE_JOB_POST,
   SEND_JOB_PROPOSAL,
   SEND_PROPOSAL_DATA,
+  SET_ALL_CLIENT_DRAFT_POSTING,
+  SET_ALL_CLIENT_POSTING,
+  SET_POST_YOUR_JOB_NOW,
   UNSAVE_JOB_POST,
 } from "../types";
 
@@ -58,6 +61,21 @@ const jobReducer = (state = initialState, action) => {
       return {
         ...state,
         onDislikeJobPost: action.payload,
+      };
+    case SET_ALL_CLIENT_POSTING:
+      return {
+        ...state,
+        allClientPosting: action.payload,
+      };
+    case SET_ALL_CLIENT_DRAFT_POSTING:
+      return {
+        ...state,
+        allClientDraftPosting: action.payload,
+      };
+    case SET_POST_YOUR_JOB_NOW:
+      return {
+        ...state,
+        postYourJob: action.payload,
       };
 
     default:

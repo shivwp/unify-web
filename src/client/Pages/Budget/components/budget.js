@@ -15,24 +15,15 @@ const Budget = () => {
   const navigate = useNavigate();
   const [price, setPrice] = useState();
   const [minPrice, setMinPrice] = useState();
+  const [maxPrice, setMaxPrice] = useState();
   const [budgetType, setBudgetType] = useState();
   const jobListingData = useSelector((state) => state.profile.jobListingData);
-
-  console.log(jobListingData);
 
   useEffect(() => {
     if (jobListingData === undefined) {
       navigate("/gettingstarted");
     }
   }, []);
-
-  const handleBudgetTypeChange = (e) => {
-    setBudgetType(e.target.value);
-  };
-
-  const handlePriceChange = (e) => {
-    setPrice(e.target.value);
-  };
 
   const nextButton = (e) => {
     dispatch({
@@ -41,6 +32,8 @@ const Budget = () => {
         ...jobListingData,
         budget_type: budgetType,
         price: price,
+        minPrice: minPrice,
+        maxPrice: maxPrice,
       },
     });
 
@@ -67,7 +60,7 @@ const Budget = () => {
                           type="radio"
                           name="budget_type"
                           value="hourly"
-                          onChange={handleBudgetTypeChange}
+                          onChange={(e) => setBudgetType(e.target.value)}
                         />
                       </div>
                       <div className="sel_icon">
@@ -95,7 +88,7 @@ const Budget = () => {
                           type="radio"
                           name="budget_type"
                           value="fixed"
-                          onChange={handleBudgetTypeChange}
+                          onChange={(e) => setBudgetType(e.target.value)}
                         />
                       </div>
                       <div className="sel_icon">
@@ -122,7 +115,12 @@ const Budget = () => {
                     <div className="d-flex">
                       <div className="input_from_tlab lign_tex">
                         <div className="d-flex align-items-center">$</div>
-                        <Form.Control type="number" />
+                        <Form.Control
+                          type="number"
+                          value={minPrice}
+                          onChange={(e) => setMinPrice(e.target.value)}
+                          onWheel={(e) => e.target.blur()}
+                        />
                       </div>
                       <div className="input_t_lab input_hour lign_tex pl-2">
                         /hour
@@ -134,7 +132,12 @@ const Budget = () => {
                     <div className="d-flex">
                       <div className="input_from_tlab lign_tex">
                         <div className="d-flex align-items-center">$</div>
-                        <Form.Control type="number" />
+                        <Form.Control
+                          type="number"
+                          value={maxPrice}
+                          onChange={(e) => setMaxPrice(e.target.value)}
+                          onWheel={(e) => e.target.blur()}
+                        />
                       </div>
                       <div className="input_t_lab input_hour lign_tex pl-2">
                         /hour
@@ -152,7 +155,7 @@ const Budget = () => {
                         <Form.Control
                           type="number"
                           value={price}
-                          onChange={handlePriceChange}
+                          onChange={(e) => setPrice(e.target.value)}
                           onWheel={(e) => e.target.blur()}
                         />
                       </div>
@@ -177,7 +180,9 @@ const Budget = () => {
               <div className="btn_foot_sec flex-wrap no-border mt-2">
                 <div className="fo_btn_c next_b_btn_c">
                   <Link to="/scope">
-                    <Button variant=""  className="mrright-gppnew">Back</Button>
+                    <Button variant="" className="mrright-gppnew">
+                      Back
+                    </Button>
                   </Link>
                 </div>
                 <div className="fo_btn_c next_b_btn_c">
