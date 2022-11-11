@@ -11,6 +11,7 @@ import {
   SET_ALL_CLIENT_POSTING,
   SET_ALL_CONTRACTS,
   SET_ALL_PROPOSALS,
+  SET_CLOSE_JOB_REASON_LIST,
   SET_POST_YOUR_JOB_NOW,
   UNSAVE_JOB_POST,
 } from "../types";
@@ -88,6 +89,11 @@ const jobReducer = (state = initialState, action) => {
       return {
         ...state,
         getAllContracts: action.payload,
+      };
+    case SET_CLOSE_JOB_REASON_LIST:
+      return {
+        ...state,
+        closeJobReasons: action.payload,
       };
 
     default:

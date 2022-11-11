@@ -12,6 +12,7 @@ import {
   SET_ALL_CLIENT_POSTING,
   SET_ALL_CONTRACTS,
   SET_ALL_PROPOSALS,
+  SET_CLOSE_JOB_REASON_LIST,
   SET_POST_YOUR_JOB_NOW,
   UNSAVE_JOB_POST,
 } from "../types";
@@ -153,6 +154,28 @@ export const getAllClientDraftPosting = (data) => async (dispatch) => {
     });
   } catch (err) {}
 };
+
+export const closeJobReasonList = () => async (dispatch) => {
+  try {
+    Axios.get("/close-job-reason-list").then((res) => {
+      dispatch({
+        type: SET_CLOSE_JOB_REASON_LIST,
+        payload: res.data.data,
+      });
+    });
+  } catch (err) {}
+};
+
+export const onCloseJob = (data, onCloseModal) => async (dispatch) => {
+  try {
+    Axios.post("/remove-job", data, config).then((res) => {
+      if (res.data.status) {
+        onCloseModal();
+      }
+    });
+  } catch (err) {}
+};
+
 export const getAllProposals = () => async (dispatch) => {
   try {
     Axios.get("/all-proposal", config).then((res) => {

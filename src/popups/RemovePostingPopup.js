@@ -1,11 +1,29 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Modal } from "react-responsive-modal";
 import "react-responsive-modal/styles.css";
 import "./popup.css";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import { useDispatch, useSelector } from "react-redux";
+import { closeJobReasonList, onCloseJob } from "../redux/actions/jobActions";
 
-const RemovePostingPopup = ({ open, onCloseModal }) => {
+const RemovePostingPopup = ({ open, onCloseModal, menuBarPosting }) => {
+  const dispatch = useDispatch();
+  const [reasonId, setReasonId] = useState();
+  const closeJobReasons = useSelector((state) => state.job.closeJobReasons);
+
+  useEffect(() => {
+    dispatch(closeJobReasonList());
+  }, []);
+
+  const handleCloseJob = () => {
+    const data = {
+      project_id: menuBarPosting,
+      reason_id: reasonId,
+    };
+    dispatch(onCloseJob(data, onCloseModal));
+  };
+
   return (
     <>
       <Modal
@@ -25,13 +43,20 @@ const RemovePostingPopup = ({ open, onCloseModal }) => {
           </h6>
           <div>
             <ul className="popup-radio">
-              <li>
-                <Form.Label htmlFor="reason-1">
-                  <Form.Check type="radio" id="reason-1" name="p" />{" "}
-                  <span>Accidental job Posting creation</span>
-                </Form.Label>
-              </li>
-              <li>
+              {closeJobReasons?.map((item, key) => (
+                <li key={key}>
+                  <Form.Label htmlFor={key}>
+                    <Form.Check
+                      type="radio"
+                      id={key}
+                      name="p"
+                      onChange={() => setReasonId(item.id)}
+                    />
+                    <span>{item.name}</span>
+                  </Form.Label>
+                </li>
+              ))}
+              {/* <li>
                 <Form.Label htmlFor="reason-2">
                   <Form.Check type="radio" name="p" id="reason-2" />{" "}
                   <span>All Position filled</span>
@@ -54,20 +79,28 @@ const RemovePostingPopup = ({ open, onCloseModal }) => {
                   <Form.Check type="radio" id="reason-5" name="p" />{" "}
                   <span>Project was cancelled</span>
                 </Form.Label>
-              </li>
+              </li> */}
             </ul>
           </div>
         </div>
         <div className="btn_foot_sec no-border flex-wrap d-flex">
           <div className="fo_btn_c next_b_btn_c">
-            <Button variant="" className="remove-posting-btns" onClick={onCloseModal}>
+            <Button
+              variant=""
+              className="remove-posting-btns"
+              onClick={onCloseModal}
+            >
               CANCEL
             </Button>
           </div>
           <div className="fo_btn_c next_b_btn_c">
-            <Button  variant="" className="active_btn_blue" style={{ fontWeight: 600 }}>
+            <button
+              className="active_btn_blue"
+              style={{ fontWeight: 600 }}
+              onClick={handleCloseJob}
+            >
               YES, CLOSE JOB
-            </Button>
+            </button>
           </div>
         </div>
       </Modal>
