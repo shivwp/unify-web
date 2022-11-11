@@ -3530,3 +3530,46 @@
   color: #fff !important;
   background-color: #39478f !important;
 }
+
+.all_contract_tabs {
+  display: flex;
+  justify-content: space-evenly;
+  background: rgb(245, 245, 245);
+  height: 50px;
+  align-items: center;
+  border-radius: 3px;
+  width: 100%;
+}
+
+.all_contract_overflow {
+  width: 100%;
+  overflow-x: auto;
+  border-bottom: 1px solid rgb(195, 194, 194);
+  margin: 20px 0;
+}
+
+.all_contract_tabs .contract_tab {
+  width: calc(100% / 5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 16px;
+  height: 100%;
+  border: 5px solid transparent;
+}
+.all_contract_tabs .contract_tab:hover {
+  border-bottom: 5px solid #6d2ef1;
+  color: #6d2ef1;
+}
+
+.active_contract {
+  border-bottom: 5px solid #6d2ef1 !important;
+  color: #6d2ef1 !important;
+}
+
+.no_contract_data {
+  text-align: center;
+  margin: 40px 0 20px 0;
+}

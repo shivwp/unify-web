@@ -9,6 +9,8 @@ import {
   SEND_PROPOSAL_DATA,
   SET_ALL_CLIENT_DRAFT_POSTING,
   SET_ALL_CLIENT_POSTING,
+  SET_ALL_CONTRACTS,
+  SET_ALL_PROPOSALS,
   SET_POST_YOUR_JOB_NOW,
   UNSAVE_JOB_POST,
 } from "../types";
@@ -76,6 +78,16 @@ const jobReducer = (state = initialState, action) => {
       return {
         ...state,
         postYourJob: action.payload,
+      };
+    case SET_ALL_PROPOSALS:
+      return {
+        ...state,
+        getAllProposal: action.payload,
+      };
+    case SET_ALL_CONTRACTS:
+      return {
+        ...state,
+        getAllContracts: action.payload,
       };
 
     default:

@@ -7,13 +7,25 @@ import Form from "react-bootstrap/Form";
 import * as Icon from "react-icons/fi";
 import Checkbox from "react-custom-checkbox";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { onGetAllContracts } from "../../../../redux/actions/jobActions";
+import AllMilestones from "./AllMilestones";
+import HourlyMilestones from "./HourlyMilestones";
+import ActiveMilestones from "./ActiveMilestones";
+import AwaitingMilestones from "./AwaitingMilestones";
+import PaymentRequested from "./PaymentRequested";
 
 const Screen = () => {
-  const [dDown, Setddown] = useState(false);
-
   Title(" | All Contracts");
+  const dispatch = useDispatch();
+  const [activeTab, setActiveTab] = useState("ALL");
+  const getAllContracts = useSelector((state) => state?.job?.getAllContracts);
 
+  console.log(getAllContracts);
+  useEffect(() => {
+    dispatch(onGetAllContracts());
+  }, []);
   return (
     <>
       <Container>
@@ -43,7 +55,6 @@ const Screen = () => {
               />
             </div>
           </div>
-          {/* Project start */}
           <div className="mt-3">
             <div className="sort_by_pa">Sort By</div>
             <div className="d-flex flex-wrap justify-content-between align-items-center">
@@ -122,7 +133,6 @@ const Screen = () => {
               </div>
             </div>
           </div>
-          {/* Project end */}
           <div className="no_found_cen justify-content-start">
             <div>
               <div className="no_foun_para_ce text-left">
@@ -134,106 +144,67 @@ const Screen = () => {
             </div>
           </div>
 
-          <div>
-            <div
-              className="job_box_card"
-              style={{ border: "none", backgroundColor: "#f5f5f5" }}
-            >
-              <Row style={{ marginTop: 10 }}>
-                <Col lg={9} md={7}>
-                  <div className="job_head_s">
-                    <h2>Edit Woocommerce plugin</h2>
-                  </div>
-                  <div className="job_d_par">
-                    <p>Staffed by: Shiv Kumar at Eoxysis IT solution LLP</p>
-                  </div>
-                </Col>
-                <Col
-                  lg={3}
-                  md={5}
-                  className="p-0"
-                  style={{ display: "flex", justifyContent: "center" }}
-                >
-                  <div className="milestone_btn_s">
-                    <Link to="/freelancer/milestone-earning">
-                      <button>Submit Work for Payment</button>
-                    </Link>
-                  </div>
-                </Col>
-              </Row>
-              <Row>
-                <Col lg={4} md={5}>
-                  <div className="job_head_s">
-                    <h3>Hired By: Ali Almazam</h3>
-                  </div>
-                  <div className="job_d_par">
-                    <p style={{ marginBottom: 0 }}>Ali Elabhm</p>
-                  </div>
-                </Col>
-                <Col lg={6} md={5}>
-                  <div className="job_head_s">
-                    <h3>Active: Milestone 1</h3>
-                  </div>
-                  <div className="job_d_par">
-                    <p style={{ marginBottom: 0 }}>Edit Woocommerce plugin</p>
-                  </div>
-                </Col>
-                <Col lg={2} md={2} style={{ fontSize: 14, color: "#6b6b6b" }}>
-                  Oct 10 - Present
-                </Col>
-              </Row>
+          <div className="all_contract_overflow">
+            <div className="all_contract_tabs">
+              <div
+                className={`contract_tab ${
+                  activeTab == "ALL" ? "active_contract" : ""
+                }`}
+                onClick={() => setActiveTab("ALL")}
+              >
+                All
+              </div>
+              <div
+                className={`contract_tab ${
+                  activeTab == "HOURLY" ? "active_contract" : ""
+                }`}
+                onClick={() => setActiveTab("HOURLY")}
+              >
+                Hourly
+              </div>
+              <div
+                className={`contract_tab ${
+                  activeTab == "ACTIVE_MILESTONE" ? "active_contract" : ""
+                }`}
+                onClick={() => setActiveTab("ACTIVE_MILESTONE")}
+              >
+                Active Milestone
+              </div>
+              <div
+                className={`contract_tab ${
+                  activeTab == "AWAITNIG_MILESTONE" ? "active_contract" : ""
+                }`}
+                onClick={() => setActiveTab("AWAITNIG_MILESTONE")}
+              >
+                Awaiting Milestone
+              </div>
+              <div
+                className={`contract_tab ${
+                  activeTab == "PAYMENTR_EQUESTED" ? "active_contract" : ""
+                }`}
+                onClick={() => setActiveTab("PAYMENTR_EQUESTED")}
+              >
+                Payment Requested
+              </div>
             </div>
           </div>
-          <div>
-            <div
-              className="job_box_card"
-              style={{ border: "none", backgroundColor: "#f5f5f5" }}
-            >
-              <Row style={{ marginTop: 10 }}>
-                <Col lg={9} md={7}>
-                  <div className="job_head_s">
-                    <h2>Edit Woocommerce plugin</h2>
-                  </div>
-                  <div className="job_d_par">
-                    <p>Staffed by: Shiv Kumar at Eoxysis IT solution LLP</p>
-                  </div>
-                </Col>
-                <Col
-                  lg={3}
-                  md={5}
-                  className="p-0"
-                  style={{ display: "flex", justifyContent: "center" }}
-                >
-                  <div className="milestone_btn_s">
-                    <Link to="/freelancer/milestone-earning">
-                      <button>Submit Work for Payment</button>
-                    </Link>
-                  </div>
-                </Col>
-              </Row>
-              <Row>
-                <Col lg={4} md={5}>
-                  <div className="job_head_s">
-                    <h3>Hired By: Ali Almazam</h3>
-                  </div>
-                  <div className="job_d_par">
-                    <p style={{ marginBottom: 0 }}>Ali Elabhm</p>
-                  </div>
-                </Col>
-                <Col lg={6} md={5}>
-                  <div className="job_head_s">
-                    <h3>Active: Milestone 1</h3>
-                  </div>
-                  <div className="job_d_par">
-                    <p style={{ marginBottom: 0 }}>Edit Woocommerce plugin</p>
-                  </div>
-                </Col>
-                <Col lg={2} md={2} style={{ fontSize: 14, color: "#6b6b6b" }}>
-                  Oct 10 - Present
-                </Col>
-              </Row>
-            </div>
-          </div>
+          {activeTab == "ALL" ? (
+            <AllMilestones getAllContracts={getAllContracts?.All} />
+          ) : activeTab == "HOURLY" ? (
+            <HourlyMilestones getAllContracts={getAllContracts?.Hourly} />
+          ) : activeTab == "ACTIVE_MILESTONE" ? (
+            <ActiveMilestones
+              getAllContracts={getAllContracts?.ActiveMilestone}
+            />
+          ) : activeTab == "AWAITNIG_MILESTONE" ? (
+            <AwaitingMilestones
+              getAllContracts={getAllContracts?.AwaitingMilestone}
+            />
+          ) : activeTab == "PAYMENTR_EQUESTED" ? (
+            <PaymentRequested
+              getAllContracts={getAllContracts?.PaymentRequest}
+            />
+          ) : null}
         </div>
       </Container>
     </>
