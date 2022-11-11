@@ -52,6 +52,8 @@ import VerifySignUp from "../../components/VerifySignUp";
 import VerifyForgotOTP from "../../components/VerifyForgotOTP";
 import ForgotPass from "../../components/ForgotPass";
 import ResetPass from "../../components/ResetPass";
+import JobListScreen from "../Pages/AllPostings";
+import DraftJobListScreen from "../Pages/AllDraftPostings";
 
 const RouterConfig = () => {
   return (
@@ -123,8 +125,10 @@ const RouterConfig = () => {
       <Route path="/dashboard/edit-posting" element={<EditPosting />} />
       <Route path="/dashboard/edit-draft" element={<EditDraft />} />
       <Route path="/post-description" element={<Description />} />
+      <Route path="/all-job-list" element={<JobListScreen />} />
+      <Route path="/all-draft-job-list" element={<DraftJobListScreen />} />
     </Routes>
   );
 };
 
-export default RouterConfig
+export default RouterConfig;
