@@ -26,6 +26,7 @@ export const onLogin = (data, navigate) => async (dispatch) => {
     const res = await Axios.post(`/login`, data);
     if (res.data.status) {
       localStorage.setItem("unify_Token", res.data.auth_token);
+      localStorage.setItem("unify_access", true);
       localStorage.setItem("unify_user", JSON.stringify(res.data.data.user));
       if (res.data.data.user.user_type === "freelancer") {
         navigate("/freelancer/dashboard");

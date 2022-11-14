@@ -62,11 +62,15 @@ const Screen = () => {
                     <div className="sett_y_b">$0.00/month</div>
                   </div>
                   <div className="btn_foot_sec no-border mt-0 mb-0 p-0 fo_btn_c next_b_btn_c">
-                    <Button variant="" className="bg-transparent h-color-b">Cancel</Button>
+                    <Button variant="" className="bg-transparent h-color-b">
+                      Cancel
+                    </Button>
                   </div>
                 </div>
                 <div className="chan_sub_n_s">
-                  <Link className="mt-2">Change Subscription</Link>
+                  <Link to="#" className="mt-2">
+                    Change Subscription
+                  </Link>
                 </div>
               </div>
             </div>
