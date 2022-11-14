@@ -1,4 +1,4 @@
-import MileEarning from "./components/MilestoneEarning";
+import MileEarning from "./components";
 import Layout from "../../Layout/Layout";
 
 const Screen = () => {

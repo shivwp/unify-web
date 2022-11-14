@@ -35,7 +35,7 @@ const AllMilestones = ({ getAllContracts }) => {
                   >
                     <div className="milestone_btn_s">
                       {item.type == "hourly" ? (
-                        <Link to="/freelancer/milestone-earning">
+                        <Link to="/freelancer/see-timesheet">
                           <button>See Timesheet</button>
                         </Link>
                       ) : (

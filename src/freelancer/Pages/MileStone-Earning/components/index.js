@@ -1,13 +1,15 @@
 import Container from "react-bootstrap/Container";
 import { useState } from "react";
 import Button from "react-bootstrap/Button";
-import ME from "./milestone";
+import ME from "./Milestone";
 import MF from "./message-file";
 import TS from "./term-setting";
 import FE from "./feedback";
+import MilestoneTimeLine from "./MilestoneTimeLine";
+import OverView from "./OverView";
 
 const Screen = () => {
-  const [Tab, SetTab] = useState(<ME />);
+  const [Tab, SetTab] = useState(<OverView/>);
   const [TabActive, setTabActive] = useState("OVERVIEW");
 
   function changeTab(componentName) {
@@ -25,6 +27,9 @@ const Screen = () => {
       setTabActive("fe");
     }
   }
+
+
+
   return (
     <>
       <Container className="mb-5 pb-3">
@@ -95,18 +100,8 @@ const Screen = () => {
               >
                 Details
               </button>
-              {/* <button
-                variant=""
-                className={`text-capitalize tab_btn_vs w-auto ${
-                  TabActive === "fe" ? "active_bvs" : ""
-                }`}
-                onClick={() => {
-                  changeTab("fe");
-                }}
-              >
-                Feedback
-              </button> */}
             </div>
+            
           </div>
         </div>
         {Tab}

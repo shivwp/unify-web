@@ -111,7 +111,7 @@ export const onDislikeJobPost = (data, setDropdownOpen) => async (dispatch) => {
     Axios.post("/dislike-job", data, config).then((res) => {
       dispatch({
         type: ON_DISLIKE_JOB_POST,
-        payload: res.data.data,
+        payload: res.data,
       });
       setDropdownOpen(false);
     });

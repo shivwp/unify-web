@@ -1,4 +1,4 @@
-import SeeTimesheet from "./SeeTimeSheet";
+import SeeTimesheet from "../../Pages/SeeMilestone/SeeTimeSheet";
 import Layout from "../../Layout/Layout";
 
 const Screen = () => {
