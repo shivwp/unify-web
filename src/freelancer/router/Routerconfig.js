@@ -42,7 +42,7 @@ import ForgotPass from "../../components/ForgotPass";
 import ResetPass from "../../components/ResetPass";
 import Testimonial from "../../components/Testimonial";
 import AgencyDashboard from "../../Agency/Pages/Dashboard";
-import SeeTimesheet from "../Pages/SeeMilestone";
+import SeeTimesheet from "../Pages/SeeTimesheet";
 
 const RouterConfig = () => {
   return (

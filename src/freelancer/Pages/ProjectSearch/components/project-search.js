@@ -20,6 +20,10 @@ import {
   removeSaveJob,
   saveJobs,
 } from "../../../../redux/actions/jobActions";
+import {
+  getCategoryList,
+  getFreelancerSkills,
+} from "../../../../redux/actions/profileAction";
 
 const ReasonsList = ({ jobId, data, setDropdownOpen }) => {
   const dispatch = useDispatch();
@@ -63,7 +67,6 @@ const ProjectSearch = () => {
   const dislikeJobReasons = useSelector(
     (state) => state?.job?.dislikeJobReasons
   );
-
 
   const ScrollTop = () => {
     window.scrollTo(0, 0);
@@ -439,9 +442,17 @@ const Project_Search = () => {
     $(e.target.nextSibling).slideToggle();
   };
   $(".slider_shutter").slideDown();
-
+  const dispatch = useDispatch();
   const [Tab, SetTab] = useState(<ProjectSearch />);
   const [TabActive, SetTabActive] = useState("search");
+  let getSkillList = useSelector((state) => state?.profile?.getSkillList);
+  const [selectSkills, setSelectSkills] = useState([]);
+  const [showSuggestedSkills, setShowSuggestedSkills] = useState(false);
+  const [filterValues, setFilterValues] = useState([]);
+  const categoryList = useSelector((state) => state.profile.categoryList);
+  const [selectCategory, setSeleceCategory] = useState({});
+  const [selectLanguages, setSelecetLanguages] = useState({});
+
   function changeTab(componentName) {
     if (componentName === "search") {
       SetTab(<ProjectSearch />);
@@ -460,6 +471,7 @@ const Project_Search = () => {
       SetTab(<ProjectSaved />);
       SetTabActive("saved");
     }
+    dispatch(getCategoryList());
   }, [saved]);
   const options1 = [
     {
@@ -467,171 +479,318 @@ const Project_Search = () => {
       label: "what are you looking for",
     },
   ];
+
+  const removeSkills = (index) => {
+    let updateSkills = [...selectSkills];
+    updateSkills.splice(index, 1);
+    setSelectSkills(updateSkills);
+  };
+
+  console.log(filterValues);
+  console.log(selectCategory);
+
+  const addSkills = (item) => {
+    if (selectSkills.length <= 15) {
+      if (
+        selectSkills.find((ele) => {
+          return ele.skill_id == item.id;
+        }) == undefined
+      ) {
+        setSelectSkills([
+          ...selectSkills,
+          { skill_id: item.id, skill_name: item.name },
+        ]);
+      }
+    }
+    document.getElementById("search_skill_inp").value = null;
+  };
+
+  const onSearchSkill = (e) => {
+    setShowSuggestedSkills(true);
+    let data;
+    if (e.target.value.length >= 1) {
+      data = { [e.target.name]: e.target.value };
+      dispatch(getFreelancerSkills(data));
+    } else {
+      data = { skill: "undefined" };
+      dispatch(getFreelancerSkills(data));
+    }
+    $("#suggest_skills").show();
+  };
+
+  $(document).mouseup(function (e) {
+    if ($(e.target).closest("#suggest_skills").length === 0) {
+      setShowSuggestedSkills(false);
+    }
+  });
   return (
     <>
       <Container>
         <Row>
-          <Col lg={3}>
-            <div className="filter_area">
-              <div className="sef_box">
-                <div className="sef_na_ea ps_n_sef">
-                  <h3>Search Filters</h3>
-                </div>
-                <div className="sef_p_c ps_n_sefp">
-                  <p>Clear all</p>
-                </div>
-              </div>
-              <div className="s_cat_bo">
-                <div className="s_na_box">
-                  <div className="s_na_h4">
-                    <h4>Search by keyword</h4>
+          {TabActive == "search" ? (
+            <Col lg={3}>
+              <div className="filter_area">
+                {/* <div className="sef_box">
+                  <div className="sef_na_ea ps_n_sef">
+                    <h3>Search Filters</h3>
                   </div>
-                  <div className="s_na_inpu">
-                    <Form.Control
-                      type="text"
-                      placeholder="what are you looking for"
-                    />
+                  <div className="sef_p_c ps_n_sefp">
+                    <p>Clear all</p>
                   </div>
-                </div>
-                <div className="s_na_box">
-                  <div className="s_na_h4">
-                    <h4>Job type</h4>
-                  </div>
-                  <div className="s_na_inpu">
-                    <Select
-                      className=" smtxt_selct_newug"
-                      placeholder="what are you looking for"
-                      options={options1}
-                    />
-                  </div>
-                </div>
-                <div className="s_na_box">
-                  <div className="s_na_h4">
-                    <h4>Skills</h4>
-                  </div>
-                  <div className="s_na_inpu">
-                    <Form.Control type="text" placeholder="Search skills" />
-                    <div className="pls_s_na_input">+</div>
-                  </div>
-                </div>
-              </div>
-              <div className="s_na_box s_cat_bo">
-                <div className="s_na_h4">
-                  <h4>Category</h4>
-                </div>
-                <div className="s_na_categ">
-                  <Form.Check type="checkbox" />
-                  <Form.Label>Apps Developements (2)</Form.Label>
-                </div>
-                <div className="s_na_categ">
-                  <Form.Check type="checkbox" />
-                  <Form.Label>IOS (2)</Form.Label>
-                </div>
-                <div className="s_na_categ">
-                  <Form.Check type="checkbox" />
-                  <Form.Label>Business (10)</Form.Label>
-                </div>
-                <div className="s_na_categ">
-                  <Form.Check type="checkbox" />
-                  <Form.Label>Services (10)</Form.Label>
-                </div>
-                <div className="s_na_categ">
-                  <Form.Check type="checkbox" />
-                  <Form.Label>Digital Marketing (10)</Form.Label>
-                </div>
-                <div className="s_na_categ">
-                  <Form.Check type="checkbox" />
-                  <Form.Label>Video & animation (10)</Form.Label>
-                </div>
-                <div className="s_na_categ">
-                  <Form.Check type="checkbox" />
-                  <Form.Label>Website Development (10)</Form.Label>
-                </div>
-                <div className="s_na_categ">
-                  <Form.Check type="checkbox" />
-                  <Form.Label>writing & Translation (10)</Form.Label>
-                </div>
-              </div>
-              <div className="s_cat_bo">
-                <div className="s_na_h4">
-                  <h4>Price</h4>
-                </div>
-                <div className="ran_fl_inp">
-                  <Form.Control type="num" value="0" placeholder="0" />
-                  <Form.Control type="num" value="1,500" placeholder="1,500" />
-                </div>
-              </div>
-
-              <div className="s_na_box s_cat_bo mb-0">
-                <div className="s_na_h4">
-                  <h4>English Level</h4>
-                </div>
-                <div className="s_na_categ">
-                  <Form.Check type="checkbox" />
-                  <Form.Label>Bilingual (1)</Form.Label>
-                </div>
-                <div className="s_na_categ">
-                  <Form.Check type="checkbox" />
-                  <Form.Label>Fluent (4)</Form.Label>
-                </div>
-                <div className="s_na_categ">
-                  <Form.Check type="checkbox" />
-                  <Form.Label>Native (3)</Form.Label>
-                </div>
-                <div className="s_na_categ">
-                  <Form.Check type="checkbox" />
-                  <Form.Label>Professional (1)</Form.Label>
-                </div>
-              </div>
-              <div className="s_na_box s_cat_bo mt-0">
-                <div
-                  className="flex_slide_ta toggle_shutter p-0"
-                  onClick={(e) => hanDleSlide(e)}
-                >
-                  <div className="s_na_h4">
-                    <h4>Languages</h4>
-                  </div>
-                  <div>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      fill="currentColor"
-                      className="bi bi-chevron-down"
-                      viewBox="0 0 16 16"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"
+                </div> */}
+                <div className="s_cat_bo">
+                  <div className="s_na_box">
+                    <div className="s_na_h4">
+                      <h4>Search by keyword</h4>
+                    </div>
+                    <div className="s_na_inpu">
+                      <Form.Control
+                        type="text"
+                        placeholder="what are you looking for"
+                        name="search"
+                        onChange={(e) => {
+                          setFilterValues({
+                            ...filterValues,
+                            [e.target.name]: e.target.value,
+                          });
+                        }}
                       />
-                    </svg>
+                    </div>
+                  </div>
+                  {/* <div className="s_na_box">
+                    <div className="s_na_h4">
+                      <h4>Job type</h4>
+                    </div>
+                    <div className="s_na_inpu">
+                      <Form.Select
+                        className=" smtxt_selct_newug"
+                        placeholder="what are you looking for"
+                        options={options1}
+                        name="type"
+                        onChange={(e) => {
+                          setFilterValues({
+                            ...filterValues,
+                            [e.target.name]: e.target.value,
+                          });
+                        }}
+                      >
+                        <option value="short_term">Sort Term </option>
+                        <option value="long_term">Long Term </option>
+                      </Form.Select>
+                    </div>
+                  </div> */}
+                  <div className="s_na_box">
+                    <div className="selected_skills_filter_jobs">
+                      {selectSkills?.map((item, index) => (
+                        <div class="skill">
+                          <span>{item.skill_name}</span>
+                          <button
+                            type="button"
+                            class="btn"
+                            onClick={() => removeSkills(index)}
+                          >
+                            X
+                          </button>
+                        </div>
+                      ))}
+                    </div>
+                    <div className="s_na_h4">
+                      <h4>Skills</h4>
+                    </div>
+                    <div className="s_na_inpu">
+                      <Form.Control
+                        type="text"
+                        placeholder="Search skills"
+                        name="skill"
+                        onChange={(e) => onSearchSkill(e)}
+                      />
+                      <div className="pls_s_na_input">+</div>
+                      {showSuggestedSkills ? (
+                        <div className="suggessted_skills" id="suggest_skills">
+                          {getSkillList?.map((item) => (
+                            <>
+                              {" "}
+                              <span onClick={() => addSkills(item)}>
+                                {item.name}
+                              </span>{" "}
+                            </>
+                          ))}
+                        </div>
+                      ) : null}
+                    </div>
                   </div>
                 </div>
-                <div className="slide_btnss slider_shutter">
-                  <div className="s_na_categ">
-                    <Form.Check type="checkbox" />
-                    <Form.Label>English (1)</Form.Label>
+                <div className="s_na_box s_cat_bo">
+                  <div className="s_na_h4">
+                    <h4>Category</h4>
                   </div>
-                  <div className="s_na_categ">
-                    <Form.Check type="checkbox" />
-                    <Form.Label>Japinese (4)</Form.Label>
+                  {categoryList?.map((item) => (
+                    <div className="s_na_categ">
+                      <Form.Check
+                        type="checkbox"
+                        name="category"
+                        value={item.id}
+                        onChange={(e) => {
+                          setSeleceCategory({
+                            ...selectCategory,
+                            [e.target.value]: e.target.checked,
+                          });
+                        }}
+                      />
+                      <Form.Label>{item.name}</Form.Label>
+                    </div>
+                  ))}
+                </div>
+                <div className="s_cat_bo">
+                  <div className="s_na_h4">
+                    <h4>Price</h4>
+                  </div>
+                  <div className="ran_fl_inp">
+                    <Form.Control
+                      type="number"
+                      placeholder="0"
+                      name="min_price"
+                      onChange={(e) => {
+                        setFilterValues({
+                          ...filterValues,
+                          [e.target.name]: e.target.value,
+                        });
+                      }}
+                    />
+                    <Form.Control
+                      type="number"
+                      placeholder="1,500"
+                      name="max_price"
+                      onChange={(e) => {
+                        setFilterValues({
+                          ...filterValues,
+                          [e.target.name]: e.target.value,
+                        });
+                      }}
+                    />
                   </div>
                 </div>
+
+                <div className="s_na_box s_cat_bo mb-0">
+                  <div className="s_na_h4">
+                    <h4>English Level</h4>
+                  </div>
+
+                  <div className="s_na_categ">
+                    <Form.Check
+                      type="radio"
+                      name="english_level"
+                      value="fluent"
+                      onChange={(e) => {
+                        setFilterValues({
+                          ...filterValues,
+                          [e.target.name]: e.target.value,
+                        });
+                      }}
+                      id="fluent"
+                    />
+                    <Form.Label htmlFor="fluent">Fluent </Form.Label>
+                  </div>
+                  <div className="s_na_categ">
+                    <Form.Check
+                      type="radio"
+                      name="english_level"
+                      value="native"
+                      onChange={(e) => {
+                        setFilterValues({
+                          ...filterValues,
+                          [e.target.name]: e.target.value,
+                        });
+                      }}
+                      id="native"
+                    />
+                    <Form.Label htmlFor="native">Native </Form.Label>
+                  </div>
+                  <div className="s_na_categ">
+                    <Form.Check
+                      type="radio"
+                      name="english_level"
+                      value="conversational"
+                      id="conversational"
+                      onChange={(e) => {
+                        setFilterValues({
+                          ...filterValues,
+                          [e.target.name]: e.target.value,
+                        });
+                      }}
+                    />
+                    <Form.Label htmlFor="conversational">
+                      Conversational{" "}
+                    </Form.Label>
+                  </div>
+                </div>
+                <div className="s_na_box s_cat_bo mt-0">
+                  <div
+                    className="flex_slide_ta toggle_shutter p-0"
+                    onClick={(e) => hanDleSlide(e)}
+                  >
+                    <div className="s_na_h4">
+                      <h4>Languages</h4>
+                    </div>
+                    <div>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        fill="currentColor"
+                        className="bi bi-chevron-down"
+                        viewBox="0 0 16 16"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                  <div className="slide_btnss slider_shutter">
+                    <div className="s_na_categ">
+                      <Form.Check
+                        type="checkbox"
+                        onChange={(e) => {
+                          setSelecetLanguages({
+                            ...selectLanguages,
+                            [e.target.value]: e.target.checked,
+                          });
+                        }}
+                      />
+                      <Form.Label>English</Form.Label>
+                    </div>
+                    <div className="s_na_categ">
+                      <Form.Check
+                        type="checkbox"
+                        onChange={(e) => {
+                          setSelecetLanguages({
+                            ...selectLanguages,
+                            [e.target.value]: e.target.checked,
+                          });
+                        }}
+                      />
+                      <Form.Label>Japinese</Form.Label>
+                    </div>
+                  </div>
+                </div>
+                <div className="desc_hin">
+                  <p>
+                    Select the options and press the Filter Result button to
+                    apply the changes
+                  </p>
+                </div>
+                <div className="fr_btn">
+                  <Button variant="" className="btnhovpple">
+                    Filter Result
+                  </Button>
+                </div>
               </div>
-              <div className="desc_hin">
-                <p>
-                  Select the options and press the Filter Result button to apply
-                  the changes
-                </p>
-              </div>
-              <div className="fr_btn">
-                <Button variant="" className="btnhovpple">
-                  Filter Result
-                </Button>
-              </div>
-            </div>
-          </Col>
-          <Col lg={9} className="top_main_c_job">
+            </Col>
+          ) : null}
+
+          <Col lg={9} className="top_main_c_job m-auto">
             <div className="overflow-scroll">
               <div className="d-flex flex-wrap tab_m_nodea mb-4 tab_scroll_cont">
                 <Link to="/freelancer/project-search">
