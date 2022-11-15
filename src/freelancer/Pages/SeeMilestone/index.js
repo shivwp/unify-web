@@ -1,10 +1,10 @@
-import MileEarning from "./components";
+import SeeTimesheet from "../../Pages/SeeMilestone/SeeTimeSheet";
 import Layout from "../../Layout/Layout";
 
 const Screen = () => {
   return (
     <Layout>
-      <MileEarning />
+      <SeeTimesheet />
     </Layout>
   );
 };

@@ -4,12 +4,12 @@ import { Row, Col } from "react-bootstrap";
 import SideNav from "../../../../components/site_nav";
 import Title from "../../../../components/title";
 import $ from "jquery";
-import Button from 'react-bootstrap/Button';
+import Button from "react-bootstrap/Button";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getFreelancerSkills } from "../../../../redux/actions/profileAction";
 import { SET_JOB_DATA_LISTING } from "../../../../redux/types";
-import Form from 'react-bootstrap/Form';
+import Form from "react-bootstrap/Form";
 
 const Skill = () => {
   Title(" | Skills");
@@ -17,6 +17,7 @@ const Skill = () => {
   const navigate = useNavigate();
   const [searchInput, setSearchInput] = useState();
   const [selectSkills, setSelectSkills] = useState([]);
+  const [englishLevel, setEnglishLeval] = useState();
   const [filteredResults, setFilteredResults] = useState([]);
   const jobListingData = useSelector((state) => state.profile.jobListingData);
   const getSkillList = useSelector((state) => state.profile.getSkillList);
@@ -70,6 +71,7 @@ const Skill = () => {
       payload: {
         ...jobListingData,
         skills: selectSkills?.map((item) => item.id)?.toString(),
+        english_level: englishLevel,
       },
     });
 
@@ -154,7 +156,9 @@ const Skill = () => {
                     {selectSkills?.map((item, index) => (
                       <Button variant="" key={item.id}>
                         {item.name}
-                        <Button variant="" onClick={() => removeSkills(index)}>X</Button>
+                        <Button variant="" onClick={() => removeSkills(index)}>
+                          X
+                        </Button>
                       </Button>
                     ))}
 
@@ -171,32 +175,38 @@ const Skill = () => {
                         <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
                       </svg>
                     </button>
-                    <button>
-                      Graphic Design
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
-                        fill="#393939"
-                        className="bi bi-plus"
-                        viewBox="0 0 16 16"
-                      >
-                        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
-                      </svg>
-                    </button> */}
+                     */}
                   </div>
                 </div>
+              </div>
+              <div className="inp_fields" style={{ margin: "30px 0px" }}>
+                <span>Language level</span>
+                <Form.Select
+                  style={{ marginTop: "10px" }}
+                  onChange={(e) => setEnglishLeval(e.target.value)}
+                >
+                  <option value="">Select</option>
+                  <option value="fluent">fluent</option>
+                  <option value="conversational">Conversational</option>
+                  <option value="naitve">naitve</option>
+                </Form.Select>
               </div>
               <div className="see_cat_link">Change your skill category</div>
               <div className="btn_foot_sec no-border flex-wrap d-flex">
                 <div className="fo_btn_c next_b_btn_c">
                   <Link to="/title14">
-                    <Button variant="" className="mrright-gppnew">Back</Button>
+                    <Button variant="" className="mrright-gppnew">
+                      Back
+                    </Button>
                   </Link>
                 </div>
                 <div className="fo_btn_c next_b_btn_c">
                   {/* <Link to="/scope"> */}
-                  <Button variant="" className="hov_ttransp active_btn_blue" onClick={nextButton}>
+                  <Button
+                    variant=""
+                    className="hov_ttransp active_btn_blue"
+                    onClick={nextButton}
+                  >
                     Next
                   </Button>
                   {/* </Link> */}

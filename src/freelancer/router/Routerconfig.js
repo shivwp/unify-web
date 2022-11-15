@@ -42,6 +42,7 @@ import ForgotPass from "../../components/ForgotPass";
 import ResetPass from "../../components/ResetPass";
 import Testimonial from "../../components/Testimonial";
 import AgencyDashboard from "../../Agency/Pages/Dashboard";
+import SeeTimesheet from "../Pages/SeeMilestone";
 
 const RouterConfig = () => {
   return (
@@ -104,6 +105,7 @@ const RouterConfig = () => {
         path="/freelancer/milestone-earning"
         element={<FreelancerMilestone />}
       />
+      <Route path="/freelancer/see-timesheet" element={<SeeTimesheet />} />
       <Route
         path="/freelancer/contact-info"
         element={<FreelancerContactInfo />}

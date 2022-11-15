@@ -64,7 +64,6 @@ const ProjectSearch = () => {
     (state) => state?.job?.dislikeJobReasons
   );
 
-  console.log(jobsList);
 
   const ScrollTop = () => {
     window.scrollTo(0, 0);

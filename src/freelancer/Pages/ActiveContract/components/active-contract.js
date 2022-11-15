@@ -1,9 +1,19 @@
+import { useEffect } from "react";
 import Container from "react-bootstrap/Container";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Title from "../../../../components/title";
+import { getAllProposals } from "../../../../redux/actions/jobActions";
 
 const Screen = () => {
   Title(" | Active Contract");
+  const dispatch = useDispatch();
+  const getAllProposal = useSelector((state) => state?.job?.getAllProposal);
+
+  console.log(getAllProposal);
+  useEffect(() => {
+    dispatch(getAllProposals());
+  }, []);
   return (
     <>
       <Container className="mb-5 pb-3">
@@ -23,8 +33,9 @@ const Screen = () => {
           <div className="my_job_flx">
             <div>
               <div className="my_job_a job_na_bol">
-                <Link to="/freelancer/message" style={{color: '#000'}}>
-                  Invitations to interview (1)
+                <Link to="/freelancer/message" style={{ color: "#000" }}>
+                  Invitations to interview (
+                  {getAllProposal?.interviewForInvitation})
                 </Link>
               </div>
             </div>

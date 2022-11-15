@@ -326,6 +326,7 @@ const Screen = () => {
         <RemovePostingPopup
           open={removePosting}
           onCloseModal={(e) => setRemovePosting(false)}
+          menuBarPosting={menuBarPosting}
         />
       )}
       {removeDraft && (

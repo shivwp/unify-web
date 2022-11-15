@@ -21,6 +21,7 @@ import { onPostYourJobNow } from "../../../../redux/actions/jobActions";
 const Description = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [values, setValues] = useState({});
   const [filteredSkills, setFilteredSkills] = useState();
   const [filteredCategory, setFilteredCategory] = useState();
   const [popup, setPopup] = useState();
@@ -43,6 +44,12 @@ const Description = () => {
       navigate("/gettingstarted");
     }
   }, []);
+
+  useEffect(() => {
+    if (jobListingData) {
+      setValues(jobListingData);
+    }
+  }, [jobListingData]);
 
   useEffect(() => {
     if (categoryList) {
@@ -73,20 +80,21 @@ const Description = () => {
   const postYourJobNow = () => {
     const formData = new FormData();
 
-    formData.append("job_type", jobListingData?.jobType);
-    formData.append("job_title", jobListingData?.job_title);
-    formData.append("job_category", jobListingData?.job_category);
-    formData.append("skills", jobListingData?.skills);
-    formData.append("scop", jobListingData?.scop);
-    formData.append("project_duration", jobListingData?.project_duration);
-    formData.append("experience_level", jobListingData?.experience_level);
-    formData.append("budget_type", jobListingData?.budget_type);
+    formData.append("job_type", values?.jobType);
+    formData.append("job_title", values?.job_title);
+    formData.append("job_category", values?.job_category);
+    formData.append("skills", values?.skills);
+    formData.append("scop", values?.scop);
+    formData.append("project_duration", values?.project_duration);
+    formData.append("experience_level", values?.experience_level);
+    formData.append("budget_type", values?.budget_type);
+    formData.append("english_level", values?.english_level);
 
-    if (jobListingData?.budget_type === "hourly") {
-      formData.append("price", jobListingData?.minPrice);
-      formData.append("min_price", jobListingData?.maxPrice);
-    } else if (jobListingData?.budget_type === "fixed") {
-      formData.append("price", jobListingData?.price);
+    if (values?.budget_type === "hourly") {
+      formData.append("price", values?.minPrice);
+      formData.append("min_price", values?.maxPrice);
+    } else if (values?.budget_type === "fixed") {
+      formData.append("price", values?.price);
     }
 
     formData.append("description", description);
@@ -99,21 +107,23 @@ const Description = () => {
   const draftYourJobNow = () => {
     const formData = new FormData();
 
-    formData.append("job_type", jobListingData?.jobType);
-    formData.append("job_title", jobListingData?.job_title);
-    formData.append("job_category", jobListingData?.job_category);
-    formData.append("skills", jobListingData?.skills);
-    formData.append("scop", jobListingData?.scop);
-    formData.append("project_duration", jobListingData?.project_duration);
-    formData.append("experience_level", jobListingData?.experience_level);
-    formData.append("budget_type", jobListingData?.budget_type);
-    if (jobListingData?.budget_type === "hourly") {
-      formData.append("price", jobListingData?.minPrice);
-      formData.append("min_price", jobListingData?.maxPrice);
-    } else if (jobListingData?.budget_type === "fixed") {
-      formData.append("price", jobListingData?.price);
+    formData.append("job_type", values?.jobType);
+    formData.append("job_title", values?.job_title);
+    formData.append("job_category", values?.job_category);
+    formData.append("skills", values?.skills);
+    formData.append("scop", values?.scop);
+    formData.append("project_duration", values?.project_duration);
+    formData.append("experience_level", values?.experience_level);
+    formData.append("budget_type", values?.budget_type);
+    formData.append("english_level", values?.english_Level);
+
+    if (values?.budget_type === "hourly") {
+      formData.append("price", values?.minPrice);
+      formData.append("min_price", values?.maxPrice);
+    } else if (values?.budget_type === "fixed") {
+      formData.append("price", values?.price);
     }
-    formData.append("price", jobListingData?.price);
+    formData.append("price", values?.price);
     formData.append("description", description);
     formData.append("status", "draft");
     formData.append("image", imageFile);
