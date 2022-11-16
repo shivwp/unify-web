@@ -2,7 +2,7 @@ import { Col, Row } from "react-bootstrap";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 
-const Message = () => {
+const FreelancerMessage = () => {
   return (
     <Container>
       <div className="job_haed_m">Job Details</div>
@@ -187,4 +187,4 @@ const Message = () => {
     </Container>
   );
 };
-export default Message;
+export default FreelancerMessage;

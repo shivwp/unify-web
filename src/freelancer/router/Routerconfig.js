@@ -24,7 +24,7 @@ import FreelancerContactInfo from "../Pages/Setting/contactinfo";
 import FreelancerBiling from "../Pages/Setting/billing";
 import FreelanceGetPaid from "../Pages/Setting/getpaid";
 import FreelanceMyTeams from "../Pages/Setting/myteam";
-import Message from "../Pages/Message";
+import Message from "../Pages/FreelancerMessage";
 import FreelancePasswordSecurity from "../Pages/Setting/password";
 import FreelanceNotification from "../Pages/Setting/notification";
 import FreelanceIdentify from "../Pages/Setting/identify";

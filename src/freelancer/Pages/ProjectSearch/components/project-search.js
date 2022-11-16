@@ -23,6 +23,7 @@ import {
 import {
   getCategoryList,
   getFreelancerSkills,
+  getLanguageList,
 } from "../../../../redux/actions/profileAction";
 
 const ReasonsList = ({ jobId, data, setDropdownOpen }) => {
@@ -53,7 +54,7 @@ const ReasonsList = ({ jobId, data, setDropdownOpen }) => {
   );
 };
 
-const ProjectSearch = () => {
+const ProjectSearch = ({ filters }) => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const totalPages = [];
   const dispatch = useDispatch();
@@ -73,8 +74,8 @@ const ProjectSearch = () => {
   };
 
   useEffect(() => {
-    dispatch(getJobsList({ pagination: 10, page }, ScrollTop));
-  }, [page, onDislikeJobPost, unSaveJobsPost, saveJobsPost]);
+    dispatch(getJobsList({ pagination: 10, page, ...filters }, ScrollTop));
+  }, [page, onDislikeJobPost, unSaveJobsPost, saveJobsPost, filters]);
 
   useEffect(() => {
     dispatch(onDislikePostReasons());
@@ -254,7 +255,9 @@ const ProjectSearch = () => {
                   {/* <img src={heart} alt="" className="heart_btn" /> */}
                 </Button>
                 <Link to={`/freelancer/project-detail/${item.id}`}>
-                  <Button variant="">Send Proposal</Button>
+                  <Button variant="">
+                    {item.is_proposal_send ? "Proposal Sent" : "Send Proposal"}
+                  </Button>
                 </Link>
               </div>
             </div>
@@ -405,7 +408,7 @@ const ProjectSaved = () => {
                   </svg>
                 </button>
                 <Link to={`/freelancer/project-detail/${item.id}`}>
-                  <button>Send Proposal</button>
+                  <button>{item.is_proposal_send ? "Proposal Sent" : "Send Proposal"}</button>
                 </Link>
               </div>
             </div>
@@ -446,16 +449,22 @@ const Project_Search = () => {
   const [Tab, SetTab] = useState(<ProjectSearch />);
   const [TabActive, SetTabActive] = useState("search");
   let getSkillList = useSelector((state) => state?.profile?.getSkillList);
-  const [selectSkills, setSelectSkills] = useState([]);
   const [showSuggestedSkills, setShowSuggestedSkills] = useState(false);
-  const [filterValues, setFilterValues] = useState([]);
+  const languageList = useSelector((state) => state?.profile?.getLanguageList);
   const categoryList = useSelector((state) => state.profile.categoryList);
+
+  const [selectSkills, setSelectSkills] = useState([]);
+  const [filterValues, setFilterValues] = useState([]);
   const [selectCategory, setSeleceCategory] = useState({});
   const [selectLanguages, setSelecetLanguages] = useState({});
 
-  function changeTab(componentName) {
+  const handleFilterChange = (e) => {
+    setFilterValues({ ...filterValues, [e.target.name]: e.target.value });
+  };
+
+  function changeTab(componentName, filters) {
     if (componentName === "search") {
-      SetTab(<ProjectSearch />);
+      SetTab(<ProjectSearch filters={filters} />);
       Title(" | Project Search");
       SetTabActive("search");
     } else if (componentName === "saved") {
@@ -472,6 +481,7 @@ const Project_Search = () => {
       SetTabActive("saved");
     }
     dispatch(getCategoryList());
+    dispatch(getLanguageList());
   }, [saved]);
   const options1 = [
     {
@@ -479,15 +489,13 @@ const Project_Search = () => {
       label: "what are you looking for",
     },
   ];
+  // console.log(languageList);
 
   const removeSkills = (index) => {
     let updateSkills = [...selectSkills];
     updateSkills.splice(index, 1);
     setSelectSkills(updateSkills);
   };
-
-  console.log(filterValues);
-  console.log(selectCategory);
 
   const addSkills = (item) => {
     if (selectSkills.length <= 15) {
@@ -523,6 +531,26 @@ const Project_Search = () => {
       setShowSuggestedSkills(false);
     }
   });
+
+  const onFilterJobList = () => {
+    var languageKeys = Object.keys(selectLanguages);
+    var categoryKeys = Object.keys(selectCategory);
+    const filters = {
+      ...filterValues,
+      language: languageKeys
+        ?.filter(function (key) {
+          return selectLanguages[key];
+        })
+        ?.toString(),
+      project_category: categoryKeys
+        ?.filter(function (key) {
+          return selectCategory[key];
+        })
+        ?.toString(),
+      skills: selectSkills?.map((item) => item.skill_id)?.toString(),
+    };
+    changeTab("search", filters);
+  };
   return (
     <>
       <Container>
@@ -548,12 +576,7 @@ const Project_Search = () => {
                         type="text"
                         placeholder="what are you looking for"
                         name="search"
-                        onChange={(e) => {
-                          setFilterValues({
-                            ...filterValues,
-                            [e.target.name]: e.target.value,
-                          });
-                        }}
+                        onChange={(e) => handleFilterChange(e)}
                       />
                     </div>
                   </div>
@@ -567,12 +590,7 @@ const Project_Search = () => {
                         placeholder="what are you looking for"
                         options={options1}
                         name="type"
-                        onChange={(e) => {
-                          setFilterValues({
-                            ...filterValues,
-                            [e.target.name]: e.target.value,
-                          });
-                        }}
+                        onChange={(e) => handleFilterChange(e)}
                       >
                         <option value="short_term">Sort Term </option>
                         <option value="long_term">Long Term </option>
@@ -601,6 +619,7 @@ const Project_Search = () => {
                       <Form.Control
                         type="text"
                         placeholder="Search skills"
+                        id="search_skill_inp"
                         name="skill"
                         onChange={(e) => onSearchSkill(e)}
                       />
@@ -650,23 +669,13 @@ const Project_Search = () => {
                       type="number"
                       placeholder="0"
                       name="min_price"
-                      onChange={(e) => {
-                        setFilterValues({
-                          ...filterValues,
-                          [e.target.name]: e.target.value,
-                        });
-                      }}
+                      onChange={(e) => handleFilterChange(e)}
                     />
                     <Form.Control
                       type="number"
                       placeholder="1,500"
                       name="max_price"
-                      onChange={(e) => {
-                        setFilterValues({
-                          ...filterValues,
-                          [e.target.name]: e.target.value,
-                        });
-                      }}
+                      onChange={(e) => handleFilterChange(e)}
                     />
                   </div>
                 </div>
@@ -681,12 +690,7 @@ const Project_Search = () => {
                       type="radio"
                       name="english_level"
                       value="fluent"
-                      onChange={(e) => {
-                        setFilterValues({
-                          ...filterValues,
-                          [e.target.name]: e.target.value,
-                        });
-                      }}
+                      onChange={(e) => handleFilterChange(e)}
                       id="fluent"
                     />
                     <Form.Label htmlFor="fluent">Fluent </Form.Label>
@@ -696,12 +700,7 @@ const Project_Search = () => {
                       type="radio"
                       name="english_level"
                       value="native"
-                      onChange={(e) => {
-                        setFilterValues({
-                          ...filterValues,
-                          [e.target.name]: e.target.value,
-                        });
-                      }}
+                      onChange={(e) => handleFilterChange(e)}
                       id="native"
                     />
                     <Form.Label htmlFor="native">Native </Form.Label>
@@ -712,12 +711,7 @@ const Project_Search = () => {
                       name="english_level"
                       value="conversational"
                       id="conversational"
-                      onChange={(e) => {
-                        setFilterValues({
-                          ...filterValues,
-                          [e.target.name]: e.target.value,
-                        });
-                      }}
+                      onChange={(e) => handleFilterChange(e)}
                     />
                     <Form.Label htmlFor="conversational">
                       Conversational{" "}
@@ -748,31 +742,22 @@ const Project_Search = () => {
                       </svg>
                     </div>
                   </div>
-                  <div className="slide_btnss slider_shutter">
-                    <div className="s_na_categ">
-                      <Form.Check
-                        type="checkbox"
-                        onChange={(e) => {
-                          setSelecetLanguages({
-                            ...selectLanguages,
-                            [e.target.value]: e.target.checked,
-                          });
-                        }}
-                      />
-                      <Form.Label>English</Form.Label>
-                    </div>
-                    <div className="s_na_categ">
-                      <Form.Check
-                        type="checkbox"
-                        onChange={(e) => {
-                          setSelecetLanguages({
-                            ...selectLanguages,
-                            [e.target.value]: e.target.checked,
-                          });
-                        }}
-                      />
-                      <Form.Label>Japinese</Form.Label>
-                    </div>
+                  <div className="slide_btnss slider_shutter languages_overflow">
+                    {languageList?.map((item) => (
+                      <div className="s_na_categ">
+                        <Form.Check
+                          type="checkbox"
+                          value={item.name}
+                          onChange={(e) => {
+                            setSelecetLanguages({
+                              ...selectLanguages,
+                              [e.target.value]: e.target.checked,
+                            });
+                          }}
+                        />
+                        <Form.Label>{item.name}</Form.Label>
+                      </div>
+                    ))}
                   </div>
                 </div>
                 <div className="desc_hin">
@@ -782,7 +767,11 @@ const Project_Search = () => {
                   </p>
                 </div>
                 <div className="fr_btn">
-                  <Button variant="" className="btnhovpple">
+                  <Button
+                    variant=""
+                    className="btnhovpple"
+                    onClick={onFilterJobList}
+                  >
                     Filter Result
                   </Button>
                 </div>
@@ -790,7 +779,7 @@ const Project_Search = () => {
             </Col>
           ) : null}
 
-          <Col lg={9} className="top_main_c_job m-auto">
+          <Col lg={9} className="top_main_c_job mx-auto">
             <div className="overflow-scroll">
               <div className="d-flex flex-wrap tab_m_nodea mb-4 tab_scroll_cont">
                 <Link to="/freelancer/project-search">

@@ -3,10 +3,7 @@ import Form from "react-bootstrap/Form";
 import { Button } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  onEditVideo,
-} from "../../../../../redux/actions/profileAction";
-
+import { onEditVideo } from "../../../../../redux/actions/profileAction";
 
 const CloseIcon = () => {
   return (
@@ -90,7 +87,7 @@ const VideoIntro = (props) => {
                   name="url"
                   onChange={(e) => handleOnChange(e)}
                   value={values?.url}
-                  placeholder="Ex: https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+                  placeholder="https://youtu.be/_B6T8O15Ohk"
                 />
               </div>
               <div className="popup_form_element">

@@ -156,8 +156,8 @@ const Testimonial = lazy(() => import("./components/Testimonial"));
 const AgencyDashboard = lazy(() => import("./Agency/Pages/Dashboard"));
 const SeeTimesheet = lazy(() => import("./freelancer/Pages/SeeTimesheet"));
 const SeeMilestone = lazy(() => import("./freelancer/Pages/MileStone-Earning"));
+const FreelancerMessage = lazy(() => import("./freelancer/Pages/FreelancerMessage"));
 
-// import Message from "./freelancer/Pages/Message";
 
 const LoggedOutRoutes = () => {
   return (
@@ -341,7 +341,7 @@ const LoggedInRoutes = () => {
         path="/freelancer/subscription"
         element={<FreelancerSubscription />}
       />
-      <Route exact path="/freelancer/message" element={<Message />} />
+      <Route exact path="/freelancer/message" element={<FreelancerMessage />} />
       <Route path="/freelancer/see-milestone" element={<SeeMilestone />} />
       <Route path="/freelancer/see-timesheet" element={<SeeTimesheet />} />
     </Routes>
