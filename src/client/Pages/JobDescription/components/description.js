@@ -11,28 +11,32 @@ import {
   getFreelancerSkills,
 } from "../../../../redux/actions/profileAction";
 import Form from "react-bootstrap/Form";
-import CategoryPopup from "../popups/CategoryPopup";
-import EditSkill from "../../../../freelancer/Pages/Profile/components/popups/EditSkill";
-import ScopePopup from "../popups/ScopePopup";
-import EditSkillsPopup from "../popups/EditSkillsPopup";
-import ProjectBudgetPopup from "../popups/ProjectBudgetPopup";
 import { onPostYourJobNow } from "../../../../redux/actions/jobActions";
+import EditCategoryPopup from "../../../../popups/EditCategoryPopup";
+import ProjectBudgetPopup from "../../../../popups/ProjectBudgetPopup";
+import ScopePopup from "../../../../popups/ScopePopup";
+import EditSkillsPopup from "../../../../popups/EditSkillsPopup";
 
 const Description = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [values, setValues] = useState({});
+  const [categoryPopup, setCategoryPopup] = useState(false);
+  const [projectBudgetPopup, setProjectBudgetPopup] = useState(false);
+  const [scopePopup, setScopePopup] = useState(false);
+  const [skillPopup, setSkillPopup] = useState(false);
   const [filteredSkills, setFilteredSkills] = useState();
   const [filteredCategory, setFilteredCategory] = useState();
-  const [popup, setPopup] = useState();
-  const jobListingData = useSelector((state) => state.profile.jobListingData);
-  const [jobTitle, setJobTitle] = useState(jobListingData?.job_title);
+  const [jobTitle, setJobTitle] = useState();
   const [description, setDescription] = useState();
   const [imageFile, setImageFile] = useState();
   const [objectUrl, setObjectUrl] = useState();
-  const [jobCategory, setJobCategory] = useState(jobListingData?.job_category);
+  const [jobCategory, setJobCategory] = useState();
+  const jobListingData = useSelector((state) => state.profile.jobListingData);
   const categoryList = useSelector((state) => state.profile.categoryList);
   const getSkillList = useSelector((state) => state.profile.getSkillList);
+
+  console.log(filteredSkills);
 
   useEffect(() => {
     dispatch(getCategoryList());
@@ -54,7 +58,7 @@ const Description = () => {
   useEffect(() => {
     if (categoryList) {
       for (let i = 0; i < categoryList.length; i++) {
-        if (parseInt(jobCategory) === categoryList[i].id) {
+        if (values?.job_category === categoryList[i].id) {
           setFilteredCategory(categoryList[i]);
         }
       }
@@ -63,7 +67,7 @@ const Description = () => {
 
   useEffect(() => {
     if (getSkillList) {
-      var skills = jobListingData?.skills?.split(",");
+      var skills = values?.skills?.split(",");
       skills = skills?.map((skill) => Number(skill));
       setFilteredSkills(
         getSkillList?.filter((item) => skills?.indexOf(item.id) != -1)
@@ -140,11 +144,13 @@ const Description = () => {
               <h1>Now just finish and review your job post.</h1>
             </div>
             <div className="ts_btn">
-              <Link to="/view-job">
-                <Button variant="" className="font-weight-500">
-                  Post Your Job Now
-                </Button>
-              </Link>
+              <Button
+                variant=""
+                className="font-weight-500"
+                onClick={postYourJobNow}
+              >
+                Post Your Job Now
+              </Button>
             </div>
           </div>
           <div className="b_bot_inp">
@@ -222,17 +228,7 @@ const Description = () => {
               <span>{filteredCategory?.name}</span>
               <button
                 className="round_b_btn"
-                onClick={() =>
-                  setPopup(
-                    <CategoryPopup
-                      Popup={setPopup}
-                      categoryList={categoryList}
-                      jobListingData={jobListingData}
-                      setJobCategory={setJobCategory}
-                      jobCategory={jobCategory}
-                    />
-                  )
-                }
+                onClick={() => setCategoryPopup(true)}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -254,8 +250,8 @@ const Description = () => {
           <div className="b_bot_inp">
             <div className="input_t_lab">Skills</div>
             <div className="slide_btnss">
-              {filteredSkills?.map((item) => (
-                <Button variant="">
+              {filteredSkills?.map((item, key) => (
+                <Button variant="" key={key}>
                   {item.name}
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -269,57 +265,9 @@ const Description = () => {
                   </svg>
                 </Button>
               ))}
-
-              {/* <button>
-              User Experience Design
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                fill="#393939"
-                className="bi bi-plus"
-                viewBox="0 0 16 16"
-              >
-                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
-              </svg>
-            </button>
-            <button>
-              User Interface Design
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                fill="#393939"
-                className="bi bi-plus"
-                viewBox="0 0 16 16"
-              >
-                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
-              </svg>
-            </button>
-            <button>
-              Graphic Design
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                fill="#393939"
-                className="bi bi-plus"
-                viewBox="0 0 16 16"
-              >
-                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
-              </svg>
-            </button> */}
               <button
                 className="round_b_btn"
-                onClick={() =>
-                  setPopup(
-                    <EditSkillsPopup
-                      Popup={setPopup}
-                      filteredSkills={filteredSkills}
-                      jobListingData={jobListingData}
-                    />
-                  )
-                }
+                onClick={() => setSkillPopup(true)}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -345,14 +293,7 @@ const Description = () => {
               <Button
                 variant=""
                 className="round_b_btn"
-                onClick={() =>
-                  setPopup(
-                    <ScopePopup
-                      Popup={setPopup}
-                      jobListingData={jobListingData}
-                    />
-                  )
-                }
+                onClick={() => setScopePopup(true)}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -388,14 +329,7 @@ const Description = () => {
               <Button
                 variant=""
                 className="round_b_btn"
-                onClick={() =>
-                  setPopup(
-                    <ProjectBudgetPopup
-                      Popup={setPopup}
-                      jobListingData={jobListingData}
-                    />
-                  )
-                }
+                onClick={() => setProjectBudgetPopup(true)}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -441,7 +375,31 @@ const Description = () => {
           </div>
         </div>
       </Container>
-      {popup}
+
+      {categoryPopup && (
+        <EditCategoryPopup
+          open={categoryPopup}
+          onCloseModal={() => setCategoryPopup(false)}
+        />
+      )}
+      {projectBudgetPopup && (
+        <ProjectBudgetPopup
+          open={projectBudgetPopup}
+          onCloseModal={() => setProjectBudgetPopup(false)}
+        />
+      )}
+      {scopePopup && (
+        <ScopePopup
+          open={scopePopup}
+          onCloseModal={() => setScopePopup(false)}
+        />
+      )}
+      {skillPopup && (
+        <EditSkillsPopup
+          open={skillPopup}
+          onCloseModal={() => setSkillPopup(false)}
+        />
+      )}
     </>
   );
 };

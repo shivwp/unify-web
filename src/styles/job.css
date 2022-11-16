@@ -2307,6 +2307,12 @@
   color: #6d2ef1;
 }
 
+.rot_svg_oety {
+  position: relative;
+  font-size: 16;
+  font-weight: 500;
+}
+
 .rot_svg_oety svg {
   transform: rotate3d(1, 1, 1, 45deg);
   -webkit-transform: rotate3d(1, 1, 1, 45deg);

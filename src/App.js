@@ -162,13 +162,13 @@ const SeeMilestone = lazy(() => import("./freelancer/Pages/MileStone-Earning"));
 const LoggedOutRoutes = () => {
   return (
     <Routes>
-      <Route exact path="/" element={<Home />} />
-      <Route exact path="/signup" element={<Signup />} />
-      <Route exact path="/signin" element={<Signin />} />
-      <Route exact path="/verify-forgot-otp" element={<VerifyForgotOTP />} />
-      <Route exact path="/forgot-password" element={<ForgotPass />} />
-      <Route exact path="/reset-password" element={<ResetPass />} />
-      <Route exact path="/verify-signup" element={<VerifySignUp />} />
+      <Route path="/" element={<Home />} />
+      <Route path="/signup" element={<Signup />} />
+      <Route path="/signin" element={<Signin />} />
+      <Route path="/verify-forgot-otp" element={<VerifyForgotOTP />} />
+      <Route path="/forgot-password" element={<ForgotPass />} />
+      <Route path="/reset-password" element={<ResetPass />} />
+      <Route path="/verify-signup" element={<VerifySignUp />} />
     </Routes>
   );
 };
@@ -176,25 +176,25 @@ const LoggedOutRoutes = () => {
 const LoggedInRoutes = () => {
   return (
     <Routes>
-      <Route exact path="/category" element={<Category />} />
-      <Route exact path="/create-category" element={<Createcategory />} />
-      <Route exact path="/question1" element={<Question />} />
-      <Route exact path="/question2" element={<QuestionTwo />} />
-      <Route exact path="/businesssize" element={<BusinessSize />} />
-      <Route exact path="/subscription" element={<Subscription />} />
-      <Route exact path="/expandteam" element={<ExpandTeam />} />
-      <Route exact path="/notification" element={<Notification />} />
-      <Route exact path="/gettingstarted" element={<GettingStarted />} />
-      <Route exact path="/title" element={<Title />} />
-      <Route exact path="/title14" element={<TitleFourteen />} />
-      <Route exact path="/skills" element={<Skills />} />
-      <Route exact path="/scope" element={<Scope />} />
-      <Route exact path="/budget" element={<Budget />} />
-      <Route exact path="/job-description" element={<JobDescription />} />
-      <Route exact path="/view-job" element={<ViewJob />} />
-      <Route exact path="/view-job/private" element={<MakePrivate />} />
-      <Route exact path="/view-job/:screen" element={<ViewJob />} />
-      <Route exact path="/hire-freelancer" element={<HireFreelancer />} />
+      <Route path="/category" element={<Category />} />
+      <Route path="/create-category" element={<Createcategory />} />
+      <Route path="/question1" element={<Question />} />
+      <Route path="/question2" element={<QuestionTwo />} />
+      <Route path="/businesssize" element={<BusinessSize />} />
+      <Route path="/subscription" element={<Subscription />} />
+      <Route path="/expandteam" element={<ExpandTeam />} />
+      <Route path="/notification" element={<Notification />} />
+      <Route path="/gettingstarted" element={<GettingStarted />} />
+      <Route path="/title" element={<Title />} />
+      <Route path="/title14" element={<TitleFourteen />} />
+      <Route path="/skills" element={<Skills />} />
+      <Route path="/scope" element={<Scope />} />
+      <Route path="/budget" element={<Budget />} />
+      <Route path="/job-description" element={<JobDescription />} />
+      <Route path="/view-job" element={<ViewJob />} />
+      <Route path="/view-job/private" element={<MakePrivate />} />
+      <Route path="/view-job/:screen" element={<ViewJob />} />
+      <Route path="/hire-freelancer" element={<HireFreelancer />} />
       <Route
         path="/hire-freelancer/addAddress"
         element={<AddCompanyAddress />}
@@ -203,27 +203,19 @@ const LoggedInRoutes = () => {
         path="/hire-freelancer/edit-address"
         element={<EditCompanyAddress />}
       />
-      <Route exact path="/my-jobs" element={<MyJobs />} />
-      <Route exact path="/all-contracts" element={<AllContracts />} />
-      <Route exact path="/talent-discover" element={<TalentDiscover />} />
-      <Route exact path="/talent-your-hires" element={<Talentyourhires />} />
-      <Route exact path="/byo-talent" element={<Talentbyo />} />
-      <Route
-        exact
-        path="/talent-recently-viewed"
-        element={<Talentrecentview />}
-      />
-      <Route exact path="/talent-saved" element={<Talentsaved />} />
-      <Route exact path="/search" element={<Search />} />
-      <Route exact path="/setting-myinfo" element={<SettingInfo />} />
-      <Route exact path="/setting-billing" element={<SettingBilling />} />
-      <Route exact path="/setting-membership" element={<SettingMembership />} />
-      <Route exact path="/setting-team" element={<SettingTeam />} />
-      <Route
-        exact
-        path="/setting-notification"
-        element={<SettingNotification />}
-      />
+      <Route path="/my-jobs" element={<MyJobs />} />
+      <Route path="/all-contracts" element={<AllContracts />} />
+      <Route path="/talent-discover" element={<TalentDiscover />} />
+      <Route path="/talent-your-hires" element={<Talentyourhires />} />
+      <Route path="/byo-talent" element={<Talentbyo />} />
+      <Route path="/talent-recently-viewed" element={<Talentrecentview />} />
+      <Route path="/talent-saved" element={<Talentsaved />} />
+      <Route path="/search" element={<Search />} />
+      <Route path="/setting-myinfo" element={<SettingInfo />} />
+      <Route path="/setting-billing" element={<SettingBilling />} />
+      <Route path="/setting-membership" element={<SettingMembership />} />
+      <Route path="/setting-team" element={<SettingTeam />} />
+      <Route path="/setting-notification" element={<SettingNotification />} />
       <Route
         path="/setting-connected-services"
         element={<SettingConnectedServices />}
@@ -236,40 +228,28 @@ const LoggedInRoutes = () => {
         path="/setting-password-security"
         element={<SettingPasswordSecurity />}
       />
-      <Route exact path="/help-support" element={<HelpSupport />} />
-      <Route exact path="/message" element={<Message />} />
-      <Route exact path="/management-board" element={<ManagementBoard />} />
-      <Route
-        exact
-        path="/transaction-history"
-        element={<TransactionHistory />}
-      />
-      <Route exact path="/dashboard" element={<Dashboard />} />
-      <Route exact path="/dashboard/edit-posting" element={<EditPosting />} />
-      <Route exact path="/dashboard/edit-draft" element={<EditDraft />} />
-      <Route exact path="/post-description" element={<Description />} />
-      <Route exact path="/all-job-list" element={<JobListScreen />} />
-      <Route
-        exact
-        path="/all-draft-job-list"
-        element={<DraftJobListScreen />}
-      />
+      <Route path="/help-support" element={<HelpSupport />} />
+      <Route path="/message" element={<Message />} />
+      <Route path="/management-board" element={<ManagementBoard />} />
+      <Route path="/transaction-history" element={<TransactionHistory />} />
+      <Route path="/dashboard" element={<Dashboard />} />
+      <Route path="/dashboard/edit-posting/:editId" element={<EditPosting />} />
+      <Route path="/dashboard/edit-draft" element={<EditDraft />} />
+      <Route path="/post-description" element={<Description />} />
+      <Route path="/all-job-list" element={<JobListScreen />} />
+      <Route path="/all-draft-job-list" element={<DraftJobListScreen />} />
 
       {/* ================================ FREELANVER ROUTES ================================== */}
       <Route
         path="/freelancer/project-detail/:id"
         element={<ProjectDetail />}
       />
-      <Route
-        exact
-        path="/freelancer/project-search"
-        element={<ProjectSearch />}
-      />
-      <Route exact path="/verify-forgot-otp" element={<VerifyForgotOTP />} />
-      <Route exact path="/forgot-password" element={<ForgotPass />} />
-      <Route exact path="/reset-password" element={<ResetPass />} />
-      <Route exact path="/submit-testimonial/:id" element={<Testimonial />} />
-      <Route exact path="/agency/dashboard" element={<AgencyDashboard />} />
+      <Route path="/freelancer/project-search" element={<ProjectSearch />} />
+      <Route path="/verify-forgot-otp" element={<VerifyForgotOTP />} />
+      <Route path="/forgot-password" element={<ForgotPass />} />
+      <Route path="/reset-password" element={<ResetPass />} />
+      <Route path="/submit-testimonial/:id" element={<Testimonial />} />
+      <Route path="/agency/dashboard" element={<AgencyDashboard />} />
       <Route
         path="/freelancer/project-search/:saved"
         element={<ProjectSearch />}
@@ -278,26 +258,14 @@ const LoggedInRoutes = () => {
         path="/freelancer/freelancer-detail"
         element={<FreelancerDetail />}
       />
-      <Route exact path="/freelancer/job-portal" element={<JobPortal />} />
-      <Route
-        exact
-        path="/freelancer/direct-contract"
-        element={<DirectContract />}
-      />
+      <Route path="/freelancer/job-portal" element={<JobPortal />} />
+      <Route path="/freelancer/direct-contract" element={<DirectContract />} />
       <Route
         path="/freelancer/all-contracts"
         element={<FreelancerAllContracts />}
       />
-      <Route
-        exact
-        path="/freelancer/question1"
-        element={<FreelancerQuestion1 />}
-      />
-      <Route
-        exact
-        path="/freelancer/question2"
-        element={<FreelancerQuestion2 />}
-      />
+      <Route path="/freelancer/question1" element={<FreelancerQuestion1 />} />
+      <Route path="/freelancer/question2" element={<FreelancerQuestion2 />} />
       <Route
         path="/freelancer/my-contract"
         element={<FreelancerMyContract />}
@@ -306,46 +274,26 @@ const LoggedInRoutes = () => {
         path="/freelancer/active-contract"
         element={<FreelancerActiveContract />}
       />
-      <Route
-        exact
-        path="/freelancer/work-diary"
-        element={<FreelancerWorkDiary />}
-      />
+      <Route path="/freelancer/work-diary" element={<FreelancerWorkDiary />} />
       <Route
         path="/freelancer/add-work-diary"
         element={<FreelancerAddWorkDiary />}
       />
-      <Route exact path="/freelancer/goals" element={<FreelancerGoals />} />
-      <Route
-        exact
-        path="/freelancer/overview"
-        element={<FreelancerOverview />}
-      />
+      <Route path="/freelancer/goals" element={<FreelancerGoals />} />
+      <Route path="/freelancer/overview" element={<FreelancerOverview />} />
       <Route
         path="/freelancer/transaction-history"
         element={<FreelancerTransaction />}
       />
 
-      <Route
-        exact
-        path="/freelancer/progress"
-        element={<FreelancerProgress />}
-      />
-      <Route
-        exact
-        path="/freelancer/objective"
-        element={<FreelancerObjective />}
-      />
-      <Route exact path="/freelancer/my-reports" element={<UserReports />} />
+      <Route path="/freelancer/progress" element={<FreelancerProgress />} />
+      <Route path="/freelancer/objective" element={<FreelancerObjective />} />
+      <Route path="/freelancer/my-reports" element={<UserReports />} />
       <Route
         path="/freelancer/report-byclient"
         element={<FreelancerReportByClient />}
       />
-      <Route
-        exact
-        path="/freelancer/weekly-report"
-        element={<FreelancerReports />}
-      />
+      <Route path="/freelancer/weekly-report" element={<FreelancerReports />} />
       <Route
         path="/freelancer/milestone-earning"
         element={<FreelancerMilestone />}
@@ -358,8 +306,8 @@ const LoggedInRoutes = () => {
         path="/freelancer/billing-payment"
         element={<FreelancerBiling />}
       />
-      <Route exact path="/freelancer/getpaid" element={<FreelanceGetPaid />} />
-      <Route exact path="/freelancer/my-teams" element={<FreelanceMyTeams />} />
+      <Route path="/freelancer/getpaid" element={<FreelanceGetPaid />} />
+      <Route path="/freelancer/my-teams" element={<FreelanceMyTeams />} />
 
       <Route
         path="/freelancer/password-security"
@@ -373,7 +321,7 @@ const LoggedInRoutes = () => {
         path="/freelancer/identify-verification"
         element={<FreelanceIdentify />}
       />
-      <Route exact path="/freelancer/my-stats" element={<FreelanceMyStats />} />
+      <Route path="/freelancer/my-stats" element={<FreelanceMyStats />} />
       <Route
         path="/freelancer/billing-earning"
         element={<FreelanceBillingEarn />}
@@ -386,28 +334,16 @@ const LoggedInRoutes = () => {
         path="/freelancer/time-tracker"
         element={<FreelanceTimeTracker />}
       />
-      <Route exact path="/freelancer/chat" element={<FreelancerChat />} />
-      <Route exact path="/freelancer/profile" element={<FreelancerProfile />} />
-      <Route
-        exact
-        path="/freelancer/dashboard"
-        element={<FreelancerDashboard />}
-      />
+      <Route path="/freelancer/chat" element={<FreelancerChat />} />
+      <Route path="/freelancer/profile" element={<FreelancerProfile />} />
+      <Route path="/freelancer/dashboard" element={<FreelancerDashboard />} />
       <Route
         path="/freelancer/subscription"
         element={<FreelancerSubscription />}
       />
       <Route exact path="/freelancer/message" element={<Message />} />
-      <Route
-        exact
-        path="/freelancer/see-milestone"
-        element={<SeeMilestone />}
-      />
-      <Route
-        exact
-        path="/freelancer/see-timesheet"
-        element={<SeeTimesheet />}
-      />
+      <Route path="/freelancer/see-milestone" element={<SeeMilestone />} />
+      <Route path="/freelancer/see-timesheet" element={<SeeTimesheet />} />
     </Routes>
   );
 };
