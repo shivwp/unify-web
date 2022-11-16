@@ -22,35 +22,35 @@ const Signinscreen = () => {
 
   const submitForm = (e) => {
     e.preventDefault();
-    let errorExist = false;
-    let errorsObject = {};
+    // let errorExist = false;
+    // let errorsObject = {};
 
-    if (
-      values.email === "" ||
-      values.email === null ||
-      values.email === undefined
-    ) {
-      errorsObject.email = true;
-      errorExist = true;
-    }
+    // if (
+    //   values.email === "" ||
+    //   values.email === null ||
+    //   values.email === undefined
+    // ) {
+    //   errorsObject.email = true;
+    //   errorExist = true;
+    // }
 
-    if (
-      values.password === "" ||
-      values.password === null ||
-      values.password === undefined
-    ) {
-      errorsObject.password = "Please Enter Your Password";
-      errorExist = true;
-    }
-    if (values.password && values.password.length < 8) {
-      errorsObject.password = "Password must be at least 8 digit long";
-      errorExist = true;
-    }
+    // if (
+    //   values.password === "" ||
+    //   values.password === null ||
+    //   values.password === undefined
+    // ) {
+    //   errorsObject.password = "Please Enter Your Password";
+    //   errorExist = true;
+    // }
+    // if (values.password && values.password.length < 8) {
+    //   errorsObject.password = "Password must be at least 8 digit long";
+    //   errorExist = true;
+    // }
 
-    if (errorExist) {
-      setErrors(errorsObject);
-      return false;
-    }
+    // if (errorExist) {
+    //   setErrors(errorsObject);
+    //   return false;
+    // }
     const data = {
       email: values?.email,
       password: values?.password,

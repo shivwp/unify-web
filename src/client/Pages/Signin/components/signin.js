@@ -44,7 +44,7 @@ const Signin = ({
           <div className="sign_buttons_group sign_upbtn_heffect">
             {/* <Link to={`/question1`} className="signup_mlr_20px_a"> */}
             <Button
-             variant=""
+              variant=""
               onClick={(e) => selectUserType(e)}
               type="button"
               className={userType === "client" ? "userTypeActive" : "userType"}
@@ -55,7 +55,7 @@ const Signin = ({
             {/* </Link> */}
             {/* <Link to={`/freelancer/question1`} className="signup_mlr_20px_a"> */}
             <Button
-             variant=""
+              variant=""
               type="button"
               onClick={(e) => selectUserType(e)}
               className={
@@ -125,24 +125,8 @@ const Signin = ({
                 </div>
 
                 <div className="input_group">
-                  <div className="input_bo">
-                    <div className="input_icoa">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="14.449"
-                        height="18.965"
-                        viewBox="0 0 14.449 18.965"
-                      >
-                        <path
-                          id="Icon_material-lock-open"
-                          data-name="Icon material-lock-open"
-                          d="M13.225,15.949a1.806,1.806,0,1,0-1.806-1.806A1.811,1.811,0,0,0,13.225,15.949Zm5.418-8.128h-.9V6.015a4.515,4.515,0,0,0-9.031,0h1.716a2.8,2.8,0,1,1,5.6,0V7.822H7.806A1.811,1.811,0,0,0,6,9.628v9.031a1.811,1.811,0,0,0,1.806,1.806H18.643a1.811,1.811,0,0,0,1.806-1.806V9.628A1.811,1.811,0,0,0,18.643,7.822Zm0,10.837H7.806V9.628H18.643Z"
-                          transform="translate(-6 -1.5)"
-                          fill="#808080"
-                        />
-                      </svg>
-                    </div>
-                    <div className="input_nodxq">
+ 
+                    <div className="input_nodxq input_bo">
                       <Form.Control
                         onChange={(e) => onInputChange(e)}
                         type={hidePass ? "password" : "text"}
@@ -170,7 +154,8 @@ const Signin = ({
                           : loginError && loginError}
                       </span>
                     </div>
-                  </div>
+                  
+                  
                 </div>
                 <div className="forgot_passw">
                   <span style={{ fontSize: "14px", margin: "-15px 0 10px 0" }}>
@@ -187,7 +172,7 @@ const Signin = ({
               <div className="sign_in_or">or</div>
               <div className="sign_form_btn_subm sign_in_social_btn mr_sign_in_n">
                 <Button
-                 variant=""
+                  variant=""
                   className="apple_btn mr_sign_in_n"
                   onClick={handleAppleSignIn}
                 >

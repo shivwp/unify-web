@@ -269,6 +269,7 @@ export const onEditDesignation =
   (data, popup, successPopup, setSuccessPopup) => async (dispatch) => {
     try {
       Axios.post("/edit-designation-info", data, config).then((res) => {
+        // console.log("firstfirstfirst",res)
         dispatch({
           type: SET_EDIT_DESIGNATION,
           payload: res.data,

@@ -2,6 +2,7 @@ import { Row, Col } from "react-bootstrap";
 import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import { useDispatch } from "react-redux";
+import InputGroup from 'react-bootstrap/InputGroup';
 import Form from "react-bootstrap/Form";
 import { onRequestTestimonial } from "../../../../../redux/actions/profileAction";
 
@@ -28,6 +29,19 @@ const ReqTestimonial = (props) => {
     setValues({ ...values, [e.target.name]: e.target.value });
   };
 
+  const [validated, setValidated] = useState(false)
+
+  const handleSubmit = (event) => {
+    const form = event.currentTarget;
+    if (form.checkValidity() === false) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+    event.preventDefault();
+    setValidated(true);
+    testimonialSubmit();
+  }
+
   const testimonialSubmit = (e) => {
     const data = {
       first_name: values?.first_name,
@@ -49,136 +63,148 @@ const ReqTestimonial = (props) => {
 
   return (
     <>
-      <div className="bg_wrapper_popup_new">
-        <div className="popup_box_bpn profile_nceqoi_popup pb-4">
-          <div className="popup_header pb-0">
-            <div className="p_header_hding">Request A Client Testimonial</div>
-            <div
-              className="close_pp_btn"
-              onClick={() => {
-                props.Popup();
-              }}
-            >
-              <CloseIcon />
-            </div>
-          </div>
-          <div className="popup_body_bpn amount_popup_body max_height_popucwui">
-            <div className="mt-3 pt-1 mb-3">
-              <div className="popuphead_smparcr">
-                Add your client’s contact details. Don’t worry—we’ll only
-                display their first name and last initial.
-              </div>
-            </div>
-
-            <div className="mb-3 ">
-              <Row>
-                <Col md={6}>
-                  <div className="popup_form_element">
-                    <Form.Label className="text-black font-size-13px font-weight-500">
-                      First Name
-                    </Form.Label>
-                    <Form.Control
-                      type="text"
-                      name="first_name"
-                      className="font-size-13px"
-                      value={values?.first_name}
-                      onChange={(e) => onInputChange(e)}
-                      placeholder="Enter First Name"
-                    />
-                  </div>
-                </Col>
-                <Col md={6}>
-                  <div className="popup_form_element">
-                    <Form.Label className="text-black font-size-13px font-weight-500">
-                      Last name{" "}
-                    </Form.Label>
-                    <Form.Control
-                      type="text"
-                      name="last_name"
-                      className="font-size-13px"
-                      value={values?.last_name}
-                      onChange={(e) => onInputChange(e)}
-                      placeholder="Enter Last name "
-                    />
-                  </div>
-                </Col>
-                <Col md={6}>
-                  <div className="popup_form_element">
-                    <Form.Label className="text-black font-size-13px font-weight-500">
-                      Business email address
-                    </Form.Label>
-                    <Form.Control
-                      type="text"
-                      name="email"
-                      className="font-size-13px"
-                      value={values?.email}
-                      onChange={(e) => onInputChange(e)}
-                      placeholder="Enter Your Business Email"
-                    />
-                  </div>
-                </Col>
-                <Col md={6}>
-                  <div className="popup_form_element">
-                    <Form.Label className="text-black font-size-13px font-weight-500">
-                      Client's title (Optional)
-                    </Form.Label>
-                    <Form.Control
-                      type="text"
-                      name="title"
-                      className="font-size-13px"
-                      value={values?.title}
-                      onChange={(e) => onInputChange(e)}
-                      placeholder="Enter Client's Title"
-                    />
-                  </div>
-                </Col>
-                <Col md={6}>
-                  <div className="popup_form_element">
-                    <Form.Label className="text-black font-size-13px font-weight-500">
-                      Project Type (Optional)
-                    </Form.Label>
-                    <Form.Control
-                      type="text"
-                      name="type"
-                      className="font-size-13px"
-                      value={values?.type}
-                      onChange={(e) => onInputChange(e)}
-                      placeholder="Enter Project Type"
-                    />
-                  </div>
-                </Col>
-                <Col md={12}>
-                  <div className="popup_form_element">
-                    <Form.Label className="text-black font-size-13px font-weight-500">
-                      Description (Optional)
-                    </Form.Label>
-                    <Form.Control
-                      as="textarea"
-                      name="description"
-                      className="font-size-13px"
-                      value={values?.description}
-                      onChange={(e) => onInputChange(e)}
-                      placeholder="Enter Here"
-                    ></Form.Control>
-                  </div>
-                </Col>
-              </Row>
-            </div>
-
-            <div className="popup_btns_new flex-wrap cwiewyehkk">
-              <Button
-               variant=""
-                className="font-weight-600 btnhovpple"
+      <Form noValidate validated={validated} onSubmit={handleSubmit}>
+        <div className="bg_wrapper_popup_new">
+          <div className="popup_box_bpn profile_nceqoi_popup pb-4">
+            <div className="popup_header pb-0">
+              <div className="p_header_hding">Request A Client Testimonial</div>
+              <div
+                className="close_pp_btn"
                 onClick={() => {
-                  testimonialSubmit();
+                  props.Popup();
                 }}
               >
-                REQUEST TESTIMONIAL
-              </Button>
+                <CloseIcon />
+              </div>
+            </div>
+            <div className="popup_body_bpn amount_popup_body max_height_popucwui">
+              <div className="mt-3 pt-1 mb-3">
+                <div className="popuphead_smparcr">
+                  Add your client’s contact details. Don’t worry—we’ll only
+                  display their first name and last initial.
+                </div>
+              </div>
+
+              <div className="mb-3 ">
+                <Row>
+                  <Col md={6}>
+                    <div className="popup_form_element">
+                      <Form.Label className="text-black font-size-13px font-weight-500">
+                        First Name
+                      </Form.Label>
+                      <Form.Control
+                        type="text"
+                        name="first_name"
+                        className="font-size-13px"
+                        value={values?.first_name}
+                        onChange={(e) => onInputChange(e)}
+                        placeholder="Enter First Name"
+                        required
+                      />
+                      <Form.Control.Feedback type="invalid">
+                        Please enter your first name.
+                      </Form.Control.Feedback>
+                    </div>
+                  </Col>
+                  <Col md={6}>
+                    <div className="popup_form_element">
+                      <Form.Label className="text-black font-size-13px font-weight-500">
+                        Last name
+                      </Form.Label>
+                      <Form.Control
+                        type="text"
+                        name="last_name"
+                        className="font-size-13px"
+                        value={values?.last_name}
+                        onChange={(e) => onInputChange(e)}
+                        placeholder="Enter Last name "
+                        required
+                      />
+                      <Form.Control.Feedback type="invalid">
+                        Please enter your Last name.
+                      </Form.Control.Feedback>
+                    </div>
+                  </Col>
+                  <Col md={6}>
+                    <div className="popup_form_element">
+                      <Form.Label className="text-black font-size-13px font-weight-500">
+                        Business email address
+                      </Form.Label>
+                      <Form.Control
+                        type="text"
+                        name="email"
+                        className="font-size-13px"
+                        value={values?.email}
+                        onChange={(e) => onInputChange(e)}
+                        placeholder="Enter Your Business Email"
+                        required
+                      />
+                      <Form.Control.Feedback type="invalid">
+                        Please enter your business email.
+                      </Form.Control.Feedback>
+                    </div>
+                  </Col>
+                  <Col md={6}>
+                    <div className="popup_form_element">
+                      <Form.Label className="text-black font-size-13px font-weight-500">
+                        Client's title (Optional)
+                      </Form.Label>
+                      <Form.Control
+                        type="text"
+                        name="title"
+                        className="font-size-13px"
+                        value={values?.title}
+                        onChange={(e) => onInputChange(e)}
+                        placeholder="Enter Client's Title"
+                      />
+                    </div>
+                  </Col>
+                  <Col md={6}>
+                    <div className="popup_form_element">
+                      <Form.Label className="text-black font-size-13px font-weight-500">
+                        Project Type (Optional)
+                      </Form.Label>
+                      <Form.Control
+                        type="text"
+                        name="type"
+                        className="font-size-13px"
+                        value={values?.type}
+                        onChange={(e) => onInputChange(e)}
+                        placeholder="Enter Project Type"
+                      />
+                    </div>
+                  </Col>
+                  <Col md={12}>
+                    <div className="popup_form_element">
+                      <Form.Label className="text-black font-size-13px font-weight-500">
+                        Description (Optional)
+                      </Form.Label>
+                      <Form.Control
+                        as="textarea"
+                        name="description"
+                        className="font-size-13px"
+                        value={values?.description}
+                        onChange={(e) => onInputChange(e)}
+                        placeholder="Enter Here"
+                      ></Form.Control>
+                    </div>
+                  </Col>
+                </Row>
+              </div>
+
+              <div className="popup_btns_new flex-wrap cwiewyehkk">
+                <Button
+                  variant=""
+                  className="font-weight-600 btnhovpple"
+                  type="submit"
+                >
+                  REQUEST TESTIMONIAL
+                </Button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </Form>
     </>
   );
 };
