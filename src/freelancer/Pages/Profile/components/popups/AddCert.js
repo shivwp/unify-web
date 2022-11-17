@@ -9,6 +9,9 @@ import {
   getCertificationList,
 } from "../../../../../redux/actions/profileAction";
 
+import { validateCertificate } from "../../../../../utility/validation/ValidationAll";
+import useForm from "../../../../../utility/validation/useForm";
+
 const CloseIcon = () => {
   return (
     <svg
@@ -23,38 +26,56 @@ const CloseIcon = () => {
     </svg>
   );
 };
+
+
 const AddCert = (props) => {
   const [certName, setCertName] = useState(props?.certificates || null);
-  const [values, setValues] = useState(props?.certificates);
+  const [certvalues, setcertvalues] = useState(props?.certificates);
   const [certificateList, setCertificateList] = useState([]);
+  const [certTypeError, setCertTypeError] = useState(false);
+  
   const dispatch = useDispatch();
   const options1 = certificateList?.map((data) => ({
     name: data.name,
     label: data.name,
   }));
 
-  console.log(options1);
+  const {
+    // values,
+    errors,
+    handleChange,
+    handleSubmit,
+  } = useForm(onSave, validateCertificate);
+
+
 
   useEffect(() => {
     dispatch(getCertificationList(setCertificateList));
   }, []);
 
-  const handleOnChange = (e) => {
-    setValues({ ...values, [e.target.name]: e.target.value });
-  };
+  // const handleOnChange = (e) => {
+  //   setValues({ ...values, [e.target.name]: e.target.value });
+  // };
 
-  const onSave = () => {
+
+
+  function onSave(){
+    if(!certName){
+      setCertTypeError('Emadsfails address is required')
+      
+      return;
+    }
     let data;
     if (props?.certificates?.id) {
       data = {
         id: props?.certificates?.id,
         name: certName.name,
-        description: values.description,
+        description: certvalues.description,
       };
     } else {
       data = {
         name: certName.name,
-        description: values.description,
+        description: certvalues.description,
       };
     }
     dispatch(
@@ -91,13 +112,16 @@ const AddCert = (props) => {
                   className="font-size-13px"
                   placeholder="Select Certificate Type"
                   options={options1}
-                  onChange={setCertName}
+                  onChange={()=>{setCertName();setCertTypeError(false)}}
                   defaultValue={
                     certName
                       ? { name: certName.name, label: certName.name }
                       : null
                   }
                 />
+                {
+                  certTypeError ? certTypeError : null 
+                }
               </div>
             </div>
             <div className="mt-3 pt-1 mb-3">
@@ -120,10 +144,13 @@ const AddCert = (props) => {
                       className="font-size-13px"
                       placeholder="Enter Here"
                       name="description"
-                      value={values?.description || null}
-                      onChange={(e) => handleOnChange(e)}
+                      certvalues={certvalues?.description || null}
+                      onChange={(e) => handleChange(e)}
                     />
                   </div>
+                  {
+                    errors?.description ? errors?.description : null
+                  }
                 </Col>
               </Row>
             </div>
@@ -137,7 +164,7 @@ const AddCert = (props) => {
               >
                 Cancel
               </button>
-              <button className="btnhovpple" onClick={onSave}>
+              <button className="btnhovpple" onClick={handleSubmit}>
                 Save
               </button>
             </div>

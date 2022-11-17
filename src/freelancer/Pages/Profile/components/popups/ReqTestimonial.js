@@ -131,7 +131,7 @@ const ReqTestimonial = (props) => {
                         Business email address
                       </Form.Label>
                       <Form.Control
-                        type="text"
+                        type="email"
                         name="email"
                         className="font-size-13px"
                         value={values?.email}

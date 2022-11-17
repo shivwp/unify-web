@@ -2011,6 +2011,16 @@
 
 .font-size-13px {
   font-size: 13px !important;
+  background-image: none !important;
+
+}
+.errorAddCertInp {
+  border: 1px solid red;
+}
+
+.errorAddCert {
+  color: red;
+  font-size: 13px;
 }
 
 .font-size-11px {

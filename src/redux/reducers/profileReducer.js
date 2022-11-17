@@ -33,6 +33,7 @@ import {
   GET_TESTIMONIAL,
   SET_JOB_DATA_LISTING,
   SET_CATEGORY_LIST,
+  EDIT_CERTIFICATE_ERROR,
 } from "../types";
 
 const initialState = {};
@@ -212,6 +213,11 @@ const profileReducer = (state = initialState, action) => {
       return {
         ...state,
         categoryList: action.payload,
+      };
+    case EDIT_CERTIFICATE_ERROR:
+      return {
+        ...state,
+        getCategoryError: action.payload,
       };
     default:
       return state;

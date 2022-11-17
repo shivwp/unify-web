@@ -23,6 +23,7 @@ const PortfolioPupup = ({
   const [portfolioImage, setPortfolioImage] = useState(null);
   const [showingImage, setShowingImage] = useState(data?.image);
   const [editPortfoData, setEditPortfoData] = useState([]);
+  const [showError, setShowError] = useState(false);
 
 
   const onInputChange = (e) => {
@@ -30,6 +31,7 @@ const PortfolioPupup = ({
   };
 
   const onImageChange = (e) => {
+    setShowError(false)
     setPortfolioImage(e.target.files[0]);
     setShowingImage(URL.createObjectURL(e.target.files[0]));
   };
@@ -58,6 +60,9 @@ const PortfolioPupup = ({
         formData.append("image", portfolioImage);
       }
     } else {
+      if(!portfolioImage){
+        setShowError(true)
+      }
       formData.append("image", portfolioImage);
     }
 
@@ -87,7 +92,6 @@ const PortfolioPupup = ({
                   <Form.Label className="text-black font-size-13px font-weight-500 mb-1 mt-0">
                     Project Title
                   </Form.Label>
-                  <InputGroup hasValidation>
                     <Form.Control
                       type="text"
                       className="font-size-13px"
@@ -102,7 +106,6 @@ const PortfolioPupup = ({
                     <Form.Control.Feedback type="invalid">
                       Please enter your job title.
                     </Form.Control.Feedback>
-                  </InputGroup>
                 </Form.Group>
               </div>
 
@@ -113,12 +116,11 @@ const PortfolioPupup = ({
                   </Form.Label>
 
                   <div className="freelancer_popup_textarea">
-                    <InputGroup hasValidation>
                       <Form.Control
                         as="textarea"
                         type="textarea"
                         placeholder="Enter here"
-                        className="p-2"
+                        className="p-2 font-size-13px "
                         name="description"
                         value={values?.description}
                         onChange={(e) => onInputChange(e)}
@@ -127,7 +129,6 @@ const PortfolioPupup = ({
                       <Form.Control.Feedback type="invalid">
                         Please enter your job Description.
                       </Form.Control.Feedback>
-                    </InputGroup>
                   </div>
                 </Form.Group>
               </div>
@@ -179,6 +180,9 @@ const PortfolioPupup = ({
                   </Form.Label>
                 </div>
               </div>
+              {
+                showError ? <p className="errorAddCert">The image must be an image. </p>: null
+              }
               <p style={{ fontSize: 13, color: "#304E71" }}>
                 You may attach up to 10 files under the size of 25MB each. Include
                 work samples or other documents to support your application.

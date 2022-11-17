@@ -34,6 +34,7 @@ import {
   REQUEST_TESTIMONIAL,
   GET_TESTIMONIAL,
   SET_CATEGORY_LIST,
+  EDIT_CERTIFICATE_ERROR,
 } from "../types";
 let userDetails = JSON.parse(localStorage.getItem("unify_user"));
 
@@ -53,7 +54,7 @@ export const getFreelancerProfile = () => async (dispatch) => {
         payload: res.data.data,
       });
     });
-  } catch (err) {}
+  } catch (err) { }
 };
 
 export const getFreelancerSkills = (data) => async (dispatch) => {
@@ -64,7 +65,7 @@ export const getFreelancerSkills = (data) => async (dispatch) => {
         payload: res.data.data,
       });
     });
-  } catch (err) {}
+  } catch (err) { }
 };
 
 export const onAddEmployment =
@@ -83,7 +84,7 @@ export const onAddEmployment =
           />
         );
       });
-    } catch (err) {}
+    } catch (err) { }
   };
 
 export const onDeleteEmployment =
@@ -96,7 +97,7 @@ export const onDeleteEmployment =
         });
         setConfirmPopup(false);
       });
-    } catch (err) {}
+    } catch (err) { }
   };
 
 // CLIENT
@@ -108,7 +109,7 @@ export const getClientInfoDetails = (data) => async (dispatch) => {
         payload: res.data.data.client,
       });
     });
-  } catch (err) {}
+  } catch (err) { }
 };
 
 export const getIndustriesList = (data) => async (dispatch) => {
@@ -119,7 +120,7 @@ export const getIndustriesList = (data) => async (dispatch) => {
         payload: res.data.data,
       });
     });
-  } catch (err) {}
+  } catch (err) { }
 };
 
 export const getTimezoneList = (data) => async (dispatch) => {
@@ -130,7 +131,7 @@ export const getTimezoneList = (data) => async (dispatch) => {
         payload: res.data.data,
       });
     });
-  } catch (err) {}
+  } catch (err) { }
 };
 
 export const addEditClientInfo = (data, setOpen) => async (dispatch) => {
@@ -142,7 +143,7 @@ export const addEditClientInfo = (data, setOpen) => async (dispatch) => {
       });
       setOpen(false);
     });
-  } catch (err) {}
+  } catch (err) { }
 };
 
 export const closeAccountReasonList = () => async (dispatch) => {
@@ -153,7 +154,7 @@ export const closeAccountReasonList = () => async (dispatch) => {
         payload: res.data.data,
       });
     });
-  } catch (err) {}
+  } catch (err) { }
 };
 
 export const onCloseAccount = (data) => async (dispatch) => {
@@ -161,7 +162,7 @@ export const onCloseAccount = (data) => async (dispatch) => {
     Axios.post("/close-account", data, config).then((res) => {
       console.log(res);
     });
-  } catch (err) {}
+  } catch (err) { }
 };
 
 export const getFreelancerDegreeList = (data) => async (dispatch) => {
@@ -172,7 +173,7 @@ export const getFreelancerDegreeList = (data) => async (dispatch) => {
         payload: res.data.data,
       });
     });
-  } catch (err) {}
+  } catch (err) { }
 };
 
 export const onAddEducation =
@@ -191,7 +192,7 @@ export const onAddEducation =
           />
         );
       });
-    } catch (err) {}
+    } catch (err) { }
   };
 
 export const onDeleteEducation =
@@ -204,7 +205,7 @@ export const onDeleteEducation =
         });
         setConfirmPopup(false);
       });
-    } catch (err) {}
+    } catch (err) { }
   };
 
 export const onEditContactInfo =
@@ -223,28 +224,28 @@ export const onEditContactInfo =
           />
         );
       });
-    } catch (err) {}
+    } catch (err) { }
   };
 
 export const onEditLocationInfo =
   (data, setEditLocation, successPopup, setSuccessPopup) =>
-  async (dispatch) => {
-    try {
-      Axios.post("/edit-location", data, config).then((res) => {
-        setEditLocation(false);
-        dispatch({
-          type: SET_EDIT_FREELANCER_LOCATION,
-          payload: res.data,
+    async (dispatch) => {
+      try {
+        Axios.post("/edit-location", data, config).then((res) => {
+          setEditLocation(false);
+          dispatch({
+            type: SET_EDIT_FREELANCER_LOCATION,
+            payload: res.data,
+          });
+          setSuccessPopup(
+            <SuccessPopup
+              Popup={() => setSuccessPopup(!successPopup)}
+              message="Details Added Successfully"
+            />
+          );
         });
-        setSuccessPopup(
-          <SuccessPopup
-            Popup={() => setSuccessPopup(!successPopup)}
-            message="Details Added Successfully"
-          />
-        );
-      });
-    } catch (err) {}
-  };
+      } catch (err) { }
+    };
 
 export const onEditVideo =
   (data, popup, successPopup, setSuccessPopup) => async (dispatch) => {
@@ -262,7 +263,7 @@ export const onEditVideo =
           />
         );
       });
-    } catch (err) {}
+    } catch (err) { }
   };
 
 export const onEditDesignation =
@@ -282,7 +283,7 @@ export const onEditDesignation =
           />
         );
       });
-    } catch (err) {}
+    } catch (err) { }
   };
 
 export const onEditPortfolio =
@@ -301,7 +302,7 @@ export const onEditPortfolio =
           />
         );
       });
-    } catch (err) {}
+    } catch (err) { }
   };
 
 export const onEditLanguage =
@@ -320,7 +321,7 @@ export const onEditLanguage =
           />
         );
       });
-    } catch (err) {}
+    } catch (err) { }
   };
 
 export const getLanguageList = () => async (dispatch) => {
@@ -331,7 +332,7 @@ export const getLanguageList = () => async (dispatch) => {
         payload: res.data.data,
       });
     });
-  } catch (err) {}
+  } catch (err) { }
 };
 
 export const getHoursPerWeekList = () => async (dispatch) => {
@@ -342,7 +343,7 @@ export const getHoursPerWeekList = () => async (dispatch) => {
         payload: res.data.data,
       });
     });
-  } catch (err) {}
+  } catch (err) { }
 };
 
 export const onEditHourPerWeek =
@@ -361,7 +362,7 @@ export const onEditHourPerWeek =
           />
         );
       });
-    } catch (err) {}
+    } catch (err) { }
   };
 
 export const onEditSkills =
@@ -380,26 +381,33 @@ export const onEditSkills =
           />
         );
       });
-    } catch (err) {}
+    } catch (err) { }
   };
 
 export const onEditCertificate =
-  (data, popup, successPopup, setSuccessPopup) => async (dispatch) => {
-    try {
-      Axios.post("/edit-certificate-info", data, config).then((res) => {
-        dispatch({
-          type: SET_EDIT_CERTIFICATE,
-          payload: res.data,
-        });
-        popup();
-        setSuccessPopup(
-          <SuccessPopup
-            Popup={() => setSuccessPopup(!successPopup)}
-            message="Certificate Added Successfully"
-          />
-        );
+  (data, popup, successPopup, setSuccessPopup) => (dispatch) => {
+    Axios.post("/edit-certificate-info", data, config).then((res) => {
+      console.log(res)
+      dispatch({
+        type: SET_EDIT_CERTIFICATE,
+        payload: res.data,
       });
-    } catch (err) {}
+      popup();
+      setSuccessPopup(
+        <SuccessPopup
+          Popup={() => setSuccessPopup(!successPopup)}
+          message="Certificate Added Successfully"
+        />
+      );
+    }).catch((err) => {
+
+
+      dispatch({
+        type: EDIT_CERTIFICATE_ERROR,
+        payload: err.response.data,
+      });
+    })
+
   };
 
 export const onDeleteCertificate =
@@ -412,7 +420,7 @@ export const onDeleteCertificate =
         });
         setConfirmPopup();
       });
-    } catch (err) {}
+    } catch (err) { }
   };
 
 export const editNameInfo = (data) => async (dispatch) => {
@@ -425,7 +433,7 @@ export const editNameInfo = (data) => async (dispatch) => {
       userDetails.profile_image = res?.data?.basic_info?.profile_image;
       localStorage.setItem("unify_user", JSON.stringify(userDetails));
     });
-  } catch (err) {}
+  } catch (err) { }
 };
 
 export const editVisiblity =
@@ -444,7 +452,7 @@ export const editVisiblity =
           />
         );
       });
-    } catch (err) {}
+    } catch (err) { }
   };
 
 export const editExprienceLev =
@@ -463,7 +471,7 @@ export const editExprienceLev =
           />
         );
       });
-    } catch (err) {}
+    } catch (err) { }
   };
 
 export const onDeletePortfolio =
@@ -476,7 +484,7 @@ export const onDeletePortfolio =
         });
         setConfirmPopup(false);
       });
-    } catch (err) {}
+    } catch (err) { }
   };
 
 export const onAdditionalAccount = (data, navigate) => async (dispatch) => {
@@ -493,7 +501,7 @@ export const onAdditionalAccount = (data, navigate) => async (dispatch) => {
         navigate("/dashboard");
       }
     });
-  } catch (err) {}
+  } catch (err) { }
 };
 
 export const onSubmitVerificationDocs = (data) => async (dispatch) => {
@@ -504,7 +512,7 @@ export const onSubmitVerificationDocs = (data) => async (dispatch) => {
         payload: res.data,
       });
     });
-  } catch (err) {}
+  } catch (err) { }
 };
 
 export const onRequestTestimonial =
@@ -523,7 +531,7 @@ export const onRequestTestimonial =
           />
         );
       });
-    } catch (err) {}
+    } catch (err) { }
   };
 
 export const onSubmitTestimonial =
@@ -539,7 +547,7 @@ export const onSubmitTestimonial =
           />
         );
       });
-    } catch (err) {}
+    } catch (err) { }
   };
 
 export const onGetTestmonial = (data, setValues) => async (dispatch) => {
@@ -551,7 +559,7 @@ export const onGetTestmonial = (data, setValues) => async (dispatch) => {
       });
       setValues(res.data.data);
     });
-  } catch (err) {}
+  } catch (err) { }
 };
 
 export const getCertificationList =
@@ -560,7 +568,7 @@ export const getCertificationList =
       Axios.get("/certificate-list", config).then((res) => {
         setCertificateList(res.data.data);
       });
-    } catch (err) {}
+    } catch (err) { }
   };
 
 export const getCategoryList = () => async (dispatch) => {
@@ -571,5 +579,5 @@ export const getCategoryList = () => async (dispatch) => {
         payload: res.data.data,
       });
     });
-  } catch (err) {}
+  } catch (err) { }
 };

@@ -19,8 +19,16 @@ import { countryList } from "../../../../redux/actions/authActions";
 import { data } from "jquery";
 import { useNavigate } from "react-router-dom";
 import AgencyNamePopup from "../../../components/popups/AgencyNamePopup";
+import useForm from "../../../../utility/validation/useForm";
+import { editContactInfo } from "../../../../utility/validation/ValidationAll";
 
 const Screen = () => {
+  const {
+    values,
+    errors,
+    handleChange,
+    handleSubmit,
+  } = useForm(login, editContactInfo);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   Title(" | Contact Info");
@@ -29,6 +37,10 @@ const Screen = () => {
   const [editLocation, setEditLocation] = useState(false);
   const [openCloseAcc, seOpenCloseAcc] = useState(false);
   const [successPopup, setSuccessPopup] = useState(false);
+
+  function login() {
+    console.log("No errors");
+  }
 
   const basicInfo = useSelector(
     (state) => state?.profile?.freelancerProfileList?.basic_info
@@ -62,26 +74,29 @@ const Screen = () => {
     const email = basicInfo?.email;
 
     const onInputChange = (e) => {
+      console.log("firstfirstfirstfirst")
       setValues({ ...values, [e.target.name]: e.target.value });
+      handleChange()
     };
 
     const EditContactInfo = () => {
       const data =
         email === values.email
           ? {
-              first_name: values.first_name,
-              last_name: values.last_name,
-            }
+            first_name: values.first_name,
+            last_name: values.last_name,
+          }
           : {
-              first_name: values.first_name,
-              last_name: values.last_name,
-              email: values.email,
-            };
+            first_name: values.first_name,
+            last_name: values.last_name,
+            email: values.email,
+          };
 
       dispatch(
         onEditContactInfo(data, setEditAccount, successPopup, setSuccessPopup)
       );
     };
+
 
     return (
       <>
@@ -122,10 +137,14 @@ const Screen = () => {
                       <Form.Control
                         name="first_name"
                         type="text"
-                        value={values.first_name}
-                        placeholder="Shiv"
+                        value={values.first_name || ''}
+                        placeholder="John"
                         onChange={(e) => onInputChange(e)}
+                        required
                       />
+                      {errors.first_name && (
+                        <p className="help is-danger">{errors.first_name}</p>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -139,11 +158,14 @@ const Screen = () => {
                     <div className="edit_contact_inp">
                       <Form.Control
                         type="text"
-                        onChange={(e) => onInputChange(e)}
-                        placeholder="Kumar Kumavat"
-                        value={values.last_name}
+                        onChange={(e) => handleChange(e)}
+                        placeholder="Doe"
+                        value={values.last_name || ''}
                         name="last_name"
                       />
+                      {errors.last_name && (
+                        <p className="help is-danger">{errors.last_name}</p>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -456,82 +478,82 @@ const Screen = () => {
                   freelancerProfileList?.is_agency &&
                   freelancerProfileList?.is_client
                 ) && (
-                  <>
-                    <div className="r-box_setting">
-                      <div className="b-bottom-gr pt-1 pb-3">
-                        <div className="setting_b_head_s">
-                          Additional accounts
+                    <>
+                      <div className="r-box_setting">
+                        <div className="b-bottom-gr pt-1 pb-3">
+                          <div className="setting_b_head_s">
+                            Additional accounts
+                          </div>
+                          <div className="c_name_sett mt-0 pt-0">
+                            Creating a new account allows you to use Upwork in
+                            different ways, while still having just one login.
+                          </div>
                         </div>
-                        <div className="c_name_sett mt-0 pt-0">
-                          Creating a new account allows you to use Upwork in
-                          different ways, while still having just one login.
-                        </div>
-                      </div>
-                      <Row>
-                        {!freelancerProfileList?.is_client && (
-                          <Col
-                            lg={12}
-                            className="d-flex justify-content-between "
-                          >
-                            <div className="d-flex mb-2 mt-3 addition_acc_media justify-content-between w-100">
-                              <div className="w-55">
-                                <div className="c_name_s_v">Client Account</div>
-                                <div className="c_name_sett pt-0 font-color-light">
-                                  Hire, manage and pay as a different company.
-                                  Each client company has its own freelancers,
-                                  payment methods and reports.
+                        <Row>
+                          {!freelancerProfileList?.is_client && (
+                            <Col
+                              lg={12}
+                              className="d-flex justify-content-between "
+                            >
+                              <div className="d-flex mb-2 mt-3 addition_acc_media justify-content-between w-100">
+                                <div className="w-55">
+                                  <div className="c_name_s_v">Client Account</div>
+                                  <div className="c_name_sett pt-0 font-color-light">
+                                    Hire, manage and pay as a different company.
+                                    Each client company has its own freelancers,
+                                    payment methods and reports.
+                                  </div>
                                 </div>
-                              </div>
 
-                              <div className="btn_foot_sec addition_acc_media d-flex pt-0 pb-0 m-0 no-border">
-                                <div className="fo_btn_c d-flex align-items-center width-max-content next_b_btn_c ">
-                                  <button
-                                    className="min-width-226"
-                                    onClick={() =>
-                                      onCreateAdditionalAccount("client")
-                                    }
-                                  >
-                                    Create Client Account
-                                  </button>
+                                <div className="btn_foot_sec addition_acc_media d-flex pt-0 pb-0 m-0 no-border">
+                                  <div className="fo_btn_c d-flex align-items-center width-max-content next_b_btn_c ">
+                                    <button
+                                      className="min-width-226"
+                                      onClick={() =>
+                                        onCreateAdditionalAccount("client")
+                                      }
+                                    >
+                                      Create Client Account
+                                    </button>
+                                  </div>
                                 </div>
                               </div>
-                            </div>
-                          </Col>
-                        )}
-                        {!freelancerProfileList?.is_agency && (
-                          <Col
-                            lg={12}
-                            className="d-flex justify-content-between addition_acc_media"
-                          >
-                            <div className="d-flex mb-2 mt-3 justify-content-between w-100 addition_acc_media">
-                              <div className="w-55">
-                                <div className="c_name_s_v">Agency Account</div>
-                                <div className="c_name_sett pt-0 font-color-light">
-                                  Find jobs and earn money as manager of a team
-                                  of freelancers.
+                            </Col>
+                          )}
+                          {!freelancerProfileList?.is_agency && (
+                            <Col
+                              lg={12}
+                              className="d-flex justify-content-between addition_acc_media"
+                            >
+                              <div className="d-flex mb-2 mt-3 justify-content-between w-100 addition_acc_media">
+                                <div className="w-55">
+                                  <div className="c_name_s_v">Agency Account</div>
+                                  <div className="c_name_sett pt-0 font-color-light">
+                                    Find jobs and earn money as manager of a team
+                                    of freelancers.
+                                  </div>
+                                </div>
+                                <div className="btn_foot_sec flex-wrap d-flex pt-0 pb-0 m-0 no-border">
+                                  <div className="fo_btn_c d-flex align-items-end width-max-content next_b_btn_c">
+                                    <button
+                                      className="min-width-226"
+                                      onClick={() =>
+                                        setPopup(
+                                          <AgencyNamePopup setPopup={setPopup} />
+                                        )
+                                      }
+                                    >
+                                      Create Agency Account
+                                    </button>
+                                  </div>
                                 </div>
                               </div>
-                              <div className="btn_foot_sec flex-wrap d-flex pt-0 pb-0 m-0 no-border">
-                                <div className="fo_btn_c d-flex align-items-end width-max-content next_b_btn_c">
-                                  <button
-                                    className="min-width-226"
-                                    onClick={() =>
-                                      setPopup(
-                                        <AgencyNamePopup setPopup={setPopup} />
-                                      )
-                                    }
-                                  >
-                                    Create Agency Account
-                                  </button>
-                                </div>
-                              </div>
-                            </div>
-                          </Col>
-                        )}
-                      </Row>
-                    </div>
-                  </>
-                )}
+                            </Col>
+                          )}
+                        </Row>
+                      </div>
+                    </>
+                  )}
                 {editLocation ? (
                   <EditLoc />
                 ) : (

@@ -123,6 +123,7 @@ const EditTitle = (props) => {
                 <Form.Group md="6" controlId="validationCustom03">
                   <Form.Control type="text"
                     as="textarea"
+                    className="font-size-13px"
                     value={values?.description}
                     name="description"
                     onChange={(e) => handleOnChange(e)}
