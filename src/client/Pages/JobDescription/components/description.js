@@ -11,32 +11,27 @@ import {
   getFreelancerSkills,
 } from "../../../../redux/actions/profileAction";
 import Form from "react-bootstrap/Form";
+import CategoryPopup from "../popups/CategoryPopup";
+import EditSkill from "../../../../freelancer/Pages/Profile/components/popups/EditSkill";
+import ScopePopup from "../popups/ScopePopup";
+import EditSkillsPopup from "../popups/EditSkillsPopup";
+import ProjectBudgetPopup from "../popups/ProjectBudgetPopup";
 import { onPostYourJobNow } from "../../../../redux/actions/jobActions";
-import EditCategoryPopup from "../../../../popups/EditCategoryPopup";
-import ProjectBudgetPopup from "../../../../popups/ProjectBudgetPopup";
-import ScopePopup from "../../../../popups/ScopePopup";
-import EditSkillsPopup from "../../../../popups/EditSkillsPopup";
 
 const Description = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [values, setValues] = useState({});
-  const [categoryPopup, setCategoryPopup] = useState(false);
-  const [projectBudgetPopup, setProjectBudgetPopup] = useState(false);
-  const [scopePopup, setScopePopup] = useState(false);
-  const [skillPopup, setSkillPopup] = useState(false);
   const [filteredSkills, setFilteredSkills] = useState();
   const [filteredCategory, setFilteredCategory] = useState();
-  const [jobTitle, setJobTitle] = useState();
+  const [popup, setPopup] = useState();
+  const jobListingData = useSelector((state) => state.profile.jobListingData);
+  const [jobTitle, setJobTitle] = useState(jobListingData?.job_title);
   const [description, setDescription] = useState();
   const [imageFile, setImageFile] = useState();
   const [objectUrl, setObjectUrl] = useState();
-  const [jobCategory, setJobCategory] = useState();
-  const jobListingData = useSelector((state) => state.profile.jobListingData);
+  const [jobCategory, setJobCategory] = useState(jobListingData?.job_category);
   const categoryList = useSelector((state) => state.profile.categoryList);
   const getSkillList = useSelector((state) => state.profile.getSkillList);
-
-  console.log(filteredSkills);
 
   useEffect(() => {
     dispatch(getCategoryList());
@@ -50,15 +45,9 @@ const Description = () => {
   }, []);
 
   useEffect(() => {
-    if (jobListingData) {
-      setValues(jobListingData);
-    }
-  }, [jobListingData]);
-
-  useEffect(() => {
     if (categoryList) {
       for (let i = 0; i < categoryList.length; i++) {
-        if (values?.job_category === categoryList[i].id) {
+        if (parseInt(jobCategory) === categoryList[i].id) {
           setFilteredCategory(categoryList[i]);
         }
       }
@@ -67,7 +56,7 @@ const Description = () => {
 
   useEffect(() => {
     if (getSkillList) {
-      var skills = values?.skills?.split(",");
+      var skills = jobListingData?.skills?.split(",");
       skills = skills?.map((skill) => Number(skill));
       setFilteredSkills(
         getSkillList?.filter((item) => skills?.indexOf(item.id) != -1)
@@ -84,21 +73,21 @@ const Description = () => {
   const postYourJobNow = () => {
     const formData = new FormData();
 
-    formData.append("job_type", values?.jobType);
-    formData.append("job_title", values?.job_title);
-    formData.append("job_category", values?.job_category);
-    formData.append("skills", values?.skills);
-    formData.append("scop", values?.scop);
-    formData.append("project_duration", values?.project_duration);
-    formData.append("experience_level", values?.experience_level);
-    formData.append("budget_type", values?.budget_type);
-    formData.append("english_level", values?.english_level);
+    formData.append("job_type", jobListingData?.jobType);
+    formData.append("job_title", jobListingData?.job_title);
+    formData.append("job_category", jobListingData?.job_category);
+    formData.append("skills", jobListingData?.skills);
+    formData.append("scop", jobListingData?.scop);
+    formData.append("project_duration", jobListingData?.project_duration);
+    formData.append("experience_level", jobListingData?.experience_level);
+    formData.append("budget_type", jobListingData?.budget_type);
+    formData.append("english_level", jobListingData?.english_level);
 
-    if (values?.budget_type === "hourly") {
-      formData.append("price", values?.minPrice);
-      formData.append("min_price", values?.maxPrice);
-    } else if (values?.budget_type === "fixed") {
-      formData.append("price", values?.price);
+    if (jobListingData?.budget_type === "hourly") {
+      formData.append("price", jobListingData?.minPrice);
+      formData.append("min_price", jobListingData?.maxPrice);
+    } else if (jobListingData?.budget_type === "fixed") {
+      formData.append("price", jobListingData?.price);
     }
 
     formData.append("description", description);
@@ -111,23 +100,23 @@ const Description = () => {
   const draftYourJobNow = () => {
     const formData = new FormData();
 
-    formData.append("job_type", values?.jobType);
-    formData.append("job_title", values?.job_title);
-    formData.append("job_category", values?.job_category);
-    formData.append("skills", values?.skills);
-    formData.append("scop", values?.scop);
-    formData.append("project_duration", values?.project_duration);
-    formData.append("experience_level", values?.experience_level);
-    formData.append("budget_type", values?.budget_type);
-    formData.append("english_level", values?.english_Level);
+    formData.append("job_type", jobListingData?.jobType);
+    formData.append("job_title", jobListingData?.job_title);
+    formData.append("job_category", jobListingData?.job_category);
+    formData.append("skills", jobListingData?.skills);
+    formData.append("scop", jobListingData?.scop);
+    formData.append("project_duration", jobListingData?.project_duration);
+    formData.append("experience_level", jobListingData?.experience_level);
+    formData.append("budget_type", jobListingData?.budget_type);
+    formData.append("english_level", jobListingData?.english_level);
 
-    if (values?.budget_type === "hourly") {
-      formData.append("price", values?.minPrice);
-      formData.append("min_price", values?.maxPrice);
-    } else if (values?.budget_type === "fixed") {
-      formData.append("price", values?.price);
+    if (jobListingData?.budget_type === "hourly") {
+      formData.append("price", jobListingData?.minPrice);
+      formData.append("min_price", jobListingData?.maxPrice);
+    } else if (jobListingData?.budget_type === "fixed") {
+      formData.append("price", jobListingData?.price);
     }
-    formData.append("price", values?.price);
+    formData.append("price", jobListingData?.price);
     formData.append("description", description);
     formData.append("status", "draft");
     formData.append("image", imageFile);
@@ -144,13 +133,11 @@ const Description = () => {
               <h1>Now just finish and review your job post.</h1>
             </div>
             <div className="ts_btn">
-              <Button
-                variant=""
-                className="font-weight-500"
-                onClick={postYourJobNow}
-              >
-                Post Your Job Now
-              </Button>
+              <Link to="/view-job">
+                <Button variant="" className="font-weight-500">
+                  Post Your Job Now
+                </Button>
+              </Link>
             </div>
           </div>
           <div className="b_bot_inp">
@@ -228,7 +215,17 @@ const Description = () => {
               <span>{filteredCategory?.name}</span>
               <button
                 className="round_b_btn"
-                onClick={() => setCategoryPopup(true)}
+                onClick={() =>
+                  setPopup(
+                    <CategoryPopup
+                      Popup={setPopup}
+                      categoryList={categoryList}
+                      jobListingData={jobListingData}
+                      setJobCategory={setJobCategory}
+                      jobCategory={jobCategory}
+                    />
+                  )
+                }
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -250,8 +247,8 @@ const Description = () => {
           <div className="b_bot_inp">
             <div className="input_t_lab">Skills</div>
             <div className="slide_btnss">
-              {filteredSkills?.map((item, key) => (
-                <Button variant="" key={key}>
+              {filteredSkills?.map((item) => (
+                <Button variant="">
                   {item.name}
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -265,9 +262,57 @@ const Description = () => {
                   </svg>
                 </Button>
               ))}
+
+              {/* <button>
+              User Experience Design
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="#393939"
+                className="bi bi-plus"
+                viewBox="0 0 16 16"
+              >
+                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+              </svg>
+            </button>
+            <button>
+              User Interface Design
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="#393939"
+                className="bi bi-plus"
+                viewBox="0 0 16 16"
+              >
+                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+              </svg>
+            </button>
+            <button>
+              Graphic Design
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="#393939"
+                className="bi bi-plus"
+                viewBox="0 0 16 16"
+              >
+                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+              </svg>
+            </button> */}
               <button
                 className="round_b_btn"
-                onClick={() => setSkillPopup(true)}
+                onClick={() =>
+                  setPopup(
+                    <EditSkillsPopup
+                      Popup={setPopup}
+                      filteredSkills={filteredSkills}
+                      jobListingData={jobListingData}
+                    />
+                  )
+                }
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -293,7 +338,14 @@ const Description = () => {
               <Button
                 variant=""
                 className="round_b_btn"
-                onClick={() => setScopePopup(true)}
+                onClick={() =>
+                  setPopup(
+                    <ScopePopup
+                      Popup={setPopup}
+                      jobListingData={jobListingData}
+                    />
+                  )
+                }
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -329,7 +381,14 @@ const Description = () => {
               <Button
                 variant=""
                 className="round_b_btn"
-                onClick={() => setProjectBudgetPopup(true)}
+                onClick={() =>
+                  setPopup(
+                    <ProjectBudgetPopup
+                      Popup={setPopup}
+                      jobListingData={jobListingData}
+                    />
+                  )
+                }
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -375,31 +434,7 @@ const Description = () => {
           </div>
         </div>
       </Container>
-
-      {categoryPopup && (
-        <EditCategoryPopup
-          open={categoryPopup}
-          onCloseModal={() => setCategoryPopup(false)}
-        />
-      )}
-      {projectBudgetPopup && (
-        <ProjectBudgetPopup
-          open={projectBudgetPopup}
-          onCloseModal={() => setProjectBudgetPopup(false)}
-        />
-      )}
-      {scopePopup && (
-        <ScopePopup
-          open={scopePopup}
-          onCloseModal={() => setScopePopup(false)}
-        />
-      )}
-      {skillPopup && (
-        <EditSkillsPopup
-          open={skillPopup}
-          onCloseModal={() => setSkillPopup(false)}
-        />
-      )}
+      {popup}
     </>
   );
 };

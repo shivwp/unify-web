@@ -26,7 +26,10 @@ const EditPosting = () => {
   const [scopePopup, setScopePopup] = useState(false);
   const [skillPopup, setSkillPopup] = useState(false);
   const [jobCategory, setJobCategory] = useState();
-  const singleJobDetails = useSelector((state) => state.job.singleJobDetails);
+  let singleJobDetails = useSelector((state) => state.job.singleJobDetails);
+  const [singleJobLists, setSingleJobLists] = useState(
+    singleJobDetails?.skills
+  );
   const categoryList = useSelector((state) => state.profile.categoryList);
   const getSkillList = useSelector((state) => state.profile.getSkillList);
 
@@ -50,8 +53,19 @@ const EditPosting = () => {
   useEffect(() => {
     if (singleJobDetails) {
       setValues(singleJobDetails);
+      setSingleJobLists(singleJobDetails?.skills);
     }
   }, [singleJobDetails]);
+
+  useEffect(() => {
+    if (categoryList) {
+      for (let i = 0; i < categoryList.length; i++) {
+        if (categoryList[i].name === singleJobDetails?.categories) {
+          setJobCategory(categoryList[i].id);
+        }
+      }
+    }
+  }, [categoryList]);
 
   const onInputChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
@@ -70,7 +84,7 @@ const EditPosting = () => {
       job_type: values?.type,
       job_title: values?.name,
       job_category: jobCategory,
-      skills: "4,5",
+      skills: singleJobLists?.map((item) => item.id)?.toString(),
       scop: values?.scop,
       project_duration: values?.project_duration,
       experience_level: values?.experience_level,
@@ -174,7 +188,7 @@ const EditPosting = () => {
                       <div className="b_bot_inp">
                         <div className="heading">Skills</div>
                         <div className="slide_btnss">
-                          {values?.skills?.map((item, key) => (
+                          {singleJobLists?.map((item, key) => (
                             <Button variant="" key={key}>
                               {item.name}
                             </Button>
@@ -288,6 +302,8 @@ const EditPosting = () => {
           onInputChange={onInputChange}
           values={values}
           getSkillList={getSkillList}
+          singleJobLists={singleJobLists}
+          setSingleJobLists={setSingleJobLists}
         />
       )}
     </>

@@ -29,6 +29,7 @@ export const onLogin = (data, navigate) => async (dispatch) => {
     if (res.data.status) {
       localStorage.setItem("unify_Token", res.data.auth_token);
       localStorage.setItem("unify_user", JSON.stringify(res.data.data.user));
+      localStorage.setItem("unify_access", true);
       if (res.data.data.user.user_type === "freelancer") {
         navigate("/freelancer/dashboard");
       } else if (res.data.data.user.user_type === "client") {

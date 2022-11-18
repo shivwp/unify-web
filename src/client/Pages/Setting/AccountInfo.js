@@ -19,7 +19,7 @@ const AccountInfo = ({
   objectUrlAbc,
 }) => {
   return (
-    <>
+    <Form onSubmit={(e) => onSubmitClientData(e)}>
       <div className="account_info">
         <div className="comp_title">
           <h5>Account</h5>
@@ -45,7 +45,9 @@ const AccountInfo = ({
           <Row>
             <Col lg={6} md={6} sm={12}>
               <Form.Group className="inp_fields">
-                <Form.Label>First Name</Form.Label>
+                <Form.Label style={{ marginBottom: "0px" }}>
+                  First Name
+                </Form.Label>
                 <Form.Control
                   type="text"
                   name="first_name"
@@ -55,7 +57,7 @@ const AccountInfo = ({
                 />
               </Form.Group>
               <Form.Group className="inp_fields">
-                <Form.Label>Email</Form.Label>
+                <Form.Label style={{ marginBottom: "0px" }}>Email</Form.Label>
                 <Form.Control
                   type="text"
                   name="email"
@@ -67,7 +69,9 @@ const AccountInfo = ({
             </Col>
             <Col lg={6} md={6} sm={12}>
               <Form.Group className="inp_fields">
-                <Form.Label>Last Name</Form.Label>
+                <Form.Label style={{ marginBottom: "0px" }}>
+                  Last Name
+                </Form.Label>
                 <Form.Control
                   type="text"
                   name="last_name"
@@ -303,18 +307,13 @@ const AccountInfo = ({
             <Button variant="" className="mrright-gppnew" onClick={setOpen}>
               Cancel
             </Button>
-            <Button
-              variant=""
-              type="button"
-              className="cls_acc_btn"
-              onClick={(e) => onSubmitClientData(e)}
-            >
+            <Button variant="" type="submit" className="cls_acc_btn">
               Save
             </Button>
           </div>
         </div>
       </div>
-    </>
+    </Form>
   );
 };
 

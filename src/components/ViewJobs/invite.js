@@ -1,45 +1,65 @@
-import { Col, Row } from 'react-bootstrap';
-import Search from './invite-freelancer/search';
-import Invite from './invite-freelancer/invite';
-import Hires from './invite-freelancer/hires';
-import Saved from './invite-freelancer/saved';
-import Button from 'react-bootstrap/Button'
-import { useState } from 'react';
+import { Col, Row } from "react-bootstrap";
+import Search from "./invite-freelancer/search";
+import Invite from "./invite-freelancer/invite";
+import Hires from "./invite-freelancer/hires";
+import Saved from "./invite-freelancer/saved";
+import Button from "react-bootstrap/Button";
+import { useState } from "react";
 
 const JonComponent = () => {
-    const [Tab, SetTab] = useState(<Search />)
-    const [TabActive, SetTabActive] = useState("search")
-    function changeTab(componentName) {
-        if (componentName === "search") {
-            SetTab(<Search />)
-            SetTabActive("search")
-        } else if (componentName === "invite") {
-            SetTab(<Invite />)
-            SetTabActive("invite")
-        } else if (componentName === "hires") {
-            SetTab(<Hires />)
-            SetTabActive("hires")
-        } else if (componentName === "saved") {
-            SetTab(<Saved />)
-            SetTabActive("saved")
-        }
-    }
-    return (
-        <Row>
-            <Col lg={12}>
-                <div className="box_vs_m">
-                    <div className='overflow-scroll'>
-                    <div className="d-flex flex-wrap tab_m_nodea tab_scroll_cont">
-                        <Button variant="" className={`tab_btn_vs text-transform-cap w-auto ${TabActive === 'search' ? 'active_bvs' : ''}`} onClick={() => { changeTab("search") }}>Search</Button>
-                        <Button variant="" className={`tab_btn_vs text-transform-cap w-auto ${TabActive === 'invite' ? 'active_bvs' : ''}`} onClick={() => { changeTab("invite") }}>Invited freelancers</Button>
-                        <Button variant="" className={`tab_btn_vs text-transform-cap w-auto ${TabActive === 'hires' ? 'active_bvs' : ''}`} onClick={() => { changeTab("hires") }}>My Hires</Button>
-                        <Button variant="" className={`tab_btn_vs text-transform-cap w-auto ${TabActive === 'saved' ? 'active_bvs' : ''}`} onClick={() => { changeTab("saved") }}>Saved Talent</Button>
-                    </div>
-                    </div>
-                    {Tab}
-                </div>
-            </Col>
-        </Row>
-    )
-}
-export default JonComponent
+  const [inviteTab, setInviteTab] = useState("searchFreelancer");
+
+  return (
+    <Row>
+      <Col lg={12}>
+        <div className="box_vs_m">
+          <div className="overflow-scroll">
+            <div className="d-flex flex-wrap tab_m_nodea tab_scroll_cont">
+              <Button
+                variant=""
+                className={`tab_btn_vs text-transform-cap w-auto ${
+                  inviteTab === "searchFreelancer" ? "active_bvs" : ""
+                }`}
+                onClick={() => setInviteTab("searchFreelancer")}
+              >
+                Search
+              </Button>
+              <Button
+                variant=""
+                className={`tab_btn_vs text-transform-cap w-auto ${
+                  inviteTab === "invited" ? "active_bvs" : ""
+                }`}
+                onClick={() => setInviteTab("invited")}
+              >
+                Invited freelancers
+              </Button>
+              <Button
+                variant=""
+                className={`tab_btn_vs text-transform-cap w-auto ${
+                  inviteTab === "myHires" ? "active_bvs" : ""
+                }`}
+                onClick={() => setInviteTab("myHires")}
+              >
+                My Hires
+              </Button>
+              <Button
+                variant=""
+                className={`tab_btn_vs text-transform-cap w-auto ${
+                  inviteTab === "savedTalent" ? "active_bvs" : ""
+                }`}
+                onClick={() => setInviteTab("savedTalent")}
+              >
+                Saved Talent
+              </Button>
+            </div>
+          </div>
+          {inviteTab === "searchFreelancer" && <Search />}
+          {inviteTab === "invited" && <Invite />}
+          {inviteTab === "myHires" && <Hires />}
+          {inviteTab === "savedTalent" && <Saved />}
+        </div>
+      </Col>
+    </Row>
+  );
+};
+export default JonComponent;

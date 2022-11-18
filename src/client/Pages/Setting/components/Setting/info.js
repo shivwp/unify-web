@@ -18,11 +18,11 @@ import { countryList } from "../../../../../redux/actions/authActions";
 
 const Screen = () => {
   Title(" | Setting - Myinfo");
+  const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
   const [values, setValues] = useState({});
   const [imageFile, setImageFile] = useState();
   const [objectUrlAbc, setObjectUrlAbc] = useState();
-  const dispatch = useDispatch();
   const getClientDetails = useSelector(
     (state) => state.profile.getClientDetails
   );
@@ -59,6 +59,7 @@ const Screen = () => {
   };
 
   const onSubmitClientData = (e) => {
+    e.preventDefault();
     const formData = new FormData();
 
     if (imageFile) {

@@ -3,12 +3,13 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import logo from "../../../assets/logo.svg";
 import NavDropdown from "react-bootstrap/NavDropdown";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { onOnlineStatus } from "../../../redux/actions/authActions";
 import { useDispatch } from "react-redux";
 
 const NavbarHeader = (props) => {
+  const history = useNavigate();
   const dispatch = useDispatch();
   const [navOpen, SetnavOpen] = useState(false);
   const [activeNav, SetactiveNav] = useState("");
@@ -173,7 +174,7 @@ const NavbarHeader = (props) => {
             </div>
             <div>
               <div className="navv2verso_flxewd">
-                <Link to="/freelancer/chat" className="navbar_btn p-0" >
+                <Link to="/freelancer/chat" className="navbar_btn p-0">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="21"
@@ -269,7 +270,15 @@ const NavbarHeader = (props) => {
                           d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"
                         />
                       </svg>
-                      <Link to="/signin">Log Out</Link>
+                      <span
+                        onClick={() => {
+                          localStorage.clear();
+                          window.location.reload();
+                          history("/signin");
+                        }}
+                      >
+                        Log Out
+                      </span>
                     </div>
                   </NavDropdown>
                 </div>
@@ -374,7 +383,10 @@ const NavbarHeader = (props) => {
                       />
                     </svg>
                   </Link>
-                  <Link to="/freelancer/chat" className="navbar_btn p-0 m_x_13_imp">
+                  <Link
+                    to="/freelancer/chat"
+                    className="navbar_btn p-0 m_x_13_imp"
+                  >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="21"
@@ -387,7 +399,10 @@ const NavbarHeader = (props) => {
                     </svg>
                   </Link>
 
-                  <Link to="/freelancer/notification" className="navbar_btn m_x_13_imp">
+                  <Link
+                    to="/freelancer/notification"
+                    className="navbar_btn m_x_13_imp"
+                  >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="21"
@@ -470,7 +485,15 @@ const NavbarHeader = (props) => {
                             d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"
                           />
                         </svg>
-                        <Link to="/signin">Log Out</Link>
+                        <span
+                          onClick={() => {
+                            localStorage.clear();
+                            window.location.reload();
+                            history("/signin");
+                          }}
+                        >
+                          Log Out
+                        </span>
                       </div>
                     </NavDropdown>
                   </div>

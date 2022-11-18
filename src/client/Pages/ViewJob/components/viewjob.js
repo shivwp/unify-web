@@ -6,36 +6,12 @@ import Hire from "../../../../components/Hire/all";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
-import Button from 'react-bootstrap/Button'
+import Button from "react-bootstrap/Button";
 
 const ViewScreen = () => {
   let { screen } = useParams();
-  const [Tab, SetTab] = useState(<ViewJob />);
-  const [TabActive, SetTabActive] = useState("view_job");
-  function changeTab(componentName) {
-    if (componentName === "invite") {
-      SetTab(<InviteFreelancer />);
-      SetTabActive("invite");
-    } else if (componentName === "view_job") {
-      SetTab(<ViewJob />);
-      SetTabActive("view_job");
-    } else if (componentName === "review") {
-      SetTab(<ReviewProposal />);
-      SetTabActive("review");
-    } else if (componentName === "hire") {
-      SetTab(<Hire />);
-      SetTabActive("hire");
-    }
-  }
+  const [currentTab, setCurrentTab] = useState("ViewJob");
 
-  useEffect(() => {
-    if (screen === "review") {
-      changeTab("review");
-    }
-    if (screen === "view_job") {
-      changeTab("ViewJob");
-    }
-  }, [screen]);
   return (
     <Container>
       <div className="view_job_box">
@@ -53,52 +29,47 @@ const ViewScreen = () => {
         <div className="overflow-scroll">
           <div className="d-flex flex-wrap tab_m_nodea mt-4 tab_scroll_cont">
             <Button
-             variant=""
+              variant=""
               className={`tab_btn_vs ${
-                TabActive === "view_job" ? "active_bvs" : ""
+                currentTab === "ViewJob" ? "active_bvs" : ""
               }`}
-              onClick={() => {
-                changeTab("view_job");
-              }}
+              onClick={() => setCurrentTab("ViewJob")}
             >
               View Job Post
             </Button>
             <Button
-             variant=""
+              variant=""
               className={`tab_btn_vs ${
-                TabActive === "invite" ? "active_bvs" : ""
+                currentTab === "invite" ? "active_bvs" : ""
               }`}
-              onClick={() => {
-                changeTab("invite");
-              }}
+              onClick={() => setCurrentTab("invite")}
             >
               Invite freelancers
             </Button>
             <Button
-             variant=""
+              variant=""
               className={`tab_btn_vs ${
-                TabActive === "review" ? "active_bvs" : ""
+                currentTab === "review" ? "active_bvs" : ""
               }`}
-              onClick={() => {
-                changeTab("review");
-              }}
+              onClick={() => setCurrentTab("review")}
             >
               Review proposals
             </Button>
             <Button
-             variant=""
+              variant=""
               className={`tab_btn_vs ${
-                TabActive === "hire" ? "active_bvs" : ""
+                currentTab === "hire" ? "active_bvs" : ""
               }`}
-              onClick={() => {
-                changeTab("hire");
-              }}
+              onClick={() => setCurrentTab("hire")}
             >
               Hire
             </Button>
           </div>
         </div>
-        {Tab}
+        {currentTab === "ViewJob" && <ViewJob />}
+        {currentTab === "invite" && <InviteFreelancer />}
+        {currentTab === "review" && <ReviewProposal />}
+        {currentTab === "hire" && <Hire />}
       </div>
     </Container>
   );

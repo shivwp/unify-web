@@ -186,9 +186,9 @@ const Skill = () => {
                   onChange={(e) => setEnglishLeval(e.target.value)}
                 >
                   <option value="">Select</option>
-                  <option value="fluent">fluent</option>
+                  <option value="fluent">Fluent</option>
                   <option value="conversational">Conversational</option>
-                  <option value="naitve">naitve</option>
+                  <option value="naitve">Naitve</option>
                 </Form.Select>
               </div>
               <div className="see_cat_link">Change your skill category</div>

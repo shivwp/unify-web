@@ -150,7 +150,8 @@ const Screen = () => {
                       <Link to="/view-job/review">View Proposals</Link>
                     </div>
                     <div className="navabr_t_li">
-                      <Link to="/view-job/view_job">View Job Post</Link>
+                      {/* <Link to="/view-job/view_job">View Job Post</Link> */}
+                      <Link to="/view-job">View Job Post</Link>
                     </div>
                     <div className="navabr_t_li">
                       <Link to="/title">Reuse Postings</Link>

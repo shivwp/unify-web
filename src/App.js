@@ -194,7 +194,7 @@ const LoggedInRoutes = () => {
       <Route path="/job-description" element={<JobDescription />} />
       <Route path="/view-job" element={<ViewJob />} />
       <Route path="/view-job/private" element={<MakePrivate />} />
-      <Route path="/view-job/:screen" element={<ViewJob />} />
+      {/* <Route path="/view-job/:screen" element={<ViewJob />} /> */}
       <Route path="/hire-freelancer" element={<HireFreelancer />} />
       <Route
         path="/hire-freelancer/addAddress"
@@ -349,8 +349,11 @@ const LoggedInRoutes = () => {
 function App() {
   return (
     <Suspense fallback={<div>Loading...</div>}>
-      <LoggedInRoutes />
+      {/* {!localStorage.getItem("unify_access") ? ( */}
       <LoggedOutRoutes />
+      {/* ) : ( */}
+      <LoggedInRoutes />
+      {/* )} */}
     </Suspense>
   );
 }
