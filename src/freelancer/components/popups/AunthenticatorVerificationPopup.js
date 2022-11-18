@@ -4,11 +4,9 @@ import "react-responsive-modal/styles.css";
 import Form from 'react-bootstrap/Form';
 import "./popup.css";
 import Button from 'react-bootstrap/Button';
-import Select from "react-select";
 import { Row, Col } from "react-bootstrap";
 
 const AunthenticatorVerificationPopup = ({ open, onCloseModal }) => {
-  const options1 = [{ name: "india", label: "india" }];
   return (
     <>
       <Modal

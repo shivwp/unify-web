@@ -1,43 +1,22 @@
 import Container from "react-bootstrap/Container";
 import { Row, Col } from "react-bootstrap";
-import { Link, useNavigate } from "react-router-dom";
-import Select from "react-select";
+import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
 import $ from "jquery";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getFreelancerProfile,
-  getFreelancerSkills,
-  onAddEmployment,
   onDeleteEmployment,
-  getFreelancerDegreeList,
-  onAddEducation,
   onDeleteEducation,
-  onEditVideo,
-  onEditDesignation,
-  onEditLanguage,
-  getLanguageList,
-  onEditSkills,
-  onEditCertificate,
   onDeleteCertificate,
   editNameInfo,
-  editVisiblity,
   editExprienceLev,
   onDeletePortfolio,
-  onSubmitVerificationDocs,
-  onRequestTestimonial,
-  getCertificationList,
 } from "../../../../redux/actions/profileAction";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper";
-import Slider from "react-slick";
 import moment from "moment";
 import HourPerWeekPopup from "../../../components/popups/HourPerWeekPopup";
 import PortfolioPupup from "../../../components/popups/PortfolioPupup";
-import { countryList } from "../../../../redux/actions/authActions";
-import { useRef } from "react";
-import { height } from "@mui/system";
 import IntroVideoPopup from "../../../../popups/IntroVideoPopup";
 import ReactPaginate from "react-paginate";
 import ConfirmationPopup from "../../../components/popups/ConfirmationPopup";
@@ -46,7 +25,6 @@ import Form from "react-bootstrap/Form";
 
 import VisiblityPopup from "./popups/VisiblityPopup";
 import UserVerification from "./popups/UserVerification";
-import AddExperience from "./popups/AddExperience";
 import WorkHistory from "./popups/WorkHistory";
 import EditSkill from "./popups/EditSkill";
 import EditTitle from "./popups/EditTitle";
@@ -100,7 +78,7 @@ function PortfolioPaginate({
     const endOffset = itemOffset + itemsPerPage;
     setCurrentItems(data?.slice(itemOffset, endOffset));
     setPageCount(Math.ceil(data?.length / itemsPerPage));
-  }, [itemOffset, data]);
+  }, [itemOffset, data, itemsPerPage]);
 
   const handlePageClick = (event) => {
     const newOffset = (event.selected * itemsPerPage) % data?.length;
@@ -398,7 +376,6 @@ const UnifyFreelancer = () => {
   const [editPortfoData, setEditPortfoData] = useState([]);
   const [confirmPopup, setConfirmPopup] = useState(false);
   const [successPopup, setSuccessPopup] = useState(false);
-  const [confirm, setConfirm] = useState(false);
 
   const deleteExprience = useSelector(
     (state) => state?.profile?.deleteExprience
@@ -451,6 +428,7 @@ const UnifyFreelancer = () => {
   useEffect(() => {
     dispatch(getFreelancerProfile());
   }, [
+    dispatch,
     deleteExprience,
     addExprience,
     deleteEducation,
@@ -523,6 +501,7 @@ const UnifyFreelancer = () => {
         >
           <img
             src={thumbnail}
+            alt="thumbnailImage"
             style={{ width: "100%", height: "auto" }}
             onClick={() => setVideoPopup(true)}
           />

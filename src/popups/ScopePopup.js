@@ -2,7 +2,6 @@ import React from "react";
 import { Modal } from "react-responsive-modal";
 import "react-responsive-modal/styles.css";
 import "./popup.css";
-import { Row, Col } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 
 const ScopePopup = ({ open, onCloseModal, onInputChange, values }) => {

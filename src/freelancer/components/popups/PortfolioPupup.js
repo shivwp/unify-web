@@ -21,7 +21,6 @@ const PortfolioPupup = ({
   });
   const [portfolioImage, setPortfolioImage] = useState(null);
   const [showingImage, setShowingImage] = useState(data?.image);
-  const [editPortfoData, setEditPortfoData] = useState([]);
 
 
   const onInputChange = (e) => {

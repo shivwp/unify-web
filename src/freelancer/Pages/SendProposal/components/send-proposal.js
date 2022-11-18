@@ -3,9 +3,8 @@ import Container from "react-bootstrap/Container";
 import { Col, Row } from "react-bootstrap";
 import Title from "../../../../components/title";
 import star from "../../../../icons/star.svg";
-import Select from "react-select";
 import Form from "react-bootstrap/Form";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
@@ -33,10 +32,10 @@ const Screen = () => {
     if (!proposalData) {
       navigate(`/freelancer/project-detail/${id}`);
     }
-  }, []);
+  }, [id, navigate, proposalData]);
   useEffect(() => {
     dispatch(singleJobPostDetails({ job_id: id }));
-  }, [id]);
+  }, [id, dispatch]);
 
   const handleOnChange = (e) => {
     let errorsObject = {};

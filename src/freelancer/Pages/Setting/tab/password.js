@@ -4,8 +4,6 @@ import SideNav from "./site_nav";
 import Title from "../../../../components/title";
 import { useState } from "react";
 import Switch from "react-switch";
-import { onPasswordChange } from "../../../../redux/actions/authActions";
-import { useDispatch } from "react-redux";
 import AddMobNoPupup from "../../../components/popups/AddMobNoPupup";
 import AunthenticatorVerificationPopup from "../../../components/popups/AunthenticatorVerificationPopup";
 import MobileAppPromptPopup from "../../../components/popups/MobileAppPromptPopup";

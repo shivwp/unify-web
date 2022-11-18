@@ -2,12 +2,9 @@ import { useState, useEffect } from "react";
 import Container from "react-bootstrap/Container";
 import { Row, Col } from "react-bootstrap";
 import star from "../../../../icons/star.svg";
-import heart from "../../../../icons/heart.svg";
-import like from "../../../../icons/like.svg";
 import Title from "../../../../components/title";
 import $ from "jquery";
 import "../../../../styles/freelancer.css";
-import Select from "react-select";
 import { useParams, Link } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
@@ -75,7 +72,7 @@ const ProjectSearch = ({ filters }) => {
 
   useEffect(() => {
     dispatch(getJobsList({ pagination: 10, page, ...filters }, ScrollTop));
-  }, [page, onDislikeJobPost, unSaveJobsPost, saveJobsPost, filters]);
+  }, [page, onDislikeJobPost, unSaveJobsPost, saveJobsPost, filters,dispatch]);
 
   useEffect(() => {
     dispatch(onDislikePostReasons());
@@ -286,7 +283,6 @@ const ProjectSearch = ({ filters }) => {
   );
 };
 const ProjectSaved = () => {
-  const [dropdownOpen, setDropdownOpen] = useState(0);
   const dispatch = useDispatch();
   const [page, setPage] = useState(1);
   const savedJobsList = useSelector((state) => state?.job?.savedJobsList?.data);

@@ -2,12 +2,9 @@ import React from "react";
 import { Modal } from "react-responsive-modal";
 import "react-responsive-modal/styles.css";
 import "./popup.css";
-import Select from "react-select";
 import Button from 'react-bootstrap/Button';
-import { Row, Col } from "react-bootstrap";
 
 const MobileAppPromptPopup = ({onCloseModal, open}) => {
-    const options1 = [{ name: "india", label: "india" }];
   return (
     <>
       <Modal

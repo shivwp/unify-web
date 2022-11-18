@@ -3,12 +3,10 @@ import { Modal } from "react-responsive-modal";
 import "react-responsive-modal/styles.css";
 import "./popup.css";
 import Button from "react-bootstrap/Button";
-import Select from "react-select";
 import { Row, Col } from "react-bootstrap";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { countryList } from "../../../redux/actions/authActions";
-import { useState } from "react";
 import Form from "react-bootstrap/Form";
 
 const AddMobNoPupup = ({ open, onCloseModal }) => {
@@ -17,7 +15,7 @@ const AddMobNoPupup = ({ open, onCloseModal }) => {
 
   useEffect(() => {
     dispatch(countryList());
-  }, []);
+  }, [dispatch]);
 
   return (
     <>

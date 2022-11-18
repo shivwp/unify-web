@@ -16,7 +16,6 @@ import {
 } from "../../../../redux/actions/profileAction";
 import CloseAccountPopup from "../../../../popups/CloseAccountPopup";
 import { countryList } from "../../../../redux/actions/authActions";
-import { data } from "jquery";
 import { useNavigate } from "react-router-dom";
 import AgencyNamePopup from "../../../components/popups/AgencyNamePopup";
 
@@ -50,7 +49,7 @@ const Screen = () => {
     dispatch(getFreelancerProfile());
     dispatch(getTimezoneList());
     dispatch(countryList());
-  }, [editFreelancerInfo, editFreelancerLocation]);
+  }, [editFreelancerInfo, editFreelancerLocation, dispatch]);
 
   const onCreateAdditionalAccount = (value) => {
     const data = { user_type: value };

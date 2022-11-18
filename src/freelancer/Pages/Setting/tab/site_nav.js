@@ -4,7 +4,7 @@ import { useState } from "react";
 
 const SideNav = () => {
   const location = useLocation();
-  const [active, Setactive] = useState(
+  const [active] = useState(
     window.location.pathname.replace("/", "")
   );
 
