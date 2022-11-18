@@ -12,6 +12,8 @@ import {
   SET_COUNTRY,
   LOGIN_ERROR,
   SIGNUP_ERROR,
+  FORGOT_PASS_ERROR,
+  FORGOT_OTP_ERROR,
 } from "../types";
 import { GoogleAuthProvider, OAuthProvider } from "firebase/auth";
 
@@ -86,22 +88,35 @@ export const countryList = () => async (dispatch) => {
 };
 
 export const onForgotPassword = (data, navigate) => async (dispatch) => {
-  try {
-    const res = await Axios.post(`/forget-password`, data);
-    if (res.data.status) {
-      navigate("/verify-forgot-otp");
-    }
-  } catch (err) {}
+  await Axios.post(`/forget-password`, data)
+    .then((res) => {
+      if (res.data.status) {
+        navigate("/verify-forgot-otp");
+      }
+    })
+    .catch((err) => {
+      dispatch({
+        type: FORGOT_PASS_ERROR,
+        payload: err.response.data.message,
+      });
+    });
 };
 
-export const onVerifyForgot = (data, navigate) => async (dispatch) => {
-  try {
-    const res = await Axios.post(`/verify-forgot-otp`, data);
-    if (res.data.status) {
-      navigate("/reset-password");
-    }
-  } catch (err) {}
-};
+export const onVerifyForgot =
+  (data, setReOtp, navigate) => async (dispatch) => {
+    await Axios.post(`/verify-forgot-otp`, data)
+      .then((res) => {
+        if (res.data.status) {
+          navigate("/reset-password");
+        }
+      })
+      .catch((err) => {
+        dispatch({
+          type: FORGOT_OTP_ERROR,
+          payload: err.response.data.message,
+        });
+      });
+  };
 
 export const onResetPassword = (data, navigate) => async (dispatch) => {
   try {

@@ -3334,8 +3334,13 @@
   background-color: #ebebf7;
   height: 45px;
   width: 100%;
-  margin: 10px 0;
+  /* margin: 10px 0; */
   padding: 0 40px;
+}
+
+.form-control.is-invalid,
+.was-validated .form-control:invalid {
+  background-image: none;
 }
 
 .forgot_pass_container .email_input input::placeholder {
@@ -3343,19 +3348,46 @@
   font-weight: 500;
 }
 
-.forgot_pass_container .forgot_pass_btn button {
+.forgot_pass_container .forgot_pass_btn {
+  width: 60%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.forgot_pass_container .forgot_pass_btn .fpbc {
+  background-color: #fff;
+  color: #170048;
+}
+.forgot_pass_container .forgot_pass_btn .fpbs {
   background-color: #170048;
-  padding: 10px 60px;
   color: #fff;
-  border: none;
+}
+
+.forgot_pass_container .forgot_pass_btn button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 0;
   border-radius: 30px;
   font-weight: 500;
   font-size: 15px;
-  margin: 20px 0;
-  -webkit-border-radius: 30px;
-  -moz-border-radius: 30px;
-  -ms-border-radius: 30px;
-  -o-border-radius: 30px;
+  border: 1px solid #170048;
+  margin: 20px 10px 20px 0;
+  width: 150px;
+}
+
+@media screen and (max-width: 425px) {
+  .forgot_pass_container .forgot_pass_btn {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .forgot_pass_container .forgot_pass_btn button {
+    width: 225px;
+    margin-inline: auto;
+  }
 }
 
 .forgot_pass_container .email_input .email_inp {
@@ -4028,7 +4060,13 @@
   background-color: #f5f5f5;
   overflow-x: auto;
 }
-
+.forgot_otp_error {
+  font-size: 12px;
+  color: rgb(255 104 104);
+  font-weight: 400;
+  margin-bottom: -4px;
+  padding: 0;
+}
 .languages_overflow::-webkit-scrollbar {
   width: 6px;
   height: 6px;

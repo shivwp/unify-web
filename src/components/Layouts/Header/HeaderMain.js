@@ -50,6 +50,11 @@ const NavbarHeader = (props) => {
         </div>
         <div className="logout_btn_mob">
           <Link to={`/signin`}>
+            <button>Pricing</button>
+          </Link>
+        </div>
+        <div className="logout_btn_mob">
+          <Link to={`/signin`}>
             <button>Login</button>
           </Link>
         </div>
@@ -68,7 +73,7 @@ const NavbarHeader = (props) => {
       >
         <Container>
           <div className="w-100 d-flex justify-content-between align-items-center flex_rev">
-            <div className="width_100_sm">
+            <div className="width_100_sm navbar_logo">
               <Link to="/">
                 <Navbar.Brand>
                   <img src={logo} className="img-fluid rounded-top" alt="" />
@@ -90,10 +95,13 @@ const NavbarHeader = (props) => {
                   <Nav.Link as={Link} to="/" className="navbar_btn">
                     Browse Jobs
                   </Nav.Link>
-                  <Nav.Link as={Link} to="/Signin" className="navbar_btn">
+                  <Nav.Link as={Link} to="/signin" className="navbar_btn">
+                    Pricing
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/signin" className="navbar_btn">
                     Login
                   </Nav.Link>
-                  <Nav.Link as={Link} to="/Signup" className="active_btn">
+                  <Nav.Link as={Link} to="/signup" className="active_btn">
                     Signup now
                   </Nav.Link>
                 </Nav>

@@ -156,8 +156,9 @@ const Testimonial = lazy(() => import("./components/Testimonial"));
 const AgencyDashboard = lazy(() => import("./Agency/Pages/Dashboard"));
 const SeeTimesheet = lazy(() => import("./freelancer/Pages/SeeTimesheet"));
 const SeeMilestone = lazy(() => import("./freelancer/Pages/MileStone-Earning"));
-const FreelancerMessage = lazy(() => import("./freelancer/Pages/FreelancerMessage"));
-
+const FreelancerMessage = lazy(() =>
+  import("./freelancer/Pages/FreelancerMessage")
+);
 
 const LoggedOutRoutes = () => {
   return (
@@ -245,9 +246,6 @@ const LoggedInRoutes = () => {
         element={<ProjectDetail />}
       />
       <Route path="/freelancer/project-search" element={<ProjectSearch />} />
-      <Route path="/verify-forgot-otp" element={<VerifyForgotOTP />} />
-      <Route path="/forgot-password" element={<ForgotPass />} />
-      <Route path="/reset-password" element={<ResetPass />} />
       <Route path="/submit-testimonial/:id" element={<Testimonial />} />
       <Route path="/agency/dashboard" element={<AgencyDashboard />} />
       <Route
