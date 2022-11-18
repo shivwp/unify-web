@@ -136,7 +136,9 @@ const Screen = () => {
                 {menuBarPosting === item.id && (
                   <div className="menu_bar" id="menu_bar1">
                     <div className="navabr_t_li">
-                      <Link to="/dashboard/edit-posting">Edit Posting</Link>
+                      <Link to={`/dashboard/edit-posting/${item.id}`}>
+                        Edit Posting
+                      </Link>
                     </div>
                     <div
                       className="navabr_t_li"

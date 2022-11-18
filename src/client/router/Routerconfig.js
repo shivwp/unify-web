@@ -1,6 +1,4 @@
-import { Routes, Route } from "react-router-dom";
-
-import App from "../../App";
+import Home from "../../Home";
 import Signup from "../Pages/Signup";
 import Signin from "../Pages/Signin";
 import Createcategory from "../Pages/Create-Category";
@@ -58,7 +56,7 @@ import DraftJobListScreen from "../Pages/AllDraftPostings";
 const RouterConfig = () => {
   return (
     <Routes>
-      <Route path="/" element={<App />} />
+      <Route path="/" element={<Home />} />
       <Route path="/signup" element={<Signup />} />
       <Route path="/verify-signup" element={<VerifySignUp />} />
       <Route path="/verify-forgot-otp" element={<VerifyForgotOTP />} />

@@ -176,6 +176,14 @@ export const onCloseJob = (data, onCloseModal) => async (dispatch) => {
   } catch (err) {}
 };
 
+export const editJobPosting = (data) => async (dispatch) => {
+  try {
+    Axios.post("/update-job", data, config).then((res) => {
+      console.log(res);
+    });
+  } catch (err) {}
+};
+
 export const getAllProposals = () => async (dispatch) => {
   try {
     Axios.get("/all-proposal", config).then((res) => {

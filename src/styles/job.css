@@ -2307,6 +2307,12 @@
   color: #6d2ef1;
 }
 
+.rot_svg_oety {
+  position: relative;
+  font-size: 16;
+  font-weight: 500;
+}
+
 .rot_svg_oety svg {
   transform: rotate3d(1, 1, 1, 45deg);
   -webkit-transform: rotate3d(1, 1, 1, 45deg);
@@ -3880,4 +3886,162 @@
 }
 .milestone_overview_left .file_show .about_file .file_info .file_size {
   margin-right: 20px;
+}
+
+/* Time Sheet  */
+
+.timesheet {
+  margin-top: 20px;
+  border: 1px solid rgb(192, 192, 192);
+  border-radius: 20px;
+  padding: 20px;
+}
+.timesheet .timesheet_times {
+  display: flex;
+  justify-content: space-evenly;
+}
+.timesheet .timesheet_times .timesheet_time {
+  display: flex;
+  flex-direction: column;
+  width: calc(100% / 4);
+}
+.timesheet .timesheet_times .timesheet_time .time_limit {
+  color: rgb(182, 181, 181);
+  font-size: 10px;
+}
+.timesheet .timesheet_times .timesheet_time .headings {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.timesheet .work_diary .heading_and_btn {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid rgb(192, 192, 192);
+  margin-bottom: 20px;
+}
+
+.timesheet .work_diary .heading_and_btn button {
+  background-color: #fff;
+  border: 1px solid #6d2ef1;
+  border-radius: 30px;
+  padding: 5px 20px;
+  margin: 10px 0;
+  color: #6d2ef1;
+}
+
+.timesheet .work_diary .heading_and_btn button:hover {
+  background-color: #6d2ef1;
+  color: #fff;
+}
+
+.timesheet .work_diary .heading_and_btn > span {
+  font-size: 20px;
+  font-weight: 500;
+}
+.timesheet .get_date_range {
+}
+.timesheet .heading {
+  font-size: 20px;
+  font-weight: 600;
+}
+.timesheet .day_timesheet {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid rgb(191, 191, 191);
+  margin: 10px 0;
+}
+.timesheet .progress_timesheet {
+  width: 60%;
+}
+.timesheet .progress_timesheet .progress {
+  height: 10px;
+}
+
+.timesheet .timesheet_tracked {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+.timesheet .timesheet_tracked .tracked {
+  display: flex;
+  flex-direction: column;
+}
+.timesheet .timesheet_tracked .tracked .heading {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.selected_skills_filter_jobs {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.selected_skills_filter_jobs .skill {
+  background: #e6dbfd;
+  border-radius: 30px;
+  padding: 5px 15px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 3px;
+}
+.selected_skills_filter_jobs .skill span {
+  border: none;
+  padding: 0 5px;
+  font-size: 12px;
+}
+.selected_skills_filter_jobs .skill button {
+  border: none;
+  padding: 0 5px;
+}
+.selected_skills_filter_jobs .skill button:hover {
+  border: none;
+}
+
+.suggessted_skills {
+  position: absolute;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  max-height: 155px;
+  overflow-y: auto;
+}
+.suggessted_skills span {
+  border-bottom: 1px solid rgb(191, 191, 191);
+  width: 100%;
+  padding: 3px 10px;
+  background-color: rgb(239, 239, 239);
+  cursor: pointer;
+}
+.suggessted_skills span:hover {
+  background-color: rgb(244, 244, 244);
+}
+
+.languages_overflow {
+  overflow-y: scroll;
+  max-height: 310px;
+}
+
+.languages_overflow::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  background-color: #f5f5f5;
+  overflow-x: auto;
+}
+
+.languages_overflow::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+  background-color: #f5f5f5;
+  overflow-x: auto;
+}
+
+.languages_overflow::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #6d2ef1;
+  overflow-x: auto;
 }
