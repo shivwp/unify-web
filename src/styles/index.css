@@ -278,6 +278,7 @@ body {
 
   .as_used {
     text-align: center;
+    margin: 10px 0;
   }
 
   .shuuter_man {
@@ -395,7 +396,7 @@ body {
   top: 40%;
   width: 200px;
   height: 150px;
-  background-image: url("../../public/assets/Group 2272.svg");
+  /* background-image: url("../../public/assets/Group 2272.svg"); */
   background-repeat: no-repeat;
   background-position: center;
   right: 26%;
@@ -416,7 +417,7 @@ body {
 }
 
 .mr_top {
-  margin-top: 5%;
+  margin-top: 7%;
 }
 
 .sllider_margin {
@@ -452,28 +453,39 @@ body {
 }
 
 .slider_get_btn button {
-  width: 179px;
-  height: 47px;
-  border-radius: 23px;
-  font-size: 18px;
+  width: 300px;
+  height: 80px;
+  border-radius: 60px;
+  font-size: 27px;
   border-color: #170048;
   color: #ffffff;
   line-height: 24px;
   font-weight: 800;
   font-family: "Poppins";
+  text-transform: uppercase;
 }
 
 .slider_get_btn button:hover {
   background-color: transparent !important;
-  border: #fff solid;
+  /* border: #fff solid; */
+}
+
+.navbar_logo img {
+  width: 110px;
+}
+
+@media screen and (max-width: 769px) {
+  .navbar_logo img {
+    width: 100px;
+  }
 }
 
 .clients_sec {
   background-color: #fff;
-  padding: 19px 0px 15px 0px;
+  padding: 25px 0;
   border-bottom: #e9b6e5 10px solid;
   position: relative;
-  margin-top: -97px;
+  margin-top: 0px;
   position: relative;
   z-index: 10;
 }
@@ -498,6 +510,7 @@ body {
   font-family: "Poppins";
   position: relative;
   z-index: 1;
+  margin-bottom: 30px;
 }
 
 .filter_area {
@@ -637,16 +650,21 @@ body {
   background-color: #fff;
   border: #180095 solid 2px;
   color: #180095;
-  padding: 12px 40px;
-  border-radius: 30px;
+  padding: 18px 70px;
+  border-radius: 50px;
   font-size: 18px;
   text-transform: uppercase;
   font-weight: bolder;
   font-family: "Poppins";
-  -webkit-border-radius: 30px;
-  -moz-border-radius: 30px;
-  -ms-border-radius: 30px;
-  -o-border-radius: 30px;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  -ms-border-radius: 50px;
+}
+
+@media screen and (max-width: 426px) {
+  .btn_services button {
+    padding: 18px 30px;
+  }
 }
 
 .btn_services button:hover {
@@ -664,15 +682,16 @@ body {
 }
 
 .freelance_section {
-  padding: 60px 0px;
-  margin-top: 80px;
-  background-image: url("/public/assets/freelance_world.png");
+  padding: 120px 0px 0 0;
+  width: 90%;
+  margin-left: auto;
+  background-image: url("/public/assets/talent_image.png");
   background-repeat: no-repeat;
   background-size: 70% 100%;
   position: relative;
   background-position: right;
-  /* z-index: -1; */
   z-index: 1;
+  margin-bottom: 100px;
 }
 
 .sp-right-0 {
@@ -681,9 +700,9 @@ body {
 }
 
 .free_sec_head h2 {
-  font-size: 43px;
+  font-size: 65px;
   letter-spacing: -1px;
-  line-height: 50px;
+  line-height: 67px;
   color: #00065a;
   font-weight: 700;
   font-family: "Poppins";
@@ -694,9 +713,9 @@ body {
 }
 
 .free_sec_para p {
-  font-size: 14px;
+  font-size: 22px;
   color: #393939;
-  font-weight: 500;
+  font-weight: 600;
   font-family: "Poppins";
 }
 
@@ -705,8 +724,12 @@ body {
   margin-top: calc(var(--bs-gutter-y) * -0.5);
   margin-right: calc(var(--bs-gutter-y) * 6.5);
   margin-left: calc(var(--bs-gutter-y) * -1);
-  margin: 0 0 0 13px !important;
-  width: 90% !important;
+  width: 100% !important;
+  position: relative;
+  top: 144px;
+}
+.box_area_freelanec .col-md-4 {
+  border-bottom: 1px solid #777777;
 }
 
 .box_area_border {
@@ -731,25 +754,31 @@ body {
   height: 27%;
   width: 105%;
   z-index: -1;
-  bottom: 5%;
+  bottom: 11%;
 }
 
 .box_area_border::before {
   content: " ";
   position: absolute;
-  left: 40%;
+  left: 50%;
   background-color: #ff88fe;
-  height: 100%;
+  height: 200%;
   width: 20%;
 }
 
 .box_area_border::after {
   content: " ";
   position: absolute;
-  left: 60%;
+  left: 70%;
   background-color: #6d2ef1;
-  height: 100%;
+  height: 200%;
   width: 40%;
+}
+
+@media screen and (max-width: 426px) {
+  .box_area_border::after {
+    left: 60%;
+  }
 }
 
 .freelance_box {
@@ -757,18 +786,277 @@ body {
   text-align: center;
   width: 100%;
 }
+.freelance_box p,
+.freelance_box h2 {
+  padding: 25px 30px;
+  text-align: center;
+  max-width: 260px;
+  margin-inline: auto;
+}
 
 .freelance_head {
   height: 80px;
 }
 
+/* home top header start */
+.home_top_header {
+  position: relative;
+  height: 900px;
+  display: flex;
+  justify-content: space-between;
+}
+.home_top_header .home_left {
+  margin: 155px 0 0 0;
+}
+.home_top_header .home_left .heading {
+  font-size: 60px;
+  color: #170048;
+  font-weight: 700;
+  line-height: 70px;
+}
+.home_top_header .home_left .description {
+  color: #393939;
+  font-weight: 500;
+  font-size: 27px;
+  width: 500px;
+  margin-top: 10px;
+  margin-top: 10px;
+}
+
+.home_top_header .home_right {
+  max-width: 600px;
+  margin-top: 80px;
+}
+.home_top_header .home_right img {
+  max-width: 500px;
+  height: auto;
+}
+
+.svg_sup1 {
+  position: absolute;
+  bottom: 50px;
+  left: 30%;
+  z-index: -1;
+}
+.svg_sup2 {
+  position: absolute;
+  top: 45px;
+  right: -5%;
+  z-index: -1;
+}
+
+/* home top header end */
+
+/* home categories start */
+.home_categories {
+  border: 1px solid #dfdfdf;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 30px;
+  border-radius: 20px;
+  margin: 10px 0;
+  cursor: pointer;
+}
+.home_categories .category_logo {
+  width: 50px;
+  margin: 5px 0;
+}
+.home_categories .category_logo img {
+  width: 100%;
+  height: auto;
+}
+.home_categories .category_title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #170048;
+  margin: 15px 0;
+}
+.home_categories .category_about {
+  display: flex;
+}
+.home_categories .rating {
+  display: flex;
+  justify-content: center;
+  width: 50%;
+  border-right: 2px solid #c4c4c4;
+  font-weight: 700;
+  color: #393939;
+}
+.home_categories span {
+  margin-right: 10px;
+  display: flex;
+  align-items: center;
+}
+.home_categories .skills_count {
+  display: flex;
+  justify-content: center;
+  color: #393939;
+  width: 50%;
+  font-weight: 700;
+  margin-right: 10px;
+  display: flex;
+  align-items: center;
+}
+
+/* home categories end */
+
+/* trusted brands start */
+.brands {
+  border: 1px solid #707070;
+  border-radius: 20px;
+  padding: 30px;
+  margin: 20px;
+}
+.brands .brand_icon {
+  width: 90px;
+  margin: auto;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.brands .brand_icon img {
+  width: 100%;
+  height: auto;
+  margin: auto;
+}
+.brands .brand_title {
+  color: #170048;
+  font-size: 18px;
+  font-weight: 700;
+  max-width: 320px;
+  margin: 15px auto;
+  text-align: center;
+}
+.brands .brand_officer {
+  font-size: 8px;
+  text-align: center;
+  color: #777777;
+}
+.brands .Results {
+  color: #777777;
+}
+.brands .Results .result {
+  font-size: 13px;
+  border-bottom: 2px solid #b5b5b5;
+  margin-top: 30px;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+
+.brands .Results .projects {
+  font-size: 13px;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5px;
+}
+.brands .Results .projects > div {
+  display: flex;
+  flex-direction: column;
+}
+.brands .Results .projects > div .count {
+  font-size: 18px;
+  font-weight: 700;
+  color: #170048;
+}
+.brands .Results .projects > div .title {
+  font-size: 10px;
+  color: #777777;
+}
+
+/* trusted brands end */
+
+@media screen and (max-width: 1440px) {
+  .freelance_section {
+    background-size: 80% 100%;
+  }
+}
+@media screen and (max-width: 1024px) {
+  .home_top_header {
+    height: 750px;
+  }
+  .home_top_header .home_left .heading {
+    font-size: 40px;
+    line-height: 45px;
+  }
+  .home_top_header .home_left .description {
+    font-size: 22px;
+    width: 472px;
+  }
+  .home_top_header .home_right img {
+    max-width: 400px;
+    height: auto;
+    position: relative;
+    left: -25px;
+  }
+}
+@media screen and (max-width: 769px) {
+  .home_top_header .home_left .heading {
+    font-size: 32px;
+    line-height: 45px;
+  }
+  .home_top_header .home_left .description {
+    font-size: 16px;
+    width: 425px;
+  }
+  .home_top_header .home_right img {
+    max-width: 300px;
+    height: auto;
+    position: relative;
+    left: -42px;
+  }
+}
+@media screen and (max-width: 425px) {
+  .home_top_header .home_left {
+    margin: 27px 5px 0 5px;
+  }
+  .home_top_header {
+    flex-direction: column;
+    justify-content: unset;
+    align-items: center;
+  }
+  .home_top_header .home_right img {
+    max-width: 300px;
+    height: auto;
+    position: relative;
+    left: 0px;
+  }
+
+  .slider_get_btn {
+    bottom: 90px !important;
+  }
+  .home_top_header .home_left .description {
+    width: 310px;
+    text-align: center;
+  }
+  .home_top_header .home_left .heading {
+    font-size: 32px;
+    line-height: 37px;
+    text-align: center;
+  }
+  .home_top_header .home_right img {
+    max-width: 270px;
+  }
+  .home_top_header .home_right {
+    margin-top: 15px;
+  }
+  .slider_get_btn {
+    bottom: 180px !important;
+  }
+  .slider_get_btn button {
+    width: 270px;
+    height: 60px;
+  }
+}
 .freelance_head h2 {
   font-size: 22px;
   letter-spacing: 0px;
   padding: 15px 0px;
   line-height: 23px;
   color: #ffffff;
-  font-weight: 600;
+  font-weight: 700;
   font-family: "Poppins";
 }
 
@@ -787,8 +1075,8 @@ body {
   line-height: 18px;
   color: #fff;
   opacity: 40%;
-  margin-top: 10px;
-  padding-bottom: 20px;
+  margin-top: -12px;
+  padding-bottom: 0px;
   font-weight: 300;
   font-family: "Poppins";
 }
@@ -801,14 +1089,21 @@ body {
 }
 
 .find-freel-head h1 {
-  font-size: 50px;
+  font-size: 70px;
   letter-spacing: -1px;
-  line-height: 53px;
+  line-height: 70px;
   color: #00065a;
   font-weight: 700;
   font-family: "Poppins";
   text-align: center;
   position: relative;
+}
+
+@media screen and (max-width: 425px) {
+  .find-freel-head h1 {
+    font-size: 43px;
+    line-height: 46px;
+  }
 }
 
 .ffh {
@@ -818,10 +1113,10 @@ body {
 .ffh::before {
   content: " ";
   position: absolute;
-  top: 35px;
+  top: 62px;
   left: 0%;
-  width: 200px;
-  background-color: #ff46fd;
+  width: 250px;
+  background-color: #ff88fe;
   height: 17px;
   z-index: -1;
 }
@@ -1133,6 +1428,14 @@ body {
 .navbar-expand-md .navbar-nav .nav-link {
   height: fit-content;
   font-weight: 500;
+  font-size: 20px;
+}
+@media only screen and (max-width: 769px) {
+  .navbar-expand-md .navbar-nav .nav-link {
+    height: fit-content;
+    font-weight: 500;
+    font-size: 16px;
+  }
 }
 
 .nav_pro_node {
@@ -2941,7 +3244,7 @@ body {
 }
 
 .sign_form_shapb {
-  background-image: url("../../public/assets/Group 2272.png");
+  background-image: url("../../public/assets/Group2272.png");
   position: absolute;
   left: 0;
   background-repeat: no-repeat;
@@ -4739,6 +5042,11 @@ a {
     margin-top: 65px;
   }
 }
+@media screen and (max-width: 425px) {
+  .find-freel-para {
+    margin-top: 65px;
+  }
+}
 
 @media only screen and (max-width: 800px) {
   .fworld_swip .swiper-button-prev,
@@ -4760,6 +5068,24 @@ a {
     font-weight: bolder;
     visibility: visible !important;
     -webkit-text-stroke-width: 1px;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .freelance_section {
+    background-size: contain !important;
+  }
+  .free_sec_head h2 {
+    font-size: 45px;
+    line-height: 47px;
+  }
+  .free_sec_para p {
+    font-size: 16px;
+  }
+}
+@media only screen and (max-width: 991px) {
+  .freelance_section {
+    background-size: contain !important;
   }
 }
 
@@ -4802,10 +5128,6 @@ a {
     margin-bottom: 100px;
   }
 
-  .mdd-none {
-    display: none !important;
-  }
-
   .find_swip .swiper-button-next,
   .find_swip .swiper-button-prev {
     top: 22% !important;
@@ -4813,6 +5135,25 @@ a {
 
   .freelance_card_profile {
     justify-content: center;
+  }
+
+  @media only screen and (max-width: 670px) {
+    .find_swip .swiper-button-next,
+    .find_swip .swiper-button-prev {
+      top: 46% !important;
+    }
+  }
+
+  .swiper-button-next,
+  .swiper-rtl .swiper-button-prev {
+    right: 6px;
+    left: auto;
+  }
+
+  .swiper-button-prev,
+  .swiper-rtl .swiper-button-next {
+    left: 8px;
+    right: auto;
   }
 
   .find_swip .swiper-button-next:after,
@@ -4900,7 +5241,7 @@ a {
   }
 
   .free_sec_para {
-    background-image: url("/public/assets/freelance_world.png");
+    background-image: url("/public/assets/talent_image.png");
     background-repeat: no-repeat;
     padding: 30px 5px 250px 5px;
     background-position: bottom center;
@@ -4945,6 +5286,12 @@ a {
     font-size: 45px;
     line-height: 50px;
     text-align: center;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .free_sec_head h2 {
+    margin-top: 100px;
   }
 }
 
@@ -5047,8 +5394,10 @@ a {
 }
 
 .nbox_area_border {
-  margin: 0 0 0 13px !important;
+  margin: 0 0 0 15px !important;
   width: 90% !important;
+  position: relative;
+  top: 144px;
 }
 
 .css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root {

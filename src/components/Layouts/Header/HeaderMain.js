@@ -76,7 +76,7 @@ const NavbarHeader = (props) => {
             <div className="width_100_sm navbar_logo">
               <Link to="/">
                 <Navbar.Brand>
-                  <img src={logo} className="img-fluid rounded-top" alt="" />
+                  <img src={logo} className="img-fluid rounded-top " alt="" />
                 </Navbar.Brand>
               </Link>
             </div>
