@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Row, Col, Container } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import RemoveDraftPopup from "../../../../popups/RemoveDraftPopup";
@@ -15,7 +15,7 @@ const AllDraftPostings = () => {
 
   useEffect(() => {
     dispatch(getAllClientDraftPosting());
-  }, []);
+  }, [dispatch]);
 
   return (
     <>

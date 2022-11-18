@@ -14,7 +14,7 @@ const RemovePostingPopup = ({ open, onCloseModal, menuBarPosting }) => {
 
   useEffect(() => {
     dispatch(closeJobReasonList());
-  }, []);
+  }, [dispatch]);
 
   const handleCloseJob = () => {
     const data = {

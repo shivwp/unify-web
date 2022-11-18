@@ -2,98 +2,8 @@ import Container from "react-bootstrap/Container";
 import { Row, Col } from "react-bootstrap";
 import Title from "../../components/title";
 import { Link } from "react-router-dom";
-import { useState } from "react";
-import Select from "react-select";
+import { useState } from "react"; 
 import Switch from "react-switch";
-
-
-const Profile = () => {
-  return (
-    <>
-      <div className="card_pcwuguoequ d-flex justify-content-between">
-        <div className="d-flex">
-          <div className="profile_crign">
-            <img src="/assets/PRO-2.png" alt="" />
-          </div>
-          <div className="pcrign_name">
-            <div className="rign_nem">Lauren Palmer</div>
-            <div className="rign_mali">laurenpalmera@gmx.com</div>
-          </div>
-        </div>
-        <div className="d-flex align-items-center svgciweyiviw">
-          <svg
-            id="chat"
-            xmlns="http://www.w3.org/2000/svg"
-            width="35.789"
-            height="35.839"
-            viewBox="0 0 35.789 35.839"
-          >
-            <g id="Group_2437" data-name="Group 2437" transform="translate(0)">
-              <g
-                id="Group_2436"
-                data-name="Group 2436"
-                transform="translate(0)"
-              >
-                <path
-                  id="Path_4494"
-                  data-name="Path 4494"
-                  d="M32.092,0H4.237A3.969,3.969,0,0,0,.27,3.973V23.862a3.973,3.973,0,0,0,3.967,3.973H17.115l9.451,7.646c.846.684,1.54.358,1.54-.737V27.836h3.986a3.969,3.969,0,0,0,3.967-3.973V3.973A3.973,3.973,0,0,0,32.092,0Zm-.01,23.859H24.129V28.4l-5.607-4.536H4.247V3.977H32.082V23.859Z"
-                  transform="translate(-0.27)"
-                  fill="#adbbc7"
-                />
-              </g>
-            </g>
-            <g
-              id="Group_2439"
-              data-name="Group 2439"
-              transform="translate(7.953 11.93)"
-            >
-              <g id="Group_2438" data-name="Group 2438">
-                <rect
-                  id="Rectangle_632"
-                  data-name="Rectangle 632"
-                  width="3.977"
-                  height="3.977"
-                  fill="#adbbc7"
-                />
-              </g>
-            </g>
-            <g
-              id="Group_2441"
-              data-name="Group 2441"
-              transform="translate(15.906 11.93)"
-            >
-              <g id="Group_2440" data-name="Group 2440">
-                <rect
-                  id="Rectangle_633"
-                  data-name="Rectangle 633"
-                  width="3.977"
-                  height="3.977"
-                  fill="#adbbc7"
-                />
-              </g>
-            </g>
-            <g
-              id="Group_2443"
-              data-name="Group 2443"
-              transform="translate(23.859 11.93)"
-            >
-              <g id="Group_2442" data-name="Group 2442">
-                <rect
-                  id="Rectangle_634"
-                  data-name="Rectangle 634"
-                  width="3.977"
-                  height="3.977"
-                  fill="#adbbc7"
-                />
-              </g>
-            </g>
-          </svg>
-        </div>
-      </div>
-    </>
-  );
-};
 
 const RecomendedProject = () => {
   return (
@@ -135,26 +45,12 @@ const Pdata = () => {
 };
 
 const Dashboard = () => {
-  const [active, setactive] = useState(
-    window.location.pathname.replace("/", "")
-  );
+ 
   Title(" | Dashboard");
   const [checked, setChecked] = useState(false);
   const handleChange = (nextChecked) => {
     setChecked(nextChecked);
   };
-  const options1 = [
-    {
-      name: "Month",
-      label: "Month",
-    },
-  ];
-
-
-
-  const labels = ["Jan", "Feb", "Mar", "Apr", "May"];
-  // add +10 on each data to view graph line accurate
-  const addition = 9;
 
   return (
     <>
@@ -695,64 +591,7 @@ const Dashboard = () => {
                     </div>
                   </div>
                 </div>
-              </div>
-              {/* <Row>
-                  <Col lg={4} md={6} className="dboard_box_mr_mbo mb-3">
-                    <div>
-                      <div className="d-flex justify-content-between">
-                        <div className="dcard_htext">Total Projects</div>
-                        <div className="dcard_htext">105</div>
-                      </div>
-    
-                      <div className="d-flex justify-content-between mt-2">
-                        <div className="dcard_lghthead">
-                          <span>20</span> projects in this month
-                        </div>
-                        <div className="ps-relative select_drd_mth">
-                          <Select
-                            className="custom_css_select"
-                            placeholder="Month"
-                            options={options1}
-                          />
-                          <div className="pls_s_na_input">+</div>
-                        </div>
-                      </div>
-                      <div
-                        className="d-flex overflow-scroll cwig9weioioi justify-content-center"
-                        style={{ height: "210px" }}
-                      >
-                        <Bar options={options} height={200} data={data} />
-                      </div>
-                      <div></div>
-                    </div>
-                  </Col>
-                  <Col lg={4} md={6} className="dboard_box_mr_mbo mb-3">
-                    <div>
-                      <div className="d-flex justify-content-between align-items-center mb-3">
-                        <div className="dcard_htext">Clients</div>
-                        <div className="dcard_ltxt">
-                          <Link to="/">View All</Link>
-                        </div>
-                      </div>
-                      <Profile />
-                      <Profile />
-                      <Profile />
-                    </div>
-                  </Col>
-                  <Col lg={4} md={6} className="dboard_box_mr_mbo mb-3">
-                    <div>
-                      <div className="d-flex justify-content-between align-items-center mb-3">
-                        <div className="dcard_htext">Recent Payments</div>
-                        <div className="dcard_ltxt cpink_ltxt">
-                          <Link to="/">View All</Link>
-                        </div>
-                      </div>
-                      <ProfilePayment />
-                      <ProfilePayment />
-                      <ProfilePayment />
-                    </div>
-                  </Col>
-                </Row> */}
+              </div> 
               <div className="d-flex box_ylow_dboard flex-wrap mt-5 pt-3 mb-5">
                 <div className="bylow_iconbox">
                   <svg

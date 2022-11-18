@@ -4,9 +4,8 @@ import Navbar from "react-bootstrap/Navbar";
 import logo from "../../../assets/logo.svg";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import { Link, useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useDispatch } from "react-redux";
-import Button from "react-bootstrap/Button";
 import { onOnlineStatus } from "../../../redux/actions/authActions";
 
 const Header = (props) => {
