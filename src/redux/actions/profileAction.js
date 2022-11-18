@@ -34,6 +34,7 @@ import {
   REQUEST_TESTIMONIAL,
   GET_TESTIMONIAL,
   SET_CATEGORY_LIST,
+  SET_PORTFOLIO_ERROR,
 } from "../types";
 let userDetails = JSON.parse(localStorage.getItem("unify_user"));
 
@@ -285,13 +286,15 @@ export const onEditDesignation =
   };
 
 export const onEditPortfolio =
-  (data, popup, successPopup, setSuccessPopup) => async (dispatch) => {
-    try {
-      Axios.post("/edit-portfolio-info", data, config).then((res) => {
+  (data, popup, successPopup, setSuccessPopup) => (dispatch) => {
+    Axios.post("/edit-portfolio-info", data, config)
+      .then((res) => {
+        console.log(res);
         dispatch({
           type: SET_EDIT_PORTFOLIO,
           payload: res.data,
         });
+
         popup();
         setSuccessPopup(
           <SuccessPopup
@@ -299,8 +302,13 @@ export const onEditPortfolio =
             message="Portfolio Added Successfully"
           />
         );
+      })
+      .catch((err) => {
+        dispatch({
+          type: SET_PORTFOLIO_ERROR,
+          payload: err.response.data.message,
+        });
       });
-    } catch (err) {}
   };
 
 export const onEditLanguage =

@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Modal } from "react-responsive-modal";
 import "react-responsive-modal/styles.css";
 import "./popup.css";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { onEditPortfolio } from "../../../redux/actions/profileAction";
@@ -19,21 +19,56 @@ const PortfolioPupup = ({
     title: data?.name,
     description: data?.description,
   });
+  const [errors, setErrors] = useState({});
   const [portfolioImage, setPortfolioImage] = useState(null);
   const [showingImage, setShowingImage] = useState(data?.image);
-  const [editPortfoData, setEditPortfoData] = useState([]);
-
+  const portfolioError = useSelector((state) => state.profile.portfolioError);
+  const [editPortfoData, setEditPortfoData] = useState();
 
   const onInputChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
+    setErrors({ ...errors, [e.target.name]: false });
   };
+
+  useEffect(() => {
+    if (portfolioError) {
+      setEditPortfoData(portfolioError);
+    }
+  }, [portfolioError]);
 
   const onImageChange = (e) => {
     setPortfolioImage(e.target.files[0]);
     setShowingImage(URL.createObjectURL(e.target.files[0]));
+    setEditPortfoData("");
   };
 
   const submitPortfolio = (e) => {
+    let errorExist = false;
+    let errorsObject = {};
+
+    if (
+      values.title === "" ||
+      values.title === null ||
+      values.title === undefined
+    ) {
+      errorsObject.title = true;
+      errorExist = true;
+    }
+
+    if (
+      values.description === "" ||
+      values.description === null ||
+      values.description === undefined
+    ) {
+      errorsObject.description = true;
+      errorExist = true;
+    }
+
+    if (errorExist) {
+      setErrors(errorsObject);
+      return false;
+    }
+
     const formData = new FormData();
     formData.append("title", values?.title);
     formData.append("description", values?.description);
@@ -62,7 +97,8 @@ const PortfolioPupup = ({
         classNames={{ modal: "freelancer_popups portfolio_popup" }}
         center
       >
-        <h5>Add Portfolio</h5>
+        {data?.id ? <h5>Edit Portfolio</h5> : <h5>Add Portfolio</h5>}
+
         <div className="content">
           <div className="freelancer_popup_inps">
             <div className="popup_form_element">
@@ -78,6 +114,9 @@ const PortfolioPupup = ({
                 onChange={(e) => onInputChange(e)}
                 style={{ padding: "7px 20px 7px 10px" }}
               />
+              <span className="signup-error">
+                {errors.title && "Please enter your title"}
+              </span>
             </div>
 
             <div>
@@ -94,6 +133,9 @@ const PortfolioPupup = ({
                   value={values?.description}
                   onChange={(e) => onInputChange(e)}
                 ></Form.Control>
+                <span className="signup-error">
+                  {errors.description && "Please enter your description"}
+                </span>
               </div>
             </div>
             <div className="portfolio_attach mb-3">
@@ -143,6 +185,7 @@ const PortfolioPupup = ({
                   </>
                 </Form.Label>
               </div>
+              <span className="signup-error">{editPortfoData}</span>
             </div>
             <p style={{ fontSize: 13, color: "#304E71" }}>
               You may attach up to 10 files under the size of 25MB each. Include

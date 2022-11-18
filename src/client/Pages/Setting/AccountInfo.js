@@ -17,6 +17,7 @@ const AccountInfo = ({
   onSubmitClientData,
   onProfileChange,
   objectUrlAbc,
+  errors,
 }) => {
   return (
     <Form onSubmit={(e) => onSubmitClientData(e)}>
@@ -53,8 +54,11 @@ const AccountInfo = ({
                   name="first_name"
                   value={values?.first_name}
                   onChange={(e) => onInputChange(e)}
-                  placeholder="Ankita"
+                  placeholder="John"
                 />
+                <span className="signup-error">
+                  {errors.first_name && "Please enter your first name"}
+                </span>
               </Form.Group>
               <Form.Group className="inp_fields">
                 <Form.Label style={{ marginBottom: "0px" }}>Email</Form.Label>
@@ -63,9 +67,12 @@ const AccountInfo = ({
                   name="email"
                   value={values?.email}
                   onChange={(e) => onInputChange(e)}
-                  placeholder="ankita@gmail.com"
+                  placeholder="johndoe@gmail.com"
                 />
               </Form.Group>
+              <span className="signup-error">
+                {errors.email && "Please enter your email"}
+              </span>
             </Col>
             <Col lg={6} md={6} sm={12}>
               <Form.Group className="inp_fields">
@@ -77,8 +84,11 @@ const AccountInfo = ({
                   name="last_name"
                   value={values?.last_name}
                   onChange={(e) => onInputChange(e)}
-                  placeholder="Kumavat"
+                  placeholder="Doe"
                 />
+                <span className="signup-error">
+                  {errors.last_name && "Please enter your last name"}
+                </span>
               </Form.Group>
             </Col>
           </Row>
@@ -101,6 +111,9 @@ const AccountInfo = ({
                   onChange={(e) => onInputChange(e)}
                   placeholder="Company Name"
                 />
+                <span className="signup-error">
+                  {errors.company_name && "Please enter company name"}
+                </span>
               </div>
               <div className="inp_fields">
                 <span>Add your industry</span>
@@ -109,12 +122,16 @@ const AccountInfo = ({
                   value={values?.industry}
                   onChange={(e) => onInputChange(e)}
                 >
+                  <option>Select</option>
                   {getIndustries?.map((item, key) => (
                     <option key={key} value={item.title}>
                       {item.title}
                     </option>
                   ))}
                 </select>
+                <span className="signup-error">
+                  {errors.industry && "Select industry"}
+                </span>
               </div>
             </Col>
             <Col lg={6} md={6} sm={12}>
@@ -127,6 +144,9 @@ const AccountInfo = ({
                   onChange={(e) => onInputChange(e)}
                   placeholder=""
                 />
+                <span className="signup-error">
+                  {errors.website && "Please enter website url"}
+                </span>
               </div>
               <div className="inp_fields">
                 <span>Tagline</span>
@@ -137,6 +157,9 @@ const AccountInfo = ({
                   onChange={(e) => onInputChange(e)}
                   placeholder=""
                 />
+                <span className="signup-error">
+                  {errors.tagline && "Please enter your tagline"}
+                </span>
               </div>
             </Col>
             <div className="inp_fields">
@@ -148,6 +171,9 @@ const AccountInfo = ({
                 onChange={(e) => onInputChange(e)}
                 id="descr"
               ></Form.Control>
+              <span className="signup-error">
+                {errors.description && "Please enter your description"}
+              </span>
             </div>
             <div className="inp_fields">
               <span>How many people are in your company?</span>
@@ -197,6 +223,9 @@ const AccountInfo = ({
                   <span>more then 100 employees</span>
                 </Form.Label>
               </div>
+              <span className="signup-error">
+                {errors.employee_no && "Please select company length"}
+              </span>
             </div>
           </Row>
         </div>
@@ -215,6 +244,7 @@ const AccountInfo = ({
                   type="text"
                   name="email"
                   value={`${values?.first_name} ${values?.last_name}`}
+                  disabled
                 />
               </div>
               <div className="inp_fields">
@@ -226,6 +256,9 @@ const AccountInfo = ({
                   onChange={(e) => onInputChange(e)}
                   placeholder="VAT ID"
                 />
+                <span className="signup-error">
+                  {errors.vat_id && "Please enter VAT id"}
+                </span>
               </div>
               <div className="inp_fields">
                 <span>Country</span>
@@ -234,12 +267,16 @@ const AccountInfo = ({
                   value={values?.country}
                   onChange={(e) => onInputChange(e)}
                 >
+                  <option>Select</option>
                   {getCountryList?.map((item, key) => (
                     <option key={key} value={item.name}>
                       {item.name}
                     </option>
                   ))}
                 </select>
+                <span className="signup-error">
+                  {errors.country && "Pleasse select country"}
+                </span>
               </div>
               <div className="inp_fields">
                 <span>City</span>
@@ -251,6 +288,9 @@ const AccountInfo = ({
                   onChange={(e) => onInputChange(e)}
                   placeholder="City"
                 />
+                <span className="signup-error">
+                  {errors.city && "Please enter city"}
+                </span>
               </div>
             </Col>
             <Col lg-6 sm-12 md-12>
@@ -263,6 +303,9 @@ const AccountInfo = ({
                   onChange={(e) => onInputChange(e)}
                   placeholder=""
                 />
+                <span className="signup-error">
+                  {errors.company_phone && "Please enter company phone number"}
+                </span>
               </div>
               <div className="inp_fields">
                 <span>Time Zone</span>
@@ -271,12 +314,16 @@ const AccountInfo = ({
                   value={values?.timezone}
                   onChange={(e) => onInputChange(e)}
                 >
+                  <option>Select</option>
                   {timezoneList?.map((item, key) => (
                     <option key={key} value={item.timezone}>
                       {item.timezone}
                     </option>
                   ))}
                 </select>
+                <span className="signup-error">
+                  {errors.timezone && "Please select timezozne"}
+                </span>
               </div>
               <div className="inp_fields">
                 <span>Address</span>
@@ -287,6 +334,9 @@ const AccountInfo = ({
                   onChange={(e) => onInputChange(e)}
                   placeholder=""
                 />
+                <span className="signup-error">
+                  {errors.company_address && "Please enter company address"}
+                </span>
               </div>
               <div className="inp_fields">
                 <span>ZIP</span>
@@ -297,6 +347,9 @@ const AccountInfo = ({
                   onChange={(e) => onInputChange(e)}
                   placeholder="zip code"
                 />
+                <span className="signup-error">
+                  {errors.zip_code && "Please enter zip code"}
+                </span>
               </div>
             </Col>
           </Row>

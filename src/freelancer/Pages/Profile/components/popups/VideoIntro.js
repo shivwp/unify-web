@@ -20,43 +20,46 @@ const CloseIcon = () => {
   );
 };
 
-const VideoIntro = (props) => {
+const VideoIntro = ({ data, Popup, successPopup, setSuccessPopup }) => {
   const dispatch = useDispatch();
-  const [values, setValues] = useState(props?.data);
-  const [type, setType] = useState(
-    props?.data && {
-      name: props.data?.type,
-      label: props.data?.type,
-    }
-  );
+  const [values, setValues] = useState(data);
+  const [errors, setErrors] = useState({});
+
+  console.log(values);
 
   const handleOnChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
+    setErrors({ ...errors, [e.target.name]: false });
   };
 
-  const videoTypes = [
-    {
-      name: "Me talking about my skills and Exprience",
-      label: "Me talking about my skills and Exprience",
-    },
-    {
-      name: "Visual samples of my work",
-      label: "Visual samples of my work",
-    },
-    {
-      name: "Something else",
-      label: "Something else",
-    },
-  ];
-
   const onSave = () => {
+    let errorExist = false;
+    let errorsObject = {};
+
+    if (values.url === "" || values.url === null || values.url === undefined) {
+      errorsObject.url = true;
+      errorExist = true;
+    }
+
+    if (
+      values.type === "" ||
+      values.type === null ||
+      values.type === undefined
+    ) {
+      errorsObject.type = true;
+      errorExist = true;
+    }
+
+    if (errorExist) {
+      setErrors(errorsObject);
+      return false;
+    }
+
     const data = {
       video: values.url,
-      video_type: type.name,
+      video_type: values.type,
     };
-    dispatch(
-      onEditVideo(data, props.Popup, props.successPopup, props.setSuccessPopup)
-    );
+    dispatch(onEditVideo(data, Popup, successPopup, setSuccessPopup));
   };
   return (
     <>
@@ -67,7 +70,7 @@ const VideoIntro = (props) => {
             <div
               className="close_pp_btn"
               onClick={() => {
-                props.Popup();
+                Popup();
               }}
             >
               <CloseIcon />
@@ -89,12 +92,34 @@ const VideoIntro = (props) => {
                   value={values?.url}
                   placeholder="https://youtu.be/_B6T8O15Ohk"
                 />
+                <span className="signup-error">
+                  {errors.url && "Please enter video url"}
+                </span>
               </div>
               <div className="popup_form_element">
                 <Form.Label className="text-black font-size-13px font-weight-500">
                   What type of video is this?
                 </Form.Label>
-                <Select
+                <select
+                  name="type"
+                  placeholder="What type of video is this?"
+                  className="font-size-13px"
+                  onChange={(e) => handleOnChange(e)}
+                  value={values?.type}
+                >
+                  <option value="">Select</option>
+                  <option value="Me talking about my skills and Exprience">
+                    Me talking about my skills and Exprience
+                  </option>
+                  <option value="Visual samples of my work">
+                    Visual samples of my work
+                  </option>
+                  <option value="Something else">Something else</option>
+                </select>
+                <span className="signup-error">
+                  {errors.type && "Please select video type"}
+                </span>
+                {/* <Select
                   className="font-size-13px"
                   placeholder="What type of video is this?"
                   onChange={setType}
@@ -107,7 +132,7 @@ const VideoIntro = (props) => {
                       : null
                   }
                   options={videoTypes}
-                />
+                /> */}
               </div>
             </div>
 
@@ -116,7 +141,7 @@ const VideoIntro = (props) => {
                 variant=""
                 className="trans_btn"
                 onClick={() => {
-                  props.Popup();
+                  Popup();
                 }}
               >
                 Cancel

@@ -1,11 +1,8 @@
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button'
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  onEditDesignation,
-} from "../../../../../redux/actions/profileAction";
-
+import { onEditDesignation } from "../../../../../redux/actions/profileAction";
 
 const CloseIcon = () => {
   return (
@@ -22,29 +19,49 @@ const CloseIcon = () => {
   );
 };
 
-
-const EditTitle = (props) => {
-  const [values, setValues] = useState(props.data);
+const EditTitle = ({ data, Popup, successPopup, setSuccessPopup }) => {
   const dispatch = useDispatch();
+  const [values, setValues] = useState(data);
+  const [errors, setErrors] = useState({});
 
   const handleOnChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
+    setErrors({ ...errors, [e.target.name]: false });
   };
 
   const onSave = () => {
+    let errorExist = false;
+    let errorsObject = {};
+
+    if (
+      values.occuption === "" ||
+      values.occuption === null ||
+      values.occuption === undefined
+    ) {
+      errorsObject.occuption = true;
+      errorExist = true;
+    }
+
+    if (
+      values.description === "" ||
+      values.description === null ||
+      values.description === undefined
+    ) {
+      errorsObject.description = true;
+      errorExist = true;
+    }
+
+    if (errorExist) {
+      setErrors(errorsObject);
+      return false;
+    }
+
     const data = {
       title: values.occuption,
       description: values.description,
     };
 
-    dispatch(
-      onEditDesignation(
-        data,
-        props.Popup,
-        props.successPopup,
-        props.setSuccessPopup
-      )
-    );
+    dispatch(onEditDesignation(data, Popup, successPopup, setSuccessPopup));
   };
   return (
     <>
@@ -52,12 +69,7 @@ const EditTitle = (props) => {
         <div className="popup_box_bpn profile_nceqoi_popup pb-4">
           <div className="popup_header pb-0">
             <div className="p_header_hding">Title And Overview</div>
-            <div
-              className="close_pp_btn"
-              onClick={() => {
-                props.Popup();
-              }}
-            >
+            <div className="close_pp_btn" onClick={() => Popup()}>
               <CloseIcon />
             </div>
           </div>
@@ -80,6 +92,9 @@ const EditTitle = (props) => {
                 value={values?.occuption}
                 placeholder="Senior UI/UX, Website Designer And Graphic Designer"
               />
+              <span className="signup-error">
+                {errors.occuption && "Please enter your title"}
+              </span>
             </div>
             <div className="pouphed_skll mt-3">Overview</div>
             <div>
@@ -99,21 +114,18 @@ const EditTitle = (props) => {
                 value={values?.description}
                 name="description"
                 onChange={(e) => handleOnChange(e)}
-                placeholder="theDesignerz offers professional and high-quality graphic design services. We have been designing for companies worldwide since 2018. We are a customer service oriented firm, and we will workwith you until you are completely satisfied with the outcome of your design projects. We are the most experienced team of designers working on Freelancer since 2017"
+                placeholder="Description"
               ></Form.Control>
+              <span className="signup-error">
+                {errors.description && "Please enter your description"}
+              </span>
             </div>
 
             <div className="popup_btns_new flex-wrap cwiewyehkk">
-              <Button
-                variant=""
-                className="trans_btn"
-                onClick={() => {
-                  props.Popup();
-                }}
-              >
+              <Button variant="" className="trans_btn" onClick={() => Popup()}>
                 Cancel
               </Button>
-              <Button variant="" className='btnhovpple' onClick={onSave}>
+              <Button variant="" className="btnhovpple" onClick={onSave}>
                 Save
               </Button>
             </div>
@@ -123,4 +135,4 @@ const EditTitle = (props) => {
     </>
   );
 };
-  export default EditTitle
+export default EditTitle;

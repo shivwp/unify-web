@@ -273,8 +273,8 @@ const NavbarHeader = (props) => {
                       <span
                         onClick={() => {
                           localStorage.clear();
-                          window.location.reload();
                           history("/signin");
+                          window.location.reload();
                         }}
                       >
                         Log Out
@@ -488,8 +488,8 @@ const NavbarHeader = (props) => {
                         <span
                           onClick={() => {
                             localStorage.clear();
-                            window.location.reload();
                             history("/signin");
+                            window.location.reload();
                           }}
                         >
                           Log Out

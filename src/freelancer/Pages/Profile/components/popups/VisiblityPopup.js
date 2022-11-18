@@ -5,53 +5,57 @@ import { editVisiblity } from "../../../../../redux/actions/profileAction";
 import Button from "react-bootstrap/Button";
 import { useEffect, useState } from "react";
 
-const VisiblityPopup = (props) => {
+const VisiblityPopup = ({ data, setSuccessPopup, successPopup, Popup }) => {
   const dispatch = useDispatch();
-  const [projectPref, setProjectPref] = useState({
-    name: props?.data?.project_preference,
-  });
-  const [visiblity, setVisiblity] = useState({
-    name: props?.data?.visibility,
-  });
+  const [values, setValues] = useState({});
+  const [errors, setErrors] = useState({});
 
-  const visiblityOps = [
-    { name: "public", label: "Public" },
-    { name: "private", label: "Private" },
-    { name: "unify_users", label: "Unify Users Only" },
-  ];
-  const projPrefrenceOps = [
-    { name: "long_term", label: "Long Term" },
-    { name: "short_term", label: "Short Term" },
-    { name: "both", label: "Both" },
-  ];
+  const handleOnChange = (e) => {
+    setValues({ ...values, [e.target.name]: e.target.value });
+    setErrors({ ...errors, [e.target.name]: false });
+  };
 
   const onSave = () => {
+    let errorExist = false;
+    let errorsObject = {};
+
+    if (
+      values?.visibility === "" ||
+      values?.visibility === null ||
+      values?.visibility === undefined
+    ) {
+      errorsObject.visibility = true;
+      errorExist = true;
+    }
+
+    if (
+      values?.project_preference === "" ||
+      values?.project_preference === null ||
+      values?.project_preference === undefined
+    ) {
+      errorsObject.project_preference = true;
+      errorExist = true;
+    }
+
+    if (errorExist) {
+      setErrors(errorsObject);
+      return false;
+    }
+
     const data = {
-      visibility: visiblity?.name,
-      project_preference: projectPref.name,
+      visibility: values?.visibility,
+      project_preference: values?.project_preference,
     };
-    console.log(data);
-    dispatch(
-      editVisiblity(
-        data,
-        props.Popup,
-        props.successPopup,
-        props.setSuccessPopup
-      )
-    );
+    dispatch(editVisiblity(data, Popup, successPopup, setSuccessPopup));
   };
+
   return (
     <>
       <div className="bg_wrapper_popup_new">
         <div className="popup_box_bpn profile_nceqoi_popup pb-4">
           <div className="popup_header pb-0">
             <div className="p_header_hding">Visibility</div>
-            <div
-              className="close_pp_btn"
-              onClick={() => {
-                props.Popup();
-              }}
-            >
+            <div className="close_pp_btn" onClick={() => Popup()}>
               <svg
                 fill="#B2B2B2"
                 className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiBox-root css-1om0hkc"
@@ -73,20 +77,19 @@ const VisiblityPopup = (props) => {
                   <Form.Label className="text-black font-size-13px font-weight-500">
                     Visibility
                   </Form.Label>
-                  <Select
-                    className="font-size-13px"
-                    placeholder="Select Visiblity"
-                    options={visiblityOps}
-                    onChange={setVisiblity}
-                    defaultValue={
-                      props?.data
-                        ? {
-                            name: props?.data?.visibility,
-                            label: props?.data?.visibility,
-                          }
-                        : null
-                    }
-                  />
+                  <select
+                    name="visibility"
+                    onChange={(e) => handleOnChange(e)}
+                    value={values?.visibility}
+                  >
+                    <option value="">Select</option>
+                    <option value="public">public</option>
+                    <option value="private">private</option>
+                    <option value="unify_users">unify_users</option>
+                  </select>
+                  <span className="signup-error">
+                    {errors.visibility && "Please select your visibility"}
+                  </span>
                 </div>
               </div>
               <div className="mt-4">
@@ -94,32 +97,26 @@ const VisiblityPopup = (props) => {
                   <Form.Label className="text-black font-size-13px font-weight-500">
                     Project Preference
                   </Form.Label>
-                  <Select
-                    className="font-size-13px"
-                    placeholder="Select Project Prefrance"
-                    options={projPrefrenceOps}
-                    onChange={setProjectPref}
-                    defaultValue={
-                      props?.data
-                        ? {
-                            name: props?.data?.project_preference,
-                            label: props?.data?.project_preference,
-                          }
-                        : null
-                    }
-                  />
+                  <select
+                    name="project_preference"
+                    onChange={(e) => handleOnChange(e)}
+                    value={values?.project_preference}
+                  >
+                    <option value="">Select</option>
+                    <option value="long_term">long_term</option>
+                    <option value="short_term">short_term</option>
+                    <option value="both">both</option>
+                  </select>
+                  <span className="signup-error">
+                    {errors.project_preference &&
+                      "Please select your project preference"}
+                  </span>
                 </div>
               </div>
             </div>
 
             <div className="popup_btns_new flex-wrap cwiewyehkk">
-              <Button
-                variant=""
-                className="trans_btn"
-                onClick={() => {
-                  props.Popup();
-                }}
-              >
+              <Button variant="" className="trans_btn" onClick={() => Popup()}>
                 Cancel
               </Button>
               <Button variant="" className="btnhovpple" onClick={onSave}>

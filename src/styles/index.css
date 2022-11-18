@@ -5774,3 +5774,9 @@ a {
   background-color: #6610f2 !important;
   color: white !important;
 }
+
+.signup-error {
+  color: red;
+  font-weight: 300 !important;
+  font-size: 12px !important;
+}

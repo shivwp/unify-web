@@ -274,9 +274,10 @@
 }
 
 .popup_form_element select {
-  border-color: #6d2ef1;
-  color: #6d2ef1;
+  border-color: #000;
+  color: #000;
   padding-left: 10px !important;
+  border: 1px solid #e8e7e7;
   padding-right: 20px !important;
 }
 

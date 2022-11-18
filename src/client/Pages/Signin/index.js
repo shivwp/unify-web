@@ -62,6 +62,7 @@ const Signinscreen = () => {
 
   const selectUserType = (e) => {
     setUserType(e.target.value);
+    setErrors({});
   };
 
   return (

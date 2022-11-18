@@ -23,77 +23,115 @@ const CloseIcon = () => {
     </svg>
   );
 };
-const AddEduc = (props) => {
-  const [values, setValues] = useState(props?.education);
-  const [endYear, setEndYear] = useState({
-    label: values?.end_year,
-    name: values?.end_year,
-  });
-  const [degree, setDegree] = useState({
-    label: values?.degree,
-    name: values?.degree,
-  });
-  const [startYear, setStartYear] = useState({
-    label: values?.start_year,
-    name: values?.start_year,
-  });
-  const getDegreeList = useSelector((state) => state.profile.getDegreeList);
+const AddEduc = ({ education, Popup, successPopup, setSuccessPopup }) => {
   const dispatch = useDispatch();
+  const [values, setValues] = useState(education);
+  const [errors, setErrors] = useState({});
+  const [startYear, setStartYear] = useState();
+  const [endYear, setEndYear] = useState();
+  const getDegreeList = useSelector((state) => state.profile.getDegreeList);
+
+  useEffect(() => {
+    startYearList();
+    endYearList();
+  }, []);
 
   const startYearList = () => {
     const today = new Date().getFullYear();
     let arr = [];
     for (let i = today; i > today - 40; i--) {
-      arr.push({
-        name: i,
-        label: i,
-      });
+      arr.push({ start_year: i });
     }
-    return arr;
+    setStartYear(arr);
   };
+
   const endYearList = () => {
     const today = new Date().getFullYear();
     let arr = [];
     for (let i = today + 3; i > today - 40; i--) {
-      arr.push({
-        name: i,
-        label: i,
-      });
+      arr.push({ end_year: i });
     }
-    return arr;
+    setEndYear(arr);
   };
 
   useEffect(() => {
     dispatch(getFreelancerDegreeList());
   }, []);
 
-  const degreeList = getDegreeList?.map((item) => ({
-    name: item.title,
-    label: item.title,
-  }));
-
   const handleOnChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
+    setErrors({ ...errors, [e.target.name]: false });
   };
 
   const AddEducation = () => {
+    let errorExist = false;
+    let errorsObject = {};
+
+    if (
+      values?.school === "" ||
+      values?.school === null ||
+      values?.school === undefined
+    ) {
+      errorsObject.school = true;
+      errorExist = true;
+    }
+
+    if (
+      values?.start_year === "" ||
+      values?.start_year === null ||
+      values?.start_year === undefined
+    ) {
+      errorsObject.start_year = true;
+      errorExist = true;
+    }
+    if (
+      values?.end_year === "" ||
+      values?.end_year === null ||
+      values?.end_year === undefined
+    ) {
+      errorsObject.end_year = true;
+      errorExist = true;
+    }
+    if (
+      values?.degree === "" ||
+      values?.degree === null ||
+      values?.degree === undefined
+    ) {
+      errorsObject.degree = true;
+      errorExist = true;
+    }
+    if (
+      values?.area_study === "" ||
+      values?.area_study === null ||
+      values?.area_study === undefined
+    ) {
+      errorsObject.area_study = true;
+      errorExist = true;
+    }
+    if (
+      values?.description === "" ||
+      values?.description === null ||
+      values?.description === undefined
+    ) {
+      errorsObject.description = true;
+      errorExist = true;
+    }
+
+    if (errorExist) {
+      setErrors(errorsObject);
+      return false;
+    }
+
     const data = {
-      id: values.id,
+      id: values?.id,
       school: values?.school,
-      start_year: startYear?.name,
-      end_year: endYear?.name,
-      degree: degree?.name,
+      start_year: values?.start_year,
+      end_year: values?.end_year,
+      degree: values?.degree,
       area_study: values?.area_study,
       description: values?.description,
     };
-    dispatch(
-      onAddEducation(
-        data,
-        props.Popup,
-        props.successPopup,
-        props.setSuccessPopup
-      )
-    );
+    dispatch(onAddEducation(data, Popup, successPopup, setSuccessPopup));
   };
 
   return (
@@ -101,13 +139,13 @@ const AddEduc = (props) => {
       <div className="bg_wrapper_popup_new">
         <div className="popup_box_bpn profile_nceqoi_popup pb-4">
           <div className="popup_header pb-0">
-            <div className="p_header_hding">Add Education</div>
-            <div
-              className="close_pp_btn"
-              onClick={() => {
-                props.Popup();
-              }}
-            >
+            {values?.id ? (
+              <div className="p_header_hding">Edit Education</div>
+            ) : (
+              <div className="p_header_hding">Add Education</div>
+            )}
+
+            <div className="close_pp_btn" onClick={() => Popup()}>
               <CloseIcon />
             </div>
           </div>
@@ -129,6 +167,9 @@ const AddEduc = (props) => {
                       className="font-size-11px"
                       placeholder="Ex: Northwestern University"
                     />
+                    <span className="signup-error">
+                      {errors.school && "Please enter your school name"}
+                    </span>
                   </div>
                 </Col>
                 <Col md={6}>
@@ -136,7 +177,24 @@ const AddEduc = (props) => {
                     <Form.Label className="text-black font_size_14px font-weight-500">
                       Dates Attended
                     </Form.Label>
-                    <Select
+
+                    <select
+                      name="start_year"
+                      value={values?.start_year}
+                      onChange={(e) => handleOnChange(e)}
+                      className="font-size-11px"
+                    >
+                      <option value="">Select</option>
+                      {startYear?.map((item, key) => (
+                        <option key={key} value={item.start_year}>
+                          {item.start_year}
+                        </option>
+                      ))}
+                    </select>
+                    <span className="signup-error">
+                      {errors.start_year && "Please select start year"}
+                    </span>
+                    {/* <Select
                       className="font-size-11px"
                       name="start_year"
                       defaultValue={
@@ -147,16 +205,32 @@ const AddEduc = (props) => {
                             }
                           : null
                       }
-                      placeholder="From"
-                      onChange={setStartYear}
-                      options={startYearList()}
-                    />
+                      placehosetStartYear}
+                      options={stlder="From"
+                      onChange={artYearList()}
+                    /> */}
                   </div>
                 </Col>
                 <Col md={6}>
                   <div className="popup_form_element">
                     <Form.Label className="text-black font_size_14px font-weight-500"></Form.Label>
-                    <Select
+                    <select
+                      name="end_year"
+                      value={values?.end_year}
+                      onChange={(e) => handleOnChange(e)}
+                      className="font-size-11px"
+                    >
+                      <option value="">Select</option>
+                      {endYear?.map((item, key) => (
+                        <option key={key} value={item.end_year}>
+                          {item.end_year}
+                        </option>
+                      ))}
+                    </select>
+                    <span className="signup-error">
+                      {errors.end_year && "Please select end year"}
+                    </span>
+                    {/* <Select
                       className="font-size-11px"
                       name="end_year"
                       defaultValue={
@@ -170,7 +244,7 @@ const AddEduc = (props) => {
                       onChange={setEndYear}
                       options={endYearList()}
                       placeholder="To (or expected gradution year)"
-                    />
+                    /> */}
                   </div>
                 </Col>
                 <Col md={12}>
@@ -178,7 +252,25 @@ const AddEduc = (props) => {
                     <Form.Label className="text-black font_size_14px font-weight-500">
                       Degree
                     </Form.Label>
-                    <Select
+
+                    <select
+                      name="degree"
+                      value={values?.degree}
+                      onChange={(e) => handleOnChange(e)}
+                      className="font-size-11px"
+                      placeholder="Degree"
+                    >
+                      <option value="">Select</option>
+                      {getDegreeList?.map((item, key) => (
+                        <option key={key} value={item.title}>
+                          {item.title}
+                        </option>
+                      ))}
+                    </select>
+                    <span className="signup-error">
+                      {errors.degree && "Please select your degree"}
+                    </span>
+                    {/* <Select
                       className="font-size-11px"
                       defaultValue={
                         values
@@ -191,7 +283,7 @@ const AddEduc = (props) => {
                       options={degreeList}
                       placeholder="Degree "
                       onChange={setDegree}
-                    />
+                    /> */}
                   </div>
                 </Col>
                 <Col md={12}>
@@ -207,6 +299,9 @@ const AddEduc = (props) => {
                       className="font-size-11px"
                       placeholder="Ex: Computer Science"
                     />
+                    <span className="signup-error">
+                      {errors.area_study && "Please enter your area study"}
+                    </span>
                   </div>
                 </Col>
                 <Col md={12}>
@@ -222,6 +317,9 @@ const AddEduc = (props) => {
                       name="description"
                       placeholder="Enter Here"
                     ></Form.Control>
+                    <span className="signup-error">
+                      {errors.description && "Please enter your description"}
+                    </span>
                   </div>
                 </Col>
               </Row>
@@ -231,7 +329,11 @@ const AddEduc = (props) => {
               <Button variant="" className="trans_btn">
                 Cancel
               </Button>
-              <Button variant="" className="btnhovpple" onClick={() => AddEducation()}>
+              <Button
+                variant=""
+                className="btnhovpple"
+                onClick={() => AddEducation()}
+              >
                 Save
               </Button>
             </div>

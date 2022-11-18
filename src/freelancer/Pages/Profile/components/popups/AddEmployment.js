@@ -22,53 +22,109 @@ const CloseIcon = () => {
   );
 };
 
-const AddEmployment = (props) => {
+const AddEmployment = ({
+  experience,
+  Popup,
+  successPopup,
+  setSuccessPopup,
+}) => {
   const dispatch = useDispatch();
   const getCountryList = useSelector((state) => state.auth.getCountryList);
-  const [country, setCountry] = useState(null);
-  const [values, setValues] = useState(
-    props?.experience || { currently_working: 0 }
-  );
-  console.log(props?.exprience);
+  const [values, setValues] = useState(experience || { currently_working: 0 });
+  const [errors, setErrors] = useState({});
 
   useState(() => {
     dispatch(countryList());
   }, []);
 
-  const countryLis = getCountryList?.map((item) => ({
-    name: item.name,
-    label: item.name,
-  }));
-
   const onInputChange = (e) => {
     if (e.target.name == "currently_working") {
       setValues({ ...values, [e.target.name]: e.target.checked ? 1 : 0 });
+      setErrors({ ...errors, [e.target.name]: false });
     } else {
       setValues({ ...values, [e.target.name]: e.target.value });
+      setErrors({ ...errors, [e.target.name]: false });
     }
   };
-  console.log(country);
 
   const onSave = () => {
+    let errorExist = false;
+    let errorsObject = {};
+
+    if (
+      values?.company === "" ||
+      values?.company === null ||
+      values?.company === undefined
+    ) {
+      errorsObject.company = true;
+      errorExist = true;
+    }
+    if (
+      values?.city === "" ||
+      values?.city === null ||
+      values?.city === undefined
+    ) {
+      errorsObject.city = true;
+      errorExist = true;
+    }
+    if (
+      values?.country === "" ||
+      values?.country === null ||
+      values?.country === undefined
+    ) {
+      errorsObject.country = true;
+      errorExist = true;
+    }
+    if (
+      values?.description === "" ||
+      values?.description === null ||
+      values?.description === undefined
+    ) {
+      errorsObject.description = true;
+      errorExist = true;
+    }
+    if (
+      values?.subject === "" ||
+      values?.subject === null ||
+      values?.subject === undefined
+    ) {
+      errorsObject.subject = true;
+      errorExist = true;
+    }
+    if (
+      values?.start_date === "" ||
+      values?.start_date === null ||
+      values?.start_date === undefined
+    ) {
+      errorsObject.start_date = true;
+      errorExist = true;
+    }
+    if (
+      values?.end_date === "" ||
+      values?.end_date === null ||
+      values?.end_date === undefined
+    ) {
+      errorsObject.end_date = true;
+      errorExist = true;
+    }
+
+    if (errorExist) {
+      setErrors(errorsObject);
+      return false;
+    }
+
     const data = {
-      id: props?.experience?.id,
-      company: values.company,
-      city: values.city,
-      country: props?.experience?.country || country.name,
-      description: values.description,
-      subject: values.subject,
-      currently_working: values.currently_working,
-      start_date: values.start_date,
-      end_date: values.end_date,
+      id: experience?.id,
+      company: values?.company,
+      city: values?.city,
+      country: experience?.country || values?.country,
+      description: values?.description,
+      subject: values?.subject,
+      currently_working: values?.currently_working,
+      start_date: values?.start_date,
+      end_date: values?.end_date,
     };
-    dispatch(
-      onAddEmployment(
-        data,
-        props.Popup,
-        props.successPopup,
-        props.setSuccessPopup
-      )
-    );
+    dispatch(onAddEmployment(data, Popup, successPopup, setSuccessPopup));
   };
 
   return (
@@ -76,13 +132,12 @@ const AddEmployment = (props) => {
       <div className="bg_wrapper_popup_new">
         <div className="popup_box_bpn profile_nceqoi_popup pb-4">
           <div className="popup_header pb-0">
-            <div className="p_header_hding">Add Employment</div>
-            <div
-              className="close_pp_btn"
-              onClick={() => {
-                props.Popup();
-              }}
-            >
+            {experience?.id ? (
+              <div className="p_header_hding">Edit Employment</div>
+            ) : (
+              <div className="p_header_hding">Add Employment</div>
+            )}
+            <div className="close_pp_btn" onClick={() => Popup()}>
               <CloseIcon />
             </div>
           </div>
@@ -101,9 +156,12 @@ const AddEmployment = (props) => {
                       className="font-size-13px"
                       placeholder="Ex: Unify"
                       name="company"
-                      value={values.company}
+                      value={values?.company}
                       onChange={(e) => onInputChange(e)}
                     />
+                    <span className="signup-error">
+                      {errors.company && "Please enter your company"}
+                    </span>
                   </div>
                 </Col>
                 <Col md={6}>
@@ -115,10 +173,13 @@ const AddEmployment = (props) => {
                       type="text"
                       name="city"
                       className="font-size-13px"
-                      value={values.city}
+                      value={values?.city}
                       onChange={(e) => onInputChange(e)}
                       placeholder="City"
                     />
+                    <span className="signup-error">
+                      {errors.city && "Please enter your city"}
+                    </span>
                   </div>
                 </Col>
                 <Col md={6}>
@@ -126,18 +187,21 @@ const AddEmployment = (props) => {
                     <Form.Label className="text-black font-size-13px font-weight-500">
                       Country
                     </Form.Label>
-                    <Select
-                      className="font-size-13px"
-                      placeholder="India"
+                    <select
                       name="country"
-                      defaultValue={
-                        values.country
-                          ? { name: values.country, label: values.country }
-                          : null
-                      }
-                      onChange={setCountry}
-                      options={countryLis}
-                    />
+                      value={values?.country}
+                      onChange={(e) => onInputChange(e)}
+                    >
+                      <option value="">Select</option>
+                      {getCountryList?.map((item, key) => (
+                        <option key={key} value={item.name}>
+                          {item.name}
+                        </option>
+                      ))}
+                    </select>
+                    <span className="signup-error">
+                      {errors.country && "Please select your country"}
+                    </span>
                   </div>
                 </Col>
                 <Col md={12}>
@@ -149,10 +213,13 @@ const AddEmployment = (props) => {
                       type="text"
                       name="subject"
                       onChange={(e) => onInputChange(e)}
-                      value={values.subject}
+                      value={values?.subject}
                       className="font-size-13px"
                       placeholder="Like: Developer, React"
                     />
+                    <span className="signup-error">
+                      {errors.subject && "Please enter your subject"}
+                    </span>
                   </div>
                 </Col>
                 <Col md={6}>
@@ -165,9 +232,12 @@ const AddEmployment = (props) => {
                       className="font-size-13px"
                       placeholder="Start Date"
                       name="start_date"
-                      value={values.start_date}
+                      value={values?.start_date}
                       onChange={(e) => onInputChange(e)}
                     />
+                    <span className="signup-error">
+                      {errors.start_date && "Please select your start date"}
+                    </span>
                   </div>
                 </Col>
                 {values?.currently_working ? (
@@ -182,10 +252,13 @@ const AddEmployment = (props) => {
                         type="date"
                         name="end_date"
                         className="font-size-13px"
-                        value={values.end_date}
+                        value={values?.end_date}
                         placeholder="End Date"
                         onChange={(e) => onInputChange(e)}
                       />
+                      <span className="signup-error">
+                        {errors.end_date && "Please select your end date"}
+                      </span>
                     </div>
                   </Col>
                 )}
@@ -204,7 +277,7 @@ const AddEmployment = (props) => {
                         type="checkbox"
                         name="currently_working"
                         onChange={(e) => onInputChange(e)}
-                        defaultChecked={values.currently_working || false}
+                        defaultChecked={values?.currently_working || false}
                       />{" "}
                       I currently work here
                     </Form.Label>
@@ -218,24 +291,21 @@ const AddEmployment = (props) => {
                     <Form.Control
                       as="textarea"
                       className="font-size-13px"
-                      value={values.description || ""}
+                      value={values?.description || ""}
                       name="description"
                       onChange={(e) => onInputChange(e)}
                       placeholder="Enter Here"
                     ></Form.Control>
+                    <span className="signup-error">
+                      {errors.description && "Please enter you description"}
+                    </span>
                   </div>
                 </Col>
               </Row>
             </div>
 
             <div className="popup_btns_new flex-wrap cwiewyehkk">
-              <Button
-                variant=""
-                className="trans_btn"
-                onClick={() => {
-                  props.Popup();
-                }}
-              >
+              <Button variant="" className="trans_btn" onClick={() => Popup()}>
                 Cancel
               </Button>
               <Button variant="" className="btnhovpple" onClick={onSave}>

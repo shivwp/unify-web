@@ -23,17 +23,11 @@ const CloseIcon = () => {
     </svg>
   );
 };
-const AddCert = (props) => {
-  const [certName, setCertName] = useState(props?.certificates || null);
-  const [values, setValues] = useState(props?.certificates);
-  const [certificateList, setCertificateList] = useState([]);
+const AddCert = ({ certificates, Popup, successPopup, setSuccessPopup }) => {
   const dispatch = useDispatch();
-  const options1 = certificateList?.map((data) => ({
-    name: data.name,
-    label: data.name,
-  }));
-
-  console.log(options1);
+  const [values, setValues] = useState(certificates);
+  const [errors, setErrors] = useState({});
+  const [certificateList, setCertificateList] = useState([]);
 
   useEffect(() => {
     dispatch(getCertificationList(setCertificateList));
@@ -41,43 +35,63 @@ const AddCert = (props) => {
 
   const handleOnChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
+    setErrors({ ...errors, [e.target.name]: false });
   };
 
   const onSave = () => {
+    let errorExist = false;
+    let errorsObject = {};
+
+    if (
+      values?.name === "" ||
+      values?.name === null ||
+      values?.name === undefined
+    ) {
+      errorsObject.name = true;
+      errorExist = true;
+    }
+
+    if (
+      values?.description === "" ||
+      values?.description === null ||
+      values?.description === undefined
+    ) {
+      errorsObject.description = true;
+      errorExist = true;
+    }
+
+    if (errorExist) {
+      setErrors(errorsObject);
+      return false;
+    }
+
     let data;
-    if (props?.certificates?.id) {
+    if (certificates?.id) {
       data = {
-        id: props?.certificates?.id,
-        name: certName.name,
+        id: certificates?.id,
+        name: values?.name,
         description: values.description,
       };
     } else {
       data = {
-        name: certName.name,
+        name: values?.name,
         description: values.description,
       };
     }
-    dispatch(
-      onEditCertificate(
-        data,
-        props.Popup,
-        props.successPopup,
-        props.setSuccessPopup
-      )
-    );
+    dispatch(onEditCertificate(data, Popup, successPopup, setSuccessPopup));
   };
   return (
     <>
       <div className="bg_wrapper_popup_new">
         <div className="popup_box_bpn profile_nceqoi_popup pb-4">
           <div className="popup_header pb-0">
-            <div className="p_header_hding">Add Certification</div>
-            <div
-              className="close_pp_btn"
-              onClick={() => {
-                props.Popup();
-              }}
-            >
+            {certificates?.id ? (
+              <div className="p_header_hding">Edit Certification</div>
+            ) : (
+              <div className="p_header_hding">Add Certification</div>
+            )}
+
+            <div className="close_pp_btn" onClick={() => Popup()}>
               <CloseIcon />
             </div>
           </div>
@@ -87,7 +101,23 @@ const AddCert = (props) => {
                 <Form.Label className="text-black font-size-13px font-weight-500">
                   Proficiency level
                 </Form.Label>
-                <Select
+
+                <select
+                  name="name"
+                  value={values?.name}
+                  onChange={(e) => handleOnChange(e)}
+                >
+                  <option value="">Select</option>
+                  {certificateList?.map((item, key) => (
+                    <option key={key} value={item.name}>
+                      {item.name}
+                    </option>
+                  ))}
+                </select>
+                <span className="signup-error">
+                  {errors.name && "Please select proficiency level"}
+                </span>
+                {/* <Select
                   className="font-size-13px"
                   placeholder="Select Certificate Type"
                   options={options1}
@@ -97,7 +127,7 @@ const AddCert = (props) => {
                       ? { name: certName.name, label: certName.name }
                       : null
                   }
-                />
+                /> */}
               </div>
             </div>
             <div className="mt-3 pt-1 mb-3">
@@ -120,21 +150,19 @@ const AddCert = (props) => {
                       className="font-size-13px"
                       placeholder="Enter Here"
                       name="description"
-                      value={values?.description || null}
+                      value={values?.description}
                       onChange={(e) => handleOnChange(e)}
                     />
                   </div>
+                  <span className="signup-error">
+                    {errors.description && "Please enter your description"}
+                  </span>
                 </Col>
               </Row>
             </div>
 
             <div className="popup_btns_new flex-wrap cwiewyehkk">
-              <button
-                className="trans_btn"
-                onClick={() => {
-                  props.Popup();
-                }}
-              >
+              <button className="trans_btn" onClick={() => Popup()}>
                 Cancel
               </button>
               <button className="btnhovpple" onClick={onSave}>

@@ -59,13 +59,49 @@ const Screen = () => {
 
   const EditAcc = () => {
     const [values, setValues] = useState(basicInfo);
+    const [errors, setErrors] = useState({});
     const email = basicInfo?.email;
 
     const onInputChange = (e) => {
       setValues({ ...values, [e.target.name]: e.target.value });
+      setErrors({ ...errors, [e.target.name]: false });
     };
 
     const EditContactInfo = () => {
+      let errorExist = false;
+      let errorsObject = {};
+
+      if (
+        values.first_name === "" ||
+        values.first_name === null ||
+        values.first_name === undefined
+      ) {
+        errorsObject.first_name = true;
+        errorExist = true;
+      }
+
+      if (
+        values.email === "" ||
+        values.email === null ||
+        values.email === undefined
+      ) {
+        errorsObject.email = true;
+        errorExist = true;
+      }
+      if (
+        values.last_name === "" ||
+        values.last_name === null ||
+        values.last_name === undefined
+      ) {
+        errorsObject.last_name = true;
+        errorExist = true;
+      }
+
+      if (errorExist) {
+        setErrors(errorsObject);
+        return false;
+      }
+
       const data =
         email === values.email
           ? {
@@ -123,10 +159,13 @@ const Screen = () => {
                         name="first_name"
                         type="text"
                         value={values.first_name}
-                        placeholder="Shiv"
+                        placeholder="John"
                         onChange={(e) => onInputChange(e)}
                       />
                     </div>
+                    <span className="signup-error">
+                      {errors.first_name && "Please enter your first name"}
+                    </span>
                   </div>
                 </div>
               </Col>
@@ -140,11 +179,14 @@ const Screen = () => {
                       <Form.Control
                         type="text"
                         onChange={(e) => onInputChange(e)}
-                        placeholder="Kumar Kumavat"
+                        placeholder="Doe"
                         value={values.last_name}
                         name="last_name"
                       />
                     </div>
+                    <span className="signup-error">
+                      {errors.last_name && "Please enter your last name"}
+                    </span>
                   </div>
                 </div>
               </Col>
@@ -160,9 +202,12 @@ const Screen = () => {
                         name="email"
                         value={values.email}
                         onChange={(e) => onInputChange(e)}
-                        placeholder=" shiv.kumar@gmail.com"
+                        placeholder="johndoe@gmail.com"
                       />
                     </div>
+                    <span className="signup-error">
+                      {errors.email && "Please enter your email"}
+                    </span>
                   </div>
                 </div>
               </Col>
@@ -192,13 +237,71 @@ const Screen = () => {
 
   const EditLoc = () => {
     const [values, setValues] = useState(basicInfo);
+    const [errors, setErrors] = useState({});
 
     const onInputChange = (e) => {
-      console.log(e.target.value);
       setValues({ ...values, [e.target.name]: e.target.value });
+      setErrors({ ...errors, [e.target.name]: false });
     };
 
     const EditLocationInfo = () => {
+      let errorExist = false;
+      let errorsObject = {};
+
+      if (
+        values.timezone === "" ||
+        values.timezone === null ||
+        values.timezone === undefined
+      ) {
+        errorsObject.timezone = true;
+        errorExist = true;
+      }
+      if (
+        values.address === "" ||
+        values.address === null ||
+        values.address === undefined
+      ) {
+        errorsObject.address = true;
+        errorExist = true;
+      }
+      if (
+        values.phone === "" ||
+        values.phone === null ||
+        values.phone === undefined
+      ) {
+        errorsObject.phone = true;
+        errorExist = true;
+      }
+      if (
+        values.city === "" ||
+        values.city === null ||
+        values.city === undefined
+      ) {
+        errorsObject.city = true;
+        errorExist = true;
+      }
+      if (
+        values.country === "" ||
+        values.country === null ||
+        values.country === undefined
+      ) {
+        errorsObject.country = true;
+        errorExist = true;
+      }
+      if (
+        values.zip_code === "" ||
+        values.zip_code === null ||
+        values.zip_code === undefined
+      ) {
+        errorsObject.zip_code = true;
+        errorExist = true;
+      }
+
+      if (errorExist) {
+        setErrors(errorsObject);
+        return false;
+      }
+
       const data = {
         timezone: values?.timezone,
         address: values?.address,
@@ -260,11 +363,15 @@ const Screen = () => {
                         value={values.timezone}
                         onChange={(e) => onInputChange(e)}
                       >
+                        <option value="">Select</option>
                         {timezoneList?.map((item) => (
                           <option value={item.timezone}>{item.timezone}</option>
                         ))}
                       </select>
                     </div>
+                    <span className="signup-error">
+                      {errors.timezone && "Please select timezone"}
+                    </span>
                   </div>
                 </div>
               </Col>
@@ -281,6 +388,9 @@ const Screen = () => {
                         placeholder="Jaipur"
                       />
                     </div>
+                    <span className="signup-error">
+                      {errors.city && "Please enter city"}
+                    </span>
                   </div>
                 </div>
               </Col>
@@ -296,11 +406,15 @@ const Screen = () => {
                         value={values?.country}
                         onChange={(e) => onInputChange(e)}
                       >
+                        <option value="">Select</option>
                         {CountryList?.map((item) => (
                           <option value={item.name}>{item.name}</option>
                         ))}
                       </select>
                     </div>
+                    <span className="signup-error">
+                      {errors.country && "Please select country"}
+                    </span>
                   </div>
                 </div>
               </Col>
@@ -320,6 +434,9 @@ const Screen = () => {
                         placeholder="12 Tiwari ji ka bagh adarsh nagar jaipur Surya Bekri Jaipur, RJ 302004 "
                       />
                     </div>
+                    <span className="signup-error">
+                      {errors.address && "Please enter your address"}
+                    </span>
                   </div>
                 </div>
               </Col>
@@ -338,6 +455,9 @@ const Screen = () => {
                         placeholder="987-654-3210"
                       />
                     </div>
+                    <span className="signup-error">
+                      {errors.phone && "Please enter your phone number"}
+                    </span>
                   </div>
                 </div>
               </Col>
@@ -356,6 +476,9 @@ const Screen = () => {
                         placeholder="301405"
                       />
                     </div>
+                    <span className="signup-error">
+                      {errors.zip_code && "Please enter your zip code"}
+                    </span>
                   </div>
                 </div>
               </Col>

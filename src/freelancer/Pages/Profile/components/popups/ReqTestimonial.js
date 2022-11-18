@@ -20,15 +20,75 @@ const CloseIcon = () => {
   );
 };
 
-const ReqTestimonial = (props) => {
+const ReqTestimonial = ({ Popup, successPopup, setSuccessPopup }) => {
   const dispatch = useDispatch();
   const [values, setValues] = useState({});
+  const [errors, setErrors] = useState({});
 
   const onInputChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
+    setErrors({ ...errors, [e.target.name]: false });
   };
 
   const testimonialSubmit = (e) => {
+    let errorExist = false;
+    let errorsObject = {};
+
+    if (
+      values.first_name === "" ||
+      values.first_name === null ||
+      values.first_name === undefined
+    ) {
+      errorsObject.first_name = true;
+      errorExist = true;
+    }
+
+    if (
+      values.last_name === "" ||
+      values.last_name === null ||
+      values.last_name === undefined
+    ) {
+      errorsObject.last_name = true;
+      errorExist = true;
+    }
+    if (
+      values.email === "" ||
+      values.email === null ||
+      values.email === undefined
+    ) {
+      errorsObject.email = true;
+      errorExist = true;
+    }
+    if (
+      values.title === "" ||
+      values.title === null ||
+      values.title === undefined
+    ) {
+      errorsObject.title = true;
+      errorExist = true;
+    }
+    if (
+      values.type === "" ||
+      values.type === null ||
+      values.type === undefined
+    ) {
+      errorsObject.type = true;
+      errorExist = true;
+    }
+    if (
+      values.description === "" ||
+      values.description === null ||
+      values.description === undefined
+    ) {
+      errorsObject.description = true;
+      errorExist = true;
+    }
+
+    if (errorExist) {
+      setErrors(errorsObject);
+      return false;
+    }
+
     const data = {
       first_name: values?.first_name,
       last_name: values?.last_name,
@@ -37,14 +97,7 @@ const ReqTestimonial = (props) => {
       type: values?.type,
       description: values?.description,
     };
-    dispatch(
-      onRequestTestimonial(
-        data,
-        props.Popup,
-        props.successPopup,
-        props.setSuccessPopup
-      )
-    );
+    dispatch(onRequestTestimonial(data, Popup, successPopup, setSuccessPopup));
   };
 
   return (
@@ -56,7 +109,7 @@ const ReqTestimonial = (props) => {
             <div
               className="close_pp_btn"
               onClick={() => {
-                props.Popup();
+                Popup();
               }}
             >
               <CloseIcon />
@@ -85,6 +138,9 @@ const ReqTestimonial = (props) => {
                       onChange={(e) => onInputChange(e)}
                       placeholder="Enter First Name"
                     />
+                    <span className="signup-error">
+                      {errors.first_name && "Please enter your first name"}
+                    </span>
                   </div>
                 </Col>
                 <Col md={6}>
@@ -100,6 +156,9 @@ const ReqTestimonial = (props) => {
                       onChange={(e) => onInputChange(e)}
                       placeholder="Enter Last name "
                     />
+                    <span className="signup-error">
+                      {errors.last_name && "Please enter your last name"}
+                    </span>
                   </div>
                 </Col>
                 <Col md={6}>
@@ -115,6 +174,9 @@ const ReqTestimonial = (props) => {
                       onChange={(e) => onInputChange(e)}
                       placeholder="Enter Your Business Email"
                     />
+                    <span className="signup-error">
+                      {errors.email && "Please enter your email"}
+                    </span>
                   </div>
                 </Col>
                 <Col md={6}>
@@ -130,6 +192,9 @@ const ReqTestimonial = (props) => {
                       onChange={(e) => onInputChange(e)}
                       placeholder="Enter Client's Title"
                     />
+                    <span className="signup-error">
+                      {errors.title && "Please enter your title"}
+                    </span>
                   </div>
                 </Col>
                 <Col md={6}>
@@ -145,6 +210,9 @@ const ReqTestimonial = (props) => {
                       onChange={(e) => onInputChange(e)}
                       placeholder="Enter Project Type"
                     />
+                    <span className="signup-error">
+                      {errors.type && "Please enter your project type"}
+                    </span>
                   </div>
                 </Col>
                 <Col md={12}>
@@ -160,6 +228,9 @@ const ReqTestimonial = (props) => {
                       onChange={(e) => onInputChange(e)}
                       placeholder="Enter Here"
                     ></Form.Control>
+                    <span className="signup-error">
+                      {errors.description && "Please enter your description"}
+                    </span>
                   </div>
                 </Col>
               </Row>
@@ -167,7 +238,7 @@ const ReqTestimonial = (props) => {
 
             <div className="popup_btns_new flex-wrap cwiewyehkk">
               <Button
-               variant=""
+                variant=""
                 className="font-weight-600 btnhovpple"
                 onClick={() => {
                   testimonialSubmit();

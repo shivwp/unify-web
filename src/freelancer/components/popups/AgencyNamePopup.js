@@ -21,12 +21,38 @@ const CloseIcon = () => {
 };
 
 const AgencyNamePopup = (props) => {
-  const [agencyName, setAgencyName] = useState(null);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [values, setValues] = useState({});
+  const [errors, setErrors] = useState({});
+
+  const handleOnChange = (e) => {
+    setValues({ ...values, [e.target.name]: e.target.value });
+    setErrors({ ...errors, [e.target.name]: false });
+  };
 
   const onCreateAdditionalAccount = () => {
-    const data = { user_type: "agency", agency_name: agencyName };
+    let errorExist = false;
+    let errorsObject = {};
+
+    if (
+      values?.agency_name === "" ||
+      values?.agency_name === null ||
+      values?.agency_name === undefined
+    ) {
+      errorsObject.agency_name = true;
+      errorExist = true;
+    }
+
+    if (errorExist) {
+      setErrors(errorsObject);
+      return false;
+    }
+
+    const data = {
+      user_type: "agency",
+      agency_name: values?.agency_name,
+    };
     dispatch(onAdditionalAccount(data, navigate));
   };
 
@@ -60,9 +86,13 @@ const AgencyNamePopup = (props) => {
                 type="text"
                 className="font-size-13px"
                 name="agency_name"
-                onChange={(e) => setAgencyName(e.target.value)}
+                value={values?.agency_name}
+                onChange={(e) => handleOnChange(e)}
                 placeholder="Agency Name"
               />
+              <span className="signup-error">
+                {errors.agency_name && "Please enter your agency name"}
+              </span>
             </div>
 
             <div className="popup_btns_new flex-wrap cwiewyehkk">

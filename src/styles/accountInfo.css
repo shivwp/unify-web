@@ -103,12 +103,13 @@
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  margin: 20px 0;
+  /* margin: 20px 0; */
+  margin: 20px 0 0 0;
 }
 .account_info .inp_fields > span {
   font-size: 15px;
   font-weight: 600;
-  margin: 5px 0;
+  /* margin: 5px 0; */
 }
 .account_info .inp_fields > input {
   width: 100%;
