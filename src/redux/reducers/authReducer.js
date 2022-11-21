@@ -7,6 +7,7 @@ import {
   FORGOT_PASS_ERROR,
   FORGOT_OTP_ERROR,
   HOME_PAGE_DATA,
+  FOOTER_PAGE_DATA,
 } from "../types";
 
 const initialState = {};
@@ -52,6 +53,11 @@ const authReducer = (state = initialState, action) => {
       return {
         ...state,
         forgotOTPError: action.payload,
+      };
+    case FOOTER_PAGE_DATA:
+      return {
+        ...state,
+        footerPageData: action.payload,
       };
     default:
       return state;

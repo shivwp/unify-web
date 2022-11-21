@@ -18,12 +18,12 @@ const AllMilestones = ({ getAllContracts }) => {
                 <Row style={{ marginTop: 10 }}>
                   <Col lg={9} md={7}>
                     <div className="job_head_s">
-                      <h2>{item.project?.name || "Unnamed"}</h2>
+                      <h2>{item?.project?.name || "Unnamed"}</h2>
                     </div>
                     <div className="job_d_par">
                       <p>
-                        Staffed by: {item.freelancer.first_name || ""}{" "}
-                        {item.freelancer.last_name || ""}
+                        Staffed by: {item.freelancer?.first_name || ""}{" "}
+                        {item.freelancer?.last_name || ""}
                       </p>
                     </div>
                   </Col>
@@ -50,8 +50,8 @@ const AllMilestones = ({ getAllContracts }) => {
                   <Col lg={4} md={5}>
                     <div className="job_head_s">
                       <h3>
-                        Hired By:{item.client.first_name || ""}{" "}
-                        {item.client.last_name || ""}
+                        Hired By:{item.client?.first_name || ""}{" "}
+                        {item.client?.last_name || ""}
                       </h3>
                     </div>
                     <div className="job_d_par">

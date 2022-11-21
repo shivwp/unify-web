@@ -503,14 +503,21 @@ body {
 }
 
 .as_used {
-  font-size: 20px;
-  line-height: 20px;
+  font-size: 25px;
+  line-height: 25px;
   color: #180095;
   font-weight: 600;
   font-family: "Poppins";
   position: relative;
   z-index: 1;
-  margin-bottom: 30px;
+  /* margin-bottom: 30px; */
+}
+
+@media screen and (max-width: 425px) {
+  .as_used {
+    text-align: center;
+    margin-bottom: 30px;
+  }
 }
 
 .filter_area {
@@ -523,7 +530,7 @@ body {
   height: 70px;
   display: flex;
   align-items: center;
-  margin-right: 25px;
+  margin: 0 auto;
 }
 
 .top_main_c_job {
@@ -852,13 +859,13 @@ body {
 /* home categories start */
 .home_categories {
   border: 1px solid #dfdfdf;
-  width: 100%;
+  width: 93%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   padding: 30px;
   border-radius: 20px;
-  margin: 10px 0;
+  margin: 10px auto;
   cursor: pointer;
 }
 .home_categories .category_logo {
@@ -880,7 +887,7 @@ body {
 }
 .home_categories .rating {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   width: 50%;
   border-right: 2px solid #c4c4c4;
   font-weight: 700;
@@ -1032,6 +1039,7 @@ body {
   .home_top_header .home_left .description {
     width: 310px;
     text-align: center;
+    margin: 0 auto;
   }
   .home_top_header .home_left .heading {
     font-size: 32px;
@@ -1099,8 +1107,20 @@ body {
   font-family: "Poppins";
   text-align: center;
   position: relative;
+  margin: 0 auto;
+  width: 1000px;
 }
 
+@media screen and (max-width: 1024px) {
+  .find-freel-head h1 {
+    margin: 0 auto;
+    width: 760px;
+  }
+  .find-freel-para p {
+    margin: 0 auto;
+    width: 600px !important;
+  }
+}
 @media screen and (max-width: 768px) {
   .find-freel-head h1 {
     font-size: 60px;
@@ -1111,6 +1131,18 @@ body {
   .find-freel-head h1 {
     font-size: 43px;
     line-height: 46px;
+    width: 330px !important;
+  }
+  .find-freel-para p {
+    width: 330px !important;
+  }
+}
+@media screen and (max-width: 320px) {
+  .find-freel-head h1 {
+    width: 280px !important;
+  }
+  .find-freel-para p {
+    width: 280px !important;
   }
 }
 
@@ -1156,6 +1188,8 @@ body {
   font-weight: 500;
   font-family: "Poppins";
   text-align: center;
+  margin: 0 auto;
+  width: 1000px;
 }
 
 .freelance_card {
@@ -5047,12 +5081,12 @@ a {
   }
 
   .find-freel-para {
-    margin-top: 65px;
+    margin-top: 20px;
   }
 }
 @media screen and (max-width: 425px) {
   .find-freel-para {
-    margin-top: 65px;
+    margin-top: 20px;
   }
 }
 
@@ -5835,4 +5869,194 @@ a {
   color: red;
   font-weight: 300 !important;
   font-size: 12px !important;
+}
+
+/* Freelancer intro start */
+
+.container_border {
+  border: 1px solid #d4d4d5;
+  padding: 20px;
+  margin: 30px 0;
+}
+
+.whatdoyoudo .heading {
+  color: #00065a;
+  font-size: 26px;
+  font-weight: 800;
+  margin: 10px 0;
+}
+.whatdoyoudo .desc {
+  margin-bottom: 10px;
+  color: #393939;
+  font-size: 14px;
+}
+
+.whatdoyoudo .search_category {
+  width: 100%;
+  display: flex;
+  position: relative;
+}
+.whatdoyoudo .search_category svg {
+  position: absolute;
+  top: 18px;
+  width: 18px;
+  left: 12px;
+}
+.whatdoyoudo .search_category input {
+  width: 100%;
+  border: 1px solid #d4d4d5;
+  border-radius: 0;
+  padding: 10px 20px 10px 40px;
+  margin: 10px 0;
+  outline: none;
+}
+.whatdoyoudo .search_category input::placeholder {
+  color: #a1a1a1;
+  font-weight: 400;
+  font-size: 14px;
+}
+
+.theme_btns {
+  display: flex;
+  padding: 20px 0;
+}
+.theme_btns button {
+  min-width: 160px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  font-weight: bold;
+  border-radius: 20px !important;
+  text-transform: uppercase;
+  padding: 8px 45px;
+  margin-top: 5px;
+  margin-right: 15px;
+  -webkit-border-radius: 60px !important;
+  margin-top: 10px;
+  border: none;
+}
+.theme_btns .first_button {
+  color: #6d2ef1;
+  background-color: #fff;
+  border: #6d2ef1 solid 1px;
+}
+.theme_btns .second_button {
+  color: #fff;
+  background-color: #6610f2;
+  border: #6d2ef1 solid 1px;
+}
+
+.startIntroIn {
+  padding: 20px;
+}
+
+.startIntroIn h5 {
+  color: #00065a;
+  font-weight: 700;
+}
+
+.startIntroP {
+  font-size: 12px;
+  margin-top: 10px;
+}
+
+.startIntroFillOut {
+  border: 1px solid #d6d6d6;
+  width: 200px;
+  margin: 35px 0 0 0;
+}
+
+.startIntroRadiobtn {
+  display: flex;
+  justify-content: end;
+  padding-top: 4px;
+  padding-right: 7px;
+}
+
+.startIntroSVG {
+  display: flex;
+  justify-content: center;
+}
+
+.startIntroIcon {
+  height: 50px;
+  width: 62px;
+}
+
+.startIntroText {
+  font-size: 12px;
+  text-align: center;
+  font-weight: 700;
+  padding-top: 10px;
+  padding-bottom: 15px;
+  color: #00065a;
+  margin-bottom: 5px;
+}
+
+.startIntroTwo {
+  border: 1px solid #d6d6d6;
+  margin-top: 10px;
+}
+
+.startIntroTwoH5 {
+  font: normal normal 600 21px/20px Poppins;
+}
+
+.startIntroTwoP {
+  font: normal normal normal 13px/18px Poppins;
+}
+
+.startIntroBox {
+  border: 1px solid #d6d6d6;
+  width: 230px;
+  padding: 4px;
+  height: 150px;
+}
+.startIntroBoxes {
+  display: flex;
+  gap: 20px;
+}
+.startIntroExp2 {
+  font: normal normal 600 16px/20px Poppins;
+  margin-top: 4px;
+}
+.startIntroTwoIcon2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #d6d6d6;
+  width: 230px;
+  padding: 4px;
+  height: 150px;
+}
+.startIntroSkil {
+  margin: 0px 0px 0px 10px;
+  line-height: 26px;
+  font-size: 16px;
+}
+
+.startIntroTwoDate {
+  font-size: 12px;
+  margin: 0px 0px 0px 10px;
+}
+.startIntroCompny {
+  margin: 0px 0px 0px 10px;
+  font-size: 14px;
+  line-height: 25px;
+}
+.startIntroTwoIcon {
+  display: flex;
+  gap: 5px;
+  padding-right: 5px;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Freelancer intro end */
+
+.footerPage .title h1 {
+  color: #00065a;
+  margin-bottom: 20px;
 }

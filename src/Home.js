@@ -22,10 +22,21 @@ const Home = () => {
 
   return (
     <>
-      <Slider nonavbg={true} hero={homePageData?.hero} />
-      <Services category={homePageData?.category} />
+      <Slider
+        nonavbg={true}
+        hero={homePageData?.hero}
+        used_by={homePageData?.used_by}
+      />
+      <Services
+        category={homePageData?.category}
+        popular_service={homePageData?.popular_service}
+      />
       <FreelanceWorld for_client={homePageData?.for_client} />
-      <Findfreelance trusted_brands={homePageData?.trusted_brands} />
+      <Findfreelance
+        trusted_brands={homePageData?.trusted_brands}
+        trusted_brand_description={homePageData?.trusted_brand_description}
+        trusted_brand_title={homePageData?.trusted_brand_title}
+      />
       <Footer />
     </>
   );

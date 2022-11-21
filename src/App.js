@@ -8,6 +8,7 @@ const VerifyForgotOTP = lazy(() => import("./components/VerifyForgotOTP"));
 const ForgotPass = lazy(() => import("./components/ForgotPass"));
 const ResetPass = lazy(() => import("./components/ResetPass"));
 const VerifySignUp = lazy(() => import("./components/VerifySignUp"));
+const FooterPages = lazy(() => import("./FooterPages"));
 
 //  ================================ CLIENT ROUTES ==================================
 const Createcategory = lazy(() => import("./client/Pages/Create-Category"));
@@ -159,6 +160,12 @@ const SeeMilestone = lazy(() => import("./freelancer/Pages/MileStone-Earning"));
 const FreelancerMessage = lazy(() =>
   import("./freelancer/Pages/FreelancerMessage")
 );
+const ProfileIntoStep1 = lazy(() =>
+  import("./freelancer/Pages/ProfileIntro/ProfileIntroStepOne")
+);
+const ProfileIntoStep2 = lazy(() =>
+  import("./freelancer/Pages/ProfileIntro/ProfileIntroStepTwo")
+);
 
 const LoggedOutRoutes = () => {
   return (
@@ -170,6 +177,7 @@ const LoggedOutRoutes = () => {
       <Route path="/forgot-password" element={<ForgotPass />} />
       <Route path="/reset-password" element={<ResetPass />} />
       <Route path="/verify-signup" element={<VerifySignUp />} />
+      <Route path="/pages/:pagename" element={<FooterPages />} />
     </Routes>
   );
 };
@@ -342,6 +350,8 @@ const LoggedInRoutes = () => {
       <Route exact path="/freelancer/message" element={<FreelancerMessage />} />
       <Route path="/freelancer/see-milestone" element={<SeeMilestone />} />
       <Route path="/freelancer/see-timesheet" element={<SeeTimesheet />} />
+      <Route path="/freelancer/profile-intro1" element={<ProfileIntoStep1 />} />
+      <Route path="/freelancer/profile-intro2" element={<ProfileIntoStep2 />} />
     </Routes>
   );
 };

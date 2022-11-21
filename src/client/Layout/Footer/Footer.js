@@ -9,57 +9,18 @@ const Footer = () => {
         <Row className="footer_border footer_padd">
           <Col lg={3}>
             <div className="footer-head">
-              <h3>Categories</h3>
-            </div>
-            <div>
-              <ul className="footer_ul">
-                <li>
-                  <Link to="/">Graphics & Design</Link>
-                </li>
-                <li>
-                  <Link to="/">Digital Marketing</Link>
-                </li>
-                <li>
-                  <Link to="/">Writing & Translation</Link>
-                </li>
-                <li>
-                  <Link to="/">Video & Animation</Link>
-                </li>
-                <li>
-                  <Link to="/">Music & Audio</Link>
-                </li>
-                <li>
-                  <Link to="/">Programming & TechLifestyle</Link>
-                </li>
-              </ul>
-            </div>
-          </Col>
-          <Col lg={3}>
-            <div className="footer-head">
               <h3>About</h3>
             </div>
             <div>
               <ul className="footer_ul">
                 <li>
-                  <Link to="/">Careers</Link>
+                  <Link to="/pages/about-us">About Us</Link>
                 </li>
                 <li>
-                  <Link to="/">Press & News</Link>
+                  <Link to="/pages/feedback">Feedback</Link>
                 </li>
                 <li>
-                  <Link to="/">Partnerships</Link>
-                </li>
-                <li>
-                  <Link to="/">Privacy Policy</Link>
-                </li>
-                <li>
-                  <Link to="/">Terms of Service</Link>
-                </li>
-                <li>
-                  <Link to="/">Intellectual Claims</Link>
-                </li>
-                <li>
-                  <Link to="/">Investor Relations</Link>
+                  <Link to="/pages/community">Community</Link>
                 </li>
               </ul>
             </div>
@@ -71,43 +32,45 @@ const Footer = () => {
             <div>
               <ul className="footer_ul">
                 <li>
-                  <Link to="/help-support">Help & Support</Link>
+                  <Link to="/pages/help">Help & Support</Link>
                 </li>
                 <li>
-                  <Link to="/">Trust & Safety</Link>
-                </li>
-                <li>
-                  <Link to="/">Selling on Unify</Link>
-                </li>
-                <li>
-                  <Link to="/">Buying on Unify</Link>
+                  <Link to="/pages/trust-safety-and-security">
+                    Trust Safty & Security
+                  </Link>
                 </li>
               </ul>
             </div>
           </Col>
           <Col lg={3}>
             <div className="footer-head">
-              <h3>Community</h3>
+              <h3>Terms</h3>
             </div>
             <div>
               <ul className="footer_ul">
                 <li>
-                  <Link to="/">Events</Link>
+                  <Link to="/pages/term-conditions">Terms of Services</Link>
                 </li>
                 <li>
-                  <Link to="/">Blog</Link>
+                  <Link to="/pages/cookie-policy">Privacy Policy</Link>
                 </li>
                 <li>
-                  <Link to="/">Forum</Link>
+                  <Link to="/pages/cookie-settings">Coockies Settings</Link>
+                </li>
+              </ul>
+            </div>
+          </Col>
+          <Col lg={3}>
+            <div className="footer-head">
+              <h3>Policy</h3>
+            </div>
+            <div>
+              <ul className="footer_ul">
+                <li>
+                  <Link to="/pages/accessibility">Accessiblity</Link>
                 </li>
                 <li>
-                  <Link to="/">Community Standards</Link>
-                </li>
-                <li>
-                  <Link to="/">Podcast</Link>
-                </li>
-                <li>
-                  <Link to="/">Affiliates</Link>
+                  <Link to="/pages/cookie-policy">Cookie Policy</Link>
                 </li>
               </ul>
             </div>
@@ -122,10 +85,10 @@ const Footer = () => {
           <Col lg={6} md={6} className="col-12 right_align">
             <ul className="copy_ri_ul">
               <li>
-                <Link to="/">Privacy Policy</Link>
+                <Link to="/pages/privacy-policy">Privacy Policy</Link>
               </li>
               <li>
-                <Link to="/">Terms and conditions</Link>
+                <Link to="/pages/term-conditions">Terms and conditions</Link>
               </li>
             </ul>
             <div className="social_links">

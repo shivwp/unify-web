@@ -15,6 +15,7 @@ import {
   FORGOT_PASS_ERROR,
   FORGOT_OTP_ERROR,
   HOME_PAGE_DATA,
+  FOOTER_PAGE_DATA,
 } from "../types";
 import { GoogleAuthProvider, OAuthProvider } from "firebase/auth";
 
@@ -258,4 +259,19 @@ export const appleSignInInitiate = (userType, navigate) => {
         appleSignInFail(error);
       });
   };
+};
+
+export const getFooterPageData = (pagename) => async (dispatch) => {
+  await Axios.get(`/page/${pagename}`)
+    .then((res) => {
+      if (res.data.status) {
+        dispatch({
+          type: FOOTER_PAGE_DATA,
+          payload: res.data.data,
+        });
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 };

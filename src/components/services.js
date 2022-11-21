@@ -6,18 +6,14 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 
-const Services = ({ category }) => {
+const Services = ({ category, popular_service }) => {
   return (
     <div className="services_sec">
       <div className="container">
         <div className="services_sec_heading">
           <h2>
-            Popular
-            <span className="blue_ater_s blue_ater_h_min">
-              {" "}
-              professional
-            </span>{" "}
-            <br /> services
+            {popular_service}
+            <span className="blue_ater_s blue_ater_h_min"></span>
           </h2>
         </div>
         <Row>

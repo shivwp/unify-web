@@ -2204,6 +2204,10 @@
     width: 48% !important;
     margin-left: 6px;
   }
+  .swiper-slide:has(.client_imag) {
+    width: 33.33% !important;
+    margin-left: 0;
+  }
 }
 
 .add_card_ee {

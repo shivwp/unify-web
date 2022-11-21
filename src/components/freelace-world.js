@@ -10,7 +10,10 @@ const FreelanceWorld = ({ for_client }) => {
     <div className="flex_cen">
       <div className="container-fluid">
         <div className=" sp-right-0 mdp-0">
-          <div className="freelance_section">
+          <div
+            className="freelance_section"
+            style={{ backgroundImage: `url("${for_client?.client_banner}")` }}
+          >
             <div className="free_sec_head">
               <h2>
                 {for_client?.client_title}

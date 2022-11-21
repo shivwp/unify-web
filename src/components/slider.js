@@ -7,8 +7,10 @@ import { Link } from "react-router-dom";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
+import Home from "../Home";
 
-const slider = ({ nonavbg, hero }) => {
+const slider = ({ nonavbg, hero, used_by }) => {
+  console.log(used_by);
   return (
     <div className="carousal_top slider_pos">
       <div className="nav_realat">
@@ -31,7 +33,7 @@ const slider = ({ nonavbg, hero }) => {
                   </div>
                 </div>
                 <div className="home_right">
-                  <img src="/assets/home_img.png" alt="" />
+                  <img src={hero?.image || "/assets/home_img.png"} alt="" />
                   {/* <img src={hero?.image} alt="" /> */}
                 </div>
                 <div className="svg_sup1">
@@ -49,19 +51,19 @@ const slider = ({ nonavbg, hero }) => {
         <div className="container">
           <Row className="row">
             <Col
-              lg={2}
-              md={2}
+              lg={3}
+              md={3}
               className="d-flex justify-content-center align-items-center"
             >
               <div className="as_used">As used by</div>
             </Col>
-            <Col lg={10} md={10} className="flex_client ">
+            <Col lg={9} md={9} className="flex_client ">
               <Swiper
                 className="w-100"
                 spaceBetween={30}
                 slidesPerView={4}
-                // onSlideChange={() => console.log("slide change")}
-                // onSwiper={(swiper) => console.log(swiper)}
+                loop={true}
+                // Autoplay={true}
                 breakpoints={{
                   200: {
                     slidesPerView: 1,
@@ -86,28 +88,13 @@ const slider = ({ nonavbg, hero }) => {
                   },
                 }}
               >
-                {/* {hero?.used_by?.used_by_section_image?.map((item) => {
-                  <SwiperSlide>
+                {used_by?.used_by_section_image?.map((item, index) => (
+                  <SwiperSlide key={index}>
                     <div className="client_imag">
-                      <img src="assets/macdonald.png" alt="" />
+                      <img src={item} alt="" />
                     </div>
-                  </SwiperSlide>;
-                })} */}
-                <SwiperSlide>
-                  <div className="client_imag">
-                    <img src="assets/macdonald.png" alt="" />
-                  </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                  <div className="client_imag">
-                    <img src="assets/talabat.png" alt="" />
-                  </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                  <div className="client_imag">
-                    <img src="assets/bruce_clay.png" alt="" />
-                  </div>
-                </SwiperSlide>
+                  </SwiperSlide>
+                ))}
               </Swiper>
             </Col>
           </Row>
