@@ -692,13 +692,38 @@ body {
   padding: 120px 0px 0 0;
   width: 90%;
   margin-left: auto;
-  background-image: url("/public/assets/talent_image.png");
   background-repeat: no-repeat;
   background-size: 70% 100%;
   position: relative;
   background-position: right;
   z-index: 1;
   margin-bottom: 100px;
+  position: relative;
+}
+
+@media screen and (max-width: 768px) {
+  .freelance_section {
+    padding: 40px 0px 0 0;
+  }
+}
+
+.freelance_section .telent_image {
+  position: absolute;
+  top: 0px;
+  width: 75%;
+  right: 0px;
+  z-index: -1;
+}
+
+@media screen and (max-width: 425px) {
+  .freelance_section .telent_image {
+    width: 100%;
+  }
+}
+
+.freelance_section .telent_image img {
+  width: 100%;
+  height: auto;
 }
 
 .sp-right-0 {
@@ -737,6 +762,13 @@ body {
   position: relative;
   top: 144px;
 }
+
+@media screen and (max-width: 768px) {
+  .box_area_freelanec {
+    top: 6px;
+  }
+}
+
 .box_area_freelanec .col-md-4 {
   border-bottom: 1px solid #777777;
 }
@@ -795,6 +827,13 @@ body {
   text-align: center;
   width: 100%;
 }
+
+@media screen and (max-width: 768px) {
+  .freelance_box {
+    padding: 25px 10px;
+  }
+}
+
 .freelance_box p,
 .freelance_box h2 {
   padding: 25px 30px;
@@ -976,12 +1015,12 @@ body {
 }
 
 /* trusted brands end */
-
+/* 
 @media screen and (max-width: 1440px) {
   .freelance_section {
     background-size: 80% 100%;
   }
-}
+} */
 @media screen and (max-width: 1024px) {
   .home_top_header {
     height: 750px;
@@ -3402,11 +3441,6 @@ body {
     height: 90%;
     width: 85px;
   }
-
-  .navbar_btn,
-  .navbar_btn .dropdown-toggle {
-    /* margin: -5px 8px !important; */
-  }
 }
 
 @media screen and (min-width: 768px) and (max-width: 992px) {
@@ -5140,11 +5174,6 @@ a {
 }
 
 @media only screen and (max-width: 670px) {
-  .freelance_section {
-    /* z-index: -1 !important; */
-    /* z-index: auto !important; */
-  }
-
   .services_sec_heading h2 {
     font-size: 40px;
   }
@@ -5285,8 +5314,6 @@ a {
   }
 
   .free_sec_para {
-    background-image: url("/public/assets/talent_image.png");
-    background-repeat: no-repeat;
     padding: 30px 5px 250px 5px;
     background-position: bottom center;
     background-size: contain;
@@ -5333,11 +5360,6 @@ a {
   }
 }
 
-@media screen and (max-width: 768px) {
-  .free_sec_head h2 {
-    margin-top: 100px;
-  }
-}
 @media screen and (max-width: 425px) {
   .freelance_section {
     width: 100%;
@@ -5359,6 +5381,7 @@ a {
   }
   .free_sec_para {
     width: 400px;
+    padding: 0px !important;
   }
 }
 
@@ -5488,6 +5511,18 @@ a {
   width: 90% !important;
   position: relative;
   top: 144px;
+}
+
+@media screen and (max-width: 768px) {
+  .nbox_area_border {
+    top: 6px;
+    right: 67px;
+  }
+}
+@media screen and (max-width: 425px) {
+  .nbox_area_border {
+    right: 0px;
+  }
 }
 
 .css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root {

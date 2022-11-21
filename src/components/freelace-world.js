@@ -10,10 +10,7 @@ const FreelanceWorld = ({ for_client }) => {
     <div className="flex_cen">
       <div className="container-fluid">
         <div className=" sp-right-0 mdp-0">
-          <div
-            className="freelance_section"
-            style={{ backgroundImage: `url("${for_client?.client_banner}")` }}
-          >
+          <div className="freelance_section">
             <div className="free_sec_head">
               <h2>
                 {for_client?.client_title}
@@ -23,6 +20,9 @@ const FreelanceWorld = ({ for_client }) => {
             </div>
             <div className="free_sec_para">
               <p>{for_client?.client_description}</p>
+            </div>
+            <div className="telent_image">
+              <img src={for_client?.client_banner} alt="" />
             </div>
             <Row className="box_area_freelanec">
               <Col md={4}>

@@ -17,7 +17,7 @@ const Services = ({ category, popular_service }) => {
           </h2>
         </div>
         <Row>
-          {category?.map((item, index) => (
+          {category?.slice(0, 6)?.map((item, index) => (
             <Col md={6} lg={4} key={index}>
               <div className="home_categories">
                 <div className="category_logo">
