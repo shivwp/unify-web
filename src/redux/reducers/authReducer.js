@@ -6,12 +6,18 @@ import {
   SIGNUP_ERROR,
   FORGOT_PASS_ERROR,
   FORGOT_OTP_ERROR,
+  HOME_PAGE_DATA,
 } from "../types";
 
 const initialState = {};
 
 const authReducer = (state = initialState, action) => {
   switch (action.type) {
+    case HOME_PAGE_DATA:
+      return {
+        ...state,
+        homePageData: action.payload,
+      };
     case SET_COUNTRY:
       return {
         ...state,

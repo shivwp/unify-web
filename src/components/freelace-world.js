@@ -5,7 +5,7 @@ import { Navigation } from "swiper";
 import Row from "react-bootstrap/Row";
 import { Col } from "react-bootstrap";
 
-const FreelanceWorld = () => {
+const FreelanceWorld = ({ for_client }) => {
   return (
     <div className="flex_cen">
       <div className="container-fluid">
@@ -13,68 +13,42 @@ const FreelanceWorld = () => {
           <div className="freelance_section">
             <div className="free_sec_head">
               <h2>
-                A Whole world of freelance
-                <br /> talent at
-                <span className="blue_ater_s"> your fingertips</span>
+                {for_client?.client_title}
+
+                <span className="blue_ater_s"> </span>
               </h2>
             </div>
             <div className="free_sec_para">
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod <br />
-                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-                minim
-                <br /> veniam, quis nostrud exercitation ullamco laboris nisi ut
-                aliquip ex
-                <br /> ea commodo consequat.
-              </p>
+              <p>{for_client?.client_description}</p>
             </div>
             <Row className="box_area_freelanec">
               <Col md={4}>
                 <div className="freelance_box f_b_border">
                   <div className="freelance_head">
-                    <h2>
-                      The best for every
-                      budget
-                    </h2>
+                    <h2>{for_client?.title_1}</h2>
                   </div>
                   <div className="freelance_para">
-                    <p>
-                      Find high-quality services at every
-                      price point. No hourly rates, just
-                      project-based pricing.
-                    </p>
+                    <p>{for_client?.description_1}</p>
                   </div>
                 </div>
               </Col>
               <Col md={4}>
                 <div className="freelance_box f_b_border">
                   <div className="freelance_head">
-                    <h2>
-                      Quality work done
-                      quickly
-                    </h2>
+                    <h2>{for_client?.title_2}</h2>
                   </div>
                   <div className="freelance_para">
-                    <p>
-                      Find the right freelancer to begin
-                      working on your project within
-                     minutes.
-                    </p>
+                    <p>{for_client?.description_2}</p>
                   </div>
                 </div>
               </Col>
               <Col md={4}>
                 <div className="freelance_box">
                   <div className="freelance_head">
-                    <h2>24/7 support</h2>
+                    <h2>{for_client?.title_3}</h2>
                   </div>
                   <div className="freelance_para">
-                    <p>
-                      Questions? Our round-the-clock
-                   support team is available to help
-                       anytime, anywhere.
-                    </p>
+                    <p>{for_client?.description_3}</p>
                   </div>
                 </div>
               </Col>

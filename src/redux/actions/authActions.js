@@ -14,6 +14,7 @@ import {
   SIGNUP_ERROR,
   FORGOT_PASS_ERROR,
   FORGOT_OTP_ERROR,
+  HOME_PAGE_DATA,
 } from "../types";
 import { GoogleAuthProvider, OAuthProvider } from "firebase/auth";
 
@@ -21,6 +22,19 @@ const config = {
   headers: {
     Authorization: `Bearer ${localStorage.getItem("unify_Token")}`,
   },
+};
+
+export const getHomePageData = () => async (dispatch) => {
+  await Axios.get(`/home-data`)
+    .then((res) => {
+      dispatch({
+        type: HOME_PAGE_DATA,
+        payload: res.data.data,
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 };
 
 export const onLogin = (data, navigate) => async (dispatch) => {

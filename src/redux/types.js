@@ -1,3 +1,5 @@
+export const HOME_PAGE_DATA = "HOME_PAGE_DATA";
+
 export const SET_COUNTRY = "SET_COUNTRY";
 
 export const SET_FREELANCER_PROFILE = "SET_FREELANCER_PROFILE";

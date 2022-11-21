@@ -49,7 +49,7 @@ const NavbarHeader = (props) => {
           <Link to="/">BROWSE JOBS</Link>
         </div>
         <div className="logout_btn_mob">
-          <Link to={`/signin`}>
+          <Link to={`/`}>
             <button>Pricing</button>
           </Link>
         </div>
@@ -95,7 +95,7 @@ const NavbarHeader = (props) => {
                   <Nav.Link as={Link} to="/" className="navbar_btn">
                     Browse Jobs
                   </Nav.Link>
-                  <Nav.Link as={Link} to="/signin" className="navbar_btn">
+                  <Nav.Link as={Link} to="/" className="navbar_btn">
                     Pricing
                   </Nav.Link>
                   <Nav.Link as={Link} to="/signin" className="navbar_btn">

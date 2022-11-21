@@ -4,7 +4,7 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Navigation, Pagination } from "swiper";
 
-const findfreelance = () => {
+const findfreelance = ({ trusted_brands }) => {
   return (
     <div className="find_frelance">
       <div className="">
@@ -60,60 +60,32 @@ const findfreelance = () => {
               },
             }}
           >
-            <SwiperSlide>
-              <div className="brands">
-                <div className="brand_icon">
-                  <img src="/assets/macdonald.png" alt="" />
-                </div>
-                <div className="brand_title">
-                  "Upwork enables us to differentiate ourselves from our
-                  competitors and produce content at a higher caliber."
-                </div>
-                <div className="brand_officer">
-                  Josh Machiz, Chief Digital Officer
-                </div>
-                <div className="Results">
-                  <div className="result">Results</div>
-                  <div className="projects">
-                    <div>
-                      <span className="count">10,000</span>
-                      <span className="title">Projects Completed</span>
-                    </div>{" "}
-                    <div>
-                      <span className="count">50% Fast</span>
-                      <span className="title">Lounch of Projects</span>
-                    </div>{" "}
+            {trusted_brands?.map((item, index) => (
+              <SwiperSlide key={index}>
+                <div className="brands">
+                  <div className="brand_icon">
+                    <img src="/assets/macdonald.png" alt="" />
+                  </div>
+                  <div className="brand_title">"{item.brand_description}"</div>
+                  <div className="brand_officer">{item.designation}</div>
+                  <div className="Results">
+                    <div className="result">Results</div>
+                    <div className="projects">
+                      <div>
+                        <span className="count">{item.total_projects}</span>
+                        <span className="title">Projects Completed</span>
+                      </div>{" "}
+                      <div>
+                        <span className="count">
+                          {item.launch_projects} Fast
+                        </span>
+                        <span className="title">Lounch of Projects</span>
+                      </div>{" "}
+                    </div>
                   </div>
                 </div>
-              </div>
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className="brands">
-                <div className="brand_icon">
-                  <img src="/assets/talabat.png" alt="" />
-                </div>
-                <div className="brand_title">
-                  "Upwork enables us to differentiate ourselves from our
-                  competitors and produce content at a higher caliber."
-                </div>
-                <div className="brand_officer">
-                  Josh Machiz, Chief Digital Officer
-                </div>
-                <div className="Results">
-                  <div className="result">Results</div>
-                  <div className="projects">
-                    <div>
-                      <span className="count">10,000</span>
-                      <span className="title">Projects Completed</span>
-                    </div>{" "}
-                    <div>
-                      <span className="count">50% Fast</span>
-                      <span className="title">Lounch of Projects</span>
-                    </div>{" "}
-                  </div>
-                </div>
-              </div>
-            </SwiperSlide>
+              </SwiperSlide>
+            ))}
           </Swiper>
         </div>
       </div>
