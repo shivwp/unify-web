@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import OTPInput from "otp-input-react";
 import { useDispatch, useSelector } from "react-redux";
 import { onResendOtp, onVerifyForgot } from "../redux/actions/authActions";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
-import { Form } from "react-bootstrap";
+import { Form, Navbar } from "react-bootstrap";
+import logo from "../assets/logo.svg";
 
 const VerifyForgotOTP = () => {
   const dispatch = useDispatch();
@@ -54,41 +55,52 @@ const VerifyForgotOTP = () => {
   };
 
   return (
-    <>
-      <div className="bg_body">
-        <div className="otp_container">
-          <div className="heading">Please enter the one time password</div>
-          <div className="otp_inputs">
-            <OTPInput
-              value={OTP}
-              onChange={setOTP}
-              autoFocus
-              OTPLength={4}
-              otpType="number"
-              disabled={false}
-            />
-          </div>
+    <div className="bg-body-wrapper">
+      <div className="container">
+        <div className="width_100_sm newnav_v2_wauto">
+          <Link to="/">
+            <Navbar.Brand>
+              <img src={logo} className="img-fluid rounded-top" alt="" />
+            </Navbar.Brand>
+          </Link>
+        </div>
+        <div className="bg_body">
+          <div className="sign_form_shap"></div>
+          <div className="sign_form_shapb"></div>
+          <div className="otp_container">
+            <div className="heading">Please enter the one time password</div>
+            <div className="otp_inputs">
+              <OTPInput
+                value={OTP}
+                onChange={setOTP}
+                autoFocus
+                OTPLength={4}
+                otpType="number"
+                disabled={false}
+              />
+            </div>
 
-          {forgotOTPError ? (
-            <p className="forgot_otp_error">{forgotOTPError}</p>
-          ) : null}
-          <div className="otp_submit_btn">
-            <Button variant="" onClick={onVerify}>
-              VERIFY
-            </Button>
+            {forgotOTPError ? (
+              <p className="forgot_otp_error">{forgotOTPError}</p>
+            ) : null}
+            <div className="otp_submit_btn">
+              <Button variant="" onClick={onVerify}>
+                VERIFY
+              </Button>
+            </div>
+            {reOtp ? (
+              <div className="suggetion_resend">
+                Don't get the code <span onClick={resendOtp}>Resend</span>
+              </div>
+            ) : (
+              <div className="suggetion_resend">
+                You can send OTP after {time} seconds
+              </div>
+            )}
           </div>
-          {reOtp ? (
-            <div className="suggetion_resend">
-              Don't get the code <span onClick={resendOtp}>Resend</span>
-            </div>
-          ) : (
-            <div className="suggetion_resend">
-              You can send OTP after {time} seconds
-            </div>
-          )}
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

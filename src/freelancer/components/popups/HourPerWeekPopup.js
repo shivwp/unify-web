@@ -100,7 +100,12 @@ const HourPerWeekPopup = ({
             </Button>
           </div>
           <div className="_save_submit">
-            <Button type="submit" className="hov_ttransp" onClick={onSave}>
+            <Button
+              type="submit"
+              className="hov_ttransp"
+              disabled={!(hourlyPrice?.hours_price && hpwValue)}
+              onClick={onSave}
+            >
               SAVE
             </Button>
           </div>

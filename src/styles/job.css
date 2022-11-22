@@ -2459,7 +2459,7 @@
   left: -30px;
   color: #ea2121;
   margin: 0 10px 0 -12px;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 300;
 }
 
@@ -3532,6 +3532,12 @@
   margin-right: 15px;
   border: #6d2ef1 solid 1px;
   -webkit-border-radius: 60px !important;
+}
+
+._save_submit .hov_ttransp:disabled {
+  background-color: #c7c6c9;
+  color: rgb(74 72 72);
+  border: 1px solid rgb(74 72 72);
 }
 
 .filter_scr {

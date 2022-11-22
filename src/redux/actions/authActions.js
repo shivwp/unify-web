@@ -16,6 +16,7 @@ import {
   FORGOT_OTP_ERROR,
   HOME_PAGE_DATA,
   FOOTER_PAGE_DATA,
+  VERIFY_OTP_ERROR,
 } from "../types";
 import { GoogleAuthProvider, OAuthProvider } from "firebase/auth";
 
@@ -79,9 +80,15 @@ export const onVerifySignup = (data, navigate) => async (dispatch) => {
     const res = await Axios.post(`/verifysignup`, data);
     if (res.data.status) {
       navigate("/signin");
+
       window.location.reload();
     }
-  } catch (err) {}
+  } catch (err) {
+    dispatch({
+      type: VERIFY_OTP_ERROR,
+      payload: err.response.data.message,
+    });
+  }
 };
 
 export const onResendOtp = (data) => async (dispatch) => {

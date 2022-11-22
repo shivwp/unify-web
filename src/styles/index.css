@@ -3312,16 +3312,19 @@ body {
   color: #fff !important;
 }
 
-.bg_body {
+.bg-body-wrapper {
   background-image: url("../../public/assets/Rectangle 1.svg");
   background-size: cover;
-  width: 100%;
   height: -webkit-fill-available;
+  width: 100%;
+  padding: 30px 0px;
+}
+
+.bg_body {
+  min-height: 559px;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 20px 0px;
-  min-height: calc(100vh);
 }
 
 .sign_form_shapb {
@@ -5848,7 +5851,6 @@ a {
 .btn-check:checked + .btn,
 .btn.active,
 .btn.show,
-.btn:first-child:active,
 :not(.btn-check) + .btn:active {
   background-color: #fff;
   color: #6d2ef1;

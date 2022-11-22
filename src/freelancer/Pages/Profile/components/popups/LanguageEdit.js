@@ -24,11 +24,11 @@ const CloseIcon = () => {
   );
 };
 
-const LanguageEdit = (props) => {
+const LanguageEdit = ({ data, Popup, successPopup, setSuccessPopup }) => {
   const dispatch = useDispatch();
   const languageList = useSelector((state) => state?.profile?.getLanguageList);
   const [inputList, setInputList] = useState(
-    props?.data || [{ language: "", level: "" }]
+    data || [{ language: "", level: "" }]
   );
 
   const handleInputChange = (e, index) => {
@@ -48,7 +48,6 @@ const LanguageEdit = (props) => {
   ];
 
   const removeInputFields = (index) => {
-    console.log(index);
     const rows = [...inputList];
     rows.splice(index, 1);
     setInputList(rows);
@@ -60,12 +59,7 @@ const LanguageEdit = (props) => {
       data[ele.language] = ele.level;
     });
     dispatch(
-      onEditLanguage(
-        { languages: data },
-        props.Popup,
-        props.successPopup,
-        props.setSuccessPopup
-      )
+      onEditLanguage({ languages: data }, Popup, successPopup, setSuccessPopup)
     );
   };
 
@@ -78,12 +72,7 @@ const LanguageEdit = (props) => {
         <div className="popup_box_bpn profile_nceqoi_popup pb-4">
           <div className="popup_header pb-0">
             <div className="p_header_hding">Edit languages</div>
-            <div
-              className="close_pp_btn"
-              onClick={() => {
-                props.Popup();
-              }}
-            >
+            <div className="close_pp_btn" onClick={() => Popup()}>
               <CloseIcon />
             </div>
           </div>
@@ -201,13 +190,7 @@ const LanguageEdit = (props) => {
             </div>
             {/* )} */}
             <div className="popup_btns_new flex-wrap cwiewyehkk">
-              <Button
-                variant=""
-                className="trans_btn"
-                onClick={() => {
-                  props.Popup();
-                }}
-              >
+              <Button variant="" className="trans_btn" onClick={() => Popup()}>
                 Cancel
               </Button>
 

@@ -8,7 +8,6 @@ import {
   onEditSkills,
 } from "../../../../../redux/actions/profileAction";
 
-
 const CloseIcon = () => {
   return (
     <svg
@@ -24,9 +23,8 @@ const CloseIcon = () => {
   );
 };
 
-const EditSkill = (props) => {
-  const [selectSkills, setSelectSkills] = useState(props?.data);
-  console.log(selectSkills);
+const EditSkill = ({ data, Popup, successPopup, setSuccessPopup }) => {
+  const [selectSkills, setSelectSkills] = useState(data);
   const dispatch = useDispatch();
   let getSkillList = useSelector((state) => state?.profile?.getSkillList);
 
@@ -37,7 +35,7 @@ const EditSkill = (props) => {
   };
 
   const addSkills = (item) => {
-    if (selectSkills.length <= 15) {
+    if (selectSkills.length <= 14) {
       if (
         selectSkills.find((ele) => {
           return ele.skill_id == item.id;
@@ -68,9 +66,7 @@ const EditSkill = (props) => {
     const data = {
       skill_id: selectSkills?.map((item) => item.skill_id)?.toString(),
     };
-    dispatch(
-      onEditSkills(data, props.Popup, props.successPopup, props.setSuccessPopup)
-    );
+    dispatch(onEditSkills(data, Popup, successPopup, setSuccessPopup));
   };
 
   $(document).mouseup(function (e) {
@@ -78,18 +74,14 @@ const EditSkill = (props) => {
       $("#suggest_skills").hide();
     }
   });
+
   return (
     <>
       <div className="bg_wrapper_popup_new">
         <div className="popup_box_bpn profile_nceqoi_popup pb-4">
           <div className="popup_header pb-0">
             <div className="p_header_hding">Edit Skills</div>
-            <div
-              className="close_pp_btn"
-              onClick={() => {
-                props.Popup();
-              }}
-            >
+            <div className="close_pp_btn" onClick={() => Popup()}>
               <CloseIcon />
             </div>
           </div>
@@ -118,7 +110,7 @@ const EditSkill = (props) => {
                   name="skill"
                   id="search_skill_inp"
                   autocomplete="off"
-                  placeholder="search here skills..."
+                  placeholder="Search here skills..."
                   className="no-border font-size-13px search_skilloiouo"
                 />
                 {getSkillList && (
@@ -141,20 +133,35 @@ const EditSkill = (props) => {
                 )}
               </div>
             </div>
-            <div className="maxlabel_atcxt mt-3">Maximum 15 skills.</div>
+            <div className="maxlabel_atcxt mt-3">
+              {selectSkills?.length === 0 ? (
+                <span style={{ color: "red" }}>
+                  At least 1 skill is required.
+                </span>
+              ) : selectSkills?.length > 14 ? (
+                <span style={{ color: "red" }}>Maximum 15 skills.</span>
+              ) : (
+                <span>Maximum 15 skills.</span>
+              )}
+            </div>
             <div className="popup_btns_new flex-wrap cwiewyehkk">
               <Button
                 variant=""
                 className="trans_btn hov_pple"
-                onClick={() => {
-                  props.Popup();
-                }}
+                onClick={() => Popup()}
               >
                 Cancel
               </Button>
-              <Button className="btnhovpple" variant="" onClick={onSave}>
-                Save
-              </Button> 
+
+              {selectSkills?.length === 0 ? (
+                <Button className="btnhovpple" variant="" disabled>
+                  Save
+                </Button>
+              ) : (
+                <Button className="btnhovpple" variant="" onClick={onSave}>
+                  Save
+                </Button>
+              )}
             </div>
           </div>
         </div>
