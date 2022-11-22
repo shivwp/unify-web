@@ -166,6 +166,9 @@ const ProfileIntoStep1 = lazy(() =>
 const ProfileIntoStep2 = lazy(() =>
   import("./freelancer/Pages/ProfileIntro/ProfileIntroStepTwo")
 );
+const ProfileIntoStep3 = lazy(() =>
+  import("./freelancer/Pages/ProfileIntro/ProfileIntroThree")
+);
 
 const LoggedOutRoutes = () => {
   return (
@@ -352,6 +355,7 @@ const LoggedInRoutes = () => {
       <Route path="/freelancer/see-timesheet" element={<SeeTimesheet />} />
       <Route path="/freelancer/profile-intro1" element={<ProfileIntoStep1 />} />
       <Route path="/freelancer/profile-intro2" element={<ProfileIntoStep2 />} />
+      <Route path="/freelancer/profile-intro3" element={<ProfileIntoStep3 />} />
     </Routes>
   );
 };

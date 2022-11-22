@@ -5954,6 +5954,7 @@ a {
 .theme_btns {
   display: flex;
   padding: 20px 0;
+  flex-wrap: wrap;
 }
 .theme_btns button {
   min-width: 160px;
@@ -5970,6 +5971,16 @@ a {
   -webkit-border-radius: 60px !important;
   margin-top: 10px;
   border: none;
+}
+
+@media screen and (max-width: 425px) {
+  .theme_btns button {
+    width: 230px;
+    margin: 0 auto;
+  }
+  .theme_btns .first_button {
+    margin-bottom: 20px;
+  }
 }
 .theme_btns .first_button {
   color: #6d2ef1;
@@ -6044,27 +6055,27 @@ a {
 
 .startIntroBox {
   border: 1px solid #d6d6d6;
-  width: 230px;
-  padding: 4px;
+  padding: 10px;
   height: 150px;
+  margin: 20px auto;
+  color: #4d4d4d;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.startIntroBoxAdd {
+  border: 1px solid #d6d6d6;
+  padding: 10px;
+  height: 150px;
+  margin: 20px auto;
+  color: #4d4d4d;
 }
 .startIntroBoxes {
   display: flex;
-  gap: 20px;
 }
 .startIntroExp2 {
   font: normal normal 600 16px/20px Poppins;
   margin-top: 4px;
-}
-.startIntroTwoIcon2 {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  border: 1px solid #d6d6d6;
-  width: 230px;
-  padding: 4px;
-  height: 150px;
 }
 .startIntroSkil {
   margin: 0px 0px 0px 10px;
@@ -6084,11 +6095,23 @@ a {
 .startIntroTwoIcon {
   display: flex;
   gap: 5px;
-  padding-right: 5px;
   justify-content: center;
   align-items: center;
 }
-
+.startIntroTwoIcon svg {
+  width: 30px;
+  cursor: pointer;
+}
+.profile_intro_add_col {
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+.profile_intro_add_col svg {
+  cursor: pointer;
+}
 /* Freelancer intro end */
 
 .footerPage .title h1 {
