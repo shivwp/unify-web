@@ -78,17 +78,17 @@ export const onRegister = (data, navigate) => async (dispatch) => {
 export const onVerifySignup = (data, navigate) => async (dispatch) => {
   try {
     const res = await Axios.post(`/verifysignup`, data);
-    if (res.data.status) {
-      navigate("/signin");
+    localStorage.setItem("unify_Token", res.data.auth_token);
+    localStorage.setItem("unify_user", JSON.stringify(res.data.data.user));
+    localStorage.setItem("unify_access", true);
 
-      window.location.reload();
+    if (res.data.data.user.user_type === "freelancer") {
+      navigate("/freelancer/dashboard");
+    } else if (res.data.data.user.user_type === "client") {
+      navigate("/dashboard");
     }
-  } catch (err) {
-    dispatch({
-      type: VERIFY_OTP_ERROR,
-      payload: err.response.data.message,
-    });
-  }
+    window.location.reload();
+  } catch (err) {}
 };
 
 export const onResendOtp = (data) => async (dispatch) => {

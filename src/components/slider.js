@@ -1,13 +1,15 @@
 import Carousel from "react-bootstrap/Carousel";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
+import "swiper/less/autoplay";
 import Navbar from "./Layouts/Header/HeaderMain";
 import { Link } from "react-router-dom";
-
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import Home from "../Home";
+import SwiperCore, { Autoplay } from "swiper";
+SwiperCore.use([Autoplay]);
 
 const slider = ({ nonavbg, hero, used_by }) => {
   console.log(used_by);
@@ -63,7 +65,10 @@ const slider = ({ nonavbg, hero, used_by }) => {
                 spaceBetween={30}
                 slidesPerView={4}
                 loop={true}
-                // Autoplay={true}
+                autoplay={{
+                  delay: 1000,
+                  disableOnInteraction: false,
+                }}
                 breakpoints={{
                   200: {
                     slidesPerView: 1,

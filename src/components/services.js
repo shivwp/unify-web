@@ -5,8 +5,18 @@ import { Navigation } from "swiper";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
+import { useState } from "react";
+import { useEffect } from "react";
 
 const Services = ({ category, popular_service }) => {
+  const [categories, setCategories] = useState([]);
+  useEffect(() => {
+    setCategories(category?.slice(0, 6));
+  }, [category]);
+
+  const showMore = () => {
+    setCategories(category);
+  };
   return (
     <div className="services_sec">
       <div className="container">
@@ -17,7 +27,7 @@ const Services = ({ category, popular_service }) => {
           </h2>
         </div>
         <Row>
-          {category?.slice(0, 6)?.map((item, index) => (
+          {categories?.map((item, index) => (
             <Col md={6} lg={4} key={index}>
               <div className="home_categories">
                 <div className="category_logo">
@@ -49,14 +59,19 @@ const Services = ({ category, popular_service }) => {
             </Col>
           ))}
         </Row>
-
-        <Row>
-          <Col lg={12}>
-            <div className="d-flex justify-content-center btn_services">
-              <Button variant="">View All The Services</Button>
-            </div>
-          </Col>
-        </Row>
+        {category > categories ? (
+          <Row>
+            <Col lg={12}>
+              <div className="d-flex justify-content-center btn_services">
+                <Button onClick={showMore} variant="">
+                  View All The Services
+                </Button>
+              </div>
+            </Col>
+          </Row>
+        ) : (
+          ""
+        )}
       </div>
     </div>
   );
