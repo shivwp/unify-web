@@ -89,7 +89,7 @@ const NavbarHeader = (props) => {
               />
               <Navbar.Collapse id="responsive-navbar-nav">
                 <Nav>
-                  <Nav.Link as={Link} to="/" className="navbar_btn">
+                  <Nav.Link as={Link} to="/how-it-works" className="navbar_btn">
                     How it works
                   </Nav.Link>
                   <Nav.Link as={Link} to="/" className="navbar_btn">

@@ -144,7 +144,7 @@ const NavbarHeader = (props) => {
           </button>
         </div>
         <div className="navdata_li">
-          <Link to="#0">HOW IT WORKS</Link>
+          <Link to="/how-it-works">HOW IT WORKS</Link>
         </div>
         <div className="navdata_li">
           <Link to="#0">BROWSE JOBS</Link>
