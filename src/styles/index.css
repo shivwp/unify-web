@@ -6056,7 +6056,7 @@ a {
 .startIntroBox {
   border: 1px solid #d6d6d6;
   padding: 10px;
-  height: 150px;
+  height: 170px;
   margin: 20px auto;
   color: #4d4d4d;
   display: flex;
@@ -6066,7 +6066,7 @@ a {
 .startIntroBoxAdd {
   border: 1px solid #d6d6d6;
   padding: 10px;
-  height: 150px;
+  height: 170px;
   margin: 20px auto;
   color: #4d4d4d;
 }
@@ -6111,6 +6111,72 @@ a {
 }
 .profile_intro_add_col svg {
   cursor: pointer;
+}
+
+.afterSignUpSklls {
+  font-family: "poppins";
+  font-size: 16px;
+  margin: 0;
+  color: #000;
+  font-weight: 600;
+}
+
+.AboutYrSelfChar {
+  font-family: "poppins";
+  font-size: 16px;
+  margin: 0;
+  color: #000;
+  font-weight: 600;
+}
+.maxlabel_atcxt2 {
+  font-family: "poppins";
+  font-size: 13px;
+  color: #9c9a9f;
+  font-weight: 400;
+  display: flex;
+  justify-content: end;
+  margin-top: 5px;
+  font-size: 12px;
+}
+.AfterSignUpYrselfTxt {
+  font-size: 12px;
+}
+.servicesChoose {
+  width: 550px;
+  border: #D6D6D6;
+}
+.servicesOfferOption {
+  font-size: 12px;
+}
+.hourlyRate {
+  color: #393939;
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+.hourlyRate2 {
+  color: #878787;
+  font-size: 14px;
+}
+.input_houry_price {
+  border: #b9c9dc solid 1px;
+  display: flex;
+  justify-content: center;
+  font: normal normal 600 18px/30px Poppins !important;
+  color: #8f8f8f;
+  padding: 3px 20px;
+  align-items: center;
+}
+.input_houry_price input {
+  border: none;
+  outline: none;
+}
+.hourly-price_rsph {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 5px;
+  color: #828282;
+  font-size: 14px;
 }
 /* Freelancer intro end */
 

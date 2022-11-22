@@ -169,7 +169,21 @@ const ProfileIntoStep2 = lazy(() =>
 const ProfileIntoStep3 = lazy(() =>
   import("./freelancer/Pages/ProfileIntro/ProfileIntroThree")
 );
-
+const ProfileIntoStep4 = lazy(() =>
+  import("./freelancer/Pages/ProfileIntro/ProfileIntroStepFour")
+);
+const ProfileIntoStep5 = lazy(() =>
+  import("./freelancer/Pages/ProfileIntro/ProfileIntroStepFive")
+);
+const ProfileIntoStep6 = lazy(() =>
+  import("./freelancer/Pages/ProfileIntro/ProfileIntroStepSix")
+);
+const ProfileIntoStep7 = lazy(() =>
+  import("./freelancer/Pages/ProfileIntro/ProfileIntroStepSeven")
+);
+const ProfileIntoStep8 = lazy(() =>
+  import("./freelancer/Pages/ProfileIntro/ProfileIntroStepEight")
+);
 const LoggedOutRoutes = () => {
   return (
     <Routes>
@@ -356,6 +370,11 @@ const LoggedInRoutes = () => {
       <Route path="/freelancer/profile-intro1" element={<ProfileIntoStep1 />} />
       <Route path="/freelancer/profile-intro2" element={<ProfileIntoStep2 />} />
       <Route path="/freelancer/profile-intro3" element={<ProfileIntoStep3 />} />
+      <Route path="/freelancer/profile-intro4" element={<ProfileIntoStep4 />} />
+      <Route path="/freelancer/profile-intro5" element={<ProfileIntoStep5 />} />
+      <Route path="/freelancer/profile-intro6" element={<ProfileIntoStep6 />} />
+      <Route path="/freelancer/profile-intro7" element={<ProfileIntoStep7 />} />
+      <Route path="/freelancer/profile-intro8" element={<ProfileIntoStep8 />} />
     </Routes>
   );
 };
