@@ -3337,7 +3337,7 @@ body {
 }
 
 .bg_body {
-  min-height: 559px;
+  min-height: calc(100vh - 104px);
   display: flex;
   justify-content: center;
   align-items: center;
