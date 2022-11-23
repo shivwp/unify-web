@@ -59,10 +59,10 @@ const HowItWorks = () => {
         <div className="award_winning_platform">
           <div className="container">
             <Row>
-              <Col md={6}>
+              <Col lg={6}>
                 <div className="heading">Our award-winning Platform</div>
                 <Row className="my-4">
-                  <Col lg={1} xs={1} className="p-0 mb-3">
+                  <Col lg={1}  xs={1} className="p-0 mb-3">
                     <div className="right_icon">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -160,7 +160,7 @@ const HowItWorks = () => {
                   </Col>
                 </Row>
               </Col>
-              <Col md={6}>
+              <Col lg={6}>
                 <div className="box_container">
                   <div className="box">
                     <h2>4.9/5</h2>
@@ -193,7 +193,7 @@ const HowItWorks = () => {
           <h2>Top Rated Freelancer</h2>
           <div className="container">
             <Swiper
-              className="find_swip"
+              className="t_r_freelancers"
               spaceBetween={30}
               slidesPerView={2}
               navigation={true}
@@ -218,7 +218,7 @@ const HowItWorks = () => {
                   spaceBetween: 0,
                 },
                 768: {
-                  slidesPerView: 3,
+                  slidesPerView: 2,
                   spaceBetween: 15,
                   centeredSlides: false,
                 },
