@@ -14,7 +14,7 @@ const HourlyRate = () => {
                             Clients will se this rate on your profile and in search result once you publish your profile. You can adjust your rate every time you submit a proposal
                         </p>
                         <Row className="m-1">
-                            <div className="pbx_pdd_sp">
+                            <div className="pbx_pdd_sp2">
                                 <Col sm={9} >
                                     <div className="mt-2">
                                         <div className="hraet_pdd_sp">Hourly Rate</div>
@@ -57,14 +57,12 @@ const HourlyRate = () => {
                                                         {errors?.bid_amount}
                                                     </Form.Control.Feedback> */}
                                             </div>
-                                            <div className="sli_bdg_pddsp d-flex align-items-center slsh_rh">
-                                                /hour
-                                            </div>
+                                            <div className="slsh_hr"> /hour </div>
                                         </div>
                                     </div>
                                 </Col>
                             </div>
-                            <div className="pbx_pdd_sp mt-1 mb-1">
+                            <div className="pbx_pdd_sp2 mt-1 mb-1">
                                 <Col sm={9}>
                                     <div className="mt-2">
                                         <div className="hraet_pdd_sp">Unify Service Fee</div>
@@ -86,14 +84,12 @@ const HourlyRate = () => {
                                                     name="unify_service_fee"
                                                 />
                                             </div>
-                                            <div className="sli_bdg_pddsp d-flex align-items-center slsh_rh">
-                                                /hour
-                                            </div>
+                                            <div className="slsh_hr"> /hour </div>
                                         </div>
                                     </div>
                                 </Col>
                             </div>
-                            <div className="pbx_pdd_sp no-border">
+                            <div className="pbx_pdd_sp2">
                                 <Col sm={9}>
                                     <div className="mt-2">
                                         <div className="hraet_pdd_sp">You'll receive</div>
@@ -118,9 +114,7 @@ const HourlyRate = () => {
                                                     name="reciving_amt"
                                                 />
                                             </div>
-                                            <div className="sli_bdg_pddsp d-flex align-items-center slsh_rh">
-                                                /hour
-                                            </div>
+                                            <div className="slsh_hr"> /hour </div>
                                         </div>
                                     </div>
                                 </Col>

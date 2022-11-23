@@ -1,8 +1,7 @@
-import React from 'react'
-import { Form } from 'react-bootstrap'
+import React, { useState } from 'react'
+import { Form, Button } from 'react-bootstrap'
 
 const Skills = () => {
-
     const filteredSkills = [
         { label: "React", value: 355 },
         { label: "Javascript", value: 54 },
@@ -10,6 +9,29 @@ const Skills = () => {
         { label: "Java", value: 61 },
         { label: "Python", value: 965 },
     ];
+    const [selectSkills, setSelectSkills] = useState(filteredSkills);
+    console.log("selectSkills======", selectSkills);
+    const removeSkills = (index) => {
+        let updateSkills = [...selectSkills];
+        updateSkills.splice(index, 1);
+        setSelectSkills(updateSkills);
+    };
+
+    const addSkills = (item) => {
+        if (selectSkills.length <= 15) {
+            if (
+                selectSkills.find((ele) => {
+                    return ele.skill_id == item.id;
+                }) == undefined
+            ) {
+                setSelectSkills([
+                    ...selectSkills,
+                    { skill_id: item.id, skill_name: item.name },
+                ]);
+            }
+        }
+        document.getElementById("search_skill_inp").value = null;
+    };
 
     return (
         <>
@@ -23,21 +45,14 @@ const Skills = () => {
                             Your skills show clients what you can offer, and help us choose which jobs to recommend to you. Add or remove the ones we've suggested, or start typing to pick more. It's up to you.
                         </p>
                         <div className="afterSignUpSklls">Your Skills</div>
-                        <div className="catbox_rd_ofive mt-2">
+                        <div className="addSkillBox mt-2">
                             <div className="d-flex flex-wrap">
-                                {filteredSkills?.map((item) => (
-                                    <div className="skill_bxr_gry">
-                                        {/* <span>{item.name}</span> */}
-                                        <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            width="16"
-                                            height="16"
-                                            fill="#393939"
-                                            className="bi bi-plus"
-                                            viewBox="0 0 16 16"
-                                        >
-                                            <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
-                                        </svg>
+                                {filteredSkills?.map((item, index) => (
+                                    <div className="skill_bxr_gry" key={item.skill_id}>
+                                        <span>{item.skill_name}</span>
+                                        <Button variant="" onClick={() => removeSkills(index)}>
+                                            X
+                                        </Button>
                                     </div>
                                 ))}
                                 <div>
@@ -47,13 +62,31 @@ const Skills = () => {
                                         id="search_skill_inp"
                                         autocomplete="off"
 
-                                        placeholder="search here skills..."
+                                        placeholder="Start typing to search for skills"
                                         className="no-border font-size-13px search_skilloiouo"
                                     />
+                                    {/* {filteredSkills && (
+                                        <div id="suggest_skills">
+                                            <div
+                                                className="suggest_skills"
+                                                style={{ position: "absolute" }}
+                                            >
+                                                {filteredSkills?.map((item) => (
+                                                    <>
+                                                        {" "}
+                                                        <span onClick={() => addSkills(item)}>
+                                                            {item.name}
+                                                        </span>{" "}
+                                                        <br />
+                                                    </>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    )} */}
                                 </div>
                             </div>
                         </div>
-                        <div className="maxlabel_atcxt mt-3">Maximum 15 skills.</div>
+                        <div className="maxlabel_atcxt mt-3 d-flex justify-content-end">Maximum 15 skills.</div>
                         <div className="theme_btns mt-0">
                             <button className="first_button">Back</button>
                             <button className="second_button">Next</button>
