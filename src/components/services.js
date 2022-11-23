@@ -10,13 +10,20 @@ import { useEffect } from "react";
 
 const Services = ({ category, popular_service }) => {
   const [categories, setCategories] = useState([]);
+  const [more, setMore] = useState(true);
   useEffect(() => {
     setCategories(category?.slice(0, 6));
   }, [category]);
 
   const showMore = () => {
     setCategories(category);
+    setMore(false);
   };
+  const showLess = () => {
+    setCategories(category?.slice(0, 6));
+    setMore(true);
+  };
+
   return (
     <div className="services_sec">
       <div className="container">
@@ -59,7 +66,7 @@ const Services = ({ category, popular_service }) => {
             </Col>
           ))}
         </Row>
-        {category > categories ? (
+        {more ? (
           <Row>
             <Col lg={12}>
               <div className="d-flex justify-content-center btn_services">
@@ -70,7 +77,15 @@ const Services = ({ category, popular_service }) => {
             </Col>
           </Row>
         ) : (
-          ""
+          <Row>
+            <Col lg={12}>
+              <div className="d-flex justify-content-center btn_services">
+                <Button onClick={showLess} variant="">
+                  Show Less
+                </Button>
+              </div>
+            </Col>
+          </Row>
         )}
       </div>
     </div>

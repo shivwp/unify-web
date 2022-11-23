@@ -525,6 +525,11 @@ body {
   background-color: #fafafa;
   padding: 16px 20px;
 }
+.browse_jobs .filter_area {
+  background-color: transparent;
+  padding: 16px 20px;
+  margin-top: 20px;
+}
 
 .client_imag {
   width: 120px;
@@ -921,6 +926,16 @@ body {
   font-weight: 700;
   color: #170048;
   margin: 15px 0;
+}
+
+@media screen and (min-width: 767px) {
+  .home_categories .category_title {
+    height: 70px;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    display: -webkit-box;
+    overflow: hidden;
+  }
 }
 .home_categories .category_about {
   display: flex;
@@ -1368,6 +1383,13 @@ body {
 }
 
 .find_swip {
+  padding: 0px 0px 50px 0px !important;
+}
+.t_r_freelancers .swiper-pagination {
+  bottom: 0px !important;
+}
+
+.t_r_freelancers {
   padding: 0px 0px 50px 0px !important;
 }
 
@@ -2617,11 +2639,11 @@ body {
   position: relative;
   padding: 25px 30px;
   border: #000 solid 1px;
-  border-radius: 3px;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  -ms-border-radius: 3px;
-  -o-border-radius: 3px;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
 }
 
 .com_name_s::before {
@@ -2659,6 +2681,10 @@ body {
   color: #170048;
   font-weight: 600;
   font-family: "Poppins";
+}
+
+.browse_jobs .job_head_s h2 {
+  font-size: 22px;
 }
 
 .job_head_s h3 {
@@ -2719,8 +2745,14 @@ body {
   padding-top: 20px;
 }
 
+@media screen and (max-width: 425px) {
+  .price_ar_jjob {
+    text-align: left;
+  }
+}
+
 .price_ar_jjob h1 {
-  font-size: 25px;
+  font-size: 24px;
   letter-spacing: -1px;
   line-height: 20px;
   color: #3b3b3b;
@@ -3724,6 +3756,34 @@ body {
 }
 
 .sign_in_or::after {
+  position: absolute;
+  right: 0;
+  width: 46%;
+  height: 1px;
+  content: " ";
+  margin-top: 16px;
+  background-color: #9da0f2;
+}
+
+.job_details_or {
+  text-align: center;
+  font: normal normal normal 16px/30px Poppins;
+  letter-spacing: 0px;
+  color: #170048;
+  position: relative;
+  margin: 20px 60px;
+}
+.job_details_or::before {
+  position: absolute;
+  left: 0;
+  width: 46%;
+  height: 1px;
+  content: " ";
+  margin-top: 16px;
+  background-color: #9da0f2;
+}
+
+.job_details_or::after {
   position: absolute;
   right: 0;
   width: 46%;
@@ -5132,6 +5192,12 @@ a {
 .find_swip .swiper-rtl .swiper-button-next:after {
   /* visibility: hidden; */
 }
+.t_r_freelancers .swiper-button-next:after,
+.t_r_freelancers .swiper-rtl .swiper-button-prev:after,
+.t_r_freelancers .swiper-button-prev:after,
+.t_r_freelancers .swiper-rtl .swiper-button-next:after {
+  visibility: hidden;
+}
 
 .find_swip .swiper-button-next,
 .find_swip .swiper-button-prev {
@@ -6227,6 +6293,39 @@ a {
   width: 65%;
   margin: 0 auto;
 }
+
+@media screen and (max-width: 1024px) {
+  .how_it_works .header_left .heading {
+    font-size: 50px;
+    margin-top: 0px;
+    line-height: 55px;
+  }
+  .how_it_works .header_left .desc {
+    font-size: 14px;
+  }
+  .how_it_works .header_left {
+    padding: 0;
+    padding-bottom: 30px;
+  }
+  .how_it_works .header_img img {
+    width: 75%;
+  }
+}
+@media screen and (max-width: 768px) {
+  .how_it_works .header_left .heading,
+  .how_it_works .header_left .desc,
+  .how_it_works .header_left .signup_btn {
+    width: 100%;
+    margin-left: 10px;
+  }
+  .how_it_works .header_left .heading {
+    font-size: 40px;
+    line-height: 45px;
+  }
+  .how_it_works .header_img img {
+    width: 100%;
+  }
+}
 /* header end */
 /* section 1st start */
 .how_it_works .diffrent_ways .heading {
@@ -6297,11 +6396,47 @@ a {
   width: 60px;
 }
 
+@media screen and (max-width: 1024px) {
+  .how_it_works .diffrent_ways .items .relation1 {
+    right: -124px;
+  }
+  .how_it_works .diffrent_ways .items .relation1 svg {
+    width: 220px;
+  }
+  .how_it_works .diffrent_ways .items .relation2 svg {
+    width: 220px;
+  }
+  .how_it_works .diffrent_ways .items .relation2 {
+    right: -123px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .how_it_works .diffrent_ways .items .item_heading {
+    font-size: 16px;
+  }
+  .how_it_works .diffrent_ways .items .item_desc {
+    padding: 0;
+    font-size: 12px;
+    text-align: justify;
+  }
+  .how_it_works .diffrent_ways .items .relation2 svg {
+    width: 160px;
+  }
+  .how_it_works .diffrent_ways .items .relation1 svg {
+    width: 160px;
+  }
+  .how_it_works .diffrent_ways .items .relation2 {
+    right: -90px;
+  }
+  .how_it_works .diffrent_ways .items .relation1 {
+    right: -92px;
+  }
+}
 /* section 1st end */
 /* section 2nd start */
 .how_it_works .award_winning_platform {
   background-color: #f3eeff;
-  padding: 20px 0;
+  padding: 40px 0;
 }
 .how_it_works .award_winning_platform .heading {
   font-size: 40px;
@@ -6312,6 +6447,9 @@ a {
   font-size: 14px;
   display: flex;
   align-items: center;
+}
+.how_it_works .award_winning_platform .right_icon {
+  margin-left: 20px;
 }
 .how_it_works .award_winning_platform .right_icon svg {
   width: 24px;
@@ -6350,6 +6488,34 @@ a {
   font-size: 14px;
   font-weight: 500;
 }
+
+@media screen and (max-width: 1024px) {
+  .how_it_works .award_winning_platform .heading {
+    font-size: 30px;
+  }
+  .how_it_works .award_winning_platform .box_container .box {
+    width: 43%;
+  }
+  .how_it_works .award_winning_platform .right_icon {
+    margin-left: 7px;
+  }
+  .how_it_works .award_winning_platform .box_container {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  .how_it_works .award_winning_platform .awp_btn button {
+    margin-left: 40px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .how_it_works .award_winning_platform .right_icon {
+    margin-left: 20px;
+  }
+  .how_it_works .award_winning_platform .desc {
+    padding-right: 30px;
+  }
+}
+
 /* section 2nd end */
 /* -------------------- section 3rd start ------------------------------------ - */
 .top_freelancers {
@@ -6434,5 +6600,90 @@ a {
   width: 20px;
 }
 
+@media screen and (max-width: 768px) {
+  .top_freelancers h2 {
+    font-size: 45px;
+  }
+  .top_freelancers .top_freelancer .image {
+    width: 130px;
+    height: 130px;
+    margin-bottom: 20px;
+  }
+}
+
 /* section 3rd end */
 /* how it works end */
+
+.border_bx_sec.right_job_detail_home .heading h2 {
+  font-size: 23px;
+  text-align: center;
+  font-weight: 700;
+  width: 80%;
+  margin: auto;
+  color: #3b3b3b;
+  margin-top: 30px;
+}
+
+.right_job_detail_home .with_email {
+  margin: 0 30px;
+}
+.right_job_detail_home .with_email .email_inp {
+  position: relative;
+  height: 45px;
+  width: 100%;
+}
+
+.right_job_detail_home .with_email input {
+  outline: none;
+  border: none;
+  background-color: #ebebf7;
+  height: 45px;
+  width: 100%;
+  padding: 0 40px;
+  z-index: -1;
+  border-radius: 0px;
+}
+
+.right_job_detail_home .with_email .forgot_pass_email_icon {
+  position: absolute;
+  top: 25px;
+  left: 12px;
+  fill: #170048;
+  z-index: 1;
+}
+.right_job_detail_home .sign_up_btn {
+  margin: 20px auto;
+  text-align: center;
+}
+.right_job_detail_home .sign_up_btn button {
+  padding: 10px 55px;
+  color: #fff;
+  border: none;
+  background-color: #6610f2;
+  border-radius: 40px;
+}
+
+.right_job_detail_home hr {
+  width: 80%;
+  margin: 20px auto;
+}
+.right_job_detail_home .job_post_heading {
+  font-size: 20px;
+  font-weight: 600;
+  text-align: center;
+  color: #170048;
+}
+.right_job_detail_home .post_job_btn_home {
+  text-align: center;
+}
+.right_job_detail_home .post_job_btn_home button {
+  padding: 8px 35px;
+  color: #6610f2;
+  border: none;
+  border: 1px solid #6610f2;
+  background-color: #fff;
+  border-radius: 40px;
+  margin: 25px 0;
+  font-weight: 500;
+  font-size: 15px;
+}
