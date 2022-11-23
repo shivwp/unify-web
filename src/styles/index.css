@@ -490,6 +490,18 @@ body {
   position: relative;
   z-index: 10;
 }
+.clients_sec_skills {
+  background-color: #fff;
+  padding: 25px 0;
+  position: relative;
+  margin-top: 0px;
+  position: relative;
+  z-index: 10;
+}
+.clients_sec_skills hr {
+  width: 90%;
+  margin: 20px auto;
+}
 
 .clients_sec::before {
   content: " ";
@@ -6687,3 +6699,171 @@ a {
   font-weight: 500;
   font-size: 15px;
 }
+
+/* Category wise Skill start */
+.cat_wise_skills .header {
+  background-color: #6d2ef1;
+  display: flex;
+  width: 100%;
+  padding: 20px;
+  border-radius: 15px;
+  margin: 20px 0;
+}
+.cat_wise_skills .header .header_left {
+  width: 50%;
+  color: #fff;
+}
+.cat_wise_skills .header .header_left .heading h1 {
+  font-size: 55px;
+  width: 90%;
+  line-height: 55px;
+  margin: 20px 0;
+}
+.cat_wise_skills .header .header_left .desc {
+  font-size: 16px;
+  margin: 20px 0;
+  width: 90%;
+}
+.cat_wise_skills .header .header_left .get_start_btn button {
+  padding: 10px 30px;
+  border: none;
+  background-color: #fff;
+  color: #000;
+  border-radius: 40px;
+  margin: 20px 0;
+}
+.cat_wise_skills .header .header_right {
+  width: 50%;
+}
+.cat_wise_skills .header .header_right .header_img {
+  width: 100%;
+}
+.cat_wise_skills .header .header_right img {
+  width: 100%;
+  height: auto;
+  border-radius: 15px;
+}
+
+/* skill list section strt */
+.skills_lists {
+  position: relative;
+  margin: 20px 0;
+}
+.skills_lists .skills_list_heading h1 {
+  font-size: 40px;
+  margin-bottom: 20px;
+}
+
+.skills_lists .skill_list_star svg {
+  fill: #fa61ff !important;
+}
+
+.skills_lists .heading {
+  display: flex;
+}
+.skills_lists .heading span {
+  font-size: 24px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+  line-height: 24px;
+}
+.skills_lists .desc {
+  color: #5e6d55;
+  font-weight: 500;
+  margin: 10px 0;
+}
+.skills_lists .skill_box {
+  background-color: #e7defc;
+  padding: 20px;
+  cursor: pointer;
+  border-radius: 15px;
+  margin: 10px 0;
+}
+.skills_lists .skill_box .skill_name {
+  margin: 0 0 20px 0;
+  color: #001e00;
+  font-size: 20px;
+  font-weight: 600;
+}
+.skills_lists .about_skill {
+  display: flex;
+  align-items: center;
+  color: #000;
+  font-weight: 500;
+}
+.skills_lists .about_skill .skill_list_star svg {
+  fill: #fa61ff !important;
+  width: 15px;
+  margin-right: 10px;
+}
+.skills_lists .skill_user_imgs {
+  display: flex;
+  position: relative;
+  margin: 20px 0;
+}
+.skills_lists .skill_user_imgs .image {
+  width: 60px;
+}
+.skills_lists .skill_user_imgs .image img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+.skills_lists .skill_user_imgs .image2 {
+  position: relative;
+  right: 30px;
+}
+.skills_lists .skill_user_imgs .image3 {
+  position: relative;
+  right: 60px;
+}
+
+.skills_lists .skill_box:hover .skill_user_imgs .image2 {
+  right: 10px;
+  transition: 1s;
+}
+.skills_lists .skill_box:hover .skill_user_imgs .image3 {
+  right: 20px;
+  transition: 1s;
+}
+.skills_lists .more_cat_skills {
+  margin: 10px 0;
+}
+.skills_lists .more_cat_skills span {
+  color: #6d2ef1;
+  cursor: pointer;
+}
+
+/* skill list section end */
+/* browse_projects section start ------------------------- */
+.browse_projects .heading h2{
+  font-size: 40px;
+  font-weight: 600;
+}
+.browse_projects .desc{
+  color: #5e6d55;
+  font-size: 25px;
+  line-height: 28px;
+  font-weight: 500;
+}
+.browse_projects .banner{
+  display: flex;
+  
+}
+.browse_projects .titles{
+  width: 30%;
+
+}
+.browse_projects .image{
+  width: 70%;
+}
+
+
+/* browse_projects section end */
+
+
+
+/* Category wise Skill end */
