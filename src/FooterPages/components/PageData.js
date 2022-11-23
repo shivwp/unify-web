@@ -8,11 +8,12 @@ const PageData = () => {
   const { pagename } = useParams();
   const dispatch = useDispatch();
   const footerPageData = useSelector((state) => state?.auth?.footerPageData);
-  console.log(footerPageData);
+
   useEffect(() => {
     dispatch(getFooterPageData(pagename));
     window.scrollTo(0, 0);
   }, [pagename]);
+
   return (
     <div className="container footerPage my-5" style={{ textAlign: "justify" }}>
       <div className="title">

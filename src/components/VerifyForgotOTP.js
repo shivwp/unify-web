@@ -11,7 +11,7 @@ const VerifyForgotOTP = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [OTP, setOTP] = useState("");
-  const [reOtp, setReOtp] = useState(false);
+  const [reOtp, setReOtp] = useState(true);
   const [time, setTime] = useState(60);
 
   const forgotOTPError = useSelector((state) => state?.auth?.forgotOTPError);
@@ -42,11 +42,14 @@ const VerifyForgotOTP = () => {
     };
     dispatch(onResendOtp(data));
     setReOtp(false);
+
     let i = 1;
+
     const timeout2 = setInterval(() => {
       setTime(time - i);
       i = i + 1;
     }, 1000);
+
     setTimeout(() => {
       setReOtp(true);
       clearInterval(timeout2);
@@ -69,6 +72,12 @@ const VerifyForgotOTP = () => {
           <div className="sign_form_shapb"></div>
           <div className="otp_container">
             <div className="heading">Please enter the one time password</div>
+            <span style={{ fontSize: "14px", color: "rgb(78 78 78)" }}>
+              We have sent code to your email:
+            </span>
+            <span style={{ fontSize: "14px", color: "rgb(78 78 78)" }}>
+              {localStorage.getItem("unify_email")}
+            </span>
             <div className="otp_inputs">
               <OTPInput
                 value={OTP}
@@ -90,7 +99,7 @@ const VerifyForgotOTP = () => {
             </div>
             {reOtp ? (
               <div className="suggetion_resend">
-                Don't get the code <span onClick={resendOtp}>Resend</span>
+                Don't get the code ? <span onClick={resendOtp}>Resend</span>
               </div>
             ) : (
               <div className="suggetion_resend">

@@ -3419,6 +3419,10 @@
   width: 95%;
 }
 
+.reset_pass_container .pass_inputs .pass_inp .showInpPass {
+  top: 57px;
+}
+
 .reset_pass_container .pass_inp {
   position: relative;
   display: flex;

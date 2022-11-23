@@ -17,6 +17,7 @@ import {
   HOME_PAGE_DATA,
   FOOTER_PAGE_DATA,
   VERIFY_OTP_ERROR,
+  RESEND_OTP_ERROR,
 } from "../types";
 import { GoogleAuthProvider, OAuthProvider } from "firebase/auth";
 
@@ -94,7 +95,10 @@ export const onVerifySignup = (data, navigate) => async (dispatch) => {
 export const onResendOtp = (data) => async (dispatch) => {
   try {
     const res = await Axios.post(`/resend-otp`, data);
-    console.log(res);
+    dispatch({
+      type: RESEND_OTP_ERROR,
+      payload: res.data.message,
+    });
   } catch (err) {}
 };
 

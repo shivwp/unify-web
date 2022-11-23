@@ -3448,6 +3448,14 @@ body {
     min-width: 200px !important;
   }
 }
+@media (max-width: 1023px) {
+  .sign_box {
+    margin-top: 20px;
+  }
+  .sign_form_shapb {
+    display: none;
+  }
+}
 
 @media only screen and (max-width: 670px) {
   .freelance_section {
@@ -3493,8 +3501,34 @@ body {
   .sign_form_btn_subm {
     flex-wrap: wrap;
   }
+
+  .sign_u_head h1 {
+    font: normal normal bolder 30px/90px "Poppins-Bold", "Poppins";
+    line-height: 40px;
+  }
+
+  .input_group {
+    margin: 0px 5px !important;
+  }
+
+  .input_group .input_bo {
+    margin: 10px 0px;
+  }
+
+  .sign_form_btn_subm .hovbgblew {
+    max-width: 345px !important;
+  }
 }
 
+@media only screen and (max-width: 375px) {
+  .sign_form_btn_subm .hovbgblew {
+    width: 86%;
+  }
+  .sign_u_head h1 {
+    font: normal normal bolder 25px/90px "Poppins-Bold", "Poppins";
+    line-height: 35px;
+  }
+}
 @media only screen and (max-width: 550px) {
   .sign_box {
     padding-left: 5px !important;
@@ -6345,7 +6379,7 @@ a {
 
 .top_freelancers .top_freelancer .rate {
   padding: 5px 5px;
-  background-color: #FF88FE;
+  background-color: #ff88fe;
   color: #fff;
   border-radius: 40px;
   display: flex;
@@ -6392,7 +6426,7 @@ a {
   font-weight: 600;
   font-size: 14px;
 }
-.top_freelancers .top_freelancer .about div span{
+.top_freelancers .top_freelancer .about div span {
   font-weight: 400;
   font-size: 14px;
 }

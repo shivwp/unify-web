@@ -1,12 +1,38 @@
 import { Link } from "react-router-dom";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { getCategoryList } from "../../../redux/actions/profileAction";
 
 const Footer = () => {
+  const dispatch = useDispatch();
+  const categoryList = useSelector((state) => state.profile.categoryList);
+
+  useEffect(() => {
+    dispatch(getCategoryList());
+  }, []);
+
   return (
     <div className="footer">
       <div className="container">
         <Row className="footer_border footer_padd">
+          <Col lg={3}>
+            <div className="footer-head">
+              <h3>Categories</h3>
+            </div>
+            <div>
+              <ul className="footer_ul">
+                {categoryList
+                  ?.filter((item, index) => index < 6)
+                  .map((item, index) => (
+                    <li key={index}>
+                      <Link to="#">{item.name}</Link>
+                    </li>
+                  ))}
+              </ul>
+            </div>
+          </Col>
           <Col lg={3}>
             <div className="footer-head">
               <h3>About</h3>
@@ -14,20 +40,32 @@ const Footer = () => {
             <div>
               <ul className="footer_ul">
                 <li>
+                  <Link to="/pages/about-us">Careers</Link>
+                </li>
+                <li>
+                  <Link to="/pages/about-us">Press & News</Link>
+                </li>
+                <li>
                   <Link to="/pages/about-us">About Us</Link>
+                </li>
+                <li>
+                  <Link to="/pages/privacy-policy">Privacy Policy</Link>
+                </li>
+                <li>
+                  <Link to="/pages/term-conditions">Terms of Service</Link>
                 </li>
                 <li>
                   <Link to="/pages/feedback">Feedback</Link>
                 </li>
-                <li>
+                {/* <li>
                   <Link to="/pages/community">Community</Link>
-                </li>
+                </li> */}
               </ul>
             </div>
           </Col>
           <Col lg={3}>
             <div className="footer-head">
-              <h3>Support</h3>
+              <h3>SUPPORT</h3>
             </div>
             <div>
               <ul className="footer_ul">
@@ -39,40 +77,35 @@ const Footer = () => {
                     Trust Safety & Security
                   </Link>
                 </li>
+                <li>
+                  <Link to="/pages/selling-on-unify">Selling on Unify</Link>
+                </li>
+                <li>
+                  <Link to="/pages/nuying-on-unify">Buying on Unify</Link>
+                </li>
               </ul>
             </div>
           </Col>
           <Col lg={3}>
             <div className="footer-head">
-              <h3>Terms</h3>
+              <h3>Community</h3>
             </div>
             <div>
               <ul className="footer_ul">
                 <li>
+                  <Link to="/pages/accessibility">Blog</Link>
+                </li>
+
+                <li>
+                  <Link to="/pages/cookie-policy">Community Standards</Link>
+                </li>
+                {/* <li>
                   <Link to="/pages/term-conditions">Terms of Services</Link>
                 </li>
-                
+
                 <li>
                   <Link to="/pages/cookie-settings">Cookies Settings</Link>
-                </li>
-              </ul>
-            </div>
-          </Col>
-          <Col lg={3}>
-            <div className="footer-head">
-              <h3>Policy</h3>
-            </div>
-            <div>
-              <ul className="footer_ul">
-                <li>
-                  <Link to="/pages/accessibility">Accessiblity</Link>
-                </li>
-                <li>
-                  <Link to="/pages/cookie-policy">Privacy Policy</Link>
-                </li>
-                <li>
-                  <Link to="/pages/cookie-policy">Cookie Policy</Link>
-                </li>
+                </li> */}
               </ul>
             </div>
           </Col>

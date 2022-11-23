@@ -103,12 +103,10 @@ const ResetPass = () => {
                     className="fa fa-eye-slash showInpPass"
                     onClick={() => setHidePass(!hidePass)}
                     aria-hidden="true"
-                    style={{ top: 48 }}
                   ></i>
                 ) : (
                   <i
                     className="fa fa-eye showInpPass"
-                    style={{ top: 48 }}
                     onClick={() => setHidePass(!hidePass)}
                     aria-hidden="true"
                   ></i>
@@ -130,12 +128,10 @@ const ResetPass = () => {
                     className="fa fa-eye-slash showInpPass"
                     onClick={() => setHideConfPass(!hideConfPass)}
                     aria-hidden="true"
-                    style={{ top: 47 }}
                   ></i>
                 ) : (
                   <i
                     className="fa fa-eye showInpPass"
-                    style={{ top: 47 }}
                     onClick={() => setHideConfPass(!hideConfPass)}
                     aria-hidden="true"
                   ></i>

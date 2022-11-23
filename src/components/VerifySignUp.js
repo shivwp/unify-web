@@ -43,6 +43,12 @@ const VerifySignUp = () => {
           <div className="sign_form_shapb"></div>
           <div className="otp_container">
             <div className="heading">Please enter the one time password</div>
+            <span style={{ fontSize: "14px", color: "rgb(78 78 78)" }}>
+              Sent a verification code on your register mail id
+            </span>
+            {/* <span style={{ fontSize: "14px", color: "rgb(78 78 78)" }}>
+              {localStorage.getItem("unify_email")}
+            </span> */}
             <div className="otp_inputs">
               <OTPInput
                 value={otp}
@@ -60,7 +66,7 @@ const VerifySignUp = () => {
               </Button>
             </div>
             <div className="suggetion_resend">
-              Don't get the code <span onClick={resendOtp}>Resend</span>
+              Don't get the code ? <span onClick={resendOtp}>Resend</span>
             </div>
           </div>
         </div>

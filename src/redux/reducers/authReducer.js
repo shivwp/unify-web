@@ -9,6 +9,7 @@ import {
   HOME_PAGE_DATA,
   FOOTER_PAGE_DATA,
   VERIFY_OTP_ERROR,
+  RESEND_OTP_ERROR,
 } from "../types";
 
 const initialState = {};
@@ -65,7 +66,11 @@ const authReducer = (state = initialState, action) => {
         ...state,
         verifyOtpError: action.payload,
       };
-
+    case RESEND_OTP_ERROR:
+      return {
+        ...state,
+        resendOtpError: action.payload,
+      };
     default:
       return state;
   }
