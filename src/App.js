@@ -184,6 +184,12 @@ const ProfileIntoStep7 = lazy(() =>
 const ProfileIntoStep8 = lazy(() =>
   import("./freelancer/Pages/ProfileIntro/ProfileIntroStepEight")
 );
+const ProfileIntoStep9 = lazy(() =>
+  import("./freelancer/Pages/ProfileIntro/ProfileIntroStepNine")
+);
+const ProfileIntoStep10 = lazy(() =>
+  import("./freelancer/Pages/ProfileIntro/ProfileIntroStepTen")
+);
 const LoggedOutRoutes = () => {
   return (
     <Routes>
@@ -375,6 +381,8 @@ const LoggedInRoutes = () => {
       <Route path="/freelancer/profile-intro6" element={<ProfileIntoStep6 />} />
       <Route path="/freelancer/profile-intro7" element={<ProfileIntoStep7 />} />
       <Route path="/freelancer/profile-intro8" element={<ProfileIntoStep8 />} />
+      <Route path="/freelancer/profile-intro9" element={<ProfileIntoStep9 />} />
+      <Route path="/freelancer/profile-intro10" element={<ProfileIntoStep10 />} />
     </Routes>
   );
 };
