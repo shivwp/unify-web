@@ -6839,31 +6839,58 @@ a {
 
 /* skill list section end */
 /* browse_projects section start ------------------------- */
-.browse_projects .heading h2{
+.browse_projects .heading h2 {
   font-size: 40px;
   font-weight: 600;
 }
-.browse_projects .desc{
+.browse_projects .desc {
   color: #5e6d55;
   font-size: 25px;
   line-height: 28px;
   font-weight: 500;
 }
-.browse_projects .banner{
-  display: flex;
-  
+.browse_projects .banner {
+  background-color: #f3eeff;
+  margin: 20px 0;
+  border-radius: 15px;
+  height: 350px;
 }
-.browse_projects .titles{
-  width: 30%;
+.browse_projects .titles {
+  padding: 20px;
+}
+.browse_projects .titles .title {
+  font-weight: 500;
+  margin: 10px 0;
+  color: #b5b5b5;
+  cursor: pointer;
+}
+.browse_projects .titles .title.active {
+  border-left: 1px solid black;
+  padding-left: 10px;
+  font-size: 15px;
+  color: #000;
+}
+
+.browse_projects .browse_project_btn button {
+  padding: 8px 40px;
+  border: none;
+  background-color: #6d2ef1;
+  color: #fff;
+  border-radius: 40px;
+  margin: 20px 20px;
 
 }
-.browse_projects .image{
-  width: 70%;
+.browse_projects .image {
+  width: 100%;
+  height: inherit;
 }
-
+.browse_projects .image img {
+  height: 100%;
+  width: 100%;
+  border-radius: 0 15px 15px 0;
+  object-fit: cover;
+}
 
 /* browse_projects section end */
-
-
 
 /* Category wise Skill end */

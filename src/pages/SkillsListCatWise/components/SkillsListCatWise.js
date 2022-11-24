@@ -5,9 +5,23 @@ import "swiper/less/autoplay";
 import { Col, Container, Row } from "react-bootstrap";
 import SwiperCore, { Autoplay } from "swiper";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 SwiperCore.use([Autoplay]);
 
 const SkillsListCatWise = () => {
+  const [bannerImg, setBannerImg] = useState(1);
+
+  const Banner_image = ({ id }) => {
+    let render_img = {
+      1: <img src="assets/job_banner1.png" alt="" />,
+      2: <img src="assets/job_banner2.jpeg" alt="" />,
+      3: <img src="assets/job_banner3.png" alt="" />,
+      4: <img src="assets/job_banner2.jpeg" alt="" />,
+      5: <img src="assets/job_banner1.png" alt="" />,
+    };
+    return render_img[id];
+  };
+
   return (
     <>
       <Container>
@@ -399,14 +413,53 @@ const SkillsListCatWise = () => {
               mobile app experience that meets your needs.
             </div>
             <div className="banner">
-              <div className="titles">
-                <div className="title">Mobile App Development</div>
-              </div>
-              <div className="image">
-                <img src="assets/job_banner1.png" alt="" />
-                <img src="assets/job_banner2.jpeg" alt="" />
-                <img src="assets/job_banner3.png" alt="" />
-              </div>
+              <Row style={{ height: "100%" }}>
+                <Col lg={3}>
+                  <div className="titles">
+                    <div
+                      onClick={() => setBannerImg(1)}
+                      className={`title ${bannerImg == 1 ? "active " : ""}`}
+                    >
+                      Mobile App Development
+                    </div>
+                    <div
+                      onClick={() => setBannerImg(2)}
+                      className={`title ${bannerImg == 2 ? "active " : ""}`}
+                    >
+                      Shopify Development
+                    </div>
+                    <div
+                      onClick={() => setBannerImg(3)}
+                      className={`title ${bannerImg == 3 ? "active " : ""}`}
+                    >
+                      WordPress Development
+                    </div>
+                    <div
+                      onClick={() => setBannerImg(4)}
+                      className={`title ${bannerImg == 4 ? "active " : ""}`}
+                    >
+                      Data Visualization
+                    </div>
+                    <div
+                      onClick={() => setBannerImg(5)}
+                      className={`title ${bannerImg == 5 ? "active " : ""}`}
+                    >
+                      Cybersecurity & Data Protection
+                    </div>
+                  </div>
+                  <div className="browse_project_btn">
+                    <button>Browse Projects</button>
+                  </div>
+                </Col>
+                <Col lg={9} style={{ height: "100%" }}>
+                  <div className="image">
+                    <Banner_image id={bannerImg} />
+                    {/* <img src="assets/job_banner1.png" alt="" /> */}
+                    {/* <img src="assets/job_banner2.jpeg" alt="" />
+                    <img src="assets/job_banner3.png" alt="" /> */}
+                  </div>
+                </Col>
+              </Row>
             </div>
           </div>
         </div>

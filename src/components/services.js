@@ -7,6 +7,7 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import { useState } from "react";
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const Services = ({ category, popular_service }) => {
   const [categories, setCategories] = useState([]);
@@ -36,33 +37,35 @@ const Services = ({ category, popular_service }) => {
         <Row>
           {categories?.map((item, index) => (
             <Col md={6} lg={4} key={index}>
-              <div className="home_categories">
-                <div className="category_logo">
-                  <img src={item.category_image} alt="" />
-                </div>
-                <div className="category_title">{item.category_name}</div>
-                <div className="category_about">
-                  <div className="rating">
-                    <span>
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="21.527"
-                        height="20.503"
-                        viewBox="0 0 21.527 20.503"
-                      >
-                        <path
-                          id="f35e3bcbde3528bceb03a6a775c06def"
-                          d="M-50.544,61.508c-.766.546-5.68-2.912-6.621-2.92s-5.911,3.371-6.668,2.813,1.023-6.287.739-7.182-5.042-4.564-4.744-5.454,6.312-.973,7.078-1.518,2.795-6.191,3.736-6.184,2.878,5.685,3.635,6.243,6.769.737,7.053,1.632-4.533,4.487-4.831,5.377S-49.778,60.963-50.544,61.508Z"
-                          transform="translate(67.851 -41.064)"
-                          fill="#f8b84e"
-                        />
-                      </svg>
-                    </span>
-                    <span>{item.rating}</span>
+              <Link to={`cat-skills/${item.category_id}`}>
+                <div className="home_categories">
+                  <div className="category_logo">
+                    <img src={item.category_image} alt="" />
                   </div>
-                  <div className="skills_count">{item.skills} Skills</div>
+                  <div className="category_title">{item.category_name}</div>
+                  <div className="category_about">
+                    <div className="rating">
+                      <span>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="21.527"
+                          height="20.503"
+                          viewBox="0 0 21.527 20.503"
+                        >
+                          <path
+                            id="f35e3bcbde3528bceb03a6a775c06def"
+                            d="M-50.544,61.508c-.766.546-5.68-2.912-6.621-2.92s-5.911,3.371-6.668,2.813,1.023-6.287.739-7.182-5.042-4.564-4.744-5.454,6.312-.973,7.078-1.518,2.795-6.191,3.736-6.184,2.878,5.685,3.635,6.243,6.769.737,7.053,1.632-4.533,4.487-4.831,5.377S-49.778,60.963-50.544,61.508Z"
+                            transform="translate(67.851 -41.064)"
+                            fill="#f8b84e"
+                          />
+                        </svg>
+                      </span>
+                      <span>{item.rating}</span>
+                    </div>
+                    <div className="skills_count">{item.skills} Skills</div>
+                  </div>
                 </div>
-              </div>
+              </Link>
             </Col>
           ))}
         </Row>
