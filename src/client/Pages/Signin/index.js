@@ -53,15 +53,15 @@ const Signinscreen = () => {
       errorExist = true;
     }
 
-    if (
-      !/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+])[0-9a-zA-Z!@#$%^&*()_+]{8,}$/.test(
-        values?.password
-      )
-    ) {
-      errorsObject.password =
-        "Password should contain numeric value, special character, upper case letter and lower case letter";
-      errorExist = true;
-    }
+    // if (
+    //   !/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+])[0-9a-zA-Z!@#$%^&*()_+]{8,}$/.test(
+    //     values?.password
+    //   )
+    // ) {
+    //   errorsObject.password =
+    //     "Password should contain numeric value, special character, upper case letter and lower case letter";
+    //   errorExist = true;
+    // }
 
     if (errorExist) {
       setErrors(errorsObject);

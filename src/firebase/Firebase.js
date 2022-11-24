@@ -9,13 +9,13 @@ import "firebase/auth";
 import { OAuthProvider } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDezJWdcq5-psXFQJjWZIo-CF1aGWcu4rw",
-  authDomain: "unifyclientapp.firebaseapp.com",
-  projectId: "unifyclientapp",
-  storageBucket: "unifyclientapp.appspot.com",
-  messagingSenderId: "691890923145",
-  appId: "1:691890923145:web:ee78fdf86c6fcbfaa74858",
-  measurementId: "G-2GQEW8TEEG",
+  apiKey: "AIzaSyA1fbvzqK5OJDZdPNn00teEzrU1S42ERGM",
+  authDomain: "unify-a8e0a.firebaseapp.com",
+  projectId: "unify-a8e0a",
+  storageBucket: "unify-a8e0a.appspot.com",
+  messagingSenderId: "475938716705",
+  appId: "1:475938716705:web:0376bcfda73b78aabdf760",
+  measurementId: "G-T7M2BJ5CTF",
 };
 
 const app = initializeApp(firebaseConfig);

@@ -195,7 +195,11 @@ const Header = (props) => {
                 </Link>
                 <div className="nav_pro_node">
                   <div className="nav_profile online_profile">
-                    <img src={userDetails?.profile_image} alt="" />
+                    {userDetails?.profile_image ? (
+                      <img src={userDetails?.profile_image} alt="" />
+                    ) : (
+                      <img src="./assets/PRO-2.png" alt="" />
+                    )}
                   </div>
                   <NavDropdown
                     className=" text-center nav_dropdown_profile custom_nav_profile_drp"
@@ -203,7 +207,11 @@ const Header = (props) => {
                   >
                     <div className="d-flex justify-content-center">
                       <div className="nav_p_d_profil">
-                        <img src={userDetails?.profile_image} alt="" />
+                        {userDetails?.profile_image ? (
+                          <img src={userDetails?.profile_image} alt="" />
+                        ) : (
+                          <img src="./assets/PRO-2.png" alt="" />
+                        )}
                       </div>
                     </div>
                     <div className="pro_name_drop_u">John Doe</div>
