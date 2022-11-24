@@ -6,9 +6,9 @@ const PreviewProfile = () => {
         <>
             <div className="container">
                 <div className="container_border">
-                    <div className="startIntroIn">
-                        <div className="pbx_pdd_sp2 mt-1 mb-1">
-                            <h5 className="startIntroTwoH5"> Preview Profile </h5>
+                    <div className="startIntroInProfile">
+                        <div className="pbx_pdd_h5 mb-1">
+                            <h5 className="previewProfileH5"> Preview Profile </h5>
                         </div>
                         <Row className='previewFirstDiv mt-3'>
                             <Col sm={10}>
@@ -30,8 +30,8 @@ const PreviewProfile = () => {
                             </Col>
                         </Row>
                     </div>
-                    <div className="startIntroIn">
-                        <div className="pbx_pdd_sp2 mb-1"></div>
+                    <div className="startIntroInProfile">
+                        <div className="pbx_pdd_sp2 mt-1 mb-1"></div>
                         <Row className='mt-3'>
                             <Col sm={2}>
                                 <div className='previewImageIcon'>
@@ -43,14 +43,17 @@ const PreviewProfile = () => {
                             </Col>
                             <Col sm={10}>
                                 <div className='previewDet'>
-                                    <div className="hraet_pdd_sp">Neha Sharma</div>
+                                    <div className="hraet_pdd_sp">Neha Sharma
+                                    <div className="previewProfileUsr"> Jaipur RJ, India </div>
+                                    <div className="previewProfileUsr"> 3:30 PM local time </div>
+                                    </div>
                                     <div className="tamoun_pdd_sp"></div>
                                 </div>
                             </Col>
-                            <div className="pbx_pdd_sp2 mt-1"></div>
+                            <div className="pbx_pdd_sp3 mt-1 mb-1"></div>
                         </Row>
                     </div>
-                    <div className="startIntroIn">
+                    <div className="startIntroInProfile">
                         <Row>
                             <div className="hraet_pdd_sp">
                                 <span className='previewPostion'> Full stack developer </span>
@@ -67,10 +70,10 @@ const PreviewProfile = () => {
                                     There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.
                                 </div>
                             </div>
-                            <div className="pbx_pdd_sp2"></div>
+                            <div className="pbx_pdd_sp3"></div>
                         </Row>
                     </div>
-                    <div className="startIntroIn">
+                    <div className="startIntroInProfile">
                         <Row>
                             <div className="hraet_pdd_sp">
                                 <span className='previewPostion'> Hourly Rate </span>
@@ -85,10 +88,10 @@ const PreviewProfile = () => {
                                 </svg>
                                 <div className="tamoun_pdd_sp"> $5.00 </div>
                             </div>
-                            <div className="pbx_pdd_sp2"></div>
+                            <div className="pbx_pdd_sp3"></div>
                         </Row>
                     </div>
-                    <div className="startIntroIn">
+                    <div className="startIntroInProfile">
                         <Row>
                             <div className="hraet_pdd_sp">
                                 <span className='previewPostion'> Skills </span>
@@ -108,10 +111,10 @@ const PreviewProfile = () => {
                                     <button className='skillsDesign_btn'>  User Experience Design </button>
                                 </div>
                             </div>
-                            <div className="pbx_pdd_sp2"></div>
+                            <div className="pbx_pdd_sp3"></div>
                         </Row>
                     </div>
-                    <div className="startIntroIn">
+                    <div className="startIntroInProfile">
                         <Row>
                             <div className="hraet_pdd_sp">
                                 <span className='previewPostion'> Work Experience </span>
@@ -149,10 +152,10 @@ const PreviewProfile = () => {
                                 </div>
                             </div>
                             <div className="previewProfileDate"> June 2019 </div>
-                            <div className="pbx_pdd_sp2"></div>
+                            <div className="pbx_pdd_sp3"></div>
                         </Row>
                     </div>
-                    <div className="startIntroIn">
+                    <div className="startIntroInProfile">
                         <Row>
                             <div className="hraet_pdd_sp">
                                 <span className='previewPostion'> Education History </span>
@@ -167,19 +170,19 @@ const PreviewProfile = () => {
                                 </svg>
                             </div>
                             <div className="previewProfileDate"> No item to display </div>
-                            <div className="pbx_pdd_sp2"></div>
+                            <div className="pbx_pdd_sp3"></div>
                         </Row>
                     </div>
-                    <div className="startIntroIn">
+                    <div className="startIntroInProfile">
                         <Row>
                             <div className="hraet_pdd_sp">
                                 <span className='previewPostion'> Location </span>
                             </div>
                             <div className="previewProfileDate"> Jaipur, RJ India </div>
-                            <div className="pbx_pdd_sp2"></div>
+                            <div className="pbx_pdd_sp3"></div>
                         </Row>
                     </div>
-                    <div className="startIntroIn">
+                    <div className="startIntroInProfile">
                         <Row>
                             <div className="hraet_pdd_sp">
                                 <span className='previewPostion'> Languages </span>

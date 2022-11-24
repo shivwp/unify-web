@@ -6256,12 +6256,12 @@ a {
 
 .startIntroTwoH5 {
   font: normal normal 600 21px/20px Poppins;
+  color: #00065a;
 }
 
 .startIntroTwoP {
   font: normal normal normal 13px/18px Poppins;
 }
-
 .startIntroBox {
   border: 1px solid #d6d6d6;
   padding: 10px;
@@ -6567,6 +6567,35 @@ a {
   .publishProfileImgForMo {
     margin-bottom: 20px;
   }
+  .previewDet {
+    display: flex;
+    /* padding-top: 20px; */
+  }
+}
+@media screen and (max-width: 425px) {
+  .skillsDesign {
+    display: flex;
+    flex-direction: column;
+  }
+  .previewDet {
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+  }
+  .previewFirstDiv {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  .previewProfileThumbsIco {
+    justify-content: center;
+    margin-bottom: 15px;
+  }
+}
+@media screen and (max-width: 320px) {
+  .previewPostion {
+    font-size: 12px;
+    /* font-weight: 600; */
+  }
 }
 .previewPostion {
   margin-right: 7px;
@@ -6591,6 +6620,9 @@ a {
   justify-content: space-between;
   align-items: center;
   border-bottom: #d4d4d5 solid 1px;
+  padding: 15px 0px;
+  max-width: 98%;
+  margin: 0 auto;
 }
 .previewWorkExp {
   display: flex;
@@ -6603,6 +6635,26 @@ a {
 }
 .previewFirstDiv {
   line-height: 25px;
+}
+.startIntroInProfile{
+  padding: 5px;
+}
+.previewProfileUsr {
+  color: #878787;
+  font-size: 12px;
+  font-weight: 400;
+}
+.previewProfileH5 {
+  color: #00065A;
+}
+.pbx_pdd_h5 {
+  padding-top: 5px;
+  padding-bottom: 17px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: #d4d4d5 solid 1px;
 }
 /* Freelancer intro end */
 

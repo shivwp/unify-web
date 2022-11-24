@@ -129,10 +129,6 @@ const Education = () => {
                   </div>
                 </div>
               </Col>
-              <div className="s_na_categ mb-0 mt-0">
-                <Form.Check type="checkbox" />
-                <Form.Label>Nothing to add? Check the box and keep going</Form.Label>
-              </div>
             </Row>
             <div className="theme_btns mt-0">
               <button className="first_button">Back</button>
