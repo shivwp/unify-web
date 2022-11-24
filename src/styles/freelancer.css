@@ -1517,6 +1517,11 @@
   font: normal normal 600 15px/30px Poppins !important;
   color: #170048;
 }
+.previewProfileUsr {
+  color: #878787;
+  font-size: 12px;
+  font-weight: 400;
+}
 
 .tamoun_pdd_sp {
   font: normal normal 400 13px/30px Poppins !important;
