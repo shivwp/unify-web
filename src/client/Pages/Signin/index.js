@@ -26,14 +26,21 @@ const Signinscreen = () => {
     let errorsObject = {};
 
     if (
-      values.email === "" ||
-      values.email === null ||
-      values.email === undefined
+      values?.email === "" ||
+      values?.email === null ||
+      values?.email === undefined
     ) {
-      errorsObject.email = true;
+      errorsObject.email = "Please enter your email";
+      errorExist = true;
+    } else if (!values?.email.trim()) {
+      errorsObject.email = "Email is required";
+      errorExist = true;
+    } else if (
+      !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(values?.email)
+    ) {
+      errorsObject.email = "Please type a valid email address";
       errorExist = true;
     }
-
     if (
       values.password === "" ||
       values.password === null ||
@@ -41,9 +48,18 @@ const Signinscreen = () => {
     ) {
       errorsObject.password = "Please Enter Your Password";
       errorExist = true;
-    }
-    if (values.password && values.password.length < 8) {
+    } else if (values.password && values.password.length < 8) {
       errorsObject.password = "Password must be at least 8 digit long";
+      errorExist = true;
+    }
+
+    if (
+      !/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+])[0-9a-zA-Z!@#$%^&*()_+]{8,}$/.test(
+        values?.password
+      )
+    ) {
+      errorsObject.password =
+        "Password should contain numeric value, special character, upper case letter and lower case letter";
       errorExist = true;
     }
 
@@ -51,6 +67,7 @@ const Signinscreen = () => {
       setErrors(errorsObject);
       return false;
     }
+
     const data = {
       email: values?.email,
       password: values?.password,

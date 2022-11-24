@@ -16,6 +16,8 @@ import {
   FORGOT_OTP_ERROR,
   HOME_PAGE_DATA,
   FOOTER_PAGE_DATA,
+  VERIFY_OTP_ERROR,
+  RESEND_OTP_ERROR,
 } from "../types";
 import { GoogleAuthProvider, OAuthProvider } from "firebase/auth";
 
@@ -77,17 +79,26 @@ export const onRegister = (data, navigate) => async (dispatch) => {
 export const onVerifySignup = (data, navigate) => async (dispatch) => {
   try {
     const res = await Axios.post(`/verifysignup`, data);
-    if (res.data.status) {
-      navigate("/signin");
-      window.location.reload();
+    localStorage.setItem("unify_Token", res.data.auth_token);
+    localStorage.setItem("unify_user", JSON.stringify(res.data.data.user));
+    localStorage.setItem("unify_access", true);
+
+    if (res.data.data.user.user_type === "freelancer") {
+      navigate("/freelancer/dashboard");
+    } else if (res.data.data.user.user_type === "client") {
+      navigate("/dashboard");
     }
+    window.location.reload();
   } catch (err) {}
 };
 
 export const onResendOtp = (data) => async (dispatch) => {
   try {
     const res = await Axios.post(`/resend-otp`, data);
-    console.log(res);
+    dispatch({
+      type: RESEND_OTP_ERROR,
+      payload: res.data.message,
+    });
   } catch (err) {}
 };
 

@@ -9,6 +9,10 @@ const ForgotPass = lazy(() => import("./components/ForgotPass"));
 const ResetPass = lazy(() => import("./components/ResetPass"));
 const VerifySignUp = lazy(() => import("./components/VerifySignUp"));
 const FooterPages = lazy(() => import("./FooterPages"));
+const HowItWorks = lazy(() => import("./pages/HowItWorks"));
+const BrowseJobs = lazy(() => import("./pages/BrowseJobs"));
+const JobDetails = lazy(() => import("./pages/JobDetails"));
+const SkillsListCatWise = lazy(() => import("./pages/SkillsListCatWise"));
 
 //  ================================ CLIENT ROUTES ==================================
 const Createcategory = lazy(() => import("./client/Pages/Create-Category"));
@@ -200,6 +204,13 @@ const LoggedOutRoutes = () => {
       <Route path="/forgot-password" element={<ForgotPass />} />
       <Route path="/reset-password" element={<ResetPass />} />
       <Route path="/verify-signup" element={<VerifySignUp />} />
+      <Route path="/how-it-works" element={<HowItWorks />} />
+      <Route path="/browse-jobs" element={<BrowseJobs />} />
+      <Route
+        path="/cat-skills/:category"
+        element={<SkillsListCatWise />}
+      />
+      <Route path="/job-details/:id" element={<JobDetails />} />
       <Route path="/pages/:pagename" element={<FooterPages />} />
     </Routes>
   );

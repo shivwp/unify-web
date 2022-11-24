@@ -1,43 +1,22 @@
 import Container from "react-bootstrap/Container";
 import { Row, Col } from "react-bootstrap";
-import { Link, useNavigate } from "react-router-dom";
-import Select from "react-select";
+import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
 import $ from "jquery";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getFreelancerProfile,
-  getFreelancerSkills,
-  onAddEmployment,
   onDeleteEmployment,
-  getFreelancerDegreeList,
-  onAddEducation,
   onDeleteEducation,
-  onEditVideo,
-  onEditDesignation,
-  onEditLanguage,
-  getLanguageList,
-  onEditSkills,
-  onEditCertificate,
   onDeleteCertificate,
   editNameInfo,
-  editVisiblity,
   editExprienceLev,
   onDeletePortfolio,
-  onSubmitVerificationDocs,
-  onRequestTestimonial,
-  getCertificationList,
 } from "../../../../redux/actions/profileAction";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper";
-import Slider from "react-slick";
 import moment from "moment";
 import HourPerWeekPopup from "../../../components/popups/HourPerWeekPopup";
 import PortfolioPupup from "../../../components/popups/PortfolioPupup";
-import { countryList } from "../../../../redux/actions/authActions";
-import { useRef } from "react";
-import { height } from "@mui/system";
 import IntroVideoPopup from "../../../../popups/IntroVideoPopup";
 import ReactPaginate from "react-paginate";
 import ConfirmationPopup from "../../../components/popups/ConfirmationPopup";
@@ -46,7 +25,6 @@ import Form from "react-bootstrap/Form";
 
 import VisiblityPopup from "./popups/VisiblityPopup";
 import UserVerification from "./popups/UserVerification";
-import AddExperience from "./popups/AddExperience";
 import WorkHistory from "./popups/WorkHistory";
 import EditSkill from "./popups/EditSkill";
 import EditTitle from "./popups/EditTitle";
@@ -56,32 +34,6 @@ import LanguageEdit from "./popups/LanguageEdit";
 import AddEduc from "./popups/AddEduc";
 import AddCert from "./popups/AddCert";
 import ReqTestimonial from "./popups/ReqTestimonial";
-
-function Listaward() {
-  const card = [1, 2, 3, 4];
-
-  return (
-    <>
-      {card.map((person, index) => (
-        <div className="col-12" key={index}>
-          <div className="award_box">
-            <div className="awrd_flex">
-              <div className="award_img">
-                <img src="/assets/awad.jpg" alt="" />
-              </div>
-              <div className="award_con">
-                <div>
-                  <div className="awrd_name">Best Game Designer</div>
-                  <div className="awrd_date">October 5, 2020</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      ))}
-    </>
-  );
-}
 
 function PortfolioPaginate({
   itemsPerPage,
@@ -238,145 +190,6 @@ const CloseIcon = () => {
     </svg>
   );
 };
-// const ChangePassword = (props) => {
-//   return (
-//     <>
-//       <div className="bg_wrapper_popup_new">
-//         <div className="popup_box_bpn profile_nceqoi_popup pb-4">
-//           <div className="popup_header pb-0">
-//             <div className="p_header_hding">Change Password</div>
-//             <div
-//               className="close_pp_btn"
-//               onClick={() => {
-//                 props.Popup();
-//               }}
-//             >
-//               <CloseIcon />
-//             </div>
-//           </div>
-//           <div className="popup_body_bpn amount_popup_body max_height_popucwui ">
-//             <div className="mt-2 pt-1 mb-4"></div>
-
-//             <div className="mb-4 ">
-//               <div className="popup_form_element">
-//                 <Form.Label className="text-black font-size-13px font-weight-500">
-//                   Old Password
-//                 </Form.Label>
-//                 <Form.Control
-//                   type="password"
-//                   className="font-size-13px"
-//                   placeholder=" "
-//                 />
-//               </div>
-//               <Row className="mt-1">
-//                 <Col md={6}>
-//                   <div className="popup_form_element">
-//                     <Form.Label className="text-black font-size-13px font-weight-500">
-//                       New password
-//                     </Form.Label>
-//                     <Form.Control
-//                       type="password"
-//                       className="font-size-13px"
-//                       placeholder=" "
-//                     />
-//                   </div>
-//                 </Col>
-//                 <Col md={6}>
-//                   <div className="popup_form_element">
-//                     <Form.Label className="text-black font-size-13px font-weight-500">
-//                       Confirm New Password
-//                     </Form.Label>
-//                     <Form.Control
-//                       type="password"
-//                       className="font-size-13px"
-//                       placeholder=" "
-//                     />
-//                   </div>
-//                 </Col>
-//               </Row>
-//               <div className="popup_form_element agrement_ineoeu mt-3 pt-1">
-//                 <Form.Label className="text-black font-size-13px font-weight-500">
-//                   <Form.Check type="checkbox" /> All devices will be required to
-//                   sign in with new password
-//                 </Form.Label>
-//               </div>
-//             </div>
-
-//             <div className="popup_btns_new flex-wrap cwiewyehkk">
-//               <Button variant="" className="trans_btn">
-//                 Cancel
-//               </Button>
-//               <Button
-//                 variant=""
-//                 onClick={() => {
-//                   props.Popup();
-//                 }}
-//               >
-//                 Save
-//               </Button>
-//             </div>
-//           </div>
-//         </div>
-//       </div>
-//     </>
-//   );
-// };
-
-// const Overview = (props) => {
-//   return (
-//     <>
-//       <div className="bg_wrapper_popup_new">
-//         <div className="popup_box_bpn profile_nceqoi_popup pb-4">
-//           <div className="popup_header pb-0">
-//             <div className="p_header_hding">Overview</div>
-//             <div
-//               className="close_pp_btn"
-//               onClick={() => {
-//                 props.Popup();
-//               }}
-//             >
-//               <CloseIcon />
-//             </div>
-//           </div>
-//           <div className="popup_body_bpn amount_popup_body max_height_popucwui overflow-scroll">
-//             <div className="mt-4 pt-1">
-//               <div className="popuphead_smparcr">
-//                 Use this space to show clients you have the skills and
-//                 experience they're looking for.
-//               </div>
-//               <ul className="popuphead_smparcr ulist_overpopup mt-1">
-//                 <li>Describe your strengths and skills</li>
-//                 <li>Highlight projects, accomplishments and education</li>
-//                 <li>Keep it short and make sure it's error-free</li>
-//               </ul>
-//             </div>
-//             <div className="gbxewueyuien">
-//               theDesignerz offers professional and high-quality graphic design
-//               services. We have been designing for companies worldwide since
-//               2018. We are a customer service oriented firm, and we will work
-//               with you until you are completely satisfied with the outcome of
-//               your design projects. We are the most experienced team of
-//               designers working on Freelancer since 2017
-//             </div>
-//             <div className="maxlabel_atcxt mt-2 text-right">
-//               4120 characters left
-//             </div>
-//             <div className="popup_btns_new flex-wrap cwiewyehkk">
-//               <button className="trans_btn">Cancel</button>
-//               <button
-//                 onClick={() => {
-//                   props.Popup();
-//                 }}
-//               >
-//                 Save
-//               </button>
-//             </div>
-//           </div>
-//         </div>
-//       </div>
-//     </>
-//   );
-// };
 
 const UnifyFreelancer = () => {
   const dispatch = useDispatch();
@@ -390,7 +203,7 @@ const UnifyFreelancer = () => {
   const [showingProImage, setShowingProImage] = useState();
   const [popup, Setpopup] = useState();
   const [hwpPopup, setHwpPopup] = useState(false);
-  const [workHistoryTab, setWorkHistoryTab] = useState("COMPLETED JOBS");
+  const [workHistoryTab, setWorkHistoryTab] = useState("completedJobs");
   const [portfolioPopup, setPortfolioPopup] = useState(false);
   const [videoPopup, setVideoPopup] = useState(false);
   const [showExprienceLevOpt, setShowExprienceLevOpt] = useState(false);
@@ -398,7 +211,6 @@ const UnifyFreelancer = () => {
   const [editPortfoData, setEditPortfoData] = useState([]);
   const [confirmPopup, setConfirmPopup] = useState(false);
   const [successPopup, setSuccessPopup] = useState(false);
-  const [confirm, setConfirm] = useState(false);
 
   const deleteExprience = useSelector(
     (state) => state?.profile?.deleteExprience
@@ -700,18 +512,7 @@ const UnifyFreelancer = () => {
                   <span>(Per Hourly)</span>
                 </div>
               </div>
-              {/* <div className="myskill_prof_node">
-                <div className="myskill_hdingn font-size-20px font-weight-600">
-                  My Skills
-                </div>
-                <div className="myskill_hdingn font-size-15px">
-                  Mobile App Development
-                </div>
-                <div className="myskill_hdingn font-size-15px">
-                  Full Stack Development
-                </div>
-                <div className="myskill_hdingn font-size-15px">All Work</div>
-              </div> */}
+
               <div className="profile_detail">
                 <div className="pd_flex flex-wrap">
                   <div className="flex_pt">
@@ -754,44 +555,6 @@ const UnifyFreelancer = () => {
                   </div>
                 </div>
               </div>
-              {/* <div className="my_skill_sec">
-                <div className="my_skil_head">
-                  <h3>My Skills</h3>
-                </div>
-                <div className="prr_box">
-                  <div className="d-flex justify-content-between">
-                    <div className="skil_nam">
-                      <p>Graphich Designer</p>
-                    </div>
-                    <div className="skil_rr">
-                      <p>60%</p>
-                    </div>
-                  </div>
-                  <div className="prr_area_line"></div>
-                </div>
-                <div className="prr_box">
-                  <div className="d-flex justify-content-between">
-                    <div className="skil_nam">
-                      <p>Front End Developer</p>
-                    </div>
-                    <div className="skil_rr">
-                      <p>60%</p>
-                    </div>
-                  </div>
-                  <div className="prr_area_line"></div>
-                </div>
-                <div className="prr_box">
-                  <div className="d-flex justify-content-between">
-                    <div className="skil_nam">
-                      <p>Video Editor</p>
-                    </div>
-                    <div className="skil_rr">
-                      <p>60%</p>
-                    </div>
-                  </div>
-                  <div className="prr_area_line"></div>
-                </div>
-              </div> */}
               <div className="myskill_prof_node">
                 <div className="intro_video">
                   <div className="myskill_hdingn profile_icon_25px">
@@ -1193,16 +956,7 @@ const UnifyFreelancer = () => {
                       </div>
                     </>
                   ))}
-
-                  {/* Tallinna University Bachelor or Engineering (BEng), Computer
-                  science 2016-2017 */}
                 </div>
-              </div>
-              <div className="award_sec">
-                <div className="my_skil_head">
-                  <h3>Diplomas, certificates</h3>
-                </div>
-                <Row>{Listaward()}</Row>
               </div>
             </div>
           </Col>
@@ -1248,28 +1002,6 @@ const UnifyFreelancer = () => {
               </div>
               <div className="d-flex mt-3">
                 <div className="descri_pfro">{basicInfo?.description}</div>
-                {/* <div className="myskill_hdingn">
-                  <button
-                    onClick={() => {
-                      Setpopup(<Overview Popup={Setpopup} />);
-                    }}
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="15.709"
-                      height="15.715" 
-                      viewBox="0 0 15.709 15.715"
-                    >
-                      <path
-                        id="_8665767_pen_icon"
-                        data-name="8665767_pen_icon"
-                        d="M15.327,2.274,13.482.429a1.475,1.475,0,0,0-2.085,0L9.662,2.165l3.9,3.929L15.3,4.358A1.447,1.447,0,0,0,15.327,2.274Zm-6.356.585L1,10.83a.491.491,0,0,0-.134.251L.057,15.123a.491.491,0,0,0,.576.58l4.042-.808a.491.491,0,0,0,.251-.134L12.9,6.789Z"
-                        transform="translate(-0.047 0.003)"
-                        fill="#6d2ef1"
-                      />
-                    </svg>
-                  </button>
-                </div> */}
               </div>
             </div>
             <div className="box-profile-bck mb-0">
@@ -1282,9 +1014,9 @@ const UnifyFreelancer = () => {
                 <div className="tabbar_profle">
                   <Button
                     variant=""
-                    onClick={() => setWorkHistoryTab("COMPLETED JOBS")}
+                    onClick={() => setWorkHistoryTab("completedJobs")}
                     className={
-                      workHistoryTab === "COMPLETED JOBS"
+                      workHistoryTab === "completedJobs"
                         ? "activetabbar_btn"
                         : ""
                     }
@@ -1293,9 +1025,9 @@ const UnifyFreelancer = () => {
                   </Button>
                   <Button
                     variant=""
-                    onClick={() => setWorkHistoryTab("IN PROGRESS")}
+                    onClick={() => setWorkHistoryTab("inProgress")}
                     className={
-                      workHistoryTab === "IN PROGRESS" ? "activetabbar_btn" : ""
+                      workHistoryTab === "inProgress" ? "activetabbar_btn" : ""
                     }
                   >
                     In Progress (1)
@@ -1423,17 +1155,6 @@ const UnifyFreelancer = () => {
                 <div className="bpck_head">Testimonials</div>
                 <div className="bpck_para">Endorsements from past clients</div>
               </div>
-              {/* <div className="d-flex justify-content-center flex-column text-center">
-                <div className="img_min_bpck">
-                  <img src="/assets/consumer.png" alt="" />
-                </div>
-                <div className="bpck_sm_txt_a mt-4">
-                  Showcase your skills with non-Unify client testimonials
-                </div>
-                <div className="bpck_sm_txt_a">
-                  <Link to="">Request a testimonial</Link>
-                </div>
-              </div> */}
               {freelancerProfileList?.testimonial?.map((item) => (
                 <>
                   {item.status == "approve" && (
@@ -1764,7 +1485,7 @@ const UnifyFreelancer = () => {
                         </div>
                       </div>
                     )}
-                    <div className="d-flex justify-content-center flex-column pl-20">
+                    <div className="d-flex justify-content-center flex-column ">
                       {freelancerProfileList?.employment?.map(
                         (experience, key) => (
                           <div key={key}>
@@ -1846,52 +1567,6 @@ const UnifyFreelancer = () => {
                   </div>
                 </div>
               </Col>
-              {/* <Col md={6}>
-                <div className="box-profile-bck minei400">
-                  <div className="d-flex justify-content-end myskill_hdingn">
-                    <Button
-                      onClick={() => {
-                        Setpopup(<AddExperience Popup={Setpopup} />);
-                      }}
-                    >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="17"
-                        height="17"
-                        viewBox="0 0 17 17"
-                      >
-                        <path
-                          id="_134224_add_plus_new_icon_2_"
-                          data-name="134224_add_plus_new_icon (2)"
-                          d="M17.786,9.286H11.714V3.214a1.214,1.214,0,0,0-2.429,0V9.286H3.214a1.214,1.214,0,0,0,0,2.429H9.286v6.071a1.214,1.214,0,1,0,2.429,0V11.714h6.071a1.214,1.214,0,1,0,0-2.429Z"
-                          transform="translate(-2 -2)"
-                          fill="#6d2ef1"
-                        />
-                      </svg>
-                    </Button>
-                  </div>
-                  <div className="bpbck_txt">
-                    <div className="bpck_head font-weight-600">
-                      Other Experiences
-                    </div>
-                  </div>
-                  <div className="d-flex justify-content-center flex-column text-center">
-                    <div className="img_min_bpck m-0 file_icon_lst">
-                      <img src="/assets/files.png" alt="" />
-                    </div>
-                    <div className="bpck_sm_txt_a font-weight-500">
-                      <Link
-                        to=""
-                        onClick={() => {
-                          Setpopup(<AddExperience Popup={Setpopup} />);
-                        }}
-                      >
-                        Add an experience
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              </Col> */}
             </Row>
           </Col>
         </Row>

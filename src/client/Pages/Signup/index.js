@@ -50,11 +50,19 @@ const Signupscreen = () => {
     let errorsObject = {};
 
     if (
-      values.email === "" ||
-      values.email === null ||
-      values.email === undefined
+      values?.email === "" ||
+      values?.email === null ||
+      values?.email === undefined
     ) {
-      errorsObject.email = true;
+      errorsObject.email = "Please enter your email";
+      errorExist = true;
+    } else if (!values?.email.trim()) {
+      errorsObject.email = "Email is required";
+      errorExist = true;
+    } else if (
+      !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(values?.email)
+    ) {
+      errorsObject.email = "Please type a valid email address";
       errorExist = true;
     }
 

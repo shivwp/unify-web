@@ -1,8 +1,10 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
-import "swiper/css/navigation";
+import "swiper/less/autoplay";
 import { Navigation, Pagination } from "swiper";
+import SwiperCore, { Autoplay } from "swiper";
+SwiperCore.use([Autoplay]);
 
 const findfreelance = ({
   trusted_brands,
@@ -10,10 +12,12 @@ const findfreelance = ({
   trusted_brand_description,
 }) => {
   return (
-    <div className="find_frelance">
+    <div className="find_frelance mb-5">
       <div className="">
         <div className="find-freel-head">
-          <h1>{trusted_brand_title}</h1>
+          <h1>
+            {trusted_brand_title} <span className="ffh"></span>
+          </h1>
         </div>
         <div className="find-freel-para">
           <p>{trusted_brand_description}</p>
@@ -30,6 +34,10 @@ const findfreelance = ({
               dynamicBullets: true,
             }}
             loop={true}
+            autoplay={{
+              delay: 4000,
+              disableOnInteraction: false,
+            }}
             breakpoints={{
               200: {
                 slidesPerView: 1,
@@ -43,7 +51,7 @@ const findfreelance = ({
               },
               768: {
                 slidesPerView: 2,
-                spaceBetween: 10,
+                spaceBetween: 15,
                 centeredSlides: false,
               },
               992: {

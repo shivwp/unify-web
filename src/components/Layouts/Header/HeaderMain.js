@@ -43,10 +43,10 @@ const NavbarHeader = (props) => {
           </button>
         </div>
         <div className="navdata_li">
-          <Link to="/">HOW IT WORKS</Link>
+          <Link to="/how-it-works">HOW IT WORKS</Link>
         </div>
         <div className="navdata_li">
-          <Link to="/">BROWSE JOBS</Link>
+          <Link to="/browse-jobs">BROWSE JOBS</Link>
         </div>
         <div className="logout_btn_mob">
           <Link to={`/`}>
@@ -89,10 +89,10 @@ const NavbarHeader = (props) => {
               />
               <Navbar.Collapse id="responsive-navbar-nav">
                 <Nav>
-                  <Nav.Link as={Link} to="/" className="navbar_btn">
+                  <Nav.Link as={Link} to="/how-it-works" className="navbar_btn">
                     How it works
                   </Nav.Link>
-                  <Nav.Link as={Link} to="/" className="navbar_btn">
+                  <Nav.Link as={Link} to="/browse-jobs" className="navbar_btn">
                     Browse Jobs
                   </Nav.Link>
                   <Nav.Link as={Link} to="/" className="navbar_btn">
