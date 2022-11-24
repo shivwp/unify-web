@@ -38,10 +38,10 @@ const Footer = () => {
             <div>
               <ul className="footer_ul">
                 <li>
-                  <Link to="/pages/about-us">Careers</Link>
+                  <Link to="/pages/career">Careers</Link>
                 </li>
                 <li>
-                  <Link to="/pages/about-us">Press & News</Link>
+                  <Link to="/pages/press-news">Press & News</Link>
                 </li>
                 <li>
                   <Link to="/pages/about-us">About Us</Link>
@@ -79,7 +79,7 @@ const Footer = () => {
                   <Link to="/pages/selling-on-unify">Selling on Unify</Link>
                 </li>
                 <li>
-                  <Link to="/pages/nuying-on-unify">Buying on Unify</Link>
+                  <Link to="/pages/buying-on-unify">Buying on Unify</Link>
                 </li>
               </ul>
             </div>
@@ -91,11 +91,11 @@ const Footer = () => {
             <div>
               <ul className="footer_ul">
                 <li>
-                  <Link to="/pages/accessibility">Blog</Link>
+                  <Link to="/pages/blog">Blog</Link>
                 </li>
 
                 <li>
-                  <Link to="/pages/cookie-policy">Community Standards</Link>
+                  <Link to="/pages/community">Community Standards</Link>
                 </li>
                 {/* <li>
                   <Link to="/pages/term-conditions">Terms of Services</Link>

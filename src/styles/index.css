@@ -7365,6 +7365,7 @@ a {
 }
 .skills_lists .skill_user_imgs .image {
   width: 60px;
+  height: 60px;
 }
 .skills_lists .skill_user_imgs .image img {
   width: 100%;
@@ -7760,6 +7761,8 @@ a {
 .dev_cat_wise .developers_list .cards .dev_card .skills {
   display: flex;
   flex-wrap: wrap;
+  height: 90px;
+  align-items: flex-start;
 }
 .dev_cat_wise .developers_list .cards .dev_card .skills .skill {
   background-color: #eaeef2;

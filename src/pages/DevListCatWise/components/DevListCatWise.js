@@ -86,7 +86,9 @@ const DevListCatWise = () => {
                       <div className="image">
                         <img src={item.profile_image} alt="" />
                       </div>
-                      <div className="name">{`${item.first_name} ${item.last_name}`}</div>
+                      <div className="name">{`${
+                        item.first_name
+                      } ${item?.last_name?.charAt(0)?.toUpperCase()}`}</div>
                       <div className="designation">{item.occcuption}</div>
                       <div className="ratings">
                         <div className="top_rated">

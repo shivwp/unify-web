@@ -9,7 +9,7 @@ const ChooseLangauge = ({ setCurrentTab, profileList }) => {
         <div className="container_border">
           <div className="startIntroIn">
             <h5 className="startIntroTwoH5">
-              Looking good.Next, tell us which languages you speak.
+              Looking good. Next, tell us which languages you speak.
             </h5>
             <div className="startIntroTwoP mt-3 mb-3">
               Unify is global, so clients are often interested to know what
