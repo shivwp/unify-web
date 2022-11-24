@@ -9,7 +9,7 @@ const Signupscreen = () => {
   const dispatch = useDispatch();
   const [country, setCountry] = useState();
   const [errors, setErrors] = useState({});
-  const [userType, setUserType] = useState(null);
+  const [userType, setUserType] = useState("freelancer");
   const getCountryList = useSelector((state) => state.auth.getCountryList);
   const signupError = useSelector(
     (state) => state?.auth?.signupError?.data.message

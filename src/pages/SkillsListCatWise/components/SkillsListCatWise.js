@@ -1,16 +1,26 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/less/autoplay";
 import { Col, Container, Row } from "react-bootstrap";
 import SwiperCore, { Autoplay } from "swiper";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getSkillsByCat } from "../../../redux/actions/authActions";
 SwiperCore.use([Autoplay]);
 
 const SkillsListCatWise = () => {
   const [bannerImg, setBannerImg] = useState(1);
+  const dispatch = useDispatch();
+  const categoryId = useParams();
+  // window.scrollTo(0, 0);
+  const [skillList, setSkillsList] = useState([]);
+  const [more, setMore] = useState(true);
 
+  const categorySkillData = useSelector(
+    (state) => state?.auth?.categorySkillData
+  );
   const Banner_image = ({ id }) => {
     let render_img = {
       1: <img src="assets/job_banner1.png" alt="" />,
@@ -22,6 +32,24 @@ const SkillsListCatWise = () => {
     return render_img[id];
   };
 
+  console.log(skillList);
+  useEffect(() => {
+    dispatch(getSkillsByCat({ category_id: categoryId?.category }));
+  }, []);
+
+  useEffect(() => {
+    setSkillsList(categorySkillData?.category_skills?.slice(0, 8));
+  }, [categorySkillData]);
+
+  const showMore = () => {
+    setSkillsList(categorySkillData?.category_skills);
+    setMore(false);
+  };
+  const showLess = () => {
+    setSkillsList(categorySkillData?.category_skills?.slice(0, 8));
+    setMore(true);
+  };
+
   return (
     <>
       <Container>
@@ -29,19 +57,23 @@ const SkillsListCatWise = () => {
           <div className="header">
             <div className="header_left">
               <div className="heading">
-                <h1>Dev and IT experts to scale your org</h1>
+                <h1>{categorySkillData?.category_data?.short_description}</h1>
               </div>
               <div className="desc">
-                Hire independent professionals to shorten development cycles,
-                bury backlogs, and drive product growth.
+                {categorySkillData?.category_data?.long_description}
               </div>
               <div className="get_start_btn">
-                <button>Get Started</button>
+                <Link to="/signup">
+                  <button>Get Started</button>
+                </Link>
               </div>
             </div>
             <div className="header_right">
               <div className="header_img">
-                <img src="/assets/cat_job_header_img.jpg" alt="" />
+                <img
+                  src={categorySkillData?.category_data?.banner_image}
+                  alt=""
+                />
               </div>
             </div>
           </div>
@@ -84,7 +116,7 @@ const SkillsListCatWise = () => {
                         spaceBetween: 0,
                       },
                       1024: {
-                        slidesPerView: 3,
+                        slidesPerView: 4,
                         spaceBetween: 0,
                       },
                     }}
@@ -97,6 +129,11 @@ const SkillsListCatWise = () => {
                     <SwiperSlide>
                       <div className="client_imag">
                         <img src="/assets/macdonald.png" alt="" />
+                      </div>
+                    </SwiperSlide>
+                    <SwiperSlide>
+                      <div className="client_imag">
+                        <img src="/assets/dell.png" alt="" />
                       </div>
                     </SwiperSlide>
                     <SwiperSlide>
@@ -151,260 +188,55 @@ const SkillsListCatWise = () => {
               </Col>
             </Row>
             <Row className="mt-4">
-              <Col md={4} lg={3}>
-                <div className="skill_box">
-                  <div className="skill_name">Java Developer</div>
-                  <div className="about_skill">
-                    <span className="skill_list_star">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
-                        fill="currentColor"
-                        className="bi bi-star-fill fill-none"
-                        viewBox="0 0 16 16"
-                      >
-                        <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
-                      </svg>
-                    </span>
-                    <span>4.8/5 average rating</span>
-                  </div>
-                  <div className="skill_user_imgs">
-                    <div className="image1 image">
-                      <img src="assets/profile1.jpeg" alt="" />
+              {skillList?.map((item) => (
+                <Col md={4} lg={3} key={item.id}>
+                  <Link to={`/skill-dev/${item.id}`}>
+                    <div className="skill_box">
+                      <div className="skill_name">{item.name}</div>
+                      <div className="about_skill">
+                        <span className="skill_list_star">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="16"
+                            height="16"
+                            fill="currentColor"
+                            className="bi bi-star-fill fill-none"
+                            viewBox="0 0 16 16"
+                          >
+                            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+                          </svg>
+                        </span>
+                        <span>{item.rating} average rating</span>
+                      </div>
+                      <div className="skill_user_imgs">
+                        <div className="image1 image">
+                          <img src={item.image} alt="" />
+                        </div>
+                        {/* <div className="image2 image">
+                          <img src="assets/profile2.jpeg" alt="" />
+                        </div>
+                        <div className="image3 image">
+                          <img src="assets/profile3.jpeg" alt="" />
+                        </div> */}
+                      </div>
                     </div>
-                    <div className="image2 image">
-                      <img src="assets/profile2.jpeg" alt="" />
-                    </div>
-                    <div className="image3 image">
-                      <img src="assets/profile3.jpeg" alt="" />
-                    </div>
-                  </div>
+                  </Link>
+                </Col>
+              ))}
+              {more ? (
+                <div className="more_cat_skills">
+                  Looking for something else?{" "}
+                  <span onClick={showMore}>See more skills</span>
                 </div>
-              </Col>
-              <Col md={4} lg={3}>
-                <div className="skill_box">
-                  <div className="skill_name">Java Developer</div>
-                  <div className="about_skill">
-                    <span className="skill_list_star">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
-                        fill="currentColor"
-                        className="bi bi-star-fill fill-none"
-                        viewBox="0 0 16 16"
-                      >
-                        <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
-                      </svg>
-                    </span>
-                    <span>4.8/5 average rating</span>
-                  </div>
-                  <div className="skill_user_imgs">
-                    <div className="image1 image">
-                      <img src="assets/profile1.jpeg" alt="" />
-                    </div>
-                    <div className="image2 image">
-                      <img src="assets/profile2.jpeg" alt="" />
-                    </div>
-                    <div className="image3 image">
-                      <img src="assets/profile3.jpeg" alt="" />
-                    </div>
-                  </div>
+              ) : (
+                <div className="more_cat_skills">
+                  Looking for something else?{" "}
+                  <span onClick={showLess}>See Less skills</span>
                 </div>
-              </Col>
-              <Col md={4} lg={3}>
-                <div className="skill_box">
-                  <div className="skill_name">Java Developer</div>
-                  <div className="about_skill">
-                    <span className="skill_list_star">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
-                        fill="currentColor"
-                        className="bi bi-star-fill fill-none"
-                        viewBox="0 0 16 16"
-                      >
-                        <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
-                      </svg>
-                    </span>
-                    <span>4.8/5 average rating</span>
-                  </div>
-                  <div className="skill_user_imgs">
-                    <div className="image1 image">
-                      <img src="assets/profile1.jpeg" alt="" />
-                    </div>
-                    <div className="image2 image">
-                      <img src="assets/profile2.jpeg" alt="" />
-                    </div>
-                    <div className="image3 image">
-                      <img src="assets/profile3.jpeg" alt="" />
-                    </div>
-                  </div>
-                </div>
-              </Col>
-              <Col md={4} lg={3}>
-                <div className="skill_box">
-                  <div className="skill_name">Java Developer</div>
-                  <div className="about_skill">
-                    <span className="skill_list_star">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
-                        fill="currentColor"
-                        className="bi bi-star-fill fill-none"
-                        viewBox="0 0 16 16"
-                      >
-                        <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
-                      </svg>
-                    </span>
-                    <span>4.8/5 average rating</span>
-                  </div>
-                  <div className="skill_user_imgs">
-                    <div className="image1 image">
-                      <img src="assets/profile1.jpeg" alt="" />
-                    </div>
-                    <div className="image2 image">
-                      <img src="assets/profile2.jpeg" alt="" />
-                    </div>
-                    <div className="image3 image">
-                      <img src="assets/profile3.jpeg" alt="" />
-                    </div>
-                  </div>
-                </div>
-              </Col>
-              <Col md={4} lg={3}>
-                <div className="skill_box">
-                  <div className="skill_name">Java Developer</div>
-                  <div className="about_skill">
-                    <span className="skill_list_star">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
-                        fill="currentColor"
-                        className="bi bi-star-fill fill-none"
-                        viewBox="0 0 16 16"
-                      >
-                        <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
-                      </svg>
-                    </span>
-                    <span>4.8/5 average rating</span>
-                  </div>
-                  <div className="skill_user_imgs">
-                    <div className="image1 image">
-                      <img src="assets/profile1.jpeg" alt="" />
-                    </div>
-                    <div className="image2 image">
-                      <img src="assets/profile2.jpeg" alt="" />
-                    </div>
-                    <div className="image3 image">
-                      <img src="assets/profile3.jpeg" alt="" />
-                    </div>
-                  </div>
-                </div>
-              </Col>
-              <Col md={4} lg={3}>
-                <div className="skill_box">
-                  <div className="skill_name">Java Developer</div>
-                  <div className="about_skill">
-                    <span className="skill_list_star">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
-                        fill="currentColor"
-                        className="bi bi-star-fill fill-none"
-                        viewBox="0 0 16 16"
-                      >
-                        <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
-                      </svg>
-                    </span>
-                    <span>4.8/5 average rating</span>
-                  </div>
-                  <div className="skill_user_imgs">
-                    <div className="image1 image">
-                      <img src="assets/profile1.jpeg" alt="" />
-                    </div>
-                    <div className="image2 image">
-                      <img src="assets/profile2.jpeg" alt="" />
-                    </div>
-                    <div className="image3 image">
-                      <img src="assets/profile3.jpeg" alt="" />
-                    </div>
-                  </div>
-                </div>
-              </Col>
-              <Col md={4} lg={3}>
-                <div className="skill_box">
-                  <div className="skill_name">Java Developer</div>
-                  <div className="about_skill">
-                    <span className="skill_list_star">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
-                        fill="currentColor"
-                        className="bi bi-star-fill fill-none"
-                        viewBox="0 0 16 16"
-                      >
-                        <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
-                      </svg>
-                    </span>
-                    <span>4.8/5 average rating</span>
-                  </div>
-                  <div className="skill_user_imgs">
-                    <div className="image1 image">
-                      <img src="assets/profile1.jpeg" alt="" />
-                    </div>
-                    <div className="image2 image">
-                      <img src="assets/profile2.jpeg" alt="" />
-                    </div>
-                    <div className="image3 image">
-                      <img src="assets/profile3.jpeg" alt="" />
-                    </div>
-                  </div>
-                </div>
-              </Col>
-              <Col md={4} lg={3}>
-                <div className="skill_box">
-                  <div className="skill_name">Java Developer</div>
-                  <div className="about_skill">
-                    <span className="skill_list_star">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
-                        fill="currentColor"
-                        className="bi bi-star-fill fill-none"
-                        viewBox="0 0 16 16"
-                      >
-                        <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
-                      </svg>
-                    </span>
-                    <span>4.8/5 average rating</span>
-                  </div>
-                  <div className="skill_user_imgs">
-                    <div className="image1 image">
-                      <img src="assets/profile1.jpeg" alt="" />
-                    </div>
-                    <div className="image2 image">
-                      <img src="assets/profile2.jpeg" alt="" />
-                    </div>
-                    <div className="image3 image">
-                      <img src="assets/profile3.jpeg" alt="" />
-                    </div>
-                  </div>
-                </div>
-              </Col>
-              <div className="more_cat_skills">
-                Looking for something else? <span>See more skills</span>
-              </div>
+              )}
             </Row>
           </div>
-          <div className="browse_projects">
+          <div className="browse_projects mb-5">
             <div className="heading">
               <h2>Development and IT projects for your most pressing work</h2>
             </div>
@@ -414,7 +246,7 @@ const SkillsListCatWise = () => {
             </div>
             <div className="banner">
               <Row style={{ height: "100%" }}>
-                <Col lg={3}>
+                <Col lg={4} xl={3} md={5}>
                   <div className="titles">
                     <div
                       onClick={() => setBannerImg(1)}
@@ -448,10 +280,12 @@ const SkillsListCatWise = () => {
                     </div>
                   </div>
                   <div className="browse_project_btn">
-                    <button>Browse Projects</button>
+                    <Link to="/browse-jobs">
+                      <button>Browse Jobs</button>
+                    </Link>
                   </div>
                 </Col>
-                <Col lg={9} style={{ height: "100%" }}>
+                <Col lg={8} xl={9} md={7} style={{ height: "100%" }}>
                   <div className="image">
                     <Banner_image id={bannerImg} />
                     {/* <img src="assets/job_banner1.png" alt="" /> */}

@@ -23,13 +23,11 @@ const Footer = () => {
             </div>
             <div>
               <ul className="footer_ul">
-                {categoryList
-                  ?.filter((item, index) => index < 6)
-                  .map((item, index) => (
-                    <li key={index}>
-                      <Link to="#">{item.name}</Link>
-                    </li>
-                  ))}
+                {categoryList?.slice(0, 6)?.map((item, index) => (
+                  <li key={index}>
+                    <Link to="#">{item.name}</Link>
+                  </li>
+                ))}
               </ul>
             </div>
           </Col>

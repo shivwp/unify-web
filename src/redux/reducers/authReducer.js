@@ -10,6 +10,8 @@ import {
   FOOTER_PAGE_DATA,
   VERIFY_OTP_ERROR,
   RESEND_OTP_ERROR,
+  CATEGORY_SKILL_DATA,
+  SKILLS_DEVELOPER_DATA,
 } from "../types";
 
 const initialState = {};
@@ -20,6 +22,16 @@ const authReducer = (state = initialState, action) => {
       return {
         ...state,
         homePageData: action.payload,
+      };
+    case CATEGORY_SKILL_DATA:
+      return {
+        ...state,
+        categorySkillData: action.payload,
+      };
+    case SKILLS_DEVELOPER_DATA:
+      return {
+        ...state,
+        skillDevData: action.payload,
       };
     case SET_COUNTRY:
       return {

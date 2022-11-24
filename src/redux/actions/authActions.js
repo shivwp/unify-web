@@ -18,6 +18,8 @@ import {
   FOOTER_PAGE_DATA,
   VERIFY_OTP_ERROR,
   RESEND_OTP_ERROR,
+  CATEGORY_SKILL_DATA,
+  SKILLS_DEVELOPER_DATA,
 } from "../types";
 import { GoogleAuthProvider, OAuthProvider } from "firebase/auth";
 
@@ -32,6 +34,30 @@ export const getHomePageData = () => async (dispatch) => {
     .then((res) => {
       dispatch({
         type: HOME_PAGE_DATA,
+        payload: res.data.data,
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+export const getSkillsByCat = (data) => async (dispatch) => {
+  await Axios.post(`/category-skills`, data)
+    .then((res) => {
+      dispatch({
+        type: CATEGORY_SKILL_DATA,
+        payload: res.data.data,
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+export const getDevelopersBySkills = (data) => async (dispatch) => {
+  await Axios.post(`/skill-freelancer`, data)
+    .then((res) => {
+      dispatch({
+        type: SKILLS_DEVELOPER_DATA,
         payload: res.data.data,
       });
     })

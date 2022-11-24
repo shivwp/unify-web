@@ -27,9 +27,9 @@ const slider = ({ nonavbg, hero, used_by }) => {
                   </div>
                   <div className="description">{hero?.description}</div>
                   <div className="slider_get_btn mdd-none">
-                    <Link to="/signup">
+                    <Link to="/browse-jobs">
                       <Button variant="" className="active_btn">
-                        {hero?.button_text || "Start Now"}
+                        {hero?.button_text || "Learn & Earn"}
                       </Button>
                     </Link>
                   </div>

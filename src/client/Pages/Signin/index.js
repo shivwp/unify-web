@@ -9,7 +9,7 @@ const Signinscreen = () => {
   const [errors, setErrors] = useState({});
   const [values, setValues] = useState({});
   const dispatch = useDispatch();
-  const [userType, setUserType] = useState();
+  const [userType, setUserType] = useState('freelancer');
 
   const onInputChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });

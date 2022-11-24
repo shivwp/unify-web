@@ -13,6 +13,7 @@ const HowItWorks = lazy(() => import("./pages/HowItWorks"));
 const BrowseJobs = lazy(() => import("./pages/BrowseJobs"));
 const JobDetails = lazy(() => import("./pages/JobDetails"));
 const SkillsListCatWise = lazy(() => import("./pages/SkillsListCatWise"));
+const DevListCatWise = lazy(() => import("./pages/DevListCatWise"));
 
 //  ================================ CLIENT ROUTES ==================================
 const Createcategory = lazy(() => import("./client/Pages/Create-Category"));
@@ -186,10 +187,8 @@ const LoggedOutRoutes = () => {
       <Route path="/verify-signup" element={<VerifySignUp />} />
       <Route path="/how-it-works" element={<HowItWorks />} />
       <Route path="/browse-jobs" element={<BrowseJobs />} />
-      <Route
-        path="/cat-skills/:category"
-        element={<SkillsListCatWise />}
-      />
+      <Route path="/cat-skills/:category" element={<SkillsListCatWise />} />
+      <Route path="/skill-dev/:skill" element={<DevListCatWise />} />
       <Route path="/job-details/:id" element={<JobDetails />} />
       <Route path="/pages/:pagename" element={<FooterPages />} />
     </Routes>
