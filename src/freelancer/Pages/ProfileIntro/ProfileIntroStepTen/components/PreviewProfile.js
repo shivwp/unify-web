@@ -31,7 +31,7 @@ const PreviewProfile = () => {
                         </Row>
                     </div>
                     <div className="startIntroIn">
-                        <div className="pbx_pdd_sp3 mt-1 mb-1"></div>
+                        <div className="pbx_pdd_sp2 mb-1"></div>
                         <Row className='mt-3'>
                             <Col sm={2}>
                                 <div className='previewImageIcon'>
@@ -47,7 +47,7 @@ const PreviewProfile = () => {
                                     <div className="tamoun_pdd_sp"></div>
                                 </div>
                             </Col>
-                            <div className="pbx_pdd_sp3 mt-1 mb-1"></div>
+                            <div className="pbx_pdd_sp2 mt-1"></div>
                         </Row>
                     </div>
                     <div className="startIntroIn">
@@ -67,7 +67,7 @@ const PreviewProfile = () => {
                                     There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.
                                 </div>
                             </div>
-                            <div className="pbx_pdd_sp3 mt-1 mb-1"></div>
+                            <div className="pbx_pdd_sp2"></div>
                         </Row>
                     </div>
                     <div className="startIntroIn">
@@ -85,7 +85,7 @@ const PreviewProfile = () => {
                                 </svg>
                                 <div className="tamoun_pdd_sp"> $5.00 </div>
                             </div>
-                            <div className="pbx_pdd_sp3 mt-1 mb-1"></div>
+                            <div className="pbx_pdd_sp2"></div>
                         </Row>
                     </div>
                     <div className="startIntroIn">
@@ -108,7 +108,7 @@ const PreviewProfile = () => {
                                     <button className='skillsDesign_btn'>  User Experience Design </button>
                                 </div>
                             </div>
-                            <div className="pbx_pdd_sp3 mt-1 mb-1"></div>
+                            <div className="pbx_pdd_sp2"></div>
                         </Row>
                     </div>
                     <div className="startIntroIn">
@@ -149,7 +149,7 @@ const PreviewProfile = () => {
                                 </div>
                             </div>
                             <div className="previewProfileDate"> June 2019 </div>
-                            <div className="pbx_pdd_sp3 mt-1 mb-1"></div>
+                            <div className="pbx_pdd_sp2"></div>
                         </Row>
                     </div>
                     <div className="startIntroIn">
@@ -167,7 +167,7 @@ const PreviewProfile = () => {
                                 </svg>
                             </div>
                             <div className="previewProfileDate"> No item to display </div>
-                            <div className="pbx_pdd_sp3 mt-1 mb-1"></div>
+                            <div className="pbx_pdd_sp2"></div>
                         </Row>
                     </div>
                     <div className="startIntroIn">
@@ -176,7 +176,7 @@ const PreviewProfile = () => {
                                 <span className='previewPostion'> Location </span>
                             </div>
                             <div className="previewProfileDate"> Jaipur, RJ India </div>
-                            <div className="pbx_pdd_sp3 mt-1 mb-1"></div>
+                            <div className="pbx_pdd_sp2"></div>
                         </Row>
                     </div>
                     <div className="startIntroIn">
@@ -193,9 +193,10 @@ const PreviewProfile = () => {
                                     </g>
                                 </svg>
                             </div>
-                            <div className="previewProfileDate"> English : Basic </div>
+                            <div className="previewProfileDate">
+                                <span className="tamoun_pdd_sp"> English </span>  : Basic </div>
                             <Col>
-                                <button className="priviewSubmitButton mt-5"> Submit Profile </button>
+                                <button className="priviewSubmitButton mt-4"> Submit Profile </button>
                             </Col>
                         </Row>
                     </div>
