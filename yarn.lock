@@ -3804,6 +3804,11 @@
   "resolved" "https://registry.npmjs.org/char-regex/-/char-regex-2.0.1.tgz"
   "version" "2.0.1"
 
+"chart.js@^4.0.0", "chart.js@^4.0.1":
+  "integrity" "sha512-5/8/9eBivwBZK81mKvmIwTb2Pmw4D/5h1RK9fBWZLLZ8mCJ+kfYNmV9rMrGoa5Hgy2/wVDBMLSUDudul2/9ihA=="
+  "resolved" "https://registry.npmjs.org/chart.js/-/chart.js-4.0.1.tgz"
+  "version" "4.0.1"
+
 "check-types@^11.1.1":
   "integrity" "sha512-tzWzvgePgLORb9/3a0YenggReLKAIb2owL03H2Xdoe5pKcUyWRSEQ8xfCar8t2SIAuEDwtmx2da1YB52YuHQMQ=="
   "resolved" "https://registry.npmjs.org/check-types/-/check-types-11.1.2.tgz"
@@ -8412,6 +8417,11 @@
     "react-transition-group" "^4.4.2"
     "uncontrollable" "^7.2.1"
     "warning" "^4.0.3"
+
+"react-chartjs-2@^5.0.1":
+  "integrity" "sha512-u38C9OxynlNCBp+79grgXRs7DSJ9w8FuQ5/HO5FbYBbri8HSZW+9SWgjVshLkbXBfXnMGWakbHEtvN0nL2UG7Q=="
+  "resolved" "https://registry.npmjs.org/react-chartjs-2/-/react-chartjs-2-5.0.1.tgz"
+  "version" "5.0.1"
 
 "react-credit-card-input@^1.1.5":
   "integrity" "sha512-G157pMMrh8CZ4Xi2ICoXrOuI9Xpl3i8AwVTZNgRWehQ8VfTwu5/TxaqlFQTbZQv3XI+g6AMCiIlgITQNDP8Jig=="

@@ -74,7 +74,11 @@ export const onLogin = (data, navigate) => async (dispatch) => {
       localStorage.setItem("unify_user", JSON.stringify(res.data.data.user));
       localStorage.setItem("unify_access", true);
       if (res.data.data.user.user_type === "freelancer") {
-        navigate("/freelancer/dashboard");
+        if (!res.data.data.user.is_profile_complete === true) {
+          navigate("/freelancer/dashboard");
+        } else {
+          navigate("/freelancer/question1");
+        }
       } else if (res.data.data.user.user_type === "client") {
         navigate("/dashboard");
       }
@@ -107,8 +111,8 @@ export const onVerifySignup = (data, navigate) => async (dispatch) => {
     const res = await Axios.post(`/verifysignup`, data);
     if (res.data.status) {
       navigate("/signin");
+      window.location.reload();
     }
-    window.location.reload();
   } catch (err) {}
 };
 

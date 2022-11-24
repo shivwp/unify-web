@@ -165,6 +165,7 @@ const SeeMilestone = lazy(() => import("./freelancer/Pages/MileStone-Earning"));
 const FreelancerMessage = lazy(() =>
   import("./freelancer/Pages/FreelancerMessage")
 );
+const ProfileInto = lazy(() => import("./freelancer/Pages/ProfileIntro"));
 
 const LoggedOutRoutes = () => {
   return (
@@ -354,6 +355,7 @@ const LoggedInRoutes = () => {
       <Route exact path="/freelancer/message" element={<FreelancerMessage />} />
       <Route path="/freelancer/see-milestone" element={<SeeMilestone />} />
       <Route path="/freelancer/see-timesheet" element={<SeeTimesheet />} />
+      <Route path="/freelancer/profile-intro" element={<ProfileInto />} />
     </Routes>
   );
 };
