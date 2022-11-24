@@ -100,7 +100,14 @@ const PreviewProfile = () => {
               </Col>
               <Col sm={10}>
                 <div className="previewDet">
-                  <div className="hraet_pdd_sp">Neha Sharma</div>
+                  <div className="hraet_pdd_sp">
+                    Neha Sharma
+                    <div className="previewProfileUsr"> Jaipur RJ, India </div>
+                    <div className="previewProfileUsr">
+                      {" "}
+                      3:30 PM local time{" "}
+                    </div>
+                  </div>
                   <div className="tamoun_pdd_sp"></div>
                 </div>
               </Col>
