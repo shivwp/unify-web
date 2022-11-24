@@ -164,36 +164,8 @@ const SeeMilestone = lazy(() => import("./freelancer/Pages/MileStone-Earning"));
 const FreelancerMessage = lazy(() =>
   import("./freelancer/Pages/FreelancerMessage")
 );
-const ProfileIntoStep1 = lazy(() =>
-  import("./freelancer/Pages/ProfileIntro/ProfileIntroStepOne")
-);
-const ProfileIntoStep2 = lazy(() =>
-  import("./freelancer/Pages/ProfileIntro/ProfileIntroStepTwo")
-);
-const ProfileIntoStep3 = lazy(() =>
-  import("./freelancer/Pages/ProfileIntro/ProfileIntroThree")
-);
-const ProfileIntoStep4 = lazy(() =>
-  import("./freelancer/Pages/ProfileIntro/ProfileIntroStepFour")
-);
-const ProfileIntoStep5 = lazy(() =>
-  import("./freelancer/Pages/ProfileIntro/ProfileIntroStepFive")
-);
-const ProfileIntoStep6 = lazy(() =>
-  import("./freelancer/Pages/ProfileIntro/ProfileIntroStepSix")
-);
-const ProfileIntoStep7 = lazy(() =>
-  import("./freelancer/Pages/ProfileIntro/ProfileIntroStepSeven")
-);
-const ProfileIntoStep8 = lazy(() =>
-  import("./freelancer/Pages/ProfileIntro/ProfileIntroStepEight")
-);
-const ProfileIntoStep9 = lazy(() =>
-  import("./freelancer/Pages/ProfileIntro/ProfileIntroStepNine")
-);
-const ProfileIntoStep10 = lazy(() =>
-  import("./freelancer/Pages/ProfileIntro/ProfileIntroStepTen")
-);
+const ProfileInto = lazy(() => import("./freelancer/Pages/ProfileIntro"));
+
 const LoggedOutRoutes = () => {
   return (
     <Routes>
@@ -206,10 +178,7 @@ const LoggedOutRoutes = () => {
       <Route path="/verify-signup" element={<VerifySignUp />} />
       <Route path="/how-it-works" element={<HowItWorks />} />
       <Route path="/browse-jobs" element={<BrowseJobs />} />
-      <Route
-        path="/cat-skills/:category"
-        element={<SkillsListCatWise />}
-      />
+      <Route path="/cat-skills/:category" element={<SkillsListCatWise />} />
       <Route path="/job-details/:id" element={<JobDetails />} />
       <Route path="/pages/:pagename" element={<FooterPages />} />
     </Routes>
@@ -384,16 +353,7 @@ const LoggedInRoutes = () => {
       <Route exact path="/freelancer/message" element={<FreelancerMessage />} />
       <Route path="/freelancer/see-milestone" element={<SeeMilestone />} />
       <Route path="/freelancer/see-timesheet" element={<SeeTimesheet />} />
-      <Route path="/freelancer/profile-intro1" element={<ProfileIntoStep1 />} />
-      <Route path="/freelancer/profile-intro2" element={<ProfileIntoStep2 />} />
-      <Route path="/freelancer/profile-intro3" element={<ProfileIntoStep3 />} />
-      <Route path="/freelancer/profile-intro4" element={<ProfileIntoStep4 />} />
-      <Route path="/freelancer/profile-intro5" element={<ProfileIntoStep5 />} />
-      <Route path="/freelancer/profile-intro6" element={<ProfileIntoStep6 />} />
-      <Route path="/freelancer/profile-intro7" element={<ProfileIntoStep7 />} />
-      <Route path="/freelancer/profile-intro8" element={<ProfileIntoStep8 />} />
-      <Route path="/freelancer/profile-intro9" element={<ProfileIntoStep9 />} />
-      <Route path="/freelancer/profile-intro10" element={<ProfileIntoStep10 />} />
+      <Route path="/freelancer/profile-intro" element={<ProfileInto />} />
     </Routes>
   );
 };

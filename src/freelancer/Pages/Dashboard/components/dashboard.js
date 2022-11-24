@@ -5,7 +5,17 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import Select from "react-select";
 import Switch from "react-switch";
-import Button from 'react-bootstrap/Button'
+import Button from "react-bootstrap/Button";
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title as Titlee,
+  Tooltip,
+  Legend,
+} from "chart.js";
+import { Bar } from "react-chartjs-2";
 
 const Profile = () => {
   return (
@@ -166,9 +176,71 @@ const Screen = () => {
     },
   ];
 
+  ChartJS.register(
+    CategoryScale,
+    LinearScale,
+    BarElement,
+    Titlee,
+    Tooltip,
+    Legend
+  );
+  const options = {
+    responsive: false,
+    scales: {},
+    plugins: {
+      legend: {
+        position: "top",
+        display: false,
+        maxHeight: 210,
+        fullSize: true,
+        labels: {
+          boxWidth: 0,
+        },
+      },
+      title: {},
+    },
+    layout: {
+      autoPadding: true,
+    },
+    elements: {
+      bar: {
+        backgroundColor: "#000",
+      },
+      point: {
+        borderWidth: 0,
+      },
+      line: {
+        borderWidth: 0,
+      },
+      arc: {
+        borderWidth: 1,
+        borderColor: "#000",
+      },
+    },
+  };
+
   const labels = ["Jan", "Feb", "Mar", "Apr", "May"];
   // add +10 on each data to view graph line accurate
   const addition = 9;
+  const data = {
+    labels,
+    datasets: [
+      {
+        label: "Projects",
+        data: [
+          20 + addition,
+          15 + addition,
+          60 + addition,
+          80 + addition,
+          40 + addition,
+        ],
+        backgroundColor: "#0777FD",
+        borderWidth: 17,
+        borderColor: "#fff0",
+      },
+    ],
+  };
+
   return (
     <div className="min_pad_m mt-min180px">
       <Container>
@@ -707,7 +779,7 @@ const Screen = () => {
                 </div>
               </div>
             </div>
-            {/* <Row>
+            <Row>
               <Col lg={4} md={6} className="dboard_box_mr_mbo mb-3">
                 <div>
                   <div className="d-flex justify-content-between">
@@ -731,7 +803,9 @@ const Screen = () => {
                   <div
                     className="d-flex overflow-scroll cwig9weioioi justify-content-center"
                     style={{ height: "210px" }}
-                  ></div>
+                  >
+                    <Bar options={options} height={200} data={data} />
+                  </div>
                   <div></div>
                 </div>
               </Col>
@@ -761,7 +835,7 @@ const Screen = () => {
                   <ProfilePayment />
                 </div>
               </Col>
-            </Row> */}
+            </Row>
             <div className="d-flex box_ylow_dboard flex-wrap mt-5 pt-3 mb-5">
               <div className="bylow_iconbox">
                 <svg
@@ -830,7 +904,9 @@ const Screen = () => {
                   <div className="d-flex justify-content-between mb-3">
                     <div className="dcard_htext">Projects</div>
                     <div className="dcard_ltxt">
-                      <Link to="/freelancer/milestone-earning">Manage Projects</Link>
+                      <Link to="/freelancer/milestone-earning">
+                        Manage Projects
+                      </Link>
                     </div>
                   </div>
                   <div className="overflow-scroll">

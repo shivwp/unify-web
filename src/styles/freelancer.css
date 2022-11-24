@@ -481,7 +481,7 @@
 .new_hbyh {
   min-height: 250px !important;
   margin-top: 20px;
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
 }
 
 .skip_question_btn_frel {

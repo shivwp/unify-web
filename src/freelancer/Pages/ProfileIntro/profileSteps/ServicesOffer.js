@@ -1,14 +1,13 @@
-import React from 'react'
-import { useState } from 'react';
-import Select from 'react-select';
+import React from "react";
+import { useState } from "react";
+import Select from "react-select";
 
-const ServicesOffer = () => {
-
+const ServicesOffer = ({ setCurrentTab }) => {
   const initialValue = () => {
-    const values = "some"
-    return values
-  }
-  const [values, setValues] = useState(initialValue)
+    const values = "some";
+    return values;
+  };
+  const [values, setValues] = useState(initialValue);
 
   const Skills = [
     { label: "React", value: 355 },
@@ -30,32 +29,44 @@ const ServicesOffer = () => {
             What are the main services you offer?
           </h5>
           <p className="startIntroTwoP">
-            Choose at least 1 service that best describes the type of work you do. this helps us match you with clients who need your unique expertise.
+            Choose at least 1 service that best describes the type of work you
+            do. this helps us match you with clients who need your unique
+            expertise.
           </p>
           <div className="servicesChoose">
             <div className="popup_form_element">
               <Select
                 name="name"
-                className='servicesOfferOption'
+                className="servicesOfferOption"
                 value={values}
                 options={Skills}
                 // onChange={(e) => handleChange(e)}
                 isMulti
-              // value={values?.name}
-              // onChange={(e) => handleOnChange(e)}
+                // value={values?.name}
+                // onChange={(e) => handleOnChange(e)}
               >
                 <option value="">Search for a service</option>
               </Select>
             </div>
           </div>
           <div className="theme_btns mt-0">
-            <button className="first_button">Back</button>
-            <button className="second_button">Next</button>
+            <button
+              className="first_button"
+              onClick={() => setCurrentTab("skills")}
+            >
+              Back
+            </button>
+            <button
+              className="second_button"
+              onClick={() => setCurrentTab("hourlyRate")}
+            >
+              Next
+            </button>
           </div>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default ServicesOffer
+export default ServicesOffer;

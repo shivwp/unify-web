@@ -223,3 +223,19 @@
   align-items: center;
   margin: 7px 0;
 }
+
+.get-startedQuestion {
+  margin-top: 20px;
+  margin-bottom: 40px;
+  width: 200px;
+  text-align: center;
+  background-color: #6d2ef1;
+  color: #fff;
+  padding: 10px 0px;
+  border-radius: 30px;
+  text-decoration: none;
+}
+
+.get-startedQuestion:hover {
+  color: #fff;
+}
