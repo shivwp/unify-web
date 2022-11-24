@@ -165,15 +165,6 @@ const SeeMilestone = lazy(() => import("./freelancer/Pages/MileStone-Earning"));
 const FreelancerMessage = lazy(() =>
   import("./freelancer/Pages/FreelancerMessage")
 );
-const ProfileIntoStep1 = lazy(() =>
-  import("./freelancer/Pages/ProfileIntro/ProfileIntroStepOne")
-);
-const ProfileIntoStep2 = lazy(() =>
-  import("./freelancer/Pages/ProfileIntro/ProfileIntroStepTwo")
-);
-const ProfileIntoStep3 = lazy(() =>
-  import("./freelancer/Pages/ProfileIntro/ProfileIntroThree")
-);
 
 const LoggedOutRoutes = () => {
   return (
@@ -363,9 +354,6 @@ const LoggedInRoutes = () => {
       <Route exact path="/freelancer/message" element={<FreelancerMessage />} />
       <Route path="/freelancer/see-milestone" element={<SeeMilestone />} />
       <Route path="/freelancer/see-timesheet" element={<SeeTimesheet />} />
-      <Route path="/freelancer/profile-intro1" element={<ProfileIntoStep1 />} />
-      <Route path="/freelancer/profile-intro2" element={<ProfileIntoStep2 />} />
-      <Route path="/freelancer/profile-intro3" element={<ProfileIntoStep3 />} />
     </Routes>
   );
 };
