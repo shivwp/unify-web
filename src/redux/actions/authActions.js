@@ -74,7 +74,7 @@ export const onLogin = (data, navigate) => async (dispatch) => {
       localStorage.setItem("unify_user", JSON.stringify(res.data.data.user));
       localStorage.setItem("unify_access", true);
       if (res.data.data.user.user_type === "freelancer") {
-        if (!res.data.data.user.is_profile_complete === true) {
+        if (res.data.data.user.is_profile_complete === true) {
           navigate("/freelancer/dashboard");
         } else {
           navigate("/freelancer/question1");

@@ -26,7 +26,10 @@ const Testimonial = () => {
   const testimonialData = useSelector(
     (state) => state?.profile?.getTestimonial
   );
-  console.log(values);
+
+  const afterSuccess = () => {
+    navigate("/");
+  };
 
   useEffect(() => {
     dispatch(onGetTestmonial(id, setValues));
@@ -40,7 +43,9 @@ const Testimonial = () => {
       last_name: values?.last_name,
       title: values.title,
     };
-    dispatch(onSubmitTestimonial(data, successPopup, setSuccessPopup, navigate));
+    dispatch(
+      onSubmitTestimonial(data, successPopup, setSuccessPopup, afterSuccess)
+    );
   };
 
   return (
@@ -143,13 +148,17 @@ const Testimonial = () => {
                   </Col>
                 </Row>
                 <div className="testimonial_info_btn">
-                  <Button variant="" onClick={(e) => setEditDetails(false)}>Save</Button>
+                  <Button variant="" onClick={(e) => setEditDetails(false)}>
+                    Save
+                  </Button>
                 </div>
               </>
             )}
           </div>
           <div className="testimonial_btn">
-            <Button variant="" onClick={onSave}>Submit Testimonial</Button>
+            <Button variant="" onClick={onSave}>
+              Submit Testimonial
+            </Button>
           </div>
         </div>
         <div className="testimonial_info">

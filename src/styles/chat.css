@@ -2070,11 +2070,11 @@
 .suggest_skills {
   position: absolute;
   background: #e7e7e7;
-  border: 1px solid #cecdcd;
+  /* border: 1px solid #cecdcd; */
   max-height: 177px;
   width: 100%;
   overflow-y: auto;
-  top: 35px;
+  top: 42px;
   left: 1px;
 }
 

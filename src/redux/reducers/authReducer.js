@@ -12,6 +12,7 @@ import {
   RESEND_OTP_ERROR,
   CATEGORY_SKILL_DATA,
   SKILLS_DEVELOPER_DATA,
+  INSTANT_LOGIN_EMAIL,
 } from "../types";
 
 const initialState = {};
@@ -82,6 +83,11 @@ const authReducer = (state = initialState, action) => {
       return {
         ...state,
         resendOtpError: action.payload,
+      };
+    case INSTANT_LOGIN_EMAIL:
+      return {
+        ...state,
+        instantLoginEmail: action.payload,
       };
     default:
       return state;

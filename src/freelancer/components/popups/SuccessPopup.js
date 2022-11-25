@@ -15,7 +15,7 @@ const CloseIcon = () => {
     </svg>
   );
 };
-const SuccessPopup = ({ Popup, message, navigate }) => {
+const SuccessPopup = ({ Popup, message, afterSuccess }) => {
   return (
     <>
       <div className="bg_wrapper_popup_new">
@@ -34,14 +34,8 @@ const SuccessPopup = ({ Popup, message, navigate }) => {
           </div>
 
           <div className="success_popup_btn ">
-            {navigate ? (
-              <button
-                onClick={() => {
-                  navigate("/");
-                }}
-              >
-                Ok
-              </button>
+            {afterSuccess ? (
+              <button onClick={() => afterSuccess()}>Ok</button>
             ) : (
               <button onClick={() => Popup()}>Ok</button>
             )}

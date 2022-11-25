@@ -207,6 +207,7 @@ const Exprience = ({ setCurrentTab, profileList }) => {
       </div>
       {popup}
       {confirmPopup}
+      {successPopup}
     </>
   );
 };

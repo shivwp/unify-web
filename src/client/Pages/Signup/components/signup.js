@@ -145,7 +145,7 @@ const Signup = ({
                       <div className="input_nodxq">
                         <Form.Control
                           type="text"
-                          value={values.first_name}
+                          value={values?.first_name}
                           onChange={(e) => onInputChange(e)}
                           name="first_name"
                           placeholder="First Name"
@@ -200,7 +200,7 @@ const Signup = ({
                           type="text"
                           placeholder="Last Name"
                           name="last_name"
-                          value={values.last_name}
+                          value={values?.last_name}
                           onChange={(e) => onInputChange(e)}
                         />
                         <span className="signInError">
@@ -227,13 +227,13 @@ const Signup = ({
                         <Form.Control
                           type="text"
                           name="email"
-                          value={values.email}
+                          value={values?.email}
                           onChange={(e) => onInputChange(e)}
                           placeholder="Email"
                         />
                         <span className="signInError">
-                          {errors.email
-                            ? errors.email
+                          {errors?.email
+                            ? errors?.email
                             : signupError && signupError}
                         </span>
                       </div>
@@ -262,7 +262,7 @@ const Signup = ({
                           name="password"
                           onChange={(e) => onInputChange(e)}
                           type={hidePass ? "password" : "text"}
-                          value={values.password}
+                          value={values?.password}
                           placeholder="Create a Password"
                         />
                         {hidePass ? (
@@ -281,7 +281,7 @@ const Signup = ({
                           ></i>
                         )}
                         <span className="signInError">
-                          {errors.password && errors.password}
+                          {errors?.password && errors?.password}
                         </span>
                       </div>
                     </div>
@@ -309,7 +309,7 @@ const Signup = ({
                           name="confirmPassword"
                           onChange={(e) => onInputChange(e)}
                           type={hideConfPass ? "password" : "text"}
-                          value={values.confirmPassword}
+                          value={values?.confirmPassword}
                           placeholder="Confirm Password"
                         />
                         {hideConfPass ? (
@@ -328,7 +328,7 @@ const Signup = ({
                           ></i>
                         )}
                         <span className="signInError">
-                          {errors.confirmPassword && errors.confirmPassword}
+                          {errors?.confirmPassword && errors?.confirmPassword}
                         </span>
                       </div>
                     </div>
@@ -389,7 +389,7 @@ const Signup = ({
                             <span>UnifyTerms of Service</span>
                           </Link>
                           , including the{" "}
-                          <Link to="/pages/user-agreement">
+                          <Link to="/pages/agreements">
                             <span>User Agreement</span>
                           </Link>{" "}
                           and{" "}

@@ -23,6 +23,9 @@ const ProfileIntro = () => {
   const addExprience = useSelector((state) => state.profile.addExprience);
   const deleteEducation = useSelector((state) => state.profile.deleteEducation);
   const editEducation = useSelector((state) => state.profile.editEducation);
+  const editFreelancerLanguage = useSelector(
+    (state) => state.profile.editFreelancerLanguage
+  );
 
   useEffect(() => {
     dispatch(getFreelancerProfile());
@@ -32,9 +35,9 @@ const ProfileIntro = () => {
     addExprience,
     deleteEducation,
     editEducation,
+    editFreelancerLanguage,
   ]);
 
-  console.log(freelancerProfileList);
 
   return (
     <div>
@@ -62,10 +65,15 @@ const ProfileIntro = () => {
       {currentTab === "chooseLangauge" && (
         <ChooseLangauge
           setCurrentTab={setCurrentTab}
-          profileList={freelancerProfileList?.languages}
+          profileList={freelancerProfileList?.language}
         />
       )}
-      {currentTab === "skills" && <Skills setCurrentTab={setCurrentTab} />}
+      {currentTab === "skills" && (
+        <Skills
+          setCurrentTab={setCurrentTab}
+          profileList={freelancerProfileList?.skills}
+        />
+      )}
 
       {currentTab === "servicesOffer" && (
         <ServicesOffer setCurrentTab={setCurrentTab} />

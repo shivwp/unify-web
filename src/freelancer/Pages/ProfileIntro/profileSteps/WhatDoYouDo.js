@@ -7,6 +7,9 @@ const WhatDoYouDo = ({ setCurrentTab, profileList }) => {
   const dispatch = useDispatch();
   const [values, setValues] = useState({});
   const [errors, setErrors] = useState({});
+  const [popup, Setpopup] = useState(false);
+  const [successPopup, setSuccessPopup] = useState(false);
+  const [confirmPopup, setConfirmPopup] = useState(false);
 
   useEffect(() => {
     if (profileList) {
@@ -17,6 +20,10 @@ const WhatDoYouDo = ({ setCurrentTab, profileList }) => {
   const onInputChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
     setErrors({ ...errors, [e.target.name]: false });
+  };
+
+  const afterSuccess = () => {
+    setCurrentTab("exprience");
   };
 
   const onEditProfile = () => {
@@ -51,9 +58,15 @@ const WhatDoYouDo = ({ setCurrentTab, profileList }) => {
       description: values.description,
     };
 
-    dispatch(onEditDesignation(data));
-
-    setCurrentTab("exprience");
+    dispatch(
+      onEditDesignation(
+        data,
+        popup,
+        successPopup,
+        setSuccessPopup,
+        afterSuccess
+      )
+    );
   };
 
   return (
@@ -86,7 +99,7 @@ const WhatDoYouDo = ({ setCurrentTab, profileList }) => {
                 as="textarea"
                 name="description"
                 className="AfterSignUpYrselfTxt"
-                maxlength="5000"
+                maxLength="5000"
                 value={values?.description}
                 onChange={onInputChange}
                 placeholder="There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable."
@@ -115,6 +128,8 @@ const WhatDoYouDo = ({ setCurrentTab, profileList }) => {
           </div>
         </div>
       </div>
+      {confirmPopup}
+      {successPopup}
     </>
   );
 };

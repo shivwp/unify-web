@@ -6235,6 +6235,11 @@ a {
   border: #6d2ef1 solid 1px;
 }
 
+.theme_btns .second_button:disabled {
+  background-color: #b1b1b1;
+  border: #b1b1b1;
+}
+
 .startIntroIn {
   padding: 20px;
 }
@@ -6459,17 +6464,8 @@ a {
 .addSkillBox {
   border: 1px solid #d4d4d5;
   padding: 5px 15px;
-}
-
-.addSkillBox .skill_bxr_gry {
   display: flex;
-  justify-content: space-between;
-  padding: 8px 16px;
-  font-size: 13px;
-  display: flex;
-  align-items: center;
-  margin-left: 0;
-  margin-right: 5px;
+  flex-wrap: wrap;
 }
 
 @media screen and (max-width: 376px) {
@@ -6646,10 +6642,10 @@ a {
   font: normal normal 500 14px/27px Poppins;
 }
 .langAdd {
-  flex-grow: 1;
+  margin: 0 10px;
 }
 .langLevel {
-  flex-grow: 2;
+  margin: 0 10px;
 }
 .languageOptionName {
   display: flex;
@@ -6674,11 +6670,14 @@ a {
   font-size: 22px;
   color: #6d2ef1;
   margin-left: 5px;
+  margin-right: 10px;
 }
 .langAdd2 {
   color: #00065a;
   flex-grow: 1;
   font: normal normal 600 16px/14px Poppins;
+  display: flex;
+  cursor: pointer;
 }
 .langAdd2 {
   color: #00065a;
@@ -7894,7 +7893,41 @@ a {
   margin-top: 10px;
   border: none;
 }
+.instant_booking_popup .sign_up_btn_ibp button:disabled {
+  background-color: #ababab;
+}
 
 /* instant booking popup end */
 
 /* skill wise develpers end ----------------------- */
+
+.addSkillBox .skill_bxr_gry {
+  align-items: center;
+  display: flex;
+  font-size: 13px;
+  justify-content: space-between;
+  margin-left: 0;
+  margin-right: 5px;
+  padding: 8px 16px;
+}
+.addSkillBox .skill_bxr_gry button {
+  background-color: initial;
+  border: none;
+  outline: none;
+  padding-bottom: 0;
+  padding-left: 7px;
+  padding-top: 0;
+  position: relative;
+  right: -10px;
+}
+.addSkillBox .search_inp_box {
+  display: flex;
+  position: relative;
+}
+.addSkillBox .search_inp_box .suggest_skills {
+  top: 55px;
+}
+.addSkillBox .search_inp_box .suggest_skills span {
+  font-size: 14px;
+  height: unset;
+}

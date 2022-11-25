@@ -80,8 +80,8 @@ const DevListCatWise = () => {
             </div>
             <div className="cards">
               <Row>
-                {skillDevData?.freelancer_data?.map((item) => (
-                  <Col lg={4} xl={3} md={6} key={item.user_id}>
+                {skillDevData?.freelancer_data?.map((item, index) => (
+                  <Col lg={4} xl={3} md={6} key={index}>
                     <div className="dev_card">
                       <div className="image">
                         <img src={item.profile_image} alt="" />
@@ -144,8 +144,8 @@ const DevListCatWise = () => {
                         </div>
                       </div>
                       <div className="skills">
-                        {item?.skills?.slice(0, 3)?.map((skill) => (
-                          <div key={skill.skill_id} className="skill">
+                        {item?.skills?.slice(0, 3)?.map((skill, index) => (
+                          <div key={index} className="skill">
                             {skill.skill_name}
                           </div>
                         ))}

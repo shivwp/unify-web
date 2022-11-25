@@ -1,17 +1,19 @@
 import React from "react";
+import { useState } from "react";
 import { useEffect } from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { googleSignInInitiate } from "../../../redux/actions/authActions";
 import { singleJobPostDetails } from "../../../redux/actions/jobActions";
-
+import { INSTANT_LOGIN_EMAIL } from "../../../redux/types";
 
 const JobDetails = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const singleJobDetails = useSelector((state) => state?.job?.singleJobDetails);
   const navigate = useNavigate();
+  const [email, setEmail] = useState({});
 
   useEffect(() => {
     dispatch(singleJobPostDetails({ job_id: id }));
@@ -20,9 +22,6 @@ const JobDetails = () => {
   const handleGoogleSignIn = () => {
     dispatch(googleSignInInitiate("freelancer", navigate));
   };
-
-
-
 
   return (
     <>
@@ -183,11 +182,22 @@ const JobDetails = () => {
                     placeholder="Email"
                     name="email"
                     required
+                    onChange={(e) =>
+                      setEmail({ [e.target.name]: e.target.value })
+                    }
                   />
                 </div>
               </div>
               <div className="sign_up_btn">
-                <Button>Sign Up</Button>
+                <Button
+                  disabled={!email?.email}
+                  onClick={() => {
+                    dispatch({ type: INSTANT_LOGIN_EMAIL, payload: email });
+                    navigate("/signup");
+                  }}
+                >
+                  Sign Up
+                </Button>
               </div>
               <hr />
 

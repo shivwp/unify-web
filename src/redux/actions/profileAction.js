@@ -267,18 +267,22 @@ export const onEditVideo =
   };
 
 export const onEditDesignation =
-  (data, popup, successPopup, setSuccessPopup) => async (dispatch) => {
+  (data, popup, successPopup, setSuccessPopup, afterSuccess) =>
+  async (dispatch) => {
     try {
       Axios.post("/edit-designation-info", data, config).then((res) => {
         dispatch({
           type: SET_EDIT_DESIGNATION,
           payload: res.data,
         });
-        popup();
+        if (popup) {
+          popup();
+        }
         setSuccessPopup(
           <SuccessPopup
             Popup={() => setSuccessPopup(!successPopup)}
             message="Title and Designation saved successfully."
+            afterSuccess={afterSuccess}
           />
         );
       });
@@ -312,18 +316,22 @@ export const onEditPortfolio =
   };
 
 export const onEditLanguage =
-  (data, popup, successPopup, setSuccessPopup) => async (dispatch) => {
+  (data, popup, successPopup, setSuccessPopup, afterSuccess) =>
+  async (dispatch) => {
     try {
       Axios.post("/edit-language", data, config).then((res) => {
         dispatch({
           type: SET_EDIT_LANGUAGE,
           payload: res.data,
         });
-        popup();
+        if (popup) {
+          popup();
+        }
         setSuccessPopup(
           <SuccessPopup
             Popup={() => setSuccessPopup(!successPopup)}
             message="Language Added Successfully"
+            afterSuccess={afterSuccess}
           />
         );
       });
@@ -372,18 +380,22 @@ export const onEditHourPerWeek =
   };
 
 export const onEditSkills =
-  (data, popup, successPopup, setSuccessPopup) => async (dispatch) => {
+  (data, popup, successPopup, setSuccessPopup, afterSuccess) =>
+  async (dispatch) => {
     try {
       Axios.post("/edit-skills-info", data, config).then((res) => {
         dispatch({
           type: SET_EDIT_SKILLS,
           payload: res.data,
         });
-        popup();
+        if (popup) {
+          popup();
+        }
         setSuccessPopup(
           <SuccessPopup
             Popup={() => setSuccessPopup(!successPopup)}
             message="Skills Added Successfully"
+            afterSuccess={afterSuccess}
           />
         );
       });
@@ -534,7 +546,7 @@ export const onRequestTestimonial =
   };
 
 export const onSubmitTestimonial =
-  (data, successPopup, setSuccessPopup, navigate) => async (dispatch) => {
+  (data, successPopup, setSuccessPopup, afterSuccess) => async (dispatch) => {
     try {
       Axios.post("/client-testimonial", data, config).then((res) => {
         console.log(res);
@@ -542,7 +554,7 @@ export const onSubmitTestimonial =
           <SuccessPopup
             Popup={() => setSuccessPopup(!successPopup)}
             message="Testimonial Submited Successfully"
-            navigate={navigate}
+            afterSuccess={afterSuccess}
           />
         );
       });

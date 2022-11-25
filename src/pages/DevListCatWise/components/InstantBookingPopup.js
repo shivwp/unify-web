@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { onAdditionalAccount } from "../../../redux/actions/profileAction";
 import { useNavigate } from "react-router-dom";
 import { googleSignInInitiate } from "../../../redux/actions/authActions";
+import { INSTANT_LOGIN_EMAIL } from "../../../redux/types";
 
 const CloseIcon = () => {
   return (
@@ -23,6 +24,7 @@ const CloseIcon = () => {
 const InstantBookingPopup = (props) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [email, setEmail] = useState({});
 
   const handleGoogleSignIn = () => {
     dispatch(googleSignInInitiate("freelancer", navigate));
@@ -91,12 +93,17 @@ const InstantBookingPopup = (props) => {
                   placeholder="Email"
                   name="email"
                   required
+                  onChange={(e) =>
+                    setEmail({ [e.target.name]: e.target.value })
+                  }
                 />
               </div>
             </div>
             <div className="sign_up_btn_ibp">
               <button
+                disabled={!email?.email}
                 onClick={() => {
+                  dispatch({ type: INSTANT_LOGIN_EMAIL, payload: email });
                   navigate("/signup");
                 }}
               >
