@@ -1,11 +1,42 @@
 import Container from "react-bootstrap/Container";
 import { Col, Row } from "react-bootstrap";
 import Title from "../../../../components/title";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Form from "react-bootstrap/Form";
+import { useState } from "react";
 
 const Screen = () => {
   Title(" | Question 1");
+  const history = useNavigate();
+  const [values, setValues] = useState({});
+  const [errors, setErrors] = useState({});
+
+  const onInputChange = (e) => {
+    setValues({ ...values, [e.target.name]: e.target.value });
+    setErrors({ ...errors, [e.target.name]: false });
+  };
+
+  const nextTab = () => {
+    let errorExist = false;
+    let errorsObject = {};
+
+    if (
+      values?.freelancerBefore === "" ||
+      values?.freelancerBefore === null ||
+      values?.freelancerBefore === undefined
+    ) {
+      errorsObject.freelancerBefore = "Kindly select at least one";
+      errorExist = true;
+    }
+
+    if (errorExist) {
+      setErrors(errorsObject);
+      return false;
+    }
+
+    history("/freelancer/question2");
+  };
+
   return (
     <>
       <Container>
@@ -27,7 +58,13 @@ const Screen = () => {
           <Col lg={3} md={6} sm={10} className="mb-3">
             <label htmlFor="firstBox" className="hire_box_yh new_hbyh">
               <div className="sub_radio">
-                <Form.Check type="radio" name="s" id="firstBox" />
+                <Form.Check
+                  type="radio"
+                  id="firstBox"
+                  value="firstBox"
+                  name="freelancerBefore"
+                  onChange={onInputChange}
+                />
               </div>
               <div>
                 <div className="hire_b_im">
@@ -41,7 +78,13 @@ const Screen = () => {
           <Col lg={3} md={6} sm={10} className="mb-3">
             <label htmlFor="secondBox" className="hire_box_yh new_hbyh">
               <div className="sub_radio">
-                <Form.Check type="radio" name="s" id="secondBox" />
+                <Form.Check
+                  type="radio"
+                  id="secondBox"
+                  value="secondBox"
+                  name="freelancerBefore"
+                  onChange={onInputChange}
+                />
               </div>
               <div>
                 <div className="hire_b_im">
@@ -57,7 +100,13 @@ const Screen = () => {
           <Col lg={3} md={6} sm={10} className="mb-3">
             <label htmlFor="thirdBox" className="hire_box_yh new_hbyh">
               <div className="sub_radio">
-                <Form.Check type="radio" name="s" id="thirdBox" />
+                <Form.Check
+                  type="radio"
+                  id="thirdBox"
+                  value="thirdBox"
+                  name="freelancerBefore"
+                  onChange={onInputChange}
+                />
               </div>
               <div>
                 <div className="hire_b_im">
@@ -69,10 +118,22 @@ const Screen = () => {
               </div>
             </label>
           </Col>
+
+          <span
+            style={{
+              color: "red",
+              textAlign: "center",
+              fontSize: "14px",
+              fontWeight: "300",
+            }}
+          >
+            {errors.freelancerBefore && errors.freelancerBefore}
+          </span>
+
           <Col lg={12} className="mb-3 d-flex justify-content-center">
-            <Link to="/freelancer/question2" className="get-startedQuestion">
+            <div onClick={nextTab} className="get-startedQuestion">
               Get Started
-            </Link>
+            </div>
           </Col>
         </Row>
       </Container>

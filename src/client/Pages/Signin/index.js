@@ -9,16 +9,20 @@ const Signinscreen = () => {
   const [errors, setErrors] = useState({});
   const [values, setValues] = useState({});
   const dispatch = useDispatch();
-  const [userType, setUserType] = useState('freelancer');
+  const [userType, setUserType] = useState("freelancer");
+  const [message, setMessage] = useState();
 
   const onInputChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
     setErrors({ ...errors, [e.target.name]: false });
-  };
 
-  const loginError = useSelector(
-    (state) => state?.auth?.loginError?.data.message
-  );
+    if (e.target.name === "email") {
+      setMessage();
+    }
+    if (e.target.name === "password") {
+      setMessage();
+    }
+  };
 
   const submitForm = (e) => {
     e.preventDefault();
@@ -53,16 +57,6 @@ const Signinscreen = () => {
       errorExist = true;
     }
 
-    // if (
-    //   !/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+])[0-9a-zA-Z!@#$%^&*()_+]{8,}$/.test(
-    //     values?.password
-    //   )
-    // ) {
-    //   errorsObject.password =
-    //     "Password should contain numeric value, special character, upper case letter and lower case letter";
-    //   errorExist = true;
-    // }
-
     if (errorExist) {
       setErrors(errorsObject);
       return false;
@@ -74,7 +68,7 @@ const Signinscreen = () => {
       user_type: userType,
     };
 
-    dispatch(onLogin(data, navigate));
+    dispatch(onLogin(data, navigate, setMessage));
   };
 
   const selectUserType = (e) => {
@@ -90,7 +84,7 @@ const Signinscreen = () => {
       setUserType={setUserType}
       userType={userType}
       selectUserType={selectUserType}
-      loginError={loginError}
+      message={message}
     />
   );
 };

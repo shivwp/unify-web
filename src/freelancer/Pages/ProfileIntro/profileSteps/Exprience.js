@@ -195,12 +195,18 @@ const Exprience = ({ setCurrentTab, profileList }) => {
               >
                 Back
               </button>
-              <button
-                className="second_button"
-                onClick={() => setCurrentTab("education")}
-              >
-                Next
-              </button>
+              {profileList?.length === 0 ? (
+                <button className="second_button" disabled>
+                  Next
+                </button>
+              ) : (
+                <button
+                  className="second_button"
+                  onClick={() => setCurrentTab("education")}
+                >
+                  Next
+                </button>
+              )}
             </div>
           </div>
         </div>

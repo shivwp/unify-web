@@ -1,11 +1,14 @@
 import Question from "./components/question2";
-import Layout from "../../Layout/Layout";
+import ProfileIntroNavbar from "../ProfileIntro/ProfileIntroNavbar";
+import Footer from "../../Layout/Footer/Footer";
 
 const Screen = () => {
   return (
-    <Layout>
+    <>
+      <ProfileIntroNavbar />
       <Question />
-    </Layout>
+      <Footer />
+    </>
   );
 };
 export default Screen;

@@ -38,7 +38,6 @@ const ProfileIntro = () => {
     editFreelancerLanguage,
   ]);
 
-
   return (
     <div>
       {currentTab === "takeTimeToIntro" && (

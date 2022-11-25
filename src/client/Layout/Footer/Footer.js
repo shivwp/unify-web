@@ -72,7 +72,7 @@ const Footer = () => {
                 </li>
                 <li>
                   <Link to="/pages/trust-safety-and-security">
-                    Trust Safety & Security
+                    Trust & Safety
                   </Link>
                 </li>
                 <li>

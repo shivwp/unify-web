@@ -17,9 +17,10 @@ import {
   HOME_PAGE_DATA,
   FOOTER_PAGE_DATA,
   VERIFY_OTP_ERROR,
-  RESEND_OTP_ERROR,
+  RESEND_OTP_SUCCESS,
   CATEGORY_SKILL_DATA,
   SKILLS_DEVELOPER_DATA,
+  VERIFY_SIGNUP_ERROR,
 } from "../types";
 import { GoogleAuthProvider, OAuthProvider } from "firebase/auth";
 
@@ -66,7 +67,7 @@ export const getDevelopersBySkills = (data) => async (dispatch) => {
     });
 };
 
-export const onLogin = (data, navigate) => async (dispatch) => {
+export const onLogin = (data, navigate, setMessage) => async (dispatch) => {
   try {
     const res = await Axios.post(`/login`, data);
     if (res.data.status) {
@@ -85,44 +86,42 @@ export const onLogin = (data, navigate) => async (dispatch) => {
       window.location.reload();
     }
   } catch (err) {
-    dispatch({
-      type: LOGIN_ERROR,
-      payload: err.response,
-    });
+    setMessage(err.response.data.message);
   }
 };
 
-export const onRegister = (data, navigate) => async (dispatch) => {
+export const onRegister = (data, navigate, setMessage) => async (dispatch) => {
   try {
     const res = await Axios.post(`/signup`, data);
     if (res.data.status) {
       navigate("/verify-signup");
     }
   } catch (err) {
-    dispatch({
-      type: SIGNUP_ERROR,
-      payload: err.response,
-    });
+    setMessage(err.response.data.message);
   }
 };
 
-export const onVerifySignup = (data, navigate) => async (dispatch) => {
-  try {
-    const res = await Axios.post(`/verifysignup`, data);
-    if (res.data.status) {
-      navigate("/signin");
-      window.location.reload();
+export const onVerifySignup =
+  (data, navigate, setMessage) => async (dispatch) => {
+    try {
+      const res = await Axios.post(`/verifysignup`, data);
+      if (res.data.status) {
+        navigate("/signin");
+        window.location.reload();
+      }
+    } catch (err) {
+      setMessage(err.response.data.message);
     }
-  } catch (err) {}
-};
+  };
 
-export const onResendOtp = (data) => async (dispatch) => {
+export const onResendOtp = (data, setOtpSuccess) => async (dispatch) => {
   try {
     const res = await Axios.post(`/resend-otp`, data);
     dispatch({
-      type: RESEND_OTP_ERROR,
+      type: RESEND_OTP_SUCCESS,
       payload: res.data.message,
     });
+    setOtpSuccess(res.data.message);
   } catch (err) {}
 };
 
@@ -204,7 +203,11 @@ export const googleSignInSuccess = (data, navigate) => async (dispatch) => {
       localStorage.setItem("unify_Token", res.data.auth_token);
       localStorage.setItem("unify_user", JSON.stringify(res.data.data.user));
       if (res.data.data.user.user_type === "freelancer") {
-        navigate("/freelancer/dashboard");
+        if (res.data.data.user.is_profile_complete === true) {
+          navigate("/freelancer/dashboard");
+        } else {
+          navigate("/freelancer/question1");
+        }
       } else if (res.data.data.user.user_type === "client") {
         navigate("/dashboard");
       }
@@ -257,7 +260,11 @@ export const appleSignInSuccess = (data, navigate) => async (dispatch) => {
       localStorage.setItem("unify_user", JSON.stringify(res.data.data.user));
       console.log(res);
       if (res.data.data.user.user_type === "freelancer") {
-        navigate("/freelancer/dashboard");
+        if (!res.data.data.user.is_profile_complete === true) {
+          navigate("/freelancer/dashboard");
+        } else {
+          navigate("/freelancer/question1");
+        }
       } else if (res.data.data.user.user_type === "client") {
         navigate("/dashboard");
       }
@@ -275,13 +282,12 @@ export const appleSignInInitiate = (userType, navigate) => {
   return function (dispatch) {
     signInWithPopup(auth, appleProvider)
       .then((result) => {
-        console.log(result);
         const credential = OAuthProvider.credentialFromResult(result);
-        const accessToken = credential.accessToken;
+        const accessToken = credential.idToken;
         dispatch(
           appleSignInSuccess(
             {
-              provider: "google",
+              provider: "apple",
               token: accessToken,
               user_type: userType,
             },

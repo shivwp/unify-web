@@ -1,11 +1,14 @@
-import Layout from "../../Layout/Layout";
+import Footer from "../../Layout/Footer/Footer";
 import ProfileIntro from "./components/ProfileIntro";
+import ProfileIntroNavbar from "./ProfileIntroNavbar";
 
 const Screen = () => {
   return (
-    <Layout>
+    <>
+      <ProfileIntroNavbar />
       <ProfileIntro />
-    </Layout>
+      <Footer />
+    </>
   );
 };
 export default Screen;

@@ -19,10 +19,10 @@ const Signup = ({
   selectUserType,
   userType,
   setCountry,
-  signupError,
   values,
   errors,
   selectCountry,
+  message,
 }) => {
   Title(" | signup");
   const [hidePass, setHidePass] = useState(true);
@@ -55,7 +55,7 @@ const Signup = ({
     <div className="bg-body-wrapper">
       <div className="container">
         <div className="width_100_sm newnav_v2_wauto">
-          <Link to="/dashboard">
+          <Link to="/">
             <Navbar.Brand>
               <img src={logo} className="img-fluid rounded-top" alt="" />
             </Navbar.Brand>
@@ -72,7 +72,6 @@ const Signup = ({
               <h3>I Want to:</h3>
             </div>
             <div className="sign_buttons_group sign_upbtn_heffect">
-              {/* <Link to={`/question1`} className='signup_mlr_20px_a'> */}
               <Button
                 variant=""
                 onClick={(e) => selectUserType(e)}
@@ -84,8 +83,6 @@ const Signup = ({
               >
                 Hire for a Project
               </Button>
-              {/* </Link> */}
-              {/* <Link to={`/freelancer/question1`} className='signup_mlr_20px_a'> */}
               <Button
                 variant=""
                 type="button"
@@ -97,13 +94,11 @@ const Signup = ({
               >
                 Work as a freelancer
               </Button>
-              {/* </Link> */}
             </div>
             {userType && (
               <>
                 <Form onSubmit={(e) => submitForm(e)}>
                   <div className="input_group">
-                    {/* <div className={errors.first_name ? "borderError input_bo" : "input_bo"}> */}
                     <div className="input_bo">
                       <div className="input_icoa">
                         <svg
@@ -232,9 +227,7 @@ const Signup = ({
                           placeholder="Email"
                         />
                         <span className="signInError">
-                          {errors?.email
-                            ? errors?.email
-                            : signupError && signupError}
+                          {errors.email ? errors.email : message && message}
                         </span>
                       </div>
                     </div>
@@ -343,7 +336,7 @@ const Signup = ({
                           options={options1}
                         />
                         <span className="signInError">
-                          {errors.country && <>Please Select your Country</>}
+                          {errors.country && <>Please select your country</>}
                         </span>
                       </div>
                     </div>

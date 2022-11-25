@@ -3567,6 +3567,9 @@ body {
   .sign_form_shapb {
     display: none;
   }
+  .sign_form_shap {
+    display: none;
+  }
 }
 
 @media only screen and (max-width: 670px) {

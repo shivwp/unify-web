@@ -1,12 +1,42 @@
 import Container from "react-bootstrap/Container";
 import { Col, Row } from "react-bootstrap";
 import Title from "../../../../components/title";
-import { Link } from "react-router-dom";
-import Button from "react-bootstrap/Button";
-
+import { Link, useNavigate } from "react-router-dom";
 import Form from "react-bootstrap/Form";
+import { useState } from "react";
+
 const Screen = () => {
   Title(" | Question 2");
+  const history = useNavigate();
+  const [values, setValues] = useState({});
+  const [errors, setErrors] = useState({});
+
+  const onInputChange = (e) => {
+    setValues({ ...values, [e.target.name]: e.target.value });
+    setErrors({ ...errors, [e.target.name]: false });
+  };
+
+  const nextTab = () => {
+    let errorExist = false;
+    let errorsObject = {};
+
+    if (
+      values?.goal === "" ||
+      values?.goal === null ||
+      values?.goal === undefined
+    ) {
+      errorsObject.goal = "Kindly select at least one";
+      errorExist = true;
+    }
+
+    if (errorExist) {
+      setErrors(errorsObject);
+      return false;
+    }
+
+    history("/freelancer/profile-intro");
+  };
+
   return (
     <>
       <Container>
@@ -29,7 +59,13 @@ const Screen = () => {
           <Col lg={3} md={6} sm={10}>
             <label htmlFor="oneBox" className="hire_box_yh new_hbyh">
               <div className="sub_radio">
-                <Form.Check type="radio" name="s" id="oneBox" />
+                <Form.Check
+                  type="radio"
+                  name="goal"
+                  id="oneBox"
+                  value="oneBox"
+                  onChange={onInputChange}
+                />
               </div>
               <div>
                 <div className="hire_b_im">
@@ -44,7 +80,13 @@ const Screen = () => {
           <Col lg={3} md={6} sm={10}>
             <label htmlFor="twoBox" className="hire_box_yh new_hbyh">
               <div className="sub_radio">
-                <Form.Check type="radio" name="s" id="twoBox" />
+                <Form.Check
+                  type="radio"
+                  name="goal"
+                  id="twoBox"
+                  value="twoBox"
+                  onChange={onInputChange}
+                />
               </div>
               <div>
                 <div className="hire_b_im">
@@ -59,7 +101,13 @@ const Screen = () => {
           <Col lg={3} md={6} sm={10}>
             <label htmlFor="threeBox" className="hire_box_yh new_hbyh">
               <div className="sub_radio">
-                <Form.Check type="radio" name="s" id="threeBox" />
+                <Form.Check
+                  type="radio"
+                  name="goal"
+                  id="threeBox"
+                  value="threeBox"
+                  onChange={onInputChange}
+                />
               </div>
               <div>
                 <div className="hire_b_im">
@@ -74,7 +122,13 @@ const Screen = () => {
           <Col lg={3} md={6} sm={10}>
             <label htmlFor="fourBox" className="hire_box_yh new_hbyh">
               <div className="sub_radio">
-                <Form.Check type="radio" name="s" id="fourBox" />
+                <Form.Check
+                  type="radio"
+                  name="goal"
+                  id="fourBox"
+                  value="fourBox"
+                  onChange={onInputChange}
+                />
               </div>
               <div>
                 <div className="hire_b_im">
@@ -87,13 +141,25 @@ const Screen = () => {
             </label>
           </Col>
         </Row>
+        <span
+          style={{
+            color: "red",
+            textAlign: "center",
+            fontSize: "14px",
+            fontWeight: "300",
+            paddingTop: "30px",
+          }}
+        >
+          {errors.goal && errors.goal}
+        </span>
+
         <div className="theme_btns">
           <Link to="/freelancer/question1">
             <button className="first_button">Back</button>
           </Link>
-          <Link to="/freelancer/profile-intro">
-            <button className="second_button">Next</button>
-          </Link>
+          <button className="second_button" onClick={nextTab}>
+            Next
+          </button>
         </div>
       </Container>
     </>

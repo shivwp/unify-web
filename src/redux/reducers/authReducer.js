@@ -9,10 +9,11 @@ import {
   HOME_PAGE_DATA,
   FOOTER_PAGE_DATA,
   VERIFY_OTP_ERROR,
-  RESEND_OTP_ERROR,
+  RESEND_OTP_SUCCESS,
   CATEGORY_SKILL_DATA,
   SKILLS_DEVELOPER_DATA,
   INSTANT_LOGIN_EMAIL,
+  VERIFY_SIGNUP_ERROR,
 } from "../types";
 
 const initialState = {};
@@ -79,10 +80,15 @@ const authReducer = (state = initialState, action) => {
         ...state,
         verifyOtpError: action.payload,
       };
-    case RESEND_OTP_ERROR:
+    case VERIFY_SIGNUP_ERROR:
       return {
         ...state,
-        resendOtpError: action.payload,
+        verifySignupError: action.payload,
+      };
+    case RESEND_OTP_SUCCESS:
+      return {
+        ...state,
+        resendOtpSuccess: action.payload,
       };
     case INSTANT_LOGIN_EMAIL:
       return {

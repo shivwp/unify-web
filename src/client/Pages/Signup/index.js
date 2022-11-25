@@ -11,9 +11,7 @@ const Signupscreen = () => {
   const [errors, setErrors] = useState({});
   const [userType, setUserType] = useState("freelancer");
   const getCountryList = useSelector((state) => state.auth.getCountryList);
-  const signupError = useSelector(
-    (state) => state?.auth?.signupError?.data.message
-  );
+  const [message, setMessage] = useState();
 
   const [values, setValues] = useState({
     agree_terms: 0,
@@ -46,6 +44,10 @@ const Signupscreen = () => {
       setValues({ ...values, [e.target.name]: e.target.value });
       setErrors({ ...errors, [e.target.name]: false });
     }
+
+    if (e.target.name === "email") {
+      setMessage();
+    }
   };
 
   const submitForm = (e) => {
@@ -55,6 +57,25 @@ const Signupscreen = () => {
 
     let errorExist = false;
     let errorsObject = {};
+
+    if (
+      (values?.first_name && values?.first_name.length < 2) ||
+      values?.first_name === "" ||
+      values?.first_name === null ||
+      values?.first_name === undefined
+    ) {
+      errorsObject.first_name = true;
+      errorExist = true;
+    }
+    if (
+      (values?.last_name && values?.last_name.length < 2) ||
+      values?.last_name === "" ||
+      values?.last_name === null ||
+      values?.last_name === undefined
+    ) {
+      errorsObject.last_name = true;
+      errorExist = true;
+    }
 
     if (
       values?.email === "" ||
@@ -73,64 +94,48 @@ const Signupscreen = () => {
       errorExist = true;
     }
 
-    if (values.password !== values.confirmPassword) {
-      errorsObject.confirmPassword =
-        "Confirm password should be match with password";
-      errorExist = true;
-    }
-
     if (
-      values.password === "" ||
-      values.password === null ||
-      values.password === undefined
+      values?.password === "" ||
+      values?.password === null ||
+      values?.password === undefined
     ) {
-      errorsObject.password = "Please Enter Your Password";
+      errorsObject.password = "Please enter your password";
       errorExist = true;
-    }
-
-    if (values.password && values.password.length < 8) {
+    } else if (values?.password && values?.password.length < 8) {
       errorsObject.password = "Password must be at least 8 digit long";
       errorExist = true;
-    }
-
-    if (
-      values.confirmPassword === "" ||
-      values.confirmPassword === null ||
-      values.confirmPassword === undefined
+    } else if (
+      !/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+])[0-9a-zA-Z!@#$%^&*()_+]{8,}$/.test(
+        values?.password
+      )
     ) {
-      errorsObject.confirmPassword = "Please Enter Your Password";
+      errorsObject.password =
+        "Password must be minimum 8 characters with alphanumeric & mix of upper & lower case & special character.";
       errorExist = true;
     }
 
-    if (values.confirmPassword && values.confirmPassword.length < 8) {
+    if (
+      values?.confirmPassword === "" ||
+      values?.confirmPassword === null ||
+      values?.confirmPassword === undefined
+    ) {
+      errorsObject.confirmPassword = "Please enter your confirm password";
+      errorExist = true;
+    } else if (values?.confirmPassword && values?.confirmPassword.length < 8) {
       errorsObject.confirmPassword = "Password must be at least 8 digit long";
       errorExist = true;
-    }
-    if (
-      (values.first_name && values.first_name.length < 2) ||
-      values.first_name === "" ||
-      values.first_name === null ||
-      values.first_name === undefined
-    ) {
-      errorsObject.first_name = true;
-      errorExist = true;
-    }
-    if (
-      (values.last_name && values.last_name.length < 2) ||
-      values.last_name === "" ||
-      values.last_name === null ||
-      values.last_name === undefined
-    ) {
-      errorsObject.last_name = true;
-      errorExist = true;
-    }
-    if (values.agree_terms == 0) {
-      errorsObject.agree_terms = true;
+    } else if (values?.password !== values?.confirmPassword) {
+      errorsObject.confirmPassword =
+        "The confirm password is not matching with password";
       errorExist = true;
     }
 
     if (country === undefined || country === null || country === "") {
       errorsObject.country = true;
+      errorExist = true;
+    }
+    if (values?.agree_terms == 0) {
+      errorsObject.agree_terms = true;
       errorExist = true;
     }
 
@@ -150,7 +155,7 @@ const Signupscreen = () => {
       send_email: values?.send_email,
     };
 
-    dispatch(onRegister(data, navigate));
+    dispatch(onRegister(data, navigate, setMessage));
   };
 
   const selectUserType = (e) => {
@@ -169,7 +174,7 @@ const Signupscreen = () => {
       errors={errors}
       setCountry={setCountry}
       selectCountry={selectCountry}
-      signupError={signupError}
+      message={message}
     />
   );
 };

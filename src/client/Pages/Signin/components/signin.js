@@ -18,7 +18,7 @@ const Signin = ({
   errors,
   selectUserType,
   userType,
-  loginError,
+  message,
 }) => {
   Title(" | signin");
   const [hidePass, setHidePass] = useState(true);
@@ -176,7 +176,7 @@ const Signin = ({
                         <span className="signInError">
                           {errors.password
                             ? errors.password
-                            : loginError && loginError}
+                            : message && message}
                         </span>
                       </div>
                     </div>
@@ -188,9 +188,9 @@ const Signin = ({
                   </div>
 
                   <div className="sign_form_btn_subm sign_w_full">
-                    <Button variant="" type="submit" className="mr_sign_in_n">
+                    <button variant="" type="submit" className="mr_sign_in_n">
                       LOGIN
-                    </Button>
+                    </button>
                   </div>
                 </Form>
                 <div className="sign_in_or">or</div>

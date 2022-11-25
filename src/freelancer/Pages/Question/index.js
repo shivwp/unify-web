@@ -1,11 +1,15 @@
 import Question from "./components/question";
 import Layout from "../../Layout/Layout";
+import Footer from "../../Layout/Footer/Footer";
+import ProfileIntroNavbar from "../ProfileIntro/ProfileIntroNavbar";
 
 const Screen = () => {
   return (
-    <Layout>
+    <>
+      <ProfileIntroNavbar />
       <Question />
-    </Layout>
+      <Footer />
+    </>
   );
 };
 export default Screen;

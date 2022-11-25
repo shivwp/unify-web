@@ -1,5 +1,7 @@
 import React, { Suspense, lazy } from "react";
 import { Routes, Route } from "react-router-dom";
+import ProtectedRoutes from "./routing/PrivateRoute";
+import PublicRoutes from "./routing/PublicRoutes";
 
 const Home = lazy(() => import("./Home"));
 const Signup = lazy(() => import("./client/Pages/Signup"));
@@ -167,207 +169,231 @@ const FreelancerMessage = lazy(() =>
 );
 const ProfileInto = lazy(() => import("./freelancer/Pages/ProfileIntro"));
 
-const LoggedOutRoutes = () => {
-  return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/signup" element={<Signup />} />
-      <Route path="/signin" element={<Signin />} />
-      <Route path="/verify-forgot-otp" element={<VerifyForgotOTP />} />
-      <Route path="/forgot-password" element={<ForgotPass />} />
-      <Route path="/reset-password" element={<ResetPass />} />
-      <Route path="/verify-signup" element={<VerifySignUp />} />
-      <Route path="/how-it-works" element={<HowItWorks />} />
-      <Route path="/browse-jobs" element={<BrowseJobs />} />
-      <Route path="/cat-skills/:category" element={<SkillsListCatWise />} />
-      <Route path="/skill-dev/:skill" element={<DevListCatWise />} />
-      <Route path="/job-details/:id" element={<JobDetails />} />
-      <Route path="/pages/:pagename" element={<FooterPages />} />
-    </Routes>
-  );
-};
-
-const LoggedInRoutes = () => {
-  return (
-    <Routes>
-      <Route path="/category" element={<Category />} />
-      <Route path="/create-category" element={<Createcategory />} />
-      <Route path="/question1" element={<Question />} />
-      <Route path="/question2" element={<QuestionTwo />} />
-      <Route path="/businesssize" element={<BusinessSize />} />
-      <Route path="/subscription" element={<Subscription />} />
-      <Route path="/expandteam" element={<ExpandTeam />} />
-      <Route path="/notification" element={<Notification />} />
-      <Route path="/gettingstarted" element={<GettingStarted />} />
-      <Route path="/title" element={<Title />} />
-      <Route path="/title14" element={<TitleFourteen />} />
-      <Route path="/skills" element={<Skills />} />
-      <Route path="/scope" element={<Scope />} />
-      <Route path="/budget" element={<Budget />} />
-      <Route path="/job-description" element={<JobDescription />} />
-      <Route path="/view-job" element={<ViewJob />} />
-      <Route path="/view-job/private" element={<MakePrivate />} />
-      {/* <Route path="/view-job/:screen" element={<ViewJob />} /> */}
-      <Route path="/hire-freelancer" element={<HireFreelancer />} />
-      <Route
-        path="/hire-freelancer/addAddress"
-        element={<AddCompanyAddress />}
-      />
-      <Route
-        path="/hire-freelancer/edit-address"
-        element={<EditCompanyAddress />}
-      />
-      <Route path="/my-jobs" element={<MyJobs />} />
-      <Route path="/all-contracts" element={<AllContracts />} />
-      <Route path="/talent-discover" element={<TalentDiscover />} />
-      <Route path="/talent-your-hires" element={<Talentyourhires />} />
-      <Route path="/byo-talent" element={<Talentbyo />} />
-      <Route path="/talent-recently-viewed" element={<Talentrecentview />} />
-      <Route path="/talent-saved" element={<Talentsaved />} />
-      <Route path="/search" element={<Search />} />
-      <Route path="/setting-myinfo" element={<SettingInfo />} />
-      <Route path="/setting-billing" element={<SettingBilling />} />
-      <Route path="/setting-membership" element={<SettingMembership />} />
-      <Route path="/setting-team" element={<SettingTeam />} />
-      <Route path="/setting-notification" element={<SettingNotification />} />
-      <Route
-        path="/setting-connected-services"
-        element={<SettingConnectedServices />}
-      />
-      <Route
-        path="/setting-membership-permission"
-        element={<SettingMembershipPerm />}
-      />
-      <Route
-        path="/setting-password-security"
-        element={<SettingPasswordSecurity />}
-      />
-      <Route path="/help-support" element={<HelpSupport />} />
-      <Route path="/message" element={<Message />} />
-      <Route path="/management-board" element={<ManagementBoard />} />
-      <Route path="/transaction-history" element={<TransactionHistory />} />
-      <Route path="/dashboard" element={<Dashboard />} />
-      <Route path="/dashboard/edit-posting/:editId" element={<EditPosting />} />
-      <Route path="/dashboard/edit-draft" element={<EditDraft />} />
-      <Route path="/post-description" element={<Description />} />
-      <Route path="/all-job-list" element={<JobListScreen />} />
-      <Route path="/all-draft-job-list" element={<DraftJobListScreen />} />
-
-      {/* ================================ FREELANVER ROUTES ================================== */}
-      <Route
-        path="/freelancer/project-detail/:id"
-        element={<ProjectDetail />}
-      />
-      <Route path="/freelancer/project-search" element={<ProjectSearch />} />
-      <Route path="/submit-testimonial/:id" element={<Testimonial />} />
-      <Route path="/agency/dashboard" element={<AgencyDashboard />} />
-      <Route
-        path="/freelancer/project-search/:saved"
-        element={<ProjectSearch />}
-      />
-      <Route
-        path="/freelancer/freelancer-detail"
-        element={<FreelancerDetail />}
-      />
-      <Route path="/freelancer/job-portal" element={<JobPortal />} />
-      <Route path="/freelancer/direct-contract" element={<DirectContract />} />
-      <Route
-        path="/freelancer/all-contracts"
-        element={<FreelancerAllContracts />}
-      />
-      <Route path="/freelancer/question1" element={<FreelancerQuestion1 />} />
-      <Route path="/freelancer/question2" element={<FreelancerQuestion2 />} />
-      <Route
-        path="/freelancer/my-contract"
-        element={<FreelancerMyContract />}
-      />
-      <Route
-        path="/freelancer/active-contract"
-        element={<FreelancerActiveContract />}
-      />
-      <Route path="/freelancer/work-diary" element={<FreelancerWorkDiary />} />
-      <Route
-        path="/freelancer/add-work-diary"
-        element={<FreelancerAddWorkDiary />}
-      />
-      <Route path="/freelancer/goals" element={<FreelancerGoals />} />
-      <Route path="/freelancer/overview" element={<FreelancerOverview />} />
-      <Route
-        path="/freelancer/transaction-history"
-        element={<FreelancerTransaction />}
-      />
-
-      <Route path="/freelancer/progress" element={<FreelancerProgress />} />
-      <Route path="/freelancer/objective" element={<FreelancerObjective />} />
-      <Route path="/freelancer/my-reports" element={<UserReports />} />
-      <Route
-        path="/freelancer/report-byclient"
-        element={<FreelancerReportByClient />}
-      />
-      <Route path="/freelancer/weekly-report" element={<FreelancerReports />} />
-      <Route
-        path="/freelancer/milestone-earning"
-        element={<FreelancerMilestone />}
-      />
-      <Route
-        path="/freelancer/contact-info"
-        element={<FreelancerContactInfo />}
-      />
-      <Route
-        path="/freelancer/billing-payment"
-        element={<FreelancerBiling />}
-      />
-      <Route path="/freelancer/getpaid" element={<FreelanceGetPaid />} />
-      <Route path="/freelancer/my-teams" element={<FreelanceMyTeams />} />
-
-      <Route
-        path="/freelancer/password-security"
-        element={<FreelancePasswordSecurity />}
-      />
-      <Route
-        path="/freelancer/notification"
-        element={<FreelanceNotification />}
-      />
-      <Route
-        path="/freelancer/identify-verification"
-        element={<FreelanceIdentify />}
-      />
-      <Route path="/freelancer/my-stats" element={<FreelanceMyStats />} />
-      <Route
-        path="/freelancer/billing-earning"
-        element={<FreelanceBillingEarn />}
-      />
-      <Route
-        path="/freelancer/send-proposal/:id"
-        element={<FreelanceProposal />}
-      />
-      <Route
-        path="/freelancer/time-tracker"
-        element={<FreelanceTimeTracker />}
-      />
-      <Route path="/freelancer/chat" element={<FreelancerChat />} />
-      <Route path="/freelancer/profile" element={<FreelancerProfile />} />
-      <Route path="/freelancer/dashboard" element={<FreelancerDashboard />} />
-      <Route
-        path="/freelancer/subscription"
-        element={<FreelancerSubscription />}
-      />
-      <Route exact path="/freelancer/message" element={<FreelancerMessage />} />
-      <Route path="/freelancer/see-milestone" element={<SeeMilestone />} />
-      <Route path="/freelancer/see-timesheet" element={<SeeTimesheet />} />
-      <Route path="/freelancer/profile-intro" element={<ProfileInto />} />
-    </Routes>
-  );
-};
-
 function App() {
   return (
     <Suspense fallback={<div>Loading...</div>}>
-      {/* {!localStorage.getItem("unify_access") ? ( */}
-      <LoggedOutRoutes />
-      {/* ) : ( */}
-      <LoggedInRoutes />
-      {/* )} */}
+      <Routes>
+        <Route path="/" element={<PublicRoutes />}>
+          <Route path="/" element={<Home />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/signin" element={<Signin />} />
+          <Route path="/verify-forgot-otp" element={<VerifyForgotOTP />} />
+          <Route path="/forgot-password" element={<ForgotPass />} />
+          <Route path="/reset-password" element={<ResetPass />} />
+          <Route path="/verify-signup" element={<VerifySignUp />} />
+          <Route path="/how-it-works" element={<HowItWorks />} />
+          <Route path="/browse-jobs" element={<BrowseJobs />} />
+          <Route path="/cat-skills/:category" element={<SkillsListCatWise />} />
+          <Route path="/skill-dev/:skill" element={<DevListCatWise />} />
+          <Route path="/job-details/:id" element={<JobDetails />} />
+        </Route>
+        <Route path="/pages/:pagename" element={<FooterPages />} />
+        <Route path="/" element={<ProtectedRoutes />}>
+          <Route path="/category" element={<Category />} />
+          <Route path="/create-category" element={<Createcategory />} />
+          <Route path="/question1" element={<Question />} />
+          <Route path="/question2" element={<QuestionTwo />} />
+          <Route path="/businesssize" element={<BusinessSize />} />
+          <Route path="/subscription" element={<Subscription />} />
+          <Route path="/expandteam" element={<ExpandTeam />} />
+          <Route path="/notification" element={<Notification />} />
+          <Route path="/gettingstarted" element={<GettingStarted />} />
+          <Route path="/title" element={<Title />} />
+          <Route path="/title14" element={<TitleFourteen />} />
+          <Route path="/skills" element={<Skills />} />
+          <Route path="/scope" element={<Scope />} />
+          <Route path="/budget" element={<Budget />} />
+          <Route path="/job-description" element={<JobDescription />} />
+          <Route path="/view-job" element={<ViewJob />} />
+          <Route path="/view-job/private" element={<MakePrivate />} />
+          {/* <Route path="/view-job/:screen" element={<ViewJob />} /> */}
+          <Route path="/hire-freelancer" element={<HireFreelancer />} />
+          <Route
+            path="/hire-freelancer/addAddress"
+            element={<AddCompanyAddress />}
+          />
+          <Route
+            path="/hire-freelancer/edit-address"
+            element={<EditCompanyAddress />}
+          />
+          <Route path="/my-jobs" element={<MyJobs />} />
+          <Route path="/all-contracts" element={<AllContracts />} />
+          <Route path="/talent-discover" element={<TalentDiscover />} />
+          <Route path="/talent-your-hires" element={<Talentyourhires />} />
+          <Route path="/byo-talent" element={<Talentbyo />} />
+          <Route
+            path="/talent-recently-viewed"
+            element={<Talentrecentview />}
+          />
+          <Route path="/talent-saved" element={<Talentsaved />} />
+          <Route path="/search" element={<Search />} />
+          <Route path="/setting-myinfo" element={<SettingInfo />} />
+          <Route path="/setting-billing" element={<SettingBilling />} />
+          <Route path="/setting-membership" element={<SettingMembership />} />
+          <Route path="/setting-team" element={<SettingTeam />} />
+          <Route
+            path="/setting-notification"
+            element={<SettingNotification />}
+          />
+          <Route
+            path="/setting-connected-services"
+            element={<SettingConnectedServices />}
+          />
+          <Route
+            path="/setting-membership-permission"
+            element={<SettingMembershipPerm />}
+          />
+          <Route
+            path="/setting-password-security"
+            element={<SettingPasswordSecurity />}
+          />
+          <Route path="/help-support" element={<HelpSupport />} />
+          <Route path="/message" element={<Message />} />
+          <Route path="/management-board" element={<ManagementBoard />} />
+          <Route path="/transaction-history" element={<TransactionHistory />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route
+            path="/dashboard/edit-posting/:editId"
+            element={<EditPosting />}
+          />
+          <Route path="/dashboard/edit-draft" element={<EditDraft />} />
+          <Route path="/post-description" element={<Description />} />
+          <Route path="/all-job-list" element={<JobListScreen />} />
+          <Route path="/all-draft-job-list" element={<DraftJobListScreen />} />
+
+          {/* ================================ FREELANVER ROUTES ================================== */}
+          <Route
+            path="/freelancer/project-detail/:id"
+            element={<ProjectDetail />}
+          />
+          <Route
+            path="/freelancer/project-search"
+            element={<ProjectSearch />}
+          />
+          <Route path="/submit-testimonial/:id" element={<Testimonial />} />
+          <Route path="/agency/dashboard" element={<AgencyDashboard />} />
+          <Route
+            path="/freelancer/project-search/:saved"
+            element={<ProjectSearch />}
+          />
+          <Route
+            path="/freelancer/freelancer-detail"
+            element={<FreelancerDetail />}
+          />
+          <Route path="/freelancer/job-portal" element={<JobPortal />} />
+          <Route
+            path="/freelancer/direct-contract"
+            element={<DirectContract />}
+          />
+          <Route
+            path="/freelancer/all-contracts"
+            element={<FreelancerAllContracts />}
+          />
+          <Route
+            path="/freelancer/question1"
+            element={<FreelancerQuestion1 />}
+          />
+          <Route
+            path="/freelancer/question2"
+            element={<FreelancerQuestion2 />}
+          />
+          <Route
+            path="/freelancer/my-contract"
+            element={<FreelancerMyContract />}
+          />
+          <Route
+            path="/freelancer/active-contract"
+            element={<FreelancerActiveContract />}
+          />
+          <Route
+            path="/freelancer/work-diary"
+            element={<FreelancerWorkDiary />}
+          />
+          <Route
+            path="/freelancer/add-work-diary"
+            element={<FreelancerAddWorkDiary />}
+          />
+          <Route path="/freelancer/goals" element={<FreelancerGoals />} />
+          <Route path="/freelancer/overview" element={<FreelancerOverview />} />
+          <Route
+            path="/freelancer/transaction-history"
+            element={<FreelancerTransaction />}
+          />
+
+          <Route path="/freelancer/progress" element={<FreelancerProgress />} />
+          <Route
+            path="/freelancer/objective"
+            element={<FreelancerObjective />}
+          />
+          <Route path="/freelancer/my-reports" element={<UserReports />} />
+          <Route
+            path="/freelancer/report-byclient"
+            element={<FreelancerReportByClient />}
+          />
+          <Route
+            path="/freelancer/weekly-report"
+            element={<FreelancerReports />}
+          />
+          <Route
+            path="/freelancer/milestone-earning"
+            element={<FreelancerMilestone />}
+          />
+          <Route
+            path="/freelancer/contact-info"
+            element={<FreelancerContactInfo />}
+          />
+          <Route
+            path="/freelancer/billing-payment"
+            element={<FreelancerBiling />}
+          />
+          <Route path="/freelancer/getpaid" element={<FreelanceGetPaid />} />
+          <Route path="/freelancer/my-teams" element={<FreelanceMyTeams />} />
+
+          <Route
+            path="/freelancer/password-security"
+            element={<FreelancePasswordSecurity />}
+          />
+          <Route
+            path="/freelancer/notification"
+            element={<FreelanceNotification />}
+          />
+          <Route
+            path="/freelancer/identify-verification"
+            element={<FreelanceIdentify />}
+          />
+          <Route path="/freelancer/my-stats" element={<FreelanceMyStats />} />
+          <Route
+            path="/freelancer/billing-earning"
+            element={<FreelanceBillingEarn />}
+          />
+          <Route
+            path="/freelancer/send-proposal/:id"
+            element={<FreelanceProposal />}
+          />
+          <Route
+            path="/freelancer/time-tracker"
+            element={<FreelanceTimeTracker />}
+          />
+          <Route path="/freelancer/chat" element={<FreelancerChat />} />
+          <Route path="/freelancer/profile" element={<FreelancerProfile />} />
+          <Route
+            path="/freelancer/dashboard"
+            element={<FreelancerDashboard />}
+          />
+          <Route
+            path="/freelancer/subscription"
+            element={<FreelancerSubscription />}
+          />
+          <Route
+            exact
+            path="/freelancer/message"
+            element={<FreelancerMessage />}
+          />
+          <Route path="/freelancer/see-milestone" element={<SeeMilestone />} />
+          <Route path="/freelancer/see-timesheet" element={<SeeTimesheet />} />
+          <Route path="/freelancer/profile-intro" element={<ProfileInto />} />
+        </Route>
+      </Routes>
     </Suspense>
   );
 }
