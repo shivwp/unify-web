@@ -39,56 +39,48 @@ const Createcategory = () => {
             <div className="s_b_r">
               <Form.Check type="radio" id="r_1" name="g" />
               <Form.Label htmlFor="r_1">
-                {" "}
                 <p>Development & IT</p>
               </Form.Label>
             </div>
             <div className="s_b_r">
               <Form.Check type="radio" id="r_2" name="g" />
               <Form.Label htmlFor="r_2">
-                {" "}
                 <p>Design & Creative</p>
               </Form.Label>
             </div>
             <div className="s_b_r">
               <Form.Check type="radio" id="r_3" name="g" />
               <Form.Label htmlFor="r_3">
-                {" "}
                 <p>Sales & Marketing</p>
               </Form.Label>
             </div>
             <div className="s_b_r">
               <Form.Check type="radio" id="r_3" name="g" />
               <Form.Label htmlFor="r_3">
-                {" "}
                 <p>Writing & Translation</p>
               </Form.Label>
             </div>
             <div className="s_b_r">
               <Form.Check type="radio" id="r_3" name="g" />
               <Form.Label htmlFor="r_3">
-                {" "}
                 <p>Finance & Accounting</p>
               </Form.Label>
             </div>
             <div className="s_b_r">
               <Form.Check type="radio" id="r_3" name="g" />
               <Form.Label htmlFor="r_3">
-                {" "}
                 <p>Engineering & Architecture</p>
               </Form.Label>
             </div>
             <div className="s_b_r">
               <Form.Check type="radio" id="r_3" name="g" />
               <Form.Label htmlFor="r_3">
-                {" "}
                 <p>Legal</p>
               </Form.Label>
             </div>
             <div className="s_b_r">
               <Form.Check type="radio" id="r_3" name="g" />
               <Form.Label htmlFor="r_3">
-                {" "}
                 <p>Admin & Customer Support</p>
               </Form.Label>
             </div>
@@ -96,11 +88,33 @@ const Createcategory = () => {
           <div className="show_less_likn">
             <Link to="/">Show less</Link>
           </div>
-          <Link to="/category">
-            <div className="fo_btn_c ccb_next_btn">
-              <button>Next</button>
+          <div className="theme_btns d-flex align-items-center justify-content-between">
+            <div className="d-flex">
+              <Link to="/question1">
+                <button className="first_button" style={{ marginTop: "0px" }}>
+                  Back
+                </button>
+              </Link>
+              <Link to="/category">
+                <button className="second_button" style={{ marginTop: "0px" }}>
+                  Next
+                </button>
+              </Link>
             </div>
-          </Link>
+
+            <Link to="/subscription">
+              <div
+                className="fo_btn_c next_b_btn_c"
+                style={{
+                  color: "#6d2ef1",
+                  fontWeight: "600",
+                  fontSize: "14px",
+                }}
+              >
+                Skip For Now >>
+              </div>
+            </Link>
+          </div>
         </div>
       </Container>
     </>

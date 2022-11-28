@@ -1,11 +1,14 @@
 import CreateCategory from "./components/create-category";
-import Layout from "../../Layout/Layout";
+import ProfileIntroNavbar from "../../../freelancer/Pages/ProfileIntro/ProfileIntroNavbar";
+import Footer from "../../Layout/Footer/Footer";
 
 const CreateScreen = () => {
   return (
-    <Layout webtype="client">
+    <>
+      <ProfileIntroNavbar />
       <CreateCategory />
-    </Layout>
+      <Footer />
+    </>
   );
 };
 export default CreateScreen;

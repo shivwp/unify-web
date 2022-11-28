@@ -81,7 +81,11 @@ export const onLogin = (data, navigate, setMessage) => async (dispatch) => {
           navigate("/freelancer/question1");
         }
       } else if (res.data.data.user.user_type === "client") {
-        navigate("/dashboard");
+        if (res.data.data.user.is_profile_complete === true) {
+          navigate("/dashboard");
+        } else {
+          navigate("/businesssize");
+        }
       }
       window.location.reload();
     }

@@ -91,9 +91,9 @@ const VerifySignUp = () => {
 
   var staredEmail = localStorage.getItem("unify_email");
   staredEmail =
-    staredEmail.slice(0, 2) +
+    staredEmail?.slice(0, 2) +
     "***" +
-    staredEmail.slice(10, localStorage.getItem("unify_email").length);
+    staredEmail?.slice(10, localStorage.getItem("unify_email").length);
 
   return (
     <div className="bg-body-wrapper">

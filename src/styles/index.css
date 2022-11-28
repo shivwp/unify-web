@@ -3562,15 +3562,18 @@ body {
     min-width: 200px !important;
   }
 }
-@media (max-width: 1023px) {
-  .sign_box {
-    margin-top: 20px;
-  }
+@media (max-width: 1200px) {
+
   .sign_form_shapb {
     display: none;
   }
   .sign_form_shap {
     display: none;
+  }
+}
+@media (max-width: 1023px) {
+  .sign_box {
+    margin-top: 20px;
   }
 }
 

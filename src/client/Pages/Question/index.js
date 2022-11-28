@@ -1,11 +1,14 @@
 import Question from "./components/question";
-import Layout from "../../Layout/Layout";
+import Footer from "../../Layout/Footer/Footer";
+import ProfileIntroNavbar from "../../../freelancer/Pages/ProfileIntro/ProfileIntroNavbar";
 
 const QuestionScreen = () => {
   return (
-    <Layout webtype="client">
+    <>
+      <ProfileIntroNavbar />
       <Question />
-    </Layout>
+      <Footer />
+    </>
   );
 };
 export default QuestionScreen;

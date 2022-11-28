@@ -2,10 +2,11 @@ import Container from "react-bootstrap/Container";
 import { Col, Row } from "react-bootstrap";
 import Title from "../../../../components/title";
 import { Link } from "react-router-dom";
-import Button from 'react-bootstrap/Button'
+import Button from "react-bootstrap/Button";
 
 const Category = () => {
   Title(" | category");
+
   return (
     <>
       <Container>
@@ -212,15 +213,30 @@ const Category = () => {
           <div className="some_el_cr">
             Looking for something else? <Link to="/">See more skills</Link>
           </div>
-          <div className="btn_foot_sec no-border d-flex flex-wrap">
-            <Link to="/create-category">
-              <div className="fo_btn_c next_b_btn_c">
-                <Button variant="">Back</Button>
-              </div>
-            </Link>
-            <Link to="/question1">
-              <div className="fo_btn_c next_b_btn_c">
-                <Button variant="" className="active_btn_blue">Next</Button>
+          <div className="theme_btns d-flex align-items-center justify-content-between">
+            <div className="d-flex">
+              <Link to="/create-category">
+                <button className="first_button" style={{ marginTop: "0px" }}>
+                  Back
+                </button>
+              </Link>
+              <Link to="/question2">
+                <button className="second_button" style={{ marginTop: "0px" }}>
+                  Next
+                </button>
+              </Link>
+            </div>
+
+            <Link to="/subscription">
+              <div
+                className="fo_btn_c next_b_btn_c"
+                style={{
+                  color: "#6d2ef1",
+                  fontWeight: "600",
+                  fontSize: "14px",
+                }}
+              >
+                {`Skip For Now >>`}
               </div>
             </Link>
           </div>
