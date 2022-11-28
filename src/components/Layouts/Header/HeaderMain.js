@@ -43,15 +43,13 @@ const NavbarHeader = (props) => {
           </button>
         </div>
         <div className="navdata_li">
-          <Link to="/how-it-works">HOW IT WORKS</Link>
+          <Link to="/how-it-works">WHAT IS UNIFY</Link>
         </div>
         <div className="navdata_li">
           <Link to="/browse-jobs">BROWSE JOBS</Link>
         </div>
-        <div className="logout_btn_mob">
-          <Link to={`/`}>
-            <button>Pricing</button>
-          </Link>
+        <div className="navdata_li">
+          <Link to={`/subscription`}>Subscription</Link>
         </div>
         <div className="logout_btn_mob">
           <Link to={`/signin`}>
@@ -74,11 +72,11 @@ const NavbarHeader = (props) => {
         <Container>
           <div className="w-100 d-flex justify-content-between align-items-center flex_rev">
             <div className="width_100_sm navbar_logo">
-              <Link to="/">
+              <a href="/">
                 <Navbar.Brand>
                   <img src={logo} className="img-fluid rounded-top " alt="" />
                 </Navbar.Brand>
-              </Link>
+              </a>
             </div>
             <div>
               <Navbar.Toggle
@@ -90,13 +88,13 @@ const NavbarHeader = (props) => {
               <Navbar.Collapse id="responsive-navbar-nav">
                 <Nav>
                   <Nav.Link as={Link} to="/how-it-works" className="navbar_btn">
-                    How it works
+                    What Is Unify
                   </Nav.Link>
                   <Nav.Link as={Link} to="/browse-jobs" className="navbar_btn">
                     Browse Jobs
                   </Nav.Link>
-                  <Nav.Link as={Link} to="/" className="navbar_btn">
-                    Pricing
+                  <Nav.Link as={Link} to="/subscription" className="navbar_btn">
+                    Subscription
                   </Nav.Link>
                   <Nav.Link as={Link} to="/signin" className="navbar_btn">
                     Login

@@ -202,6 +202,7 @@ export const googleSignInSuccess = (data, navigate) => async (dispatch) => {
     if (res.data.status) {
       localStorage.setItem("unify_Token", res.data.auth_token);
       localStorage.setItem("unify_user", JSON.stringify(res.data.data.user));
+      localStorage.setItem("unify_access", true);
       if (res.data.data.user.user_type === "freelancer") {
         if (res.data.data.user.is_profile_complete === true) {
           navigate("/freelancer/dashboard");
@@ -258,7 +259,7 @@ export const appleSignInSuccess = (data, navigate) => async (dispatch) => {
     if (res.data.status) {
       localStorage.setItem("unify_Token", res.data.auth_token);
       localStorage.setItem("unify_user", JSON.stringify(res.data.data.user));
-      console.log(res);
+      localStorage.setItem("unify_access", true);
       if (res.data.data.user.user_type === "freelancer") {
         if (!res.data.data.user.is_profile_complete === true) {
           navigate("/freelancer/dashboard");

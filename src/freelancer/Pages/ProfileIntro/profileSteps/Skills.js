@@ -90,9 +90,9 @@ const Skills = ({ setCurrentTab, profileList }) => {
                 {selectSkills?.map((item, index) => (
                   <div className="skill_bxr_gry" key={item.skill_id}>
                     <span>{item.skill_name}</span>
-                    <Button variant="" onClick={() => removeSkills(index)}>
+                    <button variant="" onClick={() => removeSkills(index)}>
                       X
-                    </Button>
+                    </button>
                   </div>
                 ))}
                 <div className="search_inp_box">
@@ -138,9 +138,7 @@ const Skills = ({ setCurrentTab, profileList }) => {
                 <span>Maximum 15 skills.</span>
               )}
             </div>
-            <div className="maxlabel_atcxt mt-3 d-flex justify-content-end">
-              Maximum 15 skills.
-            </div>
+
             <div className="theme_btns mt-0">
               <button
                 className="first_button"

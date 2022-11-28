@@ -76,7 +76,7 @@ const DevListCatWise = () => {
             </div>
             <div className="desc">
               Find someone with the skills and background you’re looking for.{" "}
-              <span>How it works</span>
+              <span>What is Unify</span>
             </div>
             <div className="cards">
               <Row>

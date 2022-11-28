@@ -8,7 +8,7 @@ import { Col } from "react-bootstrap";
 const FreelanceWorld = ({ for_client }) => {
   return (
     <div className="flex_cen">
-      <div className="container-fluid">
+      <div className="container">
         <div className=" sp-right-0 mdp-0">
           <div className="freelance_section">
             <div className="free_sec_head">
