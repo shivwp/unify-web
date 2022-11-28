@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Form } from "react-bootstrap";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { onEditDesignation } from "../../../../redux/actions/profileAction";
 
 const WhatDoYouDo = ({ setCurrentTab, profileList }) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [values, setValues] = useState({});
   const [errors, setErrors] = useState({});
   const [popup, Setpopup] = useState(false);
@@ -23,7 +25,7 @@ const WhatDoYouDo = ({ setCurrentTab, profileList }) => {
   };
 
   const afterSuccess = () => {
-    setCurrentTab("exprience");
+    navigate(`/freelancer/profile-intro/exprience`);
   };
 
   const onEditProfile = () => {
@@ -120,7 +122,10 @@ const WhatDoYouDo = ({ setCurrentTab, profileList }) => {
             <div className="theme_btns">
               <button
                 className="first_button"
-                onClick={() => setCurrentTab("takeTimeToIntro")}
+                onClick={() => {
+                  setCurrentTab("takeTimeToIntro");
+                  navigate(`/freelancer/profile-intro/takeTimeToIntro`);
+                }}
               >
                 Back
               </button>

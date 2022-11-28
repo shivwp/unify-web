@@ -34,7 +34,7 @@ const Screen = () => {
       return false;
     }
 
-    history("/freelancer/profile-intro");
+    history("/freelancer/profile-intro/takeTimeToIntro");
   };
 
   return (

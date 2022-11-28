@@ -1,8 +1,10 @@
 import React from "react";
 import Form from "react-bootstrap/Form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const TakeTimeToIntro = ({ setCurrentTab }) => {
+  const navigate = useNavigate();
+
   return (
     <div className="container">
       <div className="container_border">
@@ -67,7 +69,10 @@ const TakeTimeToIntro = ({ setCurrentTab }) => {
             </Link>
             <button
               className="second_button"
-              onClick={() => setCurrentTab("whatDoYouDo")}
+              onClick={() => {
+                setCurrentTab("whatDoYouDo");
+                navigate(`/freelancer/profile-intro/whatDoYouDo`);
+              }}
             >
               Next
             </button>

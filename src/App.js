@@ -392,7 +392,10 @@ function App() {
           />
           <Route path="/freelancer/see-milestone" element={<SeeMilestone />} />
           <Route path="/freelancer/see-timesheet" element={<SeeTimesheet />} />
-          <Route path="/freelancer/profile-intro" element={<ProfileInto />} />
+          <Route
+            path="/freelancer/profile-intro/:tabName"
+            element={<ProfileInto />}
+          />
         </Route>
       </Routes>
     </Suspense>

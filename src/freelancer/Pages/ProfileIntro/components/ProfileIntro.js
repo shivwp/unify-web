@@ -11,8 +11,10 @@ import PreviewProfile from "../profileSteps/PreviewProfile";
 import ChooseLangauge from "../profileSteps/ChooseLanguage";
 import { useDispatch, useSelector } from "react-redux";
 import { getFreelancerProfile } from "../../../../redux/actions/profileAction";
+import { useParams } from "react-router-dom";
 
 const ProfileIntro = () => {
+  const { tabName } = useParams();
   const dispatch = useDispatch();
   const [currentTab, setCurrentTab] = useState("takeTimeToIntro");
   const freelancerProfileList = useSelector(
@@ -26,6 +28,10 @@ const ProfileIntro = () => {
   const editFreelancerLanguage = useSelector(
     (state) => state.profile.editFreelancerLanguage
   );
+
+  useEffect(() => {
+    setCurrentTab(tabName);
+  }, [tabName]);
 
   useEffect(() => {
     dispatch(getFreelancerProfile());
