@@ -23,6 +23,7 @@ import {
   VERIFY_SIGNUP_ERROR,
 } from "../types";
 import { GoogleAuthProvider, OAuthProvider } from "firebase/auth";
+import SuccessPopup from "../../freelancer/components/popups/SuccessPopup";
 
 const config = {
   headers: {
@@ -177,14 +178,25 @@ export const onResetPassword = (data, navigate) => async (dispatch) => {
   } catch (err) {}
 };
 
-export const onPasswordChange = (data, popup) => async (dispatch) => {
+export const onPasswordChange = (data, popup, successPopup, setSuccessPopup, setMessage) => async (dispatch) => {
   try {
     const res = await Axios.post(`/change-password`, data, config);
     if (res.data.status) {
-      console.log(res);
       popup();
+      console.log(popup)
+      setSuccessPopup(
+        <SuccessPopup
+          Popup={() => setSuccessPopup(!successPopup)}
+          message="Password Changed Successfully"
+        // afterSuccess={afterSuccess}
+        />
+      );
     }
-  } catch (err) {}
+  }
+  catch (err) {
+    setMessage(err.response.data.message)
+
+  }
 };
 
 export const onOnlineStatus = (data, navigate) => async (dispatch) => {

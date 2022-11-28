@@ -1,5 +1,6 @@
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import React, { useState } from "react";
 
 const CloseIcon = () => {
   return (
@@ -16,6 +17,38 @@ const CloseIcon = () => {
   );
 };
 const VerificationPref = (props) => {
+  const [values, setValues] = useState({});
+  const [errors, setErrors] = useState({});
+
+  const onInputChange = (e) => {
+    setValues({ ...values, [e.target.name]: e.target.value });
+    setErrors({ ...errors, [e.target.name]: false });
+  };
+  const onSubmit = () => {
+    let errorExist = false;
+    let errorsObject = {};
+    if (
+      values?.freelancerBefore === "" ||
+      values?.freelancerBefore === null ||
+      values?.freelancerBefore === undefined
+    ) {
+      errorsObject.freelancerBefore = "Please select at least one";
+      errorExist = true;
+    } 
+    if (
+      values?.freelancerBeforeTwo === "" ||
+      values?.freelancerBeforeTwo === null ||
+      values?.freelancerBeforeTwo === undefined
+    ) {
+      errorsObject.freelancerBeforeTwo = "Please select at least one";
+      errorExist = true;
+    }
+    if (errorExist) {
+      setErrors(errorsObject);
+      return false;
+    }
+  };
+
   return (
     <>
       <div className="bg_wrapper_popup_new">
@@ -42,43 +75,94 @@ const VerificationPref = (props) => {
                   If we need to confirm it's you, which should we try first?
                 </div>
                 <Form.Label className="text-black font-size-13px font-weight-500 mt-3 pb-1 radiolablepopo">
-                  <Form.Check type="radio" name="g" /> Authenticator app code
+                  <Form.Check
+                    type="radio"
+                    value="firstBox"
+                    name="freelancerBefore"
+                    onChange={(e) => onInputChange(e)}
+                  />
+                  Authenticator app code
                 </Form.Label>
                 <Form.Label className="text-black font-size-13px font-weight-500 mt-1 pb-1 radiolablepopo">
-                  <Form.Check type="radio" name="g" /> Mobile app prompt
+                  <Form.Check
+                    type="radio"
+                    value="secondBox"
+                    name="freelancerBefore"
+                    onChange={(e) => onInputChange(e)}
+                  />
+                  Mobile app prompt
                 </Form.Label>
                 <Form.Label className="text-black font-size-13px font-weight-500 mt-1 pb-1 radiolablepopo">
-                  <Form.Check type="radio" name="g" /> Text message
+                  <Form.Check
+                    type="radio"
+                    value="thirdBox"
+                    name="freelancerBefore"
+                    onChange={(e) => onInputChange(e)}
+                  />
+                  Text message
                 </Form.Label>
+                <span
+                  style={{
+                    color: "red",
+                    fontWeight: "300",
+                    fontSize: "13px"
+                  }}
+                >
+                  {errors.freelancerBefore && errors.freelancerBefore}
+                </span>
               </div>
             </div>
             <div className="mb-4">
               <div className="popup_form_element agrement_ineoeu mt-3 pt-1">
                 <div className="headiwuewopiu">When should we confirm?</div>
                 <Form.Label className="text-black font-size-13px font-weight-500 mt-3 pb-1 radiolablepopo">
-                  <Form.Check type="radio" name="g" />{" "}
+                  <Form.Check
+                    type="radio"
+                    value="fourBox"
+                    name="freelancerBeforeTwo"
+                    onChange={(e) => onInputChange(e)}
+                  />
                   <span style={{ fontWeight: 500 }}>
-                    {" "}
                     When my login or activity seems risky
                   </span>
                 </Form.Label>
                 <Form.Label className="text-black font-size-13px font-weight-500 mt-1 pb-1 radiolablepopo">
-                  <Form.Check type="radio" name="g" />{" "}
+                  <Form.Check
+                    type="radio"
+                    value="fiveBox"
+                    name="freelancerBeforeTwo"
+                    onChange={(e) => onInputChange(e)}
+                  />
                   <span style={{ fontWeight: 500 }}>
-                    {" "}
                     At every login and when my login or activity seems risky
                   </span>
                 </Form.Label>
+                <span
+                  style={{
+                    color: "red",
+                    fontWeight: "300",
+                    fontSize: "13px"
+                  }}
+                >
+                  {errors.freelancerBeforeTwo && errors.freelancerBeforeTwo }
+                </span>
               </div>
             </div>
 
             <div className="popup_btns_new flex-wrap cwiewyehkk">
-              <Button variant="" className="trans_btn">Cancel</Button>
-              <Button variant=""
-              className="btnhovpple"
+              <Button
+                variant=""
+                className="trans_btn"
                 onClick={() => {
                   props.Popup();
                 }}
+              >
+                Cancel
+              </Button>
+              <Button
+                variant=""
+                className="btnhovpple"
+                onClick={() => onSubmit()}
               >
                 Save
               </Button>

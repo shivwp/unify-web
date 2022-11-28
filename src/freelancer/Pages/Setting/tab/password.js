@@ -4,7 +4,6 @@ import SideNav from "./site_nav";
 import Title from "../../../../components/title";
 import { useState } from "react";
 import Switch from "react-switch";
-import { onPasswordChange } from "../../../../redux/actions/authActions";
 import { useDispatch } from "react-redux";
 import AddMobNoPupup from "../../../components/popups/AddMobNoPupup";
 import AunthenticatorVerificationPopup from "../../../components/popups/AunthenticatorVerificationPopup";
@@ -19,6 +18,7 @@ const Screen = () => {
   const [mobilePromptOn, setMobilePromptOn] = useState(false);
   const [messageOn, setMessageOn] = useState(false);
   const [appCodeOn, setAppCodeOn] = useState(false);
+  const [successPopup, setSuccessPopup] = useState(false)
 
   return (
     <div className="bg-f2f8ff min_pad_m">
@@ -37,7 +37,7 @@ const Screen = () => {
                     <Button variant=""
                       className="round_b_btn"
                       onClick={() => {
-                        Setpopup(<ChangePassword Popup={Setpopup} />);
+                        Setpopup(<ChangePassword Popup={Setpopup} successPopup={successPopup} setSuccessPopup={setSuccessPopup} />);
                       }}
                     >
                       <svg
@@ -255,7 +255,7 @@ const Screen = () => {
                   </div>
                   <div className="d-flex justify-content-center align-items-center">
                     <div>
-                      <Button  variant="" className="round_b_btn">
+                      <Button variant="" className="round_b_btn">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="16"
@@ -298,6 +298,7 @@ const Screen = () => {
           onCloseModal={() => setMobilePromptOn(false)}
         />
       )}
+      {successPopup}
     </div>
   );
 };
