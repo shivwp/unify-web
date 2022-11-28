@@ -101,16 +101,13 @@ const Signupscreen = () => {
     ) {
       errorsObject.password = "Please enter your password";
       errorExist = true;
-    } else if (values?.password && values?.password.length < 8) {
-      errorsObject.password = "Password must be at least 8 digit long";
-      errorExist = true;
     } else if (
-      !/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+])[0-9a-zA-Z!@#$%^&*()_+]{8,}$/.test(
+      !/^(?=.*\d)(?=.*[a-z])(?=.*[!@#$%^&*()_+])[0-9a-zA-Z!@#$%^&*()_+]{8,}$/.test(
         values?.password
       )
     ) {
       errorsObject.password =
-        "Password must be minimum 8 characters with alphanumeric & mix of upper & lower case & special character.";
+        "Password must be at least 8 characters with 1 Special & 1 Number";
       errorExist = true;
     }
 
@@ -120,9 +117,6 @@ const Signupscreen = () => {
       values?.confirmPassword === undefined
     ) {
       errorsObject.confirmPassword = "Please enter your confirm password";
-      errorExist = true;
-    } else if (values?.confirmPassword && values?.confirmPassword.length < 8) {
-      errorsObject.confirmPassword = "Password must be at least 8 digit long";
       errorExist = true;
     } else if (values?.password !== values?.confirmPassword) {
       errorsObject.confirmPassword =

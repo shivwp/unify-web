@@ -34,18 +34,18 @@ const EditTitle = ({ data, Popup, successPopup, setSuccessPopup }) => {
     let errorsObject = {};
 
     if (
-      values.occuption === "" ||
-      values.occuption === null ||
-      values.occuption === undefined
+      values?.occuption === "" ||
+      values?.occuption === null ||
+      values?.occuption === undefined
     ) {
       errorsObject.occuption = true;
       errorExist = true;
     }
 
     if (
-      values.description === "" ||
-      values.description === null ||
-      values.description === undefined
+      values?.description === "" ||
+      values?.description === null ||
+      values?.description === undefined
     ) {
       errorsObject.description = true;
       errorExist = true;
@@ -57,8 +57,8 @@ const EditTitle = ({ data, Popup, successPopup, setSuccessPopup }) => {
     }
 
     const data = {
-      title: values.occuption,
-      description: values.description,
+      title: values?.occuption,
+      description: values?.description,
     };
 
     dispatch(onEditDesignation(data, Popup, successPopup, setSuccessPopup));

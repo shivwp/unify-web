@@ -11,8 +11,7 @@ const ForgotPass = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [email, setEmail] = useState();
-
-  const forgotPassError = useSelector((state) => state?.auth?.forgotPassError);
+  const [forgotPassError, setForgotPassError] = useState();
 
   const sendEmail = () => {
     localStorage.setItem("unify_email", email);
@@ -20,7 +19,7 @@ const ForgotPass = () => {
     const data = {
       email: email,
     };
-    dispatch(onForgotPassword(data, navigate));
+    dispatch(onForgotPassword(data, navigate, setForgotPassError));
   };
 
   return (
@@ -56,7 +55,10 @@ const ForgotPass = () => {
                   type="text"
                   placeholder="Email"
                   name="email"
-                  onChange={(e) => setEmail(e.target.value)}
+                  onChange={(e) => {
+                    setEmail(e.target.value);
+                    setForgotPassError();
+                  }}
                   required
                   isInvalid={forgotPassError}
                 />

@@ -15,7 +15,12 @@ const TakeTimeToIntro = ({ setCurrentTab }) => {
           </p>
           <label htmlFor="aboutYourSelf" className="startIntroFillOut">
             <div className="startIntroRadiobtn">
-              <Form.Check type="radio" name="p" id="aboutYourSelf" />
+              <Form.Check
+                type="radio"
+                name="p"
+                id="aboutYourSelf"
+                style={{ visibility: "hidden" }}
+              />
             </div>
             <div className="startIntroSVG">
               <svg

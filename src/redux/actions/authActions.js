@@ -137,23 +137,21 @@ export const countryList = () => async (dispatch) => {
   } catch (err) {}
 };
 
-export const onForgotPassword = (data, navigate) => async (dispatch) => {
-  await Axios.post(`/forget-password`, data)
-    .then((res) => {
-      if (res.data.status) {
-        navigate("/verify-forgot-otp");
-      }
-    })
-    .catch((err) => {
-      dispatch({
-        type: FORGOT_PASS_ERROR,
-        payload: err.response.data.message,
+export const onForgotPassword =
+  (data, navigate, setForgotPassError) => async (dispatch) => {
+    await Axios.post(`/forget-password`, data)
+      .then((res) => {
+        if (res.data.status) {
+          navigate("/verify-forgot-otp");
+        }
+      })
+      .catch((err) => {
+        setForgotPassError(err.response.data.message);
       });
-    });
-};
+  };
 
 export const onVerifyForgot =
-  (data, setReOtp, navigate) => async (dispatch) => {
+  (data, navigate, setMessage) => async (dispatch) => {
     await Axios.post(`/verify-forgot-otp`, data)
       .then((res) => {
         if (res.data.status) {
@@ -161,10 +159,7 @@ export const onVerifyForgot =
         }
       })
       .catch((err) => {
-        dispatch({
-          type: FORGOT_OTP_ERROR,
-          payload: err.response.data.message,
-        });
+        setMessage(err.response.data.message);
       });
   };
 

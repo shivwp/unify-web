@@ -24,37 +24,33 @@ const ResetPass = () => {
     let errorExist = false;
     let errorsObject = {};
 
-    if (values.password !== values.confirm_password) {
+    if (
+      values?.password === "" ||
+      values?.password === null ||
+      values?.password === undefined
+    ) {
+      errorsObject.password = "Please enter your password";
+      errorExist = true;
+    } else if (
+      !/^(?=.*\d)(?=.*[a-z])(?=.*[!@#$%^&*()_+])[0-9a-zA-Z!@#$%^&*()_+]{8,}$/.test(
+        values?.password
+      )
+    ) {
+      errorsObject.password =
+        "Password must be at least 8 characters with 1 Special & 1 Number";
+      errorExist = true;
+    }
+
+    if (
+      values?.confirm_password === "" ||
+      values?.confirm_password === null ||
+      values?.confirm_password === undefined
+    ) {
+      errorsObject.confirm_password = "Please enter your confirm password";
+      errorExist = true;
+    } else if (values?.password !== values?.confirm_password) {
       errorsObject.confirm_password =
-        "Confirm password should be match with password";
-      errorExist = true;
-    }
-
-    if (
-      values.password === "" ||
-      values.password === null ||
-      values.password === undefined
-    ) {
-      errorsObject.password = "Please Enter Your Password";
-      errorExist = true;
-    }
-
-    if (values.password && values.password.length < 8) {
-      errorsObject.password = "Password must be at least 8 digit long";
-      errorExist = true;
-    }
-
-    if (
-      values.confirm_password === "" ||
-      values.confirm_password === null ||
-      values.confirm_password === undefined
-    ) {
-      errorsObject.confirm_password = "Please Enter Your Password";
-      errorExist = true;
-    }
-
-    if (values.confirm_password && values.confirm_password.length < 8) {
-      errorsObject.confirm_password = "Password must be at least 8 digit long";
+        "The confirm password is not matching with password";
       errorExist = true;
     }
 
