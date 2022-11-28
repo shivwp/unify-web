@@ -24,7 +24,7 @@ const CloseIcon = () => {
 };
 
 const EditSkill = ({ data, Popup, successPopup, setSuccessPopup }) => {
-  const [selectSkills, setSelectSkills] = useState(data);
+  const [selectSkills, setSelectSkills] = useState(data || []);
   const dispatch = useDispatch();
   const [showSkillList, setShowSkillList] = useState(false);
 

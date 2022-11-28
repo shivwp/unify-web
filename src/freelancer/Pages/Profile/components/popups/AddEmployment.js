@@ -75,14 +75,14 @@ const AddEmployment = ({
       errorsObject.country = true;
       errorExist = true;
     }
-    if (
-      values?.description === "" ||
-      values?.description === null ||
-      values?.description === undefined
-    ) {
-      errorsObject.description = true;
-      errorExist = true;
-    }
+    // if (
+    //   values?.description === "" ||
+    //   values?.description === null ||
+    //   values?.description === undefined
+    // ) {
+    //   errorsObject.description = true;
+    //   errorExist = true;
+    // }
     if (
       values?.subject === "" ||
       values?.subject === null ||
@@ -296,9 +296,9 @@ const AddEmployment = ({
                       onChange={(e) => onInputChange(e)}
                       placeholder="Enter Here"
                     ></Form.Control>
-                    <span className="signup-error">
+                    {/* <span className="signup-error">
                       {errors.description && "Please enter you description"}
-                    </span>
+                    </span> */}
                   </div>
                 </Col>
               </Row>

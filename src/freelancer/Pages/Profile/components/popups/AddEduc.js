@@ -108,14 +108,14 @@ const AddEduc = ({ education, Popup, successPopup, setSuccessPopup }) => {
       errorsObject.area_study = true;
       errorExist = true;
     }
-    if (
-      values?.description === "" ||
-      values?.description === null ||
-      values?.description === undefined
-    ) {
-      errorsObject.description = true;
-      errorExist = true;
-    }
+    // if (
+    //   values?.description === "" ||
+    //   values?.description === null ||
+    //   values?.description === undefined
+    // ) {
+    //   errorsObject.description = true;
+    //   errorExist = true;
+    // }
 
     if (errorExist) {
       setErrors(errorsObject);
@@ -194,21 +194,6 @@ const AddEduc = ({ education, Popup, successPopup, setSuccessPopup }) => {
                     <span className="signup-error">
                       {errors.start_year && "Please select start year"}
                     </span>
-                    {/* <Select
-                      className="font-size-11px"
-                      name="start_year"
-                      defaultValue={
-                        values
-                          ? {
-                              name: values?.start_year,
-                              label: values?.start_year,
-                            }
-                          : null
-                      }
-                      placehosetStartYear}
-                      options={stlder="From"
-                      onChange={artYearList()}
-                    /> */}
                   </div>
                 </Col>
                 <Col md={6}>
@@ -230,21 +215,6 @@ const AddEduc = ({ education, Popup, successPopup, setSuccessPopup }) => {
                     <span className="signup-error">
                       {errors.end_year && "Please select end year"}
                     </span>
-                    {/* <Select
-                      className="font-size-11px"
-                      name="end_year"
-                      defaultValue={
-                        values
-                          ? {
-                              name: values?.end_year,
-                              label: values?.end_year,
-                            }
-                          : null
-                      }
-                      onChange={setEndYear}
-                      options={endYearList()}
-                      placeholder="To (or expected gradution year)"
-                    /> */}
                   </div>
                 </Col>
                 <Col md={12}>
@@ -270,20 +240,6 @@ const AddEduc = ({ education, Popup, successPopup, setSuccessPopup }) => {
                     <span className="signup-error">
                       {errors.degree && "Please select your degree"}
                     </span>
-                    {/* <Select
-                      className="font-size-11px"
-                      defaultValue={
-                        values
-                          ? {
-                              name: values?.degree,
-                              label: values?.degree,
-                            }
-                          : null
-                      }
-                      options={degreeList}
-                      placeholder="Degree "
-                      onChange={setDegree}
-                    /> */}
                   </div>
                 </Col>
                 <Col md={12}>
@@ -317,9 +273,6 @@ const AddEduc = ({ education, Popup, successPopup, setSuccessPopup }) => {
                       name="description"
                       placeholder="Enter Here"
                     ></Form.Control>
-                    <span className="signup-error">
-                      {errors.description && "Please enter your description"}
-                    </span>
                   </div>
                 </Col>
               </Row>

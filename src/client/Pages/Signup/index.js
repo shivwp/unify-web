@@ -17,13 +17,15 @@ const Signupscreen = () => {
     agree_terms: 0,
     send_email: 0,
   });
-  const instantLoginEmail = useSelector(
-    (state) => state?.auth?.instantLoginEmail
-  );
+  // const instantLoginEmail = useSelector(
+  //   (state) => state?.auth?.instantLoginEmail
+  // );
 
-  useEffect(() => {
-    setValues(instantLoginEmail);
-  }, [instantLoginEmail]);
+  console.log(values)
+
+  // useEffect(() => {
+  //   setValues(instantLoginEmail);
+  // }, [instantLoginEmail]);
 
   useEffect(() => {
     dispatch(countryList());

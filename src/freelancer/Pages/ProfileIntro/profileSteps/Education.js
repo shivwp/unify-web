@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import { Row, Col, Form } from "react-bootstrap";
 import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { onDeleteEducation } from "../../../../redux/actions/profileAction";
 import ConfirmationPopup from "../../../components/popups/ConfirmationPopup";
 import AddEduc from "../../Profile/components/popups/AddEduc";
 
 const Education = ({ setCurrentTab, profileList }) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [popup, Setpopup] = useState();
   const [successPopup, setSuccessPopup] = useState(false);
   const [confirmPopup, setConfirmPopup] = useState(false);
@@ -181,26 +182,38 @@ const Education = ({ setCurrentTab, profileList }) => {
                   </div>
                 </div>
               </Col>
-              <div className="s_na_categ mb-0 mt-0">
+              {/* <div className="s_na_categ mb-0 mt-0">
                 <Form.Check type="checkbox" />
                 <Form.Label>
                   Nothing to add? Check the box and keep going
                 </Form.Label>
-              </div>
+              </div> */}
             </Row>
             <div className="theme_btns mt-0">
               <button
                 className="first_button"
-                onClick={() => setCurrentTab("exprience")}
+                onClick={() => {
+                  setCurrentTab("exprience");
+                  navigate(`/freelancer/profile-intro/exprience`);
+                }}
               >
                 Back
               </button>
-              <button
-                className="second_button"
-                onClick={() => setCurrentTab("chooseLangauge")}
-              >
-                Next
-              </button>
+              {profileList?.length === 0 ? (
+                <button className="second_button" disabled>
+                  Next
+                </button>
+              ) : (
+                <button
+                  className="second_button"
+                  onClick={() => {
+                    setCurrentTab("chooseLangauge");
+                    navigate(`/freelancer/profile-intro/chooseLangauge`);
+                  }}
+                >
+                  Next
+                </button>
+              )}
             </div>
           </div>
         </div>

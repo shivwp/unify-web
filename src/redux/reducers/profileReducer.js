@@ -34,6 +34,7 @@ import {
   SET_JOB_DATA_LISTING,
   SET_CATEGORY_LIST,
   SET_PORTFOLIO_ERROR,
+  ADD_CATEGORY,
 } from "../types";
 
 const initialState = {};
@@ -218,6 +219,11 @@ const profileReducer = (state = initialState, action) => {
       return {
         ...state,
         portfolioError: action.payload,
+      };
+    case ADD_CATEGORY:
+      return {
+        ...state,
+        addCategory: action.payload,
       };
     default:
       return state;

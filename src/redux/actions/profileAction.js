@@ -35,6 +35,8 @@ import {
   GET_TESTIMONIAL,
   SET_CATEGORY_LIST,
   SET_PORTFOLIO_ERROR,
+  ADD_CATEGORY,
+  HOURLY_PRICE,
 } from "../types";
 let userDetails = JSON.parse(localStorage.getItem("unify_user"));
 
@@ -361,20 +363,25 @@ export const getHoursPerWeekList = () => async (dispatch) => {
 };
 
 export const onEditHourPerWeek =
-  (data, popup, successPopup, setSuccessPopup) => async (dispatch) => {
+  (data, popup, successPopup, setSuccessPopup, afterSuccess) =>
+  async (dispatch) => {
     try {
       Axios.post("/edit-hours-per-week", data, config).then((res) => {
         dispatch({
           type: SET_HOURS_PER_WEEK,
           payload: res.data,
         });
-        popup();
+
         setSuccessPopup(
           <SuccessPopup
             Popup={() => setSuccessPopup(!successPopup)}
             message="Hours Per Week set Successfully"
+            afterSuccess={afterSuccess}
           />
         );
+        if (popup) {
+          popup();
+        }
       });
     } catch (err) {}
   };
@@ -572,6 +579,42 @@ export const onGetTestmonial = (data, setValues) => async (dispatch) => {
     });
   } catch (err) {}
 };
+export const onAddCategory =
+  (data, successPopup, setSuccessPopup, afterSuccess) => async (dispatch) => {
+    try {
+      Axios.post("/add-category", data, config).then((res) => {
+        dispatch({
+          type: ADD_CATEGORY,
+          payload: res.data.data,
+        });
+        setSuccessPopup(
+          <SuccessPopup
+            Popup={() => setSuccessPopup(!successPopup)}
+            message="Your Service is Set Successfully"
+            afterSuccess={afterSuccess}
+          />
+        );
+      });
+    } catch (err) {}
+  };
+export const setHourlyPrice =
+  (data, successPopup, setSuccessPopup, afterSuccess) => async (dispatch) => {
+    try {
+      Axios.post("/add-category", data, config).then((res) => {
+        dispatch({
+          type: HOURLY_PRICE,
+          payload: res.data.data,
+        });
+        setSuccessPopup(
+          <SuccessPopup
+            Popup={() => setSuccessPopup(!successPopup)}
+            message="Hourly Price Added Successfully"
+            afterSuccess={afterSuccess}
+          />
+        );
+      });
+    } catch (err) {}
+  };
 
 export const getCertificationList =
   (setCertificateList) => async (dispatch) => {

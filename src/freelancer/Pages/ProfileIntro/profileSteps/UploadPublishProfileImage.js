@@ -1,4 +1,5 @@
 import React from "react";
+import { useState } from "react";
 import { Row } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 
@@ -17,7 +18,17 @@ const CloseIcon = () => {
   );
 };
 
-const UploadPublishProfilepic = ({ Popup }) => {
+const UploadPublishProfilepic = ({
+  Popup,
+  setPortfolioImage,
+  portfolioImage,
+  showingImage,
+  setShowingImage,
+}) => {
+  const onImageChange = (e) => {
+    setPortfolioImage(e.target.files[0]);
+    setShowingImage(URL.createObjectURL(e.target.files[0]));
+  };
   return (
     <>
       <div className="bg_wrapper_popup_new">
@@ -33,24 +44,45 @@ const UploadPublishProfilepic = ({ Popup }) => {
             <div className="mt-2 pt-1 mb-4"></div>
             <Row className="mt-3">
               <div className="uploadPublishPhoto">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="100"
-                  height="100"
-                  viewBox="0 0 170 170"
-                >
-                  <path
-                    id="user_1_"
-                    data-name="user (1)"
-                    d="M87,172A85,85,0,1,0,2,87,85,85,0,0,0,87,172ZM112.5,70A25.5,25.5,0,1,1,87,44.5,25.5,25.5,0,0,1,112.5,70ZM36,129.5a63.75,63.75,0,0,1,102,0,63.75,63.75,0,0,1-102,0Z"
-                    transform="translate(-2 -2)"
-                    fill="#dedede"
-                    fill-rule="evenodd"
+                <div className="image_to_show">
+                  {showingImage ? (
+                    <img
+                      src={showingImage}
+                      style={{
+                        width: "100%",
+                        height: "100%",
+                        objectFit: "cover",
+                      }}
+                    />
+                  ) : (
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 170 170"
+                    >
+                      <path
+                        id="user_1_"
+                        data-name="user (1)"
+                        d="M87,172A85,85,0,1,0,2,87,85,85,0,0,0,87,172ZM112.5,70A25.5,25.5,0,1,1,87,44.5,25.5,25.5,0,0,1,112.5,70ZM36,129.5a63.75,63.75,0,0,1,102,0,63.75,63.75,0,0,1-102,0Z"
+                        transform="translate(-2 -2)"
+                        fill="#dedede"
+                        fill-rule="evenodd"
+                      />
+                    </svg>
+                  )}
+                </div>
+
+                <label htmlFor="uploadImg" className="uploadPublish_button">
+                  <input
+                    type="file"
+                    id="uploadImg"
+                    name="profile"
+                    style={{
+                      display: "none",
+                    }}
+                    onChange={(e) => onImageChange(e)}
                   />
-                </svg>
-                <button className="uploadPublish_button">
                   Select Profile Image
-                </button>
+                </label>
               </div>
             </Row>
             <Row className="mt-4">

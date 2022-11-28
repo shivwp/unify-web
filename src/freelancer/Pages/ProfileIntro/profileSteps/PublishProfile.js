@@ -5,6 +5,9 @@ import UploadPublishProfileImage from "./UploadPublishProfileImage";
 const PublishProfile = ({ setCurrentTab }) => {
   const [popup, setPopup] = useState();
 
+  const [showingImage, setShowingImage] = useState();
+  const [portfolioImage, setPortfolioImage] = useState(null);
+
   return (
     <>
       <div className="container">
@@ -38,7 +41,15 @@ const PublishProfile = ({ setCurrentTab }) => {
               <button
                 className="uploadPublish_button"
                 onClick={() => {
-                  setPopup(<UploadPublishProfileImage Popup={setPopup} />);
+                  setPopup(
+                    <UploadPublishProfileImage
+                      Popup={setPopup}
+                      setShowingImage={setShowingImage}
+                      showingImage={showingImage}
+                      portfolioImage={portfolioImage}
+                      setPortfolioImage={setPortfolioImage}
+                    />
+                  );
                 }}
               >
                 Upload Photo

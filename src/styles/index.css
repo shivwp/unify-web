@@ -6486,6 +6486,7 @@ a {
   padding: 5px 15px;
   display: flex;
   flex-wrap: wrap;
+  min-height: 61px;
 }
 
 @media screen and (max-width: 376px) {
@@ -6524,6 +6525,20 @@ a {
   flex-direction: column;
   align-items: center;
   gap: 23px;
+}
+.uploadPublishPhoto .image_to_show {
+  width: 100px;
+  height: 100px;
+}
+.uploadPublishPhoto .image_to_show img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+.uploadPublishPhoto .image_to_show svg {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
 }
 
 .uploadImageDetails {

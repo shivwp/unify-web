@@ -25,6 +25,7 @@ const WhatDoYouDo = ({ setCurrentTab, profileList }) => {
   };
 
   const afterSuccess = () => {
+    setCurrentTab("exprience");
     navigate(`/freelancer/profile-intro/exprience`);
   };
 

@@ -25,6 +25,8 @@ const ProfileIntro = () => {
   const addExprience = useSelector((state) => state.profile.addExprience);
   const deleteEducation = useSelector((state) => state.profile.deleteEducation);
   const editEducation = useSelector((state) => state.profile.editEducation);
+  const addCategory = useSelector((state) => state?.profile?.addCategory);
+
   const editFreelancerLanguage = useSelector(
     (state) => state.profile.editFreelancerLanguage
   );
@@ -42,7 +44,9 @@ const ProfileIntro = () => {
     deleteEducation,
     editEducation,
     editFreelancerLanguage,
+    addCategory,
   ]);
+
 
   return (
     <div>
@@ -81,7 +85,10 @@ const ProfileIntro = () => {
       )}
 
       {currentTab === "servicesOffer" && (
-        <ServicesOffer setCurrentTab={setCurrentTab} />
+        <ServicesOffer
+          setCurrentTab={setCurrentTab}
+          profileList={freelancerProfileList?.basic_info}
+        />
       )}
       {currentTab === "hourlyRate" && (
         <HourlyRate setCurrentTab={setCurrentTab} />
