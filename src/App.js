@@ -190,6 +190,8 @@ function App() {
         </Route>
         <Route path="/pages/:pagename" element={<FooterPages />} />
         <Route path="/subscription" element={<Subscription />} />
+        <Route path="/submit-testimonial/:id" element={<Testimonial />} />
+
         <Route
           path="/freelancer/subscription"
           element={<FreelancerSubscription />}
@@ -275,7 +277,6 @@ function App() {
             path="/freelancer/project-search"
             element={<ProjectSearch />}
           />
-          <Route path="/submit-testimonial/:id" element={<Testimonial />} />
           <Route path="/agency/dashboard" element={<AgencyDashboard />} />
           <Route
             path="/freelancer/project-search/:saved"

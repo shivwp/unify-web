@@ -44,7 +44,7 @@ const NavbarHeader = (props) => {
         <div className="w-100 d-flex justify-content-between align-items-center flex_rev newnav_v2_flxew pb-0 no-border">
           <NavDropdown
             className="navbar_btn b_job_l_sx nenav_bddowniu"
-            title="WHAT IS UNIFY"
+            title="What Is Unify"
             id="navbarScrollingDropdown"
           >
             <div className="navabr_t_li">
@@ -310,7 +310,7 @@ const NavbarHeader = (props) => {
                 <Nav>
                   <NavDropdown
                     className="navbar_btn b_job_l_sx"
-                    title="WHAT IS UNIFY"
+                    title="What is Unify"
                     id="navbarScrollingDropdown"
                   >
                     <div className="navabr_t_li">

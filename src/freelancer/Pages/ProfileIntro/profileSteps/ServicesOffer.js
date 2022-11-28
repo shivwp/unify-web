@@ -1,26 +1,24 @@
 import React from "react";
+import { useEffect } from "react";
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import Select from "react-select";
+import { getCategoryList } from "../../../../redux/actions/profileAction";
 
 const ServicesOffer = ({ setCurrentTab }) => {
-  const initialValue = () => {
-    const values = "some";
-    return values;
-  };
-  const [values, setValues] = useState(initialValue);
+  const dispatch = useDispatch();
+  const categoryList = useSelector((state) => state?.profile?.categoryList);
+  const [values, setValues] = useState({});
 
-  const Skills = [
-    { label: "React", value: 355 },
-    { label: "Javascript", value: 54 },
-    { label: "PHP", value: 43 },
-    { label: "Java", value: 61 },
-    { label: "Python", value: 965 },
-  ];
+  useEffect(() => {
+    dispatch(getCategoryList());
+  }, []);
 
-  const handleChange = (e) => {
-    setValues(e.target.value);
+  const handleOnChange = (e) => {
+    setValues({ [e.target.name]: e.target.value });
   };
 
+  console.log(categoryList);
   return (
     <div className="container">
       <div className="container_border">
@@ -35,18 +33,18 @@ const ServicesOffer = ({ setCurrentTab }) => {
           </p>
           <div className="servicesChoose">
             <div className="popup_form_element">
-              <Select
+              <select
                 name="name"
                 className="servicesOfferOption"
-                value={values}
-                options={Skills}
-                // onChange={(e) => handleChange(e)}
-                isMulti
-                // value={values?.name}
-                // onChange={(e) => handleOnChange(e)}
+                onChange={(e) => handleOnChange(e)}
               >
-                <option value="">Search for a service</option>
-              </Select>
+                <option selected disabled>
+                  Search for a service
+                </option>
+                {categoryList?.map((item) => (
+                  <option value={item?.name}>{item.name}</option>
+                ))}
+              </select>
             </div>
           </div>
           <div className="theme_btns mt-0">

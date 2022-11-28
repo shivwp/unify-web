@@ -1521,7 +1521,7 @@ body {
   font-size: 20px;
   letter-spacing: 2px;
   color: #ffffff;
-  font-weight: 700;
+  font-weight: 600;
   text-transform: uppercase;
   font-family: "Poppins";
 }
@@ -3442,6 +3442,7 @@ body {
 }
 
 .bg-body-wrapper {
+  min-height: 100vh;
   background-image: url("../../public/assets/Rectangle 1.svg");
   background-size: cover;
   height: -webkit-fill-available;
@@ -5895,7 +5896,7 @@ a {
   align-items: center;
   max-width: 650px;
   width: 95%;
-  padding: 20px;
+  padding: 40px 30px;
   background: #ffffff 0% 0% no-repeat padding-box;
   min-height: 200px;
   /* max-height: 98vh; */
@@ -5962,7 +5963,7 @@ a {
 }
 
 .submit_testimo_inp {
-  margin-top: 25px;
+  margin-top: 30px;
 }
 
 .submit_testimo_inp label {
@@ -5980,6 +5981,7 @@ a {
   outline: none;
   font-size: 12px;
   padding: 10px;
+  border-radius: 0;
 }
 
 .submit_testimo_inp textarea::placeholder {
