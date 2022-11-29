@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { Row, Col } from "react-bootstrap";
 import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   editNameInfo,
   onDeleteEducation,
@@ -26,6 +26,7 @@ const PreviewProfile = ({ setCurrentTab, profileList }) => {
   const [successPopup, setSuccessPopup] = useState();
   const [confirmPopup, setConfirmPopup] = useState();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     setShowingImage(profileList?.basic_info?.profile_image);
@@ -655,6 +656,42 @@ const PreviewProfile = ({ setCurrentTab, profileList }) => {
             <Row>
               <div className="hraet_pdd_sp">
                 <span className="previewPostion"> Location </span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="25"
+                  height="25"
+                  viewBox="0 0 40 40"
+                  onClick={() => {
+                    setCurrentTab("publishProfile");
+                    navigate(`/freelancer/profile-intro/publishProfile`);
+                  }}
+                >
+                  <g
+                    id="Group_3589"
+                    data-name="Group 3589"
+                    transform="translate(-464 -2581)"
+                  >
+                    <g
+                      id="Ellipse_689"
+                      data-name="Ellipse 689"
+                      transform="translate(464 2581)"
+                      fill="#fff"
+                      stroke="#707070"
+                      strokeWidth="1"
+                      opacity="0.43"
+                    >
+                      <circle cx="20" cy="20" r="20" stroke="none" />
+                      <circle cx="20" cy="20" r="19.5" fill="none" />
+                    </g>
+                    <path
+                      id="_8665767_pen_icon"
+                      data-name="8665767_pen_icon"
+                      d="M15.327,2.274,13.482.429a1.475,1.475,0,0,0-2.085,0L9.662,2.165l3.9,3.929L15.3,4.358A1.447,1.447,0,0,0,15.327,2.274Zm-6.356.585L1,10.83a.491.491,0,0,0-.134.251L.057,15.123a.491.491,0,0,0,.576.58l4.042-.808a.491.491,0,0,0,.251-.134L12.9,6.789Z"
+                      transform="translate(477.099 2593.145)"
+                      fill="#b9bdc1"
+                    />
+                  </g>
+                </svg>
               </div>
               <div className="previewProfileDate">
                 {profileList?.basic_info?.city}{" "}
