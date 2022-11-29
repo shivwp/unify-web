@@ -1,11 +1,14 @@
 import Subscriptionc from "./components/subscription";
-import Layout from "../../Layout/Layout";
+import Footer from "../../Layout/Footer/Footer";
+import ProfileIntroNavbar from "../../../freelancer/Pages/ProfileIntro/ProfileIntroNavbar";
 
 const Subscription = () => {
   return (
-    <Layout webtype="client">
+    <>
+      <ProfileIntroNavbar />
       <Subscriptionc />
-    </Layout>
+      <Footer />
+    </>
   );
 };
 export default Subscription;

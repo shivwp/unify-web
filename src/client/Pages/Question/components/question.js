@@ -33,7 +33,7 @@ const Question = () => {
               </Link>
             </div>
             <div className="fo_btn_c next_b_btn_c">
-              <Link to="/create-category">
+              <Link to="/subscription">
                 <Button variant="" className="active_btn_blue">
                   Continue
                 </Button>

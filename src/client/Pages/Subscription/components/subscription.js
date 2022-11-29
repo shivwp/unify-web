@@ -1,12 +1,59 @@
+import React, { useEffect, useState } from "react";
 import Container from "react-bootstrap/Container";
 import { Col, Row } from "react-bootstrap";
-import Title from "../../../../components/title";
-import { Link } from "react-router-dom";
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
+import { Link, useNavigate } from "react-router-dom";
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  getSubscriptionList,
+  onSubscriptionPayment,
+} from "../../../../redux/actions/subscriptionAction";
+import StripeCheckout from "react-stripe-checkout";
 
 const Subscriptionplan = () => {
-  Title(" | Subscription plan");
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const [values, setValues] = useState({});
+  const [errors, setErrors] = useState({});
+  const subscriptionList = useSelector(
+    (state) => state.subscription.subscriptionList
+  );
+
+  useEffect(() => {
+    dispatch(getSubscriptionList());
+  }, []);
+
+  const onInputChange = (e) => {
+    setValues({ ...values, [e.target.name]: e.target.value });
+    setErrors({ ...errors, [e.target.name]: false });
+  };
+
+  const handlePayment = (token) => {
+    let errorExist = false;
+    let errorsObject = {};
+
+    if (
+      values?.subscription === "" ||
+      values?.subscription === null ||
+      values?.subscription === undefined
+    ) {
+      errorsObject.subscription = true;
+      errorExist = true;
+    }
+
+    if (errorExist) {
+      setErrors(errorsObject);
+      return false;
+    }
+
+    const data = {
+      subscription_id: values?.subscription,
+      stripe_token: token.id,
+    };
+    dispatch(onSubscriptionPayment(data, navigate));
+  };
+
   return (
     <>
       <Container>
@@ -15,87 +62,48 @@ const Subscriptionplan = () => {
             <h1 className="text-center font-fiftie">Subscription plan</h1>
           </div>
           <Row className="justify-content-center">
-            <Col lg={4} className="sub_col_c">
-              <Form.Label>
-                <div className="subscription_box_r">
-                  <div className="sub_radio new_sub_rad">
-                    <Form.Check type="radio" name="s" />
+            <span
+              className="signup-error"
+              style={{ fontSize: "16px !important" }}
+            >
+              {errors.subscription && "Please select subscription plan"}
+            </span>
+            {subscriptionList?.map((item, key) => (
+              <Col lg={4} className="sub_col_c" key={key}>
+                <Form.Label>
+                  <div className="subscription_box_r">
+                    <div className="sub_radio new_sub_rad">
+                      <Form.Check
+                        type="radio"
+                        name="subscription"
+                        value={item.id}
+                        onChange={(e) => onInputChange(e)}
+                      />
+                    </div>
+                    <div className="sub_sm_tex">{item.title}</div>
+                    <div className="sub_pric">
+                      ${item.amount} / {item.validity}
+                    </div>
+                    <ul className="sub_list_ul">
+                      {item.services.map((data, key) => (
+                        <li key={key}>{data.service_name}</li>
+                      ))}
+                    </ul>
+                    <div>
+                      <StripeCheckout
+                        label="Add Card"
+                        token={handlePayment}
+                        stripeKey="pk_test_51M7YBGEAU8g6XRhsSzwgw2cS4DwXnFyL6C8HiT3GkOTY4GVOpbyjff7PCITznuAi5GV9xic6sDlLZd4p2t9fKnPZ00zZi7dmqe"
+                      >
+                        <button className="btn_chose_pl btnhovpple">
+                          CHOOSE PLAN
+                        </button>
+                      </StripeCheckout>
+                    </div>
                   </div>
-                  <div className="sub_sm_tex">BASIC</div>
-                  <div className="sub_pric">$0.00 /month</div>
-                  <ul className="sub_list_ul">
-                    <li>Free job post & verified freelancer work history</li>
-                    <li>Free proposals from talent</li>
-                    <li>Unify Payment Protection</li>
-                    <li>On-demand sourcing services </li>
-                    <li>Team project tracking & collaboration tools </li>
-                    <li>
-                      Additional freelancer invites, report & tracking
-                      capabilities
-                    </li>
-                  </ul>
-                  <div> 
-                    <Link to="/dashboard">
-                      <Button variant="" className="btn_chose_pl btnhovpple">CHOOSE PLAN</Button>
-                    </Link>
-                  </div>
-                </div>
-              </Form.Label>
-            </Col>
-            <Col lg={4} className="sub_col_c">
-              <Form.Label>
-                <div className="subscription_box_r">
-                  <div className="sub_radio new_sub_rad">
-                    <Form.Check type="radio" name="s" />
-                  </div>
-                  <div className="sub_sm_tex">PLUS</div>
-                  <div className="sub_pric">50.00 /month</div>
-                  <ul className="sub_list_ul">
-                    <li>Free job post & verified freelancer work history</li>
-                    <li>Free proposals from talent</li>
-                    <li>Unify Payment Protection</li>
-                    <li>On-demand sourcing services </li>
-                    <li>Team project tracking & collaboration tools </li>
-                    <li>
-                      Additional freelancer invites, report & tracking
-                      capabilities
-                    </li>
-                  </ul>
-                  <div>
-                    <Link to="/dashboard">
-                      <Button variant="" className="btn_chose_pl btnhovpple">CHOOSE PLAN</Button>
-                    </Link>
-                  </div>
-                </div>
-              </Form.Label>
-            </Col>
-            <Col lg={4} className="sub_col_c">
-              <Form.Label>
-                <div className="subscription_box_r">
-                  <div className="sub_radio new_sub_rad">
-                    <Form.Check type="radio" name="s" />
-                  </div>
-                  <div className="sub_sm_tex">ENTERPRISE</div>
-                  <div className="sub_pric">$100.00/year</div>
-                  <ul className="sub_list_ul">
-                    <li>Free job post & verified freelancer work history</li>
-                    <li>Free proposals from talent</li>
-                    <li>Unify Payment Protection</li>
-                    <li>On-demand sourcing services </li>
-                    <li>Team project tracking & collaboration tools </li>
-                    <li>
-                      Additional freelancer invites, report & tracking
-                      capabilities
-                    </li>
-                  </ul>
-                  <div>
-                    <Link to="/dashboard">
-                      <Button variant="" className="btn_chose_pl btnhovpple">CHOOSE PLAN</Button>
-                    </Link>
-                  </div>
-                </div>
-              </Form.Label>
-            </Col>
+                </Form.Label>
+              </Col>
+            ))}
           </Row>
         </div>
       </Container>

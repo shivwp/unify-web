@@ -189,7 +189,6 @@ function App() {
           <Route path="/job-details/:id" element={<JobDetails />} />
         </Route>
         <Route path="/pages/:pagename" element={<FooterPages />} />
-        <Route path="/subscription" element={<Subscription />} />
         <Route path="/submit-testimonial/:id" element={<Testimonial />} />
 
         <Route
@@ -201,6 +200,7 @@ function App() {
           <Route path="/create-category" element={<Createcategory />} />
           <Route path="/question1" element={<Question />} />
           <Route path="/question2" element={<QuestionTwo />} />
+          <Route path="/subscription" element={<Subscription />} />
           <Route path="/businesssize" element={<BusinessSize />} />
           <Route path="/expandteam" element={<ExpandTeam />} />
           <Route path="/notification" element={<Notification />} />
