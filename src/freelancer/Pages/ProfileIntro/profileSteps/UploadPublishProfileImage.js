@@ -22,6 +22,7 @@ const UploadPublishProfilepic = ({
   Popup,
   setShowingImage,
   setProfileImage,
+  showingImage,
 }) => {
   const [showingImage2, setShowingImage2] = useState(null);
 
@@ -54,6 +55,15 @@ const UploadPublishProfilepic = ({
                   {showingImage2 ? (
                     <img
                       src={showingImage2}
+                      style={{
+                        width: "100%",
+                        height: "100%",
+                        objectFit: "cover",
+                      }}
+                    />
+                  ) : showingImage ? (
+                    <img
+                      src={showingImage}
                       style={{
                         width: "100%",
                         height: "100%",

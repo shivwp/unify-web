@@ -2,20 +2,56 @@ import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
 import { Row, Col } from "react-bootstrap";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import {
+  editNameInfo,
+  onDeleteEducation,
+  onDeleteEmployment,
+} from "../../../../redux/actions/profileAction";
+import ConfirmationPopup from "../../../components/popups/ConfirmationPopup";
 import PortfolioPupup from "../../../components/popups/PortfolioPupup";
+import SuccessPopup from "../../../components/popups/SuccessPopup";
+import AddEduc from "../../Profile/components/popups/AddEduc";
+import AddEmployment from "../../Profile/components/popups/AddEmployment";
+import EditSkill from "../../Profile/components/popups/EditSkill";
+import EditTitle from "../../Profile/components/popups/EditTitle";
+import HourlyRatePopup from "../../Profile/components/popups/HourlyRatePopup";
+import LanguageEdit from "../../Profile/components/popups/LanguageEdit";
 
 const PreviewProfile = ({ setCurrentTab, profileList }) => {
   const [showingImage, setShowingImage] = useState(null);
   const [profileImage, setProfileImage] = useState(null);
+  const [popup, Setpopup] = useState();
+  const [successPopup, setSuccessPopup] = useState();
+  const [confirmPopup, setConfirmPopup] = useState();
+  const dispatch = useDispatch();
 
-  const onImageChange = (e) => {
-    setProfileImage(e.target.files[0]);
-    setShowingImage(URL.createObjectURL(e.target.files[0]));
-  };
   useEffect(() => {
     setShowingImage(profileList?.basic_info?.profile_image);
   }, [profileList]);
+  console.log(profileImage);
+
+  const deleteExp = (id) => {
+    dispatch(onDeleteEmployment({ id }, setConfirmPopup));
+  };
+
+  const deleteEdu = (id) => {
+    dispatch(onDeleteEducation({ id }, setConfirmPopup));
+  };
+
+  const onProfleImgChange = (e) => {
+    const profileImage = e.target.files[0];
+    setShowingImage(URL.createObjectURL(e.target.files[0]));
+    const formData = new FormData();
+
+    formData.append("first_name", profileList?.basic_info?.first_name);
+    formData.append("last_name", profileList?.basic_info?.last_name);
+    formData.append("occcuption", profileList?.basic_info?.occcuption);
+    formData.append("profile_image", profileImage);
+
+    dispatch(editNameInfo(formData));
+  };
   return (
     <>
       <div className="container">
@@ -125,6 +161,7 @@ const PreviewProfile = ({ setCurrentTab, profileList }) => {
                       name="profile_image"
                       id="selectImg"
                       style={{ display: "none" }}
+                      onChange={(e) => onProfleImgChange(e)}
                     />
                     Edit photo
                   </label>
@@ -163,6 +200,19 @@ const PreviewProfile = ({ setCurrentTab, profileList }) => {
                   width="25"
                   height="25"
                   viewBox="0 0 40 40"
+                  onClick={() => {
+                    Setpopup(
+                      <EditTitle
+                        data={{
+                          occuption: profileList?.basicInfo?.occuption,
+                          description: profileList?.basicInfo?.description,
+                        }}
+                        Popup={Setpopup}
+                        successPopup={successPopup}
+                        setSuccessPopup={setSuccessPopup}
+                      />
+                    );
+                  }}
                 >
                   <g
                     id="Group_3589"
@@ -206,6 +256,16 @@ const PreviewProfile = ({ setCurrentTab, profileList }) => {
                   width="25"
                   height="25"
                   viewBox="0 0 40 40"
+                  onClick={() => {
+                    Setpopup(
+                      <HourlyRatePopup
+                        Popup={Setpopup}
+                        successPopup={successPopup}
+                        setSuccessPopup={setSuccessPopup}
+                        data={profileList?.basic_info?.amount}
+                      />
+                    );
+                  }}
                 >
                   <g
                     id="Group_3589"
@@ -250,6 +310,16 @@ const PreviewProfile = ({ setCurrentTab, profileList }) => {
                   width="25"
                   height="25"
                   viewBox="0 0 40 40"
+                  onClick={() => {
+                    Setpopup(
+                      <EditSkill
+                        Popup={Setpopup}
+                        data={profileList?.skills}
+                        setSuccessPopup={setSuccessPopup}
+                        successPopup={successPopup}
+                      />
+                    );
+                  }}
                 >
                   <g
                     id="Group_3589"
@@ -297,6 +367,15 @@ const PreviewProfile = ({ setCurrentTab, profileList }) => {
                   width="25"
                   height="25"
                   viewBox="0 0 40 40"
+                  onClick={() => {
+                    Setpopup(
+                      <AddEmployment
+                        Popup={Setpopup}
+                        successPopup={successPopup}
+                        setSuccessPopup={setSuccessPopup}
+                      />
+                    );
+                  }}
                 >
                   <g
                     id="Group_3592"
@@ -327,12 +406,22 @@ const PreviewProfile = ({ setCurrentTab, profileList }) => {
               </div>
               {profileList?.employment?.map((item, index) => (
                 <>
-                  <div className="hraet_pdd_sp" key={index}>
+                  <div className="hraet_pdd_sp mt-1" key={index}>
                     <div className="previewWorkExp">
                       <span className="previewPostion">
                         {item?.subject} | {item.company}
                       </span>
                       <svg
+                        onClick={(e) => {
+                          Setpopup(
+                            <AddEmployment
+                              Popup={Setpopup}
+                              experience={item}
+                              successPopup={successPopup}
+                              setSuccessPopup={setSuccessPopup}
+                            />
+                          );
+                        }}
                         xmlns="http://www.w3.org/2000/svg"
                         width="25"
                         height="25"
@@ -369,6 +458,14 @@ const PreviewProfile = ({ setCurrentTab, profileList }) => {
                         width="25"
                         height="25"
                         viewBox="0 0 40 40"
+                        onClick={() =>
+                          setConfirmPopup(
+                            <ConfirmationPopup
+                              Popup={() => setConfirmPopup(!confirmPopup)}
+                              confirm={() => deleteExp(item.id)}
+                            />
+                          )
+                        }
                       >
                         <g
                           id="Group_3591"
@@ -398,12 +495,12 @@ const PreviewProfile = ({ setCurrentTab, profileList }) => {
                       </svg>
                     </div>
                   </div>
-                  <div className="previewProfileDate">
+                  <div className="previewProfileDate mb-3">
                     {item.start_date} - {item.end_date}
                   </div>
-                  <div className="pbx_pdd_sp2"></div>
                 </>
               ))}
+              <div className="pbx_pdd_sp2"></div>
             </Row>
           </div>
           <div className="startIntroIn">
@@ -415,6 +512,15 @@ const PreviewProfile = ({ setCurrentTab, profileList }) => {
                   width="25"
                   height="25"
                   viewBox="0 0 40 40"
+                  onClick={() => {
+                    Setpopup(
+                      <AddEduc
+                        Popup={Setpopup}
+                        successPopup={successPopup}
+                        setSuccessPopup={setSuccessPopup}
+                      />
+                    );
+                  }}
                 >
                   <g
                     id="Group_3592"
@@ -445,21 +551,104 @@ const PreviewProfile = ({ setCurrentTab, profileList }) => {
               </div>
               {profileList?.education?.map((item, index) => (
                 <>
-                  <div key={index}>
-                    {item ? (
-                      <div className="previewProfileDate">
-                        {item.school} {item.start_year} - {item.end_year}
-                      </div>
-                    ) : (
-                      <div className="previewProfileDate">
-                        No item to display
-                      </div>
-                    )}
-
-                    <div className="pbx_pdd_sp2"></div>
+                  <div
+                    key={index}
+                    className="my-2"
+                    style={{ display: "flex", alignItems: "center" }}
+                  >
+                    <div
+                      className="previewProfileDate"
+                      style={{ marginRight: 10 }}
+                    >
+                      {item.school} {item.start_year} - {item.end_year}
+                    </div>
+                    <svg
+                      style={{ marginRight: 6 }}
+                      onClick={() => {
+                        Setpopup(
+                          <AddEduc
+                            education={item}
+                            Popup={Setpopup}
+                            successPopup={successPopup}
+                            setSuccessPopup={setSuccessPopup}
+                          />
+                        );
+                      }}
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="25"
+                      height="25"
+                      viewBox="0 0 40 40"
+                    >
+                      <g
+                        id="Group_3589"
+                        data-name="Group 3589"
+                        transform="translate(-464 -2581)"
+                      >
+                        <g
+                          id="Ellipse_689"
+                          data-name="Ellipse 689"
+                          transform="translate(464 2581)"
+                          fill="#fff"
+                          stroke="#707070"
+                          strokeWidth="1"
+                          opacity="0.43"
+                        >
+                          <circle cx="20" cy="20" r="20" stroke="none" />
+                          <circle cx="20" cy="20" r="19.5" fill="none" />
+                        </g>
+                        <path
+                          id="_8665767_pen_icon"
+                          data-name="8665767_pen_icon"
+                          d="M15.327,2.274,13.482.429a1.475,1.475,0,0,0-2.085,0L9.662,2.165l3.9,3.929L15.3,4.358A1.447,1.447,0,0,0,15.327,2.274Zm-6.356.585L1,10.83a.491.491,0,0,0-.134.251L.057,15.123a.491.491,0,0,0,.576.58l4.042-.808a.491.491,0,0,0,.251-.134L12.9,6.789Z"
+                          transform="translate(477.099 2593.145)"
+                          fill="#b9bdc1"
+                        />
+                      </g>
+                    </svg>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="25"
+                      height="25"
+                      viewBox="0 0 40 40"
+                      onClick={() =>
+                        setConfirmPopup(
+                          <ConfirmationPopup
+                            Popup={() => setConfirmPopup(!confirmPopup)}
+                            confirm={() => deleteEdu(item?.id)}
+                          />
+                        )
+                      }
+                    >
+                      <g
+                        id="Group_3591"
+                        data-name="Group 3591"
+                        transform="translate(-516 -2581)"
+                      >
+                        <g
+                          id="Ellipse_690"
+                          data-name="Ellipse 690"
+                          transform="translate(516 2581)"
+                          fill="#fff"
+                          stroke="#707070"
+                          strokeWidth="1"
+                          opacity="0.43"
+                        >
+                          <circle cx="20" cy="20" r="20" stroke="none" />
+                          <circle cx="20" cy="20" r="19.5" fill="none" />
+                        </g>
+                        <path
+                          id="_2203546_bin_delete_gabage_trash_icon"
+                          data-name="2203546_bin_delete_gabage_trash_icon"
+                          d="M8,0A1,1,0,0,0,7,1H0V3H1V14a2,2,0,0,0,2,2H13a2,2,0,0,0,2-2V3h1V1H9A1,1,0,0,0,8,0ZM4,14H3V5H4Zm3,0H6V5H7Zm3,0H9V5h1Zm3,0H12V5h1Z"
+                          transform="translate(528 2593)"
+                          fill="#b9bdc1"
+                        />
+                      </g>
+                    </svg>
                   </div>
                 </>
               ))}
+              <div className="pbx_pdd_sp2"></div>
             </Row>
           </div>
           <div className="startIntroIn">
@@ -484,6 +673,16 @@ const PreviewProfile = ({ setCurrentTab, profileList }) => {
                   width="25"
                   height="25"
                   viewBox="0 0 40 40"
+                  onClick={() => {
+                    Setpopup(
+                      <LanguageEdit
+                        Popup={Setpopup}
+                        data={profileList?.language}
+                        successPopup={successPopup}
+                        setSuccessPopup={setSuccessPopup}
+                      />
+                    );
+                  }}
                 >
                   <g
                     id="Group_3589"
@@ -513,7 +712,13 @@ const PreviewProfile = ({ setCurrentTab, profileList }) => {
                 </svg>
               </div>
               <div className="previewProfileDate">
-                <span className="tamoun_pdd_sp"> English </span> : Basic
+                {profileList?.language?.map((item) => (
+                  <>
+                    <span className="tamoun_pdd_sp"> {item.language} : </span>
+                    {item.level}
+                    <br />
+                  </>
+                ))}
               </div>
               <Col>
                 <Link to="/freelancer/dashboard">
@@ -526,6 +731,9 @@ const PreviewProfile = ({ setCurrentTab, profileList }) => {
           </div>
         </div>
       </div>
+      {popup}
+      {successPopup}
+      {confirmPopup}
     </>
   );
 };

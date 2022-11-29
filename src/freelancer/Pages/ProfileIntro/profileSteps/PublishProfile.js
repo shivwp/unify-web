@@ -103,6 +103,7 @@ const PublishProfile = ({ setCurrentTab, profileList }) => {
                     <UploadPublishProfileImage
                       Popup={setPopup}
                       setShowingImage={setShowingImage}
+                      showingImage={showingImage}
                       setProfileImage={setProfileImage}
                     />
                   );

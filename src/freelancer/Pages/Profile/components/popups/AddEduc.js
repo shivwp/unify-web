@@ -279,7 +279,7 @@ const AddEduc = ({ education, Popup, successPopup, setSuccessPopup }) => {
             </div>
 
             <div className="popup_btns_new flex-wrap cwiewyehkk">
-              <Button variant="" className="trans_btn">
+              <Button variant="" className="trans_btn" onClick={() => Popup()}>
                 Cancel
               </Button>
               <Button
