@@ -7,17 +7,24 @@ import {
   onEditSkills,
 } from "../../../../redux/actions/profileAction";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 const Skills = ({ setCurrentTab, profileList }) => {
-  const [selectSkills, setSelectSkills] = useState(profileList || []);
-  const [showSkillList, setShowSkillList] = useState(false);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const [selectSkills, setSelectSkills] = useState(profileList);
+  const [showSkillList, setShowSkillList] = useState(false);
   let getSkillList = useSelector((state) => state?.profile?.getSkillList);
   const [popup, Setpopup] = useState(false);
   const [successPopup, setSuccessPopup] = useState(false);
   const [confirmPopup, setConfirmPopup] = useState(false);
 
-  const dispatch = useDispatch();
+  useEffect(() => {
+    if (profileList) {
+      setSelectSkills(profileList);
+    }
+  }, [profileList]);
+
   const removeSkills = (index) => {
     let updateSkills = [...selectSkills];
     updateSkills.splice(index, 1);
@@ -93,9 +100,7 @@ const Skills = ({ setCurrentTab, profileList }) => {
                 {selectSkills?.map((item, index) => (
                   <div className="skill_bxr_gry" key={index}>
                     <span>{item.skill_name}</span>
-                    <button variant="" onClick={() => removeSkills(index)}>
-                      X
-                    </button>
+                    <button onClick={() => removeSkills(index)}>X</button>
                   </div>
                 ))}
                 <div className="search_inp_box">

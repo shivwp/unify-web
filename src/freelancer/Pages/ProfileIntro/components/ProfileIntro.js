@@ -26,7 +26,10 @@ const ProfileIntro = () => {
   const deleteEducation = useSelector((state) => state.profile.deleteEducation);
   const editEducation = useSelector((state) => state.profile.editEducation);
   const addCategory = useSelector((state) => state?.profile?.addCategory);
-
+  const editHoursPerWeek = useSelector(
+    (state) => state?.profile?.editHoursPerWeek
+  );
+  const editSkills = useSelector((state) => state?.profile?.editSkills);
   const editFreelancerLanguage = useSelector(
     (state) => state.profile.editFreelancerLanguage
   );
@@ -45,6 +48,9 @@ const ProfileIntro = () => {
     editEducation,
     editFreelancerLanguage,
     addCategory,
+    editSkills,
+    addCategory,
+    editHoursPerWeek,
   ]);
 
   console.log(freelancerProfileList);

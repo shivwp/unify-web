@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { onAddEmployment } from "../../../../../redux/actions/profileAction";
 import Select from "react-select";
 import { countryList } from "../../../../../redux/actions/authActions";
+import moment from "moment";
 
 const CloseIcon = () => {
   return (
@@ -45,6 +46,15 @@ const AddEmployment = ({
       setValues({ ...values, [e.target.name]: e.target.value });
       setErrors({ ...errors, [e.target.name]: false });
     }
+  };
+
+  const disabledDates = () => {
+    let today, dd, mm, yyyy;
+    today = new Date();
+    dd = today.getDate() + 1;
+    mm = today.getMonth() + 1;
+    yyyy = today.getFullYear() + 1;
+    return yyyy + "-" + mm + "-" + dd;
   };
 
   const onSave = () => {
@@ -96,9 +106,13 @@ const AddEmployment = ({
       values?.start_date === null ||
       values?.start_date === undefined
     ) {
-      errorsObject.start_date = true;
+      errorsObject.start_date = "Please select your end date";
+      errorExist = true;
+    } else if (values?.start_date <= new Date()) {
+      errorsObject.start_date = "Please select adfsadfsadfsdf end date";
       errorExist = true;
     }
+
     if (
       values?.end_date === "" ||
       values?.end_date === null ||
@@ -233,10 +247,11 @@ const AddEmployment = ({
                       placeholder="Start Date"
                       name="start_date"
                       value={values?.start_date}
+                      max={moment(new Date()).format("YYYY-MM-DD")}
                       onChange={(e) => onInputChange(e)}
                     />
                     <span className="signup-error">
-                      {errors.start_date && "Please select your start date"}
+                      {errors.start_date && errors.start_date}
                     </span>
                   </div>
                 </Col>
@@ -253,6 +268,8 @@ const AddEmployment = ({
                         name="end_date"
                         className="font-size-13px"
                         value={values?.end_date}
+                        min={moment(values?.start_date).format("YYYY-MM-DD")}
+                        max={moment(new Date()).format("YYYY-MM-DD")}
                         placeholder="End Date"
                         onChange={(e) => onInputChange(e)}
                       />

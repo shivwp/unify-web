@@ -588,30 +588,12 @@ export const onAddCategory =
       Axios.post("/add-category", data, config).then((res) => {
         dispatch({
           type: ADD_CATEGORY,
-          payload: res.data.data,
+          payload: res.data,
         });
         setSuccessPopup(
           <SuccessPopup
             Popup={() => setSuccessPopup(!successPopup)}
             message="Your Service is Set Successfully"
-            afterSuccess={afterSuccess}
-          />
-        );
-      });
-    } catch (err) {}
-  };
-export const setHourlyPrice =
-  (data, successPopup, setSuccessPopup, afterSuccess) => async (dispatch) => {
-    try {
-      Axios.post("/add-category", data, config).then((res) => {
-        dispatch({
-          type: HOURLY_PRICE,
-          payload: res.data.data,
-        });
-        setSuccessPopup(
-          <SuccessPopup
-            Popup={() => setSuccessPopup(!successPopup)}
-            message="Hourly Price Added Successfully"
             afterSuccess={afterSuccess}
           />
         );
