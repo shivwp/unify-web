@@ -9,8 +9,10 @@ import {
   setHourlyPrice,
 } from "../../../../redux/actions/profileAction";
 
-const HourlyRate = ({ setCurrentTab }) => {
-  const [values, setValues] = useState(null);
+const HourlyRate = ({ setCurrentTab, profileList }) => {
+  const [values, setValues] = useState(
+    profileList?.amount ? { hours_price: profileList?.amount } : null
+  );
   const percent = 20;
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -87,8 +89,7 @@ const HourlyRate = ({ setCurrentTab }) => {
                     <div className="hraet_pdd_sp">Unify Service Fee</div>
                     <div className="tamoun_pdd_sp">
                       The unify Service fee is 20% when you begin a contract
-                      with a new client. Once you bill over $500 with your
-                      client, the fee will be 10%
+                      with a new client.
                     </div>
                   </div>
                 </Col>

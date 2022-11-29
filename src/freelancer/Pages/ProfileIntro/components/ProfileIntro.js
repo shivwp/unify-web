@@ -47,6 +47,7 @@ const ProfileIntro = () => {
     addCategory,
   ]);
 
+  console.log(freelancerProfileList);
 
   return (
     <div>
@@ -91,13 +92,22 @@ const ProfileIntro = () => {
         />
       )}
       {currentTab === "hourlyRate" && (
-        <HourlyRate setCurrentTab={setCurrentTab} />
+        <HourlyRate
+          setCurrentTab={setCurrentTab}
+          profileList={freelancerProfileList?.basic_info}
+        />
       )}
       {currentTab === "publishProfile" && (
-        <PublishProfile setCurrentTab={setCurrentTab} />
+        <PublishProfile
+          setCurrentTab={setCurrentTab}
+          profileList={freelancerProfileList?.basic_info}
+        />
       )}
       {currentTab === "previewProfile" && (
-        <PreviewProfile setCurrentTab={setCurrentTab} />
+        <PreviewProfile
+          setCurrentTab={setCurrentTab}
+          profileList={freelancerProfileList}
+        />
       )}
     </div>
   );

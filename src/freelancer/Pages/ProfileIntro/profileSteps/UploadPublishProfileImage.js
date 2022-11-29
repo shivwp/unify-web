@@ -20,15 +20,21 @@ const CloseIcon = () => {
 
 const UploadPublishProfilepic = ({
   Popup,
-  setPortfolioImage,
-  portfolioImage,
-  showingImage,
   setShowingImage,
+  setProfileImage,
 }) => {
+  const [showingImage2, setShowingImage2] = useState(null);
+
   const onImageChange = (e) => {
-    setPortfolioImage(e.target.files[0]);
-    setShowingImage(URL.createObjectURL(e.target.files[0]));
+    setProfileImage(e.target.files[0]);
+    setShowingImage2(URL.createObjectURL(e.target.files[0]));
   };
+
+  const onSave = () => {
+    setShowingImage(showingImage2);
+    Popup();
+  };
+
   return (
     <>
       <div className="bg_wrapper_popup_new">
@@ -45,9 +51,9 @@ const UploadPublishProfilepic = ({
             <Row className="mt-3">
               <div className="uploadPublishPhoto">
                 <div className="image_to_show">
-                  {showingImage ? (
+                  {showingImage2 ? (
                     <img
-                      src={showingImage}
+                      src={showingImage2}
                       style={{
                         width: "100%",
                         height: "100%",
@@ -65,7 +71,7 @@ const UploadPublishProfilepic = ({
                         d="M87,172A85,85,0,1,0,2,87,85,85,0,0,0,87,172ZM112.5,70A25.5,25.5,0,1,1,87,44.5,25.5,25.5,0,0,1,112.5,70ZM36,129.5a63.75,63.75,0,0,1,102,0,63.75,63.75,0,0,1-102,0Z"
                         transform="translate(-2 -2)"
                         fill="#dedede"
-                        fill-rule="evenodd"
+                        fillRule="evenodd"
                       />
                     </svg>
                   )}
@@ -98,7 +104,7 @@ const UploadPublishProfilepic = ({
               <Button variant="" className="trans_btn" onClick={() => Popup()}>
                 Cancel
               </Button>
-              <Button variant="" className="btnhovpple">
+              <Button variant="" className="btnhovpple" onClick={onSave}>
                 {" "}
                 Save{" "}
               </Button>

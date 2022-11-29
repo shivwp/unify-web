@@ -1,8 +1,21 @@
 import React from "react";
+import { useEffect } from "react";
+import { useState } from "react";
 import { Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import PortfolioPupup from "../../../components/popups/PortfolioPupup";
 
-const PreviewProfile = () => {
+const PreviewProfile = ({ setCurrentTab, profileList }) => {
+  const [showingImage, setShowingImage] = useState(null);
+  const [profileImage, setProfileImage] = useState(null);
+
+  const onImageChange = (e) => {
+    setProfileImage(e.target.files[0]);
+    setShowingImage(URL.createObjectURL(e.target.files[0]));
+  };
+  useEffect(() => {
+    setShowingImage(profileList?.basic_info?.profile_image);
+  }, [profileList]);
   return (
     <>
       <div className="container">
@@ -13,15 +26,14 @@ const PreviewProfile = () => {
             </div>
             <Row className="previewFirstDiv mt-3">
               <Col sm={10}>
-                <div className="hraet_pdd_sp">Looking good, Neha</div>
+                <div className="hraet_pdd_sp">
+                  Looking good, {profileList?.basic_info?.first_name}
+                </div>
                 <div className="previewProfileDate">
                   Make any edits you want, then submit your profile. You can
                   make more change after it's live.
                 </div>
-                <button className="priviewSubmitButton">
-                  {" "}
-                  Submit Profile{" "}
-                </button>
+                <button className="priviewSubmitButton">Submit Profile </button>
               </Col>
               <Col sm={2} className="previewProfileThumbsIco">
                 <svg
@@ -77,35 +89,60 @@ const PreviewProfile = () => {
             <div className="pbx_pdd_sp2 mb-1"></div>
             <Row className="mt-3">
               <Col sm={2}>
-                <div className="previewImageIcon">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="90"
-                    height="90"
-                    viewBox="0 0 170 170"
+                <div className="previewImageIcon publishPhotoImg">
+                  <div className="image_to_show">
+                    {showingImage ? (
+                      <img
+                        src={showingImage}
+                        style={{
+                          width: "100%",
+                          height: "100%",
+                          objectFit: "cover",
+                        }}
+                      />
+                    ) : (
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 170 170"
+                      >
+                        <path
+                          id="user_1_"
+                          data-name="user (1)"
+                          d="M87,172A85,85,0,1,0,2,87,85,85,0,0,0,87,172ZM112.5,70A25.5,25.5,0,1,1,87,44.5,25.5,25.5,0,0,1,112.5,70ZM36,129.5a63.75,63.75,0,0,1,102,0,63.75,63.75,0,0,1-102,0Z"
+                          transform="translate(-2 -2)"
+                          fill="#dedede"
+                          fillRule="evenodd"
+                        />
+                      </svg>
+                    )}
+                  </div>
+                  <label
+                    htmlFor="selectImg"
+                    className="priviewProfile_button ml-0"
                   >
-                    <path
-                      id="user_1_"
-                      data-name="user (1)"
-                      d="M87,172A85,85,0,1,0,2,87,85,85,0,0,0,87,172ZM112.5,70A25.5,25.5,0,1,1,87,44.5,25.5,25.5,0,0,1,112.5,70ZM36,129.5a63.75,63.75,0,0,1,102,0,63.75,63.75,0,0,1-102,0Z"
-                      transform="translate(-2 -2)"
-                      fill="#dedede"
-                      fill-rule="evenodd"
+                    <input
+                      type="file"
+                      name="profile_image"
+                      id="selectImg"
+                      style={{ display: "none" }}
                     />
-                  </svg>
-                  <button className="priviewProfile_button ml-0">
                     Edit photo
-                  </button>
+                  </label>
                 </div>
               </Col>
               <Col sm={10}>
                 <div className="previewDet">
                   <div className="hraet_pdd_sp">
-                    Neha Sharma
-                    <div className="previewProfileUsr"> Jaipur RJ, India </div>
+                    {profileList?.basic_info?.first_name}{" "}
+                    {profileList?.basic_info?.last_name}
+                    <div className="previewProfileUsr">
+                      {profileList?.basic_info?.city}
+                      {profileList?.basic_info?.address}{" "}
+                      {profileList?.basic_info?.country}
+                    </div>
                     <div className="previewProfileUsr">
                       {" "}
-                      3:30 PM local time{" "}
+                      {profileList?.basic_info?.local_time} local time{" "}
                     </div>
                   </div>
                   <div className="tamoun_pdd_sp"></div>
@@ -117,7 +154,10 @@ const PreviewProfile = () => {
           <div className="startIntroIn">
             <Row>
               <div className="hraet_pdd_sp">
-                <span className="previewPostion"> Full stack developer </span>
+                <span className="previewPostion">
+                  {" "}
+                  {profileList?.basic_info?.occuption}
+                </span>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="25"
@@ -135,7 +175,7 @@ const PreviewProfile = () => {
                       transform="translate(464 2581)"
                       fill="#fff"
                       stroke="#707070"
-                      stroke-width="1"
+                      strokeWidth="1"
                       opacity="0.43"
                     >
                       <circle cx="20" cy="20" r="20" stroke="none" />
@@ -151,13 +191,7 @@ const PreviewProfile = () => {
                   </g>
                 </svg>
                 <div className="tamoun_pdd_sp">
-                  There are many variations of passages of Lorem Ipsum
-                  available, but the majority have suffered alteration in some
-                  form, by injected humour, or randomised words which don't look
-                  even slightly believable. There are many variations of
-                  passages of Lorem Ipsum available, but the majority have
-                  suffered alteration in some form, by injected humour, or
-                  randomised words which don't look even slightly believable.
+                  {profileList?.basic_info?.description}
                 </div>
               </div>
               <div className="pbx_pdd_sp2"></div>
@@ -184,7 +218,7 @@ const PreviewProfile = () => {
                       transform="translate(464 2581)"
                       fill="#fff"
                       stroke="#707070"
-                      stroke-width="1"
+                      strokeWidth="1"
                       opacity="0.43"
                     >
                       <circle cx="20" cy="20" r="20" stroke="none" />
@@ -199,7 +233,10 @@ const PreviewProfile = () => {
                     />
                   </g>
                 </svg>
-                <div className="tamoun_pdd_sp"> $5.00 </div>
+                <div className="tamoun_pdd_sp">
+                  {" "}
+                  $ {profileList?.basic_info?.amount}
+                </div>
               </div>
               <div className="pbx_pdd_sp2"></div>
             </Row>
@@ -225,7 +262,7 @@ const PreviewProfile = () => {
                       transform="translate(464 2581)"
                       fill="#fff"
                       stroke="#707070"
-                      stroke-width="1"
+                      strokeWidth="1"
                       opacity="0.43"
                     >
                       <circle cx="20" cy="20" r="20" stroke="none" />
@@ -241,19 +278,11 @@ const PreviewProfile = () => {
                   </g>
                 </svg>
                 <div className="skillsDesign">
-                  <button className="skillsDesign_btn">
-                    {" "}
-                    Mobile App Design{" "}
-                  </button>
-                  <button className="skillsDesign_btn"> Graphic Design </button>
-                  <button className="skillsDesign_btn">
-                    {" "}
-                    User Interface Design{" "}
-                  </button>
-                  <button className="skillsDesign_btn">
-                    {" "}
-                    User Experience Design{" "}
-                  </button>
+                  {profileList?.skills?.map((skill, index) => (
+                    <button key={index} className="skillsDesign_btn">
+                      {skill?.skill_name}
+                    </button>
+                  ))}
                 </div>
               </div>
               <div className="pbx_pdd_sp2"></div>
@@ -280,7 +309,7 @@ const PreviewProfile = () => {
                       transform="translate(301 2495)"
                       fill="#fff"
                       stroke="#707070"
-                      stroke-width="1"
+                      strokeWidth="1"
                       opacity="0.43"
                     >
                       <circle cx="20" cy="20" r="20" stroke="none" />
@@ -296,80 +325,85 @@ const PreviewProfile = () => {
                   </g>
                 </svg>
               </div>
-              <div className="hraet_pdd_sp">
-                <div className="previewWorkExp">
-                  <span className="previewPostion">
-                    {" "}
-                    Laravel | Eoxys It Solution LLP{" "}
-                  </span>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="25"
-                    height="25"
-                    viewBox="0 0 40 40"
-                  >
-                    <g
-                      id="Group_3589"
-                      data-name="Group 3589"
-                      transform="translate(-464 -2581)"
-                    >
-                      <g
-                        id="Ellipse_689"
-                        data-name="Ellipse 689"
-                        transform="translate(464 2581)"
-                        fill="#fff"
-                        stroke="#707070"
-                        stroke-width="1"
-                        opacity="0.43"
+              {profileList?.employment?.map((item, index) => (
+                <>
+                  <div className="hraet_pdd_sp" key={index}>
+                    <div className="previewWorkExp">
+                      <span className="previewPostion">
+                        {item?.subject} | {item.company}
+                      </span>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="25"
+                        height="25"
+                        viewBox="0 0 40 40"
                       >
-                        <circle cx="20" cy="20" r="20" stroke="none" />
-                        <circle cx="20" cy="20" r="19.5" fill="none" />
-                      </g>
-                      <path
-                        id="_8665767_pen_icon"
-                        data-name="8665767_pen_icon"
-                        d="M15.327,2.274,13.482.429a1.475,1.475,0,0,0-2.085,0L9.662,2.165l3.9,3.929L15.3,4.358A1.447,1.447,0,0,0,15.327,2.274Zm-6.356.585L1,10.83a.491.491,0,0,0-.134.251L.057,15.123a.491.491,0,0,0,.576.58l4.042-.808a.491.491,0,0,0,.251-.134L12.9,6.789Z"
-                        transform="translate(477.099 2593.145)"
-                        fill="#b9bdc1"
-                      />
-                    </g>
-                  </svg>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="25"
-                    height="25"
-                    viewBox="0 0 40 40"
-                  >
-                    <g
-                      id="Group_3591"
-                      data-name="Group 3591"
-                      transform="translate(-516 -2581)"
-                    >
-                      <g
-                        id="Ellipse_690"
-                        data-name="Ellipse 690"
-                        transform="translate(516 2581)"
-                        fill="#fff"
-                        stroke="#707070"
-                        stroke-width="1"
-                        opacity="0.43"
+                        <g
+                          id="Group_3589"
+                          data-name="Group 3589"
+                          transform="translate(-464 -2581)"
+                        >
+                          <g
+                            id="Ellipse_689"
+                            data-name="Ellipse 689"
+                            transform="translate(464 2581)"
+                            fill="#fff"
+                            stroke="#707070"
+                            strokeWidth="1"
+                            opacity="0.43"
+                          >
+                            <circle cx="20" cy="20" r="20" stroke="none" />
+                            <circle cx="20" cy="20" r="19.5" fill="none" />
+                          </g>
+                          <path
+                            id="_8665767_pen_icon"
+                            data-name="8665767_pen_icon"
+                            d="M15.327,2.274,13.482.429a1.475,1.475,0,0,0-2.085,0L9.662,2.165l3.9,3.929L15.3,4.358A1.447,1.447,0,0,0,15.327,2.274Zm-6.356.585L1,10.83a.491.491,0,0,0-.134.251L.057,15.123a.491.491,0,0,0,.576.58l4.042-.808a.491.491,0,0,0,.251-.134L12.9,6.789Z"
+                            transform="translate(477.099 2593.145)"
+                            fill="#b9bdc1"
+                          />
+                        </g>
+                      </svg>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="25"
+                        height="25"
+                        viewBox="0 0 40 40"
                       >
-                        <circle cx="20" cy="20" r="20" stroke="none" />
-                        <circle cx="20" cy="20" r="19.5" fill="none" />
-                      </g>
-                      <path
-                        id="_2203546_bin_delete_gabage_trash_icon"
-                        data-name="2203546_bin_delete_gabage_trash_icon"
-                        d="M8,0A1,1,0,0,0,7,1H0V3H1V14a2,2,0,0,0,2,2H13a2,2,0,0,0,2-2V3h1V1H9A1,1,0,0,0,8,0ZM4,14H3V5H4Zm3,0H6V5H7Zm3,0H9V5h1Zm3,0H12V5h1Z"
-                        transform="translate(528 2593)"
-                        fill="#b9bdc1"
-                      />
-                    </g>
-                  </svg>
-                </div>
-              </div>
-              <div className="previewProfileDate"> June 2019 </div>
-              <div className="pbx_pdd_sp2"></div>
+                        <g
+                          id="Group_3591"
+                          data-name="Group 3591"
+                          transform="translate(-516 -2581)"
+                        >
+                          <g
+                            id="Ellipse_690"
+                            data-name="Ellipse 690"
+                            transform="translate(516 2581)"
+                            fill="#fff"
+                            stroke="#707070"
+                            strokeWidth="1"
+                            opacity="0.43"
+                          >
+                            <circle cx="20" cy="20" r="20" stroke="none" />
+                            <circle cx="20" cy="20" r="19.5" fill="none" />
+                          </g>
+                          <path
+                            id="_2203546_bin_delete_gabage_trash_icon"
+                            data-name="2203546_bin_delete_gabage_trash_icon"
+                            d="M8,0A1,1,0,0,0,7,1H0V3H1V14a2,2,0,0,0,2,2H13a2,2,0,0,0,2-2V3h1V1H9A1,1,0,0,0,8,0ZM4,14H3V5H4Zm3,0H6V5H7Zm3,0H9V5h1Zm3,0H12V5h1Z"
+                            transform="translate(528 2593)"
+                            fill="#b9bdc1"
+                          />
+                        </g>
+                      </svg>
+                    </div>
+                  </div>
+                  <div className="previewProfileDate">
+                    {item.start_date} - {item.end_date}
+                  </div>
+                  <div className="pbx_pdd_sp2"></div>
+                </>
+              ))}
             </Row>
           </div>
           <div className="startIntroIn">
@@ -393,7 +427,7 @@ const PreviewProfile = () => {
                       transform="translate(301 2495)"
                       fill="#fff"
                       stroke="#707070"
-                      stroke-width="1"
+                      strokeWidth="1"
                       opacity="0.43"
                     >
                       <circle cx="20" cy="20" r="20" stroke="none" />
@@ -409,8 +443,23 @@ const PreviewProfile = () => {
                   </g>
                 </svg>
               </div>
-              <div className="previewProfileDate"> No item to display </div>
-              <div className="pbx_pdd_sp2"></div>
+              {profileList?.education?.map((item, index) => (
+                <>
+                  <div key={index}>
+                    {item ? (
+                      <div className="previewProfileDate">
+                        {item.school} {item.start_year} - {item.end_year}
+                      </div>
+                    ) : (
+                      <div className="previewProfileDate">
+                        No item to display
+                      </div>
+                    )}
+
+                    <div className="pbx_pdd_sp2"></div>
+                  </div>
+                </>
+              ))}
             </Row>
           </div>
           <div className="startIntroIn">
@@ -418,7 +467,11 @@ const PreviewProfile = () => {
               <div className="hraet_pdd_sp">
                 <span className="previewPostion"> Location </span>
               </div>
-              <div className="previewProfileDate"> Jaipur, RJ India </div>
+              <div className="previewProfileDate">
+                {profileList?.basic_info?.city}{" "}
+                {profileList?.basic_info?.address}{" "}
+                {profileList?.basic_info?.country}{" "}
+              </div>
               <div className="pbx_pdd_sp2"></div>
             </Row>
           </div>
@@ -443,7 +496,7 @@ const PreviewProfile = () => {
                       transform="translate(464 2581)"
                       fill="#fff"
                       stroke="#707070"
-                      stroke-width="1"
+                      strokeWidth="1"
                       opacity="0.43"
                     >
                       <circle cx="20" cy="20" r="20" stroke="none" />

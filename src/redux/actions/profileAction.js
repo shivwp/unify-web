@@ -230,11 +230,13 @@ export const onEditContactInfo =
   };
 
 export const onEditLocationInfo =
-  (data, setEditLocation, successPopup, setSuccessPopup) =>
+  (data, setEditLocation, successPopup, setSuccessPopup, afterSuccess) =>
   async (dispatch) => {
     try {
       Axios.post("/edit-location", data, config).then((res) => {
-        setEditLocation(false);
+        if (setEditLocation) {
+          setEditLocation(false);
+        }
         dispatch({
           type: SET_EDIT_FREELANCER_LOCATION,
           payload: res.data,
@@ -243,6 +245,7 @@ export const onEditLocationInfo =
           <SuccessPopup
             Popup={() => setSuccessPopup(!successPopup)}
             message="Details Added Successfully"
+            afterSuccess={afterSuccess}
           />
         );
       });
