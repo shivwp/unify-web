@@ -1644,6 +1644,14 @@
   line-height: 23px;
   color: #170048;
 }
+.hi_bx_head3 {
+  font-family: "Poppins-Bold", "Poppins";
+  font-weight: bold;
+  padding: 0px -14px;
+  font-size: 18px;
+  line-height: 23px;
+  color: #00065A;
+}
 
 .hire_b_im {
   height: 100px;

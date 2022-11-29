@@ -7,6 +7,7 @@ import "swiper/css/pagination";
 import "swiper/less/autoplay";
 import { Navigation, Pagination } from "swiper";
 import SwiperCore, { Autoplay } from "swiper";
+import { Link } from "react-router-dom";
 SwiperCore.use([Autoplay]);
 
 const HowItWorks = () => {
@@ -16,15 +17,19 @@ const HowItWorks = () => {
         {/* -------------------- header start ------------------------------------------------------------------*/}
         <div className="header">
           <div className="header_left">
-            <h1 className="heading">Do The Work You Love, Your Way</h1>
+            <h1 className="heading">Learn... Whilst you Eran $$</h1>
             <p className="desc">
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              type and scrambled
+              Unify is the world first learn and earn platform, allowing
+              freelancers to enhance their skills, Whilst getting paid along the
+              way.
+            </p>
+            <p className="desc">
+              Browse our extensive course catalogue and diversify your skillset.
             </p>
             <div className="signup_btn">
-              <button>Sign up</button>
+              <Link to="/signup">
+                <button>Sign up</button>
+              </Link>
             </div>
           </div>
           <div className="header_right">
@@ -62,7 +67,7 @@ const HowItWorks = () => {
               <Col lg={6}>
                 <div className="heading">Our award-winning Platform</div>
                 <Row className="my-4">
-                  <Col lg={1}  xs={1} className="p-0 mb-3">
+                  <Col lg={1} xs={1} className="p-0 mb-3">
                     <div className="right_icon">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"

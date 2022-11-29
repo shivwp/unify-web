@@ -79,13 +79,12 @@ const Skills = ({ setCurrentTab, profileList }) => {
       <div className="container">
         <div className="container_border">
           <div className="startIntroIn">
-            <h5 className="startIntroTwoH5">
-              Nearly there! what work are you here to do?
-            </h5>
-            <p className="startIntroTwoP">
-              Your skills show clients what you can offer, and help us choose
-              which jobs to recommend to you. Add or remove the ones we've
-              suggested, or start typing to pick more. It's up to you.
+            <h5 className="startIntroTwoH5">Time to show off your skills!</h5>
+            <p className="startIntroTwoP2">
+              Skills will show up on your profile and help you stand out to
+              clients. It'll also help us recommend jobs for you. We've
+              pre-populated this based on the information you've given us, but
+              feel free to add more!
             </p>
             <div className="afterSignUpSklls">Your Skills</div>
             <div className="addSkillBox mt-2">
@@ -134,9 +133,9 @@ const Skills = ({ setCurrentTab, profileList }) => {
                   At least 1 skill is required.
                 </span>
               ) : selectSkills?.length > 14 ? (
-                <span style={{ color: "red" }}>Maximum 15 skills.</span>
+                <span style={{ color: "red", display: "flex", justifyContent: "end" }}>Maximum 15 skills.</span>
               ) : (
-                <span>Maximum 15 skills.</span>
+                <span style={{ display: "flex", justifyContent: "end" }}>Maximum 15 skills.</span>
               )}
             </div>
 

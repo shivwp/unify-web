@@ -92,7 +92,7 @@ const Signup = ({
                 }
                 value="freelancer"
               >
-                Work as a freelancer
+                Earn and Learn
               </Button>
             </div>
             {userType && (
@@ -364,8 +364,8 @@ const Signup = ({
                           onChange={(e) => onInputChange(e)}
                         />
                         <Form.Label className="tb_mob_f12px">
-                          yes! Send me genuinely useful emails every now and
-                          then to help me get the most out of Unify
+                          Yes - sign me up for useful emails to get the most out
+                          of Unify!
                         </Form.Label>
                       </div>
                     </div>
@@ -377,7 +377,7 @@ const Signup = ({
                           onChange={(e) => onInputChange(e)}
                         />
                         <Form.Label className="tb_mob_f12px">
-                          yes! I understand and agree to the{" "}
+                          Yes! I understand and agree to the{" "}
                           <Link to="/pages/term-conditions">
                             <span>UnifyTerms of Service</span>
                           </Link>

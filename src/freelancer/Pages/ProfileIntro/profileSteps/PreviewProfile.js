@@ -13,15 +13,14 @@ const PreviewProfile = () => {
             </div>
             <Row className="previewFirstDiv mt-3">
               <Col sm={10}>
-                <div className="hraet_pdd_sp">Looking good, Neha</div>
+                <div className="hraet_pdd_sp">You're almost there, Neha.</div>
                 <div className="previewProfileDate">
-                  Make any edits you want, then submit your profile. You can
-                  make more change after it's live.
+                  Please review your information below to check it's accurate
+                  and then submit your profile. Our team will verify it behind
+                  the scenes and let you know once it's ready. You can make
+                  changes later on once you're live on the platform.
                 </div>
-                <button className="priviewSubmitButton">
-                  {" "}
-                  Submit Profile{" "}
-                </button>
+                <button className="priviewSubmitButton">Submit Profile</button>
               </Col>
               <Col sm={2} className="previewProfileThumbsIco">
                 <svg

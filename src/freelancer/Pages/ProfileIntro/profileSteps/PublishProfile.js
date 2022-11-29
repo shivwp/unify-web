@@ -14,13 +14,16 @@ const PublishProfile = ({ setCurrentTab }) => {
         <div className="container_border">
           <div className="startIntroIn">
             <h5>
-              {" "}
-              A few last details-then you can check and publish your profile.{" "}
+              Right, we're almost done. The last few bits before you are on your
+              way to Learn and Earn.
             </h5>
-            <p className="startIntroP">
-              A professional photo helps you build trust with your clients. To
-              keep things safe and simple, they'll pay you through us - which is
-              why we need your personal information.
+            <p className="startIntroP2 mt-3">
+              We need some personal information, clients need to know who you
+              are and where you're from.
+              <p className="startIntroP2">
+                Your address and phone number are just for us - we will not show
+                this to clients or release this information.
+              </p>
             </p>
             <div className="publishPhoto">
               <svg

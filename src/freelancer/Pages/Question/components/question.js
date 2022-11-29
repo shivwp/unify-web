@@ -42,15 +42,14 @@ const Screen = () => {
       <Container>
         <div className="mt-5">
           <div className="questopn_h1">
-            <h1>
-              A few quick questions: First, have <br /> you freelanced before?
-            </h1>
+            <h1>Help us help you...</h1>
           </div>
-          <div className="question_p">
-            <p>
-              This lets us know how much help to give you along the way. <br />(
-              We won't share you answer with anyone else, including potestial
-              clients.)
+          <div className="question_p mt-4 mb-2">
+            <p className="questionHeading">
+              Have you freelanced before? Are you new to this? Unify is for
+              everyone, we just need to know how to help you along the way. This
+              information is just for us, it won't be shared with any clients.
+              Pick what best suits you from the below.
             </p>
           </div>
         </div>
@@ -70,7 +69,7 @@ const Screen = () => {
                 <div className="hire_b_im">
                   <img src="/assets/sprout.svg" alt="" />
                 </div>
-                <div className="hi_bx_head2">Nope: it's new to me</div>
+                <div className="hi_bx_head2">I'm completely new to this</div>
               </div>
             </label>
           </Col>
@@ -91,8 +90,8 @@ const Screen = () => {
                   <img src="/assets/help-file.svg" alt="" />
                 </div>
                 <div className="hi_bx_head2">
-                  I've tried it but still
-                  <br /> might need tips
+                  I've dabbled in it here and there, <br /> but I might still
+                  need some guidance
                 </div>
               </div>
             </label>
@@ -113,7 +112,7 @@ const Screen = () => {
                   <img src="/assets/star.svg" alt="" />
                 </div>
                 <div className="hi_bx_head2">
-                  Yep. I've freelanced for <br /> years
+                  I'm a seasoned <br /> freelancer, let's get <br /> going.
                 </div>
               </div>
             </label>
@@ -132,7 +131,7 @@ const Screen = () => {
 
           <Col lg={12} className="mb-3 d-flex justify-content-center">
             <div onClick={nextTab} className="get-startedQuestion">
-              Get Started
+              Let's go!
             </div>
           </Col>
         </Row>

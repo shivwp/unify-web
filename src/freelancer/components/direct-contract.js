@@ -64,15 +64,15 @@ const Popup = (props) => {
                   style={{ color: "#000" }}
                   className="popup_radio_element inp_0_radio"
                 >
-                  <Form.Check type="radio"/>
+                  <Form.Check type="radio" />
                   Fixed Price
                 </Form.Label>
               </div>
             </div>
             <div className="popup_btns_new flex-wrap">
               <Button
-               variant=""
-               className="btnhovpple"
+                variant=""
+                className="btnhovpple"
                 onClick={() => {
                   props.Popup(<AmountPopup Popup={props.Popup} />);
                 }}
@@ -167,7 +167,7 @@ const AmountPopup = (props) => {
             </div>
             <div className="popup_btns_new flex-wrap cwiewyehkk">
               <Button
-               variant=""
+                variant=""
                 style={{ padding: "11px 35px" }}
                 className="trans_btn"
                 onClick={() => {
@@ -177,7 +177,13 @@ const AmountPopup = (props) => {
                 BACK
               </Button>
               <Link to="/freelancer/project-detail">
-                <Button variant="" className="btnhovpple" style={{ padding: "11px 35px" }}>SEND CONTRACT</Button>
+                <Button
+                  variant=""
+                  className="btnhovpple"
+                  style={{ padding: "11px 35px" }}
+                >
+                  SEND CONTRACT
+                </Button>
               </Link>
             </div>
           </div>
@@ -201,10 +207,10 @@ const Screen = () => {
             <h1 className="no_sudo">Direct Contracts</h1>
           </div>
           <div className="question_p">
-            <p>
-              Securely create contracts and quickly collect payment for
-              non-Unify projects.
-            </p>
+            <span className="directContractText">
+              Working on a project outside of Unify? No problem - securely and
+              quickly collect payments for these projects
+            </span>
           </div>
           <div className="btn_foot_sec justify-content-center flex-wrap no-border mt-2 a_fl_with_css">
             <Link to="/category" className="mrright-gppnew">
@@ -214,7 +220,7 @@ const Screen = () => {
             </Link>
             <div className="fo_btn_c next_b_btn_c">
               <Button
-               variant=""
+                variant=""
                 className="active_btn_blue"
                 onClick={() => SetPopup(<Popup Popup={SetPopup} />)}
               >

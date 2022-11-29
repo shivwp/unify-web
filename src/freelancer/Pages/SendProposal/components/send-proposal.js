@@ -90,7 +90,7 @@ const Screen = () => {
                 />
               </div> */}
               <div className="ssmtxto_hdsp">
-                This proposal requires 4 Connects
+                This proposal requires 4 unicoins
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"
@@ -103,7 +103,7 @@ const Screen = () => {
                 </svg>
               </div>
               <div className="ssmtxto_hdsp">
-                When you submit this proposal, you'll have 132 Connects
+                When you submit this proposal, you'll have 132 unicoins
                 remaining.
               </div>
             </Col>

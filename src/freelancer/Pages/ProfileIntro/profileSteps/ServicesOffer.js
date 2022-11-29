@@ -63,12 +63,11 @@ const ServicesOffer = ({ setCurrentTab, profileList }) => {
         <div className="container_border">
           <div className="startIntroIn">
             <h5 className="startIntroTwoH5">
-              What are the main services you offer?
+              What projects are you looking for?
             </h5>
             <p className="startIntroTwoP">
-              Choose at least 1 service that best describes the type of work you
-              do. this helps us match you with clients who need your unique
-              expertise.
+              Choose at least 1 service. This will help clients find you for the
+              work they need.
             </p>
             <div className="servicesChoose">
               <div className="popup_form_element">

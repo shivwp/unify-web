@@ -140,12 +140,17 @@ body {
   background-color: #170048;
   color: #fff;
   font-weight: 600;
-  padding: 10px 20px !important;
+  padding: 14px 28px !important;
+  font: normal normal bold 18px/25px Poppins;
   border-radius: 30px;
   -webkit-border-radius: 30px;
   -moz-border-radius: 30px;
   -ms-border-radius: 30px;
   -o-border-radius: 30px;
+}
+.sliderbtn {
+  display: flex;
+  gap: 12px;
 }
 
 .logout_btn_nav {
@@ -165,8 +170,29 @@ body {
 }
 
 .active_btn:hover {
-  background-color: #fff !important;
+  background-color: transparent;
   color: #170048 !important;
+}
+
+@media only screen and (max-width:425px) {
+  .sliderbtn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .active_btnM {
+    margin: 0 auto;
+    width: 195px;
+  }
+}
+@media only screen and (max-width:768px) {
+  .sliderbtn {
+    display: flex;
+  }
+  .active_btn {
+    padding: 9px 15px !important;
+    font-size: 15px;
+  }
 }
 
 @media only screen and (max-width: 499px) {
@@ -302,6 +328,7 @@ body {
     display: flex;
     justify-content: center;
     width: 100%;
+    padding: 30px 0px;
   }
 
   .slider_headin {
@@ -448,10 +475,6 @@ body {
   line-height: 24px;
   padding-top: 15px;
   color: #393939;
-}
-
-.slider_get_btn {
-  padding: 30px 0px;
 }
 
 .slider_get_btn button {
@@ -2054,6 +2077,19 @@ body {
   padding: 15px 0px;
   border-bottom: 1px solid #707070;
 }
+.hourly_amout_nodeUnicon {
+  display: flex;
+  align-items: self-end;
+  padding: 15px 0px;
+}
+.dashboardEarning {
+  display: flex;
+
+}
+.dashboradTotalProject {
+  display: flex;
+  flex-direction: column;
+}
 
 .b-bottom-b {
   border-bottom: #d4d4d5 solid 1px;
@@ -3466,6 +3502,11 @@ body {
   height: 30%;
   width: 350px;
 }
+.verifyOtpHeding {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
 
 .sign_form_shap {
   background-image: url("../../public/assets/Path 4401.svg");
@@ -4112,11 +4153,30 @@ body {
   z-index: -1;
   content: " ";
   position: absolute;
-  top: 40px;
-  left: 22%;
-  width: 280px;
+  top: 34px;
+  left: 30%;
+  width: 284px;
   background-color: #ff88fe;
-  height: 14px;
+  height: 26px;
+}
+.questopn_h2 h1 {
+  font: normal normal bolder 45px/60px Poppins;
+  letter-spacing: 0px;
+  text-align: center;
+  color: #00065a;
+  overflow: hidden;
+  position: relative;
+}
+
+.questopn_h2 h1::before {
+  z-index: -1;
+  content: " ";
+  position: absolute;
+  top: 34px;
+  left: 24%;
+  width: 284px;
+  background-color: #ff88fe;
+  height: 26px;
 }
 
 .question_p p {
@@ -4129,6 +4189,15 @@ body {
 .question_p a {
   color: #6d2ef1;
   font-weight: bold;
+}
+.questionHeading {
+  max-width: 74%;
+  margin: 0 auto;
+}
+.directContractText {
+  letter-spacing: 0px;
+  color: #393939;
+  font-weight: 600;
 }
 
 .box_border {
@@ -6276,6 +6345,10 @@ a {
   font-size: 12px;
   margin-top: 10px;
 }
+.startIntroP2 {
+  font-size: 13px;
+  line-height: 22px;
+}
 
 .startIntroFillOut {
   border: 1px solid #d6d6d6;
@@ -6319,8 +6392,10 @@ a {
   font: normal normal 600 21px/20px Poppins;
 }
 
-.startIntroTwoP {
-  font: normal normal normal 13px/18px Poppins;
+.startIntroTwoP2 {
+  font: normal normal normal 14px/26px Poppins;
+  color: #393939;
+  padding: 5px;
 }
 
 .startIntroBox {

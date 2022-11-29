@@ -23,11 +23,11 @@ const Education = ({ setCurrentTab, profileList }) => {
         <div className="container_border">
           <div className="startIntroIn">
             <h5 className="startIntroTwoH5">
-              Client like to know what you know add your education here.
+              We want to know, what you know...
             </h5>
             <p className="startIntroTwoP">
-              You don't have to have a degree. Adding any relevant education
-              helps make your profile more visible.
+              Do you have any educational qualifications? Or professional
+              certifications? Add a copy of them here. It'll help you stand out.
             </p>
             <Row>
               {profileList?.map((item, key) => (
