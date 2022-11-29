@@ -54,7 +54,6 @@ const ChooseLangauge = ({ setCurrentTab, profileList }) => {
   };
 
   const handleSave = () => {
-    console.log(inputList);
     const data = {};
     inputList.map((ele) => {
       data[ele.language] = ele.level;
@@ -76,12 +75,11 @@ const ChooseLangauge = ({ setCurrentTab, profileList }) => {
         <div className="container_border">
           <div className="startIntroIn">
             <h5 className="startIntroTwoH5">
-              Looking good. Next, tell us which languages you speak.
+              Bilingual? What languages do you speak?
             </h5>
             <div className="startIntroTwoP mt-3 mb-3">
-              Unify is global, so clients are often interested to know what
-              languages you speak. English is a must, but do you speak any other
-              languages?
+              We are a global platform and clients are often looking for
+              expertise in their native languages. Add more information here.
             </div>
             <Row>
               <div className="languageOption">

@@ -12,7 +12,6 @@ import SwiperCore, { Autoplay } from "swiper";
 SwiperCore.use([Autoplay]);
 
 const slider = ({ nonavbg, hero, used_by }) => {
-  console.log(used_by);
   return (
     <div className="carousal_top slider_pos">
       <div className="nav_realat">
@@ -26,10 +25,15 @@ const slider = ({ nonavbg, hero, used_by }) => {
                     {hero?.title} <span className="blue_ater_s"> </span>
                   </div>
                   <div className="description">{hero?.description}</div>
-                  <div className="slider_get_btn mdd-none">
-                    <Link to="/browse-jobs">
-                      <Button variant="" className="active_btn">
+                  <div className="sliderbtn mdd-none mt-4">
+                    <Link to="/signup">
+                      <Button variant="" className="active_btn active_btnM ">
                         {hero?.button_text || "Learn & Earn"}
+                      </Button>
+                    </Link>
+                    <Link to="/signup">
+                      <Button variant="" className="active_btn">
+                        {hero?.button_text2}
                       </Button>
                     </Link>
                   </div>

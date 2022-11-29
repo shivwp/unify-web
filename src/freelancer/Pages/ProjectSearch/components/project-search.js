@@ -408,7 +408,9 @@ const ProjectSaved = () => {
                   </svg>
                 </button>
                 <Link to={`/freelancer/project-detail/${item.id}`}>
-                  <button>{item.is_proposal_send ? "Proposal Sent" : "Send Proposal"}</button>
+                  <button>
+                    {item.is_proposal_send ? "Proposal Sent" : "Send Proposal"}
+                  </button>
                 </Link>
               </div>
             </div>
@@ -489,7 +491,6 @@ const Project_Search = () => {
       label: "what are you looking for",
     },
   ];
-  // console.log(languageList);
 
   const removeSkills = (index) => {
     let updateSkills = [...selectSkills];

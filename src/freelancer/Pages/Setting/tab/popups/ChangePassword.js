@@ -19,21 +19,77 @@ const CloseIcon = () => {
   );
 };
 
-const ChangePassword = (props) => {
+const ChangePassword = ({ setSuccessPopup, successPopup, Popup }) => {
+  const dispatch = useDispatch();
   const [hideNewPass, setHideNewPass] = useState(true);
   const [hideOldPass, setHideOldPass] = useState(true);
   const [hideConfPass, setHideConfPass] = useState(true);
-  const dispatch = useDispatch();
   const [values, setValues] = useState();
+  const [errors, setErrors] = useState({});
+  const [message, setMessage] = useState();
 
   const handleOnChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
+    setErrors({ ...errors, [e.target.name]: false });
+    setMessage();
   };
 
-  console.log(values);
-
   const onSubmit = () => {
-    dispatch(onPasswordChange(values, props.Popup));
+    let errorExist = false;
+    let errorsObject = {};
+
+    if (
+      values?.old_password === "" ||
+      values?.old_password === null ||
+      values?.old_password === undefined
+    ) {
+      errorsObject.old_password = "Please enter your old password";
+      errorExist = true;
+    } else if (
+      !/^(?=.*\d)(?=.*[a-z])(?=.*[!@#$%^&*()_+])[0-9a-zA-Z!@#$%^&*()_+]{8,}$/.test(
+        values?.old_password
+      )
+    ) {
+      errorsObject.old_password =
+        "Password must be at least 8 characters with 1 Special & 1 Number";
+      errorExist = true;
+    }
+
+    if (
+      values?.new_password === "" ||
+      values?.new_password === null ||
+      values?.new_password === undefined
+    ) {
+      errorsObject.new_password = "Please enter new password";
+      errorExist = true;
+    } else if (
+      !/^(?=.*\d)(?=.*[a-z])(?=.*[!@#$%^&*()_+])[0-9a-zA-Z!@#$%^&*()_+]{8,}$/.test(
+        values?.new_password
+      )
+    ) {
+      errorsObject.new_password =
+        "Password must be at least 8 characters with 1 Special & 1 Number";
+      errorExist = true;
+    }
+    if (
+      values?.confirm_password === "" ||
+      values?.confirm_password === null ||
+      values?.confirm_password === undefined
+    ) {
+      errorsObject.confirm_password = "Please enter confirm password";
+      errorExist = true;
+    } else if (values.new_password !== values.confirm_password) {
+      errorsObject.confirm_password =
+        "Confirm password should be match with new password";
+      errorExist = true;
+    }
+    if (errorExist) {
+      setErrors(errorsObject);
+      return false;
+    }
+    dispatch(
+      onPasswordChange(values, Popup, successPopup, setSuccessPopup, setMessage)
+    );
   };
 
   return (
@@ -42,12 +98,7 @@ const ChangePassword = (props) => {
         <div className="popup_box_bpn profile_nceqoi_popup pb-4">
           <div className="popup_header pb-0">
             <div className="p_header_hding">Change Password</div>
-            <div
-              className="close_pp_btn"
-              onClick={() => {
-                props.Popup();
-              }}
-            >
+            <div className="close_pp_btn" onClick={() => Popup()}>
               <CloseIcon />
             </div>
           </div>
@@ -67,6 +118,7 @@ const ChangePassword = (props) => {
                   className="font-size-13px"
                   onChange={(e) => handleOnChange(e)}
                   name="old_password"
+                  value={values?.old_password}
                   placeholder=" "
                 />
                 {hideOldPass ? (
@@ -82,6 +134,9 @@ const ChangePassword = (props) => {
                     aria-hidden="true"
                   ></i>
                 )}
+                <span className="signup-error">
+                  {errors.old_password ? errors.old_password : message}
+                </span>
               </div>
               <Row className="mt-1">
                 <Col md={6}>
@@ -95,6 +150,7 @@ const ChangePassword = (props) => {
                     <Form.Control
                       type={hideNewPass ? "password" : "text"}
                       name="new_password"
+                      value={values?.new_password}
                       onChange={(e) => handleOnChange(e)}
                       className="font-size-13px"
                       placeholder=" "
@@ -112,6 +168,9 @@ const ChangePassword = (props) => {
                         aria-hidden="true"
                       ></i>
                     )}
+                    <span className="signup-error">
+                      {errors.new_password && errors.new_password}
+                    </span>
                   </div>
                 </Col>
                 <Col md={6}>
@@ -125,6 +184,7 @@ const ChangePassword = (props) => {
                     <Form.Control
                       type={hideConfPass ? "password" : "text"}
                       name="confirm_password"
+                      value={values?.confirm_password}
                       onChange={(e) => handleOnChange(e)}
                       className="font-size-13px"
                       placeholder=" "
@@ -142,20 +202,21 @@ const ChangePassword = (props) => {
                         aria-hidden="true"
                       ></i>
                     )}
+                    <span className="signup-error">
+                      {errors.confirm_password && errors.confirm_password}
+                    </span>
                   </div>
                 </Col>
               </Row>
-              <div className="popup_form_element agrement_ineoeu mt-3 pt-1">
-                <Form.Label className="text-black font-size-13px font-weight-500 radiolablepopo ">
-                  <Form.Check type="checkbox" /> All devices will be required to
-                  sign in with new password
-                </Form.Label>
-              </div>
             </div>
 
             <div className="popup_btns_new flex-wrap cwiewyehkk">
-              <Button variant="" className="trans_btn">Cancel</Button>
-              <Button variant="" onClick={() => onSubmit()}>Save</Button>
+              <Button variant="" onClick={() => Popup()} className="trans_btn">
+                Cancel
+              </Button>
+              <Button variant="" onClick={() => onSubmit()}>
+                Save
+              </Button>
             </div>
           </div>
         </div>

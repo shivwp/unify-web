@@ -23,14 +23,12 @@ const Exprience = ({ setCurrentTab, profileList }) => {
         <div className="container_border">
           <div className="startIntroIn">
             <h5 className="startIntroTwoH5">
-              {" "}
-              If you have relevent work experience, add it here.{" "}
+              Tell us about your experience...
             </h5>
             <p className="startIntroTwoP">
-              {" "}
-              Freelancers who add their experience are twice as likely to win
-              work. But if you're just starting out, you can still create a
-              great profile. Just head on to the next page.{" "}
+              Add any information here about previous work experience, or
+              freelance projects. If you're just starting out, no problem - you
+              can leave this blank.
             </p>
             <Row>
               {profileList?.map((item, key) => (

@@ -73,7 +73,7 @@ const Signin = ({
                 }
                 value="freelancer"
               >
-                Work as a freelancer
+                Earn and Learn
               </Button>
             </div>
             {userType && (

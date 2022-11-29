@@ -33,6 +33,9 @@ const ProfileIntro = () => {
   const editFreelancerLanguage = useSelector(
     (state) => state.profile.editFreelancerLanguage
   );
+  const editFreelancerLocation = useSelector(
+    (state) => state.profile.editFreelancerLocation
+  );
 
   useEffect(() => {
     setCurrentTab(tabName);
@@ -51,9 +54,8 @@ const ProfileIntro = () => {
     editSkills,
     addCategory,
     editHoursPerWeek,
+    editFreelancerLocation,
   ]);
-
-  console.log(freelancerProfileList);
 
   return (
     <div>

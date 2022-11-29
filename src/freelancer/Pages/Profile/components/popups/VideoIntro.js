@@ -25,8 +25,6 @@ const VideoIntro = ({ data, Popup, successPopup, setSuccessPopup }) => {
   const [values, setValues] = useState(data);
   const [errors, setErrors] = useState({});
 
-  console.log(values);
-
   const handleOnChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
     setErrors({ ...errors, [e.target.name]: false });

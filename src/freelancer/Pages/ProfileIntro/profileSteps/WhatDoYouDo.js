@@ -80,12 +80,11 @@ const WhatDoYouDo = ({ setCurrentTab, profileList }) => {
       <div className="container">
         <div className="container_border">
           <div className="whatdoyoudo">
-            <div className="heading">
-              Got it. Now, add a title to tell the world what do you do.
-            </div>
+            <div className="heading">Ok Great! Now we need a headline</div>
             <div className="desc">
-              It's the very first thing clients see, so make it count. Stand out
-              by describing your expertise in your own words.
+              This will be the first thing a client sees when looking for a
+              freelancer. It'll also allow them to quickly get an overview of
+              your skills. Be unique!
             </div>
             <div className="popup_form_element mb-3">
               <Form.Control

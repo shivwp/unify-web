@@ -21,8 +21,6 @@ const Signupscreen = () => {
   //   (state) => state?.auth?.instantLoginEmail
   // );
 
-  console.log(values)
-
   // useEffect(() => {
   //   setValues(instantLoginEmail);
   // }, [instantLoginEmail]);

@@ -11,7 +11,6 @@ import { singleJobPostDetails } from "../../../../redux/actions/jobActions";
 import { SEND_PROPOSAL_DATA } from "../../../../redux/types";
 
 function ListProposals({ project_type, data }) {
-  console.log(data);
   return (
     <>
       {data?.map((item, index) => (

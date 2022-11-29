@@ -43,7 +43,6 @@ const BrowseJobs = () => {
   for (let i = 1; i < jobsPagination?.total_page + 1; i++) {
     totalPages.push(i);
   }
-  console.log(filters);
   useEffect(() => {
     dispatch(getJobsList({ pagination: 10, page, ...filters }, ScrollTop));
   }, [page, filters]);

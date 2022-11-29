@@ -22,7 +22,6 @@ const Screen = () => {
   const [activeTab, setActiveTab] = useState("ALL");
   const getAllContracts = useSelector((state) => state?.job?.getAllContracts);
 
-  console.log(getAllContracts);
   useEffect(() => {
     dispatch(onGetAllContracts());
   }, []);

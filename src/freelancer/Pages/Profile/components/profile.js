@@ -313,7 +313,6 @@ const UnifyFreelancer = () => {
     let vidId = data?.url?.split("v=")[1]?.substring(0, 11);
     vidId = vidId || data?.url?.split("youtu.be/")[1];
 
-    console.log(vidId);
     const thumbnail = data
       ? `https://img.youtube.com/vi/${vidId}/0.jpg`
       : `https://img.youtube.com/vi/0.jpg`;

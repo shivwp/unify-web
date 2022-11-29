@@ -40,13 +40,11 @@ const HourlyRate = ({ setCurrentTab, profileList }) => {
       <div className="container">
         <div className="container_border">
           <div className="startIntroIn">
-            <h5 className="startIntroTwoH5">
-              Now, Lets's set your hourly rate.
-            </h5>
-            <p className="startIntroTwoP">
-              Clients will se this rate on your profile and in search result
-              once you publish your profile. You can adjust your rate every time
-              you submit a proposal
+            <h5 className="startIntroTwoH5">Show me the money!</h5>
+            <p className="startIntroTwoP mt-3">
+              This will appear on your profile as your standard hourly rate. You
+              may find projects that are above or below this, and can change
+              this every time you are interested in a new project.
             </p>
             <Row className="m-1">
               <div className="pbx_pdd_sp2">

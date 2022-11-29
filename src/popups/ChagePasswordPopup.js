@@ -10,7 +10,6 @@ const ChagePasswordPopup = ({ onCloseModal, open }) => {
   const [hideOldPass, setHideOldPass] = useState(true);
   const [hideConfPass, setHideConfPass] = useState(true);
 
-  console.log(open);
   return (
     <>
       <Modal
@@ -88,7 +87,11 @@ const ChagePasswordPopup = ({ onCloseModal, open }) => {
 
         <div className="btn_foot_sec no-border flex-wrap d-flex">
           <div className="fo_btn_c next_b_btn_c">
-            <Button variant="" className="remove-posting-btns" onClick={onCloseModal}>
+            <Button
+              variant=""
+              className="remove-posting-btns"
+              onClick={onCloseModal}
+            >
               CANCEL
             </Button>
           </div>

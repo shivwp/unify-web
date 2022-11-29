@@ -41,21 +41,22 @@ const Screen = () => {
     <>
       <Container>
         <div className="mt-5">
-          <div className="questopn_h1">
+          <div className="questopn_h2">
             <h1>
-              Got it: So what's your biggest goal <br /> for freelancing?
+              Next up: Tell us your hopes, your dreams, your aspirations and
+              your goals...
             </h1>
           </div>
           <div className="question_p">
             <p>
-              Different people come to Unify for different reasons. We want to
-              highlight the opportunities that fit your goals <br /> best -
-              while still showing you all the possibilities. Which of these
-              feels most right for you?
+              Unify is a place for everyone. We want to understand your
+              motivations so we can help you get the best out of <br /> your
+              experience with us.
             </p>
           </div>
         </div>
         <Row className="justify-content-center">
+          <div className="hi_bx_head3"> Pick which suits you best below. </div>
           <Col lg={3} md={6} sm={10}>
             <label htmlFor="oneBox" className="hire_box_yh new_hbyh">
               <div className="sub_radio">
@@ -72,7 +73,7 @@ const Screen = () => {
                   <img src="/assets/diamond.svg" alt="" />
                 </div>
                 <div className="hi_bx_head2">
-                  To earn my main <br /> income
+                  I'm here to earn a make a <br /> full-time income
                 </div>
               </div>
             </label>
@@ -93,7 +94,7 @@ const Screen = () => {
                   <img src="/assets/invoice.svg" alt="" />
                 </div>
                 <div className="hi_bx_head2">
-                  To make money on <br /> the side
+                  I'm here to make <br /> money on the side.
                 </div>
               </div>
             </label>
@@ -114,7 +115,8 @@ const Screen = () => {
                   <img src="/assets/top-rated.svg" alt="" />
                 </div>
                 <div className="hi_bx_head2">
-                  To get experience so I can find a full-time job
+                  I'm here to gain <br /> experience, to help me <br /> find a
+                  full-time role.
                 </div>
               </div>
             </label>
@@ -135,7 +137,7 @@ const Screen = () => {
                   <img src="/assets/search.svg" alt="" />
                 </div>
                 <div className="hi_bx_head2">
-                  I don't have a goal <br /> yet: I'm exploring
+                  I'm just exploring for <br /> now
                 </div>
               </div>
             </label>

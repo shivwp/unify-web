@@ -31,7 +31,6 @@ const PreviewProfile = ({ setCurrentTab, profileList }) => {
   useEffect(() => {
     setShowingImage(profileList?.basic_info?.profile_image);
   }, [profileList]);
-  console.log(profileImage);
 
   const deleteExp = (id) => {
     dispatch(onDeleteEmployment({ id }, setConfirmPopup));
@@ -53,6 +52,7 @@ const PreviewProfile = ({ setCurrentTab, profileList }) => {
 
     dispatch(editNameInfo(formData));
   };
+
   return (
     <>
       <div className="container">
@@ -64,13 +64,19 @@ const PreviewProfile = ({ setCurrentTab, profileList }) => {
             <Row className="previewFirstDiv mt-3">
               <Col sm={10}>
                 <div className="hraet_pdd_sp">
-                  Looking good, {profileList?.basic_info?.first_name}
+                  You're almost there, {profileList?.basic_info?.first_name}
                 </div>
                 <div className="previewProfileDate">
-                  Make any edits you want, then submit your profile. You can
-                  make more change after it's live.
+                  Please review your information below to check it's accurate
+                  and then submit your profile. Our team will verify it behind
+                  the scenes and let you know once it's ready. You can make
+                  changes later on once you're live on the platform.
                 </div>
-                <button className="priviewSubmitButton">Submit Profile </button>
+                <Link to="/description">
+                  <button className="priviewSubmitButton">
+                    Submit Profile
+                  </button>
+                </Link>
               </Col>
               <Col sm={2} className="previewProfileThumbsIco">
                 <svg
@@ -193,7 +199,6 @@ const PreviewProfile = ({ setCurrentTab, profileList }) => {
             <Row>
               <div className="hraet_pdd_sp">
                 <span className="previewPostion">
-                  {" "}
                   {profileList?.basic_info?.occuption}
                 </span>
                 <svg
@@ -204,10 +209,7 @@ const PreviewProfile = ({ setCurrentTab, profileList }) => {
                   onClick={() => {
                     Setpopup(
                       <EditTitle
-                        data={{
-                          occuption: profileList?.basicInfo?.occuption,
-                          description: profileList?.basicInfo?.description,
-                        }}
+                        data={profileList?.basic_info}
                         Popup={Setpopup}
                         successPopup={successPopup}
                         setSuccessPopup={setSuccessPopup}
@@ -758,7 +760,7 @@ const PreviewProfile = ({ setCurrentTab, profileList }) => {
                 ))}
               </div>
               <Col>
-                <Link to="/freelancer/dashboard">
+                <Link to="/description">
                   <button className="priviewSubmitButton mt-4">
                     Submit Profile
                   </button>

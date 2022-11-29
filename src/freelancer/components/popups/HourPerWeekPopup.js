@@ -26,7 +26,6 @@ const HourPerWeekPopup = ({
   const [hpwValue, setHPWValue] = useState();
   const hwpList = useSelector((state) => state?.profile?.getHoursPerWeekList);
 
-  console.log(amount);
   const handleOnChange = (e) => {
     setHourlyPrice({ ...hourlyPrice, [e.target.name]: e.target.value });
   };

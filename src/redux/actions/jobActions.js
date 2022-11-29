@@ -30,7 +30,6 @@ export const getJobsList = (data, ScrollTop) => async (dispatch) => {
         type: JOBS_LIST,
         payload: res.data,
       });
-      // console.log(res.data);
       ScrollTop();
     });
   } catch (err) {}
@@ -54,7 +53,6 @@ export const saveJobs = (data) => async (dispatch) => {
         type: SAVE_JOB_POST,
         payload: res.data,
       });
-      console.log(res);
     });
   } catch (err) {}
 };
@@ -92,7 +90,6 @@ export const onSendJobProposal =
             message="Proposal Sent Successfully"
           />
         );
-        console.log(successPopup);
       });
     } catch (err) {}
   };
@@ -178,9 +175,7 @@ export const onCloseJob = (data, onCloseModal) => async (dispatch) => {
 
 export const editJobPosting = (data) => async (dispatch) => {
   try {
-    Axios.post("/update-job", data, config).then((res) => {
-      console.log(res);
-    });
+    Axios.post("/update-job", data, config).then((res) => {});
   } catch (err) {}
 };
 

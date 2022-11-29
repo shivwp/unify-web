@@ -10,7 +10,6 @@ const Screen = () => {
   const dispatch = useDispatch();
   const getAllProposal = useSelector((state) => state?.job?.getAllProposal);
 
-  console.log(getAllProposal);
   useEffect(() => {
     dispatch(getAllProposals());
   }, []);

@@ -25,9 +25,7 @@ export const onSubscriptionPayment = (data, navigate) => async (dispatch) => {
     .then((res) => {
       if (res.data.status) {
         Axios.get(`/submit-profile`, config)
-          .then((res) => {
-            console.log("submit-profile");
-          })
+          .then((res) => {})
           .catch((err) => {
             console.log(err);
           });

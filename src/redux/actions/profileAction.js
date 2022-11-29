@@ -161,9 +161,7 @@ export const closeAccountReasonList = () => async (dispatch) => {
 
 export const onCloseAccount = (data) => async (dispatch) => {
   try {
-    Axios.post("/close-account", data, config).then((res) => {
-      console.log(res);
-    });
+    Axios.post("/close-account", data, config).then((res) => {});
   } catch (err) {}
 };
 
@@ -298,7 +296,6 @@ export const onEditPortfolio =
   (data, popup, successPopup, setSuccessPopup) => (dispatch) => {
     Axios.post("/edit-portfolio-info", data, config)
       .then((res) => {
-        console.log(res);
         dispatch({
           type: SET_EDIT_PORTFOLIO,
           payload: res.data,
@@ -559,7 +556,6 @@ export const onSubmitTestimonial =
   (data, successPopup, setSuccessPopup, afterSuccess) => async (dispatch) => {
     try {
       Axios.post("/client-testimonial", data, config).then((res) => {
-        console.log(res);
         setSuccessPopup(
           <SuccessPopup
             Popup={() => setSuccessPopup(!successPopup)}

@@ -707,13 +707,73 @@ const Screen = () => {
             </div>
             <div className="mt-4 mb-4 d-flex justify-content-between flex-wrap">
               <div>
-                <div className="welcome_ax_dboard">Welcome to Alex K!</div>
+                <div className="welcome_ax_dboard">
+                  Welcome to your <br /> Dashboard Alex K,
+                </div>
                 <div className="wdesc_ax_dboard mt-3">
-                  Hope you're having a grate time freelancing. <br /> Your DBX
-                  project is still pending. Hope you remember.
+                  Here you'll find all the important information <br /> about
+                  your projects.
                 </div>
               </div>
-              <div className="minwidth-200px">
+              <div className="dashboardEarning minwidth-200px">
+                <div className="hourly_amout_nodeUnicon">
+                  <div className="wallet_icon">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="91.531"
+                      height="93.496"
+                      viewBox="0 0 91.531 93.496"
+                    >
+                      <g
+                        id="Layer_2"
+                        data-name="Layer 2"
+                        transform="translate(-1.314 -1)"
+                      >
+                        <path
+                          id="Path_4822"
+                          data-name="Path 4822"
+                          d="M44.117,42.364C21.628,42.364,4,33.28,4,21.682S21.628,1,44.117,1s40.108,9.087,40.108,20.682S66.61,42.364,44.117,42.364Zm0-35.131c-19.965,0-33.885,7.616-33.885,14.45s13.91,14.45,33.876,14.45,33.885-7.613,33.885-14.45S64.079,7.232,44.117,7.232Z"
+                          transform="translate(5.684)"
+                          fill="#eee"
+                        />
+                        <path
+                          id="Path_4823"
+                          data-name="Path 4823"
+                          d="M44.124,40.646c-22.486,0-40.1-9.08-40.124-20.679H4V7.637h6.232V19.958c0,6.837,13.917,14.459,33.885,14.459,19.6,0,33.368-7.339,33.869-14.079V7.637h6.232V19.958C84.241,31.56,66.635,40.646,44.124,40.646Z"
+                          transform="translate(5.684 14.045)"
+                          fill="#eee"
+                        />
+                        <path
+                          id="Path_4824"
+                          data-name="Path 4824"
+                          d="M44.969,51.586c-21.215,0-38.41-8.167-39.99-19.009l6.167-.9c.966,6.6,14.789,13.664,33.826,13.664,19.968,0,33.885-7.619,33.885-14.459,0-3.471-3.45-7.027-9.467-9.76l2.58-5.675c8.46,3.842,13.119,9.327,13.119,15.434C85.086,42.5,67.461,51.586,44.969,51.586Z"
+                          transform="translate(7.756 30.574)"
+                          fill="#eee"
+                        />
+                        <path
+                          id="Path_4825"
+                          data-name="Path 4825"
+                          d="M52.72,78.935c-22.5,0-40.117-9.09-40.117-20.691V47.107h6.232V58.244c0,6.84,13.9,14.459,33.885,14.459a59.45,59.45,0,0,0,24.829-4.858c5.759-2.711,9.056-6.207,9.056-9.6V45.923h6.232V58.244c0,5.989-4.481,11.4-12.627,15.235A65.72,65.72,0,0,1,52.72,78.935ZM70.628,32.962V29.846l-1.851,1.1-1.3.234A58.365,58.365,0,0,1,41.43,36.643c-19.968,0-33.885-7.619-33.885-14.459,0-2.9,2.421-5.9,6.818-8.442L11.247,8.348c-6.407,3.7-9.931,8.616-9.931,13.836,0,11.6,17.622,20.691,40.117,20.691a61.257,61.257,0,0,0,30.791-7.223l1.493-.91V32.99Z"
+                          transform="translate(0.004 15.549)"
+                          fill="#eee"
+                        />
+                        <path
+                          id="Path_4826"
+                          data-name="Path 4826"
+                          d="M41.431,45.8c-22.5,0-40.117-9.09-40.117-20.691V12.789H7.546V25.113c0,6.837,13.917,14.459,33.885,14.459s33.882-7.619,33.882-14.459V20.224h6.232V25.11C81.549,36.712,63.927,45.8,41.431,45.8Z"
+                          transform="translate(0 24.947)"
+                          fill="#eee"
+                        />
+                      </g>
+                    </svg>
+                  </div>
+                  <div className="hourly_am">
+                    <span>Total Unicoin Balance</span>
+                    <h1 className="line-hei-1">
+                      1200
+                    </h1>
+                  </div>
+                </div>
                 <div className="hourly_amout_node flex-wrap">
                   <div className="wallet_icon">
                     <svg
@@ -763,7 +823,7 @@ const Screen = () => {
                     </h1>
                   </div>
                 </div>
-                <div className="pd_flex flex-wrap hrly_dboard_ntxt">
+                {/* <div className="dashboradTotalProject pd_flex hrly_dboard_ntxt">
                   <div className="flex_pt no-border pt-3">
                     <div className="pt_title">Total projects</div>
                     <div className="pt_num pt_n1 color-red font-weight-600">
@@ -776,7 +836,7 @@ const Screen = () => {
                       609
                     </div>
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
             <Row>

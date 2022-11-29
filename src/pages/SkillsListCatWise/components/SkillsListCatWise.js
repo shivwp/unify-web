@@ -32,7 +32,6 @@ const SkillsListCatWise = () => {
     return render_img[id];
   };
 
-  console.log(skillList);
   useEffect(() => {
     dispatch(getSkillsByCat({ category_id: categoryId?.category }));
   }, []);
