@@ -6,10 +6,12 @@ import {
   getFreelancerSkills,
   onEditSkills,
 } from "../../../../redux/actions/profileAction";
+import { useNavigate } from "react-router-dom";
 
 const Skills = ({ setCurrentTab, profileList }) => {
-  const [selectSkills, setSelectSkills] = useState(profileList);
+  const [selectSkills, setSelectSkills] = useState(profileList || []);
   const [showSkillList, setShowSkillList] = useState(false);
+  const navigate = useNavigate();
   let getSkillList = useSelector((state) => state?.profile?.getSkillList);
   const [popup, Setpopup] = useState(false);
   const [successPopup, setSuccessPopup] = useState(false);
@@ -24,12 +26,13 @@ const Skills = ({ setCurrentTab, profileList }) => {
 
   const afterSuccess = () => {
     setCurrentTab("servicesOffer");
+    navigate(`/freelancer/profile-intro/servicesOffer`);
   };
 
   const addSkills = (item) => {
-    if (selectSkills.length < 15) {
+    if (selectSkills?.length <= 14) {
       if (
-        selectSkills.find((ele) => {
+        selectSkills?.find((ele) => {
           return ele.skill_id == item.id;
         }) == undefined
       ) {
@@ -88,11 +91,11 @@ const Skills = ({ setCurrentTab, profileList }) => {
             <div className="addSkillBox mt-2">
               <div className="d-flex flex-wrap">
                 {selectSkills?.map((item, index) => (
-                  <div className="skill_bxr_gry" key={item.skill_id}>
+                  <div className="skill_bxr_gry" key={index}>
                     <span>{item.skill_name}</span>
-                    <Button variant="" onClick={() => removeSkills(index)}>
+                    <button variant="" onClick={() => removeSkills(index)}>
                       X
-                    </Button>
+                    </button>
                   </div>
                 ))}
                 <div className="search_inp_box">
@@ -100,7 +103,7 @@ const Skills = ({ setCurrentTab, profileList }) => {
                     type="text"
                     name="skill"
                     id="search_skill_inp"
-                    autocomplete="on"
+                    autoComplete="on"
                     placeholder="Start typing to search"
                     className="no-border font-size-13px search_skilloiouo"
                     onChange={handleOnChange}
@@ -111,13 +114,11 @@ const Skills = ({ setCurrentTab, profileList }) => {
                       className="suggest_skills"
                       style={{ position: "absolute" }}
                     >
-                      {getSkillList?.map((item) => (
+                      {getSkillList?.map((item, index) => (
                         <>
-                          {" "}
-                          <span onClick={() => addSkills(item)}>
+                          <span key={index} onClick={() => addSkills(item)}>
                             {item.name}
-                          </span>{" "}
-                          <br />
+                          </span>
                         </>
                       ))}
                     </div>
@@ -138,13 +139,14 @@ const Skills = ({ setCurrentTab, profileList }) => {
                 <span>Maximum 15 skills.</span>
               )}
             </div>
-            <div className="maxlabel_atcxt mt-3 d-flex justify-content-end">
-              Maximum 15 skills.
-            </div>
+
             <div className="theme_btns mt-0">
               <button
                 className="first_button"
-                onClick={() => setCurrentTab("chooseLangauge")}
+                onClick={() => {
+                  setCurrentTab("chooseLangauge");
+                  navigate(`/freelancer/profile-intro/chooseLangauge`);
+                }}
               >
                 Back
               </button>

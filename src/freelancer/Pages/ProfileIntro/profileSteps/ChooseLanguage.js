@@ -2,6 +2,7 @@ import { autocompleteClasses } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { Col, Row, Form } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import {
   getLanguageList,
   onEditLanguage,
@@ -10,6 +11,8 @@ import {
 const ChooseLangauge = ({ setCurrentTab, profileList }) => {
   const languageList = useSelector((state) => state?.profile?.getLanguageList);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const [popup, Setpopup] = useState(false);
   const [successPopup, setSuccessPopup] = useState(false);
   const [confirmPopup, setConfirmPopup] = useState(false);
@@ -44,6 +47,7 @@ const ChooseLangauge = ({ setCurrentTab, profileList }) => {
 
   const afterSuccess = () => {
     setCurrentTab("skills");
+    navigate(`/freelancer/profile-intro/skills`);
   };
 
   const handleSave = () => {
@@ -183,8 +187,8 @@ const ChooseLangauge = ({ setCurrentTab, profileList }) => {
               })}
             </Row>
             <div className="langPlus my-4">
-              {inputList?.slice(-1)[0].language &&
-              inputList?.slice(-1)[0].level ? (
+              {inputList?.slice(-1)[0]?.language &&
+              inputList?.slice(-1)[0]?.level ? (
                 <div className="langAdd2" onClick={handleAddClick}>
                   {" "}
                   <div className="langPlusIcon mr-1"> + </div>
@@ -198,7 +202,10 @@ const ChooseLangauge = ({ setCurrentTab, profileList }) => {
             <div className="theme_btns mt-0">
               <button
                 className="first_button"
-                onClick={() => setCurrentTab("education")}
+                onClick={() => {
+                  setCurrentTab("education");
+                  navigate(`/freelancer/profile-intro/education`);
+                }}
               >
                 Back
               </button>
@@ -206,8 +213,8 @@ const ChooseLangauge = ({ setCurrentTab, profileList }) => {
                 className="second_button"
                 disabled={
                   !(
-                    inputList?.slice(-1)[0].language &&
-                    inputList?.slice(-1)[0].level
+                    inputList?.slice(-1)[0]?.language &&
+                    inputList?.slice(-1)[0]?.level
                   )
                 }
                 onClick={handleSave}

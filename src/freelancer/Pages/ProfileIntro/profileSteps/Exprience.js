@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import { Col, Row } from "react-bootstrap";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { onDeleteEmployment } from "../../../../redux/actions/profileAction";
 import ConfirmationPopup from "../../../components/popups/ConfirmationPopup";
 import AddEmployment from "../../Profile/components/popups/AddEmployment";
 
 const Exprience = ({ setCurrentTab, profileList }) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [popup, Setpopup] = useState();
   const [successPopup, setSuccessPopup] = useState(false);
   const [confirmPopup, setConfirmPopup] = useState(false);
@@ -191,7 +193,10 @@ const Exprience = ({ setCurrentTab, profileList }) => {
             <div className="theme_btns">
               <button
                 className="first_button"
-                onClick={() => setCurrentTab("whatDoYouDo")}
+                onClick={() => {
+                  setCurrentTab("whatDoYouDo");
+                  navigate(`/freelancer/profile-intro/whatDoYouDo`);
+                }}
               >
                 Back
               </button>
@@ -202,7 +207,10 @@ const Exprience = ({ setCurrentTab, profileList }) => {
               ) : (
                 <button
                   className="second_button"
-                  onClick={() => setCurrentTab("education")}
+                  onClick={() => {
+                    setCurrentTab("education");
+                    navigate(`/freelancer/profile-intro/education`);
+                  }}
                 >
                   Next
                 </button>

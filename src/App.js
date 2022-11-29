@@ -16,6 +16,9 @@ const BrowseJobs = lazy(() => import("./pages/BrowseJobs"));
 const JobDetails = lazy(() => import("./pages/JobDetails"));
 const SkillsListCatWise = lazy(() => import("./pages/SkillsListCatWise"));
 const DevListCatWise = lazy(() => import("./pages/DevListCatWise"));
+const FreelancerSubscription = lazy(() =>
+  import("./freelancer/Pages/Subscription")
+);
 
 //  ================================ CLIENT ROUTES ==================================
 const Createcategory = lazy(() => import("./client/Pages/Create-Category"));
@@ -156,9 +159,7 @@ const FreelanceTimeTracker = lazy(() =>
 const FreelancerProfile = lazy(() => import("./freelancer/Pages/Profile"));
 const FreelancerChat = lazy(() => import("./freelancer/Pages/Chat"));
 const FreelancerDashboard = lazy(() => import("./freelancer/Pages/Dashboard"));
-const FreelancerSubscription = lazy(() =>
-  import("./freelancer/Pages/Subscription")
-);
+
 const UserReports = lazy(() => import("./freelancer/Pages/UserReports"));
 const Testimonial = lazy(() => import("./components/Testimonial"));
 const AgencyDashboard = lazy(() => import("./Agency/Pages/Dashboard"));
@@ -188,13 +189,19 @@ function App() {
           <Route path="/job-details/:id" element={<JobDetails />} />
         </Route>
         <Route path="/pages/:pagename" element={<FooterPages />} />
+        <Route path="/subscription" element={<Subscription />} />
+        <Route path="/submit-testimonial/:id" element={<Testimonial />} />
+
+        <Route
+          path="/freelancer/subscription"
+          element={<FreelancerSubscription />}
+        />
         <Route path="/" element={<ProtectedRoutes />}>
           <Route path="/category" element={<Category />} />
           <Route path="/create-category" element={<Createcategory />} />
           <Route path="/question1" element={<Question />} />
           <Route path="/question2" element={<QuestionTwo />} />
           <Route path="/businesssize" element={<BusinessSize />} />
-          <Route path="/subscription" element={<Subscription />} />
           <Route path="/expandteam" element={<ExpandTeam />} />
           <Route path="/notification" element={<Notification />} />
           <Route path="/gettingstarted" element={<GettingStarted />} />
@@ -270,7 +277,6 @@ function App() {
             path="/freelancer/project-search"
             element={<ProjectSearch />}
           />
-          <Route path="/submit-testimonial/:id" element={<Testimonial />} />
           <Route path="/agency/dashboard" element={<AgencyDashboard />} />
           <Route
             path="/freelancer/project-search/:saved"
@@ -381,17 +387,16 @@ function App() {
             element={<FreelancerDashboard />}
           />
           <Route
-            path="/freelancer/subscription"
-            element={<FreelancerSubscription />}
-          />
-          <Route
             exact
             path="/freelancer/message"
             element={<FreelancerMessage />}
           />
           <Route path="/freelancer/see-milestone" element={<SeeMilestone />} />
           <Route path="/freelancer/see-timesheet" element={<SeeTimesheet />} />
-          <Route path="/freelancer/profile-intro" element={<ProfileInto />} />
+          <Route
+            path="/freelancer/profile-intro/:tabName"
+            element={<ProfileInto />}
+          />
         </Route>
       </Routes>
     </Suspense>

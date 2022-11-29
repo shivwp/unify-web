@@ -1,11 +1,14 @@
 import Category from "./components/category";
-import Layout from "../../Layout/Layout";
+import ProfileIntroNavbar from "../../../freelancer/Pages/ProfileIntro/ProfileIntroNavbar";
+import Footer from "../../Layout/Footer/Footer";
 
 const CategoryScreen = () => {
   return (
-    <Layout webtype="client">
+    <>
+      <ProfileIntroNavbar />
       <Category />
-    </Layout>
+      <Footer />
+    </>
   );
 };
 export default CategoryScreen;

@@ -11,8 +11,10 @@ import PreviewProfile from "../profileSteps/PreviewProfile";
 import ChooseLangauge from "../profileSteps/ChooseLanguage";
 import { useDispatch, useSelector } from "react-redux";
 import { getFreelancerProfile } from "../../../../redux/actions/profileAction";
+import { useParams } from "react-router-dom";
 
 const ProfileIntro = () => {
+  const { tabName } = useParams();
   const dispatch = useDispatch();
   const [currentTab, setCurrentTab] = useState("takeTimeToIntro");
   const freelancerProfileList = useSelector(
@@ -23,9 +25,15 @@ const ProfileIntro = () => {
   const addExprience = useSelector((state) => state.profile.addExprience);
   const deleteEducation = useSelector((state) => state.profile.deleteEducation);
   const editEducation = useSelector((state) => state.profile.editEducation);
+  const addCategory = useSelector((state) => state?.profile?.addCategory);
+
   const editFreelancerLanguage = useSelector(
     (state) => state.profile.editFreelancerLanguage
   );
+
+  useEffect(() => {
+    setCurrentTab(tabName);
+  }, [tabName]);
 
   useEffect(() => {
     dispatch(getFreelancerProfile());
@@ -36,7 +44,9 @@ const ProfileIntro = () => {
     deleteEducation,
     editEducation,
     editFreelancerLanguage,
+    addCategory,
   ]);
+
 
   return (
     <div>
@@ -75,7 +85,10 @@ const ProfileIntro = () => {
       )}
 
       {currentTab === "servicesOffer" && (
-        <ServicesOffer setCurrentTab={setCurrentTab} />
+        <ServicesOffer
+          setCurrentTab={setCurrentTab}
+          profileList={freelancerProfileList?.basic_info}
+        />
       )}
       {currentTab === "hourlyRate" && (
         <HourlyRate setCurrentTab={setCurrentTab} />

@@ -35,7 +35,7 @@ const slider = ({ nonavbg, hero, used_by }) => {
                   </div>
                 </div>
                 <div className="home_right">
-                  <img src={hero?.image || "/assets/home_img.png"} alt="" />
+                  <img src={hero?.image} alt="" />
                   {/* <img src={hero?.image} alt="" /> */}
                 </div>
                 <div className="svg_sup1">

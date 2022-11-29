@@ -55,11 +55,11 @@ const Signup = ({
     <div className="bg-body-wrapper">
       <div className="container">
         <div className="width_100_sm newnav_v2_wauto">
-          <Link to="/">
+          <a href="/">
             <Navbar.Brand>
               <img src={logo} className="img-fluid rounded-top" alt="" />
             </Navbar.Brand>
-          </Link>
+          </a>
         </div>
         <div className="bg_body">
           <div className="sign_form_shap"></div>

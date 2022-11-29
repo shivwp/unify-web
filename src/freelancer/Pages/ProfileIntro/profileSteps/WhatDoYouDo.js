@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Form } from "react-bootstrap";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { onEditDesignation } from "../../../../redux/actions/profileAction";
 
 const WhatDoYouDo = ({ setCurrentTab, profileList }) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [values, setValues] = useState({});
   const [errors, setErrors] = useState({});
   const [popup, Setpopup] = useState(false);
@@ -24,6 +26,7 @@ const WhatDoYouDo = ({ setCurrentTab, profileList }) => {
 
   const afterSuccess = () => {
     setCurrentTab("exprience");
+    navigate(`/freelancer/profile-intro/exprience`);
   };
 
   const onEditProfile = () => {
@@ -31,20 +34,23 @@ const WhatDoYouDo = ({ setCurrentTab, profileList }) => {
     let errorsObject = {};
 
     if (
-      values.occuption === "" ||
-      values.occuption === null ||
-      values.occuption === undefined
+      values?.occuption === "" ||
+      values?.occuption === null ||
+      values?.occuption === undefined
     ) {
       errorsObject.occuption = true;
       errorExist = true;
     }
 
     if (
-      values.description === "" ||
-      values.description === null ||
-      values.description === undefined
+      values?.description === "" ||
+      values?.description === null ||
+      values?.description === undefined
     ) {
-      errorsObject.description = true;
+      errorsObject.description = "Please enter your description";
+      errorExist = true;
+    } else if (values?.description?.length < 100) {
+      errorsObject.description = "Description minimum length is 100 characters";
       errorExist = true;
     }
 
@@ -106,7 +112,7 @@ const WhatDoYouDo = ({ setCurrentTab, profileList }) => {
               ></Form.Control>
 
               <span className="signup-error">
-                {errors.description && "Please enter your description"}
+                {errors.description && errors.description}
               </span>
             </div>
             <span className="maxlabel_atcxt2">
@@ -117,11 +123,21 @@ const WhatDoYouDo = ({ setCurrentTab, profileList }) => {
             <div className="theme_btns">
               <button
                 className="first_button"
-                onClick={() => setCurrentTab("takeTimeToIntro")}
+                onClick={() => {
+                  setCurrentTab("takeTimeToIntro");
+                  navigate(`/freelancer/profile-intro/takeTimeToIntro`);
+                }}
               >
                 Back
               </button>
-              <button className="second_button" onClick={onEditProfile}>
+              <button
+                className="second_button"
+                disabled={
+                  values?.description?.length == 0 ||
+                  values?.occuption?.length == 0
+                }
+                onClick={onEditProfile}
+              >
                 Next
               </button>
             </div>

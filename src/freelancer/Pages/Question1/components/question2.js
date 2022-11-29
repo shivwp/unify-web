@@ -34,7 +34,7 @@ const Screen = () => {
       return false;
     }
 
-    history("/freelancer/profile-intro");
+    history("/freelancer/profile-intro/takeTimeToIntro");
   };
 
   return (
@@ -114,7 +114,7 @@ const Screen = () => {
                   <img src="/assets/top-rated.svg" alt="" />
                 </div>
                 <div className="hi_bx_head2">
-                  To get experience so I can find a fill-time job
+                  To get experience so I can find a full-time job
                 </div>
               </div>
             </label>

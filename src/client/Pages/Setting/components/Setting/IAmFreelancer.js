@@ -29,7 +29,7 @@ const IAmFreelancer = () => {
                 </div>
                 <div className="help_ame_h">Get Started</div>
                 <div className="help_val_h">
-                  How It Works, Getting Started, Fees & Protection
+                  WHAT IS UNIFY, Getting Started, Fees & Protection
                 </div>
               </div>
             </Col>

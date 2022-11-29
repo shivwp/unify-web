@@ -1,9 +1,9 @@
 import Container from "react-bootstrap/Container";
 import Title from "../../../../components/title";
 import { Link } from "react-router-dom";
-import Button from 'react-bootstrap/Button'
+import Button from "react-bootstrap/Button";
 
-import Form from 'react-bootstrap/Form';
+import Form from "react-bootstrap/Form";
 const Question = () => {
   Title(" | question 2");
   return (
@@ -111,15 +111,30 @@ const Question = () => {
               </div>
             </div>
           </div>
-          <div className="btn_foot_sec flex-wrap d-flex no-border mt-2">
-            <Link to="/question1">
-              <div className="fo_btn_c next_b_btn_c">
-                <Button variant="" className="mrright-gppnew">Back</Button>
-              </div>
-            </Link>
-            <Link to="/businesssize">
-              <div className="fo_btn_c next_b_btn_c">
-                <Button variant="" className="active_btn_blue">Next</Button>
+          <div className="theme_btns d-flex align-items-center justify-content-between">
+            <div className="d-flex">
+              <Link to="/category">
+                <button className="first_button" style={{ marginTop: "0px" }}>
+                  Back
+                </button>
+              </Link>
+              <Link to="/subscription">
+                <button className="second_button" style={{ marginTop: "0px" }}>
+                  Next
+                </button>
+              </Link>
+            </div>
+
+            <Link to="/subscription">
+              <div
+                className="fo_btn_c next_b_btn_c"
+                style={{
+                  color: "#6d2ef1",
+                  fontWeight: "600",
+                  fontSize: "14px",
+                }}
+              >
+                Skip For Now >>
               </div>
             </Link>
           </div>

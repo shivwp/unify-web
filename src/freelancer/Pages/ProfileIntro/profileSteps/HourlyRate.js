@@ -1,8 +1,38 @@
 import React from "react";
+import { useEffect } from "react";
+import { useState } from "react";
 import { Col, Row, Form } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import {
+  onEditHourPerWeek,
+  setHourlyPrice,
+} from "../../../../redux/actions/profileAction";
 
 const HourlyRate = ({ setCurrentTab }) => {
+  const [values, setValues] = useState(null);
+  const percent = 20;
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const [successPopup, setSuccessPopup] = useState(false);
+  const [popup, setPopup] = useState();
+
+  const afterSuccess = () => {
+    setCurrentTab("publishProfile");
+    navigate(`/freelancer/profile-intro/publishProfile`);
+  };
+
+  const onSave = () => {
+    dispatch(
+      onEditHourPerWeek(
+        values,
+        popup,
+        successPopup,
+        setSuccessPopup,
+        afterSuccess
+      )
+    );
+  };
   return (
     <>
       <div className="container">
@@ -28,14 +58,7 @@ const HourlyRate = ({ setCurrentTab }) => {
                 </Col>
                 <Col sm={3}>
                   <div>
-                    <div className="sli_bdg_pddsp">
-                      {/* Client’s budget:
-                                                {singleJobDetails?.budget_type === "fixed"
-                                                    ? ` $${singleJobDetails?.price}`
-                                                    : singleJobDetails?.budget_type === "hourly"
-                                                        ? ` $${singleJobDetails?.min_price} - $${singleJobDetails?.price} /hr`
-                                                        : null} */}
-                    </div>
+                    <div className="sli_bdg_pddsp"></div>
                     <div className="d-flex">
                       <div
                         className="inp_bdg_pdsp"
@@ -44,21 +67,14 @@ const HourlyRate = ({ setCurrentTab }) => {
                         $
                         <Form.Control
                           type="number"
-                          placeholder={`15.00`}
-                          name="bid_amount"
+                          placeholder={`10.00`}
+                          name="hours_price"
                           className="project_details_Num_inp send_proposal_num_inp"
-                          // value={values?.bid_amount}
-                          // onChange={(e) => handleOnChange(e)}
-                          // isInvalid={errors?.bid_amount}
-                          // feedback={errors?.bid_amount}
-                          // onWheel={(e) => e.target.blur()}
+                          onChange={(e) =>
+                            setValues({ [e.target.name]: e.target.value })
+                          }
+                          value={values?.hours_price || null}
                         />
-                        {/* <Form.Control.Feedback
-                                                        type="invalid"
-                                                        style={{ position: "absolute", top: 44, left: 0 }}
-                                                    >
-                                                        {errors?.bid_amount}
-                                                    </Form.Control.Feedback> */}
                       </div>
                       <div className="slsh_hr"> /hour </div>
                     </div>
@@ -83,10 +99,16 @@ const HourlyRate = ({ setCurrentTab }) => {
                         $
                         <Form.Control
                           type="text"
-                          // value={(values?.bid_amount / 100) * percent}
                           disabled
-                          placeholder={`03.00`}
+                          placeholder={`02.00`}
                           name="unify_service_fee"
+                          value={
+                            values
+                              ? ((values?.hours_price / 100) * percent).toFixed(
+                                  2
+                                )
+                              : null
+                          }
                         />
                       </div>
                       <div className="slsh_hr"> /hour </div>
@@ -110,13 +132,17 @@ const HourlyRate = ({ setCurrentTab }) => {
                         $
                         <Form.Control
                           type="text"
-                          placeholder={`12.00`}
-                          // disabled
-                          // value={
-                          //     values?.bid_amount -
-                          //     (values?.bid_amount / 100) * percent
-                          // }
+                          disabled
+                          placeholder={`10.00`}
                           name="reciving_amt"
+                          value={
+                            values
+                              ? (
+                                  values?.hours_price -
+                                  (values?.hours_price / 100) * percent
+                                ).toFixed(2)
+                              : null
+                          }
                         />
                       </div>
                       <div className="slsh_hr"> /hour </div>
@@ -128,13 +154,17 @@ const HourlyRate = ({ setCurrentTab }) => {
             <div className="theme_btns mt-0">
               <button
                 className="first_button"
-                onClick={() => setCurrentTab("servicesOffer")}
+                onClick={() => {
+                  setCurrentTab("servicesOffer");
+                  navigate(`/freelancer/profile-intro/servicesOffer`);
+                }}
               >
                 Back
               </button>
               <button
                 className="second_button"
-                onClick={() => setCurrentTab("publishProfile")}
+                disabled={!values?.hours_price}
+                onClick={onSave}
               >
                 Next
               </button>
@@ -142,6 +172,7 @@ const HourlyRate = ({ setCurrentTab }) => {
           </div>
         </div>
       </div>
+      {successPopup}
     </>
   );
 };

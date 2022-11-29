@@ -82,7 +82,11 @@ export const onLogin = (data, navigate, setMessage) => async (dispatch) => {
           navigate("/freelancer/question1");
         }
       } else if (res.data.data.user.user_type === "client") {
-        navigate("/dashboard");
+        if (res.data.data.user.is_profile_complete === true) {
+          navigate("/dashboard");
+        } else {
+          navigate("/businesssize");
+        }
       }
       window.location.reload();
     }
@@ -138,23 +142,21 @@ export const countryList = () => async (dispatch) => {
   } catch (err) {}
 };
 
-export const onForgotPassword = (data, navigate) => async (dispatch) => {
-  await Axios.post(`/forget-password`, data)
-    .then((res) => {
-      if (res.data.status) {
-        navigate("/verify-forgot-otp");
-      }
-    })
-    .catch((err) => {
-      dispatch({
-        type: FORGOT_PASS_ERROR,
-        payload: err.response.data.message,
+export const onForgotPassword =
+  (data, navigate, setForgotPassError) => async (dispatch) => {
+    await Axios.post(`/forget-password`, data)
+      .then((res) => {
+        if (res.data.status) {
+          navigate("/verify-forgot-otp");
+        }
+      })
+      .catch((err) => {
+        setForgotPassError(err.response.data.message);
       });
-    });
-};
+  };
 
 export const onVerifyForgot =
-  (data, setReOtp, navigate) => async (dispatch) => {
+  (data, navigate, setMessage) => async (dispatch) => {
     await Axios.post(`/verify-forgot-otp`, data)
       .then((res) => {
         if (res.data.status) {
@@ -162,10 +164,7 @@ export const onVerifyForgot =
         }
       })
       .catch((err) => {
-        dispatch({
-          type: FORGOT_OTP_ERROR,
-          payload: err.response.data.message,
-        });
+        setMessage(err.response.data.message);
       });
   };
 
@@ -214,6 +213,7 @@ export const googleSignInSuccess = (data, navigate) => async (dispatch) => {
     if (res.data.status) {
       localStorage.setItem("unify_Token", res.data.auth_token);
       localStorage.setItem("unify_user", JSON.stringify(res.data.data.user));
+      localStorage.setItem("unify_access", true);
       if (res.data.data.user.user_type === "freelancer") {
         if (res.data.data.user.is_profile_complete === true) {
           navigate("/freelancer/dashboard");
@@ -270,7 +270,7 @@ export const appleSignInSuccess = (data, navigate) => async (dispatch) => {
     if (res.data.status) {
       localStorage.setItem("unify_Token", res.data.auth_token);
       localStorage.setItem("unify_user", JSON.stringify(res.data.data.user));
-      console.log(res);
+      localStorage.setItem("unify_access", true);
       if (res.data.data.user.user_type === "freelancer") {
         if (!res.data.data.user.is_profile_complete === true) {
           navigate("/freelancer/dashboard");

@@ -11,8 +11,7 @@ const ForgotPass = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [email, setEmail] = useState();
-
-  const forgotPassError = useSelector((state) => state?.auth?.forgotPassError);
+  const [forgotPassError, setForgotPassError] = useState();
 
   const sendEmail = () => {
     localStorage.setItem("unify_email", email);
@@ -20,18 +19,18 @@ const ForgotPass = () => {
     const data = {
       email: email,
     };
-    dispatch(onForgotPassword(data, navigate));
+    dispatch(onForgotPassword(data, navigate, setForgotPassError));
   };
 
   return (
     <div className="bg-body-wrapper">
       <div className="container">
         <div className="width_100_sm newnav_v2_wauto">
-          <Link to="/">
+          <a href="/">
             <Navbar.Brand>
               <img src={logo} className="img-fluid rounded-top" alt="" />
             </Navbar.Brand>
-          </Link>
+          </a>
         </div>
         <div className="bg_body">
           <div className="sign_form_shap"></div>
@@ -56,7 +55,10 @@ const ForgotPass = () => {
                   type="text"
                   placeholder="Email"
                   name="email"
-                  onChange={(e) => setEmail(e.target.value)}
+                  onChange={(e) => {
+                    setEmail(e.target.value);
+                    setForgotPassError();
+                  }}
                   required
                   isInvalid={forgotPassError}
                 />
