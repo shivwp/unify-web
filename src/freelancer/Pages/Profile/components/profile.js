@@ -957,6 +957,35 @@ const UnifyFreelancer = () => {
                   ))}
                 </div>
               </div>
+              <div className="myskill_prof_node">
+                <div className="intro_video">
+                  <div className="myskill_hdingn profile_icon_25px">
+                    Diplomas, certificates
+                  </div>
+                </div>
+                <div className="profileDiploma">
+                  <div className="mt-2">
+                    <img src="/assets/shield.png" className="DiplomaImg" />
+                  </div>
+                  <div>
+                    <div className="myskill_hdingn ms_hdsmall font-size-15px">
+                      Unify Accreditations
+                    </div>
+                    <div className="freelancer_work p-0">October 5, 2020</div>
+                  </div>
+                </div>
+              </div>
+              <div className="profileDiploma mb-4 mt-2">
+                <div className="mt-2">
+                  <img src="/assets/shield.png" className="DiplomaImg" />
+                </div>
+                <div>
+                  <div className="myskill_hdingn ms_hdsmall font-size-15px">
+                    Unify Accreditations
+                  </div>
+                  <div className="freelancer_work p-0">October 5, 2020</div>
+                </div>
+              </div>
             </div>
           </Col>
           <Col lg={9}>

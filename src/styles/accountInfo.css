@@ -237,6 +237,13 @@
   cursor: pointer;
 }
 
+.questionOnebtn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 75%;
+}
+
 .get-startedQuestion:hover {
   color: #fff;
 }

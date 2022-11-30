@@ -1187,8 +1187,9 @@ body {
   }
 
   .home_top_header .home_left .description {
-    width: 310px;
+    width: 227px;
     text-align: center;
+    padding-top: 10px;
     margin: 0 auto;
   }
 
@@ -1196,6 +1197,7 @@ body {
     font-size: 32px;
     line-height: 37px;
     text-align: center;
+    width: 225px;
   }
 
   .home_top_header .home_right img {
@@ -1957,7 +1959,6 @@ body {
   width: 95%;
   min-width: 100px;
   align-items: center;
-  justify-content: space-between;
 }
 
 .skil_nam p {
@@ -2014,7 +2015,7 @@ body {
 
 .pd_flex {
   display: flex;
-  justify-content: space-between;
+  justify-content: end;
   width: 100%;
 }
 
@@ -2080,8 +2081,10 @@ body {
 .hourly_amout_node {
   display: flex;
   align-items: self-end;
-  padding: 15px 0px;
-  border-bottom: 1px solid #707070;
+  padding: 14px 0px;
+  max-width: 85%;
+  margin: 0 auto;
+  border-bottom: 1px solid #7070703b;
 }
 .hourly_amout_nodeUnicon {
   display: flex;
@@ -6310,6 +6313,46 @@ a {
   border: none;
 }
 
+.theme_btnsQuestionTwo {
+  display: flex;
+  padding: 20px 0;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.theme_btnsQuestionTwo button {
+  min-width: 160px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  font-weight: bold;
+  border-radius: 20px !important;
+  padding: 8px 45px;
+  margin-top: 5px;
+  margin-right: 15px;
+  -webkit-border-radius: 60px !important;
+  margin-top: 10px;
+  border: none;
+}
+
+.theme_btnsQuestionTwo .first_button {
+  color: #6d2ef1;
+  background-color: #fff;
+  border: #6d2ef1 solid 1px;
+}
+
+.theme_btnsQuestionTwo .second_button {
+  color: #fff;
+  background-color: #6610f2;
+  border: #6d2ef1 solid 1px;
+}
+
+.questionTwobtn {
+  display: flex;
+}
+
 @media screen and (max-width: 425px) {
   .theme_btns button {
     width: 230px;
@@ -6317,6 +6360,14 @@ a {
   }
 
   .theme_btns .first_button {
+    margin-bottom: 20px;
+  }
+  .theme_btnsQuestionTwo button {
+    width: 230px;
+    margin: 0 auto;
+  }
+
+  .theme_btnsQuestionTwo .first_button {
     margin-bottom: 20px;
   }
 }

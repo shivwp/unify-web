@@ -155,13 +155,27 @@ const Screen = () => {
           {errors.goal && errors.goal}
         </span>
 
-        <div className="theme_btns">
-          <Link to="/freelancer/question1">
-            <button className="first_button">Back</button>
+        <div className="theme_btnsQuestionTwo">
+          <div className="questionTwobtn">
+            <Link to="/freelancer/question1">
+              <button className="first_button">Back</button>
+            </Link>
+            <button className="second_button" onClick={nextTab}>
+              Next
+            </button>
+          </div>
+          <Link to="/freelancer/profile-intro/takeTimeToIntro">
+            <div
+              className="fo_btn_c next_b_btn_c"
+              style={{
+                color: "#6d2ef1",
+                fontWeight: "600",
+                fontSize: "14px",
+              }}
+            >
+              Skip For Now >>
+            </div>
           </Link>
-          <button className="second_button" onClick={nextTab}>
-            Next
-          </button>
         </div>
       </Container>
     </>

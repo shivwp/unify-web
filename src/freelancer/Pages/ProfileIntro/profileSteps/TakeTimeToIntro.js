@@ -9,11 +9,10 @@ const TakeTimeToIntro = ({ setCurrentTab }) => {
     <div className="container">
       <div className="container_border">
         <div className="startIntroIn">
-          <h5> How would you like to tell us about yourself? </h5>
+          <h5> First, we need some information... </h5>
           <p className="startIntroP">
-            we need to get a sense of your education, experience and skills.
-            It's quickest to import our information - you can edit it before
-            your profile goes live.
+            We need some information about your education, experience and
+            skills. How would you like to proceed?
           </p>
           <label htmlFor="aboutYourSelf" className="startIntroFillOut">
             <div className="startIntroRadiobtn">

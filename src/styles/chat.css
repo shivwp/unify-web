@@ -564,7 +564,15 @@
 
 .myskill_prof_node {
   padding: 20px 0px;
-  /* border-bottom: #707070 solid 1px; */
+  border-bottom: 1px solid #707070;;
+}
+.profileDiploma {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.DiplomaImg {
+  height: 50px;
 }
 
 .myskill_hdingn {

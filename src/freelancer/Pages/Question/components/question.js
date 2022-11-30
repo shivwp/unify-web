@@ -1,7 +1,7 @@
 import Container from "react-bootstrap/Container";
 import { Col, Row } from "react-bootstrap";
 import Title from "../../../../components/title";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import { useState } from "react";
 
@@ -129,10 +129,22 @@ const Screen = () => {
             {errors.freelancerBefore && errors.freelancerBefore}
           </span>
 
-          <Col lg={12} className="mb-3 d-flex justify-content-center">
+          <Col lg={12} className="mb-3 questionOnebtn">
             <div onClick={nextTab} className="get-startedQuestion">
               Let's go!
             </div>
+            <Link to="/freelancer/question2">
+              <div
+                className="fo_btn_c next_b_btn_c"
+                style={{
+                  color: "#6d2ef1",
+                  fontWeight: "600",
+                  fontSize: "14px",
+                }}
+              >
+                Skip For Now >>
+              </div>
+            </Link>
           </Col>
         </Row>
       </Container>
