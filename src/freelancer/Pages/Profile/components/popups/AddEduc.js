@@ -175,7 +175,7 @@ const AddEduc = ({ education, Popup, successPopup, setSuccessPopup }) => {
                 <Col md={6}>
                   <div className="popup_form_element">
                     <Form.Label className="text-black font_size_14px font-weight-500">
-                      Dates Attended
+                      Start date
                     </Form.Label>
 
                     <select
@@ -198,7 +198,7 @@ const AddEduc = ({ education, Popup, successPopup, setSuccessPopup }) => {
                 </Col>
                 <Col md={6}>
                   <div className="popup_form_element">
-                    <Form.Label className="text-black font_size_14px font-weight-500"></Form.Label>
+                    <Form.Label className="text-black font_size_14px font-weight-500">End date/ expected end date</Form.Label>
                     <select
                       name="end_year"
                       value={values?.end_year}
@@ -245,7 +245,7 @@ const AddEduc = ({ education, Popup, successPopup, setSuccessPopup }) => {
                 <Col md={12}>
                   <div className="popup_form_element">
                     <Form.Label className="text-black font_size_14px font-weight-500">
-                      Area of Study
+                      Area of study
                     </Form.Label>
                     <Form.Control
                       type="text"

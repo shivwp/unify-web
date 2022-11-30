@@ -18,6 +18,7 @@ const HourlyRate = ({ setCurrentTab, profileList }) => {
   const navigate = useNavigate();
   const [successPopup, setSuccessPopup] = useState(false);
   const [popup, setPopup] = useState();
+  const [isChange, setIsChange] = useState(false);
 
   const afterSuccess = () => {
     setCurrentTab("publishProfile");
@@ -25,16 +26,22 @@ const HourlyRate = ({ setCurrentTab, profileList }) => {
   };
 
   const onSave = () => {
-    dispatch(
-      onEditHourPerWeek(
-        values,
-        popup,
-        successPopup,
-        setSuccessPopup,
-        afterSuccess
-      )
-    );
+    if (isChange) {
+      dispatch(
+        onEditHourPerWeek(
+          values,
+          popup,
+          successPopup,
+          setSuccessPopup,
+          afterSuccess
+        )
+      );
+    } else {
+      setCurrentTab("publishProfile");
+      navigate(`/freelancer/profile-intro/publishProfile`);
+    }
   };
+
   return (
     <>
       <div className="container">
@@ -70,9 +77,10 @@ const HourlyRate = ({ setCurrentTab, profileList }) => {
                           placeholder={`10.00`}
                           name="hours_price"
                           className="project_details_Num_inp send_proposal_num_inp"
-                          onChange={(e) =>
-                            setValues({ [e.target.name]: e.target.value })
-                          }
+                          onChange={(e) => {
+                            setValues({ [e.target.name]: e.target.value });
+                            setIsChange(true);
+                          }}
                           value={values?.hours_price || null}
                         />
                       </div>

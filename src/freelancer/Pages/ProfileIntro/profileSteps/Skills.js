@@ -20,6 +20,7 @@ const Skills = ({ setCurrentTab, profileList }) => {
   const [popup, Setpopup] = useState(false);
   const [successPopup, setSuccessPopup] = useState(false);
   const [confirmPopup, setConfirmPopup] = useState(false);
+  const [isChange, setIsChange] = useState(false);
 
   useEffect(() => {
     if (profileList) {
@@ -58,6 +59,7 @@ const Skills = ({ setCurrentTab, profileList }) => {
   };
 
   const handleOnChange = (e) => {
+    setIsChange(true);
     let data;
     if (e.target.value.length >= 1) {
       data = { [e.target.name]: e.target.value };
@@ -76,15 +78,20 @@ const Skills = ({ setCurrentTab, profileList }) => {
   });
 
   const onSave = (e) => {
-    if (selectSkills.length == 0) {
-      setShowSkillError(true);
+    if (isChange) {
+      if (selectSkills.length == 0) {
+        setShowSkillError(true);
+      } else {
+        const data = {
+          skill_id: selectSkills?.map((item) => item.skill_id)?.toString(),
+        };
+        dispatch(
+          onEditSkills(data, popup, successPopup, setSuccessPopup, afterSuccess)
+        );
+      }
     } else {
-      const data = {
-        skill_id: selectSkills?.map((item) => item.skill_id)?.toString(),
-      };
-      dispatch(
-        onEditSkills(data, popup, successPopup, setSuccessPopup, afterSuccess)
-      );
+      setCurrentTab("servicesOffer");
+      navigate(`/freelancer/profile-intro/servicesOffer`);
     }
   };
 

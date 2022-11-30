@@ -50,10 +50,9 @@ const PreviewProfile = ({ setCurrentTab, profileList }) => {
     formData.append("occcuption", profileList?.basic_info?.occuption);
     formData.append("profile_image", profileImage);
 
-    dispatch(editNameInfo(formData));
+    dispatch(editNameInfo(formData, successPopup, setSuccessPopup));
   };
 
-  console.log(profileList);
 
   return (
     <>

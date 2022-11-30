@@ -441,18 +441,25 @@ export const onDeleteCertificate =
     } catch (err) {}
   };
 
-export const editNameInfo = (data) => async (dispatch) => {
-  try {
-    Axios.post("/edit-name-info", data, config).then((res) => {
-      dispatch({
-        type: SET_PROFILE_IMG_CHANGE,
-        payload: res.data,
+export const editNameInfo =
+  (data, successPopup, setSuccessPopup) => async (dispatch) => {
+    try {
+      Axios.post("/edit-name-info", data, config).then((res) => {
+        dispatch({
+          type: SET_PROFILE_IMG_CHANGE,
+          payload: res.data,
+        });
+        setSuccessPopup(
+          <SuccessPopup
+            Popup={() => setSuccessPopup(!successPopup)}
+            message="Profile details changed successfully"
+          />
+        );
+        userDetails.profile_image = res?.data?.basic_info?.profile_image;
+        localStorage.setItem("unify_user", JSON.stringify(userDetails));
       });
-      userDetails.profile_image = res?.data?.basic_info?.profile_image;
-      localStorage.setItem("unify_user", JSON.stringify(userDetails));
-    });
-  } catch (err) {}
-};
+    } catch (err) {}
+  };
 
 export const editVisiblity =
   (data, popup, successPopup, setSuccessPopup) => async (dispatch) => {

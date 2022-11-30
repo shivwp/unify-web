@@ -16,6 +16,8 @@ const ServicesOffer = ({ setCurrentTab, profileList }) => {
   const [categoryId, setCategoryId] = useState("");
   const navigate = useNavigate();
 
+  const [isChange, setIsChange] = useState(false);
+
   const [successPopup, setSuccessPopup] = useState(false);
 
   useEffect(() => {
@@ -44,6 +46,7 @@ const ServicesOffer = ({ setCurrentTab, profileList }) => {
   };
 
   const handleOnChange = (e) => {
+    setIsChange(true);
     setValues({ ...values, [e.target.name]: e.target.value });
 
     if (categoryList) {
@@ -55,14 +58,19 @@ const ServicesOffer = ({ setCurrentTab, profileList }) => {
     }
   };
   const onSave = () => {
-    dispatch(
-      onAddCategory(
-        { category_id: categoryId },
-        successPopup,
-        setSuccessPopup,
-        afterSuccess
-      )
-    );
+    if (isChange) {
+      dispatch(
+        onAddCategory(
+          { category_id: categoryId },
+          successPopup,
+          setSuccessPopup,
+          afterSuccess
+        )
+      );
+    } else {
+      setCurrentTab("hourlyRate");
+      navigate(`/freelancer/profile-intro/hourlyRate`);
+    }
   };
 
   return (

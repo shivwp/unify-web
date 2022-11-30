@@ -306,7 +306,7 @@ const UnifyFreelancer = () => {
     formData.append("occcuption", basicInfo?.occuption);
     formData.append("profile_image", profileImage);
 
-    dispatch(editNameInfo(formData));
+    dispatch(editNameInfo(formData, successPopup, setSuccessPopup));
   };
 
   const IntroVideoThumb = ({ data }) => {
