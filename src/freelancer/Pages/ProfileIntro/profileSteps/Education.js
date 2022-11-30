@@ -199,21 +199,17 @@ const Education = ({ setCurrentTab, profileList }) => {
               >
                 Back
               </button>
-              {profileList?.length === 0 ? (
-                <button className="second_button" disabled>
-                  Next
-                </button>
-              ) : (
-                <button
-                  className="second_button"
-                  onClick={() => {
-                    setCurrentTab("chooseLangauge");
-                    navigate(`/freelancer/profile-intro/chooseLangauge`);
-                  }}
-                >
-                  Next
-                </button>
-              )}
+
+              <button
+                className="second_button"
+                disabled={profileList?.length === 0 || !profileList}
+                onClick={() => {
+                  setCurrentTab("chooseLangauge");
+                  navigate(`/freelancer/profile-intro/chooseLangauge`);
+                }}
+              >
+                Next
+              </button>
             </div>
           </div>
         </div>

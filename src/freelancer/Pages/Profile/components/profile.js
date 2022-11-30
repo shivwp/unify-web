@@ -435,7 +435,10 @@ const UnifyFreelancer = () => {
                     {basicInfo && basicInfo.last_name}
                   </div>
 
-                  <div className="freelancer_work">
+                  <div
+                    className="freelancer_work"
+                    style={{ wordBreak: "break-word" }}
+                  >
                     {basicInfo && basicInfo.occuption}
                   </div>
                   <div className="freelance_map">
@@ -962,7 +965,10 @@ const UnifyFreelancer = () => {
           <Col lg={9}>
             <div className="box-profile-bck mb-0">
               <div className="bpbck_txt d-flex mt-0">
-                <div className="bpck_head font-weight-500 line-height-30">
+                <div
+                  className="bpck_head font-weight-500 line-height-30"
+                  style={{ wordBreak: "break-word" }}
+                >
                   {basicInfo?.occuption}
                 </div>
                 <div className="myskill_hdingn">
@@ -1000,7 +1006,12 @@ const UnifyFreelancer = () => {
                 </div>
               </div>
               <div className="d-flex mt-3">
-                <div className="descri_pfro">{basicInfo?.description}</div>
+                <div
+                  className="descri_pfro"
+                  style={{ wordBreak: "break-word" }}
+                >
+                  {basicInfo?.description}
+                </div>
               </div>
             </div>
             <div className="box-profile-bck mb-0">

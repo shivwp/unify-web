@@ -133,8 +133,9 @@ const Projectdetail = () => {
   };
 
   const sendProposal = () => {
-    dispatch({ type: SEND_PROPOSAL_DATA, payload: values });
-    navigate(`/freelancer/send-proposal/${id}`);
+    // dispatch({ type: SEND_PROPOSAL_DATA, payload: values });
+    // navigate(`/freelancer/send-proposal/${id}`);
+    navigate(`/freelancer/send-proposal/9`);
   };
 
   return (

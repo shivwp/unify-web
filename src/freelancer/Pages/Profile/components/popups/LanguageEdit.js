@@ -27,10 +27,15 @@ const CloseIcon = () => {
 const LanguageEdit = ({ data, Popup, successPopup, setSuccessPopup }) => {
   const dispatch = useDispatch();
   const languageList = useSelector((state) => state?.profile?.getLanguageList);
-  const [inputList, setInputList] = useState(
-    data || [{ language: "", level: "" }]
-  );
+  const [inputList, setInputList] = useState([
+    { language: "English", level: "" },
+  ]);
 
+  useEffect(() => {
+    if (data?.length) {
+      setInputList(data);
+    }
+  }, [data]);
   const handleInputChange = (e, index) => {
     const { name, value } = e.target;
     const list = [...inputList];
@@ -89,19 +94,32 @@ const LanguageEdit = ({ data, Popup, successPopup, setSuccessPopup }) => {
                           <Form.Label className="text-black font-size-13px font-weight-500">
                             Language
                           </Form.Label>
-                          <select
-                            className="font-size-13px language_sel"
-                            name="language"
-                            value={data.language}
-                            onChange={(e) => handleInputChange(e, i)}
-                          >
-                            <option selected hidden>
-                              Select a Language
-                            </option>
-                            {languageList?.map((item) => (
-                              <option value={item.name}>{item.name}</option>
-                            ))}
-                          </select>
+                          {data.language == "English" ? (
+                            <span
+                              style={{
+                                height: 40,
+                                display: "flex",
+                                alignItems: "center",
+                                fontWeight: 600,
+                              }}
+                            >
+                              English
+                            </span>
+                          ) : (
+                            <select
+                              className="font-size-13px language_sel"
+                              name="language"
+                              value={data.language}
+                              onChange={(e) => handleInputChange(e, i)}
+                            >
+                              <option selected hidden>
+                                Select a Language
+                              </option>
+                              {languageList?.map((item) => (
+                                <option value={item.name}>{item.name}</option>
+                              ))}
+                            </select>
+                          )}
                           {/* <input
                             className="font-size-13px"
                             placeholder="English"
@@ -121,7 +139,8 @@ const LanguageEdit = ({ data, Popup, successPopup, setSuccessPopup }) => {
                             }}
                           >
                             <span>Proficiency level</span>{" "}
-                            {inputList?.length !== 1 ? (
+                            {inputList?.length !== 0 &&
+                            data.language != "English" ? (
                               <button
                                 onClick={() => removeInputFields(i)}
                                 style={{

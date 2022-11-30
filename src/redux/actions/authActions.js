@@ -187,7 +187,7 @@ export const onPasswordChange =
         setSuccessPopup(
           <SuccessPopup
             Popup={() => setSuccessPopup(!successPopup)}
-            message="Password Changed Successfully"
+            message="Password changed successfully"
             // afterSuccess={afterSuccess}
           />
         );

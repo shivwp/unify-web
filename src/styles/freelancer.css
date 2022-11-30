@@ -374,8 +374,8 @@
 }
 
 .popup_btns_new button:disabled {
-  background-color: #c7c6c9;
-  color: rgb(74 72 72);
+  background-color: #5e5e5e;
+  color: #fff;
   font: normal normal medium 18px/30px Poppins !important;
   font-weight: bold;
   border-radius: 60px !important;
@@ -384,7 +384,7 @@
   margin-top: 5px;
   min-width: 160px;
   margin-right: 15px;
-  border: #838383 solid 1px;
+  border: none;
   -webkit-border-radius: 60px !important;
 }
 
@@ -457,9 +457,9 @@
 }
 
 .addMoreLanguageBtn[disabled] {
-  border: #c9c8cb solid 1px;
-  color: #a7a6aa;
-  background-color: none;
+  border: none;
+  color: #fff;
+  background-color: #a7a6aa;
 }
 
 .freelancer_all_contract {

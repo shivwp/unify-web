@@ -1653,7 +1653,7 @@ body {
   .navbar-expand-md .navbar-nav .nav-link {
     height: fit-content;
     font-weight: 500;
-    font-size: 18px;
+    font-size: 15px;
   }
 }
 @media only screen and (max-width: 769px) {
@@ -6778,6 +6778,7 @@ a {
   padding: 10px;
   color: #1f1f1f;
   font: normal normal 500 14px/27px Poppins;
+  font-weight: 700;
 }
 .langAdd {
   margin: 0 10px;
@@ -8063,7 +8064,7 @@ a {
   position: relative;
 }
 .addSkillBox .search_inp_box .suggest_skills {
-  top: 55px;
+  top: 57px;
 }
 .addSkillBox .search_inp_box .suggest_skills span {
   font-size: 14px;

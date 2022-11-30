@@ -40,7 +40,10 @@ const PublishProfile = ({ setCurrentTab, profileList }) => {
   const onSave = () => {
     const formData = new FormData();
 
-    formData.append("profile_image", profileImage);
+    if (profileImage) {
+      formData.append("profile_image", profileImage);
+    }
+
     formData.append("phone", values?.phone);
     formData.append("timezone", values?.timezone);
     formData.append("address", values?.address);

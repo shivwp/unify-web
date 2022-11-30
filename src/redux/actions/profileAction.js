@@ -82,7 +82,7 @@ export const onAddEmployment =
         setSuccessPopup(
           <SuccessPopup
             Popup={() => setSuccessPopup(!successPopup)}
-            message="Employment History Added Sucessfully"
+            message="Employment history saved Sucessfully"
           />
         );
       });
@@ -188,7 +188,7 @@ export const onAddEducation =
         setSuccessPopup(
           <SuccessPopup
             Popup={() => setSuccessPopup(!successPopup)}
-            message="Education Added Successfully"
+            message="Education saved successfully"
           />
         );
       });
@@ -220,7 +220,7 @@ export const onEditContactInfo =
         setSuccessPopup(
           <SuccessPopup
             Popup={() => setSuccessPopup(!successPopup)}
-            message="Details Added Successfully"
+            message="Details saved successfully"
           />
         );
       });
@@ -242,7 +242,7 @@ export const onEditLocationInfo =
         setSuccessPopup(
           <SuccessPopup
             Popup={() => setSuccessPopup(!successPopup)}
-            message="Details Added Successfully"
+            message="Details saved successfully"
             afterSuccess={afterSuccess}
           />
         );
@@ -262,7 +262,7 @@ export const onEditVideo =
         setSuccessPopup(
           <SuccessPopup
             Popup={() => setSuccessPopup(!successPopup)}
-            message="Introduction Video Added Successfully"
+            message="Introduction video saved Successfully"
           />
         );
       });
@@ -284,7 +284,7 @@ export const onEditDesignation =
         setSuccessPopup(
           <SuccessPopup
             Popup={() => setSuccessPopup(!successPopup)}
-            message="Title and Designation saved successfully."
+            message="Title and bio saved successfully."
             afterSuccess={afterSuccess}
           />
         );
@@ -305,7 +305,7 @@ export const onEditPortfolio =
         setSuccessPopup(
           <SuccessPopup
             Popup={() => setSuccessPopup(!successPopup)}
-            message="Portfolio Added Successfully"
+            message="Portfolio saved successfully"
           />
         );
       })
@@ -332,7 +332,7 @@ export const onEditLanguage =
         setSuccessPopup(
           <SuccessPopup
             Popup={() => setSuccessPopup(!successPopup)}
-            message="Language Added Successfully"
+            message="Language saved successfully"
             afterSuccess={afterSuccess}
           />
         );
@@ -375,7 +375,7 @@ export const onEditHourPerWeek =
         setSuccessPopup(
           <SuccessPopup
             Popup={() => setSuccessPopup(!successPopup)}
-            message="Hours Per Week set Successfully"
+            message="Hourly price saved successfully"
             afterSuccess={afterSuccess}
           />
         );
@@ -401,7 +401,7 @@ export const onEditSkills =
         setSuccessPopup(
           <SuccessPopup
             Popup={() => setSuccessPopup(!successPopup)}
-            message="Skills Added Successfully"
+            message="Skills saved successfully"
             afterSuccess={afterSuccess}
           />
         );
@@ -421,7 +421,7 @@ export const onEditCertificate =
         setSuccessPopup(
           <SuccessPopup
             Popup={() => setSuccessPopup(!successPopup)}
-            message="Certificate Added Successfully"
+            message="Certificate saved successfully"
           />
         );
       });
@@ -466,7 +466,7 @@ export const editVisiblity =
         setSuccessPopup(
           <SuccessPopup
             Popup={() => setSuccessPopup(!successPopup)}
-            message="Visibility Change Successfully"
+            message="Visibility saved successfully"
           />
         );
       });
@@ -485,7 +485,7 @@ export const editExprienceLev =
         setSuccessPopup(
           <SuccessPopup
             Popup={() => setSuccessPopup(!successPopup)}
-            message="Exprience Level Changed Successfully"
+            message="Exprience level saved successfully"
           />
         );
       });
@@ -545,7 +545,7 @@ export const onRequestTestimonial =
         setSuccessPopup(
           <SuccessPopup
             Popup={() => setSuccessPopup(!successPopup)}
-            message="Testimonial Request sent successfully"
+            message="Testimonial request sent successfully"
           />
         );
       });
@@ -559,7 +559,7 @@ export const onSubmitTestimonial =
         setSuccessPopup(
           <SuccessPopup
             Popup={() => setSuccessPopup(!successPopup)}
-            message="Testimonial Submited Successfully"
+            message="Testimonial submited successfully"
             afterSuccess={afterSuccess}
           />
         );
@@ -589,7 +589,7 @@ export const onAddCategory =
         setSuccessPopup(
           <SuccessPopup
             Popup={() => setSuccessPopup(!successPopup)}
-            message="Your Service is Set Successfully"
+            message="Your project preference saved successfully"
             afterSuccess={afterSuccess}
           />
         );

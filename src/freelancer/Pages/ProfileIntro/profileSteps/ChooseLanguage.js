@@ -14,7 +14,9 @@ const ChooseLangauge = ({ setCurrentTab, profileList }) => {
   const [popup, Setpopup] = useState(false);
   const [successPopup, setSuccessPopup] = useState(false);
   const [confirmPopup, setConfirmPopup] = useState(false);
-  const [inputList, setInputList] = useState([{ language: "", level: "" }]);
+  const [inputList, setInputList] = useState([
+    { language: "English", level: "" },
+  ]);
 
   useEffect(() => {
     if (profileList?.length) {
@@ -69,6 +71,8 @@ const ChooseLangauge = ({ setCurrentTab, profileList }) => {
     );
   };
 
+  console.log(inputList);
+
   return (
     <>
       <div className="container">
@@ -96,28 +100,25 @@ const ChooseLangauge = ({ setCurrentTab, profileList }) => {
                 <>
                   <Col md={5} lg={4} key={i}>
                     <div className="popup_form_element">
-                      <select
-                        className="font-size-13px language_sel"
-                        name="language"
-                        value={data.language}
-                        onChange={(e) => handleInputChange(e, i)}
-                      >
-                        <option selected hidden>
-                          Select a Language
-                        </option>
-                        {languageList?.map((item, i) => (
-                          <option key={i} value={item.name}>
-                            {item.name}
+                      {data.language == "English" ? (
+                        <span style={{ fontWeight: 600 }}>English</span>
+                      ) : (
+                        <select
+                          className="font-size-13px language_sel"
+                          name="language"
+                          value={data.language}
+                          onChange={(e) => handleInputChange(e, i)}
+                        >
+                          <option selected hidden>
+                            Select a Language
                           </option>
-                        ))}
-                      </select>
-                      {/* <input
-                      className="font-size-13px"
-                      placeholder="English"
-                      name="language"
-                      value={data.language}
-                      onChange={(e) => handleInputChange(e, i)}
-                    /> */}
+                          {languageList?.map((item, i) => (
+                            <option key={i} value={item.name}>
+                              {item.name}
+                            </option>
+                          ))}
+                        </select>
+                      )}
                     </div>
                   </Col>
                   <Col md={5} lg={4}>
@@ -144,7 +145,7 @@ const ChooseLangauge = ({ setCurrentTab, profileList }) => {
                   </Col>
                   <Col md={2} lg={1}>
                     <div className="popup_form_element">
-                      {inputList?.length !== 1 ? (
+                      {inputList?.length !== 0 && data.language != "English" ? (
                         <button
                           onClick={() => removeInputFields(i)}
                           style={{
