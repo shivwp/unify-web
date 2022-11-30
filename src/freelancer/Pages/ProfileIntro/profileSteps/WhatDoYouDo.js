@@ -12,6 +12,7 @@ const WhatDoYouDo = ({ setCurrentTab, profileList }) => {
   const [popup, Setpopup] = useState(false);
   const [successPopup, setSuccessPopup] = useState(false);
   const [confirmPopup, setConfirmPopup] = useState(false);
+  const [isChange, setIsChange] = useState(false);
 
   useEffect(() => {
     if (profileList) {
@@ -22,6 +23,7 @@ const WhatDoYouDo = ({ setCurrentTab, profileList }) => {
   const onInputChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
     setErrors({ ...errors, [e.target.name]: false });
+    setIsChange(true);
   };
 
   const afterSuccess = () => {
@@ -64,15 +66,20 @@ const WhatDoYouDo = ({ setCurrentTab, profileList }) => {
       description: values.description,
     };
 
-    dispatch(
-      onEditDesignation(
-        data,
-        popup,
-        successPopup,
-        setSuccessPopup,
-        afterSuccess
-      )
-    );
+    if (isChange) {
+      dispatch(
+        onEditDesignation(
+          data,
+          popup,
+          successPopup,
+          setSuccessPopup,
+          afterSuccess
+        )
+      );
+    } else {
+      setCurrentTab("exprience");
+      navigate(`/freelancer/profile-intro/exprience`);
+    }
   };
 
   return (

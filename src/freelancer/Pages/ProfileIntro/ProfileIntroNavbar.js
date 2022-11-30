@@ -13,11 +13,11 @@ const ProfileIntroNavbar = () => {
       <Container>
         <div className="w-100 d-flex justify-content-between align-items-center flex_rev newnav_v2_flxew">
           <div className="width_100_sm newnav_v2_wauto">
-            <a href="/">
+            <Link to="/">
               <Navbar.Brand>
                 <img src={logo} className="img-fluid rounded-top" alt="" />
               </Navbar.Brand>
-            </a>
+            </Link>
           </div>
         </div>
       </Container>

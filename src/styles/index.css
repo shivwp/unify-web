@@ -3315,6 +3315,9 @@ body {
 .invalid-feedback {
   font-weight: 400 !important;
 }
+.project_details_Num_inp::placeholder {
+  color: gray !important;
+}
 
 .project_details_Num_inp::-webkit-outer-spin-button,
 .project_details_Num_inp::-webkit-inner-spin-button {

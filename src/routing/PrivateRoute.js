@@ -1,17 +1,8 @@
 import React from "react";
 import { Navigate, Outlet } from "react-router-dom";
 
-const useAuth = () => {
-  const user = localStorage.getItem("unify_access");
-  if (user) {
-    return true;
-  } else {
-    return false;
-  }
-};
-
-const ProtectedRoutes = (props) => {
-  const auth = useAuth();
+const ProtectedRoutes = () => {
+  const auth = localStorage.getItem("unify_token");
 
   return auth ? <Outlet /> : <Navigate to="/signin" />;
 };

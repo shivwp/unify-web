@@ -74,7 +74,7 @@ const HourlyRate = ({ setCurrentTab, profileList }) => {
                         $
                         <Form.Control
                           type="number"
-                          placeholder={`10.00`}
+                          placeholder="0.00"
                           name="hours_price"
                           className="project_details_Num_inp send_proposal_num_inp"
                           onChange={(e) => {

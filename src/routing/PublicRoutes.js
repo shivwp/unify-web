@@ -1,17 +1,8 @@
 import React from "react";
 import { Navigate, Outlet } from "react-router-dom";
 
-const useAuth = () => {
-  const user = localStorage.getItem("unify_access");
-  if (user) {
-    return true;
-  } else {
-    return false;
-  }
-};
-
-const PublicRoutes = (props) => {
-  const auth = useAuth();
+const PublicRoutes = () => {
+  const auth = localStorage.getItem("unify_token");
   const userDetails = JSON.parse(localStorage.getItem("unify_user"));
 
   return (
@@ -19,9 +10,21 @@ const PublicRoutes = (props) => {
       {auth ? (
         <>
           {userDetails?.user_type === "freelancer" ? (
-            <Navigate to="/freelancer/dashboard" />
+            <>
+              {userDetails?.is_profile_complete === true ? (
+                <Navigate to="/freelancer/dashboard" />
+              ) : (
+                <Navigate to="/freelancer/question1" />
+              )}
+            </>
           ) : userDetails?.user_type === "client" ? (
-            <Navigate to="/dashboard" />
+            <>
+              {userDetails?.is_profile_complete === true ? (
+                <Navigate to="/dashboard" />
+              ) : (
+                <Navigate to="/businesssize" />
+              )}
+            </>
           ) : null}
         </>
       ) : (

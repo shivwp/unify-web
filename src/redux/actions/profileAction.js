@@ -42,7 +42,7 @@ let userDetails = JSON.parse(localStorage.getItem("unify_user"));
 
 const config = {
   headers: {
-    Authorization: `Bearer ${localStorage.getItem("unify_Token")}`,
+    Authorization: `Bearer ${localStorage.getItem("unify_token")}`,
   },
 };
 

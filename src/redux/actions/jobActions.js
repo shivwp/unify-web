@@ -19,7 +19,7 @@ import {
 
 const config = {
   headers: {
-    Authorization: `Bearer ${localStorage.getItem("unify_Token")}`,
+    Authorization: `Bearer ${localStorage.getItem("unify_token")}`,
   },
 };
 

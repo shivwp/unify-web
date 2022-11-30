@@ -3,7 +3,7 @@ import { SET_SUBSCRIPTION_LIST } from "../types";
 
 const config = {
   headers: {
-    Authorization: `Bearer ${localStorage.getItem("unify_Token")}`,
+    Authorization: `Bearer ${localStorage.getItem("unify_token")}`,
   },
 };
 
@@ -20,18 +20,39 @@ export const getSubscriptionList = () => async (dispatch) => {
     });
 };
 
-export const onSubscriptionPayment = (data, navigate) => async (dispatch) => {
-  await Axios.post(`/subscription-payment`, data, config)
+export const onSubmitProfile = (navigate) => async (dispatch) => {
+  await Axios.get(`/submit-profile`, config)
     .then((res) => {
       if (res.data.status) {
-        Axios.get(`/submit-profile`, config)
-          .then((res) => {})
-          .catch((err) => {
-            console.log(err);
-          });
+        if (
+          JSON.parse(localStorage.getItem("unify_user")).user_type ===
+          "freelancer"
+        ) {
+          navigate("/freelancer/dashboard");
+        } else if (
+          JSON.parse(localStorage.getItem("unify_user")).user_type === "client"
+        ) {
+          navigate("/dashboard");
+        }
       }
     })
     .catch((err) => {
       console.log(err);
     });
 };
+
+// export const onSubscriptionPayment = (data, navigate) => async (dispatch) => {
+//   await Axios.post(`/subscription-payment`, data, config)
+//     .then((res) => {
+//       if (res.data.status) {
+//         Axios.get(`/submit-profile`, config)
+//           .then((res) => {})
+//           .catch((err) => {
+//             console.log(err);
+//           });
+//       }
+//     })
+//     .catch((err) => {
+//       console.log(err);
+//     });
+// };

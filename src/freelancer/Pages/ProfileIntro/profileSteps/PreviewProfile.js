@@ -73,7 +73,7 @@ const PreviewProfile = ({ setCurrentTab, profileList }) => {
                   the scenes and let you know once it's ready. You can make
                   changes later on once you're live on the platform.
                 </div>
-                <Link to="/description">
+                <Link to="/subscription">
                   <button className="priviewSubmitButton">
                     Submit Profile
                   </button>
@@ -761,7 +761,7 @@ const PreviewProfile = ({ setCurrentTab, profileList }) => {
                 ))}
               </div>
               <Col>
-                <Link to="/description">
+                <Link to="/subscription">
                   <button className="priviewSubmitButton mt-4">
                     Submit Profile
                   </button>

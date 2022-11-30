@@ -10,6 +10,7 @@ import {
   onSubscriptionPayment,
 } from "../../../../redux/actions/subscriptionAction";
 import StripeCheckout from "react-stripe-checkout";
+import { onSubmitProfile } from "../../../../redux/actions/subscriptionAction";
 
 const Subscriptionplan = () => {
   const dispatch = useDispatch();
@@ -29,29 +30,33 @@ const Subscriptionplan = () => {
     setErrors({ ...errors, [e.target.name]: false });
   };
 
-  const handlePayment = (token) => {
-    let errorExist = false;
-    let errorsObject = {};
+  // const handlePayment = (token) => {
+  //   let errorExist = false;
+  //   let errorsObject = {};
 
-    if (
-      values?.subscription === "" ||
-      values?.subscription === null ||
-      values?.subscription === undefined
-    ) {
-      errorsObject.subscription = true;
-      errorExist = true;
-    }
+  //   if (
+  //     values?.subscription === "" ||
+  //     values?.subscription === null ||
+  //     values?.subscription === undefined
+  //   ) {
+  //     errorsObject.subscription = true;
+  //     errorExist = true;
+  //   }
 
-    if (errorExist) {
-      setErrors(errorsObject);
-      return false;
-    }
+  //   if (errorExist) {
+  //     setErrors(errorsObject);
+  //     return false;
+  //   }
 
-    const data = {
-      subscription_id: values?.subscription,
-      stripe_token: token.id,
-    };
-    dispatch(onSubscriptionPayment(data, navigate));
+  //   const data = {
+  //     subscription_id: values?.subscription,
+  //     stripe_token: token.id,
+  //   };
+  //   dispatch(onSubscriptionPayment(data, navigate));
+  // };
+
+  const onNext = () => {
+    dispatch(onSubmitProfile(navigate));
   };
 
   return (
@@ -90,15 +95,18 @@ const Subscriptionplan = () => {
                       ))}
                     </ul>
                     <div>
-                      <StripeCheckout
+                      {/* <StripeCheckout
                         label="Add Card"
                         token={handlePayment}
                         stripeKey="pk_test_51M7YBGEAU8g6XRhsSzwgw2cS4DwXnFyL6C8HiT3GkOTY4GVOpbyjff7PCITznuAi5GV9xic6sDlLZd4p2t9fKnPZ00zZi7dmqe"
+                      > */}
+                      <button
+                        className="btn_chose_pl btnhovpple"
+                        onClick={onNext}
                       >
-                        <button className="btn_chose_pl btnhovpple">
-                          CHOOSE PLAN
-                        </button>
-                      </StripeCheckout>
+                        CHOOSE PLAN
+                      </button>
+                      {/* </StripeCheckout> */}
                     </div>
                   </div>
                 </Form.Label>
