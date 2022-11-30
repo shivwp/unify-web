@@ -29,11 +29,11 @@ const Screen = () => {
   const [errors, setErrors] = useState({});
   const [successPopup, setSuccessPopup] = useState(false);
 
-  useEffect(() => {
-    if (!proposalData) {
-      navigate(`/freelancer/project-detail/${id}`);
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (!proposalData) {
+  //     navigate(`/freelancer/project-detail/${id}`);
+  //   }
+  // }, []);
   useEffect(() => {
     dispatch(singleJobPostDetails({ job_id: id }));
   }, [id]);

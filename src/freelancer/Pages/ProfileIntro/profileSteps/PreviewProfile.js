@@ -47,11 +47,13 @@ const PreviewProfile = ({ setCurrentTab, profileList }) => {
 
     formData.append("first_name", profileList?.basic_info?.first_name);
     formData.append("last_name", profileList?.basic_info?.last_name);
-    formData.append("occcuption", profileList?.basic_info?.occcuption);
+    formData.append("occcuption", profileList?.basic_info?.occuption);
     formData.append("profile_image", profileImage);
 
     dispatch(editNameInfo(formData));
   };
+
+  console.log(profileList);
 
   return (
     <>

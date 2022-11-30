@@ -107,7 +107,7 @@ const WhatDoYouDo = ({ setCurrentTab, profileList }) => {
                 maxLength="5000"
                 value={values?.description}
                 onChange={onInputChange}
-                placeholder="There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable."
+                placeholder="A short bio..."
               ></Form.Control>
 
               <span className="signup-error">

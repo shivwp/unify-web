@@ -14,6 +14,8 @@ const Skills = ({ setCurrentTab, profileList }) => {
   const dispatch = useDispatch();
   const [selectSkills, setSelectSkills] = useState(profileList);
   const [showSkillList, setShowSkillList] = useState(false);
+  const [showSkillError, setShowSkillError] = useState(false);
+
   let getSkillList = useSelector((state) => state?.profile?.getSkillList);
   const [popup, Setpopup] = useState(false);
   const [successPopup, setSuccessPopup] = useState(false);
@@ -50,6 +52,7 @@ const Skills = ({ setCurrentTab, profileList }) => {
       }
     } else {
       setShowSkillList(false);
+      setShowSkillError(true);
     }
     document.getElementById("search_skill_inp").value = null;
   };
@@ -73,12 +76,16 @@ const Skills = ({ setCurrentTab, profileList }) => {
   });
 
   const onSave = (e) => {
-    const data = {
-      skill_id: selectSkills?.map((item) => item.skill_id)?.toString(),
-    };
-    dispatch(
-      onEditSkills(data, popup, successPopup, setSuccessPopup, afterSuccess)
-    );
+    if (selectSkills.length == 0) {
+      setShowSkillError(true);
+    } else {
+      const data = {
+        skill_id: selectSkills?.map((item) => item.skill_id)?.toString(),
+      };
+      dispatch(
+        onEditSkills(data, popup, successPopup, setSuccessPopup, afterSuccess)
+      );
+    }
   };
 
   return (
@@ -107,7 +114,6 @@ const Skills = ({ setCurrentTab, profileList }) => {
                     type="text"
                     name="skill"
                     id="search_skill_inp"
-                    autoComplete="on"
                     placeholder="Start typing to search"
                     className="no-border font-size-13px search_skilloiouo"
                     onChange={handleOnChange}
@@ -133,14 +139,24 @@ const Skills = ({ setCurrentTab, profileList }) => {
               </div>
             </div>
             <div className="maxlabel_atcxt mt-3">
-              {selectSkills?.length === 0 ? (
+              {selectSkills?.length === 0 && showSkillError ? (
                 <span style={{ color: "red" }}>
                   At least 1 skill is required.
                 </span>
-              ) : selectSkills?.length > 14 ? (
-                <span style={{ color: "red", display: "flex", justifyContent: "end" }}>Maximum 15 skills.</span>
+              ) : selectSkills?.length > 14 && showSkillError ? (
+                <span
+                  style={{
+                    color: "red",
+                    display: "flex",
+                    justifyContent: "end",
+                  }}
+                >
+                  Maximum 15 skills.
+                </span>
               ) : (
-                <span style={{ display: "flex", justifyContent: "end" }}>Maximum 15 skills.</span>
+                <span style={{ display: "flex", justifyContent: "end" }}>
+                  Maximum 15 skills.
+                </span>
               )}
             </div>
 

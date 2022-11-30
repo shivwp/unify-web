@@ -19,6 +19,16 @@ const ServicesOffer = ({ setCurrentTab, profileList }) => {
   const [successPopup, setSuccessPopup] = useState(false);
 
   useEffect(() => {
+    if (categoryList) {
+      for (let i = 0; i < categoryList.length; i++) {
+        if (categoryList[i]?.name == profileList?.category) {
+          setCategoryId(categoryList[i].id);
+        }
+      }
+    }
+  }, [categoryList, profileList]);
+
+  useEffect(() => {
     if (profileList) {
       setValues(profileList);
     }
@@ -74,7 +84,11 @@ const ServicesOffer = ({ setCurrentTab, profileList }) => {
                   className="servicesOfferOption"
                   value={values?.category}
                   onChange={(e) => handleOnChange(e)}
+                  defaultValue={"DEFAULT"}
                 >
+                  <option hidden value={"DEFAULT"} disabled>
+                    Please Select an option
+                  </option>
                   {categoryList?.map((item, index) => (
                     <option key={index} value={item?.name}>
                       {item.name}

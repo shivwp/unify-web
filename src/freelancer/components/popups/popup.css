@@ -361,6 +361,9 @@
   font-weight: 400;
   color: #000;
 }
+.success_popup .sucess_message > div {
+  text-align: center;
+}
 .success_popup .success_popup_btn {
   display: flex;
   justify-content: center;

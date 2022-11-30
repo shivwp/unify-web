@@ -87,7 +87,7 @@ export const onSendJobProposal =
         setSuccessPopup(
           <SuccessPopup
             Popup={() => setSuccessPopup(!successPopup)}
-            message="Proposal Sent Successfully"
+            message="Proposal sent successfully"
           />
         );
       });
