@@ -73,11 +73,39 @@ const NavbarHeader = (props) => {
         <Container>
           <div className="w-100 d-flex justify-content-between align-items-center flex_rev">
             <div className="width_100_sm navbar_logo">
-              <Link to="/">
-                <Navbar.Brand>
-                  <img src={logo} className="img-fluid rounded-top " alt="" />
-                </Navbar.Brand>
-              </Link>
+              {localStorage.getItem("unify_token") ? (
+                <>
+                  {JSON.parse(localStorage.getItem("unify_user")).user_type ===
+                  "freelancer" ? (
+                    <Link to="/freelancer/dashboard">
+                      <Navbar.Brand>
+                        <img
+                          src={logo}
+                          className="img-fluid rounded-top "
+                          alt=""
+                        />
+                      </Navbar.Brand>
+                    </Link>
+                  ) : JSON.parse(localStorage.getItem("unify_user"))
+                      .user_type === "client" ? (
+                    <Link to="/dashboard">
+                      <Navbar.Brand>
+                        <img
+                          src={logo}
+                          className="img-fluid rounded-top "
+                          alt=""
+                        />
+                      </Navbar.Brand>
+                    </Link>
+                  ) : null}
+                </>
+              ) : (
+                <Link to="/">
+                  <Navbar.Brand>
+                    <img src={logo} className="img-fluid rounded-top " alt="" />
+                  </Navbar.Brand>
+                </Link>
+              )}
             </div>
             <div>
               <Navbar.Toggle

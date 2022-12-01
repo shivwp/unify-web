@@ -581,7 +581,7 @@ const Project_Search = () => {
                       />
                     </div>
                   </div>
-                  {/* <div className="s_na_box">
+                  <div className="s_na_box">
                     <div className="s_na_h4">
                       <h4>Job type</h4>
                     </div>
@@ -597,7 +597,7 @@ const Project_Search = () => {
                         <option value="long_term">Long Term </option>
                       </Form.Select>
                     </div>
-                  </div> */}
+                  </div>
                   <div className="s_na_box">
                     <div className="selected_skills_filter_jobs">
                       {selectSkills?.map((item, index) => (

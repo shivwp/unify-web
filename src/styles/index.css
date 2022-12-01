@@ -2185,8 +2185,8 @@ body {
 }
 
 .wallet_icon svg {
-  height: 60px;
-  width: 60px;
+  height: 110px;
+  width: 80px;
   fill: #eeeeee;
   padding: 0px 10px;
 }
@@ -3435,7 +3435,7 @@ body {
 }
 
 .coevr_photo_no {
-  height: 150px;
+  height: 200px;
   width: 100%;
 }
 
@@ -3453,7 +3453,102 @@ body {
 .asxee_pad {
   padding: 20px 10px;
 }
+.job_details_client.about_the_client {
+  padding: 0 20px 20px 20px;
+}
+.job_details_client.about_the_client .heading {
+  color: #170048;
+  font-weight: 700;
+}
+.job_details_client.about_the_client .is_varified {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+  gap: 8px;
+}
+.job_details_client.about_the_client .is_varified .msg {
+  color: #5d5d5d;
+  font-size: 12px;
+}
+.job_details_client.about_the_client .reviews {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  margin: 10px 0;
+}
+.job_details_client.about_the_client .reviews .client_review svg {
+  width: 16px;
+}
+.job_details_client.about_the_client .about {
+  margin-top: 10px;
+  margin-bottom: 15px;
+}
+.job_details_client.about_the_client .about .about_heading {
+  color: #6d2ef1;
+  font-size: 15px;
+  font-weight: 500;
+}
+.job_details_client.about_the_client .about .about_desc {
+  color: #462d7a;
+  font-size: 13px;
+}
 
+.job_details_client.about_the_client .about2 {
+  color: #462d7a;
+  font-size: 13px;
+  font-weight: 500;
+  margin: 15px 0;
+}
+
+/* client_recent_history start */
+.client_recent_history {
+  padding: 20px 20px 0 20px;
+}
+.client_recent_history .heading {
+  color: #170048;
+  font-weight: 700;
+}
+.client_recent_history .project {
+  padding: 20px 0;
+  border-bottom: 1px solid #d8d8d8;
+}
+.client_recent_history .project .name {
+  color: #363636;
+  font-weight: 600;
+  font-size: 14px;
+  margin: 5px 0;
+}
+.client_recent_history .project .rating {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  margin-top: 5px;
+}
+.client_recent_history .project .rating .stars {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 70px;
+}
+.client_recent_history .project .rating .date {
+  font-size: 13px;
+  color: #363636;
+}
+.client_recent_history .project .desc {
+  font-size: 13px;
+  color: #000;
+  font-weight: 500;
+  margin: 15px 0;
+}
+.client_recent_history .project .rate_date {
+  font-size: 17px;
+  color: #000;
+  font-weight: 600;
+  display: flex;
+  gap: 60px;
+  margin: 10px 0;
+}
+/* client_recent_history end */
 .mak_prof_img {
   height: 70px;
   width: 70px;
@@ -4313,7 +4408,7 @@ body {
 }
 @media only screen and (max-width: 768px) {
   .questionHeading {
-    max-width: 100% ;
+    max-width: 100%;
     margin: 0 auto;
   }
   .question_p p {
@@ -4345,7 +4440,7 @@ body {
 }
 @media only screen and (max-width: 425px) {
   .questionHeading {
-    max-width: 100% ;
+    max-width: 100%;
     margin: 0 auto;
   }
   .question_p p {
@@ -4364,7 +4459,7 @@ body {
     width: 203px;
     height: 22px;
   }
-  .row_quexenwt{
+  .row_quexenwt {
     justify-content: unset !important;
   }
   .get-startedQuestion {
@@ -6574,7 +6669,7 @@ a {
   display: flex;
 }
 @media only screen and (max-width: 425px) {
-  .questionTwobtn{
+  .questionTwobtn {
     flex-direction: column;
     margin-bottom: 20px;
   }
@@ -8347,3 +8442,199 @@ a {
   font-size: 14px;
   height: unset;
 }
+
+/* Fixed bid start------------------ */
+.fixed_bid > .heading {
+  display: flex;
+  justify-content: space-between;
+}
+.fixed_bid > .heading .head {
+  color: #6d2ef1;
+  font-weight: 700;
+  font-size: 18px;
+}
+.fixed_bid .heading .budget {
+  color: #170048;
+  font-weight: 700;
+  font-size: 15px;
+}
+.fixed_bid .how_to_be_paid > .heading {
+  color: #170048;
+  font-weight: 600;
+  font-size: 15px;
+  margin-top: 20px;
+}
+.fixed_bid .how_to_be_paid > .methods .method {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+.fixed_bid .how_to_be_paid > .methods .method .heading {
+  color: #170048;
+  font-weight: 600;
+  font-size: 15px;
+}
+.fixed_bid .how_to_be_paid > .methods .method .desc {
+  color: #170048;
+  font-weight: 400;
+  font-size: 13px;
+}
+
+.fixed_bid .milsetone {
+  border-bottom: 1px solid #dbdbdb;
+  padding: 20px 0;
+}
+.fixed_bid .milsetone .heading {
+  color: #170048;
+  font-weight: 600;
+  font-size: 15px;
+  margin: 20px 0;
+}
+.fixed_bid .milsetone .milestone_count .headings {
+  color: #170048;
+  font-weight: 600;
+  font-size: 15px;
+  display: flex;
+  gap: 15px;
+}
+.fixed_bid .milsetone .milestone_count .input_list {
+  display: flex;
+  gap: 15px;
+  margin: 20px 0;
+}
+.fixed_bid .milsetone .milestone_count .headings .srno,
+.fixed_bid .milsetone .milestone_count .input_list .srno {
+  flex: 1;
+}
+.fixed_bid .milsetone .milestone_count .headings .desc,
+.fixed_bid .milsetone .milestone_count .input_list .desc {
+  flex: 16;
+}
+.fixed_bid .milsetone .milestone_count .headings .date,
+.fixed_bid .milsetone .milestone_count .input_list .date {
+  flex: 10;
+}
+.fixed_bid .milsetone .milestone_count .headings .amount,
+.fixed_bid .milsetone .milestone_count .input_list .amount {
+  flex: 10;
+}
+
+.fixed_bid .milsetone .milestone_count .input_list .desc input,
+.fixed_bid .milsetone .milestone_count .input_list .srno input,
+.fixed_bid .milsetone .milestone_count .input_list .date input,
+.fixed_bid .milsetone .milestone_count .input_list .amount input {
+  width: 100%;
+  height: 40px;
+  outline: none;
+  border: 1px solid #dbdbdb;
+  padding: 5px 10px;
+}
+.fixed_bid .milsetone .add_milestone span {
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  color: #6610f2;
+}
+
+.fixed_bid .total_project_price {
+  border-bottom: 1px solid #dbdbdb;
+  padding: 20px 0;
+}
+.fixed_bid .total_project_price .heading {
+  display: flex;
+  justify-content: space-between;
+}
+.fixed_bid .total_project_price .heading .head {
+  color: #170048;
+  font-weight: 600;
+  font-size: 15px;
+  margin: 15px 0;
+}
+.fixed_bid .total_project_price .heading .amt {
+  color: #170048;
+  font-weight: 600;
+  font-size: 15px;
+  margin: 5px 0;
+}
+.fixed_bid .total_project_price .desc {
+  color: #170048;
+  font-weight: 400;
+  font-size: 13px;
+}
+
+.fixed_bid .unify_service_fee {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #dbdbdb;
+  padding: 20px 0;
+}
+
+.fixed_bid .unify_service_fee .head {
+  color: #170048;
+  font-weight: 600;
+  font-size: 15px;
+  margin: 15px 0;
+}
+.fixed_bid .unify_service_fee .amt {
+  color: #170048;
+  font-weight: 600;
+  font-size: 15px;
+  margin: 5px 0;
+}
+.fixed_bid .unify_service_fee {
+  color: #170048;
+  font-weight: 600;
+  font-size: 15px;
+  margin: 5px 0;
+}
+
+.fixed_bid .unify_service_fee {
+  border-bottom: 1px solid #dbdbdb;
+  padding: 20px 0;
+}
+.fixed_bid .you_will_recive .heading {
+  display: flex;
+  justify-content: space-between;
+}
+.fixed_bid .you_will_recive .heading .head {
+  color: #170048;
+  font-weight: 600;
+  font-size: 15px;
+  margin: 15px 0;
+}
+.fixed_bid .you_will_recive .heading .amt {
+  color: #170048;
+  font-weight: 600;
+  font-size: 15px;
+  margin: 5px 0;
+}
+.fixed_bid .you_will_recive .desc {
+  color: #170048;
+  font-weight: 400;
+  font-size: 13px;
+}
+
+.full_project_bid .heading {
+  color: #170048;
+  font-weight: 600;
+  font-size: 15px;
+  margin-top: 20px;
+}
+
+.full_project_bid .head {
+  color: #170048;
+  font-weight: 600;
+  font-size: 15px;
+}
+.full_project_bid .desc {
+  color: #170048;
+  font-weight: 400;
+  font-size: 13px;
+}
+.full_project_bid input {
+  width: 100%;
+  height: 40px;
+  outline: none;
+  border: 1px solid #dbdbdb;
+}
+/* Fixed bid end ------------------ */

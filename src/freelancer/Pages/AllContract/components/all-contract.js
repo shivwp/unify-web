@@ -143,7 +143,7 @@ const Screen = () => {
             </div>
           </div>
 
-          <div className="all_contract_overflow">
+          {/* <div className="all_contract_overflow">
             <div className="all_contract_tabs">
               <div
                 className={`contract_tab ${
@@ -186,8 +186,9 @@ const Screen = () => {
                 Payment Requested
               </div>
             </div>
-          </div>
-          {activeTab == "ALL" ? (
+          </div> */}
+          <AllMilestones getAllContracts={getAllContracts?.All} />
+          {/* {activeTab == "ALL" ? (
             <AllMilestones getAllContracts={getAllContracts?.All} />
           ) : activeTab == "HOURLY" ? (
             <HourlyMilestones getAllContracts={getAllContracts?.Hourly} />
@@ -203,7 +204,7 @@ const Screen = () => {
             <PaymentRequested
               getAllContracts={getAllContracts?.PaymentRequest}
             />
-          ) : null}
+          ) : null} */}
         </div>
       </Container>
     </>

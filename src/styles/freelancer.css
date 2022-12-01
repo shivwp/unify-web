@@ -1493,9 +1493,10 @@
 }
 
 .css-rve-prt {
-  color: #304e71;
+  color: #6d2ef1;
   text-align: center;
-  font: normal normal 400 13px/30px Poppins !important;
+  font: normal normal 600 13px/30px Poppins !important;
+  cursor: pointer;
 }
 
 .sphd_btext_protection {
