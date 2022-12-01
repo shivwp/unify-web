@@ -566,6 +566,10 @@
   padding: 20px 0px;
   border-bottom: 1px solid #707070;;
 }
+.profileDiplomaBottom {
+  padding: 20px 0px;
+  border-bottom: 1px solid #70707048;;
+}
 .profileDiploma {
   display: flex;
   align-items: center;

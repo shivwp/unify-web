@@ -141,7 +141,7 @@ const PublishProfile = ({ setCurrentTab, profileList }) => {
             <p className="startIntroP2 mt-3">
               We need some personal information, clients need to know who you
               are and where you're from.
-              <p className="startIntroP2">
+              <p className="startIntroP2 mt-1">
                 Your address and phone number are just for us - we will not show
                 this to clients or release this information.
               </p>
@@ -327,7 +327,7 @@ const PublishProfile = ({ setCurrentTab, profileList }) => {
             <div className="theme_btns">
               <button
                 className="first_button"
-                onClick={() => setCurrentTab("hourlyRate")}
+                onClick={() => {setCurrentTab("hourlyRate"); navigate(`/freelancer/profile-intro/hourlyRate`);}}
               >
                 Back
               </button>

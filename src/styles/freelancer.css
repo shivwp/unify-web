@@ -213,6 +213,21 @@
   color: #6d2ef1;
   font: normal normal bold 25px/35px Poppins;
 }
+.securityPopupSubHead {
+  font: normal normal normal 14px/24px Poppins;
+  letter-spacing: 0px;
+  color: #393939;
+  padding-top: 10px;
+}
+.securityPopup2ndHead {
+  color: #271943;
+  font-size: 18px;
+  font-weight: 500;
+}
+.securityHeading {
+  color: #271943;
+  font-size: 14px;
+}
 
 .close_pp_btn {
   height: 25px;
@@ -288,6 +303,67 @@
 .popup_form_element textarea {
   height: 100px;
 }
+@media screen and (max-width: 768px) and (min-width: 426px) {
+  .col-sm-9 {
+    flex: 0 0 auto;
+    width: 62%;
+  }
+  .col-sm-3 {
+    flex: 0 0 auto;
+    width: 36%;
+  }
+}
+/* @media screen and (max-width: 320px) {
+  .col-sm-9 {
+    flex: 0 0 auto;
+    width: 62%;
+  }
+  .col-sm-3 {
+    flex: 0 0 auto;
+    width: 36%;
+  }
+} */
+
+@media screen and (max-width: 425px) {
+  .popup_form_element {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    width: 56%;
+    padding: 10px;
+  }
+  .startIntroIn h5 {
+    color: #00065a;
+    font-weight: 700;
+    text-align: center;
+    font-size: 25px;
+    line-height: 32px;
+  } 
+}
+@media screen and (max-width: 375px) {
+  .popup_form_element {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    width: 48%;
+  }
+  .startIntroIn h5 {
+    color: #00065a;
+    font-weight: 700;
+    text-align: center;
+    font-size: 23px;
+    line-height: 32px;
+  } 
+}
+@media screen and (max-width: 320px) {
+  .popup_form_element {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    width: 46%;
+  }
+}
+
 
 ._profile_overview textarea {
   resize: none;
@@ -1537,6 +1613,11 @@
   font: normal normal 600 14px/30px Poppins !important;
   color: #170048;
   padding: 8px 20px;
+}
+
+.hourlyRateDisableInp {
+  background-color: #e9ecef6e !important;
+  opacity: 1;
 }
 
 .cvr_ltr_textbox textarea {
