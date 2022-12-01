@@ -87,7 +87,7 @@ const ClientRoutes = () => {
         <Route path="/scope" element={<Scope />} />
         <Route path="/budget" element={<Budget />} />
         <Route path="/job-description" element={<JobDescription />} />
-        <Route path="/view-job" element={<ViewJob />} />
+        <Route path="/view-job/:jobId" element={<ViewJob />} />
         <Route path="/view-job/private" element={<MakePrivate />} />
         <Route path="/hire-freelancer" element={<HireFreelancer />} />
         <Route

@@ -6,18 +6,28 @@ import Hire from "../../../../components/Hire/all";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
-import Button from "react-bootstrap/Button";
+import { useDispatch, useSelector } from "react-redux";
+import { singleJobPostDetails } from "../../../../redux/actions/jobActions";
 
 const ViewScreen = () => {
-  let { screen } = useParams();
+  let { jobId } = useParams();
+  const dispatch = useDispatch();
   const [currentTab, setCurrentTab] = useState("ViewJob");
+  let singleJobDetails = useSelector((state) => state.job.singleJobDetails);
+
+  useEffect(() => {
+    const data = {
+      job_id: jobId,
+    };
+    dispatch(singleJobPostDetails(data));
+  }, []);
 
   return (
     <Container>
       <div className="view_job_box">
         <div className="d-flex justify-content-between">
           <div className="vj_hea">
-            <h1>UI/UX Design</h1>
+            <h1>{singleJobDetails?.name}</h1>
           </div>
           <div>
             <div className="vj_r_link">
@@ -28,46 +38,44 @@ const ViewScreen = () => {
         </div>
         <div className="overflow-scroll">
           <div className="d-flex flex-wrap tab_m_nodea mt-4 tab_scroll_cont">
-            <Button
-              variant=""
+            <button
               className={`tab_btn_vs ${
                 currentTab === "ViewJob" ? "active_bvs" : ""
               }`}
               onClick={() => setCurrentTab("ViewJob")}
             >
               View Job Post
-            </Button>
-            <Button
-              variant=""
+            </button>
+            <button
               className={`tab_btn_vs ${
                 currentTab === "invite" ? "active_bvs" : ""
               }`}
               onClick={() => setCurrentTab("invite")}
             >
               Invite freelancers
-            </Button>
-            <Button
-              variant=""
+            </button>
+            <button
               className={`tab_btn_vs ${
                 currentTab === "review" ? "active_bvs" : ""
               }`}
               onClick={() => setCurrentTab("review")}
             >
               Review proposals
-            </Button>
-            <Button
-              variant=""
+            </button>
+            <button
               className={`tab_btn_vs ${
                 currentTab === "hire" ? "active_bvs" : ""
               }`}
               onClick={() => setCurrentTab("hire")}
             >
               Hire
-            </Button>
+            </button>
           </div>
         </div>
-        {currentTab === "ViewJob" && <ViewJob />}
-        {currentTab === "invite" && <InviteFreelancer />}
+        {currentTab === "ViewJob" && (
+          <ViewJob singleJobDetails={singleJobDetails} />
+        )}
+        {currentTab === "invite" && <InviteFreelancer jobId={jobId} />}
         {currentTab === "review" && <ReviewProposal />}
         {currentTab === "hire" && <Hire />}
       </div>

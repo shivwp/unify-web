@@ -25,13 +25,13 @@
   margin-right: 5px;
 }
 
-.remove-posting-popup>p {
+.remove-posting-popup > p {
   font-size: 12px;
   margin-top: 10px;
   color: rgb(128 123 123);
 }
 
-.remove-posting-popup>p>span {
+.remove-posting-popup > p > span {
   font-size: 12px;
   color: #6d2ef1;
 }
@@ -61,7 +61,7 @@
   margin: 0px;
 }
 
-.remove-draft-popup>p {
+.remove-draft-popup > p {
   margin: 2rem 0 3rem 0;
 }
 
@@ -84,6 +84,31 @@
 .change-password-popup h5 {
   color: #6d2ef1;
   font-weight: 700;
+}
+
+.change-password-popup .invite-toJob-wrapper {
+  display: flex;
+  padding: 20px 0px;
+}
+.change-password-popup .invite-toJob-wrapper .invite-toJob-image {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.change-password-popup .invite-toJob-wrapper .invite-toJob-info {
+  margin-top: 10px;
+  margin-left: 10px;
+}
+.change-password-popup .invite-input-wrapper .invite-heading {
+  margin-bottom: 10px;
+}
+.change-password-popup .invite-input-wrapper textarea {
+  width: 100%;
+  border: 1px solid #9b9696;
+  border-radius: 5px;
+  outline: none;
+  padding: 10px;
 }
 
 @media screen and (max-width: 644px) {
@@ -235,7 +260,7 @@
   font-size: 15px;
 }
 
-.team_name label>input {
+.team_name label > input {
   outline: none;
   border: none;
   border: 1px solid #cbcaca;
@@ -250,14 +275,14 @@
   font-weight: 600;
 }
 
-.create_new_team_popup>p {
+.create_new_team_popup > p {
   font-size: 12px;
   font-weight: 500;
   color: rgb(128 123 123);
   margin: 20px 0;
 }
 
-.create_new_team_popup>p>span {
+.create_new_team_popup > p > span {
   font-size: 12px;
   color: #6d2ef1;
 }
@@ -286,12 +311,12 @@
   margin: 20px 0;
 }
 
-.invite_user_popup .invite_users>label {
+.invite_user_popup .invite_users > label {
   display: flex;
   flex-direction: column;
 }
 
-.invite_user_popup .invite_users>label span {
+.invite_user_popup .invite_users > label span {
   font-weight: 600;
   font-size: 17px;
 }
@@ -301,7 +326,7 @@
   font-size: 17px;
 }
 
-.invite_user_popup .invite_users>label input {
+.invite_user_popup .invite_users > label input {
   outline: none;
   border: none;
   border: 1px solid #cbcaca;
@@ -311,7 +336,7 @@
   padding: 3px 38px 3px 10px;
 }
 
-.invite_user_popup .invite_users>label textarea {
+.invite_user_popup .invite_users > label textarea {
   resize: none;
   outline: none;
   border: none;

@@ -5009,8 +5009,8 @@ body {
   margin-right: 6px;
   background-color: #eaeef2;
   border-radius: 60px;
-  border: #eaeef2 solid;
-  padding: 2px 12px;
+  border: 2px #eaeef2 solid;
+  padding: 6px 12px;
   margin-top: 5px;
   margin-bottom: 5px;
   -webkit-border-radius: 60px;
@@ -5024,7 +5024,7 @@ body {
 
 .slide_btnss button:hover {
   background-color: transparent;
-  border-color: #eaeef2;
+  border-color: 1px solid #eaeef2;
 }
 
 .slider_shutter {

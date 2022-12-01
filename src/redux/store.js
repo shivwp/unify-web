@@ -6,6 +6,7 @@ import authReducer from "./reducers/authReducer";
 import profileReducer from "./reducers/profileReducer";
 import jobReducer from "./reducers/jobReducer";
 import subscriptionReducer from "./reducers/subscriptionReducer";
+import freelancerReducer from "./reducers/freelancerReducer";
 
 let middleware = [thunk];
 
@@ -14,6 +15,7 @@ const rootReducer = combineReducers({
   profile: profileReducer,
   job: jobReducer,
   subscription: subscriptionReducer,
+  freelancer: freelancerReducer,
 });
 
 const store = createStore(
