@@ -198,7 +198,7 @@ const Bsize = () => {
                   fontSize: "16px",
                 }}
               >
-                {`Skip For Now >>`}
+              Skip For Now &#62;&#62;
               </div>
             </Link>
           </div>

@@ -236,7 +236,7 @@ const Category = () => {
                   fontSize: "14px",
                 }}
               >
-                {`Skip For Now >>`}
+               Skip For Now &#62;&#62;
               </div>
             </Link>
           </div>

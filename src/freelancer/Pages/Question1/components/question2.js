@@ -50,7 +50,7 @@ const Screen = () => {
           <div className="question_p">
             <p>
               Unify is a place for everyone. We want to understand your
-              motivations so we can help you get the best out of <br /> your
+              motivations so we can help you get the best out of your
               experience with us.
             </p>
           </div>
@@ -173,7 +173,7 @@ const Screen = () => {
                 fontSize: "14px",
               }}
             >
-              Skip For Now >>
+              Skip For Now 	&#62;&#62;
             </div>
           </Link>
         </div>
