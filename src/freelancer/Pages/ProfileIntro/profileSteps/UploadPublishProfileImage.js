@@ -106,10 +106,10 @@ const UploadPublishProfilepic = ({
             <Row className="mt-4">
               <h5 className="uploadImgDetailsTitle"> Your Photo Should: </h5>
               <ul className="uploadImageDetails">
-                <li>Be a close-up of your face</li>
-                <li>Show your face clearly - no sunglasses!</li>
-                <li>Be clear and crisp</li>
-                <li>Have a neutral background</li>
+                <li>Make sure it is a clear picture of your face</li>
+                <li>Professional photo's are good, think Linkedin or your CV!</li>
+                <li>No sunglasses (we'll reject these)</li>
+                <li>Clear backgrounds preferred</li>
               </ul>
             </Row>
             <div className="popup_btns_new flex-wrap cwiewyehkk">

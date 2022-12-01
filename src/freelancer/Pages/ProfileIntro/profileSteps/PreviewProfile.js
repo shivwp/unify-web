@@ -561,7 +561,7 @@ const PreviewProfile = ({ setCurrentTab, profileList }) => {
                     style={{ display: "flex", alignItems: "center" }}
                   >
                     <div
-                      className="previewProfileDate"
+                      className="previewProfileDate respUniversityName"
                       style={{ marginRight: 10 }}
                     >
                       {item.school} {item.start_year} - {item.end_year}

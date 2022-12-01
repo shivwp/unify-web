@@ -5814,6 +5814,13 @@ a {
   }
 }
 
+@media only screen and (max-width: 768px) {
+  .blue_ater_s::before {
+    display: none;
+  }
+}
+
+
 @media only screen and (max-width: 670px) {
   .services_sec_heading h2 {
     font-size: 40px;
@@ -5831,11 +5838,7 @@ a {
     font-size: 23px;
   }
 
-  .blue_ater_s::before {
-    width: 220px;
-    right: 0;
-    left: auto;
-  }
+
 
   .md_btn_getstarted {
     display: flex;
@@ -6723,6 +6726,26 @@ a {
   font-weight: 700;
 }
 
+@media only screen and (max-width: 320px) {
+  .startIntroIn h5 {
+    text-align: center;
+    font-size: 18px;
+  }
+  .startIntroTwoP {
+    text-align: center;
+    font-size: 14px;
+  }
+  .languageOption {
+  display: flex;
+  justify-content: space-between;
+  background: #83b4ef3d;
+  padding: 12px;
+  color: #1f1f1f;
+  font: normal normal 500 14px/27px Poppins;
+  font-weight: 700;
+  }
+}
+
 .startIntroP {
   font-size: 12px;
   margin-top: 10px;
@@ -6876,6 +6899,33 @@ a {
   font-size: 12px;
 }
 
+.whatdoYoudo-head {
+  color: #00065a !important;
+  font-size: 14px !important;
+  font-weight: 550 !important;
+  line-height: 35px !important;
+}
+@media only screen and (max-width: 425px) {
+  .whatdoYoudo-head {
+    color: #00065a !important;
+    font-size: 13px !important;
+    font-weight: 550 !important;
+    line-height: 35px !important;
+  }
+}
+@media only screen and (max-width: 375px) {
+  .whatdoYoudo-head {
+    color: #00065a !important;
+    font-size: 13px !important;
+    font-weight: 550 !important;
+    line-height: 18px !important;
+}
+}
+@media only screen and (max-width: 320px) {
+  .whatdoyoudo {
+    padding: 14px;
+}
+}
 .AfterSignUpYrselfTxt {
   font-size: 12px;
 }
@@ -7085,6 +7135,28 @@ a {
   justify-content: end;
   align-items: center;
 }
+@media screen and (max-width: 425px) and (min-width: 375px) {
+  .previewProfileThumbsIco {
+    display: none;
+  }
+}
+@media screen and (max-width: 425px) and (min-width: 320px) {
+  .respUniversityName {
+    max-width: 70%;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .previewProfileThumbsIco {
+    display: none;
+  }
+  .respUniversityName {
+    max-width: 70%;
+  }
+  .startIntroIn {
+    padding-top: 0px;
+  }
+}
 
 @media screen and (max-width: 425px) {
   .publishPhoto {
@@ -7096,7 +7168,10 @@ a {
     display: flex;
     flex-direction: column;
   }
-
+  .popup_uploadProfileImg .popup_form_element {
+    width: 100%;
+    padding: 0px;
+  }
   .theme_btns .first_button {
     margin-bottom: 20px;
   }

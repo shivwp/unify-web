@@ -106,6 +106,7 @@ const HourlyRate = ({ setCurrentTab, profileList }) => {
                         $
                         <Form.Control
                           type="text"
+                          className="hourlyRateDisableInp"
                           disabled
                           placeholder={`02.00`}
                           name="unify_service_fee"
@@ -139,6 +140,7 @@ const HourlyRate = ({ setCurrentTab, profileList }) => {
                         $
                         <Form.Control
                           type="text"
+                          className="hourlyRateDisableInp"
                           disabled
                           placeholder={`10.00`}
                           name="reciving_amt"

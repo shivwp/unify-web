@@ -10,6 +10,7 @@ import AunthenticatorVerificationPopup from "../../../components/popups/Aunthent
 import MobileAppPromptPopup from "../../../components/popups/MobileAppPromptPopup";
 import VerificationPref from "./popups/VerificationPref";
 import ChangePassword from "./popups/ChangePassword";
+import SecurityQuestionPopup from "./popups/SecurityQuestionPopup";
 import Button from "react-bootstrap/Button";
 
 const Screen = () => {
@@ -255,7 +256,11 @@ const Screen = () => {
                   </div>
                   <div className="d-flex justify-content-center align-items-center">
                     <div>
-                      <Button variant="" className="round_b_btn">
+                      <Button variant="" className="round_b_btn" 
+                      onClick={() => {
+                        Setpopup(<SecurityQuestionPopup Popup={Setpopup} successPopup={successPopup} setSuccessPopup={setSuccessPopup} />);
+                      }}
+                      >
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="16"
