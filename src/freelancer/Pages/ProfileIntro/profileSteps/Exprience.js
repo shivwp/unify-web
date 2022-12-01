@@ -201,7 +201,6 @@ const Exprience = ({ setCurrentTab, profileList }) => {
 
               <button
                 className="second_button"
-                disabled={profileList?.length === 0 || !profileList}
                 onClick={() => {
                   setCurrentTab("education");
                   navigate(`/freelancer/profile-intro/education`);
