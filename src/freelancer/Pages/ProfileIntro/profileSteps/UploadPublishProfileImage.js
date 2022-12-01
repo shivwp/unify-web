@@ -23,12 +23,14 @@ const UploadPublishProfilepic = ({
   setShowingImage,
   setProfileImage,
   showingImage,
+  setIsChange,
 }) => {
   const [showingImage2, setShowingImage2] = useState(null);
 
   const onImageChange = (e) => {
     setProfileImage(e.target.files[0]);
     setShowingImage2(URL.createObjectURL(e.target.files[0]));
+    setIsChange(true);
   };
 
   const onSave = () => {

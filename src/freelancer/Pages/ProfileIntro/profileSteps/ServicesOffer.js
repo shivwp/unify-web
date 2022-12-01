@@ -11,22 +11,11 @@ import {
 
 const ServicesOffer = ({ setCurrentTab, profileList }) => {
   const dispatch = useDispatch();
-  const categoryList = useSelector((state) => state?.profile?.categoryList);
-  const [values, setValues] = useState({});
-  const [categoryId, setCategoryId] = useState("");
   const navigate = useNavigate();
-
+  const [values, setValues] = useState({});
+  const [isChange, setIsChange] = useState(false);
+  const categoryList = useSelector((state) => state?.profile?.categoryList);
   const [successPopup, setSuccessPopup] = useState(false);
-
-  useEffect(() => {
-    if (categoryList) {
-      for (let i = 0; i < categoryList.length; i++) {
-        if (categoryList[i]?.name == profileList?.category) {
-          setCategoryId(categoryList[i].id);
-        }
-      }
-    }
-  }, [categoryList, profileList]);
 
   useEffect(() => {
     if (profileList) {
@@ -44,25 +33,24 @@ const ServicesOffer = ({ setCurrentTab, profileList }) => {
   };
 
   const handleOnChange = (e) => {
+    setIsChange(true);
     setValues({ ...values, [e.target.name]: e.target.value });
-
-    if (categoryList) {
-      for (let i = 0; i < categoryList.length; i++) {
-        if (categoryList[i].name == e.target.value) {
-          setCategoryId(categoryList[i].id);
-        }
-      }
-    }
   };
+
   const onSave = () => {
-    dispatch(
-      onAddCategory(
-        { category_id: categoryId },
-        successPopup,
-        setSuccessPopup,
-        afterSuccess
-      )
-    );
+    if (isChange) {
+      dispatch(
+        onAddCategory(
+          { category_id: values?.category_id },
+          successPopup,
+          setSuccessPopup,
+          afterSuccess
+        )
+      );
+    } else {
+      setCurrentTab("hourlyRate");
+      navigate(`/freelancer/profile-intro/hourlyRate`);
+    }
   };
 
   return (
@@ -80,9 +68,9 @@ const ServicesOffer = ({ setCurrentTab, profileList }) => {
             <div className="servicesChoose">
               <div className="popup_form_element">
                 <select
-                  name="category"
+                  name="category_id"
                   className="servicesOfferOption"
-                  value={values?.category}
+                  value={values?.category_id}
                   onChange={(e) => handleOnChange(e)}
                   defaultValue={"DEFAULT"}
                 >
@@ -90,7 +78,7 @@ const ServicesOffer = ({ setCurrentTab, profileList }) => {
                     Please Select an option
                   </option>
                   {categoryList?.map((item, index) => (
-                    <option key={index} value={item?.name}>
+                    <option key={index} value={item?.id}>
                       {item.name}
                     </option>
                   ))}
@@ -110,7 +98,7 @@ const ServicesOffer = ({ setCurrentTab, profileList }) => {
 
               <button
                 className="second_button"
-                disabled={!values?.category}
+                disabled={!values?.category_id}
                 onClick={onSave}
               >
                 Next

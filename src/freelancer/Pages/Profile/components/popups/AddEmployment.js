@@ -34,6 +34,7 @@ const AddEmployment = ({
   const [values, setValues] = useState(experience || { currently_working: 0 });
   const [errors, setErrors] = useState({});
 
+  console.log(values);
   useState(() => {
     dispatch(countryList());
   }, []);
@@ -46,15 +47,6 @@ const AddEmployment = ({
       setValues({ ...values, [e.target.name]: e.target.value });
       setErrors({ ...errors, [e.target.name]: false });
     }
-  };
-
-  const disabledDates = () => {
-    let today, dd, mm, yyyy;
-    today = new Date();
-    dd = today.getDate() + 1;
-    mm = today.getMonth() + 1;
-    yyyy = today.getFullYear() + 1;
-    return yyyy + "-" + mm + "-" + dd;
   };
 
   const onSave = () => {
@@ -114,9 +106,9 @@ const AddEmployment = ({
     }
 
     if (
-      values?.end_date === "" ||
-      values?.end_date === null ||
-      values?.end_date === undefined
+      (values?.end_date === "" && !values.currently_working) ||
+      (values?.end_date === null && !values.currently_working) ||
+      (values?.end_date === undefined && !values.currently_working)
     ) {
       errorsObject.end_date = true;
       errorExist = true;

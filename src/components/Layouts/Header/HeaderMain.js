@@ -8,6 +8,7 @@ import { useState } from "react";
 const NavbarHeader = (props) => {
   const [navOpen, SetnavOpen] = useState(false);
   const [activeNav, SetactiveNav] = useState("");
+  const loggedIn = localStorage.getItem("unify_token");
 
   function ToggleNav() {
     SetnavOpen(!navOpen);
@@ -72,11 +73,11 @@ const NavbarHeader = (props) => {
         <Container>
           <div className="w-100 d-flex justify-content-between align-items-center flex_rev">
             <div className="width_100_sm navbar_logo">
-              <a href="/">
+              <Link to="/">
                 <Navbar.Brand>
                   <img src={logo} className="img-fluid rounded-top " alt="" />
                 </Navbar.Brand>
-              </a>
+              </Link>
             </div>
             <div>
               <Navbar.Toggle
@@ -86,23 +87,70 @@ const NavbarHeader = (props) => {
                 }}
               />
               <Navbar.Collapse id="responsive-navbar-nav">
-                <Nav>
-                  <Nav.Link as={Link} to="/how-it-works" className="navbar_btn">
-                    What Is Unify
-                  </Nav.Link>
-                  <Nav.Link as={Link} to="/browse-jobs" className="navbar_btn">
-                    Browse Jobs
-                  </Nav.Link>
-                  <Nav.Link as={Link} to="/subscription" className="navbar_btn">
-                    Subscription
-                  </Nav.Link>
-                  <Nav.Link as={Link} to="/signin" className="navbar_btn">
-                    Login
-                  </Nav.Link>
-                  <Nav.Link as={Link} to="/signup" className="active_btn">
-                    Signup now
-                  </Nav.Link>
-                </Nav>
+                {loggedIn ? (
+                  <Nav>
+                    <Nav.Link
+                      as={Link}
+                      to="/how-it-works"
+                      className="navbar_btn"
+                    >
+                      What Is Unify
+                    </Nav.Link>
+                    <Nav.Link
+                      as={Link}
+                      to="/browse-jobs"
+                      className="navbar_btn"
+                    >
+                      Browse Jobs
+                    </Nav.Link>
+                    <Nav.Link
+                      as={Link}
+                      to="/subscription"
+                      className="navbar_btn"
+                    >
+                      Subscription
+                    </Nav.Link>
+                    <button
+                      className="active_btn"
+                      onClick={() => {
+                        localStorage.clear();
+                        window.location.reload();
+                      }}
+                    >
+                      Logout
+                    </button>
+                  </Nav>
+                ) : (
+                  <Nav>
+                    <Nav.Link
+                      as={Link}
+                      to="/how-it-works"
+                      className="navbar_btn"
+                    >
+                      What Is Unify
+                    </Nav.Link>
+                    <Nav.Link
+                      as={Link}
+                      to="/browse-jobs"
+                      className="navbar_btn"
+                    >
+                      Browse Jobs
+                    </Nav.Link>
+                    <Nav.Link
+                      as={Link}
+                      to="/subscription"
+                      className="navbar_btn"
+                    >
+                      Subscription
+                    </Nav.Link>
+                    <Nav.Link as={Link} to="/signin" className="navbar_btn">
+                      Login
+                    </Nav.Link>
+                    <Nav.Link as={Link} to="/signup" className="active_btn">
+                      Signup now
+                    </Nav.Link>
+                  </Nav>
+                )}
               </Navbar.Collapse>
             </div>
           </div>

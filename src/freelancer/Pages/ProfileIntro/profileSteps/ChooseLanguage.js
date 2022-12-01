@@ -14,6 +14,7 @@ const ChooseLangauge = ({ setCurrentTab, profileList }) => {
   const [popup, Setpopup] = useState(false);
   const [successPopup, setSuccessPopup] = useState(false);
   const [confirmPopup, setConfirmPopup] = useState(false);
+  const [isChange, setIsChange] = useState(false);
   const [inputList, setInputList] = useState([
     { language: "English", level: "" },
   ]);
@@ -33,6 +34,7 @@ const ChooseLangauge = ({ setCurrentTab, profileList }) => {
     const list = [...inputList];
     list[index][name] = value;
     setInputList(list);
+    setIsChange(true);
   };
 
   const handleAddClick = () => {
@@ -56,19 +58,24 @@ const ChooseLangauge = ({ setCurrentTab, profileList }) => {
   };
 
   const handleSave = () => {
-    const data = {};
-    inputList.map((ele) => {
-      data[ele.language] = ele.level;
-    });
-    dispatch(
-      onEditLanguage(
-        { languages: data },
-        popup,
-        successPopup,
-        setSuccessPopup,
-        afterSuccess
-      )
-    );
+    if (isChange) {
+      const data = {};
+      inputList.map((ele) => {
+        data[ele.language] = ele.level;
+      });
+      dispatch(
+        onEditLanguage(
+          { languages: data },
+          popup,
+          successPopup,
+          setSuccessPopup,
+          afterSuccess
+        )
+      );
+    } else {
+      setCurrentTab("skills");
+      navigate(`/freelancer/profile-intro/skills`);
+    }
   };
 
   console.log(inputList);

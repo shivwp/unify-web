@@ -386,6 +386,7 @@
   margin-right: 15px;
   border: none;
   -webkit-border-radius: 60px !important;
+  z-index: -1;
 }
 
 .popup_btns_new .trans_btn {

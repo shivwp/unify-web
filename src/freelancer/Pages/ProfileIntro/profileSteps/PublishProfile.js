@@ -14,11 +14,12 @@ const PublishProfile = ({ setCurrentTab, profileList }) => {
   const [popup, setPopup] = useState();
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
   const [showingImage, setShowingImage] = useState(null);
   const [profileImage, setProfileImage] = useState(null);
   const [successPopup, setSuccessPopup] = useState(null);
-  const [values, setValues] = useState();
+  const [values, setValues] = useState({});
+  const [errors, setErrors] = useState({});
+  const [isChange, setIsChange] = useState(false);
   const getCountryList = useSelector((state) => state?.auth?.getCountryList);
   const timezoneList = useSelector((state) => state?.profile?.timezoneList);
 
@@ -32,33 +33,100 @@ const PublishProfile = ({ setCurrentTab, profileList }) => {
     setValues(profileList);
   }, [profileList]);
 
+  const onInputChange = (e) => {
+    setValues({ ...values, [e.target.name]: e.target.value });
+    setErrors({ ...errors, [e.target.name]: false });
+    setIsChange(true);
+  };
+
   const afterSuccess = () => {
     setCurrentTab("previewProfile");
     navigate(`/freelancer/profile-intro/previewProfile`);
   };
 
   const onSave = () => {
-    const formData = new FormData();
+    let errorExist = false;
+    let errorsObject = {};
 
-    if (profileImage) {
-      formData.append("profile_image", profileImage);
+    if (
+      values?.timezone === "" ||
+      values?.timezone === null ||
+      values?.timezone === undefined
+    ) {
+      errorsObject.timezone = true;
+      errorExist = true;
+    }
+    if (
+      values?.country === "" ||
+      values?.country === null ||
+      values?.country === undefined
+    ) {
+      errorsObject.country = true;
+      errorExist = true;
+    }
+    if (
+      values?.address === "" ||
+      values?.address === null ||
+      values?.address === undefined
+    ) {
+      errorsObject.address = true;
+      errorExist = true;
+    }
+    if (
+      values?.city === "" ||
+      values?.city === null ||
+      values?.city === undefined
+    ) {
+      errorsObject.city = true;
+      errorExist = true;
+    }
+    if (
+      values?.zip_code === "" ||
+      values?.zip_code === null ||
+      values?.zip_code === undefined
+    ) {
+      errorsObject.zip_code = true;
+      errorExist = true;
+    }
+    if (
+      values?.phone === "" ||
+      values?.phone === null ||
+      values?.phone === undefined
+    ) {
+      errorsObject.phone = true;
+      errorExist = true;
     }
 
-    formData.append("phone", values?.phone);
-    formData.append("timezone", values?.timezone);
-    formData.append("address", values?.address);
-    formData.append("city", values?.city);
-    formData.append("country", values?.country);
-    formData.append("zip_code", values?.zip_code);
-    dispatch(
-      onEditLocationInfo(
-        formData,
-        false,
-        successPopup,
-        setSuccessPopup,
-        afterSuccess
-      )
-    );
+    if (errorExist) {
+      setErrors(errorsObject);
+      return false;
+    }
+
+    if (isChange) {
+      const formData = new FormData();
+      if (profileImage) {
+        formData.append("profile_image", profileImage);
+      }
+
+      formData.append("timezone", values?.timezone);
+      formData.append("country", values?.country);
+      formData.append("address", values?.address);
+      formData.append("city", values?.city);
+      formData.append("zip_code", values?.zip_code);
+      formData.append("phone", values?.phone);
+      dispatch(
+        onEditLocationInfo(
+          formData,
+          false,
+          successPopup,
+          setSuccessPopup,
+          afterSuccess
+        )
+      );
+    } else {
+      setCurrentTab("previewProfile");
+      navigate(`/freelancer/profile-intro/previewProfile`);
+    }
   };
 
   return (
@@ -110,6 +178,7 @@ const PublishProfile = ({ setCurrentTab, profileList }) => {
                       Popup={setPopup}
                       setShowingImage={setShowingImage}
                       showingImage={showingImage}
+                      setIsChange={setIsChange}
                       setProfileImage={setProfileImage}
                     />
                   );
@@ -132,19 +201,21 @@ const PublishProfile = ({ setCurrentTab, profileList }) => {
                       borderRadius: 0,
                     }}
                     value={values?.timezone || ""}
-                    onChange={(e) =>
-                      setValues({ ...values, [e.target.name]: e.target.value })
-                    }
+                    onChange={(e) => onInputChange(e)}
                     className="font-size-11px"
                     placeholder="Select TimeZone"
                     name="timezone"
                   >
+                    <option value="">Select timezone</option>
                     {timezoneList?.map((item, index) => (
                       <option key={index} value={item.timezone}>
                         {item.timezone}
                       </option>
                     ))}
                   </select>
+                  <span className="signup-error">
+                    {errors.timezone && "Please Select your timezone"}
+                  </span>
                 </div>
               </Col>
               <Col lg={6}>
@@ -160,19 +231,21 @@ const PublishProfile = ({ setCurrentTab, profileList }) => {
                       borderRadius: 0,
                     }}
                     value={values?.country || ""}
-                    onChange={(e) =>
-                      setValues({ ...values, [e.target.name]: e.target.value })
-                    }
+                    onChange={(e) => onInputChange(e)}
                     className="font-size-11px"
                     placeholder="Select ID"
                     name="country"
                   >
+                    <option value="">Select Country</option>
                     {getCountryList?.map((item, index) => (
                       <option key={index} value={item.name}>
                         {item.name}
                       </option>
                     ))}
                   </select>
+                  <span className="signup-error">
+                    {errors.country && "Please Select your country"}
+                  </span>
                 </div>
               </Col>
               <Col lg={6}>
@@ -186,10 +259,11 @@ const PublishProfile = ({ setCurrentTab, profileList }) => {
                     placeholder=""
                     name="address"
                     value={values?.address || ""}
-                    onChange={(e) =>
-                      setValues({ ...values, [e.target.name]: e.target.value })
-                    }
+                    onChange={(e) => onInputChange(e)}
                   />
+                  <span className="signup-error">
+                    {errors.address && "Please enter your address"}
+                  </span>
                 </div>
               </Col>
 
@@ -204,10 +278,11 @@ const PublishProfile = ({ setCurrentTab, profileList }) => {
                     placeholder=""
                     name="city"
                     value={values?.city || ""}
-                    onChange={(e) =>
-                      setValues({ ...values, [e.target.name]: e.target.value })
-                    }
+                    onChange={(e) => onInputChange(e)}
                   />
+                  <span className="signup-error">
+                    {errors.city && "Please enter your city"}
+                  </span>
                 </div>
               </Col>
               <Col lg={6}>
@@ -221,10 +296,11 @@ const PublishProfile = ({ setCurrentTab, profileList }) => {
                     placeholder=""
                     name="zip_code"
                     value={values?.zip_code || ""}
-                    onChange={(e) =>
-                      setValues({ ...values, [e.target.name]: e.target.value })
-                    }
+                    onChange={(e) => onInputChange(e)}
                   />
+                  <span className="signup-error">
+                    {errors.zip_code && "Please enter your zip code"}
+                  </span>
                 </div>
               </Col>
 
@@ -239,10 +315,12 @@ const PublishProfile = ({ setCurrentTab, profileList }) => {
                     placeholder="Enter Phone Number"
                     name="phone"
                     value={values?.phone || ""}
-                    onChange={(e) =>
-                      setValues({ ...values, [e.target.name]: e.target.value })
-                    }
+                    onChange={(e) => onInputChange(e)}
+                    onWheel={(e) => e.target.blur()}
                   />
+                  <span className="signup-error">
+                    {errors.phone && "Please enter your phone number"}
+                  </span>
                 </div>
               </Col>
             </Row>

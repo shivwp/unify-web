@@ -216,6 +216,7 @@ const Education = ({ setCurrentTab, profileList }) => {
       </div>
       {popup}
       {confirmPopup}
+      {successPopup}
     </>
   );
 };
