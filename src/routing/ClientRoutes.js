@@ -9,12 +9,6 @@ const BusinessSize = lazy(() => import("../client/Pages/BusinessSize"));
 const Subscription = lazy(() => import("../client/Pages/Subscription"));
 const ExpandTeam = lazy(() => import("../client/Pages/ExpandTeam"));
 const Notification = lazy(() => import("../client/Pages/Notification"));
-const GettingStarted = lazy(() => import("../client/Pages/GettingStarted"));
-const Title = lazy(() => import("../client/Pages/Title"));
-const TitleFourteen = lazy(() => import("../client/Pages/TitleFour"));
-const Skills = lazy(() => import("../client/Pages/Skills"));
-const Scope = lazy(() => import("../client/Pages/Scope"));
-const Budget = lazy(() => import("../client/Pages/Budget"));
 const Description = lazy(() => import("../client/Pages/PostDescription"));
 const JobDescription = lazy(() => import("../client/Pages/JobDescription"));
 const ViewJob = lazy(() => import("../client/Pages/ViewJob"));
@@ -67,26 +61,23 @@ const DraftJobListScreen = lazy(() =>
 const EditDraft = lazy(() => import("../components/EditDraft"));
 const EditPosting = lazy(() => import("../components/EditPosting"));
 const MakePrivate = lazy(() => import("../components/MakePrivate"));
+const PostYourJobScreen = lazy(() => import("../client/Pages/postYourJobNow"));
 
 const ClientRoutes = () => {
   return (
     <Routes>
       <Route element={<ProtectedRoutes />}>
+        <Route path="/businesssize" element={<BusinessSize />} />
+        <Route path="/question1" element={<Question />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/post-your-job" element={<PostYourJobScreen />} />
+        <Route path="/job-description" element={<JobDescription />} />
         <Route path="/category" element={<Category />} />
         <Route path="/create-category" element={<Createcategory />} />
-        <Route path="/question1" element={<Question />} />
         <Route path="/question2" element={<QuestionTwo />} />
         <Route path="/subscription" element={<Subscription />} />
-        <Route path="/businesssize" element={<BusinessSize />} />
         <Route path="/expandteam" element={<ExpandTeam />} />
         <Route path="/notification" element={<Notification />} />
-        <Route path="/gettingstarted" element={<GettingStarted />} />
-        <Route path="/title" element={<Title />} />
-        <Route path="/title14" element={<TitleFourteen />} />
-        <Route path="/skills" element={<Skills />} />
-        <Route path="/scope" element={<Scope />} />
-        <Route path="/budget" element={<Budget />} />
-        <Route path="/job-description" element={<JobDescription />} />
         <Route path="/view-job/:jobId" element={<ViewJob />} />
         <Route path="/view-job/private" element={<MakePrivate />} />
         <Route path="/hire-freelancer" element={<HireFreelancer />} />
@@ -127,7 +118,7 @@ const ClientRoutes = () => {
         <Route path="/message" element={<Message />} />
         <Route path="/management-board" element={<ManagementBoard />} />
         <Route path="/transaction-history" element={<TransactionHistory />} />
-        <Route path="/dashboard" element={<Dashboard />} />
+
         <Route
           path="/dashboard/edit-posting/:editId"
           element={<EditPosting />}

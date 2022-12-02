@@ -16,14 +16,14 @@ const Question = () => {
             <h1>Let's start with a few job details</h1>
           </div>
           <div className="question_p">
-            <p>
+            <p className="text-center">
               this will help your job stand out to talent who fit what you're
               looking for.
             </p>
           </div>
-          <div className="question_p">
+          {/* <div className="question_p">
             Need help hiring? <Link to="#0">Talk to a recruiter</Link>
-          </div>
+          </div> */}
           <div className="btn_foot_sec justify-content-center flex-wrap no-border mt-2">
             <div className="fo_btn_c next_b_btn_c">
               <Link to="/businesssize">

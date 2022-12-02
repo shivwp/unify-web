@@ -1,15 +1,15 @@
-import JobPosting from "./components/job-posting";
 import Layout from "../../Layout/Layout";
+import PostYourJobNow from "./components/PostYourJobNow";
 
-const StartedScreen = () => {
+const PostYourJobScreen = () => {
   return (
     <div>
       <div className="slider_pos nin_vh">
         <Layout webtype="client">
-          <JobPosting />
+          <PostYourJobNow />
         </Layout>
       </div>
     </div>
   );
 };
-export default StartedScreen;
+export default PostYourJobScreen;

@@ -1,10 +1,9 @@
+import React, { useState } from "react";
 import Container from "react-bootstrap/Container";
-import Button from "react-bootstrap/Button";
 import { Col, Row } from "react-bootstrap";
 import Title from "../../../../components/title";
 import { Link, useNavigate } from "react-router-dom";
 import Form from "react-bootstrap/Form";
-import { useState } from "react";
 
 const Bsize = () => {
   Title(" | Business Size");
@@ -175,21 +174,15 @@ const Bsize = () => {
           </div>
 
           <span className="signup-error">
-            {errors.employees && "Kindly Select at least one"}
+            {errors.employees && "Please select any one to continue"}
           </span>
           <div className="justify-content-between btn_foot_sec flex-wrap d-flex no-border mt-2 pt-0">
-            {/* <Link to="/question1"> */}
             <div className="fo_btn_c next_b_btn_c">
-              <button
-                variant=""
-                className="f-size-to active_btn_blue"
-                onClick={onNext}
-              >
+              <button className="f-size-to active_btn_blue" onClick={onNext}>
                 Continue
               </button>
             </div>
-            {/* </Link> */}
-            <Link to="/subscription">
+            <Link to="/question1">
               <div
                 className="fo_btn_c next_b_btn_c"
                 style={{
@@ -198,7 +191,7 @@ const Bsize = () => {
                   fontSize: "16px",
                 }}
               >
-              Skip For Now &#62;&#62;
+                Skip For Now &#62;&#62;
               </div>
             </Link>
           </div>

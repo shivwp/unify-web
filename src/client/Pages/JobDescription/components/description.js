@@ -39,12 +39,6 @@ const Description = () => {
   }, []);
 
   useEffect(() => {
-    if (jobListingData === undefined) {
-      navigate("/gettingstarted");
-    }
-  }, []);
-
-  useEffect(() => {
     if (categoryList) {
       for (let i = 0; i < categoryList.length; i++) {
         if (parseInt(jobCategory) === categoryList[i].id) {

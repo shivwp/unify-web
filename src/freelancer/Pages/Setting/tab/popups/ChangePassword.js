@@ -63,7 +63,7 @@ const ChangePassword = ({ setSuccessPopup, successPopup, Popup }) => {
       errorsObject.new_password = "Please enter new password";
       errorExist = true;
     } else if (
-      !/^(?=.*\d)(?=.*[a-z])(?=.*[!@#$%^&*()_+])[0-9a-zA-Z!@#$%^&*()_+]{8,}$/.test(
+      !/^(?=.*\d)(?=.*[!@#$%^&*()_+])[0-9a-zA-Z!@#$%^&*()_+]{8,}$/.test(
         values?.new_password
       )
     ) {

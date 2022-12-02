@@ -1,14 +1,11 @@
+import React, { useState, useEffect } from "react";
 import Container from "react-bootstrap/Container";
 import Title from "../../../../components/title";
 import $ from "jquery";
 import { Link } from "react-router-dom";
-import { useState } from "react";
-import Button from "react-bootstrap/Button";
-
 import RemovePostingPopup from "../../../../popups/RemovePostingPopup";
 import RemoveDraftPopup from "../../../../popups/RemoveDraftPopup";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
 import {
   getAllClientDraftPosting,
   getAllClientPosting,
@@ -52,15 +49,10 @@ const Screen = () => {
               Browse Project Catalog
             </Button> */}
             <Link to="/gettingstarted">
-              <Button variant="" className="mt-2 border_blue_wwifth">
-                Post A Job
-              </Button>
+              <button className="mt-2 border_blue_wwifth">Post A Job</button>
             </Link>
             <Link to="/expandteam">
-              <Button
-                variant=""
-                className="ml_btn trans_btn_myjo blue_coloe_brn mt-2"
-              >
+              <button className="ml_btn trans_btn_myjo blue_coloe_brn mt-2">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"
@@ -75,7 +67,7 @@ const Screen = () => {
                     d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z"
                   />
                 </svg>
-              </Button>
+              </button>
             </Link>
           </div>
         </div>
@@ -116,8 +108,7 @@ const Screen = () => {
                 </div>
               </div>
               <div className="text-right d-flex flex-wrap menu_btn">
-                <Button
-                  variant=""
+                <button
                   className="toggle_btn_dot"
                   onClick={() => setMenuBarPosting(item.id)}
                 >
@@ -131,7 +122,7 @@ const Screen = () => {
                   >
                     <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
                   </svg>
-                </Button>
+                </button>
 
                 {menuBarPosting === item.id && (
                   <div className="menu_bar" id="menu_bar1">
@@ -185,8 +176,7 @@ const Screen = () => {
                 <div className="my_job_pos_tme">Saved 25 min ago</div>
               </div>
               <div className="text-right d-flex flex-wrap menu_btn">
-                <Button
-                  variant=""
+                <button
                   className="toggle_btn_dot"
                   onClick={() => setMenuBarDraft(item.id)}
                 >
@@ -200,7 +190,7 @@ const Screen = () => {
                   >
                     <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
                   </svg>
-                </Button>
+                </button>
                 {menuBarDraft === item.id && (
                   <div className="menu_bar" id="menu_bar2">
                     <div className="navabr_t_li">
@@ -213,8 +203,7 @@ const Screen = () => {
                       Remove Draft
                     </div>
                     <span className="menu_btn_arrow" id="menu_btn_arrow2">
-                      {" "}
-                      &#62;{" "}
+                      &#62;
                     </span>
                   </div>
                 )}

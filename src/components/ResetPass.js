@@ -32,7 +32,7 @@ const ResetPass = () => {
       errorsObject.password = "Please enter your password";
       errorExist = true;
     } else if (
-      !/^(?=.*\d)(?=.*[a-z])(?=.*[!@#$%^&*()_+])[0-9a-zA-Z!@#$%^&*()_+]{8,}$/.test(
+      !/^(?=.*\d)(?=.*[!@#$%^&*()_+])[0-9a-zA-Z!@#$%^&*()_+]{8,}$/.test(
         values?.password
       )
     ) {

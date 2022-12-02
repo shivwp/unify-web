@@ -99,9 +99,9 @@ const Header = (props) => {
             <div className="navabr_t_li">
               <Link to="/transaction-history">Transaction History</Link>
             </div>
-            <div className="navabr_t_li">
+            {/* <div className="navabr_t_li">
               <Link to="/message">Message</Link>
-            </div>
+            </div> */}
           </NavDropdown>
         </div>
         <div className="d-flex justify-content-between smbtn_logsignup">
@@ -360,9 +360,9 @@ const Header = (props) => {
                           Transaction History
                         </Link>
                       </div>
-                      <div className="navabr_t_li">
+                      {/* <div className="navabr_t_li">
                         <Link to="/message">Message</Link>
-                      </div>
+                      </div> */}
                     </NavDropdown>
                   </div>
                   {/* <Nav.Link className="active_btn logout_btn_nav">
