@@ -1697,6 +1697,25 @@
   /* overflow-x: scroll; */
 }
 
+.billingTop {
+  margin-top: 11px;
+}
+.billingStripSection {
+  display: flex;
+  justify-content: space-between;
+}
+.billingStripTab {
+  display: flex;
+  flex-direction: column;
+}
+
+.billingStripLogo {
+  width: 100px;
+}
+.billingStripText {
+  font-size: 14px;
+}
+
 .scroll_table {
   overflow-x: auto;
 }

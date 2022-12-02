@@ -105,7 +105,7 @@ const ChangePassword = ({ setSuccessPopup, successPopup, Popup }) => {
           <div className="popup_body_bpn amount_popup_body max_height_popucwui overflow-scroll">
             <div className="mt-2 pt-1 mb-4"></div>
 
-            <div className="mb-4 ">
+            <div className="mb-4 changePasswordRespPopup">
               <div
                 className="popup_form_element"
                 style={{ position: "relative" }}

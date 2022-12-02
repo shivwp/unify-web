@@ -75,15 +75,6 @@ const ReqTestimonial = ({ Popup, successPopup, setSuccessPopup }) => {
       errorsObject.type = true;
       errorExist = true;
     }
-    if (
-      values.description === "" ||
-      values.description === null ||
-      values.description === undefined
-    ) {
-      errorsObject.description = true;
-      errorExist = true;
-    }
-
     if (errorExist) {
       setErrors(errorsObject);
       return false;
@@ -192,9 +183,6 @@ const ReqTestimonial = ({ Popup, successPopup, setSuccessPopup }) => {
                       onChange={(e) => onInputChange(e)}
                       placeholder="Enter Client's Title"
                     />
-                    <span className="signup-error">
-                      {errors.title && "Please enter your title"}
-                    </span>
                   </div>
                 </Col>
                 <Col md={6}>
@@ -210,9 +198,6 @@ const ReqTestimonial = ({ Popup, successPopup, setSuccessPopup }) => {
                       onChange={(e) => onInputChange(e)}
                       placeholder="Enter Project Type"
                     />
-                    <span className="signup-error">
-                      {errors.type && "Please enter your project type"}
-                    </span>
                   </div>
                 </Col>
                 <Col md={12}>
@@ -228,9 +213,6 @@ const ReqTestimonial = ({ Popup, successPopup, setSuccessPopup }) => {
                       onChange={(e) => onInputChange(e)}
                       placeholder="Enter Here"
                     ></Form.Control>
-                    <span className="signup-error">
-                      {errors.description && "Please enter your description"}
-                    </span>
                   </div>
                 </Col>
               </Row>
