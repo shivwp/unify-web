@@ -68,7 +68,7 @@ export const removeSaveJob = (data) => async (dispatch) => {
 };
 export const singleJobPostDetails = (data) => async (dispatch) => {
   try {
-    Axios.post("/single-job", data).then((res) => {
+    Axios.post("/single-job", data, config).then((res) => {
       dispatch({
         type: JOB_POST_DETAILS,
         payload: res.data.data,

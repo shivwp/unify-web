@@ -1,7 +1,38 @@
-import React from "react";
+import React, { useState } from "react";
+import { useEffect } from "react";
 import { Col, Row } from "react-bootstrap";
 
-const ByMilesstone = () => {
+const ByMilesstone = ({ inputList, setInputList, singleJobDetails }) => {
+  const [totalPrice, setTotalPrice] = useState(0.0);
+
+  useEffect(() => {
+    let add = 0;
+    for (let i = 0; i < inputList?.length; i++) {
+      add += Number(inputList[i]?.amount);
+      setTotalPrice(add);
+    }
+  }, [inputList]);
+
+  const handleAddClick = () => {
+    setInputList([...inputList, { description: "", due_date: "", amount: 0 }]);
+  };
+
+  const handleInputChange = (e, index) => {
+    const { name, value } = e.target;
+    const list = [...inputList];
+    if (name == "amount") {
+      list[index][name] = Number(value);
+    } else {
+      list[index][name] = value;
+    }
+    setInputList(list);
+  };
+
+  const removeInputFields = (index) => {
+    const rows = [...inputList];
+    rows.splice(index, 1);
+    setInputList(rows);
+  };
   return (
     <>
       <Col lg={12}>
@@ -15,23 +46,55 @@ const ByMilesstone = () => {
               <div className="desc">Description </div>
               <div className="date">Due date</div>
               <div className="amount">Amount</div>
+              <div className="remove"></div>
             </div>
-            <div className="input_list">
-              <div className="srno">1</div>
-              <div className="desc">
-                <input type="text" />
+            {inputList?.map((data, i) => (
+              <div className="input_list">
+                <div className="srno">{i + 1}</div>
+                <div className="desc">
+                  <input
+                    type="text"
+                    name="description"
+                    placeholder="Description"
+                    onChange={(e) => handleInputChange(e, i)}
+                  />
+                </div>
+                <div className="date">
+                  <input
+                    type="date"
+                    name="due_date"
+                    placeholder="Date"
+                    onChange={(e) => handleInputChange(e, i)}
+                  />
+                </div>
+                <div className="amount">
+                  <input
+                    type="number"
+                    name="amount"
+                    placeholder="0.00"
+                    onChange={(e) => handleInputChange(e, i)}
+                  />
+                  <span className="dollar_icon">$</span>
+                </div>
+                {i != 0 ? (
+                  <div className="remove" onClick={() => removeInputFields(i)}>
+                    X
+                  </div>
+                ) : (
+                  <div className="remove"></div>
+                )}
               </div>
-              <div className="date">
-                <input type="date" />
-              </div>
-              <div className="amount">
-                <input type="number" />
-              </div>
+            ))}
+          </div>
+          {inputList?.slice(-1)[0]?.description &&
+          inputList?.slice(-1)[0]?.due_date &&
+          inputList?.slice(-1)[0]?.amount ? (
+            <div className="add_milestone">
+              <span onClick={handleAddClick}>+ Add milestone</span>
             </div>
-          </div>
-          <div className="add_milestone">
-            <span>+ Add milestone</span>
-          </div>
+          ) : (
+            ""
+          )}
         </div>
       </Col>
       <Row>
@@ -50,21 +113,40 @@ const ByMilesstone = () => {
           <div className="total_project_price">
             <div className="heading">
               <span className="head">Total price of project</span>
-              <span className="amt">$0.00</span>
+              <span className="amt">${totalPrice.toFixed(2)}</span>
             </div>
+
             <div className="desc">
               This includes all milestone and is the amount your client will
               see.
             </div>
           </div>
           <div className="unify_service_fee">
-            <span className="head">Unify Service Fee</span>
-            <span className="amt">$0.00</span>
+            <div className="heading">
+              <span className="head">Unify Service Fee</span>
+              <span className="amt">
+                $
+                {((totalPrice / 100) * singleJobDetails?.service_fee)?.toFixed(
+                  2
+                )}
+              </span>
+            </div>
+            <div className="desc">
+              The unify Service fee is 20% when you begin a contract with a new
+              client.
+            </div>
           </div>
+
           <div className="you_will_recive">
             <div className="heading">
               <span className="head">You Will Receive</span>
-              <span className="amt">$0.00</span>
+              <span className="amt">
+                $
+                {(
+                  totalPrice -
+                  (totalPrice / 100) * singleJobDetails?.service_fee
+                )?.toFixed(2)}
+              </span>
             </div>
             <div className="desc">
               Your estimated payment, after service fees
@@ -76,7 +158,11 @@ const ByMilesstone = () => {
   );
 };
 
-const ByProject = () => {
+const ByProject = ({ values, setValues, singleJobDetails }) => {
+  const handleOnChange = (e) => {
+    setValues({ ...values, [e.target.name]: e.target.value });
+  };
+  console.log(values);
   return (
     <>
       <div className="full_project_bid">
@@ -99,8 +185,14 @@ const ByProject = () => {
                 </div>
               </Col>
               <Col lg={5}>
-                <div>
-                  <input type="number" />
+                <div style={{ position: "relative" }}>
+                  <input
+                    type="number"
+                    name="bid_amount"
+                    onChange={(e) => handleOnChange(e)}
+                    placeholder="0.00"
+                  />
+                  <span className="dollar_icon">$</span>
                 </div>
               </Col>
             </Row>
@@ -115,8 +207,17 @@ const ByProject = () => {
                 <div className="head">Upwork Service Fee </div>
               </Col>
               <Col lg={5}>
-                <div>
-                  <input type="number" />
+                <div style={{ position: "relative" }}>
+                  <input
+                    type="number"
+                    disabled
+                    placeholder="0.00"
+                    value={(
+                      (values?.bid / 100) *
+                      singleJobDetails?.service_fee
+                    )?.toFixed(2)}
+                  />
+                  <span className="dollar_icon">$</span>
                 </div>
               </Col>
             </Row>
@@ -134,8 +235,17 @@ const ByProject = () => {
                 </div>
               </Col>
               <Col lg={5}>
-                <div>
-                  <input type="number" />
+                <div style={{ position: "relative" }}>
+                  <input
+                    type="number"
+                    disabled
+                    placeholder="0.00"
+                    value={(
+                      values?.bid -
+                      (values?.bid / 100) * singleJobDetails?.service_fee
+                    )?.toFixed(2)}
+                  />
+                  <span className="dollar_icon">$</span>
                 </div>
               </Col>
             </Row>
@@ -157,7 +267,19 @@ const ByProject = () => {
     </>
   );
 };
-const FixedBid = () => {
+
+const FixedBid = ({
+  singleJobDetails,
+  handleOnChange,
+  values,
+  setValues,
+  errors,
+  inputList,
+  setInputList,
+  handleRadioChange,
+  isByMilestone,
+}) => {
+  console.log(values);
   return (
     <>
       <div className="fixed_bid">
@@ -172,7 +294,14 @@ const FixedBid = () => {
               <div className="methods">
                 <div className="method">
                   <div>
-                    <input type="radio" id="by_milestone" name="paid_method" />
+                    <input
+                      type="radio"
+                      id="by_milestone"
+                      name="paid_method"
+                      value="by_milestone"
+                      defaultChecked={isByMilestone == "by_milestone"}
+                      onChange={(e) => handleRadioChange(e)}
+                    />
                   </div>
                   <div>
                     <label htmlFor="by_milestone" className="heading">
@@ -187,7 +316,13 @@ const FixedBid = () => {
                 </div>
                 <div className="method">
                   <div>
-                    <input type="radio" id="by_project" name="paid_method" />
+                    <input
+                      type="radio"
+                      id="by_project"
+                      name="paid_method"
+                      value="by_project"
+                      onChange={(e) => handleRadioChange(e)}
+                    />
                   </div>
                   <div>
                     <label htmlFor="by_project" className="heading">
@@ -200,7 +335,54 @@ const FixedBid = () => {
                   </div>
                 </div>
               </div>
-              <ByProject />
+              <div className="project_duration">
+                <label htmlFor="project_duration">
+                  How long will this project take?
+                </label>
+                <Row>
+                  <Col md={4}>
+                    <select
+                      name="project_duration"
+                      id="project_duration"
+                      onChange={(e) =>
+                        setValues({
+                          ...values,
+                          [e.target.name]: e.target.value,
+                        })
+                      }
+                    >
+                      <option disabled selected hidden>
+                        Select a duration
+                      </option>
+                      <option value="More then 6 months">
+                        More then 6 months
+                      </option>
+                      <option value="3 to 6 months">3 to 6 months</option>
+                      <option value="1 to 3 months">1 to 3 months</option>
+                      <option value="Less then 1 months">
+                        Less then 1 months
+                      </option>
+                    </select>
+                  </Col>
+                </Row>
+              </div>
+              {isByMilestone == "by_milestone" ? (
+                <ByMilesstone
+                  handleOnChange={handleOnChange}
+                  singleJobDetails={singleJobDetails}
+                  values={values}
+                  inputList={inputList}
+                  setInputList={setInputList}
+                />
+              ) : isByMilestone == "by_project" ? (
+                <ByProject
+                  setValues={setValues}
+                  values={values}
+                  singleJobDetails={singleJobDetails}
+                />
+              ) : (
+                ""
+              )}
             </div>
           </Col>
         </Row>

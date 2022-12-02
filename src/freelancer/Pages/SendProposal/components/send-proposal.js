@@ -27,50 +27,56 @@ const Screen = () => {
   const [disableSubmitBtn, setDisableSubmitBtn] = useState(true);
   const [portfolioImage, setPortfolioImage] = useState(null);
   const [showingImage, setShowingImage] = useState();
-  const [errors, setErrors] = useState({});
   const [successPopup, setSuccessPopup] = useState(false);
+  const [errors, setErrors] = useState(false);
+  const [isByMilestone, setIsByMilestone] = useState("by_milestone");
 
-  // useEffect(() => {
-  //   if (!proposalData) {
-  //     navigate(`/freelancer/project-detail/${id}`);
-  //   }
-  // }, []);
+  const [inputList, setInputList] = useState([
+    { description: "", due_date: "", amount: 0 },
+  ]);
+
   useEffect(() => {
     dispatch(singleJobPostDetails({ job_id: id }));
   }, [id]);
-  console.log(singleJobDetails);
-
-  const handleOnChange = (e) => {
-    let errorsObject = {};
-
-    if (e.target.name == "bid_amount") {
-      // if (Number(e.target.value) > singleJobDetails?.price) {
-      //   errorsObject.bid_amount = `Cannot be more than $${singleJobDetails?.price}`;
-      //   setDisableSubmitBtn(false);
-      // } else {
-      //   errorsObject.bid_amount = false;
-      //   setDisableSubmitBtn(true);
-      // }
-      setErrors(errorsObject);
-      setValues({ ...values, [e.target.name]: Number(e.target.value) });
-    } else {
-      setValues({ ...values, [e.target.name]: e.target.value });
-    }
-  };
+  console.log(values);
+  console.log(inputList);
 
   const onImageChange = (e) => {
     setPortfolioImage(e.target.files[0]);
     setShowingImage(URL.createObjectURL(e.target.files[0]));
   };
 
+  console.log([...inputList]);
+
   const onSendProposal = () => {
     const formData = new FormData();
+
     formData.append("job_id", id);
-    formData.append("bid_amount", values?.bid_amount);
-    formData.append("cover_letter", values?.cover_letter);
-    formData.append("project_duration", values?.project_duration);
-    formData.append("image", portfolioImage);
+    if (singleJobDetails?.budget_type == "hourly") {
+      formData.append("bid_amount", values?.bid_amount);
+      formData.append("cover_letter", values?.cover_letter);
+      formData.append("image", portfolioImage);
+    } else if (singleJobDetails?.budget_type == "fixed") {
+      if (isByMilestone == "by_project") {
+        formData.append("milestone_type", "single");
+        formData.append("project_duration", values?.project_duration);
+        formData.append("bid_amount", values?.bid_amount);
+        formData.append("cover_letter", values?.cover_letter);
+        formData.append("image", portfolioImage);
+      }
+      if (isByMilestone == "by_milestone") {
+        formData.append("milestone_type", "multiple");
+        formData.append("project_duration", values?.project_duration);
+        formData.append("milestone_data", JSON.stringify(inputList));
+        formData.append("cover_letter", values?.cover_letter);
+        formData.append("image", portfolioImage);
+      }
+    }
     dispatch(onSendJobProposal(formData, successPopup, setSuccessPopup));
+  };
+
+  const handleRadioChange = (e) => {
+    setIsByMilestone(e.target.value);
   };
 
   return (
@@ -80,16 +86,7 @@ const Screen = () => {
           <Row>
             <Col lg={5}>
               <div className="send_propo_hdsp">Submit a proposal</div>
-              {/* <div className="ssmtxto_hdsp mt-2">
-                Propose with a Specialized profile
-              </div>
-              <div className="sm_select_hdsp">
-                <Select
-                  className="custom_css_select sendpro_select"
-                  placeholder="Select Profile"
-                  options={options1}
-                />
-              </div> */}
+
               <div className="ssmtxto_hdsp">
                 This proposal requires 4 unicoins
                 <svg
@@ -123,16 +120,6 @@ const Screen = () => {
                 <div className="trs_css-76">Posted Aug 3, 2022</div>
               </div>
               <div className="pbsp_prs">{singleJobDetails?.description}</div>
-              {/* <div className="pbsp_prs">
-                The design will be similar in name or contain abbreviated
-                letters of the name
-              </div>
-              <div className="pbsp_prs">
-                Message the project supervisor on telegram @Michellewilliams460
-              </div>
-              <div className="bbsp_linkn">
-                <Link to="#0">View job posting</Link>
-              </div> */}
             </Col>
             <Col lg={3}>
               <div className="box_bgay">
@@ -340,22 +327,38 @@ const Screen = () => {
           <div className="mt-3">
             <div className="skll_hding">Skills and expertise</div>
             <div className="d-flex flex-wrap cwcss_cw">
-              {singleJobDetails?.skills?.map((skill) => (
+              {singleJobDetails?.skills?.map((skill, index) => (
                 <>
-                  <div className="blue_bx_sp_ct">{skill.name}</div>
+                  <div key={index} className="blue_bx_sp_ct">
+                    {skill.name}
+                  </div>
                 </>
               ))}
             </div>
           </div>
         </div>
         <div className="propo_box_sp bg_gray_sp no-border">
-          {/* <HourlyBid
-                singleJobDetails={singleJobDetails}
-                handleOnChange={handleOnChange}
-                values={values}
-                errors={errors}
-              /> */}
-          <FixedBid />
+          {singleJobDetails?.budget_type == "fixed" ? (
+            <FixedBid
+              singleJobDetails={singleJobDetails}
+              values={values}
+              errors={errors}
+              setValues={setValues}
+              setInputList={setInputList}
+              inputList={inputList}
+              handleRadioChange={handleRadioChange}
+              isByMilestone={isByMilestone}
+            />
+          ) : singleJobDetails?.budget_type == "hourly" ? (
+            <HourlyBid
+              singleJobDetails={singleJobDetails}
+              values={values}
+              setValues={setValues}
+              errors={errors}
+            />
+          ) : (
+            ""
+          )}
         </div>
         <div className="propo_box_sp bg_gray_sp no-border">
           <Row className="mt-3">
@@ -366,7 +369,9 @@ const Screen = () => {
                   as="textarea"
                   name="cover_letter"
                   value={values?.cover_letter}
-                  onChange={(e) => handleOnChange(e)}
+                  onChange={(e) =>
+                    setValues({ ...values, [e.target.name]: e.target.value })
+                  }
                 ></Form.Control>
               </div>
               <div className="skll_hding mt-4">Attachments</div>
@@ -388,7 +393,7 @@ const Screen = () => {
           <Button
             variant=""
             className="send_pros_btn"
-            disabled={!disableSubmitBtn}
+            disabled={singleJobDetails?.is_proposal_send}
             onClick={onSendProposal}
           >
             send proposal

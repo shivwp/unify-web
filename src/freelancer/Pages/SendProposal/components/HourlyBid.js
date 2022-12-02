@@ -1,7 +1,11 @@
 import React from "react";
 import { Col, Row, Form } from "react-bootstrap";
 
-const HourlyBid = ({ singleJobDetails, handleOnChange, values, errors }) => {
+const HourlyBid = ({ singleJobDetails, values, setValues, errors }) => {
+  const handleOnChange = (e) => {
+    setValues({ ...values, [e.target.name]: e.target.value });
+  };
+
   return (
     <>
       <Row className="mt-3">

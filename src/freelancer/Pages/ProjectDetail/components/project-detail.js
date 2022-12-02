@@ -7,7 +7,11 @@ import Form from "react-bootstrap/Form";
 import { Button } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { singleJobPostDetails } from "../../../../redux/actions/jobActions";
+import {
+  removeSaveJob,
+  saveJobs,
+  singleJobPostDetails,
+} from "../../../../redux/actions/jobActions";
 import { SEND_PROPOSAL_DATA } from "../../../../redux/types";
 import moment from "moment";
 
@@ -160,40 +164,21 @@ const Projectdetail = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
   const navigate = useNavigate();
-  const [values, setValues] = useState();
-  const [disableSubmitBtn, setDisableSubmitBtn] = useState(false);
   const singleJobDetails = useSelector((state) => state?.job?.singleJobDetails);
-  const [errors, setErrors] = useState({});
-  const [clientRating, setClientRating] = useState([]);
+  const unSaveJobsPost = useSelector((state) => state?.job?.unSaveJobsPost);
+  const saveJobsPost = useSelector((state) => state?.job?.saveJobsPost);
 
   useEffect(() => {
     dispatch(singleJobPostDetails({ job_id: id }));
-  }, []);
+  }, [unSaveJobsPost, saveJobsPost]);
+  const SaveJob = (id) => {
+    dispatch(saveJobs({ job_id: id }));
+  };
+  const UnSaveJob = (id) => {
+    dispatch(removeSaveJob({ job_id: id }));
+  };
 
   console.log(singleJobDetails);
-
-  const handleOnChange = (e) => {
-    let errorsObject = {};
-    if (e.target.name == "bid_amount") {
-      if (Number(e.target.value) > singleJobDetails?.price) {
-        errorsObject.bid_amount = `Cannot be more than $${singleJobDetails?.price}`;
-      } else {
-        errorsObject.bid_amount = false;
-      }
-      setErrors(errorsObject);
-      setValues({ ...values, [e.target.name]: Number(e.target.value) });
-    } else if (e.target.name == "agree_terms") {
-      setValues({ ...values, [e.target.name]: e.target.checked });
-      setDisableSubmitBtn(e.target.checked);
-    } else {
-      setValues({ ...values, [e.target.name]: e.target.value });
-    }
-  };
-
-  const sendProposal = () => {
-    dispatch({ type: SEND_PROPOSAL_DATA, payload: values });
-    navigate(`/freelancer/send-proposal/${id}`);
-  };
 
   return (
     <>
@@ -206,14 +191,21 @@ const Projectdetail = () => {
                   <Button
                     variant=""
                     className="bg-trans_s_pro bg_li_grey"
-                    style={{ margin: "0 3px", padding: "12px 20px" }}
+                    style={{ margin: "0 3px", padding: "8px 15px" }}
+                    onClick={
+                      singleJobDetails?.is_saved
+                        ? () => UnSaveJob(singleJobDetails?.id)
+                        : () => SaveJob(singleJobDetails?.id)
+                    }
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
+                      width="25"
+                      height="25"
                       fill="currentColor"
-                      className="bi bi-heart-fill heart_btn"
+                      className={`bi bi-heart-fill heart_btn ${
+                        singleJobDetails?.is_saved ? "proposal_saved" : ""
+                      }`}
                       viewBox="0 0 16 16"
                     >
                       <path
@@ -225,11 +217,10 @@ const Projectdetail = () => {
 
                   <Button
                     variant=""
-                    className="pd_n_sendp"
+                    className="pd_n_sendp send_proposal_btn_job_detail"
+                    disabled={singleJobDetails?.is_proposal_send }
                     onClick={() => {
-                      document
-                        .getElementById("send_proposal_form")
-                        .scrollIntoView({ behavior: "smooth" });
+                      navigate(`/freelancer/send-proposal/${id}`);
                     }}
                   >
                     Send Proposal
@@ -435,124 +426,13 @@ const Projectdetail = () => {
                   Project Proposals ({singleJobDetails?.proposal_list?.length})
                 </h3>
               </div>
-              <div className="proposal_boxes">
+              <div>
                 {
                   <ListProposals
                     project_type={singleJobDetails?.budget_type}
                     data={singleJobDetails?.proposal_list}
                   />
                 }
-              </div>
-              <div className="phead_h3" id="send_proposal_form">
-                <h3>Send Your Proposal</h3>
-              </div>
-              <div className="flex_inp_b flex-wrap">
-                <div className="inp_box">
-                  <div className="inp_label">Your hourly price</div>
-                  <div className="d-flex">
-                    <div className="inp_input">
-                      <Form.Control
-                        name="bid_amount"
-                        className="project_details_Num_inp"
-                        type="number"
-                        isInvalid={errors?.bid_amount}
-                        feedback={errors?.bid_amount}
-                        onChange={(e) => handleOnChange(e)}
-                        onWheel={(e) => e.target.blur()}
-                      />
-                      <Form.Control.Feedback
-                        type="invalid"
-                        style={{ position: "absolute" }}
-                      >
-                        {errors?.bid_amount}
-                      </Form.Control.Feedback>
-                    </div>
-                    <div className="p_inp_icon">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
-                        fill="currentColor"
-                        className="bi bi-collection"
-                        viewBox="0 0 16 16"
-                      >
-                        <path d="M2.5 3.5a.5.5 0 0 1 0-1h11a.5.5 0 0 1 0 1h-11zm2-2a.5.5 0 0 1 0-1h7a.5.5 0 0 1 0 1h-7zM0 13a1.5 1.5 0 0 0 1.5 1.5h13A1.5 1.5 0 0 0 16 13V6a1.5 1.5 0 0 0-1.5-1.5h-13A1.5 1.5 0 0 0 0 6v7zm1.5.5A.5.5 0 0 1 1 13V6a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-.5.5h-13z" />
-                      </svg>
-                    </div>
-                  </div>
-                </div>
-                <div className="inp_box">
-                  <div className="inp_label">Estimated Hours</div>
-                  <div className="d-flex">
-                    <div className="inp_input">
-                      <Form.Control
-                        type="text"
-                        name="project_duration"
-                        onChange={(e) => handleOnChange(e)}
-                      />
-                    </div>
-                    <div className="p_inp_icon">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
-                        fill="currentColor"
-                        className="bi bi-clock"
-                        viewBox="0 0 16 16"
-                      >
-                        <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z" />
-                        <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z" />
-                      </svg>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="flex_inp_b inp_w_100">
-                <div className="inp_box">
-                  <div className="inp_label">Cover Letter</div>
-                  <div className="inp_input">
-                    <Form.Control
-                      as="textarea"
-                      name="cover_letter"
-                      onChange={(e) => handleOnChange(e)}
-                    ></Form.Control>
-                  </div>
-                </div>
-              </div>
-              <div className="f_agre_fot mt-2 flex-wrap">
-                <div className="agree_term_b align-items-center">
-                  <Form.Check
-                    type="checkbox"
-                    name="agree_terms"
-                    feedback="You must agree before submitting."
-                    required
-                    onChange={(e) => handleOnChange(e)}
-                  />
-                  <Form.Label>I agree to the Terms And Conditions</Form.Label>
-                </div>
-                <div>
-                  <div className="fb_btns_s_pro">
-                    {/* <Link
-                      to="/freelancer/send-proposal"
-                      style={disableSubmitBtn ? { pointerEvents: "none" } : {}}
-                    > */}
-                    <Button
-                      type="submit"
-                      variant=""
-                      className="pd_n_sendp pad_n_pdd"
-                      disabled={
-                        !(
-                          disableSubmitBtn &&
-                          (errors?.bid_amount ? false : true)
-                        )
-                      }
-                      onClick={() => sendProposal()}
-                    >
-                      Send Proposal
-                    </Button>
-                    {/* </Link> */}
-                  </div>
-                </div>
               </div>
             </div>
           </Col>

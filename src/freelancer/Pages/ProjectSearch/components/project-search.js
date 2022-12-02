@@ -164,7 +164,7 @@ const ProjectSearch = ({ filters }) => {
                   onClick={() =>
                     setDropdownOpen(dropdownOpen ? false : item.id)
                   }
-                  style={{ padding: 0 }}
+                  style={{ padding: 0, transform: "rotate(180deg)" }}
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
