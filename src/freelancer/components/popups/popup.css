@@ -88,6 +88,85 @@
   -webkit-border-radius: 60px !important;
 }
 
+.cancleSubsPopupBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.subsPopup {
+  display: flex;
+  flex-direction: column;
+}
+
+.subsPopup2 {
+  display: flex;
+  flex-direction: column;
+}
+
+.cancleSubHead {
+  font: normal normal bold 35px/106px Poppins;
+  letter-spacing: 0px;
+  color: #6D2EF1;
+  text-align: center;
+}
+.cancleSubHead2 {
+  font: normal normal normal 13px/24px Poppins;
+  letter-spacing: 0px;
+  color: #545454;
+}
+
+.subsNotNowbtn {
+  color: #6d2ef1;
+  background-color: #fff;
+  font-weight: bold;
+  border-radius: 20px !important;
+  text-transform: uppercase;
+  font-size: 14px;
+  padding: 10px 30px;
+  margin-top: 5px;
+  margin-right: 15px;
+  border: #6d2ef1 solid 1px;
+  -webkit-border-radius: 60px !important;
+}
+.subsCancleSubsbtn {
+  color: #fff;
+  background-color: #6d2ef1;
+  font-weight: 500;
+  border-radius: 20px !important;
+  text-transform: uppercase;
+  font-size: 13px;
+  padding: 10px 30px !important;
+  margin-top: 5px;
+  margin-right: 15px;
+  border: #6d2ef1 solid 1px;
+  -webkit-border-radius: 60px !important;
+}
+.subsCancleSubsbtn:hover {
+  color: #fff;
+  background-color: #6d2ef1;
+}
+
+@media screen and (max-width: 768px) {
+  .subsNotNowbtn {
+    margin-top: 0px;
+    margin-left: 10px;
+  }
+  .subsCancleSubsbtn {
+    margin-top: 0px;
+  }
+}
+@media screen and (max-width: 320px) {
+  .cancleSubHead {
+    margin-top: 0px;
+    font-size: 19px !important;
+    padding-bottom: 5px;
+  }
+  .cancleSubHead2 {
+    padding: 0px 10px;
+  }
+}
+
 @media screen and (max-width: 425px) {
   .freelancer_popup_btns {
     display: flex;
@@ -98,8 +177,30 @@
     width: 220px;
     margin-top: 10px !important;
   }
+  .subsNotNowbtn {
+    color: #6d2ef1;
+    background-color: #fff;
+    font-weight: bold;
+    border-radius: 20px !important;
+    font-size: 14px;
+    margin-top: 5px;
+    margin-right: 15px;
+    border: #6d2ef1 solid 1px;
+    -webkit-border-radius: 60px !important;
+  }
+  .subsCancleSubsbtn {
+    width: 266px !important;
+    padding: 10px 0 !important;
+    font-size: 14px;
+  }
 }
 
+
+@media screen and (min-width: 700px) {
+  .subsCancleSubs{
+    flex-wrap: nowrap;
+  }
+}
 .freelancer_popup_inps label {
   display: flex;
   flex-direction: column;

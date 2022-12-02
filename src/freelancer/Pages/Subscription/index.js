@@ -23,7 +23,7 @@ const Subscriptionplan = () => {
                     <div className="sub_radio new_sub_rad">
                       <Form.Check type="radio" name="s" />
                     </div>
-                    <div className="sub_sm_tex">BASIC</div>
+                    <div className="sub_sm_tex">Just Learn</div>
                     <div className="sub_pric">$0.00 /month</div>
                     <ul className="sub_list_ul">
                       <li>Free job post & verified freelancer work history</li>
@@ -50,7 +50,7 @@ const Subscriptionplan = () => {
                     <div className="sub_radio new_sub_rad">
                       <Form.Check type="radio" name="s" />
                     </div>
-                    <div className="sub_sm_tex">PLUS</div>
+                    <div className="sub_sm_tex">JUST EARN</div>
                     <div className="sub_pric">$50.00 /month</div>
                     <ul className="sub_list_ul">
                       <li>Free job post & verified freelancer work history</li>
@@ -77,7 +77,7 @@ const Subscriptionplan = () => {
                     <div className="sub_radio new_sub_rad">
                       <Form.Check type="radio" name="s" />
                     </div>
-                    <div className="sub_sm_tex">ENTERPRISE</div>
+                    <div className="sub_sm_tex">LEARN & EARN</div>
                     <div className="sub_pric">$100.00/year</div>
                     <ul className="sub_list_ul">
                       <li>Free job post & verified freelancer work history</li>

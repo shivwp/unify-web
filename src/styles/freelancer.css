@@ -229,6 +229,12 @@
   font-size: 14px;
 }
 
+@media screen and (max-width: 425px) {
+  .securityRespFirstAns .popup_form_element {
+    width: 100%;
+  }
+}
+
 .close_pp_btn {
   height: 25px;
   width: 25px;

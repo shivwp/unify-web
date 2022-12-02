@@ -7142,6 +7142,20 @@ a {
   justify-content: end;
   align-items: center;
 }
+
+@media screen and (max-width: 425px) and (min-width: 320px) {
+  .changePasswordRespPopup .popup_form_element {
+    width: 100%;
+  }
+  .changePasswordRespPopup .showPassFreelancer {
+    cursor: pointer;
+    position: absolute;
+    top: 51px;
+    right: 10px;
+    color: #aaaaaa;
+ }
+}
+
 @media screen and (max-width: 425px) and (min-width: 375px) {
   .previewProfileThumbsIco {
     display: none;

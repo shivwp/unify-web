@@ -2158,6 +2158,8 @@
   border-radius: 5px !important;
 }
 
+
+
 .addpay_header_hdin {
   color: #271943;
   font: normal normal 600 21px/35px Poppins !important;
@@ -2188,6 +2190,11 @@
   outline: none;
 }
 
+.cardPopupExpire {
+  display: flex;
+  gap: 10px;
+}
+
 @media only screen and (min-width: 768px) and (max-width: 1024px) {
   .popuphead_smparcr {
     font-size: 12px;
@@ -2197,6 +2204,29 @@
 @media only screen and (max-width: 768px) {
   .p_header_hding {
     font-size: 22px;
+  }
+}
+
+@media only screen and (max-width: 425px) {
+  .cardDetailsPopup {
+    width: 100%;
+  }
+  .cardPopupExpire {
+    display: flex;
+    gap: 0px;
+  }
+  .cardPopupExpire .payformelent {
+    width: 100%;
+  }
+  .popup_box_bpn {
+    max-width: 470px;
+    width: 93%;
+    padding: 0px 12px;
+    background: #ffffff 0% 0% no-repeat padding-box;
+    opacity: 1;
+    min-height: 200px;
+    max-height: 93vh;
+    overflow-y: scroll;
   }
 }
 

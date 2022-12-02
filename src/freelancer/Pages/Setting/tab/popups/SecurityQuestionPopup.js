@@ -1,4 +1,3 @@
-import { Row, Col } from "react-bootstrap";
 import { useState } from "react";
 import { onPasswordChange } from "../../../../../redux/actions/authActions";
 import Form from "react-bootstrap/Form";
@@ -21,9 +20,6 @@ const CloseIcon = () => {
 
 const SecurityQuestionPopup = ({ setSuccessPopup, successPopup, Popup }) => {
   const dispatch = useDispatch();
-  const [hideNewPass, setHideNewPass] = useState(true);
-  const [hideOldPass, setHideOldPass] = useState(true);
-  const [hideConfPass, setHideConfPass] = useState(true);
   const [values, setValues] = useState();
   const [errors, setErrors] = useState({});
   const [message, setMessage] = useState();
@@ -78,10 +74,14 @@ const SecurityQuestionPopup = ({ setSuccessPopup, successPopup, Popup }) => {
             your current one correctly
           </div>
           <div className="popup_body_bpn amount_popup_body max_height_popucwui overflow-scroll">
-            <div className="mt-4 pt-1 securityPopup2ndHead ">Current Question</div>
-            <div className="mb-4 mt-1 securityHeading "> Your Mother's Middle name </div>
+            <div className="mt-4 pt-1 securityPopup2ndHead ">
+              Current Question
+            </div>
+            <div className="mb-4 mt-1 securityHeading ">
+              Your Mother's Middle name
+            </div>
 
-            <div className="mb-2 ">
+            <div className="mb-2 securityRespFirstAns">
               <div
                 className="popup_form_element"
                 style={{ position: "relative" }}
@@ -89,20 +89,15 @@ const SecurityQuestionPopup = ({ setSuccessPopup, successPopup, Popup }) => {
                 <Form.Label className="text-black font-size-13px font-weight-500">
                   Answer
                 </Form.Label>
-                <Form.Control
-                  type={hideOldPass ? "password" : "text"}
-                  className="font-size-13px"
-                  onChange={(e) => handleOnChange(e)}
-                  name="Answer"
-                  value={values?.old_password}
-                  placeholder="Your favorite writer"
-                />
-                {/* <span className="signup-error">
-                  {errors.old_password ? errors.old_password : message}
-                </span> */}
+                <select name="cars" id="cars" className="font-size-13px">
+                  <option value="volvo">Volvo</option>
+                  <option value="saab">Saab</option>
+                  <option value="opel">Opel</option>
+                  <option value="audi">Audi</option>
+                </select>
               </div>
             </div>
-            <div className="mb-2 ">
+            <div className="mb-2 securityRespFirstAns ">
               <div
                 className="popup_form_element"
                 style={{ position: "relative" }}
@@ -110,17 +105,15 @@ const SecurityQuestionPopup = ({ setSuccessPopup, successPopup, Popup }) => {
                 <Form.Label className="text-black font-size-13px font-weight-500">
                   New Question
                 </Form.Label>
-                <Form.Control
-                  type={hideOldPass ? "password" : "text"}
-                  className="font-size-13px"
-                  onChange={(e) => handleOnChange(e)}
-                  name="old_password"
-                  value={values?.old_password}
-                  placeholder="Your favorite writer"
-                />
+                <select name="cars" id="cars" className="font-size-13px">
+                  <option value="volvo">Volvo</option>
+                  <option value="saab">Saab</option>
+                  <option value="opel">Opel</option>
+                  <option value="audi">Audi</option>
+                </select>
               </div>
             </div>
-            <div className="mb-2 ">
+            <div className="mb-2 securityRespFirstAns">
               <div
                 className="popup_form_element"
                 style={{ position: "relative" }}
@@ -128,14 +121,7 @@ const SecurityQuestionPopup = ({ setSuccessPopup, successPopup, Popup }) => {
                 <Form.Label className="text-black font-size-13px font-weight-500">
                   Answer
                 </Form.Label>
-                <Form.Control
-                  type={hideOldPass ? "password" : "text"}
-                  className="font-size-13px"
-                  onChange={(e) => handleOnChange(e)}
-                  name="old_password"
-                  value={values?.old_password}
-                  placeholder=" "
-                />
+                <Form.Control className="font-size-13px" placeholder=" " />
               </div>
             </div>
             <div style={{ position: "relative" }}>
