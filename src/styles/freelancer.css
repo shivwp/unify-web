@@ -1928,6 +1928,32 @@
   user-select: none;
 }
 
+.durationIcon {
+  position: absolute;
+  right: 12px;
+  height: 25px;
+  pointer-events: none;
+  width: 25px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Poppins";
+  font-size: 20px;
+  top: 7px;
+  color: #fff;
+  line-height: 20px;
+  font-weight: 500;
+  cursor: pointer;
+  user-select: none;
+}
+.jobDurationInp {
+  border: none;
+}
+.projectDurationOption option {
+  border: none;
+  outline: none;
+}
 .font-12-px {
   font-size: 12px !important;
 }
