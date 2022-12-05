@@ -1,12 +1,33 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Modal } from "react-responsive-modal";
 import "react-responsive-modal/styles.css";
 import "./popup.css";
-import Button from "react-bootstrap/Button";
 import { Row, Col } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 
-const ProjectBudgetPopup = ({ open, onCloseModal, onInputChange, values }) => {
+const ProjectBudgetPopup = ({ open, onCloseModal, setValues, values }) => {
+  const [budgetData, setBudgetData] = useState({});
+
+  useEffect(() => {
+    if (values) {
+      setBudgetData(values);
+    }
+  }, [values]);
+
+  const onInputChange = (e) => {
+    setBudgetData({ ...budgetData, [e.target.name]: e.target.value });
+  };
+
+  const onSave = () => {
+    setValues({
+      ...values,
+      budget_type: budgetData?.budget_type,
+      price: budgetData?.price,
+      min_price: budgetData?.min_price,
+    });
+    onCloseModal();
+  };
+
   return (
     <Modal
       open={open}
@@ -25,6 +46,9 @@ const ProjectBudgetPopup = ({ open, onCloseModal, onInputChange, values }) => {
                     type="radio"
                     name="budget_type"
                     value="hourly"
+                    checked={
+                      budgetData?.budget_type === "hourly" ? true : false
+                    }
                     onChange={(e) => onInputChange(e)}
                   />
                 </div>
@@ -53,6 +77,7 @@ const ProjectBudgetPopup = ({ open, onCloseModal, onInputChange, values }) => {
                     type="radio"
                     name="budget_type"
                     value="fixed"
+                    checked={budgetData?.budget_type === "fixed" ? true : false}
                     onChange={(e) => onInputChange(e)}
                   />
                 </div>
@@ -73,7 +98,7 @@ const ProjectBudgetPopup = ({ open, onCloseModal, onInputChange, values }) => {
             </Form.Label>
           </Col>
         </Row>
-        {values?.budget_type === "hourly" ? (
+        {budgetData?.budget_type === "hourly" ? (
           <div className="d-flex">
             <div className="input_ft">
               <div className="input_t_lab bud_new_l_tex">From</div>
@@ -83,7 +108,7 @@ const ProjectBudgetPopup = ({ open, onCloseModal, onInputChange, values }) => {
                   <Form.Control
                     type="number"
                     name="price"
-                    value={values?.price}
+                    value={budgetData?.price}
                     onChange={(e) => onInputChange(e)}
                     onWheel={(e) => e.target.blur()}
                   />
@@ -101,7 +126,7 @@ const ProjectBudgetPopup = ({ open, onCloseModal, onInputChange, values }) => {
                   <Form.Control
                     type="number"
                     name="min_price"
-                    value={values?.min_price}
+                    value={budgetData?.min_price}
                     onChange={(e) => onInputChange(e)}
                     onWheel={(e) => e.target.blur()}
                   />
@@ -112,7 +137,7 @@ const ProjectBudgetPopup = ({ open, onCloseModal, onInputChange, values }) => {
               </div>
             </div>
           </div>
-        ) : values?.budget_type === "fixed" ? (
+        ) : budgetData?.budget_type === "fixed" ? (
           <div className="d-flex">
             <div className="input_ft">
               <div className="input_t_lab bud_new_l_tex">To</div>
@@ -122,7 +147,7 @@ const ProjectBudgetPopup = ({ open, onCloseModal, onInputChange, values }) => {
                   <Form.Control
                     type="number"
                     name="price"
-                    value={values?.price}
+                    value={budgetData?.price}
                     onChange={(e) => onInputChange(e)}
                     onWheel={(e) => e.target.blur()}
                   />
@@ -146,9 +171,32 @@ const ProjectBudgetPopup = ({ open, onCloseModal, onInputChange, values }) => {
           <button className="trans_btn hov_pple" onClick={() => onCloseModal()}>
             Cancel
           </button>
-          <button className="btnhovpple" onClick={() => onCloseModal()}>
-            Save
-          </button>
+
+          {budgetData?.budget_type === "fixed" ? (
+            <>
+              {!budgetData?.price ? (
+                <button disabled className="active_btn_blueDiabled">
+                  Save
+                </button>
+              ) : (
+                <button className="active_btn_blue" onClick={onSave}>
+                  Save
+                </button>
+              )}
+            </>
+          ) : budgetData?.budget_type === "hourly" ? (
+            <>
+              {!budgetData?.price || !budgetData?.min_price ? (
+                <button disabled className="active_btn_blueDiabled">
+                  Save
+                </button>
+              ) : (
+                <button className="active_btn_blue" onClick={onSave}>
+                  Save
+                </button>
+              )}
+            </>
+          ) : null}
         </div>
       </div>
     </Modal>

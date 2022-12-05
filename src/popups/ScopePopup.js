@@ -1,11 +1,34 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Modal } from "react-responsive-modal";
 import "react-responsive-modal/styles.css";
 import "./popup.css";
-import { Row, Col } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 
-const ScopePopup = ({ open, onCloseModal, onInputChange, values }) => {
+const ScopePopup = ({ open, onCloseModal, values, setValues }) => {
+  const [scopeData, setScopeData] = useState({});
+
+  useEffect(() => {
+    if (values) {
+      setScopeData(values);
+    }
+  }, [values]);
+
+  const onInputChange = (e) => {
+    setScopeData({ ...scopeData, [e.target.name]: e.target.value });
+  };
+
+  const onSave = () => {
+    setValues({
+      ...values,
+      scope: scopeData?.scope,
+      project_duration: scopeData?.project_duration,
+      experience_level: scopeData?.experience_level,
+    });
+    onCloseModal();
+  };
+
+  console.log(scopeData);
+
   return (
     <Modal
       open={open}
@@ -24,8 +47,9 @@ const ScopePopup = ({ open, onCloseModal, onInputChange, values }) => {
                   <Form.Check
                     type="radio"
                     id="scope-one"
-                    name="scop"
+                    name="scope"
                     value="large"
+                    checked={scopeData?.scope === "large" ? true : false}
                     onChange={(e) => onInputChange(e)}
                   />
                   <Form.Label htmlFor="scope-one">
@@ -46,8 +70,9 @@ const ScopePopup = ({ open, onCloseModal, onInputChange, values }) => {
                   <Form.Check
                     type="radio"
                     id="scope-two"
-                    name="scop"
+                    name="scope"
                     value="medium"
+                    checked={scopeData?.scope === "medium" ? true : false}
                     onChange={(e) => onInputChange(e)}
                   />
                   <Form.Label htmlFor="scope-two">
@@ -67,8 +92,9 @@ const ScopePopup = ({ open, onCloseModal, onInputChange, values }) => {
                   <Form.Check
                     type="radio"
                     id="scope-three"
-                    name="scop"
+                    name="scope"
                     value="small"
+                    checked={scopeData?.scope === "small" ? true : false}
                     onChange={(e) => onInputChange(e)}
                   />
                   <Form.Label htmlFor="scope-three">
@@ -96,6 +122,11 @@ const ScopePopup = ({ open, onCloseModal, onInputChange, values }) => {
                     id="work-take-one"
                     name="project_duration"
                     value="More than 6 months"
+                    checked={
+                      scopeData?.project_duration === "More than 6 months"
+                        ? true
+                        : false
+                    }
                     onChange={(e) => onInputChange(e)}
                   />
                   <Form.Label htmlFor="work-take-one">
@@ -110,6 +141,11 @@ const ScopePopup = ({ open, onCloseModal, onInputChange, values }) => {
                     id="work-take-two"
                     name="project_duration"
                     value="3 to 6 months"
+                    checked={
+                      scopeData?.project_duration === "3 to 6 months"
+                        ? true
+                        : false
+                    }
                     onChange={(e) => onInputChange(e)}
                   />
                   <Form.Label htmlFor="work-take-two">
@@ -124,6 +160,11 @@ const ScopePopup = ({ open, onCloseModal, onInputChange, values }) => {
                     id="work-take-three"
                     name="project_duration"
                     value="1 to 3 months"
+                    checked={
+                      scopeData?.project_duration === "1 to 3 months"
+                        ? true
+                        : false
+                    }
                     onChange={(e) => onInputChange(e)}
                   />
                   <Form.Label htmlFor="work-take-three">
@@ -147,6 +188,9 @@ const ScopePopup = ({ open, onCloseModal, onInputChange, values }) => {
                     id="level-one"
                     name="experience_level"
                     value="entry"
+                    checked={
+                      scopeData?.experience_level === "entry" ? true : false
+                    }
                     onChange={(e) => onInputChange(e)}
                   />
                   <Form.Label htmlFor="level-one">
@@ -168,6 +212,11 @@ const ScopePopup = ({ open, onCloseModal, onInputChange, values }) => {
                     id="level-two"
                     name="experience_level"
                     value="intermediate"
+                    checked={
+                      scopeData?.experience_level === "intermediate"
+                        ? true
+                        : false
+                    }
                     onChange={(e) => onInputChange(e)}
                   />
                   <Form.Label htmlFor="level-two">
@@ -189,6 +238,9 @@ const ScopePopup = ({ open, onCloseModal, onInputChange, values }) => {
                     id="lavel-three"
                     name="experience_level"
                     value="expert"
+                    checked={
+                      scopeData?.experience_level === "expert" ? true : false
+                    }
                     onChange={(e) => onInputChange(e)}
                   />
                   <Form.Label htmlFor="lavel-three">
@@ -211,7 +263,16 @@ const ScopePopup = ({ open, onCloseModal, onInputChange, values }) => {
           <button className="trans_btn" onClick={() => onCloseModal()}>
             Cancel
           </button>
-          <button onClick={() => onCloseModal()}>Save</button>
+
+          {!values?.scope ||
+          !values?.project_duration ||
+          !values?.experience_level ? (
+            <button disabled className="active_btn_blueDiabled">
+              Save
+            </button>
+          ) : (
+            <button onClick={() => onSave()}>Save</button>
+          )}
         </div>
       </div>
     </Modal>

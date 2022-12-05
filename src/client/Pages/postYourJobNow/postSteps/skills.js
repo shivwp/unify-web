@@ -13,7 +13,7 @@ const Skill = ({ setCurrentTab, onInputChange, setValues, values }) => {
 
   useEffect(() => {
     if (selectSkills) {
-      setValues({ ...values, selectSkills });
+      setValues({ ...values, skills: selectSkills });
     }
   }, [selectSkills]);
 
@@ -141,18 +141,7 @@ const Skill = ({ setCurrentTab, onInputChange, setValues, values }) => {
             </div>
           </div>
 
-          {selectSkills?.length === 0 ? (
-            <div
-              style={{
-                color: "red",
-                marginLeft: "20px",
-                marginTop: "10px",
-                fontSize: "13px",
-              }}
-            >
-              At least 1 skill is required
-            </div>
-          ) : selectSkills?.length > 9 ? (
+          {selectSkills?.length > 9 ? (
             <div
               style={{
                 color: "red",
@@ -161,7 +150,7 @@ const Skill = ({ setCurrentTab, onInputChange, setValues, values }) => {
                 fontSize: "13px",
               }}
             >
-              Minimum 10 skills can select
+              Maximum 10 skills
             </div>
           ) : null}
         </div>

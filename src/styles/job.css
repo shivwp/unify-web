@@ -106,6 +106,22 @@
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='15' viewBox='0 0 24 24'%3E%3Cpath fill='%236D2EF1' d='M20 3h-1V1h-2v2H7V1H5v2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 18H4V8h16v13z'/%3E%3C/svg%3E");
 }
 
+.ts_btn label {
+  background-color: #6d2ef1;
+  padding: 12px 25px;
+  color: #fff;
+  border: none;
+  min-width: 180px;
+  border-radius: 30px;
+  font-family: "Poppins-Bold", "Poppins";
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 20px;
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  -ms-border-radius: 30px;
+  -o-border-radius: 30px;
+}
 .ts_btn button {
   background-color: #6d2ef1;
   padding: 12px 25px;
@@ -121,6 +137,13 @@
   -moz-border-radius: 30px;
   -ms-border-radius: 30px;
   -o-border-radius: 30px;
+}
+
+.b_bot_inp .selectImage {
+  width: 100px;
+  height: 100px;
+  overflow: hidden;
+  object-fit: cover;
 }
 
 .input_t_lab {
@@ -144,9 +167,9 @@
   color: #1f1f1f;
   background-color: #fff;
   font-family: "Poppins-Bold", "Poppins";
-  font-size: 17px;
+  font-size: 14px;
   width: 100%;
-  font-weight: 700;
+  font-weight: 400;
 }
 
 .sm_label_inp {
@@ -1650,7 +1673,7 @@
   padding: 0px -14px;
   font-size: 18px;
   line-height: 23px;
-  color: #00065A;
+  color: #00065a;
 }
 
 .hire_b_im {

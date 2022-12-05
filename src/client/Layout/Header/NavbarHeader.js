@@ -311,7 +311,7 @@ const Header = (props) => {
                     id="navbarScrollingDropdown"
                   >
                     <div className="navabr_t_li">
-                      <Link to="/gettingstarted">Post A Job</Link>
+                      <Link to="/post-your-job">Post A Job</Link>
                     </div>
                     <div className="navabr_t_li">
                       <Link to="/dashboard">My Jobs</Link>

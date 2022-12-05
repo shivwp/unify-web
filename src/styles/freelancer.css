@@ -344,7 +344,7 @@
     text-align: center;
     font-size: 25px;
     line-height: 32px;
-  } 
+  }
 }
 @media screen and (max-width: 375px) {
   .popup_form_element {
@@ -359,7 +359,7 @@
     text-align: center;
     font-size: 23px;
     line-height: 32px;
-  } 
+  }
 }
 @media screen and (max-width: 320px) {
   .popup_form_element {
@@ -369,7 +369,6 @@
     width: 46%;
   }
 }
-
 
 ._profile_overview textarea {
   resize: none;
@@ -436,19 +435,19 @@
   }
 }
 
-.popup_btns_new button:hover {
+/* .popup_btns_new button:hover {
   background-color: #fff;
   color: #6d2ef1;
-}
+} */
 .blue_btncb {
   background-color: #6d2ef1 !important;
   color: #fff !important;
 }
-.btnhovpple:hover {
+/* .btnhovpple:hover {
   background-color: #6d2ef1 !important;
   color: #fff !important;
   border-color: #6d2ef1 !important;
-}
+} */
 .hov_whitepple:hover {
   background-color: #fff !important;
   color: #6d2ef1 !important;
@@ -456,7 +455,7 @@
 }
 
 .popup_btns_new button:disabled {
-  background-color: #5e5e5e;
+  background-color: #b1b1b1;
   color: #fff;
   font: normal normal medium 18px/30px Poppins !important;
   font-weight: bold;
@@ -468,7 +467,7 @@
   margin-right: 15px;
   border: none;
   -webkit-border-radius: 60px !important;
-  z-index: -1;
+  /* z-index: -1; */
 }
 
 .popup_btns_new .trans_btn {

@@ -1,16 +1,32 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Modal } from "react-responsive-modal";
 import "react-responsive-modal/styles.css";
 import "./popup.css";
-import Button from "react-bootstrap/Button";
 
 const EditCategoryPopup = ({
   open,
   onCloseModal,
   categoryList,
-  onInputChange,
   values,
+  setValues,
 }) => {
+  const [categoryId, setCategoryId] = useState({});
+
+  useEffect(() => {
+    if (values) {
+      setCategoryId(values);
+    }
+  }, [values]);
+
+  const onInputChange = (e) => {
+    setCategoryId({ ...categoryId, [e.target.name]: e.target.value });
+  };
+
+  const onSave = () => {
+    setValues({ ...values, job_category: categoryId?.job_category });
+    onCloseModal();
+  };
+
   return (
     <Modal
       open={open}
@@ -24,27 +40,30 @@ const EditCategoryPopup = ({
           <div className="pouphed_skll">Category</div>
           <select
             className="category-popup-select"
-            name="categories"
-            value={values?.categories}
+            name="job_category"
+            value={categoryId?.job_category}
             onChange={(e) => onInputChange(e)}
           >
+            <option value="">Select Category</option>
             {categoryList?.map((item, key) => (
-              <option key={key}>{item.name}</option>
+              <option key={key} value={item.id}>
+                {item.name}
+              </option>
             ))}
           </select>
         </div>
 
         <div className="popup_btns_new flex-wrap cwiewyehkk">
-          <Button
-            variant=""
-            className="trans_btn"
-            onClick={() => onCloseModal()}
-          >
+          <button className="trans_btn" onClick={() => onCloseModal()}>
             Cancel
-          </Button>
-          <Button variant="" onClick={() => onCloseModal()}>
-            Save
-          </Button>
+          </button>
+          {!categoryId?.job_category ? (
+            <button disabled className="active_btn_blueDiabled">
+              Save
+            </button>
+          ) : (
+            <button onClick={() => onSave()}>Save</button>
+          )}
         </div>
       </div>
     </Modal>

@@ -25,7 +25,7 @@ const TitleBody = ({ setCurrentTab, onInputChange, values }) => {
           <h3>Write a title for your job post</h3>
         </div>
         <div className="t_area_ob">
-          <Form.Control disabled type="text" value={values?.title} />
+          <Form.Control disabled type="text" value={values?.job_title} />
         </div>
         <div className="t_inp_bt_text mt-1 mb-2">
           We’ll match you with candidates that specialize in{" "}

@@ -4596,6 +4596,9 @@ body {
   -ms-border-radius: 50px;
   -o-border-radius: 50px;
 }
+.bi-pencil-square {
+  color: #d4d4d5;
+}
 
 .mrr_riii {
   margin-right: 30px;
@@ -7153,7 +7156,7 @@ a {
     top: 51px;
     right: 10px;
     color: #aaaaaa;
- }
+  }
 }
 
 @media screen and (max-width: 425px) and (min-width: 375px) {

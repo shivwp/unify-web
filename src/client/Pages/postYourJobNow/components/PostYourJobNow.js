@@ -7,8 +7,13 @@ import TitleFourteen from "../postSteps/title1";
 import Skills from "../postSteps/skills";
 import Scope from "../postSteps/scope";
 import Budget from "../postSteps/budget";
+import { useDispatch } from "react-redux";
+import { SET_JOB_DATA_LISTING } from "../../../../redux/types";
+import { useNavigate } from "react-router-dom";
 
 const PostYourJobNow = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [currentTab, setCurrentTab] = useState("getting-started");
   const [values, setValues] = useState({});
 
@@ -16,7 +21,14 @@ const PostYourJobNow = () => {
     setValues({ ...values, [e.target.name]: e.target.value });
   };
 
-  console.log(values);
+  const reviewJobPost = () => {
+    dispatch({
+      type: SET_JOB_DATA_LISTING,
+      payload: values,
+    });
+
+    navigate("/job-description");
+  };
 
   return (
     <div className="bg-f2f8ff min_pad_m">
@@ -64,6 +76,7 @@ const PostYourJobNow = () => {
               setCurrentTab={setCurrentTab}
               onInputChange={onInputChange}
               values={values}
+              reviewJobPost={reviewJobPost}
             />
           )}
         </Row>

@@ -1,11 +1,7 @@
 import { Row, Col } from "react-bootstrap";
-import { Link } from "react-router-dom";
 import Form from "react-bootstrap/Form";
-import { useState } from "react";
 
-const Budget = ({ setCurrentTab, onInputChange, values }) => {
-  const [budgetType, setBudgetType] = useState();
-
+const Budget = ({ setCurrentTab, onInputChange, values, reviewJobPost }) => {
   return (
     <Col lg={9}>
       <div className="s_nav_body">
@@ -22,7 +18,7 @@ const Budget = ({ setCurrentTab, onInputChange, values }) => {
                     type="radio"
                     name="budget_type"
                     value="hourly"
-                    onChange={(e) => setBudgetType(e.target.value)}
+                    onChange={(e) => onInputChange(e)}
                   />
                 </div>
                 <div className="sel_icon">
@@ -50,7 +46,7 @@ const Budget = ({ setCurrentTab, onInputChange, values }) => {
                     type="radio"
                     name="budget_type"
                     value="fixed"
-                    onChange={(e) => setBudgetType(e.target.value)}
+                    onChange={(e) => onInputChange(e)}
                   />
                 </div>
                 <div className="sel_icon">
@@ -71,7 +67,7 @@ const Budget = ({ setCurrentTab, onInputChange, values }) => {
           </Col>
         </Row>
 
-        {budgetType === "hourly" ? (
+        {values?.budget_type === "hourly" ? (
           <div className="d-flex">
             <div className="input_ft">
               <div className="input_t_lab bud_new_l_tex">From</div>
@@ -110,7 +106,7 @@ const Budget = ({ setCurrentTab, onInputChange, values }) => {
               </div>
             </div>
           </div>
-        ) : budgetType === "fixed" ? (
+        ) : values?.budget_type === "fixed" ? (
           <div className="d-flex">
             <div className="input_ft">
               <div className="input_t_lab bud_new_l_tex">To</div>
@@ -150,7 +146,7 @@ const Budget = ({ setCurrentTab, onInputChange, values }) => {
             </button>
           </div>
 
-          {budgetType === "fixed" ? (
+          {values?.budget_type === "fixed" ? (
             <>
               {!values?.price ? (
                 <div className="fo_btn_c next_b_btn_c">
@@ -160,13 +156,13 @@ const Budget = ({ setCurrentTab, onInputChange, values }) => {
                 </div>
               ) : (
                 <div className="fo_btn_c next_b_btn_c">
-                  <Link to="/job-description">
-                    <button className="active_btn_blue">Review Job Post</button>
-                  </Link>
+                  <button className="active_btn_blue" onClick={reviewJobPost}>
+                    Review Job Post
+                  </button>
                 </div>
               )}
             </>
-          ) : budgetType === "hourly" ? (
+          ) : values?.budget_type === "hourly" ? (
             <>
               {!values?.price || !values?.min_price ? (
                 <div className="fo_btn_c next_b_btn_c">
@@ -176,9 +172,9 @@ const Budget = ({ setCurrentTab, onInputChange, values }) => {
                 </div>
               ) : (
                 <div className="fo_btn_c next_b_btn_c">
-                  <Link to="/job-description">
-                    <button className="active_btn_blue">Review Job Post</button>
-                  </Link>
+                  <button className="active_btn_blue" onClick={reviewJobPost}>
+                    Review Job Post
+                  </button>
                 </div>
               )}
             </>

@@ -4,7 +4,7 @@ import "react-responsive-modal/styles.css";
 import "./popup.css";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import $ from "jquery";
 import { getFreelancerSkills } from "../redux/actions/profileAction";
 
@@ -12,11 +12,14 @@ const EditSkillsPopup = ({
   open,
   onCloseModal,
   values,
-  getSkillList,
+  setValues,
   setSingleJobLists,
   singleJobLists,
 }) => {
   const dispatch = useDispatch();
+  const [showSkillList, setShowSkillList] = useState(false);
+  const [showSkillError, setShowSkillError] = useState(false);
+  const getSkillList = useSelector((state) => state.profile.getSkillList);
   const [selectSkills, setSelectSkills] = useState(
     singleJobLists || values?.skills
   );
@@ -28,7 +31,7 @@ const EditSkillsPopup = ({
   };
 
   const addSkills = (item) => {
-    if (selectSkills.length <= 15) {
+    if (selectSkills.length <= 9) {
       if (
         selectSkills.find((ele) => {
           return ele.id == item.id;
@@ -36,6 +39,9 @@ const EditSkillsPopup = ({
       ) {
         setSelectSkills([...selectSkills, { id: item.id, name: item.name }]);
       }
+    } else {
+      setShowSkillList(false);
+      setShowSkillError(true);
     }
     document.getElementById("search_skill_inp").value = null;
   };
@@ -49,17 +55,22 @@ const EditSkillsPopup = ({
       data = { skill: "undefined" };
       dispatch(getFreelancerSkills(data));
     }
-    $("#suggest_skills").show();
+    setShowSkillList(true);
   };
 
   const onSave = (e) => {
-    setSingleJobLists(selectSkills);
-    onCloseModal();
+    if (selectSkills.length == 0) {
+      setShowSkillError(true);
+    } else {
+      setValues({ ...values, skills: selectSkills });
+      onCloseModal();
+    }
+    // setSingleJobLists(selectSkills);
   };
 
   $(document).mouseup(function (e) {
-    if ($(e.target).closest("#suggest_skills").length === 0) {
-      $("#suggest_skills").hide();
+    if ($(e.target).closest(".suggest_skills").length === 0) {
+      setShowSkillList(false);
     }
   });
 
@@ -102,38 +113,40 @@ const EditSkillsPopup = ({
               className="no-border font-size-13px search_skilloiouo"
             />
 
-            {getSkillList && (
-              <div id="suggest_skills">
-                <div
-                  className="suggest_skills"
-                  style={{ position: "absolute" }}
-                >
-                  {getSkillList?.map((item) => (
-                    <>
-                      {" "}
-                      <span onClick={() => addSkills(item)}>
-                        {item.name}
-                      </span>{" "}
-                      <br />
-                    </>
-                  ))}
-                </div>
+            {showSkillList && getSkillList ? (
+              <div className="suggest_skills" style={{ position: "absolute" }}>
+                {getSkillList?.map((item) => (
+                  <>
+                    <span onClick={() => addSkills(item)}>{item.name}</span>{" "}
+                    <br />
+                  </>
+                ))}
               </div>
+            ) : (
+              ""
             )}
           </div>
         </div>
-        <div className="maxlabel_atcxt mt-3">Maximum 15 skills.</div>
+        <div className="maxlabel_atcxt mt-3">
+          {selectSkills?.length > 9 && showSkillError ? (
+            <span style={{ color: "red" }}>Maximum 10 skills.</span>
+          ) : (
+            <span>Maximum 10 skills.</span>
+          )}
+        </div>
         <div className="popup_btns_new flex-wrap cwiewyehkk">
-          <Button
-            variant=""
-            className="trans_btn hov_pple"
-            onClick={onCloseModal}
-          >
+          <button className="trans_btn hov_pple" onClick={onCloseModal}>
             Cancel
-          </Button>
-          <Button className="btnhovpple" variant="" onClick={onSave}>
-            Save
-          </Button>
+          </button>
+          {selectSkills?.length === 0 ? (
+            <button disabled className="active_btn_blueDiabled">
+              Save
+            </button>
+          ) : (
+            <button className="btnhovpple" onClick={onSave}>
+              Save
+            </button>
+          )}
         </div>
       </div>
     </Modal>

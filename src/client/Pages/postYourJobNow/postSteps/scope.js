@@ -19,7 +19,7 @@ const Skill = ({ setCurrentTab, onInputChange, values }) => {
                   id="scope-one"
                   name="scope"
                   value="large"
-                  checked={values?.scope === "scope" ? true : false}
+                  checked={values?.scope === "large" ? true : false}
                   onChange={(e) => onInputChange(e)}
                 />
                 <Form.Label htmlFor="scope-one">

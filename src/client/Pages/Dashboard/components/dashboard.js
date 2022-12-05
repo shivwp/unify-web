@@ -48,7 +48,7 @@ const Screen = () => {
             {/* <Button variant="" className="trans_btn_myjo mr_btn mt-2">
               Browse Project Catalog
             </Button> */}
-            <Link to="/gettingstarted">
+            <Link to="/post-your-job">
               <button className="mt-2 border_blue_wwifth">Post A Job</button>
             </Link>
             <Link to="/expandteam">
