@@ -65,7 +65,7 @@ const EditSkillsPopup = ({ Popup, filteredSkills }) => {
                 />
               </div>
             </div>
-            <div className="maxlabel_atcxt mt-3">Maximum 15 skills.</div>
+            <div className="maxlabel_atcxt mt-3">Maximum 10 skills.</div>
             <div className="popup_btns_new flex-wrap cwiewyehkk">
               <Button
                 variant=""

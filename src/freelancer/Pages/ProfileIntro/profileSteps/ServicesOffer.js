@@ -3,7 +3,6 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import Select from "react-select";
 import {
   getCategoryList,
   onAddCategory,
@@ -74,7 +73,7 @@ const ServicesOffer = ({ setCurrentTab, profileList }) => {
                   onChange={(e) => handleOnChange(e)}
                   defaultValue={"DEFAULT"}
                 >
-                  <option hidden value={"DEFAULT"} disabled>
+                  <option value="">
                     Please Select an option
                   </option>
                   {categoryList?.map((item, index) => (

@@ -7072,6 +7072,12 @@ a {
   border-radius: 50%;
 }
 
+.uploadImgEror {
+  color: red;
+  font-size: 12px;
+  text-align: center;
+}
+
 .uploadImageDetails {
   color: #393939;
   padding-left: 32px;

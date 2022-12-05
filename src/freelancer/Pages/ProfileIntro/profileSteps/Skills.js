@@ -158,11 +158,11 @@ const Skills = ({ setCurrentTab, profileList }) => {
                     justifyContent: "end",
                   }}
                 >
-                  Maximum 15 skills.
+                  Maximum 10 skills.
                 </span>
               ) : (
                 <span style={{ display: "flex", justifyContent: "end" }}>
-                  Maximum 15 skills.
+                  Maximum 10 skills.
                 </span>
               )}
             </div>

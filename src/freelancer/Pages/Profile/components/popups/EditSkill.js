@@ -150,7 +150,7 @@ const EditSkill = ({ data, Popup, successPopup, setSuccessPopup }) => {
               ) : selectSkills?.length > 14 && showSkillError ? (
                 <span style={{ color: "red" }}>Maximum 15 skills.</span>
               ) : (
-                <span>Maximum 15 skills.</span>
+                <span>Maximum 10 skills.</span>
               )}
             </div>
             <div className="popup_btns_new flex-wrap cwiewyehkk">

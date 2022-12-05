@@ -7,7 +7,6 @@ import like from "../../../../icons/like.svg";
 import Title from "../../../../components/title";
 import $ from "jquery";
 import "../../../../styles/freelancer.css";
-import Select from "react-select";
 import { useParams, Link } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
@@ -629,14 +628,34 @@ const Project_Search = () => {
                         <div className="suggessted_skills" id="suggest_skills">
                           {getSkillList?.map((item) => (
                             <>
-                              {" "}
                               <span onClick={() => addSkills(item)}>
                                 {item.name}
-                              </span>{" "}
+                              </span>
                             </>
                           ))}
                         </div>
                       ) : null}
+                    </div>
+                  </div>
+                  <div className="s_na_box">
+                    <div className="s_na_h4">
+                      <h4>Project duration</h4>
+                    </div>
+                    <div className="s_na_inpu">
+                      <select
+                        name="cars"
+                        id="cars"
+                        className="font-size-13px projectDurationOption"
+                        placeholder="Select a duration"
+                      >
+                        <option selected disabled>
+                          Select a duration
+                        </option>
+                        <option value="volvo">More then 6 months</option>
+                        <option value="saab">3 to 6 months</option>
+                        <option value="opel">1 to 3 months</option>
+                        <option value="audi">Less then 1 month</option>
+                      </select>
                     </div>
                   </div>
                 </div>

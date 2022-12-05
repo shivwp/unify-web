@@ -26,16 +26,22 @@ const UploadPublishProfilepic = ({
   setIsChange,
 }) => {
   const [showingImage2, setShowingImage2] = useState(null);
+  const [showError, setShowError] = useState();
 
   const onImageChange = (e) => {
     setProfileImage(e.target.files[0]);
     setShowingImage2(URL.createObjectURL(e.target.files[0]));
     setIsChange(true);
+    setShowError("");
   };
 
   const onSave = () => {
-    setShowingImage(showingImage2);
-    Popup();
+    if (!showingImage2) {
+      setShowError("Profile must be an image");
+    } else {
+      setShowingImage(showingImage2);
+      Popup();
+    }
   };
 
   return (
@@ -103,11 +109,14 @@ const UploadPublishProfilepic = ({
                 </label>
               </div>
             </Row>
+            <p className="uploadImgEror"> {showError} </p>
             <Row className="mt-4">
               <h5 className="uploadImgDetailsTitle"> Your Photo Should: </h5>
               <ul className="uploadImageDetails">
                 <li>Make sure it is a clear picture of your face</li>
-                <li>Professional photo's are good, think Linkedin or your CV!</li>
+                <li>
+                  Professional photo's are good, think Linkedin or your CV!
+                </li>
                 <li>No sunglasses (we'll reject these)</li>
                 <li>Clear backgrounds preferred</li>
               </ul>
@@ -117,8 +126,7 @@ const UploadPublishProfilepic = ({
                 Cancel
               </Button>
               <Button variant="" className="btnhovpple" onClick={onSave}>
-                {" "}
-                Save{" "}
+                Save
               </Button>
             </div>
           </div>

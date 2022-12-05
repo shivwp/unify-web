@@ -47,7 +47,6 @@ const PublishProfile = ({ setCurrentTab, profileList }) => {
   const onSave = () => {
     let errorExist = false;
     let errorsObject = {};
-
     if (
       values?.timezone === "" ||
       values?.timezone === null ||
