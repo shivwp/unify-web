@@ -12,12 +12,11 @@ const Exprience = ({ setCurrentTab, profileList }) => {
   const [popup, Setpopup] = useState();
   const [successPopup, setSuccessPopup] = useState(false);
   const [confirmPopup, setConfirmPopup] = useState(false);
-  const [isNothing, setIsNothing] = useState();
+  const [isNothing, setIsNothing] = useState(false);
 
   const deleteExp = (id) => {
     dispatch(onDeleteEmployment({ id }, setConfirmPopup));
   };
-  console.log("first---=-=-=-=", profileList);
   return (
     <>
       <div className="container">
@@ -186,16 +185,20 @@ const Exprience = ({ setCurrentTab, profileList }) => {
                   </div>
                 </div>
               </Col>
-              <div className="s_na_categ mb-0 mt-0">
-                <Form.Check
-                  type="checkbox"
-                  name="isNothing"
-                  onChange={(e) => setIsNothing(e.target.checked)}
-                />
-                <Form.Label>
-                  Nothing to add? Check the box and keep going
-                </Form.Label>
-              </div>
+              {profileList?.length > 0 ? null : (
+                <>
+                  <div className="s_na_categ mb-0 mt-0">
+                    <Form.Check
+                      type="checkbox"
+                      name="isNothing"
+                      onChange={(e) => setIsNothing(e.target.checked)}
+                    />
+                    <Form.Label>
+                      Nothing to add? Check the box and keep going
+                    </Form.Label>
+                  </div>
+                </>
+              )}
             </Row>
             <div className="theme_btns">
               <button
