@@ -218,7 +218,11 @@ export const googleSignInSuccess = (data, navigate) => async (dispatch) => {
           navigate("/freelancer/question1");
         }
       } else if (res.data.data.user.user_type === "client") {
-        navigate("/dashboard");
+        if (res.data.data.user.is_profile_complete === true) {
+          navigate("/dashboard");
+        } else {
+          navigate("/businesssize");
+        }
       }
       window.location.reload();
     }
@@ -268,13 +272,17 @@ export const appleSignInSuccess = (data, navigate) => async (dispatch) => {
       localStorage.setItem("unify_token", res.data.auth_token);
       localStorage.setItem("unify_user", JSON.stringify(res.data.data.user));
       if (res.data.data.user.user_type === "freelancer") {
-        if (!res.data.data.user.is_profile_complete === true) {
+        if (res.data.data.user.is_profile_complete === true) {
           navigate("/freelancer/dashboard");
         } else {
           navigate("/freelancer/question1");
         }
       } else if (res.data.data.user.user_type === "client") {
-        navigate("/dashboard");
+        if (res.data.data.user.is_profile_complete === true) {
+          navigate("/dashboard");
+        } else {
+          navigate("/businesssize");
+        }
       }
       window.location.reload();
     }

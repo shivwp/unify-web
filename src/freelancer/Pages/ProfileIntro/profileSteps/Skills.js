@@ -12,7 +12,7 @@ import { useEffect } from "react";
 const Skills = ({ setCurrentTab, profileList }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [selectSkills, setSelectSkills] = useState(profileList);
+  const [selectSkills, setSelectSkills] = useState();
   const [showSkillList, setShowSkillList] = useState(false);
   const [showSkillError, setShowSkillError] = useState(false);
 
@@ -177,7 +177,12 @@ const Skills = ({ setCurrentTab, profileList }) => {
               >
                 Back
               </button>
-              <button className="second_button" onClick={onSave}>
+
+              <button
+                disabled={selectSkills?.length === 0}
+                className="second_button"
+                onClick={onSave}
+              >
                 Next
               </button>
             </div>
