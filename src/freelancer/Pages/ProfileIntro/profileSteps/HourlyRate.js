@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import { Col, Row, Form } from "react-bootstrap";
 import { useDispatch } from "react-redux";
@@ -9,9 +9,7 @@ import {
 } from "../../../../redux/actions/profileAction";
 
 const HourlyRate = ({ setCurrentTab, profileList }) => {
-  const [values, setValues] = useState(
-    profileList?.amount ? { hours_price: profileList?.amount } : null
-  );
+  const [values, setValues] = useState({});
   const percent = 20;
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -19,6 +17,13 @@ const HourlyRate = ({ setCurrentTab, profileList }) => {
   const [popup, setPopup] = useState();
   const [isChange, setIsChange] = useState(false);
 
+  console.log(values);
+  console.log(profileList);
+  useEffect(() => {
+    if (profileList) {
+      setValues({ hours_price: profileList?.amount });
+    }
+  }, [profileList]);
   const afterSuccess = () => {
     setCurrentTab("publishProfile");
     navigate(`/freelancer/profile-intro/publishProfile`);

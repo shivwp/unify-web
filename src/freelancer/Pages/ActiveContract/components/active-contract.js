@@ -18,58 +18,95 @@ const Screen = () => {
   return (
     <>
       <Container className="mb-5 pb-3">
-        <div className="flex_m_j_t pt-4 flex-wrap">
+        <div className="flex_m_j_t pt-4 flex-wrap ">
           <div className="my_jo_headin freelancer_all_contract text-transform-uppercase">
             MY Proposals
           </div>
         </div>
-        <div className="yourp_box pb-0 pt-0 border-r-7">
-          <div className="my_job_flx">
-            <div style={{ width: "100%" }}>
-              <div className="my_job_a job_na_bol">Offers (0)</div>
-            </div>
-          </div>
-        </div>
-        <div className="yourp_box pb-0 pt-0 border-r-7">
+
+        <div className="yourp_box pb-0 pt-0 border-r-7 all_proposals_list">
           <div className="my_job_flx">
             <div style={{ width: "100%" }}>
               <div className="my_job_a job_na_bol">
-                <Link to="/freelancer/message" style={{ color: "#000" }}>
-                  Invitations to interview (
-                  {getAllProposal?.interviewForInvitation?.length})
-                </Link>
+                Offers ({getAllProposal?.offers?.length})
               </div>
-            </div>
-          </div>
-        </div>
-        <div className="yourp_box pb-0 pt-0 border-r-7">
-          <div className="my_job_flx">
-            <div style={{ width: "100%" }}>
-              <div className="my_job_a job_na_bol">
-                <Link to="/freelancer/message" style={{ color: "#000" }}>
-                  Active Proposals ({getAllProposal?.activeProposal?.length})
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="yourp_box pb-0 pt-0 border-r-7 all_proposals">
-          <div className="my_job_flx">
-            <div style={{ width: "100%" }}>
-              <div className="my_job_a job_na_bol">
-                <Link to="/freelancer/message" style={{ color: "#000" }}>
-                  Submitted Proposals (
-                  {getAllProposal?.submittedProposal?.length})
-                </Link>
-              </div>
-              <div className="proposals_list">
-                <div className="date_time">
-                  <div className="init_date">Initiated Dec 2, 2022</div>
-                  <div className="time">10 min ago</div>
+              {getAllProposal?.offers?.map((item) => (
+                <div className="proposals_list">
+                  <div className="date_time">
+                    <div className="init_date">Initiated {item.date}</div>
+                    <div className="time">{item.time}</div>
+                  </div>
+                  <Link to={""}>
+                    <div className="titls">{item.name}</div>
+                  </Link>
+                  <div className="job_type">{item.budget_type}</div>
                 </div>
-                <div className="titls">Mearn Full stack development</div>
-                <div className="job_type">Fixed</div>
+              ))}
+            </div>
+          </div>
+        </div>
+        <div className="yourp_box pb-0 pt-0 border-r-7 all_proposals_list">
+          <div className="my_job_flx">
+            <div style={{ width: "100%" }}>
+              <div className="my_job_a job_na_bol">
+                Invitations to interview (
+                {getAllProposal?.interviewForInvitation?.length})
               </div>
+              {getAllProposal?.interviewForInvitation?.map((item) => (
+                <div className="proposals_list">
+                  <div className="date_time">
+                    <div className="init_date">Initiated {item.date}</div>
+                    <div className="time">{item.time}</div>
+                  </div>
+                  <Link to={"/freelancer/message"}>
+                    <div className="titls">{item.name}</div>
+                  </Link>
+                  <div className="job_type">{item.budget_type}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+        <div className="yourp_box pb-0 pt-0 border-r-7 all_proposals_list">
+          <div className="my_job_flx">
+            <div style={{ width: "100%" }}>
+              <div className="my_job_a job_na_bol">
+                Active Proposals ({getAllProposal?.activeProposal?.length})
+              </div>
+              {getAllProposal?.activeProposal?.map((item) => (
+                <div className="proposals_list">
+                  <div className="date_time">
+                    <div className="init_date">Initiated {item.date}</div>
+                    <div className="time">{item.time}</div>
+                  </div>
+                  <Link to={"/freelancer/single-active-proposal/1"}>
+                    <div className="titls">{item.name}</div>
+                  </Link>
+                  <div className="job_type">{item.budget_type}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+        <div className="yourp_box pb-0 pt-0 border-r-7 all_proposals_list">
+          <div className="my_job_flx">
+            <div style={{ width: "100%" }}>
+              <div className="my_job_a job_na_bol">
+                Submitted Proposals ({getAllProposal?.submittedProposal?.length}
+                )
+              </div>
+              {getAllProposal?.submittedProposal?.map((item) => (
+                <div className="proposals_list">
+                  <div className="date_time">
+                    <div className="init_date">Initiated {item.date}</div>
+                    <div className="time">{item.time}</div>
+                  </div>
+                  <Link to={"/freelancer/single-submited-proposal/1"}>
+                    <div className="titls">{item.name}</div>
+                  </Link>
+                  <div className="job_type">{item.budget_type}</div>
+                </div>
+              ))}
             </div>
           </div>
         </div>

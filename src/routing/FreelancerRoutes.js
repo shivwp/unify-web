@@ -87,6 +87,12 @@ const ProfileInto = lazy(() => import("../freelancer/Pages/ProfileIntro"));
 const FreelancerSubscription = lazy(() =>
   import("../freelancer/Pages/Subscription")
 );
+const SingleActiveProposal = lazy(() =>
+  import("../freelancer/Pages/SingleActiveProposal")
+);
+const SingleSubmitedProposal = lazy(() =>
+  import("../freelancer/Pages/SingleSubmitedProposal")
+);
 
 const FreelancerRoutes = () => {
   return (
@@ -208,6 +214,14 @@ const FreelancerRoutes = () => {
         <Route
           path="/freelancer/profile-intro/:tabName"
           element={<ProfileInto />}
+        />
+        <Route
+          path="/freelancer/single-active-proposal/:id"
+          element={<SingleActiveProposal />}
+        />
+        <Route
+          path="/freelancer/single-submited-proposal/:id"
+          element={<SingleSubmitedProposal />}
         />
       </Route>
     </Routes>

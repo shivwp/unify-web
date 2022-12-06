@@ -5545,7 +5545,7 @@ a {
 
 .yourp_box {
   border: #d4d4d5 solid 1px;
-  padding: 10px 15px;
+  padding: 10px 20px;
   margin-bottom: 20px;
 }
 
@@ -8820,3 +8820,713 @@ input::-webkit-inner-spin-button {
   font-weight: 600;
 }
 /* Fixed bid end ------------------ */
+
+/* ------------------------ all proposals start --------------------- */
+.all_proposals_list .proposals_list {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  border-bottom: 1px solid #e2e2e2;
+  padding: 10px 0;
+  align-items: center;
+}
+.all_proposals_list .proposals_list .date_time .init_date,
+.all_proposals_list .proposals_list .titls {
+  font-weight: 600;
+  font-size: 15px;
+}
+.all_proposals_list .proposals_list .titls {
+  color: #6610f2;
+}
+.all_proposals_list .proposals_list .titls:hover {
+  color: #467af3;
+  text-decoration: underline;
+}
+.all_proposals_list .proposals_list .date_time .time {
+  color: #324047;
+  font-size: 14px;
+}
+/* ------------------------ all proposals end --------------------- */
+
+/* ------------------------ single submited proposal detail after click on submited proposals start --------------------- */
+.single_submited_proposal {
+  margin: 20px auto;
+}
+.single_submited_proposal > .heading {
+  color: #170048;
+  font-weight: 700;
+  font-size: 25px;
+  margin: 20px 0;
+}
+
+.single_submited_proposal .sep_bdr {
+  border: 1px solid #bfbfbf;
+  margin-bottom: 20px;
+}
+
+.single_submited_proposal .sep_bdr .job_details,
+.single_submited_proposal .sep_bdr .skills {
+  border-bottom: 1px solid #e9e9e9;
+  margin-bottom: 10px;
+  padding: 20px 30px;
+}
+.single_submited_proposal .sep_bdr .job_details .left {
+  border-right: 1px solid #e9e9e9;
+  padding: 0 5px;
+}
+
+.single_submited_proposal .sep_bdr .job_details .left .left_heading {
+  font-weight: 600;
+  font-size: 18px;
+  color: #6d2ef1;
+}
+.single_submited_proposal .sep_bdr .job_details .left .left_title {
+  font-weight: 600;
+  font-size: 20px;
+  color: #170048;
+}
+.single_submited_proposal .sep_bdr .job_details .left .categories {
+  margin: 20px 0;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.single_submited_proposal .sep_bdr .job_details .left .categories span {
+  border: 1px solid #6d2ef1;
+  color: #6d2ef1;
+  padding: 5px 20px;
+  border-radius: 40px;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.single_submited_proposal .sep_bdr .job_details .left .categories .date {
+  font-size: 14px;
+  color: #5d5d5d;
+  font-weight: 600;
+}
+.single_submited_proposal .sep_bdr .job_details .left .description {
+  color: #adadad;
+  font-weight: 400;
+  font-size: 14px;
+  margin: 20px 0;
+}
+.single_submited_proposal .sep_bdr .job_details .left .view_more_posting {
+  color: #000000;
+  font-weight: 700;
+  font-size: 14px;
+  text-decoration: underline;
+  cursor: pointer;
+  margin: 10px 0;
+}
+
+.single_submited_proposal .sep_bdr .job_details .right {
+  padding: 30px 0;
+}
+.single_submited_proposal .sep_bdr .job_details .right svg {
+  width: 20px;
+  height: 20px;
+}
+.single_submited_proposal .sep_bdr .job_details .right svg {
+  width: 20px;
+  height: 20px;
+}
+.single_submited_proposal .sep_bdr .job_details .right .right_item {
+  margin-top: 20px;
+}
+.single_submited_proposal .sep_bdr .job_details .right .right_item .head {
+  display: flex;
+  font-weight: 600;
+  gap: 10px;
+  align-items: center;
+  color: #6d2ef1;
+}
+.single_submited_proposal .sep_bdr .job_details .right .right_item .desc {
+  font-weight: 600;
+  font-size: 15px;
+  color: #462d7a;
+  margin-left: 30px;
+}
+
+.single_submited_proposal .sep_bdr .skills .head {
+  font-size: 16px;
+  font-weight: 700;
+  color: #170048;
+}
+
+.single_submited_proposal .sep_bdr .skills .skill_list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.single_submited_proposal .sep_bdr .skills .skill_list span {
+  border: 1px solid #6d2ef1;
+  color: #6d2ef1;
+  padding: 5px 20px;
+  border-radius: 40px;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.single_submited_proposal .sep_bdr .terms {
+  margin-bottom: 10px;
+  padding: 20px 30px;
+}
+.single_submited_proposal .sep_bdr .terms .head {
+  display: flex;
+  justify-content: space-between;
+}
+.single_submited_proposal .sep_bdr .terms .head .headi {
+  font-size: 16px;
+  font-weight: 700;
+  color: #170048;
+}
+.single_submited_proposal .sep_bdr .terms .head .budget {
+  font-size: 14px;
+  font-weight: 700;
+  color: #170048;
+}
+
+.single_submited_proposal .sep_bdr .terms .how_be_paid,
+.single_submited_proposal .sep_bdr .terms .price_project {
+  margin: 20px 0;
+}
+.single_submited_proposal .sep_bdr .terms .how_be_paid .head {
+  font-size: 15px;
+  font-weight: 700;
+  color: #170048;
+}
+.single_submited_proposal .sep_bdr .terms .how_be_paid .desc {
+  font-size: 14px;
+  color: #a2a2a2;
+  font-weight: 400;
+}
+
+.single_submited_proposal .sep_bdr .terms .price_project .head {
+  font-size: 15px;
+  font-weight: 700;
+  color: #170048;
+}
+.single_submited_proposal .sep_bdr .terms .price_project .desc {
+  font-size: 13px;
+  color: #626262;
+  font-weight: 400;
+}
+.single_submited_proposal .sep_bdr .terms .price_project .amt {
+  font-size: 13px;
+  color: #626262;
+  font-weight: 600;
+  margin-top: 5px;
+}
+.single_submited_proposal .sep_bdr .terms .you_recive .head {
+  font-size: 15px;
+  font-weight: 700;
+  color: #170048;
+}
+.single_submited_proposal .sep_bdr .terms .you_recive .desc {
+  font-size: 13px;
+  color: #626262;
+  font-weight: 400;
+}
+.single_submited_proposal .sep_bdr .terms .you_recive .amt {
+  font-size: 13px;
+  color: #626262;
+  font-weight: 600;
+  margin-top: 5px;
+}
+
+.single_submited_proposal .sep_bdr.cover_letter {
+  margin-bottom: 10px;
+  padding: 20px 30px;
+}
+.single_submited_proposal .cover_letter .heading {
+  color: #170048;
+  font-weight: 700;
+  font-size: 25px;
+  margin: 10px 0;
+}
+.single_submited_proposal .cover_letter .desc {
+  color: #6b6b6b;
+  font-weight: 400;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+.single_submited_proposal .about_client {
+  margin-bottom: 10px;
+  padding: 20px 30px;
+}
+.single_submited_proposal .about_client .heading {
+  color: #170048;
+  font-weight: 700;
+  font-size: 20px;
+  margin: 10px 0;
+}
+.single_submited_proposal .about_client .isvarified {
+  display: flex;
+  gap: 10px;
+  font-size: 14px;
+  color: #5d5d5d;
+}
+.single_submited_proposal .about_client .reviews {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin: 10px 0;
+}
+.single_submited_proposal .about_client .reviews .stars {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+.single_submited_proposal .about_client .stars svg {
+  width: 15px;
+  height: 15px;
+}
+.single_submited_proposal .about_client .reviews .desc {
+  color: #462d7a;
+  font-size: 14px;
+  padding: 0;
+  margin: 0;
+}
+
+.single_submited_proposal .about_client .location {
+  margin-top: 30px;
+}
+
+.single_submited_proposal .about_client .location .headingl {
+  color: #170048;
+  font-weight: 700;
+  font-size: 16px;
+}
+.single_submited_proposal .about_client .location .country {
+  color: #6d2ef1;
+  font-size: 16px;
+  font-weight: 500;
+}
+.single_submited_proposal .about_client .location .timezone {
+  color: #462d7a;
+  font-size: 14px;
+  font-weight: 500;
+}
+.single_submited_proposal .about_client .history .headingh {
+  color: #170048;
+  font-weight: 700;
+  font-size: 16px;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+.single_submited_proposal .about_client .history .desc {
+  color: #462d7a;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 5px 0;
+}
+.single_submited_proposal .about_client .member_since {
+  color: #462d7a;
+  font-size: 13px;
+  font-weight: 500;
+  margin-top: 15px;
+}
+
+/* ------------------------ single submited proposal detail after click on submited proposals end --------------------- */
+
+/* ------------------------ single active proposal detail after click on submited proposals end --------------------- */
+.single_active_proposal {
+  margin: 20px auto;
+}
+.single_active_proposal > .heading {
+  color: #170048;
+  font-weight: 700;
+  font-size: 25px;
+  margin: 20px 0;
+}
+
+.single_active_proposal .sep_bdr {
+  border: 1px solid #bfbfbf;
+  margin-bottom: 20px;
+}
+
+.single_active_proposal .sep_bdr .job_details,
+.single_active_proposal .sep_bdr .skills {
+  border-bottom: 1px solid #e9e9e9;
+  margin-bottom: 10px;
+  padding: 20px 30px;
+}
+.single_active_proposal .sep_bdr .job_details .left {
+  border-right: 1px solid #e9e9e9;
+  padding: 0 5px;
+}
+
+.single_active_proposal .sep_bdr .job_details .left .left_heading {
+  font-weight: 600;
+  font-size: 18px;
+  color: #6d2ef1;
+}
+.single_active_proposal .sep_bdr .job_details .left .left_title {
+  font-weight: 600;
+  font-size: 20px;
+  color: #170048;
+}
+.single_active_proposal .sep_bdr .job_details .left .categories {
+  margin: 20px 0;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.single_active_proposal .sep_bdr .job_details .left .categories span {
+  border: 1px solid #6d2ef1;
+  color: #6d2ef1;
+  padding: 5px 20px;
+  border-radius: 40px;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.single_active_proposal .sep_bdr .job_details .left .categories .date {
+  font-size: 14px;
+  color: #5d5d5d;
+  font-weight: 600;
+}
+.single_active_proposal .sep_bdr .job_details .left .description {
+  color: #adadad;
+  font-weight: 400;
+  font-size: 14px;
+  margin: 20px 0;
+}
+.single_active_proposal .sep_bdr .job_details .left .view_more_posting {
+  color: #000000;
+  font-weight: 700;
+  font-size: 14px;
+  text-decoration: underline;
+  cursor: pointer;
+  margin: 10px 0;
+}
+
+.single_active_proposal .sep_bdr .job_details .right {
+  padding: 30px 0;
+}
+.single_active_proposal .sep_bdr .job_details .right svg {
+  width: 20px;
+  height: 20px;
+}
+.single_active_proposal .sep_bdr .job_details .right svg {
+  width: 20px;
+  height: 20px;
+}
+.single_active_proposal .sep_bdr .job_details .right .right_item {
+  margin-top: 20px;
+}
+.single_active_proposal .sep_bdr .job_details .right .right_item .head {
+  display: flex;
+  font-weight: 600;
+  gap: 10px;
+  align-items: center;
+  color: #6d2ef1;
+}
+.single_active_proposal .sep_bdr .job_details .right .right_item .desc {
+  font-weight: 600;
+  font-size: 15px;
+  color: #462d7a;
+  margin-left: 30px;
+}
+
+.single_active_proposal .sep_bdr .skills .head {
+  font-size: 16px;
+  font-weight: 700;
+  color: #170048;
+}
+
+.single_active_proposal .sep_bdr .skills .skill_list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.single_active_proposal .sep_bdr .skills .skill_list span {
+  border: 1px solid #6d2ef1;
+  color: #6d2ef1;
+  padding: 5px 20px;
+  border-radius: 40px;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.single_active_proposal .sep_bdr .terms {
+  margin-bottom: 10px;
+  padding: 20px 30px;
+}
+.single_active_proposal .sep_bdr .terms .head {
+  display: flex;
+  justify-content: space-between;
+}
+.single_active_proposal .sep_bdr .terms .head .headi {
+  font-size: 16px;
+  font-weight: 700;
+  color: #170048;
+}
+.single_active_proposal .sep_bdr .terms .head .budget {
+  font-size: 14px;
+  font-weight: 700;
+  color: #170048;
+}
+
+.single_active_proposal .sep_bdr .terms .how_be_paid,
+.single_active_proposal .sep_bdr .terms .price_project {
+  margin: 20px 0;
+}
+.single_active_proposal .sep_bdr .terms .how_be_paid .head {
+  font-size: 15px;
+  font-weight: 700;
+  color: #170048;
+}
+.single_active_proposal .sep_bdr .terms .how_be_paid .desc {
+  font-size: 14px;
+  color: #a2a2a2;
+  font-weight: 400;
+}
+
+.single_active_proposal .sep_bdr .terms .price_project .head {
+  font-size: 15px;
+  font-weight: 700;
+  color: #170048;
+}
+.single_active_proposal .sep_bdr .terms .price_project .desc {
+  font-size: 13px;
+  color: #626262;
+  font-weight: 400;
+}
+.single_active_proposal .sep_bdr .terms .price_project .amt {
+  font-size: 13px;
+  color: #626262;
+  font-weight: 600;
+  margin-top: 5px;
+}
+.single_active_proposal .sep_bdr .terms .you_recive .head {
+  font-size: 15px;
+  font-weight: 700;
+  color: #170048;
+}
+.single_active_proposal .sep_bdr .terms .you_recive .desc {
+  font-size: 13px;
+  color: #626262;
+  font-weight: 400;
+}
+.single_active_proposal .sep_bdr .terms .you_recive .amt {
+  font-size: 13px;
+  color: #626262;
+  font-weight: 600;
+  margin-top: 5px;
+}
+
+.single_active_proposal .sep_bdr.cover_letter {
+  margin-bottom: 10px;
+  padding: 20px 30px;
+}
+.single_active_proposal .cover_letter .heading {
+  color: #170048;
+  font-weight: 700;
+  font-size: 25px;
+  margin: 10px 0;
+}
+.single_active_proposal .cover_letter .desc {
+  color: #6b6b6b;
+  font-weight: 400;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+.single_active_proposal .about_client {
+  margin-bottom: 10px;
+  padding: 20px 30px;
+}
+.single_active_proposal .about_client .heading {
+  color: #170048;
+  font-weight: 700;
+  font-size: 20px;
+  margin: 10px 0;
+}
+.single_active_proposal .about_client .isvarified {
+  display: flex;
+  gap: 10px;
+  font-size: 14px;
+  color: #5d5d5d;
+}
+.single_active_proposal .about_client .reviews {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin: 10px 0;
+}
+.single_active_proposal .about_client .reviews .stars {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+.single_active_proposal .about_client .stars svg {
+  width: 15px;
+  height: 15px;
+}
+.single_active_proposal .about_client .reviews .desc {
+  color: #462d7a;
+  font-size: 14px;
+  padding: 0;
+  margin: 0;
+}
+
+.single_active_proposal .about_client .location {
+  margin-top: 30px;
+}
+
+.single_active_proposal .about_client .location .headingl {
+  color: #170048;
+  font-weight: 700;
+  font-size: 16px;
+}
+.single_active_proposal .about_client .location .country {
+  color: #6d2ef1;
+  font-size: 16px;
+  font-weight: 500;
+}
+.single_active_proposal .about_client .location .timezone {
+  color: #462d7a;
+  font-size: 14px;
+  font-weight: 500;
+}
+.single_active_proposal .about_client .history .headingh {
+  color: #170048;
+  font-weight: 700;
+  font-size: 16px;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+.single_active_proposal .about_client .history .desc {
+  color: #462d7a;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 5px 0;
+}
+.single_active_proposal .about_client .member_since {
+  color: #462d7a;
+  font-size: 13px;
+  font-weight: 500;
+  margin-top: 15px;
+}
+
+.single_active_proposal .sep_bdr.original_client_msg {
+  margin-bottom: 10px;
+  padding: 20px 30px;
+}
+
+.single_active_proposal .original_client_msg .heading {
+  color: #170048;
+  font-weight: 700;
+  font-size: 25px;
+  margin: 10px 0;
+}
+.single_active_proposal .original_client_msg .desc {
+  color: #6b6b6b;
+  font-weight: 400;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.single_active_proposal .sep_bdr .messages {
+  margin-bottom: 10px;
+  padding: 20px 30px;
+}
+
+.single_active_proposal .messages .heading {
+  color: #170048;
+  font-weight: 700;
+  font-size: 25px;
+  margin: 10px 0;
+}
+
+.single_active_proposal .messages .project_details {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #d9d9d9;
+  padding-bottom: 10px;
+  margin-top: 20px;
+}
+.single_active_proposal .messages .project_details .left .title {
+  font-weight: 600;
+  color: #170048;
+  display: flex;
+  gap: 10px;
+  font-size: 14px;
+}
+.single_active_proposal .messages .project_details .left .time {
+  color: #929292;
+}
+.single_active_proposal .messages .project_details .left .desc {
+  color: #6d6d6d;
+}
+
+.single_active_proposal .messages .actions {
+  display: flex;
+  border-bottom: 1px solid #d9d9d9;
+  padding-bottom: 10px;
+  margin-top: 20px;
+  gap: 20px;
+}
+.single_active_proposal .messages .actions .btns {
+  color: #6610f2;
+  cursor: pointer;
+}
+.single_active_proposal .messages .message {
+  margin: 10px 0;
+  display: flex;
+  gap: 20px;
+  padding: 20px 0;
+  border-bottom: 1px solid #d9d9d9;
+}
+.single_active_proposal .messages .message .img {
+  width: 60px;
+  height: 60px;
+}
+.single_active_proposal .messages .message .img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.single_active_proposal .messages .message .right {
+  padding: 10px 0;
+}
+.single_active_proposal .messages .message .right .name {
+  font-weight: 600;
+}
+
+.single_active_proposal .messages .message .right .name {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.single_active_proposal .messages .message .right .name span {
+  color: #c1c1c1;
+  font-size: 14px;
+}
+.single_active_proposal .messages .message .right .msg {
+  color: #a6a6a6;
+  font-size: 16px;
+}
+.single_active_proposal .messages .write_msg .msg_inp {
+  width: 100%;
+}
+.single_active_proposal .messages .write_msg .msg_inp input {
+  width: 100%;
+  border: none;
+  outline: none;
+}
+.single_active_proposal .messages .write_msg .icons {
+  display: flex;
+  justify-content: space-between;
+}
+.single_active_proposal .messages .write_msg .icons svg {
+  width: 20px;
+  height: 20px;
+}
+/* ------------------------ single active proposal detail after click on submited proposals end --------------------- */

@@ -247,7 +247,9 @@ const AddEmployment = ({
                     </span>
                   </div>
                 </Col>
-                {values?.currently_working ? (
+                {values?.currently_working ||
+                values?.start_date ==
+                  moment(new Date()).format("YYYY-MM-DD") ? (
                   ""
                 ) : (
                   <Col md={6}>
@@ -287,8 +289,13 @@ const AddEmployment = ({
                         name="currently_working"
                         onChange={(e) => onInputChange(e)}
                         defaultChecked={values?.currently_working || false}
+                        checked={
+                          values?.start_date ==
+                            moment(new Date()).format("YYYY-MM-DD") ||
+                          values?.currently_working
+                        }
                       />{" "}
-                      I currently work here
+                      I currently working here
                     </Form.Label>
                   </div>
                 </Col>
