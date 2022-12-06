@@ -226,7 +226,9 @@ const NavbarHeader = (props) => {
                         )}
                       </div>
                     </div>
-                    <div className="pro_name_drop_u">John Doe</div>
+                    <div className="pro_name_drop_u">
+                      {userDetails?.first_name} {userDetails?.last_name}
+                    </div>
                     <div className="pro_o_nme">Freelancer</div>
                     <div className="drop_p_o_i">
                       <button
@@ -455,8 +457,11 @@ const NavbarHeader = (props) => {
                           )}
                         </div>
                       </div>
-                      <div className="pro_name_drop_u">John Doe</div>
-                      <div className="pro_o_nme">Freelancer</div>
+                      <div className="pro_name_drop_u">
+                        {" "}
+                        {userDetails?.first_name} {userDetails?.last_name}
+                      </div>
+                      <div className="pro_o_nme">{userDetails?.user_type}</div>
                       <div className="drop_p_o_i">
                         <button
                           className={

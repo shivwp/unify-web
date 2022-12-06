@@ -847,9 +847,9 @@ const UnifyFreelancer = () => {
                     "Requested"
                   )}
                 </div>
-                <div className="myskill_hdingn ms_hdsmall font-size-15px">
+                {/* <div className="myskill_hdingn ms_hdsmall font-size-15px">
                   Hannah Finn
-                </div>
+                </div> */}
                 <div className="myskill_hdingn profile_icon_25px profile_heading_mb">
                   Education
                   <div className="d-flex justify-content-start">
@@ -968,7 +968,10 @@ const UnifyFreelancer = () => {
                 </div>
                 <div className="profileDiploma">
                   <div className="mt-2">
-                    <img src="/assets/diplomaAward.png" className="DiplomaImg" />
+                    <img
+                      src="/assets/diplomaAward.png"
+                      className="DiplomaImg"
+                    />
                   </div>
                   <div>
                     <div className="myskill_hdingn ms_hdsmall font-size-15px">

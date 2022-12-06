@@ -159,11 +159,22 @@ export const closeAccountReasonList = () => async (dispatch) => {
   } catch (err) {}
 };
 
-export const onCloseAccount = (data) => async (dispatch) => {
-  try {
-    Axios.post("/close-account", data, config).then((res) => {});
-  } catch (err) {}
-};
+export const onCloseAccount =
+  (data, popup, successPopup, setSuccessPopup, afterSuccess) =>
+  async (dispatch) => {
+    try {
+      Axios.post("/close-account", data, config).then((res) => {
+        popup();
+        setSuccessPopup(
+          <SuccessPopup
+            Popup={() => setSuccessPopup(!successPopup)}
+            message="Account close successfully"
+            afterSuccess={afterSuccess}
+          />
+        );
+      });
+    } catch (err) {}
+  };
 
 export const getFreelancerDegreeList = (data) => async (dispatch) => {
   try {

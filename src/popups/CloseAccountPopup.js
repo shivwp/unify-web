@@ -9,23 +9,69 @@ import {
 } from "../redux/actions/profileAction";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-const CloseAccountPopup = ({ open, onCloseModal }) => {
+import { useNavigate } from "react-router-dom";
+const CloseAccountPopup = ({
+  open,
+  onCloseModal,
+  successPopup,
+  setSuccessPopup,
+}) => {
   const dispatch = useDispatch();
-  const [reasonId, setReasonId] = useState("");
+  const [values, setValues] = useState({});
+  const [errors, setErrors] = useState({});
+  const navigate = useNavigate();
   const closeAccountReasons = useSelector(
     (state) => state.profile.closeAccountReasons
   );
+
+  console.log(values);
 
   useEffect(() => {
     dispatch(closeAccountReasonList());
   }, []);
 
+  const handleOnChange = (e) => {
+    setValues({ ...values, [e.target.name]: e.target.value });
+    setErrors({ ...errors, [e.target.name]: false });
+  };
+
+  const afterSuccess = () => {
+    localStorage.clear();
+    navigate("/signup");
+    window.location.reload();
+  };
+
   const handleCloseAccount = (e) => {
+    let errorExist = false;
+    let errorsObject = {};
+
+    if (
+      values?.reasonId === "" ||
+      values?.reasonId === null ||
+      values?.reasonId === undefined
+    ) {
+      errorsObject.reasonId = true;
+      errorExist = true;
+    }
+
+    if (errorExist) {
+      setErrors(errorsObject);
+      return false;
+    }
+
     const data = {
-      reason_id: reasonId,
+      reason_id: values?.reasonId,
     };
 
-    dispatch(onCloseAccount(data));
+    dispatch(
+      onCloseAccount(
+        data,
+        onCloseModal,
+        successPopup,
+        setSuccessPopup,
+        afterSuccess
+      )
+    );
   };
 
   return (
@@ -54,10 +100,10 @@ const CloseAccountPopup = ({ open, onCloseModal }) => {
                     <Form.Check
                       type="radio"
                       id={data.id}
-                      name="p"
+                      name="reasonId"
                       value={data.id}
-                      onChange={(e) => setReasonId(e.target.value)}
-                    />{" "}
+                      onChange={(e) => handleOnChange(e)}
+                    />
                     <span>{data.title}</span>
                   </Form.Label>
                 </li>
@@ -65,15 +111,23 @@ const CloseAccountPopup = ({ open, onCloseModal }) => {
             </ul>
           </div>
         </div>
-
+        <span className="signup-error">
+          {errors.reasonId && "Please select a reason"}
+        </span>
         <div className="btn_foot_sec no-border flex-wrap d-flex">
           <div className="fo_btn_c next_b_btn_c">
-            <Button variant="" className="remove-posting-btns" onClick={onCloseModal}>
+            <Button
+              variant=""
+              className="remove-posting-btns"
+              onClick={onCloseModal}
+            >
               CANCEL
             </Button>
           </div>
           <div className="fo_btn_c next_b_btn_c" onClick={handleCloseAccount}>
-            <Button variant="" className="active_btn_blue">CLOSE ACCOUNT</Button>
+            <Button variant="" className="active_btn_blue">
+              CLOSE ACCOUNT
+            </Button>
           </div>
         </div>
       </Modal>

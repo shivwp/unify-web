@@ -159,7 +159,7 @@ const Screen = () => {
                         name="first_name"
                         type="text"
                         value={values.first_name}
-                        placeholder="John"
+                        placeholder="First Name"
                         onChange={(e) => onInputChange(e)}
                       />
                     </div>
@@ -179,7 +179,7 @@ const Screen = () => {
                       <Form.Control
                         type="text"
                         onChange={(e) => onInputChange(e)}
-                        placeholder="Doe"
+                        placeholder="Last Name"
                         value={values.last_name}
                         name="last_name"
                       />
@@ -768,6 +768,8 @@ const Screen = () => {
         <CloseAccountPopup
           open={openCloseAcc}
           onCloseModal={() => seOpenCloseAcc(false)}
+          successPopup={successPopup}
+          setSuccessPopup={setSuccessPopup}
         />
       )}
       {successPopup}
