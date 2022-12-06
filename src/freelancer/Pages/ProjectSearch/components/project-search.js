@@ -648,7 +648,7 @@ const Project_Search = () => {
                         className="font-size-13px projectDurationOption"
                         placeholder="Select a duration"
                       >
-                        <option selected disabled>
+                        <option disabled selected hidden>
                           Select a duration
                         </option>
                         <option value="volvo">More then 6 months</option>

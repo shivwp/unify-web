@@ -76,7 +76,10 @@ const Screen = () => {
         values.first_name === null ||
         values.first_name === undefined
       ) {
-        errorsObject.first_name = true;
+        errorsObject.first_name = "Please enter your first name";
+        errorExist = true;
+      } else if (/^[0-9]\d*$/.test(values?.first_name)) {
+        errorsObject.first_name = "please input a valid first name ";
         errorExist = true;
       }
 
@@ -93,7 +96,10 @@ const Screen = () => {
         values.last_name === null ||
         values.last_name === undefined
       ) {
-        errorsObject.last_name = true;
+        errorsObject.last_name = "Please enter your last name";
+        errorExist = true;
+      } else if (/^[0-9]\d*$/.test(values?.last_name)) {
+        errorsObject.last_name = "please input a valid last name ";
         errorExist = true;
       }
 
@@ -164,7 +170,8 @@ const Screen = () => {
                       />
                     </div>
                     <span className="signup-error">
-                      {errors.first_name && "Please enter your first name"}
+                      {/* {errors.first_name && "Please enter your first name"} */}
+                      {errors.first_name && errors.first_name}
                     </span>
                   </div>
                 </div>
@@ -185,7 +192,8 @@ const Screen = () => {
                       />
                     </div>
                     <span className="signup-error">
-                      {errors.last_name && "Please enter your last name"}
+                      {/* {errors.last_name && "Please enter your last name"} */}
+                      {errors.last_name && errors.last_name}
                     </span>
                   </div>
                 </div>

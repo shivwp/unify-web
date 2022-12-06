@@ -38,7 +38,10 @@ const EditTitle = ({ data, Popup, successPopup, setSuccessPopup }) => {
       values?.occuption === null ||
       values?.occuption === undefined
     ) {
-      errorsObject.occuption = true;
+      errorsObject.occuption = "Please enter your title";
+      errorExist = true;
+    } else if (/^[0-9]\d*$/.test(values?.occuption)) {
+      errorsObject.occuption = "please input a valid title ";
       errorExist = true;
     }
 
@@ -47,7 +50,10 @@ const EditTitle = ({ data, Popup, successPopup, setSuccessPopup }) => {
       values?.description === null ||
       values?.description === undefined
     ) {
-      errorsObject.description = true;
+      errorsObject.description = "Please enter your description";
+      errorExist = true;
+    } else if (/^[0-9]\d*$/.test(values?.description)) {
+      errorsObject.description = "please input a valid description ";
       errorExist = true;
     }
 
@@ -93,7 +99,8 @@ const EditTitle = ({ data, Popup, successPopup, setSuccessPopup }) => {
                 placeholder="Senior UI/UX, Website Designer And Graphic Designer"
               />
               <span className="signup-error">
-                {errors.occuption && "Please enter your title"}
+                {/* {errors.occuption && "Please enter your title"} */}
+                {errors.occuption && errors.occuption}
               </span>
             </div>
             <div className="pouphed_skll mt-3">Overview</div>
@@ -117,7 +124,8 @@ const EditTitle = ({ data, Popup, successPopup, setSuccessPopup }) => {
                 placeholder="Description"
               ></Form.Control>
               <span className="signup-error">
-                {errors.description && "Please enter your description"}
+                {/* {errors.description && "Please enter your description"} */}
+                {errors.description && errors.description}
               </span>
             </div>
 

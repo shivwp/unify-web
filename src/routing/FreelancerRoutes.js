@@ -87,6 +87,9 @@ const ProfileInto = lazy(() => import("../freelancer/Pages/ProfileIntro"));
 const FreelancerSubscription = lazy(() =>
   import("../freelancer/Pages/Subscription")
 );
+const SingleOfferDetail = lazy(() =>
+  import("../freelancer/Pages/SingleOfferDetail")
+);
 
 const FreelancerRoutes = () => {
   return (
@@ -203,6 +206,11 @@ const FreelancerRoutes = () => {
           path="/freelancer/message"
           element={<FreelancerMessage />}
         />
+        <Route
+          exact
+          path="/freelancer/single-offer-detail/:id"
+          element={<SingleOfferDetail />}
+        />
         <Route path="/freelancer/see-milestone" element={<SeeMilestone />} />
         <Route path="/freelancer/see-timesheet" element={<SeeTimesheet />} />
         <Route
@@ -210,6 +218,7 @@ const FreelancerRoutes = () => {
           element={<ProfileInto />}
         />
       </Route>
+      
     </Routes>
   );
 };

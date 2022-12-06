@@ -7,6 +7,7 @@ const VerifyForgotOTP = lazy(() => import("../components/VerifyForgotOTP"));
 const ForgotPass = lazy(() => import("../components/ForgotPass"));
 const ResetPass = lazy(() => import("../components/ResetPass"));
 const VerifySignUp = lazy(() => import("../components/VerifySignUp"));
+// const Subscription = lazy(() => import("../client/Pages/Subscription"));
 
 const CommanRoutes = () => {
   return (
@@ -18,6 +19,7 @@ const CommanRoutes = () => {
         <Route path="/forgot-password" element={<ForgotPass />} />
         <Route path="/verify-forgot-otp" element={<VerifyForgotOTP />} />
         <Route path="/reset-password" element={<ResetPass />} />
+        {/* <Route path="/subscription" element={<Subscription />} /> */}
       </Route>
     </Routes>
   );

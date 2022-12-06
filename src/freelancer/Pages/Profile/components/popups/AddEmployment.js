@@ -287,7 +287,7 @@ const AddEmployment = ({
                         name="currently_working"
                         onChange={(e) => onInputChange(e)}
                         defaultChecked={values?.currently_working || false}
-                      />{" "}
+                      />
                       I currently work here
                     </Form.Label>
                   </div>
@@ -305,9 +305,6 @@ const AddEmployment = ({
                       onChange={(e) => onInputChange(e)}
                       placeholder="Enter Here"
                     ></Form.Control>
-                    {/* <span className="signup-error">
-                      {errors.description && "Please enter you description"}
-                    </span> */}
                   </div>
                 </Col>
               </Row>

@@ -778,7 +778,7 @@ body {
   top: 0px;
   width: 75%;
   right: 0px;
-  z-index: -1;
+  z-index: -2;
 }
 @media screen and (max-width: 1024px) {
   .freelance_section .telent_image {
@@ -810,6 +810,16 @@ body {
   font-weight: 700;
   font-family: "Poppins";
   width: 866px;
+}
+
+.free_sec_headFreeLancer::before {
+  position: absolute !important;
+  left: -521px !important;
+  background-color: #ff88fe !important;
+  height: 27% !important;
+  width: 265px !important;
+  z-index: -1 !important;
+  top: -16px !important;
 }
 
 .free_sec_para {
@@ -923,6 +933,7 @@ body {
   padding: 25px 30px;
   text-align: center;
   width: 100%;
+  height: 100%;
 }
 
 @media screen and (max-width: 768px) {
@@ -4705,6 +4716,7 @@ body {
   border-radius: 20px;
   padding: 45px 30px 20px 30px;
   position: relative;
+  width: 347px;
   text-align: left;
   -webkit-border-radius: 20px;
   -moz-border-radius: 20px;
@@ -4760,9 +4772,12 @@ body {
 .sub_list_ul {
   list-style: none;
   padding: 0;
+  min-height: 110px;
   /* padding: 15px 0px; */
 }
-
+.freeSubsBtn {
+  margin-top: 17px;
+}
 .sub_list_ul li {
   font: normal normal normal 13px/22px Poppins;
   letter-spacing: 0px;
@@ -6036,6 +6051,9 @@ a {
     margin-bottom: 40px;
     width: 400px;
     margin-top: 185px;
+  }
+  .f_b_border {
+    border: none;
   }
 }
 

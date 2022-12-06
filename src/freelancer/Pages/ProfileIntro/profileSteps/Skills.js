@@ -40,7 +40,7 @@ const Skills = ({ setCurrentTab, profileList }) => {
   };
 
   const addSkills = (item) => {
-    if (selectSkills?.length <= 14) {
+    if (selectSkills?.length <= 9) {
       if (
         selectSkills?.find((ele) => {
           return ele.skill_id == item.id;
@@ -150,7 +150,7 @@ const Skills = ({ setCurrentTab, profileList }) => {
                 <span style={{ color: "red" }}>
                   At least 1 skill is required.
                 </span>
-              ) : selectSkills?.length > 14 && showSkillError ? (
+              ) : selectSkills?.length > 9 && showSkillError ? (
                 <span
                   style={{
                     color: "red",

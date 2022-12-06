@@ -20,6 +20,7 @@ const PublishProfile = ({ setCurrentTab, profileList }) => {
   const [values, setValues] = useState({});
   const [errors, setErrors] = useState({});
   const [isChange, setIsChange] = useState(false);
+  const [showError, setShowError] = useState();
   const getCountryList = useSelector((state) => state?.auth?.getCountryList);
   const timezoneList = useSelector((state) => state?.profile?.timezoneList);
 
@@ -43,7 +44,7 @@ const PublishProfile = ({ setCurrentTab, profileList }) => {
     setCurrentTab("previewProfile");
     navigate(`/freelancer/profile-intro/previewProfile`);
   };
-
+  console.log("first", values?.zip_code?.length);
   const onSave = () => {
     let errorExist = false;
     let errorsObject = {};
@@ -76,7 +77,10 @@ const PublishProfile = ({ setCurrentTab, profileList }) => {
       values?.city === null ||
       values?.city === undefined
     ) {
-      errorsObject.city = true;
+      errorsObject.city = "Please enter your city";
+      errorExist = true;
+    } else if (/^[0-9]\d*$/.test(values?.city)) {
+      errorsObject.city = "please input a valid city ";
       errorExist = true;
     }
     if (
@@ -84,15 +88,22 @@ const PublishProfile = ({ setCurrentTab, profileList }) => {
       values?.zip_code === null ||
       values?.zip_code === undefined
     ) {
-      errorsObject.zip_code = true;
+      errorsObject.zip_code = "Please enter your zip code";
+      errorExist = true;
+    } else if (values?.zip_code?.length < 6 || values?.zip_code?.length > 6) {
+      errorsObject.zip_code = "please input a valid zip code";
       errorExist = true;
     }
+
     if (
       values?.phone === "" ||
       values?.phone === null ||
       values?.phone === undefined
     ) {
-      errorsObject.phone = true;
+      errorsObject.phone = "Please enter your phone number";
+      errorExist = true;
+    } else if (values?.phone?.length < 10 || values?.phone?.length > 12) {
+      errorsObject.phone = "The phone must be between 10 and 12 digits.";
       errorExist = true;
     }
 
@@ -150,6 +161,8 @@ const PublishProfile = ({ setCurrentTab, profileList }) => {
                 {showingImage ? (
                   <img
                     src={showingImage}
+                    type="file"
+                    onChange={(e) => onInputChange(e)}
                     style={{
                       width: "100%",
                       height: "100%",
@@ -280,7 +293,8 @@ const PublishProfile = ({ setCurrentTab, profileList }) => {
                     onChange={(e) => onInputChange(e)}
                   />
                   <span className="signup-error">
-                    {errors.city && "Please enter your city"}
+                    {/* {errors.city && "Please enter your city"} */}
+                    {errors.city && errors.city}
                   </span>
                 </div>
               </Col>
@@ -298,7 +312,8 @@ const PublishProfile = ({ setCurrentTab, profileList }) => {
                     onChange={(e) => onInputChange(e)}
                   />
                   <span className="signup-error">
-                    {errors.zip_code && "Please enter your zip code"}
+                    {/* {errors.zip_code && "Please enter your zip code" } */}
+                    {errors.zip_code && errors.zip_code}
                   </span>
                 </div>
               </Col>
@@ -318,7 +333,7 @@ const PublishProfile = ({ setCurrentTab, profileList }) => {
                     onWheel={(e) => e.target.blur()}
                   />
                   <span className="signup-error">
-                    {errors.phone && "Please enter your phone number"}
+                    {errors.phone && errors.phone}
                   </span>
                 </div>
               </Col>
@@ -326,7 +341,10 @@ const PublishProfile = ({ setCurrentTab, profileList }) => {
             <div className="theme_btns">
               <button
                 className="first_button"
-                onClick={() => {setCurrentTab("hourlyRate"); navigate(`/freelancer/profile-intro/hourlyRate`);}}
+                onClick={() => {
+                  setCurrentTab("hourlyRate");
+                  navigate(`/freelancer/profile-intro/hourlyRate`);
+                }}
               >
                 Back
               </button>

@@ -58,7 +58,7 @@ const ProfileIntro = () => {
   ]);
 
   return (
-    <div>
+    <div style={{minHeight: 450}}>
       {currentTab === "takeTimeToIntro" && (
         <TakeTimeToIntro setCurrentTab={setCurrentTab} />
       )}

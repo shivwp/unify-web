@@ -12,10 +12,8 @@ const FreelanceWorld = ({ for_client }) => {
         <div className=" sp-right-0 mdp-0">
           <div className="freelance_section">
             <div className="free_sec_head">
-              <h2>
-                {for_client?.client_title}
-
-                <span className="blue_ater_s"> </span>
+              <h2>{for_client?.client_title}
+              <span className="blue_ater_s free_sec_headFreeLancer"></span>
               </h2>
             </div>
             <div className="free_sec_para">
