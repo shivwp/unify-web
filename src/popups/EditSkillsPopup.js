@@ -8,21 +8,12 @@ import { useDispatch, useSelector } from "react-redux";
 import $ from "jquery";
 import { getFreelancerSkills } from "../redux/actions/profileAction";
 
-const EditSkillsPopup = ({
-  open,
-  onCloseModal,
-  values,
-  setValues,
-  setSingleJobLists,
-  singleJobLists,
-}) => {
+const EditSkillsPopup = ({ open, onCloseModal, values, setValues }) => {
   const dispatch = useDispatch();
   const [showSkillList, setShowSkillList] = useState(false);
   const [showSkillError, setShowSkillError] = useState(false);
   const getSkillList = useSelector((state) => state.profile.getSkillList);
-  const [selectSkills, setSelectSkills] = useState(
-    singleJobLists || values?.skills
-  );
+  const [selectSkills, setSelectSkills] = useState(values?.job_skills);
 
   const removeSkills = (index) => {
     let updateSkills = [...selectSkills];
@@ -62,7 +53,7 @@ const EditSkillsPopup = ({
     if (selectSkills.length == 0) {
       setShowSkillError(true);
     } else {
-      setValues({ ...values, skills: selectSkills });
+      setValues({ ...values, job_skills: selectSkills });
       onCloseModal();
     }
     // setSingleJobLists(selectSkills);

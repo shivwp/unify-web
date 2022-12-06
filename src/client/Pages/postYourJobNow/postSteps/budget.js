@@ -18,6 +18,7 @@ const Budget = ({ setCurrentTab, onInputChange, values, reviewJobPost }) => {
                     type="radio"
                     name="budget_type"
                     value="hourly"
+                    checked={values?.budget_type === "hourly" ? true : false}
                     onChange={(e) => onInputChange(e)}
                   />
                 </div>
@@ -46,6 +47,7 @@ const Budget = ({ setCurrentTab, onInputChange, values, reviewJobPost }) => {
                     type="radio"
                     name="budget_type"
                     value="fixed"
+                    checked={values?.budget_type === "fixed" ? true : false}
                     onChange={(e) => onInputChange(e)}
                   />
                 </div>
@@ -155,11 +157,70 @@ const Budget = ({ setCurrentTab, onInputChange, values, reviewJobPost }) => {
                   </button>
                 </div>
               ) : (
-                <div className="fo_btn_c next_b_btn_c">
-                  <button className="active_btn_blue" onClick={reviewJobPost}>
-                    Review Job Post
-                  </button>
-                </div>
+                <>
+                  {!values?.job_type ? (
+                    <div className="fo_btn_c next_b_btn_c">
+                      <button
+                        className="active_btn_blue"
+                        onClick={() => setCurrentTab("getting-started")}
+                      >
+                        Review Job Post
+                      </button>
+                    </div>
+                  ) : !values?.job_title ? (
+                    <div className="fo_btn_c next_b_btn_c">
+                      <button
+                        className="active_btn_blue"
+                        onClick={() => setCurrentTab("title")}
+                      >
+                        Review Job Post
+                      </button>
+                    </div>
+                  ) : !values?.category_id ? (
+                    <div className="fo_btn_c next_b_btn_c">
+                      <button
+                        className="active_btn_blue"
+                        onClick={() => setCurrentTab("job-category")}
+                      >
+                        Review Job Post
+                      </button>
+                    </div>
+                  ) : values?.job_skills?.length === 0 ||
+                    values?.english_level === "" ||
+                    values?.job_skills?.length === 0 ||
+                    values?.english_level === undefined ||
+                    values?.job_skills?.length === 0 ||
+                    values?.english_level === null ? (
+                    <div className="fo_btn_c next_b_btn_c">
+                      <button
+                        className="active_btn_blue"
+                        onClick={() => setCurrentTab("skills")}
+                      >
+                        Review Job Post
+                      </button>
+                    </div>
+                  ) : !values?.scop ||
+                    !values?.project_duration ||
+                    !values?.experience_level ? (
+                    <div className="fo_btn_c next_b_btn_c">
+                      <button
+                        className="active_btn_blue"
+                        onClick={() => setCurrentTab("scope")}
+                      >
+                        Review Job Post
+                      </button>
+                    </div>
+                  ) : (
+                    <div className="fo_btn_c next_b_btn_c">
+                      <button
+                        className="active_btn_blue"
+                        onClick={reviewJobPost}
+                      >
+                        Review Job Post
+                      </button>
+                    </div>
+                  )}
+                </>
               )}
             </>
           ) : values?.budget_type === "hourly" ? (
@@ -171,11 +232,70 @@ const Budget = ({ setCurrentTab, onInputChange, values, reviewJobPost }) => {
                   </button>
                 </div>
               ) : (
-                <div className="fo_btn_c next_b_btn_c">
-                  <button className="active_btn_blue" onClick={reviewJobPost}>
-                    Review Job Post
-                  </button>
-                </div>
+                <>
+                  {!values?.job_type ? (
+                    <div className="fo_btn_c next_b_btn_c">
+                      <button
+                        className="active_btn_blue"
+                        onClick={() => setCurrentTab("getting-started")}
+                      >
+                        Review Job Post
+                      </button>
+                    </div>
+                  ) : !values?.job_title ? (
+                    <div className="fo_btn_c next_b_btn_c">
+                      <button
+                        className="active_btn_blue"
+                        onClick={() => setCurrentTab("title")}
+                      >
+                        Review Job Post
+                      </button>
+                    </div>
+                  ) : !values?.category_id ? (
+                    <div className="fo_btn_c next_b_btn_c">
+                      <button
+                        className="active_btn_blue"
+                        onClick={() => setCurrentTab("job-category")}
+                      >
+                        Review Job Post
+                      </button>
+                    </div>
+                  ) : values?.job_skills?.length === 0 ||
+                    values?.english_level === "" ||
+                    values?.job_skills?.length === 0 ||
+                    values?.english_level === undefined ||
+                    values?.job_skills?.length === 0 ||
+                    values?.english_level === null ? (
+                    <div className="fo_btn_c next_b_btn_c">
+                      <button
+                        className="active_btn_blue"
+                        onClick={() => setCurrentTab("skills")}
+                      >
+                        Review Job Post
+                      </button>
+                    </div>
+                  ) : !values?.scop ||
+                    !values?.project_duration ||
+                    !values?.experience_level ? (
+                    <div className="fo_btn_c next_b_btn_c">
+                      <button
+                        className="active_btn_blue"
+                        onClick={() => setCurrentTab("scope")}
+                      >
+                        Review Job Post
+                      </button>
+                    </div>
+                  ) : (
+                    <div className="fo_btn_c next_b_btn_c">
+                      <button
+                        className="active_btn_blue"
+                        onClick={reviewJobPost}
+                      >
+                        Review Job Post
+                      </button>
+                    </div>
+                  )}
+                </>
               )}
             </>
           ) : null}

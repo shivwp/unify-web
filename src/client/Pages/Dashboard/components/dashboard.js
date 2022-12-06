@@ -24,11 +24,13 @@ const Screen = () => {
     (state) => state?.job?.allClientDraftPosting?.data
   );
   const postYourJob = useSelector((state) => state?.job?.postYourJob);
+  const removeJobPosted = useSelector((state) => state?.job?.removeJobPosted);
+  const updateJobPosted = useSelector((state) => state?.job?.updateJobPosted);
 
   useEffect(() => {
     dispatch(getAllClientPosting());
     dispatch(getAllClientDraftPosting());
-  }, [postYourJob]);
+  }, [postYourJob, removeJobPosted, updateJobPosted]);
 
   Title(" | Dashboard");
   const hanDleSlide = (e) => {
@@ -194,11 +196,13 @@ const Screen = () => {
                 {menuBarDraft === item.id && (
                   <div className="menu_bar" id="menu_bar2">
                     <div className="navabr_t_li">
-                      <Link to="/dashboard/edit-draft">Edit Draft</Link>
+                      <Link to={`/dashboard/edit-draft/${item.id}`}>
+                        Edit Draft
+                      </Link>
                     </div>
                     <div
                       className="navabr_t_li"
-                      onClick={() => setRemoveDraft(true)}
+                      onClick={() => setRemovePosting(true)}
                     >
                       Remove Draft
                     </div>
@@ -316,7 +320,7 @@ const Screen = () => {
         <RemovePostingPopup
           open={removePosting}
           onCloseModal={(e) => setRemovePosting(false)}
-          menuBarPosting={menuBarPosting}
+          menuBarPosting={menuBarPosting || menuBarDraft}
         />
       )}
       {removeDraft && (

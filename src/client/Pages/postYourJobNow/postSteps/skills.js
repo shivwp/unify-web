@@ -13,7 +13,7 @@ const Skill = ({ setCurrentTab, onInputChange, setValues, values }) => {
 
   useEffect(() => {
     if (selectSkills) {
-      setValues({ ...values, skills: selectSkills });
+      setValues({ ...values, job_skills: selectSkills });
     }
   }, [selectSkills]);
 
@@ -165,7 +165,7 @@ const Skill = ({ setCurrentTab, onInputChange, setValues, values }) => {
             <option value="">Select</option>
             <option value="fluent">Fluent</option>
             <option value="conversational">Conversational</option>
-            <option value="naitve">Naitve</option>
+            <option value="native">Native</option>
           </Form.Select>
         </div>
         <div className="see_cat_link">Change your skill category</div>
