@@ -59,21 +59,26 @@ const Signupscreen = () => {
     let errorsObject = {};
 
     if (
-      (values?.first_name && values?.first_name.length < 2) ||
       values?.first_name === "" ||
       values?.first_name === null ||
       values?.first_name === undefined
     ) {
-      errorsObject.first_name = true;
+      errorsObject.first_name = "Please enter your first name";
+      errorExist = true;
+    } else if (values?.first_name && values?.first_name?.length < 2) {
+      errorsObject.first_name = "First name must be at least 2 characters ";
       errorExist = true;
     }
+
     if (
-      (values?.last_name && values?.last_name.length < 2) ||
       values?.last_name === "" ||
       values?.last_name === null ||
       values?.last_name === undefined
     ) {
-      errorsObject.last_name = true;
+      errorsObject.last_name = "Please enter your last name";
+      errorExist = true;
+    } else if (values?.last_name?.length < 2) {
+      errorsObject.last_name = "Last name must be at least 2 characters";
       errorExist = true;
     }
 

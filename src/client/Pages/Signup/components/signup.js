@@ -146,9 +146,7 @@ const Signup = ({
                           placeholder="First Name"
                         />
                         <span className="signInError">
-                          {errors.first_name && (
-                            <>Please enter your First Name</>
-                          )}
+                          {errors.first_name && errors?.first_name}
                         </span>
                       </div>
                     </div>
@@ -199,7 +197,7 @@ const Signup = ({
                           onChange={(e) => onInputChange(e)}
                         />
                         <span className="signInError">
-                          {errors.last_name && <>Please enter your Last Name</>}
+                          {errors.last_name && errors?.last_name}
                         </span>
                       </div>
                     </div>
