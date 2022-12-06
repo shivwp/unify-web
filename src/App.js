@@ -12,6 +12,7 @@ const JobDetails = lazy(() => import("./pages/JobDetails"));
 const SkillsListCatWise = lazy(() => import("./pages/SkillsListCatWise"));
 const DevListCatWise = lazy(() => import("./pages/DevListCatWise"));
 const Testimonial = lazy(() => import("./components/Testimonial"));
+const Subscription = lazy(() => import("./client/Pages/Subscription"));
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         <Route path="/job-details/:id" element={<JobDetails />} />
         <Route path="/pages/:pagename" element={<FooterPages />} />
         <Route path="/submit-testimonial/:id" element={<Testimonial />} />
+        <Route path="/subscription" element={<Subscription />} />
       </Routes>
 
       <ClientRoutes />

@@ -12,6 +12,7 @@ const Education = ({ setCurrentTab, profileList }) => {
   const [popup, Setpopup] = useState();
   const [successPopup, setSuccessPopup] = useState(false);
   const [confirmPopup, setConfirmPopup] = useState(false);
+  const [isNothing, setIsNothing] = useState();
 
   const deleteEdu = (id) => {
     dispatch(onDeleteEducation({ id }, setConfirmPopup));
@@ -182,12 +183,16 @@ const Education = ({ setCurrentTab, profileList }) => {
                   </div>
                 </div>
               </Col>
-              {/* <div className="s_na_categ mb-0 mt-0">
-                <Form.Check type="checkbox" />
+              <div className="s_na_categ mb-0 mt-0">
+                <Form.Check
+                  type="checkbox"
+                  onChange={(e) => setIsNothing(e.target.checked)}
+                  name="isNothing"
+                />
                 <Form.Label>
                   Nothing to add? Check the box and keep going
                 </Form.Label>
-              </div> */}
+              </div>
             </Row>
             <div className="theme_btns mt-0">
               <button
@@ -200,16 +205,28 @@ const Education = ({ setCurrentTab, profileList }) => {
                 Back
               </button>
 
-              <button
-                className="second_button"
-                disabled={profileList?.length === 0 || !profileList}
-                onClick={() => {
-                  setCurrentTab("chooseLangauge");
-                  navigate(`/freelancer/profile-intro/chooseLangauge`);
-                }}
-              >
-                Next
-              </button>
+              {profileList?.length === 0 ? (
+                <button
+                  className="second_button"
+                  disabled={!isNothing}
+                  onClick={() => {
+                    setCurrentTab("chooseLangauge");
+                    navigate(`/freelancer/profile-intro/chooseLangauge`);
+                  }}
+                >
+                  Next
+                </button>
+              ) : (
+                <button
+                  className="second_button"
+                  onClick={() => {
+                    setCurrentTab("chooseLangauge");
+                    navigate(`/freelancer/profile-intro/chooseLangauge`);
+                  }}
+                >
+                  Next
+                </button>
+              )}
             </div>
           </div>
         </div>

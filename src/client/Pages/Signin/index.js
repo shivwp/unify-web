@@ -52,9 +52,6 @@ const Signinscreen = () => {
     ) {
       errorsObject.password = "Please Enter Your Password";
       errorExist = true;
-    } else if (values.password && values.password.length < 8) {
-      errorsObject.password = "Password must be at least 8 digit long";
-      errorExist = true;
     }
 
     if (errorExist) {

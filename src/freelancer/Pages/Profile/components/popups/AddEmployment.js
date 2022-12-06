@@ -312,9 +312,6 @@ const AddEmployment = ({
                       onChange={(e) => onInputChange(e)}
                       placeholder="Enter Here"
                     ></Form.Control>
-                    {/* <span className="signup-error">
-                      {errors.description && "Please enter you description"}
-                    </span> */}
                   </div>
                 </Col>
               </Row>

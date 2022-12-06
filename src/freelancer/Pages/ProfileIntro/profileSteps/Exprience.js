@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Col, Row } from "react-bootstrap";
+import { Col, Row, Form } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { onDeleteEmployment } from "../../../../redux/actions/profileAction";
@@ -12,11 +12,12 @@ const Exprience = ({ setCurrentTab, profileList }) => {
   const [popup, Setpopup] = useState();
   const [successPopup, setSuccessPopup] = useState(false);
   const [confirmPopup, setConfirmPopup] = useState(false);
+  const [isNothing, setIsNothing] = useState();
 
   const deleteExp = (id) => {
     dispatch(onDeleteEmployment({ id }, setConfirmPopup));
   };
-
+  console.log("first---=-=-=-=", profileList);
   return (
     <>
       <div className="container">
@@ -38,12 +39,10 @@ const Exprience = ({ setCurrentTab, profileList }) => {
                       <h5 className="startIntroSkil">{item.subject}</h5>
                       <p className="startIntroCompny">{item.company}</p>
                       <p className="startIntroTwoDate">
-                        {" "}
-                        {item.start_date} - {item.end_date}{" "}
+                        {item.start_date} - {item.end_date}
                       </p>
                       <p className="startIntroTwoDate">
-                        {" "}
-                        {item.city}, {item.country}{" "}
+                        {item.city}, {item.country}
                       </p>
                     </div>
                     <div className="startIntroTwoIcon">
@@ -187,6 +186,16 @@ const Exprience = ({ setCurrentTab, profileList }) => {
                   </div>
                 </div>
               </Col>
+              <div className="s_na_categ mb-0 mt-0">
+                <Form.Check
+                  type="checkbox"
+                  name="isNothing"
+                  onChange={(e) => setIsNothing(e.target.checked)}
+                />
+                <Form.Label>
+                  Nothing to add? Check the box and keep going
+                </Form.Label>
+              </div>
             </Row>
             <div className="theme_btns">
               <button
@@ -199,15 +208,28 @@ const Exprience = ({ setCurrentTab, profileList }) => {
                 Back
               </button>
 
-              <button
-                className="second_button"
-                onClick={() => {
-                  setCurrentTab("education");
-                  navigate(`/freelancer/profile-intro/education`);
-                }}
-              >
-                Next
-              </button>
+              {profileList?.length === 0 ? (
+                <button
+                  disabled={!isNothing}
+                  className="second_button"
+                  onClick={() => {
+                    setCurrentTab("education");
+                    navigate(`/freelancer/profile-intro/education`);
+                  }}
+                >
+                  Next
+                </button>
+              ) : (
+                <button
+                  className="second_button"
+                  onClick={() => {
+                    setCurrentTab("education");
+                    navigate(`/freelancer/profile-intro/education`);
+                  }}
+                >
+                  Next
+                </button>
+              )}
             </div>
           </div>
         </div>
