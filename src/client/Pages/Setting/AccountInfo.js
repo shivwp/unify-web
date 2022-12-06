@@ -1,11 +1,7 @@
 import React from "react";
 import "../../../styles/accountInfo.css";
 import { Row, Col } from "react-bootstrap";
-import CompanyContactInfo from "./CompanyContactInfo";
-import CompnyDetailsInfo from "./CompnyDetailsInfo";
 import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
-import Select from "react-select";
 
 const AccountInfo = ({
   setOpen,
@@ -122,7 +118,7 @@ const AccountInfo = ({
                   value={values?.industry}
                   onChange={(e) => onInputChange(e)}
                 >
-                  <option>Select</option>
+                  <option value="">Select</option>
                   {getIndustries?.map((item, key) => (
                     <option key={key} value={item.title}>
                       {item.title}
@@ -267,7 +263,7 @@ const AccountInfo = ({
                   value={values?.country}
                   onChange={(e) => onInputChange(e)}
                 >
-                  <option>Select</option>
+                  <option value="">Select</option>
                   {getCountryList?.map((item, key) => (
                     <option key={key} value={item.name}>
                       {item.name}
@@ -314,7 +310,7 @@ const AccountInfo = ({
                   value={values?.timezone}
                   onChange={(e) => onInputChange(e)}
                 >
-                  <option>Select</option>
+                  <option value="">Select</option>
                   {timezoneList?.map((item, key) => (
                     <option key={key} value={item.timezone}>
                       {item.timezone}
@@ -357,12 +353,12 @@ const AccountInfo = ({
             This is a <span>Client</span> account
           </div>
           <div className="acc_btn">
-            <Button variant="" className="mrright-gppnew" onClick={setOpen}>
+            <button className="mrright-gppnew" onClick={setOpen}>
               Cancel
-            </Button>
-            <Button variant="" type="submit" className="cls_acc_btn">
+            </button>
+            <button type="submit" className="cls_acc_btn">
               Save
-            </Button>
+            </button>
           </div>
         </div>
       </div>

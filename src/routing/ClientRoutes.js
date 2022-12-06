@@ -80,6 +80,11 @@ const ClientRoutes = () => {
         <Route path="/notification" element={<Notification />} />
         <Route path="/view-job/:jobId" element={<ViewJob />} />
         <Route path="/view-job/private" element={<MakePrivate />} />
+        <Route
+          path="/dashboard/edit-posting/:editId"
+          element={<EditPosting />}
+        />
+        <Route path="/dashboard/edit-draft/:draftId" element={<EditDraft />} />
         <Route path="/hire-freelancer" element={<HireFreelancer />} />
         <Route
           path="/hire-freelancer/addAddress"
@@ -119,11 +124,6 @@ const ClientRoutes = () => {
         <Route path="/management-board" element={<ManagementBoard />} />
         <Route path="/transaction-history" element={<TransactionHistory />} />
 
-        <Route
-          path="/dashboard/edit-posting/:editId"
-          element={<EditPosting />}
-        />
-        <Route path="/dashboard/edit-draft" element={<EditDraft />} />
         <Route path="/post-description" element={<Description />} />
         <Route path="/all-job-list" element={<JobListScreen />} />
         <Route path="/all-draft-job-list" element={<DraftJobListScreen />} />

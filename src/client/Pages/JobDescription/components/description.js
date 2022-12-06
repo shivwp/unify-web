@@ -40,7 +40,7 @@ const Description = () => {
   useEffect(() => {
     if (categoryList) {
       for (let i = 0; i < categoryList.length; i++) {
-        if (categoryList[i].id == parseInt(values?.job_category)) {
+        if (categoryList[i].id == parseInt(values?.category_id)) {
           setCategoryName(categoryList[i]);
         }
       }
@@ -61,12 +61,12 @@ const Description = () => {
 
     formData.append("job_type", values?.job_type);
     formData.append("job_title", values?.job_title);
-    formData.append("job_category", values?.job_category);
+    formData.append("job_category", values?.category_id);
     formData.append(
       "skills",
-      values?.skills?.map((item) => item.id)?.toString()
+      values?.job_skills?.map((item) => item.id)?.toString()
     );
-    formData.append("scop", values?.scope);
+    formData.append("scop", values?.scop);
     formData.append("project_duration", values?.project_duration);
     formData.append("experience_level", values?.experience_level);
     formData.append("budget_type", values?.budget_type);
@@ -91,12 +91,12 @@ const Description = () => {
 
     formData.append("job_type", values?.job_type);
     formData.append("job_title", values?.job_title);
-    formData.append("job_category", values?.job_category);
+    formData.append("job_category", values?.category_id);
     formData.append(
       "skills",
-      values?.skills?.map((item) => item.id)?.toString()
+      values?.job_skills?.map((item) => item.id)?.toString()
     );
-    formData.append("scop", values?.scope);
+    formData.append("scop", values?.scop);
     formData.append("project_duration", values?.project_duration);
     formData.append("experience_level", values?.experience_level);
     formData.append("budget_type", values?.budget_type);
@@ -139,7 +139,9 @@ const Description = () => {
               </div>
             ) : (
               <div className="ts_btn">
-                <button className="font-weight-500">Post Your Job Now</button>
+                <button className="font-weight-500" onClick={postYourJobNow}>
+                  Post Your Job Now
+                </button>
               </div>
             )}
           </div>
@@ -194,7 +196,7 @@ const Description = () => {
                   type="file"
                   onChange={handleImageChange}
                 />
-                <i className="bi bi-paperclip"></i>
+                <i class="fa fa-paperclip" aria-hidden="true"></i>
                 Attach File
               </label>
               <div className="sm_label_inp">Max file size: 100 MB</div>
@@ -218,7 +220,7 @@ const Description = () => {
           <div className="b_bot_inp">
             <div className="input_t_lab">Skills</div>
             <div className="slide_btnss">
-              {values?.skills?.map((item, key) => (
+              {values?.job_skills?.map((item, key) => (
                 <button>{item.name}</button>
               ))}
 
@@ -242,7 +244,7 @@ const Description = () => {
                 <i className="bi bi-pencil-square"></i>
               </button>
             </div>
-            <span>{values?.scope}</span>
+            <span>{values?.scop}</span>
             <div>{values?.experience_level}</div>
           </div>
           <div className="b_bot_inp">

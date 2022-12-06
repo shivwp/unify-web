@@ -46,9 +46,9 @@ const TitleBody = ({ setCurrentTab, onInputChange, values }) => {
                       <Form.Check
                         type="radio"
                         id={key}
-                        name="job_category"
+                        name="category_id"
                         value={item.id}
-                        checked={item.id == values?.job_category ? true : false}
+                        checked={item.id == values?.category_id ? true : false}
                         onChange={(e) => onInputChange(e)}
                       />
                       <p className="litt_sm_para">{item.name}</p>
@@ -74,7 +74,7 @@ const TitleBody = ({ setCurrentTab, onInputChange, values }) => {
             </button>
           </div>
 
-          {!values?.job_category ? (
+          {!values?.category_id ? (
             <div className="fo_btn_c next_b_btn_c">
               <button disabled className="active_btn_blueDiabled">
                 Next

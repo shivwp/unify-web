@@ -17,9 +17,9 @@ const Skill = ({ setCurrentTab, onInputChange, values }) => {
                 <Form.Check
                   type="radio"
                   id="scope-one"
-                  name="scope"
+                  name="scop"
                   value="large"
-                  checked={values?.scope === "large" ? true : false}
+                  checked={values?.scop === "large" ? true : false}
                   onChange={(e) => onInputChange(e)}
                 />
                 <Form.Label htmlFor="scope-one">
@@ -40,9 +40,9 @@ const Skill = ({ setCurrentTab, onInputChange, values }) => {
                 <Form.Check
                   type="radio"
                   id="scope-two"
-                  name="scope"
+                  name="scop"
                   value="medium"
-                  checked={values?.scope === "medium" ? true : false}
+                  checked={values?.scop === "medium" ? true : false}
                   onChange={(e) => onInputChange(e)}
                 />
                 <Form.Label htmlFor="scope-two">
@@ -62,9 +62,9 @@ const Skill = ({ setCurrentTab, onInputChange, values }) => {
                 <Form.Check
                   type="radio"
                   id="scope-three"
-                  name="scope"
+                  name="scop"
                   value="small"
-                  checked={values?.scope === "small" ? true : false}
+                  checked={values?.scop === "small" ? true : false}
                   onChange={(e) => onInputChange(e)}
                 />
                 <Form.Label htmlFor="scope-three">
@@ -226,7 +226,7 @@ const Skill = ({ setCurrentTab, onInputChange, values }) => {
               Back
             </button>
           </div>
-          {!values?.scope ||
+          {!values?.scop ||
           !values?.project_duration ||
           !values?.experience_level ? (
             <div className="fo_btn_c next_b_btn_c">

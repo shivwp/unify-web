@@ -20,7 +20,7 @@ const ScopePopup = ({ open, onCloseModal, values, setValues }) => {
   const onSave = () => {
     setValues({
       ...values,
-      scope: scopeData?.scope,
+      scop: scopeData?.scop,
       project_duration: scopeData?.project_duration,
       experience_level: scopeData?.experience_level,
     });
@@ -47,9 +47,9 @@ const ScopePopup = ({ open, onCloseModal, values, setValues }) => {
                   <Form.Check
                     type="radio"
                     id="scope-one"
-                    name="scope"
+                    name="scop"
                     value="large"
-                    checked={scopeData?.scope === "large" ? true : false}
+                    checked={scopeData?.scop === "large" ? true : false}
                     onChange={(e) => onInputChange(e)}
                   />
                   <Form.Label htmlFor="scope-one">
@@ -70,9 +70,9 @@ const ScopePopup = ({ open, onCloseModal, values, setValues }) => {
                   <Form.Check
                     type="radio"
                     id="scope-two"
-                    name="scope"
+                    name="scop"
                     value="medium"
-                    checked={scopeData?.scope === "medium" ? true : false}
+                    checked={scopeData?.scop === "medium" ? true : false}
                     onChange={(e) => onInputChange(e)}
                   />
                   <Form.Label htmlFor="scope-two">
@@ -92,9 +92,9 @@ const ScopePopup = ({ open, onCloseModal, values, setValues }) => {
                   <Form.Check
                     type="radio"
                     id="scope-three"
-                    name="scope"
+                    name="scop"
                     value="small"
-                    checked={scopeData?.scope === "small" ? true : false}
+                    checked={scopeData?.scop === "small" ? true : false}
                     onChange={(e) => onInputChange(e)}
                   />
                   <Form.Label htmlFor="scope-three">
@@ -264,7 +264,7 @@ const ScopePopup = ({ open, onCloseModal, values, setValues }) => {
             Cancel
           </button>
 
-          {!values?.scope ||
+          {!values?.scop ||
           !values?.project_duration ||
           !values?.experience_level ? (
             <button disabled className="active_btn_blueDiabled">

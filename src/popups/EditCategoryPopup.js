@@ -23,7 +23,7 @@ const EditCategoryPopup = ({
   };
 
   const onSave = () => {
-    setValues({ ...values, job_category: categoryId?.job_category });
+    setValues({ ...values, category_id: categoryId?.category_id });
     onCloseModal();
   };
 
@@ -40,8 +40,8 @@ const EditCategoryPopup = ({
           <div className="pouphed_skll">Category</div>
           <select
             className="category-popup-select"
-            name="job_category"
-            value={categoryId?.job_category}
+            name="category_id"
+            value={categoryId?.category_id}
             onChange={(e) => onInputChange(e)}
           >
             <option value="">Select Category</option>
@@ -57,7 +57,7 @@ const EditCategoryPopup = ({
           <button className="trans_btn" onClick={() => onCloseModal()}>
             Cancel
           </button>
-          {!categoryId?.job_category ? (
+          {!categoryId?.category_id ? (
             <button disabled className="active_btn_blueDiabled">
               Save
             </button>

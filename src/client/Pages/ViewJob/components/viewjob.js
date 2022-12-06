@@ -73,7 +73,7 @@ const ViewScreen = () => {
           </div>
         </div>
         {currentTab === "ViewJob" && (
-          <ViewJob singleJobDetails={singleJobDetails} />
+          <ViewJob singleJobDetails={singleJobDetails} jobId={jobId} />
         )}
         {currentTab === "invite" && <InviteFreelancer jobId={jobId} />}
         {currentTab === "review" && <ReviewProposal />}
