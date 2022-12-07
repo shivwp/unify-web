@@ -168,7 +168,7 @@ const Skill = ({ setCurrentTab, onInputChange, setValues, values }) => {
             <option value="native">Native</option>
           </Form.Select>
         </div>
-        <div className="see_cat_link">Change your skill category</div>
+        {/* <div className="see_cat_link">Change your skill category</div> */}
         <div className="btn_foot_sec flex-wrap">
           <div className="fo_btn_c next_b_btn_c">
             <button

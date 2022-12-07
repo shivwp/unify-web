@@ -4724,6 +4724,19 @@ body {
   -o-border-radius: 20px;
 }
 
+.subscription_box_popup {
+  border: 1px solid #6d2ef1;
+  border-radius: 20px;
+  padding: 45px 30px 20px 30px;
+  position: relative;
+  width: 230px;
+  text-align: left;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+}
+
 .sub_radio {
   position: absolute;
   right: 10px;
@@ -7507,7 +7520,7 @@ a {
     font-size: 38px !important;
   }
 }
-@media screen and (max-width: 425px){
+@media screen and (max-width: 425px) {
   .how_it_works .header_img {
     display: none;
   }
@@ -7535,7 +7548,7 @@ a {
     padding: 20px 30px;
   } */
 }
-@media screen and (max-width: 320px){
+@media screen and (max-width: 320px) {
   .how_it_works .award_winning_platform .heading {
     font-size: 20px !important;
   }

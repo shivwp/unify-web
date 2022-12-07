@@ -3,299 +3,320 @@ import { Col, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import { Link } from "react-router-dom";
-import Button from "react-bootstrap/Button";
+import RemovePostingPopup from "../../popups/RemovePostingPopup";
 
-const JonComponent = ({ singleJobDetails, jobId }) => {
-  const [privateAcc, setPrivateAcc] = useState(false);
+const JonComponent = ({ singleJobDetails, jobId, handleMakePublicPrivate }) => {
   const navigate = useNavigate();
+  const [removePosting, setRemovePosting] = useState(false);
 
   return (
-    <Row>
-      <Col lg={8}>
-        <div className="box_vs_m">
-          <div className="svs_b_bot">
-            <div className="d-flex justify-content-between flex-wrap">
-              <div className="bvs_main_head">
-                {singleJobDetails?.name}{" "}
-                {privateAcc && (
-                  <span
-                    style={{
-                      color: "#535353",
-                      fontSize: "12px",
-                      fontWeight: 500,
-                    }}
-                  >
-                    Invite Only
-                  </span>
-                )}
-              </div>
-              <div className="bvs_m_post_time">
-                Posted {singleJobDetails?.created_at}
-              </div>
-            </div>
-            <div className="world_wide_t">
-              <i className="bi bi-pin-map"></i> Worldwide
-            </div>
-          </div>
-          <div className="svs_b_bot">
-            <div className="svs_para">{singleJobDetails?.description}</div>
-          </div>
-          {singleJobDetails?.budget_type === "fixed" ? (
+    <>
+      <Row>
+        <Col lg={8}>
+          <div className="box_vs_m">
             <div className="svs_b_bot">
-              <Row>
-                <Col md={6} sm={12}>
-                  <div className="d-flex">
-                    <div className="a25_px_oxpm">
-                      <img src="/assets/timer.svg" alt="" />
-                    </div>
-                    <div>
-                      <div className="input_t_lab p-0">
-                        ${parseInt(singleJobDetails?.price).toFixed(2)}
-                      </div>
-                      <div className="svs_para mt-0 pt-0">
-                        {singleJobDetails?.budget_type}
-                      </div>
-                    </div>
-                  </div>
-                </Col>
-                <Col md={6} sm={12}>
-                  <div className="d-flex">
-                    <div className="a25_px_oxpm">
-                      <img src="/assets/idea (1).svg" alt="" />
-                    </div>
-                    <div>
-                      <div className="input_t_lab p-0">
-                        {singleJobDetails?.experience_level}
-                      </div>
-                      <div className="svs_para mt-0 pt-0">
-                        I am looking for freelancers with the lowest rates
-                      </div>
-                    </div>
-                  </div>
-                </Col>
-              </Row>
+              <div className="d-flex justify-content-between flex-wrap">
+                <div className="bvs_main_head">
+                  {singleJobDetails?.name}{" "}
+                  {singleJobDetails?.is_private === true && (
+                    <span
+                      style={{
+                        color: "#535353",
+                        fontSize: "12px",
+                        fontWeight: 500,
+                      }}
+                    >
+                      Invite Only
+                    </span>
+                  )}
+                </div>
+                <div className="bvs_m_post_time">
+                  Posted {singleJobDetails?.created_at}
+                </div>
+              </div>
+              <div className="world_wide_t">
+                <i className="bi bi-pin-map"></i> Worldwide
+              </div>
             </div>
-          ) : singleJobDetails?.budget_type === "hourly" ? (
             <div className="svs_b_bot">
-              <Row>
-                <Col md={6} sm={12}>
-                  <div className="d-flex">
-                    <div className="a25_px_oxpm">
-                      <img src="/assets/time (1).svg" alt="" />
-                    </div>
-                    <div>
-                      <div className="input_t_lab p-0">
-                        Less than 30 hrs/week
-                      </div>
-                      <div className="svs_para mt-0 pt-0">
-                        {singleJobDetails?.budget_type}
-                      </div>
-                    </div>
-                  </div>
-                </Col>
-                <Col md={6} sm={12}>
-                  <div className="d-flex">
-                    <div className="a25_px_oxpm">
-                      <img src="/assets/calendar1.svg" alt="" />
-                    </div>
-                    <div>
-                      <div className="input_t_lab p-0">
-                        {singleJobDetails?.project_duration}
-                      </div>
-                      <div className="svs_para mt-0 pt-0">Project Length</div>
-                    </div>
-                  </div>
-                </Col>
-              </Row>
-              <Row>
-                <Col md={6} sm={12}>
-                  <div className="d-flex">
-                    <div className="a25_px_oxpm">
-                      <img src="/assets/idea (1).svg" alt="" />
-                    </div>
-                    <div>
-                      <div className="input_t_lab p-0">
-                        {singleJobDetails?.experience_level}
-                      </div>
-                      <div className="svs_para mt-0 pt-0">
-                        I am looking for freelancers with the lowest rates
-                      </div>
-                    </div>
-                  </div>
-                </Col>
-                <Col md={6} sm={12}>
-                  <div className="d-flex">
-                    <div className="a25_px_oxpm">
-                      <img src="/assets/timer.svg" alt="" />
-                    </div>
-                    <div>
-                      <div className="input_t_lab p-0">
-                        ${singleJobDetails?.price.toFixed(2)}-$
-                        {singleJobDetails?.min_price.toFixed(2)}
-                      </div>
-                      <div className="svs_para mt-0 pt-0">
-                        {singleJobDetails?.budget_type}
-                      </div>
-                    </div>
-                  </div>
-                </Col>
-              </Row>
+              <div className="svs_para">{singleJobDetails?.description}</div>
             </div>
-          ) : null}
-
-          <div className="svs_b_bot">
-            <div className="input_t_lab p-0">Project Type</div>
             {singleJobDetails?.budget_type === "fixed" ? (
-              <div className="svs_para">Complex project</div>
+              <div className="svs_b_bot">
+                <Row>
+                  <Col md={6} sm={12}>
+                    <div className="d-flex">
+                      <div className="a25_px_oxpm">
+                        <img src="/assets/timer.svg" alt="" />
+                      </div>
+                      <div>
+                        <div className="input_t_lab p-0">
+                          ${parseInt(singleJobDetails?.price).toFixed(2)}
+                        </div>
+                        <div className="svs_para mt-0 pt-0">
+                          {singleJobDetails?.budget_type}
+                        </div>
+                      </div>
+                    </div>
+                  </Col>
+                  <Col md={6} sm={12}>
+                    <div className="d-flex">
+                      <div className="a25_px_oxpm">
+                        <img src="/assets/idea (1).svg" alt="" />
+                      </div>
+                      <div>
+                        <div className="input_t_lab p-0">
+                          {singleJobDetails?.experience_level}
+                        </div>
+                        <div className="svs_para mt-0 pt-0">
+                          I am looking for freelancers with the lowest rates
+                        </div>
+                      </div>
+                    </div>
+                  </Col>
+                </Row>
+              </div>
             ) : singleJobDetails?.budget_type === "hourly" ? (
-              <div className="svs_para">Ongoing project</div>
+              <div className="svs_b_bot">
+                <Row>
+                  <Col md={6} sm={12}>
+                    <div className="d-flex">
+                      <div className="a25_px_oxpm">
+                        <img src="/assets/time (1).svg" alt="" />
+                      </div>
+                      <div>
+                        <div className="input_t_lab p-0">
+                          Less than 30 hrs/week
+                        </div>
+                        <div className="svs_para mt-0 pt-0">
+                          {singleJobDetails?.budget_type}
+                        </div>
+                      </div>
+                    </div>
+                  </Col>
+                  <Col md={6} sm={12}>
+                    <div className="d-flex">
+                      <div className="a25_px_oxpm">
+                        <img src="/assets/calendar1.svg" alt="" />
+                      </div>
+                      <div>
+                        <div className="input_t_lab p-0">
+                          {singleJobDetails?.project_duration}
+                        </div>
+                        <div className="svs_para mt-0 pt-0">Project Length</div>
+                      </div>
+                    </div>
+                  </Col>
+                </Row>
+                <Row>
+                  <Col md={6} sm={12}>
+                    <div className="d-flex">
+                      <div className="a25_px_oxpm">
+                        <img src="/assets/idea (1).svg" alt="" />
+                      </div>
+                      <div>
+                        <div className="input_t_lab p-0">
+                          {singleJobDetails?.experience_level}
+                        </div>
+                        <div className="svs_para mt-0 pt-0">
+                          I am looking for freelancers with the lowest rates
+                        </div>
+                      </div>
+                    </div>
+                  </Col>
+                  <Col md={6} sm={12}>
+                    <div className="d-flex">
+                      <div className="a25_px_oxpm">
+                        <img src="/assets/timer.svg" alt="" />
+                      </div>
+                      <div>
+                        <div className="input_t_lab p-0">
+                          ${singleJobDetails?.price.toFixed(2)}-$
+                          {singleJobDetails?.min_price.toFixed(2)}
+                        </div>
+                        <div className="svs_para mt-0 pt-0">
+                          {singleJobDetails?.budget_type}
+                        </div>
+                      </div>
+                    </div>
+                  </Col>
+                </Row>
+              </div>
             ) : null}
-          </div>
 
-          <div className="b_bot_inp pt-0">
-            <div className="input_t_lab">Skills</div>
-            <div className="slide_btnss">
-              {singleJobDetails?.job_skills?.map((item, key) => (
-                <button key={key}>{item.name}</button>
-              ))}
+            <div className="svs_b_bot">
+              <div className="input_t_lab p-0">Project Type</div>
+              {singleJobDetails?.budget_type === "fixed" ? (
+                <div className="svs_para">Complex project</div>
+              ) : singleJobDetails?.budget_type === "hourly" ? (
+                <div className="svs_para">Ongoing project</div>
+              ) : null}
+            </div>
+
+            <div className="b_bot_inp pt-0">
+              <div className="input_t_lab">Skills</div>
+              <div className="slide_btnss">
+                {singleJobDetails?.job_skills?.map((item, key) => (
+                  <button key={key}>{item.name}</button>
+                ))}
+              </div>
+            </div>
+            <div className="b_bot_inp pt-0">
+              <div className="input_t_lab">Activity on this job</div>
+              <ul className="activite_ul">
+                <li>
+                  <div className="au_name">Proposals</div> :{" "}
+                  <span>Less than 5</span>
+                </li>
+                <li>
+                  <div className="au_name">interviewing</div> : <span>0</span>
+                </li>
+                <li>
+                  <div className="au_name">invites sents</div> : <span>0</span>
+                </li>
+                <li>
+                  <div className="au_name">unanswered invites</div> :{" "}
+                  <span>0</span>
+                </li>
+              </ul>
             </div>
           </div>
-          <div className="b_bot_inp pt-0">
-            <div className="input_t_lab">Activity on this job</div>
-            <ul className="activite_ul">
-              <li>
-                <div className="au_name">Proposals</div> :{" "}
-                <span>Less than 5</span>
-              </li>
-              <li>
-                <div className="au_name">interviewing</div> : <span>0</span>
-              </li>
-              <li>
-                <div className="au_name">invites sents</div> : <span>0</span>
-              </li>
-              <li>
-                <div className="au_name">unanswered invites</div> :{" "}
-                <span>0</span>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </Col>
-      <Col lg={4}>
-        <div className="box_vs_m">
-          <Link to={`/dashboard/edit-posting/${jobId}`}>
+        </Col>
+        <Col lg={4}>
+          <div className="box_vs_m">
+            <Link to={`/dashboard/edit-posting/${jobId}`}>
+              <div className="r_in_tab_h">
+                <button className="round_b_btn">
+                  <i className="bi bi-pencil text-secondary"></i>
+                </button>
+                <h1>Edit Posting</h1>
+              </div>
+            </Link>
+
             <div className="r_in_tab_h">
               <button className="round_b_btn">
-                <i className="bi bi-pencil text-secondary"></i>
+                <i className="bi bi-pin-angle text-secondary"></i>
               </button>
-              <h1>Edit Posting</h1>
+              <h1>Reuse Posting</h1>
             </div>
-          </Link>
+            <div className="r_in_tab_h" onClick={() => setRemovePosting(true)}>
+              <button className="round_b_btn">
+                <i className="bi bi-x text-secondary"></i>
+              </button>
+              <h1>Remove Posting</h1>
+            </div>
 
-          <div className="r_in_tab_h">
-            <button className="round_b_btn">
-              <i className="bi bi-pin-angle text-secondary"></i>
-            </button>
-            <h1>Reuse Posting</h1>
-          </div>
-          <div className="r_in_tab_h">
-            <button className="round_b_btn">
-              <i className="bi bi-x text-secondary"></i>
-            </button>
-            <h1>Remove Posting</h1>
-          </div>
-          <div className="r_in_tab_h">
-            <button
-              className="round_b_btn"
-              onClick={() => {
-                navigate("/view-job/private");
-              }}
-            >
-              <i className="bi bi-shield-lock text-secondary"></i>
-            </button>
-            {privateAcc ? <h1>Make Public</h1> : <h1>Make Private</h1>}
-          </div>
-          <div className="about_client_no">
-            <div className="d-flex justify-content-between">
-              <div>
-                <div className="ab_t_c_h1">
-                  <h1>About the client</h1>
+            {singleJobDetails?.is_private === false ? (
+              <div
+                className="r_in_tab_h"
+                onClick={() => handleMakePublicPrivate("private")}
+              >
+                <button className="round_b_btn">
+                  <i className="bi bi-shield-lock text-secondary"></i>
+                </button>
+                <h1>Make Private</h1>
+              </div>
+            ) : (
+              <div
+                className="r_in_tab_h"
+                onClick={() => handleMakePublicPrivate("public")}
+              >
+                <button className="round_b_btn">
+                  <i class="bi bi-globe text-secondary"></i>
+                </button>
+                <h1>Make Public</h1>
+              </div>
+            )}
+
+            <div className="about_client_no">
+              <div className="d-flex justify-content-between">
+                <div>
+                  <div className="ab_t_c_h1">
+                    <h1>About the client</h1>
+                  </div>
+                  <div className="p_not_verif">
+                    payment method not varified
+                    <span className="no_verify_icon">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        fill="currentColor"
+                        className="bi bi-question-circle-fill"
+                        viewBox="0 0 16 16"
+                      >
+                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.496 6.033h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286a.237.237 0 0 0 .241.247zm2.325 6.443c.61 0 1.029-.394 1.029-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94 0 .533.425.927 1.01.927z" />
+                      </svg>
+                    </span>
+                  </div>
                 </div>
-                <div className="p_not_verif">
-                  payment method not varified
-                  <span className="no_verify_icon">
+                <div>
+                  <button className="round_b_btn">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="16"
                       height="16"
-                      fill="currentColor"
-                      className="bi bi-question-circle-fill"
+                      fill="#D4D4D5"
+                      className="bi bi-pencil-square"
                       viewBox="0 0 16 16"
                     >
-                      <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.496 6.033h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286a.237.237 0 0 0 .241.247zm2.325 6.443c.61 0 1.029-.394 1.029-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94 0 .533.425.927 1.01.927z" />
+                      <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                      <path
+                        fillRule="evenodd"
+                        d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"
+                      />
                     </svg>
-                  </span>
+                  </button>
                 </div>
               </div>
-              <div>
-                <button className="round_b_btn">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    fill="#D4D4D5"
-                    className="bi bi-pencil-square"
-                    viewBox="0 0 16 16"
-                  >
-                    <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
-                    <path
-                      fillRule="evenodd"
-                      d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"
-                    />
-                  </svg>
-                </button>
+              <div className="cline_sm_area_i">
+                <div className="csai_name">
+                  {singleJobDetails?.client_data?.country}
+                </div>
+                <div className="csai_t">
+                  {singleJobDetails?.client_data?.local_time}
+                </div>
               </div>
-            </div>
-            <div className="cline_sm_area_i">
-              <div className="csai_name">
-                {singleJobDetails?.client_data?.country}
-              </div>
-              <div className="csai_t">
-                {singleJobDetails?.client_data?.local_time}
-              </div>
-            </div>
-            <div className="cline_sm_area_i">
-              <div className="csai_name">
-                {singleJobDetails?.client_data?.job_posted} Jobs Posted
-              </div>
-              <div className="csai_t">0% hire rate, 1 open job</div>
+              <div className="cline_sm_area_i">
+                <div className="csai_name">
+                  {singleJobDetails?.client_data?.job_posted} Jobs Posted
+                </div>
+                <div className="csai_t">0% hire rate, 1 open job</div>
 
-              <div className="csai_t">
-                {singleJobDetails?.client_data?.employee_no <= 10
-                  ? " Company size  (1-10 people)"
-                  : singleJobDetails?.client_data?.employee_no <= 100
-                  ? "Company size  (10-100 people)"
-                  : singleJobDetails?.client_data?.employee_no <= 1000
-                  ? " Company size  (100-1000 people)"
-                  : " Company size  1000+ people"}
-              </div>
-              <div className="csai_t">
-                Member since {singleJobDetails?.client_data?.member_since}
+                <div className="csai_t">
+                  {singleJobDetails?.client_data?.employee_no <= 10
+                    ? " Company size  (1-10 people)"
+                    : singleJobDetails?.client_data?.employee_no <= 100
+                    ? "Company size  (10-100 people)"
+                    : singleJobDetails?.client_data?.employee_no <= 1000
+                    ? " Company size  (100-1000 people)"
+                    : " Company size  1000+ people"}
+                </div>
+                <div className="csai_t">
+                  Member since {singleJobDetails?.client_data?.member_since}
+                </div>
               </div>
             </div>
+            <div className="ab_t_c_h1">
+              <h1>Job Link</h1>
+            </div>
+            <div className="ab_inpu_cop">
+              <Form.Control type="text" />
+            </div>
+            <div className="cp_link">
+              <Link to="#0;">copy link</Link>
+            </div>
           </div>
-          <div className="ab_t_c_h1">
-            <h1>Job Link</h1>
-          </div>
-          <div className="ab_inpu_cop">
-            <Form.Control type="text" />
-          </div>
-          <div className="cp_link">
-            <Link to="#0;">copy link</Link>
-          </div>
-        </div>
-      </Col>
-    </Row>
+        </Col>
+      </Row>
+      {removePosting && (
+        <RemovePostingPopup
+          open={removePosting}
+          onCloseModal={(e) => setRemovePosting(false)}
+          menuBarPosting={jobId}
+        />
+      )}
+    </>
   );
 };
 export default JonComponent;

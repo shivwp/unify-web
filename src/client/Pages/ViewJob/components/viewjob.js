@@ -8,19 +8,33 @@ import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { singleJobPostDetails } from "../../../../redux/actions/jobActions";
+import { makePrivatePublicJob } from "../../../../redux/actions/freelancerAction";
 
 const ViewScreen = () => {
   let { jobId } = useParams();
   const dispatch = useDispatch();
   const [currentTab, setCurrentTab] = useState("ViewJob");
   let singleJobDetails = useSelector((state) => state.job.singleJobDetails);
+  const privatePublicJob = useSelector(
+    (state) => state.freelancer.privatePublicJob
+  );
 
   useEffect(() => {
     const data = {
       job_id: jobId,
     };
     dispatch(singleJobPostDetails(data));
-  }, []);
+  }, [privatePublicJob]);
+
+  const [privateAcc, setPrivateAcc] = useState(false);
+
+  const handleMakePublicPrivate = (type) => {
+    const data = {
+      job_id: jobId,
+      type: type,
+    };
+    dispatch(makePrivatePublicJob(data));
+  };
 
   return (
     <Container>
@@ -73,7 +87,11 @@ const ViewScreen = () => {
           </div>
         </div>
         {currentTab === "ViewJob" && (
-          <ViewJob singleJobDetails={singleJobDetails} jobId={jobId} />
+          <ViewJob
+            singleJobDetails={singleJobDetails}
+            jobId={jobId}
+            handleMakePublicPrivate={handleMakePublicPrivate}
+          />
         )}
         {currentTab === "invite" && <InviteFreelancer jobId={jobId} />}
         {currentTab === "review" && <ReviewProposal />}

@@ -78,7 +78,7 @@
 
 .change-password-popup {
   font-family: "Poppins-Bold", "Poppins";
-  min-width: 600px;
+  width: 600px;
 }
 
 .change-password-popup h5 {
