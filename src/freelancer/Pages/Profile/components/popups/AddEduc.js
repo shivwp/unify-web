@@ -32,33 +32,55 @@ const AddEduc = ({ education, Popup, successPopup, setSuccessPopup }) => {
   const getDegreeList = useSelector((state) => state.profile.getDegreeList);
 
   useEffect(() => {
-    startYearList();
-    endYearList();
-  }, []);
-
-  const startYearList = () => {
-    const today = new Date().getFullYear();
-    let arr = [];
-    for (let i = today; i > today - 40; i--) {
-      arr.push({ start_year: i });
-    }
-    setStartYear(arr);
-  };
-
-  const endYearList = () => {
-    const today = new Date().getFullYear();
-    let arr = [];
-    for (let i = today + 3; i > today - 40; i--) {
-      arr.push({ end_year: i });
-    }
-    setEndYear(arr);
-  };
-
-  useEffect(() => {
     dispatch(getFreelancerDegreeList());
   }, []);
 
+  useEffect(() => {
+    const startYears = [];
+    const endYears = [];
+    for (
+      let i = new Date().getFullYear();
+      i > new Date().getFullYear() - 40;
+      i--
+    ) {
+      startYears.push({ start_year: i });
+    }
+
+    for (
+      let i = new Date().getFullYear() + 10;
+      i > new Date().getFullYear() - 40;
+      i--
+    ) {
+      endYears.push({ end_year: i });
+    }
+    setEndYear(endYears);
+    setStartYear(startYears);
+  }, []);
+
   const handleOnChange = (e) => {
+    const years = [];
+    if (e.target.name == "start_year") {
+      for (
+        let i = Number(e.target.value);
+        i < Number(e.target.value) + 20;
+        i++
+      ) {
+        years.push({ end_year: i });
+      }
+      setEndYear(years);
+    }
+
+    if (e.target.name == "end_year") {
+      for (
+        let i = Number(e.target.value);
+        i > Number(e.target.value) - 20;
+        i--
+      ) {
+        years.push({ start_year: i });
+      }
+      setStartYear(years);
+    }
+
     setValues({ ...values, [e.target.name]: e.target.value });
     setErrors({ ...errors, [e.target.name]: false });
   };
@@ -198,7 +220,9 @@ const AddEduc = ({ education, Popup, successPopup, setSuccessPopup }) => {
                 </Col>
                 <Col md={6}>
                   <div className="popup_form_element">
-                    <Form.Label className="text-black font_size_14px font-weight-500">End date/ expected end date</Form.Label>
+                    <Form.Label className="text-black font_size_14px font-weight-500">
+                      End date/ expected end date
+                    </Form.Label>
                     <select
                       name="end_year"
                       value={values?.end_year}
