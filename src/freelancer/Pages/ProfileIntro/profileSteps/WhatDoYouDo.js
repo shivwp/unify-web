@@ -62,10 +62,12 @@ const WhatDoYouDo = ({ setCurrentTab, profileList }) => {
     } else if (values?.description?.length < 100) {
       errorsObject.description = "Description minimum length is 100 characters";
       errorExist = true;
-    } else if (/\s/g.test(values?.description)) {
-      errorsObject.description = "Field is required";
-      errorExist = true;
-    }else if (/^[0-9]\d*$/.test(values?.description)) {
+    } 
+    // else if (/\s/g.test(values?.description)) {
+    //   errorsObject.description = "Field is required";
+    //   errorExist = true;
+    // } 
+    else if (/^[0-9]\d*$/.test(values?.description)) {
       errorsObject.description = "please input a valid description ";
       errorExist = true;
     } 
