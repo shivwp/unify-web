@@ -478,7 +478,6 @@ const Screen = () => {
         </div>
         <div className="mt-4 mb-4">
           <button
-            variant=""
             className="send_pros_btn"
             disabled={singleJobDetails?.is_proposal_send}
             onClick={onSendProposal}

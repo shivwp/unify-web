@@ -87,6 +87,7 @@ const HourlyRate = ({ setCurrentTab, profileList }) => {
                             setValues({ [e.target.name]: e.target.value });
                             setIsChange(true);
                           }}
+                          onWheel={(e) => e.target.blur()}
                           value={values?.hours_price || null}
                         />
                       </div>

@@ -65,6 +65,7 @@ const HourlyRatePopup = ({ Popup, data, setSuccessPopup, successPopup }) => {
                           onChange={(e) =>
                             setValues({ [e.target.name]: e.target.value })
                           }
+                          onWheel={(e) => e.target.blur()}
                           value={values?.hours_price || null}
                         />
                       </div>
