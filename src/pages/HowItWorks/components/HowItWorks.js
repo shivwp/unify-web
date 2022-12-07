@@ -1,16 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import { Col, Row } from "react-bootstrap";
 import TalentMarketPlace from "./TalentMarketPlace";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/less/autoplay";
+import ProjectCatalog from "./ProjectCatalog";
+import TalentScout from "./TalentScout";
 import { Navigation, Pagination } from "swiper";
 import SwiperCore, { Autoplay } from "swiper";
 import { Link } from "react-router-dom";
 SwiperCore.use([Autoplay]);
 
 const HowItWorks = () => {
+  const [currentTab, setCurrentTab] = useState("ViewJob");
   return (
     <>
       <div className="how_it_works ">
@@ -46,20 +49,50 @@ const HowItWorks = () => {
               <h1>Explore The Different Ways To Earn</h1>
             </div>
             <div className="tabs">
-              <div className="tab active">
-                Talent Marketplace <sup>TM</sup>
+              {/* Talent Marketplace <sup>TM</sup> */}
+              {/* <button >*/}
+              <div
+                className={`tab_btn_vs ${
+                  currentTab === "ViewJob" ? "active_bvs " : ""
+                }`}
+                onClick={() => setCurrentTab("ViewJob")}
+              >
+                Talent Marketplace
+                {/* </button> */}
               </div>
-              <div className="tab">
-                Project Catalog <sup>TM</sup>
+              {/* Project Catalog <sup>TM</sup> */}
+              {/* <button > */}
+              <div
+                className={`tab_btn_vs ${
+                  currentTab === "invite" ? "active_bvs " : ""
+                }`}
+                onClick={() => setCurrentTab("invite")}
+              >
+                Project Catalog
+                {/* </button> */}
               </div>
-              <div className="tab">
-                Talent Scout <sup>TM</sup>
+              {/* Talent Scout <sup>TM</sup> */}
+              {/* <button >*/}
+              {/* // className="tab" */}
+              <div
+                className={`tab_btn_vs ${
+                  currentTab === "hire" ? "active_bvs" : ""
+                }`}
+                onClick={() => setCurrentTab("hire")}
+              >
+                Talent Scout
+                {/* </button> */}
               </div>
             </div>
-            <TalentMarketPlace />
+            {/* <TalentMarketPlace /> */}
+
+            {currentTab === "ViewJob" && <TalentMarketPlace />}
+            {currentTab === "invite" && <ProjectCatalog />}
+            {currentTab === "hire" && <TalentScout />}
           </div>
         </div>
         {/* section 1st end */}
+
         {/* -------------------  section 2nd start  ------------------------------------------------------------------*/}
         <div className="award_winning_platform">
           <div className="container">
@@ -396,6 +429,7 @@ const HowItWorks = () => {
             </Swiper>
           </div>
         </div>
+
         {/* section 3rd end */}
       </div>
     </>

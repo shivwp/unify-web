@@ -58,7 +58,18 @@ const AddEmployment = ({
       values?.company === null ||
       values?.company === undefined
     ) {
-      errorsObject.company = true;
+      errorsObject.company = "Please select your company";
+      errorExist = true;
+    } else if (values?.company?.length < 3) {
+      errorsObject.company = "company length should be minimum 3";
+      errorExist = true;
+    } 
+    // else if (/\s/g.test(values?.company)) {
+    //   errorsObject.company = "Field is required";
+    //   errorExist = true;
+    // } 
+    else if (/^[0-9]\d*$/.test(values?.company)) {
+      errorsObject.company = "please input a valid company name ";
       errorExist = true;
     }
     if (
@@ -66,7 +77,13 @@ const AddEmployment = ({
       values?.city === null ||
       values?.city === undefined
     ) {
-      errorsObject.city = true;
+      errorsObject.city = "Please enter your city";
+      errorExist = true;
+    } else if (/^[0-9]\d*$/.test(values?.city)) {
+      errorsObject.city = "please input a valid location ";
+      errorExist = true;
+    } else if (/\s/g.test(values?.city)) {
+      errorsObject.city = "Field is required";
       errorExist = true;
     }
     if (
@@ -90,7 +107,13 @@ const AddEmployment = ({
       values?.subject === null ||
       values?.subject === undefined
     ) {
-      errorsObject.subject = true;
+      errorsObject.subject = "Please enter your title";
+      errorExist = true;
+    } else if (/^[0-9]\d*$/.test(values?.subject)) {
+      errorsObject.subject = "please input a valid title ";
+      errorExist = true;
+    } else if (/\s/g.test(values?.subject)) {
+      errorsObject.subject = "Field is required";
       errorExist = true;
     }
     if (
@@ -166,7 +189,7 @@ const AddEmployment = ({
                       onChange={(e) => onInputChange(e)}
                     />
                     <span className="signup-error">
-                      {errors.company && "Please enter your company"}
+                      {errors.company && errors.company}
                     </span>
                   </div>
                 </Col>
@@ -184,7 +207,7 @@ const AddEmployment = ({
                       placeholder="City"
                     />
                     <span className="signup-error">
-                      {errors.city && "Please enter your city"}
+                      {errors.city && errors.city}
                     </span>
                   </div>
                 </Col>
@@ -224,7 +247,7 @@ const AddEmployment = ({
                       placeholder="Like: Developer, React"
                     />
                     <span className="signup-error">
-                      {errors.subject && "Please enter your subject"}
+                      {errors.subject && errors.subject}
                     </span>
                   </div>
                 </Col>

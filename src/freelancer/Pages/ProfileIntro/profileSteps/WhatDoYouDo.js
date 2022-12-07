@@ -40,9 +40,17 @@ const WhatDoYouDo = ({ setCurrentTab, profileList }) => {
       values?.occuption === null ||
       values?.occuption === undefined
     ) {
-      errorsObject.occuption = true;
+      errorsObject.occuption = "Please enter your title";
       errorExist = true;
-    }
+    } 
+    // else if (/\s/g.test(values?.occuption)) {
+    //   errorsObject.occuption = "Field is required";
+    //   errorExist = true;
+    // } 
+    else if (/^[0-9]\d*$/.test(values?.occuption)) {
+      errorsObject.occuption = "please input a valid title ";
+      errorExist = true;
+    } 
 
     if (
       values?.description === "" ||
@@ -54,7 +62,13 @@ const WhatDoYouDo = ({ setCurrentTab, profileList }) => {
     } else if (values?.description?.length < 100) {
       errorsObject.description = "Description minimum length is 100 characters";
       errorExist = true;
-    }
+    } else if (/\s/g.test(values?.description)) {
+      errorsObject.description = "Field is required";
+      errorExist = true;
+    }else if (/^[0-9]\d*$/.test(values?.description)) {
+      errorsObject.description = "please input a valid description ";
+      errorExist = true;
+    } 
 
     if (errorExist) {
       setErrors(errorsObject);
@@ -103,7 +117,7 @@ const WhatDoYouDo = ({ setCurrentTab, profileList }) => {
                 placeholder="ex. Full Stack Developer | Web & Mobile"
               />
               <span className="signup-error">
-                {errors.occuption && "Please enter your title"}
+                {errors.occuption && errors.occuption}
               </span>
             </div>
             <div className="popup_form_element mb-0">
