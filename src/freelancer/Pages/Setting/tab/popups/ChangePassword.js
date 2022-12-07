@@ -45,15 +45,16 @@ const ChangePassword = ({ setSuccessPopup, successPopup, Popup }) => {
     ) {
       errorsObject.old_password = "Please enter your old password";
       errorExist = true;
-    } else if (
-      !/^(?=.*\d)(?=.*[a-z])(?=.*[!@#$%^&*()_+])[0-9a-zA-Z!@#$%^&*()_+]{8,}$/.test(
-        values?.old_password
-      )
-    ) {
-      errorsObject.old_password =
-        "Password must be at least 8 characters with 1 Special & 1 Number";
-      errorExist = true;
-    }
+    } 
+    // else if (
+    //   !/^(?=.*\d)(?=.*[a-z])(?=.*[!@#$%^&*()_+])[0-9a-zA-Z!@#$%^&*()_+]{8,}$/.test(
+    //     values?.old_password
+    //   )
+    // ) {
+    //   errorsObject.old_password =
+    //     "Password must be at least 8 characters with 1 Special & 1 Number";
+    //   errorExist = true;
+    // }
 
     if (
       values?.new_password === "" ||
