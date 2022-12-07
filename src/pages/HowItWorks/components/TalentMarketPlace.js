@@ -123,7 +123,7 @@ const TalentMarketPlace = () => {
                       stroke="#fff"
                       stroke-linecap="round"
                       stroke-linejoin="round"
-                      stroke-width="3"
+                      strokeWidth="3"
                     />
                     <path
                       id="Path_4790"
@@ -134,7 +134,7 @@ const TalentMarketPlace = () => {
                       stroke="#fff"
                       stroke-linecap="round"
                       stroke-linejoin="round"
-                      stroke-width="3"
+                      strokeWidth="3"
                     />
                   </g>
                 </g>

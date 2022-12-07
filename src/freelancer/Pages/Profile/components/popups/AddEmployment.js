@@ -31,7 +31,9 @@ const AddEmployment = ({
 }) => {
   const dispatch = useDispatch();
   const getCountryList = useSelector((state) => state.auth.getCountryList);
-  const [values, setValues] = useState(experience || { currently_working: 0 });
+  const [values, setValues] = useState(
+    experience || { currently_working: 0, start_date: null, end_date: null }
+  );
   const [errors, setErrors] = useState({});
 
   console.log(values);
@@ -100,18 +102,17 @@ const AddEmployment = ({
     ) {
       errorsObject.start_date = "Please select your end date";
       errorExist = true;
-    } else if (values?.start_date <= new Date()) {
-      errorsObject.start_date = "Please select adfsadfsadfsdf end date";
-      errorExist = true;
     }
 
-    if (
-      (values?.end_date === "" && !values.currently_working) ||
-      (values?.end_date === null && !values.currently_working) ||
-      (values?.end_date === undefined && !values.currently_working)
-    ) {
-      errorsObject.end_date = true;
-      errorExist = true;
+    if (!values?.currently_working) {
+      if (
+        values?.end_date === "" ||
+        values?.end_date === null ||
+        values?.end_date === undefined
+      ) {
+        errorsObject.end_date = true;
+        errorExist = true;
+      }
     }
 
     if (errorExist) {
@@ -198,7 +199,9 @@ const AddEmployment = ({
                       value={values?.country}
                       onChange={(e) => onInputChange(e)}
                     >
-                      <option value="">Select</option>
+                      <option value="" disabled hidden selected>
+                        Select
+                      </option>
                       {getCountryList?.map((item, key) => (
                         <option key={key} value={item.name}>
                           {item.name}

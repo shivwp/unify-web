@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import Container from "react-bootstrap/Container";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Title from "../../../../components/title";
 import { getAllProposals } from "../../../../redux/actions/jobActions";
 
@@ -9,7 +9,6 @@ const Screen = () => {
   Title(" | Active Contract");
   const dispatch = useDispatch();
   const getAllProposal = useSelector((state) => state?.job?.getAllProposal);
-
   useEffect(() => {
     dispatch(getAllProposals());
   }, []);
@@ -36,7 +35,7 @@ const Screen = () => {
                     <div className="init_date">Initiated {item.date}</div>
                     <div className="time">{item.time}</div>
                   </div>
-                  <Link to={""}>
+                  <Link to={`/freelancer/single-offer-detail/${item.id}`}>
                     <div className="titls">{item.name}</div>
                   </Link>
                   <div className="job_type">{item.budget_type}</div>
@@ -58,7 +57,7 @@ const Screen = () => {
                     <div className="init_date">Initiated {item.date}</div>
                     <div className="time">{item.time}</div>
                   </div>
-                  <Link to={"/freelancer/message"}>
+                  <Link to={`/freelancer/single-invitation/${item.id}`}>
                     <div className="titls">{item.name}</div>
                   </Link>
                   <div className="job_type">{item.budget_type}</div>
@@ -101,7 +100,7 @@ const Screen = () => {
                     <div className="init_date">Initiated {item.date}</div>
                     <div className="time">{item.time}</div>
                   </div>
-                  <Link to={"/freelancer/single-submited-proposal/1"}>
+                  <Link to={`/freelancer/single-submited-proposal/${item.id}`}>
                     <div className="titls">{item.name}</div>
                   </Link>
                   <div className="job_type">{item.budget_type}</div>

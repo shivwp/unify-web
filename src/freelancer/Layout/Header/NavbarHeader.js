@@ -54,7 +54,7 @@ const NavbarHeader = (props) => {
               <Link to="/freelancer/project-search/saved">Saved Jobs</Link>
             </div>
             <div className="navabr_t_li">
-              <Link to="/freelancer/active-contract">Proposals</Link>
+              <Link to="/freelancer/AllProposals">Proposals</Link>
             </div>
             <div className="navabr_t_li">
               <Link to="/freelancer/profile">Profile</Link>
@@ -324,7 +324,7 @@ const NavbarHeader = (props) => {
                       </Link>
                     </div>
                     <div className="navabr_t_li">
-                      <Link to="/freelancer/active-contract">Proposals</Link>
+                      <Link to="/freelancer/AllProposals">Proposals</Link>
                     </div>
                     <div className="navabr_t_li">
                       <Link to="/freelancer/profile">Profile</Link>

@@ -1,10 +1,10 @@
 import Layout from "../../Layout/Layout";
-import FreelancerMessage from "./FreelancerMessage";
+import SingleInvitation from "./components/SingleInvitation";
 
 const Index = () => {
   return (
     <Layout>
-      <FreelancerMessage />
+      <SingleInvitation />
     </Layout>
   );
 };

@@ -14,6 +14,7 @@ import {
   SET_CLOSE_JOB_REASON_LIST,
   SET_POST_YOUR_JOB_NOW,
   SET_REMOVE_JOB_POST,
+  SET_SINGLE_PROPOSAL_DETAILS,
   SET_UPDATE_JOB_POST,
   UNSAVE_JOB_POST,
 } from "../types";
@@ -107,7 +108,11 @@ const jobReducer = (state = initialState, action) => {
         ...state,
         removeJobPosted: action.payload,
       };
-
+    case SET_SINGLE_PROPOSAL_DETAILS:
+      return {
+        ...state,
+        singleProposalDetails: action.payload,
+      };
     default:
       return state;
   }

@@ -120,7 +120,8 @@ const Screen = () => {
         if (
           inputList[inputList.length - 1]?.amount == "" ||
           inputList[inputList.length - 1]?.amount == null ||
-          inputList[inputList.length - 1]?.amount == undefined
+          inputList[inputList.length - 1]?.amount == undefined ||
+          inputList[inputList.length - 1]?.amount <= 0
         ) {
           errorsObject.amount = "Please enter a valid amount";
           errorExist = true;

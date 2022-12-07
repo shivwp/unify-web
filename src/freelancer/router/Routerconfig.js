@@ -78,7 +78,7 @@ const RouterConfig = () => {
         element={<FreelancerMyContract />}
       />
       <Route
-        path="/freelancer/active-contract"
+        path="/freelancer/AllProposals"
         element={<FreelancerActiveContract />}
       />
       <Route path="/freelancer/work-diary" element={<FreelancerWorkDiary />} />

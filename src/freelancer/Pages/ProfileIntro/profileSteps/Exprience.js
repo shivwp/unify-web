@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { onDeleteEmployment } from "../../../../redux/actions/profileAction";
 import ConfirmationPopup from "../../../components/popups/ConfirmationPopup";
 import AddEmployment from "../../Profile/components/popups/AddEmployment";
+import moment from "moment";
 
 const Exprience = ({ setCurrentTab, profileList }) => {
   const dispatch = useDispatch();
@@ -17,6 +18,8 @@ const Exprience = ({ setCurrentTab, profileList }) => {
   const deleteExp = (id) => {
     dispatch(onDeleteEmployment({ id }, setConfirmPopup));
   };
+
+  console.log(profileList);
   return (
     <>
       <div className="container">
@@ -38,7 +41,10 @@ const Exprience = ({ setCurrentTab, profileList }) => {
                       <h5 className="startIntroSkil">{item.subject}</h5>
                       <p className="startIntroCompny">{item.company}</p>
                       <p className="startIntroTwoDate">
-                        {item.start_date} - {item.end_date}
+                        {moment(item.start_date).format("DD MMM YYYY")} -{" "}
+                        {item.currently_working
+                          ? "Currently Working"
+                          : moment(item.end_date).format("DD MMM YYYY")}
                       </p>
                       <p className="startIntroTwoDate">
                         {item.city}, {item.country}
@@ -72,7 +78,7 @@ const Exprience = ({ setCurrentTab, profileList }) => {
                             transform="translate(464 2581)"
                             fill="#fff"
                             stroke="#707070"
-                            stroke-width="1"
+                            strokeWidth="1"
                             opacity="0.43"
                           >
                             <circle cx="20" cy="20" r="20" stroke="none" />
@@ -113,7 +119,7 @@ const Exprience = ({ setCurrentTab, profileList }) => {
                             transform="translate(516 2581)"
                             fill="#fff"
                             stroke="#707070"
-                            stroke-width="1"
+                            strokeWidth="1"
                             opacity="0.43"
                           >
                             <circle cx="20" cy="20" r="20" stroke="none" />
@@ -176,7 +182,7 @@ const Exprience = ({ setCurrentTab, profileList }) => {
                           stroke="#fff"
                           stroke-linecap="round"
                           stroke-linejoin="round"
-                          stroke-width="4"
+                          strokeWidth="4"
                           fill-rule="evenodd"
                         />
                       </g>

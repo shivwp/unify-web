@@ -1,8 +1,21 @@
 import { Col, Row } from "react-bootstrap";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
+import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
+import { useEffect } from "react";
+import { singleProposalDetails } from "../../../../redux/actions/jobActions";
 
-const FreelancerMessage = () => {
+const SingleInvitation = () => {
+  const dispatch = useDispatch();
+  const singleProposal = useSelector(
+    (state) => state?.job?.singleProposalDetails
+  );
+  const { id } = useParams();
+
+  useEffect(() => {
+    dispatch(singleProposalDetails(id, "invite"));
+  }, [id]);
   return (
     <Container>
       <div className="job_haed_m">Job Details</div>
@@ -88,7 +101,7 @@ const FreelancerMessage = () => {
             <div className="csai_t text-center">
               Interested in discussing this job?
             </div>
-            <div className="btn_foot_sec justify-content-center flex-wrap no-border mt-0 mb-2 p-0">
+            <div className="btn_foot_sec justify-content-center flex-wrap no-border mb-2 mt-3 p-0">
               <div className="fo_btn_c next_b_btn_c">
                 <Button
                   variant=""
@@ -105,13 +118,13 @@ const FreelancerMessage = () => {
                 </Button>
               </div>
             </div>
-            <div className="btn_foot_sec justify-content-center flex-wrap no-border mt-0 mb-2 p-0">
+            {/* <div className="btn_foot_sec justify-content-center flex-wrap no-border mt-0 mb-2 p-0">
               <div className="fo_btn_c next_b_btn_c">
                 <Button variant="" className="min-w-2hpx">
                   Refer a Freelancer
                 </Button>
               </div>
-            </div>
+            </div> */}
             <div className="about_client_no mb-2">
               <div className="d-flex justify-content-between">
                 <div>
@@ -187,4 +200,4 @@ const FreelancerMessage = () => {
     </Container>
   );
 };
-export default FreelancerMessage;
+export default SingleInvitation;

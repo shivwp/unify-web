@@ -182,7 +182,7 @@ const ProjectSearch = ({ filters }) => {
                         transform="translate(1380 582)"
                         fill="none"
                         stroke="#dedede"
-                        stroke-width="1"
+                        strokeWidth="1"
                       >
                         <circle cx="26.5" cy="26.5" r="26.5" stroke="none" />
                         <circle cx="26.5" cy="26.5" r="26" fill="none" />
@@ -236,7 +236,7 @@ const ProjectSearch = ({ filters }) => {
                         transform="translate(1466 582)"
                         fill="none"
                         stroke="#dedede"
-                        stroke-width="1"
+                        strokeWidth="1"
                       >
                         <circle cx="26.5" cy="26.5" r="26.5" stroke="none" />
                         <circle cx="26.5" cy="26.5" r="26" fill="none" />
@@ -391,7 +391,7 @@ const ProjectSaved = () => {
                         transform="translate(1466 582)"
                         fill="none"
                         stroke="#dedede"
-                        stroke-width="1"
+                        strokeWidth="1"
                       >
                         <circle cx="26.5" cy="26.5" r="26.5" stroke="none" />
                         <circle cx="26.5" cy="26.5" r="26" fill="none" />

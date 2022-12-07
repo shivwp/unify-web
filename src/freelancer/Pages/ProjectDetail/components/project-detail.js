@@ -127,7 +127,7 @@ const ClientRating = (rating) => {
                 transform="translate(1.023 0.504)"
                 fill="#ff88fe"
                 stroke="#ff88fe"
-                stroke-width="2"
+                strokeWidth="2"
               />
             </svg>
           </span>
@@ -149,7 +149,7 @@ const ClientRating = (rating) => {
                 transform="translate(1.023 0.504)"
                 fill="none"
                 stroke="#ff88fe"
-                stroke-width="2"
+                strokeWidth="2"
               />
             </svg>
           </span>
@@ -218,7 +218,11 @@ const Projectdetail = () => {
                   <Button
                     variant=""
                     className="pd_n_sendp send_proposal_btn_job_detail"
-                    disabled={singleJobDetails?.is_proposal_send }
+                    disabled={
+                      singleJobDetails
+                        ? singleJobDetails?.is_proposal_send
+                        : true
+                    }
                     onClick={() => {
                       navigate(`/freelancer/send-proposal/${id}`);
                     }}
@@ -411,7 +415,7 @@ const Projectdetail = () => {
                 </div>
                 <br />
                 <div className="dlex_sk_block m-0 pd_n_bss flex-wrap">
-                  {singleJobDetails?.skills?.map((skill, index) => (
+                  {singleJobDetails?.job_skills?.map((skill, index) => (
                     <div key={index} className="b_skil">
                       {skill.name}
                     </div>
