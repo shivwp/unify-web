@@ -84,7 +84,7 @@ const ServicesOffer = ({ setCurrentTab, profileList }) => {
                 </select>
               </div>
             </div>
-            <div className="theme_btns mt-0">
+            <div className="theme_btns servicebtn">
               <button
                 className="first_button"
                 onClick={() => {

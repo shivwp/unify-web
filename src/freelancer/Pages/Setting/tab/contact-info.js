@@ -257,51 +257,60 @@ const Screen = () => {
       let errorsObject = {};
 
       if (
-        values.timezone === "" ||
-        values.timezone === null ||
-        values.timezone === undefined
+        values?.timezone === "" ||
+        values?.timezone === null ||
+        values?.timezone === undefined
       ) {
         errorsObject.timezone = true;
         errorExist = true;
       }
       if (
-        values.address === "" ||
-        values.address === null ||
-        values.address === undefined
+        values?.address === "" ||
+        values?.address === null ||
+        values?.address === undefined
       ) {
         errorsObject.address = true;
         errorExist = true;
       }
       if (
-        values.phone === "" ||
-        values.phone === null ||
-        values.phone === undefined
+        values?.phone === "" ||
+        values?.phone === null ||
+        values?.phone === undefined
       ) {
-        errorsObject.phone = true;
+        errorsObject.phone = "Please enter your phone number";
+        errorExist = true;
+      } else if (values?.phone?.length < 10 || values?.phone?.length > 12) {
+        errorsObject.phone = "The phone must be between 10 and 12 digits.";
         errorExist = true;
       }
       if (
-        values.city === "" ||
-        values.city === null ||
-        values.city === undefined
+        values?.city === "" ||
+        values?.city === null ||
+        values?.city === undefined
       ) {
-        errorsObject.city = true;
+        errorsObject.city = "Please enter your city";
+        errorExist = true;
+      } else if (/^[0-9]\d*$/.test(values?.city)) {
+        errorsObject.city = "please input a valid city ";
         errorExist = true;
       }
       if (
-        values.country === "" ||
-        values.country === null ||
-        values.country === undefined
+        values?.country === "" ||
+        values?.country === null ||
+        values?.country === undefined
       ) {
         errorsObject.country = true;
         errorExist = true;
       }
       if (
-        values.zip_code === "" ||
-        values.zip_code === null ||
-        values.zip_code === undefined
+        values?.zip_code === "" ||
+        values?.zip_code === null ||
+        values?.zip_code === undefined
       ) {
-        errorsObject.zip_code = true;
+        errorsObject.zip_code = "Please enter your zip code";
+        errorExist = true;
+      } else if (values?.zip_code?.length < 6 || values?.zip_code?.length > 6) {
+        errorsObject.zip_code = "please input a valid zip code";
         errorExist = true;
       }
 
@@ -397,7 +406,8 @@ const Screen = () => {
                       />
                     </div>
                     <span className="signup-error">
-                      {errors.city && "Please enter city"}
+                      {/* {errors.city && "Please enter city"} */}
+                      {errors.city && errors.city}
                     </span>
                   </div>
                 </div>
@@ -464,7 +474,7 @@ const Screen = () => {
                       />
                     </div>
                     <span className="signup-error">
-                      {errors.phone && "Please enter your phone number"}
+                      {errors.phone && errors.phone}
                     </span>
                   </div>
                 </div>
@@ -485,7 +495,8 @@ const Screen = () => {
                       />
                     </div>
                     <span className="signup-error">
-                      {errors.zip_code && "Please enter your zip code"}
+                      {/* {errors.zip_code && "Please enter your zip code"} */}
+                      {errors.zip_code && errors.zip_code}
                     </span>
                   </div>
                 </div>
