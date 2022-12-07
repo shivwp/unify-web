@@ -206,7 +206,9 @@ const AddEduc = ({ education, Popup, successPopup, setSuccessPopup }) => {
                       onChange={(e) => handleOnChange(e)}
                       className="font-size-11px"
                     >
-                      <option value="">Select</option>
+                      <option value="" disabled hidden selected>
+                        Select
+                      </option>
                       {startYear?.map((item, key) => (
                         <option key={key} value={item.start_year}>
                           {item.start_year}
@@ -229,7 +231,9 @@ const AddEduc = ({ education, Popup, successPopup, setSuccessPopup }) => {
                       onChange={(e) => handleOnChange(e)}
                       className="font-size-11px"
                     >
-                      <option value="">Select</option>
+                      <option value="" disabled hidden selected>
+                        Select
+                      </option>
                       {endYear?.map((item, key) => (
                         <option key={key} value={item.end_year}>
                           {item.end_year}

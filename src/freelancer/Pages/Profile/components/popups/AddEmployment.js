@@ -238,7 +238,7 @@ const AddEmployment = ({
                       className="font-size-13px"
                       placeholder="Start Date"
                       name="start_date"
-                      value={values?.start_date}
+                      value={moment(values?.start_date).format("YYYY-MM-DD")}
                       max={moment(new Date()).format("YYYY-MM-DD")}
                       onChange={(e) => onInputChange(e)}
                     />
@@ -261,7 +261,7 @@ const AddEmployment = ({
                         type="date"
                         name="end_date"
                         className="font-size-13px"
-                        value={values?.end_date}
+                        value={moment(values?.end_date).format("YYYY-MM-DD")}
                         min={moment(values?.start_date).format("YYYY-MM-DD")}
                         max={moment(new Date()).format("YYYY-MM-DD")}
                         placeholder="End Date"

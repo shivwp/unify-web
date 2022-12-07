@@ -46,6 +46,8 @@ const HourlyRate = ({ setCurrentTab, profileList }) => {
     }
   };
 
+  console.log(values?.hours_price);
+
   return (
     <>
       <div className="container">

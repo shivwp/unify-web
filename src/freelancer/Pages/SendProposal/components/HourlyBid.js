@@ -1,9 +1,16 @@
 import React from "react";
 import { Col, Row, Form } from "react-bootstrap";
 
-const HourlyBid = ({ singleJobDetails, values, setValues, errors }) => {
+const HourlyBid = ({
+  singleJobDetails,
+  values,
+  setValues,
+  errors,
+  setErrors,
+}) => {
   const handleOnChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
+    setErrors({ ...errors, [e.target.name]: false });
   };
 
   return (
@@ -41,7 +48,8 @@ const HourlyBid = ({ singleJobDetails, values, setValues, errors }) => {
                   $
                   <Form.Control
                     type="number"
-                    placeholder={`15.00`}
+                    placeholder={`0.00`}
+                    min="1"
                     name="bid_amount"
                     className="project_details_Num_inp send_proposal_num_inp"
                     value={values?.bid_amount}
@@ -77,7 +85,7 @@ const HourlyBid = ({ singleJobDetails, values, setValues, errors }) => {
                       (values?.bid_amount / 100) * singleJobDetails?.service_fee
                     }
                     disabled
-                    placeholder={`03.00`}
+                    placeholder={`0.00`}
                     name="unify_service_fee"
                   />
                 </div>
@@ -100,7 +108,7 @@ const HourlyBid = ({ singleJobDetails, values, setValues, errors }) => {
                   $
                   <Form.Control
                     type="text"
-                    placeholder={`12.00`}
+                    placeholder={`0.00`}
                     disabled
                     value={
                       values?.bid_amount -

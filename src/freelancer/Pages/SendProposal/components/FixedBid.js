@@ -1,8 +1,15 @@
+import moment from "moment";
 import React, { useState } from "react";
 import { useEffect } from "react";
 import { Col, Row } from "react-bootstrap";
 
-const ByMilesstone = ({ inputList, setInputList, singleJobDetails }) => {
+const ByMilesstone = ({
+  inputList,
+  setInputList,
+  singleJobDetails,
+  errors,
+  setErrors,
+}) => {
   const [totalPrice, setTotalPrice] = useState(0.0);
 
   useEffect(() => {
@@ -26,12 +33,26 @@ const ByMilesstone = ({ inputList, setInputList, singleJobDetails }) => {
       list[index][name] = value;
     }
     setInputList(list);
+    if (index == inputList.length - 1) {
+      setErrors({
+        ...errors,
+        [e.target.name]: false,
+      });
+    }
   };
 
   const removeInputFields = (index) => {
     const rows = [...inputList];
     rows.splice(index, 1);
     setInputList(rows);
+    if (index == inputList.length - 1) {
+      setErrors({
+        ...errors,
+        description: false,
+        amount: false,
+        due_date: false,
+      });
+    }
   };
   return (
     <>
@@ -58,22 +79,46 @@ const ByMilesstone = ({ inputList, setInputList, singleJobDetails }) => {
                     placeholder="Description"
                     onChange={(e) => handleInputChange(e, i)}
                   />
+                  {i == inputList.length - 1 ? (
+                    <span className="signup-error">
+                      {errors?.description && errors?.description}
+                    </span>
+                  ) : (
+                    ""
+                  )}
                 </div>
                 <div className="date">
                   <input
                     type="date"
                     name="due_date"
                     placeholder="Date"
+                    min={moment(new Date()).format("YYYY-MM-DD")}
                     onChange={(e) => handleInputChange(e, i)}
                   />
+                  {i == inputList.length - 1 ? (
+                    <span className="signup-error">
+                      {errors?.due_date && errors?.due_date}
+                    </span>
+                  ) : (
+                    ""
+                  )}
                 </div>
                 <div className="amount">
                   <input
                     type="number"
                     name="amount"
+                    min="1"
                     placeholder="0.00"
                     onChange={(e) => handleInputChange(e, i)}
                   />
+                  {i == inputList.length - 1 ? (
+                    <span className="signup-error">
+                      {errors?.amount && errors?.amount}
+                    </span>
+                  ) : (
+                    ""
+                  )}
+
                   <span className="dollar_icon">$</span>
                 </div>
                 {i != 0 ? (
@@ -158,11 +203,20 @@ const ByMilesstone = ({ inputList, setInputList, singleJobDetails }) => {
   );
 };
 
-const ByProject = ({ values, setValues, singleJobDetails }) => {
+const ByProject = ({
+  values,
+  setValues,
+  singleJobDetails,
+  errors,
+  setErrors,
+}) => {
   const handleOnChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
+    setErrors({ ...errors, [e.target.name]: false });
   };
-  console.log(values);
+
+  console.log(values.bid_amount);
+
   return (
     <>
       <div className="full_project_bid">
@@ -189,11 +243,15 @@ const ByProject = ({ values, setValues, singleJobDetails }) => {
                   <input
                     type="number"
                     name="bid_amount"
+                    min="1"
                     onChange={(e) => handleOnChange(e)}
                     placeholder="0.00"
                   />
                   <span className="dollar_icon">$</span>
                 </div>
+                <span className="signup-error">
+                  {errors?.bid_amount && errors?.bid_amount}
+                </span>
               </Col>
             </Row>
             <Row
@@ -209,13 +267,12 @@ const ByProject = ({ values, setValues, singleJobDetails }) => {
               <Col lg={5}>
                 <div style={{ position: "relative" }}>
                   <input
-                    type="number"
+                    type="text"
                     disabled
                     placeholder="0.00"
-                    value={(
-                      (values?.bid / 100) *
-                      singleJobDetails?.service_fee
-                    )?.toFixed(2)}
+                    value={
+                      (values?.bid_amount / 100) * singleJobDetails?.service_fee
+                    }
                   />
                   <span className="dollar_icon">$</span>
                 </div>
@@ -237,13 +294,13 @@ const ByProject = ({ values, setValues, singleJobDetails }) => {
               <Col lg={5}>
                 <div style={{ position: "relative" }}>
                   <input
-                    type="number"
+                    type="text"
                     disabled
                     placeholder="0.00"
-                    value={(
-                      values?.bid -
-                      (values?.bid / 100) * singleJobDetails?.service_fee
-                    )?.toFixed(2)}
+                    value={
+                      values?.bid_amount -
+                      (values?.bid_amount / 100) * singleJobDetails?.service_fee
+                    }
                   />
                   <span className="dollar_icon">$</span>
                 </div>
@@ -278,8 +335,8 @@ const FixedBid = ({
   setInputList,
   handleRadioChange,
   isByMilestone,
+  setErrors,
 }) => {
-  console.log(values);
   return (
     <>
       <div className="fixed_bid">
@@ -344,14 +401,15 @@ const FixedBid = ({
                     <select
                       name="project_duration"
                       id="project_duration"
-                      onChange={(e) =>
+                      onChange={(e) => {
                         setValues({
                           ...values,
                           [e.target.name]: e.target.value,
-                        })
-                      }
+                        });
+                        setErrors({ ...errors, project_duration: false });
+                      }}
                     >
-                      <option disabled selected hidden>
+                      <option disabled selected hidden value={null}>
                         Select a duration
                       </option>
                       <option value="More then 6 months">
@@ -363,6 +421,9 @@ const FixedBid = ({
                         Less then 1 months
                       </option>
                     </select>
+                    <span className="signup-error">
+                      {errors?.project_duration && errors?.project_duration}
+                    </span>
                   </Col>
                 </Row>
               </div>
@@ -373,12 +434,16 @@ const FixedBid = ({
                   values={values}
                   inputList={inputList}
                   setInputList={setInputList}
+                  setErrors={setErrors}
+                  errors={errors}
                 />
               ) : isByMilestone == "by_project" ? (
                 <ByProject
                   setValues={setValues}
+                  errors={errors}
                   values={values}
                   singleJobDetails={singleJobDetails}
+                  setErrors={setErrors}
                 />
               ) : (
                 ""

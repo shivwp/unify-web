@@ -15,6 +15,7 @@ import {
   SET_CLOSE_JOB_REASON_LIST,
   SET_POST_YOUR_JOB_NOW,
   SET_REMOVE_JOB_POST,
+  SET_SINGLE_PROPOSAL_DETAILS,
   SET_UPDATE_JOB_POST,
   UNSAVE_JOB_POST,
 } from "../types";
@@ -70,7 +71,7 @@ export const removeSaveJob = (data) => async (dispatch) => {
 };
 export const singleJobPostDetails = (data) => async (dispatch) => {
   try {
-    Axios.get(`/single-job/${data.job_id}`, data, config).then((res) => {
+    Axios.get(`/single-job/${data.job_id}`, config).then((res) => {
       dispatch({
         type: JOB_POST_DETAILS,
         payload: res.data.data,
@@ -208,6 +209,16 @@ export const onGetAllContracts = () => async (dispatch) => {
     Axios.get("/contracts", config).then((res) => {
       dispatch({
         type: SET_ALL_CONTRACTS,
+        payload: res.data.data,
+      });
+    });
+  } catch (err) {}
+};
+export const singleProposalDetails = (id, type) => async (dispatch) => {
+  try {
+    Axios.get(`/single-proposal-details/${id}/${type}`, config).then((res) => {
+      dispatch({
+        type: SET_SINGLE_PROPOSAL_DETAILS,
         payload: res.data.data,
       });
     });

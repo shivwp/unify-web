@@ -22,14 +22,14 @@ const Screen = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const proposalData = useSelector((state) => state.job.proposalData);
-  const [values, setValues] = useState(proposalData);
+  const [values, setValues] = useState(proposalData || { bid_amount: 0 });
   const singleJobDetails = useSelector((state) => state?.job?.singleJobDetails);
   const [disableSubmitBtn, setDisableSubmitBtn] = useState(true);
-  const [portfolioImage, setPortfolioImage] = useState(null);
+  const [attachment, setAttachment] = useState(null);
   const [showingImage, setShowingImage] = useState();
   const [successPopup, setSuccessPopup] = useState(false);
-  const [errors, setErrors] = useState(false);
   const [isByMilestone, setIsByMilestone] = useState("by_milestone");
+  const [errors, setErrors] = useState({});
 
   const [inputList, setInputList] = useState([
     { description: "", due_date: "", amount: 0 },
@@ -38,38 +38,116 @@ const Screen = () => {
   useEffect(() => {
     dispatch(singleJobPostDetails({ job_id: id }));
   }, [id]);
-  console.log(values);
-  console.log(inputList);
 
   const onImageChange = (e) => {
-    setPortfolioImage(e.target.files[0]);
+    setAttachment(e.target.files[0]);
     setShowingImage(URL.createObjectURL(e.target.files[0]));
+    setErrors({ ...errors, attachment: false });
   };
-
-  console.log([...inputList]);
 
   const onSendProposal = () => {
     const formData = new FormData();
+    let errorExist = false;
+    let errorsObject = {};
+
+    if (
+      values?.cover_letter === "" ||
+      values?.cover_letter === null ||
+      values?.cover_letter === undefined
+    ) {
+      errorsObject.cover_letter = "Cover letter is required";
+      errorExist = true;
+    } else if (values?.cover_letter?.length < 100) {
+      errorsObject.cover_letter =
+        "Cover letter must be atleast 100 characters.";
+      errorExist = true;
+    }
+
+    if (!attachment) {
+      errorsObject.attachment = "Please add a attachment image";
+      errorExist = true;
+    }
+    if (singleJobDetails?.budget_type == "hourly") {
+      if (values?.bid_amount < 0) {
+        errorsObject.bid_amount = "Please enter valid amount";
+        errorExist = true;
+      } else if (
+        values?.bid_amount === "" ||
+        values?.bid_amount === undefined ||
+        values?.bid_amount === null
+      ) {
+        errorsObject.bid_amount = "Please enter valid amount";
+        errorExist = true;
+      }
+    } else if (singleJobDetails?.budget_type == "fixed") {
+      if (
+        values?.project_duration == null ||
+        values?.project_duration == undefined
+      ) {
+        errorsObject.project_duration = "Please select project duration";
+        errorExist = true;
+      }
+      if (isByMilestone == "by_project") {
+        if (values?.bid_amount < 0) {
+          errorsObject.bid_amount = "Please enter valid amount";
+          errorExist = true;
+        } else if (
+          values?.bid_amount === "" ||
+          values?.bid_amount === undefined ||
+          values?.bid_amount === null
+        ) {
+          errorsObject.bid_amount = "Please enter valid amount";
+          errorExist = true;
+        }
+      }
+      if (isByMilestone == "by_milestone") {
+        if (
+          inputList[inputList.length - 1]?.description == "" ||
+          inputList[inputList.length - 1]?.description == null ||
+          inputList[inputList.length - 1]?.description == undefined
+        ) {
+          errorsObject.description = "Description can't be empty";
+          errorExist = true;
+        }
+        if (
+          inputList[inputList.length - 1]?.due_date == "" ||
+          inputList[inputList.length - 1]?.due_date == null ||
+          inputList[inputList.length - 1]?.due_date == undefined
+        ) {
+          errorsObject.due_date = "Please enter a valid date";
+          errorExist = true;
+        }
+        if (
+          inputList[inputList.length - 1]?.amount == "" ||
+          inputList[inputList.length - 1]?.amount == null ||
+          inputList[inputList.length - 1]?.amount == undefined
+        ) {
+          errorsObject.amount = "Please enter a valid amount";
+          errorExist = true;
+        }
+      }
+    }
+
+    if (errorExist) {
+      setErrors(errorsObject);
+      return false;
+    }
 
     formData.append("job_id", id);
+    formData.append("cover_letter", values?.cover_letter);
+    formData.append("image", attachment);
     if (singleJobDetails?.budget_type == "hourly") {
       formData.append("bid_amount", values?.bid_amount);
-      formData.append("cover_letter", values?.cover_letter);
-      formData.append("image", portfolioImage);
     } else if (singleJobDetails?.budget_type == "fixed") {
       if (isByMilestone == "by_project") {
         formData.append("milestone_type", "single");
         formData.append("project_duration", values?.project_duration);
         formData.append("bid_amount", values?.bid_amount);
-        formData.append("cover_letter", values?.cover_letter);
-        formData.append("image", portfolioImage);
       }
       if (isByMilestone == "by_milestone") {
         formData.append("milestone_type", "multiple");
         formData.append("project_duration", values?.project_duration);
         formData.append("milestone_data", JSON.stringify(inputList));
-        formData.append("cover_letter", values?.cover_letter);
-        formData.append("image", portfolioImage);
       }
     }
     dispatch(onSendJobProposal(formData, successPopup, setSuccessPopup));
@@ -348,6 +426,7 @@ const Screen = () => {
               inputList={inputList}
               handleRadioChange={handleRadioChange}
               isByMilestone={isByMilestone}
+              setErrors={setErrors}
             />
           ) : singleJobDetails?.budget_type == "hourly" ? (
             <HourlyBid
@@ -355,6 +434,7 @@ const Screen = () => {
               values={values}
               setValues={setValues}
               errors={errors}
+              setErrors={setErrors}
             />
           ) : (
             ""
@@ -369,11 +449,15 @@ const Screen = () => {
                   as="textarea"
                   name="cover_letter"
                   value={values?.cover_letter}
-                  onChange={(e) =>
-                    setValues({ ...values, [e.target.name]: e.target.value })
-                  }
+                  onChange={(e) => {
+                    setValues({ ...values, [e.target.name]: e.target.value });
+                    setErrors({ ...errors, cover_letter: false });
+                  }}
                 ></Form.Control>
               </div>
+              <span className="signup-error">
+                {errors?.cover_letter && errors?.cover_letter}
+              </span>
               <div className="skll_hding mt-4">Attachments</div>
               <div className="sent_proposal_pre_img">
                 <img src={showingImage} alt="" />
@@ -382,6 +466,9 @@ const Screen = () => {
                 <Form.Control type="file" onChange={(e) => onImageChange(e)} />
                 Drag or <span>upload</span> project files
               </div>
+              <span className="signup-error">
+                {errors?.attachment && errors?.attachment}
+              </span>
               <div className="tamoun_pdd_sp mt-4">
                 Do not attach your résumé — your Unify profile is automatically
                 forwarded to the client with your proposal.
@@ -390,14 +477,14 @@ const Screen = () => {
           </Row>
         </div>
         <div className="mt-4 mb-4">
-          <Button
+          <button
             variant=""
             className="send_pros_btn"
             disabled={singleJobDetails?.is_proposal_send}
             onClick={onSendProposal}
           >
             send proposal
-          </Button>
+          </button>
         </div>
       </Container>
       {successPopup}
