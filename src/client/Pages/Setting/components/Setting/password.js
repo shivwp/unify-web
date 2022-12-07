@@ -6,11 +6,11 @@ import Switch from "react-switch";
 import { useState } from "react";
 import ChangePasswordPopup from "../../../../../popups/ChagePasswordPopup";
 import SetYourVerification from "../../../../../popups/SetYourVerification";
-import Button from 'react-bootstrap/Button'
+import Button from "react-bootstrap/Button";
 
 const Screen = () => {
   const [checked, setChecked] = useState(false);
-
+  const [successPopup, setSuccessPopup] = useState();
   const [openChangePass, setOpenChangePass] = useState(false);
   const [openVerification, setOpenVerification] = useState(false);
 
@@ -35,7 +35,7 @@ const Screen = () => {
                     <div className="setting_b_head_s">Password</div>
                     <div>
                       <Button
-                       variant=""
+                        variant=""
                         className="round_b_btn"
                         type="button"
                         onClick={() => {
@@ -86,7 +86,7 @@ const Screen = () => {
                     </div>
                     <div>
                       <Button
-                       variant=""
+                        variant=""
                         className="round_b_btn"
                         onClick={() => {
                           setOpenVerification(true);
@@ -294,6 +294,8 @@ const Screen = () => {
       {openChangePass && (
         <ChangePasswordPopup
           open={openChangePass}
+          successPopup={successPopup}
+          setSuccessPopup={setSuccessPopup}
           onCloseModal={() => setOpenChangePass(!openChangePass)}
         />
       )}
@@ -303,6 +305,7 @@ const Screen = () => {
           onCloseModal={() => setOpenVerification(false)}
         />
       )}
+      {successPopup}
     </>
   );
 };

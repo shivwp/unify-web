@@ -182,7 +182,9 @@ export const onPasswordChange =
     try {
       const res = await Axios.post(`/change-password`, data, config);
       if (res.data.status) {
-        popup();
+        if (popup) {
+          popup();
+        }
         setSuccessPopup(
           <SuccessPopup
             Popup={() => setSuccessPopup(!successPopup)}

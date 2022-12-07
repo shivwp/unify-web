@@ -9,7 +9,7 @@ const Budget = ({ setCurrentTab, onInputChange, values, reviewJobPost }) => {
           <h2>Budget</h2>
           <div className="s_on">Step 5 of 5</div>
         </div>
-        <Row className="mt-3">
+        <Row className="mt-3" style={{ display: "flex", gap: "30px" }}>
           <Col md={5} sm={6}>
             <Form.Label className="form_card_label">
               <div className="select_card subscription_box_r pnew_bud">
