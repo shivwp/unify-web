@@ -390,14 +390,13 @@ const Screen = () => {
           </Row>
         </div>
         <div className="mt-4 mb-4">
-          <Button
-            variant=""
+          <button
             className="send_pros_btn"
             disabled={singleJobDetails?.is_proposal_send}
             onClick={onSendProposal}
           >
             send proposal
-          </Button>
+          </button>
         </div>
       </Container>
       {successPopup}

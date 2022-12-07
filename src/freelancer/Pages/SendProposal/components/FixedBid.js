@@ -191,6 +191,7 @@ const ByProject = ({ values, setValues, singleJobDetails }) => {
                     name="bid_amount"
                     onChange={(e) => handleOnChange(e)}
                     placeholder="0.00"
+                    onWheel={(e) => e.target.blur()}
                   />
                   <span className="dollar_icon">$</span>
                 </div>

@@ -343,7 +343,7 @@ export const onEditLanguage =
         setSuccessPopup(
           <SuccessPopup
             Popup={() => setSuccessPopup(!successPopup)}
-            message="Language saved successfully"
+            message="Languages saved successfully"
             afterSuccess={afterSuccess}
           />
         );

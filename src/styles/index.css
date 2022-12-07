@@ -7495,6 +7495,54 @@ a {
     width: 100%;
   }
 }
+@media screen and (max-width: 500px) {
+  .how_it_works .header_img {
+    display: none;
+  }
+  .how_it_works .header_left {
+    width: 100% !important;
+    padding: 10px 0;
+  }
+  .heading {
+    font-size: 38px !important;
+  }
+}
+@media screen and (max-width: 425px){
+  .how_it_works .header_img {
+    display: none;
+  }
+}
+@media screen and (max-width: 425px) and (min-width: 320px) {
+  .how_it_works .header_img {
+    display: none;
+  }
+  .how_it_works .header_left {
+    width: 100% !important;
+    padding: 10px 0;
+  }
+  .heading {
+    font-size: 35px !important;
+  }
+  .how_it_works .award_winning_platform .right_icon {
+    margin-left: 5px !important;
+  }
+  .how_it_works .award_winning_platform .heading {
+    font-size: 20px !important;
+  }
+  /* .top_freelancers .top_freelancer {
+    color: #3b3b3b;
+    width: 100%;
+    padding: 20px 30px;
+  } */
+}
+@media screen and (max-width: 320px){
+  .how_it_works .award_winning_platform .heading {
+    font-size: 20px !important;
+  }
+  .how_it_works .award_winning_platform .desc {
+    padding-right: 16px !important;
+  }
+}
 /* header end */
 /* section 1st start */
 .how_it_works .diffrent_ways .heading {
