@@ -50,7 +50,7 @@ const Signinscreen = () => {
       values.password === null ||
       values.password === undefined
     ) {
-      errorsObject.password = "Please Enter Your Password";
+      errorsObject.password = "Please enter your password";
       errorExist = true;
     }
 
