@@ -215,7 +215,7 @@ const ByProject = ({
     setErrors({ ...errors, [e.target.name]: false });
   };
 
-  console.log(values.bid_amount);
+  console.log(values?.bid_amount);
 
   return (
     <>

@@ -3,6 +3,7 @@ import Button from "react-bootstrap/Button";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./changeTermPopup.css";
+import FixedBid from "../../SendProposal/components/FixedBid";
 
 const CloseIcon = () => {
   return (
@@ -24,9 +25,17 @@ const ChangeTermPopup = ({ data, popup, successPopup, setSuccessPopup }) => {
   const [values, setValues] = useState();
   const [errors, setErrors] = useState({});
   const reasonsList = useSelector((state) => state?.job?.reasonsList);
+  const [isByMilestone, setIsByMilestone] = useState("by_milestone");
 
+  const [inputList, setInputList] = useState([
+    { description: "", due_date: "", amount: 0 },
+  ]);
   const handleOnChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
+  };
+
+  const handleRadioChange = (e) => {
+    setIsByMilestone(e.target.value);
   };
 
   useEffect(() => {}, []);
@@ -37,7 +46,7 @@ const ChangeTermPopup = ({ data, popup, successPopup, setSuccessPopup }) => {
   return (
     <>
       <div className="bg_wrapper_popup_new">
-        <div className="popup_box_bpn profile_nceqoi_popup pb-4">
+        <div className="popup_box_bpn change_proposal_term_popup pb-4">
           <div className="popup_header pb-0">
             <div className="p_header_hding">Change Terms</div>
             <div className="close_pp_btn" onClick={() => popup()}>
@@ -45,6 +54,17 @@ const ChangeTermPopup = ({ data, popup, successPopup, setSuccessPopup }) => {
             </div>
           </div>
           <div className="popup_body_bpn change_term_popup max_height_popucwui">
+            <FixedBid
+              data={data}
+              values={values}
+              errors={errors}
+              setValues={setValues}
+              setInputList={setInputList}
+              inputList={inputList}
+              handleRadioChange={handleRadioChange}
+              isByMilestone={isByMilestone}
+              setErrors={setErrors}
+            />
             <div className="theme_btns">
               <button className="first_button" onClick={() => popup()}>
                 CANCEL
