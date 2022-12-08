@@ -48,42 +48,45 @@ const HowItWorks = () => {
             <div className="heading">
               <h1>Explore The Different Ways To Earn</h1>
             </div>
-            <div className="tabs">
-              {/* Talent Marketplace <sup>TM</sup> */}
-              {/* <button >*/}
-              <div
-                className={`tab_btn_vs ${
-                  currentTab === "ViewJob" ? "active_bvs " : ""
-                }`}
-                onClick={() => setCurrentTab("ViewJob")}
-              >
-                Talent Marketplace
-                {/* </button> */}
-              </div>
-              {/* Project Catalog <sup>TM</sup> */}
-              {/* <button > */}
-              <div
-                className={`tab_btn_vs ${
-                  currentTab === "invite" ? "active_bvs " : ""
-                }`}
-                onClick={() => setCurrentTab("invite")}
-              >
-                Project Catalog
-                {/* </button> */}
-              </div>
-              {/* Talent Scout <sup>TM</sup> */}
-              {/* <button >*/}
-              {/* // className="tab" */}
-              <div
-                className={`tab_btn_vs ${
-                  currentTab === "hire" ? "active_bvs" : ""
-                }`}
-                onClick={() => setCurrentTab("hire")}
-              >
-                Talent Scout
-                {/* </button> */}
+            <div className="overflow-scroll">
+              <div className="d-flex flex-wrap tab_m_nodea mt-4 tab_scroll_cont">
+                {/* Talent Marketplace <sup>TM</sup> */}
+                {/* <button >*/}
+                <div
+                  className={`tab_btn_vs ${
+                    currentTab === "ViewJob" ? "active_bvs " : ""
+                  }`}
+                  onClick={() => setCurrentTab("ViewJob")}
+                >
+                  Talent Marketplace
+                  {/* </button> */}
+                </div>
+                {/* Project Catalog <sup>TM</sup> */}
+                {/* <button > */}
+                <div
+                  className={`tab_btn_vs ${
+                    currentTab === "invite" ? "active_bvs " : ""
+                  }`}
+                  onClick={() => setCurrentTab("invite")}
+                >
+                  Project Catalog
+                  {/* </button> */}
+                </div>
+                {/* Talent Scout <sup>TM</sup> */}
+                {/* <button >*/}
+                {/* // className="tab" */}
+                <div
+                  className={`tab_btn_vs ${
+                    currentTab === "hire" ? "active_bvs" : ""
+                  }`}
+                  onClick={() => setCurrentTab("hire")}
+                >
+                  Talent Scout
+                  {/* </button> */}
+                </div>
               </div>
             </div>
+
             {/* <TalentMarketPlace /> */}
 
             {currentTab === "ViewJob" && <TalentMarketPlace />}

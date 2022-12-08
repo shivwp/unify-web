@@ -416,11 +416,24 @@
   text-align: center;
   border-bottom: transparent solid 6px;
 }
-
 .active_bvs {
   border-bottom: #6d2ef1 solid 6px;
   color: #6d2ef1;
   font-weight: 700;
+}
+@media screen and (max-width: 1024px) {
+  .tab_btn_vs {
+    width: unset;
+  }
+}
+@media screen and (max-width: 425px) {
+  .relation1 {
+    display: none;
+  }
+  .relation2 {
+    display: none;
+  }
+  
 }
 
 .box_vs_m {
