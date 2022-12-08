@@ -1,12 +1,18 @@
 import React from "react";
+import { useState } from "react";
 import { useEffect } from "react";
 import { Col, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { singleProposalDetails } from "../../../../redux/actions/jobActions";
+import ChangeTermPopup from "./ChangeTermPopup";
 
 const SingleSubmitedProposal = () => {
   const dispatch = useDispatch();
+  const [milestonesTotal, setMilestonesTotal] = useState(0);
+  const [successPopup, setSuccessPopup] = useState(false);
+  const [popup, setPopup] = useState(false);
+
   const project_data = useSelector(
     (state) => state?.job?.singleProposalDetails?.project_data
   );
@@ -25,7 +31,13 @@ const SingleSubmitedProposal = () => {
     dispatch(singleProposalDetails(id, "submit"));
   }, [id]);
 
-  console.log(project_data);
+  useEffect(() => {
+    let add = 0;
+    for (let i = 0; i < milestonedata?.length; i++) {
+      add = add + milestonedata[i].amount;
+    }
+    setMilestonesTotal(add);
+  }, [milestonedata]);
 
   return (
     <>
@@ -210,26 +222,106 @@ const SingleSubmitedProposal = () => {
                 </div>
                 <div className="how_be_paid">
                   <div className="head">How do you want to be paid?</div>
-                  <div className="desc">{milestonedata?.length == 0 ?'By Project': 'By milestone'}</div>
-                </div>
-                <div className="price_project">
-                  <div className="head">Total price of project</div>
                   <div className="desc">
-                    This includes all milsetones, and is the amount your client
-                    will see.
+                    {project_data?.budget_type == "fixed" &&
+                    milestonedata?.length == 0
+                      ? "By Project"
+                      : project_data?.budget_type == "fixed" &&
+                        milestonedata?.length != 0
+                      ? "By milestone"
+                      : "Hourly"}
                   </div>
-                  <div className="amt">$40.00</div>
                 </div>
-                <div className="you_recive">
-                  <div className="head">You'll Receive</div>
-                  <div className="desc">
-                    Your estimated payment, after service fees.
-                  </div>
-                  <div className="amt">$32.00</div>
-                </div>
+                {project_data?.budget_type == "fixed" &&
+                milestonedata?.length == 0 ? (
+                  <>
+                    <div className="price_project">
+                      <div className="head">Total price of project</div>
+                      {/* <div className="desc">
+                        This includes all milsetones, and is the amount your
+                        client will see.
+                      </div> */}
+                      <div className="amt">${proposal_data?.amount}</div>
+                    </div>
+                    <div className="you_recive">
+                      <div className="head">You'll Receive</div>
+                      <div className="desc">
+                        Your estimated payment, after service fees.
+                      </div>
+                      <div className="amt">
+                        $
+                        {proposal_data?.amount -
+                          (proposal_data?.amount / 100) *
+                            project_data?.service_fee}
+                      </div>
+                    </div>
+                  </>
+                ) : project_data?.budget_type == "fixed" &&
+                  milestonedata?.length != 0 ? (
+                  <>
+                    <div className="price_project">
+                      <div className="head">Total price of project</div>
+                      <div className="desc">
+                        This includes all milsetones, and is the amount your
+                        client will see.
+                      </div>
+                      <div className="amt">${milestonesTotal}</div>
+                    </div>
+                    <div className="you_recive">
+                      <div className="head">You'll Receive</div>
+                      <div className="desc">
+                        Your estimated payment, after service fees.
+                      </div>
+                      <div className="amt">
+                        $
+                        {milestonesTotal -
+                          (milestonesTotal / 100) * project_data?.service_fee}
+                      </div>
+                    </div>
+                  </>
+                ) : project_data?.budget_type == "hourly" ? (
+                  <>
+                    <div className="price_project">
+                      <div className="head">Hourly Rate</div>
+                      <div className="desc">
+                        Total amount the client will see on your proposal
+                      </div>
+                      <div className="amt">${proposal_data?.amount}/hr</div>
+                    </div>
+                    <div className="you_recive">
+                      <div className="head">You'll Receive</div>
+                      <div className="desc">
+                        Your estimated payment, after service fees.
+                      </div>
+                      <div className="amt">
+                        ${" "}
+                        {proposal_data?.amount -
+                          (proposal_data?.amount / 100) *
+                            project_data?.service_fee}
+                        /hr
+                      </div>
+                    </div>
+                  </>
+                ) : (
+                  ""
+                )}
+
                 <div className="buttons">
                   <div className="theme_btns">
-                    <button className="first_button">CHANGE TERMS</button>
+                    <button
+                      className="first_button"
+                      onClick={() =>
+                        setPopup(
+                          <ChangeTermPopup
+                            popup={setPopup}
+                            successPopup={successPopup}
+                            setSuccessPopup={setSuccessPopup}
+                          />
+                        )
+                      }
+                    >
+                      CHANGE TERMS
+                    </button>
                     <button className="second_button">WITHDRAW PROPOSAL</button>
                   </div>
                 </div>
@@ -237,10 +329,7 @@ const SingleSubmitedProposal = () => {
             </div>
             <div className="sep_bdr cover_letter">
               <div className="heading">Cover Letter</div>
-              <div className="desc">
-                It is a long established fact that a reader will be distracted
-                by the readable content of a page when looking at its layout.
-              </div>
+              <div className="desc">{proposal_data?.cover_letter}</div>
             </div>
           </Col>
           <Col lg={3}>
@@ -354,24 +443,33 @@ const SingleSubmitedProposal = () => {
                 </div>
                 <div className="location">
                   <div className="headingl">Location</div>
-                  <div className="country">Netherland</div>
-                  <div className="timezone">Zwijndrecht 12:20 pm</div>
+                  <div className="country">{client_data?.country}</div>
+                  <div className="timezone">{client_data?.local_time}</div>
                 </div>
                 <div className="history">
                   <div className="headingh">History</div>
-                  <div className="desc">10 to 15 proposals</div>
-                  <div className="desc">3 interviews</div>
-                  <div className="desc">1 Hired</div>
-                  <div className="desc">$1096 total spent</div>
-                  <div className="desc">Open 72 jobs</div>
-                  <div className="desc">59 hires</div>
+                  <div className="desc">
+                    {" "}
+                    {project_data?.interview} proposals
+                  </div>
+                  <div className="desc">
+                    {client_data?.job_posted} interviews
+                  </div>
+                  <div className="desc"> {project_data?.open_jobs} Hired</div>
+                  {/* <div className="desc">$1096 total spent</div> */}
+                  <div className="desc">{project_data?.open_jobs} jobs</div>
+                  <div className="desc">{project_data?.total_hire} hires</div>
                 </div>
-                <div className="member_since">Member since Sep 16, 2020</div>
+                <div className="member_since">
+                  Member since {client_data?.member_since}
+                </div>
               </div>
             </div>
           </Col>
         </Row>
       </div>
+      {popup}
+      {successPopup}
     </>
   );
 };

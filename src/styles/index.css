@@ -9699,6 +9699,7 @@ input::-webkit-inner-spin-button {
   font-size: 16px;
 }
 .single_active_proposal .messages .write_msg .msg_inp {
+  margin-bottom: 10px;
   width: 100%;
 }
 .single_active_proposal .messages .write_msg .msg_inp input {
@@ -9713,5 +9714,11 @@ input::-webkit-inner-spin-button {
 .single_active_proposal .messages .write_msg .icons svg {
   width: 20px;
   height: 20px;
+}
+
+.single_active_proposal .messages .write_msg .icons .right,
+.single_active_proposal .messages .write_msg .icons .left {
+  display: flex;
+  gap: 10px;
 }
 /* ------------------------ single active proposal detail after click on submited proposals end --------------------- */

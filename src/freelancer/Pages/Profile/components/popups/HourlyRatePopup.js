@@ -148,7 +148,16 @@ const HourlyRatePopup = ({ Popup, data, setSuccessPopup, successPopup }) => {
             <button className="first_button" onClick={() => Popup()}>
               Back
             </button>
-            <button className="second_button" onClick={onSave}>
+            <button
+              className="second_button"
+              disabled={
+                values?.hours_price == 0 ||
+                values?.hours_price == "" ||
+                values?.hours_price == undefined ||
+                values?.hours_price == null
+              }
+              onClick={onSave}
+            >
               Next
             </button>
           </div>

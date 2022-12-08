@@ -78,7 +78,7 @@ const Screen = () => {
                     <div className="init_date">Initiated {item.date}</div>
                     <div className="time">{item.time}</div>
                   </div>
-                  <Link to={"/freelancer/single-active-proposal/1"}>
+                  <Link to={`/freelancer/single-active-proposal/${item.id}`}>
                     <div className="titls">{item.name}</div>
                   </Link>
                   <div className="job_type">{item.budget_type}</div>

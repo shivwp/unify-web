@@ -1,4 +1,5 @@
 import {
+  DECLINE_REASONS_LIST,
   DISLIKE_POST_REASONS,
   JOBS_LIST,
   JOB_POST_DETAILS,
@@ -112,6 +113,11 @@ const jobReducer = (state = initialState, action) => {
       return {
         ...state,
         singleProposalDetails: action.payload,
+      };
+    case DECLINE_REASONS_LIST:
+      return {
+        ...state,
+        reasonsList: action.payload,
       };
     default:
       return state;

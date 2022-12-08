@@ -1507,6 +1507,7 @@
   color: #5d5d5d;
   font: normal normal 400 15px/25px Poppins !important;
   padding: 8px 0px;
+  white-space: pre-line;
 }
 
 .bbsp_linkn a {
@@ -1665,6 +1666,11 @@
   font: normal normal 600 16px/30px Poppins !important;
   border-radius: 50px;
   text-transform: uppercase;
+}
+.send_pros_btn:disabled {
+  background-color: #c9c9c9;
+  border: 1px solid #c9c9c9;
+  color: #fff;
 }
 
 .drag_file_bx {

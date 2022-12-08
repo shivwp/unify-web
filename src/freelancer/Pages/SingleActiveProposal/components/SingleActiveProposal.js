@@ -1,4 +1,5 @@
 import React from "react";
+import { useState } from "react";
 import { useEffect } from "react";
 import { Col, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
@@ -7,14 +8,34 @@ import { singleProposalDetails } from "../../../../redux/actions/jobActions";
 
 const SingleActiveProposal = () => {
   const dispatch = useDispatch();
-  const singleProposal = useSelector(
-    (state) => state?.job?.singleProposalDetails
-  );
+  const [milestonesTotal, setMilestonesTotal] = useState(0);
+
   const { id } = useParams();
+  const project_data = useSelector(
+    (state) => state?.job?.singleProposalDetails?.project_data
+  );
+  const milestonedata = useSelector(
+    (state) => state?.job?.singleProposalDetails?.milestonedata
+  );
+  const client_data = useSelector(
+    (state) => state?.job?.singleProposalDetails?.client_data
+  );
+  const proposal_data = useSelector(
+    (state) => state?.job?.singleProposalDetails?.proposal_data
+  );
 
   useEffect(() => {
     dispatch(singleProposalDetails(id, "active"));
   }, [id]);
+
+  useEffect(() => {
+    let add = 0;
+    for (let i = 0; i < milestonedata?.length; i++) {
+      add = add + milestonedata[i].amount;
+    }
+    setMilestonesTotal(add);
+  }, [milestonedata]);
+
   return (
     <>
       <div className="single_active_proposal container">
@@ -27,20 +48,17 @@ const SingleActiveProposal = () => {
                   <Col lg={8} md={8}>
                     <div className="left">
                       <div className="left_heading">Job Details</div>
-                      <div className="left_title">
-                        Graphic Design Logo design for companies and the brand
-                      </div>
+                      <div className="left_title">{project_data?.name}</div>
                       <div className="categories">
-                        <span>Graphic Design</span>
-                        <div className="date">Posted Aug 3, 2022</div>
+                        <span>{project_data?.categories}</span>
+                        <div className="date">
+                          Posted {project_data?.posted_date}
+                        </div>
                       </div>
                       <div className="description">
-                        Logo design for companies and the brand Choosing the
-                        idea of his design for the company's name and content
-                        Message the project supervisor on telegram
-                        @Michellewilliams460
+                        {project_data?.description}
                       </div>
-                      <div className="view_more_posting">View job posting</div>
+                      {/* <div className="view_more_posting">View job posting</div> */}
                     </div>
                   </Col>
                   <Col lg={4} md={4}>
@@ -88,7 +106,7 @@ const SingleActiveProposal = () => {
                               </g>
                             </svg>
                           </span>
-                          <span>Expert</span>
+                          <span>{project_data?.experience_level}</span>
                         </div>
                         <div className="desc">Exprience Level</div>
                       </div>
@@ -123,9 +141,9 @@ const SingleActiveProposal = () => {
                               </g>
                             </svg>
                           </span>
-                          <span>Propose your terms</span>
+                          <span>{project_data?.budget_type}</span>
                         </div>
-                        <div className="desc">Fixed Price</div>
+                        <div className="desc">Propose your terms</div>
                       </div>
                       <div className="right_item">
                         <div className="head">
@@ -172,7 +190,7 @@ const SingleActiveProposal = () => {
                               </g>
                             </svg>
                           </span>
-                          <span>Less than a month</span>
+                          <span>{project_data?.project_duration}</span>
                         </div>
                         <div className="desc">Project Length</div>
                       </div>
@@ -183,36 +201,109 @@ const SingleActiveProposal = () => {
               <div className="skills">
                 <div className="head">Skills and expertise</div>
                 <div className="skill_list">
-                  <span>Backend Developer</span>
-                  <span>Designer</span>
-                  <span>Support Agent</span>
-                  <span>IOS Developer</span>
+                  {project_data?.job_skills?.map((item) => (
+                    <span>{item.name}</span>
+                  ))}
                 </div>
               </div>
               <div className="terms">
                 <div className="head">
                   <div className="headi">Your proposed terms</div>
-                  <div className="budget">Client's budget: $40.00</div>
+                  <div className="budget">
+                    Client's budget:{" "}
+                    {project_data?.budget_type == "fixed"
+                      ? `$${project_data?.price}`
+                      : project_data?.budget_type == "hourly"
+                      ? ` $${project_data?.price} -  $${project_data?.min_price}`
+                      : null}
+                  </div>
                 </div>
                 <div className="how_be_paid">
                   <div className="head">How do you want to be paid?</div>
-                  <div className="desc">By Project</div>
-                </div>
-                <div className="price_project">
-                  <div className="head">Total price of project</div>
                   <div className="desc">
-                    This includes all milsetones, and is the amount your client
-                    will see.
+                    {" "}
+                    {project_data?.budget_type == "fixed" &&
+                    milestonedata?.length == 0
+                      ? "By Project"
+                      : project_data?.budget_type == "fixed" &&
+                        milestonedata?.length != 0
+                      ? "By milestone"
+                      : "Hourly"}
                   </div>
-                  <div className="amt">$40.00</div>
                 </div>
-                <div className="you_recive">
-                  <div className="head">You'll Receive</div>
-                  <div className="desc">
-                    Your estimated payment, after service fees.
-                  </div>
-                  <div className="amt">$32.00</div>
-                </div>
+                {project_data?.budget_type == "fixed" &&
+                milestonedata?.length == 0 ? (
+                  <>
+                    <div className="price_project">
+                      <div className="head">Total price of project</div>
+                      {/* <div className="desc">
+                        This includes all milsetones, and is the amount your
+                        client will see.
+                      </div> */}
+                      <div className="amt">${proposal_data?.amount}</div>
+                    </div>
+                    <div className="you_recive">
+                      <div className="head">You'll Receive</div>
+                      <div className="desc">
+                        Your estimated payment, after service fees.
+                      </div>
+                      <div className="amt">
+                        $
+                        {proposal_data?.amount -
+                          (proposal_data?.amount / 100) *
+                            project_data?.service_fee}
+                      </div>
+                    </div>
+                  </>
+                ) : project_data?.budget_type == "fixed" &&
+                  milestonedata?.length != 0 ? (
+                  <>
+                    <div className="price_project">
+                      <div className="head">Total price of project</div>
+                      <div className="desc">
+                        This includes all milsetones, and is the amount your
+                        client will see.
+                      </div>
+                      <div className="amt">${milestonesTotal}</div>
+                    </div>
+                    <div className="you_recive">
+                      <div className="head">You'll Receive</div>
+                      <div className="desc">
+                        Your estimated payment, after service fees.
+                      </div>
+                      <div className="amt">
+                        $
+                        {milestonesTotal -
+                          (milestonesTotal / 100) * project_data?.service_fee}
+                      </div>
+                    </div>
+                  </>
+                ) : project_data?.budget_type == "hourly" ? (
+                  <>
+                    <div className="price_project">
+                      <div className="head">Hourly Rate</div>
+                      <div className="desc">
+                        Total amount the client will see on your proposal
+                      </div>
+                      <div className="amt">${proposal_data?.amount}/hr</div>
+                    </div>
+                    <div className="you_recive">
+                      <div className="head">You'll Receive</div>
+                      <div className="desc">
+                        Your estimated payment, after service fees.
+                      </div>
+                      <div className="amt">
+                        ${" "}
+                        {proposal_data?.amount -
+                          (proposal_data?.amount / 100) *
+                            project_data?.service_fee}
+                        /hr
+                      </div>
+                    </div>
+                  </>
+                ) : (
+                  ""
+                )}
                 <div className="buttons">
                   <div className="theme_btns">
                     <button className="first_button">CHANGE TERMS</button>
@@ -231,10 +322,7 @@ const SingleActiveProposal = () => {
             </div>
             <div className="sep_bdr cover_letter">
               <div className="heading">Cover Letter</div>
-              <div className="desc">
-                It is a long established fact that a reader will be distracted
-                by the readable content of a page when looking at its layout.
-              </div>
+              <div className="desc">{proposal_data?.cover_letter}</div>
             </div>
             <div className="sep_bdr">
               <div className="messages">
@@ -300,18 +388,28 @@ const SingleActiveProposal = () => {
                       <span>
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
-                          data-name="Layer 1"
-                          viewBox="0 0 24 24"
+                          viewBox="0 0 16.736 21.796"
                         >
-                          <path d="M16.5,9.5A3.5,3.5,0,0,0,13,6H8.5a1,1,0,0,0-1,1V17a1,1,0,0,0,1,1H13a3.49,3.49,0,0,0,2.44-6A3.5,3.5,0,0,0,16.5,9.5ZM13,16H9.5V13H13a1.5,1.5,0,0,1,0,3Zm0-5H9.5V8H13a1.5,1.5,0,0,1,0,3Z" />
+                          <path
+                            id="Path_5052"
+                            data-name="Path 5052"
+                            d="M20.389,14.571a5.668,5.668,0,0,0,2.569-4.344A6.138,6.138,0,0,0,16.73,4H8.557A1.561,1.561,0,0,0,7,5.557V24.239A1.561,1.561,0,0,0,8.557,25.8h9a6.169,6.169,0,0,0,6.181-5.869,5.792,5.792,0,0,0-3.347-5.356ZM11.671,7.892h4.671a2.335,2.335,0,0,1,0,4.671H11.671ZM17.12,21.9H11.671V17.233H17.12a2.335,2.335,0,1,1,0,4.671Z"
+                            transform="translate(-7 -4)"
+                            fill="#cecdcd"
+                          />
                         </svg>
                       </span>
                       <span>
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 8 8"
+                          viewBox="0 0 19.512 19.512"
                         >
-                          <path d="M2 0v1h1.63l-.06.13-2 5-.34.88H.01v1h5v-1H3.38l.06-.13 2-5L5.78 1H7V0H2z" />
+                          <path
+                            id="italic"
+                            d="M23.886,6H14.13a1.626,1.626,0,0,0,0,3.252H16.6L11.4,22.26H7.626a1.626,1.626,0,0,0,0,3.252h9.756a1.626,1.626,0,0,0,0-3.252H14.91l5.2-13.008h3.772a1.626,1.626,0,1,0,0-3.252Z"
+                            transform="translate(-6 -6)"
+                            fill="#cecdcd"
+                          />
                         </svg>
                       </span>
                     </div>
@@ -319,26 +417,40 @@ const SingleActiveProposal = () => {
                       <span>
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 20 20"
+                          viewBox="0 0 21.843 24.15"
                         >
-                          <path d="M5.602 19.8c-1.293 0-2.504-.555-3.378-1.44-1.695-1.716-2.167-4.711.209-7.116l9.748-9.87c.988-1 2.245-1.387 3.448-1.06 1.183.32 2.151 1.301 2.468 2.498.322 1.22-.059 2.493-1.046 3.493l-9.323 9.44c-.532.539-1.134.858-1.738.922-.599.064-1.17-.13-1.57-.535-.724-.736-.828-2.117.378-3.337l6.548-6.63c.269-.272.705-.272.974 0s.269.714 0 .986l-6.549 6.631c-.566.572-.618 1.119-.377 1.364.106.106.266.155.451.134.283-.029.606-.216.909-.521l9.323-9.439c.64-.648.885-1.41.69-2.145a2.162 2.162 0 0 0-1.493-1.513c-.726-.197-1.48.052-2.12.7l-9.748 9.87c-1.816 1.839-1.381 3.956-.209 5.143 1.173 1.187 3.262 1.629 5.079-.212l9.748-9.87a.683.683 0 0 1 .974 0 .704.704 0 0 1 0 .987L9.25 18.15c-1.149 1.162-2.436 1.65-3.648 1.65z" />
+                          <path
+                            id="clip"
+                            d="M27.1,40.775a7.314,7.314,0,0,0,5.131-2.1l4.49-4.49a.857.857,0,1,0-1.212-1.212l-4.49,4.454a5.494,5.494,0,0,1-3.92,1.6,5.555,5.555,0,0,1-3.92-1.6,5.351,5.351,0,0,1-1.6-3.92,5.555,5.555,0,0,1,1.6-3.92L33.334,19.431a3.848,3.848,0,0,1,2.779-1.14,3.908,3.908,0,0,1,2.779,1.14,3.848,3.848,0,0,1,1.14,2.779,3.908,3.908,0,0,1-1.14,2.779L28.7,35.181A2.318,2.318,0,0,1,25.423,31.9l4.525-4.525a.857.857,0,0,0-1.212-1.212l-4.49,4.525a4.031,4.031,0,0,0,5.7,5.7L40.1,26.237a5.678,5.678,0,0,0,0-7.982,5.657,5.657,0,0,0-7.946,0L22,28.411a7.191,7.191,0,0,0-2.1,5.131A7.314,7.314,0,0,0,22,38.673,7.169,7.169,0,0,0,27.1,40.775Z"
+                            transform="translate(-19.9 -16.625)"
+                            fill="#cecdcd"
+                          />
                         </svg>
                       </span>
                       <span>
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 16 16"
+                          viewBox="0 0 24.375 24.375"
                         >
                           <path
-                            fill="#212121"
-                            d="M8,2 C11.3137,2 14,4.68629 14,8 C14,11.3137 11.3137,14 8,14 C4.68629,14 2,11.3137 2,8 C2,4.68629 4.68629,2 8,2 Z M8,3 C5.23858,3 3,5.23858 3,8 C3,10.7614 5.23858,13 8,13 C10.7614,13 13,10.7614 13,8 C13,5.23858 10.7614,3 8,3 Z M9.86353,9.66654 C10.0477,9.46078 10.3638,9.44327 10.5696,9.62743 C10.7753,9.8116 10.7928,10.1277 10.6087,10.3335 C9.96851,11.0487 9.03663,11.4999949 8,11.4999949 C6.96337,11.4999949 6.03148,11.0487 5.39132,10.3335 C5.20716,10.1277 5.22467,9.8116 5.43043,9.62743 C5.6362,9.44327 5.95229,9.46078 6.13646,9.66654 C6.59494,10.1788 7.25963,10.4999949 8,10.4999949 C8.74037,10.4999949 9.40505,10.1788 9.86353,9.66654 Z M6.25,6.25 C6.66421,6.25 7,6.58579 7,7 C7,7.41421 6.66421,7.75 6.25,7.75 C5.83579,7.75 5.5,7.41421 5.5,7 C5.5,6.58579 5.83579,6.25 6.25,6.25 Z M9.75,6.25 C10.1642,6.25 10.5,6.58579 10.5,7 C10.5,7.41421 10.1642,7.75 9.75,7.75 C9.33579,7.75 9,7.41421 9,7 C9,6.58579 9.33579,6.25 9.75,6.25 Z"
+                            id="emoji"
+                            d="M14.188,2A12.188,12.188,0,1,1,2,14.188,12.188,12.188,0,0,1,14.188,2Zm0,2.031A10.156,10.156,0,1,0,24.344,14.188,10.156,10.156,0,0,0,14.188,4.031Zm3.785,13.541a1.016,1.016,0,1,1,1.514,1.355,7.11,7.11,0,0,1-10.6,0A1.016,1.016,0,1,1,10.4,17.573a5.078,5.078,0,0,0,7.571,0Zm-7.34-6.94a1.523,1.523,0,1,1-1.523,1.523A1.523,1.523,0,0,1,10.633,10.633Zm7.109,0a1.523,1.523,0,1,1-1.523,1.523A1.523,1.523,0,0,1,17.742,10.633Z"
+                            transform="translate(-2 -2)"
+                            fill="#cecdcd"
                           />
                         </svg>
                       </span>
                       <span>
-                        <svg xmlns="http://www.w3.org/2000/svg">
-                          <path d="M4.02 42 46 24 4.02 6 4 20l30 4-30 4z" />
-                          <path fill="none" d="M0 0h48v48H0z" />
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 26.72 24.969"
+                        >
+                          <path
+                            id="send"
+                            d="M27.211,2.716a1.3,1.3,0,0,0-1.832-1.087L1.23,13.068a1.3,1.3,0,0,0-.153,2.252l5.66,3.7v6.174a1.3,1.3,0,0,0,2.208.915L12.359,22.7l4.777,3.123a1.294,1.294,0,0,0,1.922-.635L27.147,3.246A1.128,1.128,0,0,0,27.211,2.716ZM19.737,7.165,9.3,17.6,4.425,14.418ZM9.324,22.071V20.712l.822.537Zm7.868.694L11.51,19.05,22.68,7.88Z"
+                            transform="translate(-0.5 -1.515)"
+                            fill="#6d2ef1"
+                          />
                         </svg>
                       </span>
                     </div>
@@ -374,7 +486,11 @@ const SingleActiveProposal = () => {
                       </g>
                     </svg>
                   </span>
-                  <span>Payment method verified</span>
+                  <span>
+                    {client_data?.payment_verified
+                      ? "Payment Varified"
+                      : "Payment method not varified"}
+                  </span>
                 </div>
                 <div className="reviews">
                   <div className="stars">
@@ -458,19 +574,26 @@ const SingleActiveProposal = () => {
                 </div>
                 <div className="location">
                   <div className="headingl">Location</div>
-                  <div className="country">Netherland</div>
-                  <div className="timezone">Zwijndrecht 12:20 pm</div>
+                  <div className="country">{client_data?.country}</div>
+                  <div className="timezone">{client_data?.local_time}</div>
                 </div>
                 <div className="history">
                   <div className="headingh">History</div>
-                  <div className="desc">10 to 15 proposals</div>
-                  <div className="desc">3 interviews</div>
-                  <div className="desc">1 Hired</div>
-                  <div className="desc">$1096 total spent</div>
-                  <div className="desc">Open 72 jobs</div>
-                  <div className="desc">59 hires</div>
+                  <div className="desc">
+                    {" "}
+                    {project_data?.interview} proposals
+                  </div>
+                  <div className="desc">
+                    {client_data?.job_posted} interviews
+                  </div>
+                  <div className="desc"> {project_data?.open_jobs} Hired</div>
+                  {/* <div className="desc">$1096 total spent</div> */}
+                  <div className="desc">{project_data?.open_jobs} jobs</div>
+                  <div className="desc">{project_data?.total_hire} hires</div>
                 </div>
-                <div className="member_since">Member since Sep 16, 2020</div>
+                <div className="member_since">
+                  Member since {client_data?.member_since}
+                </div>
               </div>
             </div>
           </Col>

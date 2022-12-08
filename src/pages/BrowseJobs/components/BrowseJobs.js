@@ -366,42 +366,44 @@ const BrowseJobs = () => {
             {/* Job start */}
             <Col lg={9} className="top_main_c_job">
               {jobsList?.map((item) => (
-                <div className="job_box_card" key={item.id}>
-                  <div className="heat_lef">
-                    <img src={star} alt="" />
+                <Link to={`/job-details/${item.id}`}>
+                  <div className="job_box_card" key={item.id}>
+                    <div className="heat_lef">
+                      <img src={star} alt="" />
+                    </div>
+                    <Row>
+                      <Col lg={9} md={9}>
+                        <div className="job_head_s mt-3">
+                          {/* <Link to={`/job-details/${item.id}`}> */}
+                            <h2>{item.name}</h2>
+                          {/* </Link> */}
+                        </div>
+                        <div className="dlex_sk_block flex-wrap">
+                          {item.skills?.map((skill) => (
+                            <div key={skill.id} className="b_skil">
+                              {skill.name}
+                            </div>
+                          ))}
+                        </div>
+                        <div className="job_d_par">
+                          <p>{item.description} </p>
+                        </div>
+                      </Col>
+                      <Col lg={3} md={3}>
+                        <div className="price_ar_jjob">
+                          <h1>
+                            {item.budget_type === "fixed"
+                              ? `$${item?.price}`
+                              : item.budget_type === "hourly"
+                              ? `$${item?.min_price} - $${item.price} /hr`
+                              : null}
+                          </h1>
+                          <p>({item?.budget_type})</p>
+                        </div>
+                      </Col>
+                    </Row>
                   </div>
-                  <Row>
-                    <Col lg={9} md={9}>
-                      <div className="job_head_s mt-3">
-                        <Link to={`/job-details/${item.id}`}>
-                          <h2>{item.name}</h2>
-                        </Link>
-                      </div>
-                      <div className="dlex_sk_block flex-wrap">
-                        {item.skills?.map((skill) => (
-                          <div key={skill.id} className="b_skil">
-                            {skill.name}
-                          </div>
-                        ))}
-                      </div>
-                      <div className="job_d_par">
-                        <p>{item.description} </p>
-                      </div>
-                    </Col>
-                    <Col lg={3} md={3}>
-                      <div className="price_ar_jjob">
-                        <h1>
-                          {item.budget_type === "fixed"
-                            ? `$${item?.price}`
-                            : item.budget_type === "hourly"
-                            ? `$${item?.min_price} - $${item.price} /hr`
-                            : null}
-                        </h1>
-                        <p>({item?.budget_type})</p>
-                      </div>
-                    </Col>
-                  </Row>
-                </div>
+                </Link>
               ))}
               <Col lg={12}>
                 <div className="pagiantion_node">

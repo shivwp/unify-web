@@ -15,6 +15,7 @@ import {
 } from "../../../../redux/actions/jobActions";
 import HourlyBid from "./HourlyBid";
 import FixedBid from "./FixedBid";
+import Alert from "react-bootstrap/Alert";
 
 const Screen = () => {
   Title(" | Send Proposal");
@@ -63,10 +64,10 @@ const Screen = () => {
       errorExist = true;
     }
 
-    if (!attachment) {
-      errorsObject.attachment = "Please add a attachment image";
-      errorExist = true;
-    }
+    // if (!attachment) {
+    //   errorsObject.attachment = "Please add a attachment image";
+    //   errorExist = true;
+    // }
     if (singleJobDetails?.budget_type == "hourly") {
       if (values?.bid_amount < 0) {
         errorsObject.bid_amount = "Please enter valid amount";
@@ -151,7 +152,9 @@ const Screen = () => {
         formData.append("milestone_data", JSON.stringify(inputList));
       }
     }
-    dispatch(onSendJobProposal(formData, successPopup, setSuccessPopup));
+    dispatch(
+      onSendJobProposal(formData, successPopup, setSuccessPopup, navigate)
+    );
   };
 
   const handleRadioChange = (e) => {
@@ -161,6 +164,16 @@ const Screen = () => {
   return (
     <>
       <Container>
+        {singleJobDetails?.is_proposal_send ? (
+          <Alert variant="success" className="mt-4">
+            <Alert.Heading>
+              Your propsal is already sent. Please wait for client's response
+            </Alert.Heading>
+            <p>Thank you for your time</p>
+          </Alert>
+        ) : (
+          ""
+        )}
         <div className="propo_box_sp">
           <Row>
             <Col lg={5}>

@@ -14,6 +14,7 @@ import {
 } from "../../../../redux/actions/jobActions";
 import { SEND_PROPOSAL_DATA } from "../../../../redux/types";
 import moment from "moment";
+import Alert from "react-bootstrap/Alert";
 
 function ListProposals({ project_type, data }) {
   return (
@@ -182,8 +183,18 @@ const Projectdetail = () => {
 
   return (
     <>
-      <Container className="mt-5">
-        <Row className="flex_reverse_768">
+      <Container className="mt-5 mb-5">
+        {singleJobDetails?.is_proposal_send ? (
+          <Alert variant="success" className="mt-4">
+            <Alert.Heading>
+              Your propsal is already sent. Please wait for client's response
+            </Alert.Heading>
+            <p>Thank you for your time</p>
+          </Alert>
+        ) : (
+          ""
+        )}
+        <Row className="flex_reverse_768 mt-5">
           <Col lg={8} md={12}>
             <div className="s_trans_bos s_nav_body box_web_req">
               <div className="fl_end_b abso_cen">
@@ -406,7 +417,9 @@ const Projectdetail = () => {
                 <h3>Description</h3>
               </div>
               <div className="bl_apra pd_n_blpara">
-                <p style={{wordBreak:'break-word'}}>{singleJobDetails?.description}</p>
+                <p style={{ wordBreak: "break-word" }}>
+                  {singleJobDetails?.description}
+                </p>
               </div>
               <div className="btn_foot_sec d-block">
                 <br />

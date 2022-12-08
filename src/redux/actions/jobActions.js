@@ -1,6 +1,7 @@
 import SuccessPopup from "../../freelancer/components/popups/SuccessPopup";
 import Axios from "../axios";
 import {
+  DECLINE_REASONS_LIST,
   DISLIKE_POST_REASONS,
   JOBS_LIST,
   JOB_POST_DETAILS,
@@ -80,17 +81,21 @@ export const singleJobPostDetails = (data) => async (dispatch) => {
   } catch (err) {}
 };
 export const onSendJobProposal =
-  (data, successPopup, setSuccessPopup) => async (dispatch) => {
+  (data, successPopup, setSuccessPopup, navigate) => async (dispatch) => {
     try {
       Axios.post("/send-proposal", data, config).then((res) => {
         dispatch({
           type: SEND_JOB_PROPOSAL,
           payload: res.data.data,
         });
+        const afterSuccess = () => {
+          navigate(`/freelancer/single-submited-proposal/${res.data.data}`);
+        };
         setSuccessPopup(
           <SuccessPopup
             Popup={() => setSuccessPopup(!successPopup)}
             message="Proposal sent successfully"
+            afterSuccess={afterSuccess}
           />
         );
       });
@@ -226,3 +231,28 @@ export const singleProposalDetails = (id, type) => async (dispatch) => {
     });
   } catch (err) {}
 };
+export const declineReasoneList = (type) => async (dispatch) => {
+  try {
+    Axios.get(`/decline-reason-list/${type}`, config).then((res) => {
+      dispatch({
+        type: DECLINE_REASONS_LIST,
+        payload: res.data.data,
+      });
+    });
+  } catch (err) {}
+};
+
+export const onDeclineForInterview =
+  (data, popup, successPopup, setSuccessPopup) => async (dispatch) => {
+    try {
+      Axios.post("/invite-decline", data, config).then((res) => {
+        popup();
+        setSuccessPopup(
+          <SuccessPopup
+            Popup={() => setSuccessPopup(!successPopup)}
+            message="Thank you for your time"
+          />
+        );
+      });
+    } catch (err) {}
+  };
