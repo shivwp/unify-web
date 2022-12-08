@@ -42,7 +42,15 @@ const AddEmployment = ({
   }, []);
 
   const onInputChange = (e) => {
-    if (e.target.name == "currently_working") {
+    if (e.target.name == "start_date") {
+      if (values?.start_date == moment(new Date()).format("YYYY-MM-DD")) {
+        setValues({ ...values, currently_working: 1 });
+        setErrors({ ...errors, currently_working: false });
+      } else {
+        setValues({ ...values, [e.target.name]: e.target.value });
+        setErrors({ ...errors, [e.target.name]: false });
+      }
+    } else if (e.target.name == "currently_working") {
       setValues({ ...values, [e.target.name]: e.target.checked ? 1 : 0 });
       setErrors({ ...errors, [e.target.name]: false });
     } else {
@@ -65,11 +73,11 @@ const AddEmployment = ({
     } else if (values?.company?.length < 3) {
       errorsObject.company = "company length should be minimum 3";
       errorExist = true;
-    } 
+    }
     // else if (/\s/g.test(values?.company)) {
     //   errorsObject.company = "Field is required";
     //   errorExist = true;
-    // } 
+    // }
     else if (/^[0-9]\d*$/.test(values?.company)) {
       errorsObject.company = "please input a valid company name ";
       errorExist = true;
