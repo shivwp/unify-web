@@ -3843,6 +3843,12 @@ body {
   }
 }
 
+@media only screen and (max-width: 768px) {
+  .signupRespError {
+    top: 34px !important;
+  }
+}
+
 @media only screen and (max-width: 640px) {
   .help_swip .swiper-slide-active .acc_bxo_h {
     margin-right: 15px !important;
@@ -3870,6 +3876,9 @@ body {
 
   .sign_form_btn_subm .hovbgblew {
     max-width: 345px !important;
+  }
+  .sign_legal_not {
+    margin-left: 7px !important;
   }
 }
 
@@ -3910,6 +3919,15 @@ body {
 
   .fo_btn_c {
     width: 100% !important;
+  }
+  .signupRespError {
+    top: 34px !important;
+  }
+}
+
+@media only screen and (max-width: 375px) and (min-width: 320px) {
+  .signupRespError {
+    top: 50px !important;
   }
 }
 
