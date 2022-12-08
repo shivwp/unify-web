@@ -6184,6 +6184,7 @@ a {
   background-color: #fff;
   border-bottom-color: #6d2ef1;
   color: #6d2ef1;
+  cursor: pointer;
 }
 
 .hovbgblew:hover {
@@ -6737,6 +6738,16 @@ a {
   .servicebtn {
     margin-top: 0px;
   }
+  .trashRespBtn {
+    height: 40px;
+    margin-top: 0px;
+    padding-top: 0px;
+  }
+  .langTrasRespBtn {
+    align-items: flex-end;
+    margin-top: 0;
+    padding-right: 0;
+  }
 }
 @media only screen and (max-width: 425px) {
   .questionTwobtn {
@@ -6763,6 +6774,10 @@ a {
   }
 }
 @media only screen and (max-width: 425px) {
+  .startIntroIn .langResp {
+    text-align: center;
+    font-size: 23px;
+  }
   .takeTimeRespBtn {
     display: flex;
     padding: 40px 0;
@@ -6792,6 +6807,13 @@ a {
   }
 }
 
+@media only screen and (max-width: 415px) and (min-width: 390) {
+.startIntroIn .langResp {
+    text-align: center;
+    font-size: 20px !important;
+ }
+}
+
 @media only screen and (max-width: 375px) {
   .container_border .eduResp {
     padding: 12px;
@@ -6801,8 +6823,11 @@ a {
     text-align: start;
   }
   .startIntroIn .eduRespHead {
-    /* line-height: 20px ; */
     font-size: 20px;
+  }
+  .startIntroIn h5 {
+    text-align: center !important;
+    font-size: 19px !important;
   }
 }
 
@@ -6854,8 +6879,8 @@ a {
     padding: 14px;
   }
   .startIntroIn h5 {
-    text-align: center;
-    font-size: 15px;
+    text-align: center !important;
+    font-size: 15px !important;
   }
   .startIntroTwoP {
     text-align: center;
@@ -7045,6 +7070,9 @@ a {
     font-weight: 550 !important;
     line-height: 35px !important;
   }
+  .langResp {
+
+  }
 }
 @media only screen and (max-width: 375px) {
   .whatdoYoudo-head {
@@ -7064,7 +7092,6 @@ a {
 }
 
 .servicesChoose {
-  width: 550px;
   border: #d6d6d6;
 }
 
@@ -7462,6 +7489,7 @@ a {
   }
   .languageOption {
     font-size: 13px;
+    justify-content: space-between;
   }
   .langLevel {
     display: flex;
@@ -7480,6 +7508,8 @@ a {
   }
   .startIntroTwoP {
     line-height: 24px;
+    text-align: center;
+    font-size: 14px;
   }
 }
 @media screen and (max-width: 768px) {
@@ -7604,10 +7634,22 @@ a {
     font-size: 38px !important;
   }
 }
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 500px) {
   .how_it_works .header_img {
     display: none;
   }
+  /* .how_it_works .diffrent_ways .tabs {
+    display: flex;
+    justify-content: space-around;
+    border-bottom: 1px solid #c7c7c7;
+    margin-bottom: 20px;
+    width: 100%;
+    overflow-x: scroll;
+    flex-wrap: nowrap;
+  }
+  .how_it_works .diffrent_ways .tabs {
+    min-width: max-content;
+  } */
 }
 @media screen and (max-width: 425px) and (min-width: 320px) {
   .how_it_works .header_img {
@@ -7709,6 +7751,16 @@ a {
 .how_it_works .diffrent_ways .items .icon svg {
   width: 60px;
 }
+.how_it_works .diffrent_ways .items .icon {
+  height: 100px;
+  display: flex;
+  /* justify-content: center; */
+}
+.talentScoutSecondRow {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
 
 @media screen and (max-width: 1024px) {
   .how_it_works .diffrent_ways .items .relation1 {
@@ -7731,7 +7783,6 @@ a {
   .how_it_works .diffrent_ways .items .item_desc {
     padding: 0;
     font-size: 12px;
-    text-align: justify;
   }
   .how_it_works .diffrent_ways .items .relation2 svg {
     width: 160px;
@@ -7744,6 +7795,13 @@ a {
   }
   .how_it_works .diffrent_ways .items .relation1 {
     right: -92px;
+  }
+}
+@media screen and (max-width: 425px) and (min-width: 320px) {
+  .talentScoutSecondRow {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
   }
 }
 /* section 1st end */

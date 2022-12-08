@@ -85,7 +85,7 @@ const ChooseLangauge = ({ setCurrentTab, profileList }) => {
       <div className="container">
         <div className="container_border">
           <div className="startIntroIn">
-            <h5 className="startIntroTwoH5">
+            <h5 className="startIntroTwoH5 langResp">
               Bilingual? What languages do you speak?
             </h5>
             <div className="startIntroTwoP mt-3 mb-3">
@@ -150,8 +150,8 @@ const ChooseLangauge = ({ setCurrentTab, profileList }) => {
                       </select>
                     </div>
                   </Col>
-                  <Col md={2} lg={1}>
-                    <div className="popup_form_element">
+                  <Col md={2} lg={1} className="trashRespBtn" >
+                    <div className="popup_form_element langTrasRespBtn">
                       {inputList?.length !== 0 && data.language != "English" ? (
                         <button
                           onClick={() => removeInputFields(i)}

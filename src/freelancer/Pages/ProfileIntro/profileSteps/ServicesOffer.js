@@ -64,7 +64,7 @@ const ServicesOffer = ({ setCurrentTab, profileList }) => {
               Choose at least 1 service. This will help clients find you for the
               work they need.
             </p>
-            <div className="servicesChoose">
+            <div className="col-lg-8 col-xs-12 col-centered servicesChoose">
               <div className="popup_form_element">
                 <select
                   name="category_id"
