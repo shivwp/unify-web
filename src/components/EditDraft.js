@@ -289,9 +289,7 @@ const EditDraft = () => {
                       <button className="draft_back_btn">Back</button>
                     </div>
                     <div className="d-flex flex-wrap no-border mt-0 pt-0 btn_foot_sec">
-                      {!values?.name ||
-                      !values?.description ||
-                      !values?.image ? (
+                      {!values?.name || !values?.description ? (
                         <div className="fo_btn_c next_b_btn_c">
                           <button disabled className="active_btn_blueDiabled">
                             Save as a draft
@@ -308,9 +306,7 @@ const EditDraft = () => {
                         </div>
                       )}
 
-                      {!values?.name ||
-                      !values?.description ||
-                      !values?.image ? (
+                      {!values?.name || !values?.description ? (
                         <div className="fo_btn_c next_b_btn_c">
                           <button disabled className="active_btn_blueDiabled">
                             Post Your Job Now

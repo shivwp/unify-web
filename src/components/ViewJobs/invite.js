@@ -33,9 +33,6 @@ const JonComponent = ({ jobId }) => {
   const removeSavedTalent = useSelector(
     (state) => state.freelancer.removeSavedTalent
   );
-  const savedTalentError = useSelector(
-    (state) => state.freelancer.savedTalentError
-  );
 
   useEffect(() => {
     const data = {
@@ -158,7 +155,6 @@ const JonComponent = ({ jobId }) => {
             <Saved
               getSavedTalentList={getSavedTalentList}
               handleRemoveSavedTalent={handleRemoveSavedTalent}
-              savedTalentError={savedTalentError}
             />
           )}
         </div>

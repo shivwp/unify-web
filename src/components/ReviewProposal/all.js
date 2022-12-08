@@ -5,12 +5,38 @@ import Messaged from "./messaged";
 import Archived from "./archive";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllJobProposalsList } from "../../redux/actions/freelancerAction";
+import {
+  getAllJobProposalsList,
+  getAllProposalArchievedList,
+  getAllProposalShortList,
+  onRemoveInShortList,
+  onSaveInShortList,
+  removeProposalArchived,
+  saveProposalArchived,
+} from "../../redux/actions/freelancerAction";
 
 const JonComponent = ({ jobId }) => {
   const dispatch = useDispatch();
   const jobBasedProposalsList = useSelector(
     (state) => state?.freelancer?.jobBasedProposalsList?.data
+  );
+  const saveProposalInShortList = useSelector(
+    (state) => state?.freelancer?.saveProposalInShortList
+  );
+  const removeProposalInShortList = useSelector(
+    (state) => state?.freelancer?.removeProposalInShortList
+  );
+  const proposalShortlist = useSelector(
+    (state) => state?.freelancer?.proposalShortlist
+  );
+  const proposalArchievedlist = useSelector(
+    (state) => state?.freelancer?.proposalArchievedlist
+  );
+  const removeProposalInArchieved = useSelector(
+    (state) => state?.freelancer?.removeProposalInArchieved
+  );
+  const saveProposalInArchieved = useSelector(
+    (state) => state?.freelancer?.saveProposalInArchieved
   );
   const [reviewProposal, setReviewProposal] = useState("allProposals");
 
@@ -21,9 +47,58 @@ const JonComponent = ({ jobId }) => {
       // page:1
     };
     dispatch(getAllJobProposalsList(data));
-  }, []);
+  }, [
+    saveProposalInShortList,
+    removeProposalInShortList,
+    removeProposalInArchieved,
+    saveProposalInArchieved,
+  ]);
 
-  console.log(jobBasedProposalsList);
+  useEffect(() => {
+    const data = {
+      project_id: jobId,
+    };
+    dispatch(getAllProposalShortList(data));
+  }, [saveProposalInShortList, removeProposalInShortList]);
+
+  useEffect(() => {
+    const data = {
+      project_id: jobId,
+    };
+    dispatch(getAllProposalArchievedList(data));
+  }, [removeProposalInArchieved, saveProposalInArchieved]);
+
+  const handleSaveProposalShortList = (id) => {
+    const data = {
+      freelancer_id: id,
+      job_id: jobId,
+    };
+    dispatch(onSaveInShortList(data));
+  };
+
+  const handleRemoveProposalShortList = (id) => {
+    const data = {
+      freelancer_id: id,
+      job_id: jobId,
+    };
+    dispatch(onRemoveInShortList(data));
+  };
+
+  const handleSaveProposalArchieved = (id) => {
+    const data = {
+      freelancer_id: id,
+      job_id: jobId,
+    };
+    dispatch(saveProposalArchived(data));
+  };
+
+  const handleRemoveProposalArchieved = (id) => {
+    const data = {
+      freelancer_id: id,
+      job_id: jobId,
+    };
+    dispatch(removeProposalArchived(data));
+  };
 
   return (
     <Row>
@@ -66,13 +141,27 @@ const JonComponent = ({ jobId }) => {
             </div>
           </div>
           {reviewProposal === "allProposals" && (
-            <AllProposals jobBasedProposalsList={jobBasedProposalsList} />
+            <AllProposals
+              jobBasedProposalsList={jobBasedProposalsList}
+              handleSaveProposalShortList={handleSaveProposalShortList}
+              handleRemoveProposalShortList={handleRemoveProposalShortList}
+              handleSaveProposalArchieved={handleSaveProposalArchieved}
+            />
           )}
           {reviewProposal === "shortListed" && (
-            <Satisfied jobBasedProposalsList={jobBasedProposalsList} />
+            <Satisfied
+              proposalShortlist={proposalShortlist}
+              handleSaveProposalShortList={handleSaveProposalShortList}
+              handleRemoveProposalShortList={handleRemoveProposalShortList}
+            />
           )}
           {reviewProposal === "messagess" && <Messaged />}
-          {reviewProposal === "archived" && <Archived />}
+          {reviewProposal === "archived" && (
+            <Archived
+              proposalArchievedlist={proposalArchievedlist}
+              handleRemoveProposalArchieved={handleRemoveProposalArchieved}
+            />
+          )}
         </div>
       </Col>
     </Row>

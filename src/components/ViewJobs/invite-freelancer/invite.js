@@ -7,7 +7,7 @@ const Screen = ({
 }) => {
   return (
     <>
-      {!invitedFreelancerList ? (
+      {invitedFreelancerList?.length === 0 ? (
         <div className="d-flex justify-content-center flex-column align-items-center py-4">
           <img src="/assets/invited-image.png" alt="" />
           <h3>No invited freelancers yet</h3>

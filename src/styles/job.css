@@ -475,6 +475,7 @@
   padding-bottom: 15px;
   padding-top: 10px;
   color: #545454;
+  white-space: pre-line;
 }
 
 .bvs_bol {

@@ -6,9 +6,14 @@ import {
   SET_SAVED_TALENT_LIST,
   SET_SAVED_TALENT,
   SET_REMOVE_SAVED_TALENT,
-  SET_SAVED_TALENT_ERROR,
   SET_MAKE_PRIVATE_JOB,
   SET_ALL_JOB_PROPOSALS_LIST,
+  SET_SAVE_PROPOSAL_IN_SHORTLIST,
+  SET_REMOVE_PROPOSAL_IN_SHORTLIST,
+  SET_PROPOSAL_SHORTLIST,
+  SET_ARCHIEVED_LIST,
+  SET_SAVE_PROPOSAL_IN_ARCHIEVED,
+  SET_REMOVE_PROPOSAL_IN_ARCHIEVED,
 } from "../types";
 
 const config = {
@@ -99,12 +104,7 @@ export const savedTalentList = (data) => async (dispatch) => {
         });
       }
     })
-    .catch((err) => {
-      dispatch({
-        type: SET_SAVED_TALENT_ERROR,
-        payload: err.response.data.message,
-      });
-    });
+    .catch((err) => {});
 };
 
 export const makePrivatePublicJob = (data) => async (dispatch) => {
@@ -128,6 +128,94 @@ export const getAllJobProposalsList = (data) => async (dispatch) => {
       if (res.data.status) {
         dispatch({
           type: SET_ALL_JOB_PROPOSALS_LIST,
+          payload: res.data,
+        });
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+export const getAllProposalShortList = (data) => async (dispatch) => {
+  await Axios.get(`/shortlist-list/${data.project_id}`, config)
+    .then((res) => {
+      if (res.data.status) {
+        dispatch({
+          type: SET_PROPOSAL_SHORTLIST,
+          payload: res.data.data,
+        });
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+export const onSaveInShortList = (data) => async (dispatch) => {
+  await Axios.post(`/save-shortlist`, data, config)
+    .then((res) => {
+      if (res.data.status) {
+        dispatch({
+          type: SET_SAVE_PROPOSAL_IN_SHORTLIST,
+          payload: res.data,
+        });
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+export const onRemoveInShortList = (data) => async (dispatch) => {
+  await Axios.post(`/remove-shortlist`, data, config)
+    .then((res) => {
+      if (res.data.status) {
+        dispatch({
+          type: SET_REMOVE_PROPOSAL_IN_SHORTLIST,
+          payload: res.data,
+        });
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+export const getAllProposalArchievedList = (data) => async (dispatch) => {
+  await Axios.get(`/arvhive-list/${data.project_id}`, config)
+    .then((res) => {
+      if (res.data.status) {
+        dispatch({
+          type: SET_ARCHIEVED_LIST,
+          payload: res.data.data,
+        });
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+export const saveProposalArchived = (data) => async (dispatch) => {
+  await Axios.post(`/save-archive`, data, config)
+    .then((res) => {
+      if (res.data.status) {
+        dispatch({
+          type: SET_SAVE_PROPOSAL_IN_ARCHIEVED,
+          payload: res.data,
+        });
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+export const removeProposalArchived = (data) => async (dispatch) => {
+  await Axios.post(`/remove-archive`, data, config)
+    .then((res) => {
+      if (res.data.status) {
+        dispatch({
+          type: SET_REMOVE_PROPOSAL_IN_ARCHIEVED,
           payload: res.data,
         });
       }

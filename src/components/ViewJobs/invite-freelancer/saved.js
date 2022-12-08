@@ -1,13 +1,18 @@
 import { Col, Row } from "react-bootstrap";
 
-const Screen = ({
-  getSavedTalentList,
-  handleRemoveSavedTalent,
-  savedTalentError,
-}) => {
+const Screen = ({ getSavedTalentList, handleRemoveSavedTalent }) => {
   return (
     <>
-      {savedTalentError === undefined ? (
+      {getSavedTalentList?.length === 0 ? (
+        <div className="d-flex justify-content-center flex-column align-items-center py-4">
+          <img src="/assets/saved-talent.png" alt="" />
+          <h3>You haven’t saved anyone yet</h3>
+          <p>
+            Select the heart icon to save your favorite talent and agencies to
+            custom lists.
+          </p>
+        </div>
+      ) : (
         <>
           {getSavedTalentList?.map((data, key) => (
             <div className="freelancer_box_in" key={key}>
@@ -65,7 +70,7 @@ const Screen = ({
                         <b>${data.total_earning}k+</b> earned
                       </div>
                       <div className="amount_hir_in p-0">
-                        <b>{data.success_rate}%</b> Job Success
+                        <b>{data.success_rate}</b> Job Success
                       </div>
                     </div>
                     <div className="cover_letter_in">
@@ -84,39 +89,7 @@ const Screen = ({
             </div>
           ))}
         </>
-      ) : (
-        <div className="d-flex justify-content-center flex-column align-items-center py-4">
-          <img src="/assets/saved-talent.png" alt="" />
-          <h3>You haven’t saved anyone yet</h3>
-          <p>
-            Select the heart icon to save your favorite talent and agencies to
-            custom lists.
-          </p>
-        </div>
       )}
-
-      {/* <div className="search_area_in sm_serch_fll_n">
-        <div className="select_inp_in mt-2">
-          <Form.Select>
-            <option>All Saved</option>
-          </Form.Select>
-        </div>
-        <Form.Group className="search_input_in selec_inp_ful_w mt-2 mb-0">
-          <div className="search_icon_in">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="currentColor"
-              className="bi bi-search"
-              viewBox="0 0 16 16"
-            >
-              <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
-            </svg>
-          </div>
-          <Form.Control type={`text`} placeholder={`search...`} />
-        </Form.Group>
-      </div> */}
     </>
   );
 };

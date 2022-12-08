@@ -43,12 +43,12 @@ const ViewScreen = () => {
           <div className="vj_hea">
             <h1>{singleJobDetails?.name}</h1>
           </div>
-          <div>
+          {/* <div>
             <div className="vj_r_link">
               <Link to="#0">Reach 6x more Top Rated Talent</Link>
             </div>
             <div className="vj_r_sm_t">Upgrade this job</div>
-          </div>
+          </div> */}
         </div>
         <div className="overflow-scroll">
           <div className="d-flex flex-wrap tab_m_nodea mt-4 tab_scroll_cont">

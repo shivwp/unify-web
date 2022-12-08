@@ -124,7 +124,7 @@ const Description = () => {
             <div className="ts_h1">
               <h1>Now just finish and review your job post.</h1>
             </div>
-            {!values?.job_title || !values?.description || !imageFile ? (
+            {!values?.job_title || !values?.description ? (
               <div className="ts_btn">
                 <button
                   className="font-weight-500"
