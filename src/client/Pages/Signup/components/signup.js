@@ -401,7 +401,7 @@ const Signup = ({
                           </Form.Label>
                         </div>
                         <span
-                          className="signInError"
+                          className="signInError signupRespError"
                           style={{ top: "25px", left: "12px" }}
                         >
                           {errors.agree_terms && (

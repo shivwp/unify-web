@@ -92,10 +92,11 @@ const AddEmployment = ({
     } else if (/^[0-9]\d*$/.test(values?.city)) {
       errorsObject.city = "please input a valid location ";
       errorExist = true;
-    } else if (/\s/g.test(values?.city)) {
-      errorsObject.city = "Field is required";
-      errorExist = true;
-    }
+    } 
+    // else if (/\s/g.test(values?.city)) {
+    //   errorsObject.city = "Field is required";
+    //   errorExist = true;
+    // }
     if (
       values?.country === "" ||
       values?.country === null ||
@@ -122,10 +123,11 @@ const AddEmployment = ({
     } else if (/^[0-9]\d*$/.test(values?.subject)) {
       errorsObject.subject = "please input a valid title ";
       errorExist = true;
-    } else if (/\s/g.test(values?.subject)) {
-      errorsObject.subject = "Field is required";
-      errorExist = true;
-    }
+    } 
+    // else if (/\s/g.test(values?.subject)) {
+    //   errorsObject.subject = "Field is required";
+    //   errorExist = true;
+    // }
     if (
       values?.start_date === "" ||
       values?.start_date === null ||
