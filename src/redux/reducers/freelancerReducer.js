@@ -7,6 +7,7 @@ import {
   SET_REMOVE_SAVED_TALENT,
   SET_SAVED_TALENT_ERROR,
   SET_MAKE_PRIVATE_JOB,
+  SET_ALL_JOB_PROPOSALS_LIST,
 } from "../types";
 const initialState = {};
 
@@ -51,6 +52,11 @@ const freelancerReducer = (state = initialState, action) => {
       return {
         ...state,
         privatePublicJob: action.payload,
+      };
+    case SET_ALL_JOB_PROPOSALS_LIST:
+      return {
+        ...state,
+        jobBasedProposalsList: action.payload,
       };
     default:
       return state;

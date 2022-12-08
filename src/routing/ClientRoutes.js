@@ -1,5 +1,6 @@
 import { lazy } from "react";
 import { Route, Routes } from "react-router-dom";
+import ReusePosting from "../components/ReusePosting";
 import ProtectedRoutes from "./PrivateRoute";
 const Createcategory = lazy(() => import("../client/Pages/Create-Category"));
 const Category = lazy(() => import("../client/Pages/Category"));
@@ -85,6 +86,10 @@ const ClientRoutes = () => {
           element={<EditPosting />}
         />
         <Route path="/dashboard/edit-draft/:draftId" element={<EditDraft />} />
+        <Route
+          path="/dashboard/reuse-posting/:reuseId"
+          element={<ReusePosting />}
+        />
         <Route path="/hire-freelancer" element={<HireFreelancer />} />
         <Route
           path="/hire-freelancer/addAddress"

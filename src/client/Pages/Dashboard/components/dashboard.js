@@ -93,7 +93,9 @@ const Screen = () => {
               <div>
                 <div className="my_job_a job_na_bol">{item.name}</div>
                 <div className="my_job_h">Invite only - {item.budget_type}</div>
-                <div className="my_job_pos_tme">Posted 21 min ago by you</div>
+                <div className="my_job_pos_tme">
+                  Posted {item.created_at} by you
+                </div>
               </div>
               <div className="d-flex justify-content-between flex-wrap">
                 <div className="my_job_n_box">
@@ -146,7 +148,9 @@ const Screen = () => {
                       <Link to={`/view-job/${item.id}`}>View Job Post</Link>
                     </div>
                     <div className="navabr_t_li">
-                      <Link to="/title">Reuse Postings</Link>
+                      <Link to={`/dashboard/reuse-posting/${item.id}`}>
+                        Reuse Postings
+                      </Link>
                     </div>
                     <span className="menu_btn_arrow" id="menu_btn_arrow1">
                       &#62;
@@ -175,7 +179,7 @@ const Screen = () => {
             >
               <div>
                 <div className="my_job_a job_na_bol">{item.name}</div>
-                <div className="my_job_pos_tme">Saved 25 min ago</div>
+                <div className="my_job_pos_tme">Saved {item.created_at}</div>
               </div>
               <div className="text-right d-flex flex-wrap menu_btn">
                 <button

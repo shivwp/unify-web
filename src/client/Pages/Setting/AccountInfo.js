@@ -107,9 +107,9 @@ const AccountInfo = ({
                   onChange={(e) => onInputChange(e)}
                   placeholder="Company Name"
                 />
-                <span className="signup-error">
+                {/* <span className="signup-error">
                   {errors.company_name && "Please enter company name"}
-                </span>
+                </span> */}
               </div>
               <div className="inp_fields">
                 <span>Add your industry</span>
@@ -125,9 +125,9 @@ const AccountInfo = ({
                     </option>
                   ))}
                 </select>
-                <span className="signup-error">
+                {/* <span className="signup-error">
                   {errors.industry && "Select industry"}
-                </span>
+                </span> */}
               </div>
             </Col>
             <Col lg={6} md={6} sm={12}>
@@ -140,9 +140,9 @@ const AccountInfo = ({
                   onChange={(e) => onInputChange(e)}
                   placeholder=""
                 />
-                <span className="signup-error">
+                {/* <span className="signup-error">
                   {errors.website && "Please enter website url"}
-                </span>
+                </span> */}
               </div>
               <div className="inp_fields">
                 <span>Tagline</span>
@@ -153,9 +153,9 @@ const AccountInfo = ({
                   onChange={(e) => onInputChange(e)}
                   placeholder=""
                 />
-                <span className="signup-error">
+                {/* <span className="signup-error">
                   {errors.tagline && "Please enter your tagline"}
-                </span>
+                </span> */}
               </div>
             </Col>
             <div className="inp_fields">
@@ -167,9 +167,9 @@ const AccountInfo = ({
                 onChange={(e) => onInputChange(e)}
                 id="descr"
               ></Form.Control>
-              <span className="signup-error">
+              {/* <span className="signup-error">
                 {errors.description && "Please enter your description"}
-              </span>
+              </span> */}
             </div>
             <div className="inp_fields">
               <span>How many people are in your company?</span>
@@ -219,9 +219,9 @@ const AccountInfo = ({
                   <span>more then 100 employees</span>
                 </Form.Label>
               </div>
-              <span className="signup-error">
+              {/* <span className="signup-error">
                 {errors.employee_no && "Please select company length"}
-              </span>
+              </span> */}
             </div>
           </Row>
         </div>
@@ -252,9 +252,9 @@ const AccountInfo = ({
                   onChange={(e) => onInputChange(e)}
                   placeholder="VAT ID"
                 />
-                <span className="signup-error">
+                {/* <span className="signup-error">
                   {errors.vat_id && "Please enter VAT id"}
-                </span>
+                </span> */}
               </div>
               <div className="inp_fields">
                 <span>Country</span>
@@ -270,9 +270,9 @@ const AccountInfo = ({
                     </option>
                   ))}
                 </select>
-                <span className="signup-error">
+                {/* <span className="signup-error">
                   {errors.country && "Pleasse select country"}
-                </span>
+                </span> */}
               </div>
               <div className="inp_fields">
                 <span>City</span>
@@ -284,9 +284,9 @@ const AccountInfo = ({
                   onChange={(e) => onInputChange(e)}
                   placeholder="City"
                 />
-                <span className="signup-error">
+                {/* <span className="signup-error">
                   {errors.city && "Please enter city"}
-                </span>
+                </span> */}
               </div>
             </Col>
             <Col lg-6 sm-12 md-12>
@@ -299,9 +299,9 @@ const AccountInfo = ({
                   onChange={(e) => onInputChange(e)}
                   placeholder=""
                 />
-                <span className="signup-error">
+                {/* <span className="signup-error">
                   {errors.company_phone && "Please enter company phone number"}
-                </span>
+                </span> */}
               </div>
               <div className="inp_fields">
                 <span>Time Zone</span>
@@ -317,9 +317,9 @@ const AccountInfo = ({
                     </option>
                   ))}
                 </select>
-                <span className="signup-error">
+                {/* <span className="signup-error">
                   {errors.timezone && "Please select timezozne"}
-                </span>
+                </span> */}
               </div>
               <div className="inp_fields">
                 <span>Address</span>
@@ -330,9 +330,9 @@ const AccountInfo = ({
                   onChange={(e) => onInputChange(e)}
                   placeholder=""
                 />
-                <span className="signup-error">
+                {/* <span className="signup-error">
                   {errors.company_address && "Please enter company address"}
-                </span>
+                </span> */}
               </div>
               <div className="inp_fields">
                 <span>ZIP</span>
@@ -343,9 +343,9 @@ const AccountInfo = ({
                   onChange={(e) => onInputChange(e)}
                   placeholder="zip code"
                 />
-                <span className="signup-error">
+                {/* <span className="signup-error">
                   {errors.zip_code && "Please enter zip code"}
-                </span>
+                </span> */}
               </div>
             </Col>
           </Row>

@@ -90,111 +90,111 @@ const Screen = () => {
       errorsObject.last_name = true;
       errorExist = true;
     }
-    if (
-      values.company_name === "" ||
-      values.company_name === null ||
-      values.company_name === undefined
-    ) {
-      errorsObject.company_name = true;
-      errorExist = true;
-    }
-    if (
-      values.website === "" ||
-      values.website === null ||
-      values.website === undefined
-    ) {
-      errorsObject.website = true;
-      errorExist = true;
-    }
-    if (
-      values.tagline === "" ||
-      values.tagline === null ||
-      values.tagline === undefined
-    ) {
-      errorsObject.tagline = true;
-      errorExist = true;
-    }
-    if (
-      values.industry === "" ||
-      values.industry === null ||
-      values.industry === undefined
-    ) {
-      errorsObject.industry = true;
-      errorExist = true;
-    }
-    if (
-      values.description === "" ||
-      values.description === null ||
-      values.description === undefined
-    ) {
-      errorsObject.description = true;
-      errorExist = true;
-    }
-    if (
-      values.employee_no === "" ||
-      values.employee_no === null ||
-      values.employee_no === undefined
-    ) {
-      errorsObject.employee_no = true;
-      errorExist = true;
-    }
+    // if (
+    //   values.company_name === "" ||
+    //   values.company_name === null ||
+    //   values.company_name === undefined
+    // ) {
+    //   errorsObject.company_name = true;
+    //   errorExist = true;
+    // }
+    // if (
+    //   values.website === "" ||
+    //   values.website === null ||
+    //   values.website === undefined
+    // ) {
+    //   errorsObject.website = true;
+    //   errorExist = true;
+    // }
+    // if (
+    //   values.tagline === "" ||
+    //   values.tagline === null ||
+    //   values.tagline === undefined
+    // ) {
+    //   errorsObject.tagline = true;
+    //   errorExist = true;
+    // }
+    // if (
+    //   values.industry === "" ||
+    //   values.industry === null ||
+    //   values.industry === undefined
+    // ) {
+    //   errorsObject.industry = true;
+    //   errorExist = true;
+    // }
+    // if (
+    //   values.description === "" ||
+    //   values.description === null ||
+    //   values.description === undefined
+    // ) {
+    //   errorsObject.description = true;
+    //   errorExist = true;
+    // }
+    // if (
+    //   values.employee_no === "" ||
+    //   values.employee_no === null ||
+    //   values.employee_no === undefined
+    // ) {
+    //   errorsObject.employee_no = true;
+    //   errorExist = true;
+    // }
 
-    if (
-      values.company_phone === "" ||
-      values.company_phone === null ||
-      values.company_phone === undefined
-    ) {
-      errorsObject.company_phone = true;
-      errorExist = true;
-    }
-    if (
-      values.vat_id === "" ||
-      values.vat_id === null ||
-      values.vat_id === undefined
-    ) {
-      errorsObject.vat_id = true;
-      errorExist = true;
-    }
-    if (
-      values.timezone === "" ||
-      values.timezone === null ||
-      values.timezone === undefined
-    ) {
-      errorsObject.timezone = true;
-      errorExist = true;
-    }
-    if (
-      values.company_address === "" ||
-      values.company_address === null ||
-      values.company_address === undefined
-    ) {
-      errorsObject.company_address = true;
-      errorExist = true;
-    }
-    if (
-      values.zip_code === "" ||
-      values.zip_code === null ||
-      values.zip_code === undefined
-    ) {
-      errorsObject.zip_code = true;
-      errorExist = true;
-    }
-    if (
-      values.city === "" ||
-      values.city === null ||
-      values.city === undefined
-    ) {
-      errorsObject.city = true;
-      errorExist = true;
-    }
-    if (
-      values.country === "" ||
-      values.country === null ||
-      values.country === undefined
-    ) {
-      errorsObject.country = true;
-      errorExist = true;
-    }
+    // if (
+    //   values.company_phone === "" ||
+    //   values.company_phone === null ||
+    //   values.company_phone === undefined
+    // ) {
+    //   errorsObject.company_phone = true;
+    //   errorExist = true;
+    // }
+    // if (
+    //   values.vat_id === "" ||
+    //   values.vat_id === null ||
+    //   values.vat_id === undefined
+    // ) {
+    //   errorsObject.vat_id = true;
+    //   errorExist = true;
+    // }
+    // if (
+    //   values.timezone === "" ||
+    //   values.timezone === null ||
+    //   values.timezone === undefined
+    // ) {
+    //   errorsObject.timezone = true;
+    //   errorExist = true;
+    // }
+    // if (
+    //   values.company_address === "" ||
+    //   values.company_address === null ||
+    //   values.company_address === undefined
+    // ) {
+    //   errorsObject.company_address = true;
+    //   errorExist = true;
+    // }
+    // if (
+    //   values.zip_code === "" ||
+    //   values.zip_code === null ||
+    //   values.zip_code === undefined
+    // ) {
+    //   errorsObject.zip_code = true;
+    //   errorExist = true;
+    // }
+    // if (
+    //   values.city === "" ||
+    //   values.city === null ||
+    //   values.city === undefined
+    // ) {
+    //   errorsObject.city = true;
+    //   errorExist = true;
+    // }
+    // if (
+    //   values.country === "" ||
+    //   values.country === null ||
+    //   values.country === undefined
+    // ) {
+    //   errorsObject.country = true;
+    //   errorExist = true;
+    // }
 
     if (errorExist) {
       setErrors(errorsObject);

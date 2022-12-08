@@ -277,7 +277,7 @@ const Description = () => {
               </Link>
             </div>
             <div className="d-flex flex-wrap no-border mt-0 pt-0 btn_foot_sec">
-              {!values?.job_title || !values?.description || !imageFile ? (
+              {!values?.job_title || !values?.description ? (
                 <div className="fo_btn_c next_b_btn_c">
                   <button disabled className="active_btn_blueDiabled">
                     Save as a draft
@@ -294,7 +294,7 @@ const Description = () => {
                 </div>
               )}
 
-              {!values?.job_title || !values?.description || !imageFile ? (
+              {!values?.job_title || !values?.description ? (
                 <div className="fo_btn_c next_b_btn_c">
                   <button disabled className="active_btn_blueDiabled">
                     Post Your Job Now

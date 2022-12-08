@@ -192,13 +192,14 @@ const JonComponent = ({ singleJobDetails, jobId, handleMakePublicPrivate }) => {
                 <h1>Edit Posting</h1>
               </div>
             </Link>
-
-            <div className="r_in_tab_h">
-              <button className="round_b_btn">
-                <i className="bi bi-pin-angle text-secondary"></i>
-              </button>
-              <h1>Reuse Posting</h1>
-            </div>
+            <Link to={`/dashboard/reuse-posting/${jobId}`}>
+              <div className="r_in_tab_h">
+                <button className="round_b_btn">
+                  <i className="bi bi-pin-angle text-secondary"></i>
+                </button>
+                <h1>Reuse Posting</h1>
+              </div>
+            </Link>
             <div className="r_in_tab_h" onClick={() => setRemovePosting(true)}>
               <button className="round_b_btn">
                 <i className="bi bi-x text-secondary"></i>

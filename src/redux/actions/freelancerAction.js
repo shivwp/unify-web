@@ -8,6 +8,7 @@ import {
   SET_REMOVE_SAVED_TALENT,
   SET_SAVED_TALENT_ERROR,
   SET_MAKE_PRIVATE_JOB,
+  SET_ALL_JOB_PROPOSALS_LIST,
 } from "../types";
 
 const config = {
@@ -112,6 +113,21 @@ export const makePrivatePublicJob = (data) => async (dispatch) => {
       if (res.data.status) {
         dispatch({
           type: SET_MAKE_PRIVATE_JOB,
+          payload: res.data,
+        });
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+export const getAllJobProposalsList = (data) => async (dispatch) => {
+  await Axios.post(`/job-proposal-list`, data, config)
+    .then((res) => {
+      if (res.data.status) {
+        dispatch({
+          type: SET_ALL_JOB_PROPOSALS_LIST,
           payload: res.data,
         });
       }
