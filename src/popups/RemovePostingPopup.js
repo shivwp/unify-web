@@ -6,9 +6,11 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { useDispatch, useSelector } from "react-redux";
 import { closeJobReasonList, onCloseJob } from "../redux/actions/jobActions";
+import { useNavigate } from "react-router-dom";
 
 const RemovePostingPopup = ({ open, onCloseModal, menuBarPosting }) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [reasonId, setReasonId] = useState();
   const closeJobReasons = useSelector((state) => state.job.closeJobReasons);
 
@@ -21,7 +23,7 @@ const RemovePostingPopup = ({ open, onCloseModal, menuBarPosting }) => {
       project_id: menuBarPosting,
       reason_id: reasonId,
     };
-    dispatch(onCloseJob(data, onCloseModal));
+    dispatch(onCloseJob(data, onCloseModal, navigate));
   };
 
   return (

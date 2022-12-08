@@ -2,6 +2,11 @@ import {
   SET_JOB_BASED_FREELANCER_LIST,
   SET_INVITED_FREELANCER_LIST,
   SET_FREELANCER_INVITED,
+  SET_SAVED_TALENT_LIST,
+  SET_SAVED_TALENT,
+  SET_REMOVE_SAVED_TALENT,
+  SET_SAVED_TALENT_ERROR,
+  SET_MAKE_PRIVATE_JOB,
 } from "../types";
 const initialState = {};
 
@@ -21,6 +26,31 @@ const freelancerReducer = (state = initialState, action) => {
       return {
         ...state,
         invitedFreelancer: action.payload,
+      };
+    case SET_SAVED_TALENT_LIST:
+      return {
+        ...state,
+        getSavedTalentList: action.payload,
+      };
+    case SET_SAVED_TALENT:
+      return {
+        ...state,
+        savedTalent: action.payload,
+      };
+    case SET_REMOVE_SAVED_TALENT:
+      return {
+        ...state,
+        removeSavedTalent: action.payload,
+      };
+    case SET_SAVED_TALENT_ERROR:
+      return {
+        ...state,
+        savedTalentError: action.payload,
+      };
+    case SET_MAKE_PRIVATE_JOB:
+      return {
+        ...state,
+        privatePublicJob: action.payload,
       };
     default:
       return state;

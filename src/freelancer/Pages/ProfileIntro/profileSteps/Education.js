@@ -70,7 +70,7 @@ const Education = ({ setCurrentTab, profileList }) => {
                             transform="translate(464 2581)"
                             fill="#fff"
                             stroke="#707070"
-                            stroke-width="1"
+                            strokeWidth="1"
                             opacity="0.43"
                           >
                             <circle cx="20" cy="20" r="20" stroke="none" />
@@ -111,7 +111,7 @@ const Education = ({ setCurrentTab, profileList }) => {
                             transform="translate(516 2581)"
                             fill="#fff"
                             stroke="#707070"
-                            stroke-width="1"
+                            strokeWidth="1"
                             opacity="0.43"
                           >
                             <circle cx="20" cy="20" r="20" stroke="none" />
@@ -174,7 +174,7 @@ const Education = ({ setCurrentTab, profileList }) => {
                           stroke="#fff"
                           stroke-linecap="round"
                           stroke-linejoin="round"
-                          stroke-width="4"
+                          strokeWidth="4"
                           fill-rule="evenodd"
                         />
                       </g>

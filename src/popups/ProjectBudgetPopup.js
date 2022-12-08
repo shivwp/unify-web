@@ -40,7 +40,7 @@ const ProjectBudgetPopup = ({ open, onCloseModal, setValues, values }) => {
         <Row className="mt-3">
           <Col md={5} sm={6}>
             <Form.Label className="form_card_label">
-              <div className="select_card subscription_box_r pnew_bud">
+              <div className="select_card subscription_box_popup pnew_bud">
                 <div className="sub_radio">
                   <Form.Check
                     type="radio"
@@ -71,7 +71,7 @@ const ProjectBudgetPopup = ({ open, onCloseModal, setValues, values }) => {
           </Col>
           <Col md={5} sm={6}>
             <Form.Label className="form_card_label">
-              <div className="select_card subscription_box_r pnew_bud">
+              <div className="select_card subscription_box_popup pnew_bud">
                 <div className="sub_radio">
                   <Form.Check
                     type="radio"
@@ -153,7 +153,7 @@ const ProjectBudgetPopup = ({ open, onCloseModal, setValues, values }) => {
                   />
                 </div>
                 <div className="input_t_lab input_hour lign_tex pl-2">
-                  /hour
+                  Max budget
                 </div>
               </div>
             </div>

@@ -1,10 +1,10 @@
-import ActiveContract from "./components/active-contract";
+import AllProposals from "./components/AllProposals";
 import Layout from "../../Layout/Layout";
 
 const Screen = () => {
   return (
     <Layout>
-      <ActiveContract />
+      <AllProposals />
     </Layout>
   );
 };

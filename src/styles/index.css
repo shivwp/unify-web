@@ -3843,6 +3843,12 @@ body {
   }
 }
 
+@media only screen and (max-width: 768px) {
+  .signupRespError {
+    top: 34px !important;
+  }
+}
+
 @media only screen and (max-width: 640px) {
   .help_swip .swiper-slide-active .acc_bxo_h {
     margin-right: 15px !important;
@@ -3870,6 +3876,9 @@ body {
 
   .sign_form_btn_subm .hovbgblew {
     max-width: 345px !important;
+  }
+  .sign_legal_not {
+    margin-left: 7px !important;
   }
 }
 
@@ -3910,6 +3919,15 @@ body {
 
   .fo_btn_c {
     width: 100% !important;
+  }
+  .signupRespError {
+    top: 34px !important;
+  }
+}
+
+@media only screen and (max-width: 375px) and (min-width: 320px) {
+  .signupRespError {
+    top: 50px !important;
   }
 }
 
@@ -4717,6 +4735,19 @@ body {
   padding: 45px 30px 20px 30px;
   position: relative;
   width: 347px;
+  text-align: left;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+}
+
+.subscription_box_popup {
+  border: 1px solid #6d2ef1;
+  border-radius: 20px;
+  padding: 45px 30px 20px 30px;
+  position: relative;
+  width: 230px;
   text-align: left;
   -webkit-border-radius: 20px;
   -moz-border-radius: 20px;
@@ -7507,7 +7538,7 @@ a {
     font-size: 38px !important;
   }
 }
-@media screen and (max-width: 425px){
+@media screen and (max-width: 425px) {
   .how_it_works .header_img {
     display: none;
   }
@@ -7535,7 +7566,7 @@ a {
     padding: 20px 30px;
   } */
 }
-@media screen and (max-width: 320px){
+@media screen and (max-width: 320px) {
   .how_it_works .award_winning_platform .heading {
     font-size: 20px !important;
   }

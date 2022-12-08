@@ -1,7 +1,21 @@
 import React from "react";
+import { useEffect } from "react";
 import { Col, Row } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
+import { singleProposalDetails } from "../../../../redux/actions/jobActions";
 
 const SingleSubmitedProposal = () => {
+  const dispatch = useDispatch();
+  const singleProposal = useSelector(
+    (state) => state?.job?.singleProposalDetails
+  );
+  const { id } = useParams();
+
+  useEffect(() => {
+    dispatch(singleProposalDetails(id, "submit"));
+  }, [id]);
+
   return (
     <>
       {" "}
@@ -259,7 +273,7 @@ const SingleSubmitedProposal = () => {
                           transform="translate(1.023 0.504)"
                           fill="#ff88fe"
                           stroke="#ff88fe"
-                          stroke-width="2"
+                          strokeWidth="2"
                         />
                       </svg>
                     </span>
@@ -274,7 +288,7 @@ const SingleSubmitedProposal = () => {
                           transform="translate(1.023 0.504)"
                           fill="#ff88fe"
                           stroke="#ff88fe"
-                          stroke-width="2"
+                          strokeWidth="2"
                         />
                       </svg>
                     </span>
@@ -289,7 +303,7 @@ const SingleSubmitedProposal = () => {
                           transform="translate(1.023 0.504)"
                           fill="#ff88fe"
                           stroke="#ff88fe"
-                          stroke-width="2"
+                          strokeWidth="2"
                         />
                       </svg>
                     </span>
@@ -304,7 +318,7 @@ const SingleSubmitedProposal = () => {
                           transform="translate(1.023 0.504)"
                           fill="#ff88fe"
                           stroke="#ff88fe"
-                          stroke-width="2"
+                          strokeWidth="2"
                         />
                       </svg>
                     </span>
@@ -319,7 +333,7 @@ const SingleSubmitedProposal = () => {
                           transform="translate(1.023 0.504)"
                           fill="none"
                           stroke="#ff88fe"
-                          stroke-width="2"
+                          strokeWidth="2"
                         />
                       </svg>
                     </span>

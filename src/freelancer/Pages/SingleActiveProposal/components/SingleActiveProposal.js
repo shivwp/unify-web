@@ -1,7 +1,20 @@
 import React from "react";
+import { useEffect } from "react";
 import { Col, Row } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
+import { singleProposalDetails } from "../../../../redux/actions/jobActions";
 
 const SingleActiveProposal = () => {
+  const dispatch = useDispatch();
+  const singleProposal = useSelector(
+    (state) => state?.job?.singleProposalDetails
+  );
+  const { id } = useParams();
+
+  useEffect(() => {
+    dispatch(singleProposalDetails(id, "active"));
+  }, [id]);
   return (
     <>
       <div className="single_active_proposal container">
@@ -376,7 +389,7 @@ const SingleActiveProposal = () => {
                           transform="translate(1.023 0.504)"
                           fill="#ff88fe"
                           stroke="#ff88fe"
-                          stroke-width="2"
+                          strokeWidth="2"
                         />
                       </svg>
                     </span>
@@ -391,7 +404,7 @@ const SingleActiveProposal = () => {
                           transform="translate(1.023 0.504)"
                           fill="#ff88fe"
                           stroke="#ff88fe"
-                          stroke-width="2"
+                          strokeWidth="2"
                         />
                       </svg>
                     </span>
@@ -406,7 +419,7 @@ const SingleActiveProposal = () => {
                           transform="translate(1.023 0.504)"
                           fill="#ff88fe"
                           stroke="#ff88fe"
-                          stroke-width="2"
+                          strokeWidth="2"
                         />
                       </svg>
                     </span>
@@ -421,7 +434,7 @@ const SingleActiveProposal = () => {
                           transform="translate(1.023 0.504)"
                           fill="#ff88fe"
                           stroke="#ff88fe"
-                          stroke-width="2"
+                          strokeWidth="2"
                         />
                       </svg>
                     </span>
@@ -436,7 +449,7 @@ const SingleActiveProposal = () => {
                           transform="translate(1.023 0.504)"
                           fill="none"
                           stroke="#ff88fe"
-                          stroke-width="2"
+                          strokeWidth="2"
                         />
                       </svg>
                     </span>

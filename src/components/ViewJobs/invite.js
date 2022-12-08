@@ -8,11 +8,14 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   getAllInvitedFreelancers,
   getJobBasedFreelancerList,
+  onRemoveSavedTalent,
+  onSavedTalent,
   savedTalentList,
 } from "../../redux/actions/freelancerAction";
 
 const JonComponent = ({ jobId }) => {
   const dispatch = useDispatch();
+  const [searchValue, setSearchValue] = useState("");
   const [inviteTab, setInviteTab] = useState("searchFreelancer");
   const jobBasedFreelancerList = useSelector(
     (state) => state.freelancer.jobBasedFreelancerList
@@ -23,13 +26,23 @@ const JonComponent = ({ jobId }) => {
   const invitedFreelancer = useSelector(
     (state) => state.freelancer.invitedFreelancer
   );
+  const getSavedTalentList = useSelector(
+    (state) => state.freelancer.getSavedTalentList
+  );
+  const savedTalent = useSelector((state) => state.freelancer.savedTalent);
+  const removeSavedTalent = useSelector(
+    (state) => state.freelancer.removeSavedTalent
+  );
+  const savedTalentError = useSelector(
+    (state) => state.freelancer.savedTalentError
+  );
 
   useEffect(() => {
     const data = {
       project_id: jobId,
     };
     dispatch(getAllInvitedFreelancers(data));
-  }, [invitedFreelancer]);
+  }, [invitedFreelancer, savedTalent, removeSavedTalent]);
 
   useEffect(() => {
     const data = {
@@ -39,11 +52,47 @@ const JonComponent = ({ jobId }) => {
       // title: "Aaquib",
     };
     dispatch(getJobBasedFreelancerList(data));
-  }, []);
+  }, [savedTalent, removeSavedTalent]);
 
   useEffect(() => {
     dispatch(savedTalentList());
-  }, []);
+  }, [savedTalent, removeSavedTalent]);
+
+  const onSearchChange = (e) => {
+    setSearchValue(e.target.value);
+  };
+
+  const onSearchSubmit = (e) => {
+    e.preventDefault();
+
+    const data = {
+      project_id: jobId,
+      title: searchValue,
+    };
+    dispatch(getJobBasedFreelancerList(data));
+  };
+
+  const onRemoveSearchData = () => {
+    setSearchValue("");
+    const data = {
+      project_id: jobId,
+    };
+    dispatch(getJobBasedFreelancerList(data));
+  };
+
+  const handleSavedTalent = (id) => {
+    const data = {
+      freelancer_id: id,
+    };
+    dispatch(onSavedTalent(data));
+  };
+
+  const handleRemoveSavedTalent = (id) => {
+    const data = {
+      freelancer_id: id,
+    };
+    dispatch(onRemoveSavedTalent(data));
+  };
 
   return (
     <Row>
@@ -89,13 +138,29 @@ const JonComponent = ({ jobId }) => {
             <Search
               jobBasedFreelancerList={jobBasedFreelancerList?.data}
               jobId={jobId}
+              searchValue={searchValue}
+              onSearchSubmit={onSearchSubmit}
+              onSearchChange={onSearchChange}
+              onRemoveSearchData={onRemoveSearchData}
+              handleSavedTalent={handleSavedTalent}
+              handleRemoveSavedTalent={handleRemoveSavedTalent}
             />
           )}
           {inviteTab === "invited" && (
-            <Invite invitedFreelancerList={invitedFreelancerList} />
+            <Invite
+              invitedFreelancerList={invitedFreelancerList}
+              handleSavedTalent={handleSavedTalent}
+              handleRemoveSavedTalent={handleRemoveSavedTalent}
+            />
           )}
           {inviteTab === "myHires" && <Hires />}
-          {inviteTab === "savedTalent" && <Saved />}
+          {inviteTab === "savedTalent" && (
+            <Saved
+              getSavedTalentList={getSavedTalentList}
+              handleRemoveSavedTalent={handleRemoveSavedTalent}
+              savedTalentError={savedTalentError}
+            />
+          )}
         </div>
       </Col>
     </Row>

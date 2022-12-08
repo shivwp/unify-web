@@ -14,7 +14,6 @@ import {
   SKILLS_DEVELOPER_DATA,
   INSTANT_LOGIN_EMAIL,
   VERIFY_SIGNUP_ERROR,
-  SET_SINGLE_PROPOSAL_DETAILS,
 } from "../types";
 
 const initialState = {};
@@ -96,11 +95,7 @@ const authReducer = (state = initialState, action) => {
         ...state,
         instantLoginEmail: action.payload,
       };
-    case SET_SINGLE_PROPOSAL_DETAILS:
-      return {
-        ...state,
-        singleProposalDetails: action.payload,
-      };
+
     default:
       return state;
   }

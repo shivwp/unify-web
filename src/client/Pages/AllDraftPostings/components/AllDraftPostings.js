@@ -27,7 +27,7 @@ const AllDraftPostings = () => {
               <Link to="/all-job-list">Job Postings</Link>
             </div>
             <div className="post_job_btn_m d-flex align-items-center flex-wrap">
-              <Link to="/gettingstarted">
+              <Link to="/post-your-job">
                 <button className="mt-2 border_blue_wwifth">
                   Post A New Job
                 </button>

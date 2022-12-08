@@ -391,7 +391,7 @@ const Screen = () => {
             <div className="chat_header_buttons chb_fill_gray  flex-wrap">
               <div className="chat_header_buttons flex-wrap">
                 <div className="vpropo_cbrntn">
-                  <Link to="/freelancer/active-contract">
+                  <Link to="/freelancer/AllProposals">
                     <Button variant="" className="btnhovpple">VIEW PROPOSAL</Button>
                   </Link>
                 </div>

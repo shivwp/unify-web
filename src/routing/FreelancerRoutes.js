@@ -17,8 +17,8 @@ const FreelancerQuestion2 = lazy(() => import("../freelancer/Pages/Question1"));
 const FreelancerMyContract = lazy(() =>
   import("../freelancer/Pages/MyContract")
 );
-const FreelancerActiveContract = lazy(() =>
-  import("../freelancer/Pages/ActiveContract")
+const AllProposals = lazy(() =>
+  import("../freelancer/Pages/AllProposals")
 );
 const FreelancerWorkDiary = lazy(() => import("../freelancer/Pages/WorkDiary"));
 const FreelancerGoals = lazy(() => import("../freelancer/Pages/Goals"));
@@ -80,8 +80,8 @@ const SeeTimesheet = lazy(() => import("../freelancer/Pages/SeeTimesheet"));
 const SeeMilestone = lazy(() =>
   import("../freelancer/Pages/MileStone-Earning")
 );
-const FreelancerMessage = lazy(() =>
-  import("../freelancer/Pages/FreelancerMessage")
+const SingleInvitation = lazy(() =>
+  import("../freelancer/Pages/SingleInvitation")
 );
 const ProfileInto = lazy(() => import("../freelancer/Pages/ProfileIntro"));
 const FreelancerSubscription = lazy(() =>
@@ -92,6 +92,9 @@ const SingleActiveProposal = lazy(() =>
 );
 const SingleSubmitedProposal = lazy(() =>
   import("../freelancer/Pages/SingleSubmitedProposal")
+);
+const SingleOfferDetail = lazy(() =>
+  import("../freelancer/Pages/SingleOfferDetail")
 );
 
 const FreelancerRoutes = () => {
@@ -132,8 +135,8 @@ const FreelancerRoutes = () => {
           element={<FreelancerMyContract />}
         />
         <Route
-          path="/freelancer/active-contract"
-          element={<FreelancerActiveContract />}
+          path="/freelancer/AllProposals"
+          element={<AllProposals />}
         />
         <Route
           path="/freelancer/work-diary"
@@ -206,14 +209,14 @@ const FreelancerRoutes = () => {
         <Route path="/freelancer/dashboard" element={<FreelancerDashboard />} />
         <Route
           exact
-          path="/freelancer/message"
-          element={<FreelancerMessage />}
+          path="/freelancer/single-invitation/:id"
+          element={<SingleInvitation />}
         />
-        {/* <Route
+        <Route
           exact
           path="/freelancer/single-offer-detail/:id"
           element={<SingleOfferDetail />}
-        /> */}
+        />
         <Route path="/freelancer/see-milestone" element={<SeeMilestone />} />
         <Route path="/freelancer/see-timesheet" element={<SeeTimesheet />} />
         <Route

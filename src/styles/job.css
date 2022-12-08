@@ -511,6 +511,7 @@
   display: flex;
   align-items: center;
   margin: 13px 0px;
+  cursor: pointer;
 }
 
 .r_in_tab_h h1 {
@@ -708,11 +709,11 @@
 }
 
 .search_input_in input {
-  color: #b7b7b7;
+  color: #000;
   font-family: "Poppins-Bold", "Poppins";
   font-size: 14px;
   background-color: transparent;
-  font-weight: 300;
+  font-weight: 500;
   width: 100%;
   padding: 0px 7px;
   height: 100%;

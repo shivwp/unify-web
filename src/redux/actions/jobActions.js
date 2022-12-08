@@ -166,19 +166,21 @@ export const closeJobReasonList = () => async (dispatch) => {
   } catch (err) {}
 };
 
-export const onCloseJob = (data, onCloseModal) => async (dispatch) => {
-  try {
-    Axios.post("/remove-job", data, config).then((res) => {
-      if (res.data.status) {
-        dispatch({
-          type: SET_REMOVE_JOB_POST,
-          payload: res.data,
-        });
-        onCloseModal();
-      }
-    });
-  } catch (err) {}
-};
+export const onCloseJob =
+  (data, onCloseModal, navigate) => async (dispatch) => {
+    try {
+      Axios.post("/remove-job", data, config).then((res) => {
+        if (res.data.status) {
+          dispatch({
+            type: SET_REMOVE_JOB_POST,
+            payload: res.data,
+          });
+          onCloseModal();
+          navigate("/dashboard");
+        }
+      });
+    } catch (err) {}
+  };
 
 export const editJobPosting = (data, navigate) => async (dispatch) => {
   try {

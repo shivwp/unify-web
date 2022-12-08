@@ -79,7 +79,7 @@ const EditDraft = () => {
       "skills",
       values?.job_skills?.map((item) => item.id)?.toString()
     );
-    formData.append("scop", values?.scope);
+    formData.append("scop", values?.scop);
     formData.append("project_duration", values?.project_duration);
     formData.append("experience_level", values?.experience_level);
     formData.append("budget_type", values?.budget_type);
