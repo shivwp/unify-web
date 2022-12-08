@@ -55,7 +55,7 @@ const Screen = () => {
             </p>
           </div>
         </div>
-        <Row className="justify-content-center">
+        <Row className="justify-content-center mb-2">
           <div className="hi_bx_head3"> Pick which suits you best below. </div>
           <Col lg={3} md={6} sm={10}>
             <label htmlFor="oneBox" className="hire_box_yh new_hbyh">
@@ -149,7 +149,6 @@ const Screen = () => {
             textAlign: "center",
             fontSize: "14px",
             fontWeight: "300",
-            paddingTop: "30px",
           }}
         >
           {errors.goal && errors.goal}

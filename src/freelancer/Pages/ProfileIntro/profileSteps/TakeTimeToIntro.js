@@ -62,7 +62,7 @@ const TakeTimeToIntro = ({ setCurrentTab }) => {
             </div>
             <div className="startIntroText"> Fill Out Manually (15 Min) </div>
           </label>
-          <div className="theme_btns">
+          <div className="theme_btns takeTimeRespBtn">
             <Link to="/freelancer/question2">
               <button className="first_button">Back</button>
             </Link>
