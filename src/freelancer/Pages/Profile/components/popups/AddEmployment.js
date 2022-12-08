@@ -43,15 +43,25 @@ const AddEmployment = ({
 
   const onInputChange = (e) => {
     if (e.target.name == "start_date") {
-      if (values?.start_date == moment(new Date()).format("YYYY-MM-DD")) {
-        setValues({ ...values, currently_working: 1 });
+      if (e.target.value == moment(new Date()).format("YYYY-MM-DD")) {
+        setValues({
+          ...values,
+          [e.target.name]: e.target.value,
+          currently_working: 1,
+        });
         setErrors({ ...errors, currently_working: false });
+        console.log("g");
       } else {
         setValues({ ...values, [e.target.name]: e.target.value });
         setErrors({ ...errors, [e.target.name]: false });
+        console.log("ee");
       }
     } else if (e.target.name == "currently_working") {
-      setValues({ ...values, [e.target.name]: e.target.checked ? 1 : 0 });
+      setValues({
+        ...values,
+        [e.target.name]: e.target.checked ? 1 : 0,
+        end_date: null,
+      });
       setErrors({ ...errors, [e.target.name]: false });
     } else {
       setValues({ ...values, [e.target.name]: e.target.value });
@@ -92,7 +102,7 @@ const AddEmployment = ({
     } else if (/^[0-9]\d*$/.test(values?.city)) {
       errorsObject.city = "please input a valid location ";
       errorExist = true;
-    } 
+    }
     // else if (/\s/g.test(values?.city)) {
     //   errorsObject.city = "Field is required";
     //   errorExist = true;
@@ -123,7 +133,7 @@ const AddEmployment = ({
     } else if (/^[0-9]\d*$/.test(values?.subject)) {
       errorsObject.subject = "please input a valid title ";
       errorExist = true;
-    } 
+    }
     // else if (/\s/g.test(values?.subject)) {
     //   errorsObject.subject = "Field is required";
     //   errorExist = true;

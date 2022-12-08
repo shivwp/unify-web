@@ -179,7 +179,7 @@ const HourlyRate = ({ setCurrentTab, profileList }) => {
               </button>
               <button
                 className="second_button"
-                disabled={!values?.hours_price}
+                disabled={!values?.hours_price || values?.hours_price == 0}
                 onClick={onSave}
               >
                 Next
