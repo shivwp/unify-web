@@ -121,8 +121,8 @@ const Screen = () => {
           <span
             style={{
               color: "red",
-              textAlign: "center",
               fontSize: "14px",
+              width:"74%",
               fontWeight: "300",
             }}
           >

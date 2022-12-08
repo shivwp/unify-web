@@ -361,12 +361,18 @@
     line-height: 32px;
   }
 }
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 425px) and (min-width: 320px) {
   .popup_form_element {
     display: flex;
     flex-direction: column;
     margin-top: 20px;
     width: 46%;
+  }
+  .popup_form_element {
+    width: 100%;
+  }
+  .whatdoyoudo .heading {
+    font-size: 20px !important;
   }
 }
 

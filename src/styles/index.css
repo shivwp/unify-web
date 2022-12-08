@@ -6762,6 +6762,59 @@ a {
     margin-bottom: 20px;
   }
 }
+@media only screen and (max-width: 425px) {
+  .takeTimeRespBtn {
+    display: flex;
+    padding: 40px 0;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .startIntroFillOut {
+    display: flex;
+    margin: 27px auto 0 auto !important;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+ }
+ .startIntroBox .eduUniResp {
+  font-size: 19px;
+  text-align: start;
+  }
+  .startIntroIn .eduRespHead {
+    /* line-height: 20px ; */
+    font-size: 26px;
+  }
+  .eduSubHeaderResp {
+    line-height: 24px;
+    font-size: 14px;
+    text-align: center;
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  .container_border .eduResp {
+    padding: 12px;
+  }
+  .startIntroBox .eduUniResp {
+    font-size: 16px;
+    text-align: start;
+  }
+  .startIntroIn .eduRespHead {
+    /* line-height: 20px ; */
+    font-size: 20px;
+  }
+}
+
+@media only screen and (max-width: 320px) {
+  .container_border .eduResp {
+    padding: 2px;
+  }
+  .startIntroIn .eduRespHead {
+    line-height: 20px ;
+    font-size: 18px;
+  }
+}
 
 .theme_btns .first_button {
   color: #6d2ef1;
@@ -6794,9 +6847,15 @@ a {
 }
 
 @media only screen and (max-width: 320px) {
+  .container_border .eduResp {
+    padding: 14px;
+  }
+  .startIntroIn {
+    padding: 14px;
+  }
   .startIntroIn h5 {
     text-align: center;
-    font-size: 18px;
+    font-size: 15px;
   }
   .startIntroTwoP {
     text-align: center;
@@ -6811,6 +6870,13 @@ a {
     font: normal normal 500 14px/27px Poppins;
     font-weight: 700;
   }
+  .startIntroFillOut {
+    display: flex;
+    margin: 27px auto 0 auto !important;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+ }
 }
 
 .startIntroP {

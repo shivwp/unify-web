@@ -22,24 +22,23 @@ const Education = ({ setCurrentTab, profileList }) => {
     <>
       <div className="container">
         <div className="container_border">
-          <div className="startIntroIn">
-            <h5 className="startIntroTwoH5">
+          <div className="startIntroIn eduResp">
+            <h5 className="startIntroTwoH5 eduRespHead">
               We want to know, what you know...
             </h5>
-            <p className="startIntroTwoP">
+            <p className="startIntroTwoP eduSubHeaderResp">
               Do you have any educational qualifications? Or professional
               certifications? Add a copy of them here. It'll help you stand out.
             </p>
             <Row>
               {profileList?.map((item, key) => (
-                <Col md={4} lg={3} className="startIntroDe" key={key}>
-                  <div className="startIntroBox">
+                <Col md={6} lg={4} xl={3} className="startIntroDe" key={key}>
+                  <div className="startIntroBox ">
                     <div>
-                      <h5 className="startIntroSkil">{item.school}</h5>
+                      <h5 className="startIntroSkil eduUniResp">{item.school}</h5>
                       <p className="startIntroTwoDate">
-                        {" "}
                         {item.degree}, {item.area_study}
-                        {item.start_year}-{item.end_year}{" "}
+                        {item.start_year}-{item.end_year}
                       </p>
                     </div>
                     <div className="startIntroTwoIcon">
@@ -131,8 +130,9 @@ const Education = ({ setCurrentTab, profileList }) => {
                 </Col>
               ))}
               <Col
-                md={4}
-                lg={3}
+                md={6}
+                lg={4}
+                xl={3}
                 className="startIntroDe"
                 onClick={() => {
                   Setpopup(
