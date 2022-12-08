@@ -35,7 +35,7 @@ const ReasonsList = ({ jobId, data, setDropdownOpen }) => {
   };
   return (
     <>
-      <div className="ddown_psr ps-absolute">
+      <div className="ddown_psr dislikeJobRreasonsList ps-absolute">
         <div className="ddown_mcotrct psearch-pnpou">
           {data?.map((item) => (
             <div
@@ -92,6 +92,12 @@ const ProjectSearch = ({ filters }) => {
     dispatch(removeSaveJob({ job_id: id }));
   };
 
+  $(document).mouseup(function (e) {
+    if ($(e.target).closest(".dislikeJobRreasonsList").length === 0) {
+      setDropdownOpen(false);
+    }
+  });
+
   return (
     <>
       {jobsList?.map((item, index) => (
@@ -114,7 +120,7 @@ const ProjectSearch = ({ filters }) => {
                 ))}
               </div>
               <div className="job_d_par">
-                <p>{item?.description}</p>
+                <p style={{ wordBreak: "break-word" }}>{item?.description}</p>
               </div>
             </Col>
             <Col lg={3}>
@@ -332,7 +338,7 @@ const ProjectSaved = () => {
                 ))}
               </div>
               <div className="job_d_par">
-                <p>{item.description}</p>
+                <p style={{ wordBreak: "break-word" }}>{item.description}</p>
               </div>
             </Col>
             <Col lg={3}>

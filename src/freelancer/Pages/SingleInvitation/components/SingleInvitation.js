@@ -8,14 +8,23 @@ import { singleProposalDetails } from "../../../../redux/actions/jobActions";
 
 const SingleInvitation = () => {
   const dispatch = useDispatch();
-  const singleProposal = useSelector(
-    (state) => state?.job?.singleProposalDetails
+  const client_data = useSelector(
+    (state) => state?.job?.singleProposalDetails?.client_data
+  );
+  const project_data = useSelector(
+    (state) => state?.job?.singleProposalDetails?.project_data
+  );
+  const proposal_data = useSelector(
+    (state) => state?.job?.singleProposalDetails?.proposal_data
   );
   const { id } = useParams();
+
+  console.log(client_data);
 
   useEffect(() => {
     dispatch(singleProposalDetails(id, "invite"));
   }, [id]);
+
   return (
     <Container>
       <div className="job_haed_m">Job Details</div>
@@ -24,10 +33,12 @@ const SingleInvitation = () => {
           <div className="box_vs_m mt-0">
             <div className="svs_b_bot">
               <div className="d-flex justify-content-between">
-                <div className="bvs_main_head">UI/UX Design</div>
-                <div className="bvs_m_post_time">Posted 29 minutes ago</div>
+                <div className="bvs_main_head">{project_data?.name}</div>
+                <div className="bvs_m_post_time">
+                  Posted {project_data?.posted_date}
+                </div>
               </div>
-              <div className="world_wide_t">
+              {/* <div className="world_wide_t">
                 <span>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -48,15 +59,10 @@ const SingleInvitation = () => {
                   </svg>
                 </span>
                 Worldwide
-              </div>
+              </div> */}
             </div>
             <div className="svs_b_bot">
-              <div className="svs_para">
-                It is a long established fact that a reader will be distracted
-                by the readable content of a page when looking at its layout.
-                The point of using Lorem Ipsum is that it has a more-or-less
-                normal distribution of letters.
-              </div>
+              <div className="svs_para">{project_data?.description}</div>
             </div>
             <div className="svs_b_bot">
               <div className="input_t_lab p-0">Project Type</div>
@@ -66,10 +72,9 @@ const SingleInvitation = () => {
             <div className="b_bot_inp pt-0">
               <div className="input_t_lab">Skills</div>
               <div className="slide_btnss">
-                <Button variant="">Mobile App Design</Button>
-                <Button variant="">User Experience Design</Button>
-                <Button variant="">User Interface Design</Button>
-                <Button variant="">Graphic Design</Button>
+                {project_data?.job_skills?.map((item) => (
+                  <Button variant="">{item.name}</Button>
+                ))}
               </div>
             </div>
             <div className="b_bot_inp pt-0">
@@ -77,22 +82,17 @@ const SingleInvitation = () => {
               <ul className="activite_ul">
                 <li>
                   <div className="au_name">Proposals</div> :{" "}
-                  <span>Less than 5</span>
+                  <span>{project_data?.proposal_count}</span>
                 </li>
                 <li>
-                  <div className="au_name">interviewing</div> : <span>0</span>
+                  <div className="au_name">interviewing</div> :{" "}
+                  <span>{project_data?.interview}</span>
                 </li>
               </ul>
             </div>
             <div className="b_bot_inp pt-0">
               <div className="input_t_lab">Original Message From Client</div>
-              <div className="new_para_m">
-                Hello, i' like to invite you to take a look at the job I've
-                posted. It is a long established fact that a reader will be
-                distracted by the readable content of a page when looking at its
-                layout. The point of using Lorem Ipsum is that it has a
-                more-or-less normal distribution of letters. John D.
-              </div>
+              <div className="new_para_m">{proposal_data?.description}</div>
             </div>
           </div>
         </Col>
@@ -132,7 +132,10 @@ const SingleInvitation = () => {
                     <h1>About the client</h1>
                   </div>
                   <div className="p_not_verif">
-                    payment method not varified
+                    {client_data?.payment_verified
+                      ? "Payment Varified"
+                      : "Payment method not varified"}
+
                     <span className="no_verify_icon">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -168,13 +171,13 @@ const SingleInvitation = () => {
               </div>
               <div className="cline_sm_area_i">
                 <div className="csai_name f_l_b">Location</div>
-                <div className="csai_name">Czech Republic</div>
-                <div className="csai_t">10:30 am</div>
+                <div className="csai_name">{client_data?.country}</div>
+                <div className="csai_t">{client_data?.local_time}</div>
               </div>
               <div className="cline_sm_area_i">
                 <div className="csai_name f_l_b">History</div>
                 <div className="csai_t pt-2">
-                  20 to 50 proposals
+                  {project_data?.proposal_count} proposals
                   <span className="no_verify_icon">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -188,12 +191,20 @@ const SingleInvitation = () => {
                     </svg>
                   </span>
                 </div>
-                <div className="csai_t">6 interviews</div>
-                <div className="csai_t">4 job posted</div>
-                <div className="csai_t">4 open jobs</div>
+                <div className="csai_t">
+                  {project_data?.interview} interviews
+                </div>
+                <div className="csai_t">
+                  {client_data?.job_posted} job posted
+                </div>
+                <div className="csai_t">
+                  {project_data?.open_jobs} open jobs
+                </div>
               </div>
             </div>
-            <div className="csai_t">Member since: Nov 22, 2021</div>
+            <div className="csai_t">
+              Member since: {client_data?.member_since}
+            </div>
           </div>
         </Col>
       </Row>

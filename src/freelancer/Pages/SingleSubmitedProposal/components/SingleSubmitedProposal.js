@@ -7,14 +7,25 @@ import { singleProposalDetails } from "../../../../redux/actions/jobActions";
 
 const SingleSubmitedProposal = () => {
   const dispatch = useDispatch();
-  const singleProposal = useSelector(
-    (state) => state?.job?.singleProposalDetails
+  const project_data = useSelector(
+    (state) => state?.job?.singleProposalDetails?.project_data
+  );
+  const milestonedata = useSelector(
+    (state) => state?.job?.singleProposalDetails?.milestonedata
+  );
+  const client_data = useSelector(
+    (state) => state?.job?.singleProposalDetails?.client_data
+  );
+  const proposal_data = useSelector(
+    (state) => state?.job?.singleProposalDetails?.proposal_data
   );
   const { id } = useParams();
 
   useEffect(() => {
     dispatch(singleProposalDetails(id, "submit"));
   }, [id]);
+
+  console.log(project_data);
 
   return (
     <>
@@ -29,20 +40,15 @@ const SingleSubmitedProposal = () => {
                   <Col lg={8} md={8}>
                     <div className="left">
                       <div className="left_heading">Job Details</div>
-                      <div className="left_title">
-                        Graphic Design Logo design for companies and the brand
-                      </div>
+                      <div className="left_title">{project_data?.name}</div>
                       <div className="categories">
-                        <span>Graphic Design</span>
-                        <div className="date">Posted Aug 3, 2022</div>
+                        <span>{project_data?.categories}</span>
+                        <div className="date">{project_data?.posted_date}</div>
                       </div>
                       <div className="description">
-                        Logo design for companies and the brand Choosing the
-                        idea of his design for the company's name and content
-                        Message the project supervisor on telegram
-                        @Michellewilliams460
+                        {project_data?.description}
                       </div>
-                      <div className="view_more_posting">View job posting</div>
+                      {/* <div className="view_more_posting">View job posting</div> */}
                     </div>
                   </Col>
                   <Col lg={4} md={4}>
@@ -90,7 +96,7 @@ const SingleSubmitedProposal = () => {
                               </g>
                             </svg>
                           </span>
-                          <span>Expert</span>
+                          <span>{project_data?.experience_level}</span>
                         </div>
                         <div className="desc">Exprience Level</div>
                       </div>
@@ -125,9 +131,9 @@ const SingleSubmitedProposal = () => {
                               </g>
                             </svg>
                           </span>
-                          <span>Propose your terms</span>
+                          <span>{project_data?.budget_type}</span>
                         </div>
-                        <div className="desc">Fixed Price</div>
+                        <div className="desc">Propose your terms</div>
                       </div>
                       <div className="right_item">
                         <div className="head">
@@ -174,9 +180,9 @@ const SingleSubmitedProposal = () => {
                               </g>
                             </svg>
                           </span>
-                          <span>Less than a month</span>
+                          <span>{project_data?.project_duration}</span>
                         </div>
-                        <div className="desc">Project Length</div>
+                        <div className="desc">Project Duration </div>
                       </div>
                     </div>
                   </Col>
@@ -185,20 +191,26 @@ const SingleSubmitedProposal = () => {
               <div className="skills">
                 <div className="head">Skills and expertise</div>
                 <div className="skill_list">
-                  <span>Backend Developer</span>
-                  <span>Designer</span>
-                  <span>Support Agent</span>
-                  <span>IOS Developer</span>
+                  {project_data?.job_skills?.map((item) => (
+                    <span>{item.name}</span>
+                  ))}
                 </div>
               </div>
               <div className="terms">
                 <div className="head">
                   <div className="headi">Your proposed terms</div>
-                  <div className="budget">Client's budget: $40.00</div>
+                  <div className="budget">
+                    Client's budget:{" "}
+                    {project_data?.budget_type == "fixed"
+                      ? `$${project_data?.price}`
+                      : project_data?.budget_type == "hourly"
+                      ? ` $${project_data?.price} -  $${project_data?.min_price}`
+                      : null}
+                  </div>
                 </div>
                 <div className="how_be_paid">
                   <div className="head">How do you want to be paid?</div>
-                  <div className="desc">By Project</div>
+                  <div className="desc">{milestonedata?.length == 0 ?'By Project': 'By milestone'}</div>
                 </div>
                 <div className="price_project">
                   <div className="head">Total price of project</div>

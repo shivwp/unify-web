@@ -406,7 +406,7 @@ const Projectdetail = () => {
                 <h3>Description</h3>
               </div>
               <div className="bl_apra pd_n_blpara">
-                <p>{singleJobDetails?.description}</p>
+                <p style={{wordBreak:'break-word'}}>{singleJobDetails?.description}</p>
               </div>
               <div className="btn_foot_sec d-block">
                 <br />
