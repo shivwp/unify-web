@@ -18,7 +18,9 @@ const HowItWorks = () => {
     <>
       <div className="how_it_works ">
         {/* -------------------- header start ------------------------------------------------------------------*/}
-        <div className="header">
+        
+        <div className="container-fluid"  style={{backgroundColor: '#6d2ef1'}}>
+        <div className="header container" style={{backgroundColor: 'unset'}} >
           <div className="header_left">
             <h1 className="heading">Learn... Whilst you Eran $$</h1>
             <p className="desc">
@@ -40,6 +42,7 @@ const HowItWorks = () => {
               <img src="/assets/selfie_hiw.png" alt="" />
             </div>
           </div>
+        </div>
         </div>
         {/* header end */}
         {/* -------------------  section 1st start  ------------------------------------------------------------------*/}
