@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Navbar } from "react-bootstrap";
+import { Button, Container, Navbar } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import logo from "../../../assets/logo.svg";
 
@@ -19,6 +19,15 @@ const ProfileIntroNavbar = () => {
               </Navbar.Brand>
             </Link>
           </div>
+          <Button
+            onClick={() => {
+              localStorage.clear();
+              window.location.reload();
+            }}
+            className="btn btn-primary"
+          >
+            Log out
+          </Button>
         </div>
       </Container>
     </Navbar>

@@ -12,14 +12,10 @@ const DirectContract = lazy(() => import("../freelancer/Pages/DirectContract"));
 const FreelancerAllContracts = lazy(() =>
   import("../freelancer/Pages/AllContract")
 );
-const FreelancerQuestion1 = lazy(() => import("../freelancer/Pages/Question"));
-const FreelancerQuestion2 = lazy(() => import("../freelancer/Pages/Question1"));
 const FreelancerMyContract = lazy(() =>
   import("../freelancer/Pages/MyContract")
 );
-const AllProposals = lazy(() =>
-  import("../freelancer/Pages/AllProposals")
-);
+const AllProposals = lazy(() => import("../freelancer/Pages/AllProposals"));
 const FreelancerWorkDiary = lazy(() => import("../freelancer/Pages/WorkDiary"));
 const FreelancerGoals = lazy(() => import("../freelancer/Pages/Goals"));
 const FreelancerTransaction = lazy(() =>
@@ -128,16 +124,11 @@ const FreelancerRoutes = () => {
           path="/freelancer/all-contracts"
           element={<FreelancerAllContracts />}
         />
-        <Route path="/freelancer/question1" element={<FreelancerQuestion1 />} />
-        <Route path="/freelancer/question2" element={<FreelancerQuestion2 />} />
         <Route
           path="/freelancer/my-contract"
           element={<FreelancerMyContract />}
         />
-        <Route
-          path="/freelancer/AllProposals"
-          element={<AllProposals />}
-        />
+        <Route path="/freelancer/AllProposals" element={<AllProposals />} />
         <Route
           path="/freelancer/work-diary"
           element={<FreelancerWorkDiary />}

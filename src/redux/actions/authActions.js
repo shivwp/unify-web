@@ -78,7 +78,7 @@ export const onLogin = (data, navigate, setMessage) => async (dispatch) => {
         if (res.data.data.user.is_profile_complete === true) {
           navigate("/freelancer/dashboard");
         } else {
-          navigate("/freelancer/question1");
+          navigate("/freelancer/profile-intro/question1");
         }
       } else if (res.data.data.user.user_type === "client") {
         if (res.data.data.user.is_profile_complete === true) {
@@ -217,7 +217,7 @@ export const googleSignInSuccess = (data, navigate) => async (dispatch) => {
         if (res.data.data.user.is_profile_complete === true) {
           navigate("/freelancer/dashboard");
         } else {
-          navigate("/freelancer/question1");
+          navigate("/freelancer/profile-intro/question1");
         }
       } else if (res.data.data.user.user_type === "client") {
         if (res.data.data.user.is_profile_complete === true) {
@@ -277,7 +277,7 @@ export const appleSignInSuccess = (data, navigate) => async (dispatch) => {
         if (res.data.data.user.is_profile_complete === true) {
           navigate("/freelancer/dashboard");
         } else {
-          navigate("/freelancer/question1");
+          navigate("/freelancer/profile-intro/question1");
         }
       } else if (res.data.data.user.user_type === "client") {
         if (res.data.data.user.is_profile_complete === true) {

@@ -63,31 +63,40 @@ const Screen = () => {
   const onSubmitClientData = (e) => {
     e.preventDefault();
 
+    window.scrollTo({ top: 200, left: 0, behavior: "smooth" });
+
     let errorExist = false;
     let errorsObject = {};
 
     if (
-      values.first_name === "" ||
-      values.first_name === null ||
-      values.first_name === undefined
+      values?.first_name === "" ||
+      values?.first_name === null ||
+      values?.first_name === undefined
     ) {
-      errorsObject.first_name = true;
+      errorsObject.first_name = "Please enter your first name";
+      errorExist = true;
+    } else if (values?.first_name?.length < 2) {
+      errorsObject.first_name = "First name should be 3 characters";
       errorExist = true;
     }
+
     if (
-      values.email === "" ||
-      values.email === null ||
-      values.email === undefined
+      values?.email === "" ||
+      values?.email === null ||
+      values?.email === undefined
     ) {
       errorsObject.email = true;
       errorExist = true;
     }
     if (
-      values.last_name === "" ||
-      values.last_name === null ||
-      values.last_name === undefined
+      values?.last_name === "" ||
+      values?.last_name === null ||
+      values?.last_name === undefined
     ) {
-      errorsObject.last_name = true;
+      errorsObject.last_name = "Last name should be 3 characters";
+      errorExist = true;
+    } else if (values?.last_name?.length < 2) {
+      errorsObject.last_name = "zfgsdfg";
       errorExist = true;
     }
     // if (
@@ -139,14 +148,21 @@ const Screen = () => {
     //   errorExist = true;
     // }
 
-    // if (
-    //   values.company_phone === "" ||
-    //   values.company_phone === null ||
-    //   values.company_phone === undefined
-    // ) {
-    //   errorsObject.company_phone = true;
-    //   errorExist = true;
-    // }
+    if (
+      values?.company_phone === "" ||
+      values?.company_phone === null ||
+      values?.company_phone === undefined
+    ) {
+      errorsObject.company_phone = "Please enter phone number";
+      errorExist = true;
+    } else if (
+      values?.company_phone?.length < 10 ||
+      values?.company_phone?.length > 12
+    ) {
+      errorsObject.company_phone =
+        "The phone must be between 10 and 12 digits.";
+      errorExist = true;
+    }
     // if (
     //   values.vat_id === "" ||
     //   values.vat_id === null ||
@@ -163,30 +179,37 @@ const Screen = () => {
     //   errorsObject.timezone = true;
     //   errorExist = true;
     // }
-    // if (
-    //   values.company_address === "" ||
-    //   values.company_address === null ||
-    //   values.company_address === undefined
-    // ) {
-    //   errorsObject.company_address = true;
-    //   errorExist = true;
-    // }
-    // if (
-    //   values.zip_code === "" ||
-    //   values.zip_code === null ||
-    //   values.zip_code === undefined
-    // ) {
-    //   errorsObject.zip_code = true;
-    //   errorExist = true;
-    // }
-    // if (
-    //   values.city === "" ||
-    //   values.city === null ||
-    //   values.city === undefined
-    // ) {
-    //   errorsObject.city = true;
-    //   errorExist = true;
-    // }
+    if (
+      values?.company_address === "" ||
+      values?.company_address === null ||
+      values?.company_address === undefined
+    ) {
+      errorsObject.company_address = true;
+      errorExist = true;
+    }
+    if (
+      values?.zip_code === "" ||
+      values?.zip_code === null ||
+      values?.zip_code === undefined
+    ) {
+      errorsObject.zip_code = "Please enter zip code";
+      errorExist = true;
+    } else if (values?.zip_code?.length < 6 || values?.zip_code?.length > 6) {
+      errorsObject.zip_code = "please input a valid zip code";
+      errorExist = true;
+    }
+
+    if (
+      values?.city === "" ||
+      values?.city === null ||
+      values?.city === undefined
+    ) {
+      errorsObject.city = "Please enter your city";
+      errorExist = true;
+    } else if (/^[0-9]\d*$/.test(values?.city)) {
+      errorsObject.city = "please input a valid city ";
+      errorExist = true;
+    }
     // if (
     //   values.country === "" ||
     //   values.country === null ||

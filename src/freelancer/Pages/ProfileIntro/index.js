@@ -7,7 +7,6 @@ const Screen = () => {
     <>
       <ProfileIntroNavbar />
       <ProfileIntro />
-      <Footer />
     </>
   );
 };

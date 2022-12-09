@@ -133,7 +133,7 @@ const Screen = ({
                         )}
 
                         <div className="ts_btn attach_f_btn wid_30_in d-flex flex-wrap">
-                          <Link to="/hire-freelancer">
+                          <Link to={`/hire-freelancer/${jobId}/${data.id}`}>
                             <button className="transp_fil_btn mt-2 font-weight-500">
                               Hire
                             </button>

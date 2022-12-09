@@ -14,6 +14,7 @@ import {
   SET_ARCHIEVED_LIST,
   SET_SAVE_PROPOSAL_IN_ARCHIEVED,
   SET_REMOVE_PROPOSAL_IN_ARCHIEVED,
+  SET_SINGLE_FREELANCER,
 } from "../types";
 
 const config = {
@@ -217,6 +218,21 @@ export const removeProposalArchived = (data) => async (dispatch) => {
         dispatch({
           type: SET_REMOVE_PROPOSAL_IN_ARCHIEVED,
           payload: res.data,
+        });
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+export const getSingleFreelancer = (freelancer_id) => async (dispatch) => {
+  await Axios.get(`/single-freelancer/${freelancer_id}`, config)
+    .then((res) => {
+      if (res.data.status) {
+        dispatch({
+          type: SET_SINGLE_FREELANCER,
+          payload: res.data.data,
         });
       }
     })

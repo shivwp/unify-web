@@ -1,12 +1,11 @@
+import React, { useState } from "react";
 import Container from "react-bootstrap/Container";
 import { Col, Row } from "react-bootstrap";
 import Title from "../../../../components/title";
 import { Link, useNavigate } from "react-router-dom";
 import Form from "react-bootstrap/Form";
-import { useState } from "react";
 
-const Screen = () => {
-  Title(" | Question 1");
+const QuestionOne = () => {
   const history = useNavigate();
   const [values, setValues] = useState({});
   const [errors, setErrors] = useState({});
@@ -34,13 +33,13 @@ const Screen = () => {
       return false;
     }
 
-    history("/freelancer/question2");
+    history("/freelancer/profile-intro/question2");
   };
 
   return (
     <>
-      <Container>
-        <div className="mt-5">
+      <Container style={{ padding: "50px 0px" }}>
+        <div>
           <div className="questopn_h1">
             <h1>Help us help you...</h1>
           </div>
@@ -122,7 +121,7 @@ const Screen = () => {
             style={{
               color: "red",
               fontSize: "14px",
-              width:"74%",
+              width: "74%",
               fontWeight: "300",
             }}
           >
@@ -133,7 +132,7 @@ const Screen = () => {
             <div onClick={nextTab} className="get-startedQuestion">
               Let's go!
             </div>
-            <Link to="/freelancer/question2">
+            <Link to="/freelancer/profile-intro/question2">
               <div
                 className="fo_btn_c next_b_btn_c"
                 style={{
@@ -151,4 +150,5 @@ const Screen = () => {
     </>
   );
 };
-export default Screen;
+
+export default QuestionOne;

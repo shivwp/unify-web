@@ -12,11 +12,13 @@ import ChooseLangauge from "../profileSteps/ChooseLanguage";
 import { useDispatch, useSelector } from "react-redux";
 import { getFreelancerProfile } from "../../../../redux/actions/profileAction";
 import { useParams } from "react-router-dom";
+import QuestionOne from "../profileSteps/QuestionOne";
+import QuestionTwo from "../profileSteps/QuestionTwo";
 
 const ProfileIntro = () => {
   const { tabName } = useParams();
   const dispatch = useDispatch();
-  const [currentTab, setCurrentTab] = useState("takeTimeToIntro");
+  const [currentTab, setCurrentTab] = useState("question2");
   const freelancerProfileList = useSelector(
     (state) => state.profile.freelancerProfileList
   );
@@ -58,7 +60,13 @@ const ProfileIntro = () => {
   ]);
 
   return (
-    <div style={{minHeight: 450}}>
+    <div style={{ minHeight: 450 }}>
+      {currentTab === "question1" && (
+        <QuestionOne setCurrentTab={setCurrentTab} />
+      )}
+      {currentTab === "question2" && (
+        <QuestionTwo setCurrentTab={setCurrentTab} />
+      )}
       {currentTab === "takeTimeToIntro" && (
         <TakeTimeToIntro setCurrentTab={setCurrentTab} />
       )}

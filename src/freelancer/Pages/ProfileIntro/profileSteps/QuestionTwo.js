@@ -1,13 +1,12 @@
+import React from "react";
 import Container from "react-bootstrap/Container";
 import { Col, Row } from "react-bootstrap";
-import Title from "../../../../components/title";
 import { Link, useNavigate } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import { useState } from "react";
 
-const Screen = () => {
-  Title(" | Question 2");
-  const history = useNavigate();
+const QuestionTwo = ({ setCurrentTab }) => {
+  const navigate = useNavigate();
   const [values, setValues] = useState({});
   const [errors, setErrors] = useState({});
 
@@ -34,13 +33,13 @@ const Screen = () => {
       return false;
     }
 
-    history("/freelancer/profile-intro/takeTimeToIntro");
+    navigate("/freelancer/profile-intro/takeTimeToIntro");
   };
 
   return (
     <>
-      <Container>
-        <div className="mt-5">
+      <Container style={{ padding: "50px 0px" }}>
+        <div>
           <div className="questopn_h2">
             <h1>
               Next up: Tell us your hopes, your dreams, your aspirations and
@@ -50,8 +49,8 @@ const Screen = () => {
           <div className="question_p">
             <p>
               Unify is a place for everyone. We want to understand your
-              motivations so we can help you get the best out of your
-              experience with us.
+              motivations so we can help you get the best out of your experience
+              with us.
             </p>
           </div>
         </div>
@@ -156,9 +155,15 @@ const Screen = () => {
 
         <div className="theme_btnsQuestionTwo">
           <div className="questionTwobtn">
-            <Link to="/freelancer/question1">
-              <button className="first_button">Back</button>
-            </Link>
+            <button
+              className="first_button"
+              onClick={() => {
+                setCurrentTab("question1");
+                navigate(`/freelancer/profile-intro/question1`);
+              }}
+            >
+              Back
+            </button>
             <button className="second_button" onClick={nextTab}>
               Next
             </button>
@@ -172,7 +177,7 @@ const Screen = () => {
                 fontSize: "14px",
               }}
             >
-              Skip For Now 	&#62;&#62;
+              Skip For Now &#62;&#62;
             </div>
           </Link>
         </div>
@@ -180,4 +185,5 @@ const Screen = () => {
     </>
   );
 };
-export default Screen;
+
+export default QuestionTwo;

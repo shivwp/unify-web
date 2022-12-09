@@ -14,7 +14,7 @@ const PublicRoutes = () => {
               {userDetails?.is_profile_complete === true ? (
                 <Navigate to="/freelancer/dashboard" />
               ) : (
-                <Navigate to="/freelancer/question1" />
+                <Navigate to="/freelancer/profile-intro/question1" />
               )}
             </>
           ) : userDetails?.user_type === "client" ? (

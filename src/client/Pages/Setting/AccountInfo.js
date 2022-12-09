@@ -53,7 +53,7 @@ const AccountInfo = ({
                   placeholder="John"
                 />
                 <span className="signup-error">
-                  {errors.first_name && "Please enter your first name"}
+                  {errors.first_name && errors.first_name}
                 </span>
               </Form.Group>
               <Form.Group className="inp_fields">
@@ -83,7 +83,7 @@ const AccountInfo = ({
                   placeholder="Doe"
                 />
                 <span className="signup-error">
-                  {errors.last_name && "Please enter your last name"}
+                  {errors.last_name && errors.last_name}
                 </span>
               </Form.Group>
             </Col>
@@ -284,9 +284,9 @@ const AccountInfo = ({
                   onChange={(e) => onInputChange(e)}
                   placeholder="City"
                 />
-                {/* <span className="signup-error">
-                  {errors.city && "Please enter city"}
-                </span> */}
+                <span className="signup-error">
+                  {errors.city && errors.city}
+                </span>
               </div>
             </Col>
             <Col lg-6 sm-12 md-12>
@@ -299,9 +299,9 @@ const AccountInfo = ({
                   onChange={(e) => onInputChange(e)}
                   placeholder=""
                 />
-                {/* <span className="signup-error">
-                  {errors.company_phone && "Please enter company phone number"}
-                </span> */}
+                <span className="signup-error">
+                  {errors.company_phone && errors.company_phone}
+                </span>
               </div>
               <div className="inp_fields">
                 <span>Time Zone</span>
@@ -330,22 +330,22 @@ const AccountInfo = ({
                   onChange={(e) => onInputChange(e)}
                   placeholder=""
                 />
-                {/* <span className="signup-error">
+                <span className="signup-error">
                   {errors.company_address && "Please enter company address"}
-                </span> */}
+                </span>
               </div>
               <div className="inp_fields">
                 <span>ZIP</span>
                 <Form.Control
-                  type="text"
+                  type="number"
                   name="zip_code"
                   value={values?.zip_code}
                   onChange={(e) => onInputChange(e)}
                   placeholder="zip code"
                 />
-                {/* <span className="signup-error">
-                  {errors.zip_code && "Please enter zip code"}
-                </span> */}
+                <span className="signup-error">
+                  {errors.zip_code && errors.zip_code}
+                </span>
               </div>
             </Col>
           </Row>

@@ -63,9 +63,15 @@ const TakeTimeToIntro = ({ setCurrentTab }) => {
             <div className="startIntroText"> Fill Out Manually (15 Min) </div>
           </label>
           <div className="theme_btns takeTimeRespBtn">
-            <Link to="/freelancer/question2">
-              <button className="first_button">Back</button>
-            </Link>
+            <button
+              className="first_button"
+              onClick={() => {
+                setCurrentTab("question2");
+                navigate(`/freelancer/profile-intro/question2`);
+              }}
+            >
+              Back
+            </button>
             <button
               className="second_button"
               onClick={() => {

@@ -13,6 +13,7 @@ import {
   SET_ARCHIEVED_LIST,
   SET_SAVE_PROPOSAL_IN_ARCHIEVED,
   SET_REMOVE_PROPOSAL_IN_ARCHIEVED,
+  SET_SINGLE_FREELANCER,
 } from "../types";
 const initialState = {};
 
@@ -87,6 +88,11 @@ const freelancerReducer = (state = initialState, action) => {
       return {
         ...state,
         removeProposalInArchieved: action.payload,
+      };
+    case SET_SINGLE_FREELANCER:
+      return {
+        ...state,
+        singleFreelancer: action.payload,
       };
     default:
       return state;

@@ -1,14 +1,13 @@
-import NavbarHeader from "../components/Layouts/Header/HeaderMain";
-import Footer from "../client/Layout/Footer/Footer";
+import Layout from "../client/Layout/Layout";
 import PageData from "./components/PageData";
 
 const Screen = () => {
   return (
-    <>
-      <NavbarHeader nonavbg={"true"} />
-      <PageData />
-      <Footer />
-    </>
+    <div className="slider_pos nin_vh">
+      <Layout webtype="client">
+        <PageData />
+      </Layout>
+    </div>
   );
 };
 export default Screen;
