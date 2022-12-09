@@ -2,11 +2,10 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { onEditDesignation } from "../../../../redux/actions/profileAction";
-import "./declineInterviewPopup.css";
+import "./WithdrawSubmitProposal.css";
 import {
   declineReasoneList,
-  onDeclineForInterview,
+  onWithdrawSubmitedProposal,
 } from "../../../../redux/actions/jobActions";
 import { useNavigate } from "react-router-dom";
 
@@ -25,7 +24,7 @@ const CloseIcon = () => {
   );
 };
 
-const DeclineInterviewPopup = ({
+const WithdrawProposal = ({
   id,
   popup,
   successPopup,
@@ -50,12 +49,12 @@ const DeclineInterviewPopup = ({
 
   const onSave = () => {
     const data = {
-      invitaion_id: id,
+      proposal_id: id,
       reason: values?.reason,
       description: values?.description,
     };
     dispatch(
-      onDeclineForInterview(
+      onWithdrawSubmitedProposal(
         data,
         popup,
         successPopup,
@@ -70,12 +69,12 @@ const DeclineInterviewPopup = ({
       <div className="bg_wrapper_popup_new">
         <div className="popup_box_bpn profile_nceqoi_popup pb-4">
           <div className="popup_header pb-0">
-            <div className="p_header_hding">Decline</div>
+            <div className="p_header_hding">Withdraw Proposal</div>
             <div className="close_pp_btn" onClick={() => popup()}>
               <CloseIcon />
             </div>
           </div>
-          <div className="popup_body_bpn decline_interview_popup max_height_popucwui">
+          <div className="popup_body_bpn withdraw_proposal_popup max_height_popucwui">
             <div className="inp_container">
               <label htmlFor="reason">Reason</label>
               <select
@@ -117,4 +116,4 @@ const DeclineInterviewPopup = ({
   );
 };
 
-export default DeclineInterviewPopup;
+export default WithdrawProposal;

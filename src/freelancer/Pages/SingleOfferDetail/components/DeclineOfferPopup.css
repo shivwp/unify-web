@@ -1,0 +1,27 @@
+.decline_interview_popup .inp_container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.decline_interview_popup .inp_container label {
+  font-weight: 600;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+.decline_interview_popup .inp_container select {
+  height: 40px;
+  border: 1px solid rgb(207 207 207);
+  width: 100%;
+  outline: none;
+}
+.decline_interview_popup .inp_container textarea {
+  height: 100px;
+  resize: none;
+  border: 1px solid rgb(207 207 207);
+  width: 100%;
+  outline: none;
+}
+.decline_interview_popup .inp_container textarea::placeholder {
+  color: rgb(134, 134, 134);
+}

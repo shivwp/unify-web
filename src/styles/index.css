@@ -6791,10 +6791,10 @@ a {
     align-items: center;
     justify-content: center;
     flex-direction: column;
- }
- .startIntroBox .eduUniResp {
-  font-size: 19px;
-  text-align: start;
+  }
+  .startIntroBox .eduUniResp {
+    font-size: 19px;
+    text-align: start;
   }
   .startIntroIn .eduRespHead {
     /* line-height: 20px ; */
@@ -6808,10 +6808,10 @@ a {
 }
 
 @media only screen and (max-width: 415px) and (min-width: 390) {
-.startIntroIn .langResp {
+  .startIntroIn .langResp {
     text-align: center;
     font-size: 20px !important;
- }
+  }
 }
 
 @media only screen and (max-width: 375px) {
@@ -6836,7 +6836,7 @@ a {
     padding: 2px;
   }
   .startIntroIn .eduRespHead {
-    line-height: 20px ;
+    line-height: 20px;
     font-size: 18px;
   }
 }
@@ -6901,7 +6901,7 @@ a {
     align-items: center;
     justify-content: center;
     flex-direction: column;
- }
+  }
 }
 
 .startIntroP {
@@ -7071,7 +7071,6 @@ a {
     line-height: 35px !important;
   }
   .langResp {
-
   }
 }
 @media only screen and (max-width: 375px) {
@@ -9079,7 +9078,12 @@ input::-webkit-inner-spin-button {
   font-size: 15px;
 }
 .all_proposals_list .proposals_list .titls {
+  max-width: 470px;
   color: #6610f2;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  display: -webkit-box;
+  overflow: hidden;
 }
 .all_proposals_list .proposals_list .titls:hover {
   color: #467af3;
@@ -9153,6 +9157,7 @@ input::-webkit-inner-spin-button {
   font-weight: 400;
   font-size: 14px;
   margin: 20px 0;
+  white-space: pre-line;
 }
 .single_submited_proposal .sep_bdr .job_details .left .view_more_posting {
   color: #000000;
@@ -9295,6 +9300,7 @@ input::-webkit-inner-spin-button {
   font-weight: 400;
   font-size: 14px;
   margin-bottom: 10px;
+  white-space: pre-line;
 }
 .single_submited_proposal .about_client {
   margin-bottom: 10px;
@@ -9579,6 +9585,7 @@ input::-webkit-inner-spin-button {
   font-weight: 400;
   font-size: 14px;
   margin-bottom: 10px;
+  white-space: pre-line;
 }
 .single_active_proposal .about_client {
   margin-bottom: 10px;

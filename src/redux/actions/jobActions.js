@@ -243,7 +243,7 @@ export const declineReasoneList = (type) => async (dispatch) => {
 };
 
 export const onDeclineForInterview =
-  (data, popup, successPopup, setSuccessPopup) => async (dispatch) => {
+  (data, popup, successPopup, setSuccessPopup,afterSuccess) => async (dispatch) => {
     try {
       Axios.post("/invite-decline", data, config).then((res) => {
         popup();
@@ -251,6 +251,23 @@ export const onDeclineForInterview =
           <SuccessPopup
             Popup={() => setSuccessPopup(!successPopup)}
             message="Thank you for your time"
+            afterSuccess={afterSuccess}
+          />
+        );
+      });
+    } catch (err) {}
+  };
+export const onWithdrawSubmitedProposal =
+  (data, popup, successPopup, setSuccessPopup, afterSuccess) =>
+  async (dispatch) => {
+    try {
+      Axios.post("/proposal-withdraw", data, config).then((res) => {
+        popup();
+        setSuccessPopup(
+          <SuccessPopup
+            Popup={() => setSuccessPopup(!successPopup)}
+            message="Thank you for your time"
+            afterSuccess={afterSuccess}
           />
         );
       });

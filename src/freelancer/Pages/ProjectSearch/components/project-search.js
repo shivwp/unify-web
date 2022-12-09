@@ -695,12 +695,14 @@ const Project_Search = () => {
                       type="number"
                       placeholder="0"
                       name="min_price"
+                      onWheel={(e) => e.target.blur(e)}
                       onChange={(e) => handleFilterChange(e)}
                     />
                     <Form.Control
                       type="number"
                       placeholder="1,500"
                       name="max_price"
+                      onWheel={(e) => e.target.blur(e)}
                       onChange={(e) => handleFilterChange(e)}
                     />
                   </div>
@@ -744,7 +746,7 @@ const Project_Search = () => {
                     </Form.Label>
                   </div>
                 </div>
-                <div className="s_na_box s_cat_bo mt-0">
+                {/* <div className="s_na_box s_cat_bo mt-0">
                   <div
                     className="flex_slide_ta toggle_shutter p-0"
                     onClick={(e) => hanDleSlide(e)}
@@ -785,7 +787,7 @@ const Project_Search = () => {
                       </div>
                     ))}
                   </div>
-                </div>
+                </div> */}
                 <div className="desc_hin">
                   <p>
                     Select the options and press the Filter Result button to
@@ -831,7 +833,7 @@ const Project_Search = () => {
                       changeTab("saved");
                     }}
                   >
-                    SAVED JOB(3)
+                    SAVED JOBS(3)
                   </Button>
                 </Link>
               </div>

@@ -5,10 +5,13 @@ import { Col, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { singleProposalDetails } from "../../../../redux/actions/jobActions";
+import WithdrawActiveProposal from "./WithdrawActiveProposal";
 
 const SingleActiveProposal = () => {
   const dispatch = useDispatch();
   const [milestonesTotal, setMilestonesTotal] = useState(0);
+  const [successPopup, setSuccessPopup] = useState(false);
+  const [popup, setPopup] = useState(false);
 
   const { id } = useParams();
   const project_data = useSelector(
@@ -240,7 +243,7 @@ const SingleActiveProposal = () => {
                         This includes all milsetones, and is the amount your
                         client will see.
                       </div> */}
-                      <div className="amt">${proposal_data?.amount}</div>
+                      <div className="amt">${proposal_data?.bid_amount}</div>
                     </div>
                     <div className="you_recive">
                       <div className="head">You'll Receive</div>
@@ -249,8 +252,8 @@ const SingleActiveProposal = () => {
                       </div>
                       <div className="amt">
                         $
-                        {proposal_data?.amount -
-                          (proposal_data?.amount / 100) *
+                        {proposal_data?.bid_amount -
+                          (proposal_data?.bid_amount / 100) *
                             project_data?.service_fee}
                       </div>
                     </div>
@@ -285,7 +288,7 @@ const SingleActiveProposal = () => {
                       <div className="desc">
                         Total amount the client will see on your proposal
                       </div>
-                      <div className="amt">${proposal_data?.amount}/hr</div>
+                      <div className="amt">${proposal_data?.bid_amount}/hr</div>
                     </div>
                     <div className="you_recive">
                       <div className="head">You'll Receive</div>
@@ -294,8 +297,8 @@ const SingleActiveProposal = () => {
                       </div>
                       <div className="amt">
                         ${" "}
-                        {proposal_data?.amount -
-                          (proposal_data?.amount / 100) *
+                        {proposal_data?.bid_amount -
+                          (proposal_data?.bid_amount / 100) *
                             project_data?.service_fee}
                         /hr
                       </div>
@@ -307,7 +310,22 @@ const SingleActiveProposal = () => {
                 <div className="buttons">
                   <div className="theme_btns">
                     <button className="first_button">CHANGE TERMS</button>
-                    <button className="second_button">WITHDRAW PROPOSAL</button>
+                    <button
+                      className="second_button"
+                      onClick={() =>
+                        setPopup(
+                          <WithdrawActiveProposal
+                            id={id}
+                            popup={setPopup}
+                            successPopup={successPopup}
+                            setSuccessPopup={setSuccessPopup}
+                            type={"withdraw"}
+                          />
+                        )
+                      }
+                    >
+                      WITHDRAW PROPOSAL
+                    </button>
                   </div>
                 </div>
               </div>
@@ -599,6 +617,8 @@ const SingleActiveProposal = () => {
           </Col>
         </Row>
       </div>
+      {popup}
+      {successPopup}
     </>
   );
 };

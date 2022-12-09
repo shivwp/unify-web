@@ -3,7 +3,8 @@ import Button from "react-bootstrap/Button";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./changeTermPopup.css";
-import FixedBid from "../../SendProposal/components/FixedBid";
+import FixedBid from "./FixedBid";
+import HourlyBid from "./HourlyBid";
 
 const CloseIcon = () => {
   return (
@@ -20,19 +21,38 @@ const CloseIcon = () => {
   );
 };
 
-const ChangeTermPopup = ({ data, popup, successPopup, setSuccessPopup }) => {
+const ChangeTermPopup = ({
+  id,
+  project_data,
+  milestonedata,
+  proposal_data,
+  popup,
+  successPopup,
+  setSuccessPopup,
+}) => {
   const dispatch = useDispatch();
-  const [values, setValues] = useState();
+  const [values, setValues] = useState({ bid_amount: 0 });
   const [errors, setErrors] = useState({});
   const reasonsList = useSelector((state) => state?.job?.reasonsList);
-  const [isByMilestone, setIsByMilestone] = useState("by_milestone");
+  const [isByMilestone, setIsByMilestone] = useState();
 
   const [inputList, setInputList] = useState([
     { description: "", due_date: "", amount: 0 },
   ]);
-  const handleOnChange = (e) => {
-    setValues({ ...values, [e.target.name]: e.target.value });
-  };
+
+  useEffect(() => {
+    setIsByMilestone(
+      milestonedata?.length == 0
+        ? "by_project"
+        : milestonedata?.length > 0
+        ? "by_milestone"
+        : ""
+    );
+    if (milestonedata?.length > 0) {
+      setInputList(milestonedata);
+    }
+    setValues(proposal_data);
+  }, [milestonedata]);
 
   const handleRadioChange = (e) => {
     setIsByMilestone(e.target.value);
@@ -41,8 +61,97 @@ const ChangeTermPopup = ({ data, popup, successPopup, setSuccessPopup }) => {
   useEffect(() => {}, []);
 
   const onSave = () => {
-    const data = {};
+    const formData = new FormData();
+    formData.append("job_id", id);
+
+    let errorExist = false;
+    let errorsObject = {};
+
+   
+    
+    if (project_data?.budget_type == "hourly") {
+      if (values?.bid_amount <= 0) {
+        errorsObject.bid_amount = "Please enter valid amount";
+        errorExist = true;
+      } else if (
+        values?.bid_amount === "" ||
+        values?.bid_amount === undefined ||
+        values?.bid_amount === null
+      ) {
+        errorsObject.bid_amount = "Please enter valid amount";
+        errorExist = true;
+      }
+    } else if (project_data?.budget_type == "fixed") {
+      if (
+        values?.project_duration == null ||
+        values?.project_duration == undefined
+      ) {
+        errorsObject.project_duration = "Please select project duration";
+        errorExist = true;
+      }
+      if (isByMilestone == "by_project") {
+        if (values?.bid_amount <= 0) {
+          errorsObject.bid_amount = "Please enter valid amount";
+          errorExist = true;
+        } else if (
+          values?.bid_amount === "" ||
+          values?.bid_amount === undefined ||
+          values?.bid_amount === null
+        ) {
+          errorsObject.bid_amount = "Please enter valid amount";
+          errorExist = true;
+        }
+      }
+      if (isByMilestone == "by_milestone") {
+        if (
+          inputList[inputList.length - 1]?.description == "" ||
+          inputList[inputList.length - 1]?.description == null ||
+          inputList[inputList.length - 1]?.description == undefined
+        ) {
+          errorsObject.description = "Description can't be empty";
+          errorExist = true;
+        }
+        if (
+          inputList[inputList.length - 1]?.due_date == "" ||
+          inputList[inputList.length - 1]?.due_date == null ||
+          inputList[inputList.length - 1]?.due_date == undefined
+        ) {
+          errorsObject.due_date = "Please enter a valid date";
+          errorExist = true;
+        }
+        if (
+          inputList[inputList.length - 1]?.amount == "" ||
+          inputList[inputList.length - 1]?.amount == null ||
+          inputList[inputList.length - 1]?.amount == undefined ||
+          inputList[inputList.length - 1]?.amount <= 0
+        ) {
+          errorsObject.amount = "Please enter a valid amount";
+          errorExist = true;
+        }
+      }
+    }
+
+    if (errorExist) {
+      setErrors(errorsObject);
+      return false;
+    }
+
+    if (project_data?.budget_type == "hourly") {
+      formData.append("bid_amount", values?.bid_amount);
+    } else if (project_data?.budget_type == "fixed") {
+      if (isByMilestone == "by_project") {
+        formData.append("milestone_type", "single");
+        formData.append("project_duration", values?.project_duration);
+        formData.append("bid_amount", values?.bid_amount);
+      }
+      if (isByMilestone == "by_milestone") {
+        formData.append("milestone_type", "multiple");
+        formData.append("project_duration", values?.project_duration);
+        formData.append("milestone_data", JSON.stringify(inputList));
+      }
+    }
   };
+
   return (
     <>
       <div className="bg_wrapper_popup_new">
@@ -54,23 +163,37 @@ const ChangeTermPopup = ({ data, popup, successPopup, setSuccessPopup }) => {
             </div>
           </div>
           <div className="popup_body_bpn change_term_popup max_height_popucwui">
-            <FixedBid
-              data={data}
-              values={values}
-              errors={errors}
-              setValues={setValues}
-              setInputList={setInputList}
-              inputList={inputList}
-              handleRadioChange={handleRadioChange}
-              isByMilestone={isByMilestone}
-              setErrors={setErrors}
-            />
+            {project_data?.budget_type == "fixed" ? (
+              <FixedBid
+                project_data={project_data}
+                values={values}
+                errors={errors}
+                setValues={setValues}
+                setInputList={setInputList}
+                inputList={inputList}
+                handleRadioChange={handleRadioChange}
+                isByMilestone={isByMilestone}
+                setErrors={setErrors}
+                milestonedata={milestonedata}
+              />
+            ) : project_data?.budget_type == "hourly" ? (
+              <HourlyBid
+                project_data={project_data}
+                values={values}
+                setValues={setValues}
+                errors={errors}
+                setErrors={setErrors}
+              />
+            ) : (
+              ""
+            )}
+
             <div className="theme_btns">
               <button className="first_button" onClick={() => popup()}>
                 CANCEL
               </button>
               <button className="second_button" onClick={onSave}>
-                DECLINE
+                SAVE
               </button>
             </div>
           </div>

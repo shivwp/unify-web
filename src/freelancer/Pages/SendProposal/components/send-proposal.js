@@ -69,7 +69,7 @@ const Screen = () => {
     //   errorExist = true;
     // }
     if (singleJobDetails?.budget_type == "hourly") {
-      if (values?.bid_amount < 0) {
+      if (values?.bid_amount <= 0) {
         errorsObject.bid_amount = "Please enter valid amount";
         errorExist = true;
       } else if (
@@ -89,7 +89,7 @@ const Screen = () => {
         errorExist = true;
       }
       if (isByMilestone == "by_project") {
-        if (values?.bid_amount < 0) {
+        if (values?.bid_amount <= 0) {
           errorsObject.bid_amount = "Please enter valid amount";
           errorExist = true;
         } else if (

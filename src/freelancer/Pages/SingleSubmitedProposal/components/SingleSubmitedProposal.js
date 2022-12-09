@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { singleProposalDetails } from "../../../../redux/actions/jobActions";
 import ChangeTermPopup from "./ChangeTermPopup";
+import WithdrawProposal from "./WithdrawSubmitProposal";
 
 const SingleSubmitedProposal = () => {
   const dispatch = useDispatch();
@@ -241,7 +242,7 @@ const SingleSubmitedProposal = () => {
                         This includes all milsetones, and is the amount your
                         client will see.
                       </div> */}
-                      <div className="amt">${proposal_data?.amount}</div>
+                      <div className="amt">${proposal_data?.bid_amount}</div>
                     </div>
                     <div className="you_recive">
                       <div className="head">You'll Receive</div>
@@ -250,8 +251,8 @@ const SingleSubmitedProposal = () => {
                       </div>
                       <div className="amt">
                         $
-                        {proposal_data?.amount -
-                          (proposal_data?.amount / 100) *
+                        {proposal_data?.bid_amount -
+                          (proposal_data?.bid_amount / 100) *
                             project_data?.service_fee}
                       </div>
                     </div>
@@ -286,7 +287,7 @@ const SingleSubmitedProposal = () => {
                       <div className="desc">
                         Total amount the client will see on your proposal
                       </div>
-                      <div className="amt">${proposal_data?.amount}/hr</div>
+                      <div className="amt">${proposal_data?.bid_amount}/hr</div>
                     </div>
                     <div className="you_recive">
                       <div className="head">You'll Receive</div>
@@ -295,8 +296,8 @@ const SingleSubmitedProposal = () => {
                       </div>
                       <div className="amt">
                         ${" "}
-                        {proposal_data?.amount -
-                          (proposal_data?.amount / 100) *
+                        {proposal_data?.bid_amount -
+                          (proposal_data?.bid_amount / 100) *
                             project_data?.service_fee}
                         /hr
                       </div>
@@ -313,6 +314,10 @@ const SingleSubmitedProposal = () => {
                       onClick={() =>
                         setPopup(
                           <ChangeTermPopup
+                          id={id}
+                            project_data={project_data}
+                            proposal_data={proposal_data}
+                            milestonedata={milestonedata}
                             popup={setPopup}
                             successPopup={successPopup}
                             setSuccessPopup={setSuccessPopup}
@@ -322,7 +327,22 @@ const SingleSubmitedProposal = () => {
                     >
                       CHANGE TERMS
                     </button>
-                    <button className="second_button">WITHDRAW PROPOSAL</button>
+                    <button
+                      className="second_button"
+                      onClick={() =>
+                        setPopup(
+                          <WithdrawProposal
+                            id={id}
+                            popup={setPopup}
+                            successPopup={successPopup}
+                            setSuccessPopup={setSuccessPopup}
+                            type={"withdraw"}
+                          />
+                        )
+                      }
+                    >
+                      WITHDRAW PROPOSAL
+                    </button>
                   </div>
                 </div>
               </div>

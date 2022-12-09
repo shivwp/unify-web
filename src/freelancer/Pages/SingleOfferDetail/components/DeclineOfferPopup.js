@@ -3,7 +3,7 @@ import Button from "react-bootstrap/Button";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { onEditDesignation } from "../../../../redux/actions/profileAction";
-import "./declineInterviewPopup.css";
+import "./DeclineOfferPopup.css";
 import {
   declineReasoneList,
   onDeclineForInterview,
@@ -25,7 +25,7 @@ const CloseIcon = () => {
   );
 };
 
-const DeclineInterviewPopup = ({
+const DeclineOfferPopup = ({
   id,
   popup,
   successPopup,
@@ -54,15 +54,15 @@ const DeclineInterviewPopup = ({
       reason: values?.reason,
       description: values?.description,
     };
-    dispatch(
-      onDeclineForInterview(
-        data,
-        popup,
-        successPopup,
-        setSuccessPopup,
-        afterSuccess
-      )
-    );
+    // dispatch(
+    //   onDeclineForInterview(
+    //     data,
+    //     popup,
+    //     successPopup,
+    //     setSuccessPopup,
+    //     afterSuccess
+    //   )
+    // );
   };
 
   return (
@@ -117,4 +117,4 @@ const DeclineInterviewPopup = ({
   );
 };
 
-export default DeclineInterviewPopup;
+export default DeclineOfferPopup;
