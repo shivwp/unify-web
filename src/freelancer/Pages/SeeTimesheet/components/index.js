@@ -8,7 +8,7 @@ import Details from "./Details";
 const SeeTimesheet = () => {
   const [tab, setTab] = useState("OVERVIEW");
   const [tabActive, setTabActive] = useState(<ToDo />);
-
+  console.log("first", tab);
   return (
     <>
       <>
@@ -86,7 +86,7 @@ const SeeTimesheet = () => {
                 <button
                   variant=""
                   className={`text-capitalize tab_btn_vs w-auto ${
-                    tabActive == "DETAILS" ? "active_bvs" : ""
+                    tab == "DETAILS" ? "active_bvs" : ""
                   }`}
                   onClick={() => {
                     setTab("DETAILS");

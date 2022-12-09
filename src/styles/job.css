@@ -433,7 +433,6 @@
   .relation2 {
     display: none;
   }
-  
 }
 
 .box_vs_m {
@@ -4081,6 +4080,154 @@
   font-size: 14px;
   font-weight: 600;
 }
+
+/* frrelancer all contracts timesheet start */
+.timesheetDetails {
+  border: 1px solid rgb(153, 153, 153);
+  margin: 20px 10px;
+  padding: 20px;
+  border-radius: 20px;
+}
+
+.timeSheetDetailsHead {
+  margin-bottom: 10px;
+  font: normal normal 600 18px/30px Poppins;
+}
+
+.timeSheetLine {
+  line-height: 20px;
+}
+
+.timesheetDetails .timeDethourly {
+  font: normal normal 600 16px/30px Poppins;
+  color: #1f1f1f;
+}
+
+.timesheetDetails .detailsBtn {
+  margin: 10px 0px;
+  color: #6d2ef1;
+  background-color: #fff;
+  border: #6d2ef1 solid 1px;
+  border-radius: 25px;
+  padding: 10px 22px;
+  font-size: 15px;
+}
+
+.detailsPTag {
+  font: normal normal 350 14px/24px Poppins;
+  color: #3f4548;
+}
+
+.detailsLinkOff {
+  font: normal normal 500 14px Poppins;
+  color: #6d2ef1;
+  line-height: 20px;
+  margin-bottom: 10px;
+}
+
+.timesheetDetails .comapanyHead {
+  margin-bottom: 10px;
+  font: normal normal 600 21px/30px Poppins;
+}
+
+.timesheetDetails .verifiedLogoDiv {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.timesheetDetails .compnyVerifiedMethod {
+  font: normal normal normal 14px/16px Poppins;
+  letter-spacing: 0px;
+  color: #5d5d5d;
+}
+
+.timesheetDetails .companyRating {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-top: 10px;
+}
+.timesheetDetails .comapnyRatingStar {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.timesheetDetails .ratingReview {
+  font: normal normal 15px/26px Poppins;
+  letter-spacing: 0px;
+  /* font-weight: 400; */
+  color: #462d7a;
+}
+
+.timesheetDetails .compDet {
+  font: normal normal 18px/20px Poppins;
+  letter-spacing: 0.22px;
+  font-weight: 500;
+  color: #6d2ef1;
+}
+
+.timesheetDetails .compLoc {
+  margin-top: 30px;
+}
+
+.timesheetDetails .compDetList {
+  padding-top: 18px;
+}
+
+.timesheetDetails .companyDetText {
+  font: normal normal 450 15px/20px Poppins;
+  letter-spacing: 0px;
+  color: #462d7a;
+  margin-top: 15px;
+}
+
+.timesheetDetails .compSize {
+  margin-top: 30px;
+}
+
+.timesheetDetails .feedbackLogo {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  height: 120px;
+}
+
+.timesheetDetails .feedBackLogoCenter {
+  max-width: 100%;
+}
+.timesheetDetails .feedBackLogoCenter svg {
+  width: 100px;
+  height: 85px;
+}
+
+.timesheetDetails .feedBackSubHead {
+  font: normal normal 450 22px/28px Poppins;
+  padding-top: 25px;
+  text-align: center;
+}
+
+.timesheetDetails .feedBackPara {
+  font: normal normal normal 16px/25px Poppins;
+  padding-top: 15px;
+  text-align: center;
+}
+
+.timesheetDetails .feedbackBtnDiv {
+  display: flex;
+  justify-content: center;
+  padding-top: 20px;
+}
+
+.timesheetDetails .feedbackBtn {
+  background: #cdcccc 0% 0% no-repeat padding-box;
+  border-radius: 25px;
+  border: none;
+  color: #fff;
+  padding: 10px 32px;
+}
+
+/* frrelancer all contracts timesheet end */
 
 .selected_skills_filter_jobs {
   display: flex;

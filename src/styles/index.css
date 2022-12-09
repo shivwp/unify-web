@@ -6178,6 +6178,7 @@ a {
 .tab_scroll_cont {
   overflow: scroll;
   flex-wrap: nowrap !important;
+  justify-content: center;
   width: 100%;
 }
 
@@ -9793,3 +9794,55 @@ input::-webkit-inner-spin-button {
   gap: 10px;
 }
 /* ------------------------ single active proposal detail after click on submited proposals end --------------------- */
+
+/* ------------------------ all contarct after settime sheet start --------------------- */
+
+.single_active_proposal .messages .seeTimeSheetContent .left .seeTimesheetTime {
+  color: #929292;
+  font-size: 13px;
+}
+
+.single_active_proposal .messages .seeTimeSheetContent {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #d9d9d9;
+  padding-bottom: 10px;
+  margin-top: 8px;
+}
+.seeTimeSheetNewBtnSpan {
+  margin-left: 6px;
+}
+.seeTimeSheetNewBtn {
+  background: #6d2ef1 0% 0% no-repeat padding-box;
+  border-radius: 60px;
+  border: none;
+  font-size: 10px;
+  color: #fff;
+  padding: 2px 6px;
+}
+
+.messageTime {
+  font-size: 11px;
+  color: #b7b7b7;
+}
+
+.messageText {
+  margin: 10px 0;
+  display: flex;
+  gap: 20px;
+  padding: 20px 0;
+  border-bottom: 1px solid #d9d9d9;
+}
+.single_active_proposal .messages .messageImg {
+  width: 45px;
+  height: 45px;
+  margin-top: 12px;
+}
+
+.messageTopIcon {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* ------------------------ all contarct after settime sheet end --------------------- */
