@@ -5,6 +5,7 @@ import { Col, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { singleProposalDetails } from "../../../../redux/actions/jobActions";
+import ChangeTermPopup from "./ChangeTermPopup";
 import WithdrawActiveProposal from "./WithdrawActiveProposal";
 
 const SingleActiveProposal = () => {
@@ -26,10 +27,11 @@ const SingleActiveProposal = () => {
   const proposal_data = useSelector(
     (state) => state?.job?.singleProposalDetails?.proposal_data
   );
+  const changeTerms = useSelector((state) => state?.job?.changeTerms);
 
   useEffect(() => {
     dispatch(singleProposalDetails(id, "active"));
-  }, [id]);
+  }, [id, changeTerms]);
 
   useEffect(() => {
     let add = 0;
@@ -309,7 +311,24 @@ const SingleActiveProposal = () => {
                 )}
                 <div className="buttons">
                   <div className="theme_btns">
-                    <button className="first_button">CHANGE TERMS</button>
+                    <button
+                      className="first_button"
+                      onClick={() =>
+                        setPopup(
+                          <ChangeTermPopup
+                            proposal_id={id}
+                            project_data={project_data}
+                            proposal_data={proposal_data}
+                            milestonedata={milestonedata}
+                            popup={setPopup}
+                            successPopup={successPopup}
+                            setSuccessPopup={setSuccessPopup}
+                          />
+                        )
+                      }
+                    >
+                      CHANGE TERMS
+                    </button>
                     <button
                       className="second_button"
                       onClick={() =>

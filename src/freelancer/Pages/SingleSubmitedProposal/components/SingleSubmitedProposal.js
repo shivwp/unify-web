@@ -26,11 +26,12 @@ const SingleSubmitedProposal = () => {
   const proposal_data = useSelector(
     (state) => state?.job?.singleProposalDetails?.proposal_data
   );
+  const changeTerms = useSelector((state) => state?.job?.changeTerms);
   const { id } = useParams();
 
   useEffect(() => {
     dispatch(singleProposalDetails(id, "submit"));
-  }, [id]);
+  }, [id, changeTerms]);
 
   useEffect(() => {
     let add = 0;
@@ -314,7 +315,7 @@ const SingleSubmitedProposal = () => {
                       onClick={() =>
                         setPopup(
                           <ChangeTermPopup
-                          id={id}
+                            proposal_id={id}
                             project_data={project_data}
                             proposal_data={proposal_data}
                             milestonedata={milestonedata}

@@ -193,6 +193,8 @@ const CloseIcon = () => {
 
 const UnifyFreelancer = () => {
   const dispatch = useDispatch();
+  let userDetails = JSON.parse(localStorage.getItem("unify_user"));
+
   const basicInfo = useSelector(
     (state) => state?.profile?.freelancerProfileList?.basic_info
   );
@@ -297,6 +299,10 @@ const UnifyFreelancer = () => {
 
   const onProfleImgChange = (e) => {
     const profileImage = e.target.files[0];
+    const profileImageChange = () => {
+      userDetails.online_status = e.target.value;
+      localStorage.setItem("unify_user", JSON.stringify(userDetails));
+    };
     setShowingProImage(URL.createObjectURL(e.target.files[0]));
 
     const formData = new FormData();
@@ -306,7 +312,9 @@ const UnifyFreelancer = () => {
     formData.append("occcuption", basicInfo?.occuption);
     formData.append("profile_image", profileImage);
 
-    dispatch(editNameInfo(formData, successPopup, setSuccessPopup));
+    dispatch(
+      editNameInfo(formData, successPopup, setSuccessPopup, profileImageChange)
+    );
   };
 
   const IntroVideoThumb = ({ data }) => {
@@ -372,9 +380,8 @@ const UnifyFreelancer = () => {
                   <div className="user_profile_bg">
                     <img
                       src={
-                        showingProImage ||
                         basicInfo?.profile_image ||
-                        "/assets/PRO-2.png"
+                        "https://unify.eoxyslive.com/images/profile-image/demo-user.png"
                       }
                     />
                   </div>

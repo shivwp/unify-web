@@ -1827,6 +1827,12 @@ body {
   -o-border-radius: 50px;
 }
 
+.user_profile_bg img:hover {
+  transform: scale(1.2);
+  transition: ease-in;
+  transition-duration: 1s;
+}
+
 .freelancer_name {
   font-size: 15px;
   letter-spacing: 0px;

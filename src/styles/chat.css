@@ -683,6 +683,7 @@
   position: relative;
   height: 166px;
   width: 100%;
+  overflow: hidden;
 }
 
 @media screen and (max-width: 425px) {
@@ -728,6 +729,13 @@
   width: 100%;
   height: 100%;
   background-color: transparent;
+}
+
+.imgbox_bccp:hover img {
+  transform: scale(1.1);
+  transition: ease-in;
+  transition: ease;
+  transition-duration: 500ms;
 }
 
 .port_folio_icons button {

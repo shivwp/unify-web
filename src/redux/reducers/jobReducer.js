@@ -4,6 +4,7 @@ import {
   JOBS_LIST,
   JOB_POST_DETAILS,
   ON_DISLIKE_JOB_POST,
+  PROPOSAL_TERMS_CHANGE,
   SAVED_JOBS_LIST,
   SAVE_JOB_POST,
   SEND_JOB_PROPOSAL,
@@ -118,6 +119,11 @@ const jobReducer = (state = initialState, action) => {
       return {
         ...state,
         reasonsList: action.payload,
+      };
+    case PROPOSAL_TERMS_CHANGE:
+      return {
+        ...state,
+        changeTerms: action.payload,
       };
     default:
       return state;

@@ -453,21 +453,26 @@ export const onDeleteCertificate =
   };
 
 export const editNameInfo =
-  (data, successPopup, setSuccessPopup) => async (dispatch) => {
+  (data, successPopup, setSuccessPopup, profileImageChange) =>
+  async (dispatch) => {
     try {
       Axios.post("/edit-name-info", data, config).then((res) => {
         dispatch({
           type: SET_PROFILE_IMG_CHANGE,
           payload: res.data,
         });
+        const afterSuccess = () => {
+          userDetails.profile_image = res?.data?.data[0]?.profile_image;
+          localStorage.setItem("unify_user", JSON.stringify(userDetails));
+          window?.location?.reload();
+        };
         setSuccessPopup(
           <SuccessPopup
             Popup={() => setSuccessPopup(!successPopup)}
             message="Profile details changed successfully"
+            afterSuccess={afterSuccess}
           />
         );
-        userDetails.profile_image = res?.data?.basic_info?.profile_image;
-        localStorage.setItem("unify_user", JSON.stringify(userDetails));
       });
     } catch (err) {}
   };
@@ -634,3 +639,4 @@ export const getCategoryList = () => async (dispatch) => {
     });
   } catch (err) {}
 };
+

@@ -6,6 +6,7 @@ import {
   JOBS_LIST,
   JOB_POST_DETAILS,
   ON_DISLIKE_JOB_POST,
+  PROPOSAL_TERMS_CHANGE,
   SAVED_JOBS_LIST,
   SAVE_JOB_POST,
   SEND_JOB_PROPOSAL,
@@ -243,7 +244,8 @@ export const declineReasoneList = (type) => async (dispatch) => {
 };
 
 export const onDeclineForInterview =
-  (data, popup, successPopup, setSuccessPopup,afterSuccess) => async (dispatch) => {
+  (data, popup, successPopup, setSuccessPopup, afterSuccess) =>
+  async (dispatch) => {
     try {
       Axios.post("/invite-decline", data, config).then((res) => {
         popup();
@@ -268,6 +270,27 @@ export const onWithdrawSubmitedProposal =
             Popup={() => setSuccessPopup(!successPopup)}
             message="Thank you for your time"
             afterSuccess={afterSuccess}
+          />
+        );
+      });
+    } catch (err) {}
+  };
+
+export const onChangeTermsOfProposals =
+  (data, successPopup, setSuccessPopup, popup) => async (dispatch) => {
+    try {
+      Axios.post("/update-proposal", data, config).then((res) => {
+        dispatch({
+          type: PROPOSAL_TERMS_CHANGE,
+          payload: res.data.data,
+        });
+        if (popup) {
+          popup();
+        }
+        setSuccessPopup(
+          <SuccessPopup
+            Popup={() => setSuccessPopup(!successPopup)}
+            message="Proposal sent successfully"
           />
         );
       });

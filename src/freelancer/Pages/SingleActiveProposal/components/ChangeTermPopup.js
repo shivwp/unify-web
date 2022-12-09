@@ -157,9 +157,7 @@ const ChangeTermPopup = ({
         formData.append("milestone_data", JSON.stringify(inputList));
       }
     }
-    dispatch(
-      onChangeTermsOfProposals(formData, successPopup, setSuccessPopup, popup)
-    );
+    dispatch(onChangeTermsOfProposals(formData, successPopup, setSuccessPopup, popup));
   };
 
   return (
