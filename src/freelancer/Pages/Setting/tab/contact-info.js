@@ -157,7 +157,7 @@ const Screen = () => {
               <Col md={12}>
                 <div className="mb-2 mt-2">
                   <div className="c_name_s_v pb-0 f_new_contact_info">
-                    First Name
+                    First Name *
                   </div>
                   <div className="c_name_sett mt-0 pt-0">
                     <div className="edit_contact_inp">
@@ -179,7 +179,7 @@ const Screen = () => {
               <Col md={12}>
                 <div className="mb-2 mt-2">
                   <div className="c_name_s_v pb-0 f_new_contact_info">
-                    Last Name
+                    Last Name *
                   </div>
                   <div className="c_name_sett mt-0 pt-0">
                     <div className="edit_contact_inp">
@@ -201,7 +201,7 @@ const Screen = () => {
               <Col md={12}>
                 <div className="mb-2 mt-2">
                   <div className="c_name_s_v pb-0 f_new_contact_info">
-                    Email
+                    Email *
                   </div>
                   <div className="c_name_sett mt-0 pt-0">
                     <div className="edit_contact_inp">
@@ -309,7 +309,10 @@ const Screen = () => {
       ) {
         errorsObject.zip_code = "Please enter your zip code";
         errorExist = true;
-      } else if (values?.zip_code?.length < 6 || values?.zip_code?.length > 6) {
+      } else if (
+        values?.zip_code?.length < 4 ||
+        values?.zip_code?.length > 10
+      ) {
         errorsObject.zip_code = "please input a valid zip code";
         errorExist = true;
       }
@@ -364,7 +367,7 @@ const Screen = () => {
               <Col md={6}>
                 <div className="mb-2 mt-2">
                   <div className="c_name_s_v pb-0 f_new_contact_info">
-                    Time Zone
+                    Time Zone *
                   </div>
                   <div className="c_name_sett mt-0 pt-0 font-color-light">
                     <div className="edit_contact_inp">
@@ -394,7 +397,9 @@ const Screen = () => {
               </Col>
               <Col md={6}>
                 <div className="mb-2 mt-2">
-                  <div className="c_name_s_v pb-0 f_new_contact_info">City</div>
+                  <div className="c_name_s_v pb-0 f_new_contact_info">
+                    City *
+                  </div>
                   <div className="c_name_sett mt-0 pt-0 font-color-light">
                     <div className="edit_contact_inp">
                       <Form.Control
@@ -415,7 +420,7 @@ const Screen = () => {
               <Col md={6}>
                 <div className="mb-2 mt-2">
                   <div className="c_name_s_v pb-0 f_new_contact_info">
-                    Country
+                    Country *
                   </div>
                   <div className="c_name_sett mt-0 pt-0 font-color-light">
                     <div className="edit_contact_inp">
@@ -440,7 +445,7 @@ const Screen = () => {
               <Col md={6}>
                 <div className="mb-2 mt-2">
                   <div className="c_name_s_v pb-0 f_new_contact_info">
-                    Address
+                    Address *
                   </div>
                   <div className="c_name_sett mt-0 pt-0 font-color-light">
                     <div className="edit_contact_inp">
@@ -461,7 +466,7 @@ const Screen = () => {
               <Col md={6}>
                 <div className="mb-2 mt-2">
                   <div className="c_name_s_v pb-0 f_new_contact_info">
-                    Phone
+                    Phone *
                   </div>
                   <div className="c_name_sett mt-0 pt-0 font-color-light">
                     <div className="edit_contact_inp">
@@ -482,7 +487,7 @@ const Screen = () => {
               <Col md={6}>
                 <div className="mb-2 mt-2">
                   <div className="c_name_s_v pb-0 f_new_contact_info">
-                    Zip Code
+                    Zip Code *
                   </div>
                   <div className="c_name_sett mt-0 pt-0 font-color-light">
                     <div className="edit_contact_inp">

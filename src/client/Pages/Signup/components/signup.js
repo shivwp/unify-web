@@ -366,11 +366,15 @@ const Signup = ({
                       <div>
                         <div className="sign_l_n_text">
                           <Form.Check
+                            id="firstCheckOnSignUP"
                             type="checkbox"
                             name="send_email"
                             onChange={(e) => onInputChange(e)}
                           />
-                          <Form.Label className="tb_mob_f12px">
+                          <Form.Label
+                            htmlFor="firstCheckOnSignUP"
+                            className="tb_mob_f12px"
+                          >
                             Yes - sign me up for useful emails to get the most
                             out of Unify!
                           </Form.Label>
@@ -379,11 +383,15 @@ const Signup = ({
                       <div style={{ position: "relative" }}>
                         <div className="sign_l_n_text">
                           <Form.Check
+                            id="SecondCheckOnSignUP"
                             type="checkbox"
                             name="agree_terms"
                             onChange={(e) => onInputChange(e)}
                           />
-                          <Form.Label className="tb_mob_f12px">
+                          <Form.Label
+                            htmlFor="SecondCheckOnSignUP"
+                            className="tb_mob_f12px"
+                          >
                             Yes! I understand and agree to the{" "}
                             <span onClick={() => setTermsPopup(true)}>
                               <span>UnifyTerms of Service</span>

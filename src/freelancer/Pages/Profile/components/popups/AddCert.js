@@ -99,7 +99,7 @@ const AddCert = ({ certificates, Popup, successPopup, setSuccessPopup }) => {
             <div className="mt-4">
               <div className="popup_form_element">
                 <Form.Label className="text-black font-size-13px font-weight-500">
-                  Proficiency level
+                  Proficiency level *
                 </Form.Label>
 
                 <select

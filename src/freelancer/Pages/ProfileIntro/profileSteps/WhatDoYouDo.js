@@ -42,15 +42,15 @@ const WhatDoYouDo = ({ setCurrentTab, profileList }) => {
     ) {
       errorsObject.occuption = "Please enter your title";
       errorExist = true;
-    } 
+    }
     // else if (/\s/g.test(values?.occuption)) {
     //   errorsObject.occuption = "Field is required";
     //   errorExist = true;
-    // } 
+    // }
     else if (/^[0-9]\d*$/.test(values?.occuption)) {
       errorsObject.occuption = "please input a valid title ";
       errorExist = true;
-    } 
+    }
 
     if (
       values?.description === "" ||
@@ -62,15 +62,15 @@ const WhatDoYouDo = ({ setCurrentTab, profileList }) => {
     } else if (values?.description?.length < 100) {
       errorsObject.description = "Description minimum length is 100 characters";
       errorExist = true;
-    } 
+    }
     // else if (/\s/g.test(values?.description)) {
     //   errorsObject.description = "Field is required";
     //   errorExist = true;
-    // } 
+    // }
     else if (/^[0-9]\d*$/.test(values?.description)) {
       errorsObject.description = "please input a valid description ";
       errorExist = true;
-    } 
+    }
 
     if (errorExist) {
       setErrors(errorsObject);
@@ -123,7 +123,10 @@ const WhatDoYouDo = ({ setCurrentTab, profileList }) => {
               </span>
             </div>
             <div className="popup_form_element mb-0">
-            <Form.Label className="whatdoYoudo-head"> Ok, time to shine! Sell yourself to the world of Unify. </Form.Label>
+              <Form.Label className="whatdoYoudo-head">
+                {" "}
+                Ok, time to shine! Sell yourself to the world of Unify *{" "}
+              </Form.Label>
               <Form.Control
                 as="textarea"
                 name="description"

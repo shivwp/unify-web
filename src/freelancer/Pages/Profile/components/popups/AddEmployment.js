@@ -201,7 +201,7 @@ const AddEmployment = ({
                 <Col md={12}>
                   <div className="popup_form_element">
                     <Form.Label className="text-black font-size-13px font-weight-500">
-                      Company
+                      Company *
                     </Form.Label>
                     <Form.Control
                       type="text"
@@ -219,7 +219,7 @@ const AddEmployment = ({
                 <Col md={6}>
                   <div className="popup_form_element">
                     <Form.Label className="text-black font-size-13px font-weight-500">
-                      Location
+                      Location *
                     </Form.Label>
                     <Form.Control
                       type="text"
@@ -237,7 +237,7 @@ const AddEmployment = ({
                 <Col md={6}>
                   <div className="popup_form_element">
                     <Form.Label className="text-black font-size-13px font-weight-500">
-                      Country
+                      Country *
                     </Form.Label>
                     <select
                       name="country"
@@ -261,7 +261,7 @@ const AddEmployment = ({
                 <Col md={12}>
                   <div className="popup_form_element">
                     <Form.Label className="text-black font-size-13px font-weight-500">
-                      Title
+                      Title *
                     </Form.Label>
                     <Form.Control
                       type="text"
@@ -279,7 +279,7 @@ const AddEmployment = ({
                 <Col md={6}>
                   <div className="popup_form_element">
                     <Form.Label className="text-black font-size-13px font-weight-500">
-                      Start Date
+                      Start Date *
                     </Form.Label>
                     <Form.Control
                       type="date"
@@ -303,7 +303,7 @@ const AddEmployment = ({
                   <Col md={6}>
                     <div className="popup_form_element">
                       <Form.Label className="text-black font-size-13px font-weight-500">
-                        End Date
+                        End Date *
                       </Form.Label>
                       <Form.Control
                         type="date"

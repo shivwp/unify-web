@@ -78,7 +78,6 @@ const ChooseLangauge = ({ setCurrentTab, profileList }) => {
     }
   };
 
-
   return (
     <>
       <div className="container">
@@ -94,10 +93,10 @@ const ChooseLangauge = ({ setCurrentTab, profileList }) => {
             <Row>
               <div className="languageOption">
                 <Col md={5} lg={4}>
-                  <div className="langAdd"> Language </div>
+                  <div className="langAdd"> Language * </div>
                 </Col>
                 <Col md={5} lg={4}>
-                  <div className="langLevel"> Proficiency </div>
+                  <div className="langLevel"> Proficiency * </div>
                 </Col>
               </div>
             </Row>
@@ -149,7 +148,7 @@ const ChooseLangauge = ({ setCurrentTab, profileList }) => {
                       </select>
                     </div>
                   </Col>
-                  <Col md={2} lg={1} className="trashRespBtn" >
+                  <Col md={2} lg={1} className="trashRespBtn">
                     <div className="popup_form_element langTrasRespBtn">
                       {inputList?.length !== 0 && data.language != "English" ? (
                         <button

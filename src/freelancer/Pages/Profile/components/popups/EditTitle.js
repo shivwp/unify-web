@@ -81,7 +81,7 @@ const EditTitle = ({ data, Popup, successPopup, setSuccessPopup }) => {
           </div>
           <div className="popup_body_bpn amount_popup_body max_height_popucwui">
             <div className="mt-3 pt-1">
-              <div className="pouphed_skll">Your title</div>
+              <div className="pouphed_skll">Your title * </div>
               <div className="popuphead_smparcr">
                 Enter a single sentence description of your professional
                 skills/experience (e.g. Expert Web Designer with Ajax
@@ -103,7 +103,7 @@ const EditTitle = ({ data, Popup, successPopup, setSuccessPopup }) => {
                 {errors.occuption && errors.occuption}
               </span>
             </div>
-            <div className="pouphed_skll mt-3">Overview</div>
+            <div className="pouphed_skll mt-3">Overview * </div>
             <div>
               <div className="popuphead_smparcr">
                 Use this space to show clients you have the skills and
