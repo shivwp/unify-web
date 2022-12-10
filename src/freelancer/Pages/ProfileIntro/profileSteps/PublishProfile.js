@@ -298,7 +298,7 @@ const PublishProfile = ({ setCurrentTab, profileList }) => {
               <Col lg={6}>
                 <div className="popup_form_element">
                   <Form.Label className="text-black font-size-13px font-weight-500">
-                    Zip/Postal Code
+                    Zip/Postal Code *
                   </Form.Label>
                   <Form.Control
                     type="text"
@@ -318,7 +318,7 @@ const PublishProfile = ({ setCurrentTab, profileList }) => {
               <Col lg={6}>
                 <div className="popup_form_element">
                   <Form.Label className="text-black font-size-13px font-weight-500">
-                    Phone Number
+                    Phone Number *
                   </Form.Label>
                   <Form.Control
                     type="number"

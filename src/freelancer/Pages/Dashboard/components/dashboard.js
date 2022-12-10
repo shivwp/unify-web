@@ -126,8 +126,6 @@ const ProfilePayment = () => {
   );
 };
 const RecomendedProject = () => {
-
-  
   return (
     <>
       <div className="card_pcwuguoequ card_rpeoject_iw d-flex justify-content-between no-border">
@@ -711,7 +709,15 @@ const Screen = () => {
               <div className="mt-4 mb-4 d-flex justify-content-between flex-wrap">
                 <Col lg={5}>
                   <div className="welcome_ax_dboard">
-                    Welcome to your <br /> Dashboard Alex K,
+                    Welcome to your <br /> Dashboard{" "}
+                    {`${
+                      JSON.parse(sessionStorage.getItem("unify_user"))
+                        ?.first_name
+                    } ${
+                      JSON.parse(sessionStorage.getItem("unify_user"))
+                        ?.last_name
+                    }`}
+                    
                   </div>
                   <div className="wdesc_ax_dboard mt-3">
                     Here you'll find all the important information <br /> about

@@ -143,9 +143,18 @@ const AddEmployment = ({
       errorsObject.start_date = "Please select your end date";
       errorExist = true;
     }
+    if (values?.start_date > moment(new Date()).format("YYYY-MM-DD")) {
+      errorsObject.start_date = "Start date can't be greater then today";
+      errorExist = true;
+    }
 
-    if (values?.start_date >= values?.end_date) {
+    if (values?.start_date > values?.end_date) {
       errorsObject.end_date = "Start date can't be less then end date";
+      errorExist = true;
+    }
+
+    if (values?.end_date > moment(new Date()).format("YYYY-MM-DD")) {
+      errorsObject.end_date = "Start date can't be greater then today";
       errorExist = true;
     }
 
@@ -316,7 +325,7 @@ const AddEmployment = ({
                         onChange={(e) => onInputChange(e)}
                       />
                       <span className="signup-error">
-                        {errors.end_date && "Please select your end date"}
+                        {errors.end_date && errors.end_date}
                       </span>
                     </div>
                   </Col>

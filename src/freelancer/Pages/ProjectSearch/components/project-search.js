@@ -37,9 +37,9 @@ const ReasonsList = ({ jobId, data, setDropdownOpen }) => {
     <>
       <div className="ddown_psr dislikeJobRreasonsList ps-absolute">
         <div className="ddown_mcotrct psearch-pnpou">
-          {data?.map((item) => (
+          {data?.map((item, index) => (
             <div
-              key={item.id}
+              key={index}
               className="ddwon_lis"
               onClick={() => dislikeJobPost(item.id)}
               style={{ cursor: "pointer" }}
@@ -68,12 +68,15 @@ const ProjectSearch = ({ filters }) => {
     (state) => state?.job?.dislikeJobReasons
   );
 
+  console.log(jobsList);
+
   const ScrollTop = () => {
     window.scrollTo(0, 0);
   };
 
   useEffect(() => {
     dispatch(getJobsList({ pagination: 10, page, ...filters }, ScrollTop));
+    dispatch(getSavedJobsList({ pagination: 10, page }, ScrollTop));
   }, [page, onDislikeJobPost, unSaveJobsPost, saveJobsPost, filters]);
 
   useEffect(() => {
@@ -111,9 +114,9 @@ const ProjectSearch = ({ filters }) => {
                 <h2>{item?.name}</h2>
               </div>
               <div className="dlex_sk_block flex-wrap">
-                {item?.skills?.map((skill) => (
+                {item?.skills?.map((skill, index) => (
                   <>
-                    <div key={skill.id} className="b_skil">
+                    <div key={index} className="b_skil">
                       {skill?.name}
                     </div>
                   </>
@@ -141,15 +144,15 @@ const ProjectSearch = ({ filters }) => {
               {/* <div className="f_b_obx">
                 <div className="ex_name_fb">Expiry:</div>
                 <div className="ex_val_f">914 DAYS LEFT</div>
-              </div>
-              <div className="f_b_obx">
+              </div> */}
+              {/*  <div className="f_b_obx">
                 <div className="ex_name_fb">Proposals:</div>
                 <div className="ex_val_f">9 Received</div>
               </div> */}
               {/* <div className="f_b_obx"> */}
               <div className="">
                 <div className="ex_name_fb">Location:</div>
-                <div className="ex_val_f">Hamburg</div>
+                <div className="ex_val_f">{item.location}</div>
               </div>
             </div>
             <div className="ps-relative mt-sesix-5">
@@ -275,10 +278,10 @@ const ProjectSearch = ({ filters }) => {
             <>
               <Button
                 variant=""
+                key={number}
                 className={`pagi_butt ${
                   jobsPagination?.current_page == number ? "PageActive" : ""
                 }`}
-                key={number}
                 onClick={() => setPage(number)}
               >
                 {number}
@@ -331,8 +334,8 @@ const ProjectSaved = () => {
                 <h2>{item.name}</h2>
               </div>
               <div className="dlex_sk_block flex-wrap">
-                {item.skills.map((skill) => (
-                  <div key={skill.id} className="b_skil">
+                {item.skills.map((skill, index) => (
+                  <div key={index} className="b_skil">
                     {skill.name}
                   </div>
                 ))}
@@ -356,18 +359,18 @@ const ProjectSaved = () => {
           </Row>
           <div className="jb_foot flex-wrap">
             <div className="flex_itm">
-              <div className="">
+              {/* <div className="">
                 <div className="ex_name_fb">Expiry:</div>
                 <div className="ex_val_f">914 DAYS LEFT</div>
-              </div>
+              </div> */}
               {/* <div className="f_b_obx">
                 <div className="ex_name_fb">Proposals:</div>
                 <div className="ex_val_f">9 Received</div>
-              </div>
-              <div className="f_b_obx">
-                <div className="ex_name_fb">Location:</div>
-                <div className="ex_val_f">Hamburg</div>
               </div> */}
+              <div className="">
+                <div className="ex_name_fb">Location:</div>
+                <div className="ex_val_f">{item.location}</div>
+              </div>
             </div>
             <div className="ps-relative mt-sesix-5">
               {/* {dropdownOpen ? <ReasonsList id={item.id} /> : ""} */}
@@ -428,12 +431,12 @@ const ProjectSaved = () => {
             <>
               <Button
                 variant=""
+                key={number}
                 className={`pagi_butt ${
                   savedjobsPagination?.current_page == number
                     ? "PageActive"
                     : ""
                 }`}
-                key={number}
                 onClick={() => setPage(number)}
               >
                 {number}
@@ -464,6 +467,7 @@ const Project_Search = () => {
   const [filterValues, setFilterValues] = useState([]);
   const [selectCategory, setSeleceCategory] = useState({});
   const [selectLanguages, setSelecetLanguages] = useState({});
+  const savedJobsMeta = useSelector((state) => state?.job?.savedJobsList?.meta);
 
   const handleFilterChange = (e) => {
     setFilterValues({ ...filterValues, [e.target.name]: e.target.value });
@@ -553,7 +557,11 @@ const Project_Search = () => {
           return selectCategory[key];
         })
         ?.toString(),
-      skills: selectSkills?.map((item) => item.skill_id)?.toString(),
+      skills: selectSkills
+        ?.map((item) => {
+          return item.skill_id;
+        })
+        ?.toString(),
     };
     changeTab("search", filters);
   };
@@ -606,7 +614,7 @@ const Project_Search = () => {
                   <div className="s_na_box">
                     <div className="selected_skills_filter_jobs">
                       {selectSkills?.map((item, index) => (
-                        <div class="skill">
+                        <div class="skill" key={index}>
                           <span>{item.skill_name}</span>
                           <button
                             type="button"
@@ -632,12 +640,10 @@ const Project_Search = () => {
                       <div className="pls_s_na_input">+</div>
                       {showSuggestedSkills ? (
                         <div className="suggessted_skills" id="suggest_skills">
-                          {getSkillList?.map((item) => (
-                            <>
-                              <span onClick={() => addSkills(item)}>
-                                {item.name}
-                              </span>
-                            </>
+                          {getSkillList?.map((item, index) => (
+                            <span key={index} onClick={() => addSkills(item)}>
+                              {item.name}
+                            </span>
                           ))}
                         </div>
                       ) : null}
@@ -653,8 +659,9 @@ const Project_Search = () => {
                         id="cars"
                         className="font-size-13px projectDurationOption"
                         placeholder="Select a duration"
+                        defaultValue="dafault"
                       >
-                        <option disabled selected hidden>
+                        <option value="dafault" disabled hidden>
                           Select a duration
                         </option>
                         <option value="volvo">More then 6 months</option>
@@ -669,11 +676,12 @@ const Project_Search = () => {
                   <div className="s_na_h4">
                     <h4>Category</h4>
                   </div>
-                  {categoryList?.map((item) => (
+                  {categoryList?.map((item, index) => (
                     <div className="s_na_categ">
                       <Form.Check
                         type="checkbox"
                         name="category"
+                        key={index}
                         value={item.id}
                         onChange={(e) => {
                           setSeleceCategory({
@@ -809,7 +817,10 @@ const Project_Search = () => {
 
           <Col lg={9} className="top_main_c_job mx-auto">
             <div className="overflow-scroll">
-              <div className="d-flex flex-wrap tab_m_nodea mb-4 tab_scroll_cont">
+              <div
+                className="d-flex flex-wrap tab_m_nodea mb-4 tab_scroll_cont"
+                style={{ justifyContent: "flex-start" }}
+              >
                 <Link to="/freelancer/project-search">
                   <Button
                     variant=""
@@ -833,7 +844,7 @@ const Project_Search = () => {
                       changeTab("saved");
                     }}
                   >
-                    SAVED JOBS(3)
+                    SAVED JOBS({savedJobsMeta?.total_item})
                   </Button>
                 </Link>
               </div>

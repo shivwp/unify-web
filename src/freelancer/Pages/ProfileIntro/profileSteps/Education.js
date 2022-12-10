@@ -35,10 +35,11 @@ const Education = ({ setCurrentTab, profileList }) => {
                 <Col md={6} lg={4} xl={3} className="startIntroDe" key={key}>
                   <div className="startIntroBox ">
                     <div>
-                      <h5 className="startIntroSkil eduUniResp">{item.school}</h5>
+                      <h5 className="startIntroSkil eduUniResp">
+                        {item.school}
+                      </h5>
                       <p className="startIntroTwoDate">
-                        {item.degree}, {item.area_study}
-                        {item.start_year}-{item.end_year}
+                        {`${item.degree},  ${item.area_study} ${item.start_year}-${item.end_year}`}
                       </p>
                     </div>
                     <div className="startIntroTwoIcon">

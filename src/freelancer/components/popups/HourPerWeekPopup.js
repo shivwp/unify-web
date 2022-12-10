@@ -81,6 +81,7 @@ const HourPerWeekPopup = ({
                 placeholder="03.00"
                 id="hourly_price"
                 type="text"
+                disabled={!hpwValue}
                 name="hours_price"
                 value={hourlyPrice?.hours_price}
                 className="form-control"
@@ -102,7 +103,13 @@ const HourPerWeekPopup = ({
             <Button
               type="submit"
               className="hov_ttransp"
-              disabled={!(hourlyPrice?.hours_price && hpwValue)}
+              disabled={
+                !(
+                  hourlyPrice?.hours_price &&
+                  hpwValue &&
+                  hourlyPrice?.hours_price != 0
+                )
+              }
               onClick={onSave}
             >
               SAVE

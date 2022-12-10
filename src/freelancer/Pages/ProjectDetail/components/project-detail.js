@@ -178,6 +178,7 @@ const Projectdetail = () => {
     dispatch(removeSaveJob({ job_id: id }));
   };
 
+  console.log(singleJobDetails);
 
   return (
     <>
@@ -186,6 +187,16 @@ const Projectdetail = () => {
           <Alert variant="success" className="mt-4">
             <Alert.Heading>
               Your propsal is already sent. Please wait for client's response
+            </Alert.Heading>
+            <p>Thank you for your time</p>
+          </Alert>
+        ) : (
+          ""
+        )}
+        {singleJobDetails?.is_invited ? (
+          <Alert variant="success" className="mt-4">
+            <Alert.Heading>
+              You have been invited for this job. Please check your invitations
             </Alert.Heading>
             <p>Thank you for your time</p>
           </Alert>
@@ -224,20 +235,39 @@ const Projectdetail = () => {
                     </svg>
                   </Button>
 
-                  <Button
-                    variant=""
-                    className="pd_n_sendp send_proposal_btn_job_detail"
-                    disabled={
-                      singleJobDetails
-                        ? singleJobDetails?.is_proposal_send
-                        : true
-                    }
-                    onClick={() => {
-                      navigate(`/freelancer/send-proposal/${id}`);
-                    }}
-                  >
-                    Send Proposal
-                  </Button>
+                  {singleJobDetails?.is_invited ? (
+                    <Button
+                      variant=""
+                      className="pd_n_sendp send_proposal_btn_job_detail"
+                      disabled={
+                        singleJobDetails
+                          ? singleJobDetails?.is_proposal_send
+                          : true
+                      }
+                      onClick={() => {
+                        navigate(
+                          `/freelancer/single-invitation/${singleJobDetails?.invite_id}`
+                        );
+                      }}
+                    >
+                      See Invitation
+                    </Button>
+                  ) : (
+                    <Button
+                      variant=""
+                      className="pd_n_sendp send_proposal_btn_job_detail"
+                      disabled={
+                        singleJobDetails
+                          ? singleJobDetails?.is_proposal_send
+                          : true
+                      }
+                      onClick={() => {
+                        navigate(`/freelancer/send-proposal/${id}`);
+                      }}
+                    >
+                      Send Proposal
+                    </Button>
+                  )}
                 </div>
               </div>
               <div className="pd_head_on pd_head_h1">

@@ -19,26 +19,61 @@ const CloseIcon = () => {
 };
 const UserVerification = (props) => {
   const dispatch = useDispatch();
-  const [docType, setDocType] = useState({});
-  const [frontImg, setFrontImg] = useState(null);
+  const [docType, setDocType] = useState(false);
+  const [frontImg, setFrontImg] = useState(false);
   const [showingFontImg, setShowingFrontImg] = useState();
-  const [backImg, setBackImg] = useState(null);
+  const [backImg, setBackImg] = useState(false);
   const [showingBackImg, setShowingBackImg] = useState();
+  const [errors, setErrors] = useState(false);
 
   const onFrontImgChange = (e) => {
     setFrontImg(e.target.files[0]);
     setShowingFrontImg(URL.createObjectURL(e.target.files[0]));
+    setErrors({ ...errors, frontImg: false });
   };
   const onBackImgChange = (e) => {
     setBackImg(e.target.files[0]);
     setShowingBackImg(URL.createObjectURL(e.target.files[0]));
+    setErrors({ ...errors, backImg: false });
   };
+
   const onSave = () => {
+    let errorExist = false;
+    let errorsObject = {};
+
+    if (!frontImg) {
+      errorsObject.frontImg = "Please upload front side of document";
+      errorExist = true;
+    }
+
+    if (!backImg) {
+      errorsObject.backImg = "Please upload back side of document";
+      errorExist = true;
+    }
+    if (!docType) {
+      errorsObject.docType = "Please select a document type";
+      errorExist = true;
+    }
+
+    console.log("hi");
+    if (errorExist) {
+      setErrors(errorsObject);
+      console.log("hi");
+      return false;
+    }
+
     const formData = new FormData();
     formData.append("type", docType);
     formData.append("document_front", frontImg);
     formData.append("document_back", backImg);
-    dispatch(onSubmitVerificationDocs(formData));
+    dispatch(
+      onSubmitVerificationDocs(
+        formData,
+        props.Popup,
+        props?.successPopup,
+        props?.setSuccessPopup
+      )
+    );
   };
 
   return (
@@ -81,6 +116,9 @@ const UserVerification = (props) => {
                     <option value="driving_license">Driving Licence</option>
                     <option value="other">Other</option>
                   </select>
+                  <span className="signup-error">
+                    {errors.docType && errors.docType}
+                  </span>
                 </div>
               </div>
               <div className="varifyDocs_pre_img ">
@@ -94,6 +132,9 @@ const UserVerification = (props) => {
                   <div>
                     <span> Back Image</span>
                     <img src={showingBackImg} alt="" />
+                    <span className="signup-error">
+                      {errors.backImg && errors.backImg}
+                    </span>
                   </div>
                 ) : null}
               </div>
@@ -146,6 +187,9 @@ const UserVerification = (props) => {
                         onChange={(e) => onFrontImgChange(e)}
                       />
                     </label>
+                    <span className="signup-error">
+                      {errors.frontImg && errors.frontImg}
+                    </span>
                   </div>
                 </Col>
                 <Col md={6}>
@@ -194,6 +238,9 @@ const UserVerification = (props) => {
                         onChange={(e) => onBackImgChange(e)}
                       />
                     </label>
+                    <span className="signup-error">
+                      {errors.backImg && errors.backImg}
+                    </span>
                   </div>
                 </Col>
               </Row>

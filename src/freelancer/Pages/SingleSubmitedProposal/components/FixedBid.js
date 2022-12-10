@@ -331,6 +331,7 @@ const FixedBid = ({
   isByMilestone,
   setErrors,
   milestonedata,
+  proposal_data,
 }) => {
   return (
     <>
@@ -397,7 +398,7 @@ const FixedBid = ({
                     <select
                       name="project_duration"
                       id="project_duration"
-                      value={inputList[0]?.project_duration}
+                      value={proposal_data?.project_duration}
                       onChange={(e) => {
                         setValues({
                           ...values,

@@ -44,7 +44,7 @@ const NavbarHeader = (props) => {
         <div className="w-100 d-flex justify-content-between align-items-center flex_rev newnav_v2_flxew pb-0 no-border">
           <NavDropdown
             className="navbar_btn b_job_l_sx nenav_bddowniu"
-            title="What Is Unify"
+            title="Find Work"
             id="navbarScrollingDropdown"
           >
             <div className="navabr_t_li">
@@ -56,14 +56,14 @@ const NavbarHeader = (props) => {
             <div className="navabr_t_li">
               <Link to="/freelancer/AllProposals">Proposals</Link>
             </div>
-            <div className="navabr_t_li">
+            {/* <div className="navabr_t_li">
               <Link to="/freelancer/profile">Profile</Link>
-            </div>
+            </div> */}
           </NavDropdown>
         </div>
         <div className="w-100 d-flex justify-content-between align-items-center flex_rev newnav_v2_flxew pb-0 no-border">
           <NavDropdown
-            className="navbar_btn b_job_l_sx nenav_bddowniu"
+            className="navbar_btn talent_dropdown_cs nenav_bddowniu report_left_caewe"
             title="Browse Jobs"
             id="navbarScrollingDropdown"
           >
@@ -314,7 +314,7 @@ const NavbarHeader = (props) => {
                 <Nav>
                   <NavDropdown
                     className="navbar_btn b_job_l_sx"
-                    title="What is Unify"
+                    title="Find Work"
                     id="navbarScrollingDropdown"
                   >
                     <div className="navabr_t_li">
@@ -328,9 +328,9 @@ const NavbarHeader = (props) => {
                     <div className="navabr_t_li">
                       <Link to="/freelancer/AllProposals">Proposals</Link>
                     </div>
-                    <div className="navabr_t_li">
+                    {/* <div className="navabr_t_li">
                       <Link to="/freelancer/profile">Profile</Link>
-                    </div>
+                    </div> */}
                   </NavDropdown>
                   <NavDropdown
                     className="navbar_btn b_job_l_sx"

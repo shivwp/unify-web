@@ -429,76 +429,88 @@ const Screen = () => {
             </div>
           </div>
         </div>
-        <div className="propo_box_sp bg_gray_sp no-border">
-          {singleJobDetails?.budget_type == "fixed" ? (
-            <FixedBid
-              singleJobDetails={singleJobDetails}
-              values={values}
-              errors={errors}
-              setValues={setValues}
-              setInputList={setInputList}
-              inputList={inputList}
-              handleRadioChange={handleRadioChange}
-              isByMilestone={isByMilestone}
-              setErrors={setErrors}
-            />
-          ) : singleJobDetails?.budget_type == "hourly" ? (
-            <HourlyBid
-              singleJobDetails={singleJobDetails}
-              values={values}
-              setValues={setValues}
-              errors={errors}
-              setErrors={setErrors}
-            />
-          ) : (
-            ""
-          )}
-        </div>
-        <div className="propo_box_sp bg_gray_sp no-border">
-          <Row className="mt-3">
-            <Col lg={12}>
-              <div className="skll_hding">Cover Letter</div>
-              <div className="cvr_ltr_textbox">
-                <Form.Control
-                  as="textarea"
-                  name="cover_letter"
-                  value={values?.cover_letter}
-                  onChange={(e) => {
-                    setValues({ ...values, [e.target.name]: e.target.value });
-                    setErrors({ ...errors, cover_letter: false });
-                  }}
-                ></Form.Control>
-              </div>
-              <span className="signup-error">
-                {errors?.cover_letter && errors?.cover_letter}
-              </span>
-              <div className="skll_hding mt-4">Attachments</div>
-              <div className="sent_proposal_pre_img">
-                <img src={showingImage} alt="" />
-              </div>
-              <div className="skll_hding mt-4 drag_file_bx">
-                <Form.Control type="file" onChange={(e) => onImageChange(e)} />
-                Drag or <span>upload</span> project files
-              </div>
-              <span className="signup-error">
-                {errors?.attachment && errors?.attachment}
-              </span>
-              <div className="tamoun_pdd_sp mt-4">
-                Do not attach your résumé — your Unify profile is automatically
-                forwarded to the client with your proposal.
-              </div>
-            </Col>
-          </Row>
-        </div>
-        <div className="mt-4 mb-4">
-          <button
-            className="send_pros_btn"
-            disabled={singleJobDetails?.is_proposal_send}
-            onClick={onSendProposal}
-          >
-            send proposal
-          </button>
-        </div>
+        {!singleJobDetails?.is_proposal_send ? (
+          <>
+            <div className="propo_box_sp bg_gray_sp no-border">
+              {singleJobDetails?.budget_type == "fixed" ? (
+                <FixedBid
+                  singleJobDetails={singleJobDetails}
+                  values={values}
+                  errors={errors}
+                  setValues={setValues}
+                  setInputList={setInputList}
+                  inputList={inputList}
+                  handleRadioChange={handleRadioChange}
+                  isByMilestone={isByMilestone}
+                  setErrors={setErrors}
+                />
+              ) : singleJobDetails?.budget_type == "hourly" ? (
+                <HourlyBid
+                  singleJobDetails={singleJobDetails}
+                  values={values}
+                  setValues={setValues}
+                  errors={errors}
+                  setErrors={setErrors}
+                />
+              ) : (
+                ""
+              )}
+            </div>
+            <div className="propo_box_sp bg_gray_sp no-border">
+              <Row className="mt-3">
+                <Col lg={12}>
+                  <div className="skll_hding">Cover Letter</div>
+                  <div className="cvr_ltr_textbox">
+                    <Form.Control
+                      as="textarea"
+                      name="cover_letter"
+                      value={values?.cover_letter}
+                      onChange={(e) => {
+                        setValues({
+                          ...values,
+                          [e.target.name]: e.target.value,
+                        });
+                        setErrors({ ...errors, cover_letter: false });
+                      }}
+                    ></Form.Control>
+                  </div>
+                  <span className="signup-error">
+                    {errors?.cover_letter && errors?.cover_letter}
+                  </span>
+                  <div className="skll_hding mt-4">Attachments</div>
+                  <div className="sent_proposal_pre_img">
+                    <img src={showingImage} alt="" />
+                  </div>
+                  <div className="skll_hding mt-4 drag_file_bx">
+                    <Form.Control
+                      type="file"
+                      onChange={(e) => onImageChange(e)}
+                    />
+                    Drag or <span>upload</span> project files
+                  </div>
+                  <span className="signup-error">
+                    {errors?.attachment && errors?.attachment}
+                  </span>
+                  <div className="tamoun_pdd_sp mt-4">
+                    Do not attach your résumé — your Unify profile is
+                    automatically forwarded to the client with your proposal.
+                  </div>
+                </Col>
+              </Row>
+            </div>
+            <div className="mt-4 mb-4">
+              <button
+                className="send_pros_btn"
+                disabled={singleJobDetails?.is_proposal_send}
+                onClick={onSendProposal}
+              >
+                send proposal
+              </button>
+            </div>
+          </>
+        ) : (
+          ""
+        )}
       </Container>
       {successPopup}
     </>

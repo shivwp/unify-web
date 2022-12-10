@@ -517,8 +517,10 @@ const UnifyFreelancer = () => {
                   </svg>
                 </div>
                 <div className="hourly_am">
-                  <h1>${basicInfo?.amount}</h1>
-                  <span>(Per Hourly)</span>
+                 
+                  <h1>${basicInfo?.amount}</h1> <span>
+                    df  
+                  </span>
                 </div>
               </div>
 
@@ -804,7 +806,7 @@ const UnifyFreelancer = () => {
                         <Button
                           variant=""
                           onClick={() => {
-                            Setpopup(<UserVerification Popup={Setpopup} />);
+                            Setpopup(<UserVerification Popup={Setpopup} successPopup={successPopup} setSuccessPopup={setSuccessPopup} />);
                           }}
                         >
                           <svg
@@ -1568,7 +1570,7 @@ const UnifyFreelancer = () => {
                         (experience, key) => (
                           <div key={key}>
                             <div className="bpck_sm_txt_a mt-4 ehistory_uxdes">
-                              {`${experience.company} | ${experience.description}`}
+                              {`${experience.company}`}
                             </div>
                             <div className="ehitory_dtine">
                               {`${moment(experience.start_date).format(

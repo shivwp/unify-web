@@ -82,7 +82,7 @@ body {
 } */
 
 .navbar_btn .dropdown-menu {
-  left: -50% !important;
+  /* left: -50% !important; */
   border-radius: 0 !important;
   -webkit-border-radius: 0 !important;
   -moz-border-radius: 0 !important;
@@ -90,7 +90,7 @@ body {
   -o-border-radius: 0 !important;
   border: #c9c9c9 solid 1px;
   padding: 15px 10px;
-  width: 220px;
+  /* width: 220px; */
 }
 
 .external_nav_padding {
@@ -114,7 +114,7 @@ body {
 }
 
 .b_job_l_sx .dropdown-menu {
-  left: -60% !important;
+  right: 0% !important;
 }
 
 .ml-10-n {
@@ -478,6 +478,8 @@ body {
 .navbar-toggler {
   border: none;
   margin-left: -35px;
+  position: absolute;
+  top: 28px;
 }
 
 .slider_subheadin {
@@ -1749,10 +1751,27 @@ body {
     font-size: 14px;
   }
 }
+@media only screen and (max-width: 768px) and (min-width: 426px) {
+  .navbar-expand-md .navbar-collapse {
+    min-width: 570px;
+  }
+  .navbar-expand-md .navbar-nav {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+}
 
 .nav_pro_node {
   display: flex;
   position: relative;
+}
+
+@media only screen and (max-width: 425px) {
+  .nav_pro_node {
+    position: absolute;
+    right: 31px;
+  }
 }
 
 .dropdown-toggle:empty::after {
@@ -4740,7 +4759,7 @@ body {
   border-radius: 20px;
   padding: 45px 30px 20px 30px;
   position: relative;
-  width: 347px;
+  max-width: 347px;
   text-align: left;
   -webkit-border-radius: 20px;
   -moz-border-radius: 20px;
@@ -4767,7 +4786,9 @@ body {
 }
 
 .sub_col_c {
-  margin: 25px 0px;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  justify-content: center;
 }
 
 .sub_radio input {
@@ -5493,7 +5514,7 @@ body {
 }
 
 .custom_nav_profile_drp .dropdown-menu {
-  left: -280% !important;
+  left: -325% !important;
   border-radius: 0 !important;
   -webkit-border-radius: 0 !important;
   -moz-border-radius: 0 !important;

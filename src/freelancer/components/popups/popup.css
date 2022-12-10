@@ -107,7 +107,7 @@
 .cancleSubHead {
   font: normal normal bold 35px/106px Poppins;
   letter-spacing: 0px;
-  color: #6D2EF1;
+  color: #6d2ef1;
   text-align: center;
 }
 .cancleSubHead2 {
@@ -195,9 +195,8 @@
   }
 }
 
-
 @media screen and (min-width: 700px) {
-  .subsCancleSubs{
+  .subsCancleSubs {
     flex-wrap: nowrap;
   }
 }
@@ -313,7 +312,6 @@
   width: 100px;
   height: auto;
 }
-
 
 .authenticator_verification_popup {
   min-width: 500px;
@@ -454,6 +452,7 @@
   top: -15px;
   color: #6d2ef1;
   font-weight: 600;
+  margin-top: 30px;
 }
 
 .success_popup .sucess_message {

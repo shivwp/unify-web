@@ -37,7 +37,7 @@ const UploadPublishProfilepic = ({
 
   const onSave = () => {
     if (!showingImage2) {
-      setShowError("Profile must be an image");
+      setShowError("Please select an image");
     } else {
       setShowingImage(showingImage2);
       Popup();

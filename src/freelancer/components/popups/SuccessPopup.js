@@ -22,9 +22,9 @@ const SuccessPopup = ({ Popup, message, afterSuccess }) => {
         <div className="popup_box_bpn success_popup pb-4">
           <div className="popup_header pb-0">
             <div className="p_header_hding"></div>
-            <div className="close_pp_btn" onClick={() => Popup()}>
+            {/* <div className="close_pp_btn" onClick={() => Popup()}>
               <CloseIcon />
-            </div>
+            </div> */}
           </div>
           <div className="success_heading">
             <h2>Success</h2>

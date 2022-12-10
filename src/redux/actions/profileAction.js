@@ -558,16 +558,26 @@ export const onAdditionalAccount = (data, navigate) => async (dispatch) => {
   } catch (err) {}
 };
 
-export const onSubmitVerificationDocs = (data) => async (dispatch) => {
-  try {
-    Axios.post("/user-document-verify", data, config).then((res) => {
-      dispatch({
-        type: SET_SUBMIT_VERIF_DOCS,
-        payload: res.data,
+export const onSubmitVerificationDocs =
+  (data, popup, successPopup, setSuccessPopup) => async (dispatch) => {
+    try {
+      Axios.post("/user-document-verify", data, config).then((res) => {
+        dispatch({
+          type: SET_SUBMIT_VERIF_DOCS,
+          payload: res.data,
+        });
+        if (popup) {
+          popup();
+        }
+        setSuccessPopup(
+          <SuccessPopup
+            Popup={() => setSuccessPopup(!successPopup)}
+            message="Verification request sent successfully"
+          />
+        );
       });
-    });
-  } catch (err) {}
-};
+    } catch (err) {}
+  };
 
 export const onRequestTestimonial =
   (data, popup, successPopup, setSuccessPopup) => async (dispatch) => {

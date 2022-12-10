@@ -185,6 +185,7 @@ const ChangeTermPopup = ({
                 isByMilestone={isByMilestone}
                 setErrors={setErrors}
                 milestonedata={milestonedata}
+                proposal_data={proposal_data}
               />
             ) : project_data?.budget_type == "hourly" ? (
               <HourlyBid
