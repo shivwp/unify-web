@@ -42,7 +42,7 @@ const HourlyRatePopup = ({ Popup, data, setSuccessPopup, successPopup }) => {
               <div className="pbx_pdd_sp2 pb-0" style={{ border: "none" }}>
                 <Col sm={12}>
                   <div className="mt-2">
-                    <div className="hraet_pdd_sp">Hourly Rate</div>
+                    <div className="hraet_pdd_sp">Hourly Rate *</div>
                     <div className="tamoun_pdd_sp">
                       Total amount the client will see on your proposal
                     </div>

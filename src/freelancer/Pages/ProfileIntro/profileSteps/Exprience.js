@@ -193,14 +193,15 @@ const Exprience = ({ setCurrentTab, profileList }) => {
               {profileList?.length > 0 ? null : (
                 <>
                   <div className="s_na_categ mb-0 mt-0">
-                    <Form.Check
+                    <input
+                      id="exp"
                       type="checkbox"
                       name="isNothing"
                       onChange={(e) => setIsNothing(e.target.checked)}
                     />
-                    <Form.Label>
+                    <label htmlFor="exp">
                       Nothing to add? Check the box and keep going
-                    </Form.Label>
+                    </label>
                   </div>
                 </>
               )}

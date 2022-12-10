@@ -187,14 +187,15 @@ const Education = ({ setCurrentTab, profileList }) => {
               {profileList?.length > 0 ? null : (
                 <>
                   <div className="s_na_categ mb-0 mt-0">
-                    <Form.Check
+                    <input
+                      id="edu"
                       type="checkbox"
                       onChange={(e) => setIsNothing(e.target.checked)}
                       name="isNothing"
                     />
-                    <Form.Label>
+                    <label htmlFor="edu">
                       Nothing to add? Check the box and keep going
-                    </Form.Label>
+                    </label>
                   </div>
                 </>
               )}

@@ -44,7 +44,6 @@ const HourlyRate = ({ setCurrentTab, profileList }) => {
     }
   };
 
-
   return (
     <>
       <div className="container">
@@ -60,7 +59,7 @@ const HourlyRate = ({ setCurrentTab, profileList }) => {
               <div className="pbx_pdd_sp2">
                 <Col sm={9}>
                   <div className="mt-2">
-                    <div className="hraet_pdd_sp">Hourly Rate</div>
+                    <div className="hraet_pdd_sp">Hourly Rate * </div>
                     <div className="tamoun_pdd_sp">
                       Total amount the client will see on your proposal
                     </div>

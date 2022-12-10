@@ -107,7 +107,7 @@ const Skills = ({ setCurrentTab, profileList }) => {
               pre-populated this based on the information you've given us, but
               feel free to add more!
             </p>
-            <div className="afterSignUpSklls">Your Skills</div>
+            <div className="afterSignUpSklls">Your Skills * </div>
             <div className="addSkillBox mt-2">
               <div className="d-flex flex-wrap">
                 {selectSkills?.map((item, index) => (

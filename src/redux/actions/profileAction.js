@@ -482,7 +482,7 @@ export const editNameInfo =
         setSuccessPopup(
           <SuccessPopup
             Popup={() => setSuccessPopup(!successPopup)}
-            message="Profile details changed successfully"
+            message="Profile changed successfully"
             afterSuccess={afterSuccess}
           />
         );

@@ -40,7 +40,6 @@ const PublishProfile = ({ setCurrentTab, profileList }) => {
     setIsChange(true);
   };
 
- 
   const onSave = () => {
     let errorExist = false;
     let errorsObject = {};
@@ -86,7 +85,7 @@ const PublishProfile = ({ setCurrentTab, profileList }) => {
     ) {
       errorsObject.zip_code = "Please enter your zip code";
       errorExist = true;
-    } else if (values?.zip_code?.length < 6 || values?.zip_code?.length > 6) {
+    } else if (values?.zip_code?.length < 4 || values?.zip_code?.length > 10) {
       errorsObject.zip_code = "please input a valid zip code";
       errorExist = true;
     }
@@ -260,7 +259,7 @@ const PublishProfile = ({ setCurrentTab, profileList }) => {
               <Col lg={6}>
                 <div className="popup_form_element">
                   <Form.Label className="text-black font-size-13px font-weight-500">
-                    Street Address* (won't show on profile)
+                    Street Address * (won't show on profile)
                   </Form.Label>
                   <Form.Control
                     type="text"
