@@ -26,6 +26,7 @@ const Screen = () => {
   const postYourJob = useSelector((state) => state?.job?.postYourJob);
   const removeJobPosted = useSelector((state) => state?.job?.removeJobPosted);
   const updateJobPosted = useSelector((state) => state?.job?.updateJobPosted);
+  const userDetails = JSON.parse(sessionStorage.getItem("unify_user"));
 
   useEffect(() => {
     dispatch(getAllClientPosting());
@@ -44,7 +45,9 @@ const Screen = () => {
         <div className="flex_m_j_t pt-4 pb-4 flex-wrap">
           <div className="my_jo_headin font-35">
             Your Dashboard
-            <div className="my_job_sm_text">Marina Pokhilko</div>
+            <div className="my_job_sm_text">
+              {userDetails?.first_name} {userDetails?.last_name}
+            </div>
           </div>
           <div className="post_job_btn_m d-flex align-items-center flex-wrap">
             {/* <Button variant="" className="trans_btn_myjo mr_btn mt-2">
