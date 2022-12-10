@@ -24,7 +24,7 @@ import {
 
 const config = {
   headers: {
-    Authorization: `Bearer ${localStorage.getItem("unify_token")}`,
+    Authorization: `Bearer ${sessionStorage.getItem("unify_token")}`,
   },
 };
 

@@ -38,11 +38,11 @@ import {
   ADD_CATEGORY,
   HOURLY_PRICE,
 } from "../types";
-let userDetails = JSON.parse(localStorage.getItem("unify_user"));
+let userDetails = JSON.parse(sessionStorage.getItem("unify_user"));
 
 const config = {
   headers: {
-    Authorization: `Bearer ${localStorage.getItem("unify_token")}`,
+    Authorization: `Bearer ${sessionStorage.getItem("unify_token")}`,
   },
 };
 
@@ -239,7 +239,14 @@ export const onEditContactInfo =
   };
 
 export const onEditLocationInfo =
-  (data, setEditLocation, successPopup, setSuccessPopup, afterSuccess) =>
+  (
+    data,
+    setEditLocation,
+    successPopup,
+    setSuccessPopup,
+    setCurrentTab,
+    navigate
+  ) =>
   async (dispatch) => {
     try {
       Axios.post("/edit-location", data, config).then((res) => {
@@ -250,6 +257,12 @@ export const onEditLocationInfo =
           type: SET_EDIT_FREELANCER_LOCATION,
           payload: res.data,
         });
+        const afterSuccess = () => {
+          userDetails.profile_image = res?.data?.data[0]?.profile_image;
+          sessionStorage.setItem("unify_user", JSON.stringify(userDetails));
+          setCurrentTab("previewProfile");
+          navigate(`/freelancer/profile-intro/previewProfile`);
+        };
         setSuccessPopup(
           <SuccessPopup
             Popup={() => setSuccessPopup(!successPopup)}
@@ -463,7 +476,7 @@ export const editNameInfo =
         });
         const afterSuccess = () => {
           userDetails.profile_image = res?.data?.data[0]?.profile_image;
-          localStorage.setItem("unify_user", JSON.stringify(userDetails));
+          sessionStorage.setItem("unify_user", JSON.stringify(userDetails));
           window?.location?.reload();
         };
         setSuccessPopup(
@@ -590,17 +603,23 @@ export const onSubmitTestimonial =
     } catch (err) {}
   };
 
-export const onGetTestmonial = (data, setValues) => async (dispatch) => {
-  try {
-    Axios.post("/get-testimonial", data, config).then((res) => {
-      dispatch({
-        type: GET_TESTIMONIAL,
-        payload: res.data.data,
+export const onGetTestmonial =
+  (data, setValues, navigate) => async (dispatch) => {
+    Axios.post("/get-testimonial", data, config)
+      .then((res) => {
+        dispatch({
+          type: GET_TESTIMONIAL,
+          payload: res.data.data,
+        });
+        if (res.data.data.is_submit) {
+          navigate("/");
+        }
+        setValues(res.data.data);
+      })
+      .catch((err) => {
+        navigate("/");
       });
-      setValues(res.data.data);
-    });
-  } catch (err) {}
-};
+  };
 export const onAddCategory =
   (data, successPopup, setSuccessPopup, afterSuccess) => async (dispatch) => {
     try {
@@ -639,4 +658,3 @@ export const getCategoryList = () => async (dispatch) => {
     });
   } catch (err) {}
 };
-

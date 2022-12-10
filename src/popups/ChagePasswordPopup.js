@@ -26,7 +26,6 @@ const ChagePasswordPopup = ({
     setMessage();
   };
 
-  console.log(message);
 
   const onSubmit = () => {
     let errorExist = false;

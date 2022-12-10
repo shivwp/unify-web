@@ -27,7 +27,7 @@ import SuccessPopup from "../../freelancer/components/popups/SuccessPopup";
 
 const config = {
   headers: {
-    Authorization: `Bearer ${localStorage.getItem("unify_token")}`,
+    Authorization: `Bearer ${sessionStorage.getItem("unify_token")}`,
   },
 };
 
@@ -72,8 +72,8 @@ export const onLogin = (data, navigate, setMessage) => async (dispatch) => {
   try {
     const res = await Axios.post(`/login`, data);
     if (res.data.status) {
-      localStorage.setItem("unify_token", res.data.auth_token);
-      localStorage.setItem("unify_user", JSON.stringify(res.data.data.user));
+      sessionStorage.setItem("unify_token", res.data.auth_token);
+      sessionStorage.setItem("unify_user", JSON.stringify(res.data.data.user));
       if (res.data.data.user.user_type === "freelancer") {
         if (res.data.data.user.is_profile_complete === true) {
           navigate("/freelancer/dashboard");
@@ -207,40 +207,46 @@ export const onOnlineStatus = (data, navigate) => async (dispatch) => {
   } catch (err) {}
 };
 
-export const googleSignInSuccess = (data, navigate) => async (dispatch) => {
-  try {
-    const res = await Axios.post(`/social-login`, data);
-    if (res.data.status) {
-      localStorage.setItem("unify_token", res.data.auth_token);
-      localStorage.setItem("unify_user", JSON.stringify(res.data.data.user));
-      if (res.data.data.user.user_type === "freelancer") {
-        if (res.data.data.user.is_profile_complete === true) {
-          navigate("/freelancer/dashboard");
-        } else {
-          navigate("/freelancer/profile-intro/question1");
+export const googleSignInSuccess =
+  (data, navigate, setMessage) => async (dispatch) => {
+    try {
+      const res = await Axios.post(`/social-login`, data);
+      if (res.data.status) {
+        sessionStorage.setItem("unify_token", res.data.auth_token);
+        sessionStorage.setItem(
+          "unify_user",
+          JSON.stringify(res.data.data.user)
+        );
+        if (res.data.data.user.user_type === "freelancer") {
+          if (res.data.data.user.is_profile_complete === true) {
+            navigate("/freelancer/dashboard");
+          } else {
+            navigate("/freelancer/profile-intro/question1");
+          }
+        } else if (res.data.data.user.user_type === "client") {
+          if (res.data.data.user.is_profile_complete === true) {
+            navigate("/dashboard");
+          } else {
+            navigate("/businesssize");
+          }
         }
-      } else if (res.data.data.user.user_type === "client") {
-        if (res.data.data.user.is_profile_complete === true) {
-          navigate("/dashboard");
-        } else {
-          navigate("/businesssize");
-        }
+        window.location.reload();
+      } else {
+        setMessage(res.data.message);
       }
-      window.location.reload();
-    }
-  } catch (err) {}
-};
+    } catch (err) {}
+  };
 
 export const googleSignInFail = (error) => ({
   type: GOOGLE_SIGN_IN_FAIL,
   payload: error,
 });
 
-export const googleSignInInitiate = (userType, navigate) => {
+export const googleSignInInitiate = (userType, navigate, setMessage) => {
   return function (dispatch) {
     signOut(auth)
       .then(() => {
-        localStorage.clear();
+        sessionStorage.clear();
         signInWithPopup(auth, googleAuthProvider)
           .then((res) => {
             const credential = GoogleAuthProvider.credentialFromResult(res);
@@ -252,7 +258,8 @@ export const googleSignInInitiate = (userType, navigate) => {
                   token: accessToken,
                   user_type: userType,
                 },
-                navigate
+                navigate,
+                setMessage
               )
             );
           })
@@ -267,36 +274,42 @@ export const googleSignInInitiate = (userType, navigate) => {
   };
 };
 
-export const appleSignInSuccess = (data, navigate) => async (dispatch) => {
-  try {
-    const res = await Axios.post(`/social-login`, data, config);
-    if (res.data.status) {
-      localStorage.setItem("unify_token", res.data.auth_token);
-      localStorage.setItem("unify_user", JSON.stringify(res.data.data.user));
-      if (res.data.data.user.user_type === "freelancer") {
-        if (res.data.data.user.is_profile_complete === true) {
-          navigate("/freelancer/dashboard");
-        } else {
-          navigate("/freelancer/profile-intro/question1");
+export const appleSignInSuccess =
+  (data, navigate, setMessage) => async (dispatch) => {
+    try {
+      const res = await Axios.post(`/social-login`, data, config);
+      if (res.data.status) {
+        sessionStorage.setItem("unify_token", res.data.auth_token);
+        sessionStorage.setItem(
+          "unify_user",
+          JSON.stringify(res.data.data.user)
+        );
+        if (res.data.data.user.user_type === "freelancer") {
+          if (res.data.data.user.is_profile_complete === true) {
+            navigate("/freelancer/dashboard");
+          } else {
+            navigate("/freelancer/profile-intro/question1");
+          }
+        } else if (res.data.data.user.user_type === "client") {
+          if (res.data.data.user.is_profile_complete === true) {
+            navigate("/dashboard");
+          } else {
+            navigate("/businesssize");
+          }
         }
-      } else if (res.data.data.user.user_type === "client") {
-        if (res.data.data.user.is_profile_complete === true) {
-          navigate("/dashboard");
-        } else {
-          navigate("/businesssize");
-        }
+        window.location.reload();
+      } else {
+        setMessage(res.data.message);
       }
-      window.location.reload();
-    }
-  } catch (err) {}
-};
+    } catch (err) {}
+  };
 
 export const appleSignInFail = (error) => ({
   type: APPLE_SIGN_IN_FAIL,
   payload: error,
 });
 
-export const appleSignInInitiate = (userType, navigate) => {
+export const appleSignInInitiate = (userType, navigate, setMessage) => {
   return function (dispatch) {
     signInWithPopup(auth, appleProvider)
       .then((result) => {
@@ -309,7 +322,8 @@ export const appleSignInInitiate = (userType, navigate) => {
               token: accessToken,
               user_type: userType,
             },
-            navigate
+            navigate,
+            setMessage
           )
         );
       })

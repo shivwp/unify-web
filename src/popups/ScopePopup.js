@@ -27,7 +27,6 @@ const ScopePopup = ({ open, onCloseModal, values, setValues }) => {
     onCloseModal();
   };
 
-  console.log(scopeData);
 
   return (
     <Modal

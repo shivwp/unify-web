@@ -19,7 +19,6 @@ const Exprience = ({ setCurrentTab, profileList }) => {
     dispatch(onDeleteEmployment({ id }, setConfirmPopup));
   };
 
-  console.log(profileList);
   return (
     <>
       <div className="container">

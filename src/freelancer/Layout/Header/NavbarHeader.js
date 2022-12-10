@@ -14,7 +14,7 @@ const NavbarHeader = (props) => {
   const [navOpen, SetnavOpen] = useState(false);
   const [activeNav, SetactiveNav] = useState("");
   const [isDownOpen, SetisDownOpen] = useState(false);
-  let userDetails = JSON.parse(localStorage.getItem("unify_user"));
+  let userDetails = JSON.parse(sessionStorage.getItem("unify_user"));
 
   function ToggleNav() {
     SetnavOpen(!navOpen);
@@ -34,7 +34,7 @@ const NavbarHeader = (props) => {
     };
 
     userDetails.online_status = e.target.value;
-    localStorage.setItem("unify_user", JSON.stringify(userDetails));
+    sessionStorage.setItem("unify_user", JSON.stringify(userDetails));
 
     dispatch(onOnlineStatus(data));
   };
@@ -216,14 +216,16 @@ const NavbarHeader = (props) => {
                   >
                     <div className="d-flex justify-content-center">
                       <div className="nav_p_d_profil">
-                        {userDetails?.profile_image ? (
-                          <img src={userDetails?.profile_image} alt="" />
-                        ) : (
-                          <img
-                            src="https://unify.eoxyslive.com/images/profile-image/demo-user.png"
-                            alt=""
-                          />
-                        )}
+                        <Link to="/freelancer/profile">
+                          {userDetails?.profile_image ? (
+                            <img src={userDetails?.profile_image} alt="" />
+                          ) : (
+                            <img
+                              src="https://unify.eoxyslive.com/images/profile-image/demo-user.png"
+                              alt=""
+                            />
+                          )}
+                        </Link>
                       </div>
                     </div>
                     <div className="pro_name_drop_u">
@@ -288,7 +290,7 @@ const NavbarHeader = (props) => {
                       </svg>
                       <span
                         onClick={() => {
-                          localStorage.clear();
+                          sessionStorage.clear();
                           history("/signin");
                           window.location.reload();
                         }}
@@ -432,14 +434,16 @@ const NavbarHeader = (props) => {
                   </Link>
                   <div className="nav_pro_node">
                     <div className="nav_profile">
-                      {userDetails?.profile_image ? (
-                        <img src={userDetails?.profile_image} alt="" />
-                      ) : (
-                        <img
-                          src="https://unify.eoxyslive.com/images/profile-image/demo-user.png"
-                          alt=""
-                        />
-                      )}
+                      <Link to="/freelancer/profile">
+                        {userDetails?.profile_image ? (
+                          <img src={userDetails?.profile_image} alt="" />
+                        ) : (
+                          <img
+                            src="https://unify.eoxyslive.com/images/profile-image/demo-user.png"
+                            alt=""
+                          />
+                        )}
+                      </Link>
                     </div>
                     <NavDropdown
                       className=" text-center nav_dropdown_profile custom_nav_profile_drp"
@@ -447,14 +451,16 @@ const NavbarHeader = (props) => {
                     >
                       <div className="d-flex justify-content-center">
                         <div className="nav_p_d_profil">
-                          {userDetails?.profile_image ? (
-                            <img src={userDetails?.profile_image} alt="" />
-                          ) : (
-                            <img
-                              src="https://unify.eoxyslive.com/images/profile-image/demo-user.png"
-                              alt=""
-                            />
-                          )}
+                          <Link to="/freelancer/profile">
+                            {userDetails?.profile_image ? (
+                              <img src={userDetails?.profile_image} alt="" />
+                            ) : (
+                              <img
+                                src="https://unify.eoxyslive.com/images/profile-image/demo-user.png"
+                                alt=""
+                              />
+                            )}
+                          </Link>
                         </div>
                       </div>
                       <div className="pro_name_drop_u">
@@ -520,7 +526,7 @@ const NavbarHeader = (props) => {
                         </svg>
                         <span
                           onClick={() => {
-                            localStorage.clear();
+                            sessionStorage.clear();
                             history("/signin");
                             window.location.reload();
                           }}

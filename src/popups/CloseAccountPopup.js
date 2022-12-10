@@ -24,8 +24,6 @@ const CloseAccountPopup = ({
     (state) => state.profile.closeAccountReasons
   );
 
-  console.log(values);
-
   useEffect(() => {
     dispatch(closeAccountReasonList());
   }, []);
@@ -36,7 +34,7 @@ const CloseAccountPopup = ({
   };
 
   const afterSuccess = () => {
-    localStorage.clear();
+    sessionStorage.clear();
     navigate("/signup");
     window.location.reload();
   };

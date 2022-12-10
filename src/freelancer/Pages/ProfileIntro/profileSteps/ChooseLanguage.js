@@ -78,7 +78,6 @@ const ChooseLangauge = ({ setCurrentTab, profileList }) => {
     }
   };
 
-  console.log(inputList);
 
   return (
     <>

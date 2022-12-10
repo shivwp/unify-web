@@ -60,7 +60,7 @@ const VerifyForgotOTP = () => {
     }
 
     const data = {
-      email: localStorage.getItem("unify_email"),
+      email: sessionStorage.getItem("unify_email"),
       otp: otp,
     };
 
@@ -69,7 +69,7 @@ const VerifyForgotOTP = () => {
 
   const resendOtp = () => {
     const data = {
-      email: localStorage.getItem("unify_email"),
+      email: sessionStorage.getItem("unify_email"),
     };
     dispatch(onResendOtp(data, setOtpSuccess));
     setReOtp(false);
@@ -88,11 +88,11 @@ const VerifyForgotOTP = () => {
     }, 60000);
   };
 
-  var staredEmail = localStorage.getItem("unify_email");
+  var staredEmail = sessionStorage.getItem("unify_email");
   staredEmail =
     staredEmail?.slice(0, 2) +
     "***" +
-    staredEmail?.slice(10, localStorage.getItem("unify_email").length);
+    staredEmail?.slice(10, sessionStorage.getItem("unify_email").length);
 
   return (
     <div className="bg-body-wrapper">

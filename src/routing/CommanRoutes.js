@@ -14,8 +14,6 @@ const BrowseJobs = lazy(() => import("../pages/BrowseJobs"));
 const JobDetails = lazy(() => import("../pages/JobDetails"));
 const SkillsListCatWise = lazy(() => import("../pages/SkillsListCatWise"));
 const DevListCatWise = lazy(() => import("../pages/DevListCatWise"));
-const Testimonial = lazy(() => import("../components/Testimonial"));
-const Subscription = lazy(() => import("../client/Pages/Subscription"));
 
 const CommanRoutes = () => {
   return (
@@ -34,8 +32,6 @@ const CommanRoutes = () => {
         <Route path="/skill-dev/:skill" element={<DevListCatWise />} />
         <Route path="/job-details/:id" element={<JobDetails />} />
 
-        <Route path="/submit-testimonial/:id" element={<Testimonial />} />
-        <Route path="/subscription" element={<Subscription />} />
       </Route>
     </Routes>
   );

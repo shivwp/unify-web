@@ -67,7 +67,6 @@ const ReusePosting = () => {
     setObjectUrl(URL.createObjectURL(e.target.files[0]));
   };
 
-  console.log(values);
 
   const postYourJobNow = () => {
     const formData = new FormData();

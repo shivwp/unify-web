@@ -8,7 +8,6 @@ import Details from "./Details";
 const SeeTimesheet = () => {
   const [tab, setTab] = useState("OVERVIEW");
   const [tabActive, setTabActive] = useState(<ToDo />);
-  console.log("first", tab);
   return (
     <>
       <>
