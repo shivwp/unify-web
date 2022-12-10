@@ -144,6 +144,11 @@ const AddEmployment = ({
       errorExist = true;
     }
 
+    if (values?.start_date >= values?.end_date) {
+      errorsObject.end_date = "Start date can't be less then end date";
+      errorExist = true;
+    }
+
     if (!values?.currently_working) {
       if (
         values?.end_date === "" ||

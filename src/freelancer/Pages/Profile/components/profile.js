@@ -1292,7 +1292,7 @@ const UnifyFreelancer = () => {
                             </div>
                             <div
                               className="testimonial_description mt-1"
-                              style={{ fontSize: 14 }}
+                              style={{ fontSize: 14, whiteSpace: 'pre-line' }}
                             >
                               {item.description}
                             </div>

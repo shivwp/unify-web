@@ -5,6 +5,7 @@ import CommanRoutes from "./routing/CommanRoutes";
 import FreelancerRoutes from "./routing/FreelancerRoutes";
 const FooterPages = lazy(() => import("./FooterPages"));
 const Subscription = lazy(() => import("./client/Pages/Subscription"));
+const Testimonial = lazy(() => import("./components/Testimonial"));
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <CommanRoutes />
       <Routes>
         <Route path="/subscription" element={<Subscription />} />
+        <Route path="/submit-testimonial/:id" element={<Testimonial />} />
         <Route path="/pages/:pagename" element={<FooterPages />} />
       </Routes>
       <ClientRoutes />

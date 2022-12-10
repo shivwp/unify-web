@@ -31,8 +31,10 @@ const Testimonial = () => {
     navigate("/");
   };
 
+  console.log(testimonialData)
+
   useEffect(() => {
-    dispatch(onGetTestmonial(id, setValues));
+    dispatch(onGetTestmonial(id, setValues, navigate));
   }, []);
 
   const onSave = () => {
