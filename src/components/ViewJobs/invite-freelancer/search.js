@@ -138,15 +138,21 @@ const Screen = ({
                               Hire
                             </button>
                           </Link>
-                          <button
-                            onClick={() => {
-                              setInviteJobPopup(true);
-                              setFreelancerId(data);
-                            }}
-                            className="mt-2 font-weight-500"
-                          >
-                            Invite to Job
-                          </button>
+                          {data.isInvite === false ? (
+                            <button
+                              onClick={() => {
+                                setInviteJobPopup(true);
+                                setFreelancerId(data);
+                              }}
+                              className="mt-2 font-weight-500"
+                            >
+                              Invite to Job
+                            </button>
+                          ) : (
+                            <button className="invitationSentDisabled" disabled>
+                              Invitation sent
+                            </button>
+                          )}
                         </div>
                       </div>
                     </div>

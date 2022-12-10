@@ -6,16 +6,22 @@ import "react-datepicker/dist/react-datepicker.css";
 import { Link, useParams } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import { useDispatch, useSelector } from "react-redux";
-import { getSingleFreelancer } from "../../../../redux/actions/freelancerAction";
+import {
+  getSingleFreelancer,
+  hireFreelancer,
+} from "../../../../redux/actions/freelancerAction";
 import { singleJobPostDetails } from "../../../../redux/actions/jobActions";
 
 const Screen = () => {
   const dispatch = useDispatch();
   const { project_id, freelancer_id } = useParams();
-  const [startDate, setStartDate] = useState();
-  const [values, setValues] = useState({});
+  const [imageFile, setImageFile] = useState();
+  const [objectUrl, setObjectUrl] = useState();
+  const [values, setValues] = useState({ amount: 30 });
   const [openPrice, setOpenPrice] = useState(false);
   const [weeklyLimit, setWeeklyLimit] = useState(false);
+  const [openBudgetType, setOpenBudgetType] = useState(false);
+  const [openFixed, setOpenFixed] = useState(false);
   const singleFreelancer = useSelector(
     (state) => state.freelancer.singleFreelancer
   );
@@ -40,6 +46,34 @@ const Screen = () => {
 
   const onInputChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
+  };
+
+  const handleImageChange = (e) => {
+    setImageFile(e.target.files[0]);
+    setObjectUrl(URL.createObjectURL(e.target.files[0]));
+  };
+
+  const handleHireFreelancer = () => {
+    const data = {
+      freelancer_id: freelancer_id,
+      project_id: project_id,
+      title: values?.contractTitle,
+      budget_type: values?.budget_type,
+      weekly_limit: values?.weeklyLimit,
+      amount: values?.amount,
+      date: values?.startDate,
+      project_duration: values?.project_duration,
+      image: imageFile,
+      // milestone_type: "multiple",
+      // milestone_data: [
+      //   { description: "first payment", due_date: "2022-11-25", amount: "500" },
+      //   { description: "first payment", due_date: "2022-11-25", amount: "200" },
+      //   { description: "first payment", due_date: "2022-11-25", amount: "400" },
+      // ],
+      cover_letter: values?.cover_letter,
+    };
+
+    dispatch(hireFreelancer(data));
   };
 
   return (
@@ -71,6 +105,18 @@ const Screen = () => {
           </div>
         </div>
         <div className="b-bottom-gr">
+          <div className="contrc_ter_head">Job Details</div>
+          <div className="input-groupHire py-2">
+            <h6>Contract Title</h6>
+            <Form.Control
+              type="text"
+              name="contractTitle"
+              value={values?.contractTitle}
+              onChange={(e) => onInputChange(e)}
+              placeholder="Enter a contract title..."
+            />
+          </div>
+
           <div className="contrc_ter_head">Contract Terms</div>
           <div className="pay_pro_par">
             You’re protected by <Link to="#0">Unify Payment Protection.</Link>{" "}
@@ -85,72 +131,90 @@ const Screen = () => {
                 </span>
               </div>
 
-              <div className="hourly_headin d-flex align-items-center">
-                {/* {values?.budget_type} */}
-                <Row className="mt-3">
-                  <Col md={6} sm={6}>
-                    <Form.Label className="form_card_label">
-                      <div className="select_card subscription_box_popup pnew_bud">
-                        <div className="sub_radio">
-                          <Form.Check
-                            type="radio"
-                            name="budget_type"
-                            value="hourly"
-                            checked={
-                              values?.budget_type === "hourly" ? true : false
-                            }
-                            onChange={(e) => onInputChange(e)}
-                          />
+              {!openBudgetType && (
+                <div className="hourly_headin d-flex align-items-center">
+                  <>
+                    {values?.budget_type === "fixed"
+                      ? "Fixed"
+                      : values?.budget_type === "hourly"
+                      ? "Hourly"
+                      : null}
+                    <button
+                      className="round_b_btn"
+                      onClick={() => setOpenBudgetType(true)}
+                    >
+                      <i className="bi bi-pencil-square"></i>
+                    </button>
+                  </>
+                </div>
+              )}
+              {openBudgetType && (
+                <div className="hourly_headin d-flex align-items-center">
+                  <Row>
+                    <Col md={6} sm={6}>
+                      <Form.Label className="form_card_label">
+                        <div className="select_card subscription_box_popup pnew_bud">
+                          <div className="sub_radio">
+                            <Form.Check
+                              type="radio"
+                              name="budget_type"
+                              value="hourly"
+                              checked={
+                                values?.budget_type === "hourly" ? true : false
+                              }
+                              onChange={(e) => onInputChange(e)}
+                            />
+                          </div>
+                          <div className="sel_icon">
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="16"
+                              height="16"
+                              fill="currentColor"
+                              className="bi bi-clock"
+                              viewBox="0 0 16 16"
+                            >
+                              <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z" />
+                              <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z" />
+                            </svg>
+                          </div>
+                          <div className="sho_tit">Hourly Rate</div>
                         </div>
-                        <div className="sel_icon">
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="16"
-                            height="16"
-                            fill="currentColor"
-                            className="bi bi-clock"
-                            viewBox="0 0 16 16"
-                          >
-                            <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z" />
-                            <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z" />
-                          </svg>
+                      </Form.Label>
+                    </Col>
+                    <Col md={6} sm={6}>
+                      <Form.Label className="form_card_label">
+                        <div className="select_card subscription_box_popup pnew_bud">
+                          <div className="sub_radio">
+                            <Form.Check
+                              type="radio"
+                              name="budget_type"
+                              value="fixed"
+                              checked={
+                                values?.budget_type === "fixed" ? true : false
+                              }
+                              onChange={(e) => onInputChange(e)}
+                            />
+                          </div>
+                          <div className="sel_icon">
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="16"
+                              height="16"
+                              fill="currentColor"
+                              className="bi bi-ui-checks"
+                              viewBox="0 0 16 16"
+                            >
+                              <path d="M7 2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-1zM2 1a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2H2zm0 8a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2v-2a2 2 0 0 0-2-2H2zm.854-3.646a.5.5 0 0 1-.708 0l-1-1a.5.5 0 1 1 .708-.708l.646.647 1.646-1.647a.5.5 0 1 1 .708.708l-2 2zm0 8a.5.5 0 0 1-.708 0l-1-1a.5.5 0 0 1 .708-.708l.646.647 1.646-1.647a.5.5 0 0 1 .708.708l-2 2zM7 10.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-1zm0-5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0 8a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z" />
+                            </svg>
+                          </div>
+                          <div className="sho_tit">Project budget</div>
                         </div>
-                        <div className="sho_tit">Hourly Rate</div>
-                      </div>
-                    </Form.Label>
-                  </Col>
-                  <Col md={6} sm={6}>
-                    <Form.Label className="form_card_label">
-                      <div className="select_card subscription_box_popup pnew_bud">
-                        <div className="sub_radio">
-                          <Form.Check
-                            type="radio"
-                            name="budget_type"
-                            value="fixed"
-                            checked={
-                              values?.budget_type === "fixed" ? true : false
-                            }
-                            onChange={(e) => onInputChange(e)}
-                          />
-                        </div>
-                        <div className="sel_icon">
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="16"
-                            height="16"
-                            fill="currentColor"
-                            className="bi bi-ui-checks"
-                            viewBox="0 0 16 16"
-                          >
-                            <path d="M7 2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-1zM2 1a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2H2zm0 8a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2v-2a2 2 0 0 0-2-2H2zm.854-3.646a.5.5 0 0 1-.708 0l-1-1a.5.5 0 1 1 .708-.708l.646.647 1.646-1.647a.5.5 0 1 1 .708.708l-2 2zm0 8a.5.5 0 0 1-.708 0l-1-1a.5.5 0 0 1 .708-.708l.646.647 1.646-1.647a.5.5 0 0 1 .708.708l-2 2zM7 10.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-1zm0-5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0 8a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z" />
-                          </svg>
-                        </div>
-                        <div className="sho_tit">Project budget</div>
-                      </div>
-                    </Form.Label>
-                  </Col>
-                </Row>
-              </div>
+                      </Form.Label>
+                    </Col>
+                  </Row>
+                </div>
+              )}
             </div>
 
             {values?.budget_type === "hourly" ? (
@@ -164,10 +228,17 @@ const Screen = () => {
                   </div>
                   <div className="hourly_headin d-flex align-items-center">
                     {!openPrice ? (
-                      "$30.00"
+                      `${values?.amount ? values?.amount : "30.00"}`
                     ) : (
                       <Col md={3}>
-                        <Form.Control type="number"></Form.Control>
+                        <Form.Control
+                          type="number"
+                          name="amount"
+                          placeholder="0.00"
+                          value={values?.amount}
+                          className="text-right"
+                          onChange={(e) => onInputChange(e)}
+                        ></Form.Control>
                       </Col>
                     )}
                     /hr
@@ -207,19 +278,23 @@ const Screen = () => {
                   </div>
                   <div className="hourly_headin d-flex align-items-center">
                     {!weeklyLimit ? (
-                      "40"
+                      `${values?.weeklyLimit ? values?.weeklyLimit : "30.00"}`
                     ) : (
                       <Col md={3}>
-                        <Form.Select value="">
-                          <option value="">No limit</option>
-                          <option value="">5 hrs/week</option>
-                          <option value="">10 hrs/week</option>
-                          <option value="">15 hrs/week</option>
-                          <option value="">20 hrs/week</option>
-                          <option value="">25 hrs/week</option>
-                          <option value="">30 hrs/week</option>
-                          <option value="">35 hrs/week</option>
-                          <option value="">40 hrs/week</option>
+                        <Form.Select
+                          name="weeklyLimit"
+                          value={values?.weeklyLimit}
+                          onChange={(e) => onInputChange(e)}
+                        >
+                          <option value="No limit">No limit</option>
+                          <option value="5 k">5 hrs/week</option>
+                          <option value="10">10 hrs/week</option>
+                          <option value="15">15 hrs/week</option>
+                          <option value="20">20 hrs/week</option>
+                          <option value="25">25 hrs/week</option>
+                          <option value="30">30 hrs/week</option>
+                          <option value="35">35 hrs/week</option>
+                          <option value="40">40 hrs/week</option>
                         </Form.Select>
                       </Col>
                     )}
@@ -245,18 +320,45 @@ const Screen = () => {
                   </div>
                   <div className="max_prof_rt">$1,200.00 max/week</div>
                 </div>
+                {/* <div className="d-flex allow_freel_che flex-wrap">
+                  <Form.Label className="d-flex">
+                    <Form.Check type="checkbox"></Form.Check>
+                    Allow freelancer to log time manually if needed.
+                  </Form.Label>
+                  <Link to="#0">Learn more</Link>
+                </div> */}
+                <div className="d-flex align-items-center flex-wrap pt-3 pb-4 b-bottom-gr">
+                  <div className="start_d_headin">
+                    Start Date <span>(Optional)</span>
+                    <span className="no_verify_icon">
+                      <i className="bi bi-question-circle-fill"></i>
+                    </span>
+                  </div>
+                  <div className="inpu_date d-flex psr-relative">
+                    <input
+                      type="date"
+                      name="startDate"
+                      value={values?.startDate}
+                      onChange={(e) => onInputChange(e)}
+                      className="custom_date_picker"
+                    />
+                    {/* <div className="psr_abs_c_icon">
+              <i class="bi bi-calendar-date"></i>
+            </div> */}
+                  </div>
+                </div>
               </>
             ) : values?.budget_type === "fixed" ? (
               <>
                 <div>
                   <div className="pay_op_heading">
-                    Pay by the hour
+                    Pay a fixed price for your project
                     <span className="no_verify_icon">
                       <i className="bi bi-question-circle-fill text-secondary"></i>
                     </span>
                   </div>
                   <div className="hourly_headin d-flex align-items-center">
-                    {!openPrice ? (
+                    {!openFixed ? (
                       "$30.00"
                     ) : (
                       <Col md={3}>
@@ -264,23 +366,23 @@ const Screen = () => {
                       </Col>
                     )}
                     /hr
-                    {!openPrice ? (
+                    {!openFixed ? (
                       <button
                         className="round_b_btn"
-                        onClick={() => setOpenPrice(!openPrice)}
+                        onClick={() => setOpenFixed(!openFixed)}
                       >
                         <i className="bi bi-pencil-square"></i>
                       </button>
                     ) : (
-                      <button
+                      <buttons
                         className="round_b_btn"
-                        onClick={() => setOpenPrice(!openPrice)}
+                        onClick={() => setOpenFixed(!openFixed)}
                       >
                         <i
                           className="bi bi-check"
                           style={{ fontSize: "26px" }}
                         ></i>
-                      </button>
+                      </buttons>
                     )}
                   </div>
                   <div className="max_prof_rt">
@@ -291,27 +393,7 @@ const Screen = () => {
             ) : null}
           </div>
         </div>
-        <div className="d-flex allow_freel_che flex-wrap">
-          <Form.Label className="d-flex">
-            <Form.Check type="checkbox"></Form.Check>
-            Allow freelancer to log time manually if needed.
-          </Form.Label>
-          <Link to="#0">Learn more</Link>
-        </div>
-        <div className="d-flex align-items-center flex-wrap pt-3 pb-4 b-bottom-gr">
-          <div className="start_d_headin">
-            Start Date <span>(Optional)</span>
-            <span className="no_verify_icon">
-              <i className="bi bi-question-circle-fill"></i>
-            </span>
-          </div>
-          <div className="inpu_date d-flex psr-relative">
-            <input type="date" className="custom_date_picker" />
-            {/* <div className="psr_abs_c_icon">
-              <i class="bi bi-calendar-date"></i>
-            </div> */}
-          </div>
-        </div>
+
         <div className="b_bot_inp d-flex justify-content-between align-items-center">
           <div className="sm_label_inp slide_n_tex">
             Add automatic weekly payments for the freelancer (Optional)
@@ -333,16 +415,30 @@ const Screen = () => {
         <div className="contrc_ter_head mb-2">Work Description</div>
         <div className="pay_pro_par p-0 m-0">Add a description of the work</div>
         <Form.Group className="description_text_h">
-          <Form.Control as="textarea" rows={3}></Form.Control>
+          <Form.Control
+            as="textarea"
+            rows={3}
+            name="cover_letter"
+            value={values?.cover_letter}
+            onChange={(e) => onInputChange(e)}
+          ></Form.Control>
         </Form.Group>
-        <div className="ts_btn attach_f_btn mt-0">
-          <Form.Control type="file" />
-          <button>
-            <i class="bi bi-paperclip"></i>
+        <div className="ts_btn attach_f_btn">
+          <label id="uploadImage" className="rot_svg_oety">
+            <input id="uploadImage" type="file" onChange={handleImageChange} />
+            <i class="fa fa-paperclip" aria-hidden="true"></i>
             Attach File
-          </button>
+          </label>
           <div className="sm_label_inp">Max file size: 100 MB</div>
         </div>
+        {objectUrl && (
+          <img
+            src={objectUrl}
+            className="selectImage"
+            alt=""
+            style={{ width: "100px", height: "100px", objectFit: "cover" }}
+          />
+        )}
       </div>
       <div className="allow_freel_che flex-wrap black_a_inp">
         <Form.Check type="checkbox" />
@@ -356,11 +452,14 @@ const Screen = () => {
           <Link to="/view-job">
             <button className="fo_btn_c next_b_btn_c mb-2">Cancel</button>
           </Link>
-          <Link to="/hire-freelancer/addAddress">
-            <button className="fo_btn_c next_b_btn_c mb-2 post_job_btn blue_ac_btn">
-              Continue
-            </button>
-          </Link>
+          {/* <Link to="/hire-freelancer/addAddress"> */}
+          <button
+            className="fo_btn_c next_b_btn_c mb-2 post_job_btn blue_ac_btn"
+            onClick={handleHireFreelancer}
+          >
+            Continue
+          </button>
+          {/* </Link> */}
         </div>
       </div>
     </Container>

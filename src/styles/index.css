@@ -5081,6 +5081,17 @@ body {
   cursor: not-allowed;
   padding: 8px 0px !important;
 }
+
+.invitationSentDisabled {
+  background-color: #e4ebe4 !important ;
+  color: #9aaa97 !important;
+  border: none !important;
+  cursor: not-allowed;
+  height: 47px;
+  font-size: 16px !important;
+  margin-top: 6px;
+  padding: 8px 0px !important;
+}
 .active_btn_blue {
   background-color: #6d2ef1 !important;
   color: #fff !important;
@@ -6199,7 +6210,7 @@ a {
 .tab_scroll_cont {
   overflow: scroll;
   flex-wrap: nowrap !important;
-  justify-content: center;
+  /* justify-content: center; */
   width: 100%;
 }
 

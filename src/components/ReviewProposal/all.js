@@ -142,6 +142,7 @@ const JonComponent = ({ jobId }) => {
           </div>
           {reviewProposal === "allProposals" && (
             <AllProposals
+              jobId={jobId}
               jobBasedProposalsList={jobBasedProposalsList}
               handleSaveProposalShortList={handleSaveProposalShortList}
               handleRemoveProposalShortList={handleRemoveProposalShortList}
@@ -150,6 +151,7 @@ const JonComponent = ({ jobId }) => {
           )}
           {reviewProposal === "shortListed" && (
             <Satisfied
+              jobId={jobId}
               proposalShortlist={proposalShortlist}
               handleSaveProposalShortList={handleSaveProposalShortList}
               handleRemoveProposalShortList={handleRemoveProposalShortList}

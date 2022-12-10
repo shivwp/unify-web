@@ -84,85 +84,105 @@ const Screen = () => {
             </div>
           </div>
 
-          {clientPostingList?.map((item, index) => (
-            <div
-              key={index}
-              className="my_job_flx"
-              style={{
-                borderBottom: "#cbcaca solid 1px",
-                paddingBottom: "15px",
-              }}
-            >
-              <div>
-                <div className="my_job_a job_na_bol">{item.name}</div>
-                <div className="my_job_h">Invite only - {item.budget_type}</div>
-                <div className="my_job_pos_tme">
-                  Posted {item.created_at} by you
-                </div>
-              </div>
-              <div className="d-flex justify-content-between flex-wrap">
-                <div className="my_job_n_box">
-                  <div className="my_job_nm">0</div>
-                  <div className="my_job_h pt-0">Proposals</div>
-                </div>
-                <div className="my_job_n_box">
-                  <div className="my_job_nm">0</div>
-                  <div className="my_job_h pt-0">Messaged</div>
-                </div>
-                <div className="my_job_n_box">
-                  <div className="my_job_nm">0</div>
-                  <div className="my_job_h pt-0">Hired</div>
-                </div>
-              </div>
-              <div className="text-right d-flex flex-wrap menu_btn">
-                <button
-                  className="toggle_btn_dot"
-                  onClick={() => setMenuBarPosting(item.id)}
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    fill="currentColor"
-                    className="bi bi-three-dots-vertical"
-                    viewBox="0 0 16 16"
-                  >
-                    <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
-                  </svg>
-                </button>
-
-                {menuBarPosting === item.id && (
-                  <div className="menu_bar" id="menu_bar1">
-                    <div className="navabr_t_li">
-                      <Link to={`/dashboard/edit-posting/${item.id}`}>
-                        Edit Posting
-                      </Link>
-                    </div>
-                    <div
-                      className="navabr_t_li"
-                      onClick={() => setRemovePosting(true)}
-                    >
-                      <Link to="#">Remove Posting</Link>
-                    </div>
-                    <div className="navabr_t_li">
-                      <Link to="/view-job/review">View Proposals</Link>
-                    </div>
-                    <div className="navabr_t_li">
-                      <Link to={`/view-job/${item.id}`}>View Job Post</Link>
-                    </div>
-                    <div className="navabr_t_li">
-                      <Link to={`/dashboard/reuse-posting/${item.id}`}>
-                        Reuse Postings
-                      </Link>
-                    </div>
-                    <span className="menu_btn_arrow" id="menu_btn_arrow1">
-                      &#62;
-                    </span>
-                  </div>
-                )}
+          {clientPostingList?.length === 0 ? (
+            <div className="d-flex justify-content-center flex-column align-items-center py-4">
+              <img src="/assets/data-not-found.png" alt="" />
+              <br />
+              <h3>No active job posts</h3>
+              <p>Post a job to the marketplace and let talent come to you.</p>
+              <div className="post_job_btn_m">
+                <Link to="/post-your-job">
+                  <button>Post a job</button>
+                </Link>
               </div>
             </div>
-          ))}
+          ) : (
+            <>
+              {clientPostingList?.map((item, index) => (
+                <div
+                  key={index}
+                  className="my_job_flx"
+                  style={{
+                    borderBottom: "#cbcaca solid 1px",
+                    paddingBottom: "15px",
+                  }}
+                >
+                  <div>
+                    <div className="my_job_a job_na_bol">{item.name}</div>
+                    <div className="my_job_h">
+                      Invite only - {item.budget_type}
+                    </div>
+                    <div className="my_job_pos_tme">
+                      Posted {item.created_at} by you
+                    </div>
+                  </div>
+                  <div className="d-flex justify-content-between flex-wrap">
+                    <div className="my_job_n_box">
+                      <div className="my_job_nm">0</div>
+                      <div className="my_job_h pt-0">Proposals</div>
+                    </div>
+                    <div className="my_job_n_box">
+                      <div className="my_job_nm">0</div>
+                      <div className="my_job_h pt-0">Messaged</div>
+                    </div>
+                    <div className="my_job_n_box">
+                      <div className="my_job_nm">0</div>
+                      <div className="my_job_h pt-0">Hired</div>
+                    </div>
+                  </div>
+                  <div className="text-right d-flex flex-wrap menu_btn">
+                    <button
+                      className="toggle_btn_dot"
+                      onClick={() => setMenuBarPosting(item.id)}
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        fill="currentColor"
+                        className="bi bi-three-dots-vertical"
+                        viewBox="0 0 16 16"
+                      >
+                        <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
+                      </svg>
+                    </button>
+
+                    {menuBarPosting === item.id && (
+                      <div className="menu_bar" id="menu_bar1">
+                        <div className="navabr_t_li">
+                          <Link to={`/dashboard/edit-posting/${item.id}`}>
+                            Edit Posting
+                          </Link>
+                        </div>
+                        <div
+                          className="navabr_t_li"
+                          onClick={() => setRemovePosting(true)}
+                        >
+                          <Link to="#">Remove Posting</Link>
+                        </div>
+                        <div className="navabr_t_li">
+                          <Link to={`/view-job/${item.id}`}>
+                            View Proposals
+                          </Link>
+                        </div>
+                        <div className="navabr_t_li">
+                          <Link to={`/view-job/${item.id}`}>View Job Post</Link>
+                        </div>
+                        <div className="navabr_t_li">
+                          <Link to={`/dashboard/reuse-posting/${item.id}`}>
+                            Reuse Postings
+                          </Link>
+                        </div>
+                        <span className="menu_btn_arrow" id="menu_btn_arrow1">
+                          &#62;
+                        </span>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </>
+          )}
         </div>
         <div className="yourp_box pb-0 pt-3">
           <div className="d-flex justify-content-between align-items-center pb-3 b-bottom-gr">
@@ -171,56 +191,74 @@ const Screen = () => {
               <Link to="/all-draft-job-list">See all drafts</Link>
             </div>
           </div>
-          {clientDraftPostingList?.map((item, index) => (
-            <div
-              key={index}
-              className="my_job_flx"
-              style={{
-                borderBottom: "#cbcaca solid 1px",
-                paddingBottom: "15px",
-              }}
-            >
-              <div>
-                <div className="my_job_a job_na_bol">{item.name}</div>
-                <div className="my_job_pos_tme">Saved {item.created_at}</div>
-              </div>
-              <div className="text-right d-flex flex-wrap menu_btn">
-                <button
-                  className="toggle_btn_dot"
-                  onClick={() => setMenuBarDraft(item.id)}
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    fill="currentColor"
-                    className="bi bi-three-dots-vertical"
-                    viewBox="0 0 16 16"
-                  >
-                    <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
-                  </svg>
-                </button>
-                {menuBarDraft === item.id && (
-                  <div className="menu_bar" id="menu_bar2">
-                    <div className="navabr_t_li">
-                      <Link to={`/dashboard/edit-draft/${item.id}`}>
-                        Edit Draft
-                      </Link>
-                    </div>
-                    <div
-                      className="navabr_t_li"
-                      onClick={() => setRemovePosting(true)}
-                    >
-                      Remove Draft
-                    </div>
-                    <span className="menu_btn_arrow" id="menu_btn_arrow2">
-                      &#62;
-                    </span>
-                  </div>
-                )}
+          {clientDraftPostingList?.length === 0 ? (
+            <div className="d-flex justify-content-center flex-column align-items-center py-4">
+              <img src="/assets/data-not-found.png" alt="" />
+              <br />
+              <h3>No active job posts</h3>
+              <p>Post a job to the marketplace and let talent come to you.</p>
+              <div className="post_job_btn_m">
+                <Link to="/post-your-job">
+                  <button>Post a job</button>
+                </Link>
               </div>
             </div>
-          ))}
+          ) : (
+            <>
+              {clientDraftPostingList?.map((item, index) => (
+                <div
+                  key={index}
+                  className="my_job_flx"
+                  style={{
+                    borderBottom: "#cbcaca solid 1px",
+                    paddingBottom: "15px",
+                  }}
+                >
+                  <div>
+                    <div className="my_job_a job_na_bol">{item.name}</div>
+                    <div className="my_job_pos_tme">
+                      Saved {item.created_at}
+                    </div>
+                  </div>
+                  <div className="text-right d-flex flex-wrap menu_btn">
+                    <button
+                      className="toggle_btn_dot"
+                      onClick={() => setMenuBarDraft(item.id)}
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        fill="currentColor"
+                        className="bi bi-three-dots-vertical"
+                        viewBox="0 0 16 16"
+                      >
+                        <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
+                      </svg>
+                    </button>
+                    {menuBarDraft === item.id && (
+                      <div className="menu_bar" id="menu_bar2">
+                        <div className="navabr_t_li">
+                          <Link to={`/dashboard/edit-draft/${item.id}`}>
+                            Edit Draft
+                          </Link>
+                        </div>
+                        <div
+                          className="navabr_t_li"
+                          onClick={() => setRemovePosting(true)}
+                        >
+                          Remove Draft
+                        </div>
+                        <span className="menu_btn_arrow" id="menu_btn_arrow2">
+                          &#62;
+                        </span>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </>
+          )}
         </div>
         <div className="yourp_box pb-0 pt-3">
           <div

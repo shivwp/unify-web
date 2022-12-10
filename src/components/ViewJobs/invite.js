@@ -49,7 +49,7 @@ const JonComponent = ({ jobId }) => {
       // title: "Aaquib",
     };
     dispatch(getJobBasedFreelancerList(data));
-  }, [savedTalent, removeSavedTalent]);
+  }, [savedTalent, removeSavedTalent, invitedFreelancer]);
 
   useEffect(() => {
     dispatch(savedTalentList());
@@ -148,6 +148,7 @@ const JonComponent = ({ jobId }) => {
               invitedFreelancerList={invitedFreelancerList}
               handleSavedTalent={handleSavedTalent}
               handleRemoveSavedTalent={handleRemoveSavedTalent}
+              jobId={jobId}
             />
           )}
           {inviteTab === "myHires" && <Hires />}
@@ -155,6 +156,7 @@ const JonComponent = ({ jobId }) => {
             <Saved
               getSavedTalentList={getSavedTalentList}
               handleRemoveSavedTalent={handleRemoveSavedTalent}
+              jobId={jobId}
             />
           )}
         </div>

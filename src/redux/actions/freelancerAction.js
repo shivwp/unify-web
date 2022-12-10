@@ -240,3 +240,14 @@ export const getSingleFreelancer = (freelancer_id) => async (dispatch) => {
       console.log(err);
     });
 };
+
+export const hireFreelancer = (data) => async (dispatch) => {
+  await Axios.post(`/hire-freelancer`, data, config)
+    .then((res) => {
+      if (res.data.status) {
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};

@@ -928,6 +928,8 @@
   font-size: 13px;
   color: #6b6b6b;
   font-weight: 400;
+  word-break: break-all;
+  white-space: pre-line;
   padding: 10px 0px;
 }
 

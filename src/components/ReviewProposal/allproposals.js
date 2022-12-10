@@ -6,6 +6,7 @@ const Screen = ({
   handleSaveProposalShortList,
   handleRemoveProposalShortList,
   handleSaveProposalArchieved,
+  jobId,
 }) => {
   return (
     <>
@@ -91,7 +92,9 @@ const Screen = ({
                           <button className="transp_fil_btn mt-2 font-weight-500">
                             Message
                           </button>
-                          <Link to="/hire-freelancer">
+                          <Link
+                            to={`/hire-freelancer/${jobId}/${data.freelancer_id}`}
+                          >
                             <button className="mt-2 font-weight-500 hover_white_io">
                               Hire
                             </button>
@@ -108,7 +111,8 @@ const Screen = ({
                       </div>
                     </div>
                     <div className="cover_letter_in">
-                      <b>Cover Letter </b> - {data.cover_letter}
+                      <b>Cover Letter </b> - <br />
+                      {data.cover_letter}
                     </div>
                     <div className="overflow-scroll">
                       <div className="slide_btnss freelancer_skill_sc">

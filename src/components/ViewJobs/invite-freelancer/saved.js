@@ -1,6 +1,7 @@
 import { Col, Row } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
-const Screen = ({ getSavedTalentList, handleRemoveSavedTalent }) => {
+const Screen = ({ getSavedTalentList, handleRemoveSavedTalent, jobId }) => {
   return (
     <>
       {getSavedTalentList?.length === 0 ? (
@@ -56,9 +57,11 @@ const Screen = ({ getSavedTalentList, handleRemoveSavedTalent }) => {
                           </svg>
                         </button>
                         <div className="ts_btn attach_f_btn wid_30_in d-flex">
-                          <button className="transp_fil_btn font-weight-500">
-                            Hire
-                          </button>
+                          <Link to={`/hire-freelancer/${jobId}/${data.id}`}>
+                            <button className="transp_fil_btn font-weight-500">
+                              Hire
+                            </button>
+                          </Link>
                         </div>
                       </div>
                     </div>
