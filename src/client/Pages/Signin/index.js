@@ -1,7 +1,11 @@
 import Signin from "./components/signin";
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { onLogin } from "../../../redux/actions/authActions";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import {
+  onLogin,
+  appleSignInInitiate,
+  googleSignInInitiate,
+} from "../../../redux/actions/authActions";
 import { useNavigate } from "react-router-dom";
 
 const Signinscreen = () => {
@@ -22,6 +26,13 @@ const Signinscreen = () => {
     if (e.target.name === "password") {
       setMessage();
     }
+  };
+
+  const handleGoogleSignIn = () => {
+    dispatch(googleSignInInitiate(userType, navigate, setMessage));
+  };
+  const handleAppleSignIn = () => {
+    dispatch(appleSignInInitiate(userType, navigate, setMessage));
   };
 
   const submitForm = (e) => {
@@ -82,6 +93,8 @@ const Signinscreen = () => {
       userType={userType}
       selectUserType={selectUserType}
       message={message}
+      handleAppleSignIn={handleAppleSignIn}
+      handleGoogleSignIn={handleGoogleSignIn}
     />
   );
 };

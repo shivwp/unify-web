@@ -12,7 +12,6 @@ function App() {
       <CommanRoutes />
       <Routes>
         <Route path="/subscription" element={<Subscription />} />
-
         <Route path="/pages/:pagename" element={<FooterPages />} />
       </Routes>
       <ClientRoutes />

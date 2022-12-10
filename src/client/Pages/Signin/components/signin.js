@@ -1,12 +1,6 @@
 import Title from "../../../../components/title";
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
-import {
-  appleSignInInitiate,
-  googleSignInInitiate,
-} from "../../../../redux/actions/authActions";
-import { useNavigate } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { Navbar } from "react-bootstrap";
@@ -19,18 +13,11 @@ const Signin = ({
   selectUserType,
   userType,
   message,
+  handleGoogleSignIn,
+  handleAppleSignIn,
 }) => {
   Title(" | signin");
   const [hidePass, setHidePass] = useState(true);
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-
-  const handleGoogleSignIn = () => {
-    dispatch(googleSignInInitiate(userType, navigate));
-  };
-  const handleAppleSignIn = () => {
-    dispatch(appleSignInInitiate(userType, navigate));
-  };
 
   return (
     <div className="bg-body-wrapper">
