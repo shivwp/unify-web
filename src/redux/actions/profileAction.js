@@ -239,7 +239,14 @@ export const onEditContactInfo =
   };
 
 export const onEditLocationInfo =
-  (data, setEditLocation, successPopup, setSuccessPopup, afterSuccess) =>
+  (
+    data,
+    setEditLocation,
+    successPopup,
+    setSuccessPopup,
+    setCurrentTab,
+    navigate
+  ) =>
   async (dispatch) => {
     try {
       Axios.post("/edit-location", data, config).then((res) => {
@@ -250,6 +257,12 @@ export const onEditLocationInfo =
           type: SET_EDIT_FREELANCER_LOCATION,
           payload: res.data,
         });
+        const afterSuccess = () => {
+          userDetails.profile_image = res?.data?.data[0]?.profile_image;
+          sessionStorage.setItem("unify_user", JSON.stringify(userDetails));
+          setCurrentTab("previewProfile");
+          navigate(`/freelancer/profile-intro/previewProfile`);
+        };
         setSuccessPopup(
           <SuccessPopup
             Popup={() => setSuccessPopup(!successPopup)}

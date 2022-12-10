@@ -40,10 +40,7 @@ const PublishProfile = ({ setCurrentTab, profileList }) => {
     setIsChange(true);
   };
 
-  const afterSuccess = () => {
-    setCurrentTab("previewProfile");
-    navigate(`/freelancer/profile-intro/previewProfile`);
-  };
+ 
   const onSave = () => {
     let errorExist = false;
     let errorsObject = {};
@@ -129,7 +126,8 @@ const PublishProfile = ({ setCurrentTab, profileList }) => {
           false,
           successPopup,
           setSuccessPopup,
-          afterSuccess
+          setCurrentTab,
+          navigate
         )
       );
     } else {
