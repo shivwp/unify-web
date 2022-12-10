@@ -94,7 +94,13 @@ const AddEduc = ({ education, Popup, successPopup, setSuccessPopup }) => {
       values?.school === null ||
       values?.school === undefined
     ) {
-      errorsObject.school = true;
+      errorsObject.school = "Please enter your school name";
+      errorExist = true;
+    } else if (values?.school?.length < 3) {
+      errorsObject.school = "School length should be minimum 3";
+      errorExist = true;
+    } else if (/^[0-9]\d*$/.test(values?.school)) {
+      errorsObject.school = "Please input a valid school name ";
       errorExist = true;
     }
 
@@ -127,7 +133,13 @@ const AddEduc = ({ education, Popup, successPopup, setSuccessPopup }) => {
       values?.area_study === null ||
       values?.area_study === undefined
     ) {
-      errorsObject.area_study = true;
+      errorsObject.area_study = "Please enter your course";
+      errorExist = true;
+    } else if (values?.area_study?.length < 1) {
+      errorsObject.area_study = "Course length should be minimum 1";
+      errorExist = true;
+    } else if (/^[0-9]\d*$/.test(values?.area_study)) {
+      errorsObject.area_study = "Please input a valid course name ";
       errorExist = true;
     }
     // if (
@@ -190,7 +202,7 @@ const AddEduc = ({ education, Popup, successPopup, setSuccessPopup }) => {
                       placeholder="Ex: Northwestern University"
                     />
                     <span className="signup-error">
-                      {errors.school && "Please enter your school name"}
+                      {errors.school && errors.school}
                     </span>
                   </div>
                 </Col>
@@ -284,7 +296,7 @@ const AddEduc = ({ education, Popup, successPopup, setSuccessPopup }) => {
                       placeholder="Ex: Computer Science"
                     />
                     <span className="signup-error">
-                      {errors.area_study && "Please enter your area study"}
+                      {errors.area_study && errors.area_study}
                     </span>
                   </div>
                 </Col>
