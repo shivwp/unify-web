@@ -193,7 +193,7 @@ const CloseIcon = () => {
 
 const UnifyFreelancer = () => {
   const dispatch = useDispatch();
-  let userDetails = JSON.parse(localStorage.getItem("unify_user"));
+  let userDetails = JSON.parse(sessionStorage.getItem("unify_user"));
 
   const basicInfo = useSelector(
     (state) => state?.profile?.freelancerProfileList?.basic_info
@@ -301,7 +301,7 @@ const UnifyFreelancer = () => {
     const profileImage = e.target.files[0];
     const profileImageChange = () => {
       userDetails.online_status = e.target.value;
-      localStorage.setItem("unify_user", JSON.stringify(userDetails));
+      sessionStorage.setItem("unify_user", JSON.stringify(userDetails));
     };
     setShowingProImage(URL.createObjectURL(e.target.files[0]));
 

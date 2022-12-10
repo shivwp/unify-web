@@ -38,11 +38,11 @@ import {
   ADD_CATEGORY,
   HOURLY_PRICE,
 } from "../types";
-let userDetails = JSON.parse(localStorage.getItem("unify_user"));
+let userDetails = JSON.parse(sessionStorage.getItem("unify_user"));
 
 const config = {
   headers: {
-    Authorization: `Bearer ${localStorage.getItem("unify_token")}`,
+    Authorization: `Bearer ${sessionStorage.getItem("unify_token")}`,
   },
 };
 
@@ -463,7 +463,7 @@ export const editNameInfo =
         });
         const afterSuccess = () => {
           userDetails.profile_image = res?.data?.data[0]?.profile_image;
-          localStorage.setItem("unify_user", JSON.stringify(userDetails));
+          sessionStorage.setItem("unify_user", JSON.stringify(userDetails));
           window?.location?.reload();
         };
         setSuccessPopup(
@@ -639,4 +639,3 @@ export const getCategoryList = () => async (dispatch) => {
     });
   } catch (err) {}
 };
-

@@ -14,7 +14,7 @@ const ForgotPass = () => {
   const [forgotPassError, setForgotPassError] = useState();
 
   const sendEmail = () => {
-    localStorage.setItem("unify_email", email);
+    sessionStorage.setItem("unify_email", email);
 
     const data = {
       email: email,

@@ -27,7 +27,7 @@ import SuccessPopup from "../../freelancer/components/popups/SuccessPopup";
 
 const config = {
   headers: {
-    Authorization: `Bearer ${localStorage.getItem("unify_token")}`,
+    Authorization: `Bearer ${sessionStorage.getItem("unify_token")}`,
   },
 };
 
@@ -72,8 +72,8 @@ export const onLogin = (data, navigate, setMessage) => async (dispatch) => {
   try {
     const res = await Axios.post(`/login`, data);
     if (res.data.status) {
-      localStorage.setItem("unify_token", res.data.auth_token);
-      localStorage.setItem("unify_user", JSON.stringify(res.data.data.user));
+      sessionStorage.setItem("unify_token", res.data.auth_token);
+      sessionStorage.setItem("unify_user", JSON.stringify(res.data.data.user));
       if (res.data.data.user.user_type === "freelancer") {
         if (res.data.data.user.is_profile_complete === true) {
           navigate("/freelancer/dashboard");
@@ -211,8 +211,8 @@ export const googleSignInSuccess = (data, navigate) => async (dispatch) => {
   try {
     const res = await Axios.post(`/social-login`, data);
     if (res.data.status) {
-      localStorage.setItem("unify_token", res.data.auth_token);
-      localStorage.setItem("unify_user", JSON.stringify(res.data.data.user));
+      sessionStorage.setItem("unify_token", res.data.auth_token);
+      sessionStorage.setItem("unify_user", JSON.stringify(res.data.data.user));
       if (res.data.data.user.user_type === "freelancer") {
         if (res.data.data.user.is_profile_complete === true) {
           navigate("/freelancer/dashboard");
@@ -240,7 +240,7 @@ export const googleSignInInitiate = (userType, navigate) => {
   return function (dispatch) {
     signOut(auth)
       .then(() => {
-        localStorage.clear();
+        sessionStorage.clear();
         signInWithPopup(auth, googleAuthProvider)
           .then((res) => {
             const credential = GoogleAuthProvider.credentialFromResult(res);
@@ -271,8 +271,8 @@ export const appleSignInSuccess = (data, navigate) => async (dispatch) => {
   try {
     const res = await Axios.post(`/social-login`, data, config);
     if (res.data.status) {
-      localStorage.setItem("unify_token", res.data.auth_token);
-      localStorage.setItem("unify_user", JSON.stringify(res.data.data.user));
+      sessionStorage.setItem("unify_token", res.data.auth_token);
+      sessionStorage.setItem("unify_user", JSON.stringify(res.data.data.user));
       if (res.data.data.user.user_type === "freelancer") {
         if (res.data.data.user.is_profile_complete === true) {
           navigate("/freelancer/dashboard");

@@ -3,7 +3,7 @@ import { SET_SUBSCRIPTION_LIST } from "../types";
 
 const config = {
   headers: {
-    Authorization: `Bearer ${localStorage.getItem("unify_token")}`,
+    Authorization: `Bearer ${sessionStorage.getItem("unify_token")}`,
   },
 };
 
@@ -25,12 +25,13 @@ export const onSubmitProfile = (navigate) => async (dispatch) => {
     .then((res) => {
       if (res.data.status) {
         if (
-          JSON.parse(localStorage.getItem("unify_user")).user_type ===
+          JSON.parse(sessionStorage.getItem("unify_user")).user_type ===
           "freelancer"
         ) {
           navigate("/freelancer/dashboard");
         } else if (
-          JSON.parse(localStorage.getItem("unify_user")).user_type === "client"
+          JSON.parse(sessionStorage.getItem("unify_user")).user_type ===
+          "client"
         ) {
           navigate("/dashboard");
         }
@@ -40,8 +41,6 @@ export const onSubmitProfile = (navigate) => async (dispatch) => {
       console.log(err);
     });
 };
-
-
 
 // export const onSubscriptionPayment = (data, navigate) => async (dispatch) => {
 //   await Axios.post(`/subscription-payment`, data, config)

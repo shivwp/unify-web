@@ -21,7 +21,7 @@ const ProfileIntroNavbar = () => {
           </div>
           <Button
             onClick={() => {
-              localStorage.clear();
+              sessionStorage.clear();
               window.location.reload();
             }}
             className="btn btn-primary"

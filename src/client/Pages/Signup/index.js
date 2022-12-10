@@ -13,7 +13,6 @@ const Signupscreen = () => {
   const getCountryList = useSelector((state) => state.auth.getCountryList);
   const [message, setMessage] = useState();
 
-
   const [values, setValues] = useState({
     agree_terms: 0,
     send_email: 0,
@@ -54,7 +53,7 @@ const Signupscreen = () => {
   const submitForm = (e) => {
     e.preventDefault();
 
-    localStorage.setItem("unify_email", values?.email);
+    sessionStorage.setItem("unify_email", values?.email);
 
     let errorExist = false;
     let errorsObject = {};

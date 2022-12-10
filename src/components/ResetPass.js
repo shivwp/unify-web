@@ -60,7 +60,7 @@ const ResetPass = () => {
     }
 
     const data = {
-      email: localStorage.getItem("unify_email"),
+      email: sessionStorage.getItem("unify_email"),
       password: values?.password,
       confirm_password: values?.confirm_password,
     };

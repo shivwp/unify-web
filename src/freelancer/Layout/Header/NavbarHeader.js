@@ -14,7 +14,7 @@ const NavbarHeader = (props) => {
   const [navOpen, SetnavOpen] = useState(false);
   const [activeNav, SetactiveNav] = useState("");
   const [isDownOpen, SetisDownOpen] = useState(false);
-  let userDetails = JSON.parse(localStorage.getItem("unify_user"));
+  let userDetails = JSON.parse(sessionStorage.getItem("unify_user"));
 
   function ToggleNav() {
     SetnavOpen(!navOpen);
@@ -34,7 +34,7 @@ const NavbarHeader = (props) => {
     };
 
     userDetails.online_status = e.target.value;
-    localStorage.setItem("unify_user", JSON.stringify(userDetails));
+    sessionStorage.setItem("unify_user", JSON.stringify(userDetails));
 
     dispatch(onOnlineStatus(data));
   };
@@ -288,7 +288,7 @@ const NavbarHeader = (props) => {
                       </svg>
                       <span
                         onClick={() => {
-                          localStorage.clear();
+                          sessionStorage.clear();
                           history("/signin");
                           window.location.reload();
                         }}
@@ -520,7 +520,7 @@ const NavbarHeader = (props) => {
                         </svg>
                         <span
                           onClick={() => {
-                            localStorage.clear();
+                            sessionStorage.clear();
                             history("/signin");
                             window.location.reload();
                           }}

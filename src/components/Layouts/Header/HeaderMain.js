@@ -8,7 +8,7 @@ import { useState } from "react";
 const NavbarHeader = (props) => {
   const [navOpen, SetnavOpen] = useState(false);
   const [activeNav, SetactiveNav] = useState("");
-  const loggedIn = localStorage.getItem("unify_token");
+  const loggedIn = sessionStorage.getItem("unify_token");
 
   function ToggleNav() {
     SetnavOpen(!navOpen);
@@ -73,10 +73,10 @@ const NavbarHeader = (props) => {
         <Container>
           <div className="w-100 d-flex justify-content-between align-items-center flex_rev">
             <div className="width_100_sm navbar_logo">
-              {localStorage.getItem("unify_token") ? (
+              {sessionStorage.getItem("unify_token") ? (
                 <>
-                  {JSON.parse(localStorage.getItem("unify_user")).user_type ===
-                  "freelancer" ? (
+                  {JSON.parse(sessionStorage.getItem("unify_user"))
+                    .user_type === "freelancer" ? (
                     <Link to="/freelancer/dashboard">
                       <Navbar.Brand>
                         <img
@@ -86,7 +86,7 @@ const NavbarHeader = (props) => {
                         />
                       </Navbar.Brand>
                     </Link>
-                  ) : JSON.parse(localStorage.getItem("unify_user"))
+                  ) : JSON.parse(sessionStorage.getItem("unify_user"))
                       .user_type === "client" ? (
                     <Link to="/dashboard">
                       <Navbar.Brand>
@@ -141,7 +141,7 @@ const NavbarHeader = (props) => {
                     <button
                       className="active_btn"
                       onClick={() => {
-                        localStorage.clear();
+                        sessionStorage.clear();
                         window.location.reload();
                       }}
                     >
