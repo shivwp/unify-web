@@ -35,7 +35,9 @@ const Education = ({ setCurrentTab, profileList }) => {
                 <Col md={6} lg={4} xl={3} className="startIntroDe" key={key}>
                   <div className="startIntroBox ">
                     <div>
-                      <h5 className="startIntroSkil eduUniResp">{item.school}</h5>
+                      <h5 className="startIntroSkil eduUniResp">
+                        {item.school}
+                      </h5>
                       <p className="startIntroTwoDate">
                         {item.degree}, {item.area_study}
                         {item.start_year}-{item.end_year}
@@ -186,14 +188,15 @@ const Education = ({ setCurrentTab, profileList }) => {
               {profileList?.length > 0 ? null : (
                 <>
                   <div className="s_na_categ mb-0 mt-0">
-                    <Form.Check
+                    <input
+                      id="edu"
                       type="checkbox"
                       onChange={(e) => setIsNothing(e.target.checked)}
                       name="isNothing"
                     />
-                    <Form.Label>
+                    <label htmlFor="edu">
                       Nothing to add? Check the box and keep going
-                    </Form.Label>
+                    </label>
                   </div>
                 </>
               )}

@@ -7552,7 +7552,7 @@ a {
 .how_it_works .header_left .heading,
 .how_it_works .header_left .desc,
 .how_it_works .header_left .signup_btn {
-  margin-left: auto;
+  /* margin-left: auto; */
   width: 80%;
 }
 
@@ -7586,7 +7586,7 @@ a {
   bottom: 0px;
   right: 0px;
   z-index: -1;
-  width: 40%;
+  width: 45%;
   display: flex;
 }
 .how_it_works .header_img img {
@@ -7623,6 +7623,9 @@ a {
   .how_it_works .header_left .heading {
     font-size: 40px;
     line-height: 45px;
+  }
+  .how_it_works .header_img {
+    width: 40%;
   }
   .how_it_works .header_img img {
     width: 100%;
