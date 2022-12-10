@@ -17,8 +17,6 @@ const HourlyRate = ({ setCurrentTab, profileList }) => {
   const [popup, setPopup] = useState();
   const [isChange, setIsChange] = useState(false);
 
-  console.log(values);
-  console.log(profileList);
   useEffect(() => {
     if (profileList) {
       setValues({ hours_price: profileList?.amount });
@@ -46,7 +44,6 @@ const HourlyRate = ({ setCurrentTab, profileList }) => {
     }
   };
 
-  console.log(values?.hours_price);
 
   return (
     <>

@@ -215,7 +215,6 @@ const ByProject = ({
     setErrors({ ...errors, [e.target.name]: false });
   };
 
-  console.log(values?.bid_amount);
 
   return (
     <>
@@ -343,7 +342,12 @@ const FixedBid = ({
       <div className="fixed_bid">
         <div className="heading">
           <span className="head">Terms</span>
-          <span className="budget">Client’s budget: $25.00 - $45.00/hr</span>
+          <span className="budget">
+            Client’s budget:{" "}
+            {singleJobDetails?.budget_type == "fixed"
+              ? `$${singleJobDetails?.price}`
+              : ""}
+          </span>
         </div>
         <Row className="mt-3">
           <Col lg={12}>

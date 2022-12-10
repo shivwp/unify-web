@@ -130,8 +130,6 @@ const EditDraft = () => {
     dispatch(editJobPosting(formData, navigate));
   };
 
-  console.log(values);
-
   return (
     <>
       <Layout>

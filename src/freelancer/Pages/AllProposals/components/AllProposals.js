@@ -13,7 +13,6 @@ const Screen = () => {
     dispatch(getAllProposals());
   }, []);
 
-  console.log(getAllProposal);
   return (
     <>
       <Container className="mb-5 pb-3">

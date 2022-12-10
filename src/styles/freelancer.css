@@ -1613,11 +1613,14 @@
   color: #878787;
   font-size: 12px;
   font-weight: 400;
+  white-space: pre-line;
 }
 
 .tamoun_pdd_sp {
   font: normal normal 400 13px/30px Poppins !important;
   color: #170048;
+  word-break: break-word;
+  white-space: pre-line;
 }
 
 .inp_bdg_pdsp {

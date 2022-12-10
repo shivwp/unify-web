@@ -36,7 +36,6 @@ const AddEmployment = ({
   );
   const [errors, setErrors] = useState({});
 
-  console.log(values);
   useState(() => {
     dispatch(countryList());
   }, []);
@@ -50,11 +49,9 @@ const AddEmployment = ({
           currently_working: 1,
         });
         setErrors({ ...errors, currently_working: false });
-        console.log("g");
       } else {
         setValues({ ...values, [e.target.name]: e.target.value });
         setErrors({ ...errors, [e.target.name]: false });
-        console.log("ee");
       }
     } else if (e.target.name == "currently_working") {
       setValues({

@@ -53,7 +53,6 @@ const PreviewProfile = ({ setCurrentTab, profileList }) => {
     dispatch(editNameInfo(formData, successPopup, setSuccessPopup));
   };
 
-
   return (
     <>
       <div className="container">
@@ -178,12 +177,9 @@ const PreviewProfile = ({ setCurrentTab, profileList }) => {
               <Col sm={10}>
                 <div className="previewDet">
                   <div className="hraet_pdd_sp">
-                    {profileList?.basic_info?.first_name}{" "}
-                    {profileList?.basic_info?.last_name}
+                    {`${profileList?.basic_info?.first_name} ${profileList?.basic_info?.last_name}`}
                     <div className="previewProfileUsr">
-                      {profileList?.basic_info?.city}
-                      {profileList?.basic_info?.address}{" "}
-                      {profileList?.basic_info?.country}
+                      {`${profileList?.basic_info?.city} ${profileList?.basic_info?.address} ${profileList?.basic_info?.country}`}
                     </div>
                     <div className="previewProfileUsr">
                       {" "}

@@ -44,7 +44,6 @@ const PublishProfile = ({ setCurrentTab, profileList }) => {
     setCurrentTab("previewProfile");
     navigate(`/freelancer/profile-intro/previewProfile`);
   };
-  console.log("first", values?.zip_code?.length);
   const onSave = () => {
     let errorExist = false;
     let errorsObject = {};

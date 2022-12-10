@@ -24,7 +24,6 @@ const CloseAccountPopup = ({
     (state) => state.profile.closeAccountReasons
   );
 
-  console.log(values);
 
   useEffect(() => {
     dispatch(closeAccountReasonList());

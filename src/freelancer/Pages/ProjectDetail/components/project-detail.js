@@ -108,7 +108,6 @@ function ListProposals({ project_type, data }) {
 }
 
 const ClientRating = (rating) => {
-  console.log(rating);
   const stars = [];
   for (let i = 1; i <= 5; i++) {
     if (i <= rating) {
@@ -179,7 +178,6 @@ const Projectdetail = () => {
     dispatch(removeSaveJob({ job_id: id }));
   };
 
-  console.log(singleJobDetails);
 
   return (
     <>

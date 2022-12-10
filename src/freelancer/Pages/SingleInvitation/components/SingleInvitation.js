@@ -23,7 +23,6 @@ const SingleInvitation = () => {
   );
   const { id } = useParams();
 
-  console.log(client_data);
 
   useEffect(() => {
     dispatch(singleProposalDetails(id, "invite"));
