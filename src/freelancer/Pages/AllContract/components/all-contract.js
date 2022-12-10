@@ -68,6 +68,8 @@ const Screen = () => {
                           // minWidth: 205,
                           height: 40,
                           borderRadius: 0,
+                          paddingTop: 2,
+                          paddingLeft: 10,
                         }}
                       >
                         <option value="" disabled selected hidden>
