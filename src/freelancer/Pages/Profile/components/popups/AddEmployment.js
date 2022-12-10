@@ -81,7 +81,7 @@ const AddEmployment = ({
       errorsObject.company = "Please select your company";
       errorExist = true;
     } else if (values?.company?.length < 3) {
-      errorsObject.company = "company length should be minimum 3";
+      errorsObject.company = "Company length should be minimum 3";
       errorExist = true;
     }
     // else if (/\s/g.test(values?.company)) {
@@ -89,7 +89,7 @@ const AddEmployment = ({
     //   errorExist = true;
     // }
     else if (/^[0-9]\d*$/.test(values?.company)) {
-      errorsObject.company = "please input a valid company name ";
+      errorsObject.company = "Please input a valid company name ";
       errorExist = true;
     }
     if (
@@ -100,7 +100,7 @@ const AddEmployment = ({
       errorsObject.city = "Please enter your city";
       errorExist = true;
     } else if (/^[0-9]\d*$/.test(values?.city)) {
-      errorsObject.city = "please input a valid location ";
+      errorsObject.city = "Please input a valid location ";
       errorExist = true;
     }
     // else if (/\s/g.test(values?.city)) {
@@ -131,7 +131,7 @@ const AddEmployment = ({
       errorsObject.subject = "Please enter your title";
       errorExist = true;
     } else if (/^[0-9]\d*$/.test(values?.subject)) {
-      errorsObject.subject = "please input a valid title ";
+      errorsObject.subject = "Please input a valid title ";
       errorExist = true;
     }
     // else if (/\s/g.test(values?.subject)) {

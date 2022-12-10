@@ -66,8 +66,8 @@ const Signupscreen = () => {
     ) {
       errorsObject.first_name = "Please enter your first name";
       errorExist = true;
-    } else if (values?.first_name && values?.first_name?.length < 2) {
-      errorsObject.first_name = "First name must be at least 2 characters ";
+    } else if (values?.first_name && values?.first_name?.length < 1) {
+      errorsObject.first_name = "First name must be at least 1 characters ";
       errorExist = true;
     }
 

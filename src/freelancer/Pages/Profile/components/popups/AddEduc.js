@@ -94,7 +94,13 @@ const AddEduc = ({ education, Popup, successPopup, setSuccessPopup }) => {
       values?.school === null ||
       values?.school === undefined
     ) {
-      errorsObject.school = true;
+      errorsObject.school = "Please enter your school name";
+      errorExist = true;
+    } else if (values?.school?.length < 3) {
+      errorsObject.school = "School length should be minimum 3";
+      errorExist = true;
+    } else if (/^[0-9]\d*$/.test(values?.school)) {
+      errorsObject.school = "Please input a valid school name ";
       errorExist = true;
     }
 
