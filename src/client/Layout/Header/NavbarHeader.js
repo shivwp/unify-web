@@ -213,6 +213,7 @@ const Header = (props) => {
                   >
                     <div className="d-flex justify-content-center">
                       <div className="nav_p_d_profil">
+                        {" "}
                         {userDetails?.profile_image ? (
                           <img src={userDetails?.profile_image} alt="" />
                         ) : (

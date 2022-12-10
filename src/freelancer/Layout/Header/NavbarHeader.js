@@ -216,14 +216,16 @@ const NavbarHeader = (props) => {
                   >
                     <div className="d-flex justify-content-center">
                       <div className="nav_p_d_profil">
-                        {userDetails?.profile_image ? (
-                          <img src={userDetails?.profile_image} alt="" />
-                        ) : (
-                          <img
-                            src="https://unify.eoxyslive.com/images/profile-image/demo-user.png"
-                            alt=""
-                          />
-                        )}
+                        <Link to="/freelancer/profile">
+                          {userDetails?.profile_image ? (
+                            <img src={userDetails?.profile_image} alt="" />
+                          ) : (
+                            <img
+                              src="https://unify.eoxyslive.com/images/profile-image/demo-user.png"
+                              alt=""
+                            />
+                          )}
+                        </Link>
                       </div>
                     </div>
                     <div className="pro_name_drop_u">
@@ -432,14 +434,16 @@ const NavbarHeader = (props) => {
                   </Link>
                   <div className="nav_pro_node">
                     <div className="nav_profile">
-                      {userDetails?.profile_image ? (
-                        <img src={userDetails?.profile_image} alt="" />
-                      ) : (
-                        <img
-                          src="https://unify.eoxyslive.com/images/profile-image/demo-user.png"
-                          alt=""
-                        />
-                      )}
+                      <Link to="/freelancer/profile">
+                        {userDetails?.profile_image ? (
+                          <img src={userDetails?.profile_image} alt="" />
+                        ) : (
+                          <img
+                            src="https://unify.eoxyslive.com/images/profile-image/demo-user.png"
+                            alt=""
+                          />
+                        )}
+                      </Link>
                     </div>
                     <NavDropdown
                       className=" text-center nav_dropdown_profile custom_nav_profile_drp"
@@ -447,14 +451,16 @@ const NavbarHeader = (props) => {
                     >
                       <div className="d-flex justify-content-center">
                         <div className="nav_p_d_profil">
-                          {userDetails?.profile_image ? (
-                            <img src={userDetails?.profile_image} alt="" />
-                          ) : (
-                            <img
-                              src="https://unify.eoxyslive.com/images/profile-image/demo-user.png"
-                              alt=""
-                            />
-                          )}
+                          <Link to="/freelancer/profile">
+                            {userDetails?.profile_image ? (
+                              <img src={userDetails?.profile_image} alt="" />
+                            ) : (
+                              <img
+                                src="https://unify.eoxyslive.com/images/profile-image/demo-user.png"
+                                alt=""
+                              />
+                            )}
+                          </Link>
                         </div>
                       </div>
                       <div className="pro_name_drop_u">

@@ -603,17 +603,23 @@ export const onSubmitTestimonial =
     } catch (err) {}
   };
 
-export const onGetTestmonial = (data, setValues) => async (dispatch) => {
-  try {
-    Axios.post("/get-testimonial", data, config).then((res) => {
-      dispatch({
-        type: GET_TESTIMONIAL,
-        payload: res.data.data,
+export const onGetTestmonial =
+  (data, setValues, navigate) => async (dispatch) => {
+    Axios.post("/get-testimonial", data, config)
+      .then((res) => {
+        dispatch({
+          type: GET_TESTIMONIAL,
+          payload: res.data.data,
+        });
+        if (res.data.data.is_submit) {
+          navigate("/");
+        }
+        setValues(res.data.data);
+      })
+      .catch((err) => {
+        navigate("/");
       });
-      setValues(res.data.data);
-    });
-  } catch (err) {}
-};
+  };
 export const onAddCategory =
   (data, successPopup, setSuccessPopup, afterSuccess) => async (dispatch) => {
     try {
