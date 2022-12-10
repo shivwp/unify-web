@@ -193,7 +193,7 @@ const Projectdetail = () => {
         ) : (
           ""
         )}
-        {singleJobDetails?.is_invited ? (
+        {singleJobDetails?.is_invited && !singleJobDetails?.is_proposal_send ? (
           <Alert variant="success" className="mt-4">
             <Alert.Heading>
               You have been invited for this job. Please check your invitations
@@ -235,15 +235,11 @@ const Projectdetail = () => {
                     </svg>
                   </Button>
 
-                  {singleJobDetails?.is_invited ? (
+                  {singleJobDetails?.is_invited &&
+                  !singleJobDetails?.is_proposal_send ? (
                     <Button
                       variant=""
                       className="pd_n_sendp send_proposal_btn_job_detail"
-                      disabled={
-                        singleJobDetails
-                          ? singleJobDetails?.is_proposal_send
-                          : true
-                      }
                       onClick={() => {
                         navigate(
                           `/freelancer/single-invitation/${singleJobDetails?.invite_id}`
