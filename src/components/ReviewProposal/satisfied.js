@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 
 const Screen = ({
   proposalShortlist,
-  jobId,
   handleRemoveProposalShortList,
   handleSaveProposalShortList,
 }) => {
@@ -85,7 +84,7 @@ const Screen = ({
                             Message
                           </button>
                           <Link
-                            to={`/hire-freelancer/${jobId}/${data.freelancer_id}`}
+                            to={`/hire-freelancer/${data.proposal_id}/${data.freelancer_id}`}
                           >
                             <button className="mt-2 font-weight-500 hover_white_io">
                               Hire

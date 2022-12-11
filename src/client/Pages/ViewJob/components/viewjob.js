@@ -26,8 +26,6 @@ const ViewScreen = () => {
     dispatch(singleJobPostDetails(data));
   }, [privatePublicJob]);
 
-  const [privateAcc, setPrivateAcc] = useState(false);
-
   const handleMakePublicPrivate = (type) => {
     const data = {
       job_id: jobId,
