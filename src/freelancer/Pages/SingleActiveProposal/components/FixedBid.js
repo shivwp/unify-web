@@ -331,6 +331,7 @@ const FixedBid = ({
   isByMilestone,
   setErrors,
   milestonedata,
+  proposal_data,
 }) => {
   return (
     <>
@@ -397,7 +398,6 @@ const FixedBid = ({
                     <select
                       name="project_duration"
                       id="project_duration"
-                      value={inputList[0]?.project_duration}
                       onChange={(e) => {
                         setValues({
                           ...values,
@@ -405,8 +405,11 @@ const FixedBid = ({
                         });
                         setErrors({ ...errors, project_duration: false });
                       }}
+                      defaultValue={
+                        proposal_data?.project_duration || "default"
+                      }
                     >
-                      <option disabled selected hidden value={null}>
+                      <option disabled hidden value={"default"}>
                         Select a duration
                       </option>
                       <option value="More then 6 months">

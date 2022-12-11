@@ -28,8 +28,8 @@ const Screen = () => {
               <div className="my_job_a job_na_bol">
                 Offers ({getAllProposal?.offers?.length})
               </div>
-              {getAllProposal?.offers?.map((item) => (
-                <div className="proposals_list">
+              {getAllProposal?.offers?.map((item, index) => (
+                <div className="proposals_list" key={index}>
                   <div className="date_time">
                     <div className="init_date">Initiated {item.date}</div>
                     <div className="time">{item.time}</div>
@@ -50,8 +50,8 @@ const Screen = () => {
                 Invitations to interview (
                 {getAllProposal?.interviewForInvitation?.length})
               </div>
-              {getAllProposal?.interviewForInvitation?.map((item) => (
-                <div className="proposals_list">
+              {getAllProposal?.interviewForInvitation?.map((item, index) => (
+                <div className="proposals_list" key={index}>
                   <div className="date_time">
                     <div className="init_date">Initiated {item.date}</div>
                     <div className="time">{item.time}</div>
@@ -71,8 +71,8 @@ const Screen = () => {
               <div className="my_job_a job_na_bol">
                 Active Proposals ({getAllProposal?.activeProposal?.length})
               </div>
-              {getAllProposal?.activeProposal?.map((item) => (
-                <div className="proposals_list">
+              {getAllProposal?.activeProposal?.map((item, index) => (
+                <div className="proposals_list" key={index}>
                   <div className="date_time">
                     <div className="init_date">Initiated {item.date}</div>
                     <div className="time">{item.time}</div>
@@ -93,8 +93,8 @@ const Screen = () => {
                 Submitted Proposals ({getAllProposal?.submittedProposal?.length}
                 )
               </div>
-              {getAllProposal?.submittedProposal?.map((item) => (
-                <div className="proposals_list">
+              {getAllProposal?.submittedProposal?.map((item, index) => (
+                <div className="proposals_list" key={index}>
                   <div className="date_time">
                     <div className="init_date">Initiated {item.date}</div>
                     <div className="time">{item.time}</div>

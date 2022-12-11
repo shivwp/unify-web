@@ -296,3 +296,20 @@ export const onChangeTermsOfProposals =
       });
     } catch (err) {}
   };
+
+export const onDeclineOffer =
+  (data, popup, successPopup, setSuccessPopup, afterSuccess) =>
+  async (dispatch) => {
+    try {
+      Axios.post("/decline-offer", data, config).then((res) => {
+        popup();
+        setSuccessPopup(
+          <SuccessPopup
+            Popup={() => setSuccessPopup(!successPopup)}
+            message="Thank you for your time"
+            afterSuccess={afterSuccess}
+          />
+        );
+      });
+    } catch (err) {}
+  };

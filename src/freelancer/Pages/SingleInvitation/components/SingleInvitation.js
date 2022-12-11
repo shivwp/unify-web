@@ -23,7 +23,6 @@ const SingleInvitation = () => {
   );
   const { id } = useParams();
 
-
   useEffect(() => {
     dispatch(singleProposalDetails(id, "invite"));
   }, [id]);
@@ -76,8 +75,10 @@ const SingleInvitation = () => {
               <div className="b_bot_inp pt-0">
                 <div className="input_t_lab">Skills</div>
                 <div className="slide_btnss">
-                  {project_data?.job_skills?.map((item) => (
-                    <Button variant="">{item.name}</Button>
+                  {project_data?.job_skills?.map((item, index) => (
+                    <Button variant="" key={index}>
+                      {item.name}
+                    </Button>
                   ))}
                 </div>
               </div>

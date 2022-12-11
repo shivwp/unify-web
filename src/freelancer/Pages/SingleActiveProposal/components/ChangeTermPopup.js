@@ -157,7 +157,9 @@ const ChangeTermPopup = ({
         formData.append("milestone_data", JSON.stringify(inputList));
       }
     }
-    dispatch(onChangeTermsOfProposals(formData, successPopup, setSuccessPopup, popup));
+    dispatch(
+      onChangeTermsOfProposals(formData, successPopup, setSuccessPopup, popup)
+    );
   };
 
   return (
@@ -183,6 +185,7 @@ const ChangeTermPopup = ({
                 isByMilestone={isByMilestone}
                 setErrors={setErrors}
                 milestonedata={milestonedata}
+                proposal_data={proposal_data}
               />
             ) : project_data?.budget_type == "hourly" ? (
               <HourlyBid

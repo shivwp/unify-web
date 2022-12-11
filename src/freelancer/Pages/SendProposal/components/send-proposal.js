@@ -138,6 +138,9 @@ const Screen = () => {
     formData.append("job_id", id);
     formData.append("cover_letter", values?.cover_letter);
     formData.append("image", attachment);
+    if (singleJobDetails?.is_invited) {
+      formData.append("invite_id", singleJobDetails?.invite_id);
+    }
     if (singleJobDetails?.budget_type == "hourly") {
       formData.append("bid_amount", values?.bid_amount);
     } else if (singleJobDetails?.budget_type == "fixed") {
@@ -160,6 +163,8 @@ const Screen = () => {
   const handleRadioChange = (e) => {
     setIsByMilestone(e.target.value);
   };
+
+  console.log();
 
   return (
     <>

@@ -182,7 +182,7 @@ const Exprience = ({ setCurrentTab, profileList }) => {
                           stroke-linecap="round"
                           stroke-linejoin="round"
                           strokeWidth="4"
-                          fill-rule="evenodd"
+                          fillRule="evenodd"
                         />
                       </g>
                     </svg>

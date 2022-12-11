@@ -39,8 +39,10 @@ const DeclineInterviewPopup = ({
   const navigate = useNavigate();
   const handleOnChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
+    setErrors({ ...errors, [e.target.name]: false });
   };
 
+  console.log(errors);
   useEffect(() => {
     dispatch(declineReasoneList(type));
   }, []);
@@ -49,6 +51,22 @@ const DeclineInterviewPopup = ({
   };
 
   const onSave = () => {
+    let errorExist = false;
+    let errorsObject = {};
+    if (
+      values?.reason === "" ||
+      values?.reason === undefined ||
+      values?.reason === null
+    ) {
+      errorsObject.reason = "Please select a reason";
+      errorExist = true;
+    }
+
+    if (errorExist) {
+      setErrors(errorsObject);
+      return false;
+    }
+
     const data = {
       invitaion_id: id,
       reason: values?.reason,
@@ -82,8 +100,9 @@ const DeclineInterviewPopup = ({
                 name="reason"
                 id="reason"
                 onChange={(e) => handleOnChange(e)}
+                defaultValue="default"
               >
-                <option value="" selected disabled hidden>
+                <option value="default" disabled hidden>
                   {" "}
                   Please Select...
                 </option>
@@ -93,6 +112,9 @@ const DeclineInterviewPopup = ({
                   </option>
                 ))}
               </select>
+              <span className="signup-error">
+                {errors?.reason && errors?.reason}
+              </span>
             </div>
             <div className="inp_container">
               <label htmlFor="message">Message (Optional)</label>

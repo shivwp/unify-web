@@ -6,7 +6,7 @@ import { onEditDesignation } from "../../../../redux/actions/profileAction";
 import "./DeclineOfferPopup.css";
 import {
   declineReasoneList,
-  onDeclineForInterview,
+  onDeclineOffer,
 } from "../../../../redux/actions/jobActions";
 import { useNavigate } from "react-router-dom";
 
@@ -39,6 +39,7 @@ const DeclineOfferPopup = ({
   const navigate = useNavigate();
   const handleOnChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
+    setErrors({ ...errors, [e.target.name]: false });
   };
 
   useEffect(() => {
@@ -49,20 +50,31 @@ const DeclineOfferPopup = ({
   };
 
   const onSave = () => {
+    let errorExist = false;
+    let errorsObject = {};
+    if (
+      values?.reason === "" ||
+      values?.reason === undefined ||
+      values?.reason === null
+    ) {
+      errorsObject.reason = "Please select a reason";
+      errorExist = true;
+    }
+
+    if (errorExist) {
+      setErrors(errorsObject);
+      return false;
+    }
+    console.log("object");
+
     const data = {
-      invitaion_id: id,
+      offer_id: id,
       reason: values?.reason,
       description: values?.description,
     };
-    // dispatch(
-    //   onDeclineForInterview(
-    //     data,
-    //     popup,
-    //     successPopup,
-    //     setSuccessPopup,
-    //     afterSuccess
-    //   )
-    // );
+    dispatch(
+      onDeclineOffer(data, popup, successPopup, setSuccessPopup, afterSuccess)
+    );
   };
 
   return (
@@ -80,10 +92,11 @@ const DeclineOfferPopup = ({
               <label htmlFor="reason">Reason</label>
               <select
                 name="reason"
+                defaultValue="default"
                 id="reason"
                 onChange={(e) => handleOnChange(e)}
               >
-                <option value="" selected disabled hidden>
+                <option value="default" disabled hidden>
                   {" "}
                   Please Select...
                 </option>
@@ -93,6 +106,9 @@ const DeclineOfferPopup = ({
                   </option>
                 ))}
               </select>
+              <span className="signup-error">
+                {errors?.reason && errors?.reason}
+              </span>
             </div>
             <div className="inp_container">
               <label htmlFor="message">Message (Optional)</label>
