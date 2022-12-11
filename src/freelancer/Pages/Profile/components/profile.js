@@ -1344,7 +1344,7 @@ const UnifyFreelancer = () => {
                 <div className="myskill_hdingn">
                   <Button
                     variant=""
-                    style={{ width: "100%", height: "100%", cursor: "pointer" }}
+                  
                     onClick={() => {
                       Setpopup(
                         <AddCert

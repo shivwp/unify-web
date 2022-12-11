@@ -81,11 +81,14 @@ const VisiblityPopup = ({ data, setSuccessPopup, successPopup, Popup }) => {
                     name="visibility"
                     onChange={(e) => handleOnChange(e)}
                     value={values?.visibility}
+                    defaultValue="default"
                   >
-                    <option value="">Select</option>
-                    <option value="public">public</option>
-                    <option value="private">private</option>
-                    <option value="unify_users">unify_users</option>
+                    <option value="default" hidden disabled>
+                      Select
+                    </option>
+                    <option value="public">Public</option>
+                    <option value="private">Private</option>
+                    <option value="unify_users">Only Unify Users</option>
                   </select>
                   <span className="signup-error">
                     {errors.visibility && "Please select your visibility"}
@@ -101,11 +104,14 @@ const VisiblityPopup = ({ data, setSuccessPopup, successPopup, Popup }) => {
                     name="project_preference"
                     onChange={(e) => handleOnChange(e)}
                     value={values?.project_preference}
+                    defaultValue="default"
                   >
-                    <option value="">Select</option>
-                    <option value="long_term">long_term</option>
-                    <option value="short_term">short_term</option>
-                    <option value="both">both</option>
+                    <option value="default" hidden disabled>
+                      Select
+                    </option>
+                    <option value="long_term">Long Term</option>
+                    <option value="short_term">Short Term</option>
+                    <option value="both">Both</option>
                   </select>
                   <span className="signup-error">
                     {errors.project_preference &&

@@ -2,7 +2,7 @@ import React from "react";
 import { Col, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-const HourlyMilestones = ({ getAllContracts }) => {
+const HourlyProjects = ({ getAllContracts }) => {
   return (
     <>
       {getAllContracts?.length === 0 ? (
@@ -78,4 +78,4 @@ const HourlyMilestones = ({ getAllContracts }) => {
   );
 };
 
-export default HourlyMilestones;
+export default HourlyProjects;

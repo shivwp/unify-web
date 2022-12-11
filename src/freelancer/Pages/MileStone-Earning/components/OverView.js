@@ -1,4 +1,6 @@
 import React from "react";
+import { Col, Row } from "react-bootstrap";
+import Earning from "./Earning";
 import Milestone from "./Milestone";
 import MilestoneTimeLine from "./MilestoneTimeLine";
 import ProjectTimeLine from "./ProjectTimeLine";
@@ -8,9 +10,12 @@ const OverView = () => {
   return (
     <>
       {/* <Milestone /> */}
-      <MilestoneTimeLine />
-      <ProjectTimeLine />
-      <RecentFiles />
+      <Row>
+        <MilestoneTimeLine />
+        <Earning />
+        <ProjectTimeLine />
+        <RecentFiles />
+      </Row>
     </>
   );
 };

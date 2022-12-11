@@ -10,8 +10,8 @@ import Checkbox from "react-custom-checkbox";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { onGetAllContracts } from "../../../../redux/actions/jobActions";
-import AllMilestones from "./AllMilestones";
-import HourlyMilestones from "./HourlyMilestones";
+import AllProjects from "./AllProjects";
+import HourlyProjects from "./HourlyProjects";
 import ActiveMilestones from "./ActiveMilestones";
 import AwaitingMilestones from "./AwaitingMilestones";
 import PaymentRequested from "./PaymentRequested";
@@ -189,11 +189,13 @@ const Screen = () => {
               </div>
             </div>
           </div> */}
-          <AllMilestones getAllContracts={getAllContracts?.All} />
+
+          <AllProjects getAllContracts={getAllContracts?.All} />
+
           {/* {activeTab == "ALL" ? (
-            <AllMilestones getAllContracts={getAllContracts?.All} />
+            <HourlyProjects getAllContracts={getAllContracts?.All} />
           ) : activeTab == "HOURLY" ? (
-            <HourlyMilestones getAllContracts={getAllContracts?.Hourly} />
+            <HourlyProjects getAllContracts={getAllContracts?.Hourly} />
           ) : activeTab == "ACTIVE_MILESTONE" ? (
             <ActiveMilestones
               getAllContracts={getAllContracts?.ActiveMilestone}

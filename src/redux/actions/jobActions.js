@@ -313,3 +313,18 @@ export const onDeclineOffer =
       });
     } catch (err) {}
   };
+
+export const onAcceptOffer =
+  (id, successPopup, setSuccessPopup, afterSuccess) => async (dispatch) => {
+    try {
+      Axios.get(`/accept-offer/${id}`, config).then((res) => {
+        setSuccessPopup(
+          <SuccessPopup
+            Popup={() => setSuccessPopup(!successPopup)}
+            message="Offer accepted successfully."
+            afterSuccess={afterSuccess}
+          />
+        );
+      });
+    } catch (err) {}
+  };

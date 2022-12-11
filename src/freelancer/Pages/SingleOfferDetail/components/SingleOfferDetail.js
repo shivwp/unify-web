@@ -2,9 +2,12 @@ import { Col, Row } from "react-bootstrap";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import { useDispatch, useSelector } from "react-redux";
-import { singleProposalDetails } from "../../../../redux/actions/jobActions";
+import {
+  onAcceptOffer,
+  singleProposalDetails,
+} from "../../../../redux/actions/jobActions";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import SuccessPopup from "../../../components/popups/SuccessPopup";
 import DeclineOfferPopup from "./DeclineOfferPopup";
 
@@ -12,6 +15,7 @@ const SingleOfferDetail = () => {
   const dispatch = useDispatch();
   const [successPopup, setSuccessPopup] = useState(false);
   const [popup, setPopup] = useState(false);
+  const navigate = useNavigate();
 
   const { id } = useParams();
   const project_data = useSelector(
@@ -27,9 +31,17 @@ const SingleOfferDetail = () => {
     (state) => state?.job?.singleProposalDetails?.proposal_data
   );
 
+  const afterSuccess = () => {
+    navigate("/freelancer/all-contracts");
+  };
+
   useEffect(() => {
     dispatch(singleProposalDetails(id, "offer"));
   }, [id]);
+
+  const OfferAccept = () => {
+    dispatch(onAcceptOffer(id, successPopup, setSuccessPopup, afterSuccess));
+  };
   return (
     <>
       <Container>
@@ -111,6 +123,7 @@ const SingleOfferDetail = () => {
                   <Button
                     variant=""
                     className="active_btn_blue hov_ttransp mt-0 min-w-2hpx"
+                    onClick={OfferAccept}
                   >
                     Accept Offer
                   </Button>
