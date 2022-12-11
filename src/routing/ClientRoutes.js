@@ -91,7 +91,7 @@ const ClientRoutes = () => {
           element={<ReusePosting />}
         />
         <Route
-          path="/hire-freelancer/:project_id/:freelancer_id"
+          path="/hire-freelancer/:proposal_id/:freelancer_id"
           element={<HireFreelancer />}
         />
         <Route

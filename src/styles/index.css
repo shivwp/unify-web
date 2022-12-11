@@ -8888,6 +8888,7 @@ a {
 }
 .fixed_bid .milsetone .milestone_count .input_list {
   display: flex;
+  align-items: center;
   gap: 15px;
   margin: 20px 0;
 }

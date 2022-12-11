@@ -19,6 +19,13 @@
   margin-bottom: 5px;
 }
 
+.doller-icon {
+  position: absolute;
+  top: 12px;
+  left: 10px;
+  color: gray;
+}
+
 .select_box_hat {
   position: relative;
   padding-top: 4px !important;
