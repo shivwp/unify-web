@@ -12,7 +12,7 @@ const AllProjects = ({ getAllContracts }) => {
         <>
           {getAllContracts?.map((item) => (
             <>
-              {item?.type != "hourly" ? (
+              {item?.type == "hourly" ? (
                 <div>
                   <div
                     className="job_box_card"
@@ -65,7 +65,9 @@ const AllProjects = ({ getAllContracts }) => {
                           </h3>
                         </div>
                         <div className="job_d_par">
-                          <p style={{ marginBottom: 0 }}>Weekly Limit</p>
+                          <p style={{ marginBottom: 0 }}>
+                            Weekly Limit: {item.weekly_limit} hr/week
+                          </p>
                         </div>
                       </Col>
                       <Col
@@ -85,7 +87,7 @@ const AllProjects = ({ getAllContracts }) => {
                     </Row>
                   </div>
                 </div>
-              ) : (
+              ) : item?.type == "fixed" ? (
                 <div>
                   <div
                     className="job_box_card"
@@ -137,9 +139,9 @@ const AllProjects = ({ getAllContracts }) => {
                             <span>{item.client?.last_activity}</span>
                           </h3>
                         </div>
-                        <div className="job_d_par">
+                        {/* <div className="job_d_par">
                           <p style={{ marginBottom: 0 }}>Weekly Limit</p>
-                        </div>
+                        </div> */}
                       </Col>
                       <Col
                         lg={2}
@@ -158,6 +160,8 @@ const AllProjects = ({ getAllContracts }) => {
                     </Row>
                   </div>
                 </div>
+              ) : (
+                ""
               )}
             </>
           ))}

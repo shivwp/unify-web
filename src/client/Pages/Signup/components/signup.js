@@ -151,7 +151,7 @@ const Signup = ({
                             onChange={(e) => onInputChange(e)}
                             name="first_name"
                             placeholder="First Name"
-                            required
+                            // required
                           />
                           <span className="signInError">
                             {errors.first_name && errors?.first_name}
@@ -203,7 +203,7 @@ const Signup = ({
                             name="last_name"
                             value={values?.last_name}
                             onChange={(e) => onInputChange(e)}
-                            required
+                            // required
                           />
                           <span className="signInError">
                             {errors.last_name && errors?.last_name}
