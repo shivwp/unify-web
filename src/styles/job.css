@@ -3241,7 +3241,8 @@
 
 .Edit_comp_address .col_left .Edit_details ._edit {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  /* justify-content: space-between; */
   margin: 2px 0;
   padding: 2px 0;
 }
@@ -3250,6 +3251,55 @@
   font-weight: 700;
   font-size: 15px;
   color: #6d2ef1;
+}
+
+.stripClientLogo {
+  height: 43px;
+}
+
+.clientStrip {
+  font: normal normal normal 16px/16px Poppins;
+  letter-spacing: 0px;
+  color: #393939;
+}
+
+.clientPayBtn .clientCardbtn {
+  min-width: 125px;
+  margin: 5px 5px 5px 0;
+  padding: 10px 5px;
+}
+
+.Select_payment_method_box .clientCardList {
+  background: #f8f8f8 0% 0% no-repeat padding-box;
+  min-height: 170px;
+  margin-bottom: 20px;
+  padding: 16px;
+}
+
+.clientCardDet {
+  display: flex;
+  gap: 10px;
+}
+
+.clientCardList h5 {
+  font: normal normal 600 20px/30px Poppins;
+  letter-spacing: 0px;
+  color: #1f1f1f;
+  padding-bottom: 10px;
+}
+
+.cardLogoSize {
+  height: 20px;
+}
+
+.clientCardDetList {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.clientCardDetList span {
+  font-size: 14px;
 }
 
 @media screen and (max-width: 1024px) {
@@ -3261,7 +3311,7 @@
 .Select_payment_method_box {
   margin: 20px 0;
   padding: 2px 0;
-  border-bottom: #e2e0e0 solid 1px;
+  /* border-bottom: #e2e0e0 solid 1px; */
 }
 
 .Select_payment_method_box ._payment_methods .setting_pay_inp {

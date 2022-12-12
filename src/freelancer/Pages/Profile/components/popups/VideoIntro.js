@@ -80,7 +80,8 @@ const VideoIntro = ({ data, Popup, successPopup, setSuccessPopup }) => {
             <div className="mb-5 ">
               <div className="popup_form_element">
                 <Form.Label className="text-black font-size-13px font-weight-500">
-                  Link to your YouTube video *
+                  Link to your YouTube video{" "}
+                  <span className="required_stars"> * </span>
                 </Form.Label>
                 <Form.Control
                   type="text"
@@ -96,7 +97,8 @@ const VideoIntro = ({ data, Popup, successPopup, setSuccessPopup }) => {
               </div>
               <div className="popup_form_element">
                 <Form.Label className="text-black font-size-13px font-weight-500">
-                  What type of video is this? *
+                  What type of video is this?{" "}
+                  <span className="required_stars"> * </span>
                 </Form.Label>
                 <select
                   name="type"

@@ -9891,9 +9891,21 @@ input::-webkit-inner-spin-button {
 /* ------------------------ all contarct after settime sheet end --------------------- */
 
 /* how it works start */
-@media screen and (min-width:768px) {
+@media screen and (min-width: 768px) {
   .how_it_works.tab_scroll_cont {
     justify-content: center !important;
   }
 }
 /* how it works end */
+
+.required_stars {
+  position: relative;
+  top: -4px;
+  color: #f34343;
+  font-size: 15px;
+}
+
+.portfolio_popup label {
+  display: flex !important;
+  flex-direction: row;
+}

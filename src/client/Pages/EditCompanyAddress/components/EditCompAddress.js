@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { Col, Row } from "react-bootstrap";
 import Container from "react-bootstrap/Container";
-import { Link } from "react-router-dom";
-import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import CardDetailsPopup from "../../../../freelancer/Pages/Setting/tab/popups/CardDetailsPopup";
 
 const EditCompAddress = () => {
+  const [popup, SetPopup] = useState();
   return (
     <>
       <Container className="add_comp_address Edit_comp_address">
@@ -15,43 +15,66 @@ const EditCompAddress = () => {
           <Col lg={8}>
             <div className="box_vs_m mt-0 col_left">
               <div className="Edit_details">
-                <div className="_edit">
-                  <h5 className="page_title">1. Edit Company Address</h5>
-                  <Link to="/hire-freelancer/addAddress" className="_edit_btn">
-                    <span className="_edit_btn">Edit</span>
-                  </Link>
-                </div>
-                <div className="_address">
-                  <p>
-                    C-56 First floor, Extension, Nami Nagar, Vaishali Nagar,
-                    Jaipur, Rajasthan 302021
-                  </p>
-                </div>
+                <Row>
+                  <Col lg={9} md={9}>
+                    <div className="_edit">
+                      <h5 className="page_title">Billing method </h5>
+                      <p>Your balance due is $0.00</p>
+                    </div>
+                  </Col>
+                  <Col lg={3} md={3}>
+                    <div className="_address">
+                      <img
+                        src="/assets/stripLogo.png"
+                        alt=""
+                        className="stripClientLogo"
+                      />
+                      <p className="clientStrip">(Secured by Stripe)</p>
+                    </div>
+                  </Col>
+                  <div>
+                    <div className="btn_foot_sec no-border mb-3 mt-0 p-0 fo_btn_c next_b_btn_c clientPayBtn">
+                      <Button
+                        variant=""
+                        className="clientCardbtn "
+                        onClick={() => {
+                          SetPopup(<CardDetailsPopup Popup={SetPopup} />);
+                        }}
+                      >
+                        Add Card
+                      </Button>
+                    </div>
+                  </div>
+                </Row>
               </div>
               <div className="Select_payment_method_box">
-                <h5 className="page_title">2. Select a billing method</h5>
-
-                <div className="_payment_methods">
-                  <ul className="setting_pay_inp">
-                    <li>
-                      <Form.Check type="radio" name="p" /> Payment card
-                    </li>
-                    <li>
-                      <Form.Check type="radio" name="p" />{" "}
-                      <img src="/assets/paypal.png" alt="" />
-                    </li>
-                  </ul>
+                <div className="clientCardList">
+                  <h5>Cards List</h5>
+                  <div className="clientCardDetList">
+                    <div className="clientCardDet">
+                      <img
+                        src="/assets/cardImg.png"
+                        alt=""
+                        className="cardLogoSize"
+                      />
+                      <span> 1922 **** **** **** 0416 </span>
+                    </div>
+                    <div className="clientCardDet">
+                      <img
+                        src="/assets/cardImg.png"
+                        alt=""
+                        className="cardLogoSize"
+                      />
+                      <span> 1922 **** **** **** 0416 </span>
+                    </div>
+                  </div>
                 </div>
                 <div className="payment_btn">
                   <Button variant="" type="button" className="pay_with_btn">
-                    Pay With PayPal
+                    Pay With Stripe
                   </Button>
                 </div>
               </div>
-              <p className="_payment_alert">
-                *Any available balance you have will be applied towards your
-                total amount.
-              </p>
             </div>
           </Col>
           <Col lg={4}>
@@ -98,7 +121,7 @@ const EditCompAddress = () => {
               </div>
               <div className="find_and_hire_button Edit_Addr">
                 <Button
-                 variant=""
+                  variant=""
                   type="button"
                   className="find_contact"
                   style={{
@@ -114,6 +137,7 @@ const EditCompAddress = () => {
           </Col>
         </Row>
       </Container>
+      {popup}
     </>
   );
 };

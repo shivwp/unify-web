@@ -199,7 +199,7 @@ const PublishProfile = ({ setCurrentTab, profileList }) => {
               <Col lg={6}>
                 <div className="popup_form_element">
                   <label className="text-black font-size-13px font-weight-500">
-                    Time Zone *
+                    Time Zone <span className="required_stars"> * </span>
                   </label>
                   <select
                     style={{
@@ -229,7 +229,7 @@ const PublishProfile = ({ setCurrentTab, profileList }) => {
               <Col lg={6}>
                 <div className="popup_form_element">
                   <label className="text-black font-size-13px font-weight-500">
-                    Country *
+                    Country <span className="required_stars"> * </span>
                   </label>
                   <select
                     style={{
@@ -259,7 +259,8 @@ const PublishProfile = ({ setCurrentTab, profileList }) => {
               <Col lg={6}>
                 <div className="popup_form_element">
                   <Form.Label className="text-black font-size-13px font-weight-500">
-                    Street Address * (won't show on profile)
+                    Street Address <span className="required_stars"> * </span>{" "}
+                    (won't show on profile)
                   </Form.Label>
                   <Form.Control
                     type="text"
@@ -278,7 +279,7 @@ const PublishProfile = ({ setCurrentTab, profileList }) => {
               <Col lg={6}>
                 <div className="popup_form_element">
                   <Form.Label className="text-black font-size-13px font-weight-500">
-                    City *
+                    City <span className="required_stars"> * </span>
                   </Form.Label>
                   <Form.Control
                     type="text"
@@ -297,7 +298,7 @@ const PublishProfile = ({ setCurrentTab, profileList }) => {
               <Col lg={6}>
                 <div className="popup_form_element">
                   <Form.Label className="text-black font-size-13px font-weight-500">
-                    Zip/Postal Code *
+                    Zip/Postal Code <span className="required_stars"> * </span>
                   </Form.Label>
                   <Form.Control
                     type="text"
@@ -317,7 +318,7 @@ const PublishProfile = ({ setCurrentTab, profileList }) => {
               <Col lg={6}>
                 <div className="popup_form_element">
                   <Form.Label className="text-black font-size-13px font-weight-500">
-                    Phone Number *
+                    Phone Number <span className="required_stars"> * </span>
                   </Form.Label>
                   <Form.Control
                     type="number"
