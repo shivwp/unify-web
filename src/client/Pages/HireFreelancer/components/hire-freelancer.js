@@ -13,7 +13,10 @@ const Screen = () => {
   const dispatch = useDispatch();
   const [values, setValues] = useState({});
   const projectData = useSelector(
-    (state) => state?.job?.singleProposalDetails?.project_data
+    (state) => state?.job?.singleProposalDetails?.proposal_data
+  );
+  const milestoneData = useSelector(
+    (state) => state?.job?.singleProposalDetails?.milestonedata
   );
   const singleFreelancer = useSelector(
     (state) => state.freelancer.singleFreelancer
@@ -21,7 +24,7 @@ const Screen = () => {
 
   useEffect(() => {
     if (projectData) {
-      setValues({ ...projectData, milestone_type: "single", amount: "30.00" });
+      setValues(projectData);
     }
   }, [projectData]);
 
@@ -36,6 +39,8 @@ const Screen = () => {
   const onInputChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
   };
+
+  console.log(values);
 
   return (
     <Container>
@@ -72,9 +77,11 @@ const Screen = () => {
             <Col md={6}>
               <Form.Control
                 type="text"
+                name="title"
                 className="w-100 mt-2 py-2"
                 style={{ fontSize: "14px" }}
                 placeholder="Enter the contact title"
+                onChange={(e) => onInputChange(e)}
               />
             </Col>
           </div>
@@ -117,8 +124,10 @@ const Screen = () => {
                   <div className="hourly_headin d-flex align-items-center">
                     <Form.Control
                       type="number"
+                      name="bid_amount"
                       className="text-right"
-                      value="30.00"
+                      value={values?.bid_amount}
+                      onChange={(e) => onInputChange(e)}
                     />
                     &nbsp;
                     <span>/hr</span>
@@ -139,7 +148,11 @@ const Screen = () => {
                     stay on budget.
                   </div>
                   <div className="hourly_headin d-flex align-items-center">
-                    <Form.Select>
+                    <Form.Select
+                      name="weekly_limit"
+                      value={values?.weekly_limit}
+                      onChange={(e) => onInputChange(e)}
+                    >
                       <option value="No limit">No limit</option>
                       <option value="5 k">5 hrs/week</option>
                       <option value="10">10 hrs/week</option>
@@ -173,7 +186,13 @@ const Screen = () => {
                     </span>
                   </div>
                   <div className="inpu_date d-flex psr-relative">
-                    <input type="date" className="custom_date_picker" />
+                    <input
+                      type="date"
+                      className="custom_date_picker"
+                      name="date"
+                      value={values?.date}
+                      onChange={(e) => onInputChange(e)}
+                    />
                   </div>
                 </div>
                 <div className="b_bot_inp d-flex justify-content-between align-items-center">
@@ -356,42 +375,47 @@ const Screen = () => {
                               Due dates will be set in Coordinated Universal
                               Time (UTC).
                             </p>
-                            <div className="milestone_count">
-                              <div className="headings">
-                                <div className="srno"></div>
-                                <div className="desc">Description </div>
-                                <div className="date">Due date</div>
-                                <div className="amount">Amount</div>
-                                <div className="remove"></div>
+                            {milestoneData?.map((data, key) => (
+                              <div className="milestone_count" key={key}>
+                                <div className="headings">
+                                  <div className="srno"></div>
+                                  <div className="desc">Description </div>
+                                  <div className="date">Due date</div>
+                                  <div className="amount">Amount</div>
+                                  <div className="remove"></div>
+                                </div>
+                                <div className="input_list">
+                                  <div className="srno">{key + 1}</div>
+                                  <div className="desc">
+                                    <input
+                                      type="text"
+                                      name="description"
+                                      placeholder="Description"
+                                      value={data.description}
+                                    />
+                                  </div>
+                                  <div className="date">
+                                    <input
+                                      type="date"
+                                      name="due_date"
+                                      placeholder="Date"
+                                      value={data.due_date}
+                                    />
+                                  </div>
+                                  <div className="amount">
+                                    <input
+                                      type="number"
+                                      name="amount"
+                                      min="1"
+                                      placeholder="0.00"
+                                      value={data.amount}
+                                    />
+                                    <span className="dollar_icon">$</span>
+                                  </div>
+                                  <i className="fa fa-remove"></i>
+                                </div>
                               </div>
-                              <div className="input_list">
-                                <div className="srno">1</div>
-                                <div className="desc">
-                                  <input
-                                    type="text"
-                                    name="description"
-                                    placeholder="Description"
-                                  />
-                                </div>
-                                <div className="date">
-                                  <input
-                                    type="date"
-                                    name="due_date"
-                                    placeholder="Date"
-                                  />
-                                </div>
-                                <div className="amount">
-                                  <input
-                                    type="number"
-                                    name="amount"
-                                    min="1"
-                                    placeholder="0.00"
-                                  />
-                                  <span className="dollar_icon">$</span>
-                                </div>
-                                <i className="fa fa-remove"></i>
-                              </div>
-                            </div>
+                            ))}
                             <div className="add_milestone">
                               <span>+ Add milestone</span>
                             </div>
@@ -410,7 +434,12 @@ const Screen = () => {
         <div className="contrc_ter_head mb-2">Work Description</div>
         <div className="pay_pro_par p-0 m-0">Add a description of the work</div>
         <Form.Group className="description_text_h">
-          <Form.Control as="textarea" rows={3}></Form.Control>
+          <Form.Control
+            as="textarea"
+            rows={3}
+            name="cover_letter"
+            value={values?.cover_letter}
+          ></Form.Control>
         </Form.Group>
         <div className="ts_btn attach_f_btn mt-0">
           <Form.Control type="file" />

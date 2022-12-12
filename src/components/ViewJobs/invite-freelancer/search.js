@@ -175,7 +175,7 @@ const Screen = ({
                       Completed 6 Mobile App Design jobs on Unify
                     </div>
                     <div className="freelancer_has_in">
-                      Has 11 relevant skills to your job
+                      Has {data.skills_count} relevant skills to your job
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="16"

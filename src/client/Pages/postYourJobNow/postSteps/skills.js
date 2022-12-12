@@ -111,7 +111,7 @@ const Skill = ({ setCurrentTab, onInputChange, setValues, values }) => {
           <div className="s_slides">
             <div className="flex_slide_ta">
               <div className="sli_ta_name">Skills</div>
-              <div>
+              {/* <div>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"
@@ -125,19 +125,25 @@ const Skill = ({ setCurrentTab, onInputChange, setValues, values }) => {
                     d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"
                   />
                 </svg>
-              </div>
+              </div> */}
             </div>
             <div className="slide_btnss">
-              {selectSkills?.map((item, index) => (
-                <button key={index}>
-                  {item.name}
-                  <i
-                    className="fa fa-remove"
-                    style={{ marginLeft: "10px" }}
-                    onClick={() => removeSkills(index)}
-                  ></i>
-                </button>
-              ))}
+              {selectSkills?.length === 0 ? (
+                <h6 className="text-center">No skills selected</h6>
+              ) : (
+                <>
+                  {selectSkills?.map((item, index) => (
+                    <button key={index}>
+                      {item.name}
+                      <i
+                        className="fa fa-remove"
+                        style={{ marginLeft: "10px" }}
+                        onClick={() => removeSkills(index)}
+                      ></i>
+                    </button>
+                  ))}
+                </>
+              )}
             </div>
           </div>
 

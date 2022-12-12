@@ -67,7 +67,6 @@ const ReusePosting = () => {
     setObjectUrl(URL.createObjectURL(e.target.files[0]));
   };
 
-
   const postYourJobNow = () => {
     const formData = new FormData();
 
@@ -233,9 +232,9 @@ const ReusePosting = () => {
                     <div className="job_t_inp cat_inp_j d-flex flex-wrap align-items-center">
                       {values?.budget_type === "hourly" ? (
                         <span>
-                          {`${parseInt(values?.price).toFixed(2)} - ${parseInt(
-                            values?.min_price
-                          ).toFixed(2)}`}
+                          {`$${parseInt(values?.price).toFixed(
+                            2
+                          )} - $${parseInt(values?.min_price).toFixed(2)}`}
                           /hr
                         </span>
                       ) : values?.budget_type === "fixed" ? (

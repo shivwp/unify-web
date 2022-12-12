@@ -79,9 +79,11 @@ const Screen = () => {
         <div className="yourp_box">
           <div className="d-flex justify-content-between align-items-center pb-3 b-bottom-gr">
             <div className="headin_yourp_b">Your Postings</div>
-            <div className="see_ps_ing">
-              <Link to="/all-job-list">See all postings</Link>
-            </div>
+            {clientPostingList?.length !== 0 && (
+              <div className="see_ps_ing">
+                <Link to="/all-job-list">See all postings</Link>
+              </div>
+            )}
           </div>
 
           {clientPostingList?.length === 0 ? (
@@ -187,15 +189,17 @@ const Screen = () => {
         <div className="yourp_box pb-0 pt-3">
           <div className="d-flex justify-content-between align-items-center pb-3 b-bottom-gr">
             <div className="headin_yourp_b">Your Drafts</div>
-            <div className="see_ps_ing">
-              <Link to="/all-draft-job-list">See all drafts</Link>
-            </div>
+            {clientDraftPostingList?.length !== 0 && (
+              <div className="see_ps_ing">
+                <Link to="/all-draft-job-list">See all drafts</Link>
+              </div>
+            )}
           </div>
           {clientDraftPostingList?.length === 0 ? (
             <div className="d-flex justify-content-center flex-column align-items-center py-4">
               <img src="/assets/data-not-found.png" alt="" />
               <br />
-              <h3>No active job posts</h3>
+              <h3>No posts in draft</h3>
               <p>Post a job to the marketplace and let talent come to you.</p>
               <div className="post_job_btn_m">
                 <Link to="/post-your-job">

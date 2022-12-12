@@ -82,7 +82,7 @@ const Screen = ({ getSavedTalentList, handleRemoveSavedTalent, jobId }) => {
                     <div className="overflow-scroll">
                       <div className="slide_btnss freelancer_skill_sc">
                         {data.skills.map((item, key) => (
-                          <button>Mobile App Design</button>
+                          <button>{item.skill_name}</button>
                         ))}
                       </div>
                     </div>

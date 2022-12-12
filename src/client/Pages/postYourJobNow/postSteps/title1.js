@@ -57,12 +57,18 @@ const TitleBody = ({ setCurrentTab, onInputChange, values }) => {
                 </div>
               ))}
           </div>
-          <div
-            className="see_cat_link"
-            onClick={() => setViewCategory(categoryList?.length)}
-          >
-            See all categories
-          </div>
+          {categoryList?.length > viewCategory ? (
+            <div
+              className="see_cat_link"
+              onClick={() => setViewCategory(categoryList?.length)}
+            >
+              See all categories
+            </div>
+          ) : (
+            <div className="see_cat_link" onClick={() => setViewCategory(3)}>
+              See less
+            </div>
+          )}
         </div>
         <div className="btn_foot_sec flex-wrap">
           <div className="fo_btn_c next_b_btn_c">
