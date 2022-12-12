@@ -191,7 +191,7 @@ const AddEduc = ({ education, Popup, successPopup, setSuccessPopup }) => {
                 <Col md={12}>
                   <div className="popup_form_element">
                     <Form.Label className="text-black font_size_14px font-weight-500">
-                      School *
+                      School <span className="required_stars"> * </span>
                     </Form.Label>
                     <Form.Control
                       type="text"
@@ -209,7 +209,7 @@ const AddEduc = ({ education, Popup, successPopup, setSuccessPopup }) => {
                 <Col md={6}>
                   <div className="popup_form_element">
                     <Form.Label className="text-black font_size_14px font-weight-500">
-                      Start date *
+                      Start date <span className="required_stars"> * </span>
                     </Form.Label>
 
                     <select
@@ -235,7 +235,8 @@ const AddEduc = ({ education, Popup, successPopup, setSuccessPopup }) => {
                 <Col md={6}>
                   <div className="popup_form_element">
                     <Form.Label className="text-black font_size_14px font-weight-500">
-                      End date/ expected end date *
+                      End date/ expected end date{" "}
+                      <span className="required_stars"> * </span>
                     </Form.Label>
                     <select
                       name="end_year"
@@ -260,7 +261,7 @@ const AddEduc = ({ education, Popup, successPopup, setSuccessPopup }) => {
                 <Col md={12}>
                   <div className="popup_form_element">
                     <Form.Label className="text-black font_size_14px font-weight-500">
-                      Degree *
+                      Degree <span className="required_stars"> * </span>
                     </Form.Label>
 
                     <select
@@ -285,7 +286,7 @@ const AddEduc = ({ education, Popup, successPopup, setSuccessPopup }) => {
                 <Col md={12}>
                   <div className="popup_form_element">
                     <Form.Label className="text-black font_size_14px font-weight-500">
-                      Area of study *
+                      Area of study <span className="required_stars"> * </span>
                     </Form.Label>
                     <Form.Control
                       type="text"

@@ -124,8 +124,7 @@ const WhatDoYouDo = ({ setCurrentTab, profileList }) => {
             </div>
             <div className="popup_form_element mb-0">
               <Form.Label className="whatdoYoudo-head">
-                {" "}
-                Ok, time to shine! Sell yourself to the world of Unify *{" "}
+                Ok, time to shine! Sell yourself to the world of Unify
               </Form.Label>
               <Form.Control
                 as="textarea"

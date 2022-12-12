@@ -157,7 +157,7 @@ const Screen = () => {
               <Col md={12}>
                 <div className="mb-2 mt-2">
                   <div className="c_name_s_v pb-0 f_new_contact_info">
-                    First Name *
+                    First Name <span className="required_stars"> * </span>
                   </div>
                   <div className="c_name_sett mt-0 pt-0">
                     <div className="edit_contact_inp">
@@ -179,7 +179,7 @@ const Screen = () => {
               <Col md={12}>
                 <div className="mb-2 mt-2">
                   <div className="c_name_s_v pb-0 f_new_contact_info">
-                    Last Name *
+                    Last Name <span className="required_stars"> * </span>
                   </div>
                   <div className="c_name_sett mt-0 pt-0">
                     <div className="edit_contact_inp">
@@ -201,7 +201,7 @@ const Screen = () => {
               <Col md={12}>
                 <div className="mb-2 mt-2">
                   <div className="c_name_s_v pb-0 f_new_contact_info">
-                    Email *
+                    Email <span className="required_stars"> * </span>
                   </div>
                   <div className="c_name_sett mt-0 pt-0">
                     <div className="edit_contact_inp">
@@ -367,7 +367,8 @@ const Screen = () => {
               <Col md={6}>
                 <div className="mb-2 mt-2">
                   <div className="c_name_s_v pb-0 f_new_contact_info">
-                    Time Zone *
+                    Time Zone
+                    <span className="required_stars"> * </span>
                   </div>
                   <div className="c_name_sett mt-0 pt-0 font-color-light">
                     <div className="edit_contact_inp">
@@ -398,7 +399,7 @@ const Screen = () => {
               <Col md={6}>
                 <div className="mb-2 mt-2">
                   <div className="c_name_s_v pb-0 f_new_contact_info">
-                    City *
+                    City <span className="required_stars"> * </span>
                   </div>
                   <div className="c_name_sett mt-0 pt-0 font-color-light">
                     <div className="edit_contact_inp">
@@ -420,7 +421,7 @@ const Screen = () => {
               <Col md={6}>
                 <div className="mb-2 mt-2">
                   <div className="c_name_s_v pb-0 f_new_contact_info">
-                    Country *
+                    Country <span className="required_stars"> * </span>
                   </div>
                   <div className="c_name_sett mt-0 pt-0 font-color-light">
                     <div className="edit_contact_inp">
@@ -445,7 +446,7 @@ const Screen = () => {
               <Col md={6}>
                 <div className="mb-2 mt-2">
                   <div className="c_name_s_v pb-0 f_new_contact_info">
-                    Address *
+                    Address <span className="required_stars"> * </span>
                   </div>
                   <div className="c_name_sett mt-0 pt-0 font-color-light">
                     <div className="edit_contact_inp">
@@ -466,7 +467,7 @@ const Screen = () => {
               <Col md={6}>
                 <div className="mb-2 mt-2">
                   <div className="c_name_s_v pb-0 f_new_contact_info">
-                    Phone *
+                    Phone <span className="required_stars"> * </span>
                   </div>
                   <div className="c_name_sett mt-0 pt-0 font-color-light">
                     <div className="edit_contact_inp">
@@ -487,7 +488,7 @@ const Screen = () => {
               <Col md={6}>
                 <div className="mb-2 mt-2">
                   <div className="c_name_s_v pb-0 f_new_contact_info">
-                    Zip Code *
+                    Zip Code <span className="required_stars"> * </span>
                   </div>
                   <div className="c_name_sett mt-0 pt-0 font-color-light">
                     <div className="edit_contact_inp">

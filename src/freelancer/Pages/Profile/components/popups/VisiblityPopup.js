@@ -75,7 +75,7 @@ const VisiblityPopup = ({ data, setSuccessPopup, successPopup, Popup }) => {
               <div className="mt-4">
                 <div className="popup_form_element">
                   <Form.Label className="text-black font-size-13px font-weight-500">
-                    Visibility *
+                    Visibility <span className="required_stars"> * </span>
                   </Form.Label>
                   <select
                     name="visibility"
@@ -98,7 +98,8 @@ const VisiblityPopup = ({ data, setSuccessPopup, successPopup, Popup }) => {
               <div className="mt-4">
                 <div className="popup_form_element">
                   <Form.Label className="text-black font-size-13px font-weight-500">
-                    Project Preference *
+                    Project Preference{" "}
+                    <span className="required_stars"> * </span>
                   </Form.Label>
                   <select
                     name="project_preference"

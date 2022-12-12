@@ -108,8 +108,8 @@ const PortfolioPupup = ({
         <div className="content">
           <div className="freelancer_popup_inps">
             <div className="popup_form_element">
-              <Form.Label className="text-black font-size-13px font-weight-500 mb-1 mt-0">
-                Project Title *
+              <Form.Label className="text-black font-size-13px font-weight-500 mb-1 mt-0 ">
+                Project Title <span className="required_stars"> * </span>
               </Form.Label>
               <Form.Control
                 type="text"
@@ -127,7 +127,7 @@ const PortfolioPupup = ({
 
             <div>
               <Form.Label className="text-black font-size-13px font-weight-500 my-2">
-                Description *
+                Description <span className="required_stars"> * </span>
               </Form.Label>
 
               <div className="freelancer_popup_textarea">
@@ -145,8 +145,8 @@ const PortfolioPupup = ({
               </div>
             </div>
             <div className="portfolio_attach mt-4">
-              <Form.Label className="text-black font-size-13px font-weight-500 my-2">
-                Attachments *
+              <Form.Label className="text-black font-size-13px font-weight-500 my-2 mb-0">
+                Attachments <span className="required_stars"> * </span>
               </Form.Label>
               <div className="portfolio_img_pre pt-0">
                 <img src={showingImage} alt="" />

@@ -102,7 +102,9 @@ const EditSkill = ({ data, Popup, successPopup, setSuccessPopup }) => {
           </div>
           <div className="popup_body_bpn amount_popup_body max_height_popucwui overflow-scroll">
             <div className="mt-4 pt-1">
-              <div className="pouphed_skll">Skills *</div>
+              <div className="pouphed_skll">
+                Skills <span className="required_stars"> * </span>{" "}
+              </div>
               <div className="popuphead_smparcr">
                 Keeping your skills up to date helps you get the jobs you want.
               </div>

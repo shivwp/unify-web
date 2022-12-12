@@ -58,6 +58,29 @@ const Screen = () => {
                   </div>
                 </div>
               </div>
+              <div className="Select_payment_method_box mb-0">
+                <div className="clientCardList">
+                  <h5>Cards List</h5>
+                  <div className="clientCardDetList">
+                    <div className="clientCardDet">
+                      <img
+                        src="/assets/cardImg.png"
+                        alt=""
+                        className="cardLogoSize"
+                      />
+                      <span> 1922 **** **** **** 0416 </span>
+                    </div>
+                    <div className="clientCardDet">
+                      <img
+                        src="/assets/cardImg.png"
+                        alt=""
+                        className="cardLogoSize"
+                      />
+                      <span> 1922 **** **** **** 0416 </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
               <div className="r-box_setting">
                 <div className="d-flex justify-content-between align-items-center b-bottom-gr pt-1 pb-3 flex-wrap">
                   <div>

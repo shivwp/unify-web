@@ -119,7 +119,7 @@ const ReqTestimonial = ({ Popup, successPopup, setSuccessPopup }) => {
                 <Col md={6}>
                   <div className="popup_form_element">
                     <Form.Label className="text-black font-size-13px font-weight-500">
-                      First Name *
+                      First Name <span className="required_stars"> * </span>
                     </Form.Label>
                     <Form.Control
                       type="text"
@@ -137,7 +137,7 @@ const ReqTestimonial = ({ Popup, successPopup, setSuccessPopup }) => {
                 <Col md={6}>
                   <div className="popup_form_element">
                     <Form.Label className="text-black font-size-13px font-weight-500">
-                      Last name *
+                      Last name <span className="required_stars"> * </span>
                     </Form.Label>
                     <Form.Control
                       type="text"
@@ -155,7 +155,8 @@ const ReqTestimonial = ({ Popup, successPopup, setSuccessPopup }) => {
                 <Col md={6}>
                   <div className="popup_form_element">
                     <Form.Label className="text-black font-size-13px font-weight-500">
-                      Business email address *
+                      Business email address{" "}
+                      <span className="required_stars"> * </span>
                     </Form.Label>
                     <Form.Control
                       type="text"
