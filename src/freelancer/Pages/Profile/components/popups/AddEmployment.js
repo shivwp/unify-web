@@ -66,6 +66,7 @@ const AddEmployment = ({
     }
   };
 
+
   const onSave = () => {
     let errorExist = false;
     let errorsObject = {};
@@ -140,9 +141,10 @@ const AddEmployment = ({
       values?.start_date === null ||
       values?.start_date === undefined
     ) {
-      errorsObject.start_date = "Please select your end date";
+      errorsObject.start_date = "Please select your start date";
       errorExist = true;
     }
+
     if (values?.start_date > moment(new Date()).format("YYYY-MM-DD")) {
       errorsObject.start_date = "Start date can't be greater then today";
       errorExist = true;
@@ -164,7 +166,7 @@ const AddEmployment = ({
         values?.end_date === null ||
         values?.end_date === undefined
       ) {
-        errorsObject.end_date = true;
+        errorsObject.end_date = "Please select your end date";
         errorExist = true;
       }
     }

@@ -15,6 +15,7 @@ const Skills = ({ setCurrentTab, profileList }) => {
   const [selectSkills, setSelectSkills] = useState();
   const [showSkillList, setShowSkillList] = useState(false);
   const [showSkillError, setShowSkillError] = useState(false);
+  const [errors, setErrors] = useState(false);
 
   let getSkillList = useSelector((state) => state?.profile?.getSkillList);
   const [popup, Setpopup] = useState(false);
@@ -50,6 +51,10 @@ const Skills = ({ setCurrentTab, profileList }) => {
           ...selectSkills,
           { skill_id: item.id, skill_name: item.name },
         ]);
+        setShowSkillList(false);
+      } else {
+        setShowSkillList(false);
+        setErrors({ already: "Skill already selected" });
       }
     } else {
       setShowSkillList(false);
@@ -60,6 +65,7 @@ const Skills = ({ setCurrentTab, profileList }) => {
 
   const handleOnChange = (e) => {
     setIsChange(true);
+    setErrors({ already: false });
     let data;
     if (e.target.value.length >= 1) {
       data = { [e.target.name]: e.target.value };
@@ -146,6 +152,11 @@ const Skills = ({ setCurrentTab, profileList }) => {
               </div>
             </div>
             <div className="maxlabel_atcxt mt-3">
+              {errors?.already ? (
+                <span style={{ color: "red" }}>{errors?.already}</span>
+              ) : (
+                ""
+              )}
               {selectSkills?.length === 0 && showSkillError ? (
                 <span style={{ color: "red" }}>
                   At least 1 skill is required.

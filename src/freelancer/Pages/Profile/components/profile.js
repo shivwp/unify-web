@@ -517,10 +517,7 @@ const UnifyFreelancer = () => {
                   </svg>
                 </div>
                 <div className="hourly_am">
-                 
-                  <h1>${basicInfo?.amount}</h1> <span>
-                    df  
-                  </span>
+                  <h1>${basicInfo?.amount}</h1> <span>(Per Hourly)</span>
                 </div>
               </div>
 
@@ -644,7 +641,13 @@ const UnifyFreelancer = () => {
                   className="myskill_hdingn ms_hdsmall font-size-15px"
                   style={{ textTransform: "capitalize" }}
                 >
-                  {basicInfo?.visibility}
+                  {basicInfo?.visibility == "public"
+                    ? "Public"
+                    : basicInfo?.visibility == "private"
+                    ? "Private"
+                    : basicInfo?.visibility == "unify_users"
+                    ? "Only Unify Users"
+                    : "Public"}
                 </div>
                 <div
                   className="myskill_hdingn profile_icon_25px profile_heading_mb"
@@ -806,7 +809,13 @@ const UnifyFreelancer = () => {
                         <Button
                           variant=""
                           onClick={() => {
-                            Setpopup(<UserVerification Popup={Setpopup} successPopup={successPopup} setSuccessPopup={setSuccessPopup} />);
+                            Setpopup(
+                              <UserVerification
+                                Popup={Setpopup}
+                                successPopup={successPopup}
+                                setSuccessPopup={setSuccessPopup}
+                              />
+                            );
                           }}
                         >
                           <svg
@@ -1294,7 +1303,7 @@ const UnifyFreelancer = () => {
                             </div>
                             <div
                               className="testimonial_description mt-1"
-                              style={{ fontSize: 14, whiteSpace: 'pre-line' }}
+                              style={{ fontSize: 14, whiteSpace: "pre-line" }}
                             >
                               {item.description}
                             </div>
@@ -1344,7 +1353,6 @@ const UnifyFreelancer = () => {
                 <div className="myskill_hdingn">
                   <Button
                     variant=""
-                  
                     onClick={() => {
                       Setpopup(
                         <AddCert
@@ -1441,7 +1449,7 @@ const UnifyFreelancer = () => {
               ))}
               {freelancerProfileList?.certificates?.length == 0 && (
                 <div className="d-flex justify-content-center flex-column text-center">
-                  <div className="img_min_bpck">
+                  <div className="">
                     <img src="/assets/Graduate.png" alt="" />
                   </div>
                   <div className="bpck_sm_txt_a mt-4">

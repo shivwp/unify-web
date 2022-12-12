@@ -740,8 +740,7 @@
 
 .imgbox_bccp:hover img {
   transform: scale(1.1);
-  transition: ease-in;
-  transition: ease;
+  transition: linear;
   transition-duration: 1s;
 }
 
@@ -2098,10 +2097,10 @@
 
 .suggest_skills {
   position: absolute;
-  background: #e7e7e7;
+  background: #ececec;
   /* border: 1px solid #cecdcd; */
   max-height: 177px;
-  width: 100%;
+  /* width: 100%; */
   overflow-y: auto;
   top: 42px;
   left: 1px;
@@ -2122,7 +2121,7 @@
   display: inline-block;
   width: 100%;
   height: 35px;
-  border-bottom: 1px solid rgb(205, 205, 205);
+  border-bottom: 1px solid rgb(244 244 244);
 }
 
 .suggest_skills span:hover {

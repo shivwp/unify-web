@@ -28,6 +28,7 @@ const EditSkill = ({ data, Popup, successPopup, setSuccessPopup }) => {
   const dispatch = useDispatch();
   const [showSkillList, setShowSkillList] = useState(false);
   const [showSkillError, setShowSkillError] = useState(false);
+  const [errors, setErrors] = useState(false);
   let getSkillList = useSelector((state) => state?.profile?.getSkillList);
 
   const removeSkills = (index) => {
@@ -37,7 +38,7 @@ const EditSkill = ({ data, Popup, successPopup, setSuccessPopup }) => {
   };
 
   const addSkills = (item) => {
-    if (selectSkills.length <= 14) {
+    if (selectSkills.length <= 9) {
       if (
         selectSkills.find((ele) => {
           return ele.skill_id == item.id;
@@ -47,6 +48,10 @@ const EditSkill = ({ data, Popup, successPopup, setSuccessPopup }) => {
           ...selectSkills,
           { skill_id: item.id, skill_name: item.name },
         ]);
+        setShowSkillList(false);
+      } else {
+        setShowSkillList(false);
+        setErrors({ already: "Skill Already selected" });
       }
     } else {
       setShowSkillList(false);
@@ -65,6 +70,7 @@ const EditSkill = ({ data, Popup, successPopup, setSuccessPopup }) => {
       dispatch(getFreelancerSkills(data));
     }
     setShowSkillList(true);
+    setErrors({ already: false });
   };
 
   const onSave = (e) => {
@@ -143,12 +149,14 @@ const EditSkill = ({ data, Popup, successPopup, setSuccessPopup }) => {
               </div>
             </div>
             <div className="maxlabel_atcxt mt-3">
-              {selectSkills?.length === 0 && showSkillError ? (
+              {errors?.already ? (
+                <span style={{ color: "red" }}>{errors?.already}</span>
+              ) : selectSkills?.length === 0 && showSkillError ? (
                 <span style={{ color: "red" }}>
                   At least 1 skill is required.
                 </span>
-              ) : selectSkills?.length > 14 && showSkillError ? (
-                <span style={{ color: "red" }}>Maximum 15 skills.</span>
+              ) : selectSkills?.length >= 10 && showSkillError ? (
+                <span style={{ color: "red" }}>Maximum 10 skills.</span>
               ) : (
                 <span>Maximum 10 skills.</span>
               )}

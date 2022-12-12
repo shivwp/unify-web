@@ -75,7 +75,7 @@ export const onLogin = (data, navigate, setMessage) => async (dispatch) => {
       sessionStorage.setItem("unify_token", res.data.auth_token);
       sessionStorage.setItem("unify_user", JSON.stringify(res.data.data.user));
       if (res.data.data.user.user_type === "freelancer") {
-        if (!res.data.data.user.is_profile_complete === true) {
+        if (res.data.data.user.is_profile_complete === true) {
           navigate("/freelancer/dashboard");
         } else {
           navigate("/freelancer/profile-intro/question1");

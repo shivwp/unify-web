@@ -40,6 +40,7 @@ const PortfolioPupup = ({
     setPortfolioImage(e.target.files[0]);
     setShowingImage(URL.createObjectURL(e.target.files[0]));
     setEditPortfoData("");
+    setErrors({ ...errors, image: false });
   };
 
   const submitPortfolio = (e) => {
@@ -64,6 +65,13 @@ const PortfolioPupup = ({
       errorExist = true;
     }
 
+    if (!data?.id) {
+      if (!portfolioImage) {
+        errorsObject.image = "Please selece an image";
+        errorExist = true;
+      }
+    }
+
     if (errorExist) {
       setErrors(errorsObject);
       return false;
@@ -72,16 +80,14 @@ const PortfolioPupup = ({
     const formData = new FormData();
     formData.append("title", values?.title);
     formData.append("description", values?.description);
+
     if (data?.id) {
+      formData.append("id", data?.id);
       if (portfolioImage) {
         formData.append("image", portfolioImage);
       }
     } else {
       formData.append("image", portfolioImage);
-    }
-
-    if (data) {
-      formData.append("id", data?.id);
     }
 
     dispatch(
@@ -142,11 +148,9 @@ const PortfolioPupup = ({
               <Form.Label className="text-black font-size-13px font-weight-500 my-2">
                 Attachments *
               </Form.Label>
-
               <div className="portfolio_img_pre pt-0">
                 <img src={showingImage} alt="" />
               </div>
-
               <div
                 className="drag_portfolio d-flex justify-content-center align-items-center"
                 style={{
@@ -185,6 +189,11 @@ const PortfolioPupup = ({
                   </>
                 </Form.Label>
               </div>
+              {errors?.image ? (
+                <span className="signup-error">{errors?.image}</span>
+              ) : (
+                ""
+              )}
               <span className="signup-error">{editPortfoData}</span>
             </div>
             <p style={{ fontSize: 13, color: "#304E71" }}>

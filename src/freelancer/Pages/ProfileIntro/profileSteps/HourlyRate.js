@@ -84,7 +84,11 @@ const HourlyRate = ({ setCurrentTab, profileList }) => {
                             setIsChange(true);
                           }}
                           onWheel={(e) => e.target.blur()}
-                          value={values?.hours_price || null}
+                          value={
+                            values?.hours_price && values?.hours_price != 0
+                              ? values?.hours_price
+                              : null
+                          }
                         />
                       </div>
                       <div className="slsh_hr"> /hour </div>

@@ -354,7 +354,7 @@ const Signup = ({
                         <div className="input_nodxq">
                           <Form.Control
                             type="text"
-                            placeholder="invitation code"
+                            placeholder="Invitation code"
                             name="referal_code"
                             onChange={(e) => onInputChange(e)}
                           />

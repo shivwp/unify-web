@@ -3037,7 +3037,7 @@ body {
 }
 
 .pd_head_on {
-  padding: 20px 0px 0px 0px;
+  padding: 0px 0px 0px 0px;
 }
 
 .bg-trans_s_pro {
@@ -9891,9 +9891,9 @@ input::-webkit-inner-spin-button {
 /* ------------------------ all contarct after settime sheet end --------------------- */
 
 /* how it works start */
-@media screen and (min-width:768px) {
+@media screen and (min-width: 768px) {
   .how_it_works.tab_scroll_cont {
-    justify-content: center !important;
+    justify-content: space-evenly !important;
   }
 }
 /* how it works end */
