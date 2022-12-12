@@ -52,7 +52,7 @@ const HowItWorks = () => {
               <h1>Explore The Different Ways To Earn</h1>
             </div>
             <div className="overflow-scroll">
-              <div className="d-flex flex-wrap tab_m_nodea mt-4 tab_scroll_cont">
+              <div className="d-flex flex-wrap tab_m_nodea mt-4 how_it_works tab_scroll_cont">
                 {/* Talent Marketplace <sup>TM</sup> */}
                 {/* <button >*/}
                 <div

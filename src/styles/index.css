@@ -3578,6 +3578,7 @@ body {
   color: #000;
   font-weight: 500;
   margin: 15px 0;
+  white-space: pre-line;
 }
 .client_recent_history .project .rate_date {
   font-size: 17px;
@@ -9882,3 +9883,11 @@ input::-webkit-inner-spin-button {
 }
 
 /* ------------------------ all contarct after settime sheet end --------------------- */
+
+/* how it works start */
+@media screen and (min-width:768px) {
+  .how_it_works.tab_scroll_cont {
+    justify-content: center !important;
+  }
+}
+/* how it works end */
