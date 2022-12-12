@@ -38,7 +38,7 @@ const QuestionTwo = ({ setCurrentTab }) => {
 
   return (
     <>
-      <Container style={{ padding: "50px 0px" }}>
+      <Container style={{ padding: "50px 15px" }}>
         <div>
           <div className="questopn_h2">
             <h1>

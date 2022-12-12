@@ -38,7 +38,7 @@ const QuestionOne = () => {
 
   return (
     <>
-      <Container style={{ padding: "50px 0px" }}>
+      <Container style={{ padding: "50px 15px" }}>
         <div>
           <div className="questopn_h1">
             <h1>Help us help you...</h1>

@@ -4464,6 +4464,12 @@ body {
     height: 29px;
   }
 }
+
+@media only screen and (max-width: 820px) {
+  .questionHeading {
+    max-width: 100%;
+  }
+}
 @media only screen and (max-width: 768px) {
   .questionHeading {
     max-width: 100%;
