@@ -82,7 +82,7 @@ export const onAddEmployment =
         setSuccessPopup(
           <SuccessPopup
             Popup={() => setSuccessPopup(!successPopup)}
-            message="Employment history saved Sucessfully"
+            message="Exprience saved Sucessfully"
           />
         );
       });
@@ -244,8 +244,8 @@ export const onEditLocationInfo =
     setEditLocation,
     successPopup,
     setSuccessPopup,
-    setCurrentTab,
-    navigate
+    navigate,
+    setCurrentTab
   ) =>
   async (dispatch) => {
     try {
@@ -260,8 +260,14 @@ export const onEditLocationInfo =
         const afterSuccess = () => {
           userDetails.profile_image = res?.data?.data[0]?.profile_image;
           sessionStorage.setItem("unify_user", JSON.stringify(userDetails));
-          setCurrentTab("previewProfile");
-          navigate(`/freelancer/profile-intro/previewProfile`);
+          if (setCurrentTab) {
+            setCurrentTab("previewProfile");
+          }
+          if (navigate) {
+            navigate(`/freelancer/profile-intro/previewProfile`);
+          } else {
+            setSuccessPopup(!successPopup);
+          }
         };
         setSuccessPopup(
           <SuccessPopup

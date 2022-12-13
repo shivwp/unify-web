@@ -39,7 +39,10 @@ const Education = ({ setCurrentTab, profileList }) => {
                         {item.school}
                       </h5>
                       <p className="startIntroTwoDate">
-                        {`${item.degree},  ${item.area_study} ${item.start_year}-${item.end_year}`}
+                        {`${item.degree},  ${item.area_study} `}
+                      </p>
+                      <p className="startIntroTwoDate">
+                        {`${item.start_year}-${item.end_year} `}
                       </p>
                     </div>
                     <div className="startIntroTwoIcon">

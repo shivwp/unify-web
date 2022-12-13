@@ -125,8 +125,8 @@ const PublishProfile = ({ setCurrentTab, profileList }) => {
           false,
           successPopup,
           setSuccessPopup,
-          setCurrentTab,
-          navigate
+          navigate,
+          setCurrentTab
         )
       );
     } else {

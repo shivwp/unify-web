@@ -870,6 +870,7 @@
   color: #6b6b6b;
   font-weight: 400;
   padding: 10px 0px;
+  white-space: pre-line;
 }
 
 .freelancer_compl_in a {
@@ -877,10 +878,45 @@
   font-weight: 600;
   text-decoration: underline;
 }
+.freelancer_compl_in span {
+  color: #6d2ef1;
+  font-weight: 600;
+  cursor: pointer;
+}
 
 .freelancer_compl_in svg {
   fill: #6d2ef1;
   margin-right: 5px;
+}
+
+/* .freelancer_compl_in.show_more p {
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  display: -webkit-box;
+  overflow: hidden;
+} */
+
+.saved_talents_options {
+  position: absolute;
+  background-color: #f2f2f2;
+  display: flex;
+  flex-direction: column;
+  min-width: 120px;
+  align-items: flex-start;
+  top: 50px;
+  right: 0px;
+  gap: 1px;
+}
+.saved_talents_options span {
+  display: flex;
+  align-items: center;
+  color: #000;
+  font-size: 14px;
+  width: 100%;
+  padding: 5px;
+}
+.saved_talents_options span:hover {
+  background-color: rgb(211, 210, 210);
 }
 
 .freelancer_has_in {

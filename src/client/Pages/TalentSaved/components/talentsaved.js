@@ -6,9 +6,73 @@ import * as Icon from "react-icons/fi";
 import Form from "react-bootstrap/Form";
 import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
-
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import {
+  onRemoveSavedTalent,
+  savedTalentList,
+} from "../../../../redux/actions/freelancerAction";
+import $ from "jquery";
 const Screen = () => {
   Title(" | Talent Saved");
+  const dispatch = useDispatch();
+  const [showPopup, setShowPopup] = useState(false);
+  const getSavedTalentList = useSelector(
+    (state) => state?.freelancer?.getSavedTalentList
+  );
+  const removeSavedTalent = useSelector(
+    (state) => state?.freelancer?.removeSavedTalent
+  );
+  const [savedListToShow, setSavedListToShow] = useState([]);
+  const [isLess, setIsLess] = useState([]);
+  const showLess = (index) => {
+    let temp = [...savedListToShow];
+    temp[index].description = getSavedTalentList[index]?.description?.slice(
+      0,
+      100
+    );
+    let temp2 = [...isLess];
+    temp2[index] = false;
+    setIsLess(temp2);
+    setSavedListToShow(temp);
+  };
+
+  const showMore = (index) => {
+    let temp = [...savedListToShow];
+    temp[index].description = getSavedTalentList[index]?.description;
+    setSavedListToShow(temp);
+    let temp2 = [...isLess];
+    temp2[index] = true;
+    setIsLess(temp2);
+  };
+
+  useEffect(() => {
+    if (getSavedTalentList) {
+      setSavedListToShow(
+        getSavedTalentList?.map((item, index) => {
+          return {
+            ...item,
+            description: item?.description?.slice(0, 100),
+          };
+        })
+      );
+    }
+  }, [getSavedTalentList]);
+
+  useEffect(() => {
+    dispatch(savedTalentList());
+  }, [removeSavedTalent]);
+
+  const RemoveSavedTalent = (freelancer_id) => {
+    dispatch(onRemoveSavedTalent({ freelancer_id }));
+  };
+
+  $(document).mouseup(function (e) {
+    if ($(e.target).closest("#saved_talents_options").length === 0) {
+      setShowPopup(false);
+    }
+  });
+
   return (
     <>
       <Container>
@@ -23,9 +87,10 @@ const Screen = () => {
             </Button>
           </div>
         </div>
+
         <div className="box_vs_m">
           <div className="search_area_in mob_ele_wfull">
-            <div className="select_inp_in prof_saved_chck_s">
+            {/* <div className="select_inp_in prof_saved_chck_s">
               <Checkbox
                 icon={<Icon.FiCheck color="#D8D7D7" size={14} />}
                 name="my-input"
@@ -35,7 +100,7 @@ const Screen = () => {
                 style={{ cursor: "pointer" }}
               />
               2 profiles saved
-            </div>
+            </div> */}
             <Form.Group className="search_input_in selec_inp_ful_w">
               <div className="search_icon_in">
                 <svg
@@ -55,91 +120,119 @@ const Screen = () => {
               />
             </Form.Group>
           </div>
-          <div className="freelancer_box_in mt-0 pt-4 pb-5">
-            <Row>
-              <Col lg={1} sm={1}>
-                <div className="profile_sel_ceck_alne">
-                  <Checkbox
-                    icon={<Icon.FiCheck color="#6d2ef1" size={17} />}
-                    name="my-input"
-                    borderRadius={0}
-                    borderWidth={1}
-                    borderColor="#D8D7D7"
-                    style={{ cursor: "pointer", height: "24px", width: "24px" }}
-                  />
-                </div>
-              </Col>
-              <Col lg={11} sm={11}>
-                <div className="freelancer_box_area_in">
-                  <div className="d-flex justify-content-between flex-wrap">
-                    <div className="d-flex flex-wrap">
-                      <div className="freelancer_img_in_r online_profile">
-                        <img src="/assets/PRO-2.png" alt="" />
+          {savedListToShow?.map((item, index) => (
+            <>
+              <div className="freelancer_box_in mt-0 pt-4 pb-5" key={index}>
+                <Row>
+                  {/* <Col lg={1} sm={1}>
+                    <div className="profile_sel_ceck_alne">
+                      <Checkbox
+                        icon={<Icon.FiCheck color="#6d2ef1" size={17} />}
+                        name="my-input"
+                        borderRadius={0}
+                        borderWidth={1}
+                        borderColor="#D8D7D7"
+                        style={{
+                          cursor: "pointer",
+                          height: "24px",
+                          width: "24px",
+                        }}
+                      />
+                    </div>
+                  </Col> */}
+                  <Col lg={12} sm={12}>
+                    <div className="freelancer_box_area_in">
+                      <div className="d-flex justify-content-between flex-wrap">
+                        <div className="d-flex flex-wrap">
+                          <div className="freelancer_img_in_r online_profile">
+                            <img src={item.profile_image} alt="" />
+                          </div>
+                          <div className="freel_det_bin">
+                            <div className="freelancer_ame_in">
+                              {`${item.first_name} ${item.last_name}`}
+                            </div>
+                            <div className="freelancer_exp_in">
+                              {item.occuption}
+                            </div>
+                            <div className="freelancer_timin d-flex">
+                              <div className="amount_hir_in p-0 ml-0">
+                                <b>{`$${item.amount}`}</b> /hr
+                              </div>
+                              <div className="line_hr_a">|</div>
+                              <div className="amount_hir_in p-0">
+                                <b>{item.success_rate}</b> Job Success
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div className=" attach_f_btn wid_30_in d-flex">
+                          <button
+                            className="transp_fil_btn heart_roun_btn"
+                            onClick={(e) => RemoveSavedTalent(item.id)}
+                          >
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="16"
+                              height="16"
+                              fill="currentColor"
+                              className="bi bi-heart-fill"
+                              viewBox="0 0 16 16"
+                            >
+                              <path
+                                fillRule="evenodd"
+                                d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"
+                              />
+                            </svg>
+                          </button>
+                          <Button
+                            variant=""
+                            className="transp_fil_btn heart_roun_btn"
+                            style={{ position: "relative" }}
+                            onClick={() =>
+                              setShowPopup(showPopup ? false : item.id)
+                            }
+                          >
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="16"
+                              height="16"
+                              fill="currentColor"
+                              className="bi bi-three-dots-vertical"
+                              viewBox="0 0 16 16"
+                            >
+                              <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
+                            </svg>
+                            {showPopup == item.id ? (
+                              <div
+                                id="saved_talents_options"
+                                className="saved_talents_options"
+                              >
+                                <span>Hire</span>
+                                <span>Invite to job</span>
+                                <span>Add a note</span>
+                              </div>
+                            ) : (
+                              ""
+                            )}
+                          </Button>
+                        </div>
                       </div>
-                      <div className="freel_det_bin">
-                        <div className="freelancer_ame_in">
-                          Mario Speedwagon
-                        </div>
-                        <div className="freelancer_exp_in">
-                          Expert in Mobile and Web Development.
-                        </div>
-                        <div className="freelancer_timin d-flex">
-                          <div className="amount_hir_in p-0 ml-0">
-                            <b>$15.00</b> /hr
-                          </div>
-                          <div className="line_hr_a">|</div>
-                          <div className="amount_hir_in p-0">
-                            <b>100%</b> Job Success
-                          </div>
-                        </div>
+                      <div className="freelancer_compl_in show_more">
+                        <p>{item?.description?.slice(0, 200)}</p>
+                        {item?.description?.length >
+                          item?.description?.slice(0, 200)?.length}
+                        {!isLess[index] ? (
+                          <span onClick={() => showMore(index)}>View more</span>
+                        ) : (
+                          <span onClick={() => showLess(index)}>Show Less</span>
+                        )}
                       </div>
                     </div>
-                    <div className=" attach_f_btn wid_30_in d-flex">
-                      <Button
-                        variant=""
-                        className="transp_fil_btn heart_roun_btn"
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="16"
-                          height="16"
-                          fill="currentColor"
-                          className="bi bi-heart"
-                          viewBox="0 0 16 16"
-                        >
-                          <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
-                        </svg>
-                      </Button>
-                      <Button
-                        variant=""
-                        className="transp_fil_btn heart_roun_btn"
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="16"
-                          height="16"
-                          fill="currentColor"
-                          className="bi bi-three-dots-vertical"
-                          viewBox="0 0 16 16"
-                        >
-                          <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
-                        </svg>
-                      </Button>
-                    </div>
-                  </div>
-                  <div className="freelancer_compl_in">
-                    Hello! I am a professional UI/UX Designer. There are many
-                    variations of passages of Lorem Ipsum available, but the
-                    majority have suffered alteration in some form, by injected
-                    humour...{" "}
-                    <Link to="#0" className="text-decoration-none">
-                      View more
-                    </Link>
-                  </div>
-                </div>
-              </Col>
-            </Row>
-          </div>
+                  </Col>
+                </Row>
+              </div>
+            </>
+          ))}
         </div>
       </Container>
     </>

@@ -40,7 +40,7 @@ const AddEduc = ({ education, Popup, successPopup, setSuccessPopup }) => {
     const endYears = [];
     for (
       let i = new Date().getFullYear();
-      i > new Date().getFullYear() - 40;
+      i > (Number(values?.start_year) - 1 || new Date().getFullYear() - 40);
       i--
     ) {
       startYears.push({ start_year: i });
@@ -48,7 +48,7 @@ const AddEduc = ({ education, Popup, successPopup, setSuccessPopup }) => {
 
     for (
       let i = new Date().getFullYear() + 10;
-      i > new Date().getFullYear() - 40;
+      i > (Number(values?.end_year) - 1 || new Date().getFullYear() - 40);
       i--
     ) {
       endYears.push({ end_year: i });
@@ -109,15 +109,26 @@ const AddEduc = ({ education, Popup, successPopup, setSuccessPopup }) => {
       values?.start_year === null ||
       values?.start_year === undefined
     ) {
-      errorsObject.start_year = true;
+      errorsObject.start_year = "Please select start year";
       errorExist = true;
     }
+
+    if (values?.start_year > new Date().getFullYear()) {
+      errorsObject.start_year = "Start year can't be greater then current year";
+      errorExist = true;
+    }
+
+    if (values?.start_year == values?.end_year) {
+      errorsObject.start_year = "End year must be grater then start year";
+      errorExist = true;
+    }
+
     if (
       values?.end_year === "" ||
       values?.end_year === null ||
       values?.end_year === undefined
     ) {
-      errorsObject.end_year = true;
+      errorsObject.end_year = "Please select end year";
       errorExist = true;
     }
     if (
@@ -209,7 +220,7 @@ const AddEduc = ({ education, Popup, successPopup, setSuccessPopup }) => {
                 <Col md={6}>
                   <div className="popup_form_element">
                     <Form.Label className="text-black font_size_14px font-weight-500">
-                      Start date <span className="required_stars"> * </span>
+                      Start year <span className="required_stars"> * </span>
                     </Form.Label>
 
                     <select
@@ -217,8 +228,9 @@ const AddEduc = ({ education, Popup, successPopup, setSuccessPopup }) => {
                       value={values?.start_year}
                       onChange={(e) => handleOnChange(e)}
                       className="font-size-11px"
+                      defaultValue="default"
                     >
-                      <option value="" disabled hidden selected>
+                      <option value="default" disabled hidden>
                         Select
                       </option>
                       {startYear?.map((item, key) => (
@@ -228,14 +240,14 @@ const AddEduc = ({ education, Popup, successPopup, setSuccessPopup }) => {
                       ))}
                     </select>
                     <span className="signup-error">
-                      {errors.start_year && "Please select start year"}
+                      {errors.start_year && errors?.start_year}
                     </span>
                   </div>
                 </Col>
                 <Col md={6}>
                   <div className="popup_form_element">
                     <Form.Label className="text-black font_size_14px font-weight-500">
-                      End date/ expected end date{" "}
+                      End year/ expected end year{" "}
                       <span className="required_stars"> * </span>
                     </Form.Label>
                     <select
@@ -254,7 +266,7 @@ const AddEduc = ({ education, Popup, successPopup, setSuccessPopup }) => {
                       ))}
                     </select>
                     <span className="signup-error">
-                      {errors.end_year && "Please select end year"}
+                      {errors.end_year && errors.end_year}
                     </span>
                   </div>
                 </Col>

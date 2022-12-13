@@ -1,3 +1,4 @@
+import moment from "moment";
 import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
@@ -496,7 +497,10 @@ const PreviewProfile = ({ setCurrentTab, profileList }) => {
                     </div>
                   </div>
                   <div className="previewProfileDate mb-3">
-                    {item.start_date} - {item.end_date}
+                    {moment(item.start_date).format("DD MMM YYYY")} -{" "}
+                    {item.currently_working
+                      ? "Currently Working"
+                      : moment(item.end_date).format("DD MMM YYYY")}
                   </div>
                 </>
               ))}
@@ -560,7 +564,8 @@ const PreviewProfile = ({ setCurrentTab, profileList }) => {
                       className="previewProfileDate respUniversityName"
                       style={{ marginRight: 10 }}
                     >
-                      {item.school} {item.start_year} - {item.end_year}
+                      {item.school} <br />
+                      {item.start_year} - {item.end_year}
                     </div>
                     <svg
                       style={{ marginRight: 6 }}

@@ -41,31 +41,39 @@ const AddEmployment = ({
   }, []);
 
   const onInputChange = (e) => {
-    if (e.target.name == "start_date") {
-      if (e.target.value == moment(new Date()).format("YYYY-MM-DD")) {
+    if (
+      (values?.[e.target.name]?.length === undefined ||
+        values?.[e.target.name]?.length === 0) &&
+      e.target.value == " "
+    ) {
+      setValues({ ...values, [e.target.name]: "" });
+      setErrors({ ...errors, [e.target.name]: "This field is required" });
+    } else {
+      if (e.target.name == "start_date") {
+        if (e.target.value == moment(new Date()).format("YYYY-MM-DD")) {
+          setValues({
+            ...values,
+            [e.target.name]: e.target.value,
+            currently_working: 1,
+          });
+          setErrors({ ...errors, currently_working: false });
+        } else {
+          setValues({ ...values, [e.target.name]: e.target.value });
+          setErrors({ ...errors, [e.target.name]: false });
+        }
+      } else if (e.target.name == "currently_working") {
         setValues({
           ...values,
-          [e.target.name]: e.target.value,
-          currently_working: 1,
+          [e.target.name]: e.target.checked ? 1 : 0,
+          end_date: null,
         });
-        setErrors({ ...errors, currently_working: false });
+        setErrors({ ...errors, [e.target.name]: false });
       } else {
         setValues({ ...values, [e.target.name]: e.target.value });
         setErrors({ ...errors, [e.target.name]: false });
       }
-    } else if (e.target.name == "currently_working") {
-      setValues({
-        ...values,
-        [e.target.name]: e.target.checked ? 1 : 0,
-        end_date: null,
-      });
-      setErrors({ ...errors, [e.target.name]: false });
-    } else {
-      setValues({ ...values, [e.target.name]: e.target.value });
-      setErrors({ ...errors, [e.target.name]: false });
     }
   };
-
 
   const onSave = () => {
     let errorExist = false;
@@ -150,9 +158,15 @@ const AddEmployment = ({
       errorExist = true;
     }
 
-    if (values?.start_date > values?.end_date) {
-      errorsObject.end_date = "Start date can't be less then end date";
-      errorExist = true;
+    if (!values?.currently_working) {
+      if (values?.start_date > values?.end_date) {
+        errorsObject.end_date = "Start date can't be less then end date";
+        errorExist = true;
+      }
+      if (values?.start_date == values?.end_date) {
+        errorsObject.end_date = "End date must be greater then start date";
+        errorExist = true;
+      }
     }
 
     if (values?.end_date > moment(new Date()).format("YYYY-MM-DD")) {

@@ -1581,11 +1581,15 @@ const UnifyFreelancer = () => {
                               {`${experience.company}`}
                             </div>
                             <div className="ehitory_dtine">
-                              {`${moment(experience.start_date).format(
-                                "MMM-YYYY"
-                              )} To ${moment(experience.end_date).format(
-                                "MMM-YYYY"
-                              )}`}
+                              {moment(experience.start_date).format(
+                                "DD MMM YYYY"
+                              )}{" "}
+                              -{" "}
+                              {experience.currently_working
+                                ? "Currently Working"
+                                : moment(experience.end_date).format(
+                                    "DD MMM YYYY"
+                                  )}
                             </div>
 
                             <div className="bpck_sm_txt_a mt-4 mb-0">
