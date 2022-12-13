@@ -194,9 +194,6 @@ const Screen = () => {
     ) {
       errorsObject.zip_code = "Please enter zip code";
       errorExist = true;
-    } else if (values?.zip_code?.length < 6 || values?.zip_code?.length > 6) {
-      errorsObject.zip_code = "please input a valid zip code";
-      errorExist = true;
     }
 
     if (

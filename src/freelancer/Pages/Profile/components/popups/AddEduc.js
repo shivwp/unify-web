@@ -58,31 +58,44 @@ const AddEduc = ({ education, Popup, successPopup, setSuccessPopup }) => {
   }, []);
 
   const handleOnChange = (e) => {
-    const years = [];
-    if (e.target.name == "start_year") {
-      for (
-        let i = Number(e.target.value);
-        i < Number(e.target.value) + 20;
-        i++
-      ) {
-        years.push({ end_year: i });
+    if (
+      (values?.[e.target.name]?.length === undefined ||
+        values?.[e.target.name]?.length === 0 ||
+        values?.[e.target.name] == " ") &&
+      e.target.value == " "
+    ) {
+      setValues({ ...values, [e.target.name]: "" });
+      setErrors({
+        ...errors,
+        [e.target.name]: `Field is required`,
+      });
+    } else {
+      const years = [];
+      if (e.target.name == "start_year") {
+        for (
+          let i = Number(e.target.value);
+          i < Number(e.target.value) + 20;
+          i++
+        ) {
+          years.push({ end_year: i });
+        }
+        setEndYear(years);
       }
-      setEndYear(years);
-    }
 
-    if (e.target.name == "end_year") {
-      for (
-        let i = Number(e.target.value);
-        i > Number(e.target.value) - 20;
-        i--
-      ) {
-        years.push({ start_year: i });
+      if (e.target.name == "end_year") {
+        for (
+          let i = Number(e.target.value);
+          i > Number(e.target.value) - 20;
+          i--
+        ) {
+          years.push({ start_year: i });
+        }
+        setStartYear(years);
       }
-      setStartYear(years);
-    }
 
-    setValues({ ...values, [e.target.name]: e.target.value });
-    setErrors({ ...errors, [e.target.name]: false });
+      setValues({ ...values, [e.target.name]: e.target.value });
+      setErrors({ ...errors, [e.target.name]: false });
+    }
   };
 
   const AddEducation = () => {

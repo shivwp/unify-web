@@ -30,6 +30,7 @@ const EditSkill = ({ data, Popup, successPopup, setSuccessPopup }) => {
   const [showSkillError, setShowSkillError] = useState(false);
   const [errors, setErrors] = useState(false);
   let getSkillList = useSelector((state) => state?.profile?.getSkillList);
+  const [values, setValues] = useState();
 
   const removeSkills = (index) => {
     let updateSkills = [...selectSkills];
@@ -61,16 +62,29 @@ const EditSkill = ({ data, Popup, successPopup, setSuccessPopup }) => {
   };
 
   const handleOnChange = (e) => {
-    let data;
-    if (e.target.value.length >= 1) {
-      data = { [e.target.name]: e.target.value };
-      dispatch(getFreelancerSkills(data));
+    if (
+      (values?.[e.target.name]?.length === undefined ||
+        values?.[e.target.name]?.length === 0 ||
+        values?.[e.target.name]?.length === " ") &&
+      e.target.value == " "
+    ) {
+      setValues({ ...values, [e.target.name]: "" });
+      setErrors({
+        ...errors,
+        [e.target.name]: `Field is required`,
+      });
     } else {
-      data = { skill: "undefined" };
-      dispatch(getFreelancerSkills(data));
+      let data;
+      if (e.target.value.length >= 1) {
+        data = { [e.target.name]: e.target.value };
+        dispatch(getFreelancerSkills(data));
+      } else {
+        data = { skill: "undefined" };
+        dispatch(getFreelancerSkills(data));
+      }
+      setShowSkillList(true);
+      setErrors({ already: false });
     }
-    setShowSkillList(true);
-    setErrors({ already: false });
   };
 
   const onSave = (e) => {
@@ -125,6 +139,7 @@ const EditSkill = ({ data, Popup, successPopup, setSuccessPopup }) => {
                   type="text"
                   onChange={(e) => handleOnChange(e)}
                   name="skill"
+                  // value={values?.skill}
                   id="search_skill_inp"
                   autocomplete="off"
                   placeholder="Search here skills..."
@@ -137,10 +152,9 @@ const EditSkill = ({ data, Popup, successPopup, setSuccessPopup }) => {
                   >
                     {getSkillList?.map((item) => (
                       <>
-                        {" "}
                         <span onClick={() => addSkills(item)}>
                           {item.name}
-                        </span>{" "}
+                        </span>
                         <br />
                       </>
                     ))}
@@ -162,6 +176,7 @@ const EditSkill = ({ data, Popup, successPopup, setSuccessPopup }) => {
               ) : (
                 <span>Maximum 10 skills.</span>
               )}
+              {/* <span style={{ color: "red" }}>{errors?.already}</span> */}
             </div>
             <div className="popup_btns_new flex-wrap cwiewyehkk">
               <Button

@@ -35,9 +35,21 @@ const PublishProfile = ({ setCurrentTab, profileList }) => {
   }, [profileList]);
 
   const onInputChange = (e) => {
-    setValues({ ...values, [e.target.name]: e.target.value });
-    setErrors({ ...errors, [e.target.name]: false });
-    setIsChange(true);
+    if (
+      (values?.[e.target.name]?.length === undefined ||
+        values?.[e.target.name]?.length === 0) &&
+      e.target.value == " "
+    ) {
+      setValues({ ...values, [e.target.name]: "" });
+      setErrors({
+        ...errors,
+        [e.target.name]: `Field is required`,
+      });
+    } else {
+      setValues({ ...values, [e.target.name]: e.target.value });
+      setErrors({ ...errors, [e.target.name]: false });
+      setIsChange(true);
+    }
   };
 
   const onSave = () => {
@@ -64,7 +76,7 @@ const PublishProfile = ({ setCurrentTab, profileList }) => {
       values?.address === null ||
       values?.address === undefined
     ) {
-      errorsObject.address = true;
+      errorsObject.address = "Please enter address";
       errorExist = true;
     }
     if (
@@ -72,10 +84,10 @@ const PublishProfile = ({ setCurrentTab, profileList }) => {
       values?.city === null ||
       values?.city === undefined
     ) {
-      errorsObject.city = "Please enter your city";
+      errorsObject.city = "Please enter city name";
       errorExist = true;
     } else if (/^[0-9]\d*$/.test(values?.city)) {
-      errorsObject.city = "please input a valid city ";
+      errorsObject.city = "please input a valid city name ";
       errorExist = true;
     }
     if (
@@ -83,10 +95,7 @@ const PublishProfile = ({ setCurrentTab, profileList }) => {
       values?.zip_code === null ||
       values?.zip_code === undefined
     ) {
-      errorsObject.zip_code = "Please enter your zip code";
-      errorExist = true;
-    } else if (values?.zip_code?.length < 4 || values?.zip_code?.length > 10) {
-      errorsObject.zip_code = "please input a valid zip code";
+      errorsObject.zip_code = "Please zip code";
       errorExist = true;
     }
 
@@ -95,7 +104,7 @@ const PublishProfile = ({ setCurrentTab, profileList }) => {
       values?.phone === null ||
       values?.phone === undefined
     ) {
-      errorsObject.phone = "Please enter your phone number";
+      errorsObject.phone = "Please enter phone number";
       errorExist = true;
     } else if (values?.phone?.length < 10 || values?.phone?.length > 12) {
       errorsObject.phone = "The phone must be between 10 and 12 digits.";
@@ -222,7 +231,7 @@ const PublishProfile = ({ setCurrentTab, profileList }) => {
                     ))}
                   </select>
                   <span className="signup-error">
-                    {errors.timezone && "Please Select your timezone"}
+                    {errors.timezone && "Please select timezone"}
                   </span>
                 </div>
               </Col>
@@ -252,7 +261,7 @@ const PublishProfile = ({ setCurrentTab, profileList }) => {
                     ))}
                   </select>
                   <span className="signup-error">
-                    {errors.country && "Please Select your country"}
+                    {errors.country && "Please select country"}
                   </span>
                 </div>
               </Col>
@@ -271,7 +280,7 @@ const PublishProfile = ({ setCurrentTab, profileList }) => {
                     onChange={(e) => onInputChange(e)}
                   />
                   <span className="signup-error">
-                    {errors.address && "Please enter your address"}
+                    {errors.address && errors.address}
                   </span>
                 </div>
               </Col>

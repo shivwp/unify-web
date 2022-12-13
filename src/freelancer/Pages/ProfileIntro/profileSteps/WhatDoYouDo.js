@@ -21,9 +21,21 @@ const WhatDoYouDo = ({ setCurrentTab, profileList }) => {
   }, [profileList]);
 
   const onInputChange = (e) => {
-    setValues({ ...values, [e.target.name]: e.target.value });
-    setErrors({ ...errors, [e.target.name]: false });
-    setIsChange(true);
+    if (
+      (values?.[e.target.name]?.length === undefined ||
+        values?.[e.target.name]?.length === 0) &&
+      e.target.value == " "
+    ) {
+      setValues({ ...values, [e.target.name]: "" });
+      setErrors({
+        ...errors,
+        [e.target.name]: `Field is required`,
+      });
+    } else {
+      setValues({ ...values, [e.target.name]: e.target.value });
+      setErrors({ ...errors, [e.target.name]: false });
+      setIsChange(true);
+    }
   };
 
   const afterSuccess = () => {

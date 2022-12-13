@@ -26,8 +26,20 @@ const PortfolioPupup = ({
   const [editPortfoData, setEditPortfoData] = useState();
 
   const onInputChange = (e) => {
-    setValues({ ...values, [e.target.name]: e.target.value });
-    setErrors({ ...errors, [e.target.name]: false });
+    if (
+      (values?.[e.target.name]?.length === undefined ||
+        values?.[e.target.name]?.length === 0) &&
+      e.target.value == " "
+    ) {
+      setValues({ ...values, [e.target.name]: "" });
+      setErrors({
+        ...errors,
+        [e.target.name]: `Field is required`,
+      });
+    } else {
+      setValues({ ...values, [e.target.name]: e.target.value });
+      setErrors({ ...errors, [e.target.name]: false });
+    }
   };
 
   useEffect(() => {
@@ -52,7 +64,7 @@ const PortfolioPupup = ({
       values.title === null ||
       values.title === undefined
     ) {
-      errorsObject.title = true;
+      errorsObject.title = "Please enter title";
       errorExist = true;
     }
 
@@ -61,7 +73,7 @@ const PortfolioPupup = ({
       values.description === null ||
       values.description === undefined
     ) {
-      errorsObject.description = true;
+      errorsObject.description = "Please enter description";
       errorExist = true;
     }
 
@@ -121,7 +133,7 @@ const PortfolioPupup = ({
                 style={{ padding: "7px 20px 7px 10px" }}
               />
               <span className="signup-error">
-                {errors.title && "Please enter your title"}
+                {errors.title && errors.title}
               </span>
             </div>
 
@@ -140,7 +152,7 @@ const PortfolioPupup = ({
                   onChange={(e) => onInputChange(e)}
                 ></Form.Control>
                 <span className="signup-error">
-                  {errors.description && "Please enter your description"}
+                  {errors.description && errors.description}
                 </span>
               </div>
             </div>

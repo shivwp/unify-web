@@ -574,8 +574,12 @@ body {
   }
 }
 
+.browseJobsLeft {
+  margin-top: 76px;
+}
+
 .filter_area {
-  background-color: #fafafa;
+  background-color: #fafafaa6;
   padding: 16px 20px;
 }
 .browse_jobs .filter_area {

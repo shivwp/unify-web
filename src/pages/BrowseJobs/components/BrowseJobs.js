@@ -375,7 +375,7 @@ const BrowseJobs = () => {
                       <Col lg={9} md={9}>
                         <div className="job_head_s mt-3">
                           {/* <Link to={`/job-details/${item.id}`}> */}
-                            <h2>{item.name}</h2>
+                          <h2>{item.name}</h2>
                           {/* </Link> */}
                         </div>
                         <div className="dlex_sk_block flex-wrap">
