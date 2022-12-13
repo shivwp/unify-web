@@ -1967,6 +1967,12 @@
   user-select: none;
 }
 
+.s_na_inpu .enterIcon {
+  z-index: 99;
+  cursor: pointer;
+  pointer-events: auto;
+}
+
 .durationIcon {
   position: absolute;
   right: 12px;

@@ -63,8 +63,20 @@ const Screen = () => {
     const email = basicInfo?.email;
 
     const onInputChange = (e) => {
-      setValues({ ...values, [e.target.name]: e.target.value });
-      setErrors({ ...errors, [e.target.name]: false });
+      if (
+        (values?.[e.target.name]?.length === undefined ||
+          values?.[e.target.name]?.length === 0) &&
+        e.target.value == " "
+      ) {
+        setValues({ ...values, [e.target.name]: "" });
+        setErrors({
+          ...errors,
+          [e.target.name]: `Field is required`,
+        });
+      } else {
+        setValues({ ...values, [e.target.name]: e.target.value });
+        setErrors({ ...errors, [e.target.name]: false });
+      }
     };
 
     const EditContactInfo = () => {
@@ -201,21 +213,22 @@ const Screen = () => {
               <Col md={12}>
                 <div className="mb-2 mt-2">
                   <div className="c_name_s_v pb-0 f_new_contact_info">
-                    Email <span className="required_stars"> * </span>
+                    Email
                   </div>
                   <div className="c_name_sett mt-0 pt-0">
                     <div className="edit_contact_inp">
                       <Form.Control
                         type="text"
                         name="email"
+                        disabled
                         value={values.email}
                         onChange={(e) => onInputChange(e)}
                         placeholder="johndoe@gmail.com"
                       />
                     </div>
-                    <span className="signup-error">
+                    {/* <span className="signup-error">
                       {errors.email && "Please enter your email"}
-                    </span>
+                    </span> */}
                   </div>
                 </div>
               </Col>
@@ -248,8 +261,20 @@ const Screen = () => {
     const [errors, setErrors] = useState({});
 
     const onInputChange = (e) => {
-      setValues({ ...values, [e.target.name]: e.target.value });
-      setErrors({ ...errors, [e.target.name]: false });
+      if (
+        (values?.[e.target.name]?.length === undefined ||
+          values?.[e.target.name]?.length === 0) &&
+        e.target.value == " "
+      ) {
+        setValues({ ...values, [e.target.name]: "" });
+        setErrors({
+          ...errors,
+          [e.target.name]: `Field is required`,
+        });
+      } else {
+        setValues({ ...values, [e.target.name]: e.target.value });
+        setErrors({ ...errors, [e.target.name]: false });
+      }
     };
 
     const EditLocationInfo = () => {
@@ -269,7 +294,7 @@ const Screen = () => {
         values?.address === null ||
         values?.address === undefined
       ) {
-        errorsObject.address = true;
+        errorsObject.address = "Please enter your address";
         errorExist = true;
       }
       if (
@@ -459,7 +484,7 @@ const Screen = () => {
                       />
                     </div>
                     <span className="signup-error">
-                      {errors.address && "Please enter your address"}
+                      {errors.address && errors.address}
                     </span>
                   </div>
                 </div>

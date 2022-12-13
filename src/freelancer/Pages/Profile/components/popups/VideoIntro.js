@@ -26,8 +26,20 @@ const VideoIntro = ({ data, Popup, successPopup, setSuccessPopup }) => {
   const [errors, setErrors] = useState({});
 
   const handleOnChange = (e) => {
-    setValues({ ...values, [e.target.name]: e.target.value });
-    setErrors({ ...errors, [e.target.name]: false });
+    if (
+      (values?.[e.target.name]?.length === undefined ||
+        values?.[e.target.name]?.length === 0) &&
+      e.target.value == " "
+    ) {
+      setValues({ ...values, [e.target.name]: "" });
+      setErrors({
+        ...errors,
+        [e.target.name]: `Field is required`,
+      });
+    } else {
+      setValues({ ...values, [e.target.name]: e.target.value });
+      setErrors({ ...errors, [e.target.name]: false });
+    }
   };
 
   const onSave = () => {
@@ -35,7 +47,7 @@ const VideoIntro = ({ data, Popup, successPopup, setSuccessPopup }) => {
     let errorsObject = {};
 
     if (values.url === "" || values.url === null || values.url === undefined) {
-      errorsObject.url = true;
+      errorsObject.url = "Please enter video url";
       errorExist = true;
     }
 
@@ -91,9 +103,7 @@ const VideoIntro = ({ data, Popup, successPopup, setSuccessPopup }) => {
                   value={values?.url}
                   placeholder="https://youtu.be/_B6T8O15Ohk"
                 />
-                <span className="signup-error">
-                  {errors.url && "Please enter video url"}
-                </span>
+                <span className="signup-error">{errors.url && errors.url}</span>
               </div>
               <div className="popup_form_element">
                 <Form.Label className="text-black font-size-13px font-weight-500">

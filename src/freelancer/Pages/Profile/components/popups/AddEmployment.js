@@ -31,41 +31,59 @@ const AddEmployment = ({
 }) => {
   const dispatch = useDispatch();
   const getCountryList = useSelector((state) => state.auth.getCountryList);
-  const [values, setValues] = useState(
-    experience || { currently_working: 0, start_date: null, end_date: null }
-  );
+  const [values, setValues] = useState({
+    currently_working: 0,
+    start_date: null,
+    end_date: null,
+  });
   const [errors, setErrors] = useState({});
 
+  useEffect(() => {
+    if (experience) {
+      setValues(experience);
+    }
+  }, [experience]);
   useState(() => {
     dispatch(countryList());
   }, []);
 
   const onInputChange = (e) => {
-    if (e.target.name == "start_date") {
-      if (e.target.value == moment(new Date()).format("YYYY-MM-DD")) {
+    if (
+      (values?.[e.target.name]?.length === undefined ||
+        values?.[e.target.name]?.length === 0) &&
+      e.target.value == " "
+    ) {
+      setValues({ ...values, [e.target.name]: "" });
+      setErrors({
+        ...errors,
+        [e.target.name]: `Field is required`,
+      });
+    } else {
+      if (e.target.name == "start_date") {
+        if (e.target.value == moment(new Date()).format("YYYY-MM-DD")) {
+          setValues({
+            ...values,
+            [e.target.name]: e.target.value,
+            currently_working: 1,
+          });
+          setErrors({ ...errors, currently_working: false });
+        } else {
+          setValues({ ...values, [e.target.name]: e.target.value });
+          setErrors({ ...errors, [e.target.name]: false });
+        }
+      } else if (e.target.name == "currently_working") {
         setValues({
           ...values,
-          [e.target.name]: e.target.value,
-          currently_working: 1,
+          [e.target.name]: e.target.checked ? 1 : 0,
+          end_date: null,
         });
-        setErrors({ ...errors, currently_working: false });
+        setErrors({ ...errors, [e.target.name]: false });
       } else {
         setValues({ ...values, [e.target.name]: e.target.value });
         setErrors({ ...errors, [e.target.name]: false });
       }
-    } else if (e.target.name == "currently_working") {
-      setValues({
-        ...values,
-        [e.target.name]: e.target.checked ? 1 : 0,
-        end_date: null,
-      });
-      setErrors({ ...errors, [e.target.name]: false });
-    } else {
-      setValues({ ...values, [e.target.name]: e.target.value });
-      setErrors({ ...errors, [e.target.name]: false });
     }
   };
-
 
   const onSave = () => {
     let errorExist = false;
@@ -76,17 +94,12 @@ const AddEmployment = ({
       values?.company === null ||
       values?.company === undefined
     ) {
-      errorsObject.company = "Please select your company";
+      errorsObject.company = "Please enter company name";
       errorExist = true;
-    } else if (values?.company?.length < 3) {
-      errorsObject.company = "Company length should be minimum 3";
+    } else if (values?.company?.length < 2) {
+      errorsObject.company = "Must be at least 2 letters";
       errorExist = true;
-    }
-    // else if (/\s/g.test(values?.company)) {
-    //   errorsObject.company = "Field is required";
-    //   errorExist = true;
-    // }
-    else if (/^[0-9]\d*$/.test(values?.company)) {
+    } else if (/^[0-9]\d*$/.test(values?.company)) {
       errorsObject.company = "Please input a valid company name ";
       errorExist = true;
     }
@@ -95,16 +108,12 @@ const AddEmployment = ({
       values?.city === null ||
       values?.city === undefined
     ) {
-      errorsObject.city = "Please enter your city";
+      errorsObject.city = "Please enter city name";
       errorExist = true;
     } else if (/^[0-9]\d*$/.test(values?.city)) {
       errorsObject.city = "Please input a valid location ";
       errorExist = true;
     }
-    // else if (/\s/g.test(values?.city)) {
-    //   errorsObject.city = "Field is required";
-    //   errorExist = true;
-    // }
     if (
       values?.country === "" ||
       values?.country === null ||
@@ -126,22 +135,18 @@ const AddEmployment = ({
       values?.subject === null ||
       values?.subject === undefined
     ) {
-      errorsObject.subject = "Please enter your title";
+      errorsObject.subject = "Please enter title name";
       errorExist = true;
     } else if (/^[0-9]\d*$/.test(values?.subject)) {
       errorsObject.subject = "Please input a valid title ";
       errorExist = true;
     }
-    // else if (/\s/g.test(values?.subject)) {
-    //   errorsObject.subject = "Field is required";
-    //   errorExist = true;
-    // }
     if (
       values?.start_date === "" ||
       values?.start_date === null ||
       values?.start_date === undefined
     ) {
-      errorsObject.start_date = "Please select your start date";
+      errorsObject.start_date = "Please select start date";
       errorExist = true;
     }
 
@@ -166,7 +171,7 @@ const AddEmployment = ({
         values?.end_date === null ||
         values?.end_date === undefined
       ) {
-        errorsObject.end_date = "Please select your end date";
+        errorsObject.end_date = "Please select end date";
         errorExist = true;
       }
     }
@@ -265,7 +270,7 @@ const AddEmployment = ({
                       ))}
                     </select>
                     <span className="signup-error">
-                      {errors.country && "Please select your country"}
+                      {errors.country && "Please select country"}
                     </span>
                   </div>
                 </Col>

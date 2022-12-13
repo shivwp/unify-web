@@ -26,8 +26,20 @@ const ReqTestimonial = ({ Popup, successPopup, setSuccessPopup }) => {
   const [errors, setErrors] = useState({});
 
   const onInputChange = (e) => {
-    setValues({ ...values, [e.target.name]: e.target.value });
-    setErrors({ ...errors, [e.target.name]: false });
+    if (
+      (values?.[e.target.name]?.length === undefined ||
+        values?.[e.target.name]?.length === 0) &&
+      e.target.value == " "
+    ) {
+      setValues({ ...values, [e.target.name]: "" });
+      setErrors({
+        ...errors,
+        [e.target.name]: `Field is required`,
+      });
+    } else {
+      setValues({ ...values, [e.target.name]: e.target.value });
+      setErrors({ ...errors, [e.target.name]: false });
+    }
   };
 
   const testimonialSubmit = (e) => {
@@ -39,7 +51,7 @@ const ReqTestimonial = ({ Popup, successPopup, setSuccessPopup }) => {
       values.first_name === null ||
       values.first_name === undefined
     ) {
-      errorsObject.first_name = true;
+      errorsObject.first_name = "Please enter first name";
       errorExist = true;
     }
 
@@ -48,7 +60,7 @@ const ReqTestimonial = ({ Popup, successPopup, setSuccessPopup }) => {
       values.last_name === null ||
       values.last_name === undefined
     ) {
-      errorsObject.last_name = true;
+      errorsObject.last_name = "Please enter last name";
       errorExist = true;
     }
     if (
@@ -56,25 +68,15 @@ const ReqTestimonial = ({ Popup, successPopup, setSuccessPopup }) => {
       values.email === null ||
       values.email === undefined
     ) {
-      errorsObject.email = true;
+      errorsObject.email = "Please enter email address";
       errorExist = true;
-    }
-    if (
-      values.title === "" ||
-      values.title === null ||
-      values.title === undefined
+    } else if (
+      !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(values?.email)
     ) {
-      errorsObject.title = true;
+      errorsObject.email = "Please type a valid email address";
       errorExist = true;
     }
-    if (
-      values.type === "" ||
-      values.type === null ||
-      values.type === undefined
-    ) {
-      errorsObject.type = true;
-      errorExist = true;
-    }
+
     if (errorExist) {
       setErrors(errorsObject);
       return false;
@@ -130,7 +132,7 @@ const ReqTestimonial = ({ Popup, successPopup, setSuccessPopup }) => {
                       placeholder="Enter First Name"
                     />
                     <span className="signup-error">
-                      {errors.first_name && "Please enter your first name"}
+                      {errors.first_name && errors.first_name}
                     </span>
                   </div>
                 </Col>
@@ -148,7 +150,7 @@ const ReqTestimonial = ({ Popup, successPopup, setSuccessPopup }) => {
                       placeholder="Enter Last name "
                     />
                     <span className="signup-error">
-                      {errors.last_name && "Please enter your last name"}
+                      {errors.last_name && errors.last_name}
                     </span>
                   </div>
                 </Col>
@@ -167,7 +169,7 @@ const ReqTestimonial = ({ Popup, successPopup, setSuccessPopup }) => {
                       placeholder="Enter Your Business Email"
                     />
                     <span className="signup-error">
-                      {errors.email && "Please enter your email"}
+                      {errors.email && errors.email}
                     </span>
                   </div>
                 </Col>

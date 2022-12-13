@@ -1,7 +1,5 @@
 import { Row, Col } from "react-bootstrap";
-import Select from "react-select";
 import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -34,8 +32,20 @@ const AddCert = ({ certificates, Popup, successPopup, setSuccessPopup }) => {
   }, []);
 
   const handleOnChange = (e) => {
-    setValues({ ...values, [e.target.name]: e.target.value });
-    setErrors({ ...errors, [e.target.name]: false });
+    if (
+      (values?.[e.target.name]?.length === undefined ||
+        values?.[e.target.name]?.length === 0) &&
+      e.target.value == " "
+    ) {
+      setValues({ ...values, [e.target.name]: "" });
+      setErrors({
+        ...errors,
+        [e.target.name]: `Field is required`,
+      });
+    } else {
+      setValues({ ...values, [e.target.name]: e.target.value });
+      setErrors({ ...errors, [e.target.name]: false });
+    }
   };
 
   const onSave = () => {
@@ -56,7 +66,7 @@ const AddCert = ({ certificates, Popup, successPopup, setSuccessPopup }) => {
       values?.description === null ||
       values?.description === undefined
     ) {
-      errorsObject.description = true;
+      errorsObject.description = "Please enter description";
       errorExist = true;
     }
 
@@ -155,7 +165,7 @@ const AddCert = ({ certificates, Popup, successPopup, setSuccessPopup }) => {
                     />
                   </div>
                   <span className="signup-error">
-                    {errors.description && "Please enter your description"}
+                    {errors.description && errors.description}
                   </span>
                 </Col>
               </Row>

@@ -25,8 +25,20 @@ const EditTitle = ({ data, Popup, successPopup, setSuccessPopup }) => {
   const [errors, setErrors] = useState({});
 
   const handleOnChange = (e) => {
-    setValues({ ...values, [e.target.name]: e.target.value });
-    setErrors({ ...errors, [e.target.name]: false });
+    if (
+      (values?.[e.target.name]?.length === undefined ||
+        values?.[e.target.name]?.length === 0) &&
+      e.target.value == " "
+    ) {
+      setValues({ ...values, [e.target.name]: "" });
+      setErrors({
+        ...errors,
+        [e.target.name]: "Field is required",
+      });
+    } else {
+      setValues({ ...values, [e.target.name]: e.target.value });
+      setErrors({ ...errors, [e.target.name]: false });
+    }
   };
 
   const onSave = () => {
@@ -96,8 +108,8 @@ const EditTitle = ({ data, Popup, successPopup, setSuccessPopup }) => {
                 type="text"
                 className="font-size-13px"
                 name="occuption"
-                onChange={(e) => handleOnChange(e)}
                 value={values?.occuption}
+                onChange={(e) => handleOnChange(e)}
                 placeholder="Senior UI/UX, Website Designer And Graphic Designer"
               />
               <span className="signup-error">
@@ -122,8 +134,8 @@ const EditTitle = ({ data, Popup, successPopup, setSuccessPopup }) => {
             <div className="_profile_overview popup_form_element mb-0">
               <Form.Control
                 as="textarea"
-                value={values?.description}
                 name="description"
+                value={values?.description}
                 onChange={(e) => handleOnChange(e)}
                 placeholder="Description"
               ></Form.Control>
