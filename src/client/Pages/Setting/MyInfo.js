@@ -133,11 +133,11 @@ const MyInfo = ({ setOpen, getClientDetails }) => {
         This is a <b>Client</b> account
       </div>
       <div className="btn_foot_sec flex-wrap d-flex no-border">
-        <div className="fo_btn_c next_b_btn_c">
+        {/* <div className="fo_btn_c next_b_btn_c">
           <Button variant="" className="mrright-gppnew">
             Create New Account
           </Button>
-        </div>
+        </div> */}
         <div className="fo_btn_c next_b_btn_c">
           <Button
             variant=""

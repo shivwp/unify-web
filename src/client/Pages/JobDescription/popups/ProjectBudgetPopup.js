@@ -171,8 +171,17 @@ const ProjectBudgetPopup = ({ Popup, jobListingData }) => {
             This is the average rate for similar projects.
           </div>
           <div className="mt-4 bud_news_para">
-            Professionals tend to charge <span>$15 - $35/hour (USD)</span> for
-            UI/UX design projects like yours. Experts may charge higher rates.
+            Professionals tend to charge{" "}
+            <span>
+              {budgetType == "hourly" ? (
+                <>{`$${maxPrice} - $${price}/hour`}</>
+              ) : (
+                { maxPrice }
+              )}
+              (USD)
+            </span>{" "}
+            for UI/UX design projects like yours. Experts may charge higher
+            rates.
           </div>
           <div className="ft_form_linki">Not ready to set an hourly rate?</div>
           <div className="popup_btns_new flex-wrap cwiewyehkk">

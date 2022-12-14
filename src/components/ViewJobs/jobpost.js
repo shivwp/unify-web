@@ -225,7 +225,7 @@ const JonComponent = ({ singleJobDetails, jobId, handleMakePublicPrivate }) => {
                 onClick={() => handleMakePublicPrivate("public")}
               >
                 <button className="round_b_btn">
-                  <i class="bi bi-globe text-secondary"></i>
+                  <i className="bi bi-globe text-secondary"></i>
                 </button>
                 <h1>Make Public</h1>
               </div>

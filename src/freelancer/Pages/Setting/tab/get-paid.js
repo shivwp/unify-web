@@ -4,13 +4,13 @@ import SideNav from "./site_nav";
 import Title from "../../../../components/title";
 import { useState } from "react";
 import AddPayment from "./popups/AddPayment";
-import Button from 'react-bootstrap/Button'
+import Button from "react-bootstrap/Button";
 
 const Screen = () => {
   const [popup, SetPopup] = useState();
   Title(" | Get Paid");
   return (
-    <div className="bg-f2f8ff min_pad_m">
+    <div className="bg-fff min_pad_m">
       <Container>
         <Row>
           <SideNav />

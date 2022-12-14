@@ -19,10 +19,10 @@ const Screen = () => {
   const [mobilePromptOn, setMobilePromptOn] = useState(false);
   const [messageOn, setMessageOn] = useState(false);
   const [appCodeOn, setAppCodeOn] = useState(false);
-  const [successPopup, setSuccessPopup] = useState(false)
+  const [successPopup, setSuccessPopup] = useState(false);
 
   return (
-    <div className="bg-f2f8ff min_pad_m">
+    <div className="bg-fff min_pad_m">
       <Container>
         <Row>
           <SideNav />
@@ -35,10 +35,17 @@ const Screen = () => {
                 <div className="d-flex justify-content-between align-items-center b-bottom-gr pt-1 pb-3">
                   <div className="setting_b_head_s">Password</div>
                   <div>
-                    <Button variant=""
+                    <Button
+                      variant=""
                       className="round_b_btn"
                       onClick={() => {
-                        Setpopup(<ChangePassword Popup={Setpopup} successPopup={successPopup} setSuccessPopup={setSuccessPopup} />);
+                        Setpopup(
+                          <ChangePassword
+                            Popup={Setpopup}
+                            successPopup={successPopup}
+                            setSuccessPopup={setSuccessPopup}
+                          />
+                        );
                       }}
                     >
                       <svg
@@ -84,7 +91,8 @@ const Screen = () => {
                     </div>
                   </div>
                   <div>
-                    <Button variant=""
+                    <Button
+                      variant=""
                       className="round_b_btn"
                       onClick={() => {
                         Setpopup(<VerificationPref Popup={Setpopup} />);
@@ -256,10 +264,18 @@ const Screen = () => {
                   </div>
                   <div className="d-flex justify-content-center align-items-center">
                     <div>
-                      <Button variant="" className="round_b_btn" 
-                      onClick={() => {
-                        Setpopup(<SecurityQuestionPopup Popup={Setpopup} successPopup={successPopup} setSuccessPopup={setSuccessPopup} />);
-                      }}
+                      <Button
+                        variant=""
+                        className="round_b_btn"
+                        onClick={() => {
+                          Setpopup(
+                            <SecurityQuestionPopup
+                              Popup={Setpopup}
+                              successPopup={successPopup}
+                              setSuccessPopup={setSuccessPopup}
+                            />
+                          );
+                        }}
                       >
                         <svg
                           xmlns="http://www.w3.org/2000/svg"

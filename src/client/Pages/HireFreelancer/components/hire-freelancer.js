@@ -200,7 +200,7 @@ const Screen = () => {
                     Add automatic weekly payments for the freelancer (Optional)
                   </div>
                   <div className="pr-10">
-                    <i class="bi bi-chevron-down"></i>
+                    <i className="bi bi-chevron-down"></i>
                   </div>
                 </div>
                 <div className="b_bot_inp d-flex justify-content-between align-items-center">
@@ -208,7 +208,7 @@ const Screen = () => {
                     How do hourly contracts work?
                   </div>
                   <div className="pr-10">
-                    <i class="bi bi-chevron-down"></i>
+                    <i className="bi bi-chevron-down"></i>
                   </div>
                 </div>
               </>
@@ -444,7 +444,7 @@ const Screen = () => {
         <div className="ts_btn attach_f_btn mt-0">
           <Form.Control type="file" />
           <button>
-            <i class="bi bi-paperclip"></i>
+            <i className="bi bi-paperclip"></i>
             Attach File
           </button>
           <div className="sm_label_inp">Max file size: 100 MB</div>

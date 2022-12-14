@@ -109,6 +109,10 @@
   border-radius: 5px;
   outline: none;
   padding: 10px;
+  font-size: 14px;
+}
+.change-password-popup .invite-input-wrapper textarea::placeholder {
+  font-size: 14px;
 }
 
 @media screen and (max-width: 644px) {

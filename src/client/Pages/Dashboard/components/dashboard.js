@@ -39,6 +39,12 @@ const Screen = () => {
   };
   $(".slider_shutter").slideDown();
 
+  $(document).mouseup(function (e) {
+    if ($(e.target).closest("#menu_bar1").length === 0) {
+      setMenuBarPosting(false);
+    }
+  });
+
   return (
     <>
       <Container>
@@ -104,13 +110,19 @@ const Screen = () => {
                 <div
                   key={index}
                   className="my_job_flx"
-                  style={{
-                    borderBottom: "#cbcaca solid 1px",
-                    paddingBottom: "15px",
-                  }}
+                  style={
+                    index != clientPostingList.length - 1
+                      ? {
+                          borderBottom: "#cbcaca solid 1px",
+                          paddingBottom: "15px",
+                        }
+                      : {}
+                  }
                 >
                   <div>
-                    <div className="my_job_a job_na_bol">{item.name}</div>
+                    <Link to={`/view-job/${item.id}`}>
+                      <div className="my_job_a job_na_bol">{item.name}</div>
+                    </Link>
                     <div className="my_job_h">
                       Invite only - {item.budget_type}
                     </div>
@@ -120,15 +132,15 @@ const Screen = () => {
                   </div>
                   <div className="d-flex justify-content-between flex-wrap">
                     <div className="my_job_n_box">
-                      <div className="my_job_nm">0</div>
+                      <div className="my_job_nm">{item.total_proposal}</div>
                       <div className="my_job_h pt-0">Proposals</div>
                     </div>
                     <div className="my_job_n_box">
-                      <div className="my_job_nm">0</div>
+                      <div className="my_job_nm">{item.total_message}</div>
                       <div className="my_job_h pt-0">Messaged</div>
                     </div>
                     <div className="my_job_n_box">
-                      <div className="my_job_nm">0</div>
+                      <div className="my_job_nm">{item.total_hire}</div>
                       <div className="my_job_h pt-0">Hired</div>
                     </div>
                   </div>
@@ -150,7 +162,7 @@ const Screen = () => {
                     </button>
 
                     {menuBarPosting === item.id && (
-                      <div className="menu_bar" id="menu_bar1">
+                      <div className="menu_bar " id="menu_bar1">
                         <div className="navabr_t_li">
                           <Link to={`/dashboard/edit-posting/${item.id}`}>
                             Edit Posting
@@ -163,7 +175,7 @@ const Screen = () => {
                           <Link to="#">Remove Posting</Link>
                         </div>
                         <div className="navabr_t_li">
-                          <Link to={`/view-job/${item.id}`}>
+                          <Link to={`/view-job/${item.id}/review`}>
                             View Proposals
                           </Link>
                         </div>

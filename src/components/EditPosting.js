@@ -165,7 +165,7 @@ const EditPosting = () => {
                           type="file"
                           onChange={handleImageChange}
                         />
-                        <i class="fa fa-paperclip" aria-hidden="true"></i>
+                        <i className="fa fa-paperclip" aria-hidden="true"></i>
                         Attach File
                       </label>
                       <div className="sm_label_inp">Max file size: 100 MB</div>

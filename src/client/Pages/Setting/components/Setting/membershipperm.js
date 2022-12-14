@@ -6,7 +6,7 @@ import { useState } from "react";
 import Active from "./active";
 import Invitations from "./Invitations";
 import InviteUsersPopup from "../../../../../popups/InviteUsersPopup";
-import Button from 'react-bootstrap/Button'
+import Button from "react-bootstrap/Button";
 
 const Screen = () => {
   const [openInviteUser, setOpenInviteUser] = useState(false);
@@ -16,7 +16,7 @@ const Screen = () => {
   Title(" | Setting - Membership & Permission");
   return (
     <>
-      <div className="bg-f2f8ff min_pad_m">
+      <div className="bg-fff min_pad_m">
         <Container>
           <Row>
             <SideNav />
@@ -33,7 +33,7 @@ const Screen = () => {
                     </div>
                     <div className="btn_foot_sec no-border mt-0 mb-0 p-0 fo_btn_c next_b_btn_c">
                       <Button
-                       variant=""
+                        variant=""
                         onClick={() => setOpenInviteUser(true)}
                         className="bg-transparent h-color-b"
                       >
@@ -45,7 +45,7 @@ const Screen = () => {
                 <div className="r-box_setting">
                   <div className="d-flex flex-wrap tab_m_nodea">
                     <Button
-                     variant=""
+                      variant=""
                       className={`tab_btn_vs bg-transparent s_btn_ns active_c_ch w-auto ${
                         tabActive === "active" ? "active_bvs active_bvss" : ""
                       }`}
@@ -56,7 +56,7 @@ const Screen = () => {
                       Active Members
                     </Button>
                     <Button
-                     variant=""
+                      variant=""
                       className={`tab_btn_vs bg-transparent active_c_ch s_btn_ns w-auto ${
                         tabActive === "invitation"
                           ? "active_bvs active_bvss"

@@ -16,7 +16,13 @@ const InviteToJobPopup = ({
   const [freelancerDetails, setFreelancerDetails] = useState();
   const [values, setValues] = useState({});
   const [errors, setErrors] = useState({});
+  let userDetails = JSON.parse(sessionStorage.getItem("unify_user"));
 
+  useEffect(() => {
+    setValues({
+      description: `hello! \n\nI'd like to invite you to take a look at the job I've posted. Please submit a proposal if you're available and interested. \n\n ${userDetails?.first_name} ${userDetails?.last_name}`,
+    });
+  }, [freelancerDetails]);
   useEffect(() => {
     if (jobBasedFreelancerList) {
       for (let i = 0; i < jobBasedFreelancerList.length; i++) {

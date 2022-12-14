@@ -49,7 +49,7 @@ const Screen = ({
                       <div className="d-flex align-items-center flex-wrap">
                         {/* <button className="transp_fil_btn heart_roun_btn mt-2">
                           <i
-                            class="bi bi-hand-thumbs-down"
+                            className="bi bi-hand-thumbs-down"
                             style={{ fontSize: "20px" }}
                           ></i>
                         </button> */}
@@ -62,7 +62,7 @@ const Screen = ({
                             }
                           >
                             <i
-                              class="bi bi-hand-thumbs-up-fill"
+                              className="bi bi-hand-thumbs-up-fill"
                               style={{ fontSize: "20px" }}
                             ></i>
                           </button>
@@ -74,7 +74,7 @@ const Screen = ({
                             }
                           >
                             <i
-                              class="bi bi-hand-thumbs-up"
+                              className="bi bi-hand-thumbs-up"
                               style={{ fontSize: "20px" }}
                             ></i>
                           </button>

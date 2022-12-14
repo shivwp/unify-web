@@ -80,6 +80,7 @@ const ClientRoutes = () => {
         <Route path="/expandteam" element={<ExpandTeam />} />
         <Route path="/notification" element={<Notification />} />
         <Route path="/view-job/:jobId" element={<ViewJob />} />
+        <Route path="/view-job/:jobId/:type" element={<ViewJob />} />
         <Route path="/view-job/private" element={<MakePrivate />} />
         <Route
           path="/dashboard/edit-posting/:editId"

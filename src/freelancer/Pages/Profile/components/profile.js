@@ -1326,7 +1326,7 @@ const UnifyFreelancer = () => {
                           className="testimonial_description my-1"
                           style={{ fontSize: 14 }}
                         >
-                          <i class="fa fa-history" aria-hidden="true"></i>
+                          <i className="fa fa-history" aria-hidden="true"></i>
                           {` ${item.message}`}
                         </div>
                         <div>

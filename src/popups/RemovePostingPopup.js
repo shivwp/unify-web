@@ -11,19 +11,37 @@ import { useNavigate } from "react-router-dom";
 const RemovePostingPopup = ({ open, onCloseModal, menuBarPosting }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [reasonId, setReasonId] = useState();
-  const closeJobReasons = useSelector((state) => state.job.closeJobReasons);
+
+  const [values, setValues] = useState({ project_id: menuBarPosting });
+  const closeJobReasons = useSelector((state) => state?.job?.closeJobReasons);
+  const [errors, setErrors] = useState(false);
 
   useEffect(() => {
     dispatch(closeJobReasonList());
   }, []);
 
+  console.log(values)
+
+
   const handleCloseJob = () => {
-    const data = {
-      project_id: menuBarPosting,
-      reason_id: reasonId,
-    };
-    dispatch(onCloseJob(data, onCloseModal, navigate));
+    let errorExist = false;
+    let errorsObject = {};
+
+    if (
+      values?.reason_id === "" ||
+      values?.reason_id === null ||
+      values?.reason_id === undefined
+    ) {
+      errorsObject.reason = "Please select a reason";
+      errorExist = true;
+    }
+
+    if (errorExist) {
+      setErrors(errorsObject);
+      return false;
+    }
+
+    dispatch(onCloseJob(values, onCloseModal, navigate));
   };
 
   return (
@@ -52,37 +70,19 @@ const RemovePostingPopup = ({ open, onCloseModal, menuBarPosting }) => {
                       type="radio"
                       id={key}
                       name="p"
-                      onChange={() => setReasonId(item.id)}
+                      onChange={() => {
+                        setValues({ ...values, reason_id: item.id });
+                        setErrors({ reason: false });
+                      }}
                     />
                     <span>{item.name}</span>
                   </Form.Label>
                 </li>
               ))}
-              {/* <li>
-                <Form.Label htmlFor="reason-2">
-                  <Form.Check type="radio" name="p" id="reason-2" />{" "}
-                  <span>All Position filled</span>
-                </Form.Label>
-              </li>
-              <li>
-                <Form.Label htmlFor="reason-3">
-                  <Form.Check type="radio" name="p" id="reason-3" />{" "}
-                  <span>Filled by alternate source</span>
-                </Form.Label>
-              </li>
-              <li>
-                <Form.Label htmlFor="reason-4">
-                  <Form.Check type="radio" name="p" id="reason-4" />{" "}
-                  <span>No freelancer for requested skills</span>
-                </Form.Label>
-              </li>
-              <li>
-                <Form.Label htmlFor="reason-5">
-                  <Form.Check type="radio" id="reason-5" name="p" />{" "}
-                  <span>Project was cancelled</span>
-                </Form.Label>
-              </li> */}
             </ul>
+            <span className="signup-error">
+              {errors.reason && errors.reason}
+            </span>
           </div>
         </div>
         <div className="btn_foot_sec no-border flex-wrap d-flex">

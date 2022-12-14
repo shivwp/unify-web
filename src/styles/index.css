@@ -26,6 +26,7 @@ body {
 .next_b_btn_c button:hover {
   background-color: #fff;
   color: #6d2ef1;
+  border: 1px solid #6d2ef1;
 }
 
 .post_job_btn_m button:hover {
@@ -2558,7 +2559,7 @@ body {
   -ms-border-radius: 27px;
   -o-border-radius: 27px;
   border: #6d2ef1 solid 1px;
-  padding: 6px 30px;
+  padding: 12px 30px;
   font-size: 15px;
   color: #6d2ef1;
   font-weight: 700;
@@ -5020,8 +5021,8 @@ body {
   border: 1px solid #d4d4d5;
 }
 
-.bg-f2f8ff {
-  background-color: #f2f8ff;
+.bg-fff {
+  background-color: #fff;
 }
 
 .min_pad_m {

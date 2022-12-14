@@ -434,7 +434,7 @@ const SingleActiveProposal = () => {
                         width="16"
                         height="16"
                         fill="currentColor"
-                        class="bi bi-telephone-fill"
+                        className="bi bi-telephone-fill"
                         viewBox="0 0 16 16"
                       >
                         <path
@@ -607,10 +607,14 @@ const SingleActiveProposal = () => {
                   <div className="desc">
                     {client_data?.job_posted} interviews
                   </div>
-                  <div className="desc"> {project_data?.open_jobs} Hired</div>
                   {/* <div className="desc">$1096 total spent</div> */}
                   <div className="desc">{project_data?.open_jobs} jobs</div>
-                  <div className="desc">{project_data?.total_hire} hires</div>
+                  <div className="desc">
+                    {project_data?.total_hire} total hires
+                  </div>
+                  <div className="desc">
+                    {project_data?.hire_rate}% hire rate
+                  </div>
                 </div>
                 <div className="member_since">
                   Member since {client_data?.member_since}

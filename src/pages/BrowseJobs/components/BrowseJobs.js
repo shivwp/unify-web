@@ -165,11 +165,11 @@ const BrowseJobs = () => {
                   <div className="s_na_box">
                     <div className="selected_skills_filter_jobs">
                       {selectSkills?.map((item, index) => (
-                        <div class="skill">
+                        <div className="skill">
                           <span>{item.skill_name}</span>
                           <button
                             type="button"
-                            class="btn"
+                            className="btn"
                             onClick={() => removeSkills(index)}
                           >
                             X

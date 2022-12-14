@@ -19,7 +19,7 @@ const AllPosting = () => {
 
   return (
     <>
-      <div className="bg-f2f8ff min_pad_m">
+      <div className="bg-fff min_pad_m">
         <Container>
           <div className="flex_m_j_t pt-4 pb-4 flex-wrap">
             <div>

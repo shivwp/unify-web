@@ -248,7 +248,7 @@ const Screen = () => {
 
   return (
     <>
-      <div className="bg-f2f8ff min_pad_m" style={{ fontFamily: "Poppins" }}>
+      <div className="bg-fff min_pad_m" style={{ fontFamily: "Poppins" }}>
         <Container>
           <Row>
             <SideNav />

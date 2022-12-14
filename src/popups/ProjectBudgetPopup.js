@@ -14,6 +14,8 @@ const ProjectBudgetPopup = ({ open, onCloseModal, setValues, values }) => {
     }
   }, [values]);
 
+  console.log(values);
+
   const onInputChange = (e) => {
     setBudgetData({ ...budgetData, [e.target.name]: e.target.value });
   };
@@ -163,8 +165,19 @@ const ProjectBudgetPopup = ({ open, onCloseModal, setValues, values }) => {
           This is the average rate for similar projects.
         </div>
         <div className="mt-4 bud_news_para">
-          Professionals tend to charge <span>$15 - $35/hour (USD)</span> for
-          UI/UX design projects like yours. Experts may charge higher rates.
+          Professionals tend to charge{" "}
+          <span>
+            {" "}
+            {budgetData?.budget_type == "hourly" ? (
+              <>{`$${budgetData?.price ? budgetData?.price : 0} - $${
+                budgetData?.min_price ? budgetData?.min_price : 0
+              }hr `}</>
+            ) : (
+              <>{`$${budgetData?.price}`}</>
+            )}
+          </span>{" "}
+          (USD) for UI/UX design projects like yours. Experts may charge higher
+          rates.
         </div>
         <div className="ft_form_linki">Not ready to set an hourly rate?</div>
         <div className="popup_btns_new flex-wrap cwiewyehkk">

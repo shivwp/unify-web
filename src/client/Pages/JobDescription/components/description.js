@@ -37,6 +37,8 @@ const Description = () => {
     dispatch(getCategoryList());
   }, []);
 
+  console.log(objectUrl);
+
   useEffect(() => {
     if (categoryList) {
       for (let i = 0; i < categoryList.length; i++) {
@@ -53,7 +55,7 @@ const Description = () => {
 
   const handleImageChange = (e) => {
     setImageFile(e.target.files[0]);
-    setObjectUrl(URL.createObjectURL(e.target.files[0]));
+    setObjectUrl(e.target.files[0].name);
   };
 
   const postYourJobNow = () => {
@@ -160,7 +162,7 @@ const Description = () => {
               candidates better understand what your job requires.
             </div>
           </div>
-          <div className="b_bot_inp">
+          <div className="b_bot_inp" style={{ paddingBottom: 25 }}>
             <div className="input_t_lab">Describe your job</div>
             <div className="input_t_par">
               This is how talent figures out what you need and why you’re great
@@ -196,13 +198,63 @@ const Description = () => {
                   type="file"
                   onChange={handleImageChange}
                 />
-                <i class="fa fa-paperclip" aria-hidden="true"></i>
+                <i className="fa fa-paperclip" aria-hidden="true"></i>
                 Attach File
               </label>
-              <div className="sm_label_inp">Max file size: 100 MB</div>
+              <div className="sm_label_inp">Max file size: 10 MB</div>
             </div>
-            {objectUrl && (
-              <img src={objectUrl} className="selectImage" alt="" />
+            {objectUrl ? (
+              <span
+                style={{
+                  border: "1px solid #c0bfbf",
+                  padding: "12px 37px 12px 12px",
+                  minWidth: 350,
+                  position: "relative",
+                }}
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="32"
+                  style={{ marginRight: 10 }}
+                >
+                  <g fill="#828282">
+                    <path d="M1.5 32h21c.827 0 1.5-.673 1.5-1.5v-21c0-.017-.008-.031-.009-.047-.002-.023-.008-.043-.013-.065a.488.488 0 0 0-.09-.191c-.007-.009-.006-.02-.013-.029l-8-9c-.003-.003-.007-.003-.01-.006a.494.494 0 0 0-.223-.134c-.019-.006-.036-.008-.056-.011C15.557.012 15.53 0 15.5 0h-14C.673 0 0 .673 0 1.5v29c0 .827.673 1.5 1.5 1.5zM16 1.815 22.387 9H16.5c-.22 0-.5-.42-.5-.75V1.815zM1 1.5a.5.5 0 0 1 .5-.5H15v7.25c0 .809.655 1.75 1.5 1.75H23v20.5a.5.5 0 0 1-.5.5h-21c-.28 0-.5-.22-.5-.5v-29z" />
+                    <path d="M5.5 14h13a.5.5 0 0 0 0-1h-13a.5.5 0 0 0 0 1zM5.5 18h13a.5.5 0 0 0 0-1h-13a.5.5 0 0 0 0 1zM5.5 10h6a.5.5 0 0 0 0-1h-6a.5.5 0 0 0 0 1zM5.5 22h13a.5.5 0 0 0 0-1h-13a.5.5 0 0 0 0 1zM5.5 26h13a.5.5 0 0 0 0-1h-13a.5.5 0 0 0 0 1z" />
+                  </g>
+                </svg>
+                <span style={{ color: "#9e9b9b", fontSize: 14 }}>
+                  File Name :{" "}
+                </span>
+                <span
+                  style={{ color: "#6d2ef1", fontSize: 14, fontWeight: 500 }}
+                >
+                  {objectUrl}
+                </span>
+                <span
+                  onClick={() => {
+                    setObjectUrl();
+                    setImageFile();
+                  }}
+                  style={{
+                    position: "absolute",
+                    right: -14,
+                    top: -16,
+                    transform: "rotateX(42deg)",
+                    color: "rgb(147 147 147)",
+                    cursor: "pointer",
+                    fontSize: 24,
+                    border: "1px solid rgb(147, 147, 147)",
+                    borderRadius: " 50%",
+                    padding: "0 5px",
+                    background: "#fff",
+                  }}
+                >
+                  X
+                </span>
+              </span>
+            ) : (
+              ""
             )}
           </div>
           <div className="b_bot_inp">
@@ -244,8 +296,8 @@ const Description = () => {
                 <i className="bi bi-pencil-square"></i>
               </button>
             </div>
-            <span>{values?.scop}</span>
-            <div>{values?.experience_level}</div>
+            <span style={{textTransform: "capitalize"}}>{values?.scop}</span>
+            <div style={{textTransform: "capitalize"}}>{values?.experience_level}</div>
           </div>
           <div className="b_bot_inp">
             <div className="input_t_lab">Budget</div>

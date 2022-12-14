@@ -685,7 +685,18 @@
 }
 
 .talent_dropdown_cs .dropdown-menu {
-  left: -160% !important;
+  left: -40% !important;
+}
+
+@media screen and (max-width: 1024px) {
+  .talent_dropdown_cs .dropdown-menu {
+    left: -75% !important;
+  }
+}
+@media screen and (max-width: 768px) {
+  .talent_dropdown_cs .dropdown-menu {
+    left: -105% !important;
+  }
 }
 
 .font-weight-600 {
@@ -719,6 +730,28 @@
   -moz-transform: rotate(270deg);
   -ms-transform: rotate(270deg);
   -o-transform: rotate(270deg);
+}
+.browseJobs_dropdown_cs .dropdown-menu::before {
+  content: "\25BA";
+  color: #fff;
+  position: absolute;
+  top: 0;
+  font-size: 20px;
+  margin-top: -19px;
+  right: 5px;
+  transform: rotate(270deg);
+  -webkit-transform: rotate(270deg);
+  -moz-transform: rotate(270deg);
+  -ms-transform: rotate(270deg);
+  -o-transform: rotate(270deg);
+}
+
+.browseJobs_dropdown_cs {
+  position: relative;
+}
+
+.browseJobs_dropdown_cs .dropdown-menu {
+  left: -160% !important;
 }
 
 .search_input_in input {
@@ -2646,6 +2679,7 @@
   margin: 10px 0;
   border: #cbcaca solid 1px;
   padding: 10px 15px;
+  outline: none;
 }
 
 .title-edit_posting > p {

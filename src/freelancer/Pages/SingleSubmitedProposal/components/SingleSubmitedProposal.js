@@ -460,10 +460,15 @@ const SingleSubmitedProposal = () => {
                   <div className="desc">
                     {client_data?.job_posted} interviews
                   </div>
-                  <div className="desc"> {project_data?.open_jobs} Hired</div>
+
                   {/* <div className="desc">$1096 total spent</div> */}
                   <div className="desc">{project_data?.open_jobs} jobs</div>
-                  <div className="desc">{project_data?.total_hire} hires</div>
+                  <div className="desc">
+                    {project_data?.total_hire} total hires
+                  </div>
+                  <div className="desc">
+                    {project_data?.hire_rate}% hire rate
+                  </div>
                 </div>
                 <div className="member_since">
                   Member since {client_data?.member_since}

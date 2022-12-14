@@ -12,12 +12,23 @@ import { makePrivatePublicJob } from "../../../../redux/actions/freelancerAction
 
 const ViewScreen = () => {
   let { jobId } = useParams();
+  let { type } = useParams();
+
+  console.log(type);
+
   const dispatch = useDispatch();
   const [currentTab, setCurrentTab] = useState("ViewJob");
   let singleJobDetails = useSelector((state) => state.job.singleJobDetails);
+
   const privatePublicJob = useSelector(
     (state) => state.freelancer.privatePublicJob
   );
+
+  useEffect(() => {
+    if (type) {
+      setCurrentTab(type);
+    }
+  }, [type]);
 
   useEffect(() => {
     const data = {

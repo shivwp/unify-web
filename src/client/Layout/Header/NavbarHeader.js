@@ -70,6 +70,7 @@ const Header = (props) => {
           <NavDropdown
             className="navbar_btn b_job_l_sx nenav_bddowniu"
             title="Talent"
+            flip="true"
             id="navbarScrollingDropdown"
           >
             <div className="navabr_t_li">
@@ -331,7 +332,7 @@ const Header = (props) => {
                   </NavDropdown>
                   <NavDropdown
                     flip="true"
-                    className="navbar_btn talent_dropdown_cs"
+                    className="navbar_btn talent_dropdown_cs "
                     title="Talent"
                     id="navbarScrollingDropdown"
                   >

@@ -4,17 +4,24 @@ import { Col, Row } from "react-bootstrap";
 import Title from "../../../../components/title";
 import { Link, useNavigate } from "react-router-dom";
 import Form from "react-bootstrap/Form";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 
 const Bsize = () => {
   Title(" | Business Size");
   const navigate = useNavigate();
   const [values, setValues] = useState({});
   const [errors, setErrors] = useState({});
+  const dispatch = useDispatch();
 
   const onInputChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
     setErrors({ ...errors, [e.target.name]: false });
   };
+
+  useEffect(() => {
+    // dispatch();
+  }, []);
 
   const onNext = () => {
     let errorExist = false;

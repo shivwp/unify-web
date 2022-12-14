@@ -31,7 +31,7 @@ const AunthenticatorVerificationPopup = ({ open, onCloseModal }) => {
             <span>
               provide you with a key.{" "}
               <i
-                class="fa fa-question-circle"
+                className="fa fa-question-circle"
                 aria-hidden="true"
                 style={{ color: "rgb(78 137 0)" }}
               ></i>

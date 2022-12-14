@@ -639,11 +639,11 @@ const Project_Search = () => {
                   <div className="s_na_box">
                     <div className="selected_skills_filter_jobs">
                       {selectSkills?.map((item, index) => (
-                        <div class="skill" key={index}>
+                        <div className="skill" key={index}>
                           <span>{item.skill_name}</span>
                           <button
                             type="button"
-                            class="btn"
+                            className="btn"
                             onClick={() => removeSkills(index)}
                           >
                             X

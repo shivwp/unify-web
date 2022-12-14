@@ -86,7 +86,7 @@ const EditSkillsPopup = ({ open, onCloseModal, values, setValues }) => {
               <div className="skill_bxr_gry" key={index}>
                 <span>{item.name}</span>&nbsp;
                 <i
-                  class="fa fa-remove"
+                  className="fa fa-remove"
                   aria-hidden="true"
                   onClick={() => removeSkills(index)}
                 ></i>

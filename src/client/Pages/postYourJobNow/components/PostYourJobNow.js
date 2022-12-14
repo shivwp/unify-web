@@ -31,7 +31,7 @@ const PostYourJobNow = () => {
   };
 
   return (
-    <div className="bg-f2f8ff min_pad_m">
+    <div className="bg-fff min_pad_m">
       <Container>
         <Row>
           <SideNav setCurrentTab={setCurrentTab} currentTab={currentTab} />

@@ -128,7 +128,7 @@ const Screen = () => {
 
   Title(" | Billing & Payments");
   return (
-    <div className="bg-f2f8ff min_pad_m">
+    <div className="bg-fff min_pad_m">
       <Container>
         <Row>
           <SideNav />
@@ -158,7 +158,6 @@ const Screen = () => {
                     </div>
                     <div className="sett_y_b">Your balance due is $0.00</div>
                   </div>
-                 
                 </div>
                 <div>
                   <ul className="setting_pay_inp d-flex sflex_spance">

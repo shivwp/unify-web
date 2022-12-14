@@ -342,7 +342,7 @@ const Screen = () => {
   const [popup, SetPopup] = useState();
   Title(" | Get Paid");
   return (
-    <div className="bg-f2f8ff min_pad_m">
+    <div className="bg-fff min_pad_m">
       <Container>
         <Row>
           <SideNav />
