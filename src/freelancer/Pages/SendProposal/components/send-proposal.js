@@ -37,6 +37,15 @@ const Screen = () => {
   ]);
 
   useEffect(() => {
+    if (singleJobDetails?.budget_type == "hourly") {
+      setValues({
+        ...values,
+        bid_amount: JSON.parse(sessionStorage.getItem("unify_user"))?.amount,
+      });
+    }
+  }, [singleJobDetails]);
+
+  useEffect(() => {
     dispatch(singleJobPostDetails({ job_id: id }));
   }, [id]);
 
@@ -45,6 +54,8 @@ const Screen = () => {
     setShowingImage(URL.createObjectURL(e.target.files[0]));
     setErrors({ ...errors, attachment: false });
   };
+
+  console.log(singleJobDetails);
 
   const onSendProposal = () => {
     const formData = new FormData();
@@ -213,8 +224,10 @@ const Screen = () => {
               <div className="send_prp_blew_hsp">Job Details</div>
               <div className="send_propo_hdsp">{singleJobDetails?.name}</div>
               <div className="d-flex mt-3 mb-3 flex-wrap">
-                <div className="blue_bx_sp_ct">Graphic Design</div>
-                <div className="trs_css-76">Posted Aug 3, 2022</div>
+                <div className="blue_bx_sp_ct">
+                  {singleJobDetails?.categories}
+                </div>
+                <div className="trs_css-76">{singleJobDetails?.created_at}</div>
               </div>
               <div className="pbsp_prs">{singleJobDetails?.description}</div>
             </Col>
@@ -424,7 +437,7 @@ const Screen = () => {
           <div className="mt-3">
             <div className="skll_hding">Skills and expertise</div>
             <div className="d-flex flex-wrap cwcss_cw">
-              {singleJobDetails?.skills?.map((skill, index) => (
+              {singleJobDetails?.job_skills?.map((skill, index) => (
                 <>
                   <div key={index} className="blue_bx_sp_ct">
                     {skill.name}

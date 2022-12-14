@@ -402,6 +402,9 @@ export const onEditHourPerWeek =
           payload: res.data,
         });
 
+        userDetails.amount = data.hours_price;
+        sessionStorage.setItem("unify_user", JSON.stringify(userDetails));
+
         setSuccessPopup(
           <SuccessPopup
             Popup={() => setSuccessPopup(!successPopup)}

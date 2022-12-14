@@ -588,6 +588,10 @@ body {
   margin-top: 20px;
 }
 
+.clearAllBtn {
+  cursor: pointer;
+}
+
 .client_imag {
   width: 120px;
   height: 70px;
@@ -8067,7 +8071,7 @@ a {
 
 .right_job_detail_home .with_email .email_inp {
   position: relative;
-  height: 45px;
+  height: 55px;
   width: 100%;
 }
 
@@ -9912,4 +9916,24 @@ input::-webkit-inner-spin-button {
 .portfolio_popup label {
   display: flex !important;
   flex-direction: row;
+}
+
+.with_email .jobSignInError {
+  color: red;
+  font-weight: 300;
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+.jobSignInError {
+  color: red;
+  font-weight: 300;
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+
+.charCount {
+  font-size: 12px;
+  color: gray;
+  text-align: end;
+  font-weight: 300;
 }

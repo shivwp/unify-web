@@ -69,11 +69,15 @@ const PortfolioPupup = ({
     }
 
     if (
-      values.description === "" ||
-      values.description === null ||
-      values.description === undefined
+      values?.description === "" ||
+      values?.description === null ||
+      values?.description === undefined
     ) {
       errorsObject.description = "Please enter description";
+      errorExist = true;
+    }
+    if (values?.description?.length > 200) {
+      errorsObject.description = "Description length maximum 200 characters";
       errorExist = true;
     }
 
@@ -150,7 +154,8 @@ const PortfolioPupup = ({
                   name="description"
                   value={values?.description}
                   onChange={(e) => onInputChange(e)}
-                ></Form.Control>
+                />
+                {/* <div className="charCount">{200 - values?.description?.length} charecters left</div> */}
                 <span className="signup-error">
                   {errors.description && errors.description}
                 </span>

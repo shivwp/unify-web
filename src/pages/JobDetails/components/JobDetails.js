@@ -3,10 +3,10 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { googleSignInInitiate } from "../../../redux/actions/authActions";
 import { singleJobPostDetails } from "../../../redux/actions/jobActions";
-import { INSTANT_LOGIN_EMAIL } from "../../../redux/types";
+import { INSTANT_LOGIN_EMAIL, POST_JOB_LIKE_THIS } from "../../../redux/types";
 
 const JobDetails = () => {
   const { id } = useParams();
@@ -14,18 +14,52 @@ const JobDetails = () => {
   const singleJobDetails = useSelector((state) => state?.job?.singleJobDetails);
   const navigate = useNavigate();
   const [email, setEmail] = useState({});
+  const [values, setValues] = useState("");
+  const [errors, setErrors] = useState({});
 
   useEffect(() => {
     dispatch(singleJobPostDetails({ job_id: id }));
   }, []);
 
+  const onHandleChange = (e) => {
+    setEmail({ [e.target.name]: e.target.value });
+    setValues({ ...values, [e.target.name]: e.target.value });
+    setErrors({ ...errors, [e.target.name]: false });
+  };
+
   const handleGoogleSignIn = () => {
     dispatch(googleSignInInitiate("freelancer", navigate));
   };
 
+  const InstentLogin = () => {
+    let errorExist = false;
+    let errorsObject = {};
+    if (
+      values?.email === "" ||
+      values?.email === null ||
+      values?.email === undefined
+    ) {
+      errorsObject.email = "Please enter your email";
+      errorExist = true;
+    } else if (!values?.email.trim()) {
+      errorsObject.email = "Email is required";
+      errorExist = true;
+    } else if (
+      !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(values?.email)
+    ) {
+      errorsObject.email = "Please type a valid email address";
+      errorExist = true;
+    }
+    if (errorExist) {
+      setErrors(errorsObject);
+      return false;
+    }
+    dispatch({ type: INSTANT_LOGIN_EMAIL, payload: email });
+    navigate("/signup");
+  };
+
   return (
     <>
-      {" "}
       <Container className="mt-5">
         <Row className="flex_reverse_768">
           <Col lg={8} md={12}>
@@ -41,33 +75,98 @@ const JobDetails = () => {
                       xmlns="http://www.w3.org/2000/svg"
                       width="16"
                       height="16"
-                      fill="currentColor"
-                      className="bi bi-geo-alt"
-                      viewBox="0 0 16 16"
+                      viewBox="0 0 33.496 30.429"
                     >
-                      <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A31.493 31.493 0 0 1 8 14.58a31.481 31.481 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94zM8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z" />
-                      <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                      <g id="script" transform="translate(0 -21.547)">
+                        <g
+                          id="Group_2383"
+                          data-name="Group 2383"
+                          transform="translate(0 21.547)"
+                        >
+                          <g
+                            id="Group_2382"
+                            data-name="Group 2382"
+                            transform="translate(0 0)"
+                          >
+                            <path
+                              id="Path_4463"
+                              data-name="Path 4463"
+                              d="M30.365,39.779V26.1a4.553,4.553,0,0,0-4.554-4.554H4.553A4.555,4.555,0,0,0,0,26.1v7.6H3.036V26.1a1.536,1.536,0,0,1,1.589-1.515A1.52,1.52,0,0,1,6.142,26.1V45.853H30.365V42.815H27.329v0H12.145v3.034H9.109V42.815h.07V26.1a4.542,4.542,0,0,0-.26-1.518H25.811A1.516,1.516,0,0,1,27.329,26.1V39.779Z"
+                              transform="translate(0 -21.547)"
+                              fill="#ff88fe"
+                            />
+                          </g>
+                        </g>
+                        <g
+                          id="Group_2385"
+                          data-name="Group 2385"
+                          transform="translate(12.145 27.634)"
+                        >
+                          <g
+                            id="Group_2384"
+                            data-name="Group 2384"
+                            transform="translate(0 0)"
+                          >
+                            <rect
+                              id="Rectangle_601"
+                              data-name="Rectangle 601"
+                              width="12.145"
+                              height="3.036"
+                              fill="#ff88fe"
+                            />
+                          </g>
+                        </g>
+                        <g
+                          id="Group_2387"
+                          data-name="Group 2387"
+                          transform="translate(12.145 33.706)"
+                        >
+                          <g id="Group_2386" data-name="Group 2386">
+                            <rect
+                              id="Rectangle_602"
+                              data-name="Rectangle 602"
+                              width="6.072"
+                              height="3.036"
+                              fill="#ff88fe"
+                            />
+                          </g>
+                        </g>
+                        <g
+                          id="Group_2389"
+                          data-name="Group 2389"
+                          transform="translate(21.253 33.706)"
+                        >
+                          <g id="Group_2388" data-name="Group 2388">
+                            <rect
+                              id="Rectangle_603"
+                              data-name="Rectangle 603"
+                              width="3.036"
+                              height="3.036"
+                              fill="#ff88fe"
+                            />
+                          </g>
+                        </g>
+                        <g
+                          id="Group_2391"
+                          data-name="Group 2391"
+                          transform="translate(6.101 42.799)"
+                        >
+                          <g id="Group_2390" data-name="Group 2390">
+                            <path
+                              id="Path_4464"
+                              data-name="Path 4464"
+                              d="M91.781,320.242v4.581a1.489,1.489,0,0,1-1.492,1.491,1.542,1.542,0,0,1-1.513-1.54V320.21H85.74v4.565a4.579,4.579,0,0,0,4.013,4.542v.055h18.824a4.554,4.554,0,0,0,4.558-4.551v-4.626ZM110.1,324.82a1.517,1.517,0,0,1-1.522,1.515H94.56a4.53,4.53,0,0,0,.258-1.512v-1.551l15.281-.035v1.583Z"
+                              transform="translate(-85.74 -320.194)"
+                              fill="#ff88fe"
+                            />
+                          </g>
+                        </g>
+                      </g>
                     </svg>
                   </div>
                   <div className="wor_name wn_freelancer">
-                    Digital Marketing
+                    {singleJobDetails?.categories}
                   </div>
-                </div>
-                <div className="fle_wor_box">
-                  <div className="wor_svg">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      fill="currentColor"
-                      className="bi bi-geo-alt"
-                      viewBox="0 0 16 16"
-                    >
-                      <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A31.493 31.493 0 0 1 8 14.58a31.481 31.481 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94zM8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z" />
-                      <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
-                    </svg>
-                  </div>
-                  <div className="wor_name wn_freelancer">Remote</div>
                 </div>
                 <div className="fle_wor_box">
                   <div className="wor_svg">
@@ -83,15 +182,17 @@ const JobDetails = () => {
                       <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z" />
                     </svg>
                   </div>
-                  <div className="wor_name wn_freelancer">January 15, 2021</div>
+                  <div className="wor_name wn_freelancer">
+                    {singleJobDetails?.created_at}
+                  </div>
                 </div>
               </div>
               <div className="proj_det_li">
                 <div className="flex_itm flex-wrap">
-                  <div className="f_b_obx">
+                  {/* <div className="f_b_obx">
                     <div className="ex_name_fb">Freelancer Type</div>
                     <div className="ex_val_f pd_evf_n">Individual</div>
-                  </div>
+                  </div> */}
                   <div className="f_b_obx">
                     <div className="ex_name_fb">Project Duration</div>
                     <div className="ex_val_f pd_evf_n">
@@ -99,19 +200,21 @@ const JobDetails = () => {
                     </div>
                   </div>
                   <div className="f_b_obx">
-                    <div className="ex_name_fb">Level</div>
+                    <div className="ex_name_fb">Exprience Level</div>
                     <div className="ex_val_f pd_evf_n">
                       {singleJobDetails?.experience_level}{" "}
                     </div>
                   </div>
                   <div className="f_b_obx">
                     <div className="ex_name_fb">English Level</div>
-                    <div className="ex_val_f pd_evf_n">Native</div>
+                    <div className="ex_val_f pd_evf_n">
+                      {singleJobDetails?.english_level}
+                    </div>
                   </div>
-                  <div className="f_b_obx">
+                  {/* <div className="f_b_obx">
                     <div className="ex_name_fb">Languages</div>
                     <div className="ex_val_f pd_evf_n">Arabic English </div>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>
@@ -130,7 +233,7 @@ const JobDetails = () => {
                 </div>
                 <br />
                 <div className="dlex_sk_block m-0 pd_n_bss flex-wrap">
-                  {singleJobDetails?.skills?.map((skill, index) => (
+                  {singleJobDetails?.job_skills?.map((skill, index) => (
                     <div key={index} className="b_skil">
                       {skill.name}
                     </div>
@@ -181,29 +284,30 @@ const JobDetails = () => {
                     type="text"
                     placeholder="Email"
                     name="email"
+                    value={values?.email}
                     required
-                    onChange={(e) =>
-                      setEmail({ [e.target.name]: e.target.value })
-                    }
+                    onChange={(e) => onHandleChange(e)}
                   />
+                  <span className="jobSignInError">
+                    {errors.email && errors.email}
+                  </span>
                 </div>
               </div>
               <div className="sign_up_btn">
-                <Button
-                  disabled={!email?.email}
-                  onClick={() => {
-                    dispatch({ type: INSTANT_LOGIN_EMAIL, payload: email });
-                    navigate("/signup");
-                  }}
-                >
-                  Sign Up
-                </Button>
+                <button onClick={InstentLogin}>Sign Up </button>
               </div>
               <hr />
 
               <div className="job_post_heading">Hiring for similar work?</div>
               <div className="post_job_btn_home">
-                <Button>Post a Job Like This</Button>
+                <div
+                  onClick={() => {
+                    dispatch({ type: POST_JOB_LIKE_THIS, payload: "client" });
+                    navigate("/signup");
+                  }}
+                >
+                  <button>Post a Job Like This</button>
+                </div>
               </div>
             </div>
           </Col>

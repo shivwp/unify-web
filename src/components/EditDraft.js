@@ -203,7 +203,7 @@ const EditDraft = () => {
                         <i class="fa fa-paperclip" aria-hidden="true"></i>
                         Attach File
                       </label>
-                      <div className="sm_label_inp">Max file size: 100 MB</div>
+                      <div className="sm_label_inp">Max file size: 10 MB</div>
                     </div>
                     <img
                       src={objectUrl ? objectUrl : values?.image}

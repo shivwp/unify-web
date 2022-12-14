@@ -166,14 +166,10 @@ const AddEduc = ({ education, Popup, successPopup, setSuccessPopup }) => {
       errorsObject.area_study = "Please input a valid course name ";
       errorExist = true;
     }
-    // if (
-    //   values?.description === "" ||
-    //   values?.description === null ||
-    //   values?.description === undefined
-    // ) {
-    //   errorsObject.description = true;
-    //   errorExist = true;
-    // }
+    if (values?.description?.length > 200) {
+      errorsObject.description = "Description length maximum 200 characters";
+      errorExist = true;
+    }
 
     if (errorExist) {
       setErrors(errorsObject);
@@ -338,7 +334,10 @@ const AddEduc = ({ education, Popup, successPopup, setSuccessPopup }) => {
                       value={values?.description}
                       name="description"
                       placeholder="Enter Here"
-                    ></Form.Control>
+                    />
+                    <span className="signup-error">
+                      {errors.description && errors.description}
+                    </span>
                   </div>
                 </Col>
               </Row>

@@ -14,6 +14,7 @@ import {
   SKILLS_DEVELOPER_DATA,
   INSTANT_LOGIN_EMAIL,
   VERIFY_SIGNUP_ERROR,
+  POST_JOB_LIKE_THIS,
 } from "../types";
 
 const initialState = {};
@@ -94,6 +95,11 @@ const authReducer = (state = initialState, action) => {
       return {
         ...state,
         instantLoginEmail: action.payload,
+      };
+    case POST_JOB_LIKE_THIS:
+      return {
+        ...state,
+        postJob: action.payload,
       };
 
     default:

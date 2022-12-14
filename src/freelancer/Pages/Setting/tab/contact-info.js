@@ -304,8 +304,8 @@ const Screen = () => {
       ) {
         errorsObject.phone = "Please enter your phone number";
         errorExist = true;
-      } else if (values?.phone?.length < 10 || values?.phone?.length > 12) {
-        errorsObject.phone = "The phone must be between 10 and 12 digits.";
+      } else if (values?.phone?.length < 8 || values?.phone?.length > 12) {
+        errorsObject.phone = "The phone must be between 8 and 12 digits.";
         errorExist = true;
       }
       if (

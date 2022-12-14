@@ -11,19 +11,28 @@ const Signupscreen = () => {
   const [errors, setErrors] = useState({});
   const [userType, setUserType] = useState("freelancer");
   const getCountryList = useSelector((state) => state.auth.getCountryList);
+  const postJob = useSelector((state) => state?.auth?.postJob);
   const [message, setMessage] = useState();
+  const instantLoginEmail = useSelector(
+    (state) => state?.auth?.instantLoginEmail
+  );
+
+  useEffect(() => {
+    if (postJob) {
+      setUserType(postJob);
+    }
+  }, [postJob]);
 
   const [values, setValues] = useState({
     agree_terms: 0,
     send_email: 0,
   });
-  // const instantLoginEmail = useSelector(
-  //   (state) => state?.auth?.instantLoginEmail
-  // );
 
-  // useEffect(() => {
-  //   setValues(instantLoginEmail);
-  // }, [instantLoginEmail]);
+  useEffect(() => {
+    if (instantLoginEmail) {
+      setValues(instantLoginEmail);
+    }
+  }, [instantLoginEmail]);
 
   useEffect(() => {
     dispatch(countryList());

@@ -122,14 +122,10 @@ const AddEmployment = ({
       errorsObject.country = true;
       errorExist = true;
     }
-    // if (
-    //   values?.description === "" ||
-    //   values?.description === null ||
-    //   values?.description === undefined
-    // ) {
-    //   errorsObject.description = true;
-    //   errorExist = true;
-    // }
+    if (values?.description?.length > 200) {
+      errorsObject.description = "Description length maximum 200 characters";
+      errorExist = true;
+    }
     if (
       values?.subject === "" ||
       values?.subject === null ||
@@ -381,7 +377,10 @@ const AddEmployment = ({
                       name="description"
                       onChange={(e) => onInputChange(e)}
                       placeholder="Enter Here"
-                    ></Form.Control>
+                    />
+                    <span className="signup-error">
+                      {errors.description && errors.description}
+                    </span>
                   </div>
                 </Col>
               </Row>
