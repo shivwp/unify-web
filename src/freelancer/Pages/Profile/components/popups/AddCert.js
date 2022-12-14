@@ -68,6 +68,9 @@ const AddCert = ({ certificates, Popup, successPopup, setSuccessPopup }) => {
     ) {
       errorsObject.description = "Please enter description";
       errorExist = true;
+    } else if (values?.description?.length > 200) {
+      errorsObject.description = "Description length maximum 200 characters";
+      errorExist = true;
     }
 
     if (errorExist) {
@@ -161,7 +164,10 @@ const AddCert = ({ certificates, Popup, successPopup, setSuccessPopup }) => {
                       placeholder="Enter Here"
                       name="description"
                       value={values?.description}
-                      onChange={(e) => handleOnChange(e)}
+                      onChange={(e) => {
+                        200 - values?.description?.length == 0 &&
+                          handleOnChange(e);
+                      }}
                     />
                   </div>
                   <span className="signup-error">

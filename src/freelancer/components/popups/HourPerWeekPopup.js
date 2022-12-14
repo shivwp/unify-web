@@ -2,7 +2,6 @@ import React from "react";
 import { Modal } from "react-responsive-modal";
 import "react-responsive-modal/styles.css";
 import "./popup.css";
-import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Button from "react-bootstrap/Button";
@@ -19,25 +18,50 @@ const HourPerWeekPopup = ({
   successPopup,
   setSuccessPopup,
   amount,
+  hours_per_week,
 }) => {
   const dispatch = useDispatch();
 
   const [hourlyPrice, setHourlyPrice] = useState({ hours_price: amount });
   const [hpwValue, setHPWValue] = useState();
   const hwpList = useSelector((state) => state?.profile?.getHoursPerWeekList);
+  const [values, setValues] = useState("");
+  const [errors, setErrors] = useState({});
 
   const handleOnChange = (e) => {
     setHourlyPrice({ ...hourlyPrice, [e.target.name]: e.target.value });
+    setValues({ ...values, [e.target.name]: e.target.value });
+    setErrors({ ...errors, [e.target.name]: false });
   };
 
+  const afterSuccess = () => {
+    window.location.reload();
+  };
   useEffect(() => {
     dispatch(getHoursPerWeekList());
   }, []);
 
   const onSave = () => {
+    let errorExist = false;
+    let errorsObject = {};
+    if (values?.hours_price < 3) {
+      errorsObject.hours_price = "Hourly price must be minimum 3 $";
+      errorExist = true;
+    }
+    if (errorExist) {
+      setErrors(errorsObject);
+      return false;
+    }
+
     const data = { hours_id: hpwValue, hours_price: hourlyPrice?.hours_price };
     dispatch(
-      onEditHourPerWeek(data, onCloseModal, successPopup, setSuccessPopup)
+      onEditHourPerWeek(
+        data,
+        onCloseModal,
+        successPopup,
+        setSuccessPopup,
+        afterSuccess
+      )
     );
   };
   return (
@@ -63,6 +87,7 @@ const HourPerWeekPopup = ({
                     type="radio"
                     id={`op-${index}`}
                     onClick={() => setHPWValue(item.id)}
+                    defaultChecked={hours_per_week == item.title}
                     name="p"
                     value={"More then 30 Hours per week"}
                   />{" "}
@@ -91,6 +116,9 @@ const HourPerWeekPopup = ({
             </div>
             <div className="hourly-price_rsph">/hr</div>
           </div>
+          <span className="jobSignInError">
+            {errors.hours_price && errors.hours_price}
+          </span>
         </div>
 
         <div className="freelancer_popup_btns">
@@ -100,7 +128,7 @@ const HourPerWeekPopup = ({
             </Button>
           </div>
           <div className="_save_submit">
-            <Button
+            <button
               type="submit"
               className="hov_ttransp"
               disabled={
@@ -113,7 +141,7 @@ const HourPerWeekPopup = ({
               onClick={onSave}
             >
               SAVE
-            </Button>
+            </button>
           </div>
         </div>
       </Modal>

@@ -1670,6 +1670,7 @@ const UnifyFreelancer = () => {
           setSuccessPopup={setSuccessPopup}
           successPopup={successPopup}
           amount={basicInfo?.amount}
+          hours_per_week={freelancerProfileList?.hours_per_week}
         />
       )}
       {portfolioPopup && (

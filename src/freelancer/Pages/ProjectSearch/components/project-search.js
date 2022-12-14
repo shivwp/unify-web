@@ -108,37 +108,39 @@ const ProjectSearch = ({ filters }) => {
           <div className="heat_lef">
             <img src={star} alt="" />
           </div>
-          <Row>
-            <Col lg={9}>
-              <div className="job_head_s">
-                <h2>{item?.name}</h2>
-              </div>
-              <div className="dlex_sk_block flex-wrap">
-                {item?.skills?.map((skill, index) => (
-                  <>
-                    <div key={index} className="b_skil">
-                      {skill?.name}
-                    </div>
-                  </>
-                ))}
-              </div>
-              <div className="job_d_par">
-                <p style={{ wordBreak: "break-word" }}>{item?.description}</p>
-              </div>
-            </Col>
-            <Col lg={3}>
-              <div className="price_ar_jjob">
-                <h1>
-                  {item.budget_type === "fixed"
-                    ? `$${item?.price}`
-                    : item.budget_type === "hourly"
-                    ? `$${item?.min_price} - $${item.price} /hr`
-                    : null}
-                </h1>
-                <p>({item?.budget_type})</p>
-              </div>
-            </Col>
-          </Row>
+          <Link to={`/freelancer/project-detail/${item.id}`}>
+            <Row>
+              <Col lg={9}>
+                <div className="job_head_s">
+                  <h2>{item?.name}</h2>
+                </div>
+                <div className="dlex_sk_block flex-wrap">
+                  {item?.skills?.map((skill, index) => (
+                    <>
+                      <div key={index} className="b_skil">
+                        {skill?.name}
+                      </div>
+                    </>
+                  ))}
+                </div>
+                <div className="job_d_par">
+                  <p style={{ wordBreak: "break-word" }}>{item?.description}</p>
+                </div>
+              </Col>
+              <Col lg={3}>
+                <div className="price_ar_jjob">
+                  <h1>
+                    {item.budget_type === "fixed"
+                      ? `$${item?.price}`
+                      : item.budget_type === "hourly"
+                      ? `$${item?.min_price} - $${item.price} /hr`
+                      : null}
+                  </h1>
+                  <p>({item?.budget_type})</p>
+                </div>
+              </Col>
+            </Row>
+          </Link>
           <div className="jb_foot flex-wrap">
             <div className="flex_itm">
               {/* <div className="f_b_obx">
@@ -592,7 +594,10 @@ const Project_Search = () => {
                   <div className="sef_na_ea ps_n_sef">
                     <h3>Search Filters</h3>
                   </div>
-                  <div className="sef_p_c ps_n_sefp" onClick={clearAllFilters}>
+                  <div
+                    className="sef_p_c ps_n_sefp clearAllBtn"
+                    onClick={clearAllFilters}
+                  >
                     <p>Clear all</p>
                   </div>
                 </div>
@@ -722,22 +727,36 @@ const Project_Search = () => {
                   <div className="s_na_h4">
                     <h4>Price</h4>
                   </div>
-                  <div className="ran_fl_inp">
-                    <Form.Control
-                      type="number"
-                      placeholder="0"
-                      name="min_price"
-                      onWheel={(e) => e.target.blur(e)}
-                      onChange={(e) => handleFilterChange(e)}
-                    />
-                    <Form.Control
-                      type="number"
-                      placeholder="1,500"
-                      name="max_price"
-                      onWheel={(e) => e.target.blur(e)}
-                      onChange={(e) => handleFilterChange(e)}
-                    />
+                  {/* <div className="ran_fl_inp"> */}
+                  <div className="jobPriceRange">
+                    <div
+                      className="inp_bdg_pdsp priceStartRange"
+                      style={{ position: "relative" }}
+                    >
+                      <span> $ </span>
+                      <Form.Control
+                        type="number"
+                        placeholder="0.00"
+                        name="hours_price"
+                        className="project_details_Num_inp send_proposal_num_inp"
+                        onWheel={(e) => e.target.blur()}
+                      />
+                    </div>
+                    <div
+                      className="inp_bdg_pdsp priceStartRange"
+                      style={{ position: "relative" }}
+                    >
+                      <span> $ </span>
+                      <Form.Control
+                        type="number"
+                        placeholder="50.00"
+                        name="hours_price"
+                        className="project_details_Num_inp send_proposal_num_inp"
+                        onWheel={(e) => e.target.blur()}
+                      />
+                    </div>
                   </div>
+                  {/* </div> */}
                 </div>
 
                 <div className="s_na_box s_cat_bo mb-0">

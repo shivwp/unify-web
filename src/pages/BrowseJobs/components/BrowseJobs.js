@@ -31,6 +31,8 @@ const BrowseJobs = () => {
   const [selectSkills, setSelectSkills] = useState([]);
   const [selectCategory, setSeleceCategory] = useState({});
   const [selectLanguages, setSelecetLanguages] = useState({});
+  const [values, setValues] = useState();
+  const [errors, setErrors] = useState({});
 
   const hanDleSlide = (e) => {
     $(e.target.nextSibling).slideToggle();
@@ -97,7 +99,35 @@ const BrowseJobs = () => {
     }
   });
 
+  const onInputChange = (e) => {
+    setValues({ ...values, [e.target.name]: e.target.value });
+    setErrors({ ...errors, [e.target.name]: false });
+  };
+  console.log("first price", values);
+  console.log("Second price", values);
+
+  const clearAllFilters = () => {
+    setSelectSkills([]);
+    setFilterValues([]);
+    setSeleceCategory({});
+    setSelecetLanguages({});
+  };
+
   const onFilterJobList = () => {
+    let errorExist = false;
+    let errorsObject = {};
+    if (values?.min_hours_price < 3) {
+      errorsObject.price = "Amount must be minimum 3 ";
+      errorExist = true;
+    } else if (values?.max_hours_price <= values?.min_hours_price) {
+      errorsObject.price = "Price must be greater then minimum ";
+      errorExist = true;
+    }
+    if (errorExist) {
+      setErrors(errorsObject);
+      return false;
+    }
+
     var languageKeys = Object.keys(selectLanguages);
     var categoryKeys = Object.keys(selectCategory);
     setFilters({
@@ -127,7 +157,10 @@ const BrowseJobs = () => {
                   <div className="sef_na_ea ps_n_sef">
                     <h3>Search Filters</h3>
                   </div>
-                  <div className="sef_p_c ps_n_sefp">
+                  <div
+                    className="sef_p_c ps_n_sefp clearAllBtn"
+                    onClick={clearAllFilters}
+                  >
                     <p>Clear all</p>
                   </div>
                 </div>
@@ -142,7 +175,16 @@ const BrowseJobs = () => {
                         placeholder="what are you looking for"
                         name="search"
                         onChange={(e) => handleFilterChange(e)}
+                        onKeyPress={(e) =>
+                          e.key === "Enter" && onFilterJobList(e)
+                        }
                       />
+                      <div
+                        className="pls_s_na_input enterIcon"
+                        onClick={onFilterJobList}
+                      >
+                        &#62;
+                      </div>
                     </div>
                   </div>
                   <div className="s_na_box">
@@ -150,7 +192,7 @@ const BrowseJobs = () => {
                       <h4>Job type</h4>
                     </div>
                     <div className="s_na_inpu">
-                      <Form.Select
+                      <select
                         className=" smtxt_selct_newug"
                         placeholder="what are you looking for"
                         name="type"
@@ -158,7 +200,7 @@ const BrowseJobs = () => {
                       >
                         <option value="short_term">Sort Term </option>
                         <option value="long_term">Long Term </option>
-                      </Form.Select>
+                      </select>
                     </div>
                   </div>
 
@@ -188,7 +230,6 @@ const BrowseJobs = () => {
                         name="skill"
                         onChange={(e) => onSearchSkill(e)}
                       />
-                      <div className="pls_s_na_input">+</div>
                       {showSuggestedSkills ? (
                         <div className="suggessted_skills" id="suggest_skills">
                           {getSkillList?.map((item) => (
@@ -250,20 +291,41 @@ const BrowseJobs = () => {
                   <div className="s_na_h4">
                     <h4>Price</h4>
                   </div>
-                  <div className="ran_fl_inp">
-                    <Form.Control
-                      type="number"
-                      placeholder="0"
-                      name="min_price"
-                      onChange={(e) => handleFilterChange(e)}
-                    />
-                    <Form.Control
-                      type="number"
-                      placeholder="1,500"
-                      name="max_price"
-                      onChange={(e) => handleFilterChange(e)}
-                    />
+                  <div className="jobPriceRange">
+                    <div
+                      className="inp_bdg_pdsp priceStartRange"
+                      style={{ position: "relative" }}
+                    >
+                      <span> $ </span>
+                      <Form.Control
+                        type="number"
+                        placeholder="3.00"
+                        name="min_hours_price"
+                        value={values?.min_hours_price}
+                        onChange={(e) => onInputChange(e)}
+                        className="project_details_Num_inp send_proposal_num_inp"
+                        onWheel={(e) => e.target.blur()}
+                      />
+                    </div>
+                    <div
+                      className="inp_bdg_pdsp priceStartRange"
+                      style={{ position: "relative" }}
+                    >
+                      <span> $ </span>
+                      <Form.Control
+                        type="number"
+                        placeholder="50.00"
+                        name="max_hours_price"
+                        value={values?.max_hours_price}
+                        onChange={(e) => onInputChange(e)}
+                        className="project_details_Num_inp send_proposal_num_inp"
+                        onWheel={(e) => e.target.blur()}
+                      />
+                    </div>
                   </div>
+                  <span className="jobSignInError">
+                    {errors.price && errors.price}
+                  </span>
                 </div>
 
                 <div className="s_na_box s_cat_bo mb-0">
@@ -304,7 +366,7 @@ const BrowseJobs = () => {
                     </Form.Label>
                   </div>
                 </div>
-                <div className="s_na_box s_cat_bo mt-0">
+                {/* <div className="s_na_box s_cat_bo mt-0">
                   <div
                     className="flex_slide_ta toggle_shutter p-0"
                     onClick={(e) => hanDleSlide(e)}
@@ -345,7 +407,7 @@ const BrowseJobs = () => {
                       </div>
                     ))}
                   </div>
-                </div>
+                </div> */}
                 <div className="desc_hin">
                   <p>
                     Select the options and press the Filter Result button to
@@ -405,26 +467,30 @@ const BrowseJobs = () => {
                   </div>
                 </Link>
               ))}
-              <Col lg={12}>
-                <div className="pagiantion_node">
-                  {totalPages.map((number) => (
-                    <>
-                      <Button
-                        variant=""
-                        className={`pagi_butt ${
-                          jobsPagination?.current_page == number
-                            ? "PageActive"
-                            : ""
-                        }`}
-                        key={number}
-                        onClick={() => setPage(number)}
-                      >
-                        {number}
-                      </Button>
-                    </>
-                  ))}
-                </div>
-              </Col>
+              {jobsPagination?.total_page > 1 ? (
+                <Col lg={12}>
+                  <div className="pagiantion_node">
+                    {totalPages.map((number) => (
+                      <>
+                        <Button
+                          variant=""
+                          className={`pagi_butt ${
+                            jobsPagination?.current_page == number
+                              ? "PageActive"
+                              : ""
+                          }`}
+                          key={number}
+                          onClick={() => setPage(number)}
+                        >
+                          {number}
+                        </Button>
+                      </>
+                    ))}
+                  </div>
+                </Col>
+              ) : (
+                ""
+              )}
             </Col>
 
             {/* Job end */}
