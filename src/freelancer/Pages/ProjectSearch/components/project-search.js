@@ -478,10 +478,14 @@ const Project_Search = () => {
   const [selectCategory, setSeleceCategory] = useState({});
   const [selectLanguages, setSelecetLanguages] = useState({});
   const savedJobsMeta = useSelector((state) => state?.job?.savedJobsList?.meta);
+  const [values, setValues] = useState();
+  const [errors, setErrors] = useState({});
 
   const handleFilterChange = (e) => {
     setFilterValues({ ...filterValues, [e.target.name]: e.target.value });
   };
+
+  console.log("short type or long type", filterValues)
 
   function changeTab(componentName, filters) {
     if (componentName === "search") {
@@ -511,6 +515,11 @@ const Project_Search = () => {
     },
   ];
 
+  const onInputChange = (e) => {
+    setValues({ ...values, [e.target.name]: e.target.value });
+    setErrors({ ...errors, [e.target.name]: false });
+  };
+  
   const removeSkills = (index) => {
     let updateSkills = [...selectSkills];
     updateSkills.splice(index, 1);
@@ -553,6 +562,19 @@ const Project_Search = () => {
   });
 
   const onFilterJobList = (e) => {
+    let errorExist = false;
+    let errorsObject = {};
+    if (values?.min_hours_price < 3) {
+      errorsObject.price = "Amount must be minimum 3 ";
+      errorExist = true;
+    } else if (values?.max_hours_price <= values?.min_hours_price) {
+      errorsObject.price = "Price must be greater then minimum ";
+      errorExist = true;
+    }
+    if (errorExist) {
+      setErrors(errorsObject);
+      return false;
+    }
     var languageKeys = Object.keys(selectLanguages);
     var categoryKeys = Object.keys(selectCategory);
     const filters = {
@@ -736,8 +758,10 @@ const Project_Search = () => {
                       <span> $ </span>
                       <Form.Control
                         type="number"
-                        placeholder="0.00"
-                        name="hours_price"
+                        placeholder="3.00"
+                        name="min_hours_price"
+                        value={values?.min_hours_price}
+                        onChange={(e) => onInputChange(e)}
                         className="project_details_Num_inp send_proposal_num_inp"
                         onWheel={(e) => e.target.blur()}
                       />
@@ -750,12 +774,17 @@ const Project_Search = () => {
                       <Form.Control
                         type="number"
                         placeholder="50.00"
-                        name="hours_price"
+                        name="max_hours_price"
+                        value={values?.max_hours_price}
+                        onChange={(e) => onInputChange(e)}
                         className="project_details_Num_inp send_proposal_num_inp"
                         onWheel={(e) => e.target.blur()}
                       />
                     </div>
                   </div>
+                  <span className="jobSignInError">
+                    {errors.price && errors.price}
+                  </span>
                   {/* </div> */}
                 </div>
 
