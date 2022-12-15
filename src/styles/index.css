@@ -3555,6 +3555,7 @@ body {
 .client_recent_history .heading {
   color: #170048;
   font-weight: 700;
+  padding-bottom: 8px;
 }
 .client_recent_history .project {
   padding: 20px 0;

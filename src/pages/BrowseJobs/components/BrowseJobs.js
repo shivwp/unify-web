@@ -25,7 +25,6 @@ const BrowseJobs = () => {
   const [filters, setFilters] = useState({});
   let getSkillList = useSelector((state) => state?.profile?.getSkillList);
   const [showSuggestedSkills, setShowSuggestedSkills] = useState(false);
-  const languageList = useSelector((state) => state?.profile?.getLanguageList);
   const categoryList = useSelector((state) => state.profile.categoryList);
 
   const [selectSkills, setSelectSkills] = useState([]);
@@ -34,21 +33,26 @@ const BrowseJobs = () => {
   const [values, setValues] = useState();
   const [errors, setErrors] = useState({});
 
-  const hanDleSlide = (e) => {
-    $(e.target.nextSibling).slideToggle();
-  };
-
   const handleFilterChange = (e) => {
     setFilterValues({ ...filterValues, [e.target.name]: e.target.value });
+
+    if (e.target.name == "max_price" || e.target.name == "min_price") {
+      setErrors({ ...errors, price: false });
+    } else {
+      setErrors({ ...errors, [e.target.name]: false });
+    }
   };
 
   for (let i = 1; i < jobsPagination?.total_page + 1; i++) {
     totalPages.push(i);
   }
+
+  // for filter jobs
   useEffect(() => {
     dispatch(getJobsList({ pagination: 10, page, ...filters }, ScrollTop));
   }, [page, filters]);
 
+  // to get language list and get category list
   useEffect(() => {
     dispatch(getLanguageList());
     dispatch(getCategoryList());
@@ -58,14 +62,37 @@ const BrowseJobs = () => {
     window.scrollTo(0, 0);
   };
 
+  // Remove Skill
   const removeSkills = (index) => {
     let updateSkills = [...selectSkills];
     updateSkills.splice(index, 1);
     setSelectSkills(updateSkills);
   };
 
+  // to filter jobs by skills
+  useEffect(() => {
+    setFilters({
+      ...filters,
+      skills: selectSkills?.map((item) => item.skill_id)?.toString(),
+    });
+  }, [selectSkills]);
+
+  // to filter jobs by category select
+  useEffect(() => {
+    var categoryKeys = Object.keys(selectCategory);
+    setFilters({
+      ...filters,
+      project_category: categoryKeys
+        ?.filter(function (key) {
+          return selectCategory[key];
+        })
+        ?.toString(),
+    });
+  }, [selectCategory]);
+
+  // to select skills
   const addSkills = (item) => {
-    if (selectSkills.length <= 15) {
+    if (selectSkills.length <= 10) {
       if (
         selectSkills.find((ele) => {
           return ele.skill_id == item.id;
@@ -80,6 +107,7 @@ const BrowseJobs = () => {
     document.getElementById("search_skill_inp").value = null;
   };
 
+  // skill search
   const onSearchSkill = (e) => {
     setShowSuggestedSkills(true);
     let data;
@@ -93,18 +121,20 @@ const BrowseJobs = () => {
     $("#suggest_skills").show();
   };
 
+  // hide skills on click outside
   $(document).mouseup(function (e) {
     if ($(e.target).closest("#suggest_skills").length === 0) {
       setShowSuggestedSkills(false);
     }
   });
 
-  const onInputChange = (e) => {
-    setValues({ ...values, [e.target.name]: e.target.value });
-    setErrors({ ...errors, [e.target.name]: false });
-  };
-  console.log("first price", values);
-  console.log("Second price", values);
+  // project duration
+  const projectDuration = [
+    { name: "More then 6 months" },
+    { name: "3 to 6 months" },
+    { name: "1 to 3 months" },
+    { name: "Less then 1 month" },
+  ];
 
   const clearAllFilters = () => {
     setSelectSkills([]);
@@ -113,13 +143,14 @@ const BrowseJobs = () => {
     setSelecetLanguages({});
   };
 
+  // to set values in setFilter state
   const onFilterJobList = () => {
     let errorExist = false;
     let errorsObject = {};
-    if (values?.min_hours_price < 3) {
+    if (filterValues?.min_price < 3) {
       errorsObject.price = "Amount must be minimum 3 ";
       errorExist = true;
-    } else if (values?.max_hours_price <= values?.min_hours_price) {
+    } else if (filterValues?.max_price <= filterValues?.min_price) {
       errorsObject.price = "Price must be greater then minimum ";
       errorExist = true;
     }
@@ -196,7 +227,12 @@ const BrowseJobs = () => {
                         className=" smtxt_selct_newug"
                         placeholder="what are you looking for"
                         name="type"
-                        onChange={(e) => handleFilterChange(e)}
+                        onChange={(e) =>
+                          setFilters({
+                            ...filters,
+                            [e.target.name]: e.target.value,
+                          })
+                        }
                       >
                         <option value="short_term">Sort Term </option>
                         <option value="long_term">Long Term </option>
@@ -250,18 +286,42 @@ const BrowseJobs = () => {
                     </div>
                     <div className="s_na_inpu">
                       <select
-                        name="cars"
-                        id="cars"
+                        name="duration"
+                        value={values?.duration}
                         className="font-size-13px projectDurationOption"
                         placeholder="Select a duration"
+                        onChange={(e) => handleFilterChange(e)}
                       >
                         <option disabled selected hidden>
                           Select a duration
                         </option>
-                        <option value="volvo">More then 6 months</option>
-                        <option value="saab">3 to 6 months</option>
-                        <option value="opel">1 to 3 months</option>
-                        <option value="audi">Less then 1 month</option>
+                        {projectDuration.map((item) => (
+                          <option value={item.name}>{item.name}</option>
+                        ))}
+                      </select>
+                    </div>
+                  </div>
+                  <div className="s_na_box">
+                    <div className="s_na_h4">
+                      <h4>Budget type</h4>
+                    </div>
+                    <div className="s_na_inpu">
+                      <select
+                        name="budget_type"
+                        onChange={(e) =>
+                          setFilters({
+                            ...filters,
+                            [e.target.name]: e.target.value,
+                          })
+                        }
+                        className="font-size-13px projectDurationOption"
+                        defaultValue="default"
+                      >
+                        <option value="default" disabled selected hidden>
+                          Select budget
+                        </option>
+                        <option value="hourly">Hourly</option>
+                        <option value="fixed">Fixed</option>
                       </select>
                     </div>
                   </div>
@@ -300,9 +360,9 @@ const BrowseJobs = () => {
                       <Form.Control
                         type="number"
                         placeholder="3.00"
-                        name="min_hours_price"
-                        value={values?.min_hours_price}
-                        onChange={(e) => onInputChange(e)}
+                        name="min_price"
+                        value={filterValues?.min_price}
+                        onChange={(e) => handleFilterChange(e)}
                         className="project_details_Num_inp send_proposal_num_inp"
                         onWheel={(e) => e.target.blur()}
                       />
@@ -315,9 +375,9 @@ const BrowseJobs = () => {
                       <Form.Control
                         type="number"
                         placeholder="50.00"
-                        name="max_hours_price"
-                        value={values?.max_hours_price}
-                        onChange={(e) => onInputChange(e)}
+                        name="max_price"
+                        value={filterValues?.max_price}
+                        onChange={(e) => handleFilterChange(e)}
                         className="project_details_Num_inp send_proposal_num_inp"
                         onWheel={(e) => e.target.blur()}
                       />
@@ -339,7 +399,12 @@ const BrowseJobs = () => {
                       name="english_level"
                       value="fluent"
                       id="fluent"
-                      onChange={(e) => handleFilterChange(e)}
+                      onChange={(e) =>
+                        setFilters({
+                          ...filters,
+                          [e.target.name]: e.target.value,
+                        })
+                      }
                     />
                     <Form.Label htmlFor="fluent">Fluent </Form.Label>
                   </div>
@@ -348,7 +413,12 @@ const BrowseJobs = () => {
                       type="radio"
                       name="english_level"
                       value="native"
-                      onChange={(e) => handleFilterChange(e)}
+                      onChange={(e) =>
+                        setFilters({
+                          ...filters,
+                          [e.target.name]: e.target.value,
+                        })
+                      }
                       id="native"
                     />
                     <Form.Label htmlFor="native">Native </Form.Label>
@@ -359,55 +429,19 @@ const BrowseJobs = () => {
                       name="english_level"
                       value="conversational"
                       id="conversational"
-                      onChange={(e) => handleFilterChange(e)}
+                      onChange={(e) =>
+                        setFilters({
+                          ...filters,
+                          [e.target.name]: e.target.value,
+                        })
+                      }
                     />
                     <Form.Label htmlFor="conversational">
                       Conversational{" "}
                     </Form.Label>
                   </div>
                 </div>
-                {/* <div className="s_na_box s_cat_bo mt-0">
-                  <div
-                    className="flex_slide_ta toggle_shutter p-0"
-                    onClick={(e) => hanDleSlide(e)}
-                  >
-                    <div className="s_na_h4">
-                      <h4>Languages</h4>
-                    </div>
-                    <div>
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
-                        fill="currentColor"
-                        className="bi bi-chevron-down"
-                        viewBox="0 0 16 16"
-                      >
-                        <path
-                          fillRule="evenodd"
-                          d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"
-                        />
-                      </svg>
-                    </div>
-                  </div>
-                  <div className="slide_btnss slider_shutter languages_overflow">
-                    {languageList?.map((item) => (
-                      <div className="s_na_categ">
-                        <Form.Check
-                          type="checkbox"
-                          value={item.name}
-                          onChange={(e) => {
-                            setSelecetLanguages({
-                              ...selectLanguages,
-                              [e.target.value]: e.target.checked,
-                            });
-                          }}
-                        />
-                        <Form.Label>{item.name}</Form.Label>
-                      </div>
-                    ))}
-                  </div>
-                </div> */}
+
                 <div className="desc_hin">
                   <p>
                     Select the options and press the Filter Result button to

@@ -68,14 +68,11 @@ const ProjectSearch = ({ filters }) => {
     (state) => state?.job?.dislikeJobReasons
   );
 
-  console.log(jobsList);
-
   const ScrollTop = () => {
     window.scrollTo(0, 0);
   };
 
   useEffect(() => {
-    dispatch(getJobsList({ pagination: 10, page, ...filters }, ScrollTop));
     dispatch(getSavedJobsList({ pagination: 10, page }, ScrollTop));
   }, [page, onDislikeJobPost, unSaveJobsPost, saveJobsPost, filters]);
 
@@ -116,11 +113,9 @@ const ProjectSearch = ({ filters }) => {
                 </div>
                 <div className="dlex_sk_block flex-wrap">
                   {item?.skills?.map((skill, index) => (
-                    <>
-                      <div key={index} className="b_skil">
-                        {skill?.name}
-                      </div>
-                    </>
+                    <div key={index} className="b_skil">
+                      {skill?.name}
+                    </div>
                   ))}
                 </div>
                 <div className="job_d_par">
@@ -278,18 +273,16 @@ const ProjectSearch = ({ filters }) => {
         <Col lg={12}>
           <div className="pagiantion_node">
             {totalPages.map((number) => (
-              <>
-                <Button
-                  variant=""
-                  key={number}
-                  className={`pagi_butt ${
-                    jobsPagination?.current_page == number ? "PageActive" : ""
-                  }`}
-                  onClick={() => setPage(number)}
-                >
-                  {number}
-                </Button>
-              </>
+              <Button
+                variant=""
+                key={number}
+                className={`pagi_butt ${
+                  jobsPagination?.current_page == number ? "PageActive" : ""
+                }`}
+                onClick={() => setPage(number)}
+              >
+                {number}
+              </Button>
             ))}
           </div>
         </Col>
@@ -478,12 +471,27 @@ const Project_Search = () => {
   const [selectCategory, setSeleceCategory] = useState({});
   const [selectLanguages, setSelecetLanguages] = useState({});
   const savedJobsMeta = useSelector((state) => state?.job?.savedJobsList?.meta);
+  const jobsPagination = useSelector((state) => state?.job?.jobsList?.meta);
+  const jobsList = useSelector((state) => state?.job?.jobsList?.data);
+  const [filters, setFilters] = useState({});
+  const [page, setPage] = useState(1);
+  const [errors, setErrors] = useState({});
+  const totalPages = [];
 
   const handleFilterChange = (e) => {
     setFilterValues({ ...filterValues, [e.target.name]: e.target.value });
+    if (e.target.name == "max_price" || e.target.name == "min_price") {
+      setErrors({ ...errors, price: false });
+    } else {
+      setErrors({ ...errors, [e.target.name]: false });
+    }
   };
 
-  function changeTab(componentName, filters) {
+  for (let i = 1; i < jobsPagination?.total_page + 1; i++) {
+    totalPages.push(i);
+  }
+
+  function changeTab(componentName) {
     if (componentName === "search") {
       SetTab(<ProjectSearch filters={filters} />);
       Title(" | Project Search");
@@ -511,6 +519,46 @@ const Project_Search = () => {
     },
   ];
 
+  // for filter jobs
+  useEffect(() => {
+    if (filters) {
+      dispatch(getJobsList({ pagination: 10, page, ...filters }));
+    }
+  }, [page, filters]);
+
+  // to filter jobs by skills
+  useEffect(() => {
+    if (selectSkills) {
+      setFilters({
+        ...filters,
+        skills: selectSkills?.map((item) => item.skill_id)?.toString(),
+      });
+    }
+  }, [selectSkills]);
+
+  // to filter jobs by category
+  useEffect(() => {
+    if (selectCategory) {
+      var categoryKeys = Object.keys(selectCategory);
+      setFilters({
+        ...filters,
+        project_category: categoryKeys
+          ?.filter(function (key) {
+            return selectCategory[key];
+          })
+          ?.toString(),
+      });
+    }
+  }, [selectCategory]);
+
+  // project duration
+  const projectDuration = [
+    { name: "More then 6 months" },
+    { name: "3 to 6 months" },
+    { name: "1 to 3 months" },
+    { name: "Less then 1 month" },
+  ];
+
   const removeSkills = (index) => {
     let updateSkills = [...selectSkills];
     updateSkills.splice(index, 1);
@@ -518,7 +566,7 @@ const Project_Search = () => {
   };
 
   const addSkills = (item) => {
-    if (selectSkills.length <= 15) {
+    if (selectSkills.length <= 10) {
       if (
         selectSkills.find((ele) => {
           return ele.skill_id == item.id;
@@ -553,6 +601,22 @@ const Project_Search = () => {
   });
 
   const onFilterJobList = (e) => {
+    console.log(filterValues);
+    let errorExist = false;
+    let errorsObject = {};
+    if (filterValues?.min_price || filterValues?.max_price) {
+      if (filterValues?.min_price < 3) {
+        errorsObject.price = "Amount must be minimum 3 ";
+        errorExist = true;
+      } else if (filterValues?.max_price <= filterValues?.min_price) {
+        errorsObject.price = "Price must be greater then minimum ";
+        errorExist = true;
+      }
+    }
+    if (errorExist) {
+      setErrors(errorsObject);
+      return false;
+    }
     var languageKeys = Object.keys(selectLanguages);
     var categoryKeys = Object.keys(selectCategory);
     const filters = {
@@ -573,12 +637,14 @@ const Project_Search = () => {
         })
         ?.toString(),
     };
-    changeTab("search", filters);
+
+    setFilters(filters);
   };
 
   const clearAllFilters = () => {
-    setSelectSkills([]);
+    setFilters({});
     setFilterValues([]);
+    setSelectSkills([]);
     setSeleceCategory({});
     setSelecetLanguages({});
   };
@@ -634,7 +700,12 @@ const Project_Search = () => {
                         placeholder="what are you looking for"
                         options={options1}
                         name="type"
-                        onChange={(e) => handleFilterChange(e)}
+                        onChange={(e) =>
+                          setFilters({
+                            ...filters,
+                            [e.target.name]: e.target.value,
+                          })
+                        }
                       >
                         <option value="short_term">Sort Term </option>
                         <option value="long_term">Long Term </option>
@@ -693,10 +764,33 @@ const Project_Search = () => {
                         <option value="dafault" disabled hidden>
                           Select a duration
                         </option>
-                        <option value="volvo">More then 6 months</option>
-                        <option value="saab">3 to 6 months</option>
-                        <option value="opel">1 to 3 months</option>
-                        <option value="audi">Less then 1 month</option>
+                        {projectDuration.map((item) => (
+                          <option value={item.name}>{item.name}</option>
+                        ))}
+                      </select>
+                    </div>
+                  </div>
+                  <div className="s_na_box">
+                    <div className="s_na_h4">
+                      <h4>Budget type</h4>
+                    </div>
+                    <div className="s_na_inpu">
+                      <select
+                        name="budget_type"
+                        onChange={(e) =>
+                          setFilters({
+                            ...filters,
+                            [e.target.name]: e.target.value,
+                          })
+                        }
+                        className="font-size-13px projectDurationOption"
+                        defaultValue="default"
+                      >
+                        <option value="default" disabled hidden>
+                          Select budget
+                        </option>
+                        <option value="hourly">Hourly</option>
+                        <option value="fixed">Fixed</option>
                       </select>
                     </div>
                   </div>
@@ -706,7 +800,7 @@ const Project_Search = () => {
                     <h4>Category</h4>
                   </div>
                   {categoryList?.map((item, index) => (
-                    <div className="s_na_categ">
+                    <div className="s_na_categ" key={index}>
                       <Form.Check
                         type="checkbox"
                         name="category"
@@ -736,8 +830,10 @@ const Project_Search = () => {
                       <span> $ </span>
                       <Form.Control
                         type="number"
-                        placeholder="0.00"
-                        name="hours_price"
+                        placeholder="3.00"
+                        name="min_price"
+                        value={filterValues?.min_price}
+                        onChange={(e) => handleFilterChange(e)}
                         className="project_details_Num_inp send_proposal_num_inp"
                         onWheel={(e) => e.target.blur()}
                       />
@@ -750,12 +846,17 @@ const Project_Search = () => {
                       <Form.Control
                         type="number"
                         placeholder="50.00"
-                        name="hours_price"
+                        name="max_price"
+                        value={filterValues?.max_price}
+                        onChange={(e) => handleFilterChange(e)}
                         className="project_details_Num_inp send_proposal_num_inp"
                         onWheel={(e) => e.target.blur()}
                       />
                     </div>
                   </div>
+                  <span className="jobSignInError">
+                    {errors.price && errors.price}
+                  </span>
                   {/* </div> */}
                 </div>
 
@@ -769,7 +870,12 @@ const Project_Search = () => {
                       type="radio"
                       name="english_level"
                       value="fluent"
-                      onChange={(e) => handleFilterChange(e)}
+                      onChange={(e) =>
+                        setFilters({
+                          ...filters,
+                          [e.target.name]: e.target.value,
+                        })
+                      }
                       id="fluent"
                     />
                     <Form.Label htmlFor="fluent">Fluent </Form.Label>
@@ -779,7 +885,12 @@ const Project_Search = () => {
                       type="radio"
                       name="english_level"
                       value="native"
-                      onChange={(e) => handleFilterChange(e)}
+                      onChange={(e) =>
+                        setFilters({
+                          ...filters,
+                          [e.target.name]: e.target.value,
+                        })
+                      }
                       id="native"
                     />
                     <Form.Label htmlFor="native">Native </Form.Label>
@@ -790,7 +901,12 @@ const Project_Search = () => {
                       name="english_level"
                       value="conversational"
                       id="conversational"
-                      onChange={(e) => handleFilterChange(e)}
+                      onChange={(e) =>
+                        setFilters({
+                          ...filters,
+                          [e.target.name]: e.target.value,
+                        })
+                      }
                     />
                     <Form.Label htmlFor="conversational">
                       Conversational{" "}
