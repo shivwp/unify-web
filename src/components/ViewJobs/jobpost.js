@@ -285,7 +285,7 @@ const JonComponent = ({ singleJobDetails, jobId, handleMakePublicPrivate }) => {
                   {singleJobDetails?.client_data?.job_posted} Jobs Posted
                 </div>
                 <div className="csai_t">
-                  {singleJobDetails?.hire_rate}% hire rate,{" "}
+                  {singleJobDetails?.hire_rate}% hire rate,
                   {singleJobDetails?.open_jobs} open job
                 </div>
 

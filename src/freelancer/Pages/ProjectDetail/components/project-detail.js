@@ -634,13 +634,19 @@ const Projectdetail = () => {
                   <div className="about_heading">
                     {singleJobDetails?.client_data?.job_posted} jobs posted
                   </div>
-                  <div className="about_desc">20% hire rate, 1 open job</div>
+                  <div className="about_desc">
+                    {singleJobDetails?.hire_rate}% hire rate,&nbsp;
+                    {singleJobDetails?.open_jobs} open job
+                  </div>
                 </div>
                 <div className="about">
                   <div className="about_heading">
                     ${singleJobDetails?.client_data?.money_spent}+ total spent
                   </div>
-                  <div className="about_desc">5 hires, 2 active</div>
+                  <div className="about_desc">
+                    {singleJobDetails?.total_hire} hires,
+                    {singleJobDetails?.total_Active} active
+                  </div>
                 </div>
                 <div className="about">
                   <div className="about_heading">

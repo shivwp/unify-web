@@ -39,7 +39,7 @@ const JobDetails = () => {
       values?.email === null ||
       values?.email === undefined
     ) {
-      errorsObject.email = "Please enter your email";
+      errorsObject.email = "Please enter email ";
       errorExist = true;
     } else if (!values?.email.trim()) {
       errorsObject.email = "Email is required";

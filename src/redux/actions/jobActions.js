@@ -35,7 +35,9 @@ export const getJobsList = (data, ScrollTop) => async (dispatch) => {
         type: JOBS_LIST,
         payload: res.data,
       });
-      ScrollTop();
+      if (ScrollTop) {
+        ScrollTop();
+      }
     });
   } catch (err) {}
 };
