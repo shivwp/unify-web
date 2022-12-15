@@ -167,6 +167,7 @@ const PublishProfile = ({ setCurrentTab, profileList }) => {
                   <img
                     src={showingImage}
                     type="file"
+                    accept="image/png, image/jpeg, image/jpg"
                     onChange={(e) => onInputChange(e)}
                     style={{
                       width: "100%",

@@ -44,7 +44,7 @@ const NavbarHeader = (props) => {
           </button>
         </div>
         <div className="navdata_li">
-          <Link to="/how-it-works">What is Unify</Link>
+          <Link to="/how-it-works">What is Unify ?</Link>
         </div>
         <div className="navdata_li">
           <Link to="/browse-jobs">BROWSE JOBS</Link>

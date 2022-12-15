@@ -285,6 +285,18 @@
   max-width: 600px !important;
 }
 
+@media screen and (min-width: 426px) {
+  .portfolio_popup {
+    min-width: 600px !important;
+  }
+}
+@media screen and (max-width: 648px) {
+  .portfolio_popup {
+    width: 90%;
+    margin: 0 auto !important;
+  }
+}
+
 .addMobPopup_heading {
   display: flex;
   flex-direction: column;

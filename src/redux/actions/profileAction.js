@@ -37,6 +37,8 @@ import {
   SET_PORTFOLIO_ERROR,
   ADD_CATEGORY,
   HOURLY_PRICE,
+  ON_CREATE_TEAM,
+  TEAM_LIST,
 } from "../types";
 let userDetails = JSON.parse(sessionStorage.getItem("unify_user"));
 
@@ -144,6 +146,28 @@ export const addEditClientInfo = (data, setOpen) => async (dispatch) => {
         payload: res.data,
       });
       setOpen(false);
+    });
+  } catch (err) {}
+};
+
+export const onCreateTeam = (data, onCloseModal) => async (dispatch) => {
+  try {
+    Axios.post("/create-team", data, config).then((res) => {
+      dispatch({
+        type: ON_CREATE_TEAM,
+        payload: res.data,
+      });
+      onCloseModal(false);
+    });
+  } catch (err) {}
+};
+export const getTeamList = () => async (dispatch) => {
+  try {
+    Axios.get("/team-list", config).then((res) => {
+      dispatch({
+        type: TEAM_LIST,
+        payload: res.data.data,
+      });
     });
   } catch (err) {}
 };

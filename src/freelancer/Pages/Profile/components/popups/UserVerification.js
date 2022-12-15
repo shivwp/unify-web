@@ -183,6 +183,7 @@ const UserVerification = (props) => {
                       <input
                         type="file"
                         id="attach-doc-front"
+                        accept="image/png, image/jpeg, image/jpg"
                         style={{ display: "none" }}
                         onChange={(e) => onFrontImgChange(e)}
                       />
@@ -234,6 +235,7 @@ const UserVerification = (props) => {
                       <input
                         type="file"
                         id="attach-doc-back"
+                        accept="image/png, image/jpeg, image/jpg"
                         style={{ display: "none" }}
                         onChange={(e) => onBackImgChange(e)}
                       />

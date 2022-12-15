@@ -422,6 +422,7 @@ const UnifyFreelancer = () => {
                     </div>
                     <Form.Control
                       type="file"
+                      accept="image/png, image/jpeg, image/jpg"
                       id="profile_img_change"
                       onChange={(e) => onProfleImgChange(e)}
                       style={{

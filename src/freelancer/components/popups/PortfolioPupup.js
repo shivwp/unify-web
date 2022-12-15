@@ -180,6 +180,7 @@ const PortfolioPupup = ({
                   <Form.Control
                     type="file"
                     id="drag_portfolio"
+                    accept="image/png, image/jpeg, image/jpg"
                     name="file"
                     className="img-fluid"
                     onChange={(e) => onImageChange(e)}
@@ -214,8 +215,7 @@ const PortfolioPupup = ({
               <span className="signup-error">{editPortfoData}</span>
             </div>
             <p style={{ fontSize: 13, color: "#304E71" }}>
-              You may attach up to 10 files under the size of 25MB each. Include
-              work samples or other documents to support your application.
+              File size limit 10 MB. 
             </p>
           </div>
         </div>

@@ -13,7 +13,7 @@ import {
   savedTalentList,
 } from "../../redux/actions/freelancerAction";
 
-const JonComponent = ({ jobId }) => {
+const JonComponent = ({ jobId, setCurrentTab }) => {
   const dispatch = useDispatch();
   const [searchValue, setSearchValue] = useState("");
   const [inviteTab, setInviteTab] = useState("searchFreelancer");
@@ -141,6 +141,7 @@ const JonComponent = ({ jobId }) => {
               onRemoveSearchData={onRemoveSearchData}
               handleSavedTalent={handleSavedTalent}
               handleRemoveSavedTalent={handleRemoveSavedTalent}
+              setCurrentTab={setCurrentTab}
             />
           )}
           {inviteTab === "invited" && (

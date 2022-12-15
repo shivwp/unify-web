@@ -35,6 +35,8 @@ import {
   SET_CATEGORY_LIST,
   SET_PORTFOLIO_ERROR,
   ADD_CATEGORY,
+  ON_CREATE_TEAM,
+  TEAM_LIST,
 } from "../types";
 
 const initialState = {};
@@ -224,6 +226,16 @@ const profileReducer = (state = initialState, action) => {
       return {
         ...state,
         addCategory: action.payload,
+      };
+    case ON_CREATE_TEAM:
+      return {
+        ...state,
+        createTeam: action.payload,
+      };
+    case TEAM_LIST:
+      return {
+        ...state,
+        teamList: action.payload,
       };
     default:
       return state;

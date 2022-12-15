@@ -84,6 +84,12 @@ export const LOGIN_ERROR = "LOGIN_ERROR";
 
 export const SIGNUP_ERROR = "SIGNUP_ERROR";
 
+export const CLIENT_BUSINESSSIZE = "CLIENT_BUSINESSSIZE";
+
+export const ON_CREATE_TEAM = "ON_CREATE_TEAM";
+
+export const TEAM_LIST = "TEAM_LIST";
+
 // JOB Types ----------------------------------------
 
 export const JOBS_LIST = "JOBS_LIST";

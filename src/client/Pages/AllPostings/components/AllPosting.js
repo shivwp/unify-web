@@ -43,10 +43,14 @@ const AllPosting = () => {
               <div
                 key={index}
                 className="my_job_flx"
-                style={{
-                  borderBottom: "#cbcaca solid 1px",
-                  paddingBottom: "15px",
-                }}
+                style={
+                  index != clientPostingList.length - 1
+                    ? {
+                        borderBottom: "#cbcaca solid 1px",
+                        paddingBottom: "15px",
+                      }
+                    : {}
+                }
               >
                 <div>
                   <div className="my_job_a job_na_bol">{item.name}</div>

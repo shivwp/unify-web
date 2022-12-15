@@ -15,6 +15,7 @@ import {
   INSTANT_LOGIN_EMAIL,
   VERIFY_SIGNUP_ERROR,
   POST_JOB_LIKE_THIS,
+  CLIENT_BUSINESSSIZE,
 } from "../types";
 
 const initialState = {};
@@ -100,6 +101,11 @@ const authReducer = (state = initialState, action) => {
       return {
         ...state,
         postJob: action.payload,
+      };
+    case CLIENT_BUSINESSSIZE:
+      return {
+        ...state,
+        clientBusinesssize: action.payload,
       };
 
     default:

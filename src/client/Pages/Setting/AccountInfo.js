@@ -31,6 +31,7 @@ const AccountInfo = ({
           <Form.Label htmlFor="uploadProfile" className="change_prof_btn">
             <Form.Control
               type="file"
+              accept="image/png, image/jpeg, image/jpg"
               id="uploadProfile"
               name="profile_image"
               onChange={(e) => onProfileChange(e)}
@@ -213,6 +214,7 @@ const AccountInfo = ({
                     id="radio-4"
                     name="employee_no"
                     value={100}
+                    
                     onChange={(e) => onInputChange(e)}
                     checked={values?.employee_no == 100 ? true : false}
                   />

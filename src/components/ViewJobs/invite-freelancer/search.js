@@ -14,6 +14,7 @@ const Screen = ({
   searchValue,
   handleSavedTalent,
   handleRemoveSavedTalent,
+  setCurrentTab,
 }) => {
   const [inviteJobPopup, setInviteJobPopup] = useState(false);
   const [freelancerId, setFreelancerId] = useState();
@@ -138,7 +139,18 @@ const Screen = ({
                               Hire
                             </button>
                           </Link>
-                          {data.isInvite === false ? (
+                          {data.isInvite ? (
+                            <button className="invitationSentDisabled" disabled>
+                              Invitation sent
+                            </button>
+                          ) : data.isSendProposal ? (
+                            <button
+                              className="mt-2 font-weight-500"
+                              onClick={() => setCurrentTab("review")}
+                            >
+                              View Proposal
+                            </button>
+                          ) : (
                             <button
                               onClick={() => {
                                 setInviteJobPopup(true);
@@ -147,10 +159,6 @@ const Screen = ({
                               className="mt-2 font-weight-500"
                             >
                               Invite to Job
-                            </button>
-                          ) : (
-                            <button className="invitationSentDisabled" disabled>
-                              Invitation sent
                             </button>
                           )}
                         </div>

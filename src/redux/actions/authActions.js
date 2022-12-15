@@ -21,6 +21,7 @@ import {
   CATEGORY_SKILL_DATA,
   SKILLS_DEVELOPER_DATA,
   VERIFY_SIGNUP_ERROR,
+  CLIENT_BUSINESSSIZE,
 } from "../types";
 import { GoogleAuthProvider, OAuthProvider } from "firebase/auth";
 import SuccessPopup from "../../freelancer/components/popups/SuccessPopup";
@@ -342,6 +343,21 @@ export const getFooterPageData = (pagename) => async (dispatch) => {
           type: FOOTER_PAGE_DATA,
           payload: res.data.data,
         });
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+export const setClientCompnySize = (data, navigate) => async (dispatch) => {
+  await Axios.post("/business-size", data, config)
+    .then((res) => {
+      if (res.data.status) {
+        dispatch({
+          type: CLIENT_BUSINESSSIZE,
+          payload: res.data.data,
+        });
+        navigate("/question1");
       }
     })
     .catch((err) => {

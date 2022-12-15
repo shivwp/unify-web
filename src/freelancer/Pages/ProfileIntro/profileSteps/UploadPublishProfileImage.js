@@ -100,6 +100,7 @@ const UploadPublishProfilepic = ({
                     type="file"
                     id="uploadImg"
                     name="profile"
+                    accept="image/png, image/jpeg, image/jpg"
                     style={{
                       display: "none",
                     }}

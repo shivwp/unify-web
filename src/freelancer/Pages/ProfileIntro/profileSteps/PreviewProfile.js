@@ -166,6 +166,7 @@ const PreviewProfile = ({ setCurrentTab, profileList }) => {
                   >
                     <input
                       type="file"
+                      accept="image/png, image/jpeg, image/jpg"
                       name="profile_image"
                       id="selectImg"
                       style={{ display: "none" }}
@@ -180,7 +181,7 @@ const PreviewProfile = ({ setCurrentTab, profileList }) => {
                   <div className="hraet_pdd_sp">
                     {`${profileList?.basic_info?.first_name} ${profileList?.basic_info?.last_name}`}
                     <div className="previewProfileUsr">
-                      {`${profileList?.basic_info?.city} ${profileList?.basic_info?.address} ${profileList?.basic_info?.country}`}
+                      {`${profileList?.basic_info?.address}, ${profileList?.basic_info?.city}, ${profileList?.basic_info?.country}`}
                     </div>
                     <div className="previewProfileUsr">
                       {" "}

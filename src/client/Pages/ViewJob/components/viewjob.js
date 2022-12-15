@@ -102,7 +102,9 @@ const ViewScreen = () => {
             handleMakePublicPrivate={handleMakePublicPrivate}
           />
         )}
-        {currentTab === "invite" && <InviteFreelancer jobId={jobId} />}
+        {currentTab === "invite" && (
+          <InviteFreelancer jobId={jobId} setCurrentTab={setCurrentTab} />
+        )}
         {currentTab === "review" && <ReviewProposal jobId={jobId} />}
         {currentTab === "hire" && <Hire />}
       </div>

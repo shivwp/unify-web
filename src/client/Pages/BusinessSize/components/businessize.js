@@ -5,7 +5,9 @@ import Title from "../../../../components/title";
 import { Link, useNavigate } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { setClientCompnySize } from "../../../../redux/actions/authActions";
+import { getClientInfoDetails } from "../../../../redux/actions/profileAction";
 
 const Bsize = () => {
   Title(" | Business Size");
@@ -13,14 +15,21 @@ const Bsize = () => {
   const [values, setValues] = useState({});
   const [errors, setErrors] = useState({});
   const dispatch = useDispatch();
+  const getClientDetails = useSelector(
+    (state) => state.profile.getClientDetails
+  );
+  useEffect(() => {
+    if (getClientDetails) {
+      setValues({ employee_no: getClientDetails?.employee_no });
+    }
+  }, [getClientDetails]);
 
   const onInputChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
     setErrors({ ...errors, [e.target.name]: false });
   };
-
   useEffect(() => {
-    // dispatch();
+    dispatch(getClientInfoDetails());
   }, []);
 
   const onNext = () => {
@@ -28,11 +37,11 @@ const Bsize = () => {
     let errorsObject = {};
 
     if (
-      values?.employees === "" ||
-      values?.employees === null ||
-      values?.employees === undefined
+      values?.employee_no === "" ||
+      values?.employee_no === null ||
+      values?.employee_no === undefined
     ) {
-      errorsObject.employees = true;
+      errorsObject.employee_no = true;
       errorExist = true;
     }
 
@@ -40,8 +49,7 @@ const Bsize = () => {
       setErrors(errorsObject);
       return false;
     }
-
-    navigate("/question1");
+    dispatch(setClientCompnySize(values, navigate));
   };
 
   return (
@@ -67,9 +75,10 @@ const Bsize = () => {
                   <div className="bs_s_inpu bg_hei_n_i">
                     <Form.Check
                       type="radio"
-                      name="employees"
-                      value="1"
-                      onChange={onInputChange}
+                      name="employee_no"
+                      value={1}
+                      checked={values?.employee_no == 1}
+                      onChange={(e) => onInputChange(e)}
                     />
                   </div>
                   <div>
@@ -85,7 +94,7 @@ const Bsize = () => {
                     </svg>
                   </div>
                   <div className="bs_s_h4">
-                    <h4>1-10 Employees</h4>
+                    <h4>It just me</h4>
                   </div>
                 </Form.Label>
               </Col>
@@ -94,9 +103,10 @@ const Bsize = () => {
                   <div className="bs_s_inpu bg_hei_n_i">
                     <Form.Check
                       type="radio"
-                      name="employees"
-                      value="10"
-                      onChange={onInputChange}
+                      name="employee_no"
+                      value={2}
+                      checked={values?.employee_no == 2}
+                      onChange={(e) => onInputChange(e)}
                     />
                   </div>
                   <div>
@@ -112,7 +122,7 @@ const Bsize = () => {
                     </svg>
                   </div>
                   <div className="bs_s_h4">
-                    <h4>10-100 Employees</h4>
+                    <h4>2-9 Employees</h4>
                   </div>
                 </Form.Label>
               </Col>
@@ -121,9 +131,10 @@ const Bsize = () => {
                   <div className="bs_s_inpu bg_hei_n_i">
                     <Form.Check
                       type="radio"
-                      name="employees"
-                      value="100"
-                      onChange={onInputChange}
+                      name="employee_no"
+                      checked={values?.employee_no == 10}
+                      value={10}
+                      onChange={(e) => onInputChange(e)}
                     />
                   </div>
                   <div>
@@ -142,7 +153,7 @@ const Bsize = () => {
                     </svg>
                   </div>
                   <div className="bs_s_h4">
-                    <h4>100-1000 Employees</h4>
+                    <h4>10-99 Employees</h4>
                   </div>
                 </Form.Label>
               </Col>
@@ -151,9 +162,10 @@ const Bsize = () => {
                   <div className="bs_s_inpu bg_hei_n_i">
                     <Form.Check
                       type="radio"
-                      name="employees"
-                      value="1000"
-                      onChange={onInputChange}
+                      name="employee_no"
+                      checked={values?.employee_no == 100}
+                      value={100}
+                      onChange={(e) => onInputChange(e)}
                     />
                   </div>
                   <div>
@@ -173,7 +185,7 @@ const Bsize = () => {
                     </svg>
                   </div>
                   <div className="bs_s_h4">
-                    <h4>1000+ Employees</h4>
+                    <h4>More then 100 employees</h4>
                   </div>
                 </Form.Label>
               </Col>
@@ -181,7 +193,7 @@ const Bsize = () => {
           </div>
 
           <span className="signup-error">
-            {errors.employees && "Please select any one to continue"}
+            {errors.employee_no && "Please select any one to continue"}
           </span>
           <div className="justify-content-between btn_foot_sec flex-wrap d-flex no-border mt-2 pt-0">
             <div className="fo_btn_c next_b_btn_c">

@@ -6,12 +6,30 @@ import CreateNewTeam from "../../../../../popups/CreateNewTeamPupup";
 import { useState } from "react";
 import EditTeamPopup from "../../../../../popups/EditTeamPopup";
 import Button from "react-bootstrap/Button";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getTeamList } from "../../../../../redux/actions/profileAction";
+import $ from "jquery";
 
 const Screen = () => {
   Title(" | Setting - Team");
+  const dispatch = useDispatch();
   const [openNewTeam, setOpenNewTeam] = useState(false);
   const [openEditTeam, setOpenEditTeam] = useState(false);
   const [menuBarTeams, setMenuBarTeams] = useState(false);
+
+  const teamList = useSelector((state) => state?.profile?.teamList);
+  const createTeam = useSelector((state) => state?.profile?.createTeam);
+
+  useEffect(() => {
+    dispatch(getTeamList());
+  }, [createTeam]);
+
+  $(document).mouseup(function (e) {
+    if ($(e.target).closest("#menu_bar_teams").length === 0) {
+      setMenuBarTeams(false);
+    }
+  });
 
   return (
     <>
@@ -60,118 +78,58 @@ const Screen = () => {
                       <div className="s_th_s w-20">PO Number</div>
                       <div className="s_th_s w-15"></div>
                     </div>
-                    <div className="s_tble_s width-max-content-s menu_btn">
-                      <div className="s_th_s s_td_s w-20">John Doe</div>
-                      <div className="s_th_s s_td_s w-20">
-                        John Doe (123456)
-                      </div>
-                      <div className="s_th_s s_td_s w-20">AK24#7777</div>
-                      <div
-                        className="w-15 mob_60_rr"
-                        style={{ position: "relative" }}
-                      >
-                        <Button
-                          variant=""
-                          className="round_b_btn bg-transparent"
-                          onClick={() => setMenuBarTeams(!menuBarTeams)}
+                    {teamList?.map((item) => (
+                      <div className="s_tble_s width-max-content-s menu_btn">
+                        <div className="s_th_s s_td_s w-20">{item.name}</div>
+                        <div className="s_th_s s_td_s w-20">{item.account}</div>
+                        <div className="s_th_s s_td_s w-20">
+                          {item.po_number}
+                        </div>
+                        <div
+                          className="w-15 mob_60_rr"
+                          style={{ position: "relative" }}
                         >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="16"
-                            height="16"
-                            fill="currentColor"
-                            className="bi bi-three-dots-vertical"
-                            viewBox="0 0 16 16"
+                          <Button
+                            variant=""
+                            className="round_b_btn bg-transparent"
+                            onClick={() => setMenuBarTeams(item.id)}
                           >
-                            <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
-                          </svg>
-                        </Button>
-                        {menuBarTeams && (
-                          <div className="menu_bar_teams">
-                            <div
-                              className="navabr_t_li"
-                              onClick={() => setOpenEditTeam(true)}
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="16"
+                              height="16"
+                              fill="currentColor"
+                              className="bi bi-three-dots-vertical"
+                              viewBox="0 0 16 16"
                             >
-                              Edit Team Info
-                            </div>
+                              <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
+                            </svg>
+                          </Button>
+                          {menuBarTeams == item.id ? (
+                            <div className="menu_bar_teams" id="menu_bar_teams">
+                              <div
+                                className="navabr_t_li"
+                                onClick={() =>
+                                  setOpenEditTeam(
+                                    <EditTeamPopup
+                                      onCloseModal={() =>
+                                        setOpenEditTeam(false)
+                                      }
+                                      name={item.name}
+                                      id={item.id}
+                                    />
+                                  )
+                                }
+                              >
+                                Edit Team Info
+                              </div>
 
-                            <span className="menu_btn_arrow"> &#62; </span>
-                          </div>
-                        )}
+                              <span className="menu_btn_arrow"> &#62; </span>
+                            </div>
+                          ) : null}
+                        </div>
                       </div>
-                    </div>
-                    <div className="s_tble_s width-max-content-s">
-                      <div className="s_th_s s_td_s w-20">John Doe</div>
-                      <div className="s_th_s s_td_s w-20">
-                        John Doe (123456)
-                      </div>
-                      <div className="s_th_s s_td_s w-20">AK24#7777</div>
-                      <div className="w-15 mob_60_rr">
-                        <Button
-                          variant=""
-                          className="round_b_btn bg-transparent"
-                        >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="16"
-                            height="16"
-                            fill="currentColor"
-                            className="bi bi-three-dots-vertical"
-                            viewBox="0 0 16 16"
-                          >
-                            <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
-                          </svg>
-                        </Button>
-                      </div>
-                    </div>
-                    <div className="s_tble_s width-max-content-s">
-                      <div className="s_th_s s_td_s w-20">John Doe</div>
-                      <div className="s_th_s s_td_s w-20">
-                        John Doe (123456)
-                      </div>
-                      <div className="s_th_s s_td_s w-20">AK24#7777</div>
-                      <div className="w-15 mob_60_rr">
-                        <Button
-                          variant=""
-                          className="round_b_btn bg-transparent"
-                        >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="16"
-                            height="16"
-                            fill="currentColor"
-                            className="bi bi-three-dots-vertical"
-                            viewBox="0 0 16 16"
-                          >
-                            <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
-                          </svg>
-                        </Button>
-                      </div>
-                    </div>
-                    <div className="s_tble_s width-max-content-s">
-                      <div className="s_th_s s_td_s w-20">John Doe</div>
-                      <div className="s_th_s s_td_s w-20">
-                        John Doe (123456)
-                      </div>
-                      <div className="s_th_s s_td_s w-20">AK24#7777</div>
-                      <div className="w-15 mob_60_rr">
-                        <Button
-                          variant=""
-                          className="round_b_btn bg-transparent"
-                        >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="16"
-                            height="16"
-                            fill="currentColor"
-                            className="bi bi-three-dots-vertical"
-                            viewBox="0 0 16 16"
-                          >
-                            <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
-                          </svg>
-                        </Button>
-                      </div>
-                    </div>
+                    ))}
                   </div>
                 </div>
               </div>
@@ -185,12 +143,7 @@ const Screen = () => {
           onCloseModal={() => setOpenNewTeam(false)}
         />
       )}
-      {openEditTeam && (
-        <EditTeamPopup
-          open={openEditTeam}
-          onCloseModal={() => setOpenEditTeam(false)}
-        />
-      )}
+      {openEditTeam}
     </>
   );
 };
