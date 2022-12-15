@@ -7,6 +7,7 @@ import Form from "react-bootstrap/Form";
 
 const ProjectBudgetPopup = ({ open, onCloseModal, setValues, values }) => {
   const [budgetData, setBudgetData] = useState({});
+  const [error, setError] = useState();
 
   useEffect(() => {
     if (values) {
@@ -14,20 +15,23 @@ const ProjectBudgetPopup = ({ open, onCloseModal, setValues, values }) => {
     }
   }, [values]);
 
-  console.log(values);
-
   const onInputChange = (e) => {
     setBudgetData({ ...budgetData, [e.target.name]: e.target.value });
   };
 
   const onSave = () => {
-    setValues({
-      ...values,
-      budget_type: budgetData?.budget_type,
-      price: budgetData?.price,
-      min_price: budgetData?.min_price,
-    });
-    onCloseModal();
+    if (budgetData?.min_price >= budgetData?.price) {
+      setError("price should be greater than and equal to minimum price");
+    } else {
+      setValues({
+        ...values,
+        budget_type: budgetData?.budget_type,
+        price: budgetData?.price,
+        min_price: budgetData?.min_price,
+      });
+      onCloseModal();
+      setError();
+    }
   };
 
   return (
@@ -109,8 +113,8 @@ const ProjectBudgetPopup = ({ open, onCloseModal, setValues, values }) => {
                   <div className="d-flex align-items-center">$</div>
                   <Form.Control
                     type="number"
-                    name="price"
-                    value={budgetData?.price}
+                    name="min_price"
+                    value={budgetData?.min_price}
                     onChange={(e) => onInputChange(e)}
                     onWheel={(e) => e.target.blur()}
                   />
@@ -127,8 +131,8 @@ const ProjectBudgetPopup = ({ open, onCloseModal, setValues, values }) => {
                   <div className="d-flex align-items-center">$</div>
                   <Form.Control
                     type="number"
-                    name="min_price"
-                    value={budgetData?.min_price}
+                    name="price"
+                    value={budgetData?.price}
                     onChange={(e) => onInputChange(e)}
                     onWheel={(e) => e.target.blur()}
                   />
@@ -169,9 +173,9 @@ const ProjectBudgetPopup = ({ open, onCloseModal, setValues, values }) => {
           <span>
             {" "}
             {budgetData?.budget_type == "hourly" ? (
-              <>{`$${budgetData?.price ? budgetData?.price : 0} - $${
-                budgetData?.min_price ? budgetData?.min_price : 0
-              }hr `}</>
+              <>{`$${budgetData?.min_price ? budgetData?.min_price : 0}/hr - $${
+                budgetData?.price ? budgetData?.price : 0
+              }/hr `}</>
             ) : (
               <>{`$${budgetData?.price}`}</>
             )}
@@ -180,6 +184,7 @@ const ProjectBudgetPopup = ({ open, onCloseModal, setValues, values }) => {
           rates.
         </div>
         <div className="ft_form_linki">Not ready to set an hourly rate?</div>
+        <span className="signup-error">{error}</span>
         <div className="popup_btns_new flex-wrap cwiewyehkk">
           <button className="trans_btn hov_pple" onClick={() => onCloseModal()}>
             Cancel

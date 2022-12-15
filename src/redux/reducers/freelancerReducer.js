@@ -14,6 +14,9 @@ import {
   SET_SAVE_PROPOSAL_IN_ARCHIEVED,
   SET_REMOVE_PROPOSAL_IN_ARCHIEVED,
   SET_SINGLE_FREELANCER,
+  SET_ADD_CARD,
+  SET_PAYMENT_CARD_LIST,
+  SET_DELETE_CARD,
 } from "../types";
 const initialState = {};
 
@@ -93,6 +96,21 @@ const freelancerReducer = (state = initialState, action) => {
       return {
         ...state,
         singleFreelancer: action.payload,
+      };
+    case SET_ADD_CARD:
+      return {
+        ...state,
+        addedCard: action.payload,
+      };
+    case SET_PAYMENT_CARD_LIST:
+      return {
+        ...state,
+        getCardList: action.payload,
+      };
+    case SET_DELETE_CARD:
+      return {
+        ...state,
+        deleteCard: action.payload,
       };
     default:
       return state;

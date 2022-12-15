@@ -2,13 +2,17 @@ import { useState, useEffect } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import "../../../../styles/job.css";
 import "react-datepicker/dist/react-datepicker.css";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import { useDispatch, useSelector } from "react-redux";
 import { singleProposalDetails } from "../../../../redux/actions/jobActions";
-import { getSingleFreelancer } from "../../../../redux/actions/freelancerAction";
+import {
+  getSingleFreelancer,
+  hireFreelancer,
+} from "../../../../redux/actions/freelancerAction";
 
 const Screen = () => {
+  const navigate = useNavigate();
   const { proposal_id, freelancer_id } = useParams();
   const dispatch = useDispatch();
   const [values, setValues] = useState({});
@@ -40,7 +44,22 @@ const Screen = () => {
     setValues({ ...values, [e.target.name]: e.target.value });
   };
 
-  console.log(values);
+  const handleHireFreelancer = () => {
+    const data = {
+      freelancer_id: freelancer_id,
+      project_id: values?.project_id,
+      title: values?.title,
+      budget_type: values?.budget_type,
+      weekly_limit: values?.weekly_limit,
+      amount: values?.bid_amount,
+      date: values?.date,
+      cover_letter: values?.cover_letter,
+    };
+
+    dispatch(hireFreelancer(data, navigate));
+
+    console.log(data);
+  };
 
   return (
     <Container>
@@ -78,6 +97,7 @@ const Screen = () => {
               <Form.Control
                 type="text"
                 name="title"
+                value={values?.title}
                 className="w-100 mt-2 py-2"
                 style={{ fontSize: "14px" }}
                 placeholder="Enter the contact title"
@@ -462,11 +482,12 @@ const Screen = () => {
           <Link to="/view-job">
             <button className="fo_btn_c next_b_btn_c mb-2">Cancel</button>
           </Link>
-          <Link to="/hire-freelancer/addAddress">
-            <button className="fo_btn_c next_b_btn_c mb-2 post_job_btn blue_ac_btn">
-              Continue
-            </button>
-          </Link>
+          <button
+            onClick={handleHireFreelancer}
+            className="fo_btn_c next_b_btn_c mb-2 post_job_btn blue_ac_btn"
+          >
+            Continue
+          </button>
         </div>
       </div>
     </Container>

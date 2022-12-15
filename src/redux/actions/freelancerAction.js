@@ -15,6 +15,9 @@ import {
   SET_SAVE_PROPOSAL_IN_ARCHIEVED,
   SET_REMOVE_PROPOSAL_IN_ARCHIEVED,
   SET_SINGLE_FREELANCER,
+  SET_ADD_CARD,
+  SET_PAYMENT_CARD_LIST,
+  SET_DELETE_CARD,
 } from "../types";
 
 const config = {
@@ -241,11 +244,69 @@ export const getSingleFreelancer = (freelancer_id) => async (dispatch) => {
     });
 };
 
-export const hireFreelancer = (data) => async (dispatch) => {
+export const hireFreelancer = (data, navigate) => async (dispatch) => {
   await Axios.post(`/hire-freelancer`, data, config)
     .then((res) => {
       if (res.data.status) {
+        navigate("/hire-freelancer/edit-address");
       }
+      sessionStorage.setItem("hire_freelancer", JSON.stringify(res.data.data));
+      window.location.reload();
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+export const addPaymentCard = (data) => async (dispatch) => {
+  await Axios.post(`/add-payment-card`, data, config)
+    .then((res) => {
+      if (res.data.status) {
+        dispatch({
+          type: SET_ADD_CARD,
+          payload: res.data,
+        });
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+export const paymentCardLists = (data) => async (dispatch) => {
+  await Axios.get(`/payment-cards-list`, config)
+    .then((res) => {
+      if (res.data.status) {
+        dispatch({
+          type: SET_PAYMENT_CARD_LIST,
+          payload: res.data.data,
+        });
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+export const deletePaymentCard = (data) => async (dispatch) => {
+  await Axios.post(`/delete-payment-card`, data, config)
+    .then((res) => {
+      if (res.data.status) {
+        dispatch({
+          type: SET_DELETE_CARD,
+          payload: res.data,
+        });
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+export const contractPayment = (data) => async (dispatch) => {
+  await Axios.post("/contract-payment", data, config)
+    .then((res) => {
+      console.log(res);
     })
     .catch((err) => {
       console.log(err);

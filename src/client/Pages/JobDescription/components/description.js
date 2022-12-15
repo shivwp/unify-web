@@ -296,16 +296,18 @@ const Description = () => {
                 <i className="bi bi-pencil-square"></i>
               </button>
             </div>
-            <span style={{textTransform: "capitalize"}}>{values?.scop}</span>
-            <div style={{textTransform: "capitalize"}}>{values?.experience_level}</div>
+            <span style={{ textTransform: "capitalize" }}>{values?.scop}</span>
+            <div style={{ textTransform: "capitalize" }}>
+              {values?.experience_level}
+            </div>
           </div>
           <div className="b_bot_inp">
             <div className="input_t_lab">Budget</div>
             <div className="job_t_inp cat_inp_j d-flex flex-wrap align-items-center">
               {values?.budget_type === "hourly" ? (
                 <span>
-                  {`$${parseInt(values?.price).toFixed(2)} - $${parseInt(
-                    values?.min_price
+                  {`$${parseInt(values?.min_price).toFixed(2)} - $${parseInt(
+                    values?.price
                   ).toFixed(2)}`}
                   /hr
                 </span>

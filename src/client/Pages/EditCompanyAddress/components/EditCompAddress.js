@@ -1,15 +1,55 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Col, Row } from "react-bootstrap";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import CardDetailsPopup from "../../../../freelancer/Pages/Setting/tab/popups/CardDetailsPopup";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  paymentCardLists,
+  deletePaymentCard,
+  contractPayment,
+} from "../../../../redux/actions/freelancerAction";
 
 const EditCompAddress = () => {
+  const dispatch = useDispatch();
+  const getCardList = useSelector((state) => state.freelancer.getCardList);
+  const addedCard = useSelector((state) => state.freelancer.addedCard);
+  const deleteCard = useSelector((state) => state.freelancer.deleteCard);
+  const paymentData = JSON.parse(sessionStorage.getItem("hire_freelancer"));
   const [popup, SetPopup] = useState();
+  const [stripeToken, setStripeToken] = useState();
+
+  useEffect(() => {
+    dispatch(paymentCardLists());
+  }, [addedCard, deleteCard]);
+
+  const handleRemoveCard = (item) => {
+    const data = {
+      card_id: item.id,
+    };
+
+    dispatch(deletePaymentCard(data));
+  };
+
+  const handleContractPayment = () => {
+    const data = {
+      id: paymentData?.id,
+      stripe_token: stripeToken,
+    };
+
+    dispatch(contractPayment(data));
+  };
+
+  const onInputChange = (data) => {
+    setStripeToken(data.id);
+  };
+
   return (
     <>
       <Container className="add_comp_address Edit_comp_address">
-        <div className="comp_address_title">Hire Mario Speedwagon</div>
+        <div className="comp_address_title">
+          Hire {paymentData?.freelancer_name}
+        </div>
         <div className="back_to_offer">Back to Offer Details</div>
         <Row>
           <Col lg={8}>
@@ -34,15 +74,14 @@ const EditCompAddress = () => {
                   </Col>
                   <div>
                     <div className="btn_foot_sec no-border mb-3 mt-0 p-0 fo_btn_c next_b_btn_c clientPayBtn">
-                      <Button
-                        variant=""
-                        className="clientCardbtn "
+                      <button
+                        className="clientCardbtn"
                         onClick={() => {
                           SetPopup(<CardDetailsPopup Popup={SetPopup} />);
                         }}
                       >
                         Add Card
-                      </Button>
+                      </button>
                     </div>
                   </div>
                 </Row>
@@ -51,28 +90,29 @@ const EditCompAddress = () => {
                 <div className="clientCardList">
                   <h5>Cards List</h5>
                   <div className="clientCardDetList">
-                    <div className="clientCardDet">
-                      <img
-                        src="/assets/cardImg.png"
-                        alt=""
-                        className="cardLogoSize"
-                      />
-                      <span> 1922 **** **** **** 0416 </span>
-                    </div>
-                    <div className="clientCardDet">
-                      <img
-                        src="/assets/cardImg.png"
-                        alt=""
-                        className="cardLogoSize"
-                      />
-                      <span> 1922 **** **** **** 0416 </span>
-                    </div>
+                    {getCardList?.map((item, key) => (
+                      <div className="clientCardDet" key={key}>
+                        <input
+                          type="radio"
+                          onChange={() => onInputChange(item)}
+                        />
+                        <img
+                          src="/assets/cardImg.png"
+                          alt=""
+                          className="cardLogoSize"
+                        />
+                        <span>**** **** **** {item.last4} </span>
+                        <button onClick={() => handleRemoveCard(item)}>
+                          <i className="fa fa-remove"></i>
+                        </button>
+                      </div>
+                    ))}
                   </div>
                 </div>
                 <div className="payment_btn">
-                  <Button variant="" type="button" className="pay_with_btn">
+                  <button type="button" className="pay_with_btn">
                     Pay With Stripe
-                  </Button>
+                  </button>
                 </div>
               </div>
             </div>
@@ -81,12 +121,12 @@ const EditCompAddress = () => {
             <div className="box_vs_m mt-0 _col_right">
               <div className="Add_Address_profile">
                 <div className="freelancer_img_in_r online_profile">
-                  <img src="/assets/PRO-2.png" alt="" />
+                  <img src={paymentData?.freelancer_profile_image} alt="" />
                 </div>
                 <div className="freel_det_bin">
                   <p>
-                    Hire Mario Speedwagon for: I need a designer to changes in
-                    my...
+                    Hire {paymentData?.freelancer_name} for:{" "}
+                    {paymentData?.project_name}
                   </p>
                 </div>
               </div>
@@ -96,33 +136,33 @@ const EditCompAddress = () => {
                 </div>
                 <div className="subtotal">
                   <span>Subtotal</span>
-                  <span className="_amount">$ 30.00</span>
+                  <span className="_amount">$ {paymentData?.subtotal}</span>
                 </div>
               </div>
               <div className="market_place_fee_box">
                 <div className="market_place">
                   <span> Marketplace Fee</span>
-                  <span className="_amount">$ 0.90</span>
+                  <span className="_amount">$ {paymentData?.fee}</span>
                 </div>
                 <div className="see_more">Learn more about fees</div>
               </div>
-              <div className="Estimated_taxes_box">
+              {/* <div className="Estimated_taxes_box">
                 <div className="Estimated_taxes">
                   <span> Estimated Taxes</span>
                   <span className="_amount">$ 0.90</span>
                 </div>
                 <div className="see_more">Learn more about fees</div>
-              </div>
+              </div> */}
               <div className="Estimated_total_box">
                 <div className="Estimated_total">
                   <span> Estimated Total</span>
-                  <span>$ 0.90</span>
+                  <span>$ {paymentData?.total}</span>
                 </div>
               </div>
               <div className="find_and_hire_button Edit_Addr">
-                <Button
-                  variant=""
+                <button
                   type="button"
+                  onClick={handleContractPayment}
                   className="find_contact"
                   style={{
                     padding: "10px 20px",
@@ -131,7 +171,7 @@ const EditCompAddress = () => {
                   }}
                 >
                   Find Contact & Hire
-                </Button>
+                </button>
               </div>
             </div>
           </Col>

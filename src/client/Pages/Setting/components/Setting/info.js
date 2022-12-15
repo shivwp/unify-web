@@ -63,8 +63,6 @@ const Screen = () => {
   const onSubmitClientData = (e) => {
     e.preventDefault();
 
-    window.scrollTo({ top: 200, left: 0, behavior: "smooth" });
-
     let errorExist = false;
     let errorsObject = {};
 
@@ -73,10 +71,7 @@ const Screen = () => {
       values?.first_name === null ||
       values?.first_name === undefined
     ) {
-      errorsObject.first_name = "Please enter your first name";
-      errorExist = true;
-    } else if (values?.first_name?.length < 2) {
-      errorsObject.first_name = "First name should be 3 characters";
+      errorsObject.first_name = "Please enter first name";
       errorExist = true;
     }
 
@@ -93,10 +88,7 @@ const Screen = () => {
       values?.last_name === null ||
       values?.last_name === undefined
     ) {
-      errorsObject.last_name = "Last name should be 3 characters";
-      errorExist = true;
-    } else if (values?.last_name?.length < 2) {
-      errorsObject.last_name = "zfgsdfg";
+      errorsObject.last_name = "Please enter last name";
       errorExist = true;
     }
     // if (

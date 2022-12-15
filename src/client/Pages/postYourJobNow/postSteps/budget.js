@@ -1,7 +1,13 @@
 import { Row, Col } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 
-const Budget = ({ setCurrentTab, onInputChange, values, reviewJobPost }) => {
+const Budget = ({
+  setCurrentTab,
+  onInputChange,
+  values,
+  reviewJobPost,
+  error,
+}) => {
   return (
     <Col lg={9}>
       <div className="s_nav_body">
@@ -78,8 +84,8 @@ const Budget = ({ setCurrentTab, onInputChange, values, reviewJobPost }) => {
                   <div className="d-flex align-items-center">$</div>
                   <Form.Control
                     type="number"
-                    name="price"
-                    value={values?.price}
+                    name="min_price"
+                    value={values?.min_price}
                     onChange={(e) => onInputChange(e)}
                     onWheel={(e) => e.target.blur()}
                   />
@@ -96,8 +102,8 @@ const Budget = ({ setCurrentTab, onInputChange, values, reviewJobPost }) => {
                   <div className="d-flex align-items-center">$</div>
                   <Form.Control
                     type="number"
-                    name="min_price"
-                    value={values?.min_price}
+                    name="price"
+                    value={values?.price}
                     onChange={(e) => onInputChange(e)}
                     onWheel={(e) => e.target.blur()}
                   />
@@ -137,7 +143,7 @@ const Budget = ({ setCurrentTab, onInputChange, values, reviewJobPost }) => {
           Professionals tend to charge{" "}
           <span>
             {values?.budget_type == "hourly" ? (
-              <>{`$${values.price} - $${values.min_price}hr (USD)`}</>
+              <>{`$${values.min_price} - $${values.price}hr (USD)`}</>
             ) : (
               <>{`$${values.price}`}</>
             )}
@@ -145,6 +151,7 @@ const Budget = ({ setCurrentTab, onInputChange, values, reviewJobPost }) => {
           for UI/UX design projects like yours. Experts may charge higher rates.
         </div>
         <div className="ft_form_linki">Not ready to set an hourly rate?</div>
+        <span className="signup-error">{error}</span>
         <div className="btn_foot_sec flex-wrap no-border mt-2">
           <div className="fo_btn_c next_b_btn_c">
             <button

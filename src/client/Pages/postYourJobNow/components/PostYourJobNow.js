@@ -16,18 +16,24 @@ const PostYourJobNow = () => {
   const navigate = useNavigate();
   const [currentTab, setCurrentTab] = useState("getting-started");
   const [values, setValues] = useState({});
+  const [error, setError] = useState();
 
   const onInputChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
   };
 
   const reviewJobPost = () => {
-    dispatch({
-      type: SET_JOB_DATA_LISTING,
-      payload: values,
-    });
+    if (values?.min_price >= values?.price) {
+      setError("price should be greater than and equal to minimum price");
+    } else {
+      dispatch({
+        type: SET_JOB_DATA_LISTING,
+        payload: values,
+      });
 
-    navigate("/job-description");
+      navigate("/job-description");
+      setError("");
+    }
   };
 
   return (
@@ -77,6 +83,7 @@ const PostYourJobNow = () => {
               onInputChange={onInputChange}
               values={values}
               reviewJobPost={reviewJobPost}
+              error={error}
             />
           )}
         </Row>

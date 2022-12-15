@@ -63,6 +63,7 @@ const AccountInfo = ({
                   type="text"
                   name="email"
                   value={values?.email}
+                  disabled
                   onChange={(e) => onInputChange(e)}
                   placeholder="johndoe@gmail.com"
                 />
