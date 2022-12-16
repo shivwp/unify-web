@@ -766,18 +766,28 @@ const Project_Search = () => {
                     </div>
                     <div className="s_na_inpu">
                       <select
-                        name="cars"
-                        id="cars"
+                        name="project_duration"
+                        value={filters?.project_duration || "default"}
                         className="font-size-13px projectDurationOption"
-                        placeholder="Select a duration"
+                        onChange={(e) =>
+                          setFilters({
+                            ...filters,
+                            [e.target.name]: e.target.value,
+                          })
+                        }
                         defaultValue="dafault"
                       >
-                        <option value="dafault" disabled hidden>
+                        <option value="dafault" hidden>
                           Select a duration
                         </option>
-                        {projectDuration.map((item) => (
-                          <option value={item.name}>{item.name}</option>
-                        ))}
+                        <option value="More then 6 months">
+                          More then 6 months
+                        </option>
+                        <option value="3 to 6 months">3 to 6 months</option>
+                        <option value="1 to 3 months">1 to 3 months</option>
+                        <option value="Less then 1 month">
+                          Less then 1 month
+                        </option>
                       </select>
                     </div>
                   </div>

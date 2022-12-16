@@ -7267,6 +7267,7 @@ a {
   background: none;
   font-size: 12px;
   color: #6d2ef1;
+  cursor: pointer;
 }
 
 /* .popup_uploadProfileImg {

@@ -48,6 +48,8 @@ const AddCert = ({ certificates, Popup, successPopup, setSuccessPopup }) => {
     }
   };
 
+  console.log(errors);
+
   const onSave = () => {
     let errorExist = false;
     let errorsObject = {};
@@ -112,10 +114,19 @@ const AddCert = ({ certificates, Popup, successPopup, setSuccessPopup }) => {
             <div className="mt-4">
               <div className="popup_form_element">
                 <Form.Label className="text-black font-size-13px font-weight-500">
-                  Proficiency level <span className="required_stars"> * </span>
+                  Proficiency level
                 </Form.Label>
-
-                <select
+                <div className="popup_form_element">
+                  <Form.Control
+                    type="text"
+                    className="font-size-13px"
+                    placeholder="Enter Certificate Name"
+                    name="name"
+                    value={values?.name}
+                    onChange={(e) => handleOnChange(e)}
+                  />
+                </div>
+                {/* <select
                   name="name"
                   value={values?.name}
                   onChange={(e) => handleOnChange(e)}
@@ -129,18 +140,7 @@ const AddCert = ({ certificates, Popup, successPopup, setSuccessPopup }) => {
                 </select>
                 <span className="signup-error">
                   {errors.name && "Please select proficiency level"}
-                </span>
-                {/* <Select
-                  className="font-size-13px"
-                  placeholder="Select Certificate Type"
-                  options={options1}
-                  onChange={setCertName}
-                  defaultValue={
-                    certName
-                      ? { name: certName.name, label: certName.name }
-                      : null
-                  }
-                /> */}
+                </span> */}
               </div>
             </div>
             <div className="mt-3 pt-1 mb-3">
@@ -160,19 +160,22 @@ const AddCert = ({ certificates, Popup, successPopup, setSuccessPopup }) => {
                   <div className="popup_form_element">
                     <Form.Control
                       type="text"
+                      maxLength={200}
                       className="font-size-13px"
                       placeholder="Enter Here"
                       name="description"
                       value={values?.description}
-                      onChange={(e) => {
-                        200 - values?.description?.length == 0 &&
-                          handleOnChange(e);
-                      }}
+                      onChange={(e) => handleOnChange(e)}
                     />
                   </div>
-                  <span className="signup-error">
-                    {errors.description && errors.description}
-                  </span>
+                  <div className="maxlabel_atcxt2_and_errors">
+                    <span className="signup-error">
+                      {errors.description && errors.description}
+                    </span>
+                    <span>
+                      {200 - (values?.description?.length || 0)} characters left{" "}
+                    </span>
+                  </div>
                 </Col>
               </Row>
             </div>
