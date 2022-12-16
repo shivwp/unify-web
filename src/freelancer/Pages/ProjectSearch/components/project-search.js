@@ -24,6 +24,7 @@ import {
   getFreelancerSkills,
   getLanguageList,
 } from "../../../../redux/actions/profileAction";
+import { filter } from "dom7";
 
 const ReasonsList = ({ jobId, data, setDropdownOpen }) => {
   const dispatch = useDispatch();
@@ -327,35 +328,37 @@ const ProjectSaved = () => {
           <div className="heat_lef">
             <img src={star} alt="" />
           </div>
-          <Row>
-            <Col lg={9}>
-              <div className="job_head_s">
-                <h2>{item.name}</h2>
-              </div>
-              <div className="dlex_sk_block flex-wrap">
-                {item.skills.map((skill, index) => (
-                  <div key={index} className="b_skil">
-                    {skill.name}
-                  </div>
-                ))}
-              </div>
-              <div className="job_d_par">
-                <p style={{ wordBreak: "break-word" }}>{item.description}</p>
-              </div>
-            </Col>
-            <Col lg={3}>
-              <div className="price_ar_jjob">
-                <h1>
-                  {item.budget_type === "fixed"
-                    ? `$${item?.price}`
-                    : item.budget_type === "hourly"
-                    ? `$${item?.min_price} - $${item.price} /hr`
-                    : null}
-                </h1>
-                <p>({item.budget_type})</p>
-              </div>
-            </Col>
-          </Row>
+          <Link to={`/freelancer/project-detail/${item.id}`}>
+            <Row>
+              <Col lg={9}>
+                <div className="job_head_s">
+                  <h2>{item.name}</h2>
+                </div>
+                <div className="dlex_sk_block flex-wrap">
+                  {item.skills.map((skill, index) => (
+                    <div key={index} className="b_skil">
+                      {skill.name}
+                    </div>
+                  ))}
+                </div>
+                <div className="job_d_par">
+                  <p style={{ wordBreak: "break-word" }}>{item.description}</p>
+                </div>
+              </Col>
+              <Col lg={3}>
+                <div className="price_ar_jjob">
+                  <h1>
+                    {item.budget_type === "fixed"
+                      ? `$${item?.price}`
+                      : item.budget_type === "hourly"
+                      ? `$${item?.min_price} - $${item.price} /hr`
+                      : null}
+                  </h1>
+                  <p>({item.budget_type})</p>
+                </div>
+              </Col>
+            </Row>
+          </Link>
           <div className="jb_foot flex-wrap">
             <div className="flex_itm">
               {/* <div className="">
@@ -465,6 +468,8 @@ const Project_Search = () => {
   const [showSuggestedSkills, setShowSuggestedSkills] = useState(false);
   const languageList = useSelector((state) => state?.profile?.getLanguageList);
   const categoryList = useSelector((state) => state.profile.categoryList);
+  const unSaveJobsPost = useSelector((state) => state?.job?.unSaveJobsPost);
+  const savedJobsList = useSelector((state) => state?.job?.savedJobsList?.data);
 
   const [selectSkills, setSelectSkills] = useState([]);
   const [filterValues, setFilterValues] = useState([]);
@@ -524,7 +529,7 @@ const Project_Search = () => {
     if (filters) {
       dispatch(getJobsList({ pagination: 10, page, ...filters }));
     }
-  }, [page, filters]);
+  }, [page, filters, unSaveJobsPost, savedJobsList]);
 
   // to filter jobs by skills
   useEffect(() => {
@@ -640,6 +645,7 @@ const Project_Search = () => {
 
     setFilters(filters);
   };
+  console.log("langauge", filters);
 
   const clearAllFilters = () => {
     setFilters({});
@@ -677,6 +683,7 @@ const Project_Search = () => {
                         type="text"
                         placeholder="what are you looking for"
                         name="search"
+                        value={filterValues?.search || ""}
                         onChange={(e) => handleFilterChange(e)}
                         onKeyPress={(e) =>
                           e.key === "Enter" && onFilterJobList(e)
@@ -697,16 +704,20 @@ const Project_Search = () => {
                     <div className="s_na_inpu">
                       <select
                         className=" smtxt_selct_newug"
-                        placeholder="what are you looking for"
                         options={options1}
                         name="type"
+                        value={filters?.type || "default"}
                         onChange={(e) =>
                           setFilters({
                             ...filters,
                             [e.target.name]: e.target.value,
                           })
                         }
+                        defaultValue="default"
                       >
+                        <option value="default" hidden disabled>
+                          Project Type
+                        </option>
                         <option value="short_term">Sort Term </option>
                         <option value="long_term">Long Term </option>
                       </select>
@@ -777,6 +788,7 @@ const Project_Search = () => {
                     <div className="s_na_inpu">
                       <select
                         name="budget_type"
+                        value={filters?.budget_type || "default"}
                         onChange={(e) =>
                           setFilters({
                             ...filters,
@@ -806,6 +818,7 @@ const Project_Search = () => {
                         name="category"
                         key={index}
                         value={item.id}
+                        checked={selectCategory[item.id] || false}
                         onChange={(e) => {
                           setSeleceCategory({
                             ...selectCategory,
@@ -832,7 +845,7 @@ const Project_Search = () => {
                         type="number"
                         placeholder="3.00"
                         name="min_price"
-                        value={filterValues?.min_price}
+                        value={filterValues?.min_price || ""}
                         onChange={(e) => handleFilterChange(e)}
                         className="project_details_Num_inp send_proposal_num_inp"
                         onWheel={(e) => e.target.blur()}
@@ -847,7 +860,7 @@ const Project_Search = () => {
                         type="number"
                         placeholder="50.00"
                         name="max_price"
-                        value={filterValues?.max_price}
+                        value={filterValues?.max_price || ""}
                         onChange={(e) => handleFilterChange(e)}
                         className="project_details_Num_inp send_proposal_num_inp"
                         onWheel={(e) => e.target.blur()}
@@ -870,6 +883,11 @@ const Project_Search = () => {
                       type="radio"
                       name="english_level"
                       value="fluent"
+                      checked={
+                        filters?.english_level
+                          ? filters?.english_level == "fluent"
+                          : false
+                      }
                       onChange={(e) =>
                         setFilters({
                           ...filters,
@@ -885,6 +903,11 @@ const Project_Search = () => {
                       type="radio"
                       name="english_level"
                       value="native"
+                      checked={
+                        filters?.english_level
+                          ? filters?.english_level == "native"
+                          : false
+                      }
                       onChange={(e) =>
                         setFilters({
                           ...filters,
@@ -901,6 +924,11 @@ const Project_Search = () => {
                       name="english_level"
                       value="conversational"
                       id="conversational"
+                      checked={
+                        filters?.english_level
+                          ? filters?.english_level == "conversational"
+                          : false
+                      }
                       onChange={(e) =>
                         setFilters({
                           ...filters,
@@ -909,7 +937,7 @@ const Project_Search = () => {
                       }
                     />
                     <Form.Label htmlFor="conversational">
-                      Conversational{" "}
+                      Conversational
                     </Form.Label>
                   </div>
                 </div>

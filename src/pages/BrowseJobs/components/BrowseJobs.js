@@ -136,7 +136,10 @@ const BrowseJobs = () => {
     { name: "Less then 1 month" },
   ];
 
+  console.log("search by keyboard", filterValues);
+
   const clearAllFilters = () => {
+    setFilters({});
     setSelectSkills([]);
     setFilterValues([]);
     setSeleceCategory({});
@@ -177,6 +180,7 @@ const BrowseJobs = () => {
     });
   };
 
+  console.log(selectCategory);
   return (
     <>
       <div className="browse_jobs">
@@ -205,6 +209,7 @@ const BrowseJobs = () => {
                         type="text"
                         placeholder="what are you looking for"
                         name="search"
+                        value={filterValues?.search || ""}
                         onChange={(e) => handleFilterChange(e)}
                         onKeyPress={(e) =>
                           e.key === "Enter" && onFilterJobList(e)
@@ -227,13 +232,18 @@ const BrowseJobs = () => {
                         className=" smtxt_selct_newug"
                         placeholder="what are you looking for"
                         name="type"
+                        value={filters?.type || "default"}
                         onChange={(e) =>
                           setFilters({
                             ...filters,
                             [e.target.name]: e.target.value,
                           })
                         }
+                        defaultValue="default"
                       >
+                        <option value="default" hidden disabled>
+                          Project Type{" "}
+                        </option>
                         <option value="short_term">Sort Term </option>
                         <option value="long_term">Long Term </option>
                       </select>
@@ -308,6 +318,7 @@ const BrowseJobs = () => {
                     <div className="s_na_inpu">
                       <select
                         name="budget_type"
+                        value={filters?.budget_type || "default"}
                         onChange={(e) =>
                           setFilters({
                             ...filters,
@@ -336,6 +347,7 @@ const BrowseJobs = () => {
                         type="checkbox"
                         name="category"
                         value={item.id}
+                        checked={selectCategory[item.id] || false}
                         onChange={(e) => {
                           setSeleceCategory({
                             ...selectCategory,
@@ -361,7 +373,7 @@ const BrowseJobs = () => {
                         type="number"
                         placeholder="3.00"
                         name="min_price"
-                        value={filterValues?.min_price}
+                        value={filterValues?.min_price || ""}
                         onChange={(e) => handleFilterChange(e)}
                         className="project_details_Num_inp send_proposal_num_inp"
                         onWheel={(e) => e.target.blur()}
@@ -376,7 +388,7 @@ const BrowseJobs = () => {
                         type="number"
                         placeholder="50.00"
                         name="max_price"
-                        value={filterValues?.max_price}
+                        value={filterValues?.max_price || ""}
                         onChange={(e) => handleFilterChange(e)}
                         className="project_details_Num_inp send_proposal_num_inp"
                         onWheel={(e) => e.target.blur()}
@@ -399,6 +411,11 @@ const BrowseJobs = () => {
                       name="english_level"
                       value="fluent"
                       id="fluent"
+                      checked={
+                        filters?.english_level
+                          ? filters?.english_level == "fluent"
+                          : false
+                      }
                       onChange={(e) =>
                         setFilters({
                           ...filters,
@@ -413,6 +430,11 @@ const BrowseJobs = () => {
                       type="radio"
                       name="english_level"
                       value="native"
+                      checked={
+                        filters?.english_level
+                          ? filters?.english_level == "native"
+                          : false
+                      }
                       onChange={(e) =>
                         setFilters({
                           ...filters,
@@ -429,6 +451,11 @@ const BrowseJobs = () => {
                       name="english_level"
                       value="conversational"
                       id="conversational"
+                      checked={
+                        filters?.english_level
+                          ? filters?.english_level == "conversational"
+                          : false
+                      }
                       onChange={(e) =>
                         setFilters({
                           ...filters,
