@@ -1,9 +1,9 @@
 import { lazy } from "react";
 import { Route, Routes } from "react-router-dom";
-import ProfileDashboard from "../client/Pages/settingDashboard";
 import ReusePosting from "../components/ReusePosting";
 import ProtectedRoutes from "./PrivateRoute";
 const Createcategory = lazy(() => import("../client/Pages/Create-Category"));
+const ProfileDashboard = lazy(() => import("../client/Pages/settingDashboard"));
 const Category = lazy(() => import("../client/Pages/Category"));
 const Question = lazy(() => import("../client/Pages/Question"));
 const QuestionTwo = lazy(() => import("../client/Pages/Question2"));
