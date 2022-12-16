@@ -37,6 +37,7 @@ import {
   ADD_CATEGORY,
   ON_CREATE_TEAM,
   TEAM_LIST,
+  ERROR_REQUEST_TESTIMONIAL,
 } from "../types";
 
 const initialState = {};
@@ -236,6 +237,11 @@ const profileReducer = (state = initialState, action) => {
       return {
         ...state,
         teamList: action.payload,
+      };
+    case ERROR_REQUEST_TESTIMONIAL:
+      return {
+        ...state,
+        errorRequestTestimonial: action.payload,
       };
     default:
       return state;

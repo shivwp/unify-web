@@ -39,6 +39,7 @@ import {
   HOURLY_PRICE,
   ON_CREATE_TEAM,
   TEAM_LIST,
+  ERROR_REQUEST_TESTIMONIAL,
 } from "../types";
 let userDetails = JSON.parse(sessionStorage.getItem("unify_user"));
 
@@ -614,8 +615,8 @@ export const onSubmitVerificationDocs =
 
 export const onRequestTestimonial =
   (data, popup, successPopup, setSuccessPopup) => async (dispatch) => {
-    try {
-      Axios.post("/edit-testimonial-info", data, config).then((res) => {
+    Axios.post("/edit-testimonial-info", data, config)
+      .then((res) => {
         dispatch({
           type: REQUEST_TESTIMONIAL,
           payload: res.data,
@@ -627,8 +628,13 @@ export const onRequestTestimonial =
             message="Testimonial request sent successfully"
           />
         );
+      })
+      .catch((err) => {
+        dispatch({
+          type: ERROR_REQUEST_TESTIMONIAL,
+          payload: err.response.data,
+        });
       });
-    } catch (err) {}
   };
 
 export const onSubmitTestimonial =

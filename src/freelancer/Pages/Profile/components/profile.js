@@ -1047,12 +1047,16 @@ const UnifyFreelancer = () => {
                     ? basicInfo?.description
                     : basicInfo?.description?.slice(0, 300)}
                   <br />
-                  <span
-                    className="show_more_description"
-                    onClick={() => setShowDescription(!showDescription)}
-                  >
-                    {showDescription ? "show less" : "show more"}
-                  </span>
+                  {basicInfo?.description?.length > 300 ? (
+                    <span
+                      className="show_more_description"
+                      onClick={() => setShowDescription(!showDescription)}
+                    >
+                      {showDescription ? "show less" : "show more"}
+                    </span>
+                  ) : (
+                    ""
+                  )}
                 </div>
               </div>
             </div>
@@ -1541,7 +1545,9 @@ const UnifyFreelancer = () => {
                         (experience, key) => (
                           <div key={key}>
                             <div className="bpck_sm_txt_a mt-4 ehistory_uxdes">
-                              {`${experience.company}`}
+                              {`${experience.subject || ""} | ${
+                                experience.company
+                              }`}
                             </div>
                             <div className="ehitory_dtine">
                               {moment(experience.start_date).format(

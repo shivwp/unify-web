@@ -261,7 +261,7 @@ const ProjectSearch = ({ filters }) => {
                   {/* <img src={heart} alt="" className="heart_btn" /> */}
                 </Button>
                 <Link to={`/freelancer/project-detail/${item.id}`}>
-                  <Button variant="">
+                  <Button variant="" disabled={item.is_proposal_send}>
                     {item.is_proposal_send ? "Proposal Sent" : "Send Proposal"}
                   </Button>
                 </Link>

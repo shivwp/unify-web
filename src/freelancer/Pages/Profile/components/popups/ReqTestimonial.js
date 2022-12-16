@@ -1,29 +1,19 @@
 import { Row, Col } from "react-bootstrap";
 import { useState } from "react";
 import Button from "react-bootstrap/Button";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Form from "react-bootstrap/Form";
 import { onRequestTestimonial } from "../../../../../redux/actions/profileAction";
-
-const CloseIcon = () => {
-  return (
-    <svg
-      fill="#B2B2B2"
-      className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiBox-root css-1om0hkc"
-      focusable="false"
-      aria-hidden="true"
-      viewBox="0 0 24 24"
-      data-testid="CloseIcon"
-    >
-      <path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path>
-    </svg>
-  );
-};
+import PopupsCloseIcon from "../../../../components/popups/PopupsCloseIcon";
 
 const ReqTestimonial = ({ Popup, successPopup, setSuccessPopup }) => {
   const dispatch = useDispatch();
   const [values, setValues] = useState({});
   const [errors, setErrors] = useState({});
+
+  const errorRequestTestimonial = useSelector(
+    (state) => state?.profile?.errorRequestTestimonial?.message
+  );
 
   const onInputChange = (e) => {
     if (
@@ -105,7 +95,7 @@ const ReqTestimonial = ({ Popup, successPopup, setSuccessPopup }) => {
                 Popup();
               }}
             >
-              <CloseIcon />
+              <PopupsCloseIcon />
             </div>
           </div>
           <div className="popup_body_bpn amount_popup_body max_height_popucwui">
@@ -216,6 +206,9 @@ const ReqTestimonial = ({ Popup, successPopup, setSuccessPopup }) => {
                       onChange={(e) => onInputChange(e)}
                       placeholder="Enter Here"
                     ></Form.Control>
+                    <span className="signup-error mt-1">
+                      {errorRequestTestimonial && errorRequestTestimonial}
+                    </span>
                   </div>
                 </Col>
               </Row>

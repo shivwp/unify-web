@@ -132,9 +132,6 @@ const UserVerification = (props) => {
                   <div>
                     <span> Back Image</span>
                     <img src={showingBackImg} alt="" />
-                    <span className="signup-error">
-                      {errors.backImg && errors.backImg}
-                    </span>
                   </div>
                 ) : null}
               </div>
@@ -249,7 +246,14 @@ const UserVerification = (props) => {
             </div>
 
             <div className="popup_btns_new flex-wrap cwiewyehkk">
-              <button className="trans_btn">Cancel</button>
+              <button
+                className="trans_btn"
+                onClick={() => {
+                  props.Popup();
+                }}
+              >
+                Cancel
+              </button>
               <button onClick={onSave}>Submit</button>
             </div>
           </div>

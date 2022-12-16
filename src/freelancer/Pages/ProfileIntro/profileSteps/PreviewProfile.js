@@ -248,12 +248,16 @@ const PreviewProfile = ({ setCurrentTab, profileList }) => {
                     ? profileList?.basic_info?.description
                     : profileList?.basic_info?.description?.slice(0, 300)}
                   <br />
-                  <span
-                    className="show_more_description"
-                    onClick={() => setShowDescription(!showDescription)}
-                  >
-                    {showDescription ? "show less" : "show more"}
-                  </span>
+                  {profileList?.basic_info?.description.length > 300 ? (
+                    <span
+                      className="show_more_description"
+                      onClick={() => setShowDescription(!showDescription)}
+                    >
+                      {showDescription ? "show less" : "show more"}
+                    </span>
+                  ) : (
+                    ""
+                  )}
                 </div>
               </div>
               <div className="pbx_pdd_sp2"></div>

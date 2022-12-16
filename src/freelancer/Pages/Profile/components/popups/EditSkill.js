@@ -29,8 +29,13 @@ const EditSkill = ({ data, Popup, successPopup, setSuccessPopup }) => {
   const [showSkillList, setShowSkillList] = useState(false);
   const [showSkillError, setShowSkillError] = useState(false);
   const [errors, setErrors] = useState(false);
+  const [skillsList, setSkillsList] = useState([]);
   let getSkillList = useSelector((state) => state?.profile?.getSkillList);
   const [values, setValues] = useState();
+
+  useEffect(() => {
+    setSkillsList(getSkillList || []);
+  }, getSkillList);
 
   const removeSkills = (index) => {
     let updateSkills = [...selectSkills];
@@ -145,16 +150,14 @@ const EditSkill = ({ data, Popup, successPopup, setSuccessPopup }) => {
                   placeholder="Search here skills..."
                   className="no-border font-size-13px search_skilloiouo"
                 />
-                {showSkillList && getSkillList ? (
+                {showSkillList && skillsList ? (
                   <div
                     className="suggest_skills"
                     style={{ position: "absolute" }}
                   >
-                    {getSkillList?.map((item) => (
+                    {skillsList?.map((item) => (
                       <>
-                        <span onClick={() => addSkills(item)}>
-                          {item.name}
-                        </span>
+                        <span onClick={() => addSkills(item)}>{item.name}</span>
                         <br />
                       </>
                     ))}

@@ -354,7 +354,6 @@ const AddEmployment = ({
                         type="checkbox"
                         name="currently_working"
                         onChange={(e) => onInputChange(e)}
-                        defaultChecked={values?.currently_working || false}
                         checked={
                           values?.start_date ==
                             moment(new Date()).format("YYYY-MM-DD") ||
