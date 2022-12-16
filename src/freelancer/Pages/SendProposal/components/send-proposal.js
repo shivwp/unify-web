@@ -51,7 +51,7 @@ const Screen = () => {
 
   const onImageChange = (e) => {
     setAttachment(e.target.files[0]);
-    setShowingImage(URL.createObjectURL(e.target.files[0]));
+    setShowingImage(e.target.files[0].name);
     setErrors({ ...errors, attachment: false });
   };
 
@@ -435,7 +435,7 @@ const Screen = () => {
             </Col>
           </Row>
           <div className="mt-3">
-            <div className="skll_hding">Skills and expertise</div>
+            <div className="skll_hding">Skills</div>
             <div className="d-flex flex-wrap cwcss_cw">
               {singleJobDetails?.job_skills?.map((skill, index) => (
                 <>
@@ -496,9 +496,37 @@ const Screen = () => {
                     {errors?.cover_letter && errors?.cover_letter}
                   </span>
                   <div className="skll_hding mt-4">Attachments</div>
-                  <div className="sent_proposal_pre_img">
-                    <img src={showingImage} alt="" />
-                  </div>
+
+                  {/* ======================================== */}
+                  {showingImage ? (
+                    <div className="document_card">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="32"
+                      >
+                        <g fill="#828282">
+                          <path d="M1.5 32h21c.827 0 1.5-.673 1.5-1.5v-21c0-.017-.008-.031-.009-.047-.002-.023-.008-.043-.013-.065a.488.488 0 0 0-.09-.191c-.007-.009-.006-.02-.013-.029l-8-9c-.003-.003-.007-.003-.01-.006a.494.494 0 0 0-.223-.134c-.019-.006-.036-.008-.056-.011C15.557.012 15.53 0 15.5 0h-14C.673 0 0 .673 0 1.5v29c0 .827.673 1.5 1.5 1.5zM16 1.815 22.387 9H16.5c-.22 0-.5-.42-.5-.75V1.815zM1 1.5a.5.5 0 0 1 .5-.5H15v7.25c0 .809.655 1.75 1.5 1.75H23v20.5a.5.5 0 0 1-.5.5h-21c-.28 0-.5-.22-.5-.5v-29z" />
+                          <path d="M5.5 14h13a.5.5 0 0 0 0-1h-13a.5.5 0 0 0 0 1zM5.5 18h13a.5.5 0 0 0 0-1h-13a.5.5 0 0 0 0 1zM5.5 10h6a.5.5 0 0 0 0-1h-6a.5.5 0 0 0 0 1zM5.5 22h13a.5.5 0 0 0 0-1h-13a.5.5 0 0 0 0 1zM5.5 26h13a.5.5 0 0 0 0-1h-13a.5.5 0 0 0 0 1z" />
+                        </g>
+                      </svg>
+                      <span className="heading">File Name : </span>
+                      <span className="name">{showingImage}</span>
+                      <span
+                        onClick={() => {
+                          setShowingImage();
+                          setAttachment();
+                        }}
+                        className="close_icon"
+                      >
+                        X
+                      </span>
+                    </div>
+                  ) : (
+                    ""
+                  )}
+                  {/* ======================================== */}
+
                   <div className="skll_hding mt-4 drag_file_bx">
                     <Form.Control
                       type="file"

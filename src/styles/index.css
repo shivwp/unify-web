@@ -9939,3 +9939,53 @@ input::-webkit-inner-spin-button {
   text-align: end;
   font-weight: 300;
 }
+
+/* document card start */
+.document_card {
+  border: 1px solid #c0bfbf;
+  padding: 12px 37px 12px 12px;
+  min-width: 350px;
+  position: relative;
+  margin-top: 10px;
+  display: inline-block;
+}
+.document_card > svg {
+  margin-right: 10px;
+}
+
+.document_card .heading {
+  color: #9e9b9b !important;
+  font-size: 14px !important;
+}
+
+.document_card .name {
+  color: #6d2ef1;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.document_card .close_icon {
+  position: absolute;
+  right: -14px;
+  top: -16px;
+  transform: rotateX(42deg);
+  color: rgb(147 147 147);
+  cursor: pointer;
+  font-size: 24px;
+  border: 1px solid rgb(147, 147, 147);
+  border-radius: 50%;
+  padding: 0 5px;
+  background: #fff;
+}
+
+@media screen  and (max-width: 376px) {
+  .document_card{
+    min-width: 300px;
+  }
+}
+@media screen  and (max-width: 321px) {
+  .document_card{
+    min-width: 245px;
+  }
+}
+/* document card end */

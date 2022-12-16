@@ -163,6 +163,7 @@ const Pdata = () => {
     </>
   );
 };
+
 const Screen = () => {
   Title(" | Dashboard");
   const [checked, setChecked] = useState(false);
@@ -692,6 +693,39 @@ const Screen = () => {
                 </div>
               </div>
             </div>
+            <div className="vmode_slide border-top-none">
+              <div className=" d-flex justify-content-between">
+                <div className="vmode_heading">LMS</div>
+                <div>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="12.707"
+                    height="7.061"
+                    viewBox="0 0 12.707 7.061"
+                  >
+                    <path
+                      id="Path_4521"
+                      data-name="Path 4521"
+                      d="M7948-1915.291l6,6,6-6"
+                      transform="translate(-7947.646 1915.645)"
+                      fill="none"
+                      stroke="#707070"
+                      strokeWidth="1"
+                    />
+                  </svg>
+                </div>
+              </div>
+              <div className="mt-3">
+                <div className="d-flex justify-content-between hrate_li">
+                  <div>Completed</div>
+                  <div>12</div>
+                </div>
+                <div className="d-flex justify-content-between hrate_li">
+                  <div>Half way</div>
+                  <div>2</div>
+                </div>
+              </div>
+            </div>
           </Col>
           <Col lg={9}>
             <div className="dboard_bbox">
@@ -717,7 +751,6 @@ const Screen = () => {
                       JSON.parse(sessionStorage.getItem("unify_user"))
                         ?.last_name
                     }`}
-                    
                   </div>
                   <div className="wdesc_ax_dboard mt-3">
                     Here you'll find all the important information <br /> about

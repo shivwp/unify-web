@@ -53,7 +53,9 @@ const AllPosting = () => {
                 }
               >
                 <div>
-                  <div className="my_job_a job_na_bol">{item.name}</div>
+                  <Link to={`/view-job/${item.id}`}>
+                    <div className="my_job_a job_na_bol">{item.name}</div>
+                  </Link>
                   <div className="my_job_h">
                     Invite only - {item.budget_type}
                   </div>
@@ -94,7 +96,9 @@ const AllPosting = () => {
                   {menuBarPosting === item.id && (
                     <div className="menu_bar" id="menu_bar1">
                       <div className="navabr_t_li">
-                        <Link to="/dashboard/edit-posting">Edit Posting</Link>
+                        <Link to={`/dashboard/edit-posting/${item.id}`}>
+                          Edit Posting
+                        </Link>
                       </div>
                       <div
                         className="navabr_t_li"
@@ -103,13 +107,17 @@ const AllPosting = () => {
                         <Link to="#">Remove Posting</Link>
                       </div>
                       <div className="navabr_t_li">
-                        <Link to="/view-job/review">View Proposals</Link>
+                        <Link to={`/view-job/${item.id}/review`}>
+                          View Proposals
+                        </Link>
                       </div>
                       <div className="navabr_t_li">
-                        <Link to="/view-job/view_job">View Job Post</Link>
+                        <Link to={`/view-job/${item.id}`}>View Job Post</Link>
                       </div>
                       <div className="navabr_t_li">
-                        <Link to="/title">Reuse Postings</Link>
+                        <Link to={`/dashboard/reuse-posting/${item.id}`}>
+                          Reuse Postings
+                        </Link>
                       </div>
                       <span className="menu_btn_arrow" id="menu_btn_arrow1">
                         {" "}

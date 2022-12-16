@@ -7,6 +7,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { googleSignInInitiate } from "../../../redux/actions/authActions";
 import { singleJobPostDetails } from "../../../redux/actions/jobActions";
 import { INSTANT_LOGIN_EMAIL, POST_JOB_LIKE_THIS } from "../../../redux/types";
+import FreeProfile from "../../Popup/FreeProfile";
 
 const JobDetails = () => {
   const { id } = useParams();
@@ -16,6 +17,7 @@ const JobDetails = () => {
   const [email, setEmail] = useState({});
   const [values, setValues] = useState("");
   const [errors, setErrors] = useState({});
+  const [popup, setPopup] = useState();
 
   useEffect(() => {
     dispatch(singleJobPostDetails({ job_id: id }));
@@ -57,6 +59,10 @@ const JobDetails = () => {
     dispatch({ type: INSTANT_LOGIN_EMAIL, payload: email });
     navigate("/signup");
   };
+
+  setTimeout(() => {
+    setPopup(<FreeProfile />);
+  }, 30000);
 
   return (
     <>
@@ -313,6 +319,7 @@ const JobDetails = () => {
           </Col>
         </Row>
       </Container>
+      {popup}
     </>
   );
 };
