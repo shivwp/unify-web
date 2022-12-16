@@ -554,7 +554,7 @@ export const editExprienceLev =
         setSuccessPopup(
           <SuccessPopup
             Popup={() => setSuccessPopup(!successPopup)}
-            message="Exprience level saved successfully"
+            message="Experience level saved successfully"
           />
         );
       });

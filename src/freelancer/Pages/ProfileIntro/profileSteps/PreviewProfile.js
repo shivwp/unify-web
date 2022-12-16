@@ -27,6 +27,7 @@ const PreviewProfile = ({ setCurrentTab, profileList }) => {
   const [successPopup, setSuccessPopup] = useState();
   const [confirmPopup, setConfirmPopup] = useState();
   const [showDescription, setShowDescription] = useState(false);
+  const [showError, setShowError] = useState();
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -43,7 +44,19 @@ const PreviewProfile = ({ setCurrentTab, profileList }) => {
   };
 
   const onProfleImgChange = (e) => {
+    let errorExist = false;
     const profileImage = e.target.files[0];
+    if (!profileImage?.name.match(/\.(jpg|jpeg|png)$/)) {
+      setShowError("Image type must be JPG, JPEG or PNG format.");
+      errorExist = true;
+    }
+    if (profileImage?.size > 1048576 * 10) {
+      setShowError("Image size must be maximum 10 MB");
+      errorExist = true;
+    }
+    if (errorExist) {
+      return false;
+    }
     setShowingImage(URL.createObjectURL(e.target.files[0]));
     const formData = new FormData();
 
@@ -176,6 +189,7 @@ const PreviewProfile = ({ setCurrentTab, profileList }) => {
                     Edit photo
                   </label>
                 </div>
+                <p className="uploadImgEror"> {showError} </p>
               </Col>
               <Col sm={10}>
                 <div className="previewDet">
@@ -185,8 +199,7 @@ const PreviewProfile = ({ setCurrentTab, profileList }) => {
                       {`${profileList?.basic_info?.address}, ${profileList?.basic_info?.city}, ${profileList?.basic_info?.country}`}
                     </div>
                     <div className="previewProfileUsr">
-                      {" "}
-                      {profileList?.basic_info?.local_time} local time{" "}
+                      {profileList?.basic_info?.local_time} local time
                     </div>
                   </div>
                   <div className="tamoun_pdd_sp"></div>

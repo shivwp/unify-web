@@ -1478,10 +1478,9 @@ const UnifyFreelancer = () => {
                           />
                         )
                       }
-                    >
-                      <div className="bpck_head font-weight-600">
-                        Employment history
-                      </div>
+                    ></div>
+                    <div className="bpck_head font-weight-600">
+                      Employment history
                     </div>
                     {freelancerProfileList?.employment?.length == 0 && (
                       <div className="d-flex justify-content-center align-items-center flex-column pl-20">
@@ -1553,6 +1552,9 @@ const UnifyFreelancer = () => {
                                 : moment(experience.end_date).format(
                                     "DD MMM YYYY"
                                   )}
+                            </div>
+                            <div className="ehitory_dtine">
+                              {`${experience.description}`}
                             </div>
 
                             <div className="bpck_sm_txt_a mt-4 mb-0">

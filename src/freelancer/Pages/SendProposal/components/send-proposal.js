@@ -50,12 +50,21 @@ const Screen = () => {
   }, [id]);
 
   const onImageChange = (e) => {
+    let errorExist = false;
+    const image = e.target.files[0];
+    if (image?.size > 1048576 * 10) {
+      setErrors({ ...errors, image: "Image size must be maximum 10 MB" });
+      errorExist = true;
+    }
+    if (errorExist) {
+      return false;
+    }
     setAttachment(e.target.files[0]);
     setShowingImage(e.target.files[0].name);
     setErrors({ ...errors, attachment: false });
   };
 
-  console.log(singleJobDetails);
+  // console.log(singleJobDetails);
 
   const onSendProposal = () => {
     const formData = new FormData();
@@ -535,7 +544,7 @@ const Screen = () => {
                     Drag or <span>upload</span> project files
                   </div>
                   <span className="signup-error">
-                    {errors?.attachment && errors?.attachment}
+                    {errors?.image && errors?.image}
                   </span>
                   <div className="tamoun_pdd_sp mt-4">
                     Do not attach your résumé — your Unify profile is

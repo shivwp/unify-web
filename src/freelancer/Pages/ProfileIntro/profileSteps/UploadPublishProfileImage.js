@@ -31,11 +31,12 @@ const UploadPublishProfilepic = ({
   const onImageChange = (e) => {
     let errorExist = false;
     const image = e.target.files[0];
-    if (!image.name.match(/\.(jpg|jpeg|png)$/)) {
-      setShowError("Image type must be jpg, jpeg or png format.");
+    console.log(image);
+    if (!image?.name.match(/\.(jpg|jpeg|png)$/)) {
+      setShowError("Image type must be JPG, JPEG or PNG format.");
       errorExist = true;
     }
-    if (image.size > 1024 * 10) {
+    if (image?.size > 1048576 * 10) {
       setShowError("Image size must be maximum 10 MB");
       errorExist = true;
     }
@@ -45,7 +46,7 @@ const UploadPublishProfilepic = ({
     setShowingImage2(URL.createObjectURL(e.target.files[0]));
     setIsChange(true);
     setShowError("");
-    console.log("image", image.size);
+    setProfileImage(e.target.files[0]);
   };
 
   const onSave = () => {

@@ -49,6 +49,22 @@ const PortfolioPupup = ({
   }, [portfolioError]);
 
   const onImageChange = (e) => {
+    let errorExist = false;
+    const image = e.target.files[0];
+    if (!image?.name.match(/\.(jpg|jpeg|png)$/)) {
+      setErrors({
+        ...errors,
+        image: "Image type must be JPG, JPEG or PNG format.",
+      });
+      errorExist = true;
+    }
+    if (image?.size > 1048576 * 10) {
+      setErrors({ ...errors, image: "Image size must be maximum 10 MB" });
+      errorExist = true;
+    }
+    if (errorExist) {
+      return false;
+    }
     setPortfolioImage(e.target.files[0]);
     setShowingImage(URL.createObjectURL(e.target.files[0]));
     setEditPortfoData("");
@@ -191,7 +207,6 @@ const PortfolioPupup = ({
                     }}
                   />
                   <>
-                    {" "}
                     {/* Drag or{" "} */}
                     <span
                       style={{
@@ -202,7 +217,7 @@ const PortfolioPupup = ({
                       }}
                     >
                       Upload
-                    </span>{" "}
+                    </span>
                     project templates
                   </>
                 </Form.Label>
@@ -215,7 +230,7 @@ const PortfolioPupup = ({
               <span className="signup-error">{editPortfoData}</span>
             </div>
             <p style={{ fontSize: 13, color: "#304E71" }}>
-              File size limit 10 MB. 
+              File size limit 10 MB.
             </p>
           </div>
         </div>

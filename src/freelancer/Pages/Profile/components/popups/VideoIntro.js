@@ -45,9 +45,15 @@ const VideoIntro = ({ data, Popup, successPopup, setSuccessPopup }) => {
   const onSave = () => {
     let errorExist = false;
     let errorsObject = {};
-
     if (values.url === "" || values.url === null || values.url === undefined) {
       errorsObject.url = "Please enter video url";
+      errorExist = true;
+    } else if (
+      !/^(?:https?:\/\/)?(?:m\.|www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})(?:\S+)?$/.test(
+        values?.url
+      )
+    ) {
+      errorsObject.url = "Please enter a valid youtube url ";
       errorExist = true;
     }
 
@@ -92,7 +98,7 @@ const VideoIntro = ({ data, Popup, successPopup, setSuccessPopup }) => {
             <div className="mb-5 ">
               <div className="popup_form_element">
                 <Form.Label className="text-black font-size-13px font-weight-500">
-                  Link to your YouTube video{" "}
+                  Link to your YouTube video
                   <span className="required_stars"> * </span>
                 </Form.Label>
                 <Form.Control
@@ -107,7 +113,7 @@ const VideoIntro = ({ data, Popup, successPopup, setSuccessPopup }) => {
               </div>
               <div className="popup_form_element">
                 <Form.Label className="text-black font-size-13px font-weight-500">
-                  What type of video is this?{" "}
+                  What type of video is this?
                   <span className="required_stars"> * </span>
                 </Form.Label>
                 <select
