@@ -22,7 +22,7 @@ const ProfileIntroNavbar = () => {
             </Link>
           </div>
 
-          {userDetails ? (
+          {userDetails?.is_profile_complete === false ? (
             <div className="nav_pro_node">
               <div className="nav_profile">
                 {userDetails?.profile_image ? (

@@ -143,7 +143,7 @@ const Budget = ({
           Professionals tend to charge{" "}
           <span>
             {values?.budget_type == "hourly" ? (
-              <>{`$${values.min_price} - $${values.price}hr (USD)`}</>
+              <>{`$${values.min_price} - $${values.price}hr (USD)` || "0"}</>
             ) : (
               <>{`$${values.price}`}</>
             )}

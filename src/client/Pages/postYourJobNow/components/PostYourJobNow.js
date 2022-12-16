@@ -23,8 +23,8 @@ const PostYourJobNow = () => {
   };
 
   const reviewJobPost = () => {
-    if (values?.min_price >= values?.price) {
-      setError("price should be greater than and equal to minimum price");
+    if (values?.min_price > values?.price) {
+      setError("Max price must be greater then min price");
     } else {
       dispatch({
         type: SET_JOB_DATA_LISTING,
@@ -37,7 +37,7 @@ const PostYourJobNow = () => {
   };
 
   return (
-    <div className="bg-fff min_pad_m">
+    <div className="bg-fff min_pad_m profileDashboard">
       <Container>
         <Row>
           <SideNav setCurrentTab={setCurrentTab} currentTab={currentTab} />

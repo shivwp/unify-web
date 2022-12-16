@@ -20,8 +20,8 @@ const ProjectBudgetPopup = ({ open, onCloseModal, setValues, values }) => {
   };
 
   const onSave = () => {
-    if (budgetData?.min_price >= budgetData?.price) {
-      setError("price should be greater than and equal to minimum price");
+    if (budgetData?.min_price > budgetData?.price) {
+      setError("Max price must be greater then min price");
     } else {
       setValues({
         ...values,

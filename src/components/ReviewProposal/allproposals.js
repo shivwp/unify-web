@@ -88,11 +88,13 @@ const Screen = ({
                         )}
 
                         <div className="ts_btn attach_f_btn wid_30_in d-flex flex-wrap">
-                          <button className="transp_fil_btn mt-2 font-weight-500">
-                            Message
-                          </button>
+                          <Link to="/message">
+                            <button className="transp_fil_btn mt-2 font-weight-500">
+                              Message
+                            </button>
+                          </Link>
                           <Link
-                            to={`/hire-freelancer/${data.proposal_id}/${data.freelancer_id}`}
+                            to={`/hire-freelancer/${data.freelancer_id}/${data.proposal_id}`}
                           >
                             <button className="mt-2 font-weight-500 hover_white_io">
                               Hire

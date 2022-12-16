@@ -6,6 +6,7 @@ const SideNav = ({ setCurrentTab, currentTab }) => {
     <Col lg={3}>
       <div className="side_nav">
         <div
+          onClick={() => setCurrentTab("getting-started")}
           className={`nav_box ${
             currentTab === "getting-started" && "active_s_nav"
           }`}
@@ -24,12 +25,13 @@ const SideNav = ({ setCurrentTab, currentTab }) => {
             </svg>
           </div>
           <div className="s_nav_title">
-            <span onClick={() => setCurrentTab("getting-started")}>
-              Getting Started
-            </span>
+            <span>Getting Started</span>
           </div>
         </div>
-        <div className={`nav_box ${currentTab === "title" && "active_s_nav"}`}>
+        <div
+          onClick={() => setCurrentTab("title")}
+          className={`nav_box ${currentTab === "title" && "active_s_nav"}`}
+        >
           <div className="s_nav_icon">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -44,11 +46,14 @@ const SideNav = ({ setCurrentTab, currentTab }) => {
             </svg>
           </div>
           <div className="s_nav_title">
-            <span onClick={() => setCurrentTab("title")}>Title</span>
+            <span>Title</span>
           </div>
         </div>
 
-        <div className={`nav_box ${currentTab === "skills" && "active_s_nav"}`}>
+        <div
+          onClick={() => setCurrentTab("skills")}
+          className={`nav_box ${currentTab === "skills" && "active_s_nav"}`}
+        >
           <div className="s_nav_icon">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -63,10 +68,13 @@ const SideNav = ({ setCurrentTab, currentTab }) => {
             </svg>
           </div>
           <div className="s_nav_title">
-            <span onClick={() => setCurrentTab("skills")}>Skills</span>
+            <span>Skills</span>
           </div>
         </div>
-        <div className={`nav_box ${currentTab === "scope" && "active_s_nav"}`}>
+        <div
+          onClick={() => setCurrentTab("scope")}
+          className={`nav_box ${currentTab === "scope" && "active_s_nav"}`}
+        >
           <div className="s_nav_icon">
             <svg
               height="16"
@@ -81,10 +89,13 @@ const SideNav = ({ setCurrentTab, currentTab }) => {
             </svg>
           </div>
           <div className="s_nav_title">
-            <span onClick={() => setCurrentTab("scope")}>Scope</span>
+            <span>Scope</span>
           </div>
         </div>
-        <div className={`nav_box ${currentTab === "budget" && "active_s_nav"}`}>
+        <div
+          onClick={() => setCurrentTab("budget")}
+          className={`nav_box ${currentTab === "budget" && "active_s_nav"}`}
+        >
           <div className="s_nav_icon">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -98,7 +109,7 @@ const SideNav = ({ setCurrentTab, currentTab }) => {
             </svg>
           </div>
           <div className="s_nav_title">
-            <span onClick={() => setCurrentTab("budget")}>Budget</span>
+            <span>Budget</span>
           </div>
         </div>
       </div>

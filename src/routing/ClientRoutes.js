@@ -1,5 +1,6 @@
 import { lazy } from "react";
 import { Route, Routes } from "react-router-dom";
+import ProfileDashboard from "../client/Pages/settingDashboard";
 import ReusePosting from "../components/ReusePosting";
 import ProtectedRoutes from "./PrivateRoute";
 const Createcategory = lazy(() => import("../client/Pages/Create-Category"));
@@ -22,26 +23,6 @@ const Talentbyo = lazy(() => import("../client/Pages/TalentBYO"));
 const Talentrecentview = lazy(() => import("../client/Pages/TalentRecent"));
 const Talentsaved = lazy(() => import("../client/Pages/TalentSaved"));
 const Search = lazy(() => import("../client/Pages/Search"));
-const SettingInfo = lazy(() => import("../client/Pages/Setting/SettingInfo"));
-const SettingBilling = lazy(() =>
-  import("../client/Pages/Setting/settingbilling")
-);
-const SettingMembership = lazy(() =>
-  import("../client/Pages/Setting/settingmember")
-);
-const SettingTeam = lazy(() => import("../client/Pages/Setting/settingteam"));
-const SettingNotification = lazy(() =>
-  import("../client/Pages/Setting/settingnotification")
-);
-const SettingConnectedServices = lazy(() =>
-  import("../client/Pages/Setting/settingservices")
-);
-const SettingMembershipPerm = lazy(() =>
-  import("../client/Pages/Setting/settingmemberperm")
-);
-const SettingPasswordSecurity = lazy(() =>
-  import("../client/Pages/Setting/settingpassword")
-);
 const HelpSupport = lazy(() => import("../client/Pages/HelpSupport"));
 const Message = lazy(() => import("../client/Pages/Chat"));
 const ManagementBoard = lazy(() => import("../client/Pages/ManagementBoard"));
@@ -92,7 +73,7 @@ const ClientRoutes = () => {
           element={<ReusePosting />}
         />
         <Route
-          path="/hire-freelancer/:proposal_id/:freelancer_id"
+          path="/hire-freelancer/:freelancer_id/:proposal_id"
           element={<HireFreelancer />}
         />
         <Route
@@ -111,23 +92,8 @@ const ClientRoutes = () => {
         <Route path="/talent-recently-viewed" element={<Talentrecentview />} />
         <Route path="/talent-saved" element={<Talentsaved />} />
         <Route path="/search" element={<Search />} />
-        <Route path="/setting-myinfo" element={<SettingInfo />} />
-        <Route path="/setting-billing" element={<SettingBilling />} />
-        <Route path="/setting-membership" element={<SettingMembership />} />
-        <Route path="/setting-team" element={<SettingTeam />} />
-        <Route path="/setting-notification" element={<SettingNotification />} />
-        <Route
-          path="/setting-connected-services"
-          element={<SettingConnectedServices />}
-        />
-        <Route
-          path="/setting-membership-permission"
-          element={<SettingMembershipPerm />}
-        />
-        <Route
-          path="/setting-password-security"
-          element={<SettingPasswordSecurity />}
-        />
+
+        <Route path="/profile-setting" element={<ProfileDashboard />} />
         <Route path="/help-support" element={<HelpSupport />} />
         <Route path="/message" element={<Message />} />
         <Route path="/management-board" element={<ManagementBoard />} />

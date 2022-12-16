@@ -109,13 +109,22 @@ const ReusePosting = () => {
                 <div className="form_box_bor mt-2">
                   <div className="edit-posting-heading">
                     <div className="heading">Review</div>
-                    <button
-                      className="mt-2 btn-save_post border_blue_wwifth"
-                      style={{ fontSize: 17, fontWeight: 600 }}
-                      onClick={postYourJobNow}
-                    >
-                      Post Your Job Now
-                    </button>
+                    {!values?.name || !values?.description ? (
+                      <button
+                        disabled
+                        className="mt-2 btn-save_post SaveJobPostDisabled"
+                      >
+                        Post Your Job Now
+                      </button>
+                    ) : (
+                      <button
+                        className="mt-2 btn-save_post border_blue_wwifth"
+                        style={{ fontSize: 17, fontWeight: 600 }}
+                        onClick={postYourJobNow}
+                      >
+                        Post Your Job Now
+                      </button>
+                    )}
                   </div>
                   <div className="title-edit_posting">
                     <div className="title">Title</div>
@@ -157,7 +166,8 @@ const ReusePosting = () => {
                         Please add a job description.
                       </div>
                       <div className="sm_label_inp text-right">
-                        5000 characters left
+                        {5000 - values?.description?.length || 5000} characters
+                        left
                       </div>
                     </div>
                     <div className="ts_btn attach_f_btn">
@@ -172,11 +182,44 @@ const ReusePosting = () => {
                       </label>
                       <div className="sm_label_inp">Max file size: 100 MB</div>
                     </div>
-                    <img
-                      src={objectUrl ? objectUrl : values?.image}
-                      className="selectImage"
-                      alt=""
-                    />
+                    {objectUrl ? (
+                      <div className="document_card">
+                        <i class="bi bi-file-earmark-text font-size-20px"></i>
+                        &nbsp;
+                        <span className="heading">File Name : </span>
+                        <span className="name">{imageFile?.name}</span>
+                        <span
+                          onClick={() => {
+                            setObjectUrl();
+                            setImageFile();
+                          }}
+                          className="close_icon"
+                        >
+                          X
+                        </span>
+                      </div>
+                    ) : (
+                      <>
+                        {values?.image_name && (
+                          <div className="document_card">
+                            <i class="bi bi-file-earmark-text font-size-20px"></i>
+                            &nbsp;
+                            <span className="heading">File Name : </span>
+                            <span className="name">{values?.image_name}</span>
+                            <span
+                              onClick={() => {
+                                setObjectUrl();
+                                setImageFile();
+                                setValues({ ...values, image_name: "" });
+                              }}
+                              className="close_icon"
+                            >
+                              X
+                            </span>
+                          </div>
+                        )}
+                      </>
+                    )}
                   </div>
 
                   {/* catagory start */}
@@ -250,9 +293,19 @@ const ReusePosting = () => {
                     </div>
                   </div>
 
-                  <div className="edit_posting_save_btn">
-                    <button onClick={postYourJobNow}>Post Your Job Now</button>
-                  </div>
+                  {!values?.name || !values?.description ? (
+                    <div className="edit_posting_save_btn">
+                      <button disabled className="SaveJobPostDisabled">
+                        Post Your Job Now
+                      </button>
+                    </div>
+                  ) : (
+                    <div className="edit_posting_save_btn">
+                      <button onClick={postYourJobNow}>
+                        Post Your Job Now
+                      </button>
+                    </div>
+                  )}
                 </div>
               </Col>
             </Row>

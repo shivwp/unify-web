@@ -2,8 +2,8 @@ import { Container } from "react-bootstrap";
 import { useState } from "react";
 import "swiper/css";
 import "swiper/css/navigation";
-import IAmClient from "../../Setting/components/Setting/IAmClient";
-import IAmFreelancer from "../../Setting/components/Setting/IAmFreelancer";
+import IAmClient from "./IAmClient";
+import IAmFreelancer from "./IAmFreelaner";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
@@ -45,7 +45,7 @@ const Screen = () => {
         </div>
         <div className="d-flex flex-wrap tab_m_nodea all_bt_fif tab_scroll_cont">
           <Button
-           variant=""
+            variant=""
             className={`tab_btn_vs w-auto ${
               TabActive === "FREELANCER" ? "active_bvs" : ""
             }`}
@@ -56,7 +56,7 @@ const Screen = () => {
             I'm a Freelancer
           </Button>
           <Button
-           variant=""
+            variant=""
             className={`tab_btn_vs w-auto ${
               TabActive === "CLIENT" ? "active_bvs" : ""
             }`}

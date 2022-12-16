@@ -190,7 +190,8 @@ const EditDraft = () => {
                         Please add a job description.
                       </div>
                       <div className="sm_label_inp text-right">
-                        5000 characters left
+                        {5000 - values?.description?.length || 5000} characters
+                        left
                       </div>
                     </div>
                     <div className="ts_btn attach_f_btn">
@@ -205,11 +206,44 @@ const EditDraft = () => {
                       </label>
                       <div className="sm_label_inp">Max file size: 10 MB</div>
                     </div>
-                    <img
-                      src={objectUrl ? objectUrl : values?.image}
-                      className="selectImage"
-                      alt=""
-                    />
+                    {objectUrl ? (
+                      <div className="document_card">
+                        <i class="bi bi-file-earmark-text font-size-20px"></i>
+                        &nbsp;
+                        <span className="heading">File Name : </span>
+                        <span className="name">{imageFile?.name}</span>
+                        <span
+                          onClick={() => {
+                            setObjectUrl();
+                            setImageFile();
+                          }}
+                          className="close_icon"
+                        >
+                          X
+                        </span>
+                      </div>
+                    ) : (
+                      <>
+                        {values?.image_name && (
+                          <div className="document_card">
+                            <i class="bi bi-file-earmark-text font-size-20px"></i>
+                            &nbsp;
+                            <span className="heading">File Name : </span>
+                            <span className="name">{values?.image_name}</span>
+                            <span
+                              onClick={() => {
+                                setObjectUrl();
+                                setImageFile();
+                                setValues({ ...values, image_name: "" });
+                              }}
+                              className="close_icon"
+                            >
+                              X
+                            </span>
+                          </div>
+                        )}
+                      </>
+                    )}
                   </div>
                   {/* catagory start */}
                   <div className="edit-posting-category">
@@ -230,7 +264,7 @@ const EditDraft = () => {
                     <div className="input_t_lab">Skills</div>
                     <div className="slide_btnss">
                       {values?.job_skills?.map((item, key) => (
-                        <button>{item.name}</button>
+                        <button key={key}>{item.name}</button>
                       ))}
 
                       <button

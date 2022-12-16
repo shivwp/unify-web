@@ -81,6 +81,12 @@
   width: 600px;
 }
 
+@media (max-width: 481px) {
+  .change-password-popup {
+    width: unset;
+  }
+}
+
 .change-password-popup h5 {
   color: #6d2ef1;
   font-weight: 700;

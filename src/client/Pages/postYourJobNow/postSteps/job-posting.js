@@ -1,14 +1,32 @@
 import { Row, Col } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Form from "react-bootstrap/Form";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  getAllClientDraftPosting,
+  getAllClientPosting,
+} from "../../../../redux/actions/jobActions";
 
 const JobPosting = ({ setCurrentTab, onInputChange, values }) => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [jobPosting, setJobPosting] = useState("createNewJob");
+  const allClientPosting = useSelector((state) => state.job.allClientPosting);
+  const allClientDraftPosting = useSelector(
+    (state) => state.job.allClientDraftPosting
+  );
+  const [draftId, setDraftId] = useState();
+  const [reuseId, setReuseId] = useState();
 
   const handleJobChange = (e) => {
     setJobPosting(e.target.value);
   };
+
+  useEffect(() => {
+    dispatch(getAllClientPosting());
+    dispatch(getAllClientDraftPosting());
+  }, []);
 
   return (
     <Col lg={9}>
@@ -123,6 +141,23 @@ const JobPosting = ({ setCurrentTab, onInputChange, values }) => {
             <p>Edit an existing draft </p>
           </Form.Label>
         </div>
+
+        {jobPosting === "editAnExistingDraft" && (
+          <div className="s_select">
+            <select
+              className="carrt_css_select"
+              onChange={(e) => setDraftId(e.target.value)}
+            >
+              <option value="">Select</option>
+              {allClientDraftPosting?.data?.map((data, key) => (
+                <option key={key} value={data.id}>
+                  {data.name}
+                </option>
+              ))}
+            </select>
+          </div>
+        )}
+
         <div className="s_b_r">
           <Form.Check
             type="radio"
@@ -135,11 +170,23 @@ const JobPosting = ({ setCurrentTab, onInputChange, values }) => {
             <p>Reuse a previous job post</p>
           </Form.Label>
         </div>
-        <div className="s_select">
-          <select className="carrt_css_select">
-            <option>HubSpot Automations - Work flow</option>
-          </select>
-        </div>
+
+        {jobPosting === "reusePreviousJobPost" && (
+          <div className="s_select">
+            <select
+              className="carrt_css_select"
+              onChange={(e) => setReuseId(e.target.value)}
+            >
+              <option value="">Select</option>
+              {allClientPosting?.data?.map((data, key) => (
+                <option key={key} value={data.id}>
+                  {data.name}
+                </option>
+              ))}
+            </select>
+          </div>
+        )}
+
         <div className="btn_foot_sec flex-wrap d-flex">
           <div className="fo_btn_c next_b_btn_c">
             <Link to="/dashboard">

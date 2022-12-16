@@ -1640,7 +1640,7 @@ body {
 .footer {
   background-image: linear-gradient(180deg, #39478f 0%, #371779 100%);
   padding: 80px 0px 0px 0px;
-  margin-top: 10px;
+  /* margin-top: 10px; */
 }
 
 .footer-head h3 {
@@ -2425,7 +2425,7 @@ body {
 .s_nav_body {
   background-color: #fff;
   padding: 30px 20px;
-  /* margin-top: 10px; */
+  margin-top: 10px;
 }
 
 .s_b_head {
@@ -2564,12 +2564,19 @@ body {
   -ms-border-radius: 27px;
   -o-border-radius: 27px;
   border: #6d2ef1 solid 1px;
-  padding: 12px 30px;
+  padding: 10px 30px;
   font-size: 15px;
   color: #6d2ef1;
   font-weight: 700;
   font-family: "Poppins";
   text-align: center;
+}
+.SaveJobPostDisabled {
+  background-color: #e4ebe4 !important ;
+  color: #9aaa97 !important;
+  cursor: not-allowed;
+  border: none !important;
+  min-width: 200px;
 }
 
 /* .fo_btn_c button:hover {
@@ -5031,6 +5038,10 @@ body {
   background-color: #fff;
 }
 
+.profileDashboard {
+  background-color: #0777fd12;
+}
+
 .min_pad_m {
   padding: 35px 0px;
 }
@@ -5089,7 +5100,7 @@ body {
 
 .next_b_btn_c button {
   min-width: 170px;
-  margin: 5px 5px 5px 0;
+  margin: 0px 5px 5px 0;
 }
 
 .active_btn_blueDiabled {
@@ -5097,7 +5108,7 @@ body {
   color: #9aaa97 !important;
   border: none !important;
   cursor: not-allowed;
-  padding: 8px 0px !important;
+  padding: 11px 0px !important;
 }
 
 .invitationSentDisabled {
@@ -5711,7 +5722,7 @@ a {
 
 .mobile_slide_menu {
   background-color: #061534;
-  padding: 40px 15px 70px 15px;
+  padding: 15px 15px 70px 15px;
   z-index: 9999999;
   position: absolute;
   text-align: -webkit-center;
@@ -5775,7 +5786,7 @@ a {
 
 .logout_btn_mob {
   width: 75%;
-  margin-top: 25px;
+  margin-top: 15px;
 }
 
 .logout_btn_mob button {

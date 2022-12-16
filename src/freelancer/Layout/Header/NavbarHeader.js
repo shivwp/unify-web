@@ -110,14 +110,18 @@ const NavbarHeader = (props) => {
             </div>
           </NavDropdown>
         </div>
-        <div className="d-flex justify-content-between smbtn_logsignup">
-          <Link to="/signin">
-            <button>Log In</button>
-          </Link>
-          <Link to="/signup">
-            <button className="active_mmnuckwu">Signup now</button>
-          </Link>
-        </div>
+        {!sessionStorage.getItem("unify_token") && (
+          <>
+            <div className="d-flex justify-content-between smbtn_logsignup">
+              <Link to="/signin">
+                <button>Log In</button>
+              </Link>
+              <Link to="/signup">
+                <button className="active_mmnuckwu">Signup now</button>
+              </Link>
+            </div>
+          </>
+        )}
       </>
     );
   };
