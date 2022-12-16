@@ -3,21 +3,7 @@ import Button from "react-bootstrap/Button";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { onEditDesignation } from "../../../../../redux/actions/profileAction";
-
-const CloseIcon = () => {
-  return (
-    <svg
-      fill="#B2B2B2"
-      className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiBox-root css-1om0hkc"
-      focusable="false"
-      aria-hidden="true"
-      viewBox="0 0 24 24"
-      data-testid="CloseIcon"
-    >
-      <path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path>
-    </svg>
-  );
-};
+import PopupsCloseIcon from "../../../../components/popups/PopupsCloseIcon";
 
 const EditTitle = ({ data, Popup, successPopup, setSuccessPopup }) => {
   const dispatch = useDispatch();
@@ -67,6 +53,9 @@ const EditTitle = ({ data, Popup, successPopup, setSuccessPopup }) => {
     } else if (/^[0-9]\d*$/.test(values?.description)) {
       errorsObject.description = "please input a valid description ";
       errorExist = true;
+    } else if (values?.description?.length < 100) {
+      errorsObject.description = "Atleast 100 charecters is required ";
+      errorExist = true;
     }
 
     if (errorExist) {
@@ -88,7 +77,7 @@ const EditTitle = ({ data, Popup, successPopup, setSuccessPopup }) => {
           <div className="popup_header pb-0">
             <div className="p_header_hding">Title And Overview</div>
             <div className="close_pp_btn" onClick={() => Popup()}>
-              <CloseIcon />
+              <PopupsCloseIcon />
             </div>
           </div>
           <div className="popup_body_bpn amount_popup_body max_height_popucwui">
@@ -137,12 +126,17 @@ const EditTitle = ({ data, Popup, successPopup, setSuccessPopup }) => {
                 name="description"
                 value={values?.description}
                 onChange={(e) => handleOnChange(e)}
+                maxlength="5000"
                 placeholder="Description"
               ></Form.Control>
-              <span className="signup-error">
-                {/* {errors.description && "Please enter your description"} */}
-                {errors.description && errors.description}
-              </span>
+              <div className="maxlabel_atcxt2_and_errors">
+                <span className="signup-error">
+                  {errors.description && errors.description}
+                </span>
+                <span>
+                  {5000 - values?.description?.length} characters left{" "}
+                </span>
+              </div>
             </div>
 
             <div className="popup_btns_new flex-wrap cwiewyehkk">

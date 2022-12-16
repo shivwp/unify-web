@@ -1892,6 +1892,7 @@ body {
 .flex_stars {
   display: flex;
   align-items: center;
+  gap: 10px;
 }
 
 .profile_box {
@@ -7112,6 +7113,23 @@ a {
   margin-top: 5px;
   font-size: 12px;
 }
+.maxlabel_atcxt2_and_errors {
+  display: flex;
+  justify-content: space-between;
+  font-family: "poppins";
+  font-size: 13px;
+  color: #9c9a9f;
+  font-weight: 400;
+  margin-top: 5px;
+  font-size: 12px;
+}
+
+.show_more_description {
+  cursor: pointer;
+  color: #6610f2;
+  font-weight: 600;
+  font-size: 14px;
+}
 
 .whatdoYoudo-head {
   color: #00065a !important;
@@ -9356,6 +9374,7 @@ input::-webkit-inner-spin-button {
   margin: 10px 0;
 }
 .single_submited_proposal .cover_letter .desc {
+  word-break: break-word;
   color: #6b6b6b;
   font-weight: 400;
   font-size: 14px;
@@ -9384,10 +9403,10 @@ input::-webkit-inner-spin-button {
   align-items: center;
   margin: 10px 0;
 }
-.single_submited_proposal .about_client .reviews .stars {
-  display: flex;
-  align-items: center;
-  gap: 3px;
+.reviews .stars {
+  display: flex !important;
+  align-items: center !important;
+  gap: 3px !important;
 }
 .single_submited_proposal .about_client .stars svg {
   width: 15px;
@@ -9646,6 +9665,7 @@ input::-webkit-inner-spin-button {
   font-size: 14px;
   margin-bottom: 10px;
   white-space: pre-line;
+  word-break: break-word;
 }
 .single_active_proposal .about_client {
   margin-bottom: 10px;
@@ -9669,15 +9689,12 @@ input::-webkit-inner-spin-button {
   align-items: center;
   margin: 10px 0;
 }
-.single_active_proposal .about_client .reviews .stars {
-  display: flex;
-  align-items: center;
-  gap: 3px;
-}
-.single_active_proposal .about_client .stars svg {
+
+.reviews .stars svg {
   width: 15px;
   height: 15px;
 }
+
 .single_active_proposal .about_client .reviews .desc {
   color: #462d7a;
   font-size: 14px;
@@ -9978,13 +9995,13 @@ input::-webkit-inner-spin-button {
   background: #fff;
 }
 
-@media screen  and (max-width: 376px) {
-  .document_card{
+@media screen and (max-width: 376px) {
+  .document_card {
     min-width: 300px;
   }
 }
-@media screen  and (max-width: 321px) {
-  .document_card{
+@media screen and (max-width: 321px) {
+  .document_card {
     min-width: 245px;
   }
 }

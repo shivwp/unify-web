@@ -60,6 +60,7 @@ const Testimonial = () => {
     setValues({ ...values, [e.target.name]: e.target.value });
     setErrors({ ...errors, [e.target.name]: false });
   };
+  
   const testimonialData = useSelector(
     (state) => state?.profile?.getTestimonial
   );
@@ -179,6 +180,8 @@ const Testimonial = () => {
                 onChange={(e) => handleOnChange(e)}
                 name="description"
                 placeholder="Enter Your Testimonial"
+                value={values?.description}
+                maxlength="800"
               ></Form.Control>
               <div
                 className="max_char"

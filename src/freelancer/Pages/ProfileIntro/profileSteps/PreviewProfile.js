@@ -26,6 +26,7 @@ const PreviewProfile = ({ setCurrentTab, profileList }) => {
   const [popup, Setpopup] = useState();
   const [successPopup, setSuccessPopup] = useState();
   const [confirmPopup, setConfirmPopup] = useState();
+  const [showDescription, setShowDescription] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -243,7 +244,16 @@ const PreviewProfile = ({ setCurrentTab, profileList }) => {
                   </g>
                 </svg>
                 <div className="tamoun_pdd_sp">
-                  {profileList?.basic_info?.description}
+                  {showDescription
+                    ? profileList?.basic_info?.description
+                    : profileList?.basic_info?.description?.slice(0, 300)}
+                  <br />
+                  <span
+                    className="show_more_description"
+                    onClick={() => setShowDescription(!showDescription)}
+                  >
+                    {showDescription ? "show less" : "show more"}
+                  </span>
                 </div>
               </div>
               <div className="pbx_pdd_sp2"></div>
@@ -566,6 +576,8 @@ const PreviewProfile = ({ setCurrentTab, profileList }) => {
                       style={{ marginRight: 10 }}
                     >
                       {item.school} <br />
+                      {item.area_study}
+                      <br />
                       {item.start_year} - {item.end_year}
                     </div>
                     <svg

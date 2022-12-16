@@ -34,6 +34,7 @@ import LanguageEdit from "./popups/LanguageEdit";
 import AddEduc from "./popups/AddEduc";
 import AddCert from "./popups/AddCert";
 import ReqTestimonial from "./popups/ReqTestimonial";
+import StarRating from "../../../components/rating/Rating";
 
 function PortfolioPaginate({
   itemsPerPage,
@@ -176,20 +177,6 @@ const Star = () => {
     </>
   );
 };
-const CloseIcon = () => {
-  return (
-    <svg
-      fill="#B2B2B2"
-      className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiBox-root css-1om0hkc"
-      focusable="false"
-      aria-hidden="true"
-      viewBox="0 0 24 24"
-      data-testid="CloseIcon"
-    >
-      <path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path>
-    </svg>
-  );
-};
 
 const UnifyFreelancer = () => {
   const dispatch = useDispatch();
@@ -213,6 +200,7 @@ const UnifyFreelancer = () => {
   const [editPortfoData, setEditPortfoData] = useState([]);
   const [confirmPopup, setConfirmPopup] = useState(false);
   const [successPopup, setSuccessPopup] = useState(false);
+  const [showDescription, setShowDescription] = useState(false);
 
   const deleteExprience = useSelector(
     (state) => state?.profile?.deleteExprience
@@ -456,43 +444,8 @@ const UnifyFreelancer = () => {
 
                   <div className="flex_stars">
                     {/* <Rating rating={1} /> */}
+                    {<StarRating rating={basicInfo?.rating} />}
 
-                    <div className="review_star">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
-                        fill="currentColor"
-                        className="bi bi-star-fill"
-                        viewBox="0 0 16 16"
-                      >
-                        <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
-                      </svg>
-                    </div>
-                    <div className="review_star">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
-                        fill="currentColor"
-                        className="bi bi-star-fill"
-                        viewBox="0 0 16 16"
-                      >
-                        <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
-                      </svg>
-                    </div>
-                    <div className="review_star">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
-                        fill="currentColor"
-                        className="bi bi-star-fill fill-none"
-                        viewBox="0 0 16 16"
-                      >
-                        <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
-                      </svg>
-                    </div>
                     <div className="review_par">
                       <p>Reviews</p>
                     </div>
@@ -1090,7 +1043,16 @@ const UnifyFreelancer = () => {
                   className="descri_pfro"
                   style={{ wordBreak: "break-word" }}
                 >
-                  {basicInfo?.description}
+                  {showDescription
+                    ? basicInfo?.description
+                    : basicInfo?.description?.slice(0, 300)}
+                  <br />
+                  <span
+                    className="show_more_description"
+                    onClick={() => setShowDescription(!showDescription)}
+                  >
+                    {showDescription ? "show less" : "show more"}
+                  </span>
                 </div>
               </div>
             </div>

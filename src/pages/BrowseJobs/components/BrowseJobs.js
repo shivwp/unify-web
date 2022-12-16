@@ -21,7 +21,6 @@ const BrowseJobs = () => {
   const totalPages = [];
   const jobsList = useSelector((state) => state?.job?.jobsList?.data);
   const jobsPagination = useSelector((state) => state?.job?.jobsList?.meta);
-  const [popup, setPopup] = useState(false);
 
   const [filters, setFilters] = useState({});
   let getSkillList = useSelector((state) => state?.profile?.getSkillList);
@@ -180,10 +179,6 @@ const BrowseJobs = () => {
       skills: selectSkills?.map((item) => item.skill_id)?.toString(),
     });
   };
-
-  setTimeout(() => {
-    setPopup(<FreeProfile />);
-  }, 30000);
 
   return (
     <>
@@ -562,7 +557,6 @@ const BrowseJobs = () => {
           </Row>
         </Container>
       </div>
-      {popup}
     </>
   );
 };
