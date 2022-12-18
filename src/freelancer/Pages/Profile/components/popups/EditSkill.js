@@ -8,20 +8,7 @@ import {
   onEditSkills,
 } from "../../../../../redux/actions/profileAction";
 
-const CloseIcon = () => {
-  return (
-    <svg
-      fill="#B2B2B2"
-      className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiBox-root css-1om0hkc"
-      focusable="false"
-      aria-hidden="true"
-      viewBox="0 0 24 24"
-      data-testid="CloseIcon"
-    >
-      <path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path>
-    </svg>
-  );
-};
+import PopupsCloseIcon from "../../../../../freelancer/components/popups/PopupsCloseIcon";
 
 const EditSkill = ({ data, Popup, successPopup, setSuccessPopup }) => {
   const [selectSkills, setSelectSkills] = useState(data || []);
@@ -33,9 +20,16 @@ const EditSkill = ({ data, Popup, successPopup, setSuccessPopup }) => {
   let getSkillList = useSelector((state) => state?.profile?.getSkillList);
   const [values, setValues] = useState();
 
+  // remove item which is selected
   useEffect(() => {
-    setSkillsList(getSkillList || []);
-  }, getSkillList);
+    const myArray = getSkillList?.filter(function (item) {
+      return !selectSkills?.find(function (ele) {
+        return item?.id === ele?.skill_id;
+      });
+    });
+    setSkillsList(myArray || []);
+  }, [getSkillList, selectSkills]);
+  // remove item which is selected
 
   const removeSkills = (index) => {
     let updateSkills = [...selectSkills];
@@ -54,7 +48,7 @@ const EditSkill = ({ data, Popup, successPopup, setSuccessPopup }) => {
           ...selectSkills,
           { skill_id: item.id, skill_name: item.name },
         ]);
-        setShowSkillList(false);
+        // setShowSkillList(false);
       } else {
         setShowSkillList(false);
         setErrors({ already: "Skill Already selected" });
@@ -116,7 +110,7 @@ const EditSkill = ({ data, Popup, successPopup, setSuccessPopup }) => {
           <div className="popup_header pb-0">
             <div className="p_header_hding">Edit Skills</div>
             <div className="close_pp_btn" onClick={() => Popup()}>
-              <CloseIcon />
+              <PopupsCloseIcon />
             </div>
           </div>
           <div className="popup_body_bpn amount_popup_body max_height_popucwui overflow-scroll">
@@ -146,7 +140,7 @@ const EditSkill = ({ data, Popup, successPopup, setSuccessPopup }) => {
                   name="skill"
                   // value={values?.skill}
                   id="search_skill_inp"
-                  autocomplete="off"
+                  autoComplete="off"
                   placeholder="Search here skills..."
                   className="no-border font-size-13px search_skilloiouo"
                 />

@@ -482,6 +482,7 @@ const Project_Search = () => {
   const [page, setPage] = useState(1);
   const [errors, setErrors] = useState({});
   const totalPages = [];
+  const [skillsList, setSkillsList] = useState([]);
 
   const handleFilterChange = (e) => {
     setFilterValues({ ...filterValues, [e.target.name]: e.target.value });
@@ -523,6 +524,17 @@ const Project_Search = () => {
       label: "what are you looking for",
     },
   ];
+
+  // remove item which is selected
+  useEffect(() => {
+    const myArray = getSkillList?.filter(function (item) {
+      return !selectSkills?.find(function (ele) {
+        return item?.id === ele?.skill_id;
+      });
+    });
+    setSkillsList(myArray || []);
+  }, [getSkillList, selectSkills]);
+  // remove item which is selected
 
   // for filter jobs
   useEffect(() => {
@@ -751,7 +763,7 @@ const Project_Search = () => {
                       />
                       {showSuggestedSkills ? (
                         <div className="suggessted_skills" id="suggest_skills">
-                          {getSkillList?.map((item, index) => (
+                          {skillsList?.map((item, index) => (
                             <span key={index} onClick={() => addSkills(item)}>
                               {item.name}
                             </span>
