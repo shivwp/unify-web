@@ -65,7 +65,7 @@ export const getFreelancerProfile = (setLoading) => async (dispatch) => {
   }
 };
 
-export const getFreelancerSkills = (data) => async (dispatch) => {
+export const getFreelancerSkills = (data, setLoading) => async (dispatch) => {
   try {
     await Axios.post(`/skill-list`, data).then((res) => {
       dispatch({
@@ -73,7 +73,12 @@ export const getFreelancerSkills = (data) => async (dispatch) => {
         payload: res.data.data,
       });
     });
-  } catch (err) {}
+    setLoading(false)
+  } catch (err) {
+    if(setLoading){
+      setLoading(false)
+    }
+  }
 };
 
 export const onAddEmployment =
@@ -477,7 +482,11 @@ export const getLanguageList = (setLoading) => async (dispatch) => {
         setLoading(false);
       }
     });
-  } catch (err) {}
+  } catch (err) {
+    if (setLoading) {
+      setLoading(false);
+    }
+  }
 };
 
 export const getHoursPerWeekList = (setLoading) => async (dispatch) => {

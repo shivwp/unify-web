@@ -15,6 +15,7 @@ import {
 import { SEND_PROPOSAL_DATA } from "../../../../redux/types";
 import moment from "moment";
 import Alert from "react-bootstrap/Alert";
+import LoadingSpinner from "../../../../components/LoadingSpinner";
 
 function ListProposals({ project_type, data }) {
   return (
@@ -167,15 +168,21 @@ const Projectdetail = () => {
   const singleJobDetails = useSelector((state) => state?.job?.singleJobDetails);
   const unSaveJobsPost = useSelector((state) => state?.job?.unSaveJobsPost);
   const saveJobsPost = useSelector((state) => state?.job?.saveJobsPost);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    dispatch(singleJobPostDetails({ job_id: id }));
+    setLoading(true);
+    dispatch(singleJobPostDetails({ job_id: id }, setLoading));
   }, [unSaveJobsPost, saveJobsPost]);
+
   const SaveJob = (id) => {
-    dispatch(saveJobs({ job_id: id }));
+    setLoading(true);
+    dispatch(saveJobs({ job_id: id }, setLoading));
   };
+
   const UnSaveJob = (id) => {
-    dispatch(removeSaveJob({ job_id: id }));
+    setLoading(true);
+    dispatch(removeSaveJob({ job_id: id }, setLoading));
   };
 
   console.log(singleJobDetails);
@@ -813,6 +820,7 @@ const Projectdetail = () => {
         </Row>
       </Container>
       <br />
+      {loading ? <LoadingSpinner /> : null}
     </>
   );
 };

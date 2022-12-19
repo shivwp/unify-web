@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect } from "react";
 import Container from "react-bootstrap/Container";
 import { Row, Col } from "react-bootstrap";
 import star from "../../../../icons/star.svg";
@@ -25,13 +25,20 @@ import {
   getLanguageList,
 } from "../../../../redux/actions/profileAction";
 import { filter } from "dom7";
+import ResultNotFound from "../ResultNotFound";
+import LoadingSpinner from "../../../../components/LoadingSpinner";
 
-const ReasonsList = ({ jobId, data, setDropdownOpen }) => {
+const ReasonsList = ({ jobId, data, setDropdownOpen, setLoading }) => {
   const dispatch = useDispatch();
 
   const dislikeJobPost = (id) => {
+    setLoading(true);
     dispatch(
-      onDislikeJobPost({ job_id: jobId, reason_id: id }, setDropdownOpen)
+      onDislikeJobPost(
+        { job_id: jobId, reason_id: id },
+        setDropdownOpen,
+        setLoading
+      )
     );
   };
   return (
@@ -54,7 +61,7 @@ const ReasonsList = ({ jobId, data, setDropdownOpen }) => {
   );
 };
 
-const ProjectSearch = ({ filters }) => {
+const ProjectSearch = ({ filters, setLoading }) => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const totalPages = [];
   const dispatch = useDispatch();
@@ -64,7 +71,6 @@ const ProjectSearch = ({ filters }) => {
   const onDislikeJobPost = useSelector((state) => state?.job?.onDislikeJobPost);
   const unSaveJobsPost = useSelector((state) => state?.job?.unSaveJobsPost);
   const saveJobsPost = useSelector((state) => state?.job?.saveJobsPost);
-
   const dislikeJobReasons = useSelector(
     (state) => state?.job?.dislikeJobReasons
   );
@@ -74,11 +80,12 @@ const ProjectSearch = ({ filters }) => {
   };
 
   useEffect(() => {
-    dispatch(getSavedJobsList({ pagination: 10, page }, ScrollTop));
+    setLoading(true);
+    dispatch(getSavedJobsList({ pagination: 10, page }, ScrollTop, setLoading));
   }, [page, onDislikeJobPost, unSaveJobsPost, saveJobsPost, filters]);
 
   useEffect(() => {
-    dispatch(onDislikePostReasons());
+    dispatch(onDislikePostReasons(setLoading));
   }, []);
 
   for (let i = 1; i < jobsPagination?.total_page + 1; i++) {
@@ -86,11 +93,13 @@ const ProjectSearch = ({ filters }) => {
   }
 
   const SaveJob = (id) => {
-    dispatch(saveJobs({ job_id: id }));
+    setLoading(true);
+    dispatch(saveJobs({ job_id: id }), setLoading);
   };
 
   const UnSaveJob = (id) => {
-    dispatch(removeSaveJob({ job_id: id }));
+    setLoading(true);
+    dispatch(removeSaveJob({ job_id: id }), setLoading);
   };
 
   $(document).mouseup(function (e) {
@@ -139,15 +148,6 @@ const ProjectSearch = ({ filters }) => {
           </Link>
           <div className="jb_foot flex-wrap">
             <div className="flex_itm">
-              {/* <div className="f_b_obx">
-                <div className="ex_name_fb">Expiry:</div>
-                <div className="ex_val_f">914 DAYS LEFT</div>
-              </div> */}
-              {/*  <div className="f_b_obx">
-                <div className="ex_name_fb">Proposals:</div>
-                <div className="ex_val_f">9 Received</div>
-              </div> */}
-              {/* <div className="f_b_obx"> */}
               <div className="">
                 <div className="ex_name_fb">Location:</div>
                 <div className="ex_val_f">{item.location}</div>
@@ -159,6 +159,7 @@ const ProjectSearch = ({ filters }) => {
                   jobId={item.id}
                   data={dislikeJobReasons}
                   setDropdownOpen={setDropdownOpen}
+                  setLoading={setLoading}
                 />
               ) : (
                 ""
@@ -257,8 +258,6 @@ const ProjectSearch = ({ filters }) => {
                       />
                     </g>
                   </svg>
-
-                  {/* <img src={heart} alt="" className="heart_btn" /> */}
                 </Button>
                 <Link to={`/freelancer/project-detail/${item.id}`}>
                   <Button variant="" disabled={item.is_proposal_send}>
@@ -290,10 +289,11 @@ const ProjectSearch = ({ filters }) => {
       ) : (
         ""
       )}
+      {jobsList?.length == 0 ? <ResultNotFound /> : null}
     </>
   );
 };
-const ProjectSaved = () => {
+const ProjectSaved = ({ setLoading }) => {
   const [dropdownOpen, setDropdownOpen] = useState(0);
   const dispatch = useDispatch();
   const [page, setPage] = useState(1);
@@ -314,11 +314,13 @@ const ProjectSaved = () => {
   }
 
   const UnSaveJob = (id) => {
-    dispatch(removeSaveJob({ job_id: id }));
+    setLoading(true);
+    dispatch(removeSaveJob({ job_id: id }, setLoading));
   };
 
   useEffect(() => {
-    dispatch(getSavedJobsList({ pagination: 10, page }, ScrollTop));
+    setLoading(true);
+    dispatch(getSavedJobsList({ pagination: 10, page }, ScrollTop, setLoading));
   }, [page, unSaveJobsPost]);
 
   return (
@@ -462,7 +464,8 @@ const Project_Search = () => {
   };
   $(".slider_shutter").slideDown();
   const dispatch = useDispatch();
-  const [Tab, SetTab] = useState(<ProjectSearch />);
+  const [loading, setLoading] = useState(false);
+  const [Tab, SetTab] = useState(<ProjectSearch setLoading={setLoading} />);
   const [TabActive, SetTabActive] = useState("search");
   let getSkillList = useSelector((state) => state?.profile?.getSkillList);
   const [showSuggestedSkills, setShowSuggestedSkills] = useState(false);
@@ -499,12 +502,12 @@ const Project_Search = () => {
 
   function changeTab(componentName) {
     if (componentName === "search") {
-      SetTab(<ProjectSearch filters={filters} />);
+      SetTab(<ProjectSearch filters={filters} setLoading={setLoading} />);
       Title(" | Project Search");
       SetTabActive("search");
     } else if (componentName === "saved") {
       Title(" | Project Saved");
-      SetTab(<ProjectSaved />);
+      SetTab(<ProjectSaved setLoading={setLoading} />);
       SetTabActive("saved");
     }
   }
@@ -512,11 +515,11 @@ const Project_Search = () => {
   useEffect(() => {
     if (saved === "saved") {
       Title(" | Project Saved");
-      SetTab(<ProjectSaved />);
+      SetTab(<ProjectSaved setLoading={setLoading} />);
       SetTabActive("saved");
     }
-    dispatch(getCategoryList());
-    dispatch(getLanguageList());
+    dispatch(getCategoryList(setLoading));
+    dispatch(getLanguageList(setLoading));
   }, [saved]);
   const options1 = [
     {
@@ -526,25 +529,26 @@ const Project_Search = () => {
   ];
 
   // remove item which is selected
-  useMemo(() => {
+  useEffect(() => {
     const myArray = getSkillList?.filter(function (item) {
       return !selectSkills?.find(function (ele) {
         return item?.id === ele?.skill_id;
       });
     });
     setSkillsList(myArray || []);
-  }, [selectSkills]);
+  }, [getSkillList, selectSkills]);
   // remove item which is selected
 
   // for filter jobs
   useEffect(() => {
     if (filters) {
-      dispatch(getJobsList({ pagination: 10, page, ...filters }));
+      setLoading(true);
+      dispatch(getJobsList({ pagination: 10, page, ...filters }, setLoading));
     }
   }, [page, filters, unSaveJobsPost, savedJobsList]);
 
   // to filter jobs by skills
-  useMemo(() => {
+  useEffect(() => {
     if (selectSkills) {
       setFilters({
         ...filters,
@@ -554,7 +558,7 @@ const Project_Search = () => {
   }, [selectSkills]);
 
   // to filter jobs by category
-  useMemo(() => {
+  useEffect(() => {
     if (selectCategory) {
       var categoryKeys = Object.keys(selectCategory);
       setFilters({
@@ -1062,6 +1066,7 @@ const Project_Search = () => {
           </Col>
         </Row>
       </Container>
+      {loading ? <LoadingSpinner /> : null}
     </>
   );
 };

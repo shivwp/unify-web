@@ -13,6 +13,8 @@ import {
   getLanguageList,
 } from "../../../redux/actions/profileAction";
 import FreeProfile from "../../Popup/FreeProfile";
+import ResultNotFound from "../../../freelancer/Pages/ProjectSearch/ResultNotFound";
+import LoadingSpinner from "../../../components/LoadingSpinner";
 
 const BrowseJobs = () => {
   const [page, setPage] = useState(1);
@@ -32,6 +34,7 @@ const BrowseJobs = () => {
   const [selectLanguages, setSelecetLanguages] = useState({});
   const [values, setValues] = useState();
   const [errors, setErrors] = useState({});
+  const [loading, setLoading] = useState(false);
 
   const [skillsList, setSkillsList] = useState([]);
 
@@ -62,13 +65,17 @@ const BrowseJobs = () => {
 
   // for filter jobs
   useEffect(() => {
-    dispatch(getJobsList({ pagination: 10, page, ...filters }, ScrollTop));
+    setLoading(true);
+    dispatch(
+      getJobsList({ pagination: 10, page, ...filters }, ScrollTop, setLoading)
+    );
   }, [page, filters]);
 
   // to get language list and get category list
   useEffect(() => {
-    dispatch(getLanguageList());
-    dispatch(getCategoryList());
+    setLoading(true);
+    dispatch(getLanguageList(), setLoading);
+    dispatch(getCategoryList(), setLoading);
   }, []);
 
   const ScrollTop = () => {
@@ -126,10 +133,10 @@ const BrowseJobs = () => {
     let data;
     if (e.target.value.length >= 1) {
       data = { [e.target.name]: e.target.value };
-      dispatch(getFreelancerSkills(data));
+      dispatch(getFreelancerSkills(data), setLoading);
     } else {
       data = { skill: "undefined" };
-      dispatch(getFreelancerSkills(data));
+      dispatch(getFreelancerSkills(data), setLoading);
     }
     $("#suggest_skills").show();
   };
@@ -148,8 +155,6 @@ const BrowseJobs = () => {
     { name: "1 to 3 months" },
     { name: "Less then 1 month" },
   ];
-
-  console.log("search by keyboard", filterValues);
 
   const clearAllFilters = () => {
     setFilters({});
@@ -592,12 +597,14 @@ const BrowseJobs = () => {
               ) : (
                 ""
               )}
+              {jobsList?.length == 0 ? <ResultNotFound /> : null}
             </Col>
 
             {/* Job end */}
           </Row>
         </Container>
       </div>
+      {loading ? <LoadingSpinner /> : null}
     </>
   );
 };

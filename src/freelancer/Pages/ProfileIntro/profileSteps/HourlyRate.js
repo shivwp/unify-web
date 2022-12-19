@@ -16,6 +16,7 @@ const HourlyRate = ({ setCurrentTab, profileList, setLoading }) => {
   const [successPopup, setSuccessPopup] = useState(false);
   const [popup, setPopup] = useState();
   const [isChange, setIsChange] = useState(false);
+  const [errors, setErrors] = useState({});
 
   useEffect(() => {
     if (profileList) {
@@ -27,7 +28,25 @@ const HourlyRate = ({ setCurrentTab, profileList, setLoading }) => {
     navigate(`/freelancer/profile-intro/publishProfile`);
   };
 
+  const handleChange = (e) => {
+    setValues({ ...values, [e.target.name]: e.target.value });
+    setErrors({ ...errors, [e.target.name]: false });
+    setIsChange(true);
+  };
+
+  console.log("hour price", values);
+
   const onSave = () => {
+    let errorsObject = {};
+    let errorsExits = false;
+    if (values?.hours_price < 3) {
+      errorsObject.hours_price = "Hourly price must be minimum 3 $";
+      errorsExits = true;
+    }
+    if (errorsExits) {
+      setErrors(errorsObject);
+      return false;
+    }
     if (isChange) {
       setLoading(true);
       dispatch(
@@ -82,10 +101,7 @@ const HourlyRate = ({ setCurrentTab, profileList, setLoading }) => {
                           placeholder="0.00"
                           name="hours_price"
                           className="project_details_Num_inp send_proposal_num_inp"
-                          onChange={(e) => {
-                            setValues({ [e.target.name]: e.target.value });
-                            setIsChange(true);
-                          }}
+                          onChange={(e) => handleChange(e)}
                           onWheel={(e) => e.target.blur()}
                           value={
                             values?.hours_price && values?.hours_price != 0
@@ -96,6 +112,9 @@ const HourlyRate = ({ setCurrentTab, profileList, setLoading }) => {
                       </div>
                       <div className="slsh_hr"> /hour </div>
                     </div>
+                    <span className="jobSignInError">
+                      {errors.hours_price && errors.hours_price}
+                    </span>
                   </div>
                 </Col>
               </div>

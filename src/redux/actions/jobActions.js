@@ -28,60 +28,81 @@ const config = {
   },
 };
 
-export const getJobsList = (data, ScrollTop) => async (dispatch) => {
-  try {
-    Axios.post("/jobs-list", data, config).then((res) => {
-      dispatch({
-        type: JOBS_LIST,
-        payload: res.data,
+export const getJobsList =
+  (data, ScrollTop, setLoading) => async (dispatch) => {
+    try {
+      Axios.post("/jobs-list", data, config).then((res) => {
+        dispatch({
+          type: JOBS_LIST,
+          payload: res.data,
+        });
+        if (setLoading) {
+          setLoading(false);
+        }
+        if (ScrollTop) {
+          ScrollTop();
+        }
       });
-      if (ScrollTop) {
-        ScrollTop();
+    } catch (err) {
+      if (setLoading) {
+        setLoading(false);
       }
-    });
-  } catch (err) {}
-};
+    }
+  };
 
-export const getSavedJobsList = (data, ScrollTop) => async (dispatch) => {
-  try {
-    Axios.post("/freelancer-saved-job", data, config).then((res) => {
-      dispatch({
-        type: SAVED_JOBS_LIST,
-        payload: res.data,
+export const getSavedJobsList =
+  (data, ScrollTop, setLoading) => async (dispatch) => {
+    try {
+      Axios.post("/freelancer-saved-job", data, config).then((res) => {
+        dispatch({
+          type: SAVED_JOBS_LIST,
+          payload: res.data,
+        });
+        setLoading(false);
+        ScrollTop();
       });
-      ScrollTop();
-    });
-  } catch (err) {}
-};
-export const saveJobs = (data) => async (dispatch) => {
+    } catch (err) {
+      setLoading(false);
+    }
+  };
+export const saveJobs = (data, setLoading) => async (dispatch) => {
   try {
     Axios.post("/saved-jobs", data, config).then((res) => {
       dispatch({
         type: SAVE_JOB_POST,
         payload: res.data,
       });
+      setLoading(false);
     });
-  } catch (err) {}
+  } catch (err) {
+    setLoading(false);
+  }
 };
-export const removeSaveJob = (data) => async (dispatch) => {
+export const removeSaveJob = (data, setLoading) => async (dispatch) => {
   try {
     Axios.post("/remove-saved-jobs", data, config).then((res) => {
       dispatch({
         type: UNSAVE_JOB_POST,
         payload: res.data,
       });
+      setLoading(false);
     });
-  } catch (err) {}
+  } catch (err) {
+    setLoading(false);
+  }
 };
-export const singleJobPostDetails = (data) => async (dispatch) => {
+export const singleJobPostDetails = (data, setLoading) => async (dispatch) => {
   try {
     Axios.get(`/single-job/${data.job_id}`, config).then((res) => {
       dispatch({
         type: JOB_POST_DETAILS,
         payload: res.data.data,
       });
+      setLoading(false);
     });
-  } catch (err) {}
+  } catch (err) {
+    setLoading(false);
+  }
 };
 export const onSendJobProposal =
   (data, successPopup, setSuccessPopup, navigate, setLoading) =>
@@ -112,27 +133,34 @@ export const onSendJobProposal =
       }
     }
   };
-export const onDislikePostReasons = (data) => async (dispatch) => {
+export const onDislikePostReasons = (setLoading) => async (dispatch) => {
   try {
     Axios.get("/dislike-reasons").then((res) => {
       dispatch({
         type: DISLIKE_POST_REASONS,
         payload: res.data.data,
       });
+      setLoading(false);
     });
-  } catch (err) {}
+  } catch (err) {
+    setLoading(false);
+  }
 };
-export const onDislikeJobPost = (data, setDropdownOpen) => async (dispatch) => {
-  try {
-    Axios.post("/dislike-job", data, config).then((res) => {
-      dispatch({
-        type: ON_DISLIKE_JOB_POST,
-        payload: res.data,
+export const onDislikeJobPost =
+  (data, setDropdownOpen, setLoading) => async (dispatch) => {
+    try {
+      Axios.post("/dislike-job", data, config).then((res) => {
+        dispatch({
+          type: ON_DISLIKE_JOB_POST,
+          payload: res.data,
+        });
+        setDropdownOpen(false);
+        setLoading(false);
       });
-      setDropdownOpen(false);
-    });
-  } catch (err) {}
-};
+    } catch (err) {
+      setLoading(false);
+    }
+  };
 
 export const onPostYourJobNow = (data, navigate) => async (dispatch) => {
   try {

@@ -552,7 +552,7 @@ const UnifyFreelancer = () => {
                       </svg>
                     </Button>
                   </div>
-                  <div>
+                  <div style={{ cursor: "pointer" }}>
                     <IntroVideoThumb data={freelancerProfileList?.video} />
                   </div>
                 </div>

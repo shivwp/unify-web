@@ -29,9 +29,26 @@ const HourlyRatePopup = ({
   const [values, setValues] = useState(data ? { hours_price: data } : null);
   const percent = 20;
   const dispatch = useDispatch();
+  const [errors, setErrors] = useState({});
+
+  const handleChange = (e) => {
+    setValues({ ...values, [e.target.name]: e.target.value });
+    setErrors({ ...errors, [e.target.name]: false });
+  };
 
   const onSave = () => {
     setLoading(true);
+    let errorExist = false;
+    let errorsObject = {};
+    if (values?.hours_price < 3) {
+      errorsObject.hours_price = "Hourly price must be minimum 3 $";
+      errorExist = true;
+    }
+    if (errorExist) {
+      setLoading(false);
+      setErrors(errorsObject);
+      return false;
+    }
     dispatch(
       onEditHourPerWeek(
         values,
@@ -78,15 +95,16 @@ const HourlyRatePopup = ({
                           placeholder={`10.00`}
                           name="hours_price"
                           className="project_details_Num_inp send_proposal_num_inp"
-                          onChange={(e) =>
-                            setValues({ [e.target.name]: e.target.value })
-                          }
+                          onChange={(e) => handleChange(e)}
                           onWheel={(e) => e.target.blur()}
                           value={values?.hours_price || null}
                         />
                       </div>
                       <div className="slsh_hr"> /hour </div>
                     </div>
+                    <span className="jobSignInError">
+                      {errors.hours_price && errors.hours_price}
+                    </span>
                   </div>
                 </Col>
               </div>

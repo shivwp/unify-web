@@ -10018,3 +10018,35 @@ input::-webkit-inner-spin-button {
   }
 }
 /* document card end */
+
+/* Page not found start */
+
+.pageNotFound {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  min-height: 425px;
+}
+.pageNotFoundHead {
+  text-align: center;
+  font: normal normal bold 40px/86px Poppins;
+  letter-spacing: -1.25px;
+  color: #00065a;
+}
+
+@media screen and (max-width: 500px) and (min-width: 318px) {
+  .pageNotFoundHead {
+    text-align: center;
+    font: normal normal bold 22px/86px Poppins;
+    letter-spacing: -1.25px;
+    color: #00065a;
+  }
+  .pageNotFoundResp svg {
+    height: 100px;
+    width: 100px;
+  }
+}
+
+/* Page not found end */

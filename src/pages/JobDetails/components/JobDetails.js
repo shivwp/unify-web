@@ -8,6 +8,7 @@ import { googleSignInInitiate } from "../../../redux/actions/authActions";
 import { singleJobPostDetails } from "../../../redux/actions/jobActions";
 import { INSTANT_LOGIN_EMAIL, POST_JOB_LIKE_THIS } from "../../../redux/types";
 import FreeProfile from "../../Popup/FreeProfile";
+import LoadingSpinner from "../../../components/LoadingSpinner";
 
 const JobDetails = () => {
   const { id } = useParams();
@@ -18,9 +19,11 @@ const JobDetails = () => {
   const [values, setValues] = useState("");
   const [errors, setErrors] = useState({});
   const [popup, setPopup] = useState();
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    dispatch(singleJobPostDetails({ job_id: id }));
+    setLoading(true)
+    dispatch(singleJobPostDetails({ job_id: id }, setLoading));
   }, []);
 
   const onHandleChange = (e) => {
@@ -319,6 +322,7 @@ const JobDetails = () => {
           </Col>
         </Row>
       </Container>
+      {loading ? <LoadingSpinner /> : null}
       {popup}
     </>
   );
