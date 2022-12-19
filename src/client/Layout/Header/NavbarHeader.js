@@ -5,9 +5,10 @@ import logo from "../../../assets/logo.svg";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Button from "react-bootstrap/Button";
 import { onOnlineStatus } from "../../../redux/actions/authActions";
+import { getClientDetails } from "../../../redux/actions/freelancerAction";
 
 const Header = (props) => {
   const history = useNavigate();
@@ -16,6 +17,18 @@ const Header = (props) => {
   const [activeNav, SetactiveNav] = useState("");
   const [isDownOpen, SetisDownOpen] = useState(false);
   let userDetails = JSON.parse(sessionStorage.getItem("unify_user"));
+  const clientDetails = useSelector((state) => state.freelancer.clientDetails);
+  const onlineStatus = useSelector((state) => state.auth.onlineStatus);
+  const editClientProfile = useSelector(
+    (state) => state.profile.editClientProfile
+  );
+
+  useEffect(() => {
+    const data = {
+      user_id: userDetails?.id,
+    };
+    dispatch(getClientDetails(data));
+  }, [onlineStatus, editClientProfile]);
 
   function ToggleNav() {
     SetnavOpen(!navOpen);
@@ -33,9 +46,6 @@ const Header = (props) => {
     const data = {
       online_status: e.target.value,
     };
-
-    userDetails.online_status = e.target.value;
-    sessionStorage.setItem("unify_user", JSON.stringify(userDetails));
 
     dispatch(onOnlineStatus(data));
   };
@@ -203,8 +213,8 @@ const Header = (props) => {
                 </Link>
                 <div className="nav_pro_node">
                   <div className="nav_profile online_profile">
-                    {userDetails?.profile_image ? (
-                      <img src={userDetails?.profile_image} alt="" />
+                    {clientDetails?.profile_image ? (
+                      <img src={clientDetails?.profile_image} alt="" />
                     ) : (
                       <img
                         src="https://unify.eoxyslive.com/images/profile-image/demo-user.png"
@@ -219,8 +229,8 @@ const Header = (props) => {
                     <div className="d-flex justify-content-center">
                       <div className="nav_p_d_profil">
                         {" "}
-                        {userDetails?.profile_image ? (
-                          <img src={userDetails?.profile_image} alt="" />
+                        {clientDetails?.profile_image ? (
+                          <img src={clientDetails?.profile_image} alt="" />
                         ) : (
                           <img
                             src="https://unify.eoxyslive.com/images/profile-image/demo-user.png"
@@ -230,13 +240,13 @@ const Header = (props) => {
                       </div>
                     </div>
                     <div className="pro_name_drop_u">
-                      {userDetails?.first_name} {userDetails?.last_name}
+                      {clientDetails?.first_name} {clientDetails?.last_name}
                     </div>
                     <div className="pro_o_nme">Client</div>
                     <div className="drop_p_o_i">
                       <button
                         className={
-                          userDetails?.online_status === "online"
+                          clientDetails?.online_status === "online"
                             ? "active_drop_poi"
                             : ""
                         }
@@ -247,7 +257,7 @@ const Header = (props) => {
                       </button>
                       <button
                         className={
-                          userDetails?.online_status === "invincible"
+                          clientDetails?.online_status === "invincible"
                             ? "active_drop_poi"
                             : ""
                         }
@@ -418,8 +428,8 @@ const Header = (props) => {
                   </Nav.Link>
                   <div className="nav_pro_node">
                     <div className="nav_profile">
-                      {userDetails?.profile_image ? (
-                        <img src={userDetails?.profile_image} alt="" />
+                      {clientDetails?.profile_image ? (
+                        <img src={clientDetails?.profile_image} alt="" />
                       ) : (
                         <img
                           src="https://unify.eoxyslive.com/images/profile-image/demo-user.png"
@@ -433,8 +443,8 @@ const Header = (props) => {
                     >
                       <div className="d-flex justify-content-center">
                         <div className="nav_p_d_profil">
-                          {userDetails?.profile_image ? (
-                            <img src={userDetails?.profile_image} alt="" />
+                          {clientDetails?.profile_image ? (
+                            <img src={clientDetails?.profile_image} alt="" />
                           ) : (
                             <img
                               src="https://unify.eoxyslive.com/images/profile-image/demo-user.png"
@@ -444,13 +454,15 @@ const Header = (props) => {
                         </div>
                       </div>
                       <div className="pro_name_drop_u">
-                        {userDetails?.first_name} {userDetails?.last_name}
+                        {clientDetails?.first_name} {clientDetails?.last_name}
                       </div>
-                      <div className="pro_o_nme">{userDetails?.user_type}</div>
+                      <div className="pro_o_nme">
+                        {clientDetails?.user_type}
+                      </div>
                       <div className="drop_p_o_i">
                         <button
                           className={
-                            userDetails?.online_status === "online"
+                            clientDetails?.online_status === "online"
                               ? "active_drop_poi"
                               : ""
                           }
@@ -461,7 +473,7 @@ const Header = (props) => {
                         </button>
                         <button
                           className={
-                            userDetails?.online_status === "invisible"
+                            clientDetails?.online_status === "invisible"
                               ? "active_drop_poi"
                               : ""
                           }

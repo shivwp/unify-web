@@ -9,6 +9,7 @@ import {
   deletePaymentCard,
   contractPayment,
 } from "../../../../redux/actions/freelancerAction";
+import ConfirmationPopup from "../../../../freelancer/components/popups/ConfirmationPopup";
 
 const EditCompAddress = () => {
   const dispatch = useDispatch();
@@ -17,24 +18,28 @@ const EditCompAddress = () => {
   const deleteCard = useSelector((state) => state.freelancer.deleteCard);
   const paymentData = JSON.parse(sessionStorage.getItem("hire_freelancer"));
   const [popup, SetPopup] = useState();
+  const [successPopup, setSuccessPopup] = useState(false);
+  const [confirmPopup, setConfirmPopup] = useState(false);
   const [stripeToken, setStripeToken] = useState();
 
   useEffect(() => {
     dispatch(paymentCardLists());
   }, [addedCard, deleteCard]);
 
-  const handleRemoveCard = (item) => {
+  const handleRemoveCard = (id) => {
     const data = {
-      card_id: item.id,
+      card_id: id,
     };
 
-    dispatch(deletePaymentCard(data));
+    dispatch(
+      deletePaymentCard(data, setConfirmPopup, successPopup, setSuccessPopup)
+    );
   };
 
   const handleContractPayment = () => {
     const data = {
       id: paymentData?.id,
-      stripe_token: stripeToken,
+      // stripe_token: stripeToken,
     };
 
     dispatch(contractPayment(data));
@@ -77,7 +82,13 @@ const EditCompAddress = () => {
                       <button
                         className="clientCardbtn"
                         onClick={() => {
-                          SetPopup(<CardDetailsPopup Popup={SetPopup} />);
+                          SetPopup(
+                            <CardDetailsPopup
+                              Popup={SetPopup}
+                              successPopup={successPopup}
+                              setSuccessPopup={setSuccessPopup}
+                            />
+                          );
                         }}
                       >
                         Add Card
@@ -86,35 +97,46 @@ const EditCompAddress = () => {
                   </div>
                 </Row>
               </div>
-              <div className="Select_payment_method_box">
-                <div className="clientCardList">
-                  <h5>Cards List</h5>
-                  <div className="clientCardDetList">
-                    {getCardList?.map((item, key) => (
-                      <div className="clientCardDet" key={key}>
-                        <input
-                          type="radio"
-                          onChange={() => onInputChange(item)}
-                        />
-                        <img
-                          src="/assets/cardImg.png"
-                          alt=""
-                          className="cardLogoSize"
-                        />
-                        <span>**** **** **** {item.last4} </span>
-                        <button onClick={() => handleRemoveCard(item)}>
-                          <i className="fa fa-remove"></i>
-                        </button>
-                      </div>
-                    ))}
+              {getCardList?.length === 0 ? null : (
+                <div className="Select_payment_method_box">
+                  <div className="clientCardList">
+                    <h5>Cards List</h5>
+                    <div className="clientCardDetList">
+                      {getCardList?.map((item, key) => (
+                        <div className="clientCardDet" key={key}>
+                          <input
+                            type="radio"
+                            onChange={() => onInputChange(item)}
+                          />
+                          <img
+                            src="/assets/cardImg.png"
+                            alt=""
+                            className="cardLogoSize"
+                          />
+                          <span>**** **** **** {item.last4} </span>
+                          <i
+                            onClick={() =>
+                              setConfirmPopup(
+                                <ConfirmationPopup
+                                  Popup={() => setConfirmPopup(!confirmPopup)}
+                                  confirm={() => handleRemoveCard(item?.id)}
+                                />
+                              )
+                            }
+                            className="fa fa-remove"
+                            style={{ cursor: "pointer", marginLeft: "30px" }}
+                          ></i>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  <div className="payment_btn">
+                    <button type="button" className="pay_with_btn">
+                      Pay With Stripe
+                    </button>
                   </div>
                 </div>
-                <div className="payment_btn">
-                  <button type="button" className="pay_with_btn">
-                    Pay With Stripe
-                  </button>
-                </div>
-              </div>
+              )}
             </div>
           </Col>
           <Col lg={4}>
@@ -178,6 +200,8 @@ const EditCompAddress = () => {
         </Row>
       </Container>
       {popup}
+      {confirmPopup}
+      {successPopup}
     </>
   );
 };

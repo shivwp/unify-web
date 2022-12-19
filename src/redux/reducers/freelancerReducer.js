@@ -17,6 +17,7 @@ import {
   SET_ADD_CARD,
   SET_PAYMENT_CARD_LIST,
   SET_DELETE_CARD,
+  SET_CLIENT_DETAILS,
 } from "../types";
 const initialState = {};
 
@@ -111,6 +112,11 @@ const freelancerReducer = (state = initialState, action) => {
       return {
         ...state,
         deleteCard: action.payload,
+      };
+    case SET_CLIENT_DETAILS:
+      return {
+        ...state,
+        clientDetails: action.payload,
       };
     default:
       return state;

@@ -5,6 +5,7 @@ const Screen = ({
   proposalShortlist,
   handleRemoveProposalShortList,
   handleSaveProposalShortList,
+  jobId,
 }) => {
   return (
     <>
@@ -84,7 +85,7 @@ const Screen = ({
                             Message
                           </button>
                           <Link
-                            to={`/hire-freelancer/${data.proposal_id}/${data.freelancer_id}`}
+                            to={`/hire-freelancer/${jobId}/${data.freelancer_id}/${data.proposal_id}`}
                           >
                             <button className="mt-2 font-weight-500 hover_white_io">
                               Hire

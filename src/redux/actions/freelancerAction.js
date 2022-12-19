@@ -1,3 +1,4 @@
+import SuccessPopup from "../../freelancer/components/popups/SuccessPopup";
 import Axios from "../axios";
 import {
   SET_JOB_BASED_FREELANCER_LIST,
@@ -18,6 +19,7 @@ import {
   SET_ADD_CARD,
   SET_PAYMENT_CARD_LIST,
   SET_DELETE_CARD,
+  SET_CLIENT_DETAILS,
 } from "../types";
 
 const config = {
@@ -251,27 +253,35 @@ export const hireFreelancer = (data, navigate) => async (dispatch) => {
         navigate("/hire-freelancer/edit-address");
       }
       sessionStorage.setItem("hire_freelancer", JSON.stringify(res.data.data));
-      window.location.reload();
     })
     .catch((err) => {
       console.log(err);
     });
 };
 
-export const addPaymentCard = (data) => async (dispatch) => {
-  await Axios.post(`/add-payment-card`, data, config)
-    .then((res) => {
-      if (res.data.status) {
-        dispatch({
-          type: SET_ADD_CARD,
-          payload: res.data,
-        });
-      }
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-};
+export const addPaymentCard =
+  (data, Popup, successPopup, setSuccessPopup) => async (dispatch) => {
+    await Axios.post(`/add-payment-card`, data, config)
+      .then((res) => {
+        if (res.data.status) {
+          dispatch({
+            type: SET_ADD_CARD,
+            payload: res.data,
+          });
+          Popup();
+
+          setSuccessPopup(
+            <SuccessPopup
+              Popup={() => setSuccessPopup(!successPopup)}
+              message={res.data.message}
+            />
+          );
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
 export const paymentCardLists = (data) => async (dispatch) => {
   await Axios.get(`/payment-cards-list`, config)
@@ -288,25 +298,49 @@ export const paymentCardLists = (data) => async (dispatch) => {
     });
 };
 
-export const deletePaymentCard = (data) => async (dispatch) => {
-  await Axios.post(`/delete-payment-card`, data, config)
+export const deletePaymentCard =
+  (data, setConfirmPopup, successPopup, setSuccessPopup) =>
+  async (dispatch) => {
+    await Axios.post(`/delete-payment-card`, data, config)
+      .then((res) => {
+        if (res.data.status) {
+          dispatch({
+            type: SET_DELETE_CARD,
+            payload: res.data,
+          });
+          setConfirmPopup(false);
+
+          setSuccessPopup(
+            <SuccessPopup
+              Popup={() => setSuccessPopup(!successPopup)}
+              message={res.data.message}
+            />
+          );
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+export const contractPayment = (data, navigate) => async (dispatch) => {
+  await Axios.post("/contract-payment", data, config)
     .then((res) => {
-      if (res.data.status) {
-        dispatch({
-          type: SET_DELETE_CARD,
-          payload: res.data,
-        });
-      }
+      console.log(res);
     })
     .catch((err) => {
       console.log(err);
     });
 };
-
-export const contractPayment = (data) => async (dispatch) => {
-  await Axios.post("/contract-payment", data, config)
+export const getClientDetails = (data, navigate) => async (dispatch) => {
+  await Axios.post("/single-client", data, config)
     .then((res) => {
-      console.log(res);
+      if (res.data.status) {
+        dispatch({
+          type: SET_CLIENT_DETAILS,
+          payload: res.data.data.client,
+        });
+      }
     })
     .catch((err) => {
       console.log(err);

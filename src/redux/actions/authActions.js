@@ -10,18 +10,13 @@ import {
   GOOGLE_SIGN_IN_FAIL,
   APPLE_SIGN_IN_FAIL,
   SET_COUNTRY,
-  LOGIN_ERROR,
-  SIGNUP_ERROR,
-  FORGOT_PASS_ERROR,
-  FORGOT_OTP_ERROR,
   HOME_PAGE_DATA,
   FOOTER_PAGE_DATA,
-  VERIFY_OTP_ERROR,
   RESEND_OTP_SUCCESS,
   CATEGORY_SKILL_DATA,
   SKILLS_DEVELOPER_DATA,
-  VERIFY_SIGNUP_ERROR,
   CLIENT_BUSINESSSIZE,
+  SET_ONLINE_STATUS,
 } from "../types";
 import { GoogleAuthProvider, OAuthProvider } from "firebase/auth";
 import SuccessPopup from "../../freelancer/components/popups/SuccessPopup";
@@ -203,7 +198,10 @@ export const onOnlineStatus = (data, navigate) => async (dispatch) => {
   try {
     const res = await Axios.post(`/online-status`, data, config);
     if (res.data.status) {
-      window.location.reload();
+      dispatch({
+        type: SET_ONLINE_STATUS,
+        payload: res.data,
+      });
     }
   } catch (err) {}
 };

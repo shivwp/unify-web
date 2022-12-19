@@ -60,8 +60,7 @@ const ClientRoutes = () => {
         {/* <Route path="/subscription" element={<Subscription />} /> */}
         <Route path="/expandteam" element={<ExpandTeam />} />
         <Route path="/notification" element={<Notification />} />
-        <Route path="/view-job/:jobId" element={<ViewJob />} />
-        <Route path="/view-job/:jobId/:type" element={<ViewJob />} />
+        <Route path="/view-job/:jobId/:tabs" element={<ViewJob />} />
         <Route path="/view-job/private" element={<MakePrivate />} />
         <Route
           path="/dashboard/edit-posting/:editId"
@@ -73,7 +72,11 @@ const ClientRoutes = () => {
           element={<ReusePosting />}
         />
         <Route
-          path="/hire-freelancer/:freelancer_id/:proposal_id"
+          path="/hire-freelancer/:project_id/:freelancer_id"
+          element={<HireFreelancer />}
+        />
+        <Route
+          path="/hire-freelancer/:project_id/:freelancer_id/:proposal_id"
           element={<HireFreelancer />}
         />
         <Route

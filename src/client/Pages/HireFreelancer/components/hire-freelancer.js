@@ -5,7 +5,10 @@ import "react-datepicker/dist/react-datepicker.css";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import { useDispatch, useSelector } from "react-redux";
-import { singleProposalDetails } from "../../../../redux/actions/jobActions";
+import {
+  singleJobPostDetails,
+  singleProposalDetails,
+} from "../../../../redux/actions/jobActions";
 import {
   getSingleFreelancer,
   hireFreelancer,
@@ -13,10 +16,13 @@ import {
 
 const Screen = () => {
   const navigate = useNavigate();
-  const { proposal_id, freelancer_id } = useParams();
+  const { project_id, proposal_id, freelancer_id } = useParams();
   const dispatch = useDispatch();
   const [values, setValues] = useState({});
-  const projectData = useSelector(
+  const [errors, setErrors] = useState({});
+  const [imageFile, setImageFile] = useState();
+  const [objectUrl, setObjectUrl] = useState();
+  const proposalData = useSelector(
     (state) => state?.job?.singleProposalDetails?.proposal_data
   );
   const milestoneData = useSelector(
@@ -25,40 +31,129 @@ const Screen = () => {
   const singleFreelancer = useSelector(
     (state) => state.freelancer.singleFreelancer
   );
+  const singleJobDetails = useSelector((state) => state.job.singleJobDetails);
 
   useEffect(() => {
-    if (projectData) {
-      setValues(projectData);
+    if (proposalData) {
+      setValues({ ...proposalData, agree_terms: 0 });
+    } else if (singleJobDetails) {
+      setValues({ ...singleJobDetails, agree_terms: 0 });
     }
-  }, [projectData]);
+  }, [proposalData, singleJobDetails]);
 
   useEffect(() => {
+    const data = {
+      job_id: project_id,
+    };
     dispatch(getSingleFreelancer(freelancer_id));
+    dispatch(singleJobPostDetails(data));
   }, []);
 
   useEffect(() => {
-    dispatch(singleProposalDetails(proposal_id, "submit"));
+    if (proposal_id) {
+      dispatch(singleProposalDetails(proposal_id, "submit"));
+    }
   }, []);
 
   const onInputChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
+    setErrors({ ...errors, [e.target.name]: false });
+  };
+
+  const onProfileChange = (e) => {
+    setImageFile(e.target.files[0]);
+    setObjectUrl(e.target.files[0].name);
   };
 
   const handleHireFreelancer = () => {
-    const data = {
-      freelancer_id: freelancer_id,
-      project_id: values?.project_id,
-      title: values?.title,
-      budget_type: values?.budget_type,
-      weekly_limit: values?.weekly_limit,
-      amount: values?.bid_amount,
-      date: values?.date,
-      cover_letter: values?.cover_letter,
-    };
+    let errorExist = false;
+    let errorsObject = {};
 
-    dispatch(hireFreelancer(data, navigate));
+    if (
+      values?.title === "" ||
+      values?.title === null ||
+      values?.title === undefined
+    ) {
+      errorsObject.title = "Please add a contract title.";
+      errorExist = true;
+    }
 
-    console.log(data);
+    if (values?.budget_type === "hourly") {
+      if (
+        values?.bid_amount === "" ||
+        values?.bid_amount === null ||
+        values?.bid_amount === undefined
+      ) {
+        errorsObject.bid_amount = "Please enter an amount";
+        errorExist = true;
+      } else if (values?.bid_amount < 3 || values?.bid_amount > 1000) {
+        errorsObject.bid_amount =
+          "Please enter an amount between $3.00 and $999.00";
+        errorExist = true;
+      }
+    }
+
+    if (values?.budget_type === "hourly") {
+      if (
+        values?.weekly_limit === "" ||
+        values?.weekly_limit === null ||
+        values?.weekly_limit === undefined
+      ) {
+        errorsObject.weekly_limit = "Please select weekly limit";
+        errorExist = true;
+      }
+    }
+
+    if (
+      values?.cover_letter === "" ||
+      values?.cover_letter === null ||
+      values?.cover_letter === undefined
+    ) {
+      errorsObject.cover_letter = "Please enter your description";
+      errorExist = true;
+    }
+
+    if (values?.agree_terms == 0) {
+      errorsObject.agree_terms = true;
+      errorExist = true;
+    }
+
+    if (errorExist) {
+      setErrors(errorsObject);
+      return false;
+    }
+
+    const formData = new FormData();
+
+    formData.append("freelancer_id", freelancer_id);
+    formData.append("project_id", project_id);
+    formData.append("title", values?.title);
+    formData.append("budget_type", values?.budget_type);
+
+    if (values?.budget_type === "hourly") {
+      formData.append("weekly_limit", values?.weekly_limit);
+      formData.append("amount", values?.bid_amount);
+      formData.append("date", values?.date);
+    }
+
+    if (values?.milestone_type === "single") {
+      formData.append("amount", values?.bid_amount);
+      formData.append("date", values?.date);
+    }
+
+    if (values?.budget_type === "fixed") {
+      formData.append("milestone_type", values?.milestone_type);
+
+      if (values?.milestone_type === "multiple") {
+        formData.append("milestone_data", "");
+        formData.append("project_duration", values?.project_duration);
+      }
+    }
+
+    formData.append("cover_letter", values?.cover_letter);
+    formData.append("image", imageFile);
+
+    dispatch(hireFreelancer(formData, navigate));
   };
 
   return (
@@ -103,6 +198,9 @@ const Screen = () => {
                 placeholder="Enter the contact title"
                 onChange={(e) => onInputChange(e)}
               />
+              <span className="signup-error">
+                {errors.title && errors.title}
+              </span>
             </Col>
           </div>
         </div>
@@ -147,11 +245,15 @@ const Screen = () => {
                       name="bid_amount"
                       className="text-right"
                       value={values?.bid_amount}
+                      onWheel={(e) => e.target.blur()}
                       onChange={(e) => onInputChange(e)}
                     />
                     &nbsp;
                     <span>/hr</span>
                   </div>
+                  <span className="signup-error">
+                    {errors.bid_amount && errors.bid_amount}
+                  </span>
                   <div className="max_prof_rt">
                     Max Mario's profile rate is $30.00 /hr
                   </div>
@@ -186,6 +288,9 @@ const Screen = () => {
                     &nbsp;
                     <span>hrs/week</span>
                   </div>
+                  <span className="signup-error">
+                    {errors.weekly_limit && errors.weekly_limit}
+                  </span>
                   <div className="max_prof_rt">$1,200.00 max/week</div>
                 </Col>
 
@@ -265,14 +370,16 @@ const Screen = () => {
                   >
                     <Form.Control
                       type="number"
-                      name="amount"
+                      name="bid_amount"
                       className="text-right"
-                      value={values?.amount}
+                      value={values?.bid_amount}
                       onChange={(e) => onInputChange(e)}
                     />
                     <div className="doller-icon">$</div>
                     &nbsp;
-                    {/* <span>/hr</span> */}
+                    <span className="signup-error">
+                      {errors.bid_amount && errors.bid_amount}
+                    </span>
                   </div>
                 </Col>
               </>
@@ -305,7 +412,8 @@ const Screen = () => {
                         </div>
                         <div>
                           <label htmlFor="single" className="heading">
-                            Deposit ${values?.amount} for the whole project
+                            Deposit ${values?.bid_amount || "0.00"} for the
+                            whole project
                           </label>
                         </div>
                       </div>
@@ -350,7 +458,13 @@ const Screen = () => {
                           </span>
                         </div>
                         <div className="inpu_date d-flex psr-relative">
-                          <input type="date" className="custom_date_picker" />
+                          <input
+                            type="date"
+                            name="date"
+                            className="custom_date_picker"
+                            value={values?.date}
+                            onChange={(e) => onInputChange(e)}
+                          />
                         </div>
                       </div>
                     ) : values?.milestone_type === "multiple" ? (
@@ -459,24 +573,58 @@ const Screen = () => {
             rows={3}
             name="cover_letter"
             value={values?.cover_letter}
+            onChange={(e) => onInputChange(e)}
           ></Form.Control>
+
+          <span className="signup-error">
+            {errors.cover_letter && errors.cover_letter}
+          </span>
         </Form.Group>
         <div className="ts_btn attach_f_btn mt-0">
-          <Form.Control type="file" />
+          <Form.Control type="file" onChange={(e) => onProfileChange(e)} />
           <button>
             <i className="bi bi-paperclip"></i>
             Attach File
           </button>
           <div className="sm_label_inp">Max file size: 100 MB</div>
         </div>
+
+        {objectUrl ? (
+          <div className="document_card">
+            <i class="bi bi-file-earmark-text font-size-20px"></i>&nbsp;
+            <span className="heading">File Name : </span>
+            <span className="name">{objectUrl}</span>
+            <span
+              onClick={() => {
+                setObjectUrl();
+                setImageFile();
+              }}
+              className="close_icon"
+            >
+              X
+            </span>
+          </div>
+        ) : (
+          ""
+        )}
       </div>
       <div className="allow_freel_che flex-wrap black_a_inp">
-        <Form.Check type="checkbox" />
-        Yes, I understand and agree to the{" "}
-        <Link to="#0"> Unify Terms of Service </Link>, including the User{" "}
-        <Link to="#0"> Agreement </Link> and{" "}
-        <Link to="#0"> Privacy Policy </Link>.
+        <Form.Check
+          type="checkbox"
+          id="SecondCheckOnSignUP"
+          name="agree_terms"
+          onChange={(e) => onInputChange(e)}
+        />
+        <Form.Label htmlFor="SecondCheckOnSignUP">
+          Yes, I understand and agree to the{" "}
+          <Link to="#0"> Unify Terms of Service </Link>, including the User{" "}
+          <Link to="#0"> Agreement </Link> and{" "}
+          <Link to="#0"> Privacy Policy </Link>.
+        </Form.Label>
       </div>
+      <span className="signup-error">
+        {errors.agree_terms && <>Please Agree Terms and Conditions</>}
+      </span>
       <div className="d-flex justify-content-between mt-4 mb-5">
         <div className="btn_job_back">
           <Link to="/view-job">
