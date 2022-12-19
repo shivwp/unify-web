@@ -30,6 +30,7 @@ const ChangeTermPopup = ({
   popup,
   successPopup,
   setSuccessPopup,
+  setLoading,
 }) => {
   const dispatch = useDispatch();
   const [values, setValues] = useState({ bid_amount: 0 });
@@ -67,14 +68,13 @@ const ChangeTermPopup = ({
     setIsByMilestone(e.target.value);
   };
 
-  useEffect(() => {}, []);
-
   const onSave = () => {
     const formData = new FormData();
     formData.append("proposal_id", proposal_id);
 
     let errorExist = false;
     let errorsObject = {};
+    setLoading(true);
 
     if (project_data?.budget_type == "hourly") {
       if (values?.bid_amount <= 0) {
@@ -140,6 +140,7 @@ const ChangeTermPopup = ({
 
     if (errorExist) {
       setErrors(errorsObject);
+      setLoading(false);
       return false;
     }
 
@@ -158,7 +159,13 @@ const ChangeTermPopup = ({
       }
     }
     dispatch(
-      onChangeTermsOfProposals(formData, successPopup, setSuccessPopup, popup)
+      onChangeTermsOfProposals(
+        formData,
+        successPopup,
+        setSuccessPopup,
+        popup,
+        setLoading
+      )
     );
   };
 

@@ -8,7 +8,7 @@ import {
   setHourlyPrice,
 } from "../../../../redux/actions/profileAction";
 
-const HourlyRate = ({ setCurrentTab, profileList }) => {
+const HourlyRate = ({ setCurrentTab, profileList, setLoading }) => {
   const [values, setValues] = useState({});
   const percent = 20;
   const dispatch = useDispatch();
@@ -29,17 +29,20 @@ const HourlyRate = ({ setCurrentTab, profileList }) => {
 
   const onSave = () => {
     if (isChange) {
+      setLoading(true);
       dispatch(
         onEditHourPerWeek(
           values,
           popup,
           successPopup,
           setSuccessPopup,
-          afterSuccess
+          afterSuccess,
+          setLoading
         )
       );
     } else {
       setCurrentTab("publishProfile");
+      setLoading(false);
       navigate(`/freelancer/profile-intro/publishProfile`);
     }
   };

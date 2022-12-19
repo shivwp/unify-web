@@ -14,7 +14,7 @@ const ConfirmationPopup = ({ Popup, confirm }) => {
             </div>
           </div>
           <h2 className="conf-heading">Are You Sure?</h2>
-          <h6 className="conf-desc">You Won't able to revert this file!</h6>
+          <h6 className="conf-desc">You won't able to revert these changes!</h6>
 
           <div className="confirmation_popup_btns ">
             <div>
@@ -25,7 +25,7 @@ const ConfirmationPopup = ({ Popup, confirm }) => {
 
             <div>
               <button className="confirm_yes_btn" onClick={confirm}>
-                yes
+                Yes
               </button>
             </div>
           </div>

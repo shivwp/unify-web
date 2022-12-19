@@ -6,7 +6,12 @@ import Form from "react-bootstrap/Form";
 import { onRequestTestimonial } from "../../../../../redux/actions/profileAction";
 import PopupsCloseIcon from "../../../../components/popups/PopupsCloseIcon";
 
-const ReqTestimonial = ({ Popup, successPopup, setSuccessPopup }) => {
+const ReqTestimonial = ({
+  Popup,
+  successPopup,
+  setSuccessPopup,
+  setLoading,
+}) => {
   const dispatch = useDispatch();
   const [values, setValues] = useState({});
   const [errors, setErrors] = useState({});
@@ -33,6 +38,7 @@ const ReqTestimonial = ({ Popup, successPopup, setSuccessPopup }) => {
   };
 
   const testimonialSubmit = (e) => {
+    setLoading(true);
     let errorExist = false;
     let errorsObject = {};
 
@@ -69,6 +75,7 @@ const ReqTestimonial = ({ Popup, successPopup, setSuccessPopup }) => {
 
     if (errorExist) {
       setErrors(errorsObject);
+      setLoading(false);
       return false;
     }
 
@@ -80,7 +87,7 @@ const ReqTestimonial = ({ Popup, successPopup, setSuccessPopup }) => {
       type: values?.type,
       description: values?.description,
     };
-    dispatch(onRequestTestimonial(data, Popup, successPopup, setSuccessPopup));
+    dispatch(onRequestTestimonial(data, Popup, successPopup, setSuccessPopup, setLoading));
   };
 
   return (

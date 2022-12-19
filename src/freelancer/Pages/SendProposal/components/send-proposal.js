@@ -16,6 +16,7 @@ import {
 import HourlyBid from "./HourlyBid";
 import FixedBid from "./FixedBid";
 import Alert from "react-bootstrap/Alert";
+import LoadingSpinner from "../../../../components/LoadingSpinner";
 
 const Screen = () => {
   Title(" | Send Proposal");
@@ -30,6 +31,7 @@ const Screen = () => {
   const [successPopup, setSuccessPopup] = useState(false);
   const [isByMilestone, setIsByMilestone] = useState("by_milestone");
   const [errors, setErrors] = useState({});
+  const [loading, setLoading] = useState(false);
 
   const [inputList, setInputList] = useState([
     { description: "", due_date: "", amount: 0 },
@@ -45,9 +47,9 @@ const Screen = () => {
     }
   }, [singleJobDetails]);
 
-
   useEffect(() => {
-    dispatch(singleJobPostDetails({ job_id: id }));
+    setLoading(true);
+    dispatch(singleJobPostDetails({ job_id: id }, setLoading));
   }, [id]);
 
   const onImageChange = (e) => {
@@ -68,6 +70,7 @@ const Screen = () => {
   // console.log(singleJobDetails);
 
   const onSendProposal = () => {
+    setLoading(true);
     const formData = new FormData();
     let errorExist = false;
     let errorsObject = {};
@@ -153,6 +156,7 @@ const Screen = () => {
 
     if (errorExist) {
       setErrors(errorsObject);
+      setLoading(false);
       return false;
     }
 
@@ -177,7 +181,13 @@ const Screen = () => {
       }
     }
     dispatch(
-      onSendJobProposal(formData, successPopup, setSuccessPopup, navigate)
+      onSendJobProposal(
+        formData,
+        successPopup,
+        setSuccessPopup,
+        navigate,
+        setLoading
+      )
     );
   };
 
@@ -568,6 +578,7 @@ const Screen = () => {
           ""
         )}
       </Container>
+      {loading ? <LoadingSpinner /> : null}
       {successPopup}
     </>
   );

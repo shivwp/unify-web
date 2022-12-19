@@ -14,11 +14,14 @@ import { getFreelancerProfile } from "../../../../redux/actions/profileAction";
 import { useParams } from "react-router-dom";
 import QuestionOne from "../profileSteps/QuestionOne";
 import QuestionTwo from "../profileSteps/QuestionTwo";
+import LoadingSpinner from "../../../../components/LoadingSpinner";
 
 const ProfileIntro = () => {
   const { tabName } = useParams();
   const dispatch = useDispatch();
   const [currentTab, setCurrentTab] = useState("question2");
+  const [loading, setLoading] = useState(false);
+
   const freelancerProfileList = useSelector(
     (state) => state.profile.freelancerProfileList
   );
@@ -44,7 +47,8 @@ const ProfileIntro = () => {
   }, [tabName]);
 
   useEffect(() => {
-    dispatch(getFreelancerProfile());
+    setLoading(true);
+    dispatch(getFreelancerProfile(setLoading));
   }, [
     editDesignation,
     deleteExprience,
@@ -62,41 +66,49 @@ const ProfileIntro = () => {
   return (
     <div style={{ minHeight: 450 }}>
       {currentTab === "question1" && (
-        <QuestionOne setCurrentTab={setCurrentTab} />
+        <QuestionOne setCurrentTab={setCurrentTab} setLoading={setLoading} />
       )}
       {currentTab === "question2" && (
-        <QuestionTwo setCurrentTab={setCurrentTab} />
+        <QuestionTwo setCurrentTab={setCurrentTab} setLoading={setLoading} />
       )}
       {currentTab === "takeTimeToIntro" && (
-        <TakeTimeToIntro setCurrentTab={setCurrentTab} />
+        <TakeTimeToIntro
+          setCurrentTab={setCurrentTab}
+          setLoading={setLoading}
+        />
       )}
       {currentTab === "whatDoYouDo" && (
         <WhatDoYouDo
           setCurrentTab={setCurrentTab}
           profileList={freelancerProfileList?.basic_info}
+          setLoading={setLoading}
         />
       )}
       {currentTab === "exprience" && (
         <Exprience
           setCurrentTab={setCurrentTab}
           profileList={freelancerProfileList?.employment}
+          setLoading={setLoading}
         />
       )}
       {currentTab === "education" && (
         <Education
           setCurrentTab={setCurrentTab}
           profileList={freelancerProfileList?.education}
+          setLoading={setLoading}
         />
       )}
       {currentTab === "chooseLangauge" && (
         <ChooseLangauge
           setCurrentTab={setCurrentTab}
           profileList={freelancerProfileList?.language}
+          setLoading={setLoading}
         />
       )}
       {currentTab === "skills" && (
         <Skills
           setCurrentTab={setCurrentTab}
+          setLoading={setLoading}
           profileList={freelancerProfileList?.skills}
         />
       )}
@@ -105,26 +117,31 @@ const ProfileIntro = () => {
         <ServicesOffer
           setCurrentTab={setCurrentTab}
           profileList={freelancerProfileList?.basic_info}
+          setLoading={setLoading}
         />
       )}
       {currentTab === "hourlyRate" && (
         <HourlyRate
           setCurrentTab={setCurrentTab}
           profileList={freelancerProfileList?.basic_info}
+          setLoading={setLoading}
         />
       )}
       {currentTab === "publishProfile" && (
         <PublishProfile
           setCurrentTab={setCurrentTab}
           profileList={freelancerProfileList?.basic_info}
+          setLoading={setLoading}
         />
       )}
       {currentTab === "previewProfile" && (
         <PreviewProfile
           setCurrentTab={setCurrentTab}
+          setLoading={setLoading}
           profileList={freelancerProfileList}
         />
       )}
+      {loading ? <LoadingSpinner /> : null}
     </div>
   );
 };

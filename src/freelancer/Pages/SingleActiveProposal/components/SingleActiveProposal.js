@@ -8,12 +8,14 @@ import { singleProposalDetails } from "../../../../redux/actions/jobActions";
 import StarRating from "../../../components/rating/Rating";
 import ChangeTermPopup from "./ChangeTermPopup";
 import WithdrawActiveProposal from "./WithdrawActiveProposal";
+import LoadingSpinner from "../../../../components/LoadingSpinner";
 
 const SingleActiveProposal = () => {
   const dispatch = useDispatch();
   const [milestonesTotal, setMilestonesTotal] = useState(0);
   const [successPopup, setSuccessPopup] = useState(false);
   const [popup, setPopup] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const { id } = useParams();
   const project_data = useSelector(
@@ -31,7 +33,8 @@ const SingleActiveProposal = () => {
   const changeTerms = useSelector((state) => state?.job?.changeTerms);
 
   useEffect(() => {
-    dispatch(singleProposalDetails(id, "active"));
+    setLoading(true);
+    dispatch(singleProposalDetails(id, "active", setLoading));
   }, [id, changeTerms]);
 
   useEffect(() => {
@@ -324,6 +327,7 @@ const SingleActiveProposal = () => {
                             popup={setPopup}
                             successPopup={successPopup}
                             setSuccessPopup={setSuccessPopup}
+                            setLoading={setLoading}
                           />
                         )
                       }
@@ -340,6 +344,7 @@ const SingleActiveProposal = () => {
                             successPopup={successPopup}
                             setSuccessPopup={setSuccessPopup}
                             type={"withdraw"}
+                            setLoading={setLoading}
                           />
                         )
                       }
@@ -546,10 +551,10 @@ const SingleActiveProposal = () => {
                   <div className="headingh">History</div>
                   <div className="desc">
                     {" "}
-                    {project_data?.interview} proposals
+                    {project_data?.proposal_count} proposals
                   </div>
                   <div className="desc">
-                    {client_data?.job_posted} interviews
+                    {project_data?.interview} interviews
                   </div>
                   {/* <div className="desc">$1096 total spent</div> */}
                   <div className="desc">{project_data?.open_jobs} jobs</div>
@@ -568,6 +573,8 @@ const SingleActiveProposal = () => {
           </Col>
         </Row>
       </div>
+      {loading ? <LoadingSpinner /> : null}
+
       {popup}
       {successPopup}
     </>

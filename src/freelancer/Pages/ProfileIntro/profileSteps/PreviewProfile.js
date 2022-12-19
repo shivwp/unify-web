@@ -10,6 +10,7 @@ import {
   onDeleteEducation,
   onDeleteEmployment,
 } from "../../../../redux/actions/profileAction";
+import { SHOW_BACK_BTN } from "../../../../redux/types";
 import ConfirmationPopup from "../../../components/popups/ConfirmationPopup";
 import PortfolioPupup from "../../../components/popups/PortfolioPupup";
 import SuccessPopup from "../../../components/popups/SuccessPopup";
@@ -20,7 +21,7 @@ import EditTitle from "../../Profile/components/popups/EditTitle";
 import HourlyRatePopup from "../../Profile/components/popups/HourlyRatePopup";
 import LanguageEdit from "../../Profile/components/popups/LanguageEdit";
 
-const PreviewProfile = ({ setCurrentTab, profileList }) => {
+const PreviewProfile = ({ setCurrentTab, profileList, setLoading }) => {
   const [showingImage, setShowingImage] = useState(null);
   const [profileImage, setProfileImage] = useState(null);
   const [popup, Setpopup] = useState();
@@ -36,15 +37,19 @@ const PreviewProfile = ({ setCurrentTab, profileList }) => {
   }, [profileList]);
 
   const deleteExp = (id) => {
-    dispatch(onDeleteEmployment({ id }, setConfirmPopup));
+    setLoading(true);
+    dispatch(onDeleteEmployment({ id }, setConfirmPopup, setLoading));
   };
 
   const deleteEdu = (id) => {
-    dispatch(onDeleteEducation({ id }, setConfirmPopup));
+    setLoading(true);
+    dispatch(onDeleteEducation({ id }, setConfirmPopup, setLoading));
   };
 
   const onProfleImgChange = (e) => {
     let errorExist = false;
+    setLoading(true);
+
     const profileImage = e.target.files[0];
     if (!profileImage?.name.match(/\.(jpg|jpeg|png)$/)) {
       setShowError("Image type must be JPG, JPEG or PNG format.");
@@ -55,6 +60,7 @@ const PreviewProfile = ({ setCurrentTab, profileList }) => {
       errorExist = true;
     }
     if (errorExist) {
+      setLoading(false);
       return false;
     }
     setShowingImage(URL.createObjectURL(e.target.files[0]));
@@ -65,7 +71,7 @@ const PreviewProfile = ({ setCurrentTab, profileList }) => {
     formData.append("occcuption", profileList?.basic_info?.occuption);
     formData.append("profile_image", profileImage);
 
-    dispatch(editNameInfo(formData, successPopup, setSuccessPopup));
+    dispatch(editNameInfo(formData, successPopup, setSuccessPopup, setLoading));
   };
 
   return (
@@ -226,6 +232,7 @@ const PreviewProfile = ({ setCurrentTab, profileList }) => {
                         Popup={Setpopup}
                         successPopup={successPopup}
                         setSuccessPopup={setSuccessPopup}
+                        setLoading={setLoading}
                       />
                     );
                   }}
@@ -292,6 +299,7 @@ const PreviewProfile = ({ setCurrentTab, profileList }) => {
                         successPopup={successPopup}
                         setSuccessPopup={setSuccessPopup}
                         data={profileList?.basic_info?.amount}
+                        setLoading={setLoading}
                       />
                     );
                   }}
@@ -346,6 +354,7 @@ const PreviewProfile = ({ setCurrentTab, profileList }) => {
                         data={profileList?.skills}
                         setSuccessPopup={setSuccessPopup}
                         successPopup={successPopup}
+                        setLoading={setLoading}
                       />
                     );
                   }}
@@ -402,6 +411,7 @@ const PreviewProfile = ({ setCurrentTab, profileList }) => {
                         Popup={Setpopup}
                         successPopup={successPopup}
                         setSuccessPopup={setSuccessPopup}
+                        setLoading={setLoading}
                       />
                     );
                   }}
@@ -448,6 +458,7 @@ const PreviewProfile = ({ setCurrentTab, profileList }) => {
                               experience={item}
                               successPopup={successPopup}
                               setSuccessPopup={setSuccessPopup}
+                              setLoading={setLoading}
                             />
                           );
                         }}
@@ -550,6 +561,7 @@ const PreviewProfile = ({ setCurrentTab, profileList }) => {
                         Popup={Setpopup}
                         successPopup={successPopup}
                         setSuccessPopup={setSuccessPopup}
+                        setLoading={setLoading}
                       />
                     );
                   }}
@@ -606,6 +618,7 @@ const PreviewProfile = ({ setCurrentTab, profileList }) => {
                             Popup={Setpopup}
                             successPopup={successPopup}
                             setSuccessPopup={setSuccessPopup}
+                            setLoading={setLoading}
                           />
                         );
                       }}
@@ -696,8 +709,11 @@ const PreviewProfile = ({ setCurrentTab, profileList }) => {
                   height="25"
                   viewBox="0 0 40 40"
                   onClick={() => {
+                    dispatch({
+                      type: SHOW_BACK_BTN,
+                      payload: "hide",
+                    });
                     setCurrentTab("publishProfile");
-                    navigate(`/freelancer/profile-intro/publishProfile`);
                   }}
                 >
                   <g
@@ -728,9 +744,7 @@ const PreviewProfile = ({ setCurrentTab, profileList }) => {
                 </svg>
               </div>
               <div className="previewProfileDate">
-                {profileList?.basic_info?.city}{" "}
-                {profileList?.basic_info?.address}{" "}
-                {profileList?.basic_info?.country}{" "}
+                {`${profileList?.basic_info?.address}, ${profileList?.basic_info?.city}, ${profileList?.basic_info?.country}`}
               </div>
               <div className="pbx_pdd_sp2"></div>
             </Row>
@@ -751,6 +765,7 @@ const PreviewProfile = ({ setCurrentTab, profileList }) => {
                         data={profileList?.language}
                         successPopup={successPopup}
                         setSuccessPopup={setSuccessPopup}
+                        setLoading={setLoading}
                       />
                     );
                   }}

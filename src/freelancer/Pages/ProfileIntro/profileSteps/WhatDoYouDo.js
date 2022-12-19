@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { onEditDesignation } from "../../../../redux/actions/profileAction";
 
-const WhatDoYouDo = ({ setCurrentTab, profileList }) => {
+const WhatDoYouDo = ({ setCurrentTab, profileList, setLoading }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [values, setValues] = useState({});
@@ -46,6 +46,7 @@ const WhatDoYouDo = ({ setCurrentTab, profileList }) => {
   const onEditProfile = () => {
     let errorExist = false;
     let errorsObject = {};
+    setLoading(true);
 
     if (
       values?.occuption === "" ||
@@ -101,10 +102,12 @@ const WhatDoYouDo = ({ setCurrentTab, profileList }) => {
           popup,
           successPopup,
           setSuccessPopup,
-          afterSuccess
+          afterSuccess,
+          setLoading
         )
       );
     } else {
+      setLoading(false);
       setCurrentTab("exprience");
       navigate(`/freelancer/profile-intro/exprience`);
     }

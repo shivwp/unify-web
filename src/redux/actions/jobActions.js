@@ -84,7 +84,8 @@ export const singleJobPostDetails = (data) => async (dispatch) => {
   } catch (err) {}
 };
 export const onSendJobProposal =
-  (data, successPopup, setSuccessPopup, navigate) => async (dispatch) => {
+  (data, successPopup, setSuccessPopup, navigate, setLoading) =>
+  async (dispatch) => {
     try {
       Axios.post("/send-proposal", data, config).then((res) => {
         dispatch({
@@ -94,6 +95,9 @@ export const onSendJobProposal =
         const afterSuccess = () => {
           navigate(`/freelancer/single-submited-proposal/${res.data.data}`);
         };
+        if (setLoading) {
+          setLoading(false);
+        }
         setSuccessPopup(
           <SuccessPopup
             Popup={() => setSuccessPopup(!successPopup)}
@@ -102,7 +106,11 @@ export const onSendJobProposal =
           />
         );
       });
-    } catch (err) {}
+    } catch (err) {
+      if (setLoading) {
+        setLoading(false);
+      }
+    }
   };
 export const onDislikePostReasons = (data) => async (dispatch) => {
   try {
@@ -224,29 +232,38 @@ export const onGetAllContracts = () => async (dispatch) => {
     });
   } catch (err) {}
 };
-export const singleProposalDetails = (id, type) => async (dispatch) => {
-  try {
-    Axios.get(`/single-proposal-details/${id}/${type}`, config).then((res) => {
-      dispatch({
-        type: SET_SINGLE_PROPOSAL_DETAILS,
-        payload: res.data.data,
-      });
-    });
-  } catch (err) {}
-};
-export const declineReasoneList = (type) => async (dispatch) => {
+export const singleProposalDetails =
+  (id, type, setLoading) => async (dispatch) => {
+    try {
+      Axios.get(`/single-proposal-details/${id}/${type}`, config).then(
+        (res) => {
+          dispatch({
+            type: SET_SINGLE_PROPOSAL_DETAILS,
+            payload: res.data.data,
+          });
+          setLoading(false);
+        }
+      );
+    } catch (err) {
+      setLoading(false);
+    }
+  };
+export const declineReasoneList = (type, setLoading) => async (dispatch) => {
   try {
     Axios.get(`/decline-reason-list/${type}`, config).then((res) => {
       dispatch({
         type: DECLINE_REASONS_LIST,
         payload: res.data.data,
       });
+      setLoading(false);
     });
-  } catch (err) {}
+  } catch (err) {
+    setLoading(false);
+  }
 };
 
 export const onDeclineForInterview =
-  (data, popup, successPopup, setSuccessPopup, afterSuccess) =>
+  (data, popup, successPopup, setSuccessPopup, afterSuccess, setLoading) =>
   async (dispatch) => {
     try {
       Axios.post("/invite-decline", data, config).then((res) => {
@@ -258,15 +275,19 @@ export const onDeclineForInterview =
             afterSuccess={afterSuccess}
           />
         );
+        setLoading(false);
       });
-    } catch (err) {}
+    } catch (err) {
+      setLoading(false);
+    }
   };
 export const onWithdrawSubmitedProposal =
-  (data, popup, successPopup, setSuccessPopup, afterSuccess) =>
+  (data, popup, successPopup, setSuccessPopup, afterSuccess, setLoading) =>
   async (dispatch) => {
     try {
       Axios.post("/proposal-withdraw", data, config).then((res) => {
         popup();
+        setLoading(false);
         setSuccessPopup(
           <SuccessPopup
             Popup={() => setSuccessPopup(!successPopup)}
@@ -275,11 +296,14 @@ export const onWithdrawSubmitedProposal =
           />
         );
       });
-    } catch (err) {}
+    } catch (err) {
+      setLoading(false);
+    }
   };
 
 export const onChangeTermsOfProposals =
-  (data, successPopup, setSuccessPopup, popup) => async (dispatch) => {
+  (data, successPopup, setSuccessPopup, popup, setLoading) =>
+  async (dispatch) => {
     try {
       Axios.post("/update-proposal", data, config).then((res) => {
         dispatch({
@@ -289,6 +313,7 @@ export const onChangeTermsOfProposals =
         if (popup) {
           popup();
         }
+        setLoading(false);
         setSuccessPopup(
           <SuccessPopup
             Popup={() => setSuccessPopup(!successPopup)}
@@ -296,7 +321,9 @@ export const onChangeTermsOfProposals =
           />
         );
       });
-    } catch (err) {}
+    } catch (err) {
+      setLoading(false);
+    }
   };
 
 export const onDeclineOffer =
@@ -317,9 +344,11 @@ export const onDeclineOffer =
   };
 
 export const onAcceptOffer =
-  (id, successPopup, setSuccessPopup, afterSuccess) => async (dispatch) => {
+  (id, successPopup, setSuccessPopup, afterSuccess, setLoading) =>
+  async (dispatch) => {
     try {
       Axios.get(`/accept-offer/${id}`, config).then((res) => {
+        setLoading(false);
         setSuccessPopup(
           <SuccessPopup
             Popup={() => setSuccessPopup(!successPopup)}
@@ -328,5 +357,7 @@ export const onAcceptOffer =
           />
         );
       });
-    } catch (err) {}
+    } catch (err) {
+      setLoading(false);
+    }
   };

@@ -5,7 +5,7 @@ import Title from "../../../../components/title";
 import { Link, useNavigate } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 
-const QuestionOne = () => {
+const QuestionOne = ({ setLoading }) => {
   const history = useNavigate();
   const [values, setValues] = useState({});
   const [errors, setErrors] = useState({});

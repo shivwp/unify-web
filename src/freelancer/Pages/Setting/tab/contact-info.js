@@ -29,6 +29,7 @@ const Screen = () => {
   const [editLocation, setEditLocation] = useState(false);
   const [openCloseAcc, seOpenCloseAcc] = useState(false);
   const [successPopup, setSuccessPopup] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const basicInfo = useSelector(
     (state) => state?.profile?.freelancerProfileList?.basic_info
@@ -47,7 +48,7 @@ const Screen = () => {
   );
 
   useEffect(() => {
-    dispatch(getFreelancerProfile());
+    dispatch(getFreelancerProfile(setLoading));
     dispatch(getTimezoneList());
     dispatch(countryList());
   }, [editFreelancerInfo, editFreelancerLocation]);

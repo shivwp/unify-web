@@ -21,14 +21,21 @@ const CloseIcon = () => {
     </svg>
   );
 };
-const AddCert = ({ certificates, Popup, successPopup, setSuccessPopup }) => {
+const AddCert = ({
+  certificates,
+  Popup,
+  successPopup,
+  setSuccessPopup,
+  setLoading,
+}) => {
   const dispatch = useDispatch();
   const [values, setValues] = useState(certificates);
   const [errors, setErrors] = useState({});
   const [certificateList, setCertificateList] = useState([]);
 
   useEffect(() => {
-    dispatch(getCertificationList(setCertificateList));
+    setLoading(true);
+    dispatch(getCertificationList(setCertificateList, setLoading));
   }, []);
 
   const handleOnChange = (e) => {
@@ -51,6 +58,7 @@ const AddCert = ({ certificates, Popup, successPopup, setSuccessPopup }) => {
   const onSave = () => {
     let errorExist = false;
     let errorsObject = {};
+    setLoading(true);
 
     if (
       values?.name === "" ||
@@ -75,6 +83,7 @@ const AddCert = ({ certificates, Popup, successPopup, setSuccessPopup }) => {
 
     if (errorExist) {
       setErrors(errorsObject);
+      setLoading(false);
       return false;
     }
 
@@ -91,7 +100,7 @@ const AddCert = ({ certificates, Popup, successPopup, setSuccessPopup }) => {
         description: values.description,
       };
     }
-    dispatch(onEditCertificate(data, Popup, successPopup, setSuccessPopup));
+    dispatch(onEditCertificate(data, Popup, successPopup, setSuccessPopup, setLoading));
   };
   return (
     <>

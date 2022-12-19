@@ -20,7 +20,7 @@ const CloseIcon = () => {
   );
 };
 
-const VideoIntro = ({ data, Popup, successPopup, setSuccessPopup }) => {
+const VideoIntro = ({ data, Popup, successPopup, setSuccessPopup, setLoading }) => {
   const dispatch = useDispatch();
   const [values, setValues] = useState(data);
   const [errors, setErrors] = useState({});
@@ -43,6 +43,7 @@ const VideoIntro = ({ data, Popup, successPopup, setSuccessPopup }) => {
   };
 
   const onSave = () => {
+    setLoading(true)
     let errorExist = false;
     let errorsObject = {};
     if (values.url === "" || values.url === null || values.url === undefined) {
@@ -68,6 +69,7 @@ const VideoIntro = ({ data, Popup, successPopup, setSuccessPopup }) => {
 
     if (errorExist) {
       setErrors(errorsObject);
+      setLoading(false)
       return false;
     }
 
@@ -75,7 +77,7 @@ const VideoIntro = ({ data, Popup, successPopup, setSuccessPopup }) => {
       video: values.url,
       video_type: values.type,
     };
-    dispatch(onEditVideo(data, Popup, successPopup, setSuccessPopup));
+    dispatch(onEditVideo(data, Popup, successPopup, setSuccessPopup, setLoading));
   };
   return (
     <>

@@ -51,15 +51,18 @@ const config = {
 
 // FREELANCER
 
-export const getFreelancerProfile = () => async (dispatch) => {
+export const getFreelancerProfile = (setLoading) => async (dispatch) => {
   try {
     await Axios.get(`/get-freelancer-profile`, config).then((res) => {
       dispatch({
         type: SET_FREELANCER_PROFILE,
         payload: res.data.data,
       });
+      setLoading(false);
     });
-  } catch (err) {}
+  } catch (err) {
+    setLoading(false);
+  }
 };
 
 export const getFreelancerSkills = (data) => async (dispatch) => {
@@ -74,7 +77,8 @@ export const getFreelancerSkills = (data) => async (dispatch) => {
 };
 
 export const onAddEmployment =
-  (data, popup, successPopup, setSuccessPopup) => async (dispatch) => {
+  (data, popup, successPopup, setSuccessPopup, setLoading) =>
+  async (dispatch) => {
     try {
       await Axios.post(`/edit-employment-info`, data, config).then((res) => {
         dispatch({
@@ -82,6 +86,9 @@ export const onAddEmployment =
           payload: res.data,
         });
         popup();
+        if (setLoading) {
+          setLoading(false);
+        }
         setSuccessPopup(
           <SuccessPopup
             Popup={() => setSuccessPopup(!successPopup)}
@@ -89,11 +96,15 @@ export const onAddEmployment =
           />
         );
       });
-    } catch (err) {}
+    } catch (err) {
+      if (setLoading) {
+        setLoading(false);
+      }
+    }
   };
 
 export const onDeleteEmployment =
-  (data, setConfirmPopup) => async (dispatch) => {
+  (data, setConfirmPopup, setLoading) => async (dispatch) => {
     try {
       await Axios.post(`/delete-employment-info`, data, config).then((res) => {
         dispatch({
@@ -101,6 +112,9 @@ export const onDeleteEmployment =
           payload: res.data,
         });
         setConfirmPopup(false);
+        if (setLoading) {
+          setLoading(false);
+        }
       });
     } catch (err) {}
   };
@@ -128,15 +142,22 @@ export const getIndustriesList = (data) => async (dispatch) => {
   } catch (err) {}
 };
 
-export const getTimezoneList = (data) => async (dispatch) => {
+export const getTimezoneList = (setLoading) => async (dispatch) => {
   try {
     await Axios.get(`/timezone_list`).then((res) => {
       dispatch({
         type: SET_TIMEZONE_LIST,
         payload: res.data.data,
       });
+      if (setLoading) {
+        setLoading(false);
+      }
     });
-  } catch (err) {}
+  } catch (err) {
+    if (setLoading) {
+      setLoading(false);
+    }
+  }
 };
 
 export const addEditClientInfo = (data, setOpen) => async (dispatch) => {
@@ -202,25 +223,32 @@ export const onCloseAccount =
     } catch (err) {}
   };
 
-export const getFreelancerDegreeList = (data) => async (dispatch) => {
+export const getFreelancerDegreeList = (setLoading) => async (dispatch) => {
   try {
     Axios.get("/degree-list").then((res) => {
       dispatch({
         type: SET_DEGREE_LIST,
         payload: res.data.data,
       });
+      setLoading(false);
     });
-  } catch (err) {}
+  } catch (err) {
+    setLoading(false);
+  }
 };
 
 export const onAddEducation =
-  (data, popup, successPopup, setSuccessPopup) => async (dispatch) => {
+  (data, popup, successPopup, setSuccessPopup, setLoading) =>
+  async (dispatch) => {
     try {
       Axios.post("/edit-education-info", data, config).then((res) => {
         dispatch({
           type: SET_EDIT_EDUCATION,
           payload: res.data,
         });
+        if (setLoading) {
+          setLoading(false);
+        }
         popup();
         setSuccessPopup(
           <SuccessPopup
@@ -229,11 +257,15 @@ export const onAddEducation =
           />
         );
       });
-    } catch (err) {}
+    } catch (err) {
+      if (setLoading) {
+        setLoading(false);
+      }
+    }
   };
 
 export const onDeleteEducation =
-  (data, setConfirmPopup) => async (dispatch) => {
+  (data, setConfirmPopup, setLoading) => async (dispatch) => {
     try {
       Axios.post("/delete-education-info", data, config).then((res) => {
         dispatch({
@@ -241,8 +273,11 @@ export const onDeleteEducation =
           payload: res.data,
         });
         setConfirmPopup(false);
+        if (setLoading) setLoading(false);
       });
-    } catch (err) {}
+    } catch (err) {
+      if (setLoading) setLoading(false);
+    }
   };
 
 export const onEditContactInfo =
@@ -271,7 +306,8 @@ export const onEditLocationInfo =
     successPopup,
     setSuccessPopup,
     navigate,
-    setCurrentTab
+    setCurrentTab,
+    setLoading
   ) =>
   async (dispatch) => {
     try {
@@ -295,6 +331,9 @@ export const onEditLocationInfo =
             setSuccessPopup(!successPopup);
           }
         };
+        if (setLoading) {
+          setLoading(false);
+        }
         setSuccessPopup(
           <SuccessPopup
             Popup={() => setSuccessPopup(!successPopup)}
@@ -303,11 +342,16 @@ export const onEditLocationInfo =
           />
         );
       });
-    } catch (err) {}
+    } catch (err) {
+      if (setLoading) {
+        setLoading(false);
+      }
+    }
   };
 
 export const onEditVideo =
-  (data, popup, successPopup, setSuccessPopup) => async (dispatch) => {
+  (data, popup, successPopup, setSuccessPopup, setLoading) =>
+  async (dispatch) => {
     try {
       Axios.post("/edit-video", data, config).then((res) => {
         dispatch({
@@ -315,6 +359,9 @@ export const onEditVideo =
           payload: res.data,
         });
         popup();
+        if (setLoading) {
+          setLoading(false);
+        }
         setSuccessPopup(
           <SuccessPopup
             Popup={() => setSuccessPopup(!successPopup)}
@@ -322,11 +369,15 @@ export const onEditVideo =
           />
         );
       });
-    } catch (err) {}
+    } catch (err) {
+      if (setLoading) {
+        setLoading(false);
+      }
+    }
   };
 
 export const onEditDesignation =
-  (data, popup, successPopup, setSuccessPopup, afterSuccess) =>
+  (data, popup, successPopup, setSuccessPopup, afterSuccess, setLoading) =>
   async (dispatch) => {
     try {
       Axios.post("/edit-designation-info", data, config).then((res) => {
@@ -337,6 +388,9 @@ export const onEditDesignation =
         if (popup) {
           popup();
         }
+        if (setLoading) {
+        }
+        setLoading(false);
         setSuccessPopup(
           <SuccessPopup
             Popup={() => setSuccessPopup(!successPopup)}
@@ -345,17 +399,24 @@ export const onEditDesignation =
           />
         );
       });
-    } catch (err) {}
+    } catch (err) {
+      if (setLoading) {
+        setLoading(false);
+      }
+    }
   };
 
 export const onEditPortfolio =
-  (data, popup, successPopup, setSuccessPopup) => (dispatch) => {
+  (data, popup, successPopup, setSuccessPopup, setLoading) => (dispatch) => {
     Axios.post("/edit-portfolio-info", data, config)
       .then((res) => {
         dispatch({
           type: SET_EDIT_PORTFOLIO,
           payload: res.data,
         });
+        if (setLoading) {
+          setLoading(false);
+        }
 
         popup();
         setSuccessPopup(
@@ -370,11 +431,14 @@ export const onEditPortfolio =
           type: SET_PORTFOLIO_ERROR,
           payload: err.response.data.message,
         });
+        if (setLoading) {
+          setLoading(false);
+        }
       });
   };
 
 export const onEditLanguage =
-  (data, popup, successPopup, setSuccessPopup, afterSuccess) =>
+  (data, popup, successPopup, setSuccessPopup, afterSuccess, setLoading) =>
   async (dispatch) => {
     try {
       Axios.post("/edit-language", data, config).then((res) => {
@@ -382,6 +446,9 @@ export const onEditLanguage =
           type: SET_EDIT_LANGUAGE,
           payload: res.data,
         });
+        if (setLoading) {
+          setLoading(false);
+        }
         if (popup) {
           popup();
         }
@@ -393,33 +460,47 @@ export const onEditLanguage =
           />
         );
       });
-    } catch (err) {}
+    } catch (err) {
+      if (setLoading) {
+        setLoading(false);
+      }
+    }
   };
 
-export const getLanguageList = () => async (dispatch) => {
+export const getLanguageList = (setLoading) => async (dispatch) => {
   try {
     Axios.get("/languages-list").then((res) => {
       dispatch({
         type: SET_LANGUAGE_LIST,
         payload: res.data.data,
       });
+      if (setLoading) {
+        setLoading(false);
+      }
     });
   } catch (err) {}
 };
 
-export const getHoursPerWeekList = () => async (dispatch) => {
+export const getHoursPerWeekList = (setLoading) => async (dispatch) => {
   try {
     Axios.get("/hours-per-week").then((res) => {
       dispatch({
         type: SET_HWP_LIST,
         payload: res.data.data,
       });
+      if (setLoading) {
+        setLoading(false);
+      }
     });
-  } catch (err) {}
+  } catch (err) {
+    if (setLoading) {
+      setLoading(false);
+    }
+  }
 };
 
 export const onEditHourPerWeek =
-  (data, popup, successPopup, setSuccessPopup, afterSuccess) =>
+  (data, popup, successPopup, setSuccessPopup, afterSuccess, setLoading) =>
   async (dispatch) => {
     try {
       Axios.post("/edit-hours-per-week", data, config).then((res) => {
@@ -427,7 +508,9 @@ export const onEditHourPerWeek =
           type: SET_HOURS_PER_WEEK,
           payload: res.data,
         });
-
+        if (setLoading) {
+          setLoading(false);
+        }
         userDetails.amount = data.hours_price;
         sessionStorage.setItem("unify_user", JSON.stringify(userDetails));
 
@@ -442,11 +525,15 @@ export const onEditHourPerWeek =
           popup();
         }
       });
-    } catch (err) {}
+    } catch (err) {
+      if (setLoading) {
+        setLoading(false);
+      }
+    }
   };
 
 export const onEditSkills =
-  (data, popup, successPopup, setSuccessPopup, afterSuccess) =>
+  (data, popup, successPopup, setSuccessPopup, afterSuccess, setLoading) =>
   async (dispatch) => {
     try {
       Axios.post("/edit-skills-info", data, config).then((res) => {
@@ -454,6 +541,9 @@ export const onEditSkills =
           type: SET_EDIT_SKILLS,
           payload: res.data,
         });
+        if (setLoading) {
+          setLoading(false);
+        }
         if (popup) {
           popup();
         }
@@ -465,17 +555,25 @@ export const onEditSkills =
           />
         );
       });
-    } catch (err) {}
+    } catch (err) {
+      if (setLoading) {
+        setLoading(false);
+      }
+    }
   };
 
 export const onEditCertificate =
-  (data, popup, successPopup, setSuccessPopup) => async (dispatch) => {
+  (data, popup, successPopup, setSuccessPopup, setLoading) =>
+  async (dispatch) => {
     try {
       Axios.post("/edit-certificate-info", data, config).then((res) => {
         dispatch({
           type: SET_EDIT_CERTIFICATE,
           payload: res.data,
         });
+        if (setLoading) {
+          setLoading(false);
+        }
         popup();
         setSuccessPopup(
           <SuccessPopup
@@ -484,7 +582,11 @@ export const onEditCertificate =
           />
         );
       });
-    } catch (err) {}
+    } catch (err) {
+      if (setLoading) {
+        setLoading(false);
+      }
+    }
   };
 
 export const onDeleteCertificate =
@@ -501,8 +603,7 @@ export const onDeleteCertificate =
   };
 
 export const editNameInfo =
-  (data, successPopup, setSuccessPopup, profileImageChange) =>
-  async (dispatch) => {
+  (data, successPopup, setSuccessPopup, setLoading) => async (dispatch) => {
     try {
       Axios.post("/edit-name-info", data, config).then((res) => {
         dispatch({
@@ -514,6 +615,9 @@ export const editNameInfo =
           sessionStorage.setItem("unify_user", JSON.stringify(userDetails));
           window?.location?.reload();
         };
+        if (setLoading) {
+          setLoading(false);
+        }
         setSuccessPopup(
           <SuccessPopup
             Popup={() => setSuccessPopup(!successPopup)}
@@ -522,7 +626,11 @@ export const editNameInfo =
           />
         );
       });
-    } catch (err) {}
+    } catch (err) {
+      if (setLoading) {
+        setLoading(false);
+      }
+    }
   };
 
 export const editVisiblity =
@@ -545,7 +653,8 @@ export const editVisiblity =
   };
 
 export const editExprienceLev =
-  (data, popup, successPopup, setSuccessPopup) => async (dispatch) => {
+  (data, popup, successPopup, setSuccessPopup, setLoading) =>
+  async (dispatch) => {
     try {
       Axios.post("/edit-experience-level", data, config).then((res) => {
         dispatch({
@@ -553,6 +662,9 @@ export const editExprienceLev =
           payload: res.data,
         });
         popup(false);
+        if (setLoading) {
+          setLoading(false);
+        }
         setSuccessPopup(
           <SuccessPopup
             Popup={() => setSuccessPopup(!successPopup)}
@@ -560,20 +672,31 @@ export const editExprienceLev =
           />
         );
       });
-    } catch (err) {}
+    } catch (err) {
+      if (setLoading) {
+        setLoading(false);
+      }
+    }
   };
 
 export const onDeletePortfolio =
-  (data, setConfirmPopup) => async (dispatch) => {
+  (data, setConfirmPopup, setLoading) => async (dispatch) => {
     try {
       Axios.post("/delete-portfolio-info", data, config).then((res) => {
         dispatch({
           type: SET_DELETE_PORTFOLIO,
           payload: res.data,
         });
+        if (setLoading) {
+          setLoading(false);
+        }
         setConfirmPopup(false);
       });
-    } catch (err) {}
+    } catch (err) {
+      if (setLoading) {
+        setLoading(false);
+      }
+    }
   };
 
 export const onAdditionalAccount = (data, navigate) => async (dispatch) => {
@@ -594,13 +717,17 @@ export const onAdditionalAccount = (data, navigate) => async (dispatch) => {
 };
 
 export const onSubmitVerificationDocs =
-  (data, popup, successPopup, setSuccessPopup) => async (dispatch) => {
+  (data, popup, successPopup, setSuccessPopup, setLoading) =>
+  async (dispatch) => {
     try {
       Axios.post("/user-document-verify", data, config).then((res) => {
         dispatch({
           type: SET_SUBMIT_VERIF_DOCS,
           payload: res.data,
         });
+        if (setLoading) {
+          setLoading(false);
+        }
         if (popup) {
           popup();
         }
@@ -611,11 +738,16 @@ export const onSubmitVerificationDocs =
           />
         );
       });
-    } catch (err) {}
+    } catch (err) {
+      if (setLoading) {
+        setLoading(false);
+      }
+    }
   };
 
 export const onRequestTestimonial =
-  (data, popup, successPopup, setSuccessPopup) => async (dispatch) => {
+  (data, popup, successPopup, setSuccessPopup, setLoading) =>
+  async (dispatch) => {
     Axios.post("/edit-testimonial-info", data, config)
       .then((res) => {
         dispatch({
@@ -623,6 +755,9 @@ export const onRequestTestimonial =
           payload: res.data,
         });
         popup();
+        if (setLoading) {
+          setLoading(false);
+        }
         setSuccessPopup(
           <SuccessPopup
             Popup={() => setSuccessPopup(!successPopup)}
@@ -635,6 +770,9 @@ export const onRequestTestimonial =
           type: ERROR_REQUEST_TESTIMONIAL,
           payload: err.response.data,
         });
+        if (setLoading) {
+          setLoading(false);
+        }
       });
   };
 
@@ -671,13 +809,17 @@ export const onGetTestmonial =
       });
   };
 export const onAddCategory =
-  (data, successPopup, setSuccessPopup, afterSuccess) => async (dispatch) => {
+  (data, successPopup, setSuccessPopup, afterSuccess, setLoading) =>
+  async (dispatch) => {
     try {
       Axios.post("/add-category", data, config).then((res) => {
         dispatch({
           type: ADD_CATEGORY,
           payload: res.data,
         });
+        if (setLoading) {
+          setLoading(false);
+        }
         setSuccessPopup(
           <SuccessPopup
             Popup={() => setSuccessPopup(!successPopup)}
@@ -686,25 +828,43 @@ export const onAddCategory =
           />
         );
       });
-    } catch (err) {}
+    } catch (err) {
+      if (setLoading) {
+        setLoading(false);
+      }
+    }
   };
 
 export const getCertificationList =
-  (setCertificateList) => async (dispatch) => {
+  (setCertificateList, setLoading) => async (dispatch) => {
     try {
       Axios.get("/certificate-list", config).then((res) => {
         setCertificateList(res.data.data);
       });
-    } catch (err) {}
+      if (setLoading) {
+        setLoading(false);
+      }
+    } catch (err) {
+      if (setLoading) {
+        setLoading(false);
+      }
+    }
   };
 
-export const getCategoryList = () => async (dispatch) => {
+export const getCategoryList = (setLoading) => async (dispatch) => {
   try {
     Axios.get("/category-list").then((res) => {
       dispatch({
         type: SET_CATEGORY_LIST,
         payload: res.data.data,
       });
+      if (setLoading) {
+        setLoading(false);
+      }
     });
-  } catch (err) {}
+  } catch (err) {
+    if (setLoading) {
+      setLoading(false);
+    }
+  }
 };

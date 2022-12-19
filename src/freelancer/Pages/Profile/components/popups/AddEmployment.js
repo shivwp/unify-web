@@ -28,6 +28,7 @@ const AddEmployment = ({
   Popup,
   successPopup,
   setSuccessPopup,
+  setLoading,
 }) => {
   const dispatch = useDispatch();
   const getCountryList = useSelector((state) => state.auth.getCountryList);
@@ -44,7 +45,8 @@ const AddEmployment = ({
     }
   }, [experience]);
   useState(() => {
-    dispatch(countryList());
+    setLoading(true);
+    dispatch(countryList(setLoading));
   }, []);
 
   const onInputChange = (e) => {
@@ -88,6 +90,7 @@ const AddEmployment = ({
   const onSave = () => {
     let errorExist = false;
     let errorsObject = {};
+    setLoading(true);
 
     if (
       values?.company === "" ||
@@ -180,6 +183,7 @@ const AddEmployment = ({
 
     if (errorExist) {
       setErrors(errorsObject);
+      setLoading(false);
       return false;
     }
 
@@ -194,7 +198,7 @@ const AddEmployment = ({
       start_date: values?.start_date,
       end_date: values?.end_date,
     };
-    dispatch(onAddEmployment(data, Popup, successPopup, setSuccessPopup));
+    dispatch(onAddEmployment(data, Popup, successPopup, setSuccessPopup, setLoading));
   };
 
   return (

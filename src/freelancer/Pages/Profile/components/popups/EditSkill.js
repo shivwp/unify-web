@@ -10,7 +10,13 @@ import {
 
 import PopupsCloseIcon from "../../../../../freelancer/components/popups/PopupsCloseIcon";
 
-const EditSkill = ({ data, Popup, successPopup, setSuccessPopup }) => {
+const EditSkill = ({
+  data,
+  Popup,
+  successPopup,
+  setSuccessPopup,
+  setLoading,
+}) => {
   const [selectSkills, setSelectSkills] = useState(data || []);
   const dispatch = useDispatch();
   const [showSkillList, setShowSkillList] = useState(false);
@@ -90,10 +96,20 @@ const EditSkill = ({ data, Popup, successPopup, setSuccessPopup }) => {
     if (selectSkills.length == 0) {
       setShowSkillError(true);
     } else {
+      setLoading(true);
       const data = {
         skill_id: selectSkills?.map((item) => item.skill_id)?.toString(),
       };
-      dispatch(onEditSkills(data, Popup, successPopup, setSuccessPopup));
+      dispatch(
+        onEditSkills(
+          data,
+          Popup,
+          successPopup,
+          setSuccessPopup,
+          false,
+          setLoading
+        )
+      );
     }
   };
 

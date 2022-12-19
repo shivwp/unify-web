@@ -205,7 +205,7 @@ const Description = () => {
             </div>
             {objectUrl ? (
               <div className="document_card">
-                <i class="bi bi-file-earmark-text font-size-20px"></i>&nbsp;
+                <i className="bi bi-file-earmark-text font-size-20px"></i>&nbsp;
                 <span className="heading">File Name : </span>
                 <span className="name">{objectUrl}</span>
                 <span

@@ -8,7 +8,7 @@ import {
   onAddCategory,
 } from "../../../../redux/actions/profileAction";
 
-const ServicesOffer = ({ setCurrentTab, profileList }) => {
+const ServicesOffer = ({ setCurrentTab, profileList, setLoading }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [values, setValues] = useState({});
@@ -23,7 +23,8 @@ const ServicesOffer = ({ setCurrentTab, profileList }) => {
   }, [profileList]);
 
   useEffect(() => {
-    dispatch(getCategoryList());
+    setLoading(true);
+    dispatch(getCategoryList(setLoading));
   }, []);
 
   const afterSuccess = () => {
@@ -38,16 +39,19 @@ const ServicesOffer = ({ setCurrentTab, profileList }) => {
 
   const onSave = () => {
     if (isChange) {
+      setLoading(true);
       dispatch(
         onAddCategory(
           { category_id: values?.category_id },
           successPopup,
           setSuccessPopup,
-          afterSuccess
+          afterSuccess,
+          setLoading
         )
       );
     } else {
       setCurrentTab("hourlyRate");
+      setLoading(false);
       navigate(`/freelancer/profile-intro/hourlyRate`);
     }
   };

@@ -7,7 +7,7 @@ import ConfirmationPopup from "../../../components/popups/ConfirmationPopup";
 import AddEmployment from "../../Profile/components/popups/AddEmployment";
 import moment from "moment";
 
-const Exprience = ({ setCurrentTab, profileList }) => {
+const Exprience = ({ setCurrentTab, profileList, setLoading }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [popup, Setpopup] = useState();
@@ -16,7 +16,8 @@ const Exprience = ({ setCurrentTab, profileList }) => {
   const [isNothing, setIsNothing] = useState(false);
 
   const deleteExp = (id) => {
-    dispatch(onDeleteEmployment({ id }, setConfirmPopup));
+    setLoading(true);
+    dispatch(onDeleteEmployment({ id }, setConfirmPopup, setLoading));
   };
 
   return (
@@ -62,6 +63,7 @@ const Exprience = ({ setCurrentTab, profileList }) => {
                               experience={item}
                               successPopup={successPopup}
                               setSuccessPopup={setSuccessPopup}
+                              setLoading={setLoading}
                             />
                           );
                         }}
@@ -147,6 +149,7 @@ const Exprience = ({ setCurrentTab, profileList }) => {
                       Popup={Setpopup}
                       successPopup={successPopup}
                       setSuccessPopup={setSuccessPopup}
+                      setLoading={setLoading}
                     />
                   );
                 }}

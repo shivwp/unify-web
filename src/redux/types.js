@@ -91,6 +91,7 @@ export const CLIENT_BUSINESSSIZE = "CLIENT_BUSINESSSIZE";
 export const ON_CREATE_TEAM = "ON_CREATE_TEAM";
 
 export const TEAM_LIST = "TEAM_LIST";
+export const SHOW_BACK_BTN = "SHOW_BACK_BTN";
 
 // JOB Types ----------------------------------------
 

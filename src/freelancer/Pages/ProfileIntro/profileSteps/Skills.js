@@ -9,7 +9,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 
-const Skills = ({ setCurrentTab, profileList }) => {
+const Skills = ({ setCurrentTab, profileList, setLoading }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [selectSkills, setSelectSkills] = useState();
@@ -99,6 +99,7 @@ const Skills = ({ setCurrentTab, profileList }) => {
 
   const onSave = (e) => {
     if (isChange) {
+      setLoading(true);
       if (selectSkills.length == 0) {
         setShowSkillError(true);
       } else {
@@ -106,11 +107,19 @@ const Skills = ({ setCurrentTab, profileList }) => {
           skill_id: selectSkills?.map((item) => item.skill_id)?.toString(),
         };
         dispatch(
-          onEditSkills(data, popup, successPopup, setSuccessPopup, afterSuccess)
+          onEditSkills(
+            data,
+            popup,
+            successPopup,
+            setSuccessPopup,
+            afterSuccess,
+            setLoading
+          )
         );
       }
     } else {
       setCurrentTab("servicesOffer");
+      setLoading(false);
       navigate(`/freelancer/profile-intro/servicesOffer`);
     }
   };

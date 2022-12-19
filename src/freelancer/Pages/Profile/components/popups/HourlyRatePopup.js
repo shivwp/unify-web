@@ -19,13 +19,29 @@ const CloseIcon = () => {
   );
 };
 
-const HourlyRatePopup = ({ Popup, data, setSuccessPopup, successPopup }) => {
+const HourlyRatePopup = ({
+  Popup,
+  data,
+  setSuccessPopup,
+  successPopup,
+  setLoading,
+}) => {
   const [values, setValues] = useState(data ? { hours_price: data } : null);
   const percent = 20;
   const dispatch = useDispatch();
 
   const onSave = () => {
-    dispatch(onEditHourPerWeek(values, Popup, successPopup, setSuccessPopup));
+    setLoading(true);
+    dispatch(
+      onEditHourPerWeek(
+        values,
+        Popup,
+        successPopup,
+        setSuccessPopup,
+        false,
+        setLoading
+      )
+    );
   };
   return (
     <>

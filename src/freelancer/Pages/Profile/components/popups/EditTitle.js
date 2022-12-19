@@ -5,7 +5,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { onEditDesignation } from "../../../../../redux/actions/profileAction";
 import PopupsCloseIcon from "../../../../components/popups/PopupsCloseIcon";
 
-const EditTitle = ({ data, Popup, successPopup, setSuccessPopup }) => {
+const EditTitle = ({
+  data,
+  Popup,
+  successPopup,
+  setSuccessPopup,
+  setLoading,
+}) => {
   const dispatch = useDispatch();
   const [values, setValues] = useState(data);
   const [errors, setErrors] = useState({});
@@ -28,6 +34,7 @@ const EditTitle = ({ data, Popup, successPopup, setSuccessPopup }) => {
   };
 
   const onSave = () => {
+    setLoading(true);
     let errorExist = false;
     let errorsObject = {};
 
@@ -60,6 +67,8 @@ const EditTitle = ({ data, Popup, successPopup, setSuccessPopup }) => {
 
     if (errorExist) {
       setErrors(errorsObject);
+      setLoading(false);
+
       return false;
     }
 
@@ -68,7 +77,9 @@ const EditTitle = ({ data, Popup, successPopup, setSuccessPopup }) => {
       description: values?.description,
     };
 
-    dispatch(onEditDesignation(data, Popup, successPopup, setSuccessPopup));
+    dispatch(
+      onEditDesignation(data, Popup, successPopup, setSuccessPopup, setLoading)
+    );
   };
   return (
     <>

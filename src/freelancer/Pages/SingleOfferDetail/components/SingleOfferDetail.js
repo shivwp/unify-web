@@ -10,12 +10,14 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import SuccessPopup from "../../../components/popups/SuccessPopup";
 import DeclineOfferPopup from "./DeclineOfferPopup";
+import LoadingSpinner from "../../../../components/LoadingSpinner";
 
 const SingleOfferDetail = () => {
   const dispatch = useDispatch();
   const [successPopup, setSuccessPopup] = useState(false);
   const [popup, setPopup] = useState(false);
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
 
   const { id } = useParams();
   const project_data = useSelector(
@@ -36,11 +38,15 @@ const SingleOfferDetail = () => {
   };
 
   useEffect(() => {
-    dispatch(singleProposalDetails(id, "offer"));
+    setLoading(true);
+    dispatch(singleProposalDetails(id, "offer", setLoading));
   }, [id]);
 
   const OfferAccept = () => {
-    dispatch(onAcceptOffer(id, successPopup, setSuccessPopup, afterSuccess));
+    setLoading(true);
+    dispatch(
+      onAcceptOffer(id, successPopup, setSuccessPopup, afterSuccess, setLoading)
+    );
   };
   return (
     <>
@@ -240,6 +246,7 @@ const SingleOfferDetail = () => {
           </Col>
         </Row>
       </Container>
+      {loading ? <LoadingSpinner /> : null}
       {popup}
       {successPopup}
     </>

@@ -19,6 +19,7 @@ const HourPerWeekPopup = ({
   setSuccessPopup,
   amount,
   hours_per_week,
+  setLoading,
 }) => {
   const dispatch = useDispatch();
 
@@ -38,7 +39,7 @@ const HourPerWeekPopup = ({
     window.location.reload();
   };
   useEffect(() => {
-    dispatch(getHoursPerWeekList());
+    dispatch(getHoursPerWeekList(setLoading));
   }, []);
 
   const onSave = () => {

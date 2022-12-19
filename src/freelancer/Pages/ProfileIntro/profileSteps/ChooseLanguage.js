@@ -7,7 +7,7 @@ import {
   onEditLanguage,
 } from "../../../../redux/actions/profileAction";
 
-const ChooseLangauge = ({ setCurrentTab, profileList }) => {
+const ChooseLangauge = ({ setCurrentTab, profileList, setLoading }) => {
   const languageList = useSelector((state) => state?.profile?.getLanguageList);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -26,7 +26,8 @@ const ChooseLangauge = ({ setCurrentTab, profileList }) => {
   }, [profileList]);
 
   useEffect(() => {
-    dispatch(getLanguageList());
+    setLoading(true);
+    dispatch(getLanguageList(setLoading));
   }, []);
 
   const handleInputChange = (e, index) => {
@@ -50,6 +51,7 @@ const ChooseLangauge = ({ setCurrentTab, profileList }) => {
     const rows = [...inputList];
     rows.splice(index, 1);
     setInputList(rows);
+    setIsChange(true);
   };
 
   const afterSuccess = () => {
@@ -59,6 +61,7 @@ const ChooseLangauge = ({ setCurrentTab, profileList }) => {
 
   const handleSave = () => {
     if (isChange) {
+      setLoading(true);
       const data = {};
       inputList.map((ele) => {
         data[ele.language] = ele.level;
@@ -69,11 +72,13 @@ const ChooseLangauge = ({ setCurrentTab, profileList }) => {
           popup,
           successPopup,
           setSuccessPopup,
-          afterSuccess
+          afterSuccess,
+          setLoading
         )
       );
     } else {
       setCurrentTab("skills");
+      setLoading(false);
       navigate(`/freelancer/profile-intro/skills`);
     }
   };

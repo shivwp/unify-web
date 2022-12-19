@@ -188,7 +188,7 @@ const EditPosting = () => {
 
                     {objectUrl ? (
                       <div className="document_card">
-                        <i class="bi bi-file-earmark-text font-size-20px"></i>
+                        <i className="bi bi-file-earmark-text font-size-20px"></i>
                         &nbsp;
                         <span className="heading">File Name : </span>
                         <span className="name">{imageFile?.name}</span>
@@ -206,7 +206,7 @@ const EditPosting = () => {
                       <>
                         {values?.image_name && (
                           <div className="document_card">
-                            <i class="bi bi-file-earmark-text font-size-20px"></i>
+                            <i className="bi bi-file-earmark-text font-size-20px"></i>
                             &nbsp;
                             <span className="heading">File Name : </span>
                             <span className="name">{values?.image_name}</span>

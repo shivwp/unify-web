@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import { useState } from "react";
 
-const QuestionTwo = ({ setCurrentTab }) => {
+const QuestionTwo = ({ setCurrentTab, setLoading }) => {
   const navigate = useNavigate();
   const [values, setValues] = useState({});
   const [errors, setErrors] = useState({});

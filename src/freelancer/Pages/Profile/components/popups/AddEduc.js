@@ -23,7 +23,13 @@ const CloseIcon = () => {
     </svg>
   );
 };
-const AddEduc = ({ education, Popup, successPopup, setSuccessPopup }) => {
+const AddEduc = ({
+  education,
+  Popup,
+  successPopup,
+  setSuccessPopup,
+  setLoading,
+}) => {
   const dispatch = useDispatch();
   const [values, setValues] = useState(education);
   const [errors, setErrors] = useState({});
@@ -32,7 +38,8 @@ const AddEduc = ({ education, Popup, successPopup, setSuccessPopup }) => {
   const getDegreeList = useSelector((state) => state.profile.getDegreeList);
 
   useEffect(() => {
-    dispatch(getFreelancerDegreeList());
+    setLoading(true);
+    dispatch(getFreelancerDegreeList(setLoading));
   }, []);
 
   useEffect(() => {
@@ -101,6 +108,7 @@ const AddEduc = ({ education, Popup, successPopup, setSuccessPopup }) => {
   const AddEducation = () => {
     let errorExist = false;
     let errorsObject = {};
+    setLoading(true);
 
     if (
       values?.school === "" ||
@@ -172,6 +180,8 @@ const AddEduc = ({ education, Popup, successPopup, setSuccessPopup }) => {
     }
 
     if (errorExist) {
+      setLoading(false);
+
       setErrors(errorsObject);
       return false;
     }
@@ -185,7 +195,7 @@ const AddEduc = ({ education, Popup, successPopup, setSuccessPopup }) => {
       area_study: values?.area_study,
       description: values?.description,
     };
-    dispatch(onAddEducation(data, Popup, successPopup, setSuccessPopup));
+    dispatch(onAddEducation(data, Popup, successPopup, setSuccessPopup, setLoading));
   };
 
   return (

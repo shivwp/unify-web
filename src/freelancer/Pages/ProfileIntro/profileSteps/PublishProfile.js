@@ -10,7 +10,7 @@ import {
 } from "../../../../redux/actions/profileAction";
 import UploadPublishProfileImage from "./UploadPublishProfileImage";
 
-const PublishProfile = ({ setCurrentTab, profileList }) => {
+const PublishProfile = ({ setCurrentTab, profileList, setLoading }) => {
   const [popup, setPopup] = useState();
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -23,10 +23,12 @@ const PublishProfile = ({ setCurrentTab, profileList }) => {
   const [showError, setShowError] = useState();
   const getCountryList = useSelector((state) => state?.auth?.getCountryList);
   const timezoneList = useSelector((state) => state?.profile?.timezoneList);
+  const showBackBtn = useSelector((state) => state?.profile?.showBackBtn);
 
   useEffect(() => {
-    dispatch(countryList());
-    dispatch(getTimezoneList());
+    setLoading(true);
+    dispatch(countryList(setLoading));
+    dispatch(getTimezoneList(setLoading));
   }, []);
 
   useEffect(() => {
@@ -55,6 +57,7 @@ const PublishProfile = ({ setCurrentTab, profileList }) => {
   const onSave = () => {
     let errorExist = false;
     let errorsObject = {};
+    setLoading(true);
     if (
       values?.timezone === "" ||
       values?.timezone === null ||
@@ -113,6 +116,7 @@ const PublishProfile = ({ setCurrentTab, profileList }) => {
 
     if (errorExist) {
       setErrors(errorsObject);
+      setLoading(false);
       return false;
     }
 
@@ -135,10 +139,13 @@ const PublishProfile = ({ setCurrentTab, profileList }) => {
           successPopup,
           setSuccessPopup,
           navigate,
-          setCurrentTab
+          setCurrentTab,
+          setLoading
         )
       );
     } else {
+      setLoading(false);
+
       setCurrentTab("previewProfile");
       navigate(`/freelancer/profile-intro/previewProfile`);
     }
@@ -346,15 +353,18 @@ const PublishProfile = ({ setCurrentTab, profileList }) => {
               </Col>
             </Row>
             <div className="theme_btns">
-              <button
-                className="first_button"
-                onClick={() => {
-                  setCurrentTab("hourlyRate");
-                  navigate(`/freelancer/profile-intro/hourlyRate`);
-                }}
-              >
-                Back
-              </button>
+              {showBackBtn == "hide" ? null : (
+                <button
+                  className="first_button"
+                  onClick={() => {
+                    setCurrentTab("hourlyRate");
+                    navigate(`/freelancer/profile-intro/hourlyRate`);
+                  }}
+                >
+                  Back
+                </button>
+              )}
+
               <button className="second_button" onClick={onSave}>
                 Next
               </button>

@@ -7,11 +7,13 @@ import { useEffect } from "react";
 import { singleProposalDetails } from "../../../../redux/actions/jobActions";
 import { useState } from "react";
 import DeclineInterviewPopup from "./DeclineInterviewPopup";
+import LoadingSpinner from "../../../../components/LoadingSpinner";
 
 const SingleInvitation = () => {
   const [successPopup, setSuccessPopup] = useState(false);
   const [popup, setPopup] = useState(false);
   const dispatch = useDispatch();
+  const [loading, setLoading] = useState(false);
   const client_data = useSelector(
     (state) => state?.job?.singleProposalDetails?.client_data
   );
@@ -24,7 +26,8 @@ const SingleInvitation = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    dispatch(singleProposalDetails(id, "invite"));
+    setLoading(true);
+    dispatch(singleProposalDetails(id, "invite", setLoading));
   }, [id]);
 
   return (
@@ -230,6 +233,7 @@ const SingleInvitation = () => {
           </Col>
         </Row>
       </Container>
+      {loading ? <LoadingSpinner /> : null}
       {popup}
       {successPopup}
     </>

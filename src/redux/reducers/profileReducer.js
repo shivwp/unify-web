@@ -38,6 +38,7 @@ import {
   ON_CREATE_TEAM,
   TEAM_LIST,
   ERROR_REQUEST_TESTIMONIAL,
+  SHOW_BACK_BTN,
 } from "../types";
 
 const initialState = {};
@@ -242,6 +243,11 @@ const profileReducer = (state = initialState, action) => {
       return {
         ...state,
         errorRequestTestimonial: action.payload,
+      };
+    case SHOW_BACK_BTN:
+      return {
+        ...state,
+        showBackBtn: action.payload,
       };
     default:
       return state;

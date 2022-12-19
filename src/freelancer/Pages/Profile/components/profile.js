@@ -35,6 +35,7 @@ import AddEduc from "./popups/AddEduc";
 import AddCert from "./popups/AddCert";
 import ReqTestimonial from "./popups/ReqTestimonial";
 import StarRating from "../../../components/rating/Rating";
+import LoadingSpinner from "../../../../components/LoadingSpinner";
 
 function PortfolioPaginate({
   itemsPerPage,
@@ -43,6 +44,7 @@ function PortfolioPaginate({
   setEditPortfoData,
   setConfirmPopup,
   confirmPopup,
+  setLoading,
 }) {
   const dispatch = useDispatch();
   const [currentItems, setCurrentItems] = useState(null);
@@ -60,7 +62,8 @@ function PortfolioPaginate({
     setItemOffset(newOffset);
   };
   const deletePortf = (id) => {
-    dispatch(onDeletePortfolio({ id: id }, setConfirmPopup));
+    setLoading(true);
+    dispatch(onDeletePortfolio({ id: id }, setConfirmPopup, setLoading));
   };
 
   return (
@@ -201,6 +204,7 @@ const UnifyFreelancer = () => {
   const [confirmPopup, setConfirmPopup] = useState(false);
   const [successPopup, setSuccessPopup] = useState(false);
   const [showDescription, setShowDescription] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const deleteExprience = useSelector(
     (state) => state?.profile?.deleteExprience
@@ -251,7 +255,7 @@ const UnifyFreelancer = () => {
   const addExprience = useSelector((state) => state?.profile?.addExprience);
 
   useEffect(() => {
-    dispatch(getFreelancerProfile());
+    dispatch(getFreelancerProfile(setLoading));
   }, [
     deleteExprience,
     addExprience,
@@ -275,34 +279,30 @@ const UnifyFreelancer = () => {
   ]);
 
   const deleteExp = (id) => {
-    dispatch(onDeleteEmployment({ id }, setConfirmPopup));
+    setLoading(true);
+    dispatch(onDeleteEmployment({ id }, setConfirmPopup, setLoading));
   };
 
   const deleteEdu = (id) => {
-    dispatch(onDeleteEducation({ id }, setConfirmPopup));
+    setLoading(true);
+    dispatch(onDeleteEducation({ id }, setConfirmPopup, setLoading));
   };
   const deleteCert = (id) => {
-    dispatch(onDeleteCertificate({ id }, setConfirmPopup));
+    setLoading(true);
+    dispatch(onDeleteCertificate({ id }, setConfirmPopup, setLoading));
   };
 
   const onProfleImgChange = (e) => {
+    setLoading(true);
     const profileImage = e.target.files[0];
-    const profileImageChange = () => {
-      userDetails.online_status = e.target.value;
-      sessionStorage.setItem("unify_user", JSON.stringify(userDetails));
-    };
     setShowingProImage(URL.createObjectURL(e.target.files[0]));
-
     const formData = new FormData();
-
     formData.append("first_name", basicInfo?.first_name);
     formData.append("last_name", basicInfo?.last_name);
     formData.append("occcuption", basicInfo?.occuption);
     formData.append("profile_image", profileImage);
 
-    dispatch(
-      editNameInfo(formData, successPopup, setSuccessPopup, profileImageChange)
-    );
+    dispatch(editNameInfo(formData, successPopup, setSuccessPopup, setLoading));
   };
 
   const IntroVideoThumb = ({ data }) => {
@@ -340,13 +340,14 @@ const UnifyFreelancer = () => {
 
   const handleExprienceLevel = (level) => {
     const data = { experience_level: level };
-    dispatch(editExprienceLev(data, setShowExprienceLevOpt));
+    setLoading(true);
     dispatch(
       editExprienceLev(
         data,
         setShowExprienceLevOpt,
         successPopup,
-        setSuccessPopup
+        setSuccessPopup,
+        setLoading
       )
     );
   };
@@ -530,6 +531,7 @@ const UnifyFreelancer = () => {
                             Popup={Setpopup}
                             successPopup={successPopup}
                             setSuccessPopup={setSuccessPopup}
+                            setLoading={setLoading}
                           />
                         );
                       }}
@@ -685,12 +687,12 @@ const UnifyFreelancer = () => {
                       <Button
                         variant=""
                         onClick={() => {
-                          Setpopup(<LanguageEdit Popup={Setpopup} />);
                           Setpopup(
                             <LanguageEdit
                               Popup={Setpopup}
                               successPopup={successPopup}
                               setSuccessPopup={setSuccessPopup}
+                              setLoading={setLoading}
                             />
                           );
                         }}
@@ -720,6 +722,7 @@ const UnifyFreelancer = () => {
                             data={freelancerProfileList?.language}
                             successPopup={successPopup}
                             setSuccessPopup={setSuccessPopup}
+                            setLoading={setLoading}
                           />
                         );
                       }}
@@ -768,6 +771,7 @@ const UnifyFreelancer = () => {
                                 Popup={Setpopup}
                                 successPopup={successPopup}
                                 setSuccessPopup={setSuccessPopup}
+                                setLoading={setLoading}
                               />
                             );
                           }}
@@ -833,6 +837,7 @@ const UnifyFreelancer = () => {
                             Popup={Setpopup}
                             successPopup={successPopup}
                             setSuccessPopup={setSuccessPopup}
+                            setLoading={setLoading}
                           />
                         );
                       }}
@@ -882,6 +887,7 @@ const UnifyFreelancer = () => {
                                   Popup={Setpopup}
                                   successPopup={successPopup}
                                   setSuccessPopup={setSuccessPopup}
+                                  setLoading={setLoading}
                                 />
                               );
                             }}
@@ -1017,6 +1023,7 @@ const UnifyFreelancer = () => {
                           Popup={Setpopup}
                           successPopup={successPopup}
                           setSuccessPopup={setSuccessPopup}
+                          setLoading={setLoading}
                         />
                       );
                     }}
@@ -1129,6 +1136,7 @@ const UnifyFreelancer = () => {
                 confirmPopup={confirmPopup}
                 setConfirmPopup={setConfirmPopup}
                 data={freelancerProfileList?.portfolio}
+                setLoading={setLoading}
               />
             </div>
 
@@ -1145,6 +1153,7 @@ const UnifyFreelancer = () => {
                           data={freelancerProfileList?.skills}
                           setSuccessPopup={setSuccessPopup}
                           successPopup={successPopup}
+                          setLoading={setLoading}
                         />
                       );
                     }}
@@ -1187,6 +1196,7 @@ const UnifyFreelancer = () => {
                         Popup={Setpopup}
                         successPopup={successPopup}
                         setSuccessPopup={setSuccessPopup}
+                        setLoading={setLoading}
                       />
                     );
                   }}
@@ -1326,6 +1336,7 @@ const UnifyFreelancer = () => {
                           Popup={Setpopup}
                           successPopup={successPopup}
                           setSuccessPopup={setSuccessPopup}
+                          setLoading={setLoading}
                         />
                       );
                     }}
@@ -1366,6 +1377,7 @@ const UnifyFreelancer = () => {
                               Popup={Setpopup}
                               successPopup={successPopup}
                               setSuccessPopup={setSuccessPopup}
+                              setLoading={setLoading}
                             />
                           );
                         }}
@@ -1450,6 +1462,7 @@ const UnifyFreelancer = () => {
                             Popup={Setpopup}
                             successPopup={successPopup}
                             setSuccessPopup={setSuccessPopup}
+                            setLoading={setLoading}
                           />
                         );
                       }}
@@ -1575,6 +1588,7 @@ const UnifyFreelancer = () => {
                                         experience={experience}
                                         successPopup={successPopup}
                                         setSuccessPopup={setSuccessPopup}
+                                        setLoading={setLoading}
                                       />
                                     );
                                   }}
@@ -1642,6 +1656,7 @@ const UnifyFreelancer = () => {
           successPopup={successPopup}
           amount={basicInfo?.amount}
           hours_per_week={freelancerProfileList?.hours_per_week}
+          setLoading={setLoading}
         />
       )}
       {portfolioPopup && (
@@ -1651,6 +1666,7 @@ const UnifyFreelancer = () => {
           data={editPortfoData}
           setSuccessPopup={setSuccessPopup}
           successPopup={successPopup}
+          setLoading={setLoading}
         />
       )}
       {videoPopup && (
@@ -1660,6 +1676,7 @@ const UnifyFreelancer = () => {
           videoUrl={videoURL}
         />
       )}
+      {loading ? <LoadingSpinner /> : null}
       {popup}
       {confirmPopup}
       {successPopup}

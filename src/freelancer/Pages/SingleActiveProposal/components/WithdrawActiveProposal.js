@@ -30,6 +30,7 @@ const WithdrawProposal = ({
   successPopup,
   setSuccessPopup,
   type,
+  setLoading,
 }) => {
   const dispatch = useDispatch();
   const [values, setValues] = useState();
@@ -42,7 +43,8 @@ const WithdrawProposal = ({
   };
 
   useEffect(() => {
-    dispatch(declineReasoneList(type));
+    setLoading(true);
+    dispatch(declineReasoneList(type, setLoading));
   }, []);
   const afterSuccess = () => {
     navigate("/freelancer/AllProposals");
@@ -51,6 +53,7 @@ const WithdrawProposal = ({
   const onSave = () => {
     let errorExist = false;
     let errorsObject = {};
+    setLoading(true);
     if (
       values?.reason === "" ||
       values?.reason === undefined ||
@@ -62,6 +65,7 @@ const WithdrawProposal = ({
 
     if (errorExist) {
       setErrors(errorsObject);
+      setLoading(false);
       return false;
     }
 
@@ -76,7 +80,8 @@ const WithdrawProposal = ({
         popup,
         successPopup,
         setSuccessPopup,
-        afterSuccess
+        afterSuccess,
+        setLoading
       )
     );
   };

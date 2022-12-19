@@ -8,12 +8,14 @@ import { singleProposalDetails } from "../../../../redux/actions/jobActions";
 import StarRating from "../../../components/rating/Rating";
 import ChangeTermPopup from "./ChangeTermPopup";
 import WithdrawProposal from "./WithdrawSubmitProposal";
+import LoadingSpinner from "../../../../components/LoadingSpinner";
 
 const SingleSubmitedProposal = () => {
   const dispatch = useDispatch();
   const [milestonesTotal, setMilestonesTotal] = useState(0);
   const [successPopup, setSuccessPopup] = useState(false);
   const [popup, setPopup] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const project_data = useSelector(
     (state) => state?.job?.singleProposalDetails?.project_data
@@ -31,7 +33,8 @@ const SingleSubmitedProposal = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    dispatch(singleProposalDetails(id, "submit"));
+    setLoading(true);
+    dispatch(singleProposalDetails(id, "submit", setLoading));
   }, [id, changeTerms]);
 
   useEffect(() => {
@@ -323,6 +326,7 @@ const SingleSubmitedProposal = () => {
                             popup={setPopup}
                             successPopup={successPopup}
                             setSuccessPopup={setSuccessPopup}
+                            setLoading={setLoading}
                           />
                         )
                       }
@@ -339,6 +343,7 @@ const SingleSubmitedProposal = () => {
                             successPopup={successPopup}
                             setSuccessPopup={setSuccessPopup}
                             type={"withdraw"}
+                            setLoading={setLoading}
                           />
                         )
                       }
@@ -404,10 +409,10 @@ const SingleSubmitedProposal = () => {
                   <div className="headingh">History</div>
                   <div className="desc">
                     {" "}
-                    {project_data?.interview} proposals
+                    {project_data?.proposal_count} proposals
                   </div>
                   <div className="desc">
-                    {client_data?.job_posted} interviews
+                    {project_data?.interview} interviews
                   </div>
 
                   {/* <div className="desc">$1096 total spent</div> */}
@@ -427,6 +432,7 @@ const SingleSubmitedProposal = () => {
           </Col>
         </Row>
       </div>
+      {loading ? <LoadingSpinner /> : null}
       {popup}
       {successPopup}
     </>

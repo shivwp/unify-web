@@ -24,7 +24,13 @@ const CloseIcon = () => {
   );
 };
 
-const LanguageEdit = ({ data, Popup, successPopup, setSuccessPopup }) => {
+const LanguageEdit = ({
+  data,
+  Popup,
+  successPopup,
+  setSuccessPopup,
+  setLoading,
+}) => {
   const dispatch = useDispatch();
   const languageList = useSelector((state) => state?.profile?.getLanguageList);
   const [inputList, setInputList] = useState([
@@ -60,16 +66,24 @@ const LanguageEdit = ({ data, Popup, successPopup, setSuccessPopup }) => {
 
   const handleSave = () => {
     const data = {};
+    setLoading(true);
     inputList.map((ele) => {
       data[ele.language] = ele.level;
     });
     dispatch(
-      onEditLanguage({ languages: data }, Popup, successPopup, setSuccessPopup)
+      onEditLanguage(
+        { languages: data },
+        Popup,
+        successPopup,
+        setSuccessPopup,
+        false,
+        setLoading
+      )
     );
   };
 
   useEffect(() => {
-    dispatch(getLanguageList());
+    dispatch(getLanguageList(setLoading));
   }, []);
   return (
     <>

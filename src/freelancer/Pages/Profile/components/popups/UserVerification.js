@@ -17,7 +17,7 @@ const CloseIcon = () => {
     </svg>
   );
 };
-const UserVerification = (props) => {
+const UserVerification = ({ Popup, successPopup, setSuccessPopup,setLoading }) => {
   const dispatch = useDispatch();
   const [docType, setDocType] = useState(false);
   const [frontImg, setFrontImg] = useState(false);
@@ -40,6 +40,7 @@ const UserVerification = (props) => {
   const onSave = () => {
     let errorExist = false;
     let errorsObject = {};
+    setLoading(true);
 
     if (!frontImg) {
       errorsObject.frontImg = "Please upload front side of document";
@@ -55,10 +56,9 @@ const UserVerification = (props) => {
       errorExist = true;
     }
 
-    console.log("hi");
     if (errorExist) {
+      setLoading(false);
       setErrors(errorsObject);
-      console.log("hi");
       return false;
     }
 
@@ -67,12 +67,7 @@ const UserVerification = (props) => {
     formData.append("document_front", frontImg);
     formData.append("document_back", backImg);
     dispatch(
-      onSubmitVerificationDocs(
-        formData,
-        props.Popup,
-        props?.successPopup,
-        props?.setSuccessPopup
-      )
+      onSubmitVerificationDocs(formData, Popup, successPopup, setSuccessPopup,setLoading )
     );
   };
 
@@ -85,7 +80,7 @@ const UserVerification = (props) => {
             <div
               className="close_pp_btn"
               onClick={() => {
-                props.Popup();
+                Popup();
               }}
             >
               <CloseIcon />
@@ -249,7 +244,7 @@ const UserVerification = (props) => {
               <button
                 className="trans_btn"
                 onClick={() => {
-                  props.Popup();
+                  Popup();
                 }}
               >
                 Cancel

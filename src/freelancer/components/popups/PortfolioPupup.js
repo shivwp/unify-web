@@ -13,6 +13,7 @@ const PortfolioPupup = ({
   data,
   successPopup,
   setSuccessPopup,
+  setLoading
 }) => {
   const dispatch = useDispatch();
   const [values, setValues] = useState({
@@ -74,6 +75,7 @@ const PortfolioPupup = ({
   const submitPortfolio = (e) => {
     let errorExist = false;
     let errorsObject = {};
+    setLoading(true)
 
     if (
       values.title === "" ||
@@ -106,6 +108,7 @@ const PortfolioPupup = ({
 
     if (errorExist) {
       setErrors(errorsObject);
+      setLoading(false)
       return false;
     }
 
@@ -123,7 +126,7 @@ const PortfolioPupup = ({
     }
 
     dispatch(
-      onEditPortfolio(formData, onCloseModal, successPopup, setSuccessPopup)
+      onEditPortfolio(formData, onCloseModal, successPopup, setSuccessPopup, setLoading)
     );
   };
 

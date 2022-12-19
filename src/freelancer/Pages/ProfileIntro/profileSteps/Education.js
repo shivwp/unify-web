@@ -6,7 +6,7 @@ import { onDeleteEducation } from "../../../../redux/actions/profileAction";
 import ConfirmationPopup from "../../../components/popups/ConfirmationPopup";
 import AddEduc from "../../Profile/components/popups/AddEduc";
 
-const Education = ({ setCurrentTab, profileList }) => {
+const Education = ({ setCurrentTab, profileList, setLoading }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [popup, Setpopup] = useState();
@@ -15,7 +15,8 @@ const Education = ({ setCurrentTab, profileList }) => {
   const [isNothing, setIsNothing] = useState();
 
   const deleteEdu = (id) => {
-    dispatch(onDeleteEducation({ id }, setConfirmPopup));
+    setLoading(true);
+    dispatch(onDeleteEducation({ id }, setConfirmPopup, setLoading));
   };
 
   return (
@@ -58,6 +59,7 @@ const Education = ({ setCurrentTab, profileList }) => {
                               Popup={Setpopup}
                               successPopup={successPopup}
                               setSuccessPopup={setSuccessPopup}
+                              setLoading={setLoading}
                             />
                           );
                         }}
@@ -144,6 +146,7 @@ const Education = ({ setCurrentTab, profileList }) => {
                       Popup={Setpopup}
                       successPopup={successPopup}
                       setSuccessPopup={setSuccessPopup}
+                      setLoading={setLoading}
                     />
                   );
                 }}
