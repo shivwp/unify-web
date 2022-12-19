@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Row, Col, Container } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import $ from "jquery";
 import RemoveDraftPopup from "../../../../popups/RemoveDraftPopup";
 import { getAllClientDraftPosting } from "../../../../redux/actions/jobActions";
 
@@ -16,6 +17,12 @@ const AllDraftPostings = () => {
   useEffect(() => {
     dispatch(getAllClientDraftPosting());
   }, []);
+
+  $(document).mouseup(function (e) {
+    if ($(e.target).closest("#menu_bar1").length === 0) {
+      setMenuBarDraft(false);
+    }
+  });
 
   return (
     <>

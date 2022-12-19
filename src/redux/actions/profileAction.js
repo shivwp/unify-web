@@ -168,7 +168,6 @@ export const addEditClientInfo = (data, setOpen) => async (dispatch) => {
         payload: res.data,
       });
       setOpen(false);
-      window.location.reload();
     });
   } catch (err) {}
 };

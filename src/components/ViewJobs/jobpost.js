@@ -131,8 +131,8 @@ const JonComponent = ({ singleJobDetails, jobId, handleMakePublicPrivate }) => {
                       </div>
                       <div>
                         <div className="input_t_lab p-0">
-                          ${singleJobDetails?.price.toFixed(2)}-$
-                          {singleJobDetails?.min_price.toFixed(2)}
+                          ${singleJobDetails?.min_price.toFixed(2)}-$
+                          {singleJobDetails?.price.toFixed(2)}
                         </div>
                         <div className="svs_para mt-0 pt-0">
                           {singleJobDetails?.budget_type}

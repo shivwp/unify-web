@@ -1,5 +1,5 @@
 import { Col, Row } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import InviteToJobPopup from "../../../popups/InviteToJobPopup";
@@ -16,6 +16,7 @@ const Screen = ({
   handleRemoveSavedTalent,
   setCurrentTab,
 }) => {
+  const navigate = useNavigate();
   const [inviteJobPopup, setInviteJobPopup] = useState(false);
   const [freelancerId, setFreelancerId] = useState();
 
@@ -146,7 +147,10 @@ const Screen = ({
                           ) : data.isSendProposal ? (
                             <button
                               className="mt-2 font-weight-500"
-                              onClick={() => setCurrentTab("review")}
+                              onClick={() => {
+                                setCurrentTab("review-proposal");
+                                navigate(`/view-job/${jobId}/review-proposal`);
+                              }}
                             >
                               View Proposal
                             </button>

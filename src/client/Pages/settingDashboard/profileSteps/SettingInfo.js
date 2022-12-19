@@ -232,9 +232,6 @@ const SettingInfo = () => {
     formData.append("city", values?.city);
     formData.append("country", values?.country);
 
-    userDetails.profile_image = objectUrlAbc;
-    sessionStorage.setItem("unify_user", JSON.stringify(userDetails));
-
     dispatch(addEditClientInfo(formData, setOpen));
   };
 

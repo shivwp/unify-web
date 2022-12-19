@@ -2,6 +2,7 @@ import { Col, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 const Screen = ({
+  jobId,
   jobBasedProposalsList,
   handleSaveProposalShortList,
   handleRemoveProposalShortList,
@@ -88,13 +89,13 @@ const Screen = ({
                         )}
 
                         <div className="ts_btn attach_f_btn wid_30_in d-flex flex-wrap">
-                          <Link to="/message">
-                            <button className="transp_fil_btn mt-2 font-weight-500">
-                              Message
-                            </button>
-                          </Link>
+                          {/* <Link to="/message"> */}
+                          <button className="transp_fil_btn mt-2 font-weight-500">
+                            Message
+                          </button>
+                          {/* </Link> */}
                           <Link
-                            to={`/hire-freelancer/${data.freelancer_id}/${data.proposal_id}`}
+                            to={`/hire-freelancer/${jobId}/${data.freelancer_id}/${data.proposal_id}`}
                           >
                             <button className="mt-2 font-weight-500 hover_white_io">
                               Hire

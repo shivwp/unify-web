@@ -4,20 +4,18 @@ import InviteFreelancer from "../../../../components/ViewJobs/invite";
 import ReviewProposal from "../../../../components/ReviewProposal/all";
 import Hire from "../../../../components/Hire/all";
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { singleJobPostDetails } from "../../../../redux/actions/jobActions";
 import { makePrivatePublicJob } from "../../../../redux/actions/freelancerAction";
 
 const ViewScreen = () => {
-  let { jobId } = useParams();
-  let { type } = useParams();
-
-  console.log(type);
+  let { jobId, tabs } = useParams();
+  const navigate = useNavigate();
 
   const dispatch = useDispatch();
-  const [currentTab, setCurrentTab] = useState("ViewJob");
+  const [currentTab, setCurrentTab] = useState("job-details");
   let singleJobDetails = useSelector((state) => state.job.singleJobDetails);
 
   const privatePublicJob = useSelector(
@@ -25,10 +23,10 @@ const ViewScreen = () => {
   );
 
   useEffect(() => {
-    if (type) {
-      setCurrentTab(type);
+    if (tabs) {
+      setCurrentTab(tabs);
     }
-  }, [type]);
+  }, [tabs]);
 
   useEffect(() => {
     const data = {
@@ -63,25 +61,34 @@ const ViewScreen = () => {
           <div className="d-flex flex-wrap tab_m_nodea mt-4 tab_scroll_cont">
             <button
               className={`tab_btn_vs ${
-                currentTab === "ViewJob" ? "active_bvs" : ""
+                currentTab === "job-details" ? "active_bvs" : ""
               }`}
-              onClick={() => setCurrentTab("ViewJob")}
+              onClick={() => {
+                setCurrentTab("job-details");
+                navigate(`/view-job/${jobId}/job-details`);
+              }}
             >
               View Job Post
             </button>
             <button
               className={`tab_btn_vs ${
-                currentTab === "invite" ? "active_bvs" : ""
+                currentTab === "invite-freelancer" ? "active_bvs" : ""
               }`}
-              onClick={() => setCurrentTab("invite")}
+              onClick={() => {
+                setCurrentTab("invite-freelancer");
+                navigate(`/view-job/${jobId}/invite-freelancer`);
+              }}
             >
               Invite freelancers
             </button>
             <button
               className={`tab_btn_vs ${
-                currentTab === "review" ? "active_bvs" : ""
+                currentTab === "review-proposal" ? "active_bvs" : ""
               }`}
-              onClick={() => setCurrentTab("review")}
+              onClick={() => {
+                setCurrentTab("review-proposal");
+                navigate(`/view-job/${jobId}/review-proposal`);
+              }}
             >
               Review proposals
             </button>
@@ -89,23 +96,26 @@ const ViewScreen = () => {
               className={`tab_btn_vs ${
                 currentTab === "hire" ? "active_bvs" : ""
               }`}
-              onClick={() => setCurrentTab("hire")}
+              onClick={() => {
+                setCurrentTab("hire");
+                navigate(`/view-job/${jobId}/hire`);
+              }}
             >
               Hire
             </button>
           </div>
         </div>
-        {currentTab === "ViewJob" && (
+        {currentTab === "job-details" && (
           <ViewJob
             singleJobDetails={singleJobDetails}
             jobId={jobId}
             handleMakePublicPrivate={handleMakePublicPrivate}
           />
         )}
-        {currentTab === "invite" && (
+        {currentTab === "invite-freelancer" && (
           <InviteFreelancer jobId={jobId} setCurrentTab={setCurrentTab} />
         )}
-        {currentTab === "review" && <ReviewProposal jobId={jobId} />}
+        {currentTab === "review-proposal" && <ReviewProposal jobId={jobId} />}
         {currentTab === "hire" && <Hire />}
       </div>
     </Container>

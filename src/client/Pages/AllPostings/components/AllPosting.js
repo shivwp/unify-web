@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Row, Col, Container } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import $ from "jquery";
 import RemovePostingPopup from "../../../../popups/RemovePostingPopup";
 import { getAllClientPosting } from "../../../../redux/actions/jobActions";
 
@@ -16,6 +17,12 @@ const AllPosting = () => {
   useEffect(() => {
     dispatch(getAllClientPosting());
   }, []);
+
+  $(document).mouseup(function (e) {
+    if ($(e.target).closest("#menu_bar1").length === 0) {
+      setMenuBarPosting(false);
+    }
+  });
 
   return (
     <>
@@ -53,7 +60,7 @@ const AllPosting = () => {
                 }
               >
                 <div>
-                  <Link to={`/view-job/${item.id}`}>
+                  <Link to={`/view-job/${item.id}/job-details`}>
                     <div className="my_job_a job_na_bol">{item.name}</div>
                   </Link>
                   <div className="my_job_h">
@@ -107,12 +114,14 @@ const AllPosting = () => {
                         <Link to="#">Remove Posting</Link>
                       </div>
                       <div className="navabr_t_li">
-                        <Link to={`/view-job/${item.id}/review`}>
+                        <Link to={`/view-job/${item.id}/review-proposal`}>
                           View Proposals
                         </Link>
                       </div>
                       <div className="navabr_t_li">
-                        <Link to={`/view-job/${item.id}`}>View Job Post</Link>
+                        <Link to={`/view-job/${item.id}/job-details`}>
+                          View Job Post
+                        </Link>
                       </div>
                       <div className="navabr_t_li">
                         <Link to={`/dashboard/reuse-posting/${item.id}`}>
