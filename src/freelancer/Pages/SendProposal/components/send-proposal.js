@@ -40,10 +40,13 @@ const Screen = () => {
     if (singleJobDetails?.budget_type == "hourly") {
       setValues({
         ...values,
-        bid_amount: JSON.parse(sessionStorage.getItem("unify_user"))?.amount,
+        bid_amount:
+          JSON.parse(sessionStorage.getItem("unify_user"))?.amount || 0,
       });
     }
   }, [singleJobDetails]);
+
+  console.log(JSON.parse(sessionStorage.getItem("unify_user"))?.amount);
 
   useEffect(() => {
     dispatch(singleJobPostDetails({ job_id: id }));
