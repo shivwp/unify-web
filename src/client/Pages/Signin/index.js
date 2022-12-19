@@ -8,6 +8,8 @@ import {
 } from "../../../redux/actions/authActions";
 import { useNavigate } from "react-router-dom";
 
+import LoadingSpinner from "../../../components/LoadingSpinner";
+
 const Signinscreen = () => {
   const navigate = useNavigate();
   const [errors, setErrors] = useState({});
@@ -15,6 +17,7 @@ const Signinscreen = () => {
   const dispatch = useDispatch();
   const [userType, setUserType] = useState("freelancer");
   const [message, setMessage] = useState();
+  const [loading, setLoading] = useState(false);
 
   const onInputChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
@@ -29,13 +32,16 @@ const Signinscreen = () => {
   };
 
   const handleGoogleSignIn = () => {
-    dispatch(googleSignInInitiate(userType, navigate, setMessage));
+    dispatch(googleSignInInitiate(userType, navigate, setMessage, setLoading));
+    setLoading(false);
   };
   const handleAppleSignIn = () => {
-    dispatch(appleSignInInitiate(userType, navigate, setMessage));
+    dispatch(appleSignInInitiate(userType, navigate, setMessage, setLoading));
+    setLoading(false);
   };
 
   const submitForm = (e) => {
+    setLoading(true);
     e.preventDefault();
     let errorExist = false;
     let errorsObject = {};
@@ -67,6 +73,7 @@ const Signinscreen = () => {
 
     if (errorExist) {
       setErrors(errorsObject);
+      setLoading(false);
       return false;
     }
 
@@ -76,7 +83,7 @@ const Signinscreen = () => {
       user_type: userType,
     };
 
-    dispatch(onLogin(data, navigate, setMessage));
+    dispatch(onLogin(data, navigate, setMessage, setLoading));
   };
 
   const selectUserType = (e) => {
@@ -85,17 +92,20 @@ const Signinscreen = () => {
   };
 
   return (
-    <Signin
-      submitForm={submitForm}
-      errors={errors}
-      onInputChange={onInputChange}
-      setUserType={setUserType}
-      userType={userType}
-      selectUserType={selectUserType}
-      message={message}
-      handleAppleSignIn={handleAppleSignIn}
-      handleGoogleSignIn={handleGoogleSignIn}
-    />
+    <>
+      <Signin
+        submitForm={submitForm}
+        errors={errors}
+        onInputChange={onInputChange}
+        setUserType={setUserType}
+        userType={userType}
+        selectUserType={selectUserType}
+        message={message}
+        handleAppleSignIn={handleAppleSignIn}
+        handleGoogleSignIn={handleGoogleSignIn}
+      />
+      {loading ? <LoadingSpinner /> : null}
+    </>
   );
 };
 export default Signinscreen;

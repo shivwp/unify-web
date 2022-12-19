@@ -626,12 +626,10 @@ const Screen = () => {
             <div>
               <div className="des_heading_dboard">Description</div>
               <div className="des_para_dboadr">
-                We are a group of Print Media Experts with over 9 years of
-                involvement. We can offer pixel-ideal plans for your
-                Brand/Products. We do all sort of illustrations related work.
-                Brand Logo, Product Labels, Product Packaging, Stickers,
-                Business Cards, Brochures, Flyer, Web Banners and Ads, E-Books
-                Covers, Flex/Hoarding, and App Icons. On the off chance that you
+                {
+                  JSON.parse(sessionStorage.getItem("unify_freelancer"))
+                    ?.description
+                }
                 need HIGH-QUALITY work with a FAST TURNAROUND, reach me. 100% .
               </div>
             </div>

@@ -25,7 +25,6 @@ const Screen = () => {
   const proposalData = useSelector((state) => state.job.proposalData);
   const [values, setValues] = useState(proposalData || { bid_amount: 0 });
   const singleJobDetails = useSelector((state) => state?.job?.singleJobDetails);
-  const [disableSubmitBtn, setDisableSubmitBtn] = useState(true);
   const [attachment, setAttachment] = useState(null);
   const [showingImage, setShowingImage] = useState();
   const [successPopup, setSuccessPopup] = useState(false);
@@ -41,12 +40,11 @@ const Screen = () => {
       setValues({
         ...values,
         bid_amount:
-          JSON.parse(sessionStorage.getItem("unify_user"))?.amount || 0,
+          JSON.parse(sessionStorage.getItem("unify_freelancer"))?.amount || 0,
       });
     }
   }, [singleJobDetails]);
 
-  console.log(JSON.parse(sessionStorage.getItem("unify_user"))?.amount);
 
   useEffect(() => {
     dispatch(singleJobPostDetails({ job_id: id }));
