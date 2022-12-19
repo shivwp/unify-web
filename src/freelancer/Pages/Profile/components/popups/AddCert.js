@@ -48,8 +48,6 @@ const AddCert = ({ certificates, Popup, successPopup, setSuccessPopup }) => {
     }
   };
 
-  console.log(errors);
-
   const onSave = () => {
     let errorExist = false;
     let errorsObject = {};
@@ -137,10 +135,10 @@ const AddCert = ({ certificates, Popup, successPopup, setSuccessPopup }) => {
                       {item.name}
                     </option>
                   ))}
-                </select>
+                </select>*/}
                 <span className="signup-error">
                   {errors.name && "Please select proficiency level"}
-                </span> */}
+                </span>
               </div>
             </div>
             <div className="mt-3 pt-1 mb-3">
@@ -173,7 +171,7 @@ const AddCert = ({ certificates, Popup, successPopup, setSuccessPopup }) => {
                       {errors.description && errors.description}
                     </span>
                     <span>
-                      {200 - (values?.description?.length || 0)} characters left{" "}
+                      {200 - (values?.description?.length || 0)} characters left
                     </span>
                   </div>
                 </Col>

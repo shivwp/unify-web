@@ -171,7 +171,10 @@ const PortfolioPupup = ({
                   value={values?.description}
                   onChange={(e) => onInputChange(e)}
                 />
-                {/* <div className="charCount">{200 - values?.description?.length} charecters left</div> */}
+                <div className="charCount">
+                  {200 - (values?.description?.length || 0)} characters left
+                </div>
+
                 <span className="signup-error">
                   {errors.description && errors.description}
                 </span>
