@@ -62,7 +62,7 @@ export const getFreelancerProfile = () => async (dispatch) => {
   } catch (err) {}
 };
 
-export const getFreelancerSkills = (data) => async (dispatch) => {
+export const getFreelancerSkills = (data, setLoading) => async (dispatch) => {
   try {
     await Axios.post(`/skill-list`, data).then((res) => {
       dispatch({
@@ -70,7 +70,12 @@ export const getFreelancerSkills = (data) => async (dispatch) => {
         payload: res.data.data,
       });
     });
-  } catch (err) {}
+    setLoading(false)
+  } catch (err) {
+    if(setLoading){
+      setLoading(false)
+    }
+  }
 };
 
 export const onAddEmployment =

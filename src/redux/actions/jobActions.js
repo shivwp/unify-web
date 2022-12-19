@@ -100,7 +100,9 @@ export const singleJobPostDetails = (data, setLoading) => async (dispatch) => {
       });
       setLoading(false);
     });
-  } catch (err) {}
+  } catch (err) {
+    setLoading(false);
+  }
 };
 export const onSendJobProposal =
   (data, successPopup, setSuccessPopup, navigate) => async (dispatch) => {

@@ -34,7 +34,7 @@ const BrowseJobs = () => {
   const [selectLanguages, setSelecetLanguages] = useState({});
   const [values, setValues] = useState();
   const [errors, setErrors] = useState({});
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   const [skillsList, setSkillsList] = useState([]);
 
@@ -65,13 +65,15 @@ const BrowseJobs = () => {
 
   // for filter jobs
   useEffect(() => {
+    setLoading(true);
     dispatch(
-      getJobsList({ pagination: 10, page, ...filters }, setLoading, ScrollTop)
+      getJobsList({ pagination: 10, page, ...filters }, ScrollTop, setLoading)
     );
   }, [page, filters]);
 
   // to get language list and get category list
   useEffect(() => {
+    setLoading(true);
     dispatch(getLanguageList(), setLoading);
     dispatch(getCategoryList(), setLoading);
   }, []);
