@@ -33,6 +33,8 @@ const BrowseJobs = () => {
   const [values, setValues] = useState();
   const [errors, setErrors] = useState({});
 
+  const [skillsList, setSkillsList] = useState([]);
+
   const handleFilterChange = (e) => {
     setFilterValues({ ...filterValues, [e.target.name]: e.target.value });
 
@@ -46,6 +48,17 @@ const BrowseJobs = () => {
   for (let i = 1; i < jobsPagination?.total_page + 1; i++) {
     totalPages.push(i);
   }
+
+  // remove item which is selected
+  useEffect(() => {
+    const myArray = getSkillList?.filter(function (item) {
+      return !selectSkills?.find(function (ele) {
+        return item?.id === ele?.skill_id;
+      });
+    });
+    setSkillsList(myArray || []);
+  }, [getSkillList, selectSkills]);
+  // remove item which is selected
 
   // for filter jobs
   useEffect(() => {
@@ -153,7 +166,9 @@ const BrowseJobs = () => {
     if (filterValues?.min_price < 3) {
       errorsObject.price = "Amount must be minimum 3 ";
       errorExist = true;
-    } else if (filterValues?.max_price <= filterValues?.min_price) {
+    } else if (
+      Number(filterValues?.max_price) <= Number(filterValues?.min_price)
+    ) {
       errorsObject.price = "Price must be greater then minimum ";
       errorExist = true;
     }
@@ -277,7 +292,7 @@ const BrowseJobs = () => {
                       />
                       {showSuggestedSkills ? (
                         <div className="suggessted_skills" id="suggest_skills">
-                          {getSkillList?.map((item) => (
+                          {skillsList?.map((item) => (
                             <>
                               {" "}
                               <span onClick={() => addSkills(item)}>

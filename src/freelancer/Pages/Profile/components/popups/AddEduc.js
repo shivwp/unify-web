@@ -329,15 +329,22 @@ const AddEduc = ({ education, Popup, successPopup, setSuccessPopup }) => {
                     </Form.Label>
                     <Form.Control
                       as="textarea"
+                      maxLength={200}
                       onChange={(e) => handleOnChange(e)}
                       className="font-size-11px"
                       value={values?.description}
                       name="description"
                       placeholder="Enter Here"
                     />
-                    <span className="signup-error">
-                      {errors.description && errors.description}
-                    </span>
+                    <div className="maxlabel_atcxt2_and_errors">
+                      <span className="signup-error">
+                        {errors.description && errors.description}
+                      </span>
+                      <span>
+                        {200 - (values?.description?.length || 0)} characters
+                        left
+                      </span>
+                    </div>
                   </div>
                 </Col>
               </Row>

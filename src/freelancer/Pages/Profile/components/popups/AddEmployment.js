@@ -371,15 +371,22 @@ const AddEmployment = ({
                     </Form.Label>
                     <Form.Control
                       as="textarea"
+                      maxLength={200}
                       className="font-size-13px"
                       value={values?.description || ""}
                       name="description"
                       onChange={(e) => onInputChange(e)}
                       placeholder="Enter Here"
                     />
-                    <span className="signup-error">
-                      {errors.description && errors.description}
-                    </span>
+                    <div className="maxlabel_atcxt2_and_errors">
+                      <span className="signup-error">
+                        {errors.description && errors.description}
+                      </span>
+                      <span>
+                        {200 - (values?.description?.length || 0)} characters
+                        left
+                      </span>
+                    </div>
                   </div>
                 </Col>
               </Row>
