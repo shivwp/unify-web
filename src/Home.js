@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useEffect } from "react";
 import Slider from "./components/slider";
 import Services from "./components/services";
@@ -8,16 +8,17 @@ import Footer from "./client/Layout/Footer/Footer";
 import Title from "./components/title";
 import { useDispatch, useSelector } from "react-redux";
 import { getHomePageData } from "./redux/actions/authActions";
-import { useSelect } from "@mui/base";
+import LoadingSpinner from "./components/LoadingSpinner";
 
 const Home = () => {
   const dispatch = useDispatch();
+  const [loading, setLoading] = useState(true);
 
   const homePageData = useSelector((state) => state?.auth?.homePageData);
 
   useEffect(() => {
     Title("");
-    dispatch(getHomePageData());
+    dispatch(getHomePageData(setLoading));
   }, []);
 
   return (
@@ -38,6 +39,7 @@ const Home = () => {
         trusted_brand_title={homePageData?.trusted_brand_title}
       />
       <Footer />
+      {loading ? <LoadingSpinner /> : null}
     </>
   );
 };

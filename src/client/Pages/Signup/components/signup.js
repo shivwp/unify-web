@@ -26,6 +26,7 @@ const Signup = ({
   errors,
   selectCountry,
   message,
+  setLoading,
 }) => {
   Title(" | signup");
   const [hidePass, setHidePass] = useState(true);
@@ -50,11 +51,15 @@ const Signup = ({
   };
 
   const handleGoogleSignIn = () => {
-    dispatch(googleSignInInitiate(userType, navigate));
+    setLoading(true);
+    dispatch(googleSignInInitiate(userType, navigate, setLoading));
+    setLoading(false);
   };
 
   const handleAppleSignIn = () => {
-    dispatch(appleSignInInitiate(userType, navigate));
+    setLoading(true);
+    dispatch(appleSignInInitiate(userType, navigate, setLoading));
+    setLoading(false);
   };
 
   return (

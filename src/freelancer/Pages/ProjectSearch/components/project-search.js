@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import Container from "react-bootstrap/Container";
 import { Row, Col } from "react-bootstrap";
 import star from "../../../../icons/star.svg";
@@ -482,6 +482,7 @@ const Project_Search = () => {
   const [page, setPage] = useState(1);
   const [errors, setErrors] = useState({});
   const totalPages = [];
+  const [skillsList, setSkillsList] = useState([]);
 
   const handleFilterChange = (e) => {
     setFilterValues({ ...filterValues, [e.target.name]: e.target.value });
@@ -524,6 +525,17 @@ const Project_Search = () => {
     },
   ];
 
+  // remove item which is selected
+  useMemo(() => {
+    const myArray = getSkillList?.filter(function (item) {
+      return !selectSkills?.find(function (ele) {
+        return item?.id === ele?.skill_id;
+      });
+    });
+    setSkillsList(myArray || []);
+  }, [selectSkills]);
+  // remove item which is selected
+
   // for filter jobs
   useEffect(() => {
     if (filters) {
@@ -532,7 +544,7 @@ const Project_Search = () => {
   }, [page, filters, unSaveJobsPost, savedJobsList]);
 
   // to filter jobs by skills
-  useEffect(() => {
+  useMemo(() => {
     if (selectSkills) {
       setFilters({
         ...filters,
@@ -542,7 +554,7 @@ const Project_Search = () => {
   }, [selectSkills]);
 
   // to filter jobs by category
-  useEffect(() => {
+  useMemo(() => {
     if (selectCategory) {
       var categoryKeys = Object.keys(selectCategory);
       setFilters({
@@ -606,14 +618,15 @@ const Project_Search = () => {
   });
 
   const onFilterJobList = (e) => {
-    console.log(filterValues);
     let errorExist = false;
     let errorsObject = {};
     if (filterValues?.min_price || filterValues?.max_price) {
       if (filterValues?.min_price < 3) {
         errorsObject.price = "Amount must be minimum 3 ";
         errorExist = true;
-      } else if (filterValues?.max_price <= filterValues?.min_price) {
+      } else if (
+        Number(filterValues?.max_price) < Number(filterValues?.min_price)
+      ) {
         errorsObject.price = "Price must be greater then minimum ";
         errorExist = true;
       }
@@ -645,7 +658,6 @@ const Project_Search = () => {
 
     setFilters(filters);
   };
-  console.log("langauge", filters);
 
   const clearAllFilters = () => {
     setFilters({});
@@ -751,7 +763,7 @@ const Project_Search = () => {
                       />
                       {showSuggestedSkills ? (
                         <div className="suggessted_skills" id="suggest_skills">
-                          {getSkillList?.map((item, index) => (
+                          {skillsList?.map((item, index) => (
                             <span key={index} onClick={() => addSkills(item)}>
                               {item.name}
                             </span>

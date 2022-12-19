@@ -22,6 +22,7 @@ const Skills = ({ setCurrentTab, profileList }) => {
   const [successPopup, setSuccessPopup] = useState(false);
   const [confirmPopup, setConfirmPopup] = useState(false);
   const [isChange, setIsChange] = useState(false);
+  const [skillsList, setSkillsList] = useState([]);
 
   useEffect(() => {
     if (profileList) {
@@ -29,10 +30,22 @@ const Skills = ({ setCurrentTab, profileList }) => {
     }
   }, [profileList]);
 
+  // remove item which is selected
+  useEffect(() => {
+    const myArray = getSkillList?.filter(function (item) {
+      return !selectSkills?.find(function (ele) {
+        return item?.id === ele?.skill_id;
+      });
+    });
+    setSkillsList(myArray || []);
+  }, [getSkillList, selectSkills]);
+  // remove item which is selected
+
   const removeSkills = (index) => {
     let updateSkills = [...selectSkills];
     updateSkills.splice(index, 1);
     setSelectSkills(updateSkills);
+    setIsChange(true);
   };
 
   const afterSuccess = () => {
@@ -51,7 +64,8 @@ const Skills = ({ setCurrentTab, profileList }) => {
           ...selectSkills,
           { skill_id: item.id, skill_name: item.name },
         ]);
-        setShowSkillList(false);
+
+        // setShowSkillList(false);
       } else {
         setShowSkillList(false);
         setErrors({ already: "Skill already selected" });
@@ -134,12 +148,12 @@ const Skills = ({ setCurrentTab, profileList }) => {
                     onChange={handleOnChange}
                   />
 
-                  {showSkillList && getSkillList ? (
+                  {showSkillList && skillsList ? (
                     <div
                       className="suggest_skills"
                       style={{ position: "absolute" }}
                     >
-                      {getSkillList?.map((item, index) => (
+                      {skillsList?.map((item, index) => (
                         <>
                           <span key={index} onClick={() => addSkills(item)}>
                             {item.name}
