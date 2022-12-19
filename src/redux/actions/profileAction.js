@@ -396,15 +396,22 @@ export const onEditLanguage =
     } catch (err) {}
   };
 
-export const getLanguageList = () => async (dispatch) => {
+export const getLanguageList = (setLoading) => async (dispatch) => {
   try {
     Axios.get("/languages-list").then((res) => {
       dispatch({
         type: SET_LANGUAGE_LIST,
         payload: res.data.data,
       });
+      if (setLoading) {
+        setLoading(false);
+      }
     });
-  } catch (err) {}
+  } catch (err) {
+    if (setLoading) {
+      setLoading(false);
+    }
+  }
 };
 
 export const getHoursPerWeekList = () => async (dispatch) => {
@@ -698,13 +705,20 @@ export const getCertificationList =
     } catch (err) {}
   };
 
-export const getCategoryList = () => async (dispatch) => {
+export const getCategoryList = (setLoading) => async (dispatch) => {
   try {
     Axios.get("/category-list").then((res) => {
       dispatch({
         type: SET_CATEGORY_LIST,
         payload: res.data.data,
       });
+      if (setLoading) {
+        setLoading(false);
+      }
     });
-  } catch (err) {}
+  } catch (err) {
+    if (setLoading) {
+      setLoading(false);
+    }
+  }
 };

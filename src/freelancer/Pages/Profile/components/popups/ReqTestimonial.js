@@ -201,14 +201,24 @@ const ReqTestimonial = ({ Popup, successPopup, setSuccessPopup }) => {
                     <Form.Control
                       as="textarea"
                       name="description"
+                      maxLength={200}
                       className="font-size-13px"
                       value={values?.description}
                       onChange={(e) => onInputChange(e)}
                       placeholder="Enter Here"
                     ></Form.Control>
-                    <span className="signup-error mt-1">
+                    {/* <span className="signup-error mt-1">
                       {errorRequestTestimonial && errorRequestTestimonial}
-                    </span>
+                    </span> */}
+                    <div className="maxlabel_atcxt2_and_errors">
+                      <span className="signup-error">
+                        {errorRequestTestimonial && errorRequestTestimonial}
+                      </span>
+                      <span>
+                        {200 - (values?.description?.length || 0)} characters
+                        left
+                      </span>
+                    </div>
                   </div>
                 </Col>
               </Row>

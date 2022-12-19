@@ -33,7 +33,7 @@ const slider = ({ nonavbg, hero, used_by }) => {
                     </Link>
                     <Link to="/signup">
                       <Button variant="" className="active_btn">
-                        {hero?.button_text2}
+                        {hero?.button_text2 || "FIND A PROFESSIONAL"}
                       </Button>
                     </Link>
                   </div>
