@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Signup from "./components/signup";
 import { countryList, onRegister } from "../../../redux/actions/authActions";
+import LoadingSpinner from "../../../components/LoadingSpinner";
 
 const Signupscreen = () => {
   const navigate = useNavigate();
@@ -13,6 +14,7 @@ const Signupscreen = () => {
   const getCountryList = useSelector((state) => state.auth.getCountryList);
   const postJob = useSelector((state) => state?.auth?.postJob);
   const [message, setMessage] = useState();
+  const [loading, setLoading] = useState(true);
   const instantLoginEmail = useSelector(
     (state) => state?.auth?.instantLoginEmail
   );
@@ -35,7 +37,8 @@ const Signupscreen = () => {
   }, [instantLoginEmail]);
 
   useEffect(() => {
-    dispatch(countryList());
+    setLoading(true);
+    dispatch(countryList(setLoading));
   }, []);
 
   const selectCountry = (e) => {
@@ -61,6 +64,7 @@ const Signupscreen = () => {
 
   const submitForm = (e) => {
     e.preventDefault();
+    setLoading(true);
 
     sessionStorage.setItem("unify_email", values?.email);
 
@@ -149,6 +153,7 @@ const Signupscreen = () => {
 
     if (errorExist) {
       setErrors(errorsObject);
+      setLoading(false);
       return false;
     }
     const data = {
@@ -163,7 +168,7 @@ const Signupscreen = () => {
       send_email: values?.send_email,
     };
 
-    dispatch(onRegister(data, navigate, setMessage));
+    dispatch(onRegister(data, navigate, setMessage, setLoading));
   };
 
   const selectUserType = (e) => {
@@ -172,18 +177,22 @@ const Signupscreen = () => {
   };
 
   return (
-    <Signup
-      onInputChange={onInputChange}
-      submitForm={submitForm}
-      getCountryList={getCountryList}
-      selectUserType={selectUserType}
-      userType={userType}
-      values={values}
-      errors={errors}
-      setCountry={setCountry}
-      selectCountry={selectCountry}
-      message={message}
-    />
+    <>
+      <Signup
+        onInputChange={onInputChange}
+        submitForm={submitForm}
+        getCountryList={getCountryList}
+        selectUserType={selectUserType}
+        userType={userType}
+        values={values}
+        errors={errors}
+        setCountry={setCountry}
+        selectCountry={selectCountry}
+        message={message}
+        setLoading={setLoading}
+      />
+      {loading ? <LoadingSpinner /> : null}
+    </>
   );
 };
 

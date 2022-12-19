@@ -554,7 +554,7 @@ const Projectdetail = () => {
                   singleJobDetails?.client_data?.last_name || ""
                 }`}</h3>
               </div>
-              <div className="comp_name_p">
+              <div className="comp_name_p" style={{ whiteSpace: " pre-line" }}>
                 <p>{singleJobDetails?.client_data?.description}</p>
               </div>
               <div className="about_the_client job_details_client">

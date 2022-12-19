@@ -32,16 +32,18 @@ const config = {
   },
 };
 
-export const getHomePageData = () => async (dispatch) => {
+export const getHomePageData = (setLoading) => async (dispatch) => {
   await Axios.get(`/home-data`)
     .then((res) => {
       dispatch({
         type: HOME_PAGE_DATA,
         payload: res.data.data,
       });
+      setLoading(false);
     })
     .catch((err) => {
       console.log(err);
+      setLoading(false);
     });
 };
 export const getSkillsByCat = (data) => async (dispatch) => {
@@ -69,68 +71,92 @@ export const getDevelopersBySkills = (data) => async (dispatch) => {
     });
 };
 
-export const onLogin = (data, navigate, setMessage) => async (dispatch) => {
-  try {
-    const res = await Axios.post(`/login`, data);
-    if (res.data.status) {
-      sessionStorage.setItem("unify_token", res.data.auth_token);
-      sessionStorage.setItem("unify_user", JSON.stringify(res.data.data.user));
-      if (res.data.data.user.user_type === "freelancer") {
-        if (res.data.data.user.is_profile_complete === true) {
-          navigate("/freelancer/dashboard");
-        } else {
-          navigate("/freelancer/profile-intro/question1");
-        }
-      } else if (res.data.data.user.user_type === "client") {
-        if (res.data.data.user.is_profile_complete === true) {
-          navigate("/dashboard");
-        } else {
-          navigate("/businesssize");
-        }
-      }
-      window.location.reload();
-    }
-  } catch (err) {
-    setMessage(err.response.data.message);
-  }
-};
-
-export const onRegister = (data, navigate, setMessage) => async (dispatch) => {
-  try {
-    const res = await Axios.post(`/signup`, data);
-    if (res.data.status) {
-      navigate("/verify-signup");
-    }
-  } catch (err) {
-    setMessage(err.response.data.message);
-  }
-};
-
-export const onVerifySignup =
-  (data, navigate, setMessage) => async (dispatch) => {
+export const onLogin =
+  (data, navigate, setMessage, setLoading) => async (dispatch) => {
     try {
-      const res = await Axios.post(`/verifysignup`, data);
+      const res = await Axios.post(`/login`, data);
       if (res.data.status) {
-        navigate("/signin");
+        sessionStorage.setItem("unify_token", res.data.auth_token);
+        sessionStorage.setItem(
+          "unify_user",
+          JSON.stringify(res.data.data.user)
+        );
+        if (res.data.data.user.user_type === "freelancer") {
+          if (res.data.data.user.is_profile_complete === true) {
+            sessionStorage.setItem(
+              "unify_freelancer",
+              JSON.stringify(res.data.data.freelancer)
+            );
+            navigate("/freelancer/dashboard");
+          } else {
+            navigate("/freelancer/profile-intro/question1");
+          }
+        } else if (res.data.data.user.user_type === "client") {
+          if (res.data.data.user.is_profile_complete === true) {
+            navigate("/dashboard");
+          } else {
+            navigate("/businesssize");
+          }
+        }
+        setLoading(false);
         window.location.reload();
       }
     } catch (err) {
       setMessage(err.response.data.message);
+      setLoading(false);
     }
   };
 
-export const onResendOtp = (data, setOtpSuccess) => async (dispatch) => {
-  try {
-    const res = await Axios.post(`/resend-otp`, data);
-    dispatch({
-      type: RESEND_OTP_SUCCESS,
-      payload: res.data.message,
-    });
-    setOtpSuccess(res.data.message);
-  } catch (err) {}
-};
+export const onRegister =
+  (data, navigate, setMessage, setLoading) => async (dispatch) => {
+    try {
+      const res = await Axios.post(`/signup`, data);
+      if (res.data.status) {
+        navigate("/verify-signup");
+      }
+      if (setLoading) {
+        setLoading(false);
+      }
+    } catch (err) {
+      setMessage(err.response.data.message);
+      if (setLoading) {
+        setLoading(false);
+      }
+    }
+  };
 
-export const countryList = () => async (dispatch) => {
+export const onVerifySignup =
+  (data, navigate, setMessage, setLoading) => async (dispatch) => {
+    try {
+      const res = await Axios.post(`/verifysignup`, data);
+      if (res.data.status) {
+        navigate("/signin");
+        setLoading(false);
+        window.location.reload();
+      }
+    } catch (err) {
+      setMessage(err.response.data.message);
+      setLoading(false);
+    }
+  };
+
+export const onResendOtp =
+  (data, setOtpSuccess, setLoading) => async (dispatch) => {
+    try {
+      const res = await Axios.post(`/resend-otp`, data);
+      dispatch({
+        type: RESEND_OTP_SUCCESS,
+        payload: res.data.message,
+      });
+      setLoading(false);
+
+      setOtpSuccess(res.data.message);
+    } catch (err) {
+      setLoading(false);
+    }
+  };
+
+export const countryList = (setLoading) => async (dispatch) => {
   try {
     const res = await Axios.get(`/coutrylist`);
     if (res.data.status) {
@@ -138,32 +164,47 @@ export const countryList = () => async (dispatch) => {
         type: SET_COUNTRY,
         payload: res.data.countrylist,
       });
+      if (setLoading) {
+        setLoading(false);
+      }
     }
-  } catch (err) {}
+  } catch (err) {
+    if (setLoading) {
+      setLoading(false);
+    }
+  }
 };
 
 export const onForgotPassword =
-  (data, navigate, setForgotPassError) => async (dispatch) => {
+  (data, navigate, setForgotPassError, setLoading) => async (dispatch) => {
     await Axios.post(`/forget-password`, data)
       .then((res) => {
         if (res.data.status) {
           navigate("/verify-forgot-otp");
         }
+        if (setLoading) {
+          setLoading(false);
+        }
       })
       .catch((err) => {
         setForgotPassError(err.response.data.message);
+        if (setLoading) {
+          setLoading(false);
+        }
       });
   };
 
 export const onVerifyForgot =
-  (data, navigate, setMessage) => async (dispatch) => {
+  (data, navigate, setMessage, setLoading) => async (dispatch) => {
     await Axios.post(`/verify-forgot-otp`, data)
       .then((res) => {
         if (res.data.status) {
+          setLoading(false);
           navigate("/reset-password");
         }
       })
       .catch((err) => {
+        setLoading(false);
         setMessage(err.response.data.message);
       });
   };
@@ -221,6 +262,10 @@ export const googleSignInSuccess =
         if (res.data.data.user.user_type === "freelancer") {
           if (res.data.data.user.is_profile_complete === true) {
             navigate("/freelancer/dashboard");
+            sessionStorage.setItem(
+              "unify_freelancer",
+              JSON.stringify(res.data.data.freelancer)
+            );
           } else {
             navigate("/freelancer/profile-intro/question1");
           }
@@ -243,7 +288,12 @@ export const googleSignInFail = (error) => ({
   payload: error,
 });
 
-export const googleSignInInitiate = (userType, navigate, setMessage) => {
+export const googleSignInInitiate = (
+  userType,
+  navigate,
+  setMessage,
+  setLoading
+) => {
   return function (dispatch) {
     signOut(auth)
       .then(() => {
@@ -263,6 +313,9 @@ export const googleSignInInitiate = (userType, navigate, setMessage) => {
                 setMessage
               )
             );
+            if (setLoading) {
+              setLoading(false);
+            }
           })
           .catch((error) => {
             console.log(error);
@@ -270,7 +323,9 @@ export const googleSignInInitiate = (userType, navigate, setMessage) => {
           });
       })
       .catch((error) => {
-        // An error happened.
+        if (setLoading) {
+          setLoading(false);
+        }
       });
   };
 };
@@ -288,6 +343,10 @@ export const appleSignInSuccess =
         if (res.data.data.user.user_type === "freelancer") {
           if (res.data.data.user.is_profile_complete === true) {
             navigate("/freelancer/dashboard");
+            sessionStorage.setItem(
+              "unify_freelancer",
+              JSON.stringify(res.data.data.freelancer)
+            );
           } else {
             navigate("/freelancer/profile-intro/question1");
           }
@@ -310,7 +369,12 @@ export const appleSignInFail = (error) => ({
   payload: error,
 });
 
-export const appleSignInInitiate = (userType, navigate, setMessage) => {
+export const appleSignInInitiate = (
+  userType,
+  navigate,
+  setMessage,
+  setLoading
+) => {
   return function (dispatch) {
     signInWithPopup(auth, appleProvider)
       .then((result) => {
@@ -327,10 +391,16 @@ export const appleSignInInitiate = (userType, navigate, setMessage) => {
             setMessage
           )
         );
+        if (setLoading) {
+          setLoading(false);
+        }
       })
       .catch((error) => {
         console.log(error);
         appleSignInFail(error);
+        if (setLoading) {
+          setLoading(false);
+        }
       });
   };
 };
