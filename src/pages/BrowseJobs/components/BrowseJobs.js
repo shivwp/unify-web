@@ -13,6 +13,7 @@ import {
   getLanguageList,
 } from "../../../redux/actions/profileAction";
 import FreeProfile from "../../Popup/FreeProfile";
+import ResultNotFound from "../../../freelancer/Pages/ProjectSearch/ResultNotFound";
 
 const BrowseJobs = () => {
   const [page, setPage] = useState(1);
@@ -592,6 +593,7 @@ const BrowseJobs = () => {
               ) : (
                 ""
               )}
+              {jobsList?.length ? "" : <ResultNotFound />}
             </Col>
 
             {/* Job end */}

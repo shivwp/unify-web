@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect } from "react";
 import Container from "react-bootstrap/Container";
 import { Row, Col } from "react-bootstrap";
 import star from "../../../../icons/star.svg";
@@ -25,6 +25,7 @@ import {
   getLanguageList,
 } from "../../../../redux/actions/profileAction";
 import { filter } from "dom7";
+import ResultNotFound from "../ResultNotFound";
 
 const ReasonsList = ({ jobId, data, setDropdownOpen }) => {
   const dispatch = useDispatch();
@@ -139,15 +140,6 @@ const ProjectSearch = ({ filters }) => {
           </Link>
           <div className="jb_foot flex-wrap">
             <div className="flex_itm">
-              {/* <div className="f_b_obx">
-                <div className="ex_name_fb">Expiry:</div>
-                <div className="ex_val_f">914 DAYS LEFT</div>
-              </div> */}
-              {/*  <div className="f_b_obx">
-                <div className="ex_name_fb">Proposals:</div>
-                <div className="ex_val_f">9 Received</div>
-              </div> */}
-              {/* <div className="f_b_obx"> */}
               <div className="">
                 <div className="ex_name_fb">Location:</div>
                 <div className="ex_val_f">{item.location}</div>
@@ -257,8 +249,6 @@ const ProjectSearch = ({ filters }) => {
                       />
                     </g>
                   </svg>
-
-                  {/* <img src={heart} alt="" className="heart_btn" /> */}
                 </Button>
                 <Link to={`/freelancer/project-detail/${item.id}`}>
                   <Button variant="" disabled={item.is_proposal_send}>
@@ -290,6 +280,7 @@ const ProjectSearch = ({ filters }) => {
       ) : (
         ""
       )}
+      {jobsList?.length ? "" : <ResultNotFound />}
     </>
   );
 };
@@ -526,14 +517,14 @@ const Project_Search = () => {
   ];
 
   // remove item which is selected
-  useMemo(() => {
+  useEffect(() => {
     const myArray = getSkillList?.filter(function (item) {
       return !selectSkills?.find(function (ele) {
         return item?.id === ele?.skill_id;
       });
     });
     setSkillsList(myArray || []);
-  }, [selectSkills]);
+  }, [getSkillList, selectSkills]);
   // remove item which is selected
 
   // for filter jobs
@@ -544,7 +535,7 @@ const Project_Search = () => {
   }, [page, filters, unSaveJobsPost, savedJobsList]);
 
   // to filter jobs by skills
-  useMemo(() => {
+  useEffect(() => {
     if (selectSkills) {
       setFilters({
         ...filters,
@@ -554,7 +545,7 @@ const Project_Search = () => {
   }, [selectSkills]);
 
   // to filter jobs by category
-  useMemo(() => {
+  useEffect(() => {
     if (selectCategory) {
       var categoryKeys = Object.keys(selectCategory);
       setFilters({
