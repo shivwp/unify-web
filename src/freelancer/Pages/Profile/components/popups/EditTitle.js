@@ -78,7 +78,14 @@ const EditTitle = ({
     };
 
     dispatch(
-      onEditDesignation(data, Popup, successPopup, setSuccessPopup, setLoading)
+      onEditDesignation(
+        data,
+        Popup,
+        successPopup,
+        setSuccessPopup,
+        false,
+        setLoading
+      )
     );
   };
   return (

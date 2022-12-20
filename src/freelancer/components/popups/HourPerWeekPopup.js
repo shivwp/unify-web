@@ -19,12 +19,13 @@ const HourPerWeekPopup = ({
   setSuccessPopup,
   amount,
   hours_per_week,
+  hours_per_week_id,
   setLoading,
 }) => {
   const dispatch = useDispatch();
 
   const [hourlyPrice, setHourlyPrice] = useState({ hours_price: amount });
-  const [hpwValue, setHPWValue] = useState();
+  const [hpwValue, setHPWValue] = useState(hours_per_week_id);
   const hwpList = useSelector((state) => state?.profile?.getHoursPerWeekList);
   const [values, setValues] = useState("");
   const [errors, setErrors] = useState({});
@@ -88,7 +89,7 @@ const HourPerWeekPopup = ({
                     type="radio"
                     id={`op-${index}`}
                     onClick={() => setHPWValue(item.id)}
-                    defaultChecked={hours_per_week == item.title}
+                    checked={hpwValue == item.id}
                     name="p"
                     value={"More then 30 Hours per week"}
                   />{" "}

@@ -398,7 +398,14 @@ export const onEditVideo =
   };
 
 export const onEditDesignation =
-  (data, popup, successPopup, setSuccessPopup, afterSuccess, setLoading) =>
+  (
+    data,
+    popup,
+    successPopup,
+    setSuccessPopup,
+    afterSuccess = false,
+    setLoading
+  ) =>
   async (dispatch) => {
     try {
       Axios.post("/edit-designation-info", data, config).then((res) => {

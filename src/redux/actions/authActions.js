@@ -266,7 +266,7 @@ export const onOnlineStatus = (data, navigate) => async (dispatch) => {
 };
 
 export const googleSignInSuccess =
-  (data, navigate, setMessage) => async (dispatch) => {
+  (data, navigate, setMessage, setLoading) => async (dispatch) => {
     try {
       const res = await Axios.post(`/social-login`, data);
       if (res.data.status) {
@@ -282,6 +282,7 @@ export const googleSignInSuccess =
               "unify_freelancer",
               JSON.stringify(res.data.data.freelancer)
             );
+            setLoading(false);
           } else {
             navigate("/freelancer/profile-intro/question1");
           }
@@ -292,6 +293,7 @@ export const googleSignInSuccess =
             navigate("/businesssize");
           }
         }
+        setLoading(false);
         window.location.reload();
       } else {
         setMessage(res.data.message);
@@ -326,7 +328,8 @@ export const googleSignInInitiate = (
                   user_type: userType,
                 },
                 navigate,
-                setMessage
+                setMessage,
+                setLoading
               )
             );
             if (setLoading) {
@@ -335,6 +338,7 @@ export const googleSignInInitiate = (
           })
           .catch((error) => {
             console.log(error);
+            setLoading(false);
             dispatch(googleSignInFail(error.message));
           });
       })

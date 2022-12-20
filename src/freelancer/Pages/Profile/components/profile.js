@@ -258,7 +258,7 @@ const UnifyFreelancer = () => {
   const addExprience = useSelector((state) => state?.profile?.addExprience);
 
   useEffect(() => {
-    setLoading(true)
+    setLoading(true);
     dispatch(getFreelancerProfile(setLoading));
   }, [
     deleteExprience,
@@ -1681,6 +1681,7 @@ const UnifyFreelancer = () => {
           successPopup={successPopup}
           amount={basicInfo?.amount}
           hours_per_week={freelancerProfileList?.hours_per_week}
+          hours_per_week_id={freelancerProfileList?.hours_per_week_id}
           setLoading={setLoading}
         />
       )}
