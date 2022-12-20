@@ -19,6 +19,7 @@ import { countryList } from "../../../../redux/actions/authActions";
 import { data } from "jquery";
 import { useNavigate } from "react-router-dom";
 import AgencyNamePopup from "../../../components/popups/AgencyNamePopup";
+import LoadingSpinner from "../../../../components/LoadingSpinner";
 
 const Screen = () => {
   const dispatch = useDispatch();
@@ -48,14 +49,16 @@ const Screen = () => {
   );
 
   useEffect(() => {
+    setLoading(true);
     dispatch(getFreelancerProfile(setLoading));
-    dispatch(getTimezoneList());
-    dispatch(countryList());
+    dispatch(getTimezoneList(setLoading));
+    dispatch(countryList(setLoading));
   }, [editFreelancerInfo, editFreelancerLocation]);
 
   const onCreateAdditionalAccount = (value) => {
     const data = { user_type: value };
-    dispatch(onAdditionalAccount(data, navigate));
+    setLoading(true);
+    dispatch(onAdditionalAccount(data, navigate, setLoading));
   };
 
   const EditAcc = () => {
@@ -83,7 +86,7 @@ const Screen = () => {
     const EditContactInfo = () => {
       let errorExist = false;
       let errorsObject = {};
-
+      setLoading(true);
       if (
         values.first_name === "" ||
         values.first_name === null ||
@@ -117,6 +120,7 @@ const Screen = () => {
       }
 
       if (errorExist) {
+        setLoading(false);
         setErrors(errorsObject);
         return false;
       }
@@ -134,7 +138,13 @@ const Screen = () => {
             };
 
       dispatch(
-        onEditContactInfo(data, setEditAccount, successPopup, setSuccessPopup)
+        onEditContactInfo(
+          data,
+          setEditAccount,
+          successPopup,
+          setSuccessPopup,
+          setLoading
+        )
       );
     };
 
@@ -281,7 +291,7 @@ const Screen = () => {
     const EditLocationInfo = () => {
       let errorExist = false;
       let errorsObject = {};
-
+      setLoading(true);
       if (
         values?.timezone === "" ||
         values?.timezone === null ||
@@ -345,6 +355,7 @@ const Screen = () => {
 
       if (errorExist) {
         setErrors(errorsObject);
+        setLoading(false);
         return false;
       }
 
@@ -357,7 +368,15 @@ const Screen = () => {
         zip_code: values?.zip_code,
       };
       dispatch(
-        onEditLocationInfo(data, setEditLocation, successPopup, setSuccessPopup)
+        onEditLocationInfo(
+          data,
+          setEditLocation,
+          successPopup,
+          setSuccessPopup,
+          false,
+          false,
+          setLoading
+        )
       );
     };
 
@@ -691,7 +710,10 @@ const Screen = () => {
                                     className="min-width-226"
                                     onClick={() =>
                                       setPopup(
-                                        <AgencyNamePopup setPopup={setPopup} />
+                                        <AgencyNamePopup
+                                          setPopup={setPopup}
+                                          setLoading={setLoading}
+                                        />
                                       )
                                     }
                                   >
@@ -821,10 +843,12 @@ const Screen = () => {
           onCloseModal={() => seOpenCloseAcc(false)}
           successPopup={successPopup}
           setSuccessPopup={setSuccessPopup}
+          setLoading={setLoading}
         />
       )}
       {successPopup}
       {popup}
+      {loading ? <LoadingSpinner /> : null}
     </>
   );
 };

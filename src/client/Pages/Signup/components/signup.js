@@ -26,6 +26,7 @@ const Signup = ({
   errors,
   selectCountry,
   message,
+  setMessage,
   setLoading,
 }) => {
   Title(" | signup");
@@ -52,16 +53,14 @@ const Signup = ({
 
   const handleGoogleSignIn = () => {
     setLoading(true);
-    dispatch(googleSignInInitiate(userType, navigate, setLoading));
+    dispatch(googleSignInInitiate(userType, navigate, setMessage, setLoading));
     setLoading(false);
   };
-
   const handleAppleSignIn = () => {
     setLoading(true);
-    dispatch(appleSignInInitiate(userType, navigate, setLoading));
+    dispatch(appleSignInInitiate(userType, navigate, setMessage, setLoading));
     setLoading(false);
   };
-
   return (
     <>
       <div className="bg-body-wrapper">

@@ -284,6 +284,7 @@ export const googleSignInSuccess =
             );
             setLoading(false);
           } else {
+            setLoading(false);
             navigate("/freelancer/profile-intro/question1");
           }
         } else if (res.data.data.user.user_type === "client") {
@@ -296,6 +297,7 @@ export const googleSignInSuccess =
         setLoading(false);
         window.location.reload();
       } else {
+        setLoading(false);
         setMessage(res.data.message);
       }
     } catch (err) {}
@@ -337,7 +339,6 @@ export const googleSignInInitiate = (
             }
           })
           .catch((error) => {
-            console.log(error);
             setLoading(false);
             dispatch(googleSignInFail(error.message));
           });

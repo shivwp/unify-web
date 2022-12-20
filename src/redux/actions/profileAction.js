@@ -212,23 +212,33 @@ export const getTeamList = () => async (dispatch) => {
   } catch (err) {}
 };
 
-export const closeAccountReasonList = () => async (dispatch) => {
+export const closeAccountReasonList = (setLoading) => async (dispatch) => {
   try {
     Axios.get("/close-account-reason-list").then((res) => {
       dispatch({
         type: SET_CLOSE_ACCOUNT_REASON_LIST,
         payload: res.data.data,
       });
+      if (setLoading) {
+        setLoading(false);
+      }
     });
-  } catch (err) {}
+  } catch (err) {
+    if (setLoading) {
+      setLoading(false);
+    }
+  }
 };
 
 export const onCloseAccount =
-  (data, popup, successPopup, setSuccessPopup, afterSuccess) =>
+  (data, popup, successPopup, setSuccessPopup, afterSuccess, setLoading) =>
   async (dispatch) => {
     try {
       Axios.post("/close-account", data, config).then((res) => {
         popup();
+        if (setLoading) {
+          setLoading(false);
+        }
         setSuccessPopup(
           <SuccessPopup
             Popup={() => setSuccessPopup(!successPopup)}
@@ -237,7 +247,11 @@ export const onCloseAccount =
           />
         );
       });
-    } catch (err) {}
+    } catch (err) {
+      if (setLoading) {
+        setLoading(false);
+      }
+    }
   };
 
 export const getFreelancerDegreeList = (setLoading) => async (dispatch) => {
@@ -302,7 +316,8 @@ export const onDeleteEducation =
   };
 
 export const onEditContactInfo =
-  (data, setEditAccount, successPopup, setSuccessPopup) => async (dispatch) => {
+  (data, setEditAccount, successPopup, setSuccessPopup, setLoading) =>
+  async (dispatch) => {
     try {
       Axios.post("/edit-contact-info", data, config).then((res) => {
         setEditAccount(false);
@@ -310,6 +325,9 @@ export const onEditContactInfo =
           type: SET_EDIT_FREELANCER_INFO,
           payload: res.data,
         });
+        if (setLoading) {
+          setLoading(false);
+        }
         setSuccessPopup(
           <SuccessPopup
             Popup={() => setSuccessPopup(!successPopup)}
@@ -317,7 +335,11 @@ export const onEditContactInfo =
           />
         );
       });
-    } catch (err) {}
+    } catch (err) {
+      if (setLoading) {
+        setLoading(false);
+      }
+    }
   };
 
 export const onEditLocationInfo =
@@ -731,22 +753,30 @@ export const onDeletePortfolio =
     }
   };
 
-export const onAdditionalAccount = (data, navigate) => async (dispatch) => {
-  try {
-    Axios.post("/additional-account", data, config).then((res) => {
-      dispatch({
-        type: SET_ADDITIONAL_ACCOUNT,
-        payload: res.data,
+export const onAdditionalAccount =
+  (data, navigate, setLoading) => async (dispatch) => {
+    try {
+      Axios.post("/additional-account", data, config).then((res) => {
+        dispatch({
+          type: SET_ADDITIONAL_ACCOUNT,
+          payload: res.data,
+        });
+        if (setLoading) {
+          setLoading(false);
+        }
+        if (data.user_type == "agency") {
+          navigate("/agency/dashboard");
+        }
+        if (data.user_type == "client") {
+          navigate("/dashboard");
+        }
       });
-      if (data.user_type == "agency") {
-        navigate("/agency/dashboard");
+    } catch (err) {
+      if (setLoading) {
+        setLoading(false);
       }
-      if (data.user_type == "client") {
-        navigate("/dashboard");
-      }
-    });
-  } catch (err) {}
-};
+    }
+  };
 
 export const onSubmitVerificationDocs =
   (data, popup, successPopup, setSuccessPopup, setLoading) =>

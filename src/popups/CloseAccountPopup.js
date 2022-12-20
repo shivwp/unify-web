@@ -15,6 +15,7 @@ const CloseAccountPopup = ({
   onCloseModal,
   successPopup,
   setSuccessPopup,
+  setLoading,
 }) => {
   const dispatch = useDispatch();
   const [values, setValues] = useState({});
@@ -25,7 +26,8 @@ const CloseAccountPopup = ({
   );
 
   useEffect(() => {
-    dispatch(closeAccountReasonList());
+    setLoading(true);
+    dispatch(closeAccountReasonList(setLoading));
   }, []);
 
   const handleOnChange = (e) => {
@@ -42,7 +44,7 @@ const CloseAccountPopup = ({
   const handleCloseAccount = (e) => {
     let errorExist = false;
     let errorsObject = {};
-
+    setLoading(true);
     if (
       values?.reasonId === "" ||
       values?.reasonId === null ||
@@ -54,6 +56,7 @@ const CloseAccountPopup = ({
 
     if (errorExist) {
       setErrors(errorsObject);
+      setLoading(false);
       return false;
     }
 
@@ -67,7 +70,9 @@ const CloseAccountPopup = ({
         onCloseModal,
         successPopup,
         setSuccessPopup,
-        afterSuccess
+        false,
+        afterSuccess,
+        setLoading
       )
     );
   };

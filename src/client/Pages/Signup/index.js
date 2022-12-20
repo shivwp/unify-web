@@ -189,6 +189,7 @@ const Signupscreen = () => {
         setCountry={setCountry}
         selectCountry={selectCountry}
         message={message}
+        setMessage={setMessage}
         setLoading={setLoading}
       />
       {loading ? <LoadingSpinner /> : null}

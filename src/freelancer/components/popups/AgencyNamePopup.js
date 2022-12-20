@@ -6,7 +6,6 @@ import { onAdditionalAccount } from "../../../redux/actions/profileAction";
 import { useNavigate } from "react-router-dom";
 import PopupsCloseIcon from "./PopupsCloseIcon";
 
-
 const AgencyNamePopup = (props) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -21,6 +20,7 @@ const AgencyNamePopup = (props) => {
   const onCreateAdditionalAccount = () => {
     let errorExist = false;
     let errorsObject = {};
+    props?.setLoading(true);
 
     if (
       values?.agency_name === "" ||
@@ -33,6 +33,7 @@ const AgencyNamePopup = (props) => {
 
     if (errorExist) {
       setErrors(errorsObject);
+      props?.setLoading(false);
       return false;
     }
 
@@ -40,7 +41,7 @@ const AgencyNamePopup = (props) => {
       user_type: "agency",
       agency_name: values?.agency_name,
     };
-    dispatch(onAdditionalAccount(data, navigate));
+    dispatch(onAdditionalAccount(data, navigate, props?.setLoading));
   };
 
   return (
