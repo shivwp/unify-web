@@ -177,41 +177,59 @@ export const onPostYourJobNow = (data, navigate) => async (dispatch) => {
   } catch (err) {}
 };
 
-export const getAllClientPosting = (data) => async (dispatch) => {
+export const getAllClientPosting = (data, setLoading) => async (dispatch) => {
   try {
     Axios.post("/client-all-posting", data, config).then((res) => {
       dispatch({
         type: SET_ALL_CLIENT_POSTING,
         payload: res.data,
       });
+      if (setLoading) {
+        setLoading(false);
+      }
     });
-  } catch (err) {}
+  } catch (err) {
+    if (setLoading) {
+      setLoading(false);
+    }
+  }
 };
 
-export const getAllClientDraftPosting = (data) => async (dispatch) => {
-  try {
-    Axios.post("/client-draft-posting", data, config).then((res) => {
-      dispatch({
-        type: SET_ALL_CLIENT_DRAFT_POSTING,
-        payload: res.data,
+export const getAllClientDraftPosting =
+  (data, setLoading) => async (dispatch) => {
+    try {
+      Axios.post("/client-draft-posting", data, config).then((res) => {
+        dispatch({
+          type: SET_ALL_CLIENT_DRAFT_POSTING,
+          payload: res.data,
+        });
+        if (setLoading) {
+          setLoading(false);
+        }
       });
-    });
-  } catch (err) {}
-};
+    } catch (err) {
+      if (setLoading) {
+        setLoading(false);
+      }
+    }
+  };
 
-export const closeJobReasonList = () => async (dispatch) => {
+export const closeJobReasonList = (setLoading) => async (dispatch) => {
   try {
     Axios.get("/close-job-reason-list").then((res) => {
       dispatch({
         type: SET_CLOSE_JOB_REASON_LIST,
         payload: res.data.data,
       });
+      setLoading(false);
     });
-  } catch (err) {}
+  } catch (err) {
+    setLoading(false);
+  }
 };
 
 export const onCloseJob =
-  (data, onCloseModal, navigate) => async (dispatch) => {
+  (data, onCloseModal, navigate, setLoading) => async (dispatch) => {
     try {
       Axios.post("/remove-job", data, config).then((res) => {
         if (res.data.status) {
@@ -222,33 +240,43 @@ export const onCloseJob =
           onCloseModal();
           navigate("/dashboard");
         }
+        setLoading(false);
       });
-    } catch (err) {}
+    } catch (err) {
+      setLoading(false);
+    }
   };
 
-export const editJobPosting = (data, navigate) => async (dispatch) => {
-  try {
-    Axios.post("/update-job", data, config).then((res) => {
-      if (res.data.status) {
-        dispatch({
-          type: SET_UPDATE_JOB_POST,
-          payload: res.data,
-        });
-        navigate("/dashboard");
-      }
-    });
-  } catch (err) {}
-};
+export const editJobPosting =
+  (data, navigate, setLoading) => async (dispatch) => {
+    try {
+      Axios.post("/update-job", data, config).then((res) => {
+        if (res.data.status) {
+          dispatch({
+            type: SET_UPDATE_JOB_POST,
+            payload: res.data,
+          });
+          setLoading(false);
+          navigate("/dashboard");
+        }
+      });
+    } catch (err) {
+      setLoading(false);
+    }
+  };
 
-export const getAllProposals = () => async (dispatch) => {
+export const getAllProposals = (setLoading) => async (dispatch) => {
   try {
     Axios.get("/all-proposal", config).then((res) => {
+      setLoading(false);
       dispatch({
         type: SET_ALL_PROPOSALS,
         payload: res.data.data,
       });
     });
-  } catch (err) {}
+  } catch (err) {
+    setLoading(false);
+  }
 };
 export const onGetAllContracts = () => async (dispatch) => {
   try {

@@ -417,18 +417,21 @@ export const getFooterPageData = (pagename) => async (dispatch) => {
       console.log(err);
     });
 };
-export const setClientCompnySize = (data, navigate) => async (dispatch) => {
-  await Axios.post("/business-size", data, config)
-    .then((res) => {
-      if (res.data.status) {
-        dispatch({
-          type: CLIENT_BUSINESSSIZE,
-          payload: res.data.data,
-        });
-        navigate("/question1");
-      }
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-};
+export const setClientCompnySize =
+  (data, navigate, setLoading) => async (dispatch) => {
+    await Axios.post("/business-size", data, config)
+      .then((res) => {
+        if (res.data.status) {
+          dispatch({
+            type: CLIENT_BUSINESSSIZE,
+            payload: res.data.data,
+          });
+          navigate("/question1");
+          setLoading(false);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+        setLoading(false);
+      });
+  };

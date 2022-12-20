@@ -15,7 +15,7 @@ import {
   saveProposalArchived,
 } from "../../redux/actions/freelancerAction";
 
-const JonComponent = ({ jobId }) => {
+const JonComponent = ({ jobId, setLoading }) => {
   const dispatch = useDispatch();
   const jobBasedProposalsList = useSelector(
     (state) => state?.freelancer?.jobBasedProposalsList?.data
@@ -46,7 +46,8 @@ const JonComponent = ({ jobId }) => {
       // pagination:2
       // page:1
     };
-    dispatch(getAllJobProposalsList(data));
+    setLoading(true);
+    dispatch(getAllJobProposalsList(data, setLoading));
   }, [
     saveProposalInShortList,
     removeProposalInShortList,
@@ -58,14 +59,16 @@ const JonComponent = ({ jobId }) => {
     const data = {
       project_id: jobId,
     };
-    dispatch(getAllProposalShortList(data));
+    setLoading(true);
+    dispatch(getAllProposalShortList(data, setLoading));
   }, [saveProposalInShortList, removeProposalInShortList]);
 
   useEffect(() => {
     const data = {
       project_id: jobId,
     };
-    dispatch(getAllProposalArchievedList(data));
+    setLoading(true);
+    dispatch(getAllProposalArchievedList(data, setLoading));
   }, [removeProposalInArchieved, saveProposalInArchieved]);
 
   const handleSaveProposalShortList = (id) => {
@@ -73,7 +76,8 @@ const JonComponent = ({ jobId }) => {
       freelancer_id: id,
       job_id: jobId,
     };
-    dispatch(onSaveInShortList(data));
+    setLoading(true);
+    dispatch(onSaveInShortList(data, setLoading));
   };
 
   const handleRemoveProposalShortList = (id) => {
@@ -81,7 +85,8 @@ const JonComponent = ({ jobId }) => {
       freelancer_id: id,
       job_id: jobId,
     };
-    dispatch(onRemoveInShortList(data));
+    setLoading(true);
+    dispatch(onRemoveInShortList(data, setLoading));
   };
 
   const handleSaveProposalArchieved = (id) => {
@@ -89,7 +94,8 @@ const JonComponent = ({ jobId }) => {
       freelancer_id: id,
       job_id: jobId,
     };
-    dispatch(saveProposalArchived(data));
+    setLoading(true);
+    dispatch(saveProposalArchived(data, setLoading));
   };
 
   const handleRemoveProposalArchieved = (id) => {
@@ -97,7 +103,8 @@ const JonComponent = ({ jobId }) => {
       freelancer_id: id,
       job_id: jobId,
     };
-    dispatch(removeProposalArchived(data));
+    setLoading(true);
+    dispatch(removeProposalArchived(data, setLoading));
   };
 
   return (

@@ -5,17 +5,20 @@ import { Link } from "react-router-dom";
 import $ from "jquery";
 import RemoveDraftPopup from "../../../../popups/RemoveDraftPopup";
 import { getAllClientDraftPosting } from "../../../../redux/actions/jobActions";
+import LoadingSpinner from "../../../../components/LoadingSpinner";
 
 const AllDraftPostings = () => {
   const dispatch = useDispatch();
   const [menuBarDraft, setMenuBarDraft] = useState();
   const [removeDraft, setRemoveDraft] = useState(false);
+  const [loading, setLoading] = useState(false);
   const clientDraftPostingList = useSelector(
     (state) => state?.job?.allClientDraftPosting?.data
   );
 
   useEffect(() => {
-    dispatch(getAllClientDraftPosting());
+    setLoading(true);
+    dispatch(getAllClientDraftPosting(false, setLoading));
   }, []);
 
   $(document).mouseup(function (e) {
@@ -109,6 +112,7 @@ const AllDraftPostings = () => {
           onCloseModal={(e) => setRemoveDraft(false)}
         />
       )}
+      {loading ? <LoadingSpinner /> : null}
     </>
   );
 };

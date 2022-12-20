@@ -73,10 +73,10 @@ export const getFreelancerSkills = (data, setLoading) => async (dispatch) => {
         payload: res.data.data,
       });
     });
-    setLoading(false)
+    setLoading(false);
   } catch (err) {
-    if(setLoading){
-      setLoading(false)
+    if (setLoading) {
+      setLoading(false);
     }
   }
 };
@@ -125,15 +125,18 @@ export const onDeleteEmployment =
   };
 
 // CLIENT
-export const getClientInfoDetails = (data) => async (dispatch) => {
+export const getClientInfoDetails = (setLoading) => async (dispatch) => {
   try {
     await Axios.get(`/get-client-info`, config).then((res) => {
+      setLoading(false);
       dispatch({
         type: SET_CLIENT_INFO_DETAILS,
         payload: res.data.data.client,
       });
     });
-  } catch (err) {}
+  } catch (err) {
+    setLoading(false);
+  }
 };
 
 export const getIndustriesList = (data) => async (dispatch) => {
@@ -785,9 +788,11 @@ export const onRequestTestimonial =
   };
 
 export const onSubmitTestimonial =
-  (data, successPopup, setSuccessPopup, afterSuccess) => async (dispatch) => {
+  (data, successPopup, setSuccessPopup, afterSuccess, setLoading) =>
+  async (dispatch) => {
     try {
       Axios.post("/client-testimonial", data, config).then((res) => {
+        setLoading(false);
         setSuccessPopup(
           <SuccessPopup
             Popup={() => setSuccessPopup(!successPopup)}
@@ -796,7 +801,9 @@ export const onSubmitTestimonial =
           />
         );
       });
-    } catch (err) {}
+    } catch (err) {
+      setLoading(false);
+    }
   };
 
 export const onGetTestmonial =

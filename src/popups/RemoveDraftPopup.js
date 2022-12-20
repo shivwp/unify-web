@@ -4,7 +4,7 @@ import "react-responsive-modal/styles.css";
 import "./popup.css";
 import Button from 'react-bootstrap/Button'
 
-const RemoveDraftPopup = ({ open, onCloseModal }) => {
+const RemoveDraftPopup = ({ open, onCloseModal, setLoading }) => {
   return (
     <div>
       <Modal

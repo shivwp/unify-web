@@ -32,7 +32,6 @@ const SingleActiveProposal = () => {
   );
   const changeTerms = useSelector((state) => state?.job?.changeTerms);
 
-  console.log(changeTerms);
   useEffect(() => {
     setLoading(true);
     dispatch(singleProposalDetails(id, "active", setLoading));

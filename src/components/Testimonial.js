@@ -11,6 +11,8 @@ import { useEffect } from "react";
 import { Row, Col } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 
+import LoadingSpinner from "../components/LoadingSpinner";
+
 const Testimonial = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -18,12 +20,14 @@ const Testimonial = () => {
   const [editDetails, setEditDetails] = useState(false);
   const [successPopup, setSuccessPopup] = useState(false);
   const [errors, setErrors] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const id = useParams();
 
   const editClientDetails = () => {
     let errorExist = false;
     let errorsObject = {};
+    setLoading(true);
 
     if (
       values?.first_name === "" ||
@@ -41,18 +45,20 @@ const Testimonial = () => {
       errorsObject.last_name = "Please enter your last name";
       errorExist = true;
     }
-    if (
-      values?.title === "" ||
-      values?.title === null ||
-      values?.title === undefined
-    ) {
-      errorsObject.title = "Please enter your Title";
-      errorExist = true;
-    }
+    // if (
+    //   values?.title === "" ||
+    //   values?.title === null ||
+    //   values?.title === undefined
+    // ) {
+    //   errorsObject.title = "Please enter your Title";
+    //   errorExist = true;
+    // }
     if (errorExist) {
+      setLoading(false);
       setErrors(errorsObject);
       return false;
     }
+    setLoading(false);
     setEditDetails(false);
   };
 
@@ -60,7 +66,7 @@ const Testimonial = () => {
     setValues({ ...values, [e.target.name]: e.target.value });
     setErrors({ ...errors, [e.target.name]: false });
   };
-  
+
   const testimonialData = useSelector(
     (state) => state?.profile?.getTestimonial
   );
@@ -76,6 +82,7 @@ const Testimonial = () => {
   const onSave = () => {
     let errorExist = false;
     let errorsObject = {};
+    setLoading(true);
 
     if (
       values?.description === "" ||
@@ -105,16 +112,18 @@ const Testimonial = () => {
       errorsObject.last_name = "Please enter your last name";
       errorExist = true;
     }
-    if (
-      values?.title === "" ||
-      values?.title === null ||
-      values?.title === undefined
-    ) {
-      errorsObject.title = "Please enter your Title";
-      errorExist = true;
-    }
+    // if (
+    //   values?.title === "" ||
+    //   values?.title === null ||
+    //   values?.title === undefined
+    // ) {
+    //   errorsObject.title = "Please enter your Title";
+    //   errorExist = true;
+    // }
 
     if (errorExist) {
+      setLoading(false);
+      setEditDetails(true);
       setErrors(errorsObject);
       return false;
     }
@@ -126,9 +135,15 @@ const Testimonial = () => {
       last_name: values?.last_name,
       title: values.title,
     };
-    // dispatch(
-    //   onSubmitTestimonial(data, successPopup, setSuccessPopup, afterSuccess)
-    // );
+    dispatch(
+      onSubmitTestimonial(
+        data,
+        successPopup,
+        setSuccessPopup,
+        afterSuccess,
+        setLoading
+      )
+    );
   };
 
   return (
@@ -191,14 +206,14 @@ const Testimonial = () => {
                   {errors.description && errors.description}
                 </span>
                 <span style={{ fontSize: 12, color: "#7f7f7f" }}>
-                  {800 - values?.description?.length || 0} characters left
+                  {800 - (values?.description?.length || 0)} characters left
                 </span>
               </div>
             </div>
             <div className="your_info">
               <div className="heading">
                 Your Information{" "}
-                <Link to="#" onClick={() => setEditDetails(!editDetails)}>
+                <Link to="#" onClick={() => setEditDetails(true)}>
                   Edit This
                 </Link>
               </div>
@@ -213,7 +228,7 @@ const Testimonial = () => {
                   <div className="title">
                     <span style={{ width: "20%" }}>Title</span>
                     <span style={{ width: "80%" }}>{`${
-                      values?.title || "Project Manager"
+                      values?.title || ""
                     }`}</span>
                   </div>
                 </div>
@@ -289,6 +304,7 @@ const Testimonial = () => {
         </div>
       </div>
       {successPopup}
+      {loading ? <LoadingSpinner /> : null}
     </>
   );
 };

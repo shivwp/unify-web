@@ -8,7 +8,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { closeJobReasonList, onCloseJob } from "../redux/actions/jobActions";
 import { useNavigate } from "react-router-dom";
 
-const RemovePostingPopup = ({ open, onCloseModal, menuBarPosting }) => {
+const RemovePostingPopup = ({
+  open,
+  onCloseModal,
+  menuBarPosting,
+  setLoading,
+}) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -17,15 +22,14 @@ const RemovePostingPopup = ({ open, onCloseModal, menuBarPosting }) => {
   const [errors, setErrors] = useState(false);
 
   useEffect(() => {
-    dispatch(closeJobReasonList());
+    setLoading(true);
+    dispatch(closeJobReasonList(setLoading));
   }, []);
-
-  console.log(values)
-
 
   const handleCloseJob = () => {
     let errorExist = false;
     let errorsObject = {};
+    setLoading(true);
 
     if (
       values?.reason_id === "" ||
@@ -38,10 +42,11 @@ const RemovePostingPopup = ({ open, onCloseModal, menuBarPosting }) => {
 
     if (errorExist) {
       setErrors(errorsObject);
+      setLoading(false);
       return false;
     }
 
-    dispatch(onCloseJob(values, onCloseModal, navigate));
+    dispatch(onCloseJob(values, onCloseModal, navigate, setLoading));
   };
 
   return (

@@ -4,13 +4,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import Title from "../../../../components/title";
 import { getAllProposals } from "../../../../redux/actions/jobActions";
-
+import LoadingSpinner from "../../../../components/LoadingSpinner";
+import { useState } from "react";
 const Screen = () => {
   Title(" | Active Contract");
   const dispatch = useDispatch();
   const getAllProposal = useSelector((state) => state?.job?.getAllProposal);
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
-    dispatch(getAllProposals());
+    setLoading(true);
+    dispatch(getAllProposals(setLoading));
   }, []);
 
   return (
@@ -109,6 +112,7 @@ const Screen = () => {
           </div>
         </div>
       </Container>
+      {loading ? <LoadingSpinner /> : null}
     </>
   );
 };

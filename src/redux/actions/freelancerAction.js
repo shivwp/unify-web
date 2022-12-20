@@ -28,18 +28,21 @@ const config = {
   },
 };
 
-export const getJobBasedFreelancerList = (data) => async (dispatch) => {
-  await Axios.post(`/job-freelancer-list`, data, config)
-    .then((res) => {
-      dispatch({
-        type: SET_JOB_BASED_FREELANCER_LIST,
-        payload: res.data,
+export const getJobBasedFreelancerList =
+  (data, setLoading) => async (dispatch) => {
+    await Axios.post(`/job-freelancer-list`, data, config)
+      .then((res) => {
+        dispatch({
+          type: SET_JOB_BASED_FREELANCER_LIST,
+          payload: res.data,
+        });
+        setLoading(false);
+      })
+      .catch((err) => {
+        setLoading(false);
+        console.log(err);
       });
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-};
+  };
 
 export const inviteFreelancer = (data, onCloseModal) => async (dispatch) => {
   await Axios.post(`/invite-freelancer`, data, config)
@@ -57,20 +60,23 @@ export const inviteFreelancer = (data, onCloseModal) => async (dispatch) => {
     });
 };
 
-export const getAllInvitedFreelancers = (data) => async (dispatch) => {
-  await Axios.post(`/all-invite-freelancers`, data, config)
-    .then((res) => {
-      dispatch({
-        type: SET_INVITED_FREELANCER_LIST,
-        payload: res.data.data,
+export const getAllInvitedFreelancers =
+  (data, setLoading) => async (dispatch) => {
+    await Axios.post(`/all-invite-freelancers`, data, config)
+      .then((res) => {
+        dispatch({
+          type: SET_INVITED_FREELANCER_LIST,
+          payload: res.data.data,
+        });
+        setLoading(false);
+      })
+      .catch((err) => {
+        setLoading(false);
+        console.log(err);
       });
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-};
+  };
 
-export const onSavedTalent = (data) => async (dispatch) => {
+export const onSavedTalent = (data, setLoading) => async (dispatch) => {
   await Axios.post(`/save-talent`, data, config)
     .then((res) => {
       if (res.data.status) {
@@ -79,13 +85,15 @@ export const onSavedTalent = (data) => async (dispatch) => {
           payload: res.data,
         });
       }
+      setLoading(false);
     })
     .catch((err) => {
+      setLoading(false);
       console.log(err);
     });
 };
 
-export const onRemoveSavedTalent = (data) => async (dispatch) => {
+export const onRemoveSavedTalent = (data, setLoading) => async (dispatch) => {
   await Axios.post(`/remove-save-talent`, data, config)
     .then((res) => {
       if (res.data.status) {
@@ -94,13 +102,15 @@ export const onRemoveSavedTalent = (data) => async (dispatch) => {
           payload: res.data,
         });
       }
+      setLoading(false);
     })
     .catch((err) => {
+      setLoading(false);
       console.log(err);
     });
 };
 
-export const savedTalentList = (data) => async (dispatch) => {
+export const savedTalentList = (data, setLoading) => async (dispatch) => {
   await Axios.post(`/save-talent-list`, data, config)
     .then((res) => {
       if (res.data.status) {
@@ -108,12 +118,15 @@ export const savedTalentList = (data) => async (dispatch) => {
           type: SET_SAVED_TALENT_LIST,
           payload: res.data.data,
         });
+        setLoading(false);
       }
     })
-    .catch((err) => {});
+    .catch((err) => {
+      setLoading(false);
+    });
 };
 
-export const makePrivatePublicJob = (data) => async (dispatch) => {
+export const makePrivatePublicJob = (data, setLoading) => async (dispatch) => {
   await Axios.post("/public-private-job", data, config)
     .then((res) => {
       if (res.data.status) {
@@ -122,43 +135,51 @@ export const makePrivatePublicJob = (data) => async (dispatch) => {
           payload: res.data,
         });
       }
+      setLoading(false);
     })
     .catch((err) => {
       console.log(err);
+      setLoading(false);
     });
 };
 
-export const getAllJobProposalsList = (data) => async (dispatch) => {
-  await Axios.post(`/job-proposal-list`, data, config)
-    .then((res) => {
-      if (res.data.status) {
-        dispatch({
-          type: SET_ALL_JOB_PROPOSALS_LIST,
-          payload: res.data,
-        });
-      }
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-};
+export const getAllJobProposalsList =
+  (data, setLoading) => async (dispatch) => {
+    await Axios.post(`/job-proposal-list`, data, config)
+      .then((res) => {
+        if (res.data.status) {
+          dispatch({
+            type: SET_ALL_JOB_PROPOSALS_LIST,
+            payload: res.data,
+          });
+        }
+        setLoading(false);
+      })
+      .catch((err) => {
+        setLoading(false);
+        console.log(err);
+      });
+  };
 
-export const getAllProposalShortList = (data) => async (dispatch) => {
-  await Axios.get(`/shortlist-list/${data.project_id}`, config)
-    .then((res) => {
-      if (res.data.status) {
-        dispatch({
-          type: SET_PROPOSAL_SHORTLIST,
-          payload: res.data.data,
-        });
-      }
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-};
+export const getAllProposalShortList =
+  (data, setLoading) => async (dispatch) => {
+    await Axios.get(`/shortlist-list/${data.project_id}`, config)
+      .then((res) => {
+        if (res.data.status) {
+          dispatch({
+            type: SET_PROPOSAL_SHORTLIST,
+            payload: res.data.data,
+          });
+        }
+        setLoading(false);
+      })
+      .catch((err) => {
+        setLoading(false);
+        console.log(err);
+      });
+  };
 
-export const onSaveInShortList = (data) => async (dispatch) => {
+export const onSaveInShortList = (data, setLoading) => async (dispatch) => {
   await Axios.post(`/save-shortlist`, data, config)
     .then((res) => {
       if (res.data.status) {
@@ -167,12 +188,14 @@ export const onSaveInShortList = (data) => async (dispatch) => {
           payload: res.data,
         });
       }
+      setLoading(false);
     })
     .catch((err) => {
       console.log(err);
+      setLoading(false);
     });
 };
-export const onRemoveInShortList = (data) => async (dispatch) => {
+export const onRemoveInShortList = (data, setLoading) => async (dispatch) => {
   await Axios.post(`/remove-shortlist`, data, config)
     .then((res) => {
       if (res.data.status) {
@@ -181,28 +204,33 @@ export const onRemoveInShortList = (data) => async (dispatch) => {
           payload: res.data,
         });
       }
+      setLoading(false);
     })
     .catch((err) => {
+      setLoading(false);
       console.log(err);
     });
 };
 
-export const getAllProposalArchievedList = (data) => async (dispatch) => {
-  await Axios.get(`/arvhive-list/${data.project_id}`, config)
-    .then((res) => {
-      if (res.data.status) {
-        dispatch({
-          type: SET_ARCHIEVED_LIST,
-          payload: res.data.data,
-        });
-      }
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-};
+export const getAllProposalArchievedList =
+  (data, setLoading) => async (dispatch) => {
+    await Axios.get(`/arvhive-list/${data.project_id}`, config)
+      .then((res) => {
+        if (res.data.status) {
+          dispatch({
+            type: SET_ARCHIEVED_LIST,
+            payload: res.data.data,
+          });
+        }
+        setLoading(false);
+      })
+      .catch((err) => {
+        setLoading(false);
+        console.log(err);
+      });
+  };
 
-export const saveProposalArchived = (data) => async (dispatch) => {
+export const saveProposalArchived = (data, setLoading) => async (dispatch) => {
   await Axios.post(`/save-archive`, data, config)
     .then((res) => {
       if (res.data.status) {
@@ -211,25 +239,30 @@ export const saveProposalArchived = (data) => async (dispatch) => {
           payload: res.data,
         });
       }
+      setLoading(false);
     })
     .catch((err) => {
+      setLoading(false);
       console.log(err);
     });
 };
-export const removeProposalArchived = (data) => async (dispatch) => {
-  await Axios.post(`/remove-archive`, data, config)
-    .then((res) => {
-      if (res.data.status) {
-        dispatch({
-          type: SET_REMOVE_PROPOSAL_IN_ARCHIEVED,
-          payload: res.data,
-        });
-      }
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-};
+export const removeProposalArchived =
+  (data, setLoading) => async (dispatch) => {
+    await Axios.post(`/remove-archive`, data, config)
+      .then((res) => {
+        if (res.data.status) {
+          dispatch({
+            type: SET_REMOVE_PROPOSAL_IN_ARCHIEVED,
+            payload: res.data,
+          });
+        }
+        setLoading(false);
+      })
+      .catch((err) => {
+        setLoading(false);
+        console.log(err);
+      });
+  };
 
 export const getSingleFreelancer = (freelancer_id) => async (dispatch) => {
   await Axios.get(`/single-freelancer/${freelancer_id}`, config)

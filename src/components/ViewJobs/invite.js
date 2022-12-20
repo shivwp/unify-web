@@ -13,7 +13,7 @@ import {
   savedTalentList,
 } from "../../redux/actions/freelancerAction";
 
-const JonComponent = ({ jobId, setCurrentTab }) => {
+const JonComponent = ({ jobId, setCurrentTab, setLoading }) => {
   const dispatch = useDispatch();
   const [searchValue, setSearchValue] = useState("");
   const [inviteTab, setInviteTab] = useState("searchFreelancer");
@@ -38,7 +38,8 @@ const JonComponent = ({ jobId, setCurrentTab }) => {
     const data = {
       project_id: jobId,
     };
-    dispatch(getAllInvitedFreelancers(data));
+    setLoading(true);
+    dispatch(getAllInvitedFreelancers(data, setLoading));
   }, [invitedFreelancer, savedTalent, removeSavedTalent]);
 
   useEffect(() => {
@@ -48,10 +49,12 @@ const JonComponent = ({ jobId, setCurrentTab }) => {
       // page: 1,
       // title: "Aaquib",
     };
-    dispatch(getJobBasedFreelancerList(data));
+    setLoading(true);
+    dispatch(getJobBasedFreelancerList(data, setLoading));
   }, [savedTalent, removeSavedTalent, invitedFreelancer]);
 
   useEffect(() => {
+    setLoading(true);
     dispatch(savedTalentList());
   }, [savedTalent, removeSavedTalent]);
 
@@ -61,12 +64,12 @@ const JonComponent = ({ jobId, setCurrentTab }) => {
 
   const onSearchSubmit = (e) => {
     e.preventDefault();
-
+    setLoading(true);
     const data = {
       project_id: jobId,
       title: searchValue,
     };
-    dispatch(getJobBasedFreelancerList(data));
+    dispatch(getJobBasedFreelancerList(data, setLoading));
   };
 
   const onRemoveSearchData = () => {
@@ -74,21 +77,24 @@ const JonComponent = ({ jobId, setCurrentTab }) => {
     const data = {
       project_id: jobId,
     };
-    dispatch(getJobBasedFreelancerList(data));
+    setLoading(true);
+    dispatch(getJobBasedFreelancerList(data, setLoading));
   };
 
   const handleSavedTalent = (id) => {
     const data = {
       freelancer_id: id,
     };
-    dispatch(onSavedTalent(data));
+    setLoading(true);
+    dispatch(onSavedTalent(data, setLoading));
   };
 
   const handleRemoveSavedTalent = (id) => {
     const data = {
       freelancer_id: id,
     };
-    dispatch(onRemoveSavedTalent(data));
+    setLoading(true);
+    dispatch(onRemoveSavedTalent(data, setLoading));
   };
 
   return (

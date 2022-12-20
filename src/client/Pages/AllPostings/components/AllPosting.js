@@ -5,17 +5,19 @@ import { Link } from "react-router-dom";
 import $ from "jquery";
 import RemovePostingPopup from "../../../../popups/RemovePostingPopup";
 import { getAllClientPosting } from "../../../../redux/actions/jobActions";
-
+import LoadingSpinner from "../../../../components/LoadingSpinner";
 const AllPosting = () => {
   const dispatch = useDispatch();
   const [menuBarPosting, setMenuBarPosting] = useState();
   const [removePosting, setRemovePosting] = useState(false);
+  const [loading, setLoading] = useState(false);
   const clientPostingList = useSelector(
     (state) => state?.job?.allClientPosting?.data
   );
 
   useEffect(() => {
-    dispatch(getAllClientPosting());
+    setLoading(true);
+    dispatch(getAllClientPosting(false, setLoading));
   }, []);
 
   $(document).mouseup(function (e) {
@@ -146,6 +148,7 @@ const AllPosting = () => {
           onCloseModal={(e) => setRemovePosting(false)}
         />
       )}
+      {loading ? <LoadingSpinner /> : null}
     </>
   );
 };

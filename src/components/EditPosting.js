@@ -14,6 +14,7 @@ import { getCategoryList } from "../redux/actions/profileAction";
 import ProjectBudgetPopup from "../popups/ProjectBudgetPopup";
 import ScopePopup from "../popups/ScopePopup";
 import EditSkillsPopup from "../popups/EditSkillsPopup";
+import LoadingSpinner from "../components/LoadingSpinner";
 
 const EditPosting = () => {
   const { editId } = useParams();
@@ -23,6 +24,7 @@ const EditPosting = () => {
   const [objectUrl, setObjectUrl] = useState();
   const [values, setValues] = useState({});
   const [categoryPopup, setCategoryPopup] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [projectBudgetPopup, setProjectBudgetPopup] = useState(false);
   const [scopePopup, setScopePopup] = useState(false);
   const [skillPopup, setSkillPopup] = useState(false);
@@ -47,14 +49,16 @@ const EditPosting = () => {
   }, [categoryList, values]);
 
   useEffect(() => {
-    dispatch(getCategoryList());
+    setLoading(true);
+    dispatch(getCategoryList(setLoading));
   }, []);
 
   useEffect(() => {
     const data = {
       job_id: editId,
     };
-    dispatch(singleJobPostDetails(data));
+    setLoading(true);
+    dispatch(singleJobPostDetails(data, setLoading));
   }, []);
 
   const onInputChange = (e) => {
@@ -68,6 +72,7 @@ const EditPosting = () => {
 
   const saveEditJobPost = () => {
     const formData = new FormData();
+    setLoading(true)
 
     formData.append("project_id", editId);
     formData.append("job_type", values?.type);
@@ -94,7 +99,7 @@ const EditPosting = () => {
     formData.append("status", values?.status);
     formData.append("image", imageFile);
 
-    dispatch(editJobPosting(formData, navigate));
+    dispatch(editJobPosting(formData, navigate, setLoading));
   };
 
   return (
@@ -348,6 +353,7 @@ const EditPosting = () => {
           onCloseModal={() => setSkillPopup(false)}
         />
       )}
+      {loading ? <LoadingSpinner /> : null}
     </>
   );
 };

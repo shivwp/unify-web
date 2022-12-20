@@ -255,6 +255,7 @@ const UnifyFreelancer = () => {
   const addExprience = useSelector((state) => state?.profile?.addExprience);
 
   useEffect(() => {
+    setLoading(true)
     dispatch(getFreelancerProfile(setLoading));
   }, [
     deleteExprience,

@@ -10,6 +10,7 @@ import {
   getAllClientDraftPosting,
   getAllClientPosting,
 } from "../../../../redux/actions/jobActions";
+import LoadingSpinner from "../../../../components/LoadingSpinner";
 
 const Screen = () => {
   const dispatch = useDispatch();
@@ -17,6 +18,7 @@ const Screen = () => {
   const [menuBarDraft, setMenuBarDraft] = useState();
   const [removePosting, setRemovePosting] = useState(false);
   const [removeDraft, setRemoveDraft] = useState(false);
+  const [loading, setLoading] = useState(false);
   const clientPostingList = useSelector(
     (state) => state?.job?.allClientPosting?.data
   );
@@ -29,8 +31,9 @@ const Screen = () => {
   const userDetails = JSON.parse(sessionStorage.getItem("unify_user"));
 
   useEffect(() => {
-    dispatch(getAllClientPosting());
-    dispatch(getAllClientDraftPosting());
+    setLoading(true);
+    dispatch(getAllClientPosting(false, setLoading));
+    dispatch(getAllClientDraftPosting(false, setLoading));
   }, [postYourJob, removeJobPosted, updateJobPosted]);
 
   Title(" | Dashboard");
@@ -385,14 +388,17 @@ const Screen = () => {
           open={removePosting}
           onCloseModal={(e) => setRemovePosting(false)}
           menuBarPosting={menuBarPosting || menuBarDraft}
+          setLoading={setLoading}
         />
       )}
       {removeDraft && (
         <RemoveDraftPopup
           open={removeDraft}
           onCloseModal={(e) => setRemoveDraft(false)}
+          setLoading={setLoading}
         />
       )}
+      {loading ? <LoadingSpinner /> : null}
     </>
   );
 };

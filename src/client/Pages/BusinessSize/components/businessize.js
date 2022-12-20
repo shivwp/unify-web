@@ -8,6 +8,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setClientCompnySize } from "../../../../redux/actions/authActions";
 import { getClientInfoDetails } from "../../../../redux/actions/profileAction";
+import LoadingSpinner from "../../../../components/LoadingSpinner";
 
 const Bsize = () => {
   Title(" | Business Size");
@@ -15,6 +16,7 @@ const Bsize = () => {
   const [values, setValues] = useState({});
   const [errors, setErrors] = useState({});
   const dispatch = useDispatch();
+  const [loading, setLoading] = useState(false);
   const getClientDetails = useSelector(
     (state) => state.profile.getClientDetails
   );
@@ -29,12 +31,14 @@ const Bsize = () => {
     setErrors({ ...errors, [e.target.name]: false });
   };
   useEffect(() => {
-    dispatch(getClientInfoDetails());
+    setLoading(true);
+    dispatch(getClientInfoDetails(setLoading));
   }, []);
 
   const onNext = () => {
     let errorExist = false;
     let errorsObject = {};
+    setLoading(true);
 
     if (
       values?.employee_no === "" ||
@@ -47,9 +51,10 @@ const Bsize = () => {
 
     if (errorExist) {
       setErrors(errorsObject);
+      setLoading(false);
       return false;
     }
-    dispatch(setClientCompnySize(values, navigate));
+    dispatch(setClientCompnySize(values, navigate, setLoading));
   };
 
   return (
@@ -216,6 +221,7 @@ const Bsize = () => {
           </div>
         </div>
       </Container>
+      {loading ? <LoadingSpinner /> : null}
     </>
   );
 };
