@@ -452,7 +452,8 @@
 /* ================ successs popup ======================== */
 
 .success_popup {
-  max-width: 400px;
+  max-width: 400px !important;
+  min-width: 300px;
   position: relative;
   top: -15%;
 }
@@ -460,11 +461,13 @@
 .success_popup .success_heading {
   display: flex;
   justify-content: center;
+  align-items: center;
   position: relative;
   top: -15px;
   color: #6d2ef1;
   font-weight: 600;
   margin-top: 30px;
+  flex-direction: column;
 }
 
 .success_popup .sucess_message {
@@ -495,6 +498,59 @@
   -webkit-border-radius: 60px !important;
 }
 
+/* Error Popup start */
+
+.error_popup {
+  max-width: 400px !important;
+  min-width: 300px;
+  position: relative;
+  /* top: -15%; */
+}
+
+.error_popup .error_heading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  top: -15px;
+  color: #6d2ef1;
+  font-weight: 600;
+  margin-top: 30px;
+  flex-direction: column;
+}
+
+.error_popup .error_message {
+  display: flex;
+  justify-content: center;
+  font-weight: 400;
+  color: #000;
+}
+.error_popup .error_message > div {
+  text-align: center;
+}
+.error_popup .errorMessage {
+  color: #6d2ef1;
+}
+.error_popup .error_popup_btn {
+  display: flex;
+  justify-content: center;
+}
+.error_popup .error_popup_btn button {
+  background-color: #6d2ef1;
+  color: #fff;
+  font: normal normal medium 18px/30px Poppins !important;
+  font-weight: bold;
+  border-radius: 60px !important;
+  text-transform: uppercase;
+  padding: 8px 34px;
+  margin-top: 30px;
+  min-width: 129px;
+  margin-right: 15px;
+  border: #6d2ef1 solid 1px;
+  -webkit-border-radius: 60px !important;
+}
+
+/* Error Popup end */
 .hourly_price {
   margin-bottom: 30px;
 }

@@ -36,6 +36,7 @@ import AddCert from "./popups/AddCert";
 import ReqTestimonial from "./popups/ReqTestimonial";
 import StarRating from "../../../components/rating/Rating";
 import LoadingSpinner from "../../../../components/LoadingSpinner";
+import ErrorPopup from "../../../components/popups/ErrorPopup";
 
 function PortfolioPaginate({
   itemsPerPage,
@@ -203,8 +204,10 @@ const UnifyFreelancer = () => {
   const [editPortfoData, setEditPortfoData] = useState([]);
   const [confirmPopup, setConfirmPopup] = useState(false);
   const [successPopup, setSuccessPopup] = useState(false);
+  const [errorPopup, setErrorPopup] = useState(false);
   const [showDescription, setShowDescription] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [errors, setErrors] = useState({});
 
   const deleteExprience = useSelector(
     (state) => state?.profile?.deleteExprience
@@ -295,16 +298,35 @@ const UnifyFreelancer = () => {
   const onProfleImgChange = (e) => {
     setLoading(true);
     const profileImage = e.target.files[0];
+    let errorExit = false;
+    if (!profileImage?.name.match(/\.(jpg|jpeg|png)$/)) {
+      setErrors({
+        ...errors,
+        profileImage: "Image type must be JPG, JPEG or PNG format.",
+      });
+      errorExit = true;
+    }
+    if (profileImage?.size > 1048576 * 10) {
+      setErrors({
+        ...errors,
+        profileImage: "Image size must be maximum 10 MB",
+      });
+      errorExit = true;
+    }
+    if (errorExit) {
+      setLoading(false);
+      return false;
+    }
     setShowingProImage(URL.createObjectURL(e.target.files[0]));
     const formData = new FormData();
     formData.append("first_name", basicInfo?.first_name);
     formData.append("last_name", basicInfo?.last_name);
     formData.append("occcuption", basicInfo?.occuption);
     formData.append("profile_image", profileImage);
+    setErrors({ ...errors, profileImage: false });
 
     dispatch(editNameInfo(formData, successPopup, setSuccessPopup, setLoading));
   };
-
   const IntroVideoThumb = ({ data }) => {
     let vidId = data?.url?.split("v=")[1]?.substring(0, 11);
     vidId = vidId || data?.url?.split("youtu.be/")[1];
@@ -423,6 +445,7 @@ const UnifyFreelancer = () => {
                     />
                   </Form.Label>
                 </div>
+
                 <div className="han_oad">
                   <div
                     className="freelancer_name font-size-20px"
@@ -453,6 +476,7 @@ const UnifyFreelancer = () => {
                   </div>
                 </div>
               </div>
+              <p className="uploadImgEror"> {errors.profileImage} </p>
               <div className="profile_pf_btn">
                 <Link to="/freelancer/contact-info">
                   <Button variant="">Profile Setting</Button>
@@ -1680,6 +1704,7 @@ const UnifyFreelancer = () => {
       {popup}
       {confirmPopup}
       {successPopup}
+      {errorPopup}
     </div>
   );
 };

@@ -58,10 +58,14 @@ export const getFreelancerProfile = (setLoading) => async (dispatch) => {
         type: SET_FREELANCER_PROFILE,
         payload: res.data.data,
       });
-      setLoading(false);
+      if (setLoading) {
+        setLoading(false);
+      }
     });
   } catch (err) {
-    setLoading(false);
+    if (setLoading) {
+      setLoading(false);
+    }
   }
 };
 
@@ -73,10 +77,12 @@ export const getFreelancerSkills = (data, setLoading) => async (dispatch) => {
         payload: res.data.data,
       });
     });
-    setLoading(false)
+    if (setLoading) {
+      setLoading(false);
+    }
   } catch (err) {
-    if(setLoading){
-      setLoading(false)
+    if (setLoading) {
+      setLoading(false);
     }
   }
 };
@@ -234,10 +240,14 @@ export const getFreelancerDegreeList = (setLoading) => async (dispatch) => {
         type: SET_DEGREE_LIST,
         payload: res.data.data,
       });
-      setLoading(false);
+      if (setLoading) {
+        setLoading(false);
+      }
     });
   } catch (err) {
-    setLoading(false);
+    if (setLoading) {
+      setLoading(false);
+    }
   }
 };
 

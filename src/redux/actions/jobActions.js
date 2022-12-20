@@ -58,11 +58,15 @@ export const getSavedJobsList =
           type: SAVED_JOBS_LIST,
           payload: res.data,
         });
-        setLoading(false);
+        if (setLoading) {
+          setLoading(false);
+        }
         ScrollTop();
       });
     } catch (err) {
-      setLoading(false);
+      if (setLoading) {
+        setLoading(false);
+      }
     }
   };
 export const saveJobs = (data, setLoading) => async (dispatch) => {
@@ -72,10 +76,14 @@ export const saveJobs = (data, setLoading) => async (dispatch) => {
         type: SAVE_JOB_POST,
         payload: res.data,
       });
-      setLoading(false);
+      if (setLoading) {
+        setLoading(false);
+      }
     });
   } catch (err) {
-    setLoading(false);
+    if (setLoading) {
+      setLoading(false);
+    }
   }
 };
 export const removeSaveJob = (data, setLoading) => async (dispatch) => {
@@ -85,10 +93,14 @@ export const removeSaveJob = (data, setLoading) => async (dispatch) => {
         type: UNSAVE_JOB_POST,
         payload: res.data,
       });
-      setLoading(false);
+      if (setLoading) {
+        setLoading(false);
+      }
     });
   } catch (err) {
-    setLoading(false);
+    if (setLoading) {
+      setLoading(false);
+    }
   }
 };
 export const singleJobPostDetails = (data, setLoading) => async (dispatch) => {
@@ -98,10 +110,14 @@ export const singleJobPostDetails = (data, setLoading) => async (dispatch) => {
         type: JOB_POST_DETAILS,
         payload: res.data.data,
       });
-      setLoading(false);
+      if (setLoading) {
+        setLoading(false);
+      }
     });
   } catch (err) {
-    setLoading(false);
+    if (setLoading) {
+      setLoading(false);
+    }
   }
 };
 export const onSendJobProposal =
@@ -140,10 +156,14 @@ export const onDislikePostReasons = (setLoading) => async (dispatch) => {
         type: DISLIKE_POST_REASONS,
         payload: res.data.data,
       });
-      setLoading(false);
+      if (setLoading) {
+        setLoading(false);
+      }
     });
   } catch (err) {
-    setLoading(false);
+    if (setLoading) {
+      setLoading(false);
+    }
   }
 };
 export const onDislikeJobPost =
@@ -155,10 +175,14 @@ export const onDislikeJobPost =
           payload: res.data,
         });
         setDropdownOpen(false);
-        setLoading(false);
+        if (setLoading) {
+          setLoading(false);
+        }
       });
     } catch (err) {
-      setLoading(false);
+      if (setLoading) {
+        setLoading(false);
+      }
     }
   };
 
@@ -269,11 +293,15 @@ export const singleProposalDetails =
             type: SET_SINGLE_PROPOSAL_DETAILS,
             payload: res.data.data,
           });
-          setLoading(false);
+          if (setLoading) {
+            setLoading(false);
+          }
         }
       );
     } catch (err) {
-      setLoading(false);
+      if (setLoading) {
+        setLoading(false);
+      }
     }
   };
 export const declineReasoneList = (type, setLoading) => async (dispatch) => {
@@ -283,10 +311,14 @@ export const declineReasoneList = (type, setLoading) => async (dispatch) => {
         type: DECLINE_REASONS_LIST,
         payload: res.data.data,
       });
-      setLoading(false);
+      if (setLoading) {
+        setLoading(false);
+      }
     });
   } catch (err) {
-    setLoading(false);
+    if (setLoading) {
+      setLoading(false);
+    }
   }
 };
 
@@ -303,10 +335,14 @@ export const onDeclineForInterview =
             afterSuccess={afterSuccess}
           />
         );
-        setLoading(false);
+        if (setLoading) {
+          setLoading(false);
+        }
       });
     } catch (err) {
-      setLoading(false);
+      if (setLoading) {
+        setLoading(false);
+      }
     }
   };
 export const onWithdrawSubmitedProposal =
@@ -315,7 +351,9 @@ export const onWithdrawSubmitedProposal =
     try {
       Axios.post("/proposal-withdraw", data, config).then((res) => {
         popup();
-        setLoading(false);
+        if (setLoading) {
+          setLoading(false);
+        }
         setSuccessPopup(
           <SuccessPopup
             Popup={() => setSuccessPopup(!successPopup)}
@@ -325,7 +363,9 @@ export const onWithdrawSubmitedProposal =
         );
       });
     } catch (err) {
-      setLoading(false);
+      if (setLoading) {
+        setLoading(false);
+      }
     }
   };
 
@@ -341,7 +381,9 @@ export const onChangeTermsOfProposals =
         if (popup) {
           popup();
         }
-        setLoading(false);
+        if (setLoading) {
+          setLoading(false);
+        }
         setSuccessPopup(
           <SuccessPopup
             Popup={() => setSuccessPopup(!successPopup)}
@@ -350,7 +392,9 @@ export const onChangeTermsOfProposals =
         );
       });
     } catch (err) {
-      setLoading(false);
+      if (setLoading) {
+        setLoading(false);
+      }
     }
   };
 
