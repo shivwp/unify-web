@@ -1776,7 +1776,7 @@ body {
   position: relative;
 }
 
-@media only screen and (max-width: 425px) {
+@media only screen and (max-width: 500px) {
   .nav_pro_node {
     position: absolute;
     right: 31px;
@@ -1893,6 +1893,12 @@ body {
   display: flex;
   align-items: center;
   gap: 10px;
+}
+
+@media screen and (max-width: 425px) {
+  .report_left_caewe .dropdown-menu{
+    left: 0;
+  }
 }
 
 .profile_box {

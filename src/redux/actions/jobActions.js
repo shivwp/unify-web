@@ -336,7 +336,7 @@ export const onChangeTermsOfProposals =
       Axios.post("/update-proposal", data, config).then((res) => {
         dispatch({
           type: PROPOSAL_TERMS_CHANGE,
-          payload: res.data.data,
+          payload: res.data,
         });
         if (popup) {
           popup();
