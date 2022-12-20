@@ -253,7 +253,7 @@ export const onPasswordChange =
     }
   };
 
-export const onOnlineStatus = (data, navigate) => async (dispatch) => {
+export const onOnlineStatus = (data, setLoading) => async (dispatch) => {
   try {
     const res = await Axios.post(`/online-status`, data, config);
     if (res.data.status) {
@@ -261,8 +261,16 @@ export const onOnlineStatus = (data, navigate) => async (dispatch) => {
         type: SET_ONLINE_STATUS,
         payload: res.data,
       });
+      if (setLoading) {
+        setLoading(false);
+      }
+      // window.location.reload();
     }
-  } catch (err) {}
+  } catch (err) {
+    if (setLoading) {
+      setLoading(false);
+    }
+  }
 };
 
 export const googleSignInSuccess =

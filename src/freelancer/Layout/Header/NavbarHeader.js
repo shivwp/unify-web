@@ -7,11 +7,13 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { onOnlineStatus } from "../../../redux/actions/authActions";
 import { useDispatch } from "react-redux";
+import LoadingSpinner from "../../../components/LoadingSpinner";
 
 const NavbarHeader = (props) => {
   const history = useNavigate();
   const dispatch = useDispatch();
   const [navOpen, SetnavOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [activeNav, SetactiveNav] = useState("");
   const [isDownOpen, SetisDownOpen] = useState(false);
   let userDetails = JSON.parse(sessionStorage.getItem("unify_user"));
@@ -32,11 +34,11 @@ const NavbarHeader = (props) => {
     const data = {
       online_status: e.target.value,
     };
-
+    setLoading(true);
     userDetails.online_status = e.target.value;
     sessionStorage.setItem("unify_user", JSON.stringify(userDetails));
 
-    dispatch(onOnlineStatus(data));
+    dispatch(onOnlineStatus(data, setLoading));
   };
   const MenuDown = () => {
     return (
@@ -547,6 +549,7 @@ const NavbarHeader = (props) => {
           {isDownOpen === true ? <MenuDown /> : ""}
         </Container>
       </Navbar>
+      {loading ? <LoadingSpinner /> : null}
     </>
   );
 };
