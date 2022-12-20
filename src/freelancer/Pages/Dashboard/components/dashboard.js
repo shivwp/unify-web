@@ -738,7 +738,7 @@ const Screen = () => {
               </div>
             </div>
             <Row>
-              <div className="mt-4 mb-4 d-flex justify-content-between flex-wrap">
+              <div className="dashboardHead">
                 <Col lg={5}>
                   <div className="welcome_ax_dboard">
                     Welcome to your <br /> Dashboard{" "}
@@ -756,7 +756,7 @@ const Screen = () => {
                   </div>
                 </Col>
                 <Col lg={3}>
-                  <div className="hourly_amout_nodeUnicon">
+                  <div className="hourly_amout_nodeUnicon dashboardWalletIcon no-border">
                     <div className="wallet_icon">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -814,7 +814,7 @@ const Screen = () => {
                   </div>
                 </Col>
                 <Col lg={4}>
-                  <div className="hourly_amout_node flex-wrap">
+                  <div className="hourly_amout_node flex-wrap dashboardWalletIcon ">
                     <div className="wallet_icon">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"

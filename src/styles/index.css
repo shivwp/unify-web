@@ -1896,7 +1896,7 @@ body {
 }
 
 @media screen and (max-width: 425px) {
-  .report_left_caewe .dropdown-menu{
+  .report_left_caewe .dropdown-menu {
     left: 0;
   }
 }
@@ -2219,6 +2219,21 @@ body {
 .dashboardEarning {
   display: flex;
 }
+.dashboardHead {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+.dashboardWalletIcon {
+  display: flex;
+  align-items: self-end;
+  padding: 13px 0px;
+  max-width: 85%;
+  margin: 0 auto;
+  border-bottom: 1px solid #7070703b;
+}
 .dashboradTotalProject {
   display: flex;
   flex-direction: column;
@@ -2237,7 +2252,7 @@ body {
 }
 
 .wallet_icon svg {
-  height: 110px;
+  height: unset;
   width: 80px;
   fill: #eeeeee;
   padding: 0px 10px;
@@ -4809,6 +4824,26 @@ body {
   -moz-border-radius: 20px;
   -ms-border-radius: 20px;
   -o-border-radius: 20px;
+}
+
+@media only screen and (max-width: 320px) {
+  .subscriptionResp {
+    width: unset;
+    max-width: 110%;
+  }
+  .font-fiftie {
+    font-size: 40px !important;
+  }
+  .blue_lin h1::before {
+    z-index: -1;
+    content: " ";
+    position: absolute;
+    top: 24px;
+    left: 18%;
+    width: 220px;
+    background-color: #ff88fe;
+    height: 14px;
+  }
 }
 
 .sub_radio {

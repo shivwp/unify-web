@@ -6,7 +6,6 @@ import Form from "react-bootstrap/Form";
 import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  editJobPosting,
   onPostYourJobNow,
   singleJobPostDetails,
 } from "../redux/actions/jobActions";

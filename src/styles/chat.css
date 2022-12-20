@@ -1012,6 +1012,7 @@
   color: #6b6b6b;
   line-height: 22px;
   white-space: pre-line;
+  text-align: justify;
 }
 
 .vmode_slide {
@@ -1047,6 +1048,7 @@
   align-items: center;
   background-color: #223750;
   padding: 50px 20px;
+  margin-top: 11px;
   flex-wrap: wrap;
   position: relative;
 }
