@@ -245,10 +245,14 @@ export const closeJobReasonList = (setLoading) => async (dispatch) => {
         type: SET_CLOSE_JOB_REASON_LIST,
         payload: res.data.data,
       });
-      setLoading(false);
+      if (setLoading) {
+        setLoading(false);
+      }
     });
   } catch (err) {
-    setLoading(false);
+    if (setLoading) {
+      setLoading(false);
+    }
   }
 };
 
@@ -264,10 +268,14 @@ export const onCloseJob =
           onCloseModal();
           navigate("/dashboard");
         }
-        setLoading(false);
+        if (setLoading) {
+          setLoading(false);
+        }
       });
     } catch (err) {
-      setLoading(false);
+      if (setLoading) {
+        setLoading(false);
+      }
     }
   };
 
@@ -280,26 +288,34 @@ export const editJobPosting =
             type: SET_UPDATE_JOB_POST,
             payload: res.data,
           });
-          setLoading(false);
           navigate("/dashboard");
+        }
+        if (setLoading) {
+          setLoading(false);
         }
       });
     } catch (err) {
-      setLoading(false);
+      if (setLoading) {
+        setLoading(false);
+      }
     }
   };
 
 export const getAllProposals = (setLoading) => async (dispatch) => {
   try {
     Axios.get("/all-proposal", config).then((res) => {
-      setLoading(false);
+      if (setLoading) {
+        setLoading(false);
+      }
       dispatch({
         type: SET_ALL_PROPOSALS,
         payload: res.data.data,
       });
     });
   } catch (err) {
-    setLoading(false);
+    if (setLoading) {
+      setLoading(false);
+    }
   }
 };
 export const onGetAllContracts = () => async (dispatch) => {
@@ -448,7 +464,9 @@ export const onAcceptOffer =
   async (dispatch) => {
     try {
       Axios.get(`/accept-offer/${id}`, config).then((res) => {
-        setLoading(false);
+        if (setLoading) {
+          setLoading(false);
+        }
         setSuccessPopup(
           <SuccessPopup
             Popup={() => setSuccessPopup(!successPopup)}
@@ -458,6 +476,8 @@ export const onAcceptOffer =
         );
       });
     } catch (err) {
-      setLoading(false);
+      if (setLoading) {
+        setLoading(false);
+      }
     }
   };

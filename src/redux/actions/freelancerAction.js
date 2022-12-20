@@ -36,10 +36,14 @@ export const getJobBasedFreelancerList =
           type: SET_JOB_BASED_FREELANCER_LIST,
           payload: res.data,
         });
-        setLoading(false);
+        if (setLoading) {
+          setLoading(false);
+        }
       })
       .catch((err) => {
-        setLoading(false);
+        if (setLoading) {
+          setLoading(false);
+        }
         console.log(err);
       });
   };
@@ -68,10 +72,14 @@ export const getAllInvitedFreelancers =
           type: SET_INVITED_FREELANCER_LIST,
           payload: res.data.data,
         });
-        setLoading(false);
+        if (setLoading) {
+          setLoading(false);
+        }
       })
       .catch((err) => {
-        setLoading(false);
+        if (setLoading) {
+          setLoading(false);
+        }
         console.log(err);
       });
   };
@@ -85,10 +93,14 @@ export const onSavedTalent = (data, setLoading) => async (dispatch) => {
           payload: res.data,
         });
       }
-      setLoading(false);
+      if (setLoading) {
+        setLoading(false);
+      }
     })
     .catch((err) => {
-      setLoading(false);
+      if (setLoading) {
+        setLoading(false);
+      }
       console.log(err);
     });
 };
@@ -102,10 +114,14 @@ export const onRemoveSavedTalent = (data, setLoading) => async (dispatch) => {
           payload: res.data,
         });
       }
-      setLoading(false);
+      if (setLoading) {
+        setLoading(false);
+      }
     })
     .catch((err) => {
-      setLoading(false);
+      if (setLoading) {
+        setLoading(false);
+      }
       console.log(err);
     });
 };
@@ -118,11 +134,15 @@ export const savedTalentList = (data, setLoading) => async (dispatch) => {
           type: SET_SAVED_TALENT_LIST,
           payload: res.data.data,
         });
-        setLoading(false);
+        if (setLoading) {
+          setLoading(false);
+        }
       }
     })
     .catch((err) => {
-      setLoading(false);
+      if (setLoading) {
+        setLoading(false);
+      }
     });
 };
 
@@ -135,11 +155,15 @@ export const makePrivatePublicJob = (data, setLoading) => async (dispatch) => {
           payload: res.data,
         });
       }
-      setLoading(false);
+      if (setLoading) {
+        setLoading(false);
+      }
     })
     .catch((err) => {
       console.log(err);
-      setLoading(false);
+      if (setLoading) {
+        setLoading(false);
+      }
     });
 };
 
@@ -153,10 +177,14 @@ export const getAllJobProposalsList =
             payload: res.data,
           });
         }
-        setLoading(false);
+        if (setLoading) {
+          setLoading(false);
+        }
       })
       .catch((err) => {
-        setLoading(false);
+        if (setLoading) {
+          setLoading(false);
+        }
         console.log(err);
       });
   };
@@ -171,10 +199,14 @@ export const getAllProposalShortList =
             payload: res.data.data,
           });
         }
-        setLoading(false);
+        if (setLoading) {
+          setLoading(false);
+        }
       })
       .catch((err) => {
-        setLoading(false);
+        if (setLoading) {
+          setLoading(false);
+        }
         console.log(err);
       });
   };
@@ -188,11 +220,15 @@ export const onSaveInShortList = (data, setLoading) => async (dispatch) => {
           payload: res.data,
         });
       }
-      setLoading(false);
+      if (setLoading) {
+        setLoading(false);
+      }
     })
     .catch((err) => {
       console.log(err);
-      setLoading(false);
+      if (setLoading) {
+        setLoading(false);
+      }
     });
 };
 export const onRemoveInShortList = (data, setLoading) => async (dispatch) => {
@@ -204,10 +240,14 @@ export const onRemoveInShortList = (data, setLoading) => async (dispatch) => {
           payload: res.data,
         });
       }
-      setLoading(false);
+      if (setLoading) {
+        setLoading(false);
+      }
     })
     .catch((err) => {
-      setLoading(false);
+      if (setLoading) {
+        setLoading(false);
+      }
       console.log(err);
     });
 };
@@ -222,10 +262,14 @@ export const getAllProposalArchievedList =
             payload: res.data.data,
           });
         }
-        setLoading(false);
+        if (setLoading) {
+          setLoading(false);
+        }
       })
       .catch((err) => {
-        setLoading(false);
+        if (setLoading) {
+          setLoading(false);
+        }
         console.log(err);
       });
   };
@@ -239,10 +283,14 @@ export const saveProposalArchived = (data, setLoading) => async (dispatch) => {
           payload: res.data,
         });
       }
-      setLoading(false);
+      if (setLoading) {
+        setLoading(false);
+      }
     })
     .catch((err) => {
-      setLoading(false);
+      if (setLoading) {
+        setLoading(false);
+      }
       console.log(err);
     });
 };
@@ -256,10 +304,14 @@ export const removeProposalArchived =
             payload: res.data,
           });
         }
-        setLoading(false);
+        if (setLoading) {
+          setLoading(false);
+        }
       })
       .catch((err) => {
-        setLoading(false);
+        if (setLoading) {
+          setLoading(false);
+        }
         console.log(err);
       });
   };

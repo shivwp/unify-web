@@ -134,14 +134,18 @@ export const onDeleteEmployment =
 export const getClientInfoDetails = (setLoading) => async (dispatch) => {
   try {
     await Axios.get(`/get-client-info`, config).then((res) => {
-      setLoading(false);
+      if (setLoading) {
+        setLoading(false);
+      }
       dispatch({
         type: SET_CLIENT_INFO_DETAILS,
         payload: res.data.data.client,
       });
     });
   } catch (err) {
-    setLoading(false);
+    if (setLoading) {
+      setLoading(false);
+    }
   }
 };
 
@@ -406,8 +410,8 @@ export const onEditDesignation =
           popup();
         }
         if (setLoading) {
+          setLoading(false);
         }
-        setLoading(false);
         setSuccessPopup(
           <SuccessPopup
             Popup={() => setSuccessPopup(!successPopup)}
@@ -802,7 +806,9 @@ export const onSubmitTestimonial =
   async (dispatch) => {
     try {
       Axios.post("/client-testimonial", data, config).then((res) => {
-        setLoading(false);
+        if (setLoading) {
+          setLoading(false);
+        }
         setSuccessPopup(
           <SuccessPopup
             Popup={() => setSuccessPopup(!successPopup)}
@@ -812,7 +818,9 @@ export const onSubmitTestimonial =
         );
       });
     } catch (err) {
-      setLoading(false);
+      if (setLoading) {
+        setLoading(false);
+      }
     }
   };
 

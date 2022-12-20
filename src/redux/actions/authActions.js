@@ -34,11 +34,15 @@ export const getHomePageData = (setLoading) => async (dispatch) => {
         type: HOME_PAGE_DATA,
         payload: res.data.data,
       });
-      setLoading(false);
+      if (setLoading) {
+        setLoading(false);
+      }
     })
     .catch((err) => {
       console.log(err);
-      setLoading(false);
+      if (setLoading) {
+        setLoading(false);
+      }
     });
 };
 export const getSkillsByCat = (data) => async (dispatch) => {
@@ -93,12 +97,16 @@ export const onLogin =
             navigate("/businesssize");
           }
         }
-        setLoading(false);
+        if (setLoading) {
+          setLoading(false);
+        }
         window.location.reload();
       }
     } catch (err) {
       setMessage(err.response.data.message);
-      setLoading(false);
+      if (setLoading) {
+        setLoading(false);
+      }
     }
   };
 
@@ -126,12 +134,16 @@ export const onVerifySignup =
       const res = await Axios.post(`/verifysignup`, data);
       if (res.data.status) {
         navigate("/signin");
-        setLoading(false);
         window.location.reload();
+      }
+      if (setLoading) {
+        setLoading(false);
       }
     } catch (err) {
       setMessage(err.response.data.message);
-      setLoading(false);
+      if (setLoading) {
+        setLoading(false);
+      }
     }
   };
 
@@ -143,11 +155,15 @@ export const onResendOtp =
         type: RESEND_OTP_SUCCESS,
         payload: res.data.message,
       });
-      setLoading(false);
+      if (setLoading) {
+        setLoading(false);
+      }
 
       setOtpSuccess(res.data.message);
     } catch (err) {
-      setLoading(false);
+      if (setLoading) {
+        setLoading(false);
+      }
     }
   };
 
@@ -199,7 +215,9 @@ export const onVerifyForgot =
         }
       })
       .catch((err) => {
-        setLoading(false);
+        if (setLoading) {
+          setLoading(false);
+        }
         setMessage(err.response.data.message);
       });
   };
@@ -427,11 +445,15 @@ export const setClientCompnySize =
             payload: res.data.data,
           });
           navigate("/question1");
+        }
+        if (setLoading) {
           setLoading(false);
         }
       })
       .catch((err) => {
         console.log(err);
-        setLoading(false);
+        if (setLoading) {
+          setLoading(false);
+        }
       });
   };
