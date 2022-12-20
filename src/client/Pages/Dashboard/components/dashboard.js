@@ -45,6 +45,10 @@ const Screen = () => {
   $(document).mouseup(function (e) {
     if ($(e.target).closest("#menu_bar1").length === 0) {
       setMenuBarPosting(false);
+    }
+  });
+  $(document).mouseup(function (e) {
+    if ($(e.target).closest("#menu_bar2").length === 0) {
       setMenuBarDraft(false);
     }
   });

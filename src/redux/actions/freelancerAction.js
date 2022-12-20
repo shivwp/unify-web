@@ -1,3 +1,4 @@
+import ErrorPopup from "../../freelancer/components/popups/ErrorPopup";
 import SuccessPopup from "../../freelancer/components/popups/SuccessPopup";
 import Axios from "../axios";
 import {
@@ -20,6 +21,7 @@ import {
   SET_PAYMENT_CARD_LIST,
   SET_DELETE_CARD,
   SET_CLIENT_DETAILS,
+  SET_HIRING_ERROR,
 } from "../types";
 
 const config = {
@@ -331,18 +333,33 @@ export const getSingleFreelancer = (freelancer_id) => async (dispatch) => {
     });
 };
 
-export const hireFreelancer = (data, navigate) => async (dispatch) => {
-  await Axios.post(`/hire-freelancer`, data, config)
-    .then((res) => {
-      if (res.data.status) {
-        navigate("/hire-freelancer/edit-address");
-      }
-      sessionStorage.setItem("hire_freelancer", JSON.stringify(res.data.data));
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-};
+export const hireFreelancer =
+  (data, navigate, errorPopup, setErrorPopup) => async (dispatch) => {
+    await Axios.post(`/hire-freelancer`, data, config)
+      .then((res) => {
+        var object = {};
+        data.forEach((value, key) => {
+          object[key] = value;
+        });
+
+        if (res.data.status) {
+          navigate("/hire-freelancer/edit-address");
+        }
+        sessionStorage.setItem(
+          "hire_freelancer",
+          JSON.stringify(res.data.data)
+        );
+        sessionStorage.setItem("freelancerData", JSON.stringify(object));
+      })
+      .catch((err) => {
+        setErrorPopup(
+          <ErrorPopup
+            Popup={() => setErrorPopup(!errorPopup)}
+            message={err.response.data.message}
+          />
+        );
+      });
+  };
 
 export const addPaymentCard =
   (data, Popup, successPopup, setSuccessPopup) => async (dispatch) => {
@@ -408,15 +425,43 @@ export const deletePaymentCard =
       });
   };
 
-export const contractPayment = (data, navigate) => async (dispatch) => {
-  await Axios.post("/contract-payment", data, config)
-    .then((res) => {
-      console.log(res);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-};
+export const contractPayment =
+  (data, navigate, successPopup, setSuccessPopup, errorPopup, setErrorPopup) =>
+  async (dispatch) => {
+    await Axios.post("/contract-payment", data, config)
+      .then((res) => {
+        const freelancerData = JSON.parse(
+          sessionStorage.getItem("freelancerData")
+        );
+
+        if (res.data.status) {
+          setSuccessPopup(
+            <SuccessPopup
+              Popup={() => setSuccessPopup(!successPopup)}
+              message={res.data.message}
+            />
+          );
+
+          setTimeout(() => {
+            navigate(
+              `/view-job/${freelancerData.project_id}/invite-freelancer`
+            );
+            sessionStorage.removeItem("hire_freelancer");
+            sessionStorage.removeItem("freelancerData");
+            window.location.reload();
+          }, 2000);
+        }
+      })
+      .catch((err) => {
+        setErrorPopup(
+          <ErrorPopup
+            Popup={() => setErrorPopup(!errorPopup)}
+            message={err.response.data.message}
+          />
+        );
+      });
+  };
+
 export const getClientDetails = (data, navigate) => async (dispatch) => {
   await Axios.post("/single-client", data, config)
     .then((res) => {

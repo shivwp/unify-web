@@ -55,9 +55,9 @@ const ErrorPopup = ({ Popup, message, afterError }) => {
 
           <div className="error_popup_btn ">
             {afterError ? (
-              <button onClick={() => afterError()}>Try Again</button>
+              <button onClick={() => afterError()}>OK</button>
             ) : (
-              <button onClick={() => Popup()}>Try Again</button>
+              <button onClick={() => Popup()}>OK</button>
             )}
           </div>
         </div>

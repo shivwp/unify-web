@@ -18,6 +18,7 @@ import {
   SET_PAYMENT_CARD_LIST,
   SET_DELETE_CARD,
   SET_CLIENT_DETAILS,
+  SET_HIRING_ERROR,
 } from "../types";
 const initialState = {};
 
@@ -117,6 +118,11 @@ const freelancerReducer = (state = initialState, action) => {
       return {
         ...state,
         clientDetails: action.payload,
+      };
+    case SET_HIRING_ERROR:
+      return {
+        ...state,
+        hiringError: action.payload,
       };
     default:
       return state;

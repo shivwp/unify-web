@@ -183,3 +183,5 @@ export const SET_ADD_CARD = "SET_ADD_CARD";
 export const SET_DELETE_CARD = "SET_DELETE_CARD";
 
 export const SET_CLIENT_DETAILS = "SET_CLIENT_DETAILS";
+
+export const SET_HIRING_ERROR = "SET_HIRING_ERROR";

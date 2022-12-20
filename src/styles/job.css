@@ -3344,7 +3344,7 @@
 
 .Select_payment_method_box .clientCardList {
   background: #f8f8f8 0% 0% no-repeat padding-box;
-  min-height: 170px;
+  min-height: 115px;
   margin-bottom: 20px;
   padding: 16px;
 }
