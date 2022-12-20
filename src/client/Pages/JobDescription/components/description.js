@@ -24,6 +24,7 @@ const Description = () => {
   const categoryList = useSelector((state) => state.profile.categoryList);
   const [values, setValues] = useState({});
   const [categoryName, setCategoryName] = useState();
+  const [showError, setShowError] = useState();
 
   useEffect(() => {
     if (jobListingData) {
@@ -54,8 +55,19 @@ const Description = () => {
   };
 
   const handleImageChange = (e) => {
+    let errorExit = false;
+    const image = e.target.files[0];
+    console.log("Client image", image);
+    if (image?.size > 1048576 * 10) {
+      setShowError("File size must be maximum 10 MB");
+      errorExit = true;
+    }
+    if (errorExit) {
+      return false;
+    }
     setImageFile(e.target.files[0]);
     setObjectUrl(e.target.files[0].name);
+    setShowError("");
   };
 
   const postYourJobNow = () => {
@@ -196,12 +208,15 @@ const Description = () => {
                 <input
                   id="uploadImage"
                   type="file"
-                  onChange={handleImageChange}
+                  onChange={(e) => handleImageChange(e)}
                 />
                 <i className="fa fa-paperclip" aria-hidden="true"></i>
                 Attach File
               </label>
               <div className="sm_label_inp">Max file size: 10 MB</div>
+              <p className="uploadImgEror" style={{ textAlign: "left" }}>
+                {showError}
+              </p>
             </div>
             {objectUrl ? (
               <div className="document_card">
