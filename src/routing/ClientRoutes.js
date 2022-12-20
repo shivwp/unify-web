@@ -8,7 +8,7 @@ const Category = lazy(() => import("../client/Pages/Category"));
 const Question = lazy(() => import("../client/Pages/Question"));
 const QuestionTwo = lazy(() => import("../client/Pages/Question2"));
 const BusinessSize = lazy(() => import("../client/Pages/BusinessSize"));
-const Subscription = lazy(() => import("../client/Pages/Subscription"));
+// const Subscription = lazy(() => import("../client/Pages/Subscription"));
 const ExpandTeam = lazy(() => import("../client/Pages/ExpandTeam"));
 const Notification = lazy(() => import("../client/Pages/Notification"));
 const Description = lazy(() => import("../client/Pages/PostDescription"));

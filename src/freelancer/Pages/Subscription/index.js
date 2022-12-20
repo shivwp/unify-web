@@ -3,8 +3,8 @@ import { Col, Row } from "react-bootstrap";
 import Title from "../../../components/title";
 import { Link } from "react-router-dom";
 import Layout from "../../Layout/Layout";
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
 
 const Subscriptionplan = () => {
   Title(" | Subscription plan");
@@ -17,7 +17,10 @@ const Subscriptionplan = () => {
               <h1 className="text-center font-fiftie">Subscription plan</h1>
             </div>
             <Row className="justify-content-center">
-              <Col lg={4} className="sub_col_c lg-flex-right-subs">
+              <Col
+                lg={4}
+                className="sub_col_c lg-flex-right-subs subscriptionResp"
+              >
                 <Form.Label>
                   <div className="subscription_box_r">
                     <div className="sub_radio new_sub_rad">
@@ -38,13 +41,21 @@ const Subscriptionplan = () => {
                     </ul>
                     <div>
                       <Link to="/freelancer/dashboard">
-                        <Button variant="" className="btn_chose_pl btnhovpple">CHOOSE PLAN</Button>
+                        <Button
+                          variant=""
+                          className="btn_chose_pl btnhovpple subscriptionResp"
+                        >
+                          CHOOSE PLAN
+                        </Button>
                       </Link>
                     </div>
                   </div>
                 </Form.Label>
               </Col>
-              <Col lg={4} className="sub_col_c lg-flex-right-subs">
+              <Col
+                lg={4}
+                className="sub_col_c lg-flex-right-subs subscriptionResp"
+              >
                 <Form.Label>
                   <div className="subscription_box_r">
                     <div className="sub_radio new_sub_rad">
@@ -65,13 +76,15 @@ const Subscriptionplan = () => {
                     </ul>
                     <div>
                       <Link to="/freelancer/dashboard">
-                        <Button variant="" className="btn_chose_pl btnhovpple">CHOOSE PLAN</Button>
+                        <Button variant="" className="btn_chose_pl btnhovpple">
+                          CHOOSE PLAN
+                        </Button>
                       </Link>
                     </div>
                   </div>
                 </Form.Label>
               </Col>
-              <Col lg={4} className="sub_col_c lg-flex--subs">
+              <Col lg={4} className="sub_col_c lg-flex--subs subscriptionResp">
                 <Form.Label>
                   <div className="subscription_box_r">
                     <div className="sub_radio new_sub_rad">
@@ -92,7 +105,9 @@ const Subscriptionplan = () => {
                     </ul>
                     <div>
                       <Link to="/freelancer/dashboard">
-                        <Button variant="" className="btn_chose_pl btnhovpple">CHOOSE PLAN</Button>
+                        <Button variant="" className="btn_chose_pl btnhovpple">
+                          CHOOSE PLAN
+                        </Button>
                       </Link>
                     </div>
                   </div>

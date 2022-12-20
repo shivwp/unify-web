@@ -74,7 +74,12 @@ const Subscriptionplan = () => {
               {errors.subscription && "Please select subscription plan"}
             </span>
             {subscriptionList?.map((item, key) => (
-              <Col lg={4} md={6} className="sub_col_c" key={key}>
+              <Col
+                lg={4}
+                md={6}
+                className="sub_col_c subscriptionResp"
+                key={key}
+              >
                 <Form.Label>
                   <div className="subscription_box_r">
                     <div className="sub_radio new_sub_rad">

@@ -1442,6 +1442,9 @@
 .my_job_n_box {
   padding: 0px 20px;
   min-width: 180px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 
 .btn-hf {
