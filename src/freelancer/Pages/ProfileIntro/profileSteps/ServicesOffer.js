@@ -75,9 +75,9 @@ const ServicesOffer = ({ setCurrentTab, profileList, setLoading }) => {
                   className="servicesOfferOption"
                   value={values?.category_id}
                   onChange={(e) => handleOnChange(e)}
-                  defaultValue={"default"}
+                  defaultValue="default"
                 >
-                  <option hidden disabled value="default">
+                  <option hidden value="default">
                     Please Select an option
                   </option>
                   {categoryList?.map((item, index) => (

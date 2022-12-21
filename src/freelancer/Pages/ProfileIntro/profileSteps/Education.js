@@ -217,7 +217,7 @@ const Education = ({ setCurrentTab, profileList, setLoading }) => {
                 Back
               </button>
 
-              {profileList?.length === 0 ? (
+              {profileList?.length === 0 || !profileList ? (
                 <button
                   className="second_button"
                   disabled={!isNothing}

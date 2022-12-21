@@ -86,6 +86,7 @@ const WhatDoYouDo = ({ setCurrentTab, profileList, setLoading }) => {
     }
 
     if (errorExist) {
+      setLoading(false);
       setErrors(errorsObject);
       return false;
     }
@@ -174,7 +175,9 @@ const WhatDoYouDo = ({ setCurrentTab, profileList, setLoading }) => {
                 className="second_button"
                 disabled={
                   values?.description?.length == 0 ||
-                  values?.occuption?.length == 0
+                  values?.occuption?.length == 0 ||
+                  !values?.description ||
+                  !values?.occuption
                 }
                 onClick={onEditProfile}
               >

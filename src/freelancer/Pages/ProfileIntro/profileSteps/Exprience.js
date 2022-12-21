@@ -220,7 +220,7 @@ const Exprience = ({ setCurrentTab, profileList, setLoading }) => {
                 Back
               </button>
 
-              {profileList?.length === 0 ? (
+              {profileList?.length === 0 || !profileList ? (
                 <button
                   disabled={!isNothing}
                   className="second_button"
