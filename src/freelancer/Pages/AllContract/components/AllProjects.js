@@ -10,7 +10,7 @@ const AllProjects = ({ getAllContracts }) => {
         <div className="no_contract_data">No Data Found</div>
       ) : (
         <>
-          {getAllContracts?.map((item) => (
+          {/* {getAllContracts?.map((item) => (
             <>
               {item?.type == "hourly" ? (
                 <div>
@@ -139,9 +139,6 @@ const AllProjects = ({ getAllContracts }) => {
                             <span>{item.client?.last_activity}</span>
                           </h3>
                         </div>
-                        {/* <div className="job_d_par">
-                          <p style={{ marginBottom: 0 }}>Weekly Limit</p>
-                        </div> */}
                       </Col>
                       <Col
                         lg={2}
@@ -164,7 +161,124 @@ const AllProjects = ({ getAllContracts }) => {
                 ""
               )}
             </>
-          ))}
+          ))} */}
+          {/* see contract start */}
+          <div className="job_box_card contract1">
+            <Row style={{ marginTop: 10 }}>
+              <Col lg={9} md={7}>
+                <div className="job_head_s">
+                  <h2>React Js Project</h2>
+                </div>
+                <div className="job_d_par">
+                  <p>Ajay Kumar</p>
+                </div>
+              </Col>
+              <Col
+                lg={3}
+                md={5}
+                className="p-0"
+                style={{ display: "flex", justifyContent: "flex-end" }}
+              >
+                <div className="milestone_btn_s">
+                  <Link to="/freelancer/milestone-earning">
+                    <button>See Contract</button>
+                  </Link>
+                </div>
+              </Col>
+            </Row>
+            <Row>
+              <Col lg={4} md={5}>
+                <div className="job_head_s">
+                  <h3>Hired By: Ajay Sharma</h3>
+                </div>
+                <div className="job_d_par">
+                  <p style={{ marginBottom: 0 }}>India</p>
+                </div>
+              </Col>
+              <Col lg={6} md={5}>
+                <div className="job_head_s">
+                  <h3>
+                    Last Activity: <span>12 hours ago</span>
+                  </h3>
+                </div>
+                {/* <div className="job_d_par">
+                      <p style={{ marginBottom: 0 }}>Weekly Limit</p>
+                    </div> */}
+              </Col>
+              <Col
+                lg={2}
+                md={2}
+                style={{
+                  fontSize: 14,
+                  color: "#6b6b6b",
+                  textAlign: "right",
+                }}
+              >
+                {moment(new Date()).format("MMM YY")} -{" "}
+                {new Date() ? moment(new Date()).format("MMM YY") : "Present"}
+              </Col>
+            </Row>
+          </div>
+          {/* see contract end */}
+
+          {/* see timesheet start */}
+          <div className="job_box_card contract1">
+            <Row style={{ marginTop: 10 }}>
+              <Col lg={9} md={7}>
+                <div className="job_head_s">
+                  <h2>Laraval project</h2>
+                </div>
+                <div className="job_d_par">
+                  <p>Ajay Kumar</p>
+                </div>
+              </Col>
+              <Col
+                lg={3}
+                md={5}
+                className="p-0"
+                style={{ display: "flex", justifyContent: "flex-end" }}
+              >
+                <div className="milestone_btn_s">
+                  <Link to="/freelancer/see-timesheet">
+                    <button>See Timesheet</button>
+                  </Link>
+                </div>
+              </Col>
+            </Row>
+            <Row>
+              <Col lg={4} md={5}>
+                <div className="job_head_s">
+                  <h3>Hired By: Ajay Sharma</h3>
+                </div>
+                <div className="job_d_par">
+                  <p style={{ marginBottom: 0 }}>India</p>
+                </div>
+              </Col>
+              <Col lg={6} md={5}>
+                <div className="job_head_s">
+                  <h3>
+                    Last Activity: <span>15 min ago</span>
+                  </h3>
+                </div>
+                <div className="job_d_par">
+                  <p style={{ marginBottom: 0 }}>Weekly Limit: 30 hr/week</p>
+                </div>
+              </Col>
+              <Col
+                lg={2}
+                md={2}
+                style={{
+                  fontSize: 14,
+                  color: "#6b6b6b",
+                  textAlign: "right",
+                }}
+              >
+                {moment(new Date()).format("MMM YY")} -{" "}
+                {new Date() ? moment(new Date()).format("MMM YY") : "Present"}
+              </Col>
+            </Row>
+          </div>
+          {/* see timesheet end */}
         </>
       )}
     </>

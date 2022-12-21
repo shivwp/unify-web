@@ -1895,7 +1895,6 @@ body {
   gap: 10px;
 }
 
-
 .profile_box {
   position: relative;
 }
@@ -10087,3 +10086,9 @@ input::-webkit-inner-spin-button {
 }
 
 /* Page not found end */
+
+/* All Contract start */
+.contract1 {
+  border: 1px solid #e8e7e7;
+}
+/* All Contract end */

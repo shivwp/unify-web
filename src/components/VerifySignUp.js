@@ -55,6 +55,7 @@ const VerifySignUp = () => {
     }
 
     if (errorExist) {
+      setLoading(false);
       setErrors(errorsObject);
       return false;
     }

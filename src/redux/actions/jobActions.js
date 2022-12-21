@@ -173,8 +173,8 @@ export const onDislikePostReasons = (setLoading) => async (dispatch) => {
 };
 export const onDislikeJobPost =
   (data, setDropdownOpen, setLoading) => async (dispatch) => {
-    try {
-      Axios.post("/dislike-job", data, config).then((res) => {
+    await Axios.post("/dislike-job", data, config)
+      .then((res) => {
         dispatch({
           type: ON_DISLIKE_JOB_POST,
           payload: res.data,
@@ -183,17 +183,17 @@ export const onDislikeJobPost =
         if (setLoading) {
           setLoading(false);
         }
+      })
+      .catch((err) => {
+        if (setLoading) {
+          setLoading(false);
+        }
       });
-    } catch (err) {
-      if (setLoading) {
-        setLoading(false);
-      }
-    }
   };
 
 export const onPostYourJobNow = (data, navigate) => async (dispatch) => {
-  try {
-    Axios.post("/post-job", data, config).then((res) => {
+  await Axios.post("/post-job", data, config)
+    .then((res) => {
       if (res.data.status) {
         navigate("/dashboard");
 
@@ -202,13 +202,15 @@ export const onPostYourJobNow = (data, navigate) => async (dispatch) => {
           payload: res.data,
         });
       }
+    })
+    .catch((err) => {
+      console.log(err);
     });
-  } catch (err) {}
 };
 
 export const getAllClientPosting = (data, setLoading) => async (dispatch) => {
-  try {
-    Axios.post("/client-all-posting", data, config).then((res) => {
+  await Axios.post("/client-all-posting", data, config)
+    .then((res) => {
       dispatch({
         type: SET_ALL_CLIENT_POSTING,
         payload: res.data,
@@ -216,18 +218,18 @@ export const getAllClientPosting = (data, setLoading) => async (dispatch) => {
       if (setLoading) {
         setLoading(false);
       }
+    })
+    .catch((err) => {
+      if (setLoading) {
+        setLoading(false);
+      }
     });
-  } catch (err) {
-    if (setLoading) {
-      setLoading(false);
-    }
-  }
 };
 
 export const getAllClientDraftPosting =
   (data, setLoading) => async (dispatch) => {
-    try {
-      Axios.post("/client-draft-posting", data, config).then((res) => {
+    await Axios.post("/client-draft-posting", data, config)
+      .then((res) => {
         dispatch({
           type: SET_ALL_CLIENT_DRAFT_POSTING,
           payload: res.data,
@@ -235,17 +237,17 @@ export const getAllClientDraftPosting =
         if (setLoading) {
           setLoading(false);
         }
+      })
+      .catch((err) => {
+        if (setLoading) {
+          setLoading(false);
+        }
       });
-    } catch (err) {
-      if (setLoading) {
-        setLoading(false);
-      }
-    }
   };
 
 export const closeJobReasonList = (setLoading) => async (dispatch) => {
-  try {
-    Axios.get("/close-job-reason-list").then((res) => {
+  await Axios.get("/close-job-reason-list")
+    .then((res) => {
       dispatch({
         type: SET_CLOSE_JOB_REASON_LIST,
         payload: res.data.data,
@@ -253,18 +255,18 @@ export const closeJobReasonList = (setLoading) => async (dispatch) => {
       if (setLoading) {
         setLoading(false);
       }
+    })
+    .catch((err) => {
+      if (setLoading) {
+        setLoading(false);
+      }
     });
-  } catch (err) {
-    if (setLoading) {
-      setLoading(false);
-    }
-  }
 };
 
 export const onCloseJob =
   (data, onCloseModal, navigate, setLoading) => async (dispatch) => {
-    try {
-      Axios.post("/remove-job", data, config).then((res) => {
+    await Axios.post("/remove-job", data, config)
+      .then((res) => {
         if (res.data.status) {
           dispatch({
             type: SET_REMOVE_JOB_POST,
@@ -276,18 +278,18 @@ export const onCloseJob =
         if (setLoading) {
           setLoading(false);
         }
+      })
+      .catch((err) => {
+        if (setLoading) {
+          setLoading(false);
+        }
       });
-    } catch (err) {
-      if (setLoading) {
-        setLoading(false);
-      }
-    }
   };
 
 export const editJobPosting =
   (data, navigate, setLoading) => async (dispatch) => {
-    try {
-      Axios.post("/update-job", data, config).then((res) => {
+    await Axios.post("/update-job", data, config)
+      .then((res) => {
         if (res.data.status) {
           dispatch({
             type: SET_UPDATE_JOB_POST,
@@ -298,17 +300,17 @@ export const editJobPosting =
         if (setLoading) {
           setLoading(false);
         }
+      })
+      .catch((err) => {
+        if (setLoading) {
+          setLoading(false);
+        }
       });
-    } catch (err) {
-      if (setLoading) {
-        setLoading(false);
-      }
-    }
   };
 
 export const getAllProposals = (setLoading) => async (dispatch) => {
-  try {
-    Axios.get("/all-proposal", config).then((res) => {
+  await Axios.get("/all-proposal", config)
+    .then((res) => {
       if (setLoading) {
         setLoading(false);
       }
@@ -316,46 +318,46 @@ export const getAllProposals = (setLoading) => async (dispatch) => {
         type: SET_ALL_PROPOSALS,
         payload: res.data.data,
       });
+    })
+    .catch((err) => {
+      if (setLoading) {
+        setLoading(false);
+      }
     });
-  } catch (err) {
-    if (setLoading) {
-      setLoading(false);
-    }
-  }
 };
 export const onGetAllContracts = () => async (dispatch) => {
-  try {
-    Axios.get("/contracts", config).then((res) => {
+  await Axios.get("/contracts", config)
+    .then((res) => {
       dispatch({
         type: SET_ALL_CONTRACTS,
         payload: res.data.data,
       });
+    })
+    .catch((err) => {
+      console.log(err);
     });
-  } catch (err) {}
 };
 export const singleProposalDetails =
   (id, type, setLoading) => async (dispatch) => {
-    try {
-      Axios.get(`/single-proposal-details/${id}/${type}`, config).then(
-        (res) => {
-          dispatch({
-            type: SET_SINGLE_PROPOSAL_DETAILS,
-            payload: res.data.data,
-          });
-          if (setLoading) {
-            setLoading(false);
-          }
+    await Axios.get(`/single-proposal-details/${id}/${type}`, config)
+      .then((res) => {
+        dispatch({
+          type: SET_SINGLE_PROPOSAL_DETAILS,
+          payload: res.data.data,
+        });
+        if (setLoading) {
+          setLoading(false);
         }
-      );
-    } catch (err) {
-      if (setLoading) {
-        setLoading(false);
-      }
-    }
+      })
+      .catch((err) => {
+        if (setLoading) {
+          setLoading(false);
+        }
+      });
   };
 export const declineReasoneList = (type, setLoading) => async (dispatch) => {
-  try {
-    Axios.get(`/decline-reason-list/${type}`, config).then((res) => {
+  await Axios.get(`/decline-reason-list/${type}`, config)
+    .then((res) => {
       dispatch({
         type: DECLINE_REASONS_LIST,
         payload: res.data.data,
@@ -363,19 +365,19 @@ export const declineReasoneList = (type, setLoading) => async (dispatch) => {
       if (setLoading) {
         setLoading(false);
       }
+    })
+    .catch((err) => {
+      if (setLoading) {
+        setLoading(false);
+      }
     });
-  } catch (err) {
-    if (setLoading) {
-      setLoading(false);
-    }
-  }
 };
 
 export const onDeclineForInterview =
   (data, popup, successPopup, setSuccessPopup, afterSuccess, setLoading) =>
   async (dispatch) => {
-    try {
-      Axios.post("/invite-decline", data, config).then((res) => {
+    await Axios.post("/invite-decline", data, config)
+      .then((res) => {
         popup();
         setSuccessPopup(
           <SuccessPopup
@@ -387,18 +389,18 @@ export const onDeclineForInterview =
         if (setLoading) {
           setLoading(false);
         }
+      })
+      .catch((err) => {
+        if (setLoading) {
+          setLoading(false);
+        }
       });
-    } catch (err) {
-      if (setLoading) {
-        setLoading(false);
-      }
-    }
   };
 export const onWithdrawSubmitedProposal =
   (data, popup, successPopup, setSuccessPopup, afterSuccess, setLoading) =>
   async (dispatch) => {
-    try {
-      Axios.post("/proposal-withdraw", data, config).then((res) => {
+    await Axios.post("/proposal-withdraw", data, config)
+      .then((res) => {
         popup();
         if (setLoading) {
           setLoading(false);
@@ -410,19 +412,19 @@ export const onWithdrawSubmitedProposal =
             afterSuccess={afterSuccess}
           />
         );
+      })
+      .catch((err) => {
+        if (setLoading) {
+          setLoading(false);
+        }
       });
-    } catch (err) {
-      if (setLoading) {
-        setLoading(false);
-      }
-    }
   };
 
 export const onChangeTermsOfProposals =
   (data, successPopup, setSuccessPopup, popup, setLoading) =>
   async (dispatch) => {
-    try {
-      Axios.post("/update-proposal", data, config).then((res) => {
+    await Axios.post("/update-proposal", data, config)
+      .then((res) => {
         dispatch({
           type: PROPOSAL_TERMS_CHANGE,
           payload: res.data,
@@ -439,19 +441,19 @@ export const onChangeTermsOfProposals =
             message="Proposal sent successfully"
           />
         );
+      })
+      .catch((err) => {
+        if (setLoading) {
+          setLoading(false);
+        }
       });
-    } catch (err) {
-      if (setLoading) {
-        setLoading(false);
-      }
-    }
   };
 
 export const onDeclineOffer =
   (data, popup, successPopup, setSuccessPopup, afterSuccess) =>
   async (dispatch) => {
-    try {
-      Axios.post("/decline-offer", data, config).then((res) => {
+    await Axios.post("/decline-offer", data, config)
+      .then((res) => {
         popup();
         setSuccessPopup(
           <SuccessPopup
@@ -460,15 +462,17 @@ export const onDeclineOffer =
             afterSuccess={afterSuccess}
           />
         );
+      })
+      .catch((err) => {
+        console.log(err);
       });
-    } catch (err) {}
   };
 
 export const onAcceptOffer =
   (id, successPopup, setSuccessPopup, afterSuccess, setLoading) =>
   async (dispatch) => {
-    try {
-      Axios.get(`/accept-offer/${id}`, config).then((res) => {
+    await Axios.get(`/accept-offer/${id}`, config)
+      .then((res) => {
         if (setLoading) {
           setLoading(false);
         }
@@ -479,10 +483,10 @@ export const onAcceptOffer =
             afterSuccess={afterSuccess}
           />
         );
+      })
+      .catch((err) => {
+        if (setLoading) {
+          setLoading(false);
+        }
       });
-    } catch (err) {
-      if (setLoading) {
-        setLoading(false);
-      }
-    }
   };

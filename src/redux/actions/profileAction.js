@@ -52,8 +52,8 @@ const config = {
 // FREELANCER
 
 export const getFreelancerProfile = (setLoading) => async (dispatch) => {
-  try {
-    await Axios.get(`/get-freelancer-profile`, config).then((res) => {
+  await Axios.get(`/get-freelancer-profile`, config)
+    .then((res) => {
       dispatch({
         type: SET_FREELANCER_PROFILE,
         payload: res.data.data,
@@ -61,37 +61,37 @@ export const getFreelancerProfile = (setLoading) => async (dispatch) => {
       if (setLoading) {
         setLoading(false);
       }
+    })
+    .catch((err) => {
+      if (setLoading) {
+        setLoading(false);
+      }
     });
-  } catch (err) {
-    if (setLoading) {
-      setLoading(false);
-    }
-  }
 };
 
 export const getFreelancerSkills = (data, setLoading) => async (dispatch) => {
-  try {
-    await Axios.post(`/skill-list`, data).then((res) => {
+  await Axios.post(`/skill-list`, data)
+    .then((res) => {
       dispatch({
         type: SET_FREELANCER_SKILLS,
         payload: res.data.data,
       });
+      if (setLoading) {
+        setLoading(false);
+      }
+    })
+    .catch((err) => {
+      if (setLoading) {
+        setLoading(false);
+      }
     });
-    if (setLoading) {
-      setLoading(false);
-    }
-  } catch (err) {
-    if (setLoading) {
-      setLoading(false);
-    }
-  }
 };
 
 export const onAddEmployment =
   (data, popup, successPopup, setSuccessPopup, setLoading) =>
   async (dispatch) => {
-    try {
-      await Axios.post(`/edit-employment-info`, data, config).then((res) => {
+    await Axios.post(`/edit-employment-info`, data, config)
+      .then((res) => {
         dispatch({
           type: SET_ADD_EXPRIENCE,
           payload: res.data,
@@ -106,18 +106,18 @@ export const onAddEmployment =
             message="Exprience saved Sucessfully"
           />
         );
+      })
+      .catch((err) => {
+        if (setLoading) {
+          setLoading(false);
+        }
       });
-    } catch (err) {
-      if (setLoading) {
-        setLoading(false);
-      }
-    }
   };
 
 export const onDeleteEmployment =
   (data, setConfirmPopup, setLoading) => async (dispatch) => {
-    try {
-      await Axios.post(`/delete-employment-info`, data, config).then((res) => {
+    await Axios.post(`/delete-employment-info`, data, config)
+      .then((res) => {
         dispatch({
           type: SET_DELETE_EXPRIENCE,
           payload: res.data,
@@ -126,14 +126,18 @@ export const onDeleteEmployment =
         if (setLoading) {
           setLoading(false);
         }
+      })
+      .catch((err) => {
+        if (setLoading) {
+          setLoading(false);
+        }
       });
-    } catch (err) {}
   };
 
 // CLIENT
 export const getClientInfoDetails = (setLoading) => async (dispatch) => {
-  try {
-    await Axios.get(`/get-client-info`, config).then((res) => {
+  await Axios.get(`/get-client-info`, config)
+    .then((res) => {
       if (setLoading) {
         setLoading(false);
       }
@@ -141,28 +145,30 @@ export const getClientInfoDetails = (setLoading) => async (dispatch) => {
         type: SET_CLIENT_INFO_DETAILS,
         payload: res.data.data.client,
       });
+    })
+    .catch((err) => {
+      if (setLoading) {
+        setLoading(false);
+      }
     });
-  } catch (err) {
-    if (setLoading) {
-      setLoading(false);
-    }
-  }
 };
 
 export const getIndustriesList = (data) => async (dispatch) => {
-  try {
-    await Axios.get(`/industries-list`).then((res) => {
+  await Axios.get(`/industries-list`)
+    .then((res) => {
       dispatch({
         type: SET_INDUSTRIES_LIST,
         payload: res.data.data,
       });
+    })
+    .catch((err) => {
+      console.log(err);
     });
-  } catch (err) {}
 };
 
 export const getTimezoneList = (setLoading) => async (dispatch) => {
-  try {
-    await Axios.get(`/timezone_list`).then((res) => {
+  await Axios.get(`/timezone_list`)
+    .then((res) => {
       dispatch({
         type: SET_TIMEZONE_LIST,
         payload: res.data.data,
@@ -170,51 +176,55 @@ export const getTimezoneList = (setLoading) => async (dispatch) => {
       if (setLoading) {
         setLoading(false);
       }
+    })
+    .catch((err) => {
+      if (setLoading) {
+        setLoading(false);
+      }
     });
-  } catch (err) {
-    if (setLoading) {
-      setLoading(false);
-    }
-  }
 };
 
 export const addEditClientInfo = (data, setOpen) => async (dispatch) => {
-  try {
-    Axios.post("/edit-client-info", data, config).then((res) => {
+  await Axios.post("/edit-client-info", data, config)
+    .then((res) => {
       dispatch({
         type: SET_EDIT_CLIENT_INFO,
         payload: res.data,
       });
       setOpen(false);
+    })
+    .catch((err) => {
+      console.log(err);
     });
-  } catch (err) {}
 };
 
 export const onCreateTeam = (data, onCloseModal) => async (dispatch) => {
-  try {
-    Axios.post("/create-team", data, config).then((res) => {
+  await Axios.post("/create-team", data, config)
+    .then((res) => {
       dispatch({
         type: ON_CREATE_TEAM,
         payload: res.data,
       });
       onCloseModal(false);
+    })
+    .catch((err) => {
+      console.log(err);
     });
-  } catch (err) {}
 };
 export const getTeamList = () => async (dispatch) => {
-  try {
-    Axios.get("/team-list", config).then((res) => {
+  await Axios.get("/team-list", config)
+    .then((res) => {
       dispatch({
         type: TEAM_LIST,
         payload: res.data.data,
       });
-    });
-  } catch (err) {}
+    })
+    .catch((err) => {});
 };
 
 export const closeAccountReasonList = (setLoading) => async (dispatch) => {
-  try {
-    Axios.get("/close-account-reason-list").then((res) => {
+  await Axios.get("/close-account-reason-list")
+    .then((res) => {
       dispatch({
         type: SET_CLOSE_ACCOUNT_REASON_LIST,
         payload: res.data.data,
@@ -222,19 +232,19 @@ export const closeAccountReasonList = (setLoading) => async (dispatch) => {
       if (setLoading) {
         setLoading(false);
       }
+    })
+    .catch((err) => {
+      if (setLoading) {
+        setLoading(false);
+      }
     });
-  } catch (err) {
-    if (setLoading) {
-      setLoading(false);
-    }
-  }
 };
 
 export const onCloseAccount =
   (data, popup, successPopup, setSuccessPopup, afterSuccess, setLoading) =>
   async (dispatch) => {
-    try {
-      Axios.post("/close-account", data, config).then((res) => {
+    await Axios.post("/close-account", data, config)
+      .then((res) => {
         popup();
         if (setLoading) {
           setLoading(false);
@@ -246,17 +256,17 @@ export const onCloseAccount =
             afterSuccess={afterSuccess}
           />
         );
+      })
+      .catch((err) => {
+        if (setLoading) {
+          setLoading(false);
+        }
       });
-    } catch (err) {
-      if (setLoading) {
-        setLoading(false);
-      }
-    }
   };
 
 export const getFreelancerDegreeList = (setLoading) => async (dispatch) => {
-  try {
-    Axios.get("/degree-list").then((res) => {
+  await Axios.get("/degree-list")
+    .then((res) => {
       dispatch({
         type: SET_DEGREE_LIST,
         payload: res.data.data,
@@ -264,19 +274,19 @@ export const getFreelancerDegreeList = (setLoading) => async (dispatch) => {
       if (setLoading) {
         setLoading(false);
       }
+    })
+    .catch((err) => {
+      if (setLoading) {
+        setLoading(false);
+      }
     });
-  } catch (err) {
-    if (setLoading) {
-      setLoading(false);
-    }
-  }
 };
 
 export const onAddEducation =
   (data, popup, successPopup, setSuccessPopup, setLoading) =>
   async (dispatch) => {
-    try {
-      Axios.post("/edit-education-info", data, config).then((res) => {
+    await Axios.post("/edit-education-info", data, config)
+      .then((res) => {
         dispatch({
           type: SET_EDIT_EDUCATION,
           payload: res.data,
@@ -291,35 +301,37 @@ export const onAddEducation =
             message="Education saved successfully"
           />
         );
+      })
+      .catch((err) => {
+        if (setLoading) {
+          setLoading(false);
+        }
       });
-    } catch (err) {
-      if (setLoading) {
-        setLoading(false);
-      }
-    }
   };
 
 export const onDeleteEducation =
   (data, setConfirmPopup, setLoading) => async (dispatch) => {
-    try {
-      Axios.post("/delete-education-info", data, config).then((res) => {
+    await Axios.post("/delete-education-info", data, config)
+      .then((res) => {
         dispatch({
           type: SET_DELETE_EDUCATION,
           payload: res.data,
         });
         setConfirmPopup(false);
         if (setLoading) setLoading(false);
+      })
+      .catch((err) => {
+        if (setLoading) {
+          setLoading(false);
+        }
       });
-    } catch (err) {
-      if (setLoading) setLoading(false);
-    }
   };
 
 export const onEditContactInfo =
   (data, setEditAccount, successPopup, setSuccessPopup, setLoading) =>
   async (dispatch) => {
-    try {
-      Axios.post("/edit-contact-info", data, config).then((res) => {
+    await Axios.post("/edit-contact-info", data, config)
+      .then((res) => {
         setEditAccount(false);
         dispatch({
           type: SET_EDIT_FREELANCER_INFO,
@@ -334,12 +346,12 @@ export const onEditContactInfo =
             message="Details saved successfully"
           />
         );
+      })
+      .catch((err) => {
+        if (setLoading) {
+          setLoading(false);
+        }
       });
-    } catch (err) {
-      if (setLoading) {
-        setLoading(false);
-      }
-    }
   };
 
 export const onEditLocationInfo =
@@ -353,8 +365,8 @@ export const onEditLocationInfo =
     setLoading
   ) =>
   async (dispatch) => {
-    try {
-      Axios.post("/edit-location", data, config).then((res) => {
+    await Axios.post("/edit-location", data, config)
+      .then((res) => {
         if (setEditLocation) {
           setEditLocation(false);
         }
@@ -384,19 +396,19 @@ export const onEditLocationInfo =
             afterSuccess={afterSuccess}
           />
         );
+      })
+      .catch((err) => {
+        if (setLoading) {
+          setLoading(false);
+        }
       });
-    } catch (err) {
-      if (setLoading) {
-        setLoading(false);
-      }
-    }
   };
 
 export const onEditVideo =
   (data, popup, successPopup, setSuccessPopup, setLoading) =>
   async (dispatch) => {
-    try {
-      Axios.post("/edit-video", data, config).then((res) => {
+    await Axios.post("/edit-video", data, config)
+      .then((res) => {
         dispatch({
           type: SET_EDIT_VIDEO,
           payload: res.data,
@@ -411,12 +423,12 @@ export const onEditVideo =
             message="Introduction video saved Successfully"
           />
         );
+      })
+      .catch((err) => {
+        if (setLoading) {
+          setLoading(false);
+        }
       });
-    } catch (err) {
-      if (setLoading) {
-        setLoading(false);
-      }
-    }
   };
 
 export const onEditDesignation =
@@ -429,8 +441,8 @@ export const onEditDesignation =
     setLoading
   ) =>
   async (dispatch) => {
-    try {
-      Axios.post("/edit-designation-info", data, config).then((res) => {
+    await Axios.post("/edit-designation-info", data, config)
+      .then((res) => {
         dispatch({
           type: SET_EDIT_DESIGNATION,
           payload: res.data,
@@ -448,17 +460,18 @@ export const onEditDesignation =
             afterSuccess={afterSuccess}
           />
         );
+      })
+      .catch((err) => {
+        if (setLoading) {
+          setLoading(false);
+        }
       });
-    } catch (err) {
-      if (setLoading) {
-        setLoading(false);
-      }
-    }
   };
 
 export const onEditPortfolio =
-  (data, popup, successPopup, setSuccessPopup, setLoading) => (dispatch) => {
-    Axios.post("/edit-portfolio-info", data, config)
+  (data, popup, successPopup, setSuccessPopup, setLoading) =>
+  async (dispatch) => {
+    await Axios.post("/edit-portfolio-info", data, config)
       .then((res) => {
         dispatch({
           type: SET_EDIT_PORTFOLIO,
@@ -490,8 +503,8 @@ export const onEditPortfolio =
 export const onEditLanguage =
   (data, popup, successPopup, setSuccessPopup, afterSuccess, setLoading) =>
   async (dispatch) => {
-    try {
-      Axios.post("/edit-language", data, config).then((res) => {
+    await Axios.post("/edit-language", data, config)
+      .then((res) => {
         dispatch({
           type: SET_EDIT_LANGUAGE,
           payload: res.data,
@@ -509,17 +522,17 @@ export const onEditLanguage =
             afterSuccess={afterSuccess}
           />
         );
+      })
+      .catch((err) => {
+        if (setLoading) {
+          setLoading(false);
+        }
       });
-    } catch (err) {
-      if (setLoading) {
-        setLoading(false);
-      }
-    }
   };
 
 export const getLanguageList = (setLoading) => async (dispatch) => {
-  try {
-    Axios.get("/languages-list").then((res) => {
+  await Axios.get("/languages-list")
+    .then((res) => {
       dispatch({
         type: SET_LANGUAGE_LIST,
         payload: res.data.data,
@@ -527,17 +540,17 @@ export const getLanguageList = (setLoading) => async (dispatch) => {
       if (setLoading) {
         setLoading(false);
       }
+    })
+    .catch((err) => {
+      if (setLoading) {
+        setLoading(false);
+      }
     });
-  } catch (err) {
-    if (setLoading) {
-      setLoading(false);
-    }
-  }
 };
 
 export const getHoursPerWeekList = (setLoading) => async (dispatch) => {
-  try {
-    Axios.get("/hours-per-week").then((res) => {
+  await Axios.get("/hours-per-week")
+    .then((res) => {
       dispatch({
         type: SET_HWP_LIST,
         payload: res.data.data,
@@ -545,19 +558,19 @@ export const getHoursPerWeekList = (setLoading) => async (dispatch) => {
       if (setLoading) {
         setLoading(false);
       }
+    })
+    .catch((err) => {
+      if (setLoading) {
+        setLoading(false);
+      }
     });
-  } catch (err) {
-    if (setLoading) {
-      setLoading(false);
-    }
-  }
 };
 
 export const onEditHourPerWeek =
   (data, popup, successPopup, setSuccessPopup, afterSuccess, setLoading) =>
   async (dispatch) => {
-    try {
-      Axios.post("/edit-hours-per-week", data, config).then((res) => {
+    await Axios.post("/edit-hours-per-week", data, config)
+      .then((res) => {
         dispatch({
           type: SET_HOURS_PER_WEEK,
           payload: res.data,
@@ -578,19 +591,19 @@ export const onEditHourPerWeek =
         if (popup) {
           popup();
         }
+      })
+      .catch((err) => {
+        if (setLoading) {
+          setLoading(false);
+        }
       });
-    } catch (err) {
-      if (setLoading) {
-        setLoading(false);
-      }
-    }
   };
 
 export const onEditSkills =
   (data, popup, successPopup, setSuccessPopup, afterSuccess, setLoading) =>
   async (dispatch) => {
-    try {
-      Axios.post("/edit-skills-info", data, config).then((res) => {
+    await Axios.post("/edit-skills-info", data, config)
+      .then((res) => {
         dispatch({
           type: SET_EDIT_SKILLS,
           payload: res.data,
@@ -608,19 +621,19 @@ export const onEditSkills =
             afterSuccess={afterSuccess}
           />
         );
+      })
+      .catch((err) => {
+        if (setLoading) {
+          setLoading(false);
+        }
       });
-    } catch (err) {
-      if (setLoading) {
-        setLoading(false);
-      }
-    }
   };
 
 export const onEditCertificate =
   (data, popup, successPopup, setSuccessPopup, setLoading) =>
   async (dispatch) => {
-    try {
-      Axios.post("/edit-certificate-info", data, config).then((res) => {
+    await Axios.post("/edit-certificate-info", data, config)
+      .then((res) => {
         dispatch({
           type: SET_EDIT_CERTIFICATE,
           payload: res.data,
@@ -635,31 +648,31 @@ export const onEditCertificate =
             message="Certificate saved successfully"
           />
         );
+      })
+      .catch((err) => {
+        if (setLoading) {
+          setLoading(false);
+        }
       });
-    } catch (err) {
-      if (setLoading) {
-        setLoading(false);
-      }
-    }
   };
 
 export const onDeleteCertificate =
   (data, setConfirmPopup) => async (dispatch) => {
-    try {
-      Axios.post("/delete-certificate-info", data, config).then((res) => {
+    await Axios.post("/delete-certificate-info", data, config)
+      .then((res) => {
         dispatch({
           type: SET_DELETE_CERTIFICATE,
           payload: res.data,
         });
         setConfirmPopup();
-      });
-    } catch (err) {}
+      })
+      .catch((err) => {});
   };
 
 export const editNameInfo =
   (data, successPopup, setSuccessPopup, setLoading) => async (dispatch) => {
-    try {
-      Axios.post("/edit-name-info", data, config).then((res) => {
+    await Axios.post("/edit-name-info", data, config)
+      .then((res) => {
         dispatch({
           type: SET_PROFILE_IMG_CHANGE,
           payload: res.data,
@@ -679,18 +692,18 @@ export const editNameInfo =
             afterSuccess={afterSuccess}
           />
         );
+      })
+      .catch((err) => {
+        if (setLoading) {
+          setLoading(false);
+        }
       });
-    } catch (err) {
-      if (setLoading) {
-        setLoading(false);
-      }
-    }
   };
 
 export const editVisiblity =
   (data, popup, successPopup, setSuccessPopup) => async (dispatch) => {
-    try {
-      Axios.post("/set-visibility", data, config).then((res) => {
+    await Axios.post("/set-visibility", data, config)
+      .then((res) => {
         dispatch({
           type: SET_VISIBLITY,
           payload: res.data,
@@ -702,15 +715,15 @@ export const editVisiblity =
             message="Visibility saved successfully"
           />
         );
-      });
-    } catch (err) {}
+      })
+      .catch((err) => {});
   };
 
 export const editExprienceLev =
   (data, popup, successPopup, setSuccessPopup, setLoading) =>
   async (dispatch) => {
-    try {
-      Axios.post("/edit-experience-level", data, config).then((res) => {
+    await Axios.post("/edit-experience-level", data, config)
+      .then((res) => {
         dispatch({
           type: SET_EXPRIENCE_LEVEL,
           payload: res.data,
@@ -725,18 +738,18 @@ export const editExprienceLev =
             message="Experience level saved successfully"
           />
         );
+      })
+      .catch((err) => {
+        if (setLoading) {
+          setLoading(false);
+        }
       });
-    } catch (err) {
-      if (setLoading) {
-        setLoading(false);
-      }
-    }
   };
 
 export const onDeletePortfolio =
   (data, setConfirmPopup, setLoading) => async (dispatch) => {
-    try {
-      Axios.post("/delete-portfolio-info", data, config).then((res) => {
+    await Axios.post("/delete-portfolio-info", data, config)
+      .then((res) => {
         dispatch({
           type: SET_DELETE_PORTFOLIO,
           payload: res.data,
@@ -745,18 +758,18 @@ export const onDeletePortfolio =
           setLoading(false);
         }
         setConfirmPopup(false);
+      })
+      .catch((err) => {
+        if (setLoading) {
+          setLoading(false);
+        }
       });
-    } catch (err) {
-      if (setLoading) {
-        setLoading(false);
-      }
-    }
   };
 
 export const onAdditionalAccount =
   (data, navigate, setLoading) => async (dispatch) => {
-    try {
-      Axios.post("/additional-account", data, config).then((res) => {
+    await Axios.post("/additional-account", data, config)
+      .then((res) => {
         dispatch({
           type: SET_ADDITIONAL_ACCOUNT,
           payload: res.data,
@@ -770,19 +783,19 @@ export const onAdditionalAccount =
         if (data.user_type == "client") {
           navigate("/dashboard");
         }
+      })
+      .catch((err) => {
+        if (setLoading) {
+          setLoading(false);
+        }
       });
-    } catch (err) {
-      if (setLoading) {
-        setLoading(false);
-      }
-    }
   };
 
 export const onSubmitVerificationDocs =
   (data, popup, successPopup, setSuccessPopup, setLoading) =>
   async (dispatch) => {
-    try {
-      Axios.post("/user-document-verify", data, config).then((res) => {
+    await Axios.post("/user-document-verify", data, config)
+      .then((res) => {
         dispatch({
           type: SET_SUBMIT_VERIF_DOCS,
           payload: res.data,
@@ -799,18 +812,18 @@ export const onSubmitVerificationDocs =
             message="Verification request sent successfully"
           />
         );
+      })
+      .catch((err) => {
+        if (setLoading) {
+          setLoading(false);
+        }
       });
-    } catch (err) {
-      if (setLoading) {
-        setLoading(false);
-      }
-    }
   };
 
 export const onRequestTestimonial =
   (data, popup, successPopup, setSuccessPopup, setLoading) =>
   async (dispatch) => {
-    Axios.post("/edit-testimonial-info", data, config)
+    await Axios.post("/edit-testimonial-info", data, config)
       .then((res) => {
         dispatch({
           type: REQUEST_TESTIMONIAL,
@@ -841,8 +854,8 @@ export const onRequestTestimonial =
 export const onSubmitTestimonial =
   (data, successPopup, setSuccessPopup, afterSuccess, setLoading) =>
   async (dispatch) => {
-    try {
-      Axios.post("/client-testimonial", data, config).then((res) => {
+    await Axios.post("/client-testimonial", data, config)
+      .then((res) => {
         if (setLoading) {
           setLoading(false);
         }
@@ -853,17 +866,17 @@ export const onSubmitTestimonial =
             afterSuccess={afterSuccess}
           />
         );
+      })
+      .catch((err) => {
+        if (setLoading) {
+          setLoading(false);
+        }
       });
-    } catch (err) {
-      if (setLoading) {
-        setLoading(false);
-      }
-    }
   };
 
 export const onGetTestmonial =
   (data, setValues, navigate) => async (dispatch) => {
-    Axios.post("/get-testimonial", data, config)
+    await Axios.post("/get-testimonial", data, config)
       .then((res) => {
         dispatch({
           type: GET_TESTIMONIAL,
@@ -881,8 +894,8 @@ export const onGetTestmonial =
 export const onAddCategory =
   (data, successPopup, setSuccessPopup, afterSuccess, setLoading) =>
   async (dispatch) => {
-    try {
-      Axios.post("/add-category", data, config).then((res) => {
+    await Axios.post("/add-category", data, config)
+      .then((res) => {
         dispatch({
           type: ADD_CATEGORY,
           payload: res.data,
@@ -897,33 +910,33 @@ export const onAddCategory =
             afterSuccess={afterSuccess}
           />
         );
+      })
+      .catch((err) => {
+        if (setLoading) {
+          setLoading(false);
+        }
       });
-    } catch (err) {
-      if (setLoading) {
-        setLoading(false);
-      }
-    }
   };
 
 export const getCertificationList =
   (setCertificateList, setLoading) => async (dispatch) => {
-    try {
-      Axios.get("/certificate-list", config).then((res) => {
+    await Axios.get("/certificate-list", config)
+      .then((res) => {
         setCertificateList(res.data.data);
+        if (setLoading) {
+          setLoading(false);
+        }
+      })
+      .catch((err) => {
+        if (setLoading) {
+          setLoading(false);
+        }
       });
-      if (setLoading) {
-        setLoading(false);
-      }
-    } catch (err) {
-      if (setLoading) {
-        setLoading(false);
-      }
-    }
   };
 
 export const getCategoryList = (setLoading) => async (dispatch) => {
-  try {
-    Axios.get("/category-list").then((res) => {
+  await Axios.get("/category-list")
+    .then((res) => {
       dispatch({
         type: SET_CATEGORY_LIST,
         payload: res.data.data,
@@ -931,10 +944,10 @@ export const getCategoryList = (setLoading) => async (dispatch) => {
       if (setLoading) {
         setLoading(false);
       }
+    })
+    .catch((err) => {
+      if (setLoading) {
+        setLoading(false);
+      }
     });
-  } catch (err) {
-    if (setLoading) {
-      setLoading(false);
-    }
-  }
 };

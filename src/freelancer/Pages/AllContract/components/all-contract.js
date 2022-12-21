@@ -192,23 +192,25 @@ const Screen = () => {
 
           <AllProjects getAllContracts={getAllContracts?.All} />
 
-          {/* {activeTab == "ALL" ? (
-            <HourlyProjects getAllContracts={getAllContracts?.All} />
-          ) : activeTab == "HOURLY" ? (
-            <HourlyProjects getAllContracts={getAllContracts?.Hourly} />
-          ) : activeTab == "ACTIVE_MILESTONE" ? (
-            <ActiveMilestones
-              getAllContracts={getAllContracts?.ActiveMilestone}
-            />
-          ) : activeTab == "AWAITNIG_MILESTONE" ? (
-            <AwaitingMilestones
-              getAllContracts={getAllContracts?.AwaitingMilestone}
-            />
-          ) : activeTab == "PAYMENTR_EQUESTED" ? (
-            <PaymentRequested
-              getAllContracts={getAllContracts?.PaymentRequest}
-            />
-          ) : null} */}
+          {/* <>
+            {activeTab == "ALL" ? (
+              <HourlyProjects getAllContracts={getAllContracts?.All} />
+            ) : activeTab == "HOURLY" ? (
+              <HourlyProjects getAllContracts={getAllContracts?.Hourly} />
+            ) : activeTab == "ACTIVE_MILESTONE" ? (
+              <ActiveMilestones
+                getAllContracts={getAllContracts?.ActiveMilestone}
+              />
+            ) : activeTab == "AWAITNIG_MILESTONE" ? (
+              <AwaitingMilestones
+                getAllContracts={getAllContracts?.AwaitingMilestone}
+              />
+            ) : activeTab == "PAYMENTR_EQUESTED" ? (
+              <PaymentRequested
+                getAllContracts={getAllContracts?.PaymentRequest}
+              />
+            ) : null}
+          </> */}
         </div>
       </Container>
     </>

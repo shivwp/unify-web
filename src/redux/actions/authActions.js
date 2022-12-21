@@ -72,118 +72,123 @@ export const getDevelopersBySkills = (data) => async (dispatch) => {
 
 export const onLogin =
   (data, navigate, setMessage, setLoading) => async (dispatch) => {
-    try {
-      const res = await Axios.post(`/login`, data);
-      if (res.data.status) {
-        sessionStorage.setItem("unify_token", res.data.auth_token);
-        sessionStorage.setItem(
-          "unify_user",
-          JSON.stringify(res.data.data.user)
-        );
-        if (res.data.data.user.user_type === "freelancer") {
-          if (res.data.data.user.is_profile_complete === true) {
-            sessionStorage.setItem(
-              "unify_freelancer",
-              JSON.stringify(res.data.data.freelancer)
-            );
-            navigate("/freelancer/dashboard");
-          } else {
-            navigate("/freelancer/profile-intro/question1");
+    await Axios.post(`/login`, data)
+      .then((res) => {
+        if (res.data.status) {
+          sessionStorage.setItem("unify_token", res.data.auth_token);
+          sessionStorage.setItem(
+            "unify_user",
+            JSON.stringify(res.data.data.user)
+          );
+          if (res.data.data.user.user_type === "freelancer") {
+            if (res.data.data.user.is_profile_complete === true) {
+              sessionStorage.setItem(
+                "unify_freelancer",
+                JSON.stringify(res.data.data.freelancer)
+              );
+              navigate("/freelancer/dashboard");
+            } else {
+              navigate("/freelancer/profile-intro/question1");
+            }
+          } else if (res.data.data.user.user_type === "client") {
+            if (res.data.data.user.is_profile_complete === true) {
+              navigate("/dashboard");
+            } else {
+              navigate("/businesssize");
+            }
           }
-        } else if (res.data.data.user.user_type === "client") {
-          if (res.data.data.user.is_profile_complete === true) {
-            navigate("/dashboard");
-          } else {
-            navigate("/businesssize");
+          if (setLoading) {
+            setLoading(false);
           }
+          window.location.reload();
         }
+      })
+      .catch((err) => {
+        setMessage(err.response.data.message);
         if (setLoading) {
           setLoading(false);
         }
-        window.location.reload();
-      }
-    } catch (err) {
-      setMessage(err.response.data.message);
-      if (setLoading) {
-        setLoading(false);
-      }
-    }
+      });
   };
 
 export const onRegister =
   (data, navigate, setMessage, setLoading) => async (dispatch) => {
-    try {
-      const res = await Axios.post(`/signup`, data);
-      if (res.data.status) {
-        navigate("/verify-signup");
-      }
-      if (setLoading) {
-        setLoading(false);
-      }
-    } catch (err) {
-      setMessage(err.response.data.message);
-      if (setLoading) {
-        setLoading(false);
-      }
-    }
+    await Axios.post(`/signup`, data)
+      .then((res) => {
+        if (res.data.status) {
+          navigate("/verify-signup");
+        }
+        if (setLoading) {
+          setLoading(false);
+        }
+      })
+      .catch((err) => {
+        setMessage(err.response.data.message);
+        if (setLoading) {
+          setLoading(false);
+        }
+      });
   };
 
 export const onVerifySignup =
   (data, navigate, setMessage, setLoading) => async (dispatch) => {
-    try {
-      const res = await Axios.post(`/verifysignup`, data);
-      if (res.data.status) {
-        navigate("/signin");
-        window.location.reload();
-      }
-      if (setLoading) {
-        setLoading(false);
-      }
-    } catch (err) {
-      setMessage(err.response.data.message);
-      if (setLoading) {
-        setLoading(false);
-      }
-    }
+    await Axios.post(`/verifysignup`, data)
+      .then((res) => {
+        if (res.data.status) {
+          navigate("/signin");
+          window.location.reload();
+        }
+        if (setLoading) {
+          setLoading(false);
+        }
+      })
+      .catch((err) => {
+        setMessage(err.response.data.message);
+        if (setLoading) {
+          setLoading(false);
+        }
+      });
   };
 
 export const onResendOtp =
   (data, setOtpSuccess, setLoading) => async (dispatch) => {
-    try {
-      const res = await Axios.post(`/resend-otp`, data);
-      dispatch({
-        type: RESEND_OTP_SUCCESS,
-        payload: res.data.message,
-      });
-      if (setLoading) {
-        setLoading(false);
-      }
+    await Axios.post(`/resend-otp`, data)
+      .then((res) => {
+        dispatch({
+          type: RESEND_OTP_SUCCESS,
+          payload: res.data.message,
+        });
+        if (setLoading) {
+          setLoading(false);
+        }
 
-      setOtpSuccess(res.data.message);
-    } catch (err) {
-      if (setLoading) {
-        setLoading(false);
-      }
-    }
+        setOtpSuccess(res.data.message);
+      })
+      .catch((err) => {
+        if (setLoading) {
+          setLoading(false);
+        }
+      });
   };
 
 export const countryList = (setLoading) => async (dispatch) => {
-  try {
-    const res = await Axios.get(`/coutrylist`);
-    if (res.data.status) {
-      dispatch({
-        type: SET_COUNTRY,
-        payload: res.data.countrylist,
-      });
+  await Axios.get(`/coutrylist`)
+    .then((res) => {
+      if (res.data.status) {
+        dispatch({
+          type: SET_COUNTRY,
+          payload: res.data.countrylist,
+        });
+        if (setLoading) {
+          setLoading(false);
+        }
+      }
+    })
+    .catch((err) => {
       if (setLoading) {
         setLoading(false);
       }
-    }
-  } catch (err) {
-    if (setLoading) {
-      setLoading(false);
-    }
-  }
+    });
 };
 
 export const onForgotPassword =
@@ -223,92 +228,101 @@ export const onVerifyForgot =
   };
 
 export const onResetPassword = (data, navigate) => async (dispatch) => {
-  try {
-    const res = await Axios.post(`/reset-password`, data);
-    if (res.data.status) {
-      navigate("/signin");
-    }
-  } catch (err) {}
+  await Axios.post(`/reset-password`, data)
+    .then((res) => {
+      if (res.data.status) {
+        navigate("/signin");
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 };
 
 export const onPasswordChange =
   (data, popup, successPopup, setSuccessPopup, setMessage) =>
   async (dispatch) => {
-    try {
-      const res = await Axios.post(`/change-password`, data, config);
-      if (res.data.status) {
-        if (popup) {
-          popup();
+    await Axios.post(`/change-password`, data, config)
+      .then((res) => {
+        if (res.data.status) {
+          if (popup) {
+            popup();
+          }
+          setSuccessPopup(
+            <SuccessPopup
+              Popup={() => setSuccessPopup(!successPopup)}
+              message="Password changed successfully"
+              // afterSuccess={afterSuccess}
+            />
+          );
         }
-        setSuccessPopup(
-          <SuccessPopup
-            Popup={() => setSuccessPopup(!successPopup)}
-            message="Password changed successfully"
-            // afterSuccess={afterSuccess}
-          />
-        );
-      }
-    } catch (err) {
-      setMessage(err.response.data.message);
-    }
+      })
+      .catch((err) => {
+        setMessage(err.response.data.message);
+      });
   };
 
 export const onOnlineStatus = (data, setLoading) => async (dispatch) => {
-  try {
-    const res = await Axios.post(`/online-status`, data, config);
-    if (res.data.status) {
-      dispatch({
-        type: SET_ONLINE_STATUS,
-        payload: res.data,
-      });
+  await Axios.post(`/online-status`, data, config)
+    .then((res) => {
+      if (res.data.status) {
+        dispatch({
+          type: SET_ONLINE_STATUS,
+          payload: res.data,
+        });
+        if (setLoading) {
+          setLoading(false);
+        }
+        // window.location.reload();
+      }
+    })
+    .catch((err) => {
       if (setLoading) {
         setLoading(false);
       }
-      // window.location.reload();
-    }
-  } catch (err) {
-    if (setLoading) {
-      setLoading(false);
-    }
-  }
+    });
 };
 
 export const googleSignInSuccess =
   (data, navigate, setMessage, setLoading) => async (dispatch) => {
-    try {
-      const res = await Axios.post(`/social-login`, data);
-      if (res.data.status) {
-        sessionStorage.setItem("unify_token", res.data.auth_token);
-        sessionStorage.setItem(
-          "unify_user",
-          JSON.stringify(res.data.data.user)
-        );
-        if (res.data.data.user.user_type === "freelancer") {
-          if (res.data.data.user.is_profile_complete === true) {
-            navigate("/freelancer/dashboard");
-            sessionStorage.setItem(
-              "unify_freelancer",
-              JSON.stringify(res.data.data.freelancer)
-            );
-            setLoading(false);
-          } else {
-            setLoading(false);
-            navigate("/freelancer/profile-intro/question1");
+    await Axios.post(`/social-login`, data)
+      .then((res) => {
+        if (res.data.status) {
+          sessionStorage.setItem("unify_token", res.data.auth_token);
+          sessionStorage.setItem(
+            "unify_user",
+            JSON.stringify(res.data.data.user)
+          );
+          if (res.data.data.user.user_type === "freelancer") {
+            if (res.data.data.user.is_profile_complete === true) {
+              navigate("/freelancer/dashboard");
+              sessionStorage.setItem(
+                "unify_freelancer",
+                JSON.stringify(res.data.data.freelancer)
+              );
+              setLoading(false);
+            } else {
+              setLoading(false);
+              navigate("/freelancer/profile-intro/question1");
+            }
+          } else if (res.data.data.user.user_type === "client") {
+            if (res.data.data.user.is_profile_complete === true) {
+              navigate("/dashboard");
+            } else {
+              navigate("/businesssize");
+            }
           }
-        } else if (res.data.data.user.user_type === "client") {
-          if (res.data.data.user.is_profile_complete === true) {
-            navigate("/dashboard");
-          } else {
-            navigate("/businesssize");
-          }
+          setLoading(false);
+          window.location.reload();
+        } else {
+          setLoading(false);
+          setMessage(res.data.message);
         }
+      })
+      .catch((err) => {
         setLoading(false);
-        window.location.reload();
-      } else {
-        setLoading(false);
-        setMessage(res.data.message);
-      }
-    } catch (err) {}
+        setMessage(err?.data?.message);
+      });
   };
 
 export const googleSignInFail = (error) => ({
@@ -361,36 +375,39 @@ export const googleSignInInitiate = (
 
 export const appleSignInSuccess =
   (data, navigate, setMessage) => async (dispatch) => {
-    try {
-      const res = await Axios.post(`/social-login`, data, config);
-      if (res.data.status) {
-        sessionStorage.setItem("unify_token", res.data.auth_token);
-        sessionStorage.setItem(
-          "unify_user",
-          JSON.stringify(res.data.data.user)
-        );
-        if (res.data.data.user.user_type === "freelancer") {
-          if (res.data.data.user.is_profile_complete === true) {
-            navigate("/freelancer/dashboard");
-            sessionStorage.setItem(
-              "unify_freelancer",
-              JSON.stringify(res.data.data.freelancer)
-            );
-          } else {
-            navigate("/freelancer/profile-intro/question1");
+    await Axios.post(`/social-login`, data, config)
+      .then((res) => {
+        if (res.data.status) {
+          sessionStorage.setItem("unify_token", res.data.auth_token);
+          sessionStorage.setItem(
+            "unify_user",
+            JSON.stringify(res.data.data.user)
+          );
+          if (res.data.data.user.user_type === "freelancer") {
+            if (res.data.data.user.is_profile_complete === true) {
+              navigate("/freelancer/dashboard");
+              sessionStorage.setItem(
+                "unify_freelancer",
+                JSON.stringify(res.data.data.freelancer)
+              );
+            } else {
+              navigate("/freelancer/profile-intro/question1");
+            }
+          } else if (res.data.data.user.user_type === "client") {
+            if (res.data.data.user.is_profile_complete === true) {
+              navigate("/dashboard");
+            } else {
+              navigate("/businesssize");
+            }
           }
-        } else if (res.data.data.user.user_type === "client") {
-          if (res.data.data.user.is_profile_complete === true) {
-            navigate("/dashboard");
-          } else {
-            navigate("/businesssize");
-          }
+          window.location.reload();
+        } else {
+          setMessage(res.data.message);
         }
-        window.location.reload();
-      } else {
-        setMessage(res.data.message);
-      }
-    } catch (err) {}
+      })
+      .catch((err) => {
+        setMessage(err?.data?.message);
+      });
   };
 
 export const appleSignInFail = (error) => ({
