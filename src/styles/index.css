@@ -9706,8 +9706,8 @@ input::-webkit-inner-spin-button {
 }
 .single_active_proposal .cover_letter .heading {
   color: #170048;
-  font-weight: 700;
-  font-size: 25px;
+  font-weight: 600;
+  font-size: 22px;
   margin: 10px 0;
 }
 .single_active_proposal .cover_letter .desc {
@@ -9799,8 +9799,8 @@ input::-webkit-inner-spin-button {
 
 .single_active_proposal .original_client_msg .heading {
   color: #170048;
-  font-weight: 700;
-  font-size: 25px;
+  font-weight: 600;
+  font-size: 22px;
   margin: 10px 0;
 }
 .single_active_proposal .original_client_msg .desc {
@@ -9817,8 +9817,8 @@ input::-webkit-inner-spin-button {
 
 .single_active_proposal .messages .heading {
   color: #170048;
-  font-weight: 700;
-  font-size: 25px;
+  font-weight: 600;
+  font-size: 22px;
   margin: 10px 0;
 }
 
@@ -10070,7 +10070,7 @@ input::-webkit-inner-spin-button {
 }
 .pageNotFoundHead {
   text-align: center;
-  font: normal normal bold 40px/86px Poppins;
+  font: normal normal 500 36px/86px Poppins;
   letter-spacing: -1.25px;
   color: #00065a;
 }

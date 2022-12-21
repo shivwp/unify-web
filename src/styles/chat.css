@@ -1959,6 +1959,12 @@
   }
 }
 
+@media only screen and (max-width: 320px) {
+  .navbarResp {
+    /* left: 93% !important; */
+  }
+}
+
 .chat-ul-area {
   padding: 0px 15px;
 }
@@ -2277,7 +2283,7 @@
 }
 
 .freelancer_testimonials {
-  padding: 5px 30px;
+  padding: 5px 21px;
 }
 
 .freelancer_testimonials .testimonial_img {
@@ -2309,6 +2315,32 @@
   font-size: 14px;
 }
 
+.testimonial_box {
+  border-bottom: 1px solid #d5d5d5;
+  margin-bottom: 4px;
+}
+
+.testimonials_head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.testimonials_head .f_user_name {
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.testimonials_head .testimonial_time {
+  color: "#62646a";
+  font-size: 12px;
+  font-weight: 300;
+}
+
+.testimonial_description {
+  font-size: 14px;
+  padding: 10px 0px;
+}
 .visiblity_opts {
   position: absolute;
   display: flex;

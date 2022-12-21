@@ -361,6 +361,10 @@ const UnifyFreelancer = () => {
     );
   };
 
+  const borderNone = {
+    border: "unset",
+  };
+
   const handleExprienceLevel = (level) => {
     const data = { experience_level: level };
     setLoading(true);
@@ -898,7 +902,7 @@ const UnifyFreelancer = () => {
                         }}
                       >
                         <div>
-                          {edu?.school}, {edu?.area_study}{" "}
+                          {edu?.school}, {edu?.area_study}
                           {moment(edu.date).format("YYYY")}
                         </div>
                         <div className="d-flex justify-content-start">
@@ -1246,56 +1250,24 @@ const UnifyFreelancer = () => {
                 <div className="bpck_head">Testimonials</div>
                 <div className="bpck_para">Endorsements from past clients</div>
               </div>
-              {freelancerProfileList?.testimonial?.map((item) => (
+              {freelancerProfileList?.testimonial?.map((item, index) => (
                 <>
                   {item.status == "approve" && (
-                    <div className="freelancer_testimonials my-2 ">
+                    <div className="freelancer_testimonials my-2 mt-4">
                       <div
-                        style={{
-                          borderBottom: " 1px solid #d5d5d5",
-                          marginBottom: 5,
-                        }}
+                        className="testimonial_box"
+                        style={
+                          freelancerProfileList?.testimonial?.length - 1 ==
+                          index
+                            ? borderNone
+                            : {}
+                        }
                       >
                         <Row>
-                          <Col lg={1}>
-                            <div className="testimonial_img">
-                              <img src="/assets/PRO-2.png" alt="" />
-                            </div>
-                          </Col>
-                          <Col lg={11}>
-                            <div className="user_details">
-                              <div
-                                className="f_user_name"
-                                style={{ textTransform: "capitalize" }}
-                              >{`${item.first_name} ${item.last_name}`}</div>
-                              <div className="f_user_country">India</div>
-                            </div>
-                          </Col>
-                        </Row>
-                        <Row>
-                          <Col lg={1}></Col>
-                          <Col lg={11}>
-                            <div className="reviews d-flex mb-2 align-items-center">
-                              <Star />
-                              <Star />
-                              <Star />
-                              <Star />
-                              <Star />
-                              <span
-                                style={{
-                                  color: "rgb(201 201 201)",
-                                  paddingLeft: 2,
-                                  fontWeight: 100,
-                                }}
-                              >
-                                {" "}
-                                |{" "}
-                              </span>
-                              <span
-                                className="ps-2"
-                                style={{ color: "#62646a" }}
-                              >
-                                {" "}
+                          <Col lg={12}>
+                            <div className="reviews testimonials_head ">
+                              <div className="f_user_name">{`${item.first_name} ${item.last_name}`}</div>
+                              <span className="testimonial_time">
                                 {moment
                                   .utc(item.request_sent)
                                   .local()
@@ -1304,8 +1276,8 @@ const UnifyFreelancer = () => {
                               </span>
                             </div>
                             <div
-                              className="testimonial_description mt-1"
-                              style={{ fontSize: 14, whiteSpace: "pre-line" }}
+                              className="testimonial_description"
+                              style={{ whiteSpace: "pre-line" }}
                             >
                               {item.description}
                             </div>
@@ -1324,16 +1296,12 @@ const UnifyFreelancer = () => {
                           marginBottom: 5,
                         }}
                       >
-                        <div
-                          className="testimonial_description my-1"
-                          style={{ fontSize: 14 }}
-                        >
+                        <div className="testimonial_description my-1">
                           <i className="fa fa-history" aria-hidden="true"></i>
                           {` ${item.message}`}
                         </div>
                         <div>
                           <span className="ps-2" style={{ color: "#62646a" }}>
-                            {" "}
                             {moment
                               .utc(item.request_sent)
                               .local()
@@ -1385,7 +1353,7 @@ const UnifyFreelancer = () => {
               </div>
               {freelancerProfileList?.certificates?.map((item, key) => (
                 <div key={key} className="ms-4">
-                  <div className="bpck_sm_txt_a mt-4 ehistory_uxdes">
+                  <div className="bpck_sm_txt_a mt-3 ehistory_uxdes">
                     {item.name}
                   </div>
                   <div className="ehitory_dtine">{item.description}</div>
