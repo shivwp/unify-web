@@ -268,7 +268,7 @@ const Screen = () => {
                           <Link to={`/edit-draft/${item.id}`}>Edit Draft</Link>
                         </div>
                         <div
-                          className="navabr_t_li"
+                          className="navabr_t_li navabr_t_lihover"
                           onClick={() => setRemovePosting(true)}
                         >
                           Remove Draft

@@ -1,4 +1,5 @@
 import { Col, Row } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 const Screen = ({ proposalArchievedlist, handleRemoveProposalArchieved }) => {
   return (
@@ -33,9 +34,13 @@ const Screen = ({ proposalArchievedlist, handleRemoveProposalArchieved }) => {
                           <img src={data.profile_image} alt="" />
                         </div>
                         <div className="freel_det_bin">
-                          <div className="freelancer_ame_in">
-                            {data.first_name} {data.last_name}
-                          </div>
+                          <Link
+                            to={`/freelancer-details/${data.freelancer_id}`}
+                          >
+                            <div className="freelancer_ame_in">
+                              {data.first_name} {data.last_name}
+                            </div>
+                          </Link>
                           <div className="freelancer_exp_in">
                             {data.occcuption}
                           </div>

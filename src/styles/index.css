@@ -132,6 +132,9 @@ body {
   padding: 8px 5px;
   font-family: "Poppins-Bold", "Poppins";
 }
+.navabr_t_lihover:hover {
+  color: #6d2ef1;
+}
 
 .navbar_btn:hover {
   color: #170048;

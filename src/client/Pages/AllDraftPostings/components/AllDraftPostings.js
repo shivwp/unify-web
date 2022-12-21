@@ -6,11 +6,12 @@ import $ from "jquery";
 import RemoveDraftPopup from "../../../../popups/RemoveDraftPopup";
 import { getAllClientDraftPosting } from "../../../../redux/actions/jobActions";
 import LoadingSpinner from "../../../../components/LoadingSpinner";
+import RemovePostingPopup from "../../../../popups/RemovePostingPopup";
 
 const AllDraftPostings = () => {
   const dispatch = useDispatch();
   const [menuBarDraft, setMenuBarDraft] = useState();
-  const [removeDraft, setRemoveDraft] = useState(false);
+  const [removePosting, setRemovePosting] = useState(false);
   const [loading, setLoading] = useState(false);
   const clientDraftPostingList = useSelector(
     (state) => state?.job?.allClientDraftPosting?.data
@@ -22,7 +23,7 @@ const AllDraftPostings = () => {
   }, []);
 
   $(document).mouseup(function (e) {
-    if ($(e.target).closest("#menu_bar1").length === 0) {
+    if ($(e.target).closest("#menu_bar2").length === 0) {
       setMenuBarDraft(false);
     }
   });
@@ -86,11 +87,11 @@ const AllDraftPostings = () => {
                   {menuBarDraft === item.id && (
                     <div className="menu_bar" id="menu_bar2">
                       <div className="navabr_t_li">
-                        <Link to="/edit-draft">Edit Draft</Link>
+                        <Link to={`/edit-draft/${item.id}`}>Edit Draft</Link>
                       </div>
                       <div
                         className="navabr_t_li"
-                        onClick={() => setRemoveDraft(true)}
+                        onClick={() => setRemovePosting(true)}
                       >
                         Remove Draft
                       </div>
@@ -106,12 +107,20 @@ const AllDraftPostings = () => {
           </div>
         </Container>
       </div>
-      {removeDraft && (
+      {removePosting && (
+        <RemovePostingPopup
+          open={removePosting}
+          onCloseModal={(e) => setRemovePosting(false)}
+          menuBarPosting={menuBarDraft}
+          setLoading={setLoading}
+        />
+      )}
+      {/* {removeDraft && (
         <RemoveDraftPopup
           open={removeDraft}
           onCloseModal={(e) => setRemoveDraft(false)}
         />
-      )}
+      )} */}
       {loading ? <LoadingSpinner /> : null}
     </>
   );

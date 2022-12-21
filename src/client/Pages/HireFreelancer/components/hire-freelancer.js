@@ -196,7 +196,7 @@ const Screen = () => {
       values?.milestone_type === "single" ||
       values?.budget_type === "hourly"
     ) {
-      formData.append("amount", values?.bid_amount);
+      formData.append("amount", parseInt(values?.bid_amount));
       formData.append("date", values?.date);
     }
 

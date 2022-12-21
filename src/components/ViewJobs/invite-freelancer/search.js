@@ -85,9 +85,11 @@ const Screen = ({
                           <img src={data.profile_image} alt="" />
                         </div>
                         <div className="freel_det_bin">
-                          <div className="freelancer_ame_in">
-                            {data.first_name} {data.last_name}
-                          </div>
+                          <Link to={`/freelancer-details/${data.id}`}>
+                            <div className="freelancer_ame_in">
+                              {data.first_name} {data.last_name}
+                            </div>
+                          </Link>
                           <div className="freelancer_exp_in">
                             {data.occuption}
                           </div>

@@ -72,15 +72,15 @@ const AllPosting = () => {
                 </div>
                 <div className="d-flex justify-content-between flex-wrap">
                   <div className="my_job_n_box">
-                    <div className="my_job_nm">0</div>
+                    <div className="my_job_nm">{item.total_proposal}</div>
                     <div className="my_job_h pt-0">Proposals</div>
                   </div>
                   <div className="my_job_n_box">
-                    <div className="my_job_nm">0</div>
+                    <div className="my_job_nm">{item.total_message}</div>
                     <div className="my_job_h pt-0">Messaged</div>
                   </div>
                   <div className="my_job_n_box">
-                    <div className="my_job_nm">0</div>
+                    <div className="my_job_nm">{item.total_hire}</div>
                     <div className="my_job_h pt-0">Hired</div>
                   </div>
                 </div>

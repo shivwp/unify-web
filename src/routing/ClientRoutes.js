@@ -44,6 +44,9 @@ const EditDraft = lazy(() => import("../components/EditDraft"));
 const EditPosting = lazy(() => import("../components/EditPosting"));
 const MakePrivate = lazy(() => import("../components/MakePrivate"));
 const PostYourJobScreen = lazy(() => import("../client/Pages/postYourJobNow"));
+const FreelancerDetails = lazy(() =>
+  import("../client/Pages/FreelancerDetails")
+);
 
 const ClientRoutes = () => {
   return (
@@ -69,6 +72,10 @@ const ClientRoutes = () => {
         <Route path="/edit-posting/:editId" element={<EditPosting />} />
         <Route path="/edit-draft/:draftId" element={<EditDraft />} />
         <Route path="/reuse-posting/:reuseId" element={<ReusePosting />} />
+        <Route
+          path="/freelancer-details/:freelancer_id"
+          element={<FreelancerDetails />}
+        />
         <Route
           path="/hire-freelancer/:project_id/:freelancer_id"
           element={<HireFreelancer />}
