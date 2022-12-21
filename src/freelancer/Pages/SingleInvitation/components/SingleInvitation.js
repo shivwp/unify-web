@@ -174,7 +174,7 @@ const SingleInvitation = () => {
                       </span>
                     </div>
                   </div>
-                  <div>
+                  {/* <div>
                     <Button variant="" className="round_b_btn">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -191,7 +191,7 @@ const SingleInvitation = () => {
                         />
                       </svg>
                     </Button>
-                  </div>
+                  </div> */}
                 </div>
                 <div className="cline_sm_area_i">
                   <div className="csai_name f_l_b">Location</div>
@@ -227,7 +227,7 @@ const SingleInvitation = () => {
                 </div>
               </div>
               <div className="csai_t">
-                Member since: {client_data?.member_since}
+                {`Member since: ${client_data?.member_since}`}
               </div>
             </div>
           </Col>

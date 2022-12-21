@@ -39,6 +39,9 @@ const AccountInfo = ({
             Upload Profile Photo
           </Form.Label>
         </div>
+        <span className="signup-error">
+          {errors?.profile_image && errors?.profile_image}
+        </span>
         <div className="acc_form">
           <Row>
             <Col lg={6} md={6} sm={12}>
