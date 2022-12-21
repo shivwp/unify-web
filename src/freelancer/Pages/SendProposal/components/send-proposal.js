@@ -186,6 +186,7 @@ const Screen = () => {
         successPopup,
         setSuccessPopup,
         navigate,
+        singleJobDetails?.is_invited,
         setLoading
       )
     );

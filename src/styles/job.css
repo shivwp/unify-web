@@ -2586,6 +2586,12 @@
   left: -125px !important;
 }
 
+@media screen and (max-width: 425px) {
+  .report_left_caewe .dropdown-menu {
+    left: 125px !important;
+  }
+}
+
 /* .sign_upbtn_heffect button:hover{
     background-color:#6D2EF1;
     color:#FFFFFF;

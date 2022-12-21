@@ -1895,11 +1895,6 @@ body {
   gap: 10px;
 }
 
-@media screen and (max-width: 425px) {
-  .report_left_caewe .dropdown-menu {
-    left: 0;
-  }
-}
 
 .profile_box {
   position: relative;
@@ -5639,6 +5634,7 @@ body {
   color: #545454;
   font-weight: 400;
   font-family: "Poppins";
+  white-space: pre-line;
 }
 
 .f_l_b {

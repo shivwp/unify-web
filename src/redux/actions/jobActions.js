@@ -121,17 +121,22 @@ export const singleJobPostDetails = (data, setLoading) => async (dispatch) => {
   }
 };
 export const onSendJobProposal =
-  (data, successPopup, setSuccessPopup, navigate, setLoading) =>
+  (data, successPopup, setSuccessPopup, navigate, is_invited, setLoading) =>
   async (dispatch) => {
-    try {
-      Axios.post("/send-proposal", data, config).then((res) => {
+    Axios.post("/send-proposal", data, config)
+      .then((res) => {
         dispatch({
           type: SEND_JOB_PROPOSAL,
           payload: res.data.data,
         });
         const afterSuccess = () => {
-          navigate(`/freelancer/single-submited-proposal/${res.data.data}`);
+          if (is_invited) {
+            navigate(`/freelancer/single-active-proposal/${res.data.data}`);
+          } else {
+            navigate(`/freelancer/single-submited-proposal/${res.data.data}`);
+          }
         };
+
         if (setLoading) {
           setLoading(false);
         }
@@ -142,12 +147,12 @@ export const onSendJobProposal =
             afterSuccess={afterSuccess}
           />
         );
+      })
+      .catch((err) => {
+        if (setLoading) {
+          setLoading(false);
+        }
       });
-    } catch (err) {
-      if (setLoading) {
-        setLoading(false);
-      }
-    }
   };
 export const onDislikePostReasons = (setLoading) => async (dispatch) => {
   try {
