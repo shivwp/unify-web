@@ -172,7 +172,7 @@ const Screen = () => {
                     {menuBarPosting === item.id && (
                       <div className="menu_bar " id="menu_bar1">
                         <div className="navabr_t_li">
-                          <Link to={`/dashboard/edit-posting/${item.id}`}>
+                          <Link to={`/edit-posting/${item.id}`}>
                             Edit Posting
                           </Link>
                         </div>
@@ -193,7 +193,7 @@ const Screen = () => {
                           </Link>
                         </div>
                         <div className="navabr_t_li">
-                          <Link to={`/dashboard/reuse-posting/${item.id}`}>
+                          <Link to={`/reuse-posting/${item.id}`}>
                             Reuse Postings
                           </Link>
                         </div>
@@ -265,9 +265,7 @@ const Screen = () => {
                     {menuBarDraft === item.id && (
                       <div className="menu_bar" id="menu_bar2">
                         <div className="navabr_t_li">
-                          <Link to={`/dashboard/edit-draft/${item.id}`}>
-                            Edit Draft
-                          </Link>
+                          <Link to={`/edit-draft/${item.id}`}>Edit Draft</Link>
                         </div>
                         <div
                           className="navabr_t_li"

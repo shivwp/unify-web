@@ -54,6 +54,10 @@ const ClientRoutes = () => {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/post-your-job" element={<PostYourJobScreen />} />
         <Route path="/job-description" element={<JobDescription />} />
+        <Route
+          path="/job-description/:project_id"
+          element={<JobDescription />}
+        />
         <Route path="/category" element={<Category />} />
         <Route path="/create-category" element={<Createcategory />} />
         <Route path="/question2" element={<QuestionTwo />} />
@@ -62,15 +66,9 @@ const ClientRoutes = () => {
         <Route path="/notification" element={<Notification />} />
         <Route path="/view-job/:jobId/:tabs" element={<ViewJob />} />
         <Route path="/view-job/private" element={<MakePrivate />} />
-        <Route
-          path="/dashboard/edit-posting/:editId"
-          element={<EditPosting />}
-        />
-        <Route path="/dashboard/edit-draft/:draftId" element={<EditDraft />} />
-        <Route
-          path="/dashboard/reuse-posting/:reuseId"
-          element={<ReusePosting />}
-        />
+        <Route path="/edit-posting/:editId" element={<EditPosting />} />
+        <Route path="/edit-draft/:draftId" element={<EditDraft />} />
+        <Route path="/reuse-posting/:reuseId" element={<ReusePosting />} />
         <Route
           path="/hire-freelancer/:project_id/:freelancer_id"
           element={<HireFreelancer />}

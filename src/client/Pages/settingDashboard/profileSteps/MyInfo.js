@@ -78,13 +78,15 @@ const MyInfo = ({ setOpen, getClientDetails }) => {
             <div className="mb-2 mt-1">
               <div className="c_name_sett">Company size</div>
               <div className="c_name_s_v">
-                {getClientDetails?.employee_no <= 10
-                  ? "(1-10 people)"
+                {getClientDetails?.employee_no <= 1
+                  ? "It Just me"
+                  : getClientDetails?.employee_no <= 2
+                  ? "2-9 employees"
+                  : getClientDetails?.employee_no <= 10
+                  ? "10-99 employees"
                   : getClientDetails?.employee_no <= 100
-                  ? "(10-100 people)"
-                  : getClientDetails?.employee_no <= 1000
-                  ? "(100-1000 people)"
-                  : "1000+ people" || "..."}
+                  ? "100+ employees" || "..."
+                  : null}
               </div>
             </div>
           </Col>

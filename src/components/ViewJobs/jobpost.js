@@ -186,7 +186,7 @@ const JonComponent = ({ singleJobDetails, jobId, handleMakePublicPrivate }) => {
         </Col>
         <Col lg={4}>
           <div className="box_vs_m">
-            <Link to={`/dashboard/edit-posting/${jobId}`}>
+            <Link to={`/edit-posting/${jobId}`}>
               <div className="r_in_tab_h">
                 <button className="round_b_btn">
                   <i className="bi bi-pencil text-secondary"></i>
@@ -194,7 +194,7 @@ const JonComponent = ({ singleJobDetails, jobId, handleMakePublicPrivate }) => {
                 <h1>Edit Posting</h1>
               </div>
             </Link>
-            <Link to={`/dashboard/reuse-posting/${jobId}`}>
+            <Link to={`/reuse-posting/${jobId}`}>
               <div className="r_in_tab_h">
                 <button className="round_b_btn">
                   <i className="bi bi-pin-angle text-secondary"></i>
