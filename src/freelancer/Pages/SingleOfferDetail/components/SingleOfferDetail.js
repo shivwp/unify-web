@@ -89,8 +89,25 @@ const SingleOfferDetail = () => {
                 <div className="svs_para">{project_data?.description}</div>
               </div>
               <div className="svs_b_bot">
-                <div className="input_t_lab p-0">Project Type</div>
-                <div className="svs_para">Ongoing project</div>
+                <div className="single_offer_type">
+                  <div>
+                    <div className="input_t_lab p-0">Project Type</div>
+                    <div className="svs_para">Ongoing project</div>
+                  </div>
+                  <div>
+                    <div className="input_t_lab p-0">Price</div>
+                    {project_data?.budget_type === "hourly" ? (
+                      <div className="svs_para">
+                        {` $${project_data?.min_price} - $${project_data?.price} /hr
+                        ${project_data?.budget_type}`}
+                      </div>
+                    ) : project_data?.budget_type === "fixed" ? (
+                      <div className="svs_para">
+                        {`$${project_data?.price} ${project_data?.budget_type}`}
+                      </div>
+                    ) : null}
+                  </div>
+                </div>
               </div>
 
               <div className="b_bot_inp pt-0">
@@ -113,7 +130,7 @@ const SingleOfferDetail = () => {
                 </li>
               </ul>
             </div> */}
-              <div className="b_bot_inp pt-0">
+              <div className="b_bot_inp pt-0 no-border">
                 <div className="input_t_lab">Original Message From Client</div>
                 <div className="new_para_m">{proposal_data?.cover_letter}</div>
               </div>
@@ -187,24 +204,6 @@ const SingleOfferDetail = () => {
                       </span>
                     </div>
                   </div>
-                  <div>
-                    <Button variant="" className="round_b_btn">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
-                        fill="#D4D4D5"
-                        className="bi bi-pencil-square"
-                        viewBox="0 0 16 16"
-                      >
-                        <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
-                        <path
-                          fillRule="evenodd"
-                          d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"
-                        />
-                      </svg>
-                    </Button>
-                  </div>
                 </div>
                 <div className="cline_sm_area_i">
                   <div className="csai_name f_l_b">Location</div>
@@ -240,7 +239,7 @@ const SingleOfferDetail = () => {
                 </div>
               </div>
               <div className="csai_t">
-                Member since:{client_data?.member_since}
+                {`Member since: ${client_data?.member_since}`}
               </div>
             </div>
           </Col>

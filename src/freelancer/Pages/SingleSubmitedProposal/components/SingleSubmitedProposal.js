@@ -408,7 +408,6 @@ const SingleSubmitedProposal = () => {
                 <div className="history">
                   <div className="headingh">History</div>
                   <div className="desc">
-                    {" "}
                     {project_data?.proposal_count} proposals
                   </div>
                   <div className="desc">

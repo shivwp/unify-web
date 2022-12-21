@@ -630,7 +630,7 @@ const Screen = () => {
                   JSON.parse(localStorage.getItem("unify_freelancer"))
                     ?.description
                 }
-                need HIGH-QUALITY work with a FAST TURNAROUND, reach me. 100% .
+                {/* need HIGH-QUALITY work with a FAST TURNAROUND, reach me. 100% . */}
               </div>
             </div>
             <div className="vmode_slide mt-5 d-flex justify-content-between">

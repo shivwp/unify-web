@@ -490,6 +490,13 @@
   white-space: pre-line;
 }
 
+.single_offer_type {
+  display: flex;
+  max-width: 350px;
+  justify-content: space-between;
+  /* gap: 40px; */
+}
+
 .bvs_bol {
   font-weight: 600;
 }
@@ -2584,12 +2591,18 @@
 }
 
 .report_left_caewe .dropdown-menu {
-  left: -125px !important;
+  left: -51px !important;
 }
 
 @media screen and (max-width: 425px) {
   .report_left_caewe .dropdown-menu {
     left: 125px !important;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .report_left_caewe .dropdown-menu {
+    left: 50px !important;
   }
 }
 

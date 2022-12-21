@@ -89,7 +89,7 @@ const NavbarHeader = (props) => {
         <div className="w-100 d-flex justify-content-between align-items-center flex_rev newnav_v2_flxew pb-0 no-border">
           <NavDropdown
             flip="true"
-            className="navbar_btn talent_dropdown_cs nenav_bddowniu report_left_caewe"
+            className="navbar_btn talent_dropdown_cs nenav_bddowniu report_left_caewe navbarResp"
             title="Reports"
             id="navbarScrollingDropdown"
           >

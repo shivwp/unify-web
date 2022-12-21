@@ -230,7 +230,6 @@ const SingleActiveProposal = () => {
                 <div className="how_be_paid">
                   <div className="head">How do you want to be paid?</div>
                   <div className="desc">
-                    {" "}
                     {project_data?.budget_type == "fixed" &&
                     milestonedata?.length == 0
                       ? "By Project"

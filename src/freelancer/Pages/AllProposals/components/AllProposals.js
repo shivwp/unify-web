@@ -16,6 +16,10 @@ const Screen = () => {
     dispatch(getAllProposals(setLoading));
   }, []);
 
+  const borderNone = {
+    border: "unset",
+  };
+
   return (
     <>
       <Container className="mb-5 pb-3">
@@ -32,7 +36,15 @@ const Screen = () => {
                 Offers ({getAllProposal?.offers?.length})
               </div>
               {getAllProposal?.offers?.map((item, index) => (
-                <div className="proposals_list" key={index}>
+                <div
+                  className="proposals_list"
+                  key={index}
+                  style={
+                    getAllProposal?.offers?.length - 1 == index
+                      ? borderNone
+                      : {}
+                  }
+                >
                   <div className="date_time">
                     <div className="init_date">Initiated {item.date}</div>
                     <div className="time">{item.time}</div>
@@ -54,7 +66,15 @@ const Screen = () => {
                 {getAllProposal?.interviewForInvitation?.length})
               </div>
               {getAllProposal?.interviewForInvitation?.map((item, index) => (
-                <div className="proposals_list" key={index}>
+                <div
+                  className="proposals_list"
+                  key={index}
+                  style={
+                    getAllProposal?.interviewForInvitation?.length - 1 == index
+                      ? borderNone
+                      : {}
+                  }
+                >
                   <div className="date_time">
                     <div className="init_date">Initiated {item.date}</div>
                     <div className="time">{item.time}</div>
@@ -75,7 +95,15 @@ const Screen = () => {
                 Active Proposals ({getAllProposal?.activeProposal?.length})
               </div>
               {getAllProposal?.activeProposal?.map((item, index) => (
-                <div className="proposals_list" key={index}>
+                <div
+                  className="proposals_list"
+                  key={index}
+                  style={
+                    getAllProposal?.activeProposal?.length - 1 == index
+                      ? borderNone
+                      : {}
+                  }
+                >
                   <div className="date_time">
                     <div className="init_date">Initiated {item.date}</div>
                     <div className="time">{item.time}</div>
@@ -97,7 +125,15 @@ const Screen = () => {
                 )
               </div>
               {getAllProposal?.submittedProposal?.map((item, index) => (
-                <div className="proposals_list" key={index}>
+                <div
+                  className="proposals_list"
+                  key={index}
+                  style={
+                    getAllProposal?.submittedProposal?.length - 1 == index
+                      ? borderNone
+                      : {}
+                  }
+                >
                   <div className="date_time">
                     <div className="init_date">Initiated {item.date}</div>
                     <div className="time">{item.time}</div>

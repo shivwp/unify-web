@@ -1,5 +1,4 @@
 import { Row, Col } from "react-bootstrap";
-import Select from "react-select";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { useEffect, useState } from "react";
@@ -99,7 +98,6 @@ const AddEduc = ({
         }
         setStartYear(years);
       }
-
       setValues({ ...values, [e.target.name]: e.target.value });
       setErrors({ ...errors, [e.target.name]: false });
     }
@@ -195,8 +193,13 @@ const AddEduc = ({
       area_study: values?.area_study,
       description: values?.description,
     };
-    dispatch(onAddEducation(data, Popup, successPopup, setSuccessPopup, setLoading));
+    dispatch(
+      onAddEducation(data, Popup, successPopup, setSuccessPopup, setLoading)
+    );
   };
+  console.log("start_year", values?.start_year);
+  console.log("end_year", values?.end_year);
+  console.log("value id", values?.id);
 
   return (
     <>
@@ -236,37 +239,66 @@ const AddEduc = ({
                     </span>
                   </div>
                 </Col>
-                <Col md={6}>
-                  <div className="popup_form_element">
-                    <Form.Label className="text-black font_size_14px font-weight-500">
-                      Start year <span className="required_stars"> * </span>
-                    </Form.Label>
-
-                    <select
-                      name="start_year"
-                      value={values?.start_year}
-                      onChange={(e) => handleOnChange(e)}
-                      className="font-size-11px"
-                      defaultValue="default"
-                    >
-                      <option value="default" disabled hidden>
+                {values?.id ? (
+                  <Col md={6}>
+                    <div className="popup_form_element">
+                      <Form.Label className="text-black font_size_14px font-weight-500">
+                        Start year <span className="required_stars"> * </span>
+                      </Form.Label>
+                      <select
+                        name="start_year"
+                        value={values?.start_year}
+                        onChange={(e) => handleOnChange(e)}
+                        className="font-size-11px"
+                        defaultValue="default"
+                      >
+                        <option value="default" disabled hidden>
+                          Select
+                        </option>
+                        {startYear?.map((item, key) => (
+                          <option key={key} value={item.start_year}>
+                            {item.start_year}
+                          </option>
+                        ))}
+                      </select>
+                      <span className="signup-error">
+                        {errors.start_year && errors?.start_year}
+                      </span>
+                    </div>
+                  </Col>
+                ) : (
+                  <Col md={6}>
+                    <div className="popup_form_element">
+                      <Form.Label className="text-black font_size_14px font-weight-500">
+                        Start year <span className="required_stars"> * </span>
+                      </Form.Label>
+                      <select
+                        name="start_year"
+                        value={values?.start_year}
+                        onChange={(e) => handleOnChange(e)}
+                        className="font-size-11px"
+                        defaultValue="default"
+                      >
+                        <option value="default" disabled hidden>
                         Select
                       </option>
-                      {startYear?.map((item, key) => (
-                        <option key={key} value={item.start_year}>
-                          {item.start_year}
-                        </option>
-                      ))}
-                    </select>
-                    <span className="signup-error">
-                      {errors.start_year && errors?.start_year}
-                    </span>
-                  </div>
-                </Col>
+                        {startYear?.map((item, key) => (
+                          <option key={key} value={item.start_year}>
+                            {item.start_year}
+                          </option>
+                        ))}
+                      </select>
+                      <span className="signup-error">
+                        {errors.start_year && errors?.start_year}
+                      </span>
+                    </div>
+                  </Col>
+                )}
+
                 <Col md={6}>
                   <div className="popup_form_element">
                     <Form.Label className="text-black font_size_14px font-weight-500">
-                      End year/ expected end year{" "}
+                      End year/ expected end year
                       <span className="required_stars"> * </span>
                     </Form.Label>
                     <select

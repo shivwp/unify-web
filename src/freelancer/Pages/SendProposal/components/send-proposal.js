@@ -359,45 +359,50 @@ const Screen = () => {
                     ) : null}
                   </div>
                 </div>
-                <div className="d-flex br_sc_gay">
-                  <div>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="23"
-                      height="23"
-                      viewBox="0 0 28 28"
-                    >
-                      <g
-                        id="Group_3309"
-                        data-name="Group 3309"
-                        transform="translate(-1432 -974)"
-                      >
-                        <circle
-                          id="Ellipse_624"
-                          data-name="Ellipse 624"
-                          cx="14"
-                          cy="14"
-                          r="14"
-                          transform="translate(1432 974)"
-                          fill="#6d2ef1"
-                        />
-                        <path
-                          id="_7787502_clock_time_watch_timer_alarm_icon"
-                          data-name="7787502_clock_time_watch_timer_alarm_icon"
-                          d="M24.531,15a9.523,9.523,0,1,0,6.742,2.789A9.531,9.531,0,0,0,24.531,15Zm0,16.82a7.274,7.274,0,1,1,5.158-2.131A7.289,7.289,0,0,1,24.531,31.82Zm2.691-8.578-1.57.673V20.046a1.121,1.121,0,0,0-2.243,0v5.607a1.1,1.1,0,0,0,.5.953,1.041,1.041,0,0,0,1.065.056l3.14-1.4a1.1,1.1,0,0,0-.9-2.018Z"
-                          transform="translate(1421 963)"
-                          fill="#fff"
-                        />
-                      </g>
-                    </svg>
-                  </div>
-                  <div>
-                    <div className="br_sec_name_cwss">
-                      Less than 30 hrs/week
+                {/* {singleJobDetails?.budget_type === "hourly" ? (
+                  <>
+                    <div className="d-flex br_sc_gay">
+                      <div>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="23"
+                          height="23"
+                          viewBox="0 0 28 28"
+                        >
+                          <g
+                            id="Group_3309"
+                            data-name="Group 3309"
+                            transform="translate(-1432 -974)"
+                          >
+                            <circle
+                              id="Ellipse_624"
+                              data-name="Ellipse 624"
+                              cx="14"
+                              cy="14"
+                              r="14"
+                              transform="translate(1432 974)"
+                              fill="#6d2ef1"
+                            />
+                            <path
+                              id="_7787502_clock_time_watch_timer_alarm_icon"
+                              data-name="7787502_clock_time_watch_timer_alarm_icon"
+                              d="M24.531,15a9.523,9.523,0,1,0,6.742,2.789A9.531,9.531,0,0,0,24.531,15Zm0,16.82a7.274,7.274,0,1,1,5.158-2.131A7.289,7.289,0,0,1,24.531,31.82Zm2.691-8.578-1.57.673V20.046a1.121,1.121,0,0,0-2.243,0v5.607a1.1,1.1,0,0,0,.5.953,1.041,1.041,0,0,0,1.065.056l3.14-1.4a1.1,1.1,0,0,0-.9-2.018Z"
+                              transform="translate(1421 963)"
+                              fill="#fff"
+                            />
+                          </g>
+                        </svg>
+                      </div>
+                      <div>
+                        <div className="br_sec_name_cwss">
+                          Less than 30 hrs/week
+                        </div>
+                        <div className="br_sec_val_cwss">Hourly</div>
+                      </div>
                     </div>
-                    <div className="br_sec_val_cwss">Hourly</div>
-                  </div>
-                </div>
+                  </>
+                ) : null} */}
+
                 <div className="d-flex br_sc_gay">
                   <div>
                     <svg
@@ -446,7 +451,6 @@ const Screen = () => {
                       className="br_sec_name_cwss"
                       style={{ textTransform: "capitalize" }}
                     >
-                      {" "}
                       {singleJobDetails?.project_duration}
                     </div>
                     <div className="br_sec_val_cwss">Project Length</div>

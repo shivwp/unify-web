@@ -453,6 +453,8 @@ export const onEditDesignation =
         if (setLoading) {
           setLoading(false);
         }
+        userDetails.description = data?.description;
+        localStorage.setItem("unify_freelancer", JSON.stringify(userDetails));
         setSuccessPopup(
           <SuccessPopup
             Popup={() => setSuccessPopup(!successPopup)}
@@ -578,8 +580,8 @@ export const onEditHourPerWeek =
         if (setLoading) {
           setLoading(false);
         }
-        userDetails.amount = data.hours_price;
-        localStorage.setItem("unify_user", JSON.stringify(userDetails));
+        userDetails.amount = data?.hours_price;
+        localStorage.setItem("unify_freelancer", JSON.stringify(userDetails));
 
         setSuccessPopup(
           <SuccessPopup

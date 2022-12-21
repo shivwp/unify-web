@@ -18,31 +18,35 @@ const HowItWorks = () => {
     <>
       <div className="how_it_works ">
         {/* -------------------- header start ------------------------------------------------------------------*/}
-        
-        <div className="container-fluid"  style={{backgroundColor: '#6d2ef1'}}>
-        <div className="header container" style={{backgroundColor: 'unset'}} >
-          <div className="header_left">
-            <h1 className="heading">Learn... Whilst you Eran $$</h1>
-            <p className="desc">
-              Unify is the world first learn and earn platform, allowing
-              freelancers to enhance their skills, Whilst getting paid along the
-              way.
-            </p>
-            <p className="desc">
-              Browse our extensive course catalogue and diversify your skillset.
-            </p>
-            <div className="signup_btn">
-              <Link to="/signup">
-                <button>Sign up</button>
-              </Link>
+
+        <div className="container-fluid" style={{ backgroundColor: "#6d2ef1" }}>
+          <div
+            className="header container"
+            style={{ backgroundColor: "unset" }}
+          >
+            <div className="header_left">
+              <h1 className="heading">Learn... Whilst you Eran $$</h1>
+              <p className="desc">
+                Unify is the world first learn and earn platform, allowing
+                freelancers to enhance their skills, Whilst getting paid along
+                the way.
+              </p>
+              <p className="desc">
+                Browse our extensive course catalogue and diversify your
+                skillset.
+              </p>
+              <div className="signup_btn">
+                <Link to="/signup">
+                  <button>Sign up</button>
+                </Link>
+              </div>
+            </div>
+            <div className="header_right">
+              <div className="header_img">
+                <img src="/assets/selfie_hiw.png" alt="" />
+              </div>
             </div>
           </div>
-          <div className="header_right">
-            <div className="header_img">
-              <img src="/assets/selfie_hiw.png" alt="" />
-            </div>
-          </div>
-        </div>
         </div>
         {/* header end */}
         {/* -------------------  section 1st start  ------------------------------------------------------------------*/}
@@ -233,7 +237,7 @@ const HowItWorks = () => {
         {/* section 2nd end */}
         {/* ---------------------- section 3rd start ------------------------------------------------------------------ */}
 
-        <div className="top_freelancers">
+        <div className="top_freelancers mb-5">
           <h2>Top Rated Freelancer</h2>
           <div className="container">
             <Swiper

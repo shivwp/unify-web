@@ -37,7 +37,8 @@ const HourPerWeekPopup = ({
   };
 
   const afterSuccess = () => {
-    window.location.reload();
+    // window.location.reload();
+    setSuccessPopup(false);
   };
   useEffect(() => {
     dispatch(getHoursPerWeekList(setLoading));

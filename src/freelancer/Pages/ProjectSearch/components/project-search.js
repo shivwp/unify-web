@@ -539,11 +539,17 @@ const Project_Search = () => {
   }, [getSkillList, selectSkills]);
   // remove item which is selected
 
+  const ScrollTop = () => {
+    window.scrollTo(0, 0);
+  };
+
   // for filter jobs
   useEffect(() => {
     if (filters) {
       setLoading(true);
-      dispatch(getJobsList({ pagination: 10, page, ...filters }, setLoading));
+      dispatch(
+        getJobsList({ pagination: 10, page, ...filters }, ScrollTop, setLoading)
+      );
     }
   }, [page, filters, unSaveJobsPost, savedJobsList]);
 
