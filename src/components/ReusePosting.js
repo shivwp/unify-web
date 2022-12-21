@@ -102,10 +102,39 @@ const ReusePosting = () => {
     }
 
     formData.append("description", values?.description);
-    formData.append("status", values?.status);
+    formData.append("status", "publish");
     if (imageFile) {
       formData.append("image", imageFile);
     }
+
+    dispatch(onPostYourJobNow(formData, navigate));
+  };
+  const draftYourJobNow = () => {
+    const formData = new FormData();
+
+    formData.append("job_type", values?.type);
+    formData.append("job_title", values?.name);
+    formData.append("job_category", values?.category_id);
+    formData.append(
+      "skills",
+      values?.job_skills?.map((item) => item.id)?.toString()
+    );
+    formData.append("scop", values?.scop);
+    formData.append("project_duration", values?.project_duration);
+    formData.append("experience_level", values?.experience_level);
+    formData.append("budget_type", values?.budget_type);
+    formData.append("english_level", values?.english_level);
+
+    if (values?.budget_type === "hourly") {
+      formData.append("price", values?.price);
+      formData.append("min_price", values?.min_price);
+    } else if (values?.budget_type === "fixed") {
+      formData.append("price", values?.min_price);
+    }
+    formData.append("price", values?.price);
+    formData.append("description", values?.description);
+    formData.append("status", "draft");
+    formData.append("image", imageFile);
 
     dispatch(onPostYourJobNow(formData, navigate));
   };
@@ -310,19 +339,41 @@ const ReusePosting = () => {
                     </div>
                   </div>
 
-                  {!values?.name || !values?.description ? (
-                    <div className="edit_posting_save_btn">
-                      <button disabled className="SaveJobPostDisabled">
-                        Post Your Job Now
-                      </button>
-                    </div>
-                  ) : (
-                    <div className="edit_posting_save_btn">
-                      <button onClick={postYourJobNow}>
-                        Post Your Job Now
-                      </button>
-                    </div>
-                  )}
+                  <div className="d-flex justify-content-end flex-wrap no-border mt-0 pt-0 btn_foot_sec">
+                    {!values?.name || !values?.description ? (
+                      <div className="fo_btn_c next_b_btn_c">
+                        <button disabled className="active_btn_blueDiabled">
+                          Save as a draft
+                        </button>
+                      </div>
+                    ) : (
+                      <div className="fo_btn_c next_b_btn_c">
+                        <button
+                          className="draf_jo_btnbn mt-2"
+                          onClick={draftYourJobNow}
+                        >
+                          Save as a draft
+                        </button>
+                      </div>
+                    )}
+
+                    {!values?.name || !values?.description ? (
+                      <div className="fo_btn_c next_b_btn_c">
+                        <button disabled className="active_btn_blueDiabled">
+                          Post Your Job Now
+                        </button>
+                      </div>
+                    ) : (
+                      <div className="fo_btn_c next_b_btn_c">
+                        <button
+                          className="post_job_btn mt-2"
+                          onClick={postYourJobNow}
+                        >
+                          Post Your Job Now
+                        </button>
+                      </div>
+                    )}
+                  </div>
                 </div>
               </Col>
             </Row>

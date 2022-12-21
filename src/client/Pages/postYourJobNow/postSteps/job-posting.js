@@ -16,8 +16,6 @@ const JobPosting = ({ setCurrentTab, onInputChange, values }) => {
   const allClientDraftPosting = useSelector(
     (state) => state.job.allClientDraftPosting
   );
-  const [draftId, setDraftId] = useState();
-  const [reuseId, setReuseId] = useState();
 
   const handleJobChange = (e) => {
     setJobPosting(e.target.value);
@@ -146,7 +144,7 @@ const JobPosting = ({ setCurrentTab, onInputChange, values }) => {
           <div className="s_select">
             <select
               className="carrt_css_select"
-              onChange={(e) => setDraftId(e.target.value)}
+              onChange={(e) => navigate(`/reuse-posting/${e.target.value}`)}
             >
               <option value="">Select</option>
               {allClientDraftPosting?.data?.map((data, key) => (
@@ -175,7 +173,7 @@ const JobPosting = ({ setCurrentTab, onInputChange, values }) => {
           <div className="s_select">
             <select
               className="carrt_css_select"
-              onChange={(e) => setReuseId(e.target.value)}
+              onChange={(e) => navigate(`/reuse-posting/${e.target.value}`)}
             >
               <option value="">Select</option>
               {allClientPosting?.data?.map((data, key) => (

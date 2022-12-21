@@ -86,7 +86,7 @@ const AllDraftPostings = () => {
                   {menuBarDraft === item.id && (
                     <div className="menu_bar" id="menu_bar2">
                       <div className="navabr_t_li">
-                        <Link to="/dashboard/edit-draft">Edit Draft</Link>
+                        <Link to="/edit-draft">Edit Draft</Link>
                       </div>
                       <div
                         className="navabr_t_li"

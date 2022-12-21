@@ -105,7 +105,7 @@ const AllPosting = () => {
                   {menuBarPosting === item.id && (
                     <div className="menu_bar" id="menu_bar1">
                       <div className="navabr_t_li">
-                        <Link to={`/dashboard/edit-posting/${item.id}`}>
+                        <Link to={`/edit-posting/${item.id}`}>
                           Edit Posting
                         </Link>
                       </div>
@@ -126,7 +126,7 @@ const AllPosting = () => {
                         </Link>
                       </div>
                       <div className="navabr_t_li">
-                        <Link to={`/dashboard/reuse-posting/${item.id}`}>
+                        <Link to={`/reuse-posting/${item.id}`}>
                           Reuse Postings
                         </Link>
                       </div>

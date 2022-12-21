@@ -55,9 +55,17 @@ const Screen = () => {
 
   useEffect(() => {
     if (proposalData) {
-      setValues({ ...proposalData, agree_terms: 0 });
+      setValues({
+        ...proposalData,
+        agree_terms: 0,
+        bid_amount: singleFreelancer?.basic_info?.amount,
+      });
     } else if (singleJobDetails) {
-      setValues({ ...singleJobDetails, agree_terms: 0 });
+      setValues({
+        ...singleJobDetails,
+        agree_terms: 0,
+        bid_amount: singleFreelancer?.basic_info?.amount,
+      });
     }
   }, [proposalData, singleJobDetails]);
 
@@ -258,7 +266,7 @@ const Screen = () => {
             </div>
           </div>
 
-          <div className="b-bottom-gr pb-4">
+          <div className="">
             <div className="contrc_ter_head">Contract Terms</div>
             <div className="pay_pro_par">
               You’re protected by <Link to="#0">Unify Payment Protection.</Link>{" "}
@@ -292,23 +300,30 @@ const Screen = () => {
                         <i className="bi bi-question-circle-fill"></i>
                       </span>
                     </div>
-                    <div className="hourly_headin d-flex align-items-center">
+                    <div
+                      className="hourly_headin d-flex align-items-center"
+                      style={{ position: "relative" }}
+                    >
                       <Form.Control
                         type="number"
                         name="bid_amount"
                         className="text-right"
+                        placeholder="0.00"
                         value={values?.bid_amount}
                         onWheel={(e) => e.target.blur()}
                         onChange={(e) => onInputChange(e)}
                       />
                       &nbsp;
                       <span>/hr</span>
+                      <div className="doller-icon">$</div>
                     </div>
                     <span className="signup-error">
                       {errors.bid_amount && errors.bid_amount}
                     </span>
                     <div className="max_prof_rt">
-                      Max Mario's profile rate is $30.00 /hr
+                      {singleFreelancer?.basic_info?.first_name}{" "}
+                      {singleFreelancer?.basic_info?.last_name} profile rate is
+                      ${singleFreelancer?.basic_info?.amount} /hr
                     </div>
                   </Col>
                   <Col md={5}>
@@ -347,7 +362,7 @@ const Screen = () => {
                     <div className="max_prof_rt">$1,200.00 max/week</div>
                   </Col>
 
-                  <div className="d-flex align-items-center flex-wrap pt-3 pb-4 b-bottom-gr">
+                  <div className="d-flex align-items-center flex-wrap pt-3">
                     <div className="start_d_headin">
                       Start Date <span>(Optional)</span>
                       <span className="no_verify_icon">
@@ -373,7 +388,7 @@ const Screen = () => {
                       />
                     </div>
                   </div>
-                  <div className="b_bot_inp d-flex justify-content-between align-items-center">
+                  {/* <div className="b_bot_inp d-flex justify-content-between align-items-center">
                     <div className="sm_label_inp slide_n_tex">
                       Add automatic weekly payments for the freelancer
                       (Optional)
@@ -389,7 +404,7 @@ const Screen = () => {
                     <div className="pr-10">
                       <i className="bi bi-chevron-down"></i>
                     </div>
-                  </div>
+                  </div> */}
                 </>
               ) : values?.budget_type === "fixed" ? (
                 <>
@@ -427,7 +442,9 @@ const Screen = () => {
                           type="number"
                           name="bid_amount"
                           className="text-right"
+                          placeholder="0.00"
                           value={values?.bid_amount}
+                          onWheel={(e) => e.target.blur()}
                           onChange={(e) => onInputChange(e)}
                         />
                         <div className="doller-icon">$</div>
@@ -608,6 +625,7 @@ const Screen = () => {
                                         min="1"
                                         placeholder="0.00"
                                         value={data.amount}
+                                        onWheel={(e) => e.target.blur()}
                                         onChange={(e) =>
                                           handleInputChange(e, index)
                                         }

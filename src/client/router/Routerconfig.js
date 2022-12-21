@@ -120,8 +120,8 @@ const RouterConfig = () => {
       <Route path="/management-board" element={<ManagementBoard />} />
       <Route path="/transaction-history" element={<TransactionHistory />} />
       <Route path="/dashboard" element={<Dashboard />} />
-      <Route path="/dashboard/edit-posting" element={<EditPosting />} />
-      <Route path="/dashboard/edit-draft" element={<EditDraft />} />
+      <Route path="/edit-posting" element={<EditPosting />} />
+      <Route path="/edit-draft" element={<EditDraft />} />
       <Route path="/post-description" element={<Description />} />
       <Route path="/all-job-list" element={<JobListScreen />} />
       <Route path="/all-draft-job-list" element={<DraftJobListScreen />} />
