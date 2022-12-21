@@ -2,8 +2,8 @@ import { Col } from "react-bootstrap";
 import MyInfo from "./MyInfo";
 import AccountInfo from "./AccountInfo";
 import { useEffect, useState } from "react";
-import CompnyDetailsInfo from "./CompnyDetailsInfo";
-import CompanyContactInfo from "./CompanyContactInfo";
+// import CompnyDetailsInfo from "./CompnyDetailsInfo";
+// import CompanyContactInfo from "./CompanyContactInfo";
 import { useDispatch, useSelector } from "react-redux";
 import {
   addEditClientInfo,
@@ -53,7 +53,31 @@ const SettingInfo = () => {
   };
 
   const onProfileChange = (e) => {
-    setImageFile(e.target.files[0]);
+    let errorExit = false;
+    let image = e.target.files[0];
+    if (!image?.name.match(/\.(jpg|jpeg|png)$/)) {
+      setErrors({
+        ...errors,
+        [e.target.name]: "Image type must be JPG, JPEG or PNG format",
+      });
+      errorExit = true;
+    } else if (image?.size > 1048576 * 10) {
+      setErrors({
+        ...errors,
+        [e.target.name]: "Image size must be maximum 10 MB",
+      });
+      errorExit = true;
+    } else {
+      setErrors({
+        ...errors,
+        [e.target.name]: false,
+      });
+      errorExit = false;
+    }
+    if (errorExit) {
+      return false;
+    }
+    setImageFile(image);
     setObjectUrlAbc(URL.createObjectURL(e.target.files[0]));
   };
 

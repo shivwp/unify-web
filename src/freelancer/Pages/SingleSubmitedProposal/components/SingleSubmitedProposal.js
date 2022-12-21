@@ -425,7 +425,7 @@ const SingleSubmitedProposal = () => {
                   </div>
                 </div>
                 <div className="member_since">
-                  Member since {client_data?.member_since}
+                  {`Member since ${client_data?.member_since}`}
                 </div>
               </div>
             </div>

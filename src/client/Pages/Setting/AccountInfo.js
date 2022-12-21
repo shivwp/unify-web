@@ -215,7 +215,6 @@ const AccountInfo = ({
                     id="radio-4"
                     name="employee_no"
                     value={100}
-                    
                     onChange={(e) => onInputChange(e)}
                     checked={values?.employee_no == 100 ? true : false}
                   />
