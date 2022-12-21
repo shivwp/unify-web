@@ -42,7 +42,7 @@ const Screen = () => {
       setValues({
         ...values,
         bid_amount:
-          JSON.parse(sessionStorage.getItem("unify_freelancer"))?.amount || 0,
+          JSON.parse(localStorage.getItem("unify_freelancer"))?.amount || 0,
       });
     }
   }, [singleJobDetails]);

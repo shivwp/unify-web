@@ -61,7 +61,7 @@ const VerifySignUp = () => {
     }
 
     const data = {
-      email: sessionStorage.getItem("unify_email"),
+      email: localStorage.getItem("unify_email"),
       otp: otp,
     };
     dispatch(onVerifySignup(data, navigate, setMessage, setLoading));
@@ -71,7 +71,7 @@ const VerifySignUp = () => {
   const resendOtp = () => {
     setLoading(true);
     const data = {
-      email: sessionStorage.getItem("unify_email"),
+      email: localStorage.getItem("unify_email"),
     };
     setErrors();
     dispatch(onResendOtp(data, setOtpSuccess, setLoading));
@@ -92,11 +92,11 @@ const VerifySignUp = () => {
     }, 60000);
   };
 
-  var staredEmail = sessionStorage.getItem("unify_email");
+  var staredEmail = localStorage.getItem("unify_email");
   staredEmail =
     staredEmail?.slice(0, 2) +
     "***" +
-    staredEmail?.slice(10, sessionStorage.getItem("unify_email").length);
+    staredEmail?.slice(10, localStorage.getItem("unify_email").length);
 
   return (
     <>

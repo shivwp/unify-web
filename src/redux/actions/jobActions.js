@@ -24,7 +24,7 @@ import {
 
 const config = {
   headers: {
-    Authorization: `Bearer ${sessionStorage.getItem("unify_token")}`,
+    Authorization: `Bearer ${localStorage.getItem("unify_token")}`,
   },
 };
 
@@ -61,7 +61,9 @@ export const getSavedJobsList =
         if (setLoading) {
           setLoading(false);
         }
-        ScrollTop();
+        if (ScrollTop) {
+          ScrollTop();
+        }
       });
     } catch (err) {
       if (setLoading) {

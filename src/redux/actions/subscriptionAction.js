@@ -3,7 +3,7 @@ import { SET_SUBSCRIPTION_LIST } from "../types";
 
 const config = {
   headers: {
-    Authorization: `Bearer ${sessionStorage.getItem("unify_token")}`,
+    Authorization: `Bearer ${localStorage.getItem("unify_token")}`,
   },
 };
 
@@ -25,13 +25,12 @@ export const onSubmitProfile = (navigate) => async (dispatch) => {
     .then((res) => {
       if (res.data.status) {
         if (
-          JSON.parse(sessionStorage.getItem("unify_user")).user_type ===
+          JSON.parse(localStorage.getItem("unify_user")).user_type ===
           "freelancer"
         ) {
           navigate("/freelancer/dashboard");
         } else if (
-          JSON.parse(sessionStorage.getItem("unify_user")).user_type ===
-          "client"
+          JSON.parse(localStorage.getItem("unify_user")).user_type === "client"
         ) {
           navigate("/dashboard");
         }

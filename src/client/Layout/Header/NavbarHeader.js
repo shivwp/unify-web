@@ -16,7 +16,7 @@ const Header = (props) => {
   const [navOpen, SetnavOpen] = useState(false);
   const [activeNav, SetactiveNav] = useState("");
   const [isDownOpen, SetisDownOpen] = useState(false);
-  let userDetails = JSON.parse(sessionStorage.getItem("unify_user"));
+  let userDetails = JSON.parse(localStorage.getItem("unify_user"));
   const clientDetails = useSelector((state) => state.freelancer.clientDetails);
   const onlineStatus = useSelector((state) => state.auth.onlineStatus);
   const editClientProfile = useSelector(
@@ -115,7 +115,7 @@ const Header = (props) => {
             </div> */}
           </NavDropdown>
         </div>
-        {!sessionStorage.getItem("unify_token") && (
+        {!localStorage.getItem("unify_token") && (
           <>
             <div className="d-flex justify-content-between smbtn_logsignup">
               <Link to="/signin">
@@ -315,7 +315,7 @@ const Header = (props) => {
                       </svg>
                       <span
                         onClick={() => {
-                          sessionStorage.clear();
+                          localStorage.clear();
                           window.location.reload();
                           history("/signin");
                         }}
@@ -531,7 +531,7 @@ const Header = (props) => {
                         </svg>
                         <span
                           onClick={() => {
-                            sessionStorage.clear();
+                            localStorage.clear();
                             history("/signin");
                             window.location.reload();
                           }}

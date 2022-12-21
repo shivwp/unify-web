@@ -18,8 +18,8 @@ const EditCompAddress = () => {
   const getCardList = useSelector((state) => state.freelancer.getCardList);
   const addedCard = useSelector((state) => state.freelancer.addedCard);
   const deleteCard = useSelector((state) => state.freelancer.deleteCard);
-  const paymentData = JSON.parse(sessionStorage.getItem("hire_freelancer"));
-  const freelancerData = JSON.parse(sessionStorage.getItem("freelancerData"));
+  const paymentData = JSON.parse(localStorage.getItem("hire_freelancer"));
+  const freelancerData = JSON.parse(localStorage.getItem("freelancerData"));
   const [popup, SetPopup] = useState();
   const [successPopup, setSuccessPopup] = useState(false);
   const [confirmPopup, setConfirmPopup] = useState(false);

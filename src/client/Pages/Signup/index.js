@@ -66,7 +66,7 @@ const Signupscreen = () => {
     e.preventDefault();
     setLoading(true);
 
-    sessionStorage.setItem("unify_email", values?.email);
+    localStorage.setItem("unify_email", values?.email);
 
     let errorExist = false;
     let errorsObject = {};

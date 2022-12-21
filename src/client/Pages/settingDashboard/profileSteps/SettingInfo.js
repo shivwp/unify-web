@@ -29,7 +29,7 @@ const SettingInfo = () => {
     (state) => state.profile.editClientProfile
   );
   const getCountryList = useSelector((state) => state.auth.getCountryList);
-  let userDetails = JSON.parse(sessionStorage.getItem("unify_user"));
+  let userDetails = JSON.parse(localStorage.getItem("unify_user"));
 
   useEffect(() => {
     dispatch(getClientInfoDetails());

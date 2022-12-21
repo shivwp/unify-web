@@ -16,7 +16,7 @@ const InviteToJobPopup = ({
   const [freelancerDetails, setFreelancerDetails] = useState();
   const [values, setValues] = useState({});
   const [errors, setErrors] = useState({});
-  let userDetails = JSON.parse(sessionStorage.getItem("unify_user"));
+  let userDetails = JSON.parse(localStorage.getItem("unify_user"));
 
   useEffect(() => {
     setValues({

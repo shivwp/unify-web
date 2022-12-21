@@ -99,7 +99,7 @@ const Subscriptionplan = () => {
                         <li key={key}>{data.service_name}</li>
                       ))}
                     </ul>
-                    {!sessionStorage.getItem("unify_token") ? (
+                    {!localStorage.getItem("unify_token") ? (
                       <Link to="/signup">
                         <button className="btn_chose_pl btnhovpple">
                           CHOOSE PLAN

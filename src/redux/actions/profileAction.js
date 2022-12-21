@@ -41,11 +41,11 @@ import {
   TEAM_LIST,
   ERROR_REQUEST_TESTIMONIAL,
 } from "../types";
-let userDetails = JSON.parse(sessionStorage.getItem("unify_user"));
+let userDetails = JSON.parse(localStorage.getItem("unify_user"));
 
 const config = {
   headers: {
-    Authorization: `Bearer ${sessionStorage.getItem("unify_token")}`,
+    Authorization: `Bearer ${localStorage.getItem("unify_token")}`,
   },
 };
 
@@ -376,7 +376,7 @@ export const onEditLocationInfo =
         });
         const afterSuccess = () => {
           userDetails.profile_image = res?.data?.data[0]?.profile_image;
-          sessionStorage.setItem("unify_user", JSON.stringify(userDetails));
+          localStorage.setItem("unify_user", JSON.stringify(userDetails));
           if (setCurrentTab) {
             setCurrentTab("previewProfile");
           }
@@ -579,7 +579,7 @@ export const onEditHourPerWeek =
           setLoading(false);
         }
         userDetails.amount = data.hours_price;
-        sessionStorage.setItem("unify_user", JSON.stringify(userDetails));
+        localStorage.setItem("unify_user", JSON.stringify(userDetails));
 
         setSuccessPopup(
           <SuccessPopup
@@ -679,7 +679,7 @@ export const editNameInfo =
         });
         const afterSuccess = () => {
           userDetails.profile_image = res?.data?.data[0]?.profile_image;
-          sessionStorage.setItem("unify_user", JSON.stringify(userDetails));
+          localStorage.setItem("unify_user", JSON.stringify(userDetails));
           window?.location?.reload();
         };
         if (setLoading) {

@@ -26,7 +26,7 @@ import {
 
 const config = {
   headers: {
-    Authorization: `Bearer ${sessionStorage.getItem("unify_token")}`,
+    Authorization: `Bearer ${localStorage.getItem("unify_token")}`,
   },
 };
 
@@ -345,11 +345,8 @@ export const hireFreelancer =
         if (res.data.status) {
           navigate("/hire-freelancer/edit-address");
         }
-        sessionStorage.setItem(
-          "hire_freelancer",
-          JSON.stringify(res.data.data)
-        );
-        sessionStorage.setItem("freelancerData", JSON.stringify(object));
+        localStorage.setItem("hire_freelancer", JSON.stringify(res.data.data));
+        localStorage.setItem("freelancerData", JSON.stringify(object));
       })
       .catch((err) => {
         setErrorPopup(
@@ -431,7 +428,7 @@ export const contractPayment =
     await Axios.post("/contract-payment", data, config)
       .then((res) => {
         const freelancerData = JSON.parse(
-          sessionStorage.getItem("freelancerData")
+          localStorage.getItem("freelancerData")
         );
 
         if (res.data.status) {
@@ -446,8 +443,8 @@ export const contractPayment =
             navigate(
               `/view-job/${freelancerData.project_id}/invite-freelancer`
             );
-            sessionStorage.removeItem("hire_freelancer");
-            sessionStorage.removeItem("freelancerData");
+            localStorage.removeItem("hire_freelancer");
+            localStorage.removeItem("freelancerData");
             window.location.reload();
           }, 2000);
         }

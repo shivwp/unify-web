@@ -5,7 +5,7 @@ import logo from "../../../assets/logo.svg";
 
 const ProfileIntroNavbar = () => {
   const navigate = useNavigate();
-  const userDetails = JSON.parse(sessionStorage.getItem("unify_user"));
+  const userDetails = JSON.parse(localStorage.getItem("unify_user"));
   return (
     <Navbar
       collapseOnSelect
@@ -70,7 +70,7 @@ const ProfileIntroNavbar = () => {
                   </svg>
                   <span
                     onClick={() => {
-                      sessionStorage.clear();
+                      localStorage.clear();
                       navigate("/signin");
                       window.location.reload();
                     }}

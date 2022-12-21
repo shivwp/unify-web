@@ -627,7 +627,7 @@ const Screen = () => {
               <div className="des_heading_dboard">Description</div>
               <div className="des_para_dboadr">
                 {
-                  JSON.parse(sessionStorage.getItem("unify_freelancer"))
+                  JSON.parse(localStorage.getItem("unify_freelancer"))
                     ?.description
                 }
                 need HIGH-QUALITY work with a FAST TURNAROUND, reach me. 100% .
@@ -743,11 +743,9 @@ const Screen = () => {
                   <div className="welcome_ax_dboard">
                     Welcome to your <br /> Dashboard{" "}
                     {`${
-                      JSON.parse(sessionStorage.getItem("unify_user"))
-                        ?.first_name
+                      JSON.parse(localStorage.getItem("unify_user"))?.first_name
                     } ${
-                      JSON.parse(sessionStorage.getItem("unify_user"))
-                        ?.last_name
+                      JSON.parse(localStorage.getItem("unify_user"))?.last_name
                     }`}
                   </div>
                   <div className="wdesc_ax_dboard mt-3">

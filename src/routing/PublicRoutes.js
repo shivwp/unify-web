@@ -2,8 +2,8 @@ import React from "react";
 import { Navigate, Outlet } from "react-router-dom";
 
 const PublicRoutes = () => {
-  const auth = sessionStorage.getItem("unify_token");
-  const userDetails = JSON.parse(sessionStorage.getItem("unify_user"));
+  const auth = localStorage.getItem("unify_token");
+  const userDetails = JSON.parse(localStorage.getItem("unify_user"));
 
   return (
     <>

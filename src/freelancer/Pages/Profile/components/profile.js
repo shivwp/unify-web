@@ -184,7 +184,7 @@ const Star = () => {
 
 const UnifyFreelancer = () => {
   const dispatch = useDispatch();
-  let userDetails = JSON.parse(sessionStorage.getItem("unify_user"));
+  let userDetails = JSON.parse(localStorage.getItem("unify_user"));
 
   const basicInfo = useSelector(
     (state) => state?.profile?.freelancerProfileList?.basic_info

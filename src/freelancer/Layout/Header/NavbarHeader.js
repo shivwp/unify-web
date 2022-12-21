@@ -16,7 +16,7 @@ const NavbarHeader = (props) => {
   const [loading, setLoading] = useState(false);
   const [activeNav, SetactiveNav] = useState("");
   const [isDownOpen, SetisDownOpen] = useState(false);
-  let userDetails = JSON.parse(sessionStorage.getItem("unify_user"));
+  let userDetails = JSON.parse(localStorage.getItem("unify_user"));
 
   function ToggleNav() {
     SetnavOpen(!navOpen);
@@ -36,7 +36,7 @@ const NavbarHeader = (props) => {
     };
     setLoading(true);
     userDetails.online_status = e.target.value;
-    sessionStorage.setItem("unify_user", JSON.stringify(userDetails));
+    localStorage.setItem("unify_user", JSON.stringify(userDetails));
 
     dispatch(onOnlineStatus(data, setLoading));
   };
@@ -112,7 +112,7 @@ const NavbarHeader = (props) => {
             </div>
           </NavDropdown>
         </div>
-        {!sessionStorage.getItem("unify_token") && (
+        {!localStorage.getItem("unify_token") && (
           <>
             <div className="d-flex justify-content-between smbtn_logsignup">
               <Link to="/signin">
@@ -296,7 +296,7 @@ const NavbarHeader = (props) => {
                       </svg>
                       <span
                         onClick={() => {
-                          sessionStorage.clear();
+                          localStorage.clear();
                           history("/signin");
                           window.location.reload();
                         }}
@@ -532,7 +532,7 @@ const NavbarHeader = (props) => {
                         </svg>
                         <span
                           onClick={() => {
-                            sessionStorage.clear();
+                            localStorage.clear();
                             history("/signin");
                             window.location.reload();
                           }}

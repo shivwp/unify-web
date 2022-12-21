@@ -28,7 +28,7 @@ const Screen = () => {
   const postYourJob = useSelector((state) => state?.job?.postYourJob);
   const removeJobPosted = useSelector((state) => state?.job?.removeJobPosted);
   const updateJobPosted = useSelector((state) => state?.job?.updateJobPosted);
-  const userDetails = JSON.parse(sessionStorage.getItem("unify_user"));
+  const userDetails = JSON.parse(localStorage.getItem("unify_user"));
 
   useEffect(() => {
     setLoading(true);

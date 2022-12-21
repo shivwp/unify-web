@@ -36,7 +36,7 @@ const CloseAccountPopup = ({
   };
 
   const afterSuccess = () => {
-    sessionStorage.clear();
+    localStorage.clear();
     navigate("/signup");
     window.location.reload();
   };
