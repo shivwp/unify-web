@@ -204,11 +204,7 @@ const Screen = () => {
     formData.append("cover_letter", values?.cover_letter);
     formData.append("image", imageFile);
 
-    for (var pair of formData.entries()) {
-      console.log(pair[0] + ", " + pair[1]);
-    }
-
-    // dispatch(hireFreelancer(formData, navigate, errorPopup, setErrorPopup));
+    dispatch(hireFreelancer(formData, navigate, errorPopup, setErrorPopup));
   };
 
   return (
