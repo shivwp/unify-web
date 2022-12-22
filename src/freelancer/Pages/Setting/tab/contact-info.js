@@ -656,7 +656,7 @@ const Screen = () => {
                           Additional accounts
                         </div>
                         <div className="c_name_sett mt-0 pt-0">
-                          Creating a new account allows you to use Upwork in
+                          Creating a new account allows you to use Unify in
                           different ways, while still having just one login.
                         </div>
                       </div>

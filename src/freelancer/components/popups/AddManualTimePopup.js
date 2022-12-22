@@ -87,7 +87,7 @@ const AddManualTimePopup = ({ open, onCloseModal }) => {
             </Form.Label>
           </div>
           <p className="Popup_note">
-            <b>Note:</b> Menual time does not qualify for Upwork Hourly
+            <b>Note:</b> Menual time does not qualify for Unify Hourly
             Protaction. <span>Learn More</span>
           </p>
         </div>

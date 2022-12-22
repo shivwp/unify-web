@@ -27,8 +27,11 @@ const ByMilesstone = ({
   const handleInputChange = (e, index) => {
     const { name, value } = e.target;
     const list = [...inputList];
+
     if (name == "amount") {
-      list[index][name] = Number(value);
+      if (value.length <= 10) {
+        list[index][name] = Number(value);
+      }
     } else {
       list[index][name] = value;
     }
@@ -107,6 +110,8 @@ const ByMilesstone = ({
                   <input
                     type="number"
                     name="amount"
+                    maxLength={10}
+                    value={inputList[i]?.amount}
                     min="1"
                     placeholder="0.00"
                     onChange={(e) => handleInputChange(e, i)}
@@ -149,7 +154,7 @@ const ByMilesstone = ({
               <img src="/assets/protection.png" alt="" />
             </div>
             <div className="css-name-proetction mt-3">
-              Includes Upwork Unify Protection.
+              Includes Unify Unify Protection.
             </div>
             <div className="css-rve-prt pt-1">Learn More</div>
           </div>
@@ -215,7 +220,6 @@ const ByProject = ({
     setErrors({ ...errors, [e.target.name]: false });
   };
 
-
   return (
     <>
       <div className="full_project_bid">
@@ -262,7 +266,7 @@ const ByProject = ({
               }}
             >
               <Col lg={7}>
-                <div className="head">Upwork Service Fee </div>
+                <div className="head">Unify Service Fee </div>
               </Col>
               <Col lg={5}>
                 <div style={{ position: "relative" }}>
@@ -314,7 +318,7 @@ const ByProject = ({
                 <img src="/assets/protection.png" alt="" />
               </div>
               <div className="css-name-proetction mt-3">
-                Includes Upwork Unify Protection.
+                Includes Unify Protection.
               </div>
               <div className="css-rve-prt pt-1">Learn More</div>
             </div>
@@ -341,7 +345,7 @@ const FixedBid = ({
     <>
       <div className="fixed_bid">
         <div className="heading">
-          <span className="head">Terms</span>
+          {/* <span className="head">Terms</span> */}
           <span className="budget">
             Client’s budget:{" "}
             {singleJobDetails?.budget_type == "fixed"

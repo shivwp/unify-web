@@ -186,7 +186,7 @@ const SkillsListCatWise = () => {
                 <div className="heading">
                   <span>1,665 skills</span>
                 </div>
-                <div className="desc">Represented by talent on Upwork.</div>
+                <div className="desc">Represented by talent on Unify.</div>
               </Col>
             </Row>
             <Row className="mt-4">

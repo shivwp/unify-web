@@ -18,7 +18,7 @@ const Screen = () => {
                 <div className="notification_box">
                   <div>
                     <div className="notification_text">
-                      A recent sign-in to your Upwork account (c42c68a5) from an
+                      A recent sign-in to your Unify account (c42c68a5) from an
                       unknown device or browser.
                     </div>
                     <div className="notification_time">04:40 pm</div>
@@ -39,7 +39,7 @@ const Screen = () => {
                 <div className="notification_box">
                   <div>
                     <div className="notification_text">
-                      A recent sign-in to your Upwork account (c42c68a5) from an
+                      A recent sign-in to your Unify account (c42c68a5) from an
                       unknown device or browser.
                     </div>
                     <div className="notification_time">04:40 pm</div>
@@ -60,7 +60,7 @@ const Screen = () => {
                 <div className="notification_box">
                   <div>
                     <div className="notification_text">
-                      A recent sign-in to your Upwork account (c42c68a5) from an
+                      A recent sign-in to your Unify account (c42c68a5) from an
                       unknown device or browser.
                     </div>
                     <div className="notification_time">04:40 pm</div>
@@ -84,7 +84,7 @@ const Screen = () => {
                 <div className="notification_box">
                   <div>
                     <div className="notification_text">
-                      A recent sign-in to your Upwork account (c42c68a5) from an
+                      A recent sign-in to your Unify account (c42c68a5) from an
                       unknown device or browser.
                     </div>
                     <div className="notification_time">04:40 pm</div>

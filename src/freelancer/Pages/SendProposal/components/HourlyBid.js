@@ -130,7 +130,7 @@ const HourlyBid = ({
               <img src="/assets/protection.png" alt="" />
             </div>
             <div className="css-name-proetction mt-3">
-              Includes Upwork Unify Protection.
+              Includes Unify Protection.
             </div>
             <div className="css-rve-prt pt-1">Learn More</div>
           </div>

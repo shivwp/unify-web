@@ -19,7 +19,7 @@ const HoursThisWeek = () => {
             <span style={{ fontSize: 14, color: "#979797" }}>40 hrs limit</span>
           </div>
           <div className="timesheet_msg">
-            You will get paid for these hours on Monday (Upwork's billing
+            You will get paid for these hours on Monday (Unify's billing
             timezone) <span>Learn More</span>
           </div>
           <div className="timesheet_btns">

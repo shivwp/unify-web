@@ -103,6 +103,9 @@ const Screen = () => {
       ) {
         errorsObject.bid_amount = "Please enter valid amount";
         errorExist = true;
+      } else if (values?.bid_amount.length > 10) {
+        errorsObject.bid_amount = "Amount should not be more then 10 digits";
+        errorExist = true;
       }
     } else if (singleJobDetails?.budget_type == "fixed") {
       if (
@@ -122,6 +125,9 @@ const Screen = () => {
           values?.bid_amount === null
         ) {
           errorsObject.bid_amount = "Please enter valid amount";
+          errorExist = true;
+        } else if (values?.bid_amount.length > 10) {
+          errorsObject.bid_amount = "Amount should not be more then 10 digits";
           errorExist = true;
         }
       }

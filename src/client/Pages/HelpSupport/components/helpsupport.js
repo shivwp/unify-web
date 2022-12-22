@@ -18,7 +18,7 @@ const Screen = () => {
             <div className="mn_six_hun">
               <div className="find_sol_headin">Find a solution fast.</div>
               <div className="find_sol_para">
-                Search hundreds of articles on Upwork Help
+                Search hundreds of articles on Unify Help
               </div>
               <Form.Group className="d-flex suppott_inp">
                 <div className="d-flex align-items-center">

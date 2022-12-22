@@ -297,7 +297,7 @@ const Testimonial = () => {
           </div>
           <div className="testimonial_info">
             <span>
-              By submitting a testimonial. you give Upwork consent to send you
+              By submitting a testimonial. you give Unify consent to send you
               relevant news and promotional emails.
             </span>
           </div>

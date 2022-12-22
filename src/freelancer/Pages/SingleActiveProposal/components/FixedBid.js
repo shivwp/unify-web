@@ -28,7 +28,9 @@ const ByMilesstone = ({
     const { name, value } = e.target;
     const list = [...inputList];
     if (name == "amount") {
-      list[index][name] = Number(value);
+      if (value.length <= 10) {
+        list[index][name] = Number(value);
+      }
     } else {
       list[index][name] = value;
     }
@@ -109,6 +111,7 @@ const ByMilesstone = ({
                   <input
                     type="number"
                     name="amount"
+                    maxLength={10}
                     min="1"
                     value={inputList[i]?.amount}
                     placeholder="0.00"
@@ -152,7 +155,7 @@ const ByMilesstone = ({
               <img src="/assets/protection.png" alt="" />
             </div>
             <div className="css-name-proetction mt-3">
-              Includes Upwork Unify Protection.
+              Includes Unify Protection.
             </div>
             <div className="css-rve-prt pt-1">Learn More</div>
           </div>
@@ -256,7 +259,7 @@ const ByProject = ({ values, setValues, project_data, errors, setErrors }) => {
               }}
             >
               <Col lg={7}>
-                <div className="head">Upwork Service Fee </div>
+                <div className="head">Unify Service Fee </div>
               </Col>
               <Col lg={5}>
                 <div style={{ position: "relative" }}>
@@ -308,7 +311,7 @@ const ByProject = ({ values, setValues, project_data, errors, setErrors }) => {
                 <img src="/assets/protection.png" alt="" />
               </div>
               <div className="css-name-proetction mt-3">
-                Includes Upwork Unify Protection.
+                Includes Unify Protection.
               </div>
               <div className="css-rve-prt pt-1">Learn More</div>
             </div>
@@ -337,7 +340,7 @@ const FixedBid = ({
     <>
       <div className="fixed_bid">
         <div className="heading">
-          <span className="head">Terms</span>
+          {/* <span className="head">Terms</span> */}
           {/* <span className="budget">Client’s budget: $25.00 - $45.00/hr</span> */}
         </div>
         <Row className="mt-3">
