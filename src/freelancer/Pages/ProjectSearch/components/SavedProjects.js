@@ -165,11 +165,11 @@ const SavedProjects = ({
                     </svg>
                   </button>
                   <Link to={`/freelancer/project-detail/${item.id}`}>
-                    <button>
+                    <Button variant="" disabled={item.is_proposal_send}>
                       {item.is_proposal_send
                         ? "Proposal Sent"
                         : "Send Proposal"}
-                    </button>
+                    </Button>
                   </Link>
                 </div>
               </div>
