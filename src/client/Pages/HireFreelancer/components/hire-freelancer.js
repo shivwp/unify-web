@@ -23,6 +23,7 @@ const Screen = () => {
   const [imageFile, setImageFile] = useState();
   const [objectUrl, setObjectUrl] = useState();
   const [errorPopup, setErrorPopup] = useState(false);
+  const [showError, setShowError] = useState();
   const [inputList, setInputList] = useState([
     { description: "", due_date: null, amount: 0 },
   ]);
@@ -89,8 +90,20 @@ const Screen = () => {
   };
 
   const onProfileChange = (e) => {
+    let errorExit = false;
+    const image = e.target.files[0];
+
+    if (image?.size > 1048576 * 10) {
+      setShowError("File size must be maximum 10 MB");
+      errorExit = true;
+    }
+    if (errorExit) {
+      return false;
+    }
+
     setImageFile(e.target.files[0]);
     setObjectUrl(e.target.files[0].name);
+    setShowError("");
   };
 
   const handleAddMilestone = () => {
@@ -344,7 +357,7 @@ const Screen = () => {
                         onChange={(e) => onInputChange(e)}
                       >
                         <option value="No limit">No limit</option>
-                        <option value="5 k">5 hrs/week</option>
+                        <option value="5">5 hrs/week</option>
                         <option value="10">10 hrs/week</option>
                         <option value="15">15 hrs/week</option>
                         <option value="20">20 hrs/week</option>
@@ -677,13 +690,20 @@ const Screen = () => {
               {errors.cover_letter && errors.cover_letter}
             </span>
           </Form.Group>
-          <div className="ts_btn attach_f_btn mt-0">
-            <Form.Control type="file" onChange={(e) => onProfileChange(e)} />
-            <button>
-              <i className="bi bi-paperclip"></i>
+          <div className="ts_btn attach_f_btn">
+            <label id="uploadImage" className="rot_svg_oety">
+              <input
+                id="uploadImage"
+                type="file"
+                onChange={(e) => onProfileChange(e)}
+              />
+              <i className="fa fa-paperclip" aria-hidden="true"></i>
               Attach File
-            </button>
-            <div className="sm_label_inp">Max file size: 100 MB</div>
+            </label>
+            <div className="sm_label_inp">Max file size: 10 MB</div>
+            <p className="uploadImgEror" style={{ textAlign: "left" }}>
+              {showError}
+            </p>
           </div>
 
           {objectUrl ? (

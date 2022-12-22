@@ -7,6 +7,7 @@ const Budget = ({
   values,
   reviewJobPost,
   error,
+  setError,
 }) => {
   return (
     <Col lg={9}>
@@ -25,7 +26,10 @@ const Budget = ({
                     name="budget_type"
                     value="hourly"
                     checked={values?.budget_type === "hourly" ? true : false}
-                    onChange={(e) => onInputChange(e)}
+                    onChange={(e) => {
+                      onInputChange(e);
+                      setError("");
+                    }}
                   />
                 </div>
                 <div className="sel_icon">
@@ -54,7 +58,10 @@ const Budget = ({
                     name="budget_type"
                     value="fixed"
                     checked={values?.budget_type === "fixed" ? true : false}
-                    onChange={(e) => onInputChange(e)}
+                    onChange={(e) => {
+                      onInputChange(e);
+                      setError("");
+                    }}
                   />
                 </div>
                 <div className="sel_icon">

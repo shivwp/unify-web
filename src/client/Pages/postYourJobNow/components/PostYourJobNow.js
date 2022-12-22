@@ -84,6 +84,7 @@ const PostYourJobNow = () => {
               values={values}
               reviewJobPost={reviewJobPost}
               error={error}
+              setError={setError}
             />
           )}
         </Row>

@@ -55,7 +55,10 @@ const ProjectBudgetPopup = ({ open, onCloseModal, setValues, values }) => {
                     checked={
                       budgetData?.budget_type === "hourly" ? true : false
                     }
-                    onChange={(e) => onInputChange(e)}
+                    onChange={(e) => {
+                      onInputChange(e);
+                      setError("");
+                    }}
                   />
                 </div>
                 <div className="sel_icon">
@@ -84,7 +87,10 @@ const ProjectBudgetPopup = ({ open, onCloseModal, setValues, values }) => {
                     name="budget_type"
                     value="fixed"
                     checked={budgetData?.budget_type === "fixed" ? true : false}
-                    onChange={(e) => onInputChange(e)}
+                    onChange={(e) => {
+                      onInputChange(e);
+                      setError("");
+                    }}
                   />
                 </div>
                 <div className="sel_icon">
