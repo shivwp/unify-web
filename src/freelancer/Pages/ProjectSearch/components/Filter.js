@@ -3,26 +3,23 @@ import { Col, Form, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import $ from "jquery";
 import { useState } from "react";
-import {
-  getCategoryList,
-  getFreelancerSkills,
-  getLanguageList,
-} from "../../../../redux/actions/profileAction";
+import { getFreelancerSkills } from "../../../../redux/actions/profileAction";
+import { getJobsList } from "../../../../redux/actions/jobActions";
+import { useMemo } from "react";
 
-const Filter = ({ setLoading }) => {
+const Filter = ({ filters, setFilters }) => {
   const categoryList = useSelector((state) => state.profile.categoryList);
+  let getSkillList = useSelector((state) => state?.profile?.getSkillList);
   const [errors, setErrors] = useState({});
   const dispatch = useDispatch();
-  const [filters, setFilters] = useState([]);
-  let getSkillList = useSelector((state) => state?.profile?.getSkillList);
   const [selectSkills, setSelectSkills] = useState([]);
   const [selectLanguages, setSelecetLanguages] = useState({});
   const [selectCategory, setSeleceCategory] = useState({});
   const [filterValues, setFilterValues] = useState([]);
   const [showSuggestedSkills, setShowSuggestedSkills] = useState(false);
   const [skillsList, setSkillsList] = useState([]);
-  //   // filter start
 
+  // filter start
   const handleFilterChange = (e) => {
     setFilterValues({ ...filterValues, [e.target.name]: e.target.value });
     if (e.target.name == "max_price" || e.target.name == "min_price") {
@@ -31,6 +28,7 @@ const Filter = ({ setLoading }) => {
       setErrors({ ...errors, [e.target.name]: false });
     }
   };
+
   const options1 = [
     {
       name: "what are you looking for",
@@ -49,53 +47,42 @@ const Filter = ({ setLoading }) => {
   }, [getSkillList, selectSkills]);
   // remove item which is selected
 
-  //   // for filter jobs
-  //   useEffect(() => {
-  //     if (filters) {
-  //       setLoading(true);
-  //       dispatch(getJobsList({ pagination: 10, page, ...filters }, setLoading));
-  //     }
-  //   }, [page, filters, unSaveJobsPost, savedJobsList]);
+  // to filter jobs by skills start
+  useMemo(() => {
+    if (selectSkills) {
+      setFilters({
+        ...filters,
+        skills: selectSkills?.map((item) => item.skill_id)?.toString(),
+      });
+    }
+  }, [selectSkills]);
+  // to filter jobs by skills end
 
-  //   // to filter jobs by skills
-  //   useEffect(() => {
-  //     if (selectSkills) {
-  //       setFilters({
-  //         ...filters,
-  //         skills: selectSkills?.map((item) => item.skill_id)?.toString(),
-  //       });
-  //     }
-  //   }, [selectSkills]);
+  // change categories start
+  useMemo(() => {
+    if (selectCategory) {
+      var categoryKeys = Object.keys(selectCategory);
+      setFilters({
+        ...filters,
+        project_category: categoryKeys
+          ?.filter(function (key) {
+            return selectCategory[key];
+          })
+          ?.toString(),
+      });
+    }
+  }, [selectCategory]);
+  // change categories end
 
-  //   // to filter jobs by category
-  //   useEffect(() => {
-  //     if (selectCategory) {
-  //       var categoryKeys = Object.keys(selectCategory);
-  //       setFilters({
-  //         ...filters,
-  //         project_category: categoryKeys
-  //           ?.filter(function (key) {
-  //             return selectCategory[key];
-  //           })
-  //           ?.toString(),
-  //       });
-  //     }
-  //   }, [selectCategory]);
-
-  //   // project duration
-  //   const projectDuration = [
-  //     { name: "More then 6 months" },
-  //     { name: "3 to 6 months" },
-  //     { name: "1 to 3 months" },
-  //     { name: "Less then 1 month" },
-  //   ];
-
+  // remove skills start
   const removeSkills = (index) => {
     let updateSkills = [...selectSkills];
     updateSkills.splice(index, 1);
     setSelectSkills(updateSkills);
   };
+  // remove skills end
 
+  // add skill start
   const addSkills = (item) => {
     if (selectSkills.length <= 10) {
       if (
@@ -111,7 +98,9 @@ const Filter = ({ setLoading }) => {
     }
     document.getElementById("search_skill_inp").value = null;
   };
+  // add skill end
 
+  // search skills start
   const onSearchSkill = (e) => {
     setShowSuggestedSkills(true);
     let data;
@@ -124,6 +113,7 @@ const Filter = ({ setLoading }) => {
     }
     $("#suggest_skills").show();
   };
+  // search skills end
 
   $(document).mouseup(function (e) {
     if ($(e.target).closest("#suggest_skills").length === 0) {
@@ -131,6 +121,7 @@ const Filter = ({ setLoading }) => {
     }
   });
 
+  // filter function start
   const onFilterJobList = (e) => {
     let errorExist = false;
     let errorsObject = {};
@@ -172,7 +163,9 @@ const Filter = ({ setLoading }) => {
 
     setFilters(filters);
   };
+  // filter function end
 
+  // clear all filters start
   const clearAllFilters = () => {
     setFilters({});
     setFilterValues([]);
@@ -180,8 +173,8 @@ const Filter = ({ setLoading }) => {
     setSeleceCategory({});
     setSelecetLanguages({});
   };
+  // clear all filters end
 
-  // filter end
   return (
     <>
       <Col lg={3} className="browseJobsLeft">
@@ -235,9 +228,8 @@ const Filter = ({ setLoading }) => {
                       [e.target.name]: e.target.value,
                     })
                   }
-                  defaultValue="default"
                 >
-                  <option value="default" hidden disabled>
+                  <option value="default" hidden>
                     Project Type
                   </option>
                   <option value="short_term">Sort Term </option>
@@ -297,7 +289,6 @@ const Filter = ({ setLoading }) => {
                       [e.target.name]: e.target.value,
                     })
                   }
-                  defaultValue="dafault"
                 >
                   <option value="dafault" hidden>
                     Select a duration
@@ -324,9 +315,8 @@ const Filter = ({ setLoading }) => {
                     })
                   }
                   className="font-size-13px projectDurationOption"
-                  defaultValue="default"
                 >
-                  <option value="default" disabled hidden>
+                  <option value="default" hidden>
                     Select budget
                   </option>
                   <option value="hourly">Hourly</option>

@@ -45,28 +45,40 @@ export const getHomePageData = (setLoading) => async (dispatch) => {
       }
     });
 };
-export const getSkillsByCat = (data) => async (dispatch) => {
+export const getSkillsByCat = (data, setLoading) => async (dispatch) => {
   await Axios.post(`/category-skills`, data)
     .then((res) => {
       dispatch({
         type: CATEGORY_SKILL_DATA,
         payload: res.data.data,
       });
+      if (setLoading) {
+        setLoading(false);
+      }
     })
     .catch((err) => {
       console.log(err);
+      if (setLoading) {
+        setLoading(false);
+      }
     });
 };
-export const getDevelopersBySkills = (data) => async (dispatch) => {
+export const getDevelopersBySkills = (data, setLoading) => async (dispatch) => {
   await Axios.post(`/skill-freelancer`, data)
     .then((res) => {
       dispatch({
         type: SKILLS_DEVELOPER_DATA,
         payload: res.data.data,
       });
+      if (setLoading) {
+        setLoading(false);
+      }
     })
     .catch((err) => {
       console.log(err);
+      if (setLoading) {
+        setLoading(false);
+      }
     });
 };
 

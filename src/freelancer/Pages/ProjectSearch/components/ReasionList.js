@@ -1,16 +1,12 @@
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import {
-  onDislikeJobPost,
-  onDislikePostReasons,
-} from "../../../../redux/actions/jobActions";
+import { useDispatch, useSelector } from "react-redux";
+import { onDislikeJobPost } from "../../../../redux/actions/jobActions";
 
-const ReasonsList = ({ jobId, data, setDropdownOpen, setLoading }) => {
+const ReasonsList = ({ jobId, setDropdownOpen, setLoading }) => {
+  const dislikeJobReasons = useSelector(
+    (state) => state?.job?.dislikeJobReasons
+  );
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(onDislikePostReasons(setLoading));
-  }, []);
   const dislikeJobPost = (id) => {
     setLoading(true);
     dispatch(
@@ -25,7 +21,7 @@ const ReasonsList = ({ jobId, data, setDropdownOpen, setLoading }) => {
     <>
       <div className="ddown_psr dislikeJobRreasonsList ps-absolute">
         <div className="ddown_mcotrct psearch-pnpou">
-          {data?.map((item, index) => (
+          {dislikeJobReasons?.map((item, index) => (
             <div
               key={index}
               className="ddwon_lis"

@@ -4,10 +4,6 @@ import star from "../../../../icons/star.svg";
 import "../../../../styles/freelancer.css";
 import Button from "react-bootstrap/Button";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  getSavedJobsList,
-  removeSaveJob,
-} from "../../../../redux/actions/jobActions";
 import { Link } from "react-router-dom";
 import ResultNotFound from "../ResultNotFound";
 
@@ -20,6 +16,7 @@ const SavedProjects = ({
   SaveJob,
   UnSaveJob,
 }) => {
+  const totalPages = [];
   const dispatch = useDispatch();
   const savedJobsList = useSelector((state) => state?.job?.savedJobsList?.data);
 
@@ -31,7 +28,6 @@ const SavedProjects = ({
     window.scrollTo(0, 0);
   };
 
-  const totalPages = [];
   for (let i = 1; i < savedjobsPagination?.total_page + 1; i++) {
     totalPages.push(i);
   }

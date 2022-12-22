@@ -14,11 +14,7 @@ import {
   removeSaveJob,
   saveJobs,
 } from "../../../../redux/actions/jobActions";
-import {
-  getCategoryList,
-  getFreelancerSkills,
-  getLanguageList,
-} from "../../../../redux/actions/profileAction";
+import { getLanguageList } from "../../../../redux/actions/profileAction";
 import LoadingSpinner from "../../../../components/LoadingSpinner";
 import ProjectSearch from "./ProjectSearch";
 import SavedProjects from "./SavedProjects";
@@ -30,14 +26,11 @@ const AllProjects = () => {
 
   const [loading, setLoading] = useState(false);
   const [tabActive, setTabActive] = useState(saved || "search");
-  const jobsPagination = useSelector((state) => state?.job?.jobsList?.meta);
   const [page, setPage] = useState(1);
-
-  const totalPages = [];
-
-  for (let i = 1; i < jobsPagination?.total_page + 1; i++) {
-    totalPages.push(i);
-  }
+  const [filters, setFilters] = useState([]);
+  const saveJobsPost = useSelector((state) => state.job.saveJobsPost);
+  const unSaveJobsPost = useSelector((state) => state.job.unSaveJobsPost);
+  const onDislikeJobPost = useSelector((state) => state.job.onDislikeJobPost);
 
   const SaveJob = (id) => {
     setLoading(true);
@@ -50,23 +43,32 @@ const AllProjects = () => {
   };
 
   useMemo(() => {
+    setLoading(true);
     if (tabActive == "saved") {
       dispatch(
         getSavedJobsList({ pagination: 10, page: page }, false, setLoading)
       );
     }
     if (tabActive == "search") {
-      dispatch(getJobsList({ pagination: 10, page: page }, false, setLoading));
+      dispatch(
+        getJobsList(
+          { pagination: 10, page: page, ...filters },
+          false,
+          setLoading
+        )
+      );
     }
-  }, [page]);
+  }, [
+    page,
+    tabActive,
+    filters,
+    saveJobsPost,
+    unSaveJobsPost,
+    onDislikeJobPost,
+  ]);
 
   useEffect(() => {
     setLoading(true);
-    dispatch(getJobsList({ pagination: 10, page: page }, false, setLoading));
-    dispatch(
-      getSavedJobsList({ pagination: 10, page: page }, false, setLoading)
-    );
-    dispatch(getCategoryList(setLoading));
     dispatch(getLanguageList(setLoading));
   }, []);
 
@@ -91,6 +93,8 @@ const AllProjects = () => {
               setPage={setPage}
               UnSaveJob={UnSaveJob}
               SaveJob={SaveJob}
+              setFilters={setFilters}
+              filters={filters}
             />
           ) : (
             ""

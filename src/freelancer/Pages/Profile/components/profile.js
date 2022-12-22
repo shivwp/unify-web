@@ -898,8 +898,14 @@ const UnifyFreelancer = () => {
                         }}
                       >
                         <div>
-                          {edu?.school}, {edu?.area_study}{" "}
-                          {moment(edu.date).format("YYYY")}
+                          {`${edu?.school}, ${edu?.area_study} 
+                          ${moment(edu.start_year).format("YYYY")} - ${moment(
+                            edu.end_year
+                          ).format("YYYY")} ${
+                            edu.end_year > new Date().getFullYear()
+                              ? "Expected"
+                              : ""
+                          }`}
                         </div>
                         <div className="d-flex justify-content-start">
                           <figure></figure>

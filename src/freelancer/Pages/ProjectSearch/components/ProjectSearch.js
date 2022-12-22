@@ -1,5 +1,5 @@
 import ResultNotFound from "../ResultNotFound";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Row, Col } from "react-bootstrap";
 import star from "../../../../icons/star.svg";
 import $ from "jquery";
@@ -7,7 +7,11 @@ import "../../../../styles/freelancer.css";
 import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import { useDispatch, useSelector } from "react-redux";
-import { removeSaveJob, saveJobs } from "../../../../redux/actions/jobActions";
+import {
+  onDislikePostReasons,
+  removeSaveJob,
+  saveJobs,
+} from "../../../../redux/actions/jobActions";
 import ReasonsList from "./ReasionList";
 import Filter from "./Filter";
 
@@ -19,22 +23,34 @@ const ProjectSearch = ({
   setPage,
   SaveJob,
   UnSaveJob,
+  filters,
+  setFilters,
 }) => {
   const totalPages = [];
   const dispatch = useDispatch();
   const jobsList = useSelector((state) => state?.job?.jobsList?.data);
   const jobsPagination = useSelector((state) => state?.job?.jobsList?.meta);
-  const dislikeJobReasons = useSelector(
-    (state) => state?.job?.dislikeJobReasons
-  );
+
   const [dropdownOpen, setDropdownOpen] = useState(false);
+
+  for (let i = 1; i < jobsPagination?.total_page + 1; i++) {
+    totalPages.push(i);
+  }
+
+  useEffect(() => {
+    setLoading(true);
+    dispatch(onDislikePostReasons(setLoading));
+  }, []);
 
   const ScrollTop = () => {
     window.scrollTo(0, 0);
   };
 
   $(document).mouseup(function (e) {
-    if ($(e.target).closest(".dislikeJobRreasonsList").length === 0) {
+    if (
+      $(e.target).closest(".dislikeJobRreasonsList, #dislike_button").length ===
+      0
+    ) {
       setDropdownOpen(false);
     }
   });
@@ -43,7 +59,11 @@ const ProjectSearch = ({
     <>
       <Row>
         <Row>
-          <Filter setLoading={setLoading} />
+          <Filter
+            setLoading={setLoading}
+            setFilters={setFilters}
+            filters={filters}
+          />
           <Col lg={9} className="top_main_c_job mx-auto">
             <div className="overflow-scroll">
               <div
@@ -127,7 +147,6 @@ const ProjectSearch = ({
                     {dropdownOpen == item.id ? (
                       <ReasonsList
                         jobId={item.id}
-                        data={dislikeJobReasons}
                         setDropdownOpen={setDropdownOpen}
                         setLoading={setLoading}
                       />
@@ -138,10 +157,11 @@ const ProjectSearch = ({
                       <Button
                         variant=""
                         className="bg-trans_s_pro btn_psnewrb"
-                        onClick={() =>
-                          setDropdownOpen(dropdownOpen ? false : item.id)
-                        }
+                        onClick={() => {
+                          setDropdownOpen(dropdownOpen ? false : item.id);
+                        }}
                         style={{ padding: 0, transform: "rotate(180deg)" }}
+                        id="dislike_button"
                       >
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -251,28 +271,31 @@ const ProjectSearch = ({
                 </div>
               </div>
             ))}
+            {jobsPagination?.total_page > 1 ? (
+              <Col lg={12}>
+                <div className="pagiantion_node">
+                  {totalPages.map((number) => (
+                    <Button
+                      variant=""
+                      key={number}
+                      className={`pagi_butt ${
+                        jobsPagination?.current_page == number
+                          ? "PageActive"
+                          : ""
+                      }`}
+                      onClick={() => setPage(number)}
+                    >
+                      {number}
+                    </Button>
+                  ))}
+                </div>
+              </Col>
+            ) : (
+              ""
+            )}
           </Col>
         </Row>
-        {jobsPagination?.total_page > 1 ? (
-          <Col lg={9}>
-            <div className="pagiantion_node">
-              {totalPages.map((number) => (
-                <Button
-                  variant=""
-                  key={number}
-                  className={`pagi_butt ${
-                    jobsPagination?.current_page == number ? "PageActive" : ""
-                  }`}
-                  onClick={() => setPage(number)}
-                >
-                  {number}
-                </Button>
-              ))}
-            </div>
-          </Col>
-        ) : (
-          ""
-        )}
+
         {jobsList?.length == 0 ? <ResultNotFound /> : null}
       </Row>
     </>
