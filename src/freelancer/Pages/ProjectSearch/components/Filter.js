@@ -130,7 +130,7 @@ const Filter = ({ filters, setFilters }) => {
         errorsObject.price = "Amount must be minimum 3 ";
         errorExist = true;
       } else if (
-        Number(filterValues?.max_price) < Number(filterValues?.min_price)
+        Number(filterValues?.max_price) <= Number(filterValues?.min_price)
       ) {
         errorsObject.price = "Price must be greater then minimum ";
         errorExist = true;
