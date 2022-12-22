@@ -739,21 +739,21 @@ const Screen = () => {
             </div>
             <Row>
               <div className="dashboardHead">
-                <Col lg={5}>
+                <Col lg={5} md={12}>
                   <div className="welcome_ax_dboard">
-                    Welcome to your <br /> Dashboard{" "}
-                    {`${
+                    Welcome to your Dashboard
+                    {` ${
                       JSON.parse(localStorage.getItem("unify_user"))?.first_name
                     } ${
                       JSON.parse(localStorage.getItem("unify_user"))?.last_name
                     }`}
                   </div>
                   <div className="wdesc_ax_dboard mt-3">
-                    Here you'll find all the important information <br /> about
-                    your projects.
+                    Here you'll find all the important information about your
+                    projects.
                   </div>
                 </Col>
-                <Col lg={3}>
+                <Col lg={3} md={6} className="dashboard_icon_resp">
                   <div className="hourly_amout_nodeUnicon dashboardWalletIcon no-border">
                     <div className="wallet_icon">
                       <svg
@@ -811,54 +811,56 @@ const Screen = () => {
                     </div>
                   </div>
                 </Col>
-                <Col lg={4}>
+                <Col lg={4} md={6} className="dashboard_icon_resp">
                   <div className="hourly_amout_node flex-wrap dashboardWalletIcon ">
-                    <div className="wallet_icon">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="88.455"
-                        height="88.525"
-                        viewBox="0 0 88.455 88.525"
-                      >
-                        <g id="wallet" transform="translate(-0.152)">
-                          <g
-                            id="Group_2397"
-                            data-name="Group 2397"
-                            transform="translate(0.152)"
-                          >
-                            <g id="Group_2396" data-name="Group 2396">
-                              <path
-                                id="Path_4467"
-                                data-name="Path 4467"
-                                d="M14.907,19.677a4.922,4.922,0,1,1,.015-9.843H78.694V0H14.921A14.745,14.745,0,0,0,.152,14.755c0,.235.006.469,0,.7V73.622A14.766,14.766,0,0,0,14.894,88.376l58.946.149A14.71,14.71,0,0,0,88.607,73.818V19.677ZM78.774,73.818a4.877,4.877,0,0,1-4.909,4.874l-58.946-.149a4.933,4.933,0,0,1-4.934-4.921V28.668a14.714,14.714,0,0,0,4.922.842H78.774Z"
-                                transform="translate(-0.152)"
-                                fill="#eee"
-                              />
+                    <div className="dashboard_Resp_Icon">
+                      <div className="wallet_icon">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="88.455"
+                          height="88.525"
+                          viewBox="0 0 88.455 88.525"
+                        >
+                          <g id="wallet" transform="translate(-0.152)">
+                            <g
+                              id="Group_2397"
+                              data-name="Group 2397"
+                              transform="translate(0.152)"
+                            >
+                              <g id="Group_2396" data-name="Group 2396">
+                                <path
+                                  id="Path_4467"
+                                  data-name="Path 4467"
+                                  d="M14.907,19.677a4.922,4.922,0,1,1,.015-9.843H78.694V0H14.921A14.745,14.745,0,0,0,.152,14.755c0,.235.006.469,0,.7V73.622A14.766,14.766,0,0,0,14.894,88.376l58.946.149A14.71,14.71,0,0,0,88.607,73.818V19.677ZM78.774,73.818a4.877,4.877,0,0,1-4.909,4.874l-58.946-.149a4.933,4.933,0,0,1-4.934-4.921V28.668a14.714,14.714,0,0,0,4.922.842H78.774Z"
+                                  transform="translate(-0.152)"
+                                  fill="#eee"
+                                />
+                              </g>
+                            </g>
+                            <g
+                              id="Group_2399"
+                              data-name="Group 2399"
+                              transform="translate(54.111 39.466)"
+                            >
+                              <g id="Group_2398" data-name="Group 2398">
+                                <path
+                                  id="Path_4468"
+                                  data-name="Path 4468"
+                                  d="M249.05,181.08H264.3v-9.833H249.05a14.762,14.762,0,1,0,0,29.523H264.3v-9.833H249.051a4.928,4.928,0,1,1,0-9.857Z"
+                                  transform="translate(-234.285 -171.247)"
+                                  fill="#eee"
+                                />
+                              </g>
                             </g>
                           </g>
-                          <g
-                            id="Group_2399"
-                            data-name="Group 2399"
-                            transform="translate(54.111 39.466)"
-                          >
-                            <g id="Group_2398" data-name="Group 2398">
-                              <path
-                                id="Path_4468"
-                                data-name="Path 4468"
-                                d="M249.05,181.08H264.3v-9.833H249.05a14.762,14.762,0,1,0,0,29.523H264.3v-9.833H249.051a4.928,4.928,0,1,1,0-9.857Z"
-                                transform="translate(-234.285 -171.247)"
-                                fill="#eee"
-                              />
-                            </g>
-                          </g>
-                        </g>
-                      </svg>
-                    </div>
-                    <div className="hourly_am">
-                      <span>Total Earnings</span>
-                      <h1 className="line-hei-1">
-                        640<sup>00</sup>
-                      </h1>
+                        </svg>
+                      </div>
+                      <div className="hourly_am">
+                        <span>Total Earnings</span>
+                        <h1 className="line-hei-1">
+                          640<sup>00</sup>
+                        </h1>
+                      </div>
                     </div>
                   </div>
                   <div className="pd_flex hrly_dboard_ntxt">

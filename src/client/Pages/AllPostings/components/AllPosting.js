@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Row, Col, Container } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import $ from "jquery";
@@ -18,7 +18,7 @@ const AllPosting = () => {
   useEffect(() => {
     setLoading(true);
     dispatch(getAllClientPosting(false, setLoading));
-  }, []);
+  }, [dispatch]);
 
   $(document).mouseup(function (e) {
     if ($(e.target).closest("#menu_bar1").length === 0) {

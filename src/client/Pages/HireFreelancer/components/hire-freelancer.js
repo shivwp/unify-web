@@ -37,7 +37,7 @@ const Screen = () => {
     (state) => state.freelancer.singleFreelancer
   );
   const singleJobDetails = useSelector((state) => state.job.singleJobDetails);
-  const hiringError = useSelector((state) => state.freelancer.hiringError);
+  // const hiringError = useSelector((state) => state.freelancer.hiringError);
 
   useEffect(() => {
     if (milestoneData) {
@@ -68,7 +68,7 @@ const Screen = () => {
         bid_amount: singleFreelancer?.basic_info?.amount,
       });
     }
-  }, [proposalData, singleJobDetails]);
+  }, [proposalData, singleJobDetails, singleFreelancer?.basic_info?.amount]);
 
   useEffect(() => {
     const data = {
@@ -76,13 +76,13 @@ const Screen = () => {
     };
     dispatch(getSingleFreelancer(freelancer_id));
     dispatch(singleJobPostDetails(data));
-  }, []);
+  }, [dispatch, freelancer_id, project_id]);
 
   useEffect(() => {
     if (proposal_id) {
       dispatch(singleProposalDetails(proposal_id, "submit"));
     }
-  }, []);
+  }, [dispatch, proposal_id]);
 
   const onInputChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });

@@ -2137,7 +2137,7 @@ body {
 
 .pd_flex {
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   width: 100%;
 }
 
@@ -2226,14 +2226,37 @@ body {
 .dashboardWalletIcon {
   display: flex;
   align-items: self-end;
-  padding: 13px 0px;
-  max-width: 85%;
+  padding: 10px 0px;
+  max-width: 96%;
   margin: 0 auto;
   border-bottom: 1px solid #7070703b;
 }
 .dashboradTotalProject {
   display: flex;
   flex-direction: column;
+}
+
+.dashboard_Resp_Icon {
+  display: flex;
+}
+
+@media screen and (max-width: 425px) {
+  .dashboardWalletIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 0px;
+    max-width: 96%;
+    margin: 0 auto;
+    border-bottom: 1px solid #7070703b;
+  }
+  .dashboard_icon_resp {
+    width: 400px !important;
+  }
+  .dashboard_Resp_Icon {
+    display: flex;
+    margin-left: -30px;
+  }
 }
 
 .b-bottom-b {
@@ -7028,7 +7051,7 @@ a {
 
 .startIntroRadiobtn {
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   padding-top: 4px;
   padding-right: 7px;
 }
@@ -7159,7 +7182,7 @@ a {
   color: #9c9a9f;
   font-weight: 400;
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   margin-top: 5px;
   font-size: 12px;
 }
@@ -7422,7 +7445,7 @@ a {
 
 .previewProfileThumbsIco {
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   align-items: center;
 }
 
@@ -7584,7 +7607,7 @@ a {
   }
   .langLevel {
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
   }
   .container_border {
     padding-top: 10px;
@@ -7617,11 +7640,11 @@ a {
   }
   .langLevel {
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
   }
   .langChoseDrop {
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
     margin-right: -10px;
     margin-left: 0px;
     width: 100%;

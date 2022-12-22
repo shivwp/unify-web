@@ -1,7 +1,6 @@
 import { Col, Row } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
 import InviteToJobPopup from "../../../popups/InviteToJobPopup";
 import { useState } from "react";
 

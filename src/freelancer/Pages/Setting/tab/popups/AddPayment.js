@@ -60,7 +60,7 @@ const AddPayment = (props) => {
                     <Form.Control
                       type="text"
                       className="font-size-13px"
-                      placeholder="Rizwan"
+                      placeholder="John"
                     />
                   </Form.Group>
                 </Col>
@@ -72,7 +72,7 @@ const AddPayment = (props) => {
                     <Form.Control
                       type="text"
                       className="font-size-13px"
-                      placeholder="Qureshi"
+                      placeholder="Due"
                     />
                   </Form.Group>
                 </Col>
@@ -114,7 +114,8 @@ const AddPayment = (props) => {
             </div>
 
             <div className="popup_btns_new flex-wrap getpaidsve_btn">
-              <Button variant=""
+              <Button
+                variant=""
                 onClick={() => {
                   props.Popup();
                 }}
