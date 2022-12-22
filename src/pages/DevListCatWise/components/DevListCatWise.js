@@ -6,16 +6,19 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getDevelopersBySkills } from "../../../redux/actions/authActions";
 import InstantBookingPopup from "./InstantBookingPopup";
+import LoadingSpinner from "../../../components/LoadingSpinner";
 
 const DevListCatWise = () => {
   const dispatch = useDispatch();
   const skillId = useParams();
   const [popup, setPopup] = useState();
+  const [loading, setLoading] = useState(false);
 
   const skillDevData = useSelector((state) => state?.auth?.skillDevData);
 
   useEffect(() => {
-    dispatch(getDevelopersBySkills({ skill_id: skillId.skill }));
+    setLoading(true);
+    dispatch(getDevelopersBySkills({ skill_id: skillId.skill }, setLoading));
   }, []);
 
   return (
@@ -170,6 +173,7 @@ const DevListCatWise = () => {
           </div>
         </Container>
       </div>
+      {loading ? <LoadingSpinner /> : null}
       {popup}
     </>
   );

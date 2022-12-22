@@ -46,7 +46,7 @@ const AddEduc = ({
     const endYears = [];
     for (
       let i = new Date().getFullYear();
-      i > (Number(values?.start_year) - 1 || new Date().getFullYear() - 40);
+      i > (Number(values?.start_year) - 30 || new Date().getFullYear() - 40);
       i--
     ) {
       startYears.push({ start_year: i });

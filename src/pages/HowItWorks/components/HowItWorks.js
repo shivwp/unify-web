@@ -230,7 +230,9 @@ const HowItWorks = () => {
               </Col>
             </Row>
             <div className="awp_btn">
-              <button>Create Your Profile</button>
+              <Link to="/signup">
+                <button>Create Your Profile</button>
+              </Link>
             </div>
           </div>
         </div>
@@ -333,7 +335,7 @@ const HowItWorks = () => {
               <SwiperSlide>
                 <div className="top_freelancer">
                   <div className="image">
-                    <img src="/assets/PRO-2.png" alt="" />
+                    <img src="/assets/PRO-03.jpg" alt="" />
                     <div className="rate">$119 /hr</div>
                   </div>
                   <div className="name">Alex K.</div>
@@ -386,7 +388,7 @@ const HowItWorks = () => {
               <SwiperSlide>
                 <div className="top_freelancer">
                   <div className="image">
-                    <img src="/assets/PRO-2.png" alt="" />
+                    <img src="/assets/profile3.jpeg" alt="" />
                     <div className="rate">$119 /hr</div>
                   </div>
                   <div className="name">Mark C.</div>

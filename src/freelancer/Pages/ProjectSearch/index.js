@@ -1,15 +1,15 @@
-import ProjectSearc from "./components/project-search";
+import AllProjects from "./components/AllProjects";
 import Layout from "../../Layout/Layout";
 
-const Projectsscreen = () => {
+const Index = () => {
   return (
     <div>
       <div className="slider_pos nin_vh">
         <Layout>
-          <ProjectSearc />
+          <AllProjects />
         </Layout>
       </div>
     </div>
   );
 };
-export default Projectsscreen;
+export default Index;

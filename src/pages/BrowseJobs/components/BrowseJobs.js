@@ -536,9 +536,9 @@ const BrowseJobs = () => {
               {jobsList?.map((item) => (
                 <Link to={`/job-details/${item.id}`}>
                   <div className="job_box_card" key={item.id}>
-                    <div className="heat_lef">
+                    {/* <div className="heat_lef">
                       <img src={star} alt="" />
-                    </div>
+                    </div> */}
                     <Row>
                       <Col lg={9} md={9}>
                         <div className="job_head_s mt-3">

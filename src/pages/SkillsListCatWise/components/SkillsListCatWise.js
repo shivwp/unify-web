@@ -8,10 +8,12 @@ import { Link, useParams } from "react-router-dom";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getSkillsByCat } from "../../../redux/actions/authActions";
+import Loadingspinner from "../../../components/LoadingSpinner";
 SwiperCore.use([Autoplay]);
 
 const SkillsListCatWise = () => {
   const [bannerImg, setBannerImg] = useState(1);
+  const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
   const categoryId = useParams();
   // window.scrollTo(0, 0);
@@ -33,7 +35,8 @@ const SkillsListCatWise = () => {
   };
 
   useEffect(() => {
-    dispatch(getSkillsByCat({ category_id: categoryId?.category }));
+    setLoading(true);
+    dispatch(getSkillsByCat({ category_id: categoryId?.category }, setLoading));
   }, []);
 
   useEffect(() => {
@@ -297,6 +300,7 @@ const SkillsListCatWise = () => {
           </div>
         </div>
       </Container>
+      {loading ? <Loadingspinner /> : null}
     </>
   );
 };
