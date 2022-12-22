@@ -112,12 +112,19 @@ const Subscriptionplan = () => {
                         token={handlePayment}
                         stripeKey="pk_test_51M7YBGEAU8g6XRhsSzwgw2cS4DwXnFyL6C8HiT3GkOTY4GVOpbyjff7PCITznuAi5GV9xic6sDlLZd4p2t9fKnPZ00zZi7dmqe"
                       > */}
-                        <button
-                          className="btn_chose_pl btnhovpple"
-                          onClick={onNext}
-                        >
-                          CHOOSE PLAN
-                        </button>
+                        {values?.subscription === item.id ? (
+                          <button
+                            className="btn_chose_pl btnhovpple"
+                            onClick={onNext}
+                          >
+                            CHOOSE PLAN
+                          </button>
+                        ) : (
+                          <button disabled className="btn_chose_pl btnhovpple ">
+                            CHOOSE PLAN
+                          </button>
+                        )}
+
                         {/* </StripeCheckout> */}
                       </div>
                     )}
