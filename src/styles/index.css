@@ -2226,14 +2226,29 @@ body {
 .dashboardWalletIcon {
   display: flex;
   align-items: self-end;
-  padding: 13px 0px;
-  max-width: 85%;
+  padding: 10px 0px;
+  max-width: 96%;
   margin: 0 auto;
   border-bottom: 1px solid #7070703b;
 }
 .dashboradTotalProject {
   display: flex;
   flex-direction: column;
+}
+
+@media screen and (max-width: 425px) {
+  .dashboardWalletIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 0px;
+    max-width: 96%;
+    margin: 0 auto;
+    border-bottom: 1px solid #7070703b;
+  }
+  .dashboard_icon_resp {
+    width: 400px !important;
+  }
 }
 
 .b-bottom-b {

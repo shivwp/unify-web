@@ -1012,7 +1012,9 @@
   color: #6b6b6b;
   line-height: 22px;
   white-space: pre-line;
-  text-align: justify;
+  /* text-align: justify; */
+  padding: 2px;
+  word-wrap: break-word;
 }
 
 .vmode_slide {

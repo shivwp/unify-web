@@ -739,7 +739,7 @@ const Screen = () => {
             </div>
             <Row>
               <div className="dashboardHead">
-                <Col lg={5}>
+                <Col lg={5} md={12}>
                   <div className="welcome_ax_dboard">
                     Welcome to your <br /> Dashboard{" "}
                     {`${
@@ -753,7 +753,7 @@ const Screen = () => {
                     your projects.
                   </div>
                 </Col>
-                <Col lg={3}>
+                <Col lg={3} md={6} className="dashboard_icon_resp">
                   <div className="hourly_amout_nodeUnicon dashboardWalletIcon no-border">
                     <div className="wallet_icon">
                       <svg
@@ -811,7 +811,7 @@ const Screen = () => {
                     </div>
                   </div>
                 </Col>
-                <Col lg={4}>
+                <Col lg={4} md={6} className="dashboard_icon_resp" >
                   <div className="hourly_amout_node flex-wrap dashboardWalletIcon ">
                     <div className="wallet_icon">
                       <svg
