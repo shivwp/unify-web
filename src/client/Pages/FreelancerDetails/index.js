@@ -1,14 +1,13 @@
 import Layout from "../../Layout/Layout";
 import Container from "react-bootstrap/Container";
 import { Row, Col } from "react-bootstrap";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
-import $ from "jquery";
+// import $ from "jquery";
 import { useDispatch, useSelector } from "react-redux";
 import moment from "moment";
 import ReactPaginate from "react-paginate";
-import Form from "react-bootstrap/Form";
 import { getSingleFreelancer } from "../../../redux/actions/freelancerAction";
 import StarRating from "../../../freelancer/components/rating/Rating";
 import WorkHistory from "../../../freelancer/Pages/Profile/components/popups/WorkHistory";
@@ -36,7 +35,7 @@ const Screen = () => {
 
   useEffect(() => {
     dispatch(getSingleFreelancer(freelancer_id));
-  }, []);
+  }, [dispatch, freelancer_id]);
 
   const handlePageClick = (event) => {
     const newOffset =
@@ -55,7 +54,7 @@ const Screen = () => {
                   <div className="flex_profile_frel">
                     <div className="profile_box">
                       <div className="user_profile_bg">
-                        <img src={basicInfo?.profile_image} />
+                        <img src={basicInfo?.profile_image} alt=" " />
                       </div>
                     </div>
 
@@ -231,6 +230,7 @@ const Screen = () => {
                         <img
                           src="/assets/diplomaAward.png"
                           className="DiplomaImg"
+                          alt=""
                         />
                       </div>
                       <div>
@@ -248,6 +248,7 @@ const Screen = () => {
                       <img
                         src="/assets/diplomaAward.png"
                         className="DiplomaImg"
+                        alt=" "
                       />
                     </div>
                     <div>
@@ -265,7 +266,11 @@ const Screen = () => {
                     </div>
                     <div className="profileDiploma">
                       <div className="mt-2">
-                        <img src="/assets/shield.png" className="DiplomaImg" />
+                        <img
+                          src="/assets/shield.png"
+                          className="DiplomaImg"
+                          alt=""
+                        />
                       </div>
                       <div>
                         <div className="myskill_hdingn ms_hdsmall font-size-15px">
@@ -279,7 +284,11 @@ const Screen = () => {
                   </div>
                   <div className="profileDiploma mb-4 mt-2">
                     <div className="mt-2">
-                      <img src="/assets/shield.png" className="DiplomaImg" />
+                      <img
+                        src="/assets/shield.png"
+                        className="DiplomaImg"
+                        alt=""
+                      />
                     </div>
                     <div>
                       <div className="myskill_hdingn ms_hdsmall font-size-15px">

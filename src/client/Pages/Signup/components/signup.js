@@ -21,7 +21,7 @@ const Signup = ({
   getCountryList,
   selectUserType,
   userType,
-  setCountry,
+  // setCountry,
   values,
   errors,
   selectCountry,
@@ -43,13 +43,13 @@ const Signup = ({
     label: data.name,
     color: "#000",
   }));
-  const customStyles = {
-    option: (provided, state) => ({
-      ...provided,
-      color: state.isSelected ? "#000" : "#000",
-      padding: 20,
-    }),
-  };
+  // const customStyles = {
+  //   option: (provided, state) => ({
+  //     ...provided,
+  //     color: state.isSelected ? "#000" : "#000",
+  //     padding: 20,
+  //   }),
+  // };
 
   const handleGoogleSignIn = () => {
     setLoading(true);
@@ -155,7 +155,6 @@ const Signup = ({
                             onChange={(e) => onInputChange(e)}
                             name="first_name"
                             placeholder="First Name"
-                            // required
                           />
                           <span className="signInError">
                             {errors.first_name && errors?.first_name}

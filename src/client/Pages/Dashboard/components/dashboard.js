@@ -34,7 +34,7 @@ const Screen = () => {
     setLoading(true);
     dispatch(getAllClientPosting(false, setLoading));
     dispatch(getAllClientDraftPosting(false, setLoading));
-  }, [postYourJob, removeJobPosted, updateJobPosted]);
+  }, [postYourJob, removeJobPosted, updateJobPosted, dispatch]);
 
   Title(" | Dashboard");
   const hanDleSlide = (e) => {

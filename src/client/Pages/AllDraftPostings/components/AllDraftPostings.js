@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { Row, Col, Container } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import $ from "jquery";
-import RemoveDraftPopup from "../../../../popups/RemoveDraftPopup";
+// import RemoveDraftPopup from "../../../../popups/RemoveDraftPopup";
 import { getAllClientDraftPosting } from "../../../../redux/actions/jobActions";
 import LoadingSpinner from "../../../../components/LoadingSpinner";
 import RemovePostingPopup from "../../../../popups/RemovePostingPopup";
@@ -20,7 +20,7 @@ const AllDraftPostings = () => {
   useEffect(() => {
     setLoading(true);
     dispatch(getAllClientDraftPosting(false, setLoading));
-  }, []);
+  }, [dispatch]);
 
   $(document).mouseup(function (e) {
     if ($(e.target).closest("#menu_bar2").length === 0) {
