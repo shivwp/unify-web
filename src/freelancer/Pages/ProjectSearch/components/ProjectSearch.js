@@ -25,6 +25,7 @@ const ProjectSearch = ({
   UnSaveJob,
   filters,
   setFilters,
+  savedjobsPagination,
 }) => {
   const totalPages = [];
   const dispatch = useDispatch();
@@ -93,16 +94,16 @@ const ProjectSearch = ({
                       setTabActive("saved");
                     }}
                   >
-                    SAVED JOBS({savedJobsMeta?.total_item})
+                    SAVED JOBS({savedjobsPagination?.total_item})
                   </Button>
                 </Link>
               </div>
             </div>
             {jobsList?.map((item, index) => (
               <div className="job_box_card" key={index}>
-                <div className="heat_lef">
+                {/* <div className="heat_lef">
                   <img src={star} alt="" />
-                </div>
+                </div> */}
                 <Link to={`/freelancer/project-detail/${item.id}`}>
                   <Row>
                     <Col lg={9}>
@@ -271,6 +272,9 @@ const ProjectSearch = ({
                 </div>
               </div>
             ))}
+            {jobsList?.length == 0 ? (
+              <ResultNotFound msg="Search Result Not Found " />
+            ) : null}
             {jobsPagination?.total_page > 1 ? (
               <Col lg={12}>
                 <div className="pagiantion_node">
@@ -295,8 +299,6 @@ const ProjectSearch = ({
             )}
           </Col>
         </Row>
-
-        {jobsList?.length == 0 ? <ResultNotFound /> : null}
       </Row>
     </>
   );

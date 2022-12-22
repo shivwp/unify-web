@@ -1,6 +1,6 @@
 import React from "react";
 
-const ResultNotFound = () => {
+const ResultNotFound = ({ msg }) => {
   return (
     <>
       <div className="pageNotFound">
@@ -105,7 +105,7 @@ const ResultNotFound = () => {
             </g>
           </svg>
         </div>
-        <div className="pageNotFoundHead"> Search Result Not Found </div>
+        <div className="pageNotFoundHead"> {msg}</div>
       </div>
     </>
   );

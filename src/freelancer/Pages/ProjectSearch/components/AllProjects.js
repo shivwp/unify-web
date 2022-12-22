@@ -32,6 +32,18 @@ const AllProjects = () => {
   const unSaveJobsPost = useSelector((state) => state.job.unSaveJobsPost);
   const onDislikeJobPost = useSelector((state) => state.job.onDislikeJobPost);
 
+  const savedjobsPagination = useSelector(
+    (state) => state?.job?.savedJobsList?.meta
+  );
+
+  useEffect(() => {
+    if (tabActive == "search") {
+      dispatch(
+        getSavedJobsList({ pagination: 10, page: page }, false, setLoading)
+      );
+    }
+  }, [saveJobsPost, unSaveJobsPost]);
+
   const SaveJob = (id) => {
     setLoading(true);
     dispatch(saveJobs({ job_id: id }, setLoading));
@@ -40,6 +52,10 @@ const AllProjects = () => {
   const UnSaveJob = (id) => {
     setLoading(true);
     dispatch(removeSaveJob({ job_id: id }, setLoading));
+  };
+
+  const ScrollTop = () => {
+    window.scrollTo(0, 0);
   };
 
   useMemo(() => {
@@ -53,7 +69,7 @@ const AllProjects = () => {
       dispatch(
         getJobsList(
           { pagination: 10, page: page, ...filters },
-          false,
+          ScrollTop,
           setLoading
         )
       );
@@ -84,9 +100,11 @@ const AllProjects = () => {
               setPage={setPage}
               UnSaveJob={UnSaveJob}
               SaveJob={SaveJob}
+              savedjobsPagination={savedjobsPagination}
             />
           ) : tabActive == "search" ? (
             <ProjectSearch
+              savedjobsPagination={savedjobsPagination}
               tabActive={tabActive}
               setLoading={setLoading}
               setTabActive={setTabActive}

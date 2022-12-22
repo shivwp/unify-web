@@ -63,16 +63,16 @@ const SavedProjects = ({
                   setTabActive("saved");
                 }}
               >
-                SAVED JOBS({savedJobsMeta?.total_item})
+                SAVED JOBS({savedjobsPagination?.total_item})
               </Button>
             </Link>
           </div>
         </div>
         {savedJobsList?.map((item, index) => (
           <div className="job_box_card" key={index}>
-            <div className="heat_lef">
+            {/* <div className="heat_lef">
               <img src={star} alt="" />
-            </div>
+            </div> */}
             <Link to={`/freelancer/project-detail/${item.id}`}>
               <Row>
                 <Col lg={9}>
@@ -176,34 +176,35 @@ const SavedProjects = ({
             </div>
           </div>
         ))}
+
+        {savedJobsList?.length == 0 ? (
+          <ResultNotFound msg="No Saved Jobs" />
+        ) : null}
+        {savedjobsPagination?.total_page > 1 ? (
+          <Col lg={12}>
+            <div className="pagiantion_node">
+              {totalPages.map((number) => (
+                <>
+                  <Button
+                    variant=""
+                    key={number}
+                    className={`pagi_butt ${
+                      savedjobsPagination?.current_page == number
+                        ? "PageActive"
+                        : ""
+                    }`}
+                    onClick={() => setPage(number)}
+                  >
+                    {number}
+                  </Button>
+                </>
+              ))}
+            </div>
+          </Col>
+        ) : (
+          ""
+        )}
       </Col>
-
-      {savedjobsPagination?.total_page > 1 ? (
-        <Col lg={12}>
-          <div className="pagiantion_node">
-            {totalPages.map((number) => (
-              <>
-                <Button
-                  variant=""
-                  key={number}
-                  className={`pagi_butt ${
-                    savedjobsPagination?.current_page == number
-                      ? "PageActive"
-                      : ""
-                  }`}
-                  onClick={() => setPage(number)}
-                >
-                  {number}
-                </Button>
-              </>
-            ))}
-          </div>
-        </Col>
-      ) : (
-        ""
-      )}
-
-      {savedJobsList?.length == 0 ? <ResultNotFound /> : null}
     </>
   );
 };
