@@ -120,6 +120,7 @@ const EditCompAddress = () => {
                           <div className="clientCardDet" key={key}>
                             <input
                               type="radio"
+                              name="payment"
                               onChange={() => onInputChange(item)}
                             />
                             <img

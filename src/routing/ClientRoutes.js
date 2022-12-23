@@ -76,14 +76,13 @@ const ClientRoutes = () => {
           path="/freelancer-details/:freelancer_id"
           element={<FreelancerDetails />}
         />
-        <Route
-          path="/hire-freelancer/:project_id/:freelancer_id"
-          element={<HireFreelancer />}
-        />
-        <Route
-          path="/hire-freelancer/:project_id/:freelancer_id/:proposal_id"
-          element={<HireFreelancer />}
-        />
+        <Route path="/hire-freelancer/:project_id">
+          <Route index path=":freelancer_id" element={<HireFreelancer />} />
+          <Route
+            path=":freelancer_id/:proposal_id"
+            element={<HireFreelancer />}
+          />
+        </Route>
         <Route
           path="/hire-freelancer/addAddress"
           element={<AddCompanyAddress />}
