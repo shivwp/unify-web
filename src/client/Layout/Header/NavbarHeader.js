@@ -65,9 +65,9 @@ const Header = (props) => {
             <div className="navabr_t_li">
               <Link to="/dashboard">My Jobs</Link>
             </div>
-            <div className="navabr_t_li">
+            {/* <div className="navabr_t_li">
               <Link to="/my-jobs">All Job Post</Link>
-            </div>
+            </div> */}
             <div className="navabr_t_li">
               <Link to="/all-contracts">All Contracts</Link>
             </div>
@@ -348,9 +348,9 @@ const Header = (props) => {
                     <div className="navabr_t_li">
                       <Link to="/dashboard">My Jobs</Link>
                     </div>
-                    <div className="navabr_t_li">
+                    {/* <div className="navabr_t_li">
                       <Link to="/my-jobs">All Job Post</Link>
-                    </div>
+                    </div> */}
                     <div className="navabr_t_li">
                       <Link to="/all-contracts">All Contracts</Link>
                     </div>

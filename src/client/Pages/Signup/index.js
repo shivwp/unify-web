@@ -25,14 +25,11 @@ const Signupscreen = () => {
     }
   }, [postJob]);
 
-  const [values, setValues] = useState({
-    agree_terms: 0,
-    send_email: 0,
-  });
+  const [values, setValues] = useState({});
 
   useEffect(() => {
     if (instantLoginEmail) {
-      setValues(instantLoginEmail);
+      setValues({ ...instantLoginEmail, agree_terms: 0, send_email: 0 });
     }
   }, [instantLoginEmail]);
 

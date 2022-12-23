@@ -1826,7 +1826,7 @@ body {
   border: #cdcccc solid 1px;
   padding: 0px 12px;
   margin: 10px 0px;
-  margin-top: 0 !important;
+  /* margin-top: 0 !important; */
   border-radius: 3px;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;

@@ -43,6 +43,7 @@ const Skill = ({ setCurrentTab, onInputChange, setValues, values }) => {
         }) == undefined
       ) {
         setSelectSkills([...selectSkills, { id: item.id, name: item.name }]);
+        setShowSkillList(false);
       }
     } else {
       setShowSkillList(false);
