@@ -18,7 +18,7 @@ const HourPerWeekPopup = ({
   successPopup,
   setSuccessPopup,
   amount,
-  hours_per_week,
+  // hours_per_week,
   hours_per_week_id,
   setLoading,
 }) => {

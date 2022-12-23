@@ -5,12 +5,12 @@ import Select from "react-select";
 import { Link } from "react-router-dom";
 import * as Icon from "react-icons/fi";
 import Checkbox from "react-custom-checkbox";
-import star from "../../icons/star.svg";
+// import star from "../../icons/star.svg";
 
-import { useState } from "react";
+// import { useState } from "react";
 
 const Screen = () => {
-  const [dDown, Setddown] = useState(false);
+  // const [dDown, Setddown] = useState(false);
 
   Title(" | All Contracts");
   const options = [
@@ -19,7 +19,10 @@ const Screen = () => {
     { value: "Client name", label: "Client name" },
     { value: "Contract name", label: "Contract name" },
   ];
-  const optionsne = [{ value: "Descending", label: "Descending" }, { value: "Ascending", label: "Ascending" }];
+  const optionsne = [
+    { value: "Descending", label: "Descending" },
+    { value: "Ascending", label: "Ascending" },
+  ];
 
   return (
     <>
@@ -113,7 +116,7 @@ const Screen = () => {
               </div>
             </div>
           </div>
-          
+
           <div>
             <div
               className="job_box_card"
@@ -128,7 +131,12 @@ const Screen = () => {
                     <p>Staffed by: Shiv Kumar at Eoxysis IT solution LLP</p>
                   </div>
                 </Col>
-                <Col lg={3} md={5} className='p-0' style={{display: 'flex', justifyContent:'center'}} >
+                <Col
+                  lg={3}
+                  md={5}
+                  className="p-0"
+                  style={{ display: "flex", justifyContent: "center" }}
+                >
                   <div className="milestone_btn_s">
                     <Link to="/freelancer/milestone-earning">
                       <button>Submit Work for Payment</button>
@@ -173,7 +181,12 @@ const Screen = () => {
                     <p>Staffed by: Shiv Kumar at Eoxysis IT solution LLP</p>
                   </div>
                 </Col>
-                <Col lg={3} md={5} className='p-0' style={{display: 'flex', justifyContent:'center'}} >
+                <Col
+                  lg={3}
+                  md={5}
+                  className="p-0"
+                  style={{ display: "flex", justifyContent: "center" }}
+                >
                   <div className="milestone_btn_s">
                     <Link to="/freelancer/milestone-earning">
                       <button>Submit Work for Payment</button>

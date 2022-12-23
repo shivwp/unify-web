@@ -1,7 +1,7 @@
 import ResultNotFound from "../ResultNotFound";
 import { useEffect, useState } from "react";
 import { Row, Col } from "react-bootstrap";
-import star from "../../../../icons/star.svg";
+// import star from "../../../../icons/star.svg";
 import $ from "jquery";
 import "../../../../styles/freelancer.css";
 import { Link } from "react-router-dom";
@@ -9,8 +9,8 @@ import Button from "react-bootstrap/Button";
 import { useDispatch, useSelector } from "react-redux";
 import {
   onDislikePostReasons,
-  removeSaveJob,
-  saveJobs,
+  // removeSaveJob,
+  // saveJobs,
 } from "../../../../redux/actions/jobActions";
 import ReasonsList from "./ReasionList";
 import Filter from "./Filter";
@@ -19,7 +19,7 @@ const ProjectSearch = ({
   setLoading,
   tabActive,
   setTabActive,
-  savedJobsMeta,
+  // savedJobsMeta,
   setPage,
   SaveJob,
   UnSaveJob,
@@ -41,11 +41,11 @@ const ProjectSearch = ({
   useEffect(() => {
     setLoading(true);
     dispatch(onDislikePostReasons(setLoading));
-  }, []);
+  }, [dispatch, setLoading]);
 
-  const ScrollTop = () => {
-    window.scrollTo(0, 0);
-  };
+  // const ScrollTop = () => {
+  //   window.scrollTo(0, 0);
+  // };
 
   $(document).mouseup(function (e) {
     if (
