@@ -93,6 +93,8 @@ const SingleOfferDetail = lazy(() =>
   import("../freelancer/Pages/SingleOfferDetail")
 );
 
+const SendMessage = lazy(() => import("../freelancer/Pages/SendMessage"));
+
 const FreelancerRoutes = () => {
   return (
     <Routes>
@@ -210,6 +212,7 @@ const FreelancerRoutes = () => {
         />
         <Route path="/freelancer/see-milestone" element={<SeeMilestone />} />
         <Route path="/freelancer/see-timesheet" element={<SeeTimesheet />} />
+        <Route path="/freelancer/send-message" element={<SendMessage />} />
         <Route
           path="/freelancer/profile-intro/:tabName"
           element={<ProfileInto />}

@@ -3918,7 +3918,7 @@
 }
 
 .milestone_overview_right .timesheet_time {
-  margin-top: 40px;
+  margin-top: 20px;
 }
 .milestone_overview_right .timesheet_msg {
   /* font-size: 15px; */
@@ -3962,6 +3962,7 @@
   display: flex;
   justify-content: space-between;
   color: rgb(106, 106, 106);
+  align-items: center;
 }
 
 .milestone_overview_right .timesheet_progress .bg-success {
@@ -4079,9 +4080,9 @@
   height: var(--tracker_point_height);
   justify-content: center;
   align-items: center;
-  color: rgb(150, 150, 150);
+  color: #170048;
   border-radius: 50%;
-  border: 1px solid rgb(141, 140, 140);
+  border: 1px solid #c1c5ca40;
   margin-top: 10px;
 }
 .milestone_timeline .progress_steps .connecting_line {
@@ -4094,7 +4095,7 @@
 }
 
 .filled_background {
-  background-color: #6d2ef1;
+  background-color: #fffffff4;
 }
 .filled_border {
   border: 1px solid #6d2ef1 !important;

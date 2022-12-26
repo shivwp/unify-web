@@ -413,7 +413,7 @@ const AllProjects = ({ getAllContracts }) => {
                 style={{ display: "flex", justifyContent: "flex-end" }}
               >
                 <div className="milestone_btn_s">
-                  <Link to="/freelancer/see-timesheet">
+                  <Link to="/freelancer/send-message">
                     <button>Send a Message</button>
                   </Link>
                 </div>
