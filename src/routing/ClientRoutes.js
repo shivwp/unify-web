@@ -57,14 +57,9 @@ const ClientRoutes = () => {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/post-your-job" element={<PostYourJobScreen />} />
         <Route path="/job-description" element={<JobDescription />} />
-        <Route
-          path="/job-description/:project_id"
-          element={<JobDescription />}
-        />
         <Route path="/category" element={<Category />} />
         <Route path="/create-category" element={<Createcategory />} />
         <Route path="/question2" element={<QuestionTwo />} />
-        {/* <Route path="/subscription" element={<Subscription />} /> */}
         <Route path="/expandteam" element={<ExpandTeam />} />
         <Route path="/notification" element={<Notification />} />
         <Route path="/view-job/:jobId/:tabs" element={<ViewJob />} />

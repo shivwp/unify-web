@@ -72,9 +72,8 @@ body {
 .navbar_btn .dropdown-toggle {
   background-color: transparent;
   margin: -5px 8px;
-  font-weight: 600;
   color: #fff;
-  font-weight: 700;
+  font-weight: 600;
   font-family: "Poppins-Bold", "Poppins";
 }
 
@@ -311,6 +310,7 @@ body {
   .width_100_sm {
     width: 100%;
     display: flex;
+    padding: 0px 20px;
     justify-content: center;
   }
 
@@ -5724,11 +5724,20 @@ a {
   margin-bottom: 20px;
 }
 
+.yourp_boxDescription {
+  border: #d4d4d5 solid 1px;
+  margin-bottom: 20px;
+}
+
 .job_na_bol {
   font-weight: 600 !important;
   color: #1f1f1f !important;
   font-family: "Poppins";
+  -webkit-box-orient: vertical;
   font-size: 18px !important;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+  display: -webkit-box;
 }
 
 .headin_yourp_b {

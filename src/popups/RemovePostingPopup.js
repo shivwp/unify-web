@@ -16,7 +16,6 @@ const RemovePostingPopup = ({
 }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
   const [values, setValues] = useState({ project_id: menuBarPosting });
   const closeJobReasons = useSelector((state) => state?.job?.closeJobReasons);
   const [errors, setErrors] = useState(false);

@@ -14,6 +14,7 @@ import {
 import { countryList } from "../../../../redux/actions/authActions";
 
 const SettingInfo = () => {
+  let scrollTo = false;
   const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
   const [values, setValues] = useState({});
@@ -50,6 +51,7 @@ const SettingInfo = () => {
   const onInputChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
     setErrors({ ...errors, [e.target.name]: false });
+    scrollTo = false;
   };
 
   const onProfileChange = (e) => {
@@ -94,6 +96,9 @@ const SettingInfo = () => {
     ) {
       errorsObject.first_name = "Please enter first name";
       errorExist = true;
+      if (!scrollTo) {
+        scrollTo = document.getElementById("first_name");
+      }
     }
 
     if (
@@ -103,6 +108,9 @@ const SettingInfo = () => {
     ) {
       errorsObject.email = true;
       errorExist = true;
+      if (!scrollTo) {
+        scrollTo = document.getElementById("email");
+      }
     }
     if (
       values?.last_name === "" ||
@@ -111,55 +119,10 @@ const SettingInfo = () => {
     ) {
       errorsObject.last_name = "Please enter last name";
       errorExist = true;
+      if (!scrollTo) {
+        scrollTo = document.getElementById("last_name");
+      }
     }
-    // if (
-    //   values.company_name === "" ||
-    //   values.company_name === null ||
-    //   values.company_name === undefined
-    // ) {
-    //   errorsObject.company_name = true;
-    //   errorExist = true;
-    // }
-    // if (
-    //   values.website === "" ||
-    //   values.website === null ||
-    //   values.website === undefined
-    // ) {
-    //   errorsObject.website = true;
-    //   errorExist = true;
-    // }
-    // if (
-    //   values.tagline === "" ||
-    //   values.tagline === null ||
-    //   values.tagline === undefined
-    // ) {
-    //   errorsObject.tagline = true;
-    //   errorExist = true;
-    // }
-    // if (
-    //   values.industry === "" ||
-    //   values.industry === null ||
-    //   values.industry === undefined
-    // ) {
-    //   errorsObject.industry = true;
-    //   errorExist = true;
-    // }
-    // if (
-    //   values.description === "" ||
-    //   values.description === null ||
-    //   values.description === undefined
-    // ) {
-    //   errorsObject.description = true;
-    //   errorExist = true;
-    // }
-    // if (
-    //   values.employee_no === "" ||
-    //   values.employee_no === null ||
-    //   values.employee_no === undefined
-    // ) {
-    //   errorsObject.employee_no = true;
-    //   errorExist = true;
-    // }
 
     if (
       values?.company_phone === "" ||
@@ -168,6 +131,9 @@ const SettingInfo = () => {
     ) {
       errorsObject.company_phone = "Please enter phone number";
       errorExist = true;
+      if (!scrollTo) {
+        scrollTo = document.getElementById("company_phone");
+      }
     } else if (
       values?.company_phone?.length < 10 ||
       values?.company_phone?.length > 12
@@ -175,15 +141,10 @@ const SettingInfo = () => {
       errorsObject.company_phone =
         "The phone must be between 10 and 12 digits.";
       errorExist = true;
+      if (!scrollTo) {
+        scrollTo = document.getElementById("company_phone");
+      }
     }
-    // if (
-    //   values.vat_id === "" ||
-    //   values.vat_id === null ||
-    //   values.vat_id === undefined
-    // ) {
-    //   errorsObject.vat_id = true;
-    //   errorExist = true;
-    // }
     if (
       values.timezone === "" ||
       values.timezone === null ||
@@ -191,6 +152,9 @@ const SettingInfo = () => {
     ) {
       errorsObject.timezone = true;
       errorExist = true;
+      if (!scrollTo) {
+        scrollTo = document.getElementById("timezone");
+      }
     }
     if (
       values?.company_address === "" ||
@@ -199,6 +163,9 @@ const SettingInfo = () => {
     ) {
       errorsObject.company_address = true;
       errorExist = true;
+      if (!scrollTo) {
+        scrollTo = document.getElementById("company_address");
+      }
     }
     if (
       values?.zip_code === "" ||
@@ -207,6 +174,9 @@ const SettingInfo = () => {
     ) {
       errorsObject.zip_code = "Please enter zip code";
       errorExist = true;
+      if (!scrollTo) {
+        scrollTo = document.getElementById("zip_code");
+      }
     }
 
     if (
@@ -216,21 +186,22 @@ const SettingInfo = () => {
     ) {
       errorsObject.city = "Please enter your city";
       errorExist = true;
+      if (!scrollTo) {
+        scrollTo = document.getElementById("city");
+      }
     } else if (/^[0-9]\d*$/.test(values?.city)) {
       errorsObject.city = "please input a valid city ";
       errorExist = true;
+      if (!scrollTo) {
+        scrollTo = document.getElementById("city");
+      }
     }
-    // if (
-    //   values.country === "" ||
-    //   values.country === null ||
-    //   values.country === undefined
-    // ) {
-    //   errorsObject.country = true;
-    //   errorExist = true;
-    // }
 
     if (errorExist) {
       setErrors(errorsObject);
+      if (scrollTo) {
+        scrollTo.scrollIntoView({ behavior: "smooth" });
+      }
       return false;
     }
 

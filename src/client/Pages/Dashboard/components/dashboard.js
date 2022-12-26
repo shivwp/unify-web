@@ -11,6 +11,7 @@ import {
   getAllClientPosting,
 } from "../../../../redux/actions/jobActions";
 import LoadingSpinner from "../../../../components/LoadingSpinner";
+import { getClientDetails } from "../../../../redux/actions/freelancerAction";
 
 const Screen = () => {
   const dispatch = useDispatch();
@@ -19,6 +20,7 @@ const Screen = () => {
   const [removePosting, setRemovePosting] = useState(false);
   const [removeDraft, setRemoveDraft] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [openDescription, setOpenDescription] = useState(true);
   const clientPostingList = useSelector(
     (state) => state?.job?.allClientPosting?.data
   );
@@ -28,6 +30,7 @@ const Screen = () => {
   const postYourJob = useSelector((state) => state?.job?.postYourJob);
   const removeJobPosted = useSelector((state) => state?.job?.removeJobPosted);
   const updateJobPosted = useSelector((state) => state?.job?.updateJobPosted);
+  const clientDetails = useSelector((state) => state.freelancer.clientDetails);
   const userDetails = JSON.parse(localStorage.getItem("unify_user"));
 
   useEffect(() => {
@@ -36,11 +39,14 @@ const Screen = () => {
     dispatch(getAllClientDraftPosting(false, setLoading));
   }, [postYourJob, removeJobPosted, updateJobPosted, dispatch]);
 
+  useEffect(() => {
+    const data = {
+      user_id: userDetails?.id,
+    };
+    dispatch(getClientDetails(data));
+  }, []);
+
   Title(" | Dashboard");
-  const hanDleSlide = (e) => {
-    $(e.target.nextSibling).slideToggle();
-  };
-  $(".slider_shutter").slideDown();
 
   $(document).mouseup(function (e) {
     if ($(e.target).closest("#menu_bar1").length === 0) {
@@ -60,7 +66,7 @@ const Screen = () => {
           <div className="my_jo_headin font-35">
             Your Dashboard
             <div className="my_job_sm_text">
-              {userDetails?.first_name} {userDetails?.last_name}
+              {clientDetails?.first_name} {clientDetails?.last_name}
             </div>
           </div>
           <div className="post_job_btn_m d-flex align-items-center flex-wrap">
@@ -127,81 +133,83 @@ const Screen = () => {
                       : {}
                   }
                 >
-                  <div>
-                    <Link to={`/view-job/${item.id}/job-details`}>
-                      <div className="my_job_a job_na_bol">{item.name}</div>
-                    </Link>
-                    <div className="my_job_h">
-                      Invite only - {item.budget_type}
-                    </div>
-                    <div className="my_job_pos_tme">
-                      Posted {item.created_at} by you
-                    </div>
-                  </div>
-                  <div className="d-flex justify-content-between flex-wrap">
-                    <div className="my_job_n_box">
-                      <div className="my_job_nm">{item.total_proposal}</div>
-                      <div className="my_job_h pt-0">Proposals</div>
-                    </div>
-                    <div className="my_job_n_box">
-                      <div className="my_job_nm">{item.total_message}</div>
-                      <div className="my_job_h pt-0">Messaged</div>
-                    </div>
-                    <div className="my_job_n_box">
-                      <div className="my_job_nm">{item.total_hire}</div>
-                      <div className="my_job_h pt-0">Hired</div>
-                    </div>
-                  </div>
-                  <div className="text-right d-flex flex-wrap menu_btn">
-                    <button
-                      className="toggle_btn_dot"
-                      onClick={() => setMenuBarPosting(item.id)}
-                    >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
-                        fill="currentColor"
-                        className="bi bi-three-dots-vertical"
-                        viewBox="0 0 16 16"
-                      >
-                        <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
-                      </svg>
-                    </button>
-
-                    {menuBarPosting === item.id && (
-                      <div className="menu_bar " id="menu_bar1">
-                        <div className="navabr_t_li">
-                          <Link to={`/edit-posting/${item.id}`}>
-                            Edit Posting
-                          </Link>
-                        </div>
-                        <div
-                          className="navabr_t_li"
-                          onClick={() => setRemovePosting(true)}
-                        >
-                          <Link to="#">Remove Posting</Link>
-                        </div>
-                        <div className="navabr_t_li">
-                          <Link to={`/view-job/${item.id}/review-proposal`}>
-                            View Proposals
-                          </Link>
-                        </div>
-                        <div className="navabr_t_li">
-                          <Link to={`/view-job/${item.id}/job-details`}>
-                            View Job Post
-                          </Link>
-                        </div>
-                        <div className="navabr_t_li">
-                          <Link to={`/reuse-posting/${item.id}`}>
-                            Reuse Postings
-                          </Link>
-                        </div>
-                        <span className="menu_btn_arrow" id="menu_btn_arrow1">
-                          &#62;
-                        </span>
+                  <Link to={`/view-job/${item.id}/job-details`}>
+                    <div className="my_job_a job_na_bol">{item.name}</div>
+                  </Link>
+                  <div className="d-flex align-items-center justify-content-between">
+                    <div>
+                      <div className="my_job_h">
+                        Invite only - {item.budget_type}
                       </div>
-                    )}
+                      <div className="my_job_pos_tme">
+                        Posted {item.created_at} by you
+                      </div>
+                    </div>
+                    <div className="d-flex justify-content-between flex-wrap">
+                      <div className="my_job_n_box">
+                        <div className="my_job_nm">{item.total_proposal}</div>
+                        <div className="my_job_h pt-0">Proposals</div>
+                      </div>
+                      <div className="my_job_n_box">
+                        <div className="my_job_nm">{item.total_message}</div>
+                        <div className="my_job_h pt-0">Messaged</div>
+                      </div>
+                      <div className="my_job_n_box">
+                        <div className="my_job_nm">{item.total_hire}</div>
+                        <div className="my_job_h pt-0">Hired</div>
+                      </div>
+                    </div>
+                    <div className="text-right d-flex flex-wrap menu_btn">
+                      <button
+                        className="toggle_btn_dot"
+                        onClick={() => setMenuBarPosting(item.id)}
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="16"
+                          height="16"
+                          fill="currentColor"
+                          className="bi bi-three-dots-vertical"
+                          viewBox="0 0 16 16"
+                        >
+                          <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
+                        </svg>
+                      </button>
+
+                      {menuBarPosting === item.id && (
+                        <div className="menu_bar " id="menu_bar1">
+                          <div className="navabr_t_li">
+                            <Link to={`/edit-posting/${item.id}`}>
+                              Edit Posting
+                            </Link>
+                          </div>
+                          <div
+                            className="navabr_t_li"
+                            onClick={() => setRemovePosting(true)}
+                          >
+                            <Link to="#">Remove Posting</Link>
+                          </div>
+                          <div className="navabr_t_li">
+                            <Link to={`/view-job/${item.id}/review-proposal`}>
+                              View Proposals
+                            </Link>
+                          </div>
+                          <div className="navabr_t_li">
+                            <Link to={`/view-job/${item.id}/job-details`}>
+                              View Job Post
+                            </Link>
+                          </div>
+                          <div className="navabr_t_li">
+                            <Link to={`/reuse-posting/${item.id}`}>
+                              Reuse Postings
+                            </Link>
+                          </div>
+                          <span className="menu_btn_arrow" id="menu_btn_arrow1">
+                            &#62;
+                          </span>
+                        </div>
+                      )}
+                    </div>
                   </div>
                 </div>
               ))}
@@ -240,54 +248,57 @@ const Screen = () => {
                     paddingBottom: "15px",
                   }}
                 >
-                  <div>
-                    <div className="my_job_a job_na_bol">{item.name}</div>
+                  <div className="my_job_a job_na_bol">{item.name}</div>
+
+                  <div className="d-flex align-items-center justify-content-between">
                     <div className="my_job_pos_tme">
                       Saved {item.created_at}
                     </div>
-                  </div>
-                  <div className="text-right d-flex flex-wrap menu_btn">
-                    <button
-                      className="toggle_btn_dot"
-                      onClick={() => setMenuBarDraft(item.id)}
-                    >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
-                        fill="currentColor"
-                        className="bi bi-three-dots-vertical"
-                        viewBox="0 0 16 16"
+                    <div className="text-right d-flex flex-wrap menu_btn">
+                      <button
+                        className="toggle_btn_dot"
+                        onClick={() => setMenuBarDraft(item.id)}
                       >
-                        <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
-                      </svg>
-                    </button>
-                    {menuBarDraft === item.id && (
-                      <div className="menu_bar" id="menu_bar2">
-                        <div className="navabr_t_li">
-                          <Link to={`/edit-draft/${item.id}`}>Edit Draft</Link>
-                        </div>
-                        <div
-                          className="navabr_t_li navabr_t_lihover"
-                          onClick={() => setRemovePosting(true)}
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="16"
+                          height="16"
+                          fill="currentColor"
+                          className="bi bi-three-dots-vertical"
+                          viewBox="0 0 16 16"
                         >
-                          Remove Draft
+                          <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
+                        </svg>
+                      </button>
+                      {menuBarDraft === item.id && (
+                        <div className="menu_bar" id="menu_bar2">
+                          <div className="navabr_t_li">
+                            <Link to={`/edit-draft/${item.id}`}>
+                              Edit Draft
+                            </Link>
+                          </div>
+                          <div
+                            className="navabr_t_li navabr_t_lihover"
+                            onClick={() => setRemovePosting(true)}
+                          >
+                            Remove Draft
+                          </div>
+                          <span className="menu_btn_arrow" id="menu_btn_arrow2">
+                            &#62;
+                          </span>
                         </div>
-                        <span className="menu_btn_arrow" id="menu_btn_arrow2">
-                          &#62;
-                        </span>
-                      </div>
-                    )}
+                      )}
+                    </div>
                   </div>
                 </div>
               ))}
             </>
           )}
         </div>
-        <div className="yourp_box pb-0 pt-3">
+        <div className="yourp_boxDescription">
           <div
-            className="d-flex justify-content-between align-items-center pb-3 b-bottom-gr"
-            onClick={(e) => hanDleSlide(e)}
+            className="d-flex justify-content-between align-items-center py-3 px-3 b-bottom-gr"
+            onClick={(e) => setOpenDescription(!openDescription)}
           >
             <div className="headin_yourp_b">
               How to work with talent
@@ -314,64 +325,69 @@ const Screen = () => {
               </div>
             </div>
           </div>
-          <div className="slide_btnss slider_shutter">
-            <div className="my_job_flx b-bottom-gr pb-2">
-              <div>
-                <div className="my_job_a job_na_bol">
-                  1. Post a job to the marketplace
+          {openDescription && (
+            <div className="px-3">
+              <div className="my_job_flx b-bottom-gr pb-2">
+                <div>
+                  <div className="my_job_a job_na_bol">
+                    1. Post a job to the marketplace
+                  </div>
+                  <div className="my_job_pos_tme">
+                    Provide enough detail for great talent to figure out if the
+                    work is right for them. (You can always edit your post, or
+                    send an invite to reach out to people directly.)
+                  </div>
+                  <div className="my_job_pos_tme inner_a_sty">
+                    <Link to="#0">
+                      Check out examples of effective job posts
+                    </Link>
+                  </div>
                 </div>
-                <div className="my_job_pos_tme">
-                  Provide enough detail for great talent to figure out if the
-                  work is right for them. (You can always edit your post, or
-                  send an invite to reach out to people directly.)
+              </div>
+              <div className="my_job_flx b-bottom-gr pb-2">
+                <div>
+                  <div className="my_job_a job_na_bol">
+                    2. Get proposals from talent
+                  </div>
+                  <div className="my_job_pos_tme">
+                    A strong working relationship starts with open
+                    communication. Here's your chance to ask about experience,
+                    set expectations for what you need, and discuss terms of the
+                    work.
+                  </div>
                 </div>
-                <div className="my_job_pos_tme inner_a_sty">
-                  <Link to="#0">Check out examples of effective job posts</Link>
+              </div>
+              <div className="my_job_flx b-bottom-gr pb-2">
+                <div>
+                  <div className="my_job_a job_na_bol">
+                    3. Start working together
+                  </div>
+                  <div className="my_job_pos_tme">
+                    Once you both agree on terms, collaborate with simple and
+                    secure tools like chat, file sharing, and time tracking.
+                  </div>
+                </div>
+              </div>
+              <div className="my_job_flx">
+                <div>
+                  <div className="my_job_a job_na_bol">
+                    4. Pay for work you approve
+                  </div>
+                  <div className="my_job_pos_tme">
+                    Reports are useful for keeping track of payments and
+                    reviewing work. As you complete jobs, you can build trusting
+                    relationships with talent in a way that helps you both grow.
+                  </div>
+                  <div className="my_job_pos_tme inner_a_sty">
+                    <Link to="#0">
+                      Read about payment protections, billing methods, taxes,
+                      and more
+                    </Link>
+                  </div>
                 </div>
               </div>
             </div>
-            <div className="my_job_flx b-bottom-gr pb-2">
-              <div>
-                <div className="my_job_a job_na_bol">
-                  2. Get proposals from talent
-                </div>
-                <div className="my_job_pos_tme">
-                  A strong working relationship starts with open communication.
-                  Here's your chance to ask about experience, set expectations
-                  for what you need, and discuss terms of the work.
-                </div>
-              </div>
-            </div>
-            <div className="my_job_flx b-bottom-gr pb-2">
-              <div>
-                <div className="my_job_a job_na_bol">
-                  3. Start working together
-                </div>
-                <div className="my_job_pos_tme">
-                  Once you both agree on terms, collaborate with simple and
-                  secure tools like chat, file sharing, and time tracking.
-                </div>
-              </div>
-            </div>
-            <div className="my_job_flx">
-              <div>
-                <div className="my_job_a job_na_bol">
-                  4. Pay for work you approve
-                </div>
-                <div className="my_job_pos_tme">
-                  Reports are useful for keeping track of payments and reviewing
-                  work. As you complete jobs, you can build trusting
-                  relationships with talent in a way that helps you both grow.
-                </div>
-                <div className="my_job_pos_tme inner_a_sty">
-                  <Link to="#0">
-                    Read about payment protections, billing methods, taxes, and
-                    more
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </div>
+          )}
         </div>
         <div className="yourp_box pb-0 pt-0">
           <div className="my_job_flx">

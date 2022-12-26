@@ -71,9 +71,7 @@ const Footer = () => {
                   <Link to="/pages/help-support">Help & Support</Link>
                 </li>
                 <li>
-                  <Link to="/pages/trust-safety-and-security">
-                    Trust & Safety
-                  </Link>
+                  <Link to="/pages/trust-safety">Trust & Safety</Link>
                 </li>
                 <li>
                   <Link to="/pages/selling-on-unify">Selling on Unify</Link>

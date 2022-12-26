@@ -51,6 +51,7 @@ const AccountInfo = ({
                 </Form.Label>
                 <Form.Control
                   type="text"
+                  id="first_name"
                   name="first_name"
                   value={values?.first_name}
                   onChange={(e) => onInputChange(e)}
@@ -65,10 +66,10 @@ const AccountInfo = ({
                 <Form.Control
                   type="text"
                   name="email"
+                  id="email"
                   value={values?.email}
-                  disabled
-                  onChange={(e) => onInputChange(e)}
                   placeholder="johndoe@gmail.com"
+                  disabled
                 />
               </Form.Group>
               <span className="signup-error">
@@ -82,6 +83,7 @@ const AccountInfo = ({
                 </Form.Label>
                 <Form.Control
                   type="text"
+                  id="last_name"
                   name="last_name"
                   value={values?.last_name}
                   onChange={(e) => onInputChange(e)}
@@ -107,19 +109,18 @@ const AccountInfo = ({
                 <span>Company Name</span>
                 <Form.Control
                   type="text"
+                  id="company_name"
                   name="company_name"
                   value={values?.company_name}
                   onChange={(e) => onInputChange(e)}
                   placeholder="Company Name"
                 />
-                {/* <span className="signup-error">
-                  {errors.company_name && "Please enter company name"}
-                </span> */}
               </div>
               <div className="inp_fields">
                 <span>Add your industry</span>
                 <select
                   name="industry"
+                  id="industry"
                   value={values?.industry}
                   onChange={(e) => onInputChange(e)}
                 >
@@ -130,9 +131,6 @@ const AccountInfo = ({
                     </option>
                   ))}
                 </select>
-                {/* <span className="signup-error">
-                  {errors.industry && "Select industry"}
-                </span> */}
               </div>
             </Col>
             <Col lg={6} md={6} sm={12}>
@@ -140,41 +138,34 @@ const AccountInfo = ({
                 <span>Website</span>
                 <Form.Control
                   type="text"
+                  id="website"
                   name="website"
                   value={values?.website}
                   onChange={(e) => onInputChange(e)}
                   placeholder=""
                 />
-                {/* <span className="signup-error">
-                  {errors.website && "Please enter website url"}
-                </span> */}
               </div>
               <div className="inp_fields">
                 <span>Tagline</span>
                 <Form.Control
                   type="text"
+                  id="tagline"
                   name="tagline"
                   value={values?.tagline}
                   onChange={(e) => onInputChange(e)}
                   placeholder=""
                 />
-                {/* <span className="signup-error">
-                  {errors.tagline && "Please enter your tagline"}
-                </span> */}
               </div>
             </Col>
             <div className="inp_fields">
               <span>Description</span>
               <Form.Control
                 as="textarea"
+                id="description"
                 name="description"
                 value={values?.description}
                 onChange={(e) => onInputChange(e)}
-                id="descr"
               ></Form.Control>
-              {/* <span className="signup-error">
-                {errors.description && "Please enter your description"}
-              </span> */}
             </div>
             <div className="inp_fields">
               <span>How many people are in your company?</span>
@@ -224,9 +215,6 @@ const AccountInfo = ({
                   <span>more then 100 employees</span>
                 </Form.Label>
               </div>
-              {/* <span className="signup-error">
-                {errors.employee_no && "Please select company length"}
-              </span> */}
             </div>
           </Row>
         </div>
@@ -252,19 +240,18 @@ const AccountInfo = ({
                 <span>VAT ID</span>
                 <Form.Control
                   type="text"
+                  id="vat_id"
                   name="vat_id"
                   value={values?.vat_id}
                   onChange={(e) => onInputChange(e)}
                   placeholder="VAT ID"
                 />
-                {/* <span className="signup-error">
-                  {errors.vat_id && "Please enter VAT id"}
-                </span> */}
               </div>
               <div className="inp_fields">
                 <span>Country</span>
                 <select
                   name="country"
+                  id="country"
                   value={values?.country}
                   onChange={(e) => onInputChange(e)}
                 >
@@ -275,15 +262,13 @@ const AccountInfo = ({
                     </option>
                   ))}
                 </select>
-                {/* <span className="signup-error">
-                  {errors.country && "Pleasse select country"}
-                </span> */}
               </div>
               <div className="inp_fields">
                 <span>City</span>
 
                 <Form.Control
                   type="text"
+                  id="city"
                   name="city"
                   value={values?.city}
                   onChange={(e) => onInputChange(e)}
@@ -299,6 +284,7 @@ const AccountInfo = ({
                 <span>Phone</span>
                 <Form.Control
                   type="number"
+                  id="company_phone"
                   name="company_phone"
                   value={values?.company_phone}
                   onChange={(e) => onInputChange(e)}
@@ -312,6 +298,7 @@ const AccountInfo = ({
                 <span>Time Zone</span>
                 <select
                   name="timezone"
+                  id="timezone"
                   value={values?.timezone}
                   onChange={(e) => onInputChange(e)}
                 >
@@ -330,6 +317,7 @@ const AccountInfo = ({
                 <span>Address</span>
                 <Form.Control
                   type="text"
+                  id="company_address"
                   name="company_address"
                   value={values?.company_address}
                   onChange={(e) => onInputChange(e)}
@@ -344,6 +332,7 @@ const AccountInfo = ({
                 <Form.Control
                   type="number"
                   name="zip_code"
+                  id="zip_code"
                   value={values?.zip_code}
                   onChange={(e) => onInputChange(e)}
                   placeholder="zip code"

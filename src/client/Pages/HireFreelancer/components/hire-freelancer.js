@@ -15,6 +15,7 @@ import {
 } from "../../../../redux/actions/freelancerAction";
 
 const Screen = () => {
+  let scrollTo = false;
   const navigate = useNavigate();
   const { project_id, proposal_id, freelancer_id } = useParams();
   const dispatch = useDispatch();
@@ -85,8 +86,16 @@ const Screen = () => {
   }, [dispatch, proposal_id]);
 
   const onInputChange = (e) => {
-    setValues({ ...values, [e.target.name]: e.target.value });
-    setErrors({ ...errors, [e.target.name]: false });
+    if (e.target.name === "agree_terms") {
+      setErrors({ ...errors, [e.target.name]: false });
+      e.target.checked
+        ? setValues({ ...values, [e.target.name]: 1 })
+        : setValues({ ...values, [e.target.name]: 0 });
+    } else {
+      setValues({ ...values, [e.target.name]: e.target.value });
+      setErrors({ ...errors, [e.target.name]: false });
+    }
+    scrollTo = false;
   };
 
   const onProfileChange = (e) => {
@@ -147,6 +156,9 @@ const Screen = () => {
     ) {
       errorsObject.title = "Please add a contract title.";
       errorExist = true;
+      if (!scrollTo) {
+        scrollTo = document.getElementById("title");
+      }
     }
 
     if (values?.budget_type === "hourly") {
@@ -157,10 +169,16 @@ const Screen = () => {
       ) {
         errorsObject.bid_amount = "Please enter an amount";
         errorExist = true;
+        if (!scrollTo) {
+          scrollTo = document.getElementById("bid_amount");
+        }
       } else if (values?.bid_amount < 3 || values?.bid_amount > 1000) {
         errorsObject.bid_amount =
           "Please enter an amount between $3.00 and $999.00";
         errorExist = true;
+        if (!scrollTo) {
+          scrollTo = document.getElementById("bid_amount");
+        }
       }
     }
 
@@ -172,6 +190,9 @@ const Screen = () => {
       ) {
         errorsObject.weekly_limit = "Please select weekly limit";
         errorExist = true;
+        if (!scrollTo) {
+          scrollTo = document.getElementById("weekly_limit");
+        }
       }
     }
 
@@ -182,15 +203,24 @@ const Screen = () => {
     ) {
       errorsObject.cover_letter = "Please enter your description";
       errorExist = true;
+      if (!scrollTo) {
+        scrollTo = document.getElementById("cover_letter");
+      }
     }
 
     if (values?.agree_terms == 0) {
       errorsObject.agree_terms = true;
       errorExist = true;
+      if (!scrollTo) {
+        scrollTo = document.getElementById("agree_terms");
+      }
     }
 
     if (errorExist) {
       setErrors(errorsObject);
+      if (scrollTo) {
+        scrollTo.scrollIntoView({ behavior: "smooth" });
+      }
       return false;
     }
 
@@ -265,6 +295,7 @@ const Screen = () => {
               <Col md={6}>
                 <Form.Control
                   type="text"
+                  id="title"
                   name="title"
                   value={values?.title}
                   className="w-100 mt-2 py-2"
@@ -319,6 +350,7 @@ const Screen = () => {
                     >
                       <Form.Control
                         type="number"
+                        id="bid_amount"
                         name="bid_amount"
                         className="text-right"
                         placeholder="0.00"
@@ -353,6 +385,7 @@ const Screen = () => {
                     <div className="hourly_headin d-flex align-items-center">
                       <Form.Select
                         name="weekly_limit"
+                        id="weekly_limit"
                         value={values?.weekly_limit}
                         onChange={(e) => onInputChange(e)}
                       >
@@ -453,6 +486,7 @@ const Screen = () => {
                       >
                         <Form.Control
                           type="number"
+                          id="bid_amount"
                           name="bid_amount"
                           className="text-right"
                           placeholder="0.00"
@@ -681,6 +715,7 @@ const Screen = () => {
             <Form.Control
               as="textarea"
               rows={3}
+              id="cover_letter"
               name="cover_letter"
               value={values?.cover_letter}
               onChange={(e) => onInputChange(e)}
@@ -728,11 +763,11 @@ const Screen = () => {
         <div className="allow_freel_che flex-wrap black_a_inp">
           <Form.Check
             type="checkbox"
-            id="SecondCheckOnSignUP"
             name="agree_terms"
+            id="agree_terms"
             onChange={(e) => onInputChange(e)}
           />
-          <Form.Label htmlFor="SecondCheckOnSignUP">
+          <Form.Label htmlFor="agree_terms">
             Yes, I understand and agree to the{" "}
             <Link to="#0"> Unify Terms of Service </Link>, including the User{" "}
             <Link to="#0"> Agreement </Link> and{" "}

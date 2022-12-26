@@ -115,6 +115,31 @@ const Header = (props) => {
             </div> */}
           </NavDropdown>
         </div>
+
+        <div className="w-100 no-border">
+          <Link to="">
+            <div className="navbar_btn talent_dropdown_cs my-1 report_left_caewe d-flex justify-content-between align-items-center">
+              Messages
+              <i className="bi bi-envelope font-size-20px"></i>
+            </div>
+          </Link>
+        </div>
+        <div className="w-100 no-border">
+          <Link to="/help-support">
+            <div className="navbar_btn talent_dropdown_cs my-2 report_left_caewe d-flex justify-content-between align-items-center">
+              Help Support
+              <i className="bi bi-question-lg font-size-20px"></i>
+            </div>
+          </Link>
+        </div>
+        <div className="w-100 no-border">
+          <Link to="/notification">
+            <div className="navbar_btn talent_dropdown_cs my-1 report_left_caewe d-flex justify-content-between align-items-center">
+              Notification
+              <i className="bi bi-bell font-size-20px"></i>
+            </div>
+          </Link>
+        </div>
         {!localStorage.getItem("unify_token") && (
           <>
             <div className="d-flex justify-content-between smbtn_logsignup">
@@ -186,45 +211,6 @@ const Header = (props) => {
             </div>
             <div>
               <div className="navv2verso_flxewd">
-                <Link to="#" className="navbar_btn p-0">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="21"
-                    height="21"
-                    fill="currentColor"
-                    className="bi bi-envelope"
-                    viewBox="0 0 16 16"
-                  >
-                    <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z" />
-                  </svg>
-                </Link>
-                <Link to="/help-support" className="navbar_btn">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="21"
-                    height="21"
-                    fill="currentColor"
-                    className="bi bi-question-lg"
-                    viewBox="0 0 16 16"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M4.475 5.458c-.284 0-.514-.237-.47-.517C4.28 3.24 5.576 2 7.825 2c2.25 0 3.767 1.36 3.767 3.215 0 1.344-.665 2.288-1.79 2.973-1.1.659-1.414 1.118-1.414 2.01v.03a.5.5 0 0 1-.5.5h-.77a.5.5 0 0 1-.5-.495l-.003-.2c-.043-1.221.477-2.001 1.645-2.712 1.03-.632 1.397-1.135 1.397-2.028 0-.979-.758-1.698-1.926-1.698-1.009 0-1.71.529-1.938 1.402-.066.254-.278.461-.54.461h-.777ZM7.496 14c.622 0 1.095-.474 1.095-1.09 0-.618-.473-1.092-1.095-1.092-.606 0-1.087.474-1.087 1.091S6.89 14 7.496 14Z"
-                    />
-                  </svg>
-                </Link>
-                <Link className="navbar_btn" to="/notification">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="21"
-                    height="21"
-                    fill="currentColor"
-                    className="bi bi-bell"
-                    viewBox="0 0 16 16"
-                  >
-                    <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zM8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z" />
-                  </svg>
-                </Link>
                 <div className="nav_pro_node">
                   <div className="nav_profile online_profile">
                     {clientDetails?.profile_image ? (
@@ -271,11 +257,11 @@ const Header = (props) => {
                       </button>
                       <button
                         className={
-                          clientDetails?.online_status === "invincible"
+                          clientDetails?.online_status === "invisible"
                             ? "active_drop_poi"
                             : ""
                         }
-                        value="invincible"
+                        value="invisible"
                         onClick={handleOnlineStatus}
                       >
                         Invisible

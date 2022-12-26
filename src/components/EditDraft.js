@@ -154,12 +154,24 @@ const EditDraft = () => {
                     <div className="heading">
                       Now Just finish and review your job post.
                     </div>
-                    <button
-                      className="mt-2 btn-save_post border_blue_wwifth"
-                      style={{ fontSize: 16, fontWeight: 500 }}
-                    >
-                      Post Your Job Now
-                    </button>
+                    {!values?.name ||
+                    values?.name?.length > 100 ||
+                    !values?.description ? (
+                      <button
+                        disabled
+                        className="mt-2 btn-save_post SaveJobPostDisabled"
+                      >
+                        Post Your Job Now
+                      </button>
+                    ) : (
+                      <button
+                        className="mt-2 btn-save_post border_blue_wwifth"
+                        style={{ fontSize: 16, fontWeight: 500 }}
+                        onClick={postYourJobNow}
+                      >
+                        Post Your Job Now
+                      </button>
+                    )}
                   </div>
                   <div className="title-edit_posting">
                     <div className="title">Title</div>
@@ -170,6 +182,11 @@ const EditDraft = () => {
                       onChange={onInputChange}
                       style={{ width: "100%" }}
                     />
+                    {values?.name?.length > 100 && (
+                      <span className="signup-error">
+                        Title must be less than 100 characters
+                      </span>
+                    )}
                     <p>
                       That looks a title short. A descriptive headline will help
                       candidates better understand what your job requires
@@ -195,12 +212,14 @@ const EditDraft = () => {
                       ></Form.Control>
                     </div>
                     <div className="d-flex justify-content-between">
-                      <div className="sm_label_inp">
-                        <span className="sm_span_icon">
-                          <i className="bi bi-info-circle-fill"></i>
-                        </span>
-                        Please add a job description.
-                      </div>
+                      {!values?.description && (
+                        <div className="sm_label_inp text-danger">
+                          <span className="sm_span_icon">
+                            <i className="bi bi-info-circle-fill"></i>
+                          </span>
+                          Please add a job description.
+                        </div>
+                      )}
                       <div className="sm_label_inp text-right">
                         {5000 - values?.description?.length || 5000} characters
                         left
@@ -339,7 +358,9 @@ const EditDraft = () => {
                       <button className="draft_back_btn">Back</button>
                     </div>
                     <div className="d-flex flex-wrap no-border mt-0 pt-0 btn_foot_sec">
-                      {!values?.name || !values?.description ? (
+                      {!values?.name ||
+                      values?.name?.length > 100 ||
+                      !values?.description ? (
                         <div className="fo_btn_c next_b_btn_c">
                           <button disabled className="active_btn_blueDiabled">
                             Save as a draft
@@ -356,7 +377,9 @@ const EditDraft = () => {
                         </div>
                       )}
 
-                      {!values?.name || !values?.description ? (
+                      {!values?.name ||
+                      values?.name?.length > 100 ||
+                      !values?.description ? (
                         <div className="fo_btn_c next_b_btn_c">
                           <button disabled className="active_btn_blueDiabled">
                             Post Your Job Now

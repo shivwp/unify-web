@@ -4,10 +4,12 @@ import { useNavigate } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import { Link } from "react-router-dom";
 import RemovePostingPopup from "../../popups/RemovePostingPopup";
+import LoadingSpinner from "../../components/LoadingSpinner";
 
 const JonComponent = ({ singleJobDetails, jobId, handleMakePublicPrivate }) => {
   const navigate = useNavigate();
   const [removePosting, setRemovePosting] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   return (
     <>
@@ -320,8 +322,10 @@ const JonComponent = ({ singleJobDetails, jobId, handleMakePublicPrivate }) => {
           open={removePosting}
           onCloseModal={(e) => setRemovePosting(false)}
           menuBarPosting={jobId}
+          setLoading={setLoading}
         />
       )}
+      {loading ? <LoadingSpinner /> : null}
     </>
   );
 };

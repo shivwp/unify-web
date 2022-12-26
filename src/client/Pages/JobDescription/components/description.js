@@ -38,8 +38,6 @@ const Description = () => {
     dispatch(getCategoryList());
   }, []);
 
-  console.log(objectUrl);
-
   useEffect(() => {
     if (categoryList) {
       for (let i = 0; i < categoryList.length; i++) {
@@ -57,7 +55,6 @@ const Description = () => {
   const handleImageChange = (e) => {
     let errorExit = false;
     const image = e.target.files[0];
-    console.log("Client image", image);
     if (image?.size > 1048576 * 10) {
       setShowError("File size must be maximum 10 MB");
       errorExit = true;
@@ -138,7 +135,9 @@ const Description = () => {
             <div className="ts_h1">
               <h1>Now just finish and review your job post.</h1>
             </div>
-            {!values?.job_title || !values?.description ? (
+            {!values?.job_title ||
+            values?.job_title?.length > 100 ||
+            !values?.description ? (
               <div className="ts_btn">
                 <button
                   className="font-weight-500"
@@ -169,6 +168,11 @@ const Description = () => {
                 onChange={(e) => onInputChange(e)}
               />
             </div>
+            {values?.job_title?.length > 100 && (
+              <span className="signup-error">
+                Title must be less than 100 characters
+              </span>
+            )}
             <div className="sm_label_inp">
               That looks a little short. A descriptive headline will help
               candidates better understand what your job requires.
@@ -193,16 +197,20 @@ const Description = () => {
               ></Form.Control>
             </div>
             <div className="d-flex justify-content-between">
-              <div className="sm_label_inp">
-                <span className="sm_span_icon">
-                  <i className="bi bi-info-circle-fill"></i>
-                </span>
-                Please add a job description.
-              </div>
+              {!values?.description && (
+                <div className="sm_label_inp text-danger">
+                  <span className="sm_span_icon">
+                    <i className="bi bi-info-circle-fill"></i>
+                  </span>
+                  Please add a job description.
+                </div>
+              )}
+
               <div className="sm_label_inp text-right">
                 {5000 - values?.description?.length || 5000} characters left
               </div>
             </div>
+
             <div className="ts_btn attach_f_btn">
               <label id="uploadImage" className="rot_svg_oety">
                 <input
@@ -328,7 +336,9 @@ const Description = () => {
                 </div>
               )}
 
-              {!values?.job_title || !values?.description ? (
+              {!values?.job_title ||
+              values?.job_title?.length > 100 ||
+              !values?.description ? (
                 <div className="fo_btn_c next_b_btn_c">
                   <button disabled className="active_btn_blueDiabled">
                     Post Your Job Now
