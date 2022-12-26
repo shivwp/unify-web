@@ -6,6 +6,8 @@ import { countryList, onRegister } from "../../../redux/actions/authActions";
 import LoadingSpinner from "../../../components/LoadingSpinner";
 
 const Signupscreen = () => {
+  let scrollTo = false;
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [country, setCountry] = useState();
@@ -57,6 +59,7 @@ const Signupscreen = () => {
     if (e.target.name === "email") {
       setMessage();
     }
+    scrollTo = false;
   };
 
   const submitForm = (e) => {
@@ -75,6 +78,9 @@ const Signupscreen = () => {
     ) {
       errorsObject.first_name = "Please enter your first name";
       errorExist = true;
+      if (!scrollTo) {
+        scrollTo = document.getElementById("first_name");
+      }
     } else if (values?.first_name && values?.first_name?.length < 1) {
       errorsObject.first_name = "First name must be at least 1 characters ";
       errorExist = true;
@@ -87,6 +93,9 @@ const Signupscreen = () => {
     ) {
       errorsObject.last_name = "Please enter your last name";
       errorExist = true;
+      if (!scrollTo) {
+        scrollTo = document.getElementById("last_name");
+      }
     } else if (values?.last_name?.length < 2) {
       errorsObject.last_name = "Last name must be at least 2 characters";
       errorExist = true;
@@ -97,6 +106,9 @@ const Signupscreen = () => {
       values?.email === null ||
       values?.email === undefined
     ) {
+      if (!scrollTo) {
+        scrollTo = document.getElementById("email");
+      }
       errorsObject.email = "Please enter your email";
       errorExist = true;
     } else if (!values?.email.trim()) {
@@ -151,6 +163,9 @@ const Signupscreen = () => {
     if (errorExist) {
       setErrors(errorsObject);
       setLoading(false);
+      if (scrollTo) {
+        scrollTo.scrollIntoView({ behavior: "smooth" });
+      }
       return false;
     }
     const data = {

@@ -280,8 +280,8 @@ const AddEduc = ({
                         defaultValue="default"
                       >
                         <option value="default" disabled hidden>
-                        Select
-                      </option>
+                          Select
+                        </option>
                         {startYear?.map((item, key) => (
                           <option key={key} value={item.start_year}>
                             {item.start_year}
@@ -306,8 +306,9 @@ const AddEduc = ({
                       value={values?.end_year}
                       onChange={(e) => handleOnChange(e)}
                       className="font-size-11px"
+                      defaultValue="default"
                     >
-                      <option value="" disabled hidden selected>
+                      <option value="default" disabled hidden>
                         Select
                       </option>
                       {endYear?.map((item, key) => (

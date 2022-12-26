@@ -31,7 +31,6 @@ const CommanRoutes = () => {
         <Route path="/cat-skills/:category" element={<SkillsListCatWise />} />
         <Route path="/skill-dev/:skill" element={<DevListCatWise />} />
         <Route path="/job-details/:id" element={<JobDetails />} />
-
       </Route>
     </Routes>
   );

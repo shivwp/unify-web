@@ -155,6 +155,7 @@ const Signup = ({
                             onChange={(e) => onInputChange(e)}
                             name="first_name"
                             placeholder="First Name"
+                            id="first_name"
                           />
                           <span className="signInError">
                             {errors.first_name && errors?.first_name}
@@ -204,6 +205,7 @@ const Signup = ({
                             type="text"
                             placeholder="Last Name"
                             name="last_name"
+                            id="last_name"
                             value={values?.last_name}
                             onChange={(e) => onInputChange(e)}
                             // required
@@ -234,6 +236,7 @@ const Signup = ({
                             name="email"
                             value={values?.email}
                             onChange={(e) => onInputChange(e)}
+                            id="email"
                             placeholder="Email"
                           />
                           <span className="signInError">

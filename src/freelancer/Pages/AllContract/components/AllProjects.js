@@ -180,7 +180,7 @@ const AllProjects = ({ getAllContracts }) => {
                 style={{ display: "flex", justifyContent: "flex-end" }}
               >
                 <div className="milestone_btn_s">
-                  <Link to="/freelancer/milestone-earning">
+                  <Link to="/freelancer/see-contract">
                     <button>See Contract</button>
                   </Link>
                 </div>

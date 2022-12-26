@@ -569,8 +569,9 @@ const Screen = () => {
                                   id="project_duration"
                                   value={values?.project_duration}
                                   onChange={(e) => onInputChange(e)}
+                                  defaultValue="default"
                                 >
-                                  <option disabled selected hidden value={null}>
+                                  <option disabled hidden value="default">
                                     Select a duration
                                   </option>
                                   <option value="More then 6 months">

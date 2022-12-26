@@ -373,7 +373,7 @@ const BrowseJobs = () => {
                         className="font-size-13px projectDurationOption"
                         defaultValue="default"
                       >
-                        <option value="default" disabled selected hidden>
+                        <option value="default" hidden>
                           Select budget
                         </option>
                         <option value="hourly">Hourly</option>

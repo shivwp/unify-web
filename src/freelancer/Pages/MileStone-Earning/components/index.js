@@ -12,21 +12,21 @@ const Screen = () => {
   const [Tab, SetTab] = useState(<OverView />);
   const [TabActive, setTabActive] = useState("OVERVIEW");
 
-  function changeTab(componentName) {
-    if (componentName === "me") {
-      SetTab(<ME />);
-      setTabActive("me");
-    } else if (componentName === "mf") {
-      SetTab(<MF />);
-      setTabActive("mf");
-    } else if (componentName === "ts") {
-      SetTab(<TS />);
-      setTabActive("ts");
-    } else if (componentName === "fe") {
-      SetTab(<FE />);
-      setTabActive("fe");
-    }
-  }
+  // function changeTab(componentName) {
+  //   if (componentName === "me") {
+  //     SetTab(<ME />);
+  //     setTabActive("me");
+  //   } else if (componentName === "mf") {
+  //     SetTab(<MF />);
+  //     setTabActive("mf");
+  //   } else if (componentName === "ts") {
+  //     SetTab(<TS />);
+  //     setTabActive("ts");
+  //   } else if (componentName === "fe") {
+  //     SetTab(<FE />);
+  //     setTabActive("fe");
+  //   }
+  // }
 
   return (
     <>

@@ -19,6 +19,7 @@ import Alert from "react-bootstrap/Alert";
 import LoadingSpinner from "../../../../components/LoadingSpinner";
 
 const Screen = () => {
+  let scrollTo = false;
   Title(" | Send Proposal");
   const { id } = useParams();
   const dispatch = useDispatch();
@@ -70,6 +71,7 @@ const Screen = () => {
   // console.log(singleJobDetails);
 
   const onSendProposal = () => {
+    scrollTo = false;
     setLoading(true);
     const formData = new FormData();
     let errorExist = false;
@@ -103,9 +105,15 @@ const Screen = () => {
       ) {
         errorsObject.bid_amount = "Please enter valid amount";
         errorExist = true;
+        if (!scrollTo) {
+          scrollTo = document.getElementById("bid_amount1");
+        }
       } else if (values?.bid_amount.length > 10) {
         errorsObject.bid_amount = "Amount should not be more then 10 digits";
         errorExist = true;
+        if (!scrollTo) {
+          scrollTo = document.getElementById("bid_amount1");
+        }
       }
     } else if (singleJobDetails?.budget_type == "fixed") {
       if (
@@ -114,6 +122,10 @@ const Screen = () => {
       ) {
         errorsObject.project_duration = "Please select project duration";
         errorExist = true;
+
+        if (!scrollTo) {
+          scrollTo = document.getElementById("project_duration");
+        }
       }
       if (isByMilestone == "by_project") {
         if (values?.bid_amount <= 0) {
@@ -124,11 +136,17 @@ const Screen = () => {
           values?.bid_amount === undefined ||
           values?.bid_amount === null
         ) {
+          if (!scrollTo) {
+            scrollTo = document.getElementById("bid_amount2");
+          }
           errorsObject.bid_amount = "Please enter valid amount";
           errorExist = true;
         } else if (values?.bid_amount.length > 10) {
           errorsObject.bid_amount = "Amount should not be more then 10 digits";
           errorExist = true;
+          if (!scrollTo) {
+            scrollTo = document.getElementById("bid_amount2");
+          }
         }
       }
       if (isByMilestone == "by_milestone") {
@@ -137,6 +155,11 @@ const Screen = () => {
           inputList[inputList.length - 1]?.description == null ||
           inputList[inputList.length - 1]?.description == undefined
         ) {
+          if (!scrollTo) {
+            scrollTo = document.getElementById(
+              `description${inputList.length - 1}`
+            );
+          }
           errorsObject.description = "Description can't be empty";
           errorExist = true;
         }
@@ -147,6 +170,11 @@ const Screen = () => {
         ) {
           errorsObject.due_date = "Please enter a valid date";
           errorExist = true;
+          if (!scrollTo) {
+            scrollTo = document.getElementById(
+              `due_date${inputList.length - 1}`
+            );
+          }
         }
         if (
           inputList[inputList.length - 1]?.amount == "" ||
@@ -156,6 +184,9 @@ const Screen = () => {
         ) {
           errorsObject.amount = "Please enter a valid amount";
           errorExist = true;
+          if (!scrollTo) {
+            scrollTo = document.getElementById(`amount${inputList.length - 1}`);
+          }
         }
       }
     }
@@ -163,6 +194,9 @@ const Screen = () => {
     if (errorExist) {
       setErrors(errorsObject);
       setLoading(false);
+      if (scrollTo) {
+        scrollTo.scrollIntoView({ behavior: "smooth" });
+      }
       return false;
     }
 
@@ -210,7 +244,7 @@ const Screen = () => {
         {singleJobDetails?.is_proposal_send ? (
           <Alert variant="success" className="mt-4">
             <Alert.Heading>
-              Your propsal is already sent. Please wait for client's response
+              Your proposal is already sent. Please wait for client's response
             </Alert.Heading>
             <p>Thank you for your time</p>
           </Alert>

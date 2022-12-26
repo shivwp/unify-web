@@ -74,9 +74,9 @@ const Screen = () => {
             </div>
           </div>
         </div>
-        {currentTab === "OVERVIEW" && <OverView />}
-        {currentTab === "MESSAGES" && <Messages />}
-        {currentTab === "DETAILS" && <Details />}
+        {currentTab === "OVERVIEW" ? <OverView /> : ""}
+        {currentTab === "MESSAGES" ? <Messages /> : ""}
+        {currentTab === "DETAILS" ? <Details /> : ""}
       </Container>
     </>
   );

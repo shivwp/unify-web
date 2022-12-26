@@ -47,6 +47,10 @@ const ProjectSearch = ({
   //   window.scrollTo(0, 0);
   // };
 
+  const ChangePage = (number) => {
+    setPage(number);
+  };
+
   $(document).mouseup(function (e) {
     if (
       $(e.target).closest(".dislikeJobRreasonsList, #dislike_button").length ===
@@ -287,7 +291,7 @@ const ProjectSearch = ({
                           ? "PageActive"
                           : ""
                       }`}
-                      onClick={() => setPage(number)}
+                      onClick={() => ChangePage(number)}
                     >
                       {number}
                     </Button>

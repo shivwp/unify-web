@@ -193,7 +193,7 @@ const Projectdetail = () => {
         {singleJobDetails?.is_proposal_send ? (
           <Alert variant="success" className="mt-4">
             <Alert.Heading>
-              Your propsal is already sent. Please wait for client's response
+              Your proposal is already sent. Please wait for client's response
             </Alert.Heading>
             <p>Thank you for your time</p>
           </Alert>

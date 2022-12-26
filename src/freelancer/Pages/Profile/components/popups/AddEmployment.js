@@ -198,7 +198,9 @@ const AddEmployment = ({
       start_date: values?.start_date,
       end_date: values?.end_date,
     };
-    dispatch(onAddEmployment(data, Popup, successPopup, setSuccessPopup, setLoading));
+    dispatch(
+      onAddEmployment(data, Popup, successPopup, setSuccessPopup, setLoading)
+    );
   };
 
   return (
@@ -265,8 +267,9 @@ const AddEmployment = ({
                       name="country"
                       value={values?.country}
                       onChange={(e) => onInputChange(e)}
+                      defaultValue="default"
                     >
-                      <option value="" disabled hidden selected>
+                      <option value="default" disabled hidden>
                         Select
                       </option>
                       {getCountryList?.map((item, key) => (
