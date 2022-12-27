@@ -102,8 +102,9 @@ const WithdrawProposal = ({
                 name="reason"
                 id="reason"
                 onChange={(e) => handleOnChange(e)}
+                defaultValue="default"
               >
-                <option value="" selected disabled hidden>
+                <option value="default" hidden>
                   {" "}
                   Please Select...
                 </option>

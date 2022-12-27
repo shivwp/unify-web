@@ -51,6 +51,7 @@ const HourlyBid = ({
                     placeholder={`0.00`}
                     min="1"
                     name="bid_amount"
+                    id="bid_amount1"
                     className="project_details_Num_inp send_proposal_num_inp"
                     value={values?.bid_amount}
                     onChange={(e) => handleOnChange(e)}

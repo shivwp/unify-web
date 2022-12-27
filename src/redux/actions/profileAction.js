@@ -337,6 +337,9 @@ export const onEditContactInfo =
           type: SET_EDIT_FREELANCER_INFO,
           payload: res.data,
         });
+
+        userDetails.first_name = data?.first_name;
+        userDetails.last_name = data?.last_name;
         if (setLoading) {
           setLoading(false);
         }
@@ -346,6 +349,7 @@ export const onEditContactInfo =
             message="Details saved successfully"
           />
         );
+        localStorage.setItem("unify_user", JSON.stringify(userDetails));
       })
       .catch((err) => {
         if (setLoading) {

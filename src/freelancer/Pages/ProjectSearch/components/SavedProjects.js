@@ -178,7 +178,7 @@ const SavedProjects = ({
         ))}
 
         {savedJobsList?.length == 0 ? (
-          <ResultNotFound msg="No Saved Jobs" />
+          <ResultNotFound msg="No saved jobs" />
         ) : null}
         {savedjobsPagination?.total_page > 1 ? (
           <Col lg={12}>

@@ -118,8 +118,9 @@ const ChooseLangauge = ({ setCurrentTab, profileList, setLoading }) => {
                           name="language"
                           value={data.language}
                           onChange={(e) => handleInputChange(e, i)}
+                          defaultValue="default"
                         >
-                          <option selected hidden>
+                          <option value={"default"} hidden>
                             Select a Language
                           </option>
                           {languageList?.map((item, i) => (
@@ -141,8 +142,9 @@ const ChooseLangauge = ({ setCurrentTab, profileList, setLoading }) => {
                         name="level"
                         value={data.level}
                         onChange={(e) => handleInputChange(e, i)}
+                        defaultValue="default"
                       >
-                        <option selected hidden>
+                        <option value="default" hidden>
                           Select a level
                         </option>
                         {proficiencyOptions.map((item, i) => (

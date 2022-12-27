@@ -180,7 +180,7 @@ const AllProjects = ({ getAllContracts }) => {
                 style={{ display: "flex", justifyContent: "flex-end" }}
               >
                 <div className="milestone_btn_s">
-                  <Link to="/freelancer/milestone-earning">
+                  <Link to="/freelancer/see-contract">
                     <button>See Contract</button>
                   </Link>
                 </div>
@@ -297,8 +297,8 @@ const AllProjects = ({ getAllContracts }) => {
                 style={{ display: "flex", justifyContent: "flex-end" }}
               >
                 <div className="milestone_btn_s">
-                  <Link to="/freelancer/see-timesheet">
-                    <button>Submit Work for Review</button>
+                  <Link to="/freelancer/submit-work-for-payment">
+                    <button>Submit Work for Payment</button>
                   </Link>
                 </div>
               </Col>
@@ -355,7 +355,7 @@ const AllProjects = ({ getAllContracts }) => {
                 style={{ display: "flex", justifyContent: "flex-end" }}
               >
                 <div className="milestone_btn_s">
-                  <Link to="/freelancer/see-timesheet">
+                  <Link to="/freelancer/review-or-resubmit-work">
                     <button>Review or Resubmit Work</button>
                   </Link>
                 </div>
@@ -413,7 +413,7 @@ const AllProjects = ({ getAllContracts }) => {
                 style={{ display: "flex", justifyContent: "flex-end" }}
               >
                 <div className="milestone_btn_s">
-                  <Link to="/freelancer/see-timesheet">
+                  <Link to="/freelancer/send-message">
                     <button>Send a Message</button>
                   </Link>
                 </div>

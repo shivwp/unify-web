@@ -80,6 +80,7 @@ const ByMilesstone = ({
                     type="text"
                     name="description"
                     placeholder="Description"
+                    id={`description${i}`}
                     onChange={(e) => handleInputChange(e, i)}
                   />
                   {i == inputList.length - 1 ? (
@@ -95,6 +96,7 @@ const ByMilesstone = ({
                     type="date"
                     name="due_date"
                     placeholder="Date"
+                    id={`due_date${i}`}
                     min={moment(new Date()).format("YYYY-MM-DD")}
                     onChange={(e) => handleInputChange(e, i)}
                   />
@@ -110,6 +112,7 @@ const ByMilesstone = ({
                   <input
                     type="number"
                     name="amount"
+                    id={`amount${i}`}
                     maxLength={10}
                     value={inputList[i]?.amount}
                     min="1"
@@ -246,6 +249,7 @@ const ByProject = ({
                   <input
                     type="number"
                     name="bid_amount"
+                    id="bid_amount2"
                     min="1"
                     onChange={(e) => handleOnChange(e)}
                     placeholder="0.00"
@@ -417,8 +421,9 @@ const FixedBid = ({
                         });
                         setErrors({ ...errors, project_duration: false });
                       }}
+                      defaultValue="default"
                     >
-                      <option disabled selected hidden value={null}>
+                      <option hidden value="default">
                         Select a duration
                       </option>
                       <option value="More then 6 months">

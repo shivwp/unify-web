@@ -71,8 +71,9 @@ const Screen = () => {
                           paddingTop: 2,
                           paddingLeft: 10,
                         }}
+                        defaultValue="default"
                       >
-                        <option value="" disabled selected hidden>
+                        <option value="default" disabled hidden>
                           Select your option
                         </option>
                         <option value="start_date">Start Date</option>
@@ -92,8 +93,9 @@ const Screen = () => {
                           height: 40,
                           borderRadius: 0,
                         }}
+                        defaultValue="default"
                       >
-                        <option value="" disabled selected hidden>
+                        <option value="default" disabled hidden>
                           Select your option
                         </option>
                         <option value="ascending">Ascending</option>

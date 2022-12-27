@@ -98,6 +98,7 @@ const AllProjects = () => {
               setTabActive={setTabActive}
               setLoading={setLoading}
               setPage={setPage}
+              page={page}
               UnSaveJob={UnSaveJob}
               SaveJob={SaveJob}
               savedjobsPagination={savedjobsPagination}
@@ -108,6 +109,7 @@ const AllProjects = () => {
               tabActive={tabActive}
               setLoading={setLoading}
               setTabActive={setTabActive}
+              page={page}
               setPage={setPage}
               UnSaveJob={UnSaveJob}
               SaveJob={SaveJob}

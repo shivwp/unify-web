@@ -10,7 +10,7 @@ const RecentFiles = () => {
           <div className="milestone_overview_left">
             <div className="top_btns">
               <div>Recent Files</div>
-              <div className="new_overview_btn">
+              <div className="new_overview_btn">  
                 <button style={{ minWidth: 40, margin: "0 15px" }}>
                   <i className="fa fa-history" aria-hidden="true"></i>
                 </button>
