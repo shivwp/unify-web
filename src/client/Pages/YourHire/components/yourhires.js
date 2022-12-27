@@ -6,6 +6,7 @@ import Button from "react-bootstrap/Button";
 
 const Screen = () => {
   Title(" | Talent Your Hires");
+
   return (
     <>
       <Container>
@@ -17,395 +18,117 @@ const Screen = () => {
             <div className="disc_para_h">Look up people you've worked with</div>
           </div>
         </div>
-        <Row>
-          {/* <Col lg={4} sm={10} className="mb-3">
-                        <div className="hire_box_yh">
-                            <div>
-                                <div className="hire_b_im">
-                                    <img src="/assets/Layer 36.png" alt="" />
-                                </div>
-                                <div className="hi_bx_head2">An Absolute Lifesaver</div>
-                            </div>
-                        </div>
-                    </Col>
-                    <Col lg={4} sm={10} className="mb-3">
-                        <div className="hire_box_yh">
-                            <div>
-                                <div className="hire_b_im">
-                                    <img src="/assets/time (2).png" alt="" />
-                                </div>
-                                <div className="hi_bx_head2">A Long-Term Collaborator</div>
-                            </div>
-                        </div>
-                    </Col>
-                    <Col lg={4} sm={10} className="mb-3">
-                        <div className="hire_box_yh">
-                            <div>
-                                <div className="hire_b_im">
-                                    <img src="/assets/idea (2).png" alt="" />
-                                </div>
-                                <div className="hi_bx_head2">Your Go-To Problem Solver</div>
-                            </div>
-                        </div>
-                    </Col> */}
-          <div className="box_vs_m">
-            <div className="search_area_in mob_ele_wfull">
-              <div className="freelancer_box_in mt-0 pt-4 pb-5">
-                <Row>
-                  {/* <Col lg={1} sm={1}>
-                    <div className="profile_sel_ceck_alne">
-                      <Checkbox
-                        icon={<Icon.FiCheck color="#6d2ef1" size={17} />}
-                        name="my-input"
-                        borderRadius={0}
-                        borderWidth={1}
-                        borderColor="#D8D7D7"
-                        style={{
-                          cursor: "pointer",
-                          height: "24px",
-                          width: "24px",
-                        }}
-                      />
-                    </div>
-                  </Col> */}
-                  <Col lg={12} sm={12}>
-                    <div className="freelancer_box_area_in">
-                      <div className="d-flex justify-content-between flex-wrap">
-                        <div className="d-flex flex-wrap">
-                          <div className="freelancer_img_in_r online_profile">
-                            <img src="/assets/PRO-2.png" alt="" />
-                          </div>
-                          <div className="freel_det_bin">
-                            <div className="freelancer_ame_in">Ajay Kumar</div>
-                            <div className="freelancer_exp_in">
-                              React Js Developer
-                            </div>
-                            <div className="freelancer_timin d-flex">
-                              <div className="amount_hir_in p-0 ml-0">
-                                <b>$80</b> /hr
-                              </div>
-                              <div className="line_hr_a">|</div>
-                              <div className="amount_hir_in p-0">
-                                <b>20%</b> Job Success
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div className=" attach_f_btn wid_30_in d-flex">
-                          <button
-                            className="transp_fil_btn heart_roun_btn"
-                            //   onClick={(e) => RemoveSavedTalent(item.id)}
-                          >
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              width="16"
-                              height="16"
-                              fill="currentColor"
-                              className="bi bi-heart-fill"
-                              viewBox="0 0 16 16"
-                            >
-                              <path
-                                fillRule="evenodd"
-                                d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"
-                              />
-                            </svg>
-                          </button>
-                          <Button
-                            variant=""
-                            className="transp_fil_btn heart_roun_btn"
-                            style={{ position: "relative" }}
-                            //   onClick={() =>
-                            //     setShowPopup(showPopup ? false : item.id)
-                            //   }
-                          >
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              width="16"
-                              height="16"
-                              fill="currentColor"
-                              className="bi bi-three-dots-vertical"
-                              viewBox="0 0 16 16"
-                            >
-                              <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
-                            </svg>
-                            {/* {showPopup == item.id ? (
-                            <div
-                              id="saved_talents_options"
-                              className="saved_talents_options"
-                            >
-                              <span>Hire</span>
-                              <span>Invite to job</span>
-                              <span>Add a note</span>
-                            </div>
-                          ) : (
-                            ""
-                          )} */}
-                          </Button>
-                        </div>
-                      </div>
-                      <div className="freelancer_compl_in show_more">
-                        <p>
-                          Lorem ipsum dolor sit amet consectetur, adipisicing
-                          elit. Aperiam esse nulla aut, rerum neque officiis
-                          mollitia quaerat molestias nostrum eligendi, omnis
-                          doloremque sapiente ad quo cumque, iure ullam
-                          voluptatibus ipsum?
-                        </p>
-
-                        <span>Show Less</span>
-                      </div>
-                    </div>
-                  </Col>
-                </Row>
-              </div>
-            </div>
-            <div className="search_area_in mob_ele_wfull">
-              <div className="freelancer_box_in mt-0 pt-4 pb-5">
-                <Row>
-                  {/* <Col lg={1} sm={1}>
-                    <div className="profile_sel_ceck_alne">
-                      <Checkbox
-                        icon={<Icon.FiCheck color="#6d2ef1" size={17} />}
-                        name="my-input"
-                        borderRadius={0}
-                        borderWidth={1}
-                        borderColor="#D8D7D7"
-                        style={{
-                          cursor: "pointer",
-                          height: "24px",
-                          width: "24px",
-                        }}
-                      />
-                    </div>
-                  </Col> */}
-                  <Col lg={12} sm={12}>
-                    <div className="freelancer_box_area_in">
-                      <div className="d-flex justify-content-between flex-wrap">
-                        <div className="d-flex flex-wrap">
-                          <div className="freelancer_img_in_r online_profile">
-                            <img src="/assets/PRO-2.png" alt="" />
-                          </div>
-                          <div className="freel_det_bin">
-                            <div className="freelancer_ame_in">Ajay Kumar</div>
-                            <div className="freelancer_exp_in">
-                              React Js Developer
-                            </div>
-                            <div className="freelancer_timin d-flex">
-                              <div className="amount_hir_in p-0 ml-0">
-                                <b>$80</b> /hr
-                              </div>
-                              <div className="line_hr_a">|</div>
-                              <div className="amount_hir_in p-0">
-                                <b>20%</b> Job Success
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div className=" attach_f_btn wid_30_in d-flex">
-                          <button
-                            className="transp_fil_btn heart_roun_btn"
-                            //   onClick={(e) => RemoveSavedTalent(item.id)}
-                          >
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              width="16"
-                              height="16"
-                              fill="currentColor"
-                              className="bi bi-heart-fill"
-                              viewBox="0 0 16 16"
-                            >
-                              <path
-                                fillRule="evenodd"
-                                d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"
-                              />
-                            </svg>
-                          </button>
-                          <Button
-                            variant=""
-                            className="transp_fil_btn heart_roun_btn"
-                            style={{ position: "relative" }}
-                            //   onClick={() =>
-                            //     setShowPopup(showPopup ? false : item.id)
-                            //   }
-                          >
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              width="16"
-                              height="16"
-                              fill="currentColor"
-                              className="bi bi-three-dots-vertical"
-                              viewBox="0 0 16 16"
-                            >
-                              <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
-                            </svg>
-                            {/* {showPopup == item.id ? (
-                            <div
-                              id="saved_talents_options"
-                              className="saved_talents_options"
-                            >
-                              <span>Hire</span>
-                              <span>Invite to job</span>
-                              <span>Add a note</span>
-                            </div>
-                          ) : (
-                            ""
-                          )} */}
-                          </Button>
-                        </div>
-                      </div>
-                      <div className="freelancer_compl_in show_more">
-                        <p>
-                          Lorem ipsum dolor sit amet consectetur, adipisicing
-                          elit. Aperiam esse nulla aut, rerum neque officiis
-                          mollitia quaerat molestias nostrum eligendi, omnis
-                          doloremque sapiente ad quo cumque, iure ullam
-                          voluptatibus ipsum?
-                        </p>
-
-                        <span>Show Less</span>
-                      </div>
-                    </div>
-                  </Col>
-                </Row>
-              </div>
-            </div>
-            <div className="search_area_in mob_ele_wfull">
-              <div className="freelancer_box_in mt-0 pt-4 pb-5">
-                <Row>
-                  {/* <Col lg={1} sm={1}>
-                    <div className="profile_sel_ceck_alne">
-                      <Checkbox
-                        icon={<Icon.FiCheck color="#6d2ef1" size={17} />}
-                        name="my-input"
-                        borderRadius={0}
-                        borderWidth={1}
-                        borderColor="#D8D7D7"
-                        style={{
-                          cursor: "pointer",
-                          height: "24px",
-                          width: "24px",
-                        }}
-                      />
-                    </div>
-                  </Col> */}
-                  <Col lg={12} sm={12}>
-                    <div className="freelancer_box_area_in">
-                      <div className="d-flex justify-content-between flex-wrap">
-                        <div className="d-flex flex-wrap">
-                          <div className="freelancer_img_in_r online_profile">
-                            <img src="/assets/PRO-2.png" alt="" />
-                          </div>
-                          <div className="freel_det_bin">
-                            <div className="freelancer_ame_in">Ajay Kumar</div>
-                            <div className="freelancer_exp_in">
-                              React Js Developer
-                            </div>
-                            <div className="freelancer_timin d-flex">
-                              <div className="amount_hir_in p-0 ml-0">
-                                <b>$80</b> /hr
-                              </div>
-                              <div className="line_hr_a">|</div>
-                              <div className="amount_hir_in p-0">
-                                <b>20%</b> Job Success
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div className=" attach_f_btn wid_30_in d-flex">
-                          <button
-                            className="transp_fil_btn heart_roun_btn"
-                            //   onClick={(e) => RemoveSavedTalent(item.id)}
-                          >
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              width="16"
-                              height="16"
-                              fill="currentColor"
-                              className="bi bi-heart-fill"
-                              viewBox="0 0 16 16"
-                            >
-                              <path
-                                fillRule="evenodd"
-                                d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"
-                              />
-                            </svg>
-                          </button>
-                          <Button
-                            variant=""
-                            className="transp_fil_btn heart_roun_btn"
-                            style={{ position: "relative" }}
-                            //   onClick={() =>
-                            //     setShowPopup(showPopup ? false : item.id)
-                            //   }
-                          >
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              width="16"
-                              height="16"
-                              fill="currentColor"
-                              className="bi bi-three-dots-vertical"
-                              viewBox="0 0 16 16"
-                            >
-                              <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
-                            </svg>
-                            {/* {showPopup == item.id ? (
-                            <div
-                              id="saved_talents_options"
-                              className="saved_talents_options"
-                            >
-                              <span>Hire</span>
-                              <span>Invite to job</span>
-                              <span>Add a note</span>
-                            </div>
-                          ) : (
-                            ""
-                          )} */}
-                          </Button>
-                        </div>
-                      </div>
-                      <div className="freelancer_compl_in show_more">
-                        <p>
-                          Lorem ipsum dolor sit amet consectetur, adipisicing
-                          elit. Aperiam esse nulla aut, rerum neque officiis
-                          mollitia quaerat molestias nostrum eligendi, omnis
-                          doloremque sapiente ad quo cumque, iure ullam
-                          voluptatibus ipsum?
-                        </p>
-
-                        <span>Show Less</span>
-                      </div>
-                    </div>
-                  </Col>
-                </Row>
-              </div>
-            </div>
+        <div className="YourHiresBorderWrapper">
+          <div className="YourHiresBorder">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="60.196"
+              height="60.196"
+              viewBox="0 0 91.36 91.387"
+            >
+              <path
+                id="Layer_36"
+                data-name="Layer 36"
+                d="M89.881,30.2A45.681,45.681,0,1,0,65.17,89.892,45.681,45.681,0,0,0,89.881,30.2ZM65.474,10.449A40.983,40.983,0,0,1,84.922,29.9L68.737,36.814a23.537,23.537,0,0,0-9.963-10.006Zm.348,44.724a19.621,19.621,0,1,1-4.295-21.323,19.752,19.752,0,0,1,4.295,21.323ZM47.68,6.36A41.548,41.548,0,0,1,61.428,8.753l-6.7,16.184a23.754,23.754,0,0,0-14.139,0L33.889,8.8A40.765,40.765,0,0,1,47.68,6.36Zm-17.794,4.09L36.8,26.634A23.537,23.537,0,0,0,26.58,36.814L10.439,29.9A40.983,40.983,0,0,1,29.886,10.449ZM8.742,33.943l16.184,6.7a23.754,23.754,0,0,0,0,14.139l-16.141,6.7a40.722,40.722,0,0,1-.044-27.539ZM29.886,84.932A40.983,40.983,0,0,1,10.439,65.485l16.184-6.7A23.276,23.276,0,0,0,36.8,68.791Zm4.046,1.7,6.7-16.184a23.015,23.015,0,0,0,7.048,1.175,24.972,24.972,0,0,0,7.091-1.175l6.7,16.141A40.722,40.722,0,0,1,33.932,86.629Zm31.542-1.7-6.7-16.184a23.537,23.537,0,0,0,10.006-9.963l16.141,6.7A40.983,40.983,0,0,1,65.474,84.932ZM86.618,61.439l-16.184-6.7a23.754,23.754,0,0,0,0-14.139l16.141-6.7a40.722,40.722,0,0,1,.044,27.539Z"
+                transform="translate(-2 -1.997)"
+                fill="#e4eaef"
+              />
+            </svg>
+            <h5>An Absolute Lifesaver</h5>
           </div>
-        </Row>
+          <div className="YourHiresBorder">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="60.196"
+              height="60.196"
+              viewBox="0 0 92.196 92.196"
+            >
+              <g id="time_2_" data-name="time (2)" transform="translate(-1 -1)">
+                <path
+                  id="Path_4642"
+                  data-name="Path 4642"
+                  d="M47.1,93.2A46.1,46.1,0,0,1,12.454,16.689a1.538,1.538,0,0,1,2.311,2.031,42.913,42.913,0,1,0,10.5-8.706,1.537,1.537,0,0,1-1.558-2.649A46.1,46.1,0,1,1,47.1,93.2Z"
+                  transform="translate(0 0)"
+                  fill="#e4eaef"
+                />
+                <path
+                  id="Path_4643"
+                  data-name="Path 4643"
+                  d="M41.915,80.33A38.415,38.415,0,1,1,80.33,41.915,38.457,38.457,0,0,1,41.915,80.33Zm0-73.757A35.342,35.342,0,1,0,77.257,41.915,35.382,35.382,0,0,0,41.915,6.573Z"
+                  transform="translate(5.183 5.183)"
+                  fill="#e4eaef"
+                />
+                <path
+                  id="Path_4644"
+                  data-name="Path 4644"
+                  d="M51.33,12.969a1.516,1.516,0,0,1-1.537-1.537,1.45,1.45,0,0,1,.458-1.076,1.54,1.54,0,0,1,2.151,0,1.489,1.489,0,0,1,0,2.151A1.442,1.442,0,0,1,51.33,12.969Zm-29.2,50.582a1.589,1.589,0,0,1-1.079-.458,1.547,1.547,0,0,1-.458-1.079,1.654,1.654,0,0,1,.43-1.1,1.635,1.635,0,0,1,2.182,0,1.54,1.54,0,0,1,.461,1.1,1.653,1.653,0,0,1-.433,1.079A1.684,1.684,0,0,1,22.134,63.551ZM62.021,23.664a1.525,1.525,0,0,1-1.076-.433A1.533,1.533,0,1,1,63.1,21.048a1.575,1.575,0,0,1,.458,1.079,1.57,1.57,0,0,1-1.537,1.537ZM11.44,52.859a1.58,1.58,0,0,1-1.076-.433,1.643,1.643,0,0,1-.461-1.1,1.54,1.54,0,0,1,2.646-1.079,1.563,1.563,0,0,1,0,2.154A1.521,1.521,0,0,1,11.44,52.859Zm54.488-14.6a1.526,1.526,0,0,1-1.079-2.615,1.524,1.524,0,0,1,2.615,1.079,1.525,1.525,0,0,1-.433,1.076A1.547,1.547,0,0,1,65.927,38.261Zm-58.391,0a1.526,1.526,0,0,1-1.079-2.615,1.524,1.524,0,0,1,2.615,1.079A1.525,1.525,0,0,1,8.64,37.8,1.547,1.547,0,0,1,7.537,38.261Zm54.485,14.6a1.642,1.642,0,0,1-1.1-.433,1.663,1.663,0,0,1-.433-1.1A1.524,1.524,0,0,1,63.1,50.244a1.575,1.575,0,0,1,.458,1.079,1.57,1.57,0,0,1-1.537,1.537ZM11.44,23.664a1.58,1.58,0,0,1-1.076-.433,1.643,1.643,0,0,1-.461-1.1,1.54,1.54,0,0,1,2.646-1.079,1.563,1.563,0,0,1,0,2.154A1.577,1.577,0,0,1,11.44,23.664ZM51.33,63.551a1.548,1.548,0,0,1-1.079-.43,1.61,1.61,0,0,1-.458-1.106,1.654,1.654,0,0,1,.43-1.1,1.606,1.606,0,0,1,2.182,0,1.54,1.54,0,0,1,.461,1.1,1.653,1.653,0,0,1-.433,1.079A1.544,1.544,0,0,1,51.33,63.551Zm-29.2-50.582a1.523,1.523,0,0,1-1.079-2.612,1.57,1.57,0,0,1,2.151-.031,1.54,1.54,0,0,1,.461,1.1,1.445,1.445,0,0,1-.458,1.079A1.491,1.491,0,0,1,22.134,12.969Zm14.6,54.488a1.593,1.593,0,0,1-1.079-.433,1.611,1.611,0,0,1-.458-1.1,1.521,1.521,0,0,1,2.612-1.079,1.538,1.538,0,0,1-1.076,2.615Zm0-58.391a1.593,1.593,0,0,1-1.079-.433,1.557,1.557,0,0,1-.458-1.1,1.49,1.49,0,0,1,.43-1.079,1.554,1.554,0,0,1,2.182,0,1.453,1.453,0,0,1,.461,1.079,1.525,1.525,0,0,1-.433,1.076A1.547,1.547,0,0,1,36.732,9.066Zm19.558,8.1a1.538,1.538,0,0,0-2.173,0L37.482,33.8a3,3,0,0,1,2.173,2.173L56.29,19.34A1.532,1.532,0,0,0,56.29,17.167ZM35.982,33.8,17.174,14.994A1.536,1.536,0,1,0,15,17.167L33.809,35.975A3,3,0,0,1,35.982,33.8Z"
+                  transform="translate(10.366 10.373)"
+                  fill="#e4eaef"
+                />
+                <path
+                  id="Path_4645"
+                  data-name="Path 4645"
+                  d="M19.11,23.72a4.61,4.61,0,1,1,4.61-4.61A4.615,4.615,0,0,1,19.11,23.72Zm0-6.146a1.537,1.537,0,1,0,1.537,1.537A1.541,1.541,0,0,0,19.11,17.573Z"
+                  transform="translate(27.988 27.988)"
+                  fill="#e4eaef"
+                />
+                <g
+                  id="Group_2973"
+                  data-name="Group 2973"
+                  transform="translate(17.903 10.22)"
+                >
+                  <path
+                    id="Path_4646"
+                    data-name="Path 4646"
+                    d="M9.573,5.537A1.541,1.541,0,0,1,8.037,7.073h0A1.541,1.541,0,0,1,6.5,5.537h0A1.541,1.541,0,0,1,8.037,4h0A1.541,1.541,0,0,1,9.573,5.537Z"
+                    transform="translate(-6.5 -4)"
+                    fill="#e4eaef"
+                  />
+                </g>
+              </g>
+            </svg>
+            <h5>A Long-Term Collaborator</h5>
+          </div>
+          <div className="YourHiresBorder">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="60.196"
+              height="60.196"
+              viewBox="0 0 86.347 106.702"
+            >
+              <g
+                id="idea_2_"
+                data-name="idea (2)"
+                transform="translate(-5.77 -1)"
+              >
+                <path
+                  id="Path_4647"
+                  data-name="Path 4647"
+                  d="M5.77,75.339V102.93A2.134,2.134,0,0,0,7.9,105.064H23.511a2.11,2.11,0,0,0,2.084-1.887c5.22,1.523,16.227,4.525,21.972,4.525.4,0,.775-.015,1.12-.046C59.124,106.731,86.112,92.828,87.12,92.3c2.911-1.253,5-3.171,5-6.74,0-5.239-5.79-8.405-9.052-6.725L70.141,85.549a50.6,50.6,0,0,1-8.1,1.2,4.851,4.851,0,0,0-1.245-1.189c-16.971-9.456-17.249-9.755-18.022-9.755H25.645v-.469A2.134,2.134,0,0,0,23.511,73.2H7.9A2.133,2.133,0,0,0,5.77,75.339Zm19.876,4.737H42.214L58.6,89.256a9.693,9.693,0,0,1-1.231,3.07L44.112,88.47a2.134,2.134,0,0,0-1.192,4.1l13.356,3.876a4.25,4.25,0,0,0,1.584.3c2.488,0,4.054-3.468,4.686-5.745a54.923,54.923,0,0,0,9.117-1.457c.236-.077,1.983-1.009,13.069-6.759a2.8,2.8,0,0,1,3.116,2.782c0,1.882-1.362,2.366-2.553,2.882-.272.142-27.378,14.109-36.985,14.959-4.475.41-16.725-2.892-22.665-4.662V80.076Zm-15.607-2.6H21.377V100.8H10.038ZM31.46,33.407A21.446,21.446,0,0,0,35.938,46.6c2.808,3.651,5.03,10.964,5.986,16.591a2.133,2.133,0,0,0,2.1,1.776H62.193a2.134,2.134,0,0,0,2.106-1.79c.865-5.289,2.878-12.719,5.707-16.251A21.642,21.642,0,1,0,31.46,33.407ZM55.078,16.145a17.367,17.367,0,0,1,11.6,28.108C63.107,48.707,61.2,56.6,60.407,60.694H55.237V43.924l4.132-4.131a2.134,2.134,0,0,0-3.018-3.018L53.1,40.022l-3.248-3.247a2.134,2.134,0,0,0-3.018,3.018l4.132,4.131v16.77H45.8c-1.12-5.533-3.349-12.629-6.48-16.7a17.222,17.222,0,0,1-3.593-10.587A17.407,17.407,0,0,1,55.078,16.145Zm.158-7.33V3.135a2.134,2.134,0,0,0-4.268,0V8.816a2.134,2.134,0,0,0,4.268,0Z"
+                  transform="translate(0 0)"
+                  fill="#e4eaef"
+                />
+                <path
+                  id="Path_4648"
+                  data-name="Path 4648"
+                  d="M25.34,5.728a2.134,2.134,0,0,0-3.018,3.018L25.878,12.3A2.134,2.134,0,0,0,28.9,9.284ZM64.056,44.444a2.134,2.134,0,1,0-3.018,3.018l3.555,3.555A2.134,2.134,0,1,0,67.611,48ZM15.077,26.237a2.134,2.134,0,0,0,0,4.268h5.681a2.134,2.134,0,0,0,0-4.268Zm59.78,4.268a2.134,2.134,0,1,0,0-4.268H69.176a2.134,2.134,0,1,0,0,4.268ZM25.878,44.444,22.323,48a2.134,2.134,0,0,0,3.018,3.018L28.9,47.461a2.134,2.134,0,0,0-3.018-3.018ZM64.593,5.728,61.038,9.284A2.134,2.134,0,1,0,64.056,12.3l3.555-3.555a2.134,2.134,0,0,0-3.018-3.018Zm-25.687,58a2.134,2.134,0,0,0,0,4.268H51.027a2.134,2.134,0,0,0,0-4.268Z"
+                  transform="translate(8.136 4.653)"
+                  fill="#e4eaef"
+                />
+              </g>
+            </svg>
+            <h5>Your Go-To Problem Solver</h5>
+          </div>
+        </div>
         <div className="d_pbtn_as">
           <div className="disc_para_h">
             You haven’t hired anyone yet. Start searching for the right fit for
             your next project.
           </div>
           <Link to="/search">
-            <Button
-              variant=""
-              className="find_tal_btn pt-3 pb-3 font-weight-500"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                fill="currentColor"
-                className="bi bi-search"
-                viewBox="0 0 16 16"
-              >
-                <path
-                  stroke="#fff"
-                  d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"
-                />
-              </svg>
-              Find Talent
-            </Button>
+            <button className="find_tal_btn pt-3 pb-3 font-weight-500">
+              <i className="bi bi-search"></i> Find Talent
+            </button>
           </Link>
         </div>
       </Container>

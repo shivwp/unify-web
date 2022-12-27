@@ -1,65 +1,156 @@
-import Container from 'react-bootstrap/Container';
-import { Col, Row } from 'react-bootstrap';
-import Title from '../../../../components/title';
-import { Link } from 'react-router-dom';
-import Button from 'react-bootstrap/Button'
+import React, { useEffect, useState } from "react";
+import Container from "react-bootstrap/Container";
+import { Col, Row } from "react-bootstrap";
+import Title from "../../../../components/title";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  getRecentFreelancerList,
+  onRemoveSavedTalent,
+  onSavedTalent,
+} from "../../../../redux/actions/freelancerAction";
+import LoadingSpinner from "../../../../components/LoadingSpinner";
+import $ from "jquery";
+import { Link } from "react-router-dom";
 
 const Screen = () => {
-    Title(" | Talent Recently Viewed");
-    return (
-        <>
-            <Container>
-                <div className="d-flex justify-content-between flex-wrap align-items-center disc_top_s_ar mt-4 pt-3">
-                    <div>
-                        <div className='disc_head_h1'><h1>Recently Viewed</h1></div>
+  Title(" | Talent Recently Viewed");
+  const dispatch = useDispatch();
+  const [showPopup, setShowPopup] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const recentlyFreelancerList = useSelector(
+    (state) => state.freelancer.recentlyFreelancerList
+  );
+  const savedTalent = useSelector((state) => state.freelancer.savedTalent);
+  const removeSavedTalent = useSelector(
+    (state) => state.freelancer.removeSavedTalent
+  );
+
+  useEffect(() => {
+    const data = {
+      freelancers: "525,516",
+    };
+
+    dispatch(getRecentFreelancerList(data));
+  }, [savedTalent, removeSavedTalent]);
+
+  const handleSavedTalent = (id) => {
+    const data = {
+      freelancer_id: id,
+    };
+    setLoading(true);
+    dispatch(onSavedTalent(data, setLoading));
+  };
+
+  const handleRemoveSavedTalent = (id) => {
+    const data = {
+      freelancer_id: id,
+    };
+    setLoading(true);
+    dispatch(onRemoveSavedTalent(data, setLoading));
+  };
+
+  $(document).mouseup(function (e) {
+    if ($(e.target).closest("#saved_talents_options").length === 0) {
+      setShowPopup(false);
+    }
+  });
+
+  return (
+    <>
+      <Container>
+        <div className="d-flex justify-content-between flex-wrap align-items-center disc_top_s_ar mt-4 pt-3">
+          <div>
+            <div className="disc_head_h1">
+              <h1>Recently Viewed</h1>
+            </div>
+          </div>
+        </div>
+        <div className="box_vs_m">
+          {recentlyFreelancerList?.map((data, key) => (
+            <div className="freelancer_box_in mt-0" key={key}>
+              <Row>
+                <Col lg={12}>
+                  <div className="freelancer_box_area_in">
+                    <div className="d-flex justify-content-between">
+                      <div className="d-flex">
+                        <div className="freelancer_img_in_r">
+                          <img src={data.profile_image} alt="" />
+                        </div>
+                        <div className="freel_det_bin">
+                          <Link to={`/freelancer-details/${data.id}`}>
+                            <div className="freelancer_ame_in">
+                              {data.first_name} {data.last_name}
+                            </div>
+                          </Link>
+                          <div className="freelancer_exp_in">
+                            {data.occuption}
+                          </div>
+                          <div className="freelancer_timin d-flex">
+                            <div className="amount_hir_in p-0 m-0">
+                              <b>${parseInt(data.amount).toFixed(2)}</b> /hr
+                            </div>
+                            <div className="amount_hir_in p-0">
+                              <b>{data.success_rate}</b> Job Success
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="attach_f_btn wid_30_in d-flex">
+                        {data.isSaveTalent === false ? (
+                          <button
+                            className="transp_fil_btn heart_roun_btn"
+                            onClick={(e) => handleSavedTalent(data.id)}
+                          >
+                            <i className="bi bi-heart font-size-20px"></i>
+                          </button>
+                        ) : (
+                          <button
+                            className="transp_fil_btn heart_roun_btn"
+                            onClick={(e) => handleRemoveSavedTalent(data.id)}
+                          >
+                            <i className="bi bi-heart-fill font-size-20px"></i>
+                          </button>
+                        )}
+                        <button
+                          className="transp_fil_btn heart_roun_btn"
+                          style={{ position: "relative" }}
+                          onClick={() =>
+                            setShowPopup(showPopup ? false : data.id)
+                          }
+                        >
+                          <i className="bi bi-three-dots-vertical font-size-20px"></i>
+                          {showPopup == data.id && (
+                            <div
+                              id="saved_talents_options"
+                              className="saved_talents_options"
+                            >
+                              <span>Invite to job</span>
+                            </div>
+                          )}
+                        </button>
+                      </div>
                     </div>
-                </div>
-                <div className="box_vs_m">
-                    <div className='freelancer_box_in mt-0'>
-                        <Row>
-                            <Col lg={3}>
-                                <div className='freel_box_in_img'><img src="/assets/mistakes.png" alt="" /></div>
-                                <div className="img_pag_tex">1 of 11</div>
-                            </Col>
-                            <Col lg={9}>
-                                <div className="freelancer_box_area_in">
-                                    <div className='d-flex justify-content-between flex-wrap'>
-                                        <div className='d-flex flex-wrap'>
-                                            <div className='freelancer_img_in_r'>
-                                                <img src="/assets/PRO-2.png" alt='' />
-                                            </div>
-                                            <div className='freel_det_bin'>
-                                                <div className='freelancer_ame_in'>Mario Speedwagon</div>
-                                                <div className='freelancer_exp_in'>Expert in Mobile and Web Development.</div>
-                                                <div className='freelancer_timin d-flex'>
-                                                    <div className='amount_hir_in p-0 m-0'><b>$15.00</b> /hr</div>
-                                                    <div className='amount_hir_in p-0'><b>100%</b> Job Success</div>
-                                                    <div className='amount_hir_in p-0'>Top Rated Plus</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className=' attach_f_btn wid_30_in d-flex'>
-                                            <Button variant="" className="transp_fil_btn heart_roun_btn">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-heart" viewBox="0 0 16 16">
-                                                    <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
-                                                </svg>
-                                            </Button>
-                                            <Button variant="" className="transp_fil_btn heart_roun_btn">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-three-dots-vertical" viewBox="0 0 16 16">
-                                                    <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
-                                                </svg>
-                                            </Button>
-                                        </div>
-                                    </div>
-                                    <div className='freelancer_compl_in'>
-                                        Hello! I am a professional UI/UX Designer. There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour... <Link to='#0'>View more</Link></div>
-                                </div>
-                            </Col>
-                        </Row>
+                    <div className="freelancer_compl_in">
+                      {data.description}
+                      {/* <Link to="#0">View more</Link> */}
                     </div>
-                </div>
-            </Container>
-        </>
-    )
-}
-export default Screen
+
+                    <div className="overflow-scroll">
+                      <div className="slide_btnss freelancer_skill_sc">
+                        {data.skills.map((item, key) => (
+                          <button key={key}>{item.skill_name}</button>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </Col>
+              </Row>
+            </div>
+          ))}
+        </div>
+      </Container>
+      {loading ? <LoadingSpinner /> : null}
+    </>
+  );
+};
+export default Screen;

@@ -631,7 +631,7 @@
 }
 
 .selec_inp_ful_w {
-  width: 70% !important;
+  width: 76% !important;
 }
 
 .select_inp_in {
@@ -802,7 +802,8 @@
 
 .freelancer_box_in {
   background-color: #f8f8f8;
-  padding: 15px 10px;
+  padding: 20px;
+  margin-bottom: 20px;
 }
 
 .img_pag_tex {
@@ -904,6 +905,18 @@
   padding: 10px 0px;
 }
 
+@media (max-width: 481px) {
+  .freelancer_timin {
+    flex-direction: column;
+  }
+  .amount_hir_in {
+    margin: 0 !important;
+  }
+  .transp_fil_btn {
+    margin-right: 5px;
+  }
+}
+
 .freelancer_compl_in {
   font-family: "Poppins-Bold", "Poppins";
   font-size: 12px;
@@ -938,7 +951,7 @@
 
 .saved_talents_options {
   position: absolute;
-  background-color: #f2f2f2;
+  background-color: #ffffff;
   display: flex;
   flex-direction: column;
   min-width: 120px;
@@ -946,14 +959,16 @@
   top: 50px;
   right: 0px;
   gap: 1px;
+  border: 1px solid #c7c7c7;
 }
+
 .saved_talents_options span {
   display: flex;
   align-items: center;
   color: #000;
   font-size: 14px;
   width: 100%;
-  padding: 5px;
+  padding: 5px 15px;
 }
 .saved_talents_options span:hover {
   background-color: rgb(211, 210, 210);
@@ -988,10 +1003,6 @@
 .freelancer_skill_sc::-webkit-scrollbar,
 .r_scroll_w_10::-webkit-scrollbar {
   display: none;
-}
-
-.freelancer_box_in {
-  margin: 12px 0px;
 }
 
 .searc_inv_w_fll .search_input_in {
@@ -1599,23 +1610,91 @@
 }
 
 .promoted_boxt {
-  padding: 20px 10px;
+  padding: 20px 20px;
   margin-top: 20px;
   border: #d4d4d5 solid 1px;
 }
 
-.propt_head_n h2 {
+.promoted_boxtDiscover {
+  padding: 20px 20px;
+  margin-top: 20px;
+  border: #d4d4d5 solid 1px;
+}
+
+.propt_head_nCategory {
+  padding-bottom: 15px;
+}
+
+.propt_head_n h2,
+.propt_head_nCategory h2 {
   font-family: "Poppins-Bold", "Poppins";
   font-weight: 600;
   padding: 5px 0px;
   font-size: 22px;
   line-height: 23px;
   color: #00065a;
+  margin-bottom: 5px;
+}
+.propt_head_n .BasedONyourJob {
+  font-weight: 600;
+  font-size: 14px;
+}
+.propt_head_n .BasedONyourJob span {
+  color: #6d2ef1;
 }
 
 .promo_box_a {
+  width: 31.5%;
   border: #d4d4d5 solid 1px;
-  padding: 15px 5px;
+  padding: 15px 15px;
+}
+
+.mobileSize {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.mobile-discover {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.mobile-discover .promo_box_a {
+  margin-right: 18px;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+  .avai_btn_promo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+@media (max-width: 481px) {
+  .promo_box_a {
+    width: 100%;
+  }
+  .mobileSize {
+    flex-direction: column;
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
+  }
+  .BasedONyourJob {
+    margin-bottom: 0px;
+  }
+  .mobile-discover {
+    margin-bottom: 20px;
+    flex-direction: column;
+  }
+  .promo_box_a {
+    margin-bottom: 20px;
+  }
+  .promoted_boxtDiscover {
+    padding: 10px;
+  }
 }
 
 .discover_prof_us {
@@ -1658,7 +1737,7 @@
 
 .avai_btn_promo button {
   background-color: transparent;
-  padding: 8px 23px;
+  padding: 7px 23px;
   color: #6d2ef1;
   border: #6d2ef1 solid 1px;
   border-radius: 30px;
@@ -1675,6 +1754,10 @@
 .avai_btn_promo button:hover {
   background-color: transparent;
   color: #6d2ef1;
+}
+
+.heart_btn_promo {
+  cursor: pointer;
 }
 
 .heart_btn_promo button {
