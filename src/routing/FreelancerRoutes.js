@@ -94,7 +94,6 @@ const SingleOfferDetail = lazy(() =>
 );
 const SingleContract = lazy(() => import("../freelancer/Pages/SingleContract"));
 
-const SendMessage = lazy(() => import("../freelancer/Pages/SendMessage"));
 
 const FreelancerRoutes = () => {
   return (
@@ -213,7 +212,6 @@ const FreelancerRoutes = () => {
         />
         {/* <Route path="/freelancer/see-milestone" element={<SeeMilestone />} /> */}
         <Route path="/freelancer/:buttonStatus" element={<SingleContract />} />
-        <Route path="/freelancer/send-message" element={<SendMessage />} />
         <Route
           path="/freelancer/profile-intro/:tabName"
           element={<ProfileInto />}

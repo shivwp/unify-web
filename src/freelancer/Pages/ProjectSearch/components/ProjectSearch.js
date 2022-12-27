@@ -277,7 +277,7 @@ const ProjectSearch = ({
               </div>
             ))}
             {jobsList?.length == 0 ? (
-              <ResultNotFound msg="Search Result Not Found " />
+              <ResultNotFound msg="Search result not found " />
             ) : null}
             {jobsPagination?.total_page > 1 ? (
               <Col lg={12}>

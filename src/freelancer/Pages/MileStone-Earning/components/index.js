@@ -1,32 +1,14 @@
 import Container from "react-bootstrap/Container";
 import { useState } from "react";
-// import Button from "react-bootstrap/Button";
-import ME from "./Milestone";
-import MF from "./message-file";
-import TS from "./term-setting";
-import FE from "./feedback";
-// import MilestoneTimeLine from "./MilestoneTimeLine";
 import OverView from "./OverView";
+import { useParams } from "react-router-dom";
+import Messages from "../../SeeTimesheet/components/Messages";
+import Details from "../../SeeTimesheet/components/Details";
 
 const Screen = () => {
-  const [Tab, SetTab] = useState(<OverView />);
-  const [TabActive, setTabActive] = useState("OVERVIEW");
-
-  // function changeTab(componentName) {
-  //   if (componentName === "me") {
-  //     SetTab(<ME />);
-  //     setTabActive("me");
-  //   } else if (componentName === "mf") {
-  //     SetTab(<MF />);
-  //     setTabActive("mf");
-  //   } else if (componentName === "ts") {
-  //     SetTab(<TS />);
-  //     setTabActive("ts");
-  //   } else if (componentName === "fe") {
-  //     SetTab(<FE />);
-  //     setTabActive("fe");
-  //   }
-  // }
+  const { buttonStatus } = useParams();
+  const [currentTab, setCurrentTab] = useState("OVERVIEW");
+  const [popup, setPopup] = useState(false);
 
   return (
     <>
@@ -68,41 +50,38 @@ const Screen = () => {
               <button
                 variant=""
                 className={`text-capitalize tab_btn_vs w-auto ${
-                  TabActive === "OVERVIEW" ? "active_bvs" : ""
+                  currentTab === "OVERVIEW" ? "active_bvs" : ""
                 }`}
-                onClick={() => {
-                  setTabActive("OVERVIEW");
-                }}
+                onClick={() => setCurrentTab("OVERVIEW")}
               >
                 Overview
               </button>
               <button
                 variant=""
                 className={`text-capitalize tab_btn_vs w-auto ${
-                  TabActive === "MESSAGES" ? "active_bvs" : ""
+                  currentTab === "MESSAGES" ? "active_bvs" : ""
                 }`}
-                onClick={() => {
-                  setTabActive("MESSAGES");
-                }}
+                onClick={() => setCurrentTab("MESSAGES")}
               >
                 Messages
               </button>
               <button
                 variant=""
                 className={`text-capitalize tab_btn_vs w-auto ${
-                  TabActive === "DETAILS" ? "active_bvs" : ""
+                  currentTab === "DETAILS" ? "active_bvs" : ""
                 }`}
-                onClick={() => {
-                  setTabActive("DETAILS");
-                }}
+                onClick={() => setCurrentTab("DETAILS")}
               >
                 Details
               </button>
             </div>
           </div>
         </div>
-        {Tab}
+        {currentTab === "OVERVIEW" ? <OverView setPopup={setPopup} /> : ""}
+        {currentTab === "MESSAGES" ? <Messages /> : ""}
+        {currentTab === "DETAILS" ? <Details /> : ""}
       </Container>
+      {popup}
     </>
   );
 };

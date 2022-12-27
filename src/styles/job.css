@@ -3843,7 +3843,7 @@
   border: 1px solid rgb(153, 153, 153);
   margin: 20px 10px;
   padding: 20px;
-  border-radius: 20px;
+  border-radius: 4px;
   min-height: 400px;
 }
 .milestone_overview_left .top_btns {
@@ -3903,9 +3903,9 @@
 
 .milestone_overview_right {
   border: 1px solid rgb(153, 153, 153);
-  margin: 20px 10px;
+  margin: 30px 10px;
   padding: 20px;
-  border-radius: 20px;
+  border-radius: 4px;
   /* min-height: 500px; */
 }
 
@@ -4001,12 +4001,16 @@
   color: rgb(130, 130, 130);
 }
 
-/* progress tracking */
+/*Milestone timeline start */
+
+.timeline {
+  position: relative;
+}
 .milestone_timeline {
   margin: 30px 0;
   border: 1px solid rgb(190, 190, 190);
   padding: 40px;
-  border-radius: 30px;
+  border-radius: 4px;
 }
 .milestone_timeline .heading {
   font-size: 20px;
@@ -4020,7 +4024,8 @@
 
   height: 100%;
 }
-.milestone_timeline .progress_steps .about_step {
+.milestone_timeline .about_step {
+  margin-top: 10px;
   width: calc(100% - var(--tracker_point_width));
   margin-left: 20px;
   color: rgb(111, 111, 111);
@@ -4031,8 +4036,21 @@
   color: rgb(253 43 43);
   font-size: 14px;
 }
-.milestone_timeline .progress_steps .about_step p {
+/* .milestone_timeline .about_step p {
   margin-top: 10px;
+} */
+.milestone_timeline .timeline_link {
+  font-size: 14px;
+  color: #6d2ef1;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: underline;
+}
+.milestone_timeline .about_step .p_heading {
+  /* margin-top: 10px; */
+  font-size: 14px;
+  font-weight: 600;
+  color: #000;
 }
 .milestone_timeline .progress_steps .about_step .is_completed_steps > div {
   display: flex;
@@ -4078,6 +4096,7 @@
   display: flex;
   width: var(--tracker_point_width);
   height: var(--tracker_point_height);
+  background-color: #fff;
   justify-content: center;
   align-items: center;
   color: #170048;
@@ -4085,20 +4104,9 @@
   border: 1px solid #d2d2d2;
   margin-top: 10px;
 }
-.milestone_timeline .progress_steps .connecting_line {
-  position: absolute;
-  width: 1px;
-  height: calc(100% - 3px);
-  border: 1px solid rgb(161, 161, 161);
-  top: 34px;
-  left: 11px;
-}
 
 .filled_background {
   background-color: #fffffff4;
-}
-.filled_border {
-  border: 1px solid #6d2ef1 !important;
 }
 
 .milestone_overview_left .file_show {
@@ -4141,6 +4149,8 @@
 .milestone_overview_left .file_show .about_file .file_info .file_size {
   margin-right: 20px;
 }
+
+/*Milestone timeline end */
 
 /* Time Sheet  */
 

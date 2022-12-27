@@ -10,8 +10,7 @@ const Index = () => {
   return (
     <>
       <Layout>
-        {buttonStatus == "see-timesheet" ? <SeeTimesheet /> : ""}
-        {buttonStatus == "see-contract" ? <SeeMilestone /> : ""}
+        {buttonStatus == "see-timesheet" ? <SeeTimesheet /> : <SeeMilestone />}
       </Layout>
     </>
   );
