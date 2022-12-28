@@ -103,6 +103,9 @@ const NavbarHeader = (props) => {
               <Link to="/freelancer/billing-earning">Billings & Earnings</Link>
             </div>
             <div className="navabr_t_li">
+              <Link to="/freelancer/unicoin-history">UniCoins History</Link>
+            </div>
+            <div className="navabr_t_li">
               <Link to="/freelancer/direct-contract">Direct Contracts</Link>
             </div>
             <div className="navabr_t_li">
@@ -380,6 +383,11 @@ const NavbarHeader = (props) => {
                       <div className="navabr_t_li">
                         <Link to="/freelancer/direct-contract">
                           Direct Contracts
+                        </Link>
+                      </div>
+                      <div className="navabr_t_li">
+                        <Link to="/freelancer/unicoin-history">
+                          UniCoins History
                         </Link>
                       </div>
                       <div className="navabr_t_li">

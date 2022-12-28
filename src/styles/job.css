@@ -1051,7 +1051,7 @@
 }
 
 .no_found_cen {
-  display: flex;
+  /* display: flex; */
   flex-wrap: wrap;
   text-align: center;
   justify-content: center;
@@ -3226,7 +3226,8 @@
 
 ._col_right .Add_Address_profile img {
   width: 60px;
-  height: auto;
+  height: 60px;
+  object-fit: cover;
 }
 
 ._col_right .Add_Address_profile p {
@@ -4547,3 +4548,220 @@
   background-color: #6d2ef1;
   overflow-x: auto;
 }
+
+/*  reports overview start */
+.reports_overview .top {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 10px;
+}
+.reports_overview .top .heading {
+  font-weight: 600;
+}
+.reports_overview .top .link {
+  color: #6d2ef1;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.reports_overview .data_container.timesheet_pending .headings {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f9f9f9;
+  padding: 10px;
+  margin: 10px 0;
+  font-weight: 500;
+}
+.reports_overview .data_container.timesheet_pending .headings .job_heading {
+  width: 20%;
+}
+.reports_overview .data_container.timesheet_pending .headings .days_headings {
+  display: flex;
+  justify-content: space-evenly;
+  width: 50%;
+}
+.reports_overview .data_container.timesheet_pending .headings .heading {
+  min-width: 100px;
+  text-align: start;
+}
+.reports_overview .data_container.timesheet_pending .headings .heading .days {
+  display: flex;
+  flex-direction: column;
+  min-width: 40px;
+  align-items: center;
+}
+.reports_overview
+  .data_container.timesheet_pending
+  .headings
+  .heading
+  .days.disabled {
+  opacity: 0.3;
+}
+
+.reports_overview .data_container.timesheet_pending .data_rows {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* background-color: #f9f9f9; */
+  padding: 10px;
+  border-bottom: 1px solid #f0f0f0;
+  font-weight: 500;
+}
+.reports_overview .data_container.timesheet_pending .data_rows .name_row {
+  width: 20%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.reports_overview
+  .data_container.timesheet_pending
+  .data_rows
+  .name_row
+  .image {
+  display: flex;
+  background-color: #6d2ef1;
+  color: #fff;
+  font-weight: 600;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+.reports_overview .data_container.timesheet_pending .data_rows .name_row .name {
+  font-weight: 600;
+  text-align: start;
+}
+.reports_overview
+  .data_container.timesheet_pending
+  .data_rows
+  .name_row
+  .about {
+  font-size: 14px;
+  text-align: start;
+  font-weight: 400;
+}
+.reports_overview .data_container.timesheet_pending .data_rows .days_row {
+  width: 50%;
+  display: flex;
+  justify-content: space-evenly;
+}
+.reports_overview .data_container.timesheet_pending .data_rows .data_row {
+  min-width: 100px;
+  text-align: start;
+}
+.reports_overview .data_container.timesheet_pending .data_rows .data_row .days {
+  display: flex;
+  flex-direction: column;
+  min-width: 40px;
+  align-items: center;
+}
+
+.reports_overview .data_container.timesheet_pending .total_row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 10px;
+  border-bottom: 1px solid #f0f0f0;
+  font-weight: 600;
+}
+.reports_overview .data_container.timesheet_pending .total_row > div {
+  min-width: 100px;
+  text-align: start;
+}
+.reports_overview .data_container.timesheet_pending .total_row .empt_job {
+  width: 20%;
+}
+.reports_overview .data_container.timesheet_pending .total_row .empt_days {
+  width: 50%;
+}
+
+.reports_overview .fixed_pending {
+  margin-top: 40px;
+}
+
+.reports_overview .data_container.fixed_pendin .headings {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f9f9f9;
+  padding: 15px 10px;
+  margin: 10px 0;
+  font-weight: 600;
+}
+.reports_overview .data_container.fixed_pendin .headings .heading {
+  min-width: 100px;
+  text-align: start;
+}
+.reports_overview .data_container.fixed_pendin .headings .heading.job {
+  width: 20%;
+  text-align: start;
+}
+.reports_overview .data_container.fixed_pendin .data_rows {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 10px;
+  margin: 10px 0;
+  font-weight: 500;
+  border-bottom: 1px solid #f0f0f0;
+}
+.reports_overview .data_container.fixed_pendin .data_row {
+  text-align: start;
+  min-width: 100px;
+}
+.reports_overview .data_container.fixed_pendin .data_row.amt {
+  opacity: 0.6;
+  font-weight: 700;
+}
+
+.reports_overview .data_container.fixed_pendin .data_rows .name_row {
+  width: 20%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.reports_overview .data_container.fixed_pendin .data_rows .name_row .image {
+  display: flex;
+  background-color: #6d2ef1;
+  color: #fff;
+  font-weight: 600;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+.reports_overview .data_container.fixed_pendin .data_rows .name_row .name {
+  font-weight: 600;
+  text-align: start;
+}
+.reports_overview .data_container.fixed_pendin .data_rows .name_row .about {
+  font-size: 14px;
+  text-align: start;
+  font-weight: 400;
+}
+.reports_overview .data_container.fixed_pendin .total_row {
+  display: flex;
+  justify-content: flex-end;
+  border-bottom: 1px solid #f0f0f0;
+  padding: 15px 10px;
+}
+.reports_overview .data_container.fixed_pendin .total_row .total {
+  min-width: 100px;
+  font-weight: 600;
+  text-align: start;
+}
+
+.contract_ov_report_note {
+  text-align: start;
+  margin: 10px 10px;
+  margin-top: 20px;
+  color: #6d2ef1;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/*  reports overview end */

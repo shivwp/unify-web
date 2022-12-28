@@ -10277,3 +10277,222 @@ input::-webkit-inner-spin-button {
   height: 40px;
 }
 /* request milestone changes popup end */
+
+/* Unicoin history page start */
+.unicoin_history {
+  border: 1px solid #e2dada;
+  border-radius: 10px;
+  margin: 40px auto;
+}
+.unicoin_history .heading_and_filter {
+  padding: 20px;
+  border-bottom: 1px solid #e2dada;
+}
+
+.unicoin_history .heading_and_filter .heading_and_btn {
+  display: flex;
+  justify-content: space-between;
+}
+.unicoin_history .heading_and_filter .heading_and_btn .heading {
+  font-size: 25px;
+  font-weight: 600;
+}
+.unicoin_history .heading_and_filter .heading_and_btn .btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #6610f2;
+  color: #fff;
+  font-weight: 600;
+  padding: 8px 45px;
+  border-radius: 30px;
+}
+.unicoin_history .heading_and_filter .filter {
+  display: flex;
+  flex-direction: column;
+}
+.unicoin_history .heading_and_filter .filter label {
+  font-size: 14px;
+  font-weight: 600;
+  margin-top: 10px;
+}
+.unicoin_history .heading_and_filter .filter select {
+  border: 1px solid #c6c6c6;
+  color: #8c8989;
+  outline: none;
+  height: 40px;
+  border-radius: 3px;
+  margin: 4px 0;
+}
+
+.unicoin_history .available {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 20px 0;
+  border-bottom: 1px solid #e2dada;
+}
+.unicoin_history .available .numbers {
+  font-size: 50px;
+  font-weight: 700;
+  color: #6610f2;
+}
+.unicoin_history .available .heading {
+  color: #3b3b3b;
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+.unicoin_history .history {
+  margin-top: 10px;
+  padding: 10px 20px;
+}
+.unicoin_history .history .day {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 10px 0;
+}
+.unicoin_history .history .history_row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+}
+.unicoin_history .history .history_row.border_bottom {
+  border-bottom: 1px solid #e0e0e0;
+}
+.unicoin_history .history .history_row .icon {
+  flex: 1;
+  text-align: center;
+}
+.unicoin_history .history .history_row button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50px;
+  background-color: #6610f2;
+  color: #fff;
+  font-size: 30px;
+  border: none;
+}
+
+.unicoin_history .history .history_row .about {
+  flex: 18;
+}
+.unicoin_history .history .history_row .about .heading {
+  font-weight: 600;
+}
+.unicoin_history .history .history_row .about .desc {
+  font-weight: 400;
+  color: #b0b0b0;
+  font-size: 14px;
+}
+.unicoin_history .history .history_row .status {
+  color: #6610f2;
+  font-weight: 600;
+  font-size: 18px;
+  text-align: end;
+  flex: 1;
+}
+/* Unicoin history page end */
+
+/* Buy Unicoins screen start */
+.buy_coins {
+  padding: 30px;
+  border: 1px solid #d5d5d5;
+  border-radius: 10px;
+  margin: 40px 0;
+}
+.buy_coins .heading {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+.buy_coins .your_coins {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0;
+}
+.buy_coins .your_coins .title {
+  font-weight: 600;
+}
+.buy_coins .your_coins .numbers {
+  font-weight: 500;
+  color: #a5a5a5;
+}
+
+.buy_coins .row.buy {
+  margin-top: 30px;
+}
+.buy_coins .row .inps {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.buy_coins .row .inps > button {
+  position: absolute;
+  bottom: 9px;
+  right: 20px;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #6610f2;
+  color: #fff;
+  font-weight: 500;
+  border-radius: 4px;
+  padding: 4px 15px;
+}
+.buy_coins .row .inps select,
+.buy_coins .row .inps input {
+  height: 40px;
+  border: 1px solid #d5d5d5;
+  outline: none;
+  margin: 5px 0;
+  border-radius: 4px;
+  color: #534e4e;
+  padding: 0 10px;
+}
+
+.buy_coins .about_coins {
+  font-size: 14px;
+  line-height: 30px;
+  color: #a7a7a7;
+  margin: 20px 0;
+}
+
+.theme_btns_big {
+  display: flex;
+  padding: 20px 0;
+  flex-wrap: wrap;
+}
+.theme_btns_big .first_button {
+  color: #6d2ef1;
+  background-color: #fff;
+  border: #6d2ef1 solid 1px;
+}
+.theme_btns_big .second_button {
+  color: #fff;
+  background-color: #6610f2;
+  border: #6d2ef1 solid 1px;
+}
+.theme_btns_big button {
+  min-width: 200px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  font-weight: 600;
+  border-radius: 20px !important;
+  padding: 8px 45px;
+  margin-top: 5px;
+  margin-right: 15px;
+  -webkit-border-radius: 60px !important;
+  margin-top: 10px;
+  border: none;
+}
+
+/* Buy Unicoins screen end */

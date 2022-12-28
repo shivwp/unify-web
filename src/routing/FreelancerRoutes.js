@@ -25,6 +25,8 @@ const FreelancerAddWorkDiary = lazy(() =>
   import("../freelancer/Pages/AddWorkDiary")
 );
 const FreelancerOverview = lazy(() => import("../freelancer/Pages/Overview"));
+const UnicoinHistory = lazy(() => import("../freelancer/Pages/UnicoinHistory"));
+const BuyUnicoins = lazy(() => import("../freelancer/Pages/BuyCoins"));
 const FreelancerProgress = lazy(() => import("../freelancer/Pages/Progress"));
 const FreelancerObjective = lazy(() => import("../freelancer/Pages/Objective"));
 const FreelancerReports = lazy(() => import("../freelancer/Pages/MyReports"));
@@ -72,10 +74,10 @@ const FreelancerChat = lazy(() => import("../freelancer/Pages/Chat"));
 const FreelancerDashboard = lazy(() => import("../freelancer/Pages/Dashboard"));
 const UserReports = lazy(() => import("../freelancer/Pages/UserReports"));
 const AgencyDashboard = lazy(() => import("../Agency/Pages/Dashboard"));
-const SeeTimesheet = lazy(() => import("../freelancer/Pages/SeeTimesheet"));
-const SeeMilestone = lazy(() =>
-  import("../freelancer/Pages/MileStone-Earning")
-);
+// const SeeTimesheet = lazy(() => import("../freelancer/Pages/SeeTimesheet"));
+// const SeeMilestone = lazy(() =>
+//   import("../freelancer/Pages/MileStone-Earning")
+// );
 const SingleInvitation = lazy(() =>
   import("../freelancer/Pages/SingleInvitation")
 );
@@ -93,7 +95,6 @@ const SingleOfferDetail = lazy(() =>
   import("../freelancer/Pages/SingleOfferDetail")
 );
 const SingleContract = lazy(() => import("../freelancer/Pages/SingleContract"));
-
 
 const FreelancerRoutes = () => {
   return (
@@ -144,6 +145,14 @@ const FreelancerRoutes = () => {
         <Route
           path="/freelancer/transaction-history"
           element={<FreelancerTransaction />}
+        />
+        <Route
+          path="/freelancer/unicoin-history"
+          element={<UnicoinHistory />}
+        />
+        <Route
+          path="/freelancer/buy-unicoins"
+          element={<BuyUnicoins />}
         />
 
         <Route path="/freelancer/progress" element={<FreelancerProgress />} />

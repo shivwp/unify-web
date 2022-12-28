@@ -2,10 +2,24 @@ import * as React from "react";
 import { useState } from "react";
 import Container from "react-bootstrap/Container";
 import Title from "../../../../components/title";
+import WorkInProgress from "./WorkInProgress";
+import InReview from "./InReviews";
+import Available from "./Available";
+import Pending from "./Pending";
 
 const Screen = () => {
-  const [currentTab, seturrentTab] = useState(1);
+  const [currentTab, seturrentTab] = useState("inProgress");
   Title(" | Overview");
+
+  const ChangeTab = ({ tabName }) => {
+    const tab = {
+      inProgress: <WorkInProgress />,
+      inReview: <InReview />,
+      Available: <Available />,
+      Pending: <Pending />,
+    };
+    return tab[tabName];
+  };
 
   return (
     <>
@@ -17,31 +31,42 @@ const Screen = () => {
             </div>
           </div>
           <div>
-            <div className="transaction_head_n pb-0 d-flex justify-content-around" style={{overflowX: 'auto'}}>
+            <div
+              className="transaction_head_n pb-0 d-flex justify-content-around"
+              style={{ overflowX: "auto" }}
+            >
               <div
-                onClick={() => seturrentTab(1)}
-                className={`box_overv_new ${currentTab == 1 ? "active": ''}`}
+                onClick={() => seturrentTab("inProgress")}
+                className={`box_overv_new ${
+                  currentTab == "inProgress" ? "active" : ""
+                }`}
               >
                 <div className="overv_sm_thead">Work in Progress</div>
                 <div className="overv_number">$0.00</div>
               </div>
               <div
-                onClick={() => seturrentTab(2)}
-                className={`box_overv_new ${currentTab == 2 ? "active":''}`}
+                onClick={() => seturrentTab("inReview")}
+                className={`box_overv_new ${
+                  currentTab == "inReview" ? "active" : ""
+                }`}
               >
                 <div className="overv_sm_thead">In review</div>
                 <div className="overv_number">$0.00</div>
               </div>
               <div
-                onClick={() => seturrentTab(3)}
-                className={`box_overv_new ${currentTab == 3 ? "active":''}`}
+                onClick={() => seturrentTab("Pending")}
+                className={`box_overv_new ${
+                  currentTab == "Pending" ? "active" : ""
+                }`}
               >
                 <div className="overv_sm_thead">Pending</div>
                 <div className="overv_number">$0.00</div>
               </div>
               <div
-                onClick={() => seturrentTab(4)}
-                className={`box_overv_new ${currentTab == 4 ? "active":''}`}
+                onClick={() => seturrentTab("Available")}
+                className={`box_overv_new ${
+                  currentTab == "Available" ? "active" : ""
+                }`}
               >
                 <div className="overv_sm_thead">Available</div>
                 <div className="overv_number">$0.00</div>
@@ -49,15 +74,8 @@ const Screen = () => {
               </div>
             </div>
           </div>
-          <div className="no_found_cen">
-            <div>
-              <div className="no_found_img_cen">
-                <img src="/assets/briefcase.svg" alt="" />
-              </div>
-              <div className="no_foun_head_ce">
-                <h1>You have no work in progress</h1>
-              </div>
-            </div>
+          <div className="no_found_cen reports_overview">
+            <ChangeTab tabName={currentTab} />
           </div>
         </div>
       </Container>
