@@ -240,7 +240,9 @@ const Screen = () => {
       values?.budget_type === "hourly"
     ) {
       formData.append("amount", parseInt(values?.bid_amount));
-      formData.append("date", values?.date);
+      if (values?.date) {
+        formData.append("date", values?.date);
+      }
     }
 
     if (values?.budget_type === "fixed") {

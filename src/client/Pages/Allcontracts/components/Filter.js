@@ -2,7 +2,8 @@ import { Col, Row } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
-const Filter = () => {
+
+const Filter = ({ setShowFilters }) => {
   return (
     <div>
       <Row>
@@ -126,7 +127,13 @@ const Filter = () => {
         </Col>
       </Row>
       <div>
-        <Button  variant="" className="blue_btn_smm">Apply Filters</Button>
+        <Button
+          variant=""
+          className="blue_btn_smm"
+          onClick={() => setShowFilters(false)}
+        >
+          Apply Filters
+        </Button>
       </div>
     </div>
   );

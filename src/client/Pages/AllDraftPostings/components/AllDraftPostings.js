@@ -63,44 +63,43 @@ const AllDraftPostings = () => {
                     : {}
                 }
               >
-                <div>
-                  <div className="my_job_a job_na_bol">{item.name}</div>
-                  <div className="my_job_pos_tme">Saved 25 min ago</div>
-                </div>
-                <div className="text-right d-flex flex-wrap menu_btn">
-                  <button
-                    variant=""
-                    className="toggle_btn_dot"
-                    onClick={() => setMenuBarDraft(item.id)}
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      fill="currentColor"
-                      className="bi bi-three-dots-vertical"
-                      viewBox="0 0 16 16"
+                <div className="my_job_a job_na_bol">{item.name}</div>
+
+                <div className="d-flex align-items-center justify-content-between">
+                  <div className="my_job_pos_tme">Saved {item.created_at}</div>
+                  <div className="text-right d-flex flex-wrap menu_btn">
+                    <button
+                      className="toggle_btn_dot"
+                      onClick={() => setMenuBarDraft(item.id)}
                     >
-                      <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
-                    </svg>
-                  </button>
-                  {menuBarDraft === item.id && (
-                    <div className="menu_bar" id="menu_bar2">
-                      <div className="navabr_t_li">
-                        <Link to={`/edit-draft/${item.id}`}>Edit Draft</Link>
-                      </div>
-                      <div
-                        className="navabr_t_li"
-                        onClick={() => setRemovePosting(true)}
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        fill="currentColor"
+                        className="bi bi-three-dots-vertical"
+                        viewBox="0 0 16 16"
                       >
-                        Remove Draft
+                        <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
+                      </svg>
+                    </button>
+                    {menuBarDraft === item.id && (
+                      <div className="menu_bar" id="menu_bar2">
+                        <div className="navabr_t_li">
+                          <Link to={`/edit-draft/${item.id}`}>Edit Draft</Link>
+                        </div>
+                        <div
+                          className="navabr_t_li navabr_t_lihover"
+                          onClick={() => setRemovePosting(true)}
+                        >
+                          Remove Draft
+                        </div>
+                        <span className="menu_btn_arrow" id="menu_btn_arrow2">
+                          &#62;
+                        </span>
                       </div>
-                      <span className="menu_btn_arrow" id="menu_btn_arrow2">
-                        {" "}
-                        &#62;{" "}
-                      </span>
-                    </div>
-                  )}
+                    )}
+                  </div>
                 </div>
               </div>
             ))}

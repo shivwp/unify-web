@@ -2,25 +2,13 @@ import Container from "react-bootstrap/Container";
 import Title from "../../../../components/title";
 import { useState } from "react";
 import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
-import Filter from "./elements/Filter";
-import Jobs from "./elements/Jobs";
-import { FilterSVG, SearchSVG } from "./icons";
+import Filter from "./Filter";
+import Jobs from "./Jobs";
+import "./allContract.css";
 
 const Screen = () => {
   Title(" | All Contracts");
-
-  const [open, Setopen] = useState(<Jobs />);
-  const [active, SetActive] = useState(0);
-  function ToggleFilter() {
-    if (active === 0) {
-      Setopen(<Filter />);
-      SetActive(1);
-    } else {
-      Setopen(<Jobs />);
-      SetActive(0);
-    }
-  }
+  const [showFilters, setShowFilters] = useState(false);
 
   return (
     <>
@@ -32,7 +20,7 @@ const Screen = () => {
           <div className="search_area_in">
             <Form.Group className="search_input_in search_reel_9_wi mx_eity">
               <div className="search_icon_in">
-                <SearchSVG />
+                <i className="bi bi-search font-size-20px"></i>
               </div>
               <Form.Control
                 type={`text`}
@@ -40,19 +28,17 @@ const Screen = () => {
               />
             </Form.Group>
             <div className="ts_btn attach_f_btn wid_30_in">
-              <Button
-               variant=""
+              <button
                 className="transp_fil_btn"
-                onClick={() => {
-                  ToggleFilter();
-                }}
+                onClick={() => setShowFilters(!showFilters)}
               >
-                <FilterSVG />
+                <i className="bi bi-funnel-fill font-size-20px"></i>
                 Filters
-              </Button>
+              </button>
             </div>
           </div>
-          {open}
+
+          {showFilters ? <Filter setShowFilters={setShowFilters} /> : <Jobs />}
         </div>
       </Container>
     </>

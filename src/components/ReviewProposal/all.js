@@ -61,7 +61,11 @@ const JonComponent = ({ jobId, setLoading }) => {
     };
     setLoading(true);
     dispatch(getAllProposalShortList(data, setLoading));
-  }, [saveProposalInShortList, removeProposalInShortList]);
+  }, [
+    saveProposalInShortList,
+    removeProposalInShortList,
+    saveProposalInArchieved,
+  ]);
 
   useEffect(() => {
     const data = {

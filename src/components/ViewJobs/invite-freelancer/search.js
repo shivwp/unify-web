@@ -115,24 +115,25 @@ const Screen = ({
                         )}
 
                         <div className="ts_btn attach_f_btn wid_30_in d-flex flex-wrap">
-                          <Link to={`/hire-freelancer/${jobId}/${data.id}`}>
-                            <button className="transp_fil_btn mt-2 font-weight-500">
-                              Hire
+                          {data.isSendOffer ? (
+                            <button
+                              className="invitationSentDisabled"
+                              disabled
+                              style={{ marginRight: "10px" }}
+                            >
+                              Offer Sent
                             </button>
-                          </Link>
+                          ) : (
+                            <Link to={`/hire-freelancer/${jobId}/${data.id}`}>
+                              <button className="transp_fil_btn mt-2 font-weight-500">
+                                Hire
+                              </button>
+                            </Link>
+                          )}
+
                           {data.isInvite ? (
                             <button className="invitationSentDisabled" disabled>
                               Invitation sent
-                            </button>
-                          ) : data.isSendProposal ? (
-                            <button
-                              className="mt-2 font-weight-500"
-                              onClick={() => {
-                                setCurrentTab("review-proposal");
-                                navigate(`/view-job/${jobId}/review-proposal`);
-                              }}
-                            >
-                              View Proposal
                             </button>
                           ) : (
                             <button

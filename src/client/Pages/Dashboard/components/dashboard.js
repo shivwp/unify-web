@@ -243,10 +243,14 @@ const Screen = () => {
                 <div
                   key={index}
                   className="my_job_flx"
-                  style={{
-                    borderBottom: "#cbcaca solid 1px",
-                    paddingBottom: "15px",
-                  }}
+                  style={
+                    index != clientDraftPostingList.length - 1
+                      ? {
+                          borderBottom: "#cbcaca solid 1px",
+                          paddingBottom: "15px",
+                        }
+                      : {}
+                  }
                 >
                   <div className="my_job_a job_na_bol">{item.name}</div>
 
@@ -308,21 +312,15 @@ const Screen = () => {
               </div>
             </div>
             <div className="see_ps_ing">
-              <div>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  fill="currentColor"
-                  className="bi bi-chevron-down"
-                  viewBox="0 0 16 16"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"
-                  ></path>
-                </svg>
-              </div>
+              {!openDescription ? (
+                <div>
+                  <i className="bi bi-chevron-down"></i>
+                </div>
+              ) : (
+                <div>
+                  <i className="bi bi-chevron-up"></i>
+                </div>
+              )}
             </div>
           </div>
           {openDescription && (
@@ -394,8 +392,8 @@ const Screen = () => {
             <div>
               <div className="my_job_a job_na_bol">Questions?</div>
               <div className="my_job_pos_tme inner_a_sty">
-                Visit our <Link to="#0">Help Center</Link> to learn more tips
-                for finding the right talent.
+                Visit our <Link to="/help-support">Help Center</Link> to learn
+                more tips for finding the right talent.
               </div>
             </div>
           </div>

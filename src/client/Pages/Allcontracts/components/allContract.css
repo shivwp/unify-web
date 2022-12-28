@@ -1,0 +1,109 @@
+.contract-list-wrapper {
+  padding: 15px;
+  border: 1px solid #e8e7e7;
+  border-radius: 6px;
+  margin-top: 15px;
+}
+
+.contract-listHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.contract-listInfo h6 {
+  font-size: 15px;
+  margin-bottom: 0px;
+}
+.contract-listInfo span {
+  font-size: 12px;
+}
+
+.contract-listButton {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+
+.menu_barContract {
+  position: absolute;
+  top: 0;
+  padding: 5px 15px;
+  left: -140px;
+  width: 250px;
+  background-color: #fff;
+  border: 1px solid #c9c9c9;
+  display: flex;
+  flex-direction: column;
+}
+
+.menu_barContract span {
+  padding: 5px 0px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.contract-listButton .RehireButton {
+  padding: 8px 30px;
+  border: none;
+  background-color: #6d2ef1;
+  border-radius: 5px;
+  color: #fff;
+}
+.contract-listButton .toggle_btn_dot {
+  margin-left: 10px;
+}
+
+.contract-listDetails {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin: 10px 0px;
+}
+
+.contract-listFirst {
+  display: flex;
+  align-items: center;
+  width: 30%;
+}
+
+.contract-listFirst .contract-info {
+  margin-left: 10px;
+}
+.contract-listFirst .contract-info h6 {
+  font-size: 14px;
+  margin-bottom: 2px;
+}
+
+.contract-listMiddle {
+  width: 50%;
+}
+
+.contract-listLast {
+  width: 16%;
+}
+.contract-listMiddle h6 {
+  font-size: 14px;
+  margin-bottom: 3px;
+}
+.contract-listMiddle span,
+.contract-listLast span {
+  font-size: 12px;
+}
+
+.contract-listFirst .contract-info span {
+  font-size: 12px;
+}
+.contract-listFirst .contract-listImage {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+.contract-listFirst .contract-listImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
