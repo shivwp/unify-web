@@ -2,7 +2,6 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { onEditDesignation } from "../../../../redux/actions/profileAction";
 import "./declineInterviewPopup.css";
 import {
   declineReasoneList,

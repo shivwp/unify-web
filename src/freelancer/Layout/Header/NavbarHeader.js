@@ -4,10 +4,11 @@ import Navbar from "react-bootstrap/Navbar";
 import logo from "../../../assets/logo.svg";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { onOnlineStatus } from "../../../redux/actions/authActions";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import LoadingSpinner from "../../../components/LoadingSpinner";
+import { getSingleFreelancer } from "../../../redux/actions/freelancerAction";
 
 const NavbarHeader = (props) => {
   const history = useNavigate();
@@ -16,6 +17,10 @@ const NavbarHeader = (props) => {
   const [loading, setLoading] = useState(false);
   const [activeNav, SetactiveNav] = useState("");
   const [isDownOpen, SetisDownOpen] = useState(false);
+  const onlineStatus = useSelector((state) => state?.auth?.onlineStatus);
+  const singleFreelancer = useSelector(
+    (state) => state.freelancer.singleFreelancer
+  );
   let userDetails = JSON.parse(localStorage.getItem("unify_user"));
 
   function ToggleNav() {
@@ -29,15 +34,16 @@ const NavbarHeader = (props) => {
   function ToggleDown() {
     SetisDownOpen(!isDownOpen);
   }
+  useEffect(() => {
+    setLoading(true);
+    dispatch(getSingleFreelancer(userDetails?.id, setLoading));
+  }, [onlineStatus]);
 
   const handleOnlineStatus = (e) => {
     const data = {
       online_status: e.target.value,
     };
     setLoading(true);
-    userDetails.online_status = e.target.value;
-    localStorage.setItem("unify_user", JSON.stringify(userDetails));
-
     dispatch(onOnlineStatus(data, setLoading));
   };
   const MenuDown = () => {
@@ -105,9 +111,9 @@ const NavbarHeader = (props) => {
             <div className="navabr_t_li">
               <Link to="/freelancer/unicoin-history">UniCoins History</Link>
             </div>
-            <div className="navabr_t_li">
+            {/* <div className="navabr_t_li">
               <Link to="/freelancer/direct-contract">Direct Contracts</Link>
-            </div>
+            </div> */}
             <div className="navabr_t_li">
               <Link to="/freelancer/transaction-history">
                 Transaction History
@@ -201,8 +207,11 @@ const NavbarHeader = (props) => {
               <div className="navv2verso_flxewd">
                 <div className="nav_pro_node">
                   <div className="nav_profile online_profile">
-                    {userDetails?.profile_image ? (
-                      <img src={userDetails?.profile_image} alt="" />
+                    {singleFreelancer?.basic_info?.profile_image ? (
+                      <img
+                        src={singleFreelancer?.basic_info?.profile_image}
+                        alt=""
+                      />
                     ) : (
                       <img
                         src="https://unify.eoxyslive.com/images/profile-image/demo-user.png"
@@ -217,8 +226,11 @@ const NavbarHeader = (props) => {
                     <div className="d-flex justify-content-center">
                       <div className="nav_p_d_profil">
                         <Link to="/freelancer/profile">
-                          {userDetails?.profile_image ? (
-                            <img src={userDetails?.profile_image} alt="" />
+                          {singleFreelancer?.basic_info?.profile_image ? (
+                            <img
+                              src={singleFreelancer?.basic_info?.profile_image}
+                              alt=""
+                            />
                           ) : (
                             <img
                               src="https://unify.eoxyslive.com/images/profile-image/demo-user.png"
@@ -229,13 +241,15 @@ const NavbarHeader = (props) => {
                       </div>
                     </div>
                     <div className="pro_name_drop_u">
-                      {userDetails?.first_name} {userDetails?.last_name}
+                      {singleFreelancer?.basic_info?.first_name}{" "}
+                      {singleFreelancer?.basic_info?.last_name}
                     </div>
                     <div className="pro_o_nme">Freelancer</div>
                     <div className="drop_p_o_i">
                       <button
                         className={
-                          userDetails?.online_status === "online"
+                          singleFreelancer?.basic_info?.online_status ===
+                          "online"
                             ? "active_drop_poi"
                             : ""
                         }
@@ -246,7 +260,8 @@ const NavbarHeader = (props) => {
                       </button>
                       <button
                         className={
-                          userDetails?.online_status === "invisible"
+                          singleFreelancer?.basic_info?.online_status ===
+                          "invisible"
                             ? "active_drop_poi"
                             : ""
                         }
@@ -345,11 +360,11 @@ const NavbarHeader = (props) => {
                           Billings & Earnings
                         </Link>
                       </div>
-                      <div className="navabr_t_li">
+                      {/* <div className="navabr_t_li">
                         <Link to="/freelancer/direct-contract">
                           Direct Contracts
                         </Link>
-                      </div>
+                      </div> */}
                       <div className="navabr_t_li">
                         <Link to="/freelancer/unicoin-history">
                           UniCoins History
@@ -384,8 +399,11 @@ const NavbarHeader = (props) => {
                   <div className="nav_pro_node">
                     <div className="nav_profile">
                       <Link to="/freelancer/profile">
-                        {userDetails?.profile_image ? (
-                          <img src={userDetails?.profile_image} alt="" />
+                        {singleFreelancer?.basic_info?.profile_image ? (
+                          <img
+                            src={singleFreelancer?.basic_info?.profile_image}
+                            alt=""
+                          />
                         ) : (
                           <img
                             src="https://unify.eoxyslive.com/images/profile-image/demo-user.png"
@@ -401,8 +419,13 @@ const NavbarHeader = (props) => {
                       <div className="d-flex justify-content-center">
                         <div className="nav_p_d_profil">
                           <Link to="/freelancer/profile">
-                            {userDetails?.profile_image ? (
-                              <img src={userDetails?.profile_image} alt="" />
+                            {singleFreelancer?.basic_info?.profile_image ? (
+                              <img
+                                src={
+                                  singleFreelancer?.basic_info?.profile_image
+                                }
+                                alt=""
+                              />
                             ) : (
                               <img
                                 src="https://unify.eoxyslive.com/images/profile-image/demo-user.png"
@@ -414,13 +437,17 @@ const NavbarHeader = (props) => {
                       </div>
                       <div className="pro_name_drop_u">
                         {" "}
-                        {userDetails?.first_name} {userDetails?.last_name}
+                        {singleFreelancer?.basic_info?.first_name}{" "}
+                        {singleFreelancer?.basic_info?.last_name}
                       </div>
-                      <div className="pro_o_nme">{userDetails?.user_type}</div>
+                      <div className="pro_o_nme">
+                        {singleFreelancer?.basic_info?.user_type}
+                      </div>
                       <div className="drop_p_o_i">
                         <button
                           className={
-                            userDetails?.online_status === "online"
+                            singleFreelancer?.basic_info?.online_status ===
+                            "online"
                               ? "active_drop_poi"
                               : ""
                           }
@@ -431,7 +458,8 @@ const NavbarHeader = (props) => {
                         </button>
                         <button
                           className={
-                            userDetails?.online_status === "invisible"
+                            singleFreelancer?.basic_info?.online_status ===
+                            "invisible"
                               ? "active_drop_poi"
                               : ""
                           }

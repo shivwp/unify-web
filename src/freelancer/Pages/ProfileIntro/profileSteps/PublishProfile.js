@@ -54,6 +54,18 @@ const PublishProfile = ({ setCurrentTab, profileList, setLoading }) => {
     }
   };
 
+  const afterSuccess = () => {
+    if (setCurrentTab) {
+      setCurrentTab("previewProfile");
+    }
+    if (navigate) {
+      navigate(`/freelancer/profile-intro/previewProfile`);
+    } else {
+      setSuccessPopup(!successPopup);
+    }
+    window.location.reload();
+  };
+
   const onSave = () => {
     let errorExist = false;
     let errorsObject = {};
@@ -138,6 +150,7 @@ const PublishProfile = ({ setCurrentTab, profileList, setLoading }) => {
           false,
           successPopup,
           setSuccessPopup,
+          afterSuccess,
           navigate,
           setCurrentTab,
           setLoading

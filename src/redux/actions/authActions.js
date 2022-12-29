@@ -94,10 +94,6 @@ export const onLogin =
           );
           if (res.data.data.user.user_type === "freelancer") {
             if (res.data.data.user.is_profile_complete === true) {
-              localStorage.setItem(
-                "unify_freelancer",
-                JSON.stringify(res.data.data.freelancer)
-              );
               navigate("/freelancer/dashboard");
             } else {
               navigate("/freelancer/profile-intro/question1");
@@ -308,10 +304,7 @@ export const googleSignInSuccess =
           if (res.data.data.user.user_type === "freelancer") {
             if (res.data.data.user.is_profile_complete === true) {
               navigate("/freelancer/dashboard");
-              localStorage.setItem(
-                "unify_freelancer",
-                JSON.stringify(res.data.data.freelancer)
-              );
+
               setLoading(false);
             } else {
               setLoading(false);
@@ -398,10 +391,6 @@ export const appleSignInSuccess =
           if (res.data.data.user.user_type === "freelancer") {
             if (res.data.data.user.is_profile_complete === true) {
               navigate("/freelancer/dashboard");
-              localStorage.setItem(
-                "unify_freelancer",
-                JSON.stringify(res.data.data.freelancer)
-              );
             } else {
               navigate("/freelancer/profile-intro/question1");
             }

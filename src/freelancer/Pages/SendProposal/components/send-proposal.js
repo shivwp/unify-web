@@ -33,7 +33,9 @@ const Screen = () => {
   const [isByMilestone, setIsByMilestone] = useState("by_milestone");
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
-
+  const singleFreelancer = useSelector(
+    (state) => state.freelancer.singleFreelancer
+  );
   const [inputList, setInputList] = useState([
     { description: "", due_date: "", amount: 0 },
   ]);
@@ -42,8 +44,7 @@ const Screen = () => {
     if (singleJobDetails?.budget_type == "hourly") {
       setValues({
         ...values,
-        bid_amount:
-          JSON.parse(localStorage.getItem("unify_freelancer"))?.amount || 0,
+        bid_amount: singleFreelancer?.basic_info?.amount || 0,
       });
     }
   }, [singleJobDetails]);

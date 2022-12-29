@@ -193,7 +193,7 @@ const Projectdetail = () => {
         {singleJobDetails?.is_proposal_send ? (
           <Alert variant="success" className="mt-4">
             <Alert.Heading>
-              Your proposal is already sent. Please wait for client's response
+              Your proposal is already sent. Please wait for client's response.
             </Alert.Heading>
             <p>Thank you for your time</p>
           </Alert>
@@ -203,7 +203,18 @@ const Projectdetail = () => {
         {singleJobDetails?.is_invited && !singleJobDetails?.is_proposal_send ? (
           <Alert variant="success" className="mt-4">
             <Alert.Heading>
-              You have been invited for this job. Please check your invitations
+              You have been invited for this job. Please check your invitations.
+            </Alert.Heading>
+            <p>Thank you for your time</p>
+          </Alert>
+        ) : (
+          ""
+        )}
+        {singleJobDetails?.isSendOffer &&
+        !singleJobDetails?.is_proposal_send ? (
+          <Alert variant="success" className="mt-4">
+            <Alert.Heading>
+              You have received an offer for this job. Please check your offers.
             </Alert.Heading>
             <p>Thank you for your time</p>
           </Alert>
@@ -255,14 +266,24 @@ const Projectdetail = () => {
                     >
                       See Invitation
                     </Button>
+                  ) : singleJobDetails?.isSendOffer ? (
+                    <Button
+                      variant=""
+                      className="pd_n_sendp send_proposal_btn_job_detail"
+                      onClick={() => {
+                        navigate(`/freelancer/AllProposals`);
+                      }}
+                    >
+                      See Offers
+                    </Button>
                   ) : (
                     <Button
                       variant=""
                       className="pd_n_sendp send_proposal_btn_job_detail"
                       disabled={
-                        singleJobDetails
+                        (singleJobDetails
                           ? singleJobDetails?.is_proposal_send
-                          : true
+                          : true) || singleJobDetails?.isSendOffer
                       }
                       onClick={() => {
                         navigate(`/freelancer/send-proposal/${id}`);

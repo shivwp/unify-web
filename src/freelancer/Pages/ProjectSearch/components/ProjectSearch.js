@@ -265,9 +265,14 @@ const ProjectSearch = ({
                         </svg>
                       </Button>
                       <Link to={`/freelancer/project-detail/${item.id}`}>
-                        <Button variant="" disabled={item.is_proposal_send}>
+                        <Button
+                          variant=""
+                          disabled={item.is_proposal_send || item.isSendOffer}
+                        >
                           {item.is_proposal_send
                             ? "Proposal Sent"
+                            : item.isSendOffer
+                            ? "Offer Recived"
                             : "Send Proposal"}
                         </Button>
                       </Link>

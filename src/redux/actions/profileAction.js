@@ -337,9 +337,8 @@ export const onEditContactInfo =
           type: SET_EDIT_FREELANCER_INFO,
           payload: res.data,
         });
+        window.location.reload();
 
-        userDetails.first_name = data?.first_name;
-        userDetails.last_name = data?.last_name;
         if (setLoading) {
           setLoading(false);
         }
@@ -349,7 +348,6 @@ export const onEditContactInfo =
             message="Details saved successfully"
           />
         );
-        localStorage.setItem("unify_user", JSON.stringify(userDetails));
       })
       .catch((err) => {
         if (setLoading) {
@@ -364,6 +362,7 @@ export const onEditLocationInfo =
     setEditLocation,
     successPopup,
     setSuccessPopup,
+    afterSuccess,
     navigate,
     setCurrentTab,
     setLoading
@@ -378,18 +377,7 @@ export const onEditLocationInfo =
           type: SET_EDIT_FREELANCER_LOCATION,
           payload: res.data,
         });
-        const afterSuccess = () => {
-          userDetails.profile_image = res?.data?.data[0]?.profile_image;
-          localStorage.setItem("unify_user", JSON.stringify(userDetails));
-          if (setCurrentTab) {
-            setCurrentTab("previewProfile");
-          }
-          if (navigate) {
-            navigate(`/freelancer/profile-intro/previewProfile`);
-          } else {
-            setSuccessPopup(!successPopup);
-          }
-        };
+
         if (setLoading) {
           setLoading(false);
         }
@@ -457,8 +445,7 @@ export const onEditDesignation =
         if (setLoading) {
           setLoading(false);
         }
-        userDetails.description = data?.description;
-        localStorage.setItem("unify_freelancer", JSON.stringify(userDetails));
+
         setSuccessPopup(
           <SuccessPopup
             Popup={() => setSuccessPopup(!successPopup)}
@@ -584,9 +571,6 @@ export const onEditHourPerWeek =
         if (setLoading) {
           setLoading(false);
         }
-        userDetails.amount = data?.hours_price;
-        localStorage.setItem("unify_freelancer", JSON.stringify(userDetails));
-
         setSuccessPopup(
           <SuccessPopup
             Popup={() => setSuccessPopup(!successPopup)}
@@ -676,18 +660,15 @@ export const onDeleteCertificate =
   };
 
 export const editNameInfo =
-  (data, successPopup, setSuccessPopup, setLoading) => async (dispatch) => {
+  (data, successPopup, setSuccessPopup, afterSuccess, setLoading) =>
+  async (dispatch) => {
     await Axios.post("/edit-name-info", data, config)
       .then((res) => {
         dispatch({
           type: SET_PROFILE_IMG_CHANGE,
           payload: res.data,
         });
-        const afterSuccess = () => {
-          userDetails.profile_image = res?.data?.data[0]?.profile_image;
-          localStorage.setItem("unify_user", JSON.stringify(userDetails));
-          window?.location?.reload();
-        };
+
         if (setLoading) {
           setLoading(false);
         }

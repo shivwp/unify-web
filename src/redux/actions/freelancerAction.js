@@ -321,20 +321,23 @@ export const removeProposalArchived =
       });
   };
 
-export const getSingleFreelancer = (freelancer_id) => async (dispatch) => {
-  await Axios.get(`/single-freelancer/${freelancer_id}`, config)
-    .then((res) => {
-      if (res.data.status) {
-        dispatch({
-          type: SET_SINGLE_FREELANCER,
-          payload: res.data.data,
-        });
-      }
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-};
+export const getSingleFreelancer =
+  (freelancer_id, setLoading) => async (dispatch) => {
+    await Axios.get(`/single-freelancer/${freelancer_id}`, config)
+      .then((res) => {
+        if (res.data.status) {
+          dispatch({
+            type: SET_SINGLE_FREELANCER,
+            payload: res.data.data,
+          });
+        }
+        setLoading(false);
+      })
+      .catch((err) => {
+        setLoading(false);
+        console.log(err);
+      });
+  };
 
 export const hireFreelancer =
   (data, navigate, errorPopup, setErrorPopup) => async (dispatch) => {

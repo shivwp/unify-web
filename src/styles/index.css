@@ -146,6 +146,7 @@ body {
   padding: 14px 28px !important;
   font: normal normal bold 18px/25px Poppins;
   border-radius: 30px;
+  border: 1px solid #170048;
   -webkit-border-radius: 30px;
   -moz-border-radius: 30px;
   -ms-border-radius: 30px;
@@ -175,6 +176,7 @@ body {
 .active_btn:hover {
   background-color: transparent;
   color: #170048 !important;
+  border: 1px solid #170048;
 }
 
 @media only screen and (max-width: 425px) {
@@ -7754,7 +7756,13 @@ a {
   font-weight: 600;
   background: #fff;
   cursor: pointer;
+  border: 1px solid #fff;
   margin: 10px 0 20px 0;
+}
+.how_it_works .header_left .signup_btn button:hover {
+  border: 1px solid #fff;
+  color: #fff;
+  background: transparent;
 }
 
 .how_it_works .header_img {
@@ -10496,3 +10504,21 @@ input::-webkit-inner-spin-button {
 }
 
 /* Buy Unicoins screen end */
+
+.export_to_csv {
+  cursor: pointer;
+  color: #6610f2;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+@media screen and (min-width: 768px) {
+  .skill_container_profile {
+    padding: 5px 20px;
+  }
+  .portofolio_container_profile {
+    padding: 0 10px;
+  }
+}

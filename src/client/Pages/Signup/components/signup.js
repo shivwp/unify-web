@@ -349,7 +349,7 @@ const Signup = ({
                             options={options1}
                           />
                           <span className="signInError">
-                            {errors.country && <>Please select your country</>}
+                            {errors.country && errors.country}
                           </span>
                         </div>
                       </div>
@@ -420,9 +420,7 @@ const Signup = ({
                           className="signInError signupRespError"
                           style={{ top: "25px", left: "12px" }}
                         >
-                          {errors.agree_terms && (
-                            <>Please Agree Terms and Conditions</>
-                          )}
+                          {errors.agree_terms && errors.agree_terms}
                         </span>
                       </div>
                     </div>

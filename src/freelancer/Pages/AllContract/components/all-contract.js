@@ -15,16 +15,33 @@ import HourlyProjects from "./HourlyProjects";
 import ActiveMilestones from "./ActiveMilestones";
 import AwaitingMilestones from "./AwaitingMilestones";
 import PaymentRequested from "./PaymentRequested";
-
+import LoadingSpinner from "../../../../components/LoadingSpinner";
+import ExportToCsv from "../../../../components/ExportToCsv/ExportToCsv";
 const Screen = () => {
   Title(" | All Contracts");
   const dispatch = useDispatch();
   const [activeTab, setActiveTab] = useState("ALL");
+  const [filters, setFilters] = useState({});
+  const [loading, setLoading] = useState(false);
   const getAllContracts = useSelector((state) => state?.job?.getAllContracts);
 
   useEffect(() => {
-    dispatch(onGetAllContracts());
-  }, []);
+    if (
+      (filters?.sort_for && filters?.sort_by) ||
+      (!filters?.sort_for && !filters?.sort_by)
+    ) {
+      setLoading(true);
+      dispatch(onGetAllContracts(filters, setLoading));
+    }
+  }, [filters]);
+
+  const handleFiltersChange = (e) => {
+    setFilters({
+      ...filters,
+      [e.target.name]: e.target.value,
+    });
+  };
+
   return (
     <>
       <Container>
@@ -62,13 +79,13 @@ const Screen = () => {
                   <Col>
                     <div className="select_inp_in filter_select_m">
                       <Form.Select
+                        name="sort_for"
                         className="custom_css_select"
+                        onChange={(e) => handleFiltersChange(e)}
                         style={{
                           boxShadow: "none",
-                          // minWidth: 205,
                           height: 40,
                           borderRadius: 0,
-                          paddingTop: 2,
                           paddingLeft: 10,
                         }}
                         defaultValue="default"
@@ -86,6 +103,8 @@ const Screen = () => {
                   <Col>
                     <div className="select_inp_in filter_select_m">
                       <Form.Select
+                        name="sort_by"
+                        onChange={(e) => handleFiltersChange(e)}
                         className="custom_css_select"
                         style={{
                           boxShadow: "none",
@@ -107,10 +126,12 @@ const Screen = () => {
                 <div className="sort_by_pa">0 Total</div>
                 <div className="sort_by_pa iclosed_ctract d-flex align-items-center">
                   <Checkbox
+                    name="closed_accounts"
                     icon={<Icon.FiCheck color="#6D2EF1" size={14} />}
-                    name="my-input"
                     borderRadius={0}
-                    checked={true}
+                    onChange={(value) =>
+                      setFilters({ ...filters, closed_accounts: value })
+                    }
                     borderWidth={1}
                     borderColor="#6D2EF1"
                     style={{ cursor: "pointer", backgroundColor: "#fff" }}
@@ -119,7 +140,24 @@ const Screen = () => {
                 </div>
               </div>
               <div className="download_lnk_csx">
-                <a href="#0">
+                <span
+                  className="export_to_csv"
+                  onClick={(e) =>
+                    ExportToCsv(
+                      getAllContracts?.All?.map((item) => {
+                        return {
+                          "Contract ID": item?.project_id,
+                          "Company Name": item?.client?.company_name,
+                          Title: item?.project?.name,
+                          "Start Date": item?.start_time,
+                          "End Date": item?.end_time,
+                          "Hourly Rate": item?.freelancer?.amount,
+                        };
+                      }),
+                      "all-contracts"
+                    )
+                  }
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="16"
@@ -132,7 +170,7 @@ const Screen = () => {
                     <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z" />
                   </svg>
                   Download CSV
-                </a>
+                </span>
               </div>
             </div>
           </div>
@@ -215,6 +253,7 @@ const Screen = () => {
           </> */}
         </div>
       </Container>
+      {loading ? <LoadingSpinner /> : null}
     </>
   );
 };

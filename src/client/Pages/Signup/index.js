@@ -27,7 +27,7 @@ const Signupscreen = () => {
     }
   }, [postJob]);
 
-  const [values, setValues] = useState({});
+  const [values, setValues] = useState({ agree_terms: 0, send_email: 0 });
 
   useEffect(() => {
     if (instantLoginEmail) {
@@ -152,11 +152,15 @@ const Signupscreen = () => {
     }
 
     if (country === undefined || country === null || country === "") {
-      errorsObject.country = true;
+      errorsObject.country = 'Please select your country';
       errorExist = true;
     }
-    if (values?.agree_terms == 0) {
-      errorsObject.agree_terms = true;
+    if (
+      values?.agree_terms == 0 ||
+      values?.agree_terms == false ||
+      !values?.agree_terms
+    ) {
+      errorsObject.agree_terms = "Please Agree Terms and Conditions";
       errorExist = true;
     }
 

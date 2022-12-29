@@ -33,6 +33,9 @@ const EditTitle = ({
     }
   };
 
+  const afterSuccess =()=>{
+    window.location.reload();
+  }
   const onSave = () => {
     setLoading(true);
     let errorExist = false;
@@ -83,7 +86,7 @@ const EditTitle = ({
         Popup,
         successPopup,
         setSuccessPopup,
-        false,
+        afterSuccess,
         setLoading
       )
     );

@@ -16,6 +16,7 @@ import {
   Legend,
 } from "chart.js";
 import { Bar } from "react-chartjs-2";
+import { useSelector } from "react-redux";
 
 const Profile = () => {
   return (
@@ -170,6 +171,9 @@ const Screen = () => {
   const handleChange = (nextChecked) => {
     setChecked(nextChecked);
   };
+  const singleFreelancer = useSelector(
+    (state) => state.freelancer.singleFreelancer
+  );
   const options1 = [
     {
       name: "Month",
@@ -626,10 +630,7 @@ const Screen = () => {
             <div>
               <div className="des_heading_dboard">Description</div>
               <div className="des_para_dboadr">
-                {
-                  JSON.parse(localStorage.getItem("unify_freelancer"))
-                    ?.description
-                }
+                {singleFreelancer?.basic_info?.description}
                 {/* need HIGH-QUALITY work with a FAST TURNAROUND, reach me. 100% . */}
               </div>
             </div>
@@ -742,11 +743,7 @@ const Screen = () => {
                 <Col lg={5} md={12}>
                   <div className="welcome_ax_dboard">
                     Welcome to your Dashboard
-                    {` ${
-                      JSON.parse(localStorage.getItem("unify_user"))?.first_name
-                    } ${
-                      JSON.parse(localStorage.getItem("unify_user"))?.last_name
-                    }`}
+                    {` ${singleFreelancer?.basic_info?.first_name} ${singleFreelancer?.basic_info?.last_name}`}
                   </div>
                   <div className="wdesc_ax_dboard mt-3">
                     Here you'll find all the important information about your

@@ -26,6 +26,7 @@ const HourlyRate = ({ setCurrentTab, profileList, setLoading }) => {
   const afterSuccess = () => {
     setCurrentTab("publishProfile");
     navigate(`/freelancer/profile-intro/publishProfile`);
+    window.location.reload();
   };
 
   const handleChange = (e) => {

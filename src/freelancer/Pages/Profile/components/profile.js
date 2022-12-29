@@ -69,7 +69,7 @@ function PortfolioPaginate({
 
   return (
     <>
-      <div className="d-flex ertr4h6j65esdv align-items-center">
+      <div className="d-flex ertr4h6j65esdv portofolio_container_profile align-items-center">
         {currentItems?.map((item) => (
           <>
             <div className="portfolio">
@@ -296,6 +296,10 @@ const UnifyFreelancer = () => {
     dispatch(onDeleteCertificate({ id }, setConfirmPopup, setLoading));
   };
 
+  const afterSuccess = () => {
+    window?.location?.reload();
+  };
+
   const onProfleImgChange = (e) => {
     setLoading(true);
     const profileImage = e.target.files[0];
@@ -326,7 +330,15 @@ const UnifyFreelancer = () => {
     formData.append("profile_image", profileImage);
     setErrors({ ...errors, profileImage: false });
 
-    dispatch(editNameInfo(formData, successPopup, setSuccessPopup, setLoading));
+    dispatch(
+      editNameInfo(
+        formData,
+        successPopup,
+        setSuccessPopup,
+        afterSuccess,
+        setLoading
+      )
+    );
   };
   const IntroVideoThumb = ({ data }) => {
     let vidId = data?.url?.split("v=")[1]?.substring(0, 11);
@@ -902,8 +914,9 @@ const UnifyFreelancer = () => {
                         }}
                       >
                         <div>
-                          {`${edu?.school}, ${edu?.area_study} 
-                          ${moment(edu.start_year).format("YYYY")} - ${moment(
+                          {`${edu?.school}, ${edu?.area_study} `}
+                          <br />
+                          {`${moment(edu.start_year).format("YYYY")} - ${moment(
                             edu.end_year
                           ).format("YYYY")} ${
                             edu.end_year > new Date().getFullYear()
@@ -1210,7 +1223,7 @@ const UnifyFreelancer = () => {
                   </Button>
                 </div>
               </div>
-              <div className="d-flex justify-content-center flex-column text-center">
+              <div className="d-flex justify-content-center skill_container_profile flex-column text-center">
                 <div className="d-flex flex-wrap">
                   {freelancerProfileList?.skills?.map((skill, key) => (
                     <div className="skill_bxr_gry" key={key}>
@@ -1572,7 +1585,7 @@ const UnifyFreelancer = () => {
                                   )}
                             </div>
                             <div className="ehitory_dtine">
-                              {`${experience.description}`}
+                              {`${experience?.description || ""}`}
                             </div>
 
                             <div className="bpck_sm_txt_a mt-4 mb-0">

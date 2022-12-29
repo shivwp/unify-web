@@ -36,6 +36,11 @@ const HourlyRatePopup = ({
     setErrors({ ...errors, [e.target.name]: false });
   };
 
+  const afterSuccess = () => {
+    window.location.reload();
+    setSuccessPopup(false);
+  };
+
   const onSave = () => {
     setLoading(true);
     let errorExist = false;
@@ -55,7 +60,7 @@ const HourlyRatePopup = ({
         Popup,
         successPopup,
         setSuccessPopup,
-        false,
+        afterSuccess,
         setLoading
       )
     );

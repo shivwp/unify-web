@@ -327,15 +327,24 @@ export const getAllProposals = (setLoading) => async (dispatch) => {
       }
     });
 };
-export const onGetAllContracts = () => async (dispatch) => {
-  await Axios.get("/contracts", config)
+export const onGetAllContracts = (filters, setLoading) => async (dispatch) => {
+  await Axios.get(`/contracts`, {
+    params: {
+      sort_for: filters?.sort_for,
+      sort_by: filters?.sort_by,
+      closed_accounts: filters?.closed_accounts,
+    },
+    ...config,
+  })
     .then((res) => {
       dispatch({
         type: SET_ALL_CONTRACTS,
         payload: res.data.data,
       });
+      setLoading(false);
     })
     .catch((err) => {
+      setLoading(false);
       console.log(err);
     });
 };

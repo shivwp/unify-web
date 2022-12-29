@@ -41,6 +41,7 @@ const WhatDoYouDo = ({ setCurrentTab, profileList, setLoading }) => {
   const afterSuccess = () => {
     setCurrentTab("exprience");
     navigate(`/freelancer/profile-intro/exprience`);
+    window.location.reload();
   };
 
   const onEditProfile = () => {

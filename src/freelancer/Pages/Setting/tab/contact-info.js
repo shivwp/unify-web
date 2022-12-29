@@ -288,6 +288,11 @@ const Screen = () => {
       }
     };
 
+    const afterSuccess = () => {
+      setSuccessPopup(!successPopup);
+      window.location.reload();
+    };
+
     const EditLocationInfo = () => {
       let errorExist = false;
       let errorsObject = {};
@@ -373,6 +378,7 @@ const Screen = () => {
           setEditLocation,
           successPopup,
           setSuccessPopup,
+          afterSuccess,
           false,
           false,
           setLoading

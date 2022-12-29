@@ -41,6 +41,11 @@ const PreviewProfile = ({ setCurrentTab, profileList, setLoading }) => {
     dispatch(onDeleteEmployment({ id }, setConfirmPopup, setLoading));
   };
 
+  const afterSuccess = () => {
+   
+    window?.location?.reload();
+  };
+
   const deleteEdu = (id) => {
     setLoading(true);
     dispatch(onDeleteEducation({ id }, setConfirmPopup, setLoading));
@@ -71,7 +76,7 @@ const PreviewProfile = ({ setCurrentTab, profileList, setLoading }) => {
     formData.append("occcuption", profileList?.basic_info?.occuption);
     formData.append("profile_image", profileImage);
 
-    dispatch(editNameInfo(formData, successPopup, setSuccessPopup, setLoading));
+    dispatch(editNameInfo(formData, successPopup, setSuccessPopup,afterSuccess, setLoading));
   };
 
   return (
