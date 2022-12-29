@@ -5,10 +5,21 @@ import Form from "react-bootstrap/Form";
 import Filter from "./Filter";
 import Jobs from "./Jobs";
 import "./allContract.css";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllClientContractList } from "../../../../redux/actions/freelancerAction";
+import { useEffect } from "react";
 
 const Screen = () => {
   Title(" | All Contracts");
+  const dispatch = useDispatch();
+  const clientContractList = useSelector(
+    (state) => state.freelancer.clientContractList
+  );
   const [showFilters, setShowFilters] = useState(false);
+
+  useEffect(() => {
+    dispatch(getAllClientContractList());
+  }, []);
 
   return (
     <>
@@ -38,7 +49,11 @@ const Screen = () => {
             </div>
           </div>
 
-          {showFilters ? <Filter setShowFilters={setShowFilters} /> : <Jobs />}
+          {showFilters ? (
+            <Filter setShowFilters={setShowFilters} />
+          ) : (
+            <Jobs clientContractList={clientContractList} />
+          )}
         </div>
       </Container>
     </>

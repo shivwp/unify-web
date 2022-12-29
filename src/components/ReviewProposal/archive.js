@@ -8,7 +8,7 @@ const Screen = ({ proposalArchievedlist, handleRemoveProposalArchieved }) => {
         <div className="no_found_cen">
           <div>
             <div className="no_found_img_cen">
-              <img src="/assets/archieved-image.png" alt="" />
+              <img src="/assets/data-not-found.png" alt="" />
             </div>
             <div className="no_foun_head_ce">
               <h2>You have no archived proposals</h2>

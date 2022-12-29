@@ -117,10 +117,16 @@ const ViewScreen = () => {
             />
           )}
           {currentTab === "invite-freelancer" && (
-            <InviteFreelancer jobId={jobId} setCurrentTab={setCurrentTab} setLoading={setLoading} />
+            <InviteFreelancer
+              jobId={jobId}
+              setCurrentTab={setCurrentTab}
+              setLoading={setLoading}
+            />
           )}
-          {currentTab === "review-proposal" && <ReviewProposal jobId={jobId} setLoading={setLoading} />}
-          {currentTab === "hire" && <Hire />}
+          {currentTab === "review-proposal" && (
+            <ReviewProposal jobId={jobId} setLoading={setLoading} />
+          )}
+          {currentTab === "hire" && <Hire jobId={jobId} />}
         </div>
       </Container>
       {loading ? <LoadingSpinner /> : null}

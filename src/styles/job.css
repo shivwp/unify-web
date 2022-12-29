@@ -1659,10 +1659,7 @@
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-}
-.mobile-discover .promo_box_a {
-  margin-right: 18px;
-  margin-bottom: 20px;
+  gap: 20px;
 }
 
 @media (max-width: 768px) {
@@ -3112,9 +3109,9 @@
   position: absolute;
   top: -5px;
   color: #cacaca;
-  font-size: 23px;
+  font-size: 23px !important;
   right: -9px;
-  font-weight: 100;
+  font-weight: 100 !important;
 }
 
 /* Add Company Address */
@@ -4443,7 +4440,7 @@
 }
 
 .timesheetDetails .feedBackSubHead {
-  font: normal normal 450 22px/28px Poppins;
+  font: normal normal 450 18px/28px Poppins;
   padding-top: 25px;
   text-align: center;
 }

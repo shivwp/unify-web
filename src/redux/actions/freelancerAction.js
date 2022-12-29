@@ -21,10 +21,12 @@ import {
   SET_PAYMENT_CARD_LIST,
   SET_DELETE_CARD,
   SET_CLIENT_DETAILS,
-  SET_HIRING_ERROR,
   SET_RECENT_FREELANCER_LIST,
   SET_JOB_DRAFT_FREELANCER_LIST,
   SET_JOB_POST_FREELANCER_LIST,
+  SET_CLIENT_CONTRACTS_LIST,
+  SET_HIRED_FREELANCER_LIST,
+  SET_OFFERED_FREELANCER_LIST,
 } from "../types";
 
 const config = {
@@ -516,6 +518,51 @@ export const getJobPostFreelancerList = () => async (dispatch) => {
       if (res.data.status) {
         dispatch({
           type: SET_JOB_POST_FREELANCER_LIST,
+          payload: res.data,
+        });
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+export const getAllClientContractList = (data) => async (dispatch) => {
+  await Axios.get("/client-contract-list", config)
+    .then((res) => {
+      if (res.data.status) {
+        dispatch({
+          type: SET_CLIENT_CONTRACTS_LIST,
+          payload: res.data.data,
+        });
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+export const getAllHiredFreelancerList = (jobId) => async (dispatch) => {
+  await Axios.get(`/hired-freelancer-list/${jobId}`, config)
+    .then((res) => {
+      if (res.data.status) {
+        dispatch({
+          type: SET_HIRED_FREELANCER_LIST,
+          payload: res.data.data,
+        });
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+export const getAllOfferedFreelancerList = (jobId) => async (dispatch) => {
+  await Axios.get(`/offer-freelancer-list/${jobId}`, config)
+    .then((res) => {
+      if (res.data.status) {
+        dispatch({
+          type: SET_OFFERED_FREELANCER_LIST,
           payload: res.data,
         });
       }

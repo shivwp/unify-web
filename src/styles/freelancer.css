@@ -940,6 +940,7 @@
 
 .me_hed_h2_new h2 {
   font: normal normal 600 26px/30px Poppins !important;
+  margin-bottom: 0;
 }
 
 .me_hed_verif_stus {

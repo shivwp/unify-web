@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Col, Row } from "react-bootstrap";
 import { useState } from "react";
 import $ from "jquery";
+import moment from "moment";
 
 const options = [
   { value: "Start date", label: "Start date" },
@@ -12,7 +13,7 @@ const options = [
 ];
 const optionsne = [{ value: "Descending", label: "Descending" }];
 
-const Jobs = () => {
+const Jobs = ({ clientContractList }) => {
   const [dropdown, setDropdown] = useState(false);
 
   $(document).mouseup(function (e) {
@@ -48,181 +49,99 @@ const Jobs = () => {
         </div>
       </div>
 
-      <div className="contract-list-wrapper">
-        <div className="contract-listHeader">
-          <div className="contract-listInfo">
-            <h6>React Js Urgent Help</h6>
-            <span>Expert web technologies</span>
-          </div>
-          <div className="contract-listButton">
-            <button className="RehireButton">Rehire</button>
-            <button
-              className="toggle_btn_dot"
-              onClick={() => setDropdown(!dropdown)}
-            >
-              <i className="bi bi-three-dots-vertical font-szie-20px"></i>
-            </button>
-            {dropdown && (
-              <div className="menu_barContract" id="menu_barContract">
-                <span>View Milestone & Payments</span>
-                <span>Send A Message</span>
-                <span>View Terms & Settings</span>
-                <Link to={`/freelancer-details/525`}>
-                  <span>View Profile</span>
-                </Link>
-              </div>
-            )}
-          </div>
-        </div>
-        <div className="contract-listDetails">
-          <div className="contract-listFirst">
-            <div className="contract-listImage">
-              <img src="/assets/prof.jfif" alt="" />
+      {clientContractList?.length === 0 ? (
+        <div className="no_found_cen">
+          <div>
+            <div className="no_found_img_cen">
+              <img src="/assets/Group 3148.png" alt="" />
             </div>
-            <div className="contract-info">
-              <h6>Afreen Khan</h6>
-              <span>6.05 PM local time</span>
+            <div className="no_foun_head_ce">
+              <h1>You don't have any contracts yet</h1>
+            </div>
+            <div className="no_foun_para_ce">
+              Your pending and active contracts will be available here when you
+              start hiring talent.
+            </div>
+            <div className="no_foun_para_ce">
+              <Link to="/post-your-job">Post a job</Link> or{" "}
+              <Link to="#0">check out who's applied</Link> to your existing job
+              posts.
             </div>
           </div>
-          <div className="contract-listMiddle">
-            <h6>Completed: No Feedback given</h6>
-            <span>$120.00 Budget</span>
-          </div>
-          <div className="contract-listLast">
-            <span>Nov 22, 2022 - Nov 22, 2022</span>
-          </div>
         </div>
-      </div>
+      ) : (
+        <>
+          {clientContractList?.map((data, key) => (
+            <div className="contract-list-wrapper" key={key}>
+              <div className="contract-listHeader">
+                <div className="contract-listInfo">
+                  <h6>{data.project.name}</h6>
+                  <span>{data.client.company_name}</span>
+                </div>
+                <div className="contract-listButton">
+                  <button className="RehireButton">Rehire</button>
+                  <button
+                    className="toggle_btn_dot"
+                    onClick={() => setDropdown(!dropdown)}
+                  >
+                    <i className="bi bi-three-dots-vertical font-szie-20px"></i>
+                  </button>
+                  {dropdown && (
+                    <div className="menu_barContract" id="menu_barContract">
+                      <span>
+                        <Link to="/single-contracts/overview">
+                          View Milestone & Payments
+                        </Link>
+                      </span>
+                      <span>
+                        <Link to="/single-contracts/messages">
+                          Send A Message
+                        </Link>
+                      </span>
+                      <span>
+                        <Link to="/single-contracts/details">
+                          View Terms & Settings
+                        </Link>
+                      </span>
+                      <span>
+                        <Link to={`/freelancer-details/525`}>View Profile</Link>
+                      </span>
 
-      <div className="contract-list-wrapper">
-        <div className="contract-listHeader">
-          <div className="contract-listInfo">
-            <h6>React Js Urgent Help</h6>
-            <span>Expert web technologies</span>
-          </div>
-          <div className="contract-listButton">
-            <button className="RehireButton">Rehire</button>
-            <button
-              className="toggle_btn_dot"
-              onClick={() => setDropdown(!dropdown)}
-            >
-              <i className="bi bi-three-dots-vertical font-szie-20px"></i>
-            </button>
-            {dropdown && (
-              <div className="menu_barContract" id="menu_barContract">
-                <span>View Milestone & Payments</span>
-                <span>Send A Message</span>
-                <span>View Terms & Settings</span>
-                <span>View Profile</span>
+                      <span className="menu_btn_arrow" id="menu_btn_arrow1">
+                        &#62;
+                      </span>
+                    </div>
+                  )}
+                </div>
               </div>
-            )}
-          </div>
-        </div>
-        <div className="contract-listDetails">
-          <div className="contract-listFirst">
-            <div className="contract-listImage">
-              <img src="/assets/prof.jfif" alt="" />
+              <div className="contract-listDetails">
+                <div className="contract-listFirst">
+                  <div className="contract-listImage">
+                    <img src={data?.freelancer?.profile_image} alt="" />
+                  </div>
+                  <div className="contract-info">
+                    <h6>
+                      {data?.freelancer?.first_name}{" "}
+                      {data?.freelancer?.last_name}
+                    </h6>
+                    <span>{data?.freelancer?.local_time} local time</span>
+                  </div>
+                </div>
+                <div className="contract-listMiddle">
+                  <h6>Completed: No Feedback given</h6>
+                  <span>${parseInt(data.project.price).toFixed(2)} Budget</span>
+                </div>
+                <div className="contract-listLast">
+                  <span>
+                    {moment(data.created_at).format("MMM DD, YYYY")} -{" "}
+                    {data.end_time === "" ? "Present" : data.end_time}
+                  </span>
+                </div>
+              </div>
             </div>
-            <div className="contract-info">
-              <h6>Afreen Khan</h6>
-              <span>6.05 PM local time</span>
-            </div>
-          </div>
-          <div className="contract-listMiddle">
-            <h6>
-              Completed:{" "}
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="10.333"
-                height="10.402"
-                viewBox="0 0 22.333 21.402"
-              >
-                <path
-                  id="star"
-                  d="M22.275,8.583a1.185,1.185,0,0,0-1.021-.815l-6.447-.585L12.259,1.217a1.187,1.187,0,0,0-2.184,0L7.527,7.182l-6.448.585A1.188,1.188,0,0,0,.4,9.845l4.873,4.273L3.841,20.447A1.187,1.187,0,0,0,5.607,21.73l5.559-3.324,5.558,3.324a1.188,1.188,0,0,0,1.767-1.283l-1.437-6.329,4.873-4.273a1.188,1.188,0,0,0,.346-1.262Zm-11,9.759"
-                  transform="translate(0 -0.496)"
-                  fill="#ff88fe"
-                />
-              </svg>{" "}
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="10.333"
-                height="10.402"
-                viewBox="0 0 22.333 21.402"
-              >
-                <path
-                  id="star"
-                  d="M22.275,8.583a1.185,1.185,0,0,0-1.021-.815l-6.447-.585L12.259,1.217a1.187,1.187,0,0,0-2.184,0L7.527,7.182l-6.448.585A1.188,1.188,0,0,0,.4,9.845l4.873,4.273L3.841,20.447A1.187,1.187,0,0,0,5.607,21.73l5.559-3.324,5.558,3.324a1.188,1.188,0,0,0,1.767-1.283l-1.437-6.329,4.873-4.273a1.188,1.188,0,0,0,.346-1.262Zm-11,9.759"
-                  transform="translate(0 -0.496)"
-                  fill="#ff88fe"
-                />
-              </svg>{" "}
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="10.333"
-                height="10.402"
-                viewBox="0 0 22.333 21.402"
-              >
-                <path
-                  id="star"
-                  d="M22.275,8.583a1.185,1.185,0,0,0-1.021-.815l-6.447-.585L12.259,1.217a1.187,1.187,0,0,0-2.184,0L7.527,7.182l-6.448.585A1.188,1.188,0,0,0,.4,9.845l4.873,4.273L3.841,20.447A1.187,1.187,0,0,0,5.607,21.73l5.559-3.324,5.558,3.324a1.188,1.188,0,0,0,1.767-1.283l-1.437-6.329,4.873-4.273a1.188,1.188,0,0,0,.346-1.262Zm-11,9.759"
-                  transform="translate(0 -0.496)"
-                  fill="#ff88fe"
-                />
-              </svg>{" "}
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="10.333"
-                height="10.402"
-                viewBox="0 0 22.333 21.402"
-              >
-                <path
-                  id="star"
-                  d="M22.275,8.583a1.185,1.185,0,0,0-1.021-.815l-6.447-.585L12.259,1.217a1.187,1.187,0,0,0-2.184,0L7.527,7.182l-6.448.585A1.188,1.188,0,0,0,.4,9.845l4.873,4.273L3.841,20.447A1.187,1.187,0,0,0,5.607,21.73l5.559-3.324,5.558,3.324a1.188,1.188,0,0,0,1.767-1.283l-1.437-6.329,4.873-4.273a1.188,1.188,0,0,0,.346-1.262Zm-11,9.759"
-                  transform="translate(0 -0.496)"
-                  fill="#ff88fe"
-                />
-              </svg>{" "}
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="10.333"
-                height="10.402"
-                viewBox="0 0 22.333 21.402"
-              >
-                <path
-                  id="star"
-                  d="M22.275,8.583a1.185,1.185,0,0,0-1.021-.815l-6.447-.585L12.259,1.217a1.187,1.187,0,0,0-2.184,0L7.527,7.182l-6.448.585A1.188,1.188,0,0,0,.4,9.845l4.873,4.273L3.841,20.447A1.187,1.187,0,0,0,5.607,21.73l5.559-3.324,5.558,3.324a1.188,1.188,0,0,0,1.767-1.283l-1.437-6.329,4.873-4.273a1.188,1.188,0,0,0,.346-1.262Zm-11,9.759"
-                  transform="translate(0 -0.496)"
-                  fill="#ff88fe"
-                />
-              </svg>
-            </h6>
-            <span>$120.00 Budget</span>
-          </div>
-          <div className="contract-listLast">
-            <span>Nov 22, 2022 - Nov 22, 2022</span>
-          </div>
-        </div>
-      </div>
-      {/* <div className="no_found_cen">
-        <div>
-          <div className="no_found_img_cen">
-            <img src="/assets/Group 3148.png" alt="" />
-          </div>
-          <div className="no_foun_head_ce">
-            <h1>You don't have any contracts yet</h1>
-          </div>
-          <div className="no_foun_para_ce">
-            Your pending and active contracts will be available here when you
-            start hiring talent.
-          </div>
-          <div className="no_foun_para_ce">
-            <Link to="#0">Post a job</Link> or{" "}
-            <Link to="#0">check out who's applied</Link> to your existing job
-            posts.
-          </div>
-        </div>
-      </div> */}
+          ))}
+        </>
+      )}
     </>
   );
 };

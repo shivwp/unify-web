@@ -119,14 +119,14 @@ const JonComponent = ({ jobId, setCurrentTab, setLoading }) => {
               >
                 Invited freelancers
               </button>
-              <button
+              {/* <button
                 className={`tab_btn_vs text-transform-cap w-auto ${
                   inviteTab === "myHires" ? "active_bvs" : ""
                 }`}
                 onClick={() => setInviteTab("myHires")}
               >
                 My Hires
-              </button>
+              </button> */}
               <button
                 className={`tab_btn_vs text-transform-cap w-auto ${
                   inviteTab === "savedTalent" ? "active_bvs" : ""
@@ -158,7 +158,7 @@ const JonComponent = ({ jobId, setCurrentTab, setLoading }) => {
               jobId={jobId}
             />
           )}
-          {inviteTab === "myHires" && <Hires />}
+          {/* {inviteTab === "myHires" && <Hires />} */}
           {inviteTab === "savedTalent" && (
             <Saved
               getSavedTalentList={getSavedTalentList}

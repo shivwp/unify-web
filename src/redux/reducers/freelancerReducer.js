@@ -18,10 +18,12 @@ import {
   SET_PAYMENT_CARD_LIST,
   SET_DELETE_CARD,
   SET_CLIENT_DETAILS,
-  SET_HIRING_ERROR,
   SET_RECENT_FREELANCER_LIST,
   SET_JOB_DRAFT_FREELANCER_LIST,
   SET_JOB_POST_FREELANCER_LIST,
+  SET_CLIENT_CONTRACTS_LIST,
+  SET_HIRED_FREELANCER_LIST,
+  SET_OFFERED_FREELANCER_LIST,
 } from "../types";
 const initialState = {};
 
@@ -122,11 +124,6 @@ const freelancerReducer = (state = initialState, action) => {
         ...state,
         clientDetails: action.payload,
       };
-    case SET_HIRING_ERROR:
-      return {
-        ...state,
-        hiringError: action.payload,
-      };
     case SET_RECENT_FREELANCER_LIST:
       return {
         ...state,
@@ -141,6 +138,21 @@ const freelancerReducer = (state = initialState, action) => {
       return {
         ...state,
         jobPostFreelancerList: action.payload,
+      };
+    case SET_CLIENT_CONTRACTS_LIST:
+      return {
+        ...state,
+        clientContractList: action.payload,
+      };
+    case SET_HIRED_FREELANCER_LIST:
+      return {
+        ...state,
+        hiredFreelancerList: action.payload,
+      };
+    case SET_OFFERED_FREELANCER_LIST:
+      return {
+        ...state,
+        offeredFreelancerList: action.payload,
       };
     default:
       return state;

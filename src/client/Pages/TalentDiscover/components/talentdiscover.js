@@ -1,7 +1,7 @@
 import Container from "react-bootstrap/Container";
 import Title from "../../../../components/title";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import {
@@ -16,10 +16,12 @@ import LoadingSpinner from "../../../../components/LoadingSpinner";
 const Screen = () => {
   Title(" | Talent Discover");
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [showSkills, setShowSkills] = useState(false);
   const [loading, setLoading] = useState(false);
   const [jobPost, setJobPost] = useState(3);
   const [jobDraftPost, setJobDraftPost] = useState(3);
+  const [freelancerId, setFreelancerId] = useState([]);
   const jobDraftFreelancerList = useSelector(
     (state) => state?.freelancer?.jobDraftFreelancerList?.data
   );
@@ -65,6 +67,17 @@ const Screen = () => {
     dispatch(onRemoveSavedTalent(data, setLoading));
   };
 
+  const handleSingleFreelancer = (id) => {
+    // if (
+    //   freelancerId.find((ele) => {
+    //     return ele.id == id;
+    //   }) == undefined
+    // ) {
+    //   setFreelancerId([...freelancerId, { id }]);
+    // }
+    navigate(`/freelancer-details/${id}`);
+  };
+
   return (
     <>
       <Container>
@@ -106,11 +119,12 @@ const Screen = () => {
                         <img src={data.profile_image} alt="" />
                       </div>
                       <div className="ml-10-n">
-                        <Link to={`/freelancer-details/${data.id}`}>
-                          <div className="propmo_u_name">
-                            {data.first_name} {data.last_name}
-                          </div>
-                        </Link>
+                        <div
+                          className="propmo_u_name"
+                          onClick={() => handleSingleFreelancer(data.id)}
+                        >
+                          {data.first_name} {data.last_name}
+                        </div>
 
                         <div className="promo_exper">{data.occuption}</div>
                         <div className="avai_btn_promo">

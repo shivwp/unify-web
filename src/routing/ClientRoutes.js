@@ -3,6 +3,9 @@ import { Route, Routes } from "react-router-dom";
 import ReusePosting from "../components/ReusePosting";
 import ProtectedRoutes from "./PrivateRoute";
 const Createcategory = lazy(() => import("../client/Pages/Create-Category"));
+const SingleContracts = lazy(() =>
+  import("../client/Pages/SingleContracts/SingleContracts")
+);
 const ProfileDashboard = lazy(() => import("../client/Pages/settingDashboard"));
 const Category = lazy(() => import("../client/Pages/Category"));
 const Question = lazy(() => import("../client/Pages/Question"));
@@ -88,6 +91,10 @@ const ClientRoutes = () => {
         />
         <Route path="/my-jobs" element={<MyJobs />} />
         <Route path="/all-contracts" element={<AllContracts />} />
+        <Route
+          path="/single-contracts/:buttonStatus"
+          element={<SingleContracts />}
+        />
         <Route path="/talent-discover" element={<TalentDiscover />} />
         <Route path="/talent-your-hires" element={<Talentyourhires />} />
         <Route path="/byo-talent" element={<Talentbyo />} />
