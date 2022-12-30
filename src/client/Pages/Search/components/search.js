@@ -1,543 +1,285 @@
 import Container from "react-bootstrap/Container";
 import { Row, Col } from "react-bootstrap";
-import React from "react";
-import $ from "jquery";
+import React, { useEffect, useState } from "react";
 import Title from "../../../../components/title";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-
-function ListCard() {
-  const card = [1, 2, 3, 4, 5, 6];
-  return (
-    <>
-      {card.map((person, index) => (
-        <div className="freelancer_box_in b-gr bg-transparent" key={index}>
-          <Row>
-            <Col lg={12}>
-              <div className="freelancer_box_area_in">
-                <div className="d-flex justify-content-between flex-wrap">
-                  <div className="d-flex flex-wrap">
-                    <div className="freelancer_img_in_r">
-                      <img src="/assets/PRO-2.png" alt="" />
-                    </div>
-                    <div className="freel_det_bin">
-                      <div className="freelancer_ame_in">Mario Speedwagon</div>
-                      <div className="freelancer_exp_in">
-                        Expert in Mobile and Web Development.
-                      </div>
-                      <div className="freelancer_exp_in freelancer_loc_in">
-                        Kharkov, Ukraine
-                      </div>
-                    </div>
-                  </div>
-                  <div className="d-flex align-items-center">
-                    <div>
-                      <Button variant="" className="transp_fil_btn heart_roun_btn btn-hf m-0 round_b_btn">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="16"
-                          height="16"
-                          fill="currentColor"
-                          className="bi bi-heart"
-                          viewBox="0 0 16 16"
-                        >
-                          <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
-                        </svg>
-                      </Button>
-                    </div>
-                    <div className="ts_btn attach_f_btn wid_30_in">
-                      <Button variant="" className="transp_fil_btn blue_btn_smm fw-500">
-                        Invite To Job
-                      </Button>
-                    </div>
-                  </div>
-                </div>
-                <div className="freelancer_timin d-flex">
-                  <div className="amount_hir_in p-0 m-0">
-                    <b>$15.00</b> /hr
-                  </div>
-                  <div className="amount_hir_in p-0">
-                    <b>$25k+</b> earned
-                  </div>
-                </div>
-                <div className="cover_letter_in">
-                  It is a long established fact that a reader will be distracted
-                  by the readable content of a page when looking at its layout.
-                  The point of using Lorem Ipsum is that it has a more-or-less
-                  normal distribution of letters.
-                </div>
-                <div className="r_scroll_w_10">
-                  <div className="slide_btnss freelancer_skill_sc flex_over_scrll">
-                    <Button variant="">Mobile App Design</Button>
-                    <Button variant="">User Experience Design</Button>
-                    <Button variant="">User Interface Design</Button>
-                    <Button variant="">Graphic Design</Button>
-                  </div>
-                </div>
-              </div>
-            </Col>
-          </Row>
-        </div>
-      ))}
-    </>
-  );
-}
+import ListCard from "./ListCard";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  getFreelancerList,
+  onRemoveSavedTalent,
+  onSavedTalent,
+} from "../../../../redux/actions/freelancerAction";
+import LoadingSpinner from "../../../../components/LoadingSpinner";
+import InviteToJobPopup from "../../../../popups/InviteToJobPopup";
 
 const Project_Search = () => {
   Title(" | Search");
-  const hanDleSlide = (e) => {
-    $(e.target.nextSibling).slideToggle();
+  let totalPages = [];
+  const dispatch = useDispatch();
+  const [openCategory, setOpenCategory] = useState(false);
+  const [skillsIdList, setSkillsIdList] = useState([]);
+  const [searchValue, setSearchValue] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [page, setPage] = useState(1);
+  const [inviteJobPopup, setInviteJobPopup] = useState(false);
+  const categoryList = useSelector((state) => state.profile.categoryList);
+  const freelancerIdsList = useSelector(
+    (state) => state.freelancer.freelancerIdsList
+  );
+  const freelancerList = useSelector(
+    (state) => state?.freelancer?.freelancerList?.data
+  );
+  const savedTalent = useSelector((state) => state.freelancer.savedTalent);
+  const removeSavedTalent = useSelector(
+    (state) => state.freelancer.removeSavedTalent
+  );
+  const jobPagination = useSelector(
+    (state) => state?.freelancer?.freelancerList?.meta
+  );
+
+  for (let i = 1; i < jobPagination?.total_page + 1; i++) {
+    totalPages.push(i);
+  }
+
+  useEffect(() => {
+    if (freelancerIdsList) {
+      setSkillsIdList(freelancerIdsList);
+    }
+  }, [freelancerIdsList]);
+
+  useEffect(() => {
+    const data = {
+      skills: skillsIdList?.map((item) => item.id)?.toString(),
+      search: searchValue,
+      page,
+    };
+    setLoading(true);
+    dispatch(getFreelancerList(data, setLoading));
+  }, [skillsIdList, savedTalent, removeSavedTalent, page]);
+
+  const removeSkills = (index) => {
+    let updateSkills = [...skillsIdList];
+    updateSkills.splice(index, 1);
+    setSkillsIdList(updateSkills);
   };
+
+  const handleSubmitData = (e) => {
+    e.preventDefault();
+
+    const data = {
+      search: searchValue,
+      skills: skillsIdList?.map((item) => item.id)?.toString(),
+    };
+
+    setLoading(true);
+    dispatch(getFreelancerList(data, setLoading));
+  };
+
+  const handleSavedTalent = (id) => {
+    const data = {
+      freelancer_id: id,
+    };
+    setLoading(true);
+    dispatch(onSavedTalent(data, setLoading));
+  };
+
+  const handleRemoveSavedTalent = (id) => {
+    const data = {
+      freelancer_id: id,
+    };
+    setLoading(true);
+    dispatch(onRemoveSavedTalent(data, setLoading));
+  };
+
+  const ChangePage = (number) => {
+    setPage(number);
+  };
+
+  console.log(skillsIdList);
+
   return (
-    <React.Fragment>
+    <>
       <Container>
         <Row>
           <Col lg={3}>
             <div className="filter_area">
               <div className="sef_box">
-                <div className="sef_na_ea">
-                  <h3>Search Filters</h3>
-                </div>
-                <div className="sef_p_c">
-                  <p>Clear all</p>
-                </div>
-              </div>
-              <div className="s_slides">
-                <div
-                  className="flex_slide_ta toggle_shutter p-left-none p-right-none"
-                  onClick={(e) => hanDleSlide(e)}
-                >
-                  <div className="sli_ta_name search_tab_sm_a">
-                    Talent Services
+                {skillsIdList?.length === 0 ? (
+                  <>
+                    <div className="sef_na_ea">
+                      <h3>Search Filters</h3>
+                    </div>
+                    <div className="sef_p_c">
+                      <p>Clear all</p>
+                    </div>
+                  </>
+                ) : (
+                  <div class="s_na_box">
+                    <div class="selected_skills_filter_jobs">
+                      {skillsIdList?.map((item, index) => (
+                        <div class="skill" key={index}>
+                          <span>{item.name}</span>
+                          <button
+                            type="button"
+                            class="btn"
+                            onClick={() => removeSkills(index)}
+                          >
+                            X
+                          </button>
+                        </div>
+                      ))}
+                    </div>
                   </div>
-                  <div className="d-flex align-items-center">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      fill="currentColor"
-                      className="bi bi-chevron-down"
-                      viewBox="0 0 16 16"
+                )}
+              </div>
+              {categoryList?.map((data, key) => (
+                <div className="s_slides" key={key}>
+                  {openCategory === data.id ? (
+                    <div
+                      className="flex_slide_ta p-left-none p-right-none"
+                      onClick={() => setOpenCategory()}
                     >
-                      <path
-                        fillRule="evenodd"
-                        d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"
-                      />
-                    </svg>
-                  </div>
-                </div>
-                <div className="slide_btnss slider_shutter">
-                  <div className="s_na_box s_cat_bo p-0 no-border">
-                    <div className="s_na_categ">
-                      <Form.Check type="checkbox" />
-                      <Form.Label>Website Development (10)</Form.Label>
+                      <div className="sli_ta_name search_tab_sm_a">
+                        {data.name}
+                      </div>
+                      <div className="d-flex align-items-center">
+                        <i className="bi bi-chevron-up"></i>
+                      </div>
                     </div>
-                    <div className="s_na_categ">
-                      <Form.Check type="checkbox" />
-                      <Form.Label>writing & Translation (10)</Form.Label>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="s_slides">
-                <div
-                  className="flex_slide_ta toggle_shutter p-left-none p-right-none"
-                  onClick={(e) => hanDleSlide(e)}
-                >
-                  <div className="sli_ta_name search_tab_sm_a">
-                    Talent Quality
-                  </div>
-                  <div className="d-flex align-items-center">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      fill="currentColor"
-                      className="bi bi-chevron-down"
-                      viewBox="0 0 16 16"
+                  ) : (
+                    <div
+                      className="flex_slide_ta p-left-none p-right-none"
+                      onClick={() => setOpenCategory(data.id)}
                     >
-                      <path
-                        fillRule="evenodd"
-                        d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"
-                      />
-                    </svg>
-                  </div>
-                </div>
-                <div className="slide_btnss slider_shutter">
-                  <div className="s_na_box s_cat_bo p-0 no-border">
-                    <div className="s_na_categ">
-                      <Form.Check type="checkbox" />
-                      <Form.Label>Website Development (10)</Form.Label>
+                      <div className="sli_ta_name search_tab_sm_a">
+                        {data.name}
+                      </div>
+                      <div className="d-flex align-items-center">
+                        <i className="bi bi-chevron-down"></i>
+                      </div>
                     </div>
-                    <div className="s_na_categ">
-                      <Form.Check type="checkbox" />
-                      <Form.Label>writing & Translation (10)</Form.Label>
-                    </div>
-                  </div>
+                  )}
+                  {openCategory === data.id && (
+                    <>
+                      {data?.category_skills?.length === 0 ? (
+                        <div className="slide_btnss text-center" key={key}>
+                          <div className="s_na_box s_cat_bo p-0 no-border ">
+                            <small>No skills found</small>
+                          </div>
+                        </div>
+                      ) : (
+                        <>
+                          {data?.category_skills?.map((item, key) => (
+                            <div className="slide_btnss" key={key}>
+                              <div className="s_na_box s_cat_bo p-0 no-border">
+                                <div className="s_na_categ">
+                                  <Form.Check
+                                    type="checkbox"
+                                    id={item.name}
+                                    name="skills"
+                                    checked={
+                                      skillsIdList.find((ele) => {
+                                        return ele.id == item.id;
+                                      }) != undefined
+                                    }
+                                    onChange={(e) => {
+                                      if (
+                                        skillsIdList.find((ele) => {
+                                          return ele.id == item.id;
+                                        }) == undefined
+                                      ) {
+                                        setSkillsIdList([
+                                          ...skillsIdList,
+                                          item,
+                                        ]);
+                                      }
+                                    }}
+                                  />
+                                  <Form.Label htmlFor={item.name}>
+                                    {item.name}
+                                  </Form.Label>
+                                </div>
+                              </div>
+                            </div>
+                          ))}
+                        </>
+                      )}
+                    </>
+                  )}
                 </div>
-              </div>
-              <div className="s_slides">
-                <div
-                  className="flex_slide_ta toggle_shutter p-left-none p-right-none"
-                  onClick={(e) => hanDleSlide(e)}
-                >
-                  <div className="sli_ta_name search_tab_sm_a">Category</div>
-                  <div className="d-flex align-items-center">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      fill="currentColor"
-                      className="bi bi-chevron-down"
-                      viewBox="0 0 16 16"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"
-                      />
-                    </svg>
-                  </div>
-                </div>
-                <div className="slide_btnss slider_shutter">
-                  <div className="s_na_box s_cat_bo p-0 no-border">
-                    <div className="s_na_categ">
-                      <Form.Check type="checkbox" />
-                      <Form.Label>Website Development (10)</Form.Label>
-                    </div>
-                    <div className="s_na_categ">
-                      <Form.Check type="checkbox" />
-                      <Form.Label>writing & Translation (10)</Form.Label>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="s_slides">
-                <div
-                  className="flex_slide_ta toggle_shutter p-left-none p-right-none"
-                  onClick={(e) => hanDleSlide(e)}
-                >
-                  <div className="sli_ta_name search_tab_sm_a">Location</div>
-                  <div className="d-flex align-items-center">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      fill="currentColor"
-                      className="bi bi-chevron-down"
-                      viewBox="0 0 16 16"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"
-                      />
-                    </svg>
-                  </div>
-                </div>
-                <div className="slide_btnss slider_shutter">
-                  <div className="s_na_box s_cat_bo p-0 no-border">
-                    <div className="s_na_categ">
-                      <Form.Check type="checkbox" />
-                      <Form.Label>Website Development (10)</Form.Label>
-                    </div>
-                    <div className="s_na_categ">
-                      <Form.Check type="checkbox" />
-                      <Form.Label>writing & Translation (10)</Form.Label>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="s_slides">
-                <div
-                  className="flex_slide_ta toggle_shutter p-left-none p-right-none"
-                  onClick={(e) => hanDleSlide(e)}
-                >
-                  <div className="sli_ta_name search_tab_sm_a">Talent Type</div>
-                  <div className="d-flex align-items-center">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      fill="currentColor"
-                      className="bi bi-chevron-down"
-                      viewBox="0 0 16 16"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"
-                      />
-                    </svg>
-                  </div>
-                </div>
-                <div className="slide_btnss slider_shutter">
-                  <div className="s_na_box s_cat_bo p-0 no-border">
-                    <div className="s_na_categ">
-                      <Form.Check type="checkbox" />
-                      <Form.Label>Website Development (10)</Form.Label>
-                    </div>
-                    <div className="s_na_categ">
-                      <Form.Check type="checkbox" />
-                      <Form.Label>writing & Translation (10)</Form.Label>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="s_slides">
-                <div
-                  className="flex_slide_ta toggle_shutter p-left-none p-right-none"
-                  onClick={(e) => hanDleSlide(e)}
-                >
-                  <div className="sli_ta_name search_tab_sm_a">Hourly Rate</div>
-                  <div className="d-flex align-items-center">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      fill="currentColor"
-                      className="bi bi-chevron-down"
-                      viewBox="0 0 16 16"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"
-                      />
-                    </svg>
-                  </div>
-                </div>
-                <div className="slide_btnss slider_shutter">
-                  <div className="s_na_box s_cat_bo p-0 no-border">
-                    <div className="s_na_categ">
-                      <Form.Check type="checkbox" />
-                      <Form.Label>Website Development (10)</Form.Label>
-                    </div>
-                    <div className="s_na_categ">
-                      <Form.Check type="checkbox" />
-                      <Form.Label>writing & Translation (10)</Form.Label>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="s_slides">
-                <div
-                  className="flex_slide_ta toggle_shutter p-left-none p-right-none"
-                  onClick={(e) => hanDleSlide(e)}
-                >
-                  <div className="sli_ta_name search_tab_sm_a">Job Success</div>
-                  <div className="d-flex align-items-center">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      fill="currentColor"
-                      className="bi bi-chevron-down"
-                      viewBox="0 0 16 16"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"
-                      />
-                    </svg>
-                  </div>
-                </div>
-                <div className="slide_btnss slider_shutter">
-                  <div className="s_na_box s_cat_bo p-0 no-border">
-                    <div className="s_na_categ">
-                      <Form.Check type="checkbox" />
-                      <Form.Label>Website Development (10)</Form.Label>
-                    </div>
-                    <div className="s_na_categ">
-                      <Form.Check type="checkbox" />
-                      <Form.Label>writing & Translation (10)</Form.Label>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="s_slides">
-                <div
-                  className="flex_slide_ta toggle_shutter p-left-none p-right-none"
-                  onClick={(e) => hanDleSlide(e)}
-                >
-                  <div className="sli_ta_name search_tab_sm_a">
-                    Earned Amount
-                  </div>
-                  <div className="d-flex align-items-center">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      fill="currentColor"
-                      className="bi bi-chevron-down"
-                      viewBox="0 0 16 16"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"
-                      />
-                    </svg>
-                  </div>
-                </div>
-                <div className="slide_btnss slider_shutter">
-                  <div className="s_na_box s_cat_bo p-0 no-border">
-                    <div className="s_na_categ">
-                      <Form.Check type="checkbox" />
-                      <Form.Label>Website Development (10)</Form.Label>
-                    </div>
-                    <div className="s_na_categ">
-                      <Form.Check type="checkbox" />
-                      <Form.Label>writing & Translation (10)</Form.Label>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="s_slides">
-                <div
-                  className="flex_slide_ta toggle_shutter p-left-none p-right-none"
-                  onClick={(e) => hanDleSlide(e)}
-                >
-                  <div className="sli_ta_name search_tab_sm_a">
-                    Hours Billed
-                  </div>
-                  <div className="d-flex align-items-center">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      fill="currentColor"
-                      className="bi bi-chevron-down"
-                      viewBox="0 0 16 16"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"
-                      />
-                    </svg>
-                  </div>
-                </div>
-                <div className="slide_btnss slider_shutter">
-                  <div className="s_na_box s_cat_bo p-0 no-border">
-                    <div className="s_na_categ">
-                      <Form.Check type="checkbox" />
-                      <Form.Label>Website Development (10)</Form.Label>
-                    </div>
-                    <div className="s_na_categ">
-                      <Form.Check type="checkbox" />
-                      <Form.Label>writing & Translation (10)</Form.Label>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="s_slides">
-                <div
-                  className="flex_slide_ta toggle_shutter p-left-none p-right-none"
-                  onClick={(e) => hanDleSlide(e)}
-                >
-                  <div className="sli_ta_name search_tab_sm_a">
-                    English Level
-                  </div>
-                  <div className="d-flex align-items-center">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      fill="currentColor"
-                      className="bi bi-chevron-down"
-                      viewBox="0 0 16 16"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"
-                      />
-                    </svg>
-                  </div>
-                </div>
-                <div className="slide_btnss slider_shutter">
-                  <div className="s_na_box s_cat_bo p-0 no-border">
-                    <div className="s_na_categ">
-                      <Form.Check type="checkbox" />
-                      <Form.Label>Website Development (10)</Form.Label>
-                    </div>
-                    <div className="s_na_categ">
-                      <Form.Check type="checkbox" />
-                      <Form.Label>writing & Translation (10)</Form.Label>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="s_slides">
-                <div
-                  className="flex_slide_ta toggle_shutter p-left-none p-right-none"
-                  onClick={(e) => hanDleSlide(e)}
-                >
-                  <div className="sli_ta_name search_tab_sm_a">
-                    Other Languages
-                  </div>
-                  <div className="d-flex align-items-center">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      fill="currentColor"
-                      className="bi bi-chevron-down"
-                      viewBox="0 0 16 16"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"
-                      />
-                    </svg>
-                  </div>
-                </div>
-                <div className="slide_btnss slider_shutter">
-                  <div className="s_na_box s_cat_bo p-0 no-border">
-                    <div className="s_na_categ">
-                      <Form.Check type="checkbox" />
-                      <Form.Label>Website Development (10)</Form.Label>
-                    </div>
-                    <div className="s_na_categ">
-                      <Form.Check type="checkbox" />
-                      <Form.Label>writing & Translation (10)</Form.Label>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              ))}
             </div>
           </Col>
           <Col lg={9} className="top_main_c_job">
-            <div className="d-flex align-items-center flex-wrap">
-              <div className="search_input_in selec_inp_ful_w">
-                <div className="search_icon_in">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    fill="currentColor"
-                    className="bi bi-search"
-                    viewBox="0 0 16 16"
-                  >
-                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
-                  </svg>
+            <Form onSubmit={handleSubmitData}>
+              <div className="d-flex align-items-center flex-wrap">
+                <div className="search_input_in selec_inp_ful_w">
+                  <div className="search_icon_in">
+                    <i className="bi bi-search"></i>
+                  </div>
+                  <Form.Control
+                    type="text"
+                    placeholder="Search"
+                    value={searchValue}
+                    onChange={(e) => setSearchValue(e.target.value)}
+                  />
+                  {searchValue && (
+                    <i
+                      className="fa fa-remove"
+                      onClick={() => {
+                        setSearchValue("");
+                        dispatch(getFreelancerList());
+                      }}
+                      style={{ cursor: "pointer" }}
+                    ></i>
+                  )}
                 </div>
-                <Form.Control type={`text`} placeholder={`Search`} />
+                <div className="post_job_btn_m in_btn_p_sm">
+                  <button className="fw-500 hovbord-blew">
+                    Advanced Search
+                  </button>
+                </div>
               </div>
-              <div className="post_job_btn_m in_btn_p_sm">
-                <Button variant="" className="fw-500 hovbord-blew">Advanced Search</Button>
+            </Form>
+
+            <ListCard
+              freelancerList={freelancerList}
+              handleRemoveSavedTalent={handleRemoveSavedTalent}
+              handleSavedTalent={handleSavedTalent}
+            />
+          </Col>
+          {jobPagination?.total_page > 1 ? (
+            <Col lg={12}>
+              <div className="pagiantion_node">
+                {totalPages.map((number) => (
+                  <button
+                    key={number}
+                    className={`pagi_butt ${
+                      jobPagination?.current_page == number ? "PageActive" : ""
+                    }`}
+                    onClick={() => ChangePage(number)}
+                  >
+                    {number}
+                  </button>
+                ))}
               </div>
-            </div>
-            {ListCard()}
-          </Col>
-          <Col lg={12}>
-            <div className="pagiantion_node">
-              <Button  variant=""className="pagi_butt">1</Button>
-              <Button variant="" className="pagi_butt">2</Button>
-              <Button variant="" className="pagi_butt">3</Button>
-              <Button variant="" className="pagi_butt">4</Button>
-              <Button variant="" className="pagi_butt">5</Button>
-              <div className="pagination_dots">...</div>
-              <Button variant="" className="pagi_butt">10</Button>
-            </div>
-          </Col>
+            </Col>
+          ) : (
+            ""
+          )}
         </Row>
       </Container>
-    </React.Fragment>
+      {loading ? <LoadingSpinner /> : null}
+
+      {inviteJobPopup && (
+        <InviteToJobPopup
+          open={inviteJobPopup}
+          onCloseModal={() => setInviteJobPopup(false)}
+        />
+      )}
+    </>
   );
 };
 export default Project_Search;

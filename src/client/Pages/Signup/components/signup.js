@@ -399,18 +399,27 @@ const Signup = ({
                             className="tb_mob_f12px"
                           >
                             Yes! I understand and agree to the{" "}
-                            <span onClick={() => setTermsPopup(true)}>
+                            <span
+                              style={{ cursor: "pointer" }}
+                              onClick={() => setTermsPopup(true)}
+                            >
                               <span>UnifyTerms of Service</span>
                             </span>
                             , including the{" "}
                             <span>
-                              <span onClick={() => setUserAgreementPopup(true)}>
+                              <span
+                                style={{ cursor: "pointer" }}
+                                onClick={() => setUserAgreementPopup(true)}
+                              >
                                 User Agreement
                               </span>
                             </span>{" "}
                             and{" "}
                             <span>
-                              <span onClick={() => setPrivacyPopup(true)}>
+                              <span
+                                style={{ cursor: "pointer" }}
+                                onClick={() => setPrivacyPopup(true)}
+                              >
                                 Privacy Policy
                               </span>
                             </span>

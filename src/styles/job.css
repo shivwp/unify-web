@@ -221,7 +221,7 @@
 }
 
 .search_tab_sm_a {
-  font-size: 16px !important;
+  font-size: 14px !important;
   font-weight: 500 !important;
   color: #3b3b3b !important;
 }
@@ -303,7 +303,7 @@
 
 .btn_job_back button {
   background-color: #fff;
-  padding: 12px 25px;
+  padding: 11px 25px;
   color: #6d2ef1;
   margin-left: 5px;
   min-width: 160px;
@@ -895,6 +895,7 @@
   -moz-border-radius: 50px !important;
   -ms-border-radius: 50px !important;
   -o-border-radius: 50px !important;
+  cursor: pointer;
 }
 
 .freelancer_timin {
@@ -1017,7 +1018,11 @@
   font-weight: 400;
   word-break: break-all;
   white-space: pre-line;
-  padding: 10px 0px;
+  margin: 10px 0px;
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
 }
 
 .cover_letter_in b,

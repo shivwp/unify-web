@@ -61,14 +61,11 @@ const Screen = ({
         <div className="no_found_cen">
           <div>
             <div className="no_found_img_cen">
-              <img src="/assets/archieved-image.png" alt="" />
+              <img src="/assets/data-not-found.png" alt="" />
             </div>
             <div className="no_foun_head_ce">
-              <h2>No data found</h2>
+              <h1>Search result not found</h1>
             </div>
-            {/* <div className="no_foun_para_ce">
-              Use the archived feature to add your preferred proposals.
-            </div> */}
           </div>
         </div>
       ) : (

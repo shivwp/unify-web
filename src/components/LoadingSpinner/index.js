@@ -1,7 +1,7 @@
 import React from "react";
 import "./loader.css";
 
-const index = () => {
+const Index = () => {
   return (
     <>
       <div className="loading">
@@ -11,4 +11,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default Index;

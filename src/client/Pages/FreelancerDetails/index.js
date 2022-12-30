@@ -136,7 +136,7 @@ const Screen = () => {
                       Hours per week
                     </div>
                     <div className="myskill_hdingn ms_hdsmall font-size-15px">
-                      {basicInfo?.hours_per_week}
+                      {singleFreelancer?.hours_per_week}
                     </div>
 
                     <div className="myskill_hdingn profile_icon_25px profile_heading_mb">
@@ -301,12 +301,18 @@ const Screen = () => {
               </Col>
               <Col lg={9}>
                 <div className="box-profile-bck mb-0">
-                  <div className="bpbck_txt d-flex mt-0">
+                  <div className="bpbck_txt d-flex justify-content-between align-items-center mt-0">
                     <div
                       className="bpck_head font-weight-500 line-height-30"
                       style={{ wordBreak: "break-word" }}
                     >
                       {basicInfo?.occuption}
+                    </div>
+                    <div
+                      className="bpck_head font-weight-500 line-height-30"
+                      style={{ wordBreak: "break-word" }}
+                    >
+                      ${basicInfo?.amount}/hr
                     </div>
                   </div>
                   <div className="d-flex mt-3">
@@ -425,6 +431,91 @@ const Screen = () => {
                       {singleFreelancer?.skills?.map((skill, key) => (
                         <div className="skill_bxr_gry" key={key}>
                           {skill.skill_name}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+                <div className="box-profile-bck">
+                  <div className="bpbck_txt">
+                    <div className="bpck_head font-weight-600">
+                      Employment history
+                    </div>
+                    {singleFreelancer?.employment?.length == 0 && (
+                      <div className="d-flex justify-content-center align-items-center flex-column pl-20">
+                        <div
+                          style={{
+                            display: "flex",
+                            justifyContent: "center",
+                            alignItems: "center",
+                            width: 80,
+                            height: 80,
+                          }}
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="109.081"
+                            height="96.833"
+                            viewBox="0 0 109.081 96.833"
+                          >
+                            <g id="employee" transform="translate(-8)">
+                              <circle
+                                id="Ellipse_741"
+                                data-name="Ellipse 741"
+                                cx="28.976"
+                                cy="28.976"
+                                r="28.976"
+                                transform="translate(59.128 17.978)"
+                                fill="#6d2ef1"
+                                opacity="0.23"
+                              />
+                              <path
+                                id="Path_4784"
+                                data-name="Path 4784"
+                                d="M8,85.477v19.669a4.544,4.544,0,0,0,4.539,4.539H88.19a4.544,4.544,0,0,0,4.539-4.539V85.477a33.336,33.336,0,0,0-27.069-32.7,24.3,24.3,0,0,1-3.78,2.542A30.3,30.3,0,0,1,89.7,85.477v19.669a1.515,1.515,0,0,1-1.513,1.513H12.539a1.515,1.515,0,0,1-1.513-1.513V85.477A30.3,30.3,0,0,1,38.848,55.323a24.3,24.3,0,0,1-3.78-2.542A33.336,33.336,0,0,0,8,85.476Z"
+                                transform="translate(0 -12.852)"
+                                fill="#25134a"
+                              />
+                              <path
+                                id="Path_4785"
+                                data-name="Path 4785"
+                                d="M78.364,21.182A21.182,21.182,0,1,0,57.182,42.364,21.182,21.182,0,0,0,78.364,21.182ZM57.182,45.39a24.132,24.132,0,0,1-6.511-.9h0L46.6,77.622a1.514,1.514,0,0,0,.725,1.483l9.037,5.409a1.512,1.512,0,0,0,1.549,0l9.119-5.409a1.513,1.513,0,0,0,.73-1.486L63.693,44.494h0a24.133,24.133,0,0,1-6.511.9Z"
+                                transform="translate(-6.818)"
+                                fill="#6d2ef1"
+                              />
+                            </g>
+                          </svg>
+                        </div>
+                        <div className="bpck_sm_txt_a mt-4 ehistory_uxdes">
+                          Eoxys IT | ReactJS Developer`
+                        </div>
+                        <div className="ehitory_dtine">
+                          21-April-2022 To 24-Oct-2022
+                        </div>
+                      </div>
+                    )}
+                    <div className="d-flex justify-content-center flex-column ">
+                      {singleFreelancer?.employment?.map((experience, key) => (
+                        <div key={key}>
+                          <div className="bpck_sm_txt_a mt-4 ehistory_uxdes">
+                            {`${experience.subject || ""} | ${
+                              experience.company
+                            }`}
+                          </div>
+                          <div className="ehitory_dtine">
+                            {moment(experience.start_date).format(
+                              "DD MMM YYYY"
+                            )}{" "}
+                            -{" "}
+                            {experience.currently_working
+                              ? "Currently Working"
+                              : moment(experience.end_date).format(
+                                  "DD MMM YYYY"
+                                )}
+                          </div>
+                          <div className="ehitory_dtine">
+                            {`${experience?.description || ""}`}
+                          </div>
                         </div>
                       ))}
                     </div>

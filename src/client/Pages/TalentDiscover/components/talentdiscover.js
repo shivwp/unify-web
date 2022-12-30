@@ -12,6 +12,7 @@ import {
   onSavedTalent,
 } from "../../../../redux/actions/freelancerAction";
 import LoadingSpinner from "../../../../components/LoadingSpinner";
+import { SET_SELECTED_IDS } from "../../../../redux/types";
 
 const Screen = () => {
   Title(" | Talent Discover");
@@ -21,7 +22,6 @@ const Screen = () => {
   const [loading, setLoading] = useState(false);
   const [jobPost, setJobPost] = useState(3);
   const [jobDraftPost, setJobDraftPost] = useState(3);
-  const [freelancerId, setFreelancerId] = useState([]);
   const jobDraftFreelancerList = useSelector(
     (state) => state?.freelancer?.jobDraftFreelancerList?.data
   );
@@ -268,14 +268,14 @@ const Screen = () => {
                     {data.isSaveTalent === false ? (
                       <div
                         className="heart_btn_promo"
-                        onClick={(e) => handleSavedTalent(data.id)}
+                        onClick={() => handleSavedTalent(data.id)}
                       >
                         <i className="bi bi-heart font-size-20px"></i>
                       </div>
                     ) : (
                       <div
                         className="heart_btn_promo"
-                        onClick={(e) => handleRemoveSavedTalent(data.id)}
+                        onClick={() => handleRemoveSavedTalent(data.id)}
                       >
                         <i className="bi bi-heart-fill font-size-20px"></i>
                       </div>
@@ -304,19 +304,27 @@ const Screen = () => {
 
           {categoryList?.map((data, key) => (
             <div className="s_slides" key={key}>
-              <div
-                className="flex_slide_ta"
-                onClick={() => setShowSkills(data.id)}
-              >
-                <div
-                  className={`sli_ta_name ${
-                    showSkills === data.id && "sli_ta_nameActive"
-                  }`}
-                >
-                  {data.name}
+              {showSkills === data.id ? (
+                <div className="flex_slide_ta" onClick={() => setShowSkills()}>
+                  <div
+                    className={`sli_ta_name ${
+                      showSkills === data.id && "sli_ta_nameActive"
+                    }`}
+                  >
+                    {data.name}
+                  </div>
+                  <i className="bi bi-chevron-up"></i>
                 </div>
-                <i className="bi bi-chevron-down"></i>
-              </div>
+              ) : (
+                <div
+                  className="flex_slide_ta"
+                  onClick={() => setShowSkills(data.id)}
+                >
+                  <div className={`sli_ta_name`}>{data.name}</div>
+                  <i className="bi bi-chevron-down"></i>
+                </div>
+              )}
+
               {showSkills === data.id && (
                 <>
                   {data?.category_skills?.length === 0 ? (
@@ -324,7 +332,18 @@ const Screen = () => {
                   ) : (
                     <div className="slide_btnss">
                       {data?.category_skills?.map((item, key) => (
-                        <button key={key}>{item.name}</button>
+                        <button
+                          key={key}
+                          onClick={() => {
+                            navigate("/search");
+                            dispatch({
+                              type: SET_SELECTED_IDS,
+                              payload: [item],
+                            });
+                          }}
+                        >
+                          {item.name}
+                        </button>
                       ))}
                     </div>
                   )}

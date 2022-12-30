@@ -794,7 +794,7 @@
 }
 
 .bpbck_txt {
-  margin-top: -40px;
+  /* margin-top: -40px; */
   padding-left: 20px;
 }
 
@@ -1882,9 +1882,9 @@
     -o-border-radius: 30px;
   }
 
-  .newnav_v2_wauto {
+  /* .newnav_v2_wauto {
     width: max-content !important;
-  }
+  } */
 
   .navv2verso_flxewd {
     display: flex;

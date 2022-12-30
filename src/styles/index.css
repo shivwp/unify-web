@@ -2807,10 +2807,10 @@ body {
   font-weight: 500;
   font-family: "Poppins";
 }
-
+/* 
 .s_na_box {
   margin: 0px 0px 20px 0px;
-}
+} */
 
 .desc_hin p {
   font-size: 11px;
@@ -2889,7 +2889,7 @@ body {
 
 .s_na_categ {
   display: flex;
-  margin: 10px 0px;
+  margin: 3px 0px;
   align-items: center;
 }
 

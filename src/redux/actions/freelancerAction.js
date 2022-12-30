@@ -27,6 +27,7 @@ import {
   SET_CLIENT_CONTRACTS_LIST,
   SET_HIRED_FREELANCER_LIST,
   SET_OFFERED_FREELANCER_LIST,
+  SET_FREELANCER_LIST,
 } from "../types";
 
 const config = {
@@ -569,5 +570,26 @@ export const getAllOfferedFreelancerList = (jobId) => async (dispatch) => {
     })
     .catch((err) => {
       console.log(err);
+    });
+};
+
+export const getFreelancerList = (data, setLoading) => async (dispatch) => {
+  await Axios.post(`/freelancer-list`, data, config)
+    .then((res) => {
+      if (res.data.status) {
+        dispatch({
+          type: SET_FREELANCER_LIST,
+          payload: res.data,
+        });
+      }
+      if (setLoading) {
+        setLoading(false);
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+      if (setLoading) {
+        setLoading(false);
+      }
     });
 };

@@ -11,7 +11,7 @@ const Screen = ({ proposalArchievedlist, handleRemoveProposalArchieved }) => {
               <img src="/assets/data-not-found.png" alt="" />
             </div>
             <div className="no_foun_head_ce">
-              <h2>You have no archived proposals</h2>
+              <h1>You have no archived proposals</h1>
             </div>
             <div className="no_foun_para_ce">
               Use the archived feature to add your preferred proposals.
