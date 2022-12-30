@@ -2,8 +2,8 @@ import Container from "react-bootstrap/Container";
 import { useState } from "react";
 import OverView from "./OverView";
 import { useParams } from "react-router-dom";
-import Messages from "../../SeeTimesheet/components/Messages";
-import Details from "../../SeeTimesheet/components/Details";
+import Messages from "../../SingleContract/components/Messages";
+import Details from "../../SingleContract/components/Details";
 
 const Screen = () => {
   const { buttonStatus } = useParams();

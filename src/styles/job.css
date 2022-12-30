@@ -4360,6 +4360,7 @@
   font: normal normal 500 14px Poppins;
   color: #6d2ef1;
   line-height: 20px;
+  cursor: pointer;
   margin-bottom: 10px;
 }
 
@@ -4759,6 +4760,77 @@
   color: #6d2ef1;
   font-weight: 600;
   cursor: pointer;
+}
+
+.recent_transection_btn {
+  display: flex;
+  gap: 10px;
+  font-size: 20px;
+  font-weight: 700;
+  margin: 20px 0;
+}
+.recent_transection_btn .payment_schedule {
+  border: 1px solid #6d2ef1;
+  color: #6d2ef1;
+  border-radius: 40px;
+  padding: 12px 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.recent_transection_btn .get_paid_now {
+  border: 1px solid #6d2ef1;
+  color: #fff;
+  background-color: #6d2ef1;
+  border-radius: 40px;
+  padding: 12px 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.get_paid_now {
+  border: 1px solid #dfdddd;
+  margin: 45px 0;
+  padding: 30px;
+  border-radius: 5px;
+}
+.get_paid_now .page_heading {
+  font-size: 24px;
+  font-weight: 600;
+  color: #192326;
+}
+.get_paid_now .avail_bal {
+  font-size: 18px;
+  font-weight: 600;
+  color: #000000;
+  margin: 10px 0;
+}
+.get_paid_now .amt {
+  font-size: 14px;
+  font-weight: 600;
+  color: #6d2ef1;
+}
+.get_paid_now .payment_method {
+  display: flex;
+  flex-direction: column;
+  margin: 20px 0;
+}
+.get_paid_now .payment_method label {
+  color: #4d4d4d;
+}
+.get_paid_now .payment_method select {
+  height: 40px;
+  border: 1px solid #d0d0d0;
+  color: #8f8f8f;
+  padding: 0 10px;
+  margin: 5px 0;
+  outline: none;
+}
+.get_paid_now button {
+  padding: 14px 45px !important;
 }
 
 /*  reports overview end */

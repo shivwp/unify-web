@@ -95,6 +95,15 @@ const SingleOfferDetail = lazy(() =>
   import("../freelancer/Pages/SingleOfferDetail")
 );
 const SingleContract = lazy(() => import("../freelancer/Pages/SingleContract"));
+const ViewOriginalOffer = lazy(() =>
+  import("../freelancer/Pages/SingleContract/components/ViewOriginalOffer")
+);
+const ViewOriginalProposal = lazy(() =>
+  import("../freelancer/Pages/SingleContract/components/ViewOriginalProposal")
+);
+const GetPaidNow = lazy(() =>
+  import("../freelancer/Pages/Overview/components/GetPaidNow/GetPaidNow")
+);
 
 const FreelancerRoutes = () => {
   return (
@@ -150,10 +159,7 @@ const FreelancerRoutes = () => {
           path="/freelancer/unicoin-history"
           element={<UnicoinHistory />}
         />
-        <Route
-          path="/freelancer/buy-unicoins"
-          element={<BuyUnicoins />}
-        />
+        <Route path="/freelancer/buy-unicoins" element={<BuyUnicoins />} />
 
         <Route path="/freelancer/progress" element={<FreelancerProgress />} />
         <Route path="/freelancer/objective" element={<FreelancerObjective />} />
@@ -220,7 +226,10 @@ const FreelancerRoutes = () => {
           element={<SingleOfferDetail />}
         />
         {/* <Route path="/freelancer/see-milestone" element={<SeeMilestone />} /> */}
-        <Route path="/freelancer/:buttonStatus" element={<SingleContract />} />
+        <Route
+          path="/freelancer/single-contract/:buttonStatus"
+          element={<SingleContract />}
+        />
         <Route
           path="/freelancer/profile-intro/:tabName"
           element={<ProfileInto />}
@@ -233,6 +242,15 @@ const FreelancerRoutes = () => {
           path="/freelancer/single-submited-proposal/:id"
           element={<SingleSubmitedProposal />}
         />
+        <Route
+          path="/freelancer/view-original-offer"
+          element={<ViewOriginalOffer />}
+        />
+        <Route
+          path="/freelancer/view-original-proposal"
+          element={<ViewOriginalProposal />}
+        />
+        <Route path="/freelancer/get-paid-now" element={<GetPaidNow />} />
       </Route>
     </Routes>
   );

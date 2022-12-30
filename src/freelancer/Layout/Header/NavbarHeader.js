@@ -23,6 +23,12 @@ const NavbarHeader = (props) => {
   );
   let userDetails = JSON.parse(localStorage.getItem("unify_user"));
 
+  useEffect(() => {
+    if (singleFreelancer?.basic_info?.is_deleted) {
+      localStorage.clear();
+      window.location.reload();
+    }
+  }, [singleFreelancer]);
   function ToggleNav() {
     SetnavOpen(!navOpen);
     if (!navOpen) {

@@ -19,7 +19,9 @@ const index = () => {
         <>
           <TimeSheetPending />
           <FixedPricePending />
-          <div className="contract_ov_report_note">Note : This report is updated every hours.</div>
+          <div className="contract_ov_report_note">
+            Note : This report is updated every hours.
+          </div>
         </>
       )}
     </>

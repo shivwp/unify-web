@@ -10522,3 +10522,161 @@ input::-webkit-inner-spin-button {
     padding: 0 10px;
   }
 }
+
+.p_relative {
+  position: relative;
+}
+
+.choose_file_resubmit_revision {
+  position: absolute;
+  height: 47px;
+  background: #fa61ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 12px;
+  color: #fff;
+  cursor: pointer;
+  right: 0;
+}
+
+.choose_file_icon_resubmit_revision {
+  position: absolute;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  padding: 0 7px;
+}
+
+.choose_file_resubmit_revision_inp {
+  padding: 0 0px 0 0px !important;
+  display: none;
+}
+.choose_file_resubmit_revision_inp_2 {
+  background-color: #fff;
+  cursor: pointer;
+  height: 48px;
+  width: 100%;
+  border: 1px solid #e8e7e7;
+  border-radius: 3px;
+}
+
+.choose_file_icon_resubmit_revision span {
+  color: #431444;
+  padding: 0 8px;
+  font-size: 12px;
+}
+
+/* view original offer start */
+.view_original_offer {
+  margin: 40px auto;
+}
+
+.view_original_offer .top_heading {
+  color: #170048;
+  font-size: 26px;
+  font-weight: 700;
+}
+.view_original_offer .offer_details {
+  border: 1px solid #d4d4d4;
+  padding: 30px;
+  border-radius: 2px;
+}
+.view_original_offer .offer_details .heading {
+  color: #170048;
+  font-size: 20px;
+  font-weight: 600;
+}
+.view_original_offer .offer_details .desc {
+  color: #170048;
+  font-size: 14px;
+  margin: 10px 0;
+  font-weight: 500;
+}
+.view_original_offer .offer_details .project_name {
+  color: #170048;
+  font-size: 24px;
+  font-weight: 700;
+  margin-top: 10px;
+}
+.view_original_offer .offer_details .description {
+  color: #6b6b6b;
+  font-size: 14px;
+  margin-top: 10px;
+  opacity: 0.8;
+}
+.view_original_offer .offer_details .more {
+  font-size: 14px;
+  font-weight: 500;
+  color: #5403ff;
+  cursor: pointer;
+  margin-top: 10px;
+}
+.view_original_offer .offer_details .client {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 25px;
+  padding-top: 25px;
+  border-top: 1px solid #e0e0e0;
+  align-items: center;
+}
+.view_original_offer .offer_details .client .about {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.view_original_offer .offer_details .client .image {
+  display: flex;
+  gap: 15px;
+}
+.view_original_offer .offer_details .client .image .name {
+  color: #1f1f1f;
+  font-size: 18px;
+  font-weight: 600;
+}
+.view_original_offer .offer_details .client .image .about_client {
+  color: #697a7e;
+  font-size: 12px;
+}
+.view_original_offer .offer_details .client .image img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.view_original_offer .offer_details .view_contract_btn {
+  border: 1px solid #6610f2;
+  color: #6610f2;
+  cursor: pointer;
+  padding: 8px 25px;
+  font-weight: 500;
+  border-radius: 40px;
+}
+/* view original offer end */
+
+.submit_work_for_payment_popup .about_work {
+  color: #170048;
+  font-size: 12px;
+  margin-top: 15px;
+}
+.submit_work_for_payment_popup .work_status {
+  color: #6d2ef1;
+  border: 1px solid #6d2ef1;
+  padding: 5px 20px;
+  border-radius: 40px;
+  display: inline-block;
+  cursor: pointer;
+  font-weight: 500;
+  margin: 10px 0;
+}
+.submit_work_for_payment_popup .when_payment {
+  color: #4d4d4d;
+  font-size: 14px;
+  margin: 10px 0;
+  margin-bottom: 20px;
+}
+.submit_work_for_payment_popup .bb_divide {
+  border-bottom: 1px solid #e4d4fe;
+  margin: 10px 0;
+}

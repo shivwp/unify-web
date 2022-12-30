@@ -38,7 +38,7 @@ const Details = () => {
             </p>
           </div>
           <div className="detailsLinkOff"> View original offer </div>
-          <div className="detailsLinkOff"> View original proposal </div>
+          <div className="detailsLinkOff"> View original proposalss </div>
           <div className="detailsLinkOff"> View original job posting </div>
           <div className="col">
             <hr />
@@ -101,7 +101,7 @@ const Details = () => {
                         transform="translate(1.023 0.504)"
                         fill="#ff88fe"
                         stroke="#ff88fe"
-                        stroke-width="2"
+                        strokeWidth="2"
                       ></path>
                     </svg>
                   </div>
@@ -118,7 +118,7 @@ const Details = () => {
                         transform="translate(1.023 0.504)"
                         fill="#ff88fe"
                         stroke="#ff88fe"
-                        stroke-width="2"
+                        strokeWidth="2"
                       ></path>
                     </svg>
                   </div>
@@ -135,7 +135,7 @@ const Details = () => {
                         transform="translate(1.023 0.504)"
                         fill="#ff88fe"
                         stroke="#ff88fe"
-                        stroke-width="2"
+                        strokeWidth="2"
                       ></path>
                     </svg>
                   </div>
@@ -152,7 +152,7 @@ const Details = () => {
                         transform="translate(1.023 0.504)"
                         fill="#ff88fe"
                         stroke="#ff88fe"
-                        stroke-width="2"
+                        strokeWidth="2"
                       ></path>
                     </svg>
                   </div>
@@ -169,7 +169,7 @@ const Details = () => {
                         transform="translate(1.023 0.504)"
                         fill="none"
                         stroke="#ff88fe"
-                        stroke-width="2"
+                        strokeWidth="2"
                       ></path>
                     </svg>
                   </div>

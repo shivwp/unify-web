@@ -47,7 +47,7 @@ const CompanyInformation = () => {
                     transform="translate(1.023 0.504)"
                     fill="#ff88fe"
                     stroke="#ff88fe"
-                    stroke-width="2"
+                    strokeWidth="2"
                   />
                 </svg>
               </div>
@@ -64,7 +64,7 @@ const CompanyInformation = () => {
                     transform="translate(1.023 0.504)"
                     fill="#ff88fe"
                     stroke="#ff88fe"
-                    stroke-width="2"
+                    strokeWidth="2"
                   />
                 </svg>
               </div>
@@ -81,7 +81,7 @@ const CompanyInformation = () => {
                     transform="translate(1.023 0.504)"
                     fill="#ff88fe"
                     stroke="#ff88fe"
-                    stroke-width="2"
+                    strokeWidth="2"
                   />
                 </svg>
               </div>
@@ -98,7 +98,7 @@ const CompanyInformation = () => {
                     transform="translate(1.023 0.504)"
                     fill="#ff88fe"
                     stroke="#ff88fe"
-                    stroke-width="2"
+                    strokeWidth="2"
                   />
                 </svg>
               </div>
@@ -115,7 +115,7 @@ const CompanyInformation = () => {
                     transform="translate(1.023 0.504)"
                     fill="none"
                     stroke="#ff88fe"
-                    stroke-width="2"
+                    strokeWidth="2"
                   />
                 </svg>
               </div>

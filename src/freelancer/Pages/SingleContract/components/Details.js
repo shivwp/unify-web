@@ -1,7 +1,8 @@
 import React from "react";
 import { Col, Row } from "react-bootstrap";
-import CompanyInformation from "./CompanyInformation";
-import FeedBack from "./FeedBack";
+import { Link } from "react-router-dom";
+import CompanyInformation from "../../SeeTimesheet/components/CompanyInformation";
+import FeedBack from "../../SeeTimesheet/components/FeedBack";
 
 const Details = () => {
   return (
@@ -80,9 +81,17 @@ const Details = () => {
                 of type and scrambled it to make a type.
               </p>
             </div>
-            <div className="detailsLinkOff"> View original offer </div>
-            <div className="detailsLinkOff"> View original proposal </div>
-            <div className="detailsLinkOff"> View original job posting </div>
+            <div className="detailsLinkOff">
+              <Link to="/freelancer/view-original-offer">
+                View original offer
+              </Link>{" "}
+            </div>
+            <div className="detailsLinkOff">
+              <Link to="/freelancer/view-original-proposal">
+                {" "}
+                View original proposal
+              </Link>{" "}
+            </div>
             <Col>
               <hr />
             </Col>

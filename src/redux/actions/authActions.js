@@ -361,6 +361,8 @@ export const googleSignInInitiate = (
                 setLoading
               )
             );
+
+            console.log(accessToken);
             if (setLoading) {
               setLoading(false);
             }

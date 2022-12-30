@@ -7,6 +7,8 @@ import { keyframes } from "styled-components";
 import AddMilestonePopup from "../popups/AddMilestonePopup";
 import { useState } from "react";
 import RequestMilestoneChanges from "../popups/RequestMilestoneChanges";
+import ResubmitRevision from "../popups/ResubmitRevision";
+import SubmitWorkForPaymentPopup from "../popups/SubmitWorkForPaymentPopup";
 
 const TimeLine = ({ setPopup }) => {
   const { buttonStatus } = useParams();
@@ -142,7 +144,13 @@ const TimeLine = ({ setPopup }) => {
                       <button>Active & Funded</button>
                     </div>
                     <div className="submit_work_btn">
-                      <button>Resubmit Revision</button>
+                      <button
+                        onClick={() =>
+                          setPopup(<ResubmitRevision popup={setPopup} />)
+                        }
+                      >
+                        Resubmit Revision
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -351,7 +359,13 @@ const TimeLine = ({ setPopup }) => {
                     <button>Active & Funded</button>
                   </div>
                   <div className="submit_work_btn">
-                    <button>Submit Work</button>
+                    <button
+                      onClick={() =>
+                        setPopup(<SubmitWorkForPaymentPopup popup={setPopup} />)
+                      }
+                    >
+                      Submit Work
+                    </button>
                   </div>
                 </div>
               </div>

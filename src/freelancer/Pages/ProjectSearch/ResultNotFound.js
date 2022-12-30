@@ -21,7 +21,7 @@ const ResultNotFound = ({ msg }) => {
                 stroke="#6d2ef1"
                 stroke-linecap="round"
                 stroke-linejoin="round"
-                stroke-width="7"
+                strokeWidth="7"
               />
               <path
                 id="Path_5060"
@@ -32,7 +32,7 @@ const ResultNotFound = ({ msg }) => {
                 stroke="#6d2ef1"
                 stroke-linecap="round"
                 stroke-linejoin="round"
-                stroke-width="7"
+                strokeWidth="7"
               />
               <path
                 id="Path_5061"
@@ -43,7 +43,7 @@ const ResultNotFound = ({ msg }) => {
                 stroke="#6d2ef1"
                 stroke-linecap="round"
                 stroke-linejoin="round"
-                stroke-width="7"
+                strokeWidth="7"
               />
               <line
                 id="Line_505"
@@ -54,7 +54,7 @@ const ResultNotFound = ({ msg }) => {
                 stroke="#6d2ef1"
                 stroke-linecap="round"
                 stroke-linejoin="round"
-                stroke-width="7"
+                strokeWidth="7"
               />
               <line
                 id="Line_506"
@@ -65,7 +65,7 @@ const ResultNotFound = ({ msg }) => {
                 stroke="#6d2ef1"
                 stroke-linecap="round"
                 stroke-linejoin="round"
-                stroke-width="7"
+                strokeWidth="7"
               />
               <path
                 id="Path_5062"
@@ -76,7 +76,7 @@ const ResultNotFound = ({ msg }) => {
                 stroke="#6d2ef1"
                 stroke-linecap="round"
                 stroke-linejoin="round"
-                stroke-width="7"
+                strokeWidth="7"
               />
               <line
                 id="Line_507"
@@ -88,7 +88,7 @@ const ResultNotFound = ({ msg }) => {
                 stroke="#6d2ef1"
                 stroke-linecap="round"
                 stroke-linejoin="round"
-                stroke-width="7"
+                strokeWidth="7"
               />
               <line
                 id="Line_508"
@@ -100,7 +100,7 @@ const ResultNotFound = ({ msg }) => {
                 stroke="#6d2ef1"
                 stroke-linecap="round"
                 stroke-linejoin="round"
-                stroke-width="7"
+                strokeWidth="7"
               />
             </g>
           </svg>
