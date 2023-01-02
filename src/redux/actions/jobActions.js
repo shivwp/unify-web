@@ -1,3 +1,4 @@
+import ErrorPopup from "../../freelancer/components/popups/ErrorPopup";
 import SuccessPopup from "../../freelancer/components/popups/SuccessPopup";
 import Axios from "../axios";
 import {
@@ -154,6 +155,12 @@ export const onSendJobProposal =
         if (setLoading) {
           setLoading(false);
         }
+        setSuccessPopup(
+          <ErrorPopup
+            popup={setSuccessPopup}
+            message={err.response.data.message}
+          />
+        );
       });
   };
 export const onDislikePostReasons = (setLoading) => async (dispatch) => {
@@ -405,6 +412,12 @@ export const onDeclineForInterview =
         if (setLoading) {
           setLoading(false);
         }
+        setSuccessPopup(
+          <ErrorPopup
+            popup={setSuccessPopup}
+            message={err.response.data.message}
+          />
+        );
       });
   };
 export const onWithdrawSubmitedProposal =
@@ -428,6 +441,12 @@ export const onWithdrawSubmitedProposal =
         if (setLoading) {
           setLoading(false);
         }
+        setSuccessPopup(
+          <ErrorPopup
+            popup={setSuccessPopup}
+            message={err.response.data.message}
+          />
+        );
       });
   };
 
@@ -457,6 +476,12 @@ export const onChangeTermsOfProposals =
         if (setLoading) {
           setLoading(false);
         }
+        setSuccessPopup(
+          <ErrorPopup
+            popup={setSuccessPopup}
+            message={err.response.data.message}
+          />
+        );
       });
   };
 
@@ -476,6 +501,12 @@ export const onDeclineOffer =
       })
       .catch((err) => {
         console.log(err);
+        setSuccessPopup(
+          <ErrorPopup
+            popup={setSuccessPopup}
+            message={err.response.data.message}
+          />
+        );
       });
   };
 
@@ -498,6 +529,12 @@ export const onAcceptOffer =
       .catch((err) => {
         if (setLoading) {
           setLoading(false);
+          setSuccessPopup(
+            <ErrorPopup
+              popup={setSuccessPopup}
+              message={err.response.data.message}
+            />
+          );
         }
       });
   };

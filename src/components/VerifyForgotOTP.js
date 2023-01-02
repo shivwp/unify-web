@@ -14,7 +14,8 @@ const VerifyForgotOTP = () => {
   const navigate = useNavigate();
   const [otp, setOtp] = useState("");
   const [errors, setErrors] = useState();
-  const [message, setMessage] = useState("");
+  // const [message, setMessage] = useState("");
+  const [popup, setPopup] = useState(false);
   const [otpSuccess, setOtpSuccess] = useState();
   const [time, setTime] = useState(60);
   const [reOtp, setReOtp] = useState(true);
@@ -40,7 +41,6 @@ const VerifyForgotOTP = () => {
   const onInputChange = (value) => {
     setOtp(value);
     setErrors();
-    setMessage("");
     setOtpSuccess("");
   };
 
@@ -68,7 +68,7 @@ const VerifyForgotOTP = () => {
       otp: otp,
     };
 
-    dispatch(onVerifyForgot(data, navigate, setMessage, setLoading));
+    dispatch(onVerifyForgot(data, navigate, setPopup, setLoading));
   };
 
   const resendOtp = () => {
@@ -175,8 +175,6 @@ const VerifyForgotOTP = () => {
                 <span className="signup-error" style={{ color: "green" }}>
                   {otpSuccess}
                 </span>
-              ) : message ? (
-                <span className="signup-error">{message}</span>
               ) : null}
 
               <div className="otp_submit_btn">
@@ -198,6 +196,7 @@ const VerifyForgotOTP = () => {
         </div>
       </div>
       {loading ? <LoadingSpinner /> : ""}
+      {popup}
     </>
   );
 };

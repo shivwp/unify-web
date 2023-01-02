@@ -15,7 +15,7 @@ const Signupscreen = () => {
   const [userType, setUserType] = useState("freelancer");
   const getCountryList = useSelector((state) => state.auth.getCountryList);
   const postJob = useSelector((state) => state?.auth?.postJob);
-  const [message, setMessage] = useState();
+  const [popup, setPopup] = useState();
   const [loading, setLoading] = useState(true);
   const instantLoginEmail = useSelector(
     (state) => state?.auth?.instantLoginEmail
@@ -56,9 +56,6 @@ const Signupscreen = () => {
       setErrors({ ...errors, [e.target.name]: false });
     }
 
-    if (e.target.name === "email") {
-      setMessage();
-    }
     scrollTo = false;
   };
 
@@ -152,7 +149,7 @@ const Signupscreen = () => {
     }
 
     if (country === undefined || country === null || country === "") {
-      errorsObject.country = 'Please select your country';
+      errorsObject.country = "Please select your country";
       errorExist = true;
     }
     if (
@@ -184,7 +181,7 @@ const Signupscreen = () => {
       send_email: values?.send_email,
     };
 
-    dispatch(onRegister(data, navigate, setMessage, setLoading));
+    dispatch(onRegister(data, navigate, setPopup, setLoading));
   };
 
   const selectUserType = (e) => {
@@ -204,11 +201,11 @@ const Signupscreen = () => {
         errors={errors}
         setCountry={setCountry}
         selectCountry={selectCountry}
-        message={message}
-        setMessage={setMessage}
         setLoading={setLoading}
+        setPopup={setPopup}
       />
       {loading ? <LoadingSpinner /> : null}
+      {popup}
     </>
   );
 };

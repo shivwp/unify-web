@@ -497,59 +497,6 @@
   -webkit-border-radius: 60px !important;
 }
 
-/* Error Popup start */
-
-.error_popup {
-  max-width: 400px !important;
-  min-width: 300px;
-  position: relative;
-  /* top: -15%; */
-}
-
-.error_popup .error_heading {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  top: -15px;
-  color: #6d2ef1;
-  font-weight: 600;
-  margin-top: 30px;
-  flex-direction: column;
-}
-
-.error_popup .error_message {
-  display: flex;
-  justify-content: center;
-  font-weight: 400;
-  color: #000;
-}
-.error_popup .error_message > div {
-  text-align: center;
-}
-.error_popup .errorMessage {
-  color: #6d2ef1;
-}
-.error_popup .error_popup_btn {
-  display: flex;
-  justify-content: center;
-}
-.error_popup .error_popup_btn button {
-  background-color: #6d2ef1;
-  color: #fff;
-  font: normal normal medium 18px/30px Poppins !important;
-  font-weight: bold;
-  border-radius: 60px !important;
-  text-transform: uppercase;
-  padding: 8px 34px;
-  margin-top: 30px;
-  min-width: 129px;
-  margin-right: 15px;
-  border: #6d2ef1 solid 1px;
-  -webkit-border-radius: 60px !important;
-}
-
-/* Error Popup end */
 .hourly_price {
   margin-bottom: 30px;
 }
@@ -576,3 +523,69 @@
   font-weight: 600;
   margin-bottom: 6px;
 }
+
+/* Error Popup start */
+
+.error_popup {
+  position: fixed;
+  z-index: 99999;
+  top: 5px;
+  right: 50%;
+  padding: 15px 8px;
+  transform: translate(50%, 0);
+  min-width: 350px;
+  background-color: #e74c3c;
+  color: #fff;
+  border-radius: 5px;
+  animation-name: error_comes;
+  animation-duration: 500ms;
+  animation-timing-function: ease-in-out;
+}
+.error_popup .error_container {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+.error_popup .message {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  gap: 10px;
+}
+
+.error_popup .close_pp_btn {
+  float: right;
+}
+.error_popup .close_pp_btn svg {
+  fill: #fff !important;
+}
+.error_popup .error_progress {
+  width: 100%;
+  height: 5px;
+  background: #fff;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  animation-name: errorProgress;
+  animation-duration: 5s;
+  animation-timing-function: ease-in-out;
+}
+
+@keyframes errorProgress {
+  0% {
+    width: 100%;
+  }
+  100% {
+    width: 0%;
+  }
+}
+
+@keyframes error_comes {
+  0% {
+    transform: translate(50%, -100%);
+  }
+  100% {
+    transform: translate(50%, 0);
+  }
+}
+/* Error Popup end */

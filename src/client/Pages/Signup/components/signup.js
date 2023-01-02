@@ -24,9 +24,8 @@ const Signup = ({
   // setCountry,
   values,
   errors,
+  setPopup,
   selectCountry,
-  message,
-  setMessage,
   setLoading,
 }) => {
   Title(" | signup");
@@ -43,6 +42,7 @@ const Signup = ({
     label: data.name,
     color: "#000",
   }));
+
   // const customStyles = {
   //   option: (provided, state) => ({
   //     ...provided,
@@ -53,12 +53,12 @@ const Signup = ({
 
   const handleGoogleSignIn = () => {
     setLoading(true);
-    dispatch(googleSignInInitiate(userType, navigate, setMessage, setLoading));
+    dispatch(googleSignInInitiate(userType, navigate, setPopup, setLoading));
     setLoading(false);
   };
   const handleAppleSignIn = () => {
     setLoading(true);
-    dispatch(appleSignInInitiate(userType, navigate, setMessage, setLoading));
+    dispatch(appleSignInInitiate(userType, navigate, setPopup, setLoading));
     setLoading(false);
   };
   return (
@@ -240,7 +240,7 @@ const Signup = ({
                             placeholder="Email"
                           />
                           <span className="signInError">
-                            {errors.email ? errors.email : message && message}
+                            {errors.email ? errors.email : ""}
                           </span>
                         </div>
                       </div>

@@ -17,6 +17,7 @@ import HourlyBid from "./HourlyBid";
 import FixedBid from "./FixedBid";
 import Alert from "react-bootstrap/Alert";
 import LoadingSpinner from "../../../../components/LoadingSpinner";
+import ErrorPopup from "../../../components/popups/ErrorPopup";
 
 const Screen = () => {
   let scrollTo = false;
@@ -109,12 +110,6 @@ const Screen = () => {
         if (!scrollTo) {
           scrollTo = document.getElementById("bid_amount1");
         }
-      } else if (values?.bid_amount.length > 10) {
-        errorsObject.bid_amount = "Amount should not be more then 10 digits";
-        errorExist = true;
-        if (!scrollTo) {
-          scrollTo = document.getElementById("bid_amount1");
-        }
       }
     } else if (singleJobDetails?.budget_type == "fixed") {
       if (
@@ -142,12 +137,6 @@ const Screen = () => {
           }
           errorsObject.bid_amount = "Please enter valid amount";
           errorExist = true;
-        } else if (values?.bid_amount.length > 10) {
-          errorsObject.bid_amount = "Amount should not be more then 10 digits";
-          errorExist = true;
-          if (!scrollTo) {
-            scrollTo = document.getElementById("bid_amount2");
-          }
         }
       }
       if (isByMilestone == "by_milestone") {
@@ -236,8 +225,6 @@ const Screen = () => {
   const handleRadioChange = (e) => {
     setIsByMilestone(e.target.value);
   };
-
-  console.log();
 
   return (
     <>

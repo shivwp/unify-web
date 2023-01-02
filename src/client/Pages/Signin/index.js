@@ -16,27 +16,20 @@ const Signinscreen = () => {
   const [values, setValues] = useState({});
   const dispatch = useDispatch();
   const [userType, setUserType] = useState("freelancer");
-  const [message, setMessage] = useState();
   const [loading, setLoading] = useState(false);
+  const [popup, setPopup] = useState(false);
 
   const onInputChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
     setErrors({ ...errors, [e.target.name]: false });
-
-    if (e.target.name === "email") {
-      setMessage();
-    }
-    if (e.target.name === "password") {
-      setMessage();
-    }
   };
 
   const handleGoogleSignIn = () => {
-    dispatch(googleSignInInitiate(userType, navigate, setMessage, setLoading));
+    dispatch(googleSignInInitiate(userType, navigate, setPopup, setLoading));
     setLoading(false);
   };
   const handleAppleSignIn = () => {
-    dispatch(appleSignInInitiate(userType, navigate, setMessage, setLoading));
+    dispatch(appleSignInInitiate(userType, navigate, setPopup, setLoading));
     setLoading(false);
   };
 
@@ -83,7 +76,7 @@ const Signinscreen = () => {
       user_type: userType,
     };
 
-    dispatch(onLogin(data, navigate, setMessage, setLoading));
+    dispatch(onLogin(data, navigate, setPopup, setLoading));
   };
 
   const selectUserType = (e) => {
@@ -100,11 +93,11 @@ const Signinscreen = () => {
         setUserType={setUserType}
         userType={userType}
         selectUserType={selectUserType}
-        message={message}
         handleAppleSignIn={handleAppleSignIn}
         handleGoogleSignIn={handleGoogleSignIn}
       />
       {loading ? <LoadingSpinner /> : null}
+      {popup}
     </>
   );
 };

@@ -13,7 +13,7 @@ const VerifySignUp = () => {
   const dispatch = useDispatch();
   const [otp, setOtp] = useState("");
   const [errors, setErrors] = useState();
-  const [message, setMessage] = useState("");
+  const [popup, setPopup] = useState(false);
   const [otpSuccess, setOtpSuccess] = useState();
   const [time, setTime] = useState(60);
   const [reOtp, setReOtp] = useState(true);
@@ -37,7 +37,6 @@ const VerifySignUp = () => {
   const onInputChange = (value) => {
     setOtp(value);
     setErrors();
-    setMessage("");
     setOtpSuccess("");
   };
 
@@ -64,7 +63,7 @@ const VerifySignUp = () => {
       email: localStorage.getItem("unify_email"),
       otp: otp,
     };
-    dispatch(onVerifySignup(data, navigate, setMessage, setLoading));
+    dispatch(onVerifySignup(data, navigate, setPopup, setLoading));
     setOtpSuccess("");
   };
 
@@ -173,8 +172,6 @@ const VerifySignUp = () => {
                 <span className="signup-error" style={{ color: "green" }}>
                   {otpSuccess}
                 </span>
-              ) : message ? (
-                <span className="signup-error">{message}</span>
               ) : null}
               <div className="otp_submit_btn">
                 <Button variant="" onClick={submitVerifyOTP}>
@@ -194,6 +191,7 @@ const VerifySignUp = () => {
           </div>
         </div>
       </div>
+      {popup}
       {loading ? <LoadingSpinner /> : null}
     </>
   );

@@ -692,17 +692,17 @@
 }
 
 .talent_dropdown_cs .dropdown-menu {
-  left: -40% !important;
+  right: 0px !important;
 }
 
 @media screen and (max-width: 1024px) {
   .talent_dropdown_cs .dropdown-menu {
-    left: -75% !important;
+    right: 0px !important;
   }
 }
 @media screen and (max-width: 768px) {
   .talent_dropdown_cs .dropdown-menu {
-    left: -105% !important;
+    right: 0px !important;
   }
 }
 
@@ -738,6 +738,7 @@
   -ms-transform: rotate(270deg);
   -o-transform: rotate(270deg);
 }
+
 .browseJobs_dropdown_cs .dropdown-menu::before {
   content: "\25BA";
   color: #fff;
@@ -758,7 +759,7 @@
 }
 
 .browseJobs_dropdown_cs .dropdown-menu {
-  left: -160% !important;
+  right: -160% !important;
 }
 
 .search_input_in input {
@@ -2676,21 +2677,29 @@
 }
 
 .report_left_caewe .dropdown-menu {
-  left: -51px !important;
+  right: 0px !important;
 }
 
 @media screen and (max-width: 425px) {
   .report_left_caewe .dropdown-menu {
-    left: 125px !important;
+    right: 0px !important;
   }
 }
 
 @media screen and (max-width: 320px) {
   .report_left_caewe .dropdown-menu {
-    left: 50px !important;
+    right: 0px !important;
   }
 }
 
+.dropdown-menu[data-bs-popper] {
+  left: unset !important;
+  right: 0px;
+}
+
+.navbar_btn .dropdown-menu {
+  min-width: 200px;
+}
 /* .sign_upbtn_heffect button:hover{
     background-color:#6D2EF1;
     color:#FFFFFF;

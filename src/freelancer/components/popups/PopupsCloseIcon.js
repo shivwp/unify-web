@@ -3,7 +3,6 @@ import React from "react";
 const PopupsCloseIcon = () => {
   return (
     <svg
-      fill="#B2B2B2"
       className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiBox-root css-1om0hkc"
       focusable="false"
       aria-hidden="true"

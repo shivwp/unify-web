@@ -1,3 +1,4 @@
+import ErrorPopup from "../../freelancer/components/popups/ErrorPopup";
 import SuccessPopup from "../../freelancer/components/popups/SuccessPopup";
 import Axios from "../axios";
 import {
@@ -458,6 +459,12 @@ export const onEditDesignation =
         if (setLoading) {
           setLoading(false);
         }
+        setSuccessPopup(
+          <ErrorPopup
+            popup={setSuccessPopup}
+            message={err.response.data.message}
+          />
+        );
       });
   };
 
@@ -487,6 +494,12 @@ export const onEditPortfolio =
           type: SET_PORTFOLIO_ERROR,
           payload: err.response.data.message,
         });
+        setSuccessPopup(
+          <ErrorPopup
+            popup={setSuccessPopup}
+            message={err.response.data.message}
+          />
+        );
         if (setLoading) {
           setLoading(false);
         }
@@ -520,6 +533,12 @@ export const onEditLanguage =
         if (setLoading) {
           setLoading(false);
         }
+        setSuccessPopup(
+          <ErrorPopup
+            popup={setSuccessPopup}
+            message={err.response.data.message}
+          />
+        );
       });
   };
 
@@ -586,6 +605,12 @@ export const onEditHourPerWeek =
         if (setLoading) {
           setLoading(false);
         }
+        setSuccessPopup(
+          <ErrorPopup
+            popup={setSuccessPopup}
+            message={err.response.data.message}
+          />
+        );
       });
   };
 
@@ -616,6 +641,12 @@ export const onEditSkills =
         if (setLoading) {
           setLoading(false);
         }
+        setSuccessPopup(
+          <ErrorPopup
+            popup={setSuccessPopup}
+            message={err.response.data.message}
+          />
+        );
       });
   };
 
@@ -643,6 +674,12 @@ export const onEditCertificate =
         if (setLoading) {
           setLoading(false);
         }
+        setSuccessPopup(
+          <ErrorPopup
+            popup={setSuccessPopup}
+            message={err.response.data.message}
+          />
+        );
       });
   };
 
@@ -684,6 +721,12 @@ export const editNameInfo =
         if (setLoading) {
           setLoading(false);
         }
+        setSuccessPopup(
+          <ErrorPopup
+            popup={setSuccessPopup}
+            message={err.response.data.message}
+          />
+        );
       });
   };
 
@@ -703,7 +746,14 @@ export const editVisiblity =
           />
         );
       })
-      .catch((err) => {});
+      .catch((err) => {
+        setSuccessPopup(
+          <ErrorPopup
+            popup={setSuccessPopup}
+            message={err.response.data.message}
+          />
+        );
+      });
   };
 
 export const editExprienceLev =
@@ -730,6 +780,12 @@ export const editExprienceLev =
         if (setLoading) {
           setLoading(false);
         }
+        setSuccessPopup(
+          <ErrorPopup
+            popup={setSuccessPopup}
+            message={err.response.data.message}
+          />
+        );
       });
   };
 
@@ -803,6 +859,12 @@ export const onSubmitVerificationDocs =
       .catch((err) => {
         if (setLoading) {
           setLoading(false);
+          setSuccessPopup(
+            <ErrorPopup
+              popup={setSuccessPopup}
+              message={err.response.data.message}
+            />
+          );
         }
       });
   };
@@ -835,6 +897,12 @@ export const onRequestTestimonial =
         if (setLoading) {
           setLoading(false);
         }
+        setSuccessPopup(
+          <ErrorPopup
+            popup={setSuccessPopup}
+            message={err.response.data.message}
+          />
+        );
       });
   };
 
@@ -858,6 +926,12 @@ export const onSubmitTestimonial =
         if (setLoading) {
           setLoading(false);
         }
+        setSuccessPopup(
+          <ErrorPopup
+            popup={setSuccessPopup}
+            message={err.response.data.message}
+          />
+        );
       });
   };
 
@@ -902,6 +976,12 @@ export const onAddCategory =
         if (setLoading) {
           setLoading(false);
         }
+        setSuccessPopup(
+          <ErrorPopup
+            popup={setSuccessPopup}
+            message={err.response.data.message}
+          />
+        );
       });
   };
 

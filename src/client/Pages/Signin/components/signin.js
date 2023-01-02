@@ -12,7 +12,6 @@ const Signin = ({
   errors,
   selectUserType,
   userType,
-  message,
   handleGoogleSignIn,
   handleAppleSignIn,
 }) => {
@@ -161,9 +160,7 @@ const Signin = ({
                           ></i>
                         )}
                         <span className="signInError">
-                          {errors.password
-                            ? errors.password
-                            : message && message}
+                          {errors.password ? errors.password : ""}
                         </span>
                       </div>
                     </div>

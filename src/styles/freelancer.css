@@ -248,6 +248,10 @@
   -o-border-radius: 50%;
 }
 
+.close_pp_btn svg {
+  fill: #b2b2b2;
+}
+
 .close_pp_btn:hover {
   cursor: pointer;
 }

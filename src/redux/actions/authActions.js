@@ -20,6 +20,7 @@ import {
 } from "../types";
 import { GoogleAuthProvider, OAuthProvider } from "firebase/auth";
 import SuccessPopup from "../../freelancer/components/popups/SuccessPopup";
+import ErrorPopup from "../../freelancer/components/popups/ErrorPopup";
 
 const config = {
   headers: {
@@ -83,7 +84,7 @@ export const getDevelopersBySkills = (data, setLoading) => async (dispatch) => {
 };
 
 export const onLogin =
-  (data, navigate, setMessage, setLoading) => async (dispatch) => {
+  (data, navigate, setPopup, setLoading) => async (dispatch) => {
     await Axios.post(`/login`, data)
       .then((res) => {
         if (res.data.status) {
@@ -112,7 +113,10 @@ export const onLogin =
         }
       })
       .catch((err) => {
-        setMessage(err.response.data.message);
+        setPopup(
+          <ErrorPopup popup={setPopup} message={err.response.data.message} />
+        );
+
         if (setLoading) {
           setLoading(false);
         }
@@ -120,7 +124,7 @@ export const onLogin =
   };
 
 export const onRegister =
-  (data, navigate, setMessage, setLoading) => async (dispatch) => {
+  (data, navigate, setPopup, setLoading) => async (dispatch) => {
     await Axios.post(`/signup`, data)
       .then((res) => {
         if (res.data.status) {
@@ -131,7 +135,9 @@ export const onRegister =
         }
       })
       .catch((err) => {
-        setMessage(err.response.data.message);
+        setPopup(
+          <ErrorPopup popup={setPopup} message={err.response.data.message} />
+        );
         if (setLoading) {
           setLoading(false);
         }
@@ -139,7 +145,7 @@ export const onRegister =
   };
 
 export const onVerifySignup =
-  (data, navigate, setMessage, setLoading) => async (dispatch) => {
+  (data, navigate, setPopup, setLoading) => async (dispatch) => {
     await Axios.post(`/verifysignup`, data)
       .then((res) => {
         if (res.data.status) {
@@ -151,7 +157,9 @@ export const onVerifySignup =
         }
       })
       .catch((err) => {
-        setMessage(err.response.data.message);
+        setPopup(
+          <ErrorPopup popup={setPopup} message={err.response.data.message} />
+        );
         if (setLoading) {
           setLoading(false);
         }
@@ -185,7 +193,7 @@ export const countryList = (setLoading) => async (dispatch) => {
       if (res.data.status) {
         dispatch({
           type: SET_COUNTRY,
-          payload: res.data.countrylist,
+          payload: res.data.data,
         });
         if (setLoading) {
           setLoading(false);
@@ -219,7 +227,7 @@ export const onForgotPassword =
   };
 
 export const onVerifyForgot =
-  (data, navigate, setMessage, setLoading) => async (dispatch) => {
+  (data, navigate, setPopup, setLoading) => async (dispatch) => {
     await Axios.post(`/verify-forgot-otp`, data)
       .then((res) => {
         if (res.data.status) {
@@ -231,7 +239,9 @@ export const onVerifyForgot =
         if (setLoading) {
           setLoading(false);
         }
-        setMessage(err.response.data.message);
+        setPopup(
+          <ErrorPopup popup={setPopup} message={err.response.data.message} />
+        );
       });
   };
 
@@ -292,7 +302,7 @@ export const onOnlineStatus = (data, setLoading) => async (dispatch) => {
 };
 
 export const googleSignInSuccess =
-  (data, navigate, setMessage, setLoading) => async (dispatch) => {
+  (data, navigate, setPopup, setLoading) => async (dispatch) => {
     await Axios.post(`/social-login`, data)
       .then((res) => {
         if (res.data.status) {
@@ -321,12 +331,14 @@ export const googleSignInSuccess =
           window.location.reload();
         } else {
           setLoading(false);
-          setMessage(res.data.message);
+          setPopup(<ErrorPopup popup={setPopup} message={res.data.message} />);
         }
       })
       .catch((err) => {
         setLoading(false);
-        setMessage(err?.data?.message);
+        setPopup(
+          <ErrorPopup popup={setPopup} message={err.response.data.message} />
+        );
       });
   };
 
@@ -338,7 +350,7 @@ export const googleSignInFail = (error) => ({
 export const googleSignInInitiate = (
   userType,
   navigate,
-  setMessage,
+  setPopup,
   setLoading
 ) => {
   return function (dispatch) {
@@ -357,7 +369,7 @@ export const googleSignInInitiate = (
                   user_type: userType,
                 },
                 navigate,
-                setMessage,
+                setPopup,
                 setLoading
               )
             );
@@ -381,7 +393,7 @@ export const googleSignInInitiate = (
 };
 
 export const appleSignInSuccess =
-  (data, navigate, setMessage) => async (dispatch) => {
+  (data, navigate, setPopup) => async (dispatch) => {
     await Axios.post(`/social-login`, data, config)
       .then((res) => {
         if (res.data.status) {
@@ -405,11 +417,13 @@ export const appleSignInSuccess =
           }
           window.location.reload();
         } else {
-          setMessage(res.data.message);
+          setPopup(<ErrorPopup popup={setPopup} message={res.data.message} />);
         }
       })
       .catch((err) => {
-        setMessage(err?.data?.message);
+        setPopup(
+          <ErrorPopup popup={setPopup} message={err.response.data.message} />
+        );
       });
   };
 
@@ -421,7 +435,7 @@ export const appleSignInFail = (error) => ({
 export const appleSignInInitiate = (
   userType,
   navigate,
-  setMessage,
+  setPopup,
   setLoading
 ) => {
   return function (dispatch) {
@@ -437,7 +451,7 @@ export const appleSignInInitiate = (
               user_type: userType,
             },
             navigate,
-            setMessage
+            setPopup
           )
         );
         if (setLoading) {
