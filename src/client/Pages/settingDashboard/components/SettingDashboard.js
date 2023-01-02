@@ -10,9 +10,11 @@ import SettingInfo from "../profileSteps/SettingInfo";
 import SettingNotification from "../profileSteps/SettingNotification";
 import Team from "../profileSteps/Team";
 import Sidebar from "./Sidebar";
+import LoadingSpinner from "../../../../components/LoadingSpinner";
 
 const SettingDashboard = () => {
   const [currentTab, setCurrentTab] = useState("my-info");
+  const [loading, setLoading] = useState(false);
 
   return (
     <>
@@ -23,7 +25,9 @@ const SettingDashboard = () => {
         <Container>
           <Row>
             <Sidebar setCurrentTab={setCurrentTab} currentTab={currentTab} />
-            {currentTab === "my-info" && <SettingInfo />}
+            {currentTab === "my-info" && (
+              <SettingInfo setLoading={setLoading} />
+            )}
             {currentTab === "setting-billing" && <SettingBilling />}
             {currentTab === "password-security" && <PasswordSecurity />}
             {currentTab === "membership" && <MemberShip />}
@@ -34,6 +38,8 @@ const SettingDashboard = () => {
           </Row>
         </Container>
       </div>
+
+      {loading ? <LoadingSpinner /> : null}
     </>
   );
 };

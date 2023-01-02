@@ -185,19 +185,28 @@ export const getTimezoneList = (setLoading) => async (dispatch) => {
     });
 };
 
-export const addEditClientInfo = (data, setOpen) => async (dispatch) => {
-  await Axios.post("/edit-client-info", data, config)
-    .then((res) => {
-      dispatch({
-        type: SET_EDIT_CLIENT_INFO,
-        payload: res.data,
+export const addEditClientInfo =
+  (data, setOpen, setLoading) => async (dispatch) => {
+    await Axios.post("/edit-client-info", data, config)
+      .then((res) => {
+        if (res.data.status) {
+          dispatch({
+            type: SET_EDIT_CLIENT_INFO,
+            payload: res.data,
+          });
+          setOpen(false);
+        }
+        if (setLoading) {
+          setLoading(false);
+        }
+      })
+      .catch((err) => {
+        if (setLoading) {
+          setLoading(false);
+        }
+        console.log(err);
       });
-      setOpen(false);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-};
+  };
 
 export const onCreateTeam = (data, onCloseModal) => async (dispatch) => {
   await Axios.post("/create-team", data, config)

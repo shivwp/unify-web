@@ -97,22 +97,27 @@ const Project_Search = () => {
     setPage(number);
   };
 
-  console.log(skillsIdList);
-
   return (
     <>
       <Container>
         <Row>
           <Col lg={3}>
             <div className="filter_area">
+              <div className="sef_p_c">
+                <p
+                  onClick={() => {
+                    setSearchValue("");
+                    setSkillsIdList([]);
+                  }}
+                >
+                  Clear all
+                </p>
+              </div>
               <div className="sef_box">
                 {skillsIdList?.length === 0 ? (
                   <>
                     <div className="sef_na_ea">
                       <h3>Search Filters</h3>
-                    </div>
-                    <div className="sef_p_c">
-                      <p>Clear all</p>
                     </div>
                   </>
                 ) : (

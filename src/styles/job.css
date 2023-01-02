@@ -319,6 +319,16 @@
   -o-border-radius: 30px;
 }
 
+.btn_job_back button:hover {
+  background-color: #6d2ef1;
+  color: #fff;
+}
+
+.next_b_btn_c button:hover {
+  background-color: #6d2ef1;
+  color: #fff;
+}
+
 .draf_jo_btnbn {
   background-color: #fff;
   padding: 12px 25px;
@@ -1723,6 +1733,7 @@
   padding: 5px 0px;
   font-size: 15px;
   line-height: 17px;
+  cursor: pointer;
   color: #3b3b3b;
 }
 
@@ -3060,6 +3071,9 @@
     top: 1px;
     right: 56px;
   }
+  .my_job_n_box {
+    min-width: 120px;
+  }
 }
 
 @media screen and (max-width: 767px) {
@@ -3076,18 +3090,17 @@
     padding: 10px 10px;
     width: 200px;
     right: unset;
-    top: 7px;
-    left: 53px;
+    top: 0px;
+    left: -210px;
   }
 
   .menu_btn #menu_btn_arrow1 {
     position: absolute;
-    top: -5px;
+    top: 5px;
     color: #cacaca;
     font-size: 23px;
-    right: unset;
-    left: -9px;
-    transform: rotate(180deg);
+    right: -8px;
+    transform: rotate(0deg);
     font-weight: 100;
   }
 }
@@ -3103,18 +3116,17 @@
     padding: 10px 10px;
     width: 200px;
     right: unset;
-    top: 7px;
-    left: 53px;
+    top: 0px;
+    left: -210px;
   }
 
   .menu_btn #menu_btn_arrow2 {
     position: absolute;
-    top: -5px;
+    top: 5px;
     color: #cacaca;
     font-size: 23px;
-    right: unset;
-    left: -9px;
-    transform: rotate(180deg);
+    right: -8px;
+    transform: rotate(0deg);
     font-weight: 100;
   }
 }

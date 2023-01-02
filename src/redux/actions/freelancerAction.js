@@ -337,13 +337,16 @@ export const getSingleFreelancer =
         setLoading(false);
       })
       .catch((err) => {
-        setLoading(false);
+        if (setLoading) {
+          setLoading(false);
+        }
         console.log(err);
       });
   };
 
 export const hireFreelancer =
-  (data, navigate, errorPopup, setErrorPopup) => async (dispatch) => {
+  (data, navigate, errorPopup, setErrorPopup, setLoading) =>
+  async (dispatch) => {
     await Axios.post(`/hire-freelancer`, data, config)
       .then((res) => {
         var object = {};
@@ -356,8 +359,13 @@ export const hireFreelancer =
         }
         localStorage.setItem("hire_freelancer", JSON.stringify(res.data.data));
         localStorage.setItem("freelancerData", JSON.stringify(object));
+
+        setLoading(false);
       })
       .catch((err) => {
+        if (setLoading) {
+          setLoading(false);
+        }
         setErrorPopup(
           <ErrorPopup
             Popup={() => setErrorPopup(!errorPopup)}
@@ -368,7 +376,8 @@ export const hireFreelancer =
   };
 
 export const addPaymentCard =
-  (data, Popup, successPopup, setSuccessPopup) => async (dispatch) => {
+  (data, Popup, successPopup, setSuccessPopup, setLoading) =>
+  async (dispatch) => {
     await Axios.post(`/add-payment-card`, data, config)
       .then((res) => {
         if (res.data.status) {
@@ -385,13 +394,20 @@ export const addPaymentCard =
             />
           );
         }
+
+        if (setLoading) {
+          setLoading(false);
+        }
       })
       .catch((err) => {
+        if (setLoading) {
+          setLoading(false);
+        }
         console.log(err);
       });
   };
 
-export const paymentCardLists = (data) => async (dispatch) => {
+export const paymentCardLists = (setLoading) => async (dispatch) => {
   await Axios.get(`/payment-cards-list`, config)
     .then((res) => {
       if (res.data.status) {
@@ -400,14 +416,20 @@ export const paymentCardLists = (data) => async (dispatch) => {
           payload: res.data.data,
         });
       }
+      if (setLoading) {
+        setLoading(false);
+      }
     })
     .catch((err) => {
+      if (setLoading) {
+        setLoading(false);
+      }
       console.log(err);
     });
 };
 
 export const deletePaymentCard =
-  (data, setConfirmPopup, successPopup, setSuccessPopup) =>
+  (data, setConfirmPopup, successPopup, setSuccessPopup, setLoading) =>
   async (dispatch) => {
     await Axios.post(`/delete-payment-card`, data, config)
       .then((res) => {
@@ -425,14 +447,28 @@ export const deletePaymentCard =
             />
           );
         }
+        if (setLoading) {
+          setLoading(false);
+        }
       })
       .catch((err) => {
+        if (setLoading) {
+          setLoading(false);
+        }
         console.log(err);
       });
   };
 
 export const contractPayment =
-  (data, navigate, successPopup, setSuccessPopup, errorPopup, setErrorPopup) =>
+  (
+    data,
+    navigate,
+    successPopup,
+    setSuccessPopup,
+    errorPopup,
+    setErrorPopup,
+    setLoading
+  ) =>
   async (dispatch) => {
     await Axios.post("/contract-payment", data, config)
       .then((res) => {
@@ -457,6 +493,10 @@ export const contractPayment =
             window.location.reload();
           }, 2000);
         }
+
+        if (setLoading) {
+          setLoading(false);
+        }
       })
       .catch((err) => {
         setErrorPopup(
@@ -465,10 +505,14 @@ export const contractPayment =
             message={err.response.data.message}
           />
         );
+
+        if (setLoading) {
+          setLoading(false);
+        }
       });
   };
 
-export const getClientDetails = (data, navigate) => async (dispatch) => {
+export const getClientDetails = (data, setLoading) => async (dispatch) => {
   await Axios.post("/single-client", data, config)
     .then((res) => {
       if (res.data.status) {
@@ -477,8 +521,14 @@ export const getClientDetails = (data, navigate) => async (dispatch) => {
           payload: res.data.data.client,
         });
       }
+      if (setLoading) {
+        setLoading(false);
+      }
     })
     .catch((err) => {
+      if (setLoading) {
+        setLoading(false);
+      }
       console.log(err);
     });
 };

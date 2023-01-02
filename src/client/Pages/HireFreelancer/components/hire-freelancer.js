@@ -13,6 +13,7 @@ import {
   getSingleFreelancer,
   hireFreelancer,
 } from "../../../../redux/actions/freelancerAction";
+import LoadingSpinner from "../../../../components/LoadingSpinner";
 
 const Screen = () => {
   let scrollTo = false;
@@ -21,6 +22,7 @@ const Screen = () => {
   const dispatch = useDispatch();
   const [values, setValues] = useState({});
   const [errors, setErrors] = useState({});
+  const [loading, setLoading] = useState(false);
   const [imageFile, setImageFile] = useState();
   const [objectUrl, setObjectUrl] = useState();
   const [errorPopup, setErrorPopup] = useState(false);
@@ -75,13 +77,16 @@ const Screen = () => {
     const data = {
       job_id: project_id,
     };
-    dispatch(getSingleFreelancer(freelancer_id));
-    dispatch(singleJobPostDetails(data));
+
+    setLoading(true);
+    dispatch(getSingleFreelancer(freelancer_id, setLoading));
+    dispatch(singleJobPostDetails(data, setLoading));
   }, [dispatch, freelancer_id, project_id]);
 
   useEffect(() => {
     if (proposal_id) {
-      dispatch(singleProposalDetails(proposal_id, "submit"));
+      setLoading(true);
+      dispatch(singleProposalDetails(proposal_id, "submit", setLoading));
     }
   }, [dispatch, proposal_id]);
 
@@ -257,7 +262,10 @@ const Screen = () => {
     formData.append("cover_letter", values?.cover_letter);
     formData.append("image", imageFile);
 
-    dispatch(hireFreelancer(formData, navigate, errorPopup, setErrorPopup));
+    setLoading(true);
+    dispatch(
+      hireFreelancer(formData, navigate, errorPopup, setErrorPopup, setLoading)
+    );
   };
 
   return (
@@ -796,6 +804,8 @@ const Screen = () => {
       </Container>
 
       {errorPopup}
+
+      {loading ? <LoadingSpinner /> : null}
     </>
   );
 };

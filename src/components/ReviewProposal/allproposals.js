@@ -98,13 +98,24 @@ const Screen = ({
                             Message
                           </button>
                           {/* </Link> */}
-                          <Link
-                            to={`/hire-freelancer/${jobId}/${data.freelancer_id}/${data.proposal_id}`}
-                          >
-                            <button className="mt-2 font-weight-500 hover_white_io">
-                              Hire
+
+                          {data.isSendOffer ? (
+                            <button
+                              className="invitationSentDisabled"
+                              disabled
+                              style={{ marginRight: "10px" }}
+                            >
+                              Offer Sent
                             </button>
-                          </Link>
+                          ) : (
+                            <Link
+                              to={`/hire-freelancer/${jobId}/${data.freelancer_id}/${data.proposal_id}`}
+                            >
+                              <button className="mt-2 font-weight-500 hover_white_io">
+                                Hire
+                              </button>
+                            </Link>
+                          )}
                         </div>
                       </div>
                     </div>

@@ -23,6 +23,9 @@ const Screen = () => {
   );
   const [savedListToShow, setSavedListToShow] = useState([]);
   const [isLess, setIsLess] = useState([]);
+  const [searchValue, setSearchValue] = useState();
+  const [loading, setLoading] = useState();
+
   const showLess = (index) => {
     let temp = [...savedListToShow];
     temp[index].description = getSavedTalentList[index]?.description?.slice(
@@ -65,6 +68,15 @@ const Screen = () => {
     dispatch(onRemoveSavedTalent({ freelancer_id }));
   };
 
+  const handleSubmitData = (e) => {
+    e.preventDefault();
+
+    const data = {
+      search: searchValue,
+    };
+    dispatch(savedTalentList(data, setLoading));
+  };
+
   $(document).mouseup(function (e) {
     if ($(e.target).closest("#saved_talents_options").length === 0) {
       setShowPopup(false);
@@ -85,7 +97,10 @@ const Screen = () => {
         </div>
 
         <div className="box_vs_m">
-          <div className="search_area_in mob_ele_wfull">
+          <Form
+            onSubmit={handleSubmitData}
+            className="search_area_in mob_ele_wfull"
+          >
             <Form.Group className="search_input_in selec_inp_ful_w">
               <div className="search_icon_in">
                 <i className="bi bi-search font-size-20px"></i>
@@ -93,9 +108,24 @@ const Screen = () => {
               <Form.Control
                 type={`text`}
                 placeholder={`Search talent names in this list`}
+                value={searchValue}
+                onChange={(e) => setSearchValue(e.target.value)}
               />
+              {searchValue && (
+                <i
+                  className="fa fa-remove"
+                  onClick={() => {
+                    setSearchValue("");
+                    dispatch(savedTalentList());
+                  }}
+                  style={{ cursor: "pointer" }}
+                ></i>
+              )}
             </Form.Group>
-          </div>
+            <div className="post_job_btn_m in_btn_p_sm">
+              <button className="fw-500 hovbord-blew">Advanced Search</button>
+            </div>
+          </Form>
           {savedListToShow?.map((item, index) => (
             <div className="freelancer_box_in" key={index}>
               <Row>

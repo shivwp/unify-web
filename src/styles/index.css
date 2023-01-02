@@ -5,9 +5,11 @@
   --bs-link-color: var(--theme-color-unify) !important;
 }
 
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700;900&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
 body {
   overflow-x: hidden;
-  font-family: "Poppins-Bold", "Poppins";
+  font-family: "Poppins", sans-serif;
 }
 
 .btn:hover {
@@ -1523,6 +1525,10 @@ body {
   align-items: center;
 }
 
+.drop_li_poi:hover {
+  color: #6d2ef1;
+}
+
 .drop_p_o_i .active_drop_poi {
   background-color: #6d2ef1;
   color: #fff;
@@ -2798,11 +2804,18 @@ body {
   font-family: "Poppins";
 }
 
+.sef_p_c {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
 .sef_p_c p {
-  font-size: 9px;
+  font-size: 12px;
   letter-spacing: 0px;
   line-height: 15px;
   margin: 0;
+  cursor: pointer;
   color: #ff88fe;
   font-weight: 500;
   font-family: "Poppins";

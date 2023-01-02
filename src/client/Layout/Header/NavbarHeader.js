@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Button from "react-bootstrap/Button";
 import { onOnlineStatus } from "../../../redux/actions/authActions";
 import { getClientDetails } from "../../../redux/actions/freelancerAction";
+import LoadingSpinner from "../../../components/LoadingSpinner";
 
 const Header = (props) => {
   const history = useNavigate();
@@ -16,6 +17,7 @@ const Header = (props) => {
   const [navOpen, SetnavOpen] = useState(false);
   const [activeNav, SetactiveNav] = useState("");
   const [isDownOpen, SetisDownOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
   let userDetails = JSON.parse(localStorage.getItem("unify_user"));
   const clientDetails = useSelector((state) => state.freelancer.clientDetails);
   const onlineStatus = useSelector((state) => state.auth.onlineStatus);
@@ -27,8 +29,16 @@ const Header = (props) => {
     const data = {
       user_id: userDetails?.id,
     };
-    dispatch(getClientDetails(data));
+    setLoading(true);
+    dispatch(getClientDetails(data, setLoading));
   }, [onlineStatus, editClientProfile]);
+
+  useEffect(() => {
+    if (clientDetails?.is_deleted) {
+      localStorage.clear();
+      window.location.reload();
+    }
+  }, [clientDetails]);
 
   function ToggleNav() {
     SetnavOpen(!navOpen);
@@ -46,8 +56,8 @@ const Header = (props) => {
     const data = {
       online_status: e.target.value,
     };
-
-    dispatch(onOnlineStatus(data));
+    setLoading(true);
+    dispatch(onOnlineStatus(data, setLoading));
   };
 
   const MenuDown = () => {
@@ -156,212 +166,55 @@ const Header = (props) => {
     );
   };
   return (
-    <div>
-      <div className={`mobile_slide_menu ${activeNav}`}>
-        <div className="text-left">
-          <button
-            className="nav_close_btn"
-            onClick={() => {
-              ToggleNav();
-            }}
-          >
-            <i className="bi bi-x-lg font-size-20px"></i>
-          </button>
+    <>
+      <div>
+        <div className={`mobile_slide_menu ${activeNav}`}>
+          <div className="text-left">
+            <button
+              className="nav_close_btn"
+              onClick={() => {
+                ToggleNav();
+              }}
+            >
+              <i className="bi bi-x-lg font-size-20px"></i>
+            </button>
+          </div>
+          <div className="navdata_li">
+            <Link to="/how-it-works">What Is Unify ?</Link>
+          </div>
+          <div className="navdata_li">
+            <Link to="#0">Browse Jobs</Link>
+          </div>
+          <div className="navdata_li">
+            <Link to="#0">Subscription</Link>
+          </div>
+          <div className="logout_btn_mob">
+            <button>Login</button>
+          </div>
+          <div className="logout_btn_mob">
+            <button>Logout</button>
+          </div>
         </div>
-        <div className="navdata_li">
-          <Link to="/how-it-works">What Is Unify ?</Link>
-        </div>
-        <div className="navdata_li">
-          <Link to="#0">Browse Jobs</Link>
-        </div>
-        <div className="navdata_li">
-          <Link to="#0">Subscription</Link>
-        </div>
-        <div className="logout_btn_mob">
-          <button>Login</button>
-        </div>
-        <div className="logout_btn_mob">
-          <button>Logout</button>
-        </div>
-      </div>
-      <Navbar
-        collapseOnSelect
-        expand="md"
-        className={`nav_realat external_nav_padding ${
-          isDownOpen === true ? "minheifghtx_smmenu" : ""
-        } navv2padding ${props.dashboardBgNav}`}
-      >
-        <Container>
-          <div className="w-100 d-flex justify-content-between align-items-center flex_rev newnav_v2_flxew">
-            <div className="width_100_sm newnav_v2_wauto">
-              <Link to="/dashboard">
-                <Navbar.Brand>
-                  <img src={logo} className="img-fluid rounded-top" alt="" />
-                </Navbar.Brand>
-              </Link>
-            </div>
-            <div>
-              <div className="navv2verso_flxewd">
-                <div className="nav_pro_node">
-                  <div className="nav_profile online_profile">
-                    {clientDetails?.profile_image ? (
-                      <img src={clientDetails?.profile_image} alt="" />
-                    ) : (
-                      <img
-                        src="https://unify.eoxyslive.com/images/profile-image/demo-user.png"
-                        alt=""
-                      />
-                    )}
-                  </div>
-                  <NavDropdown
-                    className="text-center nav_dropdown_profile custom_nav_profile_drp"
-                    id="basic-nav-dropdown"
-                  >
-                    <div className="d-flex justify-content-center">
-                      <div className="nav_p_d_profil">
-                        {clientDetails?.profile_image ? (
-                          <img src={clientDetails?.profile_image} alt="" />
-                        ) : (
-                          <img
-                            src="https://unify.eoxyslive.com/images/profile-image/demo-user.png"
-                            alt=""
-                          />
-                        )}
-                      </div>
-                    </div>
-                    <div className="pro_name_drop_u">
-                      {clientDetails?.first_name} {clientDetails?.last_name}
-                    </div>
-                    <div className="pro_o_nme">Client</div>
-                    <div className="drop_p_o_i">
-                      <button
-                        className={
-                          clientDetails?.online_status === "online"
-                            ? "active_drop_poi"
-                            : ""
-                        }
-                        value="online"
-                        onClick={handleOnlineStatus}
-                      >
-                        Online
-                      </button>
-                      <button
-                        className={
-                          clientDetails?.online_status === "invisible"
-                            ? "active_drop_poi"
-                            : ""
-                        }
-                        value="invisible"
-                        onClick={handleOnlineStatus}
-                      >
-                        Invisible
-                      </button>
-                    </div>
-                    <div className="drop_li_poi">
-                      <i className="bi bi-gear font-size-20px"></i>
-                      <Link to="/profile-setting">Setting</Link>
-                    </div>
-                    <div className="drop_li_poi">
-                      <i className="bi bi-box-arrow-right font-size-20px"></i>
-                      <span
-                        onClick={() => {
-                          localStorage.clear();
-                          window.location.reload();
-                          history("/signin");
-                        }}
-                      >
-                        Log Out
-                      </span>
-                    </div>
-                  </NavDropdown>
-                </div>
-                <Navbar.Toggle
-                  aria-controls="responsive-navbar-nav"
-                  className={`${
-                    isDownOpen === true ? "close_iconsvgciweuw" : ""
-                  }`}
-                  onClick={() => {
-                    ToggleDown();
-                  }}
-                />
+        <Navbar
+          collapseOnSelect
+          expand="md"
+          className={`nav_realat external_nav_padding ${
+            isDownOpen === true ? "minheifghtx_smmenu" : ""
+          } navv2padding ${props.dashboardBgNav}`}
+        >
+          <Container>
+            <div className="w-100 d-flex justify-content-between align-items-center flex_rev newnav_v2_flxew">
+              <div className="width_100_sm newnav_v2_wauto">
+                <Link to="/dashboard">
+                  <Navbar.Brand>
+                    <img src={logo} className="img-fluid rounded-top" alt="" />
+                  </Navbar.Brand>
+                </Link>
               </div>
-              <Navbar.Collapse id="responsive-navbar-nav">
-                <Nav>
-                  <NavDropdown
-                    className="navbar_btn b_job_l_sx"
-                    title="Browse Jobs"
-                    id="navbarScrollingDropdown"
-                  >
-                    <div className="navabr_t_li">
-                      <Link to="/post-your-job">Post A Job</Link>
-                    </div>
-                    <div className="navabr_t_li">
-                      <Link to="/dashboard">My Jobs</Link>
-                    </div>
-                    {/* <div className="navabr_t_li">
-                      <Link to="/my-jobs">All Job Post</Link>
-                    </div> */}
-                    <div className="navabr_t_li">
-                      <Link to="/all-contracts">All Contracts</Link>
-                    </div>
-                    <div className="navabr_t_li">
-                      <Link to="/management-board">Management Board</Link>
-                    </div>
-                  </NavDropdown>
-                  <NavDropdown
-                    flip="true"
-                    className="navbar_btn talent_dropdown_cs "
-                    title="Talent"
-                    id="navbarScrollingDropdown"
-                  >
-                    <div className="navabr_t_li">
-                      <Link to="/talent-discover">Discover</Link>
-                    </div>
-                    <div className="navabr_t_li">
-                      <Link to="/talent-your-hires">Your Hires</Link>
-                    </div>
-                    <div className="navabr_t_li">
-                      <Link to="/byo-talent">BYO Talent</Link>
-                    </div>
-                    <div className="navabr_t_li">
-                      <Link to="/talent-recently-viewed">Recently Viewed</Link>
-                    </div>
-                    <div className="navabr_t_li">
-                      <Link to="/talent-saved">Saved talent</Link>
-                    </div>
-                  </NavDropdown>
-                  <div>
-                    <NavDropdown
-                      flip="true"
-                      className="navbar_btn talent_dropdown_cs report_left_caewe"
-                      title="Reports"
-                      id="navbarScrollingDropdown"
-                    >
-                      <div className="navabr_t_li">
-                        <Link to="#">Overview</Link>
-                      </div>
-                      <div className="navabr_t_li">
-                        <Link to="/transaction-history">
-                          Transaction History
-                        </Link>
-                      </div>
-                    </NavDropdown>
-                  </div>
-                  {/* <Nav.Link className="active_btn logout_btn_nav">
-                    <Link to="/signin">Logout</Link>
-                  </Nav.Link> */}
-                  <Nav.Link as={Link} to="/help-support" className="navbar_btn">
-                    <i className="bi bi-question-lg font-size-20px"></i>
-                  </Nav.Link>
-                  <Link to="#" className="navbar_btn p-0">
-                    <i className="bi bi-envelope font-size-20px"></i>
-                  </Link>
-
-                  <Nav.Link as={Link} to="/notification" className="navbar_btn">
-                    <i className="bi bi-bell font-size-20px"></i>
-                  </Nav.Link>
+              <div>
+                <div className="navv2verso_flxewd">
                   <div className="nav_pro_node">
-                    <div className="nav_profile">
+                    <div className="nav_profile online_profile">
                       {clientDetails?.profile_image ? (
                         <img src={clientDetails?.profile_image} alt="" />
                       ) : (
@@ -372,7 +225,7 @@ const Header = (props) => {
                       )}
                     </div>
                     <NavDropdown
-                      className=" text-center nav_dropdown_profile custom_nav_profile_drp"
+                      className="text-center nav_dropdown_profile custom_nav_profile_drp"
                       id="basic-nav-dropdown"
                     >
                       <div className="d-flex justify-content-center">
@@ -390,9 +243,7 @@ const Header = (props) => {
                       <div className="pro_name_drop_u">
                         {clientDetails?.first_name} {clientDetails?.last_name}
                       </div>
-                      <div className="pro_o_nme">
-                        {clientDetails?.user_type}
-                      </div>
+                      <div className="pro_o_nme">Client</div>
                       <div className="drop_p_o_i">
                         <button
                           className={
@@ -400,7 +251,7 @@ const Header = (props) => {
                               ? "active_drop_poi"
                               : ""
                           }
-                          value={"online"}
+                          value="online"
                           onClick={handleOnlineStatus}
                         >
                           Online
@@ -411,8 +262,8 @@ const Header = (props) => {
                               ? "active_drop_poi"
                               : ""
                           }
+                          value="invisible"
                           onClick={handleOnlineStatus}
-                          value={"invisible"}
                         >
                           Invisible
                         </button>
@@ -426,8 +277,8 @@ const Header = (props) => {
                         <span
                           onClick={() => {
                             localStorage.clear();
-                            history("/signin");
                             window.location.reload();
+                            history("/signin");
                           }}
                         >
                           Log Out
@@ -435,14 +286,187 @@ const Header = (props) => {
                       </div>
                     </NavDropdown>
                   </div>
-                </Nav>
-              </Navbar.Collapse>
+                  <Navbar.Toggle
+                    aria-controls="responsive-navbar-nav"
+                    className={`${
+                      isDownOpen === true ? "close_iconsvgciweuw" : ""
+                    }`}
+                    onClick={() => {
+                      ToggleDown();
+                    }}
+                  />
+                </div>
+                <Navbar.Collapse id="responsive-navbar-nav">
+                  <Nav>
+                    <NavDropdown
+                      className="navbar_btn b_job_l_sx"
+                      title="Browse Jobs"
+                      id="navbarScrollingDropdown"
+                    >
+                      <div className="navabr_t_li">
+                        <Link to="/post-your-job">Post A Job</Link>
+                      </div>
+                      <div className="navabr_t_li">
+                        <Link to="/dashboard">My Jobs</Link>
+                      </div>
+                      {/* <div className="navabr_t_li">
+                      <Link to="/my-jobs">All Job Post</Link>
+                    </div> */}
+                      <div className="navabr_t_li">
+                        <Link to="/all-contracts">All Contracts</Link>
+                      </div>
+                      <div className="navabr_t_li">
+                        <Link to="/management-board">Management Board</Link>
+                      </div>
+                    </NavDropdown>
+                    <NavDropdown
+                      flip="true"
+                      className="navbar_btn talent_dropdown_cs "
+                      title="Talent"
+                      id="navbarScrollingDropdown"
+                    >
+                      <div className="navabr_t_li">
+                        <Link to="/talent-discover">Discover</Link>
+                      </div>
+                      <div className="navabr_t_li">
+                        <Link to="/talent-your-hires">Your Hires</Link>
+                      </div>
+                      <div className="navabr_t_li">
+                        <Link to="/byo-talent">BYO Talent</Link>
+                      </div>
+                      <div className="navabr_t_li">
+                        <Link to="/talent-recently-viewed">
+                          Recently Viewed
+                        </Link>
+                      </div>
+                      <div className="navabr_t_li">
+                        <Link to="/talent-saved">Saved talent</Link>
+                      </div>
+                    </NavDropdown>
+                    <div>
+                      <NavDropdown
+                        flip="true"
+                        className="navbar_btn talent_dropdown_cs report_left_caewe"
+                        title="Reports"
+                        id="navbarScrollingDropdown"
+                      >
+                        <div className="navabr_t_li">
+                          <Link to="#">Overview</Link>
+                        </div>
+                        <div className="navabr_t_li">
+                          <Link to="/transaction-history">
+                            Transaction History
+                          </Link>
+                        </div>
+                      </NavDropdown>
+                    </div>
+                    {/* <Nav.Link className="active_btn logout_btn_nav">
+                    <Link to="/signin">Logout</Link>
+                  </Nav.Link> */}
+                    <Nav.Link
+                      as={Link}
+                      to="/help-support"
+                      className="navbar_btn"
+                    >
+                      <i className="bi bi-question-lg font-size-20px"></i>
+                    </Nav.Link>
+                    <Link to="#" className="navbar_btn p-0">
+                      <i className="bi bi-envelope font-size-20px"></i>
+                    </Link>
+
+                    <Nav.Link
+                      as={Link}
+                      to="/notification"
+                      className="navbar_btn"
+                    >
+                      <i className="bi bi-bell font-size-20px"></i>
+                    </Nav.Link>
+                    <div className="nav_pro_node">
+                      <div className="nav_profile">
+                        {clientDetails?.profile_image ? (
+                          <img src={clientDetails?.profile_image} alt="" />
+                        ) : (
+                          <img
+                            src="https://unify.eoxyslive.com/images/profile-image/demo-user.png"
+                            alt=""
+                          />
+                        )}
+                      </div>
+                      <NavDropdown
+                        className=" text-center nav_dropdown_profile custom_nav_profile_drp"
+                        id="basic-nav-dropdown"
+                      >
+                        <div className="d-flex justify-content-center">
+                          <div className="nav_p_d_profil">
+                            {clientDetails?.profile_image ? (
+                              <img src={clientDetails?.profile_image} alt="" />
+                            ) : (
+                              <img
+                                src="https://unify.eoxyslive.com/images/profile-image/demo-user.png"
+                                alt=""
+                              />
+                            )}
+                          </div>
+                        </div>
+                        <div className="pro_name_drop_u">
+                          {clientDetails?.first_name} {clientDetails?.last_name}
+                        </div>
+                        <div className="pro_o_nme">
+                          {clientDetails?.user_type}
+                        </div>
+                        <div className="drop_p_o_i">
+                          <button
+                            className={
+                              clientDetails?.online_status === "online"
+                                ? "active_drop_poi"
+                                : ""
+                            }
+                            value={"online"}
+                            onClick={handleOnlineStatus}
+                          >
+                            Online
+                          </button>
+                          <button
+                            className={
+                              clientDetails?.online_status === "invisible"
+                                ? "active_drop_poi"
+                                : ""
+                            }
+                            onClick={handleOnlineStatus}
+                            value={"invisible"}
+                          >
+                            Invisible
+                          </button>
+                        </div>
+                        <div className="drop_li_poi">
+                          <i className="bi bi-gear font-size-20px"></i>
+                          <Link to="/profile-setting">Setting</Link>
+                        </div>
+                        <div className="drop_li_poi">
+                          <i className="bi bi-box-arrow-right font-size-20px"></i>
+                          <span
+                            onClick={() => {
+                              localStorage.clear();
+                              history("/signin");
+                              window.location.reload();
+                            }}
+                          >
+                            Log Out
+                          </span>
+                        </div>
+                      </NavDropdown>
+                    </div>
+                  </Nav>
+                </Navbar.Collapse>
+              </div>
             </div>
-          </div>
-          {isDownOpen === true ? <MenuDown /> : ""}
-        </Container>
-      </Navbar>
-    </div>
+            {isDownOpen === true ? <MenuDown /> : ""}
+          </Container>
+        </Navbar>
+      </div>
+
+      {loading ? <LoadingSpinner /> : null}
+    </>
   );
 };
 

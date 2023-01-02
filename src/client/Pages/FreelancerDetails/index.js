@@ -43,6 +43,7 @@ const Screen = () => {
     setItemOffset(newOffset);
   };
 
+  console.log(singleFreelancer);
   return (
     <div className="slider_pos nin_vh">
       <Layout webtype="client">
@@ -86,7 +87,7 @@ const Screen = () => {
                     </div>
                   </div>
                   <div className="profile_pf_btn">
-                    <Button variant="">Hire</Button>
+                    <button>Invite</button>
                   </div>
 
                   <div className="profile_detail">
@@ -197,10 +198,7 @@ const Screen = () => {
                       Education
                       <div className="d-flex justify-content-start"></div>
                     </div>
-                    <div
-                      className="myskill_hdingn profile_icon_25px ms_hdsmall font-size-15px"
-                      style={{ flexDirection: "column" }}
-                    >
+                    <div className="myskill_hdingn profile_icon_25px ms_hdsmall font-size-15px">
                       {singleFreelancer?.education?.map((edu) => (
                         <>
                           <div
@@ -211,8 +209,15 @@ const Screen = () => {
                             }}
                           >
                             <div>
-                              {edu?.school}, {edu?.area_study}{" "}
-                              {moment(edu.date).format("YYYY")}
+                              {`${edu?.school}, ${edu?.area_study} `}
+                              <br />
+                              {`${moment(edu.start_year).format(
+                                "YYYY"
+                              )} - ${moment(edu.end_year).format("YYYY")} ${
+                                edu.end_year > new Date().getFullYear()
+                                  ? "Expected"
+                                  : ""
+                              }`}
                             </div>
                           </div>
                         </>

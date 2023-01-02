@@ -99,13 +99,22 @@ const Screen = () => {
                 Based on your <span>job post</span>
               </p>
             </div>
+
             {jobPostFreelancerList?.length > 3 && (
-              <div
-                className="avai_btn_promo"
-                onClick={() => setJobPost(jobPostFreelancerList?.length)}
-              >
-                <button>See More Like this</button>
-              </div>
+              <>
+                {jobPostFreelancerList?.length > jobPost ? (
+                  <div
+                    className="avai_btn_promo"
+                    onClick={() => setJobPost(jobPostFreelancerList?.length)}
+                  >
+                    <button>See More Like this</button>
+                  </div>
+                ) : (
+                  <div className="avai_btn_promo" onClick={() => setJobPost(3)}>
+                    <button>See Less Like this</button>
+                  </div>
+                )}
+              </>
             )}
           </div>
           <div className="mobile-discover">
@@ -235,12 +244,25 @@ const Screen = () => {
               </p>
             </div>
             {jobDraftFreelancerList?.length > 3 && (
-              <div
-                className="avai_btn_promo"
-                onClick={() => setJobDraftPost(jobDraftFreelancerList?.length)}
-              >
-                <button>See More Like This</button>
-              </div>
+              <>
+                {jobDraftFreelancerList?.length > jobDraftPost ? (
+                  <div
+                    className="avai_btn_promo"
+                    onClick={() =>
+                      setJobDraftPost(jobDraftFreelancerList?.length)
+                    }
+                  >
+                    <button>See More Like This</button>
+                  </div>
+                ) : (
+                  <div
+                    className="avai_btn_promo"
+                    onClick={() => setJobDraftPost(3)}
+                  >
+                    <button>See Less Like This</button>
+                  </div>
+                )}
+              </>
             )}
           </div>
           <div className="mobile-discover">

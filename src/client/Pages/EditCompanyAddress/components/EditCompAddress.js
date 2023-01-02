@@ -11,6 +11,7 @@ import {
 } from "../../../../redux/actions/freelancerAction";
 import ConfirmationPopup from "../../../../freelancer/components/popups/ConfirmationPopup";
 import { useNavigate } from "react-router-dom";
+import LoadingSpinner from "../../../../components/LoadingSpinner";
 
 const EditCompAddress = () => {
   const dispatch = useDispatch();
@@ -19,15 +20,16 @@ const EditCompAddress = () => {
   const addedCard = useSelector((state) => state.freelancer.addedCard);
   const deleteCard = useSelector((state) => state.freelancer.deleteCard);
   const paymentData = JSON.parse(localStorage.getItem("hire_freelancer"));
-  const freelancerData = JSON.parse(localStorage.getItem("freelancerData"));
   const [popup, SetPopup] = useState();
   const [successPopup, setSuccessPopup] = useState(false);
   const [confirmPopup, setConfirmPopup] = useState(false);
   const [errorPopup, setErrorPopup] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [stripeToken, setStripeToken] = useState();
 
   useEffect(() => {
-    dispatch(paymentCardLists());
+    setLoading(true);
+    dispatch(paymentCardLists(setLoading));
   }, [addedCard, deleteCard]);
 
   const handleRemoveCard = (id) => {
@@ -35,8 +37,15 @@ const EditCompAddress = () => {
       card_id: id,
     };
 
+    setLoading(true);
     dispatch(
-      deletePaymentCard(data, setConfirmPopup, successPopup, setSuccessPopup)
+      deletePaymentCard(
+        data,
+        setConfirmPopup,
+        successPopup,
+        setSuccessPopup,
+        setLoading
+      )
     );
   };
 
@@ -46,6 +55,7 @@ const EditCompAddress = () => {
       stripe_token: stripeToken,
     };
 
+    setLoading(true);
     dispatch(
       contractPayment(
         data,
@@ -53,7 +63,8 @@ const EditCompAddress = () => {
         successPopup,
         setSuccessPopup,
         errorPopup,
-        setErrorPopup
+        setErrorPopup,
+        setLoading
       )
     );
   };
@@ -100,6 +111,7 @@ const EditCompAddress = () => {
                               Popup={SetPopup}
                               successPopup={successPopup}
                               setSuccessPopup={setSuccessPopup}
+                              setLoading={setLoading}
                             />
                           );
                         }}
@@ -161,13 +173,13 @@ const EditCompAddress = () => {
           <Col lg={4}>
             <div className="box_vs_m mt-0 _col_right">
               <div className="Add_Address_profile">
-                <div className="freelancer_img_in_r online_profile">
+                <div className="freelancer_img_in_r">
                   <img src={paymentData?.freelancer_profile_image} alt="" />
                 </div>
                 <div className="freel_det_bin">
                   <p>
-                    Hire {paymentData?.freelancer_name} for:{" "}
-                    {paymentData?.project_name}
+                    Hire <b>{paymentData?.freelancer_name}</b> for:{" "}
+                    <b>{paymentData?.project_name}</b>
                   </p>
                 </div>
               </div>
@@ -222,6 +234,8 @@ const EditCompAddress = () => {
       {confirmPopup}
       {successPopup}
       {errorPopup}
+
+      {loading ? <LoadingSpinner /> : null}
     </>
   );
 };

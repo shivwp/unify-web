@@ -4,7 +4,7 @@ import { Row, Col } from "react-bootstrap";
 import CloseAccountPopup from "../../../../popups/CloseAccountPopup";
 import Button from "react-bootstrap/Button";
 
-const MyInfo = ({ setOpen, getClientDetails }) => {
+const MyInfo = ({ setOpen, getClientDetails, setLoading }) => {
   const [openCloseAccount, setOpenCloseAccount] = useState(false);
 
   return (
@@ -184,6 +184,7 @@ const MyInfo = ({ setOpen, getClientDetails }) => {
         <CloseAccountPopup
           open={openCloseAccount}
           onCloseModal={() => setOpenCloseAccount(false)}
+          setLoading={setLoading}
         />
       )}
     </>

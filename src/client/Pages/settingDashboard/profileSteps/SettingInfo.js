@@ -13,7 +13,7 @@ import {
 } from "../../../../redux/actions/profileAction";
 import { countryList } from "../../../../redux/actions/authActions";
 
-const SettingInfo = () => {
+const SettingInfo = ({ setLoading }) => {
   let scrollTo = false;
   const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
@@ -227,37 +227,41 @@ const SettingInfo = () => {
     formData.append("city", values?.city);
     formData.append("country", values?.country);
 
-    dispatch(addEditClientInfo(formData, setOpen));
+    setLoading(true);
+    dispatch(addEditClientInfo(formData, setOpen, setLoading));
   };
 
   return (
-    <Col lg={9}>
-      <div className="s_nav_body">
-        <div className="s_b_head no-border">
-          <h2>My Info</h2>
-        </div>
+    <>
+      <Col lg={9}>
+        <div className="s_nav_body">
+          <div className="s_b_head no-border">
+            <h2>My Info</h2>
+          </div>
 
-        {open === true ? (
-          <AccountInfo
-            setOpen={() => setOpen(false)}
-            getIndustries={getIndustries}
-            getCountryList={getCountryList}
-            timezoneList={timezoneList}
-            onInputChange={onInputChange}
-            values={values}
-            onSubmitClientData={onSubmitClientData}
-            onProfileChange={onProfileChange}
-            objectUrlAbc={objectUrlAbc}
-            errors={errors}
-          />
-        ) : (
-          <MyInfo
-            setOpen={() => setOpen(true)}
-            getClientDetails={getClientDetails}
-          />
-        )}
-      </div>
-    </Col>
+          {open === true ? (
+            <AccountInfo
+              setOpen={() => setOpen(false)}
+              getIndustries={getIndustries}
+              getCountryList={getCountryList}
+              timezoneList={timezoneList}
+              onInputChange={onInputChange}
+              values={values}
+              onSubmitClientData={onSubmitClientData}
+              onProfileChange={onProfileChange}
+              objectUrlAbc={objectUrlAbc}
+              errors={errors}
+            />
+          ) : (
+            <MyInfo
+              setOpen={() => setOpen(true)}
+              getClientDetails={getClientDetails}
+              setLoading={setLoading}
+            />
+          )}
+        </div>
+      </Col>
+    </>
   );
 };
 export default SettingInfo;
