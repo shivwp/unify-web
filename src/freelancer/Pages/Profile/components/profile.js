@@ -401,7 +401,7 @@ const UnifyFreelancer = () => {
     <div className="mt-5 mb-5">
       <Container>
         <Row>
-          <Col lg={3}>
+          <Col lg={4} xl={3}>
             <div className="border_bx_sec">
               <div className="flex_profile_frel">
                 <div className="profile_box">
@@ -1049,7 +1049,7 @@ const UnifyFreelancer = () => {
               </div>
             </div>
           </Col>
-          <Col lg={9}>
+          <Col lg={8} xl={9}>
             <div className="box-profile-bck mb-0">
               <div className="bpbck_txt d-flex mt-0">
                 <div

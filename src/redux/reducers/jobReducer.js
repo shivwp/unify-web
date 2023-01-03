@@ -18,6 +18,7 @@ import {
   SET_REMOVE_JOB_POST,
   SET_SINGLE_PROPOSAL_DETAILS,
   SET_UPDATE_JOB_POST,
+  SINGLE_CONTRACT_DATA,
   UNSAVE_JOB_POST,
 } from "../types";
 
@@ -124,6 +125,11 @@ const jobReducer = (state = initialState, action) => {
       return {
         ...state,
         changeTerms: action.payload,
+      };
+    case SINGLE_CONTRACT_DATA:
+      return {
+        ...state,
+        singleContractData: action.payload,
       };
     default:
       return state;

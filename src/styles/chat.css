@@ -559,6 +559,15 @@
   width: 100%;
 }
 
+@media (max-width: 769px) and (min-width: 376px) {
+  .profile_pf_btn {
+    align-items: center;
+  }
+  .profile_pf_btn button {
+    width: 300px !important;
+  }
+}
+
 /* .profile_pf_btn button:hover {
   background-color: #6d2ef1;
   color: #fff;

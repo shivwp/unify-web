@@ -1,4 +1,4 @@
-import ProjectDetai from "./components/project-detail";
+import ProjectDetai from "./components/ProjectDetail";
 import Layout from "../../Layout/Layout";
 
 const Projectdetail = () => {

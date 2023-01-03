@@ -11,12 +11,9 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { onGetAllContracts } from "../../../../redux/actions/jobActions";
 import AllProjects from "./AllProjects";
-import HourlyProjects from "./HourlyProjects";
-import ActiveMilestones from "./ActiveMilestones";
-import AwaitingMilestones from "./AwaitingMilestones";
-import PaymentRequested from "./PaymentRequested";
 import LoadingSpinner from "../../../../components/LoadingSpinner";
 import ExportToCsv from "../../../../components/ExportToCsv/ExportToCsv";
+
 const Screen = () => {
   Title(" | All Contracts");
   const dispatch = useDispatch();

@@ -1,10 +1,10 @@
 import React from "react";
 import { Col, ProgressBar } from "react-bootstrap";
 
-const Earning = () => {
+const Earning = ({ singleContractData }) => {
   return (
     <>
-      <Col md={5} lg={4}>
+      <Col md={12} lg={12}>
         <div className="milestone_overview_right">
           <div className="top_heading">Earnings</div>
           <div className="timesheet_time">
@@ -19,15 +19,15 @@ const Earning = () => {
           <div className="earnings_progress">
             <div>
               <span>Received</span>
-              <span>$ 100</span>
+              <span>$ {singleContractData?.freelancer?.total_earning}</span>
             </div>
             <div>
-              <span>Funded (Escrow Protection) </span>
-              <span>$ 200</span>
+              <span>Funded </span>
+              <span>$ {singleContractData?.in_escrow}</span>
             </div>
             <div>
               <span>Project Price </span>
-              <span>$ 300</span>
+              <span>$ {singleContractData?.project?.price}</span>
             </div>
           </div>
         </div>

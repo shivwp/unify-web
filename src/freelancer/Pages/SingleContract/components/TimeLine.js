@@ -1,17 +1,17 @@
 import React from "react";
-import { Col, Row } from "react-bootstrap";
+import { Col } from "react-bootstrap";
 import { useParams } from "react-router-dom";
-import RecentFiles from "./RecentFiles";
 import styled from "styled-components";
 import { keyframes } from "styled-components";
 import AddMilestonePopup from "../popups/AddMilestonePopup";
-import { useState } from "react";
 import RequestMilestoneChanges from "../popups/RequestMilestoneChanges";
 import ResubmitRevision from "../popups/ResubmitRevision";
 import SubmitWorkForPaymentPopup from "../popups/SubmitWorkForPaymentPopup";
 
-const TimeLine = ({ setPopup }) => {
+const TimeLine = ({ setPopup, singleContractData }) => {
   const { buttonStatus } = useParams();
+
+  console.log(singleContractData);
 
   const TimelineProgress = (height) => keyframes`
   0% {
@@ -23,7 +23,7 @@ const TimeLine = ({ setPopup }) => {
   }
 `;
 
-  const Connecting_line = styled.div`
+  const ConnectingLine = styled.div`
     position: absolute;
     width: 1px;
     height: calc(${(props) => props?.height} - 3px);
@@ -51,141 +51,88 @@ const TimeLine = ({ setPopup }) => {
       <Col md={7} lg={8}>
         <div className="milestone_timeline">
           <div className="heading">Milestone Timeline</div>
-          {buttonStatus == "see-contract" ? (
-            <div className="timeline">
-              <div className="progress_steps" id="progress_step1">
-                <div className="fill_ filled_background">1</div>
-                <div className=" "></div>
-                <div className="about_step">
-                  <p>Edit woocommerce plugin</p>
-                  Lorem Ipsum available, but the majority have suffered
-                  alteration in some form, by injected humour, or randomised
-                  words which don't look even slightly believable.
-                </div>
+          <div className="timeline">
+            <ConnectingLine height={"100%"}></ConnectingLine>
+            <Progress height={"100%"}></Progress>
+            {singleContractData?.milestone?.map((item, index) => (
+              <>
+                {index !== singleContractData?.milestone?.length - 1 ? (
+                  <div className="progress_steps" id="progress_step1">
+                    <div className="fill_ filled_background">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="50"
+                        height="50"
+                        viewBox="0 0 50 50"
+                      >
+                        <g
+                          id="Group_3799"
+                          data-name="Group 3799"
+                          transform="translate(-282 -675)"
+                        >
+                          <circle
+                            id="Ellipse_770"
+                            data-name="Ellipse 770"
+                            cx="25"
+                            cy="25"
+                            r="25"
+                            transform="translate(282 675)"
+                            fill="#6d2ef1"
+                          />
+                          <g id="check" transform="translate(291.5 684.5)">
+                            <rect
+                              id="Rectangle_1291"
+                              data-name="Rectangle 1291"
+                              width="31"
+                              height="31"
+                              transform="translate(0.5 0.5)"
+                              fill="none"
+                            />
+                            <path
+                              id="Path_4797"
+                              data-name="Path 4797"
+                              d="M44.234,76.473a1.449,1.449,0,0,1-1.027-.426l-6.781-6.781a1.453,1.453,0,0,1,2.055-2.055l5.754,5.753L56.769,60.431a1.453,1.453,0,1,1,2.055,2.055L45.262,76.048A1.449,1.449,0,0,1,44.234,76.473Z"
+                              transform="translate(-31.538 -52.636)"
+                              fill="#fff"
+                            />
+                          </g>
+                        </g>
+                      </svg>
+                    </div>
+                    <div className="connecting_line"></div>
+                    <div className="about_step">
+                      {item?.description}
+                      <div className="paid_btn">
+                        <button>Paid</button>
+                      </div>
+                    </div>
+                  </div>
+                ) : null}
+              </>
+            ))}
+          </div>
+          <div className="progress_steps" id="progress_step1">
+            <div className="fill_ filled_background">
+              {singleContractData?.milestone?.length - 1}
+            </div>
+            <div className="connecting_line"></div>
+            <div className="about_step">
+              {
+                singleContractData?.milestone[
+                  singleContractData?.milestone?.length - 1
+                ]?.description
+              }
+              <div className="paid_btn">
+                <button>Paid</button>
               </div>
             </div>
-          ) : (
-            ""
-          )}
-          {buttonStatus == "review-or-resubmit-work" ? (
-            <>
-              <div className="timeline">
-                <Connecting_line height={"100%"}></Connecting_line>
-                <Progress height={"20%"}></Progress>
+          </div>
 
-                <div className="progress_steps" id="progress_step1">
-                  <div className="fill_ filled_background">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="50"
-                      height="50"
-                      viewBox="0 0 50 50"
-                    >
-                      <g
-                        id="Group_3799"
-                        data-name="Group 3799"
-                        transform="translate(-282 -675)"
-                      >
-                        <circle
-                          id="Ellipse_770"
-                          data-name="Ellipse 770"
-                          cx="25"
-                          cy="25"
-                          r="25"
-                          transform="translate(282 675)"
-                          fill="#6d2ef1"
-                        />
-                        <g id="check" transform="translate(291.5 684.5)">
-                          <rect
-                            id="Rectangle_1291"
-                            data-name="Rectangle 1291"
-                            width="31"
-                            height="31"
-                            transform="translate(0.5 0.5)"
-                            fill="none"
-                          />
-                          <path
-                            id="Path_4797"
-                            data-name="Path 4797"
-                            d="M44.234,76.473a1.449,1.449,0,0,1-1.027-.426l-6.781-6.781a1.453,1.453,0,0,1,2.055-2.055l5.754,5.753L56.769,60.431a1.453,1.453,0,1,1,2.055,2.055L45.262,76.048A1.449,1.449,0,0,1,44.234,76.473Z"
-                            transform="translate(-31.538 -52.636)"
-                            fill="#fff"
-                          />
-                        </g>
-                      </g>
-                    </svg>
-                  </div>
-                  <div className="connecting_line"></div>
-                  <div className="about_step">
-                    There are many variations of passages of Lorem Ipsum
-                    available, but the majority have suffered alteration in some
-                    form, by injected humour, or randomised words which don't
-                    look even slightly believable. If you are going to use a
-                    passage of Lorem Ipsum, you need to be sure there isn't
-                    anything embarrassing hidden in the middle of text. All the
-                    Lorem Ipsum generators on the Internet tend to repeat
-                    predefined chunks as necessary, making this the first true
-                    generator on the Internet. It uses a dictionary of over 200
-                    Latin words, combined with a handful of model sentence
-                    structures, to generate Lorem Ipsum which looks reasonable.
-                    <div className="paid_btn">
-                      <button>Paid</button>
-                    </div>
-                  </div>
-                </div>
-                <div className="progress_steps" id="progress_step2">
-                  <div className="fill_ filled_background">2</div>
-                  <div className="about_step">
-                    <div className="p_heading">
-                      Simple Smart "Add to queue", Synched currently playing
-                    </div>
-
-                    <div className="paid_btn">
-                      <button>Active & Funded</button>
-                    </div>
-                    <div className="submit_work_btn">
-                      <button
-                        onClick={() =>
-                          setPopup(<ResubmitRevision popup={setPopup} />)
-                        }
-                      >
-                        Resubmit Revision
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="progress_steps" id="progress_step3">
-                <div className="fill_ ">3</div>
-                <div className="about_step">
-                  <div
-                    className="timeline_link"
-                    onClick={() =>
-                      setPopup(<AddMilestonePopup popup={setPopup} />)
-                    }
-                  >
-                    Propose a new milestone
-                  </div>
-                  <div className="submit_work_btn">
-                    <button
-                      onClick={() =>
-                        setPopup(<RequestMilestoneChanges popup={setPopup} />)
-                      }
-                    >
-                      Manage Milestone
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </>
-          ) : (
-            ""
-          )}
-
+          {/* 
           {buttonStatus == "send-message" ? (
             <>
               <div className="timeline">
-                <Connecting_line height={"100%"}></Connecting_line>
+                <ConnectingLine height={"100%"}></ConnectingLine>
                 <Progress height={"20%"}></Progress>
 
                 <div className="progress_steps" id="progress_step1">
@@ -279,11 +226,11 @@ const TimeLine = ({ setPopup }) => {
             </>
           ) : (
             ""
-          )}
-          {buttonStatus == "submit-work-for-payment" ? (
+          )} */}
+          {/* {buttonStatus == "submit-work-for-payment" ? (
             <>
               <div className="timeline">
-                <Connecting_line height={"100%"}></Connecting_line>
+                <ConnectingLine height={"100%"}></ConnectingLine>
                 <Progress height={"20%"}></Progress>
 
                 <div className="progress_steps" id="progress_step1">
@@ -372,7 +319,7 @@ const TimeLine = ({ setPopup }) => {
             </>
           ) : (
             ""
-          )}
+          )} */}
         </div>
       </Col>
     </>

@@ -227,7 +227,7 @@ const FreelancerRoutes = () => {
         />
         {/* <Route path="/freelancer/see-milestone" element={<SeeMilestone />} /> */}
         <Route
-          path="/freelancer/single-contract/:buttonStatus"
+          path="/freelancer/single-contract/:buttonStatus/:id"
           element={<SingleContract />}
         />
         <Route

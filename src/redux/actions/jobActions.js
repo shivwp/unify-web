@@ -20,6 +20,7 @@ import {
   SET_REMOVE_JOB_POST,
   SET_SINGLE_PROPOSAL_DETAILS,
   SET_UPDATE_JOB_POST,
+  SINGLE_CONTRACT_DATA,
   UNSAVE_JOB_POST,
 } from "../types";
 
@@ -205,7 +206,6 @@ export const onPostYourJobNow = (data, navigate) => async (dispatch) => {
     .then((res) => {
       if (res.data.status) {
         navigate("/dashboard");
-
         dispatch({
           type: SET_POST_YOUR_JOB_NOW,
           payload: res.data,
@@ -538,3 +538,20 @@ export const onAcceptOffer =
         }
       });
   };
+export const SingleContractData = (id, setLoading) => async (dispatch) => {
+  await Axios.get(`/single-contract/${id}`, config)
+    .then((res) => {
+      if (setLoading) {
+        setLoading(false);
+      }
+      dispatch({
+        payload: res.data.data,
+        type: SINGLE_CONTRACT_DATA
+      })
+    })
+    .catch((err) => {
+      if (setLoading) {
+        setLoading(false);
+      }
+    });
+};

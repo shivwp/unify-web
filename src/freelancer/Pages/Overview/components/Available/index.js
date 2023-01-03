@@ -19,7 +19,7 @@ const Index = () => {
       ) : (
         <>
           <div className="recent_transection_btn">
-            <div className="payment_schedule">Set Up Payment Schedule</div>
+            {/* <div className="payment_schedule">Set Up Payment Schedule</div> */}
             <div className="get_paid_now">
               <Link to="/freelancer/get-paid-now"> Get Paid Now</Link>
             </div>

@@ -35,94 +35,54 @@ const TimeSheet = () => {
             <div className="work_diary">
               <div className="heading_and_btn">
                 <span>Work Diary</span>
-                <button>Add Time</button>
-              </div>
-              <Row>
-                <Col lg={4}>
-                  <div className="get_date_range">
-                    <DateRangePicker
-                      initialSettings={{
-                        startDate: new Date(),
-                        endDate: new Date(),
-                      }}
-                    >
-                      <input type="text" className="form-control col-4" />
-                    </DateRangePicker>
-                  </div>
-                </Col>
-                <Col lg={8}>
-                  <div
-                    className="get_datesheet_time"
-                    style={{
-                      borderLeft: "1px solid rgb(187, 186, 186)",
-                      paddingLeft: 20,
+                <div className="get_date_range">
+                  <DateRangePicker
+                    initialSettings={{
+                      startDate: new Date(),
+                      endDate: new Date(),
                     }}
                   >
+                    <input type="text" className="form-control col-4" />
+                  </DateRangePicker>
+                </div>
+              </div>
+              <Row>
+                <Col lg={12}>
+                  <div className="get_datesheet_time">
                     <div className="heading">Nov 14 -Nov 20</div>
                     <div className="day_timesheet">
-                      <span>Mon 11/14</span>
-                      <div className="progress_timesheet">
-                        <ProgressBar
-                          striped
-                          variant="success"
-                          now={35}
-                          key={1}
-                        />
-                      </div>
-                      <span>0.00 hrs</span>
-                      <span> &#62;</span>
+                      <span>Mon 14/11</span>
+                      {/* <span>0.00 hrs</span> */}
+                      <input
+                        type="number"
+                        className="timesheet_time_input"
+                        placeholder="00.00"
+                      />
+                      <button className="time_sheet_time_btn">Save</button>
                     </div>
                     <div className="day_timesheet">
-                      <span>Mon 11/15</span>
-                      <div className="progress_timesheet">
-                        <ProgressBar
-                          striped
-                          variant="success"
-                          now={0}
-                          key={1}
-                        />
-                      </div>
+                      <span>Mon 15/11</span>
+
                       <span>0.00 hrs</span>
-                      <span> &#62;</span>
+                      <button className="time_sheet_time_btn">Add Time</button>
                     </div>
                     <div className="day_timesheet">
-                      <span>Mon 11/16</span>
-                      <div className="progress_timesheet">
-                        <ProgressBar
-                          striped
-                          variant="success"
-                          now={0}
-                          key={1}
-                        />
-                      </div>
+                      <span>Mon 16/11</span>
+
                       <span>0.00 hrs</span>
-                      <span> &#62;</span>
+                      <button className="time_sheet_time_btn">Edit Time</button>
                     </div>
                     <div className="day_timesheet">
-                      <span>Mon 11/17</span>
-                      <div className="progress_timesheet">
-                        <ProgressBar
-                          striped
-                          variant="success"
-                          now={0}
-                          key={1}
-                        />
-                      </div>
+                      <span>Mon 17/11</span>
+
                       <span>0.00 hrs</span>
-                      <span> &#62;</span>
+                      <button className="time_sheet_time_btn">Edit Time</button>
                     </div>
                     <div className="day_timesheet">
-                      <span>Mon 11/18</span>
-                      <div className="progress_timesheet">
-                        <ProgressBar
-                          striped
-                          variant="success"
-                          now={0}
-                          key={1}
-                        />
-                      </div>
+                      <span>Mon 18/11</span>
+
                       <span>0.00 hrs</span>
-                      <span> &#62;</span>
+                      <button className="time_sheet_time_btn">Edit Time</button>
                     </div>
                   </div>
                   <div className="timesheet_tracked">

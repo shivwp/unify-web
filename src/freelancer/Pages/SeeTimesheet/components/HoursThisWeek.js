@@ -1,10 +1,10 @@
 import React from "react";
 import { Col, ProgressBar } from "react-bootstrap";
 
-const HoursThisWeek = () => {
+const HoursThisWeek = ({ setPopup }) => {
   return (
     <>
-      <Col md={5} lg={4}>
+      <Col md={12} lg={12}>
         <div className="milestone_overview_right">
           <div className="top_heading">Hours This Week</div>
           <div className="timesheet_time">
@@ -22,10 +22,7 @@ const HoursThisWeek = () => {
             You will get paid for these hours on Monday (Unify's billing
             timezone) <span>Learn More</span>
           </div>
-          <div className="timesheet_btns">
-            <button className="timesheet_btn1">Open Time Tracker</button>
-            <button className="timesheet_btn2">Add Time Manually</button>
-          </div>
+
           <div
             style={{
               display: "flex",

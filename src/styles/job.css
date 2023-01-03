@@ -4010,7 +4010,7 @@
 
 .milestone_overview_right {
   border: 1px solid rgb(153, 153, 153);
-  margin: 30px 10px;
+  margin: 20px 10px;
   padding: 20px;
   border-radius: 4px;
   /* min-height: 500px; */
@@ -4031,30 +4031,7 @@
   /* font-size: 15px; */
   margin: 10px 0 30px 0;
 }
-.milestone_overview_right .timesheet_btns {
-  display: flex;
-  flex-direction: column;
-}
-.milestone_overview_right .timesheet_btns button {
-  border-radius: 40px;
-  border: 1px solid #6d2ef1;
-  height: 40px;
-  margin: 10px 0;
-}
 
-.milestone_overview_right .timesheet_btns .timesheet_btn1 {
-  background-color: #6d2ef1;
-  color: #fff;
-}
-
-.milestone_overview_right .timesheet_btns .timesheet_btn2 {
-  background-color: #fff;
-  color: #6d2ef1;
-}
-.milestone_overview_right .timesheet_btns .timesheet_btn2:hover {
-  background-color: #6d2ef1;
-  color: #fff;
-}
 .milestone_overview_right .timesheet_msg span {
   color: #6d2ef1;
 }
@@ -4114,7 +4091,7 @@
   position: relative;
 }
 .milestone_timeline {
-  margin: 30px 0;
+  margin: 20px 0;
   border: 1px solid rgb(190, 190, 190);
   padding: 40px;
   border-radius: 4px;
@@ -4210,6 +4187,7 @@
   border-radius: 50%;
   border: 1px solid #d2d2d2;
   margin-top: 10px;
+  z-index: 9;
 }
 
 .filled_background {
@@ -4290,20 +4268,30 @@
   justify-content: space-between;
   border-bottom: 1px solid rgb(192, 192, 192);
   margin-bottom: 20px;
+  padding: 5px 0;
 }
 
-.timesheet .work_diary .heading_and_btn button {
+.timesheet .work_diary .time_sheet_time_btn {
   background-color: #fff;
   border: 1px solid #6d2ef1;
   border-radius: 30px;
   padding: 5px 20px;
   margin: 10px 0;
   color: #6d2ef1;
+  min-width: 120px;
 }
 
-.timesheet .work_diary .heading_and_btn button:hover {
+.timesheet .work_diary .time_sheet_time_btn:hover {
   background-color: #6d2ef1;
   color: #fff;
+}
+.timesheet .work_diary .timesheet_time_input {
+  width: 120px;
+  height: 40px;
+  outline: none;
+  border: 1px solid #d8d8d8;
+  text-align: right;
+  padding: 0 12px;
 }
 
 .timesheet .work_diary .heading_and_btn > span {
@@ -4321,7 +4309,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 10px 0;
-  border-bottom: 1px solid rgb(191, 191, 191);
+  border-bottom: 1px solid rgb(240 240 241);
   margin: 10px 0;
 }
 .timesheet .progress_timesheet {
@@ -4350,7 +4338,7 @@
   border: 1px solid rgb(153, 153, 153);
   margin: 20px 10px;
   padding: 20px;
-  border-radius: 20px;
+  border-radius: 5px;
 }
 
 .timeSheetDetailsHead {
@@ -4380,6 +4368,7 @@
 .detailsPTag {
   font: normal normal 350 14px/24px Poppins;
   color: #3f4548;
+  white-space: pre-line;
 }
 
 .detailsLinkOff {

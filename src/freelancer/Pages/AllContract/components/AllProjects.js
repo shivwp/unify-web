@@ -4,6 +4,7 @@ import { Col, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 const AllProjects = ({ getAllContracts }) => {
+  console.log(getAllContracts);
   return (
     <>
       {getAllContracts?.length === 0 ? (
@@ -36,17 +37,17 @@ const AllProjects = ({ getAllContracts }) => {
                       <Link
                         to={
                           item.button_status == "submit work for payment"
-                            ? "/freelancer/single-contract/submit-work-for-payment"
+                            ? `/freelancer/single-contract/submit-work-for-payment/${item.id}`
                             : item.button_status == " propose new contract"
-                            ? "/freelancer/single-contract/propose-new-contract"
+                            ? `/freelancer/single-contract/propose-new-contract/${item.id}`
                             : item.button_status == "see timesheet"
-                            ? "/freelancer/single-contract/see-timesheet"
+                            ? `/freelancer/single-contract/see-timesheet/${item.id}`
                             : item.button_status == "send message"
-                            ? "/freelancer/single-contract/send-message"
+                            ? `/freelancer/single-contract/send-message/${item.id}`
                             : item.button_status == "review and resubmit work"
-                            ? "/freelancer/single-contract/review-and-resubmit-work"
+                            ? `/freelancer/single-contract/review-and-resubmit-work/${item.id}`
                             : item.button_status == "see dispute"
-                            ? "/freelancer/single-contract/see-dispute"
+                            ? `/freelancer/single-contract/see-dispute/${item.id}`
                             : ""
                         }
                       >
@@ -114,7 +115,7 @@ const AllProjects = ({ getAllContracts }) => {
                 style={{ display: "flex", justifyContent: "flex-end" }}
               >
                 <div className="milestone_btn_s">
-                  <Link to="/freelancer/single-contract/see-contract">
+                  <Link to="/freelancer/single-contract/see-contract/8">
                     <button>See contract</button>
                   </Link>
                 </div>
@@ -168,7 +169,7 @@ const AllProjects = ({ getAllContracts }) => {
                 style={{ display: "flex", justifyContent: "flex-end" }}
               >
                 <div className="milestone_btn_s">
-                  <Link to="/freelancer/single-contract/see-timesheet">
+                  <Link to="/freelancer/single-contract/see-timesheet/4">
                     <button>See timesheet</button>
                   </Link>
                 </div>
@@ -221,7 +222,7 @@ const AllProjects = ({ getAllContracts }) => {
                 style={{ display: "flex", justifyContent: "flex-end" }}
               >
                 <div className="milestone_btn_s">
-                  <Link to="/freelancer/single-contract/review-or-resubmit-work">
+                  <Link to="/freelancer/single-contract/review-or-resubmit-work/3">
                     <button>Review and resubmit work</button>
                   </Link>
                 </div>
@@ -274,7 +275,7 @@ const AllProjects = ({ getAllContracts }) => {
                 style={{ display: "flex", justifyContent: "flex-end" }}
               >
                 <div className="milestone_btn_s">
-                  <Link to="/freelancer/single-contract/send-message">
+                  <Link to="/freelancer/single-contract/send-message/6">
                     <button>Send Message</button>
                   </Link>
                 </div>
