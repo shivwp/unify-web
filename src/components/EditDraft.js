@@ -67,7 +67,6 @@ const EditDraft = () => {
   const handleImageChange = (e) => {
     let errorExit = false;
     const image = e.target.files[0];
-    console.log("Client image", image);
     if (image?.size > 1048576 * 10) {
       setShowError("File size must be maximum 10 MB");
       errorExit = true;

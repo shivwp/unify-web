@@ -483,7 +483,7 @@ export const getFooterPageData = (pagename) => async (dispatch) => {
     });
 };
 export const setClientCompnySize =
-  (data, navigate, setLoading) => async (dispatch) => {
+  (data, navigate, setLoading, update) => async (dispatch) => {
     await Axios.post("/business-size", data, config)
       .then((res) => {
         if (res.data.status) {
@@ -491,7 +491,12 @@ export const setClientCompnySize =
             type: CLIENT_BUSINESSSIZE,
             payload: res.data.data,
           });
-          navigate("/question1");
+
+          if (update) {
+            navigate(`/view-job/${update}/job-details`);
+          } else {
+            navigate("/question1");
+          }
         }
         if (setLoading) {
           setLoading(false);

@@ -27,7 +27,9 @@ const Screen = () => {
 
   useEffect(() => {
     const data = {
-      freelancers: "525,516",
+      freelancers: JSON.parse(localStorage.getItem("idsList"))
+        ?.map((item) => item.id)
+        ?.toString(),
     };
 
     dispatch(getRecentFreelancerList(data));

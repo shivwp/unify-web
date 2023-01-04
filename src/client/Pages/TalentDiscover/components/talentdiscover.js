@@ -13,6 +13,7 @@ import {
 } from "../../../../redux/actions/freelancerAction";
 import LoadingSpinner from "../../../../components/LoadingSpinner";
 import { SET_SELECTED_IDS } from "../../../../redux/types";
+import { useMemo } from "react";
 
 const Screen = () => {
   Title(" | Talent Discover");
@@ -37,6 +38,15 @@ const Screen = () => {
   const removeSavedTalent = useSelector(
     (state) => state.freelancer.removeSavedTalent
   );
+  const [idsList, setIdsList] = useState(
+    JSON.parse(localStorage.getItem("idsList")) || []
+  );
+
+  useMemo(() => {
+    if (idsList) {
+      localStorage.setItem("idsList", JSON.stringify(idsList));
+    }
+  }, [idsList]);
 
   useEffect(() => {
     dispatch(getJobDraftFreelancerList());
@@ -45,11 +55,13 @@ const Screen = () => {
 
   useEffect(() => {
     const data = {
-      freelancers: "525,516",
+      freelancers: JSON.parse(localStorage.getItem("idsList"))
+        ?.map((item) => item.id)
+        ?.toString(),
     };
 
     dispatch(getRecentFreelancerList(data));
-  }, [savedTalent, removeSavedTalent]);
+  }, [savedTalent, removeSavedTalent, idsList]);
 
   const handleSavedTalent = (id) => {
     const data = {
@@ -68,14 +80,15 @@ const Screen = () => {
   };
 
   const handleSingleFreelancer = (id) => {
-    // if (
-    //   freelancerId.find((ele) => {
-    //     return ele.id == id;
-    //   }) == undefined
-    // ) {
-    //   setFreelancerId([...freelancerId, { id }]);
-    // }
-    navigate(`/freelancer-details/${id}`);
+    setIdsList([...idsList, { id }]);
+
+    localStorage.setItem(
+      "idsList",
+      JSON.stringify([...JSON.parse(localStorage.getItem("idsList")), { id }])
+    );
+    if (idsList) {
+      navigate(`/freelancer-details/${id}`);
+    }
   };
 
   return (

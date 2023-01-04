@@ -256,9 +256,11 @@ const JonComponent = ({ singleJobDetails, jobId, handleMakePublicPrivate }) => {
                   </div>
                 </div>
                 <div>
-                  <button className="round_b_btn">
-                    <i className="bi bi-pencil-square"></i>
-                  </button>
+                  <Link to={`/businesssize/${jobId}`}>
+                    <button className="round_b_btn">
+                      <i className="bi bi-pencil-square"></i>
+                    </button>
+                  </Link>
                 </div>
               </div>
               <div className="cline_sm_area_i">
@@ -274,18 +276,20 @@ const JonComponent = ({ singleJobDetails, jobId, handleMakePublicPrivate }) => {
                   {singleJobDetails?.client_data?.job_posted} Jobs Posted
                 </div>
                 <div className="csai_t">
-                  {singleJobDetails?.hire_rate}% hire rate,
+                  {singleJobDetails?.hire_rate}% hire rate,{" "}
                   {singleJobDetails?.open_jobs} open job
                 </div>
 
                 <div className="csai_t">
-                  {singleJobDetails?.client_data?.employee_no <= 10
-                    ? " Company size  (1-10 people)"
-                    : singleJobDetails?.client_data?.employee_no <= 100
+                  {singleJobDetails?.client_data?.employee_no <= 1
+                    ? "Company size  (It Just me)"
+                    : singleJobDetails?.client_data?.employee_no <= 2
+                    ? "Company size  (1-10 people)"
+                    : singleJobDetails?.client_data?.employee_no <= 10
                     ? "Company size  (10-100 people)"
-                    : singleJobDetails?.client_data?.employee_no <= 1000
-                    ? " Company size  (100-1000 people)"
-                    : " Company size  1000+ people"}
+                    : singleJobDetails?.client_data?.employee_no <= 100
+                    ? "Company size  100+ people" || "..."
+                    : null}
                 </div>
                 <div className="csai_t">
                   Member since {singleJobDetails?.client_data?.member_since}

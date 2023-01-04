@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Container from "react-bootstrap/Container";
 import { Col, Row } from "react-bootstrap";
 import Title from "../../../../components/title";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -12,6 +12,7 @@ import LoadingSpinner from "../../../../components/LoadingSpinner";
 
 const Bsize = () => {
   Title(" | Business Size");
+  const { update } = useParams();
   const navigate = useNavigate();
   const [values, setValues] = useState({});
   const [errors, setErrors] = useState({});
@@ -54,7 +55,7 @@ const Bsize = () => {
       setLoading(false);
       return false;
     }
-    dispatch(setClientCompnySize(values, navigate, setLoading));
+    dispatch(setClientCompnySize(values, navigate, setLoading, update));
   };
 
   return (
