@@ -58,17 +58,17 @@ const Screen = () => {
   }, [milestoneData]);
 
   useEffect(() => {
-    if (proposalData) {
+    if (proposal_id) {
       setValues({
         ...proposalData,
         agree_terms: 0,
-        bid_amount: singleFreelancer?.basic_info?.amount,
+        bid_amount: parseInt(proposalData?.bid_amount).toFixed(2),
       });
-    } else if (singleJobDetails) {
+    } else if (project_id) {
       setValues({
         ...singleJobDetails,
         agree_terms: 0,
-        bid_amount: singleFreelancer?.basic_info?.amount,
+        bid_amount: parseInt(singleFreelancer?.basic_info?.amount).toFixed(2),
       });
     }
   }, [proposalData, singleJobDetails, singleFreelancer?.basic_info?.amount]);
@@ -767,6 +767,28 @@ const Screen = () => {
                 X
               </span>
             </div>
+          ) : proposalData?.image_link ? (
+            <div className="document_card">
+              <i class="bi bi-file-earmark-text font-size-20px"></i>&nbsp;
+              <span className="heading">File Name : </span>
+              <a
+                href={proposalData?.image_link}
+                target="_blank"
+                download
+                className="name"
+              >
+                {proposalData?.image_link}
+              </a>
+              <span
+                onClick={() => {
+                  setObjectUrl();
+                  setImageFile();
+                }}
+                className="close_icon"
+              >
+                X
+              </span>
+            </div>
           ) : (
             ""
           )}
@@ -790,7 +812,7 @@ const Screen = () => {
         </span>
         <div className="d-flex justify-content-between mt-4 mb-5">
           <div className="btn_job_back">
-            <Link to="/view-job">
+            <Link to={`/view-job/${project_id}/review-proposal`}>
               <button className="fo_btn_c next_b_btn_c mb-2">Cancel</button>
             </Link>
             <button

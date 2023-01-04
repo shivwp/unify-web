@@ -6,6 +6,7 @@ const Screen = ({
   handleRemoveProposalShortList,
   handleSaveProposalShortList,
   jobId,
+  setReviewProposal,
 }) => {
   return (
     <>
@@ -85,7 +86,10 @@ const Screen = ({
                           </button>
                         )}
                         <div className="ts_btn attach_f_btn wid_30_in d-flex flex-wrap">
-                          <button className="transp_fil_btn mt-2 font-weight-500">
+                          <button
+                            onClick={() => setReviewProposal("messagess")}
+                            className="transp_fil_btn mt-2 font-weight-500"
+                          >
                             Message
                           </button>
                           <Link

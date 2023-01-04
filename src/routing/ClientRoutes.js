@@ -56,6 +56,7 @@ const ClientRoutes = () => {
     <Routes>
       <Route element={<ProtectedRoutes />}>
         <Route path="/businesssize" element={<BusinessSize />} />
+        <Route path="/businesssize/:update" element={<BusinessSize />} />
         <Route path="/question1" element={<Question />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/post-your-job" element={<PostYourJobScreen />} />

@@ -158,6 +158,7 @@ const JonComponent = ({ jobId, setLoading }) => {
               handleSaveProposalShortList={handleSaveProposalShortList}
               handleRemoveProposalShortList={handleRemoveProposalShortList}
               handleSaveProposalArchieved={handleSaveProposalArchieved}
+              setReviewProposal={setReviewProposal}
             />
           )}
           {reviewProposal === "shortListed" && (
@@ -166,6 +167,7 @@ const JonComponent = ({ jobId, setLoading }) => {
               proposalShortlist={proposalShortlist}
               handleSaveProposalShortList={handleSaveProposalShortList}
               handleRemoveProposalShortList={handleRemoveProposalShortList}
+              setReviewProposal={setReviewProposal}
             />
           )}
           {reviewProposal === "messagess" && <Messaged />}

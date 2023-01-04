@@ -13,7 +13,7 @@ const Screen = () => {
   Title(" | All Contracts");
   const dispatch = useDispatch();
   const clientContractList = useSelector(
-    (state) => state.freelancer.clientContractList
+    (state) => state?.freelancer?.clientContractList?.All
   );
   const [showFilters, setShowFilters] = useState(false);
 

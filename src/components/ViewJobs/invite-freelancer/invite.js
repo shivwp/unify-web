@@ -44,7 +44,7 @@ const Screen = ({
                       <div className="d-flex align-items-center">
                         {data.isSaveTalent === false ? (
                           <button
-                            className="transp_fil_btn heart_roun_btn mt-2"
+                            className="transp_fil_btn heart_roun_btn"
                             onClick={(e) => handleSavedTalent(data.id)}
                           >
                             <svg
