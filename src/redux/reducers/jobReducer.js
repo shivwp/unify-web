@@ -1,6 +1,8 @@
 import {
+  ADD_TIMESHEET_TIME,
   DECLINE_REASONS_LIST,
   DISLIKE_POST_REASONS,
+  GET_TIMESHEET_DATA,
   JOBS_LIST,
   JOB_POST_DETAILS,
   ON_DISLIKE_JOB_POST,
@@ -130,6 +132,16 @@ const jobReducer = (state = initialState, action) => {
       return {
         ...state,
         singleContractData: action.payload,
+      };
+    case ADD_TIMESHEET_TIME:
+      return {
+        ...state,
+        addTimesheetTime: action.payload,
+      };
+    case GET_TIMESHEET_DATA:
+      return {
+        ...state,
+        getTimeSheet: action.payload,
       };
     default:
       return state;

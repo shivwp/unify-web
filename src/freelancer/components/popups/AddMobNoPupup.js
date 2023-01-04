@@ -35,7 +35,7 @@ const AddMobNoPupup = ({ open, onCloseModal }) => {
           <div className="message_header_img">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              enable-background="new 0 0 512 512"
+              enableBackground="new 0 0 512 512"
               viewBox="0 0 512 512"
             >
               <path

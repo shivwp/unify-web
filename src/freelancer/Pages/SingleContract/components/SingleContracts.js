@@ -62,21 +62,21 @@ const SingleContracts = () => {
             </div>
           </div>
         </div>
-        {buttonStatus == "see-timesheet" ? (
-          <div>
-            <div className="overflow-scroll">
-              <div className="d-flex tab_m_nodea tab_scroll_cont">
-                <button
-                  variant=""
-                  className={`text-capitalize tab_btn_vs w-auto ${
-                    currentTab == "OVERVIEW" ? "active_bvs" : ""
-                  }`}
-                  onClick={() => {
-                    setCurrentTab("OVERVIEW");
-                  }}
-                >
-                  Overview
-                </button>
+        <div>
+          <div className="overflow-scroll">
+            <div className="d-flex tab_m_nodea tab_scroll_cont">
+              <button
+                variant=""
+                className={`text-capitalize tab_btn_vs w-auto ${
+                  currentTab == "OVERVIEW" ? "active_bvs" : ""
+                }`}
+                onClick={() => {
+                  setCurrentTab("OVERVIEW");
+                }}
+              >
+                Overview
+              </button>
+              {buttonStatus == "see-timesheet" ? (
                 <button
                   variant=""
                   className={`text-capitalize tab_btn_vs w-auto ${
@@ -88,46 +88,19 @@ const SingleContracts = () => {
                 >
                   Timesheet
                 </button>
-
-                <button
-                  variant=""
-                  className={`text-capitalize tab_btn_vs w-auto ${
-                    currentTab == "DETAILS" ? "active_bvs" : ""
-                  }`}
-                  onClick={() => setCurrentTab("DETAILS")}
-                >
-                  Details
-                </button>
-              </div>
+              ) : null}
+              <button
+                variant=""
+                className={`text-capitalize tab_btn_vs w-auto ${
+                  currentTab == "DETAILS" ? "active_bvs" : ""
+                }`}
+                onClick={() => setCurrentTab("DETAILS")}
+              >
+                Details
+              </button>
             </div>
           </div>
-        ) : (
-          <div>
-            <div className="overflow-scroll">
-              <div className="d-flex tab_m_nodea tab_scroll_cont">
-                <button
-                  variant=""
-                  className={`text-capitalize tab_btn_vs w-auto ${
-                    currentTab === "OVERVIEW" ? "active_bvs" : ""
-                  }`}
-                  onClick={() => setCurrentTab("OVERVIEW")}
-                >
-                  Overview
-                </button>
-
-                <button
-                  variant=""
-                  className={`text-capitalize tab_btn_vs w-auto ${
-                    currentTab === "DETAILS" ? "active_bvs" : ""
-                  }`}
-                  onClick={() => setCurrentTab("DETAILS")}
-                >
-                  Details
-                </button>
-              </div>
-            </div>
-          </div>
-        )}
+        </div>
 
         {currentTab === "OVERVIEW" ? (
           buttonStatus == "see-timesheet" ? (

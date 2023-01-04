@@ -2,8 +2,10 @@ import ErrorPopup from "../../freelancer/components/popups/ErrorPopup";
 import SuccessPopup from "../../freelancer/components/popups/SuccessPopup";
 import Axios from "../axios";
 import {
+  ADD_TIMESHEET_TIME,
   DECLINE_REASONS_LIST,
   DISLIKE_POST_REASONS,
+  GET_TIMESHEET_DATA,
   JOBS_LIST,
   JOB_POST_DETAILS,
   ON_DISLIKE_JOB_POST,
@@ -546,8 +548,49 @@ export const SingleContractData = (id, setLoading) => async (dispatch) => {
       }
       dispatch({
         payload: res.data.data,
-        type: SINGLE_CONTRACT_DATA
-      })
+        type: SINGLE_CONTRACT_DATA,
+      });
+    })
+    .catch((err) => {
+      if (setLoading) {
+        setLoading(false);
+      }
+    });
+};
+export const AddTimeSheetTime = (data, setLoading) => async (dispatch) => {
+  await Axios.post(`/add-timesheet`, data, config)
+    .then((res) => {
+      if (setLoading) {
+        setLoading(false);
+      }
+      dispatch({
+        payload: res.data.data,
+        type: ADD_TIMESHEET_TIME,
+      });
+    })
+    .catch((err) => {
+      if (setLoading) {
+        setLoading(false);
+      }
+    });
+};
+export const getContractTimesheet = (data, setLoading) => async (dispatch) => {
+  console.log(data);
+  await Axios.get(`/contract-timesheet/${data.id}`, {
+    params: {
+      start_date: data?.start_date,
+      end_date: data?.end_date,
+    },
+    ...config,
+  })
+    .then((res) => {
+      if (setLoading) {
+        setLoading(false);
+      }
+      dispatch({
+        payload: res.data.data,
+        type: GET_TIMESHEET_DATA,
+      });
     })
     .catch((err) => {
       if (setLoading) {

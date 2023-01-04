@@ -21,7 +21,7 @@ const ToDos = () => {
             <div className="to_do_icon">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                enable-background="new 0 0 1920 1080"
+                enableBackground="new 0 0 1920 1080"
                 viewBox="0 0 1920 1080"
                 width="200"
                 height="200"
