@@ -9,7 +9,6 @@ import {
   getContractTimesheet,
 } from "../../../../redux/actions/jobActions";
 import { useParams } from "react-router-dom";
-import WeekPicker from "../../../../components/WeekPicker/WeekPicker";
 import moment from "moment";
 
 const TimeSheet = ({ setLoading, setPopup }) => {
@@ -87,7 +86,8 @@ const TimeSheet = ({ setLoading, setPopup }) => {
   };
 
   const getFullWeek = (dates) => {
-    setSelectedWeek(dates);
+    console.log(dates);
+    // setSelectedWeek(dates);
   };
 
   const handleOnChange = (e, i) => {
@@ -127,7 +127,7 @@ const TimeSheet = ({ setLoading, setPopup }) => {
               <div className="heading_and_btn">
                 <span>Work Diary</span>
                 <div className="get_date_range">
-                  <CustomeDateRangePicker getFullWeek={getFullWeek} />
+                  <CustomeDateRangePicker weeksAllDays={getFullWeek} />
                 </div>
               </div>
               <Row>

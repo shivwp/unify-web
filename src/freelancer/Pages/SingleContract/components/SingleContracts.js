@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Messages from "./Messages";
 import Details from "./Details";
-import TimeSheet from "../../SeeTimesheet/components/TimeSheet";
+import TimeSheet from "./TimeSheet";
 import { SingleContractData } from "../../../../redux/actions/jobActions";
 import { useDispatch, useSelector } from "react-redux";
 import OverViewFixed from "./OverViewFixed";

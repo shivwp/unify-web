@@ -5,15 +5,13 @@ import { useState } from "react";
 import "./CustomeDateRangePicker.css";
 import $ from "jquery";
 
-const CustomeDateRangePicker = ({ getFullWeek, dateRange }) => {
-  const [showCal, setShowCal] = useState(false);
-  const [changeOnlyYear, setChangeOnlyYear] = useState(false);
-  const [selectedMonth, setSelectedMonth] = useState(new Date().getMonth());
-  const [selectedYear, setSelectedYear] = useState(new Date().getFullYear());
-  const [selectedDate, setSelectedDate] = useState(new Date().getDate());
-  const [selectedDay, setSelectedDay] = useState(new Date().getDay());
-  const [activeDates, setActiveDates] = useState([]);
+// Functions that needs to pass in props
+// 1. getDate, if need only selected date
+// 2. getFullWeek, if need only start date and end date
+// 3. weeksAllDays, if need all dates of week
+// 4. DateRange if need start_date and end date of selected date range
 
+const CustomeDateRangePicker = ({ getFullWeek, getDate, weeksAllDays }) => {
   // months name
   const months = [
     "January",
@@ -30,7 +28,42 @@ const CustomeDateRangePicker = ({ getFullWeek, dateRange }) => {
     "December",
   ];
 
-  // days in months
+  // weeks name
+  const weekDays = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  const [showCal, setShowCal] = useState(false);
+  const [changeOnlyYear, setChangeOnlyYear] = useState(false);
+  const [selectedMonth, setSelectedMonth] = useState(new Date().getMonth());
+  const [selectedYear, setSelectedYear] = useState(new Date().getFullYear());
+  const [selectedDate, setSelectedDate] = useState(new Date().getDate());
+  const [selectedDay, setSelectedDay] = useState(new Date().getDay());
+  const [activeDates, setActiveDates] = useState([]);
+
+  // return selected date and get week name  from date
+  const selectedFullDate = useMemo(() => {
+    // set week name in state
+    setSelectedDay(
+      new Date(
+        `${selectedDate} ${months[selectedMonth]}, ${selectedYear}`
+      ).getDay()
+    );
+    // returning selected date
+    return `${selectedDate} ${months[selectedMonth]}, ${selectedYear}`;
+  }, [selectedDate, selectedMonth, selectedYear]);
+
+  // sending selected date
+  if (getDate) {
+    getDate(selectedFullDate);
+  }
+
+  // number of days in months
   const dayInMonth = {
     January: 31,
     February: selectedYear % 4 ? 28 : 29,
@@ -46,42 +79,28 @@ const CustomeDateRangePicker = ({ getFullWeek, dateRange }) => {
     December: 31,
   };
 
-  // weeks name
-  const weekDays = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-  ];
+  // get previous month of selected month
+  const prevMonth = () => {
+    if (selectedMonth < 1) {
+      return 11;
+    } else {
+      return selectedMonth - 1;
+    }
+  };
 
+  // day in next month of selected month
+  const nextMonth = () => {
+    if (selectedMonth < 11) {
+      return selectedMonth + 1;
+    } else {
+      return 0;
+    }
+  };
+
+  // get Full Week,
   useMemo(() => {
-    if (getFullWeek) {
+    if (getFullWeek || weeksAllDays) {
       const activeD = [];
-
-      // get previous month
-      const prevMonth = () => {
-        let prev;
-        if (selectedMonth < 1) {
-          prev = 11;
-        } else {
-          prev = selectedMonth - 1;
-        }
-        return prev;
-      };
-
-      // day in next month
-      const nextMonth = () => {
-        let next;
-        if (selectedMonth < 11) {
-          next = selectedMonth + 1;
-        } else {
-          next = 0;
-        }
-        return next;
-      };
 
       // week's first and last day start
       var firstOfWeek =
@@ -96,7 +115,6 @@ const CustomeDateRangePicker = ({ getFullWeek, dateRange }) => {
 
       // checking if first date is not in negative
       if (lastofWeek < 7) {
-        console.log("object1");
         for (
           let j =
             dayInMonth[months[prevMonth()]] -
@@ -111,12 +129,10 @@ const CustomeDateRangePicker = ({ getFullWeek, dateRange }) => {
           activeD.push({ day: j, month: previousMonth });
         }
         for (let i = firstOfWeek; i <= lastofWeek; i++) {
-          console.log("object2");
           activeD.push({ day: i, month: months[selectedMonth] });
         }
       } else {
         if (lastofWeek > dayInMonth[months[selectedMonth]]) {
-          console.log("object3");
           let last = lastofWeek - dayInMonth[months[selectedMonth]];
 
           for (
@@ -135,57 +151,40 @@ const CustomeDateRangePicker = ({ getFullWeek, dateRange }) => {
           }
         }
       }
+
+      // active date to show in calender
       setActiveDates(activeD);
-      getFullWeek({
-        first_date: `${activeD[0].day} ${activeD[0].month} ${selectedYear}`,
-        last_date: `${activeD[activeD.length - 1].day} ${
-          activeD[activeD.length - 1].month
-        } ${selectedYear}`,
-      });
+
+      // sending only start date and end date
+      if (getFullWeek) {
+        getFullWeek({
+          first_date: `${activeD[0].day} ${activeD[0].month} ${selectedYear}`,
+          last_date: `${activeD[activeD.length - 1].day} ${
+            activeD[activeD.length - 1].month
+          } ${selectedYear}`,
+        });
+      }
+      // sending all days from start date to end date
+      else if (weeksAllDays) {
+        weeksAllDays(
+          activeD.map(
+            (item, index) =>
+              `${activeD[index].day} ${activeD[index].month} ${selectedYear}`
+          )
+        );
+      }
     }
   }, [selectedDate, selectedMonth, selectedYear]);
 
-  // get selected full date
-  useEffect(() => {
-    setSelectedDay(
-      new Date(
-        `${selectedDate} ${months[selectedMonth]}, ${selectedYear}`
-      ).getDay()
-    );
-  }, [selectedDate, selectedMonth, selectedYear]);
-
-  const selectedFullDate = `${selectedDate} ${months[selectedMonth]}, ${selectedYear}`;
-
   // get All days in month
-  const getAllDaysInMonth = (selectedM, year) => {
+  const getAllDaysInMonth = () => {
     const AllDays = [];
 
     if (dayInMonth[months[selectedMonth]] < selectedDate) {
       setSelectedDate(dayInMonth[months[selectedMonth]]);
     }
 
-    // day in prev month
-    const prevMonth = () => {
-      let prev;
-      if (selectedMonth < 1) {
-        prev = 11;
-      } else {
-        prev = selectedMonth - 1;
-      }
-      return prev;
-    };
-    // day in next month
-    const nextMonth = () => {
-      let next;
-      if (selectedMonth < 11) {
-        next = selectedMonth + 1;
-      } else {
-        next = 0;
-      }
-      return next;
-    };
-
-    // prev month days
+    // prev month's days to show in current month
     for (
       let j =
         dayInMonth[months[prevMonth()]] -
@@ -202,6 +201,7 @@ const CustomeDateRangePicker = ({ getFullWeek, dateRange }) => {
       AllDays.push({ cls: "current", day: i, m: months[selectedMonth] });
     }
 
+    // get next month's day to show in current month
     if (AllDays.length > 35) {
       var nextM = 42 - AllDays.length;
     } else {
@@ -236,8 +236,8 @@ const CustomeDateRangePicker = ({ getFullWeek, dateRange }) => {
   };
 
   // select date
-  const DateSelect = (day, month) => {
-    setSelectedDate(day);
+  const DateSelect = (date, month) => {
+    setSelectedDate(date);
 
     if (month == "prev") {
       if (selectedMonth < 1) {
@@ -256,6 +256,7 @@ const CustomeDateRangePicker = ({ getFullWeek, dateRange }) => {
       }
     }
   };
+
   // get next year
   const getNextYear = (year) => {
     setSelectedYear(selectedYear + 1);
@@ -266,8 +267,9 @@ const CustomeDateRangePicker = ({ getFullWeek, dateRange }) => {
     setSelectedYear(selectedYear - 1);
   };
 
+  // hide calender when click outside of calender
   $(document).mouseup(function (e) {
-    if ($(e.target).closest("#calender_input, #calender").length === 0) {
+    if ($(e.target).closest("#Acalender_input, #Acalender").length === 0) {
       setShowCal(false);
     }
   });
@@ -277,12 +279,12 @@ const CustomeDateRangePicker = ({ getFullWeek, dateRange }) => {
       <div className="date_inp">
         <input
           type="text"
-          id="calender_input"
+          id="Acalender_input"
           value={selectedFullDate}
           onFocus={() => setShowCal(true)}
         />
         <div
-          id="calender"
+          id="Acalender"
           className={`calender ${!showCal ? "hide_calender" : ""}`}
         >
           {changeOnlyYear ? (
