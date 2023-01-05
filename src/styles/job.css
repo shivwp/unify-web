@@ -4280,18 +4280,30 @@
   color: #6d2ef1;
   min-width: 120px;
 }
-
 .timesheet .work_diary .time_sheet_time_btn:hover {
   background-color: #6d2ef1;
   color: #fff;
 }
+.timesheet .work_diary .time_sheet_time_btn:disabled {
+  background-color: #d1d1d1;
+  border: 1px solid #ffffff;
+  color: #ffffff;
+}
+.timesheet .work_diary .time_sheet_time_btn:disabled:hover {
+  background-color: #d1d1d1;
+  border: 1px solid #ffffff;
+  color: #ffffff;
+}
+
 .timesheet .work_diary .timesheet_time_input {
-  width: 120px;
+  width: 80px;
   height: 40px;
   outline: none;
   border: 1px solid #d8d8d8;
   text-align: right;
   padding: 0 12px;
+  margin: 0 5px;
+  text-align: center;
 }
 
 .timesheet .work_diary .heading_and_btn > span {

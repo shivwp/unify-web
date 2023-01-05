@@ -557,32 +557,29 @@ export const SingleContractData = (id, setLoading) => async (dispatch) => {
       }
     });
 };
-export const AddTimeSheetTime = (data, setLoading) => async (dispatch) => {
-  await Axios.post(`/add-timesheet`, data, config)
-    .then((res) => {
-      if (setLoading) {
-        setLoading(false);
-      }
-      dispatch({
-        payload: res.data.data,
-        type: ADD_TIMESHEET_TIME,
+export const AddTimeSheetTime =
+  (data, setLoading, setPopup) => async (dispatch) => {
+    await Axios.post(`/add-timesheet`, data, config)
+      .then((res) => {
+        if (setLoading) {
+          setLoading(false);
+        }
+        dispatch({
+          payload: res.data,
+          type: ADD_TIMESHEET_TIME,
+        });
+      })
+      .catch((err) => {
+        if (setLoading) {
+          setLoading(false);
+        }
+        setPopup(
+          <ErrorPopup popup={setPopup} message={err.response.data.message} />
+        );
       });
-    })
-    .catch((err) => {
-      if (setLoading) {
-        setLoading(false);
-      }
-    });
-};
+  };
 export const getContractTimesheet = (data, setLoading) => async (dispatch) => {
-  console.log(data);
-  await Axios.get(`/contract-timesheet/${data.id}`, {
-    params: {
-      start_date: data?.start_date,
-      end_date: data?.end_date,
-    },
-    ...config,
-  })
+  await Axios.post(`/contract-timesheet`, data, config)
     .then((res) => {
       if (setLoading) {
         setLoading(false);

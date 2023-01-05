@@ -8,9 +8,11 @@ import { SingleContractData } from "../../../../redux/actions/jobActions";
 import { useDispatch, useSelector } from "react-redux";
 import OverViewFixed from "./OverViewFixed";
 import OverViewHourly from "./OverViewHourly";
+import LoadingSpinner from "../../../../components/LoadingSpinner";
 
 const SingleContracts = () => {
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
   const { buttonStatus, id } = useParams();
   const [currentTab, setCurrentTab] = useState("OVERVIEW");
@@ -21,9 +23,10 @@ const SingleContracts = () => {
   );
 
   useEffect(() => {
-    dispatch(SingleContractData(id));
+    setLoading(true);
+    dispatch(SingleContractData(id, setLoading));
   }, []);
-  console.log(singleContractData);
+
   return (
     <>
       <Container className="mb-5 pb-3">
@@ -122,9 +125,14 @@ const SingleContracts = () => {
         ) : (
           ""
         )}
-        {currentTab == "TIMESHEET" ? <TimeSheet /> : ""}
+        {currentTab == "TIMESHEET" ? (
+          <TimeSheet setLoading={setLoading} setPopup={setPopup} />
+        ) : (
+          ""
+        )}
       </Container>
       {popup}
+      {loading ? <LoadingSpinner /> : null}
     </>
   );
 };

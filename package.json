@@ -26,6 +26,7 @@
     "react-custom-checkbox": "^2.0.2",
     "react-datepicker": "^4.8.0",
     "react-daterange-picker": "^2.0.1",
+    "react-dates": "^21.8.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.4.0",
     "react-paginate": "^8.1.3",

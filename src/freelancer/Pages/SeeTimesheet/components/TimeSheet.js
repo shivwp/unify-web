@@ -9,48 +9,90 @@ import {
   getContractTimesheet,
 } from "../../../../redux/actions/jobActions";
 import { useParams } from "react-router-dom";
+import WeekPicker from "../../../../components/WeekPicker/WeekPicker";
+import moment from "moment";
 
-const TimeSheet = () => {
+const TimeSheet = ({ setLoading, setPopup }) => {
   const dispatch = useDispatch();
   const { id } = useParams();
+  const [selectedWeek, setSelectedWeek] = useState(false);
   const [timeInput, setTimeInput] = useState(false);
   const addTimesheetTime = useSelector((state) => state?.job?.addTimesheetTime);
   const getTimeSheet = useSelector((state) => state?.job?.getTimeSheet);
+  const [errors, setErrors] = useState(false);
+  const [values, setValues] = useState({});
 
   useEffect(() => {
-    dispatch(
-      getContractTimesheet({
-        id,
-        start_date: "2023-01-03",
-        end_date: "2023-01-04",
+    setLoading(true);
+    const data = {
+      contract_id: id,
+      start_date: moment(selectedWeek?.first_date).format("YYYY-MM-DD"),
+      end_date: moment(selectedWeek?.last_date).format("YYYY-MM-DD"),
+    };
+    dispatch(getContractTimesheet(data, setLoading));
+  }, [addTimesheetTime, selectedWeek]);
+
+  useEffect(() => {
+    setValues(
+      getTimeSheet?.map((item) => {
+        return {
+          hours: item.hours.split(":")[0],
+          minuts: item.hours.split(":")[1],
+        };
       })
     );
-  }, [addTimesheetTime]);
+  }, [getTimeSheet]);
 
-  let data = [
-    { id: 1, date: "12-02-2023", hours: "00" },
-    { id: 2, date: "13-02-2023", hours: "00" },
-    { id: 3, date: "14-02-2023", hours: "00" },
-    { id: 4, date: "15-02-2023", hours: "00" },
-    { id: 5, date: "16-02-2023", hours: "00" },
-    { id: 6, date: "17-02-2023", hours: "00" },
-    { id: 7, date: "18-02-2023", hours: "00" },
-  ];
+  console.log(addTimesheetTime);
+  const onAddTimeInTimesheet = (date) => {
+    let errorExist = false;
+    let errorsObject = {};
 
-  const SelectedDates = (e, picker) => {
-    console.log(e);
-    console.log(picker);
+    if (!values?.hours || values.hours == "" || values.hours == undefined) {
+      errorExist = true;
+      errorsObject.hours = "Hours field is required";
+    } else if (values?.hours > 24) {
+      errorExist = true;
+      errorsObject.hours = "Hours can't be more then 24 hours in one day";
+    } else if (values.hours < 0) {
+      errorExist = true;
+      errorsObject.hours = "Hours can't be less then 0";
+    } else if (
+      !values?.minuts ||
+      values.minuts == "" ||
+      values.minuts == undefined
+    ) {
+      errorExist = true;
+      errorsObject.hours = "Minuts field is required";
+    } else if (values?.minuts > 60) {
+      errorExist = true;
+      errorsObject.hours = "Minuts can't be more then 60 minuts in one day";
+    } else if (values.minuts < 0) {
+      errorExist = true;
+      errorsObject.hours = "Minuts can't be less then 0";
+    }
+
+    if (errorExist) {
+      setErrors(errorsObject);
+      return false;
+    }
+    setLoading(true);
+    setLoading(true);
+    const data = {
+      contract_id: id,
+      date,
+      hours: `${values?.hours}:${values.minuts}`,
+    };
+    dispatch(AddTimeSheetTime(data, setLoading, setPopup));
   };
 
-  const onAddTimeInTimesheet = () => {
-    setTimeInput(false);
-    console.log("object");
-    // const data = {
-    //   contract_id,
-    //   date,
-    //   hours,
-    // };
-    // dispatch(AddTimeSheetTime(data));
+  const getFullWeek = (dates) => {
+    setSelectedWeek(dates);
+  };
+
+  const handleOnChange = (e, i) => {
+    setValues((values[i][e.target.name] = e.target.value));
+    setErrors({ hours: false });
   };
 
   return (
@@ -85,16 +127,7 @@ const TimeSheet = () => {
               <div className="heading_and_btn">
                 <span>Work Diary</span>
                 <div className="get_date_range">
-                  <DateRangePicker
-                    onApply={SelectedDates}
-                    initialSettings={{
-                      startDate: new Date(),
-                      endDate: new Date(),
-                    }}
-                  >
-                    <input type="text" className="form-control col-4" />
-                  </DateRangePicker>
-                  {/* <CustomeDateRangePicker /> */}
+                  <CustomeDateRangePicker getFullWeek={getFullWeek} />
                 </div>
               </div>
               <Row>
@@ -105,26 +138,53 @@ const TimeSheet = () => {
                       <div className="day_timesheet" key={index}>
                         <span>{item?.date}</span>
                         {/* <span>0.00 hrs</span> */}
-                        {timeInput == item.id ? (
-                          <input
-                            type="number"
-                            className="timesheet_time_input"
-                            placeholder="00.00"
-                          />
+                        {timeInput === item.date ? (
+                          <div>
+                            <div>
+                              <input
+                                type="number"
+                                name="hours"
+                                className="timesheet_time_input"
+                                placeholder="Hours"
+                                value={values[index].hours}
+                                onChange={(e) => handleOnChange(e, index)}
+                              />
+                              <input
+                                type="number"
+                                name="minuts"
+                                className="timesheet_time_input"
+                                placeholder="Minute"
+                                value={values[index].minuts}
+                                onChange={(e) => handleOnChange(e, index)}
+                              />
+                            </div>
+                            <div>
+                              <span
+                                className="signup-error"
+                                style={{ fontSize: "16px !important" }}
+                              >
+                                {errors.hours && errors.hours}
+                              </span>
+                            </div>
+                          </div>
                         ) : (
                           <span>{item.hours}</span>
                         )}
-                        {timeInput == item.id ? (
+                        {item.date > moment(new Date()).format("YYYY-MM-DD") ? (
+                          <button className="time_sheet_time_btn" disabled>
+                            Add Time
+                          </button>
+                        ) : timeInput === item.date ? (
                           <button
                             className="time_sheet_time_btn"
-                            onClick={onAddTimeInTimesheet}
+                            onClick={() => onAddTimeInTimesheet(item.date)}
                           >
                             Save
                           </button>
                         ) : (
                           <button
                             className="time_sheet_time_btn"
-                            onClick={() => setTimeInput(item.id)}
+                            onClick={() => setTimeInput(item.date)}
                           >
                             Add Time
                           </button>

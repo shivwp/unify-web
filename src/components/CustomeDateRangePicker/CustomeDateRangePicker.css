@@ -8,14 +8,15 @@
   height: 100%;
   border: 1px solid #d4d4d4;
   outline: none;
+  text-align: center;
 }
 
 .date_inp .calender {
   position: absolute;
-  height: 250px;
+  min-height: 196px;
   width: 250px;
   background-color: #eeeef0;
-  border: 1px solid #d4d4d4;
+  border: 1px solid #e2d0ff;
 }
 
 .date_inp .calender .selected_months {
@@ -24,6 +25,21 @@
   padding: 5px 20px;
   background-color: #fff;
 }
+.date_inp .calender .selected_months .prevBtn,
+.date_inp .calender .selected_months .nextBtn {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.date_inp .calender .selected_months .prevBtn:active,
+.date_inp .calender .selected_months .nextBtn:active {
+  background-color: #6610f2;
+  color: #fff;
+}
+
 .date_inp .calender .selected_months span {
   cursor: pointer;
 }
@@ -32,10 +48,72 @@
   display: none;
 }
 
+.date_inp .calender .week_days {
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 12px;
+  gap: 1px;
+  padding: 2px;
+  background-color: #e2d0ff;
+}
+.date_inp .calender .week_days .week_day {
+  width: 34px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background-color: #efe5ff;
+  border: 1px solid #e8e3f0;
+}
+
+.dayActive {
+  background-color: #6610f2 !important;
+  color: #fff !important;
+}
+.date_inp .calender .week_days .week_day:hover {
+  background-color: #e2d0ff;
+}
+
 .date_inp .calender .days {
   display: flex;
   flex-wrap: wrap;
+  font-size: 12px;
+  gap: 1px;
+  padding: 2px;
+  /* justify-content: space-evenly; */
 }
 .date_inp .calender .days .day {
-  width: 20px;
+  width: 34px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background-color: #fff;
+  border: 1px solid #e8e3f0;
+}
+
+.date_inp .calender .days .day.prev {
+  background-color: #d5d3d8 !important;
+  color: #000 !important;
+}
+.date_inp .calender .days .day.next {
+  background-color: #d5d3d8 !important;
+  color: #000 !important;
+}
+
+.dateActive {
+  background-color: #6610f2 !important;
+  color: #fff !important;
+}
+
+.date_inp .calender .days .day.WeekActive {
+  background-color: #6610f2 !important;
+  color: #fff !important;
+}
+
+.date_inp .calender .days .day:hover {
+  background-color: #6610f2 !important;
+  color: #fff;
 }
