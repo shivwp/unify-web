@@ -7,6 +7,7 @@ import LoadingSpinner from "./components/LoadingSpinner";
 const FooterPages = lazy(() => import("./FooterPages"));
 const Subscription = lazy(() => import("./client/Pages/Subscription"));
 const Testimonial = lazy(() => import("./components/Testimonial"));
+const HelpSupport = lazy(() => import("./client/Pages/HelpSupport"));
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/subscription" element={<Subscription />} />
         <Route path="/submit-testimonial/:id" element={<Testimonial />} />
         <Route path="/pages/:pagename" element={<FooterPages />} />
+        <Route path="/help-support" element={<HelpSupport />} />
       </Routes>
       <ClientRoutes />
       <FreelancerRoutes />
