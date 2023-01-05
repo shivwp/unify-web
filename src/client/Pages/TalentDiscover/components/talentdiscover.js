@@ -289,11 +289,12 @@ const Screen = () => {
                         <img src={data.profile_image} alt="" />
                       </div>
                       <div className="ml-10-n">
-                        <Link to={`/freelancer-details/${data.id}`}>
-                          <div className="propmo_u_name">
-                            {data.first_name} {data.last_name}
-                          </div>
-                        </Link>
+                        <div
+                          className="propmo_u_name"
+                          onClick={() => handleSingleFreelancer(data.id)}
+                        >
+                          {data.first_name} {data.last_name}
+                        </div>
                         <div className="promo_exper">{data.occuption}</div>
                         <div className="avai_btn_promo">
                           <button>Available</button>

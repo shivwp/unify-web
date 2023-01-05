@@ -31,12 +31,20 @@ const Jobs = ({ clientContractList }) => {
             <Row>
               <Col>
                 <div className="select_inp_in filter_select_m">
-                  <Select className="custom_css_select" options={options} />
+                  <select className="custom_css_select">
+                    <option value="Start date">Start date</option>
+                    <option value="End date">End date</option>
+                    <option value="Client name">Client name</option>
+                    <option value="Contract name">Contract name</option>
+                  </select>
                 </div>
               </Col>
               <Col>
                 <div className="select_inp_in filter_select_m">
-                  <Select className="custom_css_select" options={optionsne} />
+                  <select className="custom_css_select">
+                    <option value="Descending">Descending</option>
+                    <option value="Aescending">Aescending</option>
+                  </select>
                 </div>
               </Col>
             </Row>
@@ -78,41 +86,35 @@ const Jobs = ({ clientContractList }) => {
                   <h6>{data.project.name}</h6>
                   <span>{data.client.company_name}</span>
                 </div>
-                <div className="contract-listButton">
-                  <button className="RehireButton">Rehire</button>
-                  <button
-                    className="toggle_btn_dot"
-                    onClick={() => setDropdown(!dropdown)}
-                  >
-                    <i className="bi bi-three-dots-vertical font-szie-20px"></i>
-                  </button>
-                  {dropdown && (
-                    <div className="menu_barContract" id="menu_barContract">
-                      <span>
-                        <Link to="/single-contracts/overview">
-                          View Milestone & Payments
-                        </Link>
-                      </span>
-                      <span>
-                        <Link to="/single-contracts/messages">
-                          Send A Message
-                        </Link>
-                      </span>
-                      <span>
-                        <Link to="/single-contracts/details">
-                          View Terms & Settings
-                        </Link>
-                      </span>
-                      <span>
-                        <Link to={`/freelancer-details/525`}>View Profile</Link>
-                      </span>
-
-                      <span className="menu_btn_arrow" id="menu_btn_arrow1">
-                        &#62;
-                      </span>
-                    </div>
-                  )}
-                </div>
+                {data?.button_status === "release milestone" ? (
+                  <div className="contract-listButton">
+                    <Link to="/single-contracts/overview">
+                      <button className="RehireButton">
+                        Release Milestone
+                      </button>
+                    </Link>
+                  </div>
+                ) : data?.button_status === "see message" ? (
+                  <div className="contract-listButton">
+                    <button className="RehireButton">Send a message</button>
+                  </div>
+                ) : data?.button_status === "rehire" ? (
+                  <div className="contract-listButton">
+                    <button className="RehireButton">Rehire</button>
+                  </div>
+                ) : data?.button_status === "see dispute" ? (
+                  <div className="contract-listButton">
+                    <button className="RehireButton">See Dispute</button>
+                  </div>
+                ) : data?.button_status === "fund milestone" ? (
+                  <div className="contract-listButton">
+                    <button className="RehireButton">Fund Milestone</button>
+                  </div>
+                ) : data?.button_status === "review work" ? (
+                  <div className="contract-listButton">
+                    <button className="RehireButton">Review Work</button>
+                  </div>
+                ) : null}
               </div>
               <div className="contract-listDetails">
                 <div className="contract-listFirst">
@@ -146,3 +148,38 @@ const Jobs = ({ clientContractList }) => {
   );
 };
 export default Jobs;
+
+{
+  /* <button
+                    className="toggle_btn_dot"
+                    onClick={() => setDropdown(!dropdown)}
+                  >
+                    <i className="bi bi-three-dots-vertical font-szie-20px"></i>
+                  </button>
+                  {dropdown && (
+                    <div className="menu_barContract" id="menu_barContract">
+                      <span>
+                        <Link to="/single-contracts/overview">
+                          View Milestone & Payments
+                        </Link>
+                      </span>
+                      <span>
+                        <Link to="/single-contracts/messages">
+                          Send A Message
+                        </Link>
+                      </span>
+                      <span>
+                        <Link to="/single-contracts/details">
+                          View Terms & Settings
+                        </Link>
+                      </span>
+                      <span>
+                        <Link to={`/freelancer-details/525`}>View Profile</Link>
+                      </span>
+
+                      <span className="menu_btn_arrow" id="menu_btn_arrow1">
+                        &#62;
+                      </span>
+                    </div>
+                  )} */
+}

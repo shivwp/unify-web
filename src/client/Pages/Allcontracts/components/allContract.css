@@ -66,7 +66,7 @@
 .contract-listFirst {
   display: flex;
   align-items: center;
-  width: 30%;
+  width: 37%;
 }
 
 .contract-listFirst .contract-info {
@@ -82,7 +82,7 @@
 }
 
 .contract-listLast {
-  width: 16%;
+  width: 13%;
 }
 .contract-listMiddle h6 {
   font-size: 14px;

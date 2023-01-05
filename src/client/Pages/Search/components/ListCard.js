@@ -1,12 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 import { Col, Row } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const ListCard = ({
   freelancerList,
   handleRemoveSavedTalent,
   handleSavedTalent,
 }) => {
+  const navigate = useNavigate();
+  const [idsList, setIdsList] = useState(
+    JSON.parse(localStorage.getItem("idsList")) || []
+  );
+
+  const handleSingleFreelancer = (id) => {
+    setIdsList([...idsList, { id }]);
+
+    localStorage.setItem(
+      "idsList",
+      JSON.stringify([...JSON.parse(localStorage.getItem("idsList")), { id }])
+    );
+    if (idsList) {
+      navigate(`/freelancer-details/${id}`);
+    }
+  };
+
   return (
     <>
       {freelancerList?.length === 0 ? (
@@ -33,11 +50,13 @@ const ListCard = ({
                           <img src={data.profile_image} alt="" />
                         </div>
                         <div className="freel_det_bin">
-                          <Link to={`/freelancer-details/${data.id}`}>
-                            <div className="freelancer_ame_in">
-                              {data.first_name} {data.last_name}
-                            </div>
-                          </Link>
+                          <div
+                            className="freelancer_ame_in"
+                            onClick={() => handleSingleFreelancer(data.id)}
+                          >
+                            {data.first_name} {data.last_name}
+                          </div>
+
                           <div className="freelancer_exp_in">
                             {data.occuption}
                           </div>

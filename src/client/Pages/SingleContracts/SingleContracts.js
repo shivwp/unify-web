@@ -52,7 +52,7 @@ const SingleContracts = () => {
                 >
                   Overview
                 </button>
-                <button
+                {/* <button
                   className={`text-capitalize tab_btn_vs w-auto ${
                     currentTab === "messages" ? "active_bvs" : ""
                   }`}
@@ -62,7 +62,7 @@ const SingleContracts = () => {
                   }}
                 >
                   Messages
-                </button>
+                </button> */}
                 <button
                   className={`text-capitalize tab_btn_vs w-auto ${
                     currentTab === "details" ? "active_bvs" : ""
