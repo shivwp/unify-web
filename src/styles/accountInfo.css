@@ -237,16 +237,6 @@
   cursor: pointer;
 }
 
-.endContracts-button {
-  border: none;
-  padding: 10px 40px;
-  border-radius: 30px;
-  background-color: #6d2ef1;
-  color: #fff;
-  font-weight: 600;
-  font-size: 14px;
-}
-
 .questionOnebtn {
   display: flex;
   align-items: center;

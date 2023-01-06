@@ -5,6 +5,14 @@ import { useState } from "react";
 import $ from "jquery";
 import moment from "moment";
 
+const options = [
+  { value: "Start date", label: "Start date" },
+  { value: "End date", label: "End date" },
+  { value: "Client name", label: "Client name" },
+  { value: "Contract name", label: "Contract name" },
+];
+const optionsne = [{ value: "Descending", label: "Descending" }];
+
 const Jobs = ({ clientContractList }) => {
   const [dropdown, setDropdown] = useState(false);
 
@@ -80,7 +88,7 @@ const Jobs = ({ clientContractList }) => {
                 </div>
                 {data?.button_status === "release milestone" ? (
                   <div className="contract-listButton">
-                    <Link to={`/single-contract/overview/${data.id}`}>
+                    <Link to="/single-contracts/overview">
                       <button className="RehireButton">
                         Release Milestone
                       </button>
