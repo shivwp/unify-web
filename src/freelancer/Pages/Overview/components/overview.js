@@ -6,17 +6,29 @@ import WorkInProgress from "./WorkInProgress";
 import InReview from "./InReviews";
 import Available from "./Available";
 import Pending from "./Pending";
+import { useDispatch, useSelector } from "react-redux";
+import { getOverViewReport } from "../../../../redux/actions/jobActions";
+import LoadingSpinner from "../../../../components/LoadingSpinner";
+import { useEffect } from "react";
 
 const Screen = () => {
   const [currentTab, seturrentTab] = useState("inProgress");
   Title(" | Overview");
+  const dispatch = useDispatch();
+  const [popup, setPopup] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const overviewReports = useSelector((state) => state.job.overviewReportss);
+  console.log(overviewReports);
 
+  useEffect(() => {
+    dispatch(getOverViewReport(setLoading, setPopup));
+  });
   const ChangeTab = ({ tabName }) => {
     const tab = {
-      inProgress: <WorkInProgress />,
-      inReview: <InReview />,
-      Available: <Available />,
-      Pending: <Pending />,
+      inProgress: <WorkInProgress overviewReports={overviewReports} />,
+      inReview: <InReview overviewReports={overviewReports} />,
+      Available: <Available overviewReports={overviewReports} />,
+      Pending: <Pending overviewReports={overviewReports} />,
     };
     return tab[tabName];
   };
@@ -79,6 +91,8 @@ const Screen = () => {
           </div>
         </div>
       </Container>
+      {loading ? <LoadingSpinner /> : null}
+      {popup}
     </>
   );
 };

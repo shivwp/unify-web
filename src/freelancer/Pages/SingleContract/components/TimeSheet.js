@@ -14,6 +14,7 @@ import moment from "moment";
 const TimeSheet = ({ setLoading, setPopup }) => {
   const dispatch = useDispatch();
   const { id } = useParams();
+  const [currentWeekStartDate, setCurrentWeekStartDate] = useState(false);
   const [selectedWeek, setSelectedWeek] = useState(false);
   const [timeInput, setTimeInput] = useState(false);
   const addTimesheetTime = useSelector((state) => state?.job?.addTimesheetTime);
@@ -28,48 +29,55 @@ const TimeSheet = ({ setLoading, setPopup }) => {
       start_date: moment(selectedWeek?.first_date).format("YYYY-MM-DD"),
       end_date: moment(selectedWeek?.last_date).format("YYYY-MM-DD"),
     };
-    dispatch(getContractTimesheet(data, setLoading));
+    dispatch(getContractTimesheet(data, setLoading, setPopup));
   }, [addTimesheetTime, selectedWeek]);
 
   useEffect(() => {
     setValues(
-      getTimeSheet?.map((item) => {
+      getTimeSheet?.all?.map((item) => {
         return {
           hours: item.hours.split(":")[0],
           minuts: item.hours.split(":")[1],
+          date: item.date,
         };
       })
     );
   }, [getTimeSheet]);
 
-  console.log(addTimesheetTime);
   const onAddTimeInTimesheet = (date) => {
     let errorExist = false;
     let errorsObject = {};
+    const index = values.findIndex((ele) => ele.date == timeInput);
 
-    if (!values?.hours || values.hours == "" || values.hours == undefined) {
+    if (
+      !values[index]?.hours ||
+      values[index].hours == "" ||
+      values[index].hours == undefined
+    ) {
       errorExist = true;
       errorsObject.hours = "Hours field is required";
-    } else if (values?.hours > 24) {
+    } else if (values[index]?.hours > 24) {
       errorExist = true;
       errorsObject.hours = "Hours can't be more then 24 hours in one day";
-    } else if (values.hours < 0) {
+    } else if (values[index].hours < 0) {
       errorExist = true;
       errorsObject.hours = "Hours can't be less then 0";
     } else if (
-      !values?.minuts ||
-      values.minuts == "" ||
-      values.minuts == undefined
+      !values[index]?.minuts ||
+      values[index].minuts == "" ||
+      values[index].minuts == undefined
     ) {
       errorExist = true;
       errorsObject.hours = "Minuts field is required";
-    } else if (values?.minuts > 60) {
+    } else if (values[index]?.minuts > 60) {
       errorExist = true;
       errorsObject.hours = "Minuts can't be more then 60 minuts in one day";
-    } else if (values.minuts < 0) {
+    } else if (values[index].minuts < 0) {
       errorExist = true;
       errorsObject.hours = "Minuts can't be less then 0";
     }
+
+    console.log(`${values[index]?.hours}:${values[index].minuts}`);
 
     if (errorExist) {
       setErrors(errorsObject);
@@ -80,19 +88,35 @@ const TimeSheet = ({ setLoading, setPopup }) => {
     const data = {
       contract_id: id,
       date,
-      hours: `${values?.hours}:${values.minuts}`,
+      hours: `${
+        values[index]?.hours < 10
+          ? `0${values[index].hours}`
+          : values[index]?.hours
+      }:${
+        values[index]?.minuts < 10
+          ? `0${values[index].minuts}`
+          : values[index]?.minuts
+      }`,
     };
-    dispatch(AddTimeSheetTime(data, setLoading, setPopup));
+    dispatch(AddTimeSheetTime(data, setTimeInput, setLoading, setPopup));
   };
 
   const getFullWeek = (dates) => {
-    console.log(dates);
-    // setSelectedWeek(dates);
+    setSelectedWeek(dates);
   };
 
   const handleOnChange = (e, i) => {
-    setValues((values[i][e.target.name] = e.target.value));
-    setErrors({ hours: false });
+    const list = [...values];
+    if (e.target.value.length < 3) {
+      list[i][e.target.name] = e.target.value;
+      setValues(list);
+      setErrors({ hours: false });
+    }
+  };
+
+  const currentWeekStart = (date) => {
+    console.log(date);
+    setCurrentWeekStartDate(date.first_date);
   };
 
   return (
@@ -102,21 +126,23 @@ const TimeSheet = ({ setLoading, setPopup }) => {
           <div className="timesheet">
             <div className="timesheet_times">
               <div className="timesheet_time">
-                <span className="headings">Last 24 hours</span>
-                <span>0.00 hrs</span>
+                <span className="headings">Yesterday</span>
+                <span>{getTimeSheet?.yesterday} hrs</span>
               </div>
               <div className="timesheet_time">
                 <span className="headings">This Week</span>
-                <span>0.00 hrs</span>
-                <span className="time_limit">Of 40 hrs limit</span>
+                <span>{getTimeSheet?.this_week} hrs</span>
+                <span className="time_limit">
+                  Of {getTimeSheet?.weekelyLimit} hrs limit
+                </span>
               </div>
               <div className="timesheet_time">
                 <span className="headings">Last Week </span>
-                <span>0.00 hrs</span>
+                <span>{getTimeSheet?.last_week} hrs</span>
               </div>
               <div className="timesheet_time">
                 <span className="headings">Since start </span>
-                <span>0.00 hrs</span>
+                <span>{getTimeSheet?.since_start} hrs</span>
               </div>
             </div>
           </div>
@@ -127,14 +153,17 @@ const TimeSheet = ({ setLoading, setPopup }) => {
               <div className="heading_and_btn">
                 <span>Work Diary</span>
                 <div className="get_date_range">
-                  <CustomeDateRangePicker weeksAllDays={getFullWeek} />
+                  <CustomeDateRangePicker
+                    getFullWeek={getFullWeek}
+                    currentWeekStart={currentWeekStart}
+                  />
                 </div>
               </div>
               <Row>
                 <Col lg={12}>
                   <div className="get_datesheet_time">
                     <div className="heading">Nov 14 -Nov 20</div>
-                    {getTimeSheet?.map((item, index) => (
+                    {getTimeSheet?.all?.map((item, index) => (
                       <div className="day_timesheet" key={index}>
                         <span>{item?.date}</span>
                         {/* <span>0.00 hrs</span> */}
@@ -170,7 +199,13 @@ const TimeSheet = ({ setLoading, setPopup }) => {
                         ) : (
                           <span>{item.hours}</span>
                         )}
+
                         {item.date > moment(new Date()).format("YYYY-MM-DD") ? (
+                          <button className="time_sheet_time_btn" disabled>
+                            Add Time
+                          </button>
+                        ) : moment(currentWeekStartDate).format("YYYY-MM-DD") >
+                          item.date ? (
                           <button className="time_sheet_time_btn" disabled>
                             Add Time
                           </button>

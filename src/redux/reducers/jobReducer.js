@@ -2,10 +2,13 @@ import {
   ADD_TIMESHEET_TIME,
   DECLINE_REASONS_LIST,
   DISLIKE_POST_REASONS,
+  GET_OVERVIEW_REPORT,
   GET_TIMESHEET_DATA,
   JOBS_LIST,
   JOB_POST_DETAILS,
   ON_DISLIKE_JOB_POST,
+  ON_FREELANCER_REQUEST_MILESTONE,
+  ON_SUBMIT_WORK_FOR_PAYMENT,
   PROPOSAL_TERMS_CHANGE,
   SAVED_JOBS_LIST,
   SAVE_JOB_POST,
@@ -142,6 +145,21 @@ const jobReducer = (state = initialState, action) => {
       return {
         ...state,
         getTimeSheet: action.payload,
+      };
+    case ON_SUBMIT_WORK_FOR_PAYMENT:
+      return {
+        ...state,
+        onSubmitWorkForPayment: action.payload,
+      };
+    case ON_FREELANCER_REQUEST_MILESTONE:
+      return {
+        ...state,
+        onRequestForMilestone: action.payload,
+      };
+    case GET_OVERVIEW_REPORT:
+      return {
+        ...state,
+        overviewReports: action.payload,
       };
     default:
       return state;

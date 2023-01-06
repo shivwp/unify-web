@@ -1,14 +1,48 @@
 import React from "react";
 import { useState } from "react";
 import { Col, Form, Row, Button } from "react-bootstrap";
+import { useDispatch } from "react-redux";
+import { onFreelancerRequestMilestone } from "../../../../redux/actions/jobActions";
 import PopupsCloseIcon from "../../../components/popups/PopupsCloseIcon";
 
-const AddMilestonePopup = ({ popup, setLoading }) => {
+const AddMilestonePopup = ({ popup, setLoading, afterSuccess }) => {
   const [errors, setErrors] = useState({});
   const [values, setValues] = useState({});
-
+  const dispatch = useDispatch();
   const onInputChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
+  };
+
+  const requestForMilestone = (another) => {
+    const errorsObject = {};
+    let errorExist = false;
+
+    if (
+      values.title == "" ||
+      values.title == undefined ||
+      values.title == null
+    ) {
+      errorsObject.title = "Please enter milestone title";
+      errorExist = true;
+    }
+    if (
+      values.amount == "" ||
+      values.amount == undefined ||
+      values.amount == null
+    ) {
+      errorsObject.amount = "Please enter milestone amount";
+      errorExist = true;
+    }
+    if (values.amount < 0) {
+      errorsObject.amount = "Please enter valid amount";
+      errorExist = true;
+    }
+    if (errorExist) {
+      setErrors(errorsObject);
+      return false;
+    }
+
+    // dispatch(onFreelancerRequestMilestone(data, setLoading, popup, another));
   };
   return (
     <>
@@ -35,14 +69,14 @@ const AddMilestonePopup = ({ popup, setLoading }) => {
                     </Form.Label>
                     <Form.Control
                       type="text"
-                      name="name"
+                      name="title"
                       className="font-size-13px"
                       value={values?.name}
                       onChange={(e) => onInputChange(e)}
                       placeholder=""
                     />
                     <span className="signup-error">
-                      {errors.name && errors.name}
+                      {errors.title && errors.title}
                     </span>
                   </div>
                 </Col>
@@ -85,9 +119,6 @@ const AddMilestonePopup = ({ popup, setLoading }) => {
                     <span style={{ fontSize: 12, marginTop: 8 }}>
                       All date and time are base on UTC
                     </span>
-                    <span className="signup-error">
-                      {errors.email && errors.email}
-                    </span>
                   </div>
                 </Col>
                 <Col md={12}>
@@ -119,10 +150,18 @@ const AddMilestonePopup = ({ popup, setLoading }) => {
             </div>
 
             <div className="popup_btns_new flex-wrap cwiewyehkk">
-              <button variant="" className="font-weight-600 trans_btn">
+              <button
+                variant=""
+                className="font-weight-600 trans_btn"
+                onClick={() => requestForMilestone(afterSuccess)}
+              >
                 SAVE & ADD ANOTHER
               </button>
-              <button variant="" className="font-weight-600 ">
+              <button
+                variant=""
+                className="font-weight-600"
+                onClick={requestForMilestone}
+              >
                 SAVE
               </button>
             </div>

@@ -1,14 +1,59 @@
 import React from "react";
 import { useState } from "react";
 import { Col, Form, Row, Button } from "react-bootstrap";
+import { useDispatch } from "react-redux";
+import { onSubmitWorkForPayment } from "../../../../redux/actions/jobActions";
 import PopupsCloseIcon from "../../../components/popups/PopupsCloseIcon";
 
-const SubmitWorkForPaymentPopup = ({ popup }) => {
+const SubmitWorkForPaymentPopup = ({ popup, setLoading }) => {
   const [errors, setErrors] = useState({});
   const [values, setValues] = useState({});
+  const [attachment, setAttachment] = useState(null);
+  const [showingImage, setShowingImage] = useState();
+  const dispatch = useDispatch();
 
   const onInputChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
+  };
+
+  const onImageChange = (e) => {
+    let errorExist = false;
+    const attachment = e.target.files[0];
+    if (attachment?.size > 1048576 * 10) {
+      setErrors({ ...errors, attachment: "Image size must be maximum 10 MB" });
+      errorExist = true;
+    }
+    if (errorExist) {
+      return false;
+    }
+    setAttachment(e.target.files[0]);
+    setShowingImage(e.target.files[0].name);
+    setErrors({ ...errors, attachment: false });
+  };
+
+  const onSubmit = () => {
+    const formData = new FormData();
+    const errorsObject = {};
+    let errorExist = false;
+    formData.append("image", attachment);
+
+    if (!attachment) {
+      errorsObject.attachment = "Please choose a attachment file";
+      errorExist = true;
+    }
+    if (
+      values?.description == "" ||
+      values?.description == undefined ||
+      values?.description == null
+    ) {
+      errorsObject.description = "Description field is required";
+      errorExist = true;
+    }
+    if (errorExist) {
+      setErrors(errorsObject);
+      return false;
+    }
+    dispatch(onSubmitWorkForPayment(formData, setLoading, popup));
   };
   return (
     <>
@@ -54,11 +99,44 @@ const SubmitWorkForPaymentPopup = ({ popup }) => {
                       onChange={(e) => onInputChange(e)}
                       placeholder="Enter Here"
                     ></Form.Control>
-                    {/* <span className="signup-error mt-1">
-                      {errorRequestTestimonial && errorRequestTestimonial}
-                    </span> */}
+                    <span className="signup-error mt-1">
+                      {errors?.description && errors?.description}
+                    </span>
                   </div>
                 </Col>
+                <Col md={12}>
+                  {" "}
+                  {/* ======================================== */}
+                  {showingImage ? (
+                    <div className="document_card mt-4 mb-2">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="32"
+                      >
+                        <g fill="#828282">
+                          <path d="M1.5 32h21c.827 0 1.5-.673 1.5-1.5v-21c0-.017-.008-.031-.009-.047-.002-.023-.008-.043-.013-.065a.488.488 0 0 0-.09-.191c-.007-.009-.006-.02-.013-.029l-8-9c-.003-.003-.007-.003-.01-.006a.494.494 0 0 0-.223-.134c-.019-.006-.036-.008-.056-.011C15.557.012 15.53 0 15.5 0h-14C.673 0 0 .673 0 1.5v29c0 .827.673 1.5 1.5 1.5zM16 1.815 22.387 9H16.5c-.22 0-.5-.42-.5-.75V1.815zM1 1.5a.5.5 0 0 1 .5-.5H15v7.25c0 .809.655 1.75 1.5 1.75H23v20.5a.5.5 0 0 1-.5.5h-21c-.28 0-.5-.22-.5-.5v-29z" />
+                          <path d="M5.5 14h13a.5.5 0 0 0 0-1h-13a.5.5 0 0 0 0 1zM5.5 18h13a.5.5 0 0 0 0-1h-13a.5.5 0 0 0 0 1zM5.5 10h6a.5.5 0 0 0 0-1h-6a.5.5 0 0 0 0 1zM5.5 22h13a.5.5 0 0 0 0-1h-13a.5.5 0 0 0 0 1zM5.5 26h13a.5.5 0 0 0 0-1h-13a.5.5 0 0 0 0 1z" />
+                        </g>
+                      </svg>
+                      <span className="heading">File Name : </span>
+                      <span className="name">{showingImage}</span>
+                      <span
+                        onClick={() => {
+                          setShowingImage();
+                          setAttachment();
+                        }}
+                        className="close_icon"
+                      >
+                        X
+                      </span>
+                    </div>
+                  ) : (
+                    ""
+                  )}
+                  {/* ======================================== */}
+                </Col>
+
                 <Col md={12}>
                   <div className="popup_form_element p_relative">
                     <Form.Label
@@ -69,9 +147,9 @@ const SubmitWorkForPaymentPopup = ({ popup }) => {
                         maxLength={200}
                         type="file"
                         id="choose_file"
+                        name="attachment"
                         className="font-size-13px choose_file_resubmit_revision_inp"
-                        value={values?.description}
-                        onChange={(e) => onInputChange(e)}
+                        onChange={(e) => onImageChange(e)}
                         placeholder="Attach Files"
                       ></Form.Control>
                       <div className="choose_file_resubmit_revision">
@@ -171,14 +249,23 @@ const SubmitWorkForPaymentPopup = ({ popup }) => {
                     </div>
                   </div>
                 </Col>
+                <span className="signup-error mt-1">
+                  {errors?.attachment && errors?.attachment}
+                </span>
               </Row>
             </div>
 
             <div className="popup_btns_new flex-wrap cwiewyehkk">
-              <button variant="" className="font-weight-600 trans_btn">
+              <button
+                variant=""
+                className="font-weight-600 trans_btn"
+                onClick={() => {
+                  popup();
+                }}
+              >
                 CANCEL
               </button>
-              <button variant="" className="font-weight-600 ">
+              <button variant="" className="font-weight-600" onClick={onSubmit}>
                 SAVE
               </button>
             </div>

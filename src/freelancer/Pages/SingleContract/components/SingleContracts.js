@@ -17,15 +17,20 @@ const SingleContracts = () => {
   const { buttonStatus, id } = useParams();
   const [currentTab, setCurrentTab] = useState("OVERVIEW");
   const [popup, setPopup] = useState(false);
-
+  const onSubmitWorkForPayment = useSelector(
+    (state) => state?.job.onSubmitWorkForPayment
+  );
+  const onRequestForMilestone = useSelector(
+    (state) => state?.job.onRequestForMilestone
+  );
   const singleContractData = useSelector(
     (state) => state?.job?.singleContractData
   );
 
   useEffect(() => {
     setLoading(true);
-    dispatch(SingleContractData(id, setLoading));
-  }, []);
+    dispatch(SingleContractData(id, setLoading, setPopup));
+  }, [onSubmitWorkForPayment, onRequestForMilestone]);
 
   return (
     <>
@@ -113,6 +118,7 @@ const SingleContracts = () => {
             />
           ) : (
             <OverViewFixed
+              setLoading={setLoading}
               setPopup={setPopup}
               singleContractData={singleContractData}
             />

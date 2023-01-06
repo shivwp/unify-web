@@ -75,9 +75,9 @@ const AllProjects = ({ getAllContracts }) => {
                         Last Activity: <span>{item.client?.last_activity}</span>
                       </h3>
                     </div>
-                    //<div className="job_d_par">
-                    //  <p style={{ marginBottom: 0 }}>Weekly Limit</p>
-                    //</div>
+                    <div className="job_d_par">
+                      <p style={{ marginBottom: 0 }}>Weekly Limit</p>
+                    </div>
                   </Col>
                   <Col
                     lg={2}

@@ -1,17 +1,23 @@
 import React from "react";
 import { useMemo } from "react";
-import { useEffect } from "react";
 import { useState } from "react";
 import "./CustomeDateRangePicker.css";
 import $ from "jquery";
+import { useEffect } from "react";
 
 // Functions that needs to pass in props
 // 1. getDate, if need only selected date
 // 2. getFullWeek, if need only start date and end date
 // 3. weeksAllDays, if need all dates of week
-// 4. DateRange if need start_date and end date of selected date range
+// 4. dateRange, if need start_date and end date of selected date range - pending
+// 5. currentWeekStart, if need start date of current week
 
-const CustomeDateRangePicker = ({ getFullWeek, getDate, weeksAllDays }) => {
+const CustomeDateRangePicker = ({
+  getFullWeek,
+  getDate,
+  weeksAllDays,
+  currentWeekStart,
+}) => {
   // months name
   const months = [
     "January",
@@ -38,6 +44,11 @@ const CustomeDateRangePicker = ({ getFullWeek, getDate, weeksAllDays }) => {
     "Friday",
     "Saturday",
   ];
+
+  const currentDate = new Date().getDate();
+  const currentMonth = new Date().getMonth();
+  const currentYear = new Date().getFullYear();
+
   const [showCal, setShowCal] = useState(false);
   const [changeOnlyYear, setChangeOnlyYear] = useState(false);
   const [selectedMonth, setSelectedMonth] = useState(new Date().getMonth());
@@ -80,25 +91,25 @@ const CustomeDateRangePicker = ({ getFullWeek, getDate, weeksAllDays }) => {
   };
 
   // get previous month of selected month
-  const prevMonth = () => {
-    if (selectedMonth < 1) {
+  const prevMonth = (month) => {
+    if (month < 1) {
       return 11;
     } else {
-      return selectedMonth - 1;
+      return month - 1;
     }
   };
 
   // day in next month of selected month
-  const nextMonth = () => {
-    if (selectedMonth < 11) {
-      return selectedMonth + 1;
+  const nextMonth = (month) => {
+    if (month < 11) {
+      return month + 1;
     } else {
       return 0;
     }
   };
 
   // get Full Week,
-  useMemo(() => {
+  useEffect(() => {
     if (getFullWeek || weeksAllDays) {
       const activeD = [];
 
@@ -117,15 +128,15 @@ const CustomeDateRangePicker = ({ getFullWeek, getDate, weeksAllDays }) => {
       if (lastofWeek < 7) {
         for (
           let j =
-            dayInMonth[months[prevMonth()]] -
+            dayInMonth[months[prevMonth(selectedMonth)]] -
             new Date(
               `${1} ${months[selectedMonth]}, ${selectedYear}`
             ).getDay() +
             1;
-          j <= dayInMonth[months[prevMonth()]];
+          j <= dayInMonth[months[prevMonth(selectedMonth)]];
           j++
         ) {
-          const previousMonth = months[prevMonth()];
+          const previousMonth = months[prevMonth(selectedMonth)];
           activeD.push({ day: j, month: previousMonth });
         }
         for (let i = firstOfWeek; i <= lastofWeek; i++) {
@@ -143,7 +154,7 @@ const CustomeDateRangePicker = ({ getFullWeek, getDate, weeksAllDays }) => {
             activeD.push({ day: i, month: months[selectedMonth] });
           }
           for (let i = 1; i <= last; i++) {
-            activeD.push({ day: i, month: months[nextMonth()] });
+            activeD.push({ day: i, month: months[nextMonth(selectedMonth)] });
           }
         } else {
           for (let i = firstOfWeek; i <= lastofWeek; i++) {
@@ -187,13 +198,17 @@ const CustomeDateRangePicker = ({ getFullWeek, getDate, weeksAllDays }) => {
     // prev month's days to show in current month
     for (
       let j =
-        dayInMonth[months[prevMonth()]] -
+        dayInMonth[months[prevMonth(selectedMonth)]] -
         new Date(`${1} ${months[selectedMonth]}, ${selectedYear}`).getDay() +
         1;
-      j <= dayInMonth[months[prevMonth()]];
+      j <= dayInMonth[months[prevMonth(selectedMonth)]];
       j++
     ) {
-      AllDays.push({ cls: "prev", day: j, m: months[prevMonth()] });
+      AllDays.push({
+        cls: "prev",
+        day: j,
+        m: months[prevMonth(selectedMonth)],
+      });
     }
 
     // current month days
@@ -210,7 +225,11 @@ const CustomeDateRangePicker = ({ getFullWeek, getDate, weeksAllDays }) => {
 
     // next month days
     for (let k = 1; k <= nextM; k++) {
-      AllDays.push({ cls: "next", day: k, m: months[nextMonth()] });
+      AllDays.push({
+        cls: "next",
+        day: k,
+        m: months[nextMonth(selectedMonth)],
+      });
     }
     return AllDays;
   };
@@ -274,6 +293,35 @@ const CustomeDateRangePicker = ({ getFullWeek, getDate, weeksAllDays }) => {
     }
   });
 
+  useMemo(() => {
+    if (currentWeekStart) {
+      // week's first and last day start
+      var first_date_of_week = new Date().getDate() - new Date().getDay();
+      var last_date_of_week = first_date_of_week + 6;
+      // week's first and last day end
+
+      // checking if first date is not in negative
+      if (last_date_of_week < 7) {
+        first_date_of_week =
+          dayInMonth[months[prevMonth(currentMonth)]] -
+          new Date(`${1} ${months[currentDate]}, ${currentYear}`).getDay() +
+          1;
+      } else if (last_date_of_week > dayInMonth[months[currentMonth]]) {
+        console.log("object");
+        last_date_of_week =
+          last_date_of_week - dayInMonth[months[currentMonth]];
+      }
+
+      first_date_of_week = `${first_date_of_week} ${months[currentMonth]}, ${currentYear}`;
+      last_date_of_week = `${last_date_of_week} ${months[currentMonth]}, ${currentYear}`;
+
+      currentWeekStart({
+        first_date: first_date_of_week,
+        last_date: last_date_of_week,
+      });
+    }
+  }, [currentDate, currentMonth, currentYear]);
+
   return (
     <>
       <div className="date_inp">
@@ -335,6 +383,7 @@ const CustomeDateRangePicker = ({ getFullWeek, getDate, weeksAllDays }) => {
           <div className="week_days">
             {weekDays?.map((item, index) => (
               <div
+                key={index}
                 className={`week_day ${
                   index == selectedDay ? "dayActive" : ""
                 } `}
@@ -344,8 +393,9 @@ const CustomeDateRangePicker = ({ getFullWeek, getDate, weeksAllDays }) => {
             ))}
           </div>
           <div className="days">
-            {getAllDaysInMonth()?.map((item) => (
+            {getAllDaysInMonth()?.map((item, index) => (
               <div
+                key={index}
                 onClick={() => {
                   item.cls == "prev"
                     ? DateSelect(item.day, "prev")

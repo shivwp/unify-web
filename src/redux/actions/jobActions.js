@@ -5,10 +5,13 @@ import {
   ADD_TIMESHEET_TIME,
   DECLINE_REASONS_LIST,
   DISLIKE_POST_REASONS,
+  GET_OVERVIEW_REPORT,
   GET_TIMESHEET_DATA,
   JOBS_LIST,
   JOB_POST_DETAILS,
   ON_DISLIKE_JOB_POST,
+  ON_FREELANCER_REQUEST_MILESTONE,
+  ON_SUBMIT_WORK_FOR_PAYMENT,
   PROPOSAL_TERMS_CHANGE,
   SAVED_JOBS_LIST,
   SAVE_JOB_POST,
@@ -32,50 +35,48 @@ const config = {
   },
 };
 
-export const getJobsList =
-  (data, ScrollTop, setLoading) => async (dispatch) => {
-    try {
-      Axios.post("/jobs-list", data, config).then((res) => {
-        dispatch({
-          type: JOBS_LIST,
-          payload: res.data,
-        });
-        if (setLoading) {
-          setLoading(false);
-        }
-        if (ScrollTop) {
-          ScrollTop();
-        }
+export const getJobsList = (data, ScrollTop, setLoading) => (dispatch) => {
+  try {
+    Axios.post("/jobs-list", data, config).then((res) => {
+      dispatch({
+        type: JOBS_LIST,
+        payload: res.data,
       });
-    } catch (err) {
       if (setLoading) {
         setLoading(false);
       }
+      if (ScrollTop) {
+        ScrollTop();
+      }
+    });
+  } catch (err) {
+    if (setLoading) {
+      setLoading(false);
     }
-  };
+  }
+};
 
-export const getSavedJobsList =
-  (data, ScrollTop, setLoading) => async (dispatch) => {
-    try {
-      Axios.post("/freelancer-saved-job", data, config).then((res) => {
-        dispatch({
-          type: SAVED_JOBS_LIST,
-          payload: res.data,
-        });
-        if (setLoading) {
-          setLoading(false);
-        }
-        if (ScrollTop) {
-          ScrollTop();
-        }
+export const getSavedJobsList = (data, ScrollTop, setLoading) => (dispatch) => {
+  try {
+    Axios.post("/freelancer-saved-job", data, config).then((res) => {
+      dispatch({
+        type: SAVED_JOBS_LIST,
+        payload: res.data,
       });
-    } catch (err) {
       if (setLoading) {
         setLoading(false);
       }
+      if (ScrollTop) {
+        ScrollTop();
+      }
+    });
+  } catch (err) {
+    if (setLoading) {
+      setLoading(false);
     }
-  };
-export const saveJobs = (data, setLoading) => async (dispatch) => {
+  }
+};
+export const saveJobs = (data, setLoading) => (dispatch) => {
   try {
     Axios.post("/saved-jobs", data, config).then((res) => {
       dispatch({
@@ -92,7 +93,7 @@ export const saveJobs = (data, setLoading) => async (dispatch) => {
     }
   }
 };
-export const removeSaveJob = (data, setLoading) => async (dispatch) => {
+export const removeSaveJob = (data, setLoading) => (dispatch) => {
   try {
     Axios.post("/remove-saved-jobs", data, config).then((res) => {
       dispatch({
@@ -109,7 +110,7 @@ export const removeSaveJob = (data, setLoading) => async (dispatch) => {
     }
   }
 };
-export const singleJobPostDetails = (data, setLoading) => async (dispatch) => {
+export const singleJobPostDetails = (data, setLoading) => (dispatch) => {
   try {
     Axios.get(`/single-job/${data.job_id}`, config).then((res) => {
       dispatch({
@@ -128,7 +129,7 @@ export const singleJobPostDetails = (data, setLoading) => async (dispatch) => {
 };
 export const onSendJobProposal =
   (data, successPopup, setSuccessPopup, navigate, is_invited, setLoading) =>
-  async (dispatch) => {
+  (dispatch) => {
     Axios.post("/send-proposal", data, config)
       .then((res) => {
         dispatch({
@@ -166,7 +167,7 @@ export const onSendJobProposal =
         );
       });
   };
-export const onDislikePostReasons = (setLoading) => async (dispatch) => {
+export const onDislikePostReasons = (setLoading) => (dispatch) => {
   try {
     Axios.get("/dislike-reasons").then((res) => {
       dispatch({
@@ -184,8 +185,8 @@ export const onDislikePostReasons = (setLoading) => async (dispatch) => {
   }
 };
 export const onDislikeJobPost =
-  (data, setDropdownOpen, setLoading) => async (dispatch) => {
-    await Axios.post("/dislike-job", data, config)
+  (data, setDropdownOpen, setLoading) => (dispatch) => {
+    Axios.post("/dislike-job", data, config)
       .then((res) => {
         dispatch({
           type: ON_DISLIKE_JOB_POST,
@@ -203,8 +204,8 @@ export const onDislikeJobPost =
       });
   };
 
-export const onPostYourJobNow = (data, navigate) => async (dispatch) => {
-  await Axios.post("/post-job", data, config)
+export const onPostYourJobNow = (data, navigate) => (dispatch) => {
+  Axios.post("/post-job", data, config)
     .then((res) => {
       if (res.data.status) {
         navigate("/dashboard");
@@ -219,8 +220,8 @@ export const onPostYourJobNow = (data, navigate) => async (dispatch) => {
     });
 };
 
-export const getAllClientPosting = (data, setLoading) => async (dispatch) => {
-  await Axios.post("/client-all-posting", data, config)
+export const getAllClientPosting = (data, setLoading) => (dispatch) => {
+  Axios.post("/client-all-posting", data, config)
     .then((res) => {
       dispatch({
         type: SET_ALL_CLIENT_POSTING,
@@ -237,27 +238,26 @@ export const getAllClientPosting = (data, setLoading) => async (dispatch) => {
     });
 };
 
-export const getAllClientDraftPosting =
-  (data, setLoading) => async (dispatch) => {
-    await Axios.post("/client-draft-posting", data, config)
-      .then((res) => {
-        dispatch({
-          type: SET_ALL_CLIENT_DRAFT_POSTING,
-          payload: res.data,
-        });
-        if (setLoading) {
-          setLoading(false);
-        }
-      })
-      .catch((err) => {
-        if (setLoading) {
-          setLoading(false);
-        }
+export const getAllClientDraftPosting = (data, setLoading) => (dispatch) => {
+  Axios.post("/client-draft-posting", data, config)
+    .then((res) => {
+      dispatch({
+        type: SET_ALL_CLIENT_DRAFT_POSTING,
+        payload: res.data,
       });
-  };
+      if (setLoading) {
+        setLoading(false);
+      }
+    })
+    .catch((err) => {
+      if (setLoading) {
+        setLoading(false);
+      }
+    });
+};
 
-export const closeJobReasonList = (setLoading) => async (dispatch) => {
-  await Axios.get("/close-job-reason-list")
+export const closeJobReasonList = (setLoading) => (dispatch) => {
+  Axios.get("/close-job-reason-list")
     .then((res) => {
       dispatch({
         type: SET_CLOSE_JOB_REASON_LIST,
@@ -275,8 +275,8 @@ export const closeJobReasonList = (setLoading) => async (dispatch) => {
 };
 
 export const onCloseJob =
-  (data, onCloseModal, navigate, setLoading) => async (dispatch) => {
-    await Axios.post("/remove-job", data, config)
+  (data, onCloseModal, navigate, setLoading) => (dispatch) => {
+    Axios.post("/remove-job", data, config)
       .then((res) => {
         if (res.data.status) {
           dispatch({
@@ -297,30 +297,29 @@ export const onCloseJob =
       });
   };
 
-export const editJobPosting =
-  (data, navigate, setLoading) => async (dispatch) => {
-    await Axios.post("/update-job", data, config)
-      .then((res) => {
-        if (res.data.status) {
-          dispatch({
-            type: SET_UPDATE_JOB_POST,
-            payload: res.data,
-          });
-          navigate("/dashboard");
-        }
-        if (setLoading) {
-          setLoading(false);
-        }
-      })
-      .catch((err) => {
-        if (setLoading) {
-          setLoading(false);
-        }
-      });
-  };
+export const editJobPosting = (data, navigate, setLoading) => (dispatch) => {
+  Axios.post("/update-job", data, config)
+    .then((res) => {
+      if (res.data.status) {
+        dispatch({
+          type: SET_UPDATE_JOB_POST,
+          payload: res.data,
+        });
+        navigate("/dashboard");
+      }
+      if (setLoading) {
+        setLoading(false);
+      }
+    })
+    .catch((err) => {
+      if (setLoading) {
+        setLoading(false);
+      }
+    });
+};
 
-export const getAllProposals = (setLoading) => async (dispatch) => {
-  await Axios.get("/all-proposal", config)
+export const getAllProposals = (setLoading) => (dispatch) => {
+  Axios.get("/all-proposal", config)
     .then((res) => {
       if (setLoading) {
         setLoading(false);
@@ -336,8 +335,8 @@ export const getAllProposals = (setLoading) => async (dispatch) => {
       }
     });
 };
-export const onGetAllContracts = (filters, setLoading) => async (dispatch) => {
-  await Axios.get(`/contracts`, {
+export const onGetAllContracts = (filters, setLoading) => (dispatch) => {
+  Axios.get(`/contracts`, {
     params: {
       sort_for: filters?.sort_for,
       sort_by: filters?.sort_by,
@@ -357,26 +356,25 @@ export const onGetAllContracts = (filters, setLoading) => async (dispatch) => {
       console.log(err);
     });
 };
-export const singleProposalDetails =
-  (id, type, setLoading) => async (dispatch) => {
-    await Axios.get(`/single-proposal-details/${id}/${type}`, config)
-      .then((res) => {
-        dispatch({
-          type: SET_SINGLE_PROPOSAL_DETAILS,
-          payload: res.data.data,
-        });
-        if (setLoading) {
-          setLoading(false);
-        }
-      })
-      .catch((err) => {
-        if (setLoading) {
-          setLoading(false);
-        }
+export const singleProposalDetails = (id, type, setLoading) => (dispatch) => {
+  Axios.get(`/single-proposal-details/${id}/${type}`, config)
+    .then((res) => {
+      dispatch({
+        type: SET_SINGLE_PROPOSAL_DETAILS,
+        payload: res.data.data,
       });
-  };
-export const declineReasoneList = (type, setLoading) => async (dispatch) => {
-  await Axios.get(`/decline-reason-list/${type}`, config)
+      if (setLoading) {
+        setLoading(false);
+      }
+    })
+    .catch((err) => {
+      if (setLoading) {
+        setLoading(false);
+      }
+    });
+};
+export const declineReasoneList = (type, setLoading) => (dispatch) => {
+  Axios.get(`/decline-reason-list/${type}`, config)
     .then((res) => {
       dispatch({
         type: DECLINE_REASONS_LIST,
@@ -395,8 +393,8 @@ export const declineReasoneList = (type, setLoading) => async (dispatch) => {
 
 export const onDeclineForInterview =
   (data, popup, successPopup, setSuccessPopup, afterSuccess, setLoading) =>
-  async (dispatch) => {
-    await Axios.post("/invite-decline", data, config)
+  (dispatch) => {
+    Axios.post("/invite-decline", data, config)
       .then((res) => {
         popup();
         setSuccessPopup(
@@ -424,8 +422,8 @@ export const onDeclineForInterview =
   };
 export const onWithdrawSubmitedProposal =
   (data, popup, successPopup, setSuccessPopup, afterSuccess, setLoading) =>
-  async (dispatch) => {
-    await Axios.post("/proposal-withdraw", data, config)
+  (dispatch) => {
+    Axios.post("/proposal-withdraw", data, config)
       .then((res) => {
         popup();
         if (setLoading) {
@@ -453,9 +451,8 @@ export const onWithdrawSubmitedProposal =
   };
 
 export const onChangeTermsOfProposals =
-  (data, successPopup, setSuccessPopup, popup, setLoading) =>
-  async (dispatch) => {
-    await Axios.post("/update-proposal", data, config)
+  (data, successPopup, setSuccessPopup, popup, setLoading) => (dispatch) => {
+    Axios.post("/update-proposal", data, config)
       .then((res) => {
         dispatch({
           type: PROPOSAL_TERMS_CHANGE,
@@ -488,9 +485,8 @@ export const onChangeTermsOfProposals =
   };
 
 export const onDeclineOffer =
-  (data, popup, successPopup, setSuccessPopup, afterSuccess) =>
-  async (dispatch) => {
-    await Axios.post("/decline-offer", data, config)
+  (data, popup, successPopup, setSuccessPopup, afterSuccess) => (dispatch) => {
+    Axios.post("/decline-offer", data, config)
       .then((res) => {
         popup();
         setSuccessPopup(
@@ -514,8 +510,8 @@ export const onDeclineOffer =
 
 export const onAcceptOffer =
   (id, successPopup, setSuccessPopup, afterSuccess, setLoading) =>
-  async (dispatch) => {
-    await Axios.get(`/accept-offer/${id}`, config)
+  (dispatch) => {
+    Axios.get(`/accept-offer/${id}`, config)
       .then((res) => {
         if (setLoading) {
           setLoading(false);
@@ -540,8 +536,8 @@ export const onAcceptOffer =
         }
       });
   };
-export const SingleContractData = (id, setLoading) => async (dispatch) => {
-  await Axios.get(`/single-contract/${id}`, config)
+export const SingleContractData = (id, setLoading, setPopup) => (dispatch) => {
+  Axios.get(`/single-contract/${id}`, config)
     .then((res) => {
       if (setLoading) {
         setLoading(false);
@@ -555,11 +551,14 @@ export const SingleContractData = (id, setLoading) => async (dispatch) => {
       if (setLoading) {
         setLoading(false);
       }
+      setPopup(
+        <ErrorPopup popup={setPopup} message={err.response.data.message} />
+      );
     });
 };
 export const AddTimeSheetTime =
-  (data, setLoading, setPopup) => async (dispatch) => {
-    await Axios.post(`/add-timesheet`, data, config)
+  (data, setTimeInput, setLoading, setPopup) => (dispatch) => {
+    Axios.post(`/add-timesheet`, data, config)
       .then((res) => {
         if (setLoading) {
           setLoading(false);
@@ -567,6 +566,28 @@ export const AddTimeSheetTime =
         dispatch({
           payload: res.data,
           type: ADD_TIMESHEET_TIME,
+        });
+        setTimeInput(false);
+      })
+      .catch((err) => {
+        if (setLoading) {
+          setLoading(false);
+        }
+        setPopup(
+          <ErrorPopup popup={setPopup} message={err.response.data.message} />
+        );
+      });
+  };
+export const getContractTimesheet =
+  (data, setLoading, setPopup) => (dispatch) => {
+    Axios.post(`/contract-timesheet`, data, config)
+      .then((res) => {
+        if (setLoading) {
+          setLoading(false);
+        }
+        dispatch({
+          payload: res.data.data,
+          type: GET_TIMESHEET_DATA,
         });
       })
       .catch((err) => {
@@ -578,20 +599,69 @@ export const AddTimeSheetTime =
         );
       });
   };
-export const getContractTimesheet = (data, setLoading) => async (dispatch) => {
-  await Axios.post(`/contract-timesheet`, data, config)
+
+export const onSubmitWorkForPayment =
+  (data, setLoading, setPopup) => (dispatch) => {
+    Axios.post(`/submit-work`, data, config)
+      .then((res) => {
+        if (setLoading) {
+          setLoading(false);
+        }
+        dispatch({
+          payload: res.data.data,
+          type: ON_SUBMIT_WORK_FOR_PAYMENT,
+        });
+      })
+      .catch((err) => {
+        if (setLoading) {
+          setLoading(false);
+        }
+        setPopup(
+          <ErrorPopup popup={setPopup} message={err.response.data.message} />
+        );
+      });
+  };
+export const onFreelancerRequestMilestone =
+  (data, setLoading, setPopup, afterSuccess) => (dispatch) => {
+    Axios.post(`/freelancer-add-milestone`, data, config)
+      .then((res) => {
+        if (setLoading) {
+          setLoading(false);
+        }
+        dispatch({
+          payload: res.data.data,
+          type: ON_FREELANCER_REQUEST_MILESTONE,
+        });
+        if (afterSuccess) {
+          afterSuccess();
+        }
+      })
+      .catch((err) => {
+        if (setLoading) {
+          setLoading(false);
+        }
+        setPopup(
+          <ErrorPopup popup={setPopup} message={err.response.data.message} />
+        );
+      });
+  };
+export const getOverViewReport = (setLoading, setPopup) => (dispatch) => {
+  Axios.get(`/overview`, config)
     .then((res) => {
       if (setLoading) {
         setLoading(false);
       }
       dispatch({
         payload: res.data.data,
-        type: GET_TIMESHEET_DATA,
+        type: GET_OVERVIEW_REPORT,
       });
     })
     .catch((err) => {
       if (setLoading) {
         setLoading(false);
       }
+      setPopup(
+        <ErrorPopup popup={setPopup} message={err.response.data.message} />
+      );
     });
 };
