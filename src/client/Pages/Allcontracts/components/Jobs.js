@@ -1,27 +1,9 @@
-import Select from "react-select";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Col, Row } from "react-bootstrap";
-import { useState } from "react";
-import $ from "jquery";
 import moment from "moment";
 
-const options = [
-  { value: "Start date", label: "Start date" },
-  { value: "End date", label: "End date" },
-  { value: "Client name", label: "Client name" },
-  { value: "Contract name", label: "Contract name" },
-];
-const optionsne = [{ value: "Descending", label: "Descending" }];
-
 const Jobs = ({ clientContractList }) => {
-  const [dropdown, setDropdown] = useState(false);
-
-  $(document).mouseup(function (e) {
-    if ($(e.target).closest("#menu_barContract").length === 0) {
-      setDropdown(false);
-    }
-  });
-
   return (
     <>
       <div className="mt-3">
@@ -87,33 +69,19 @@ const Jobs = ({ clientContractList }) => {
                   <span>{data.client.company_name}</span>
                 </div>
                 {data?.button_status === "release milestone" ? (
-                  <div className="contract-listButton">
-                    <Link to="/single-contracts/overview">
+                  <Link to={`/single-contracts/overview/${data.id}`}>
+                    <div className="contract-listButton">
                       <button className="RehireButton">
                         Release Milestone
                       </button>
-                    </Link>
-                  </div>
+                    </div>
+                  </Link>
                 ) : data?.button_status === "see message" ? (
-                  <div className="contract-listButton">
-                    <button className="RehireButton">Send a message</button>
-                  </div>
-                ) : data?.button_status === "rehire" ? (
-                  <div className="contract-listButton">
-                    <button className="RehireButton">Rehire</button>
-                  </div>
-                ) : data?.button_status === "see dispute" ? (
-                  <div className="contract-listButton">
-                    <button className="RehireButton">See Dispute</button>
-                  </div>
-                ) : data?.button_status === "fund milestone" ? (
-                  <div className="contract-listButton">
-                    <button className="RehireButton">Fund Milestone</button>
-                  </div>
-                ) : data?.button_status === "review work" ? (
-                  <div className="contract-listButton">
-                    <button className="RehireButton">Review Work</button>
-                  </div>
+                  <Link to={`/single-contracts/overview/${data.id}`}>
+                    <div className="contract-listButton">
+                      <button className="RehireButton">See Message</button>
+                    </div>
+                  </Link>
                 ) : null}
               </div>
               <div className="contract-listDetails">
@@ -148,38 +116,3 @@ const Jobs = ({ clientContractList }) => {
   );
 };
 export default Jobs;
-
-{
-  /* <button
-                    className="toggle_btn_dot"
-                    onClick={() => setDropdown(!dropdown)}
-                  >
-                    <i className="bi bi-three-dots-vertical font-szie-20px"></i>
-                  </button>
-                  {dropdown && (
-                    <div className="menu_barContract" id="menu_barContract">
-                      <span>
-                        <Link to="/single-contracts/overview">
-                          View Milestone & Payments
-                        </Link>
-                      </span>
-                      <span>
-                        <Link to="/single-contracts/messages">
-                          Send A Message
-                        </Link>
-                      </span>
-                      <span>
-                        <Link to="/single-contracts/details">
-                          View Terms & Settings
-                        </Link>
-                      </span>
-                      <span>
-                        <Link to={`/freelancer-details/525`}>View Profile</Link>
-                      </span>
-
-                      <span className="menu_btn_arrow" id="menu_btn_arrow1">
-                        &#62;
-                      </span>
-                    </div>
-                  )} */
-}

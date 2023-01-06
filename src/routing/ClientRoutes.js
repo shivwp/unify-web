@@ -93,7 +93,7 @@ const ClientRoutes = () => {
         <Route path="/my-jobs" element={<MyJobs />} />
         <Route path="/all-contracts" element={<AllContracts />} />
         <Route
-          path="/single-contracts/:buttonStatus"
+          path="/single-contracts/:buttonStatus/:contact_id"
           element={<SingleContracts />}
         />
         <Route path="/talent-discover" element={<TalentDiscover />} />
@@ -104,7 +104,7 @@ const ClientRoutes = () => {
         <Route path="/search" element={<Search />} />
 
         <Route path="/profile-setting" element={<ProfileDashboard />} />
-        <Route path="/help-support" element={<HelpSupport />} />
+        {/* <Route path="/help-support" element={<HelpSupport />} /> */}
         <Route path="/message" element={<Message />} />
         <Route path="/management-board" element={<ManagementBoard />} />
         <Route path="/transaction-history" element={<TransactionHistory />} />
