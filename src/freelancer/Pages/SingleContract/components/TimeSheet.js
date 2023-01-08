@@ -14,6 +14,7 @@ import moment from "moment";
 const TimeSheet = ({ setLoading, setPopup }) => {
   const dispatch = useDispatch();
   const { id } = useParams();
+
   const [currentWeekStartDate, setCurrentWeekStartDate] = useState(false);
   const [selectedWeek, setSelectedWeek] = useState(false);
   const [timeInput, setTimeInput] = useState(false);
@@ -24,11 +25,15 @@ const TimeSheet = ({ setLoading, setPopup }) => {
 
   useEffect(() => {
     setLoading(true);
-    const data = {
-      contract_id: id,
-      start_date: moment(selectedWeek?.first_date).format("YYYY-MM-DD"),
-      end_date: moment(selectedWeek?.last_date).format("YYYY-MM-DD"),
-    };
+    let data = selectedWeek
+      ? {
+          contract_id: id,
+          start_date: moment(selectedWeek?.start_date).format("YYYY-MM-DD"),
+          end_date: moment(selectedWeek?.end_date).format("YYYY-MM-DD"),
+        }
+      : {
+          contract_id: id,
+        };
     dispatch(getContractTimesheet(data, setLoading, setPopup));
   }, [addTimesheetTime, selectedWeek]);
 
@@ -89,11 +94,11 @@ const TimeSheet = ({ setLoading, setPopup }) => {
       contract_id: id,
       date,
       hours: `${
-        values[index]?.hours < 10
+        values[index]?.hours?.length < 2
           ? `0${values[index].hours}`
           : values[index]?.hours
       }:${
-        values[index]?.minuts < 10
+        values[index]?.minuts?.length < 2
           ? `0${values[index].minuts}`
           : values[index]?.minuts
       }`,
@@ -101,16 +106,26 @@ const TimeSheet = ({ setLoading, setPopup }) => {
     dispatch(AddTimeSheetTime(data, setTimeInput, setLoading, setPopup));
   };
 
-  const getFullWeek = (dates) => {
+  const weekSelect = (dates) => {
+    console.log(dates);
     setSelectedWeek(dates);
   };
 
   const handleOnChange = (e, i) => {
     const list = [...values];
+    const next = e.target.tabIndex - 2;
     if (e.target.value.length < 3) {
       list[i][e.target.name] = e.target.value;
       setValues(list);
       setErrors({ hours: false });
+    }
+    if (e.target.name == "hours") {
+      if (e.target.value.length > 1) {
+        document.getElementById("minuts").focus();
+        list[i][e.target.name] = e.target.value;
+        setValues(list);
+        setErrors({ hours: false });
+      }
     }
   };
 
@@ -154,8 +169,11 @@ const TimeSheet = ({ setLoading, setPopup }) => {
                 <span>Work Diary</span>
                 <div className="get_date_range">
                   <CustomeDateRangePicker
-                    getFullWeek={getFullWeek}
-                    currentWeekStart={currentWeekStart}
+                    // dateSelect={dateSelect}
+                    // dateRangeSelect={dateRangeSelect}
+                    weekSelect={weekSelect}
+                    // fullWeekSelect={fullWeekSelect}
+                    currentWeekSelect={currentWeekStart}
                   />
                 </div>
               </div>
@@ -174,6 +192,8 @@ const TimeSheet = ({ setLoading, setPopup }) => {
                                 type="number"
                                 name="hours"
                                 className="timesheet_time_input"
+                                id="hours"
+                                tabIndex={1}
                                 placeholder="Hours"
                                 value={values[index].hours}
                                 onChange={(e) => handleOnChange(e, index)}
@@ -181,6 +201,8 @@ const TimeSheet = ({ setLoading, setPopup }) => {
                               <input
                                 type="number"
                                 name="minuts"
+                                id="minuts"
+                                tabIndex={2}
                                 className="timesheet_time_input"
                                 placeholder="Minute"
                                 value={values[index].minuts}
