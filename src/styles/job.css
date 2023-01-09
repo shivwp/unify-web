@@ -4194,6 +4194,13 @@
   background-color: #fffffff4;
 }
 
+.fa-checkBackground {
+  background-color: #6d2ef1 !important;
+}
+.fa-checkBackground .fa-check {
+  font-size: 12px;
+}
+
 .milestone_overview_left .file_show {
   display: flex;
   border-top: 1px solid rgb(229 229 229);

@@ -21,6 +21,9 @@ const SingleContracts = () => {
   const singleContractData = useSelector(
     (state) => state.job.singleContractData
   );
+  const reviewWorkAndChange = useSelector(
+    (state) => state.freelancer.reviewWorkAndChange
+  );
   const milestoneData = useSelector(
     (state) => state?.job?.singleContractData?.milestone
   );
@@ -34,8 +37,6 @@ const SingleContracts = () => {
     dispatch(SingleContractData(contact_id, setLoading));
   }, []);
 
-  console.log(milestoneData);
-
   return (
     <>
       <div className="slider_pos nin_vh">
@@ -44,10 +45,16 @@ const SingleContracts = () => {
             <div className="d-flex justify-content-between align-items-center flex-wrap mt-5">
               <div className="d-flex justify-content-between align-items-center flex-wrap">
                 <div className="prof_round_me">
-                  <img src="/assets/PRO-2.png" alt="" />
+                  <img
+                    src={singleContractData?.freelancer?.profile_image}
+                    alt=""
+                  />
                 </div>
                 <div>
-                  <div className="prof_name_ne">Jolly Smith</div>
+                  <div className="prof_name_ne">
+                    {singleContractData?.freelancer?.first_name}{" "}
+                    {singleContractData?.freelancer?.last_name}
+                  </div>
                   <div className="prof_sm_me">12:19 pm Friday</div>
                 </div>
               </div>
@@ -55,7 +62,7 @@ const SingleContracts = () => {
             </div>
             <div className="d-flex justify-content-between align-items-center flex-wrap my-4">
               <div className="me_hed_h2_new">
-                <h2>Experienced Developer for Wellness App</h2>
+                <h2>{singleContractData?.project_title}</h2>
               </div>
             </div>
             <div>
@@ -67,7 +74,7 @@ const SingleContracts = () => {
                     }`}
                     onClick={() => {
                       setCurrentTab("overview");
-                      navigate("/single-contracts/overview");
+                      navigate(`/single-contracts/overview/${contact_id}`);
                     }}
                   >
                     Overview
@@ -89,7 +96,7 @@ const SingleContracts = () => {
                     }`}
                     onClick={() => {
                       setCurrentTab("details");
-                      navigate("/single-contracts/details");
+                      navigate(`/single-contracts/details/${contact_id}`);
                     }}
                   >
                     Details
@@ -102,10 +109,13 @@ const SingleContracts = () => {
                 setCurrentTab={setCurrentTab}
                 setPopup={setPopup}
                 milestoneData={milestoneData}
+                setLoading={setLoading}
               />
             )}
             {/* {currentTab === "messages" && <Messages />} */}
-            {currentTab === "details" && <Details />}
+            {currentTab === "details" && (
+              <Details singleContractData={singleContractData} />
+            )}
           </Container>
         </Layout>
       </div>

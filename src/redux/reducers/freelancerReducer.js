@@ -26,6 +26,7 @@ import {
   SET_OFFERED_FREELANCER_LIST,
   SET_FREELANCER_LIST,
   SET_SELECTED_IDS,
+  SET_CHANGE_APPROVE_WORK,
 } from "../types";
 const initialState = {};
 
@@ -165,6 +166,11 @@ const freelancerReducer = (state = initialState, action) => {
       return {
         ...state,
         freelancerIdsList: action.payload,
+      };
+    case SET_CHANGE_APPROVE_WORK:
+      return {
+        ...state,
+        reviewWorkAndChange: action.payload,
       };
     default:
       return state;

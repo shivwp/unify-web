@@ -4,21 +4,22 @@ import styled from "styled-components";
 import { keyframes } from "styled-components";
 import AddMilestone from "./popup/AddMilestone";
 import RequestMilestone from "./popup/RequestMilestone";
+import ReviewRequestWork from "./popup/ReviewRequestWork";
 
-const Overview = ({ setCurrentTab, setPopup, milestoneData }) => {
+const Overview = ({ setCurrentTab, setPopup, milestoneData, setLoading }) => {
   const navigate = useNavigate();
 
   const TimelineProgress = (height) => keyframes`
-    0% {
-      height: calc(1% - 3px);
-    }
-  
-    100% {
-      height: calc(${height} - 3px);
-    }
-  `;
+  0% {
+    height: calc(1% - 3px);
+  }
 
-  const Connecting_line = styled.div`
+  100% {
+    height: calc(${height} - 3px);
+  }
+`;
+
+  const ConnectingLine = styled.div`
     position: absolute;
     width: 1px;
     height: calc(${(props) => props?.height} - 3px);
@@ -36,9 +37,11 @@ const Overview = ({ setCurrentTab, setPopup, milestoneData }) => {
     left: 11px;
     z-index: 0;
     animation-name: ${(props) => TimelineProgress(props.height)};
-    animation-duration: 3s;
+    animation-duration: 1s;
     animation-iteration-count: 1;
     animation-timing-function: ease-in-out;
+    animation-delay: ${(props) => props?.delay}s;
+    animation-fill-mode: both;
   `;
 
   return (
@@ -48,69 +51,88 @@ const Overview = ({ setCurrentTab, setPopup, milestoneData }) => {
           <div className="milestone_timeline">
             <div className="heading">Milestone Timeline</div>
             <div className="timeline">
-              <Connecting_line height={"100%"}></Connecting_line>
-              <Progress height={"20%"}></Progress>
+              <ConnectingLine height={"100%"}></ConnectingLine>
+              {/* <Progress height={"20%"}></Progress> */}
 
-              {milestoneData?.map((item, key) => (
+              {milestoneData?.map((item, index) => (
                 <>
-                  {item?.status === "active" ? (
-                    <div
-                      className="progress_steps"
-                      id="progress_step2"
-                      key={key}
-                    >
-                      <div className="fill_ filled_background">{key + 1}</div>
-                      <div className="about_step">
-                        <div className="p_heading">Milestone 6</div>Once the
-                        website is live done and the code submit to the client
-                        <div className="paid_btn">
-                          <span
-                            style={{
-                              fontSize: "16px",
-                              fontWeight: "600",
-                              color: "rgb(0, 0, 0)",
-                              marginRight: "10px",
-                            }}
-                          >
-                            $1200.00
-                          </span>
-                          <button>Paid</button>
-                        </div>
+                  <div
+                    className="progress_steps"
+                    id="progress_step2"
+                    key={index}
+                  >
+                    {index !== milestoneData?.length - 1 ? (
+                      <>
+                        <ConnectingLine height={"100%"}></ConnectingLine>
+                        {item.status == "active" ? (
+                          <Progress height={"100%"} delay={index}></Progress>
+                        ) : null}
+                      </>
+                    ) : null}
+                    {item.status === "paid" ? (
+                      <div className="fill_ filled_background fa-checkBackground">
+                        <i className="fa fa-check text-white"></i>
                       </div>
-                    </div>
-                  ) : (
-                    <div className="progress_steps" id="progress_step2">
-                      <div className="fill_ filled_background">2</div>
-                      <div className="about_step">
-                        <div className="p_heading">Milestone 6</div>Once the
-                        website is live done and the code submit to the client
-                        <div className="paid_btn">
-                          <span
-                            style={{
-                              fontSize: "16px",
-                              fontWeight: "600",
-                              color: "rgb(0, 0, 0)",
-                              marginRight: "10px",
-                            }}
-                          >
-                            $1200.00
-                          </span>
-                          <button>Pending</button>
-                        </div>
-                        Chris hasn't paid for this milestone yet. Make sure the
-                        milestone is funded before starting the work.
-                        <div
-                          className="submit_work_btn"
-                          // onClick={() => {
-                          //   setCurrentTab("messages");
-                          //   navigate("/single-contracts/messages");
-                          // }}
+                    ) : (
+                      <div className="fill_ filled_background">{index + 1}</div>
+                    )}
+
+                    <div className="about_step">
+                      <div className="p_heading">{item.description}</div>
+                      {/* Once
+                        the website is live done and the code submit to the
+                        client */}
+                      <div className="paid_btn">
+                        <span
+                          style={{
+                            fontSize: "16px",
+                            fontWeight: "600",
+                            color: "rgb(0, 0, 0)",
+                            marginRight: "10px",
+                          }}
                         >
+                          ${item.amount.toFixed(2)}
+                        </span>
+                        {item.status === "active" ? (
+                          <button>Paid</button>
+                        ) : item.status === "submit-work" ? (
+                          <button>Paid</button>
+                        ) : item.status === "changed" ? (
+                          <button>In Review</button>
+                        ) : item.status === "created" ? (
+                          <button>Pending</button>
+                        ) : item.status === "paid" ? (
+                          <button>Completed</button>
+                        ) : null}
+                      </div>
+                      {item.status === "created"
+                        ? ` Chris hasn't paid for this milestone yet. Make sure the
+                          milestone is funded before starting the work.`
+                        : null}
+
+                      {item.status === "created" ? (
+                        <div className="submit_work_btn">
                           <button>Message Ankit</button>
                         </div>
-                      </div>
+                      ) : item.status === "submit-work" ? (
+                        <div className="submit_work_btn">
+                          <button
+                            onClick={() =>
+                              setPopup(
+                                <ReviewRequestWork
+                                  data={item.id}
+                                  popup={setPopup}
+                                  setLoading={setLoading}
+                                />
+                              )
+                            }
+                          >
+                            Review & Request for change
+                          </button>
+                        </div>
+                      ) : null}
                     </div>
-                  )}
+                  </div>
                 </>
               ))}
             </div>
@@ -146,7 +168,7 @@ const Overview = ({ setCurrentTab, setPopup, milestoneData }) => {
                   </g>
                 </svg>
               </div>
-              <div className="connecting_line"></div>
+              <div className="ConnectingLine"></div>
               <div className="about_step">
                 <div
                   className="timeline_link"

@@ -28,6 +28,7 @@ import {
   SET_HIRED_FREELANCER_LIST,
   SET_OFFERED_FREELANCER_LIST,
   SET_FREELANCER_LIST,
+  SET_CHANGE_APPROVE_WORK,
 } from "../types";
 
 const config = {
@@ -643,3 +644,25 @@ export const getFreelancerList = (data, setLoading) => async (dispatch) => {
       }
     });
 };
+
+export const reviewRequestForChange =
+  (data, setLoading) => async (dispatch) => {
+    await Axios.post(`/change-approve-work`, data, config)
+      .then((res) => {
+        if (res.data.status) {
+          dispatch({
+            type: SET_CHANGE_APPROVE_WORK,
+            payload: res.data,
+          });
+        }
+        if (setLoading) {
+          setLoading(false);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+        if (setLoading) {
+          setLoading(false);
+        }
+      });
+  };
