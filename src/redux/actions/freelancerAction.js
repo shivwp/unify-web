@@ -646,7 +646,7 @@ export const getFreelancerList = (data, setLoading) => async (dispatch) => {
 };
 
 export const reviewRequestForChange =
-  (data, setLoading) => async (dispatch) => {
+  (data, popup, setLoading) => async (dispatch) => {
     await Axios.post(`/change-approve-work`, data, config)
       .then((res) => {
         if (res.data.status) {
@@ -654,6 +654,7 @@ export const reviewRequestForChange =
             type: SET_CHANGE_APPROVE_WORK,
             payload: res.data,
           });
+          popup();
         }
         if (setLoading) {
           setLoading(false);

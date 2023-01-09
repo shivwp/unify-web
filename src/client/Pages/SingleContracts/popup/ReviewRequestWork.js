@@ -1,12 +1,28 @@
 import React from "react";
+import { useState } from "react";
 import { Col, Form, Row } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import PopupsCloseIcon from "../../../../freelancer/components/popups/PopupsCloseIcon";
+import { reviewRequestForChange } from "../../../../redux/actions/freelancerAction";
 
-const ReviewRequestWork = ({ popup, data, setLoading }) => {
+const ReviewRequestWork = ({ popup, milestone_id, setLoading }) => {
   const dispatch = useDispatch();
+  const [values, setValues] = useState({});
 
-  const handleApproveWork = () => {};
+  const onInputChange = (e) => {
+    setValues({ ...values, [e.target.name]: e.target.value });
+  };
+
+  const handleApproveWork = (type) => {
+    const data = {
+      milestone_id: milestone_id,
+      status: type,
+      message: values?.description,
+    };
+
+    dispatch(reviewRequestForChange(data, popup, setLoading));
+  };
+
   return (
     <>
       <div className="bg_wrapper_popup_new">
@@ -29,8 +45,10 @@ const ReviewRequestWork = ({ popup, data, setLoading }) => {
                       as="textarea"
                       name="description"
                       maxLength={200}
+                      value={values?.description}
                       className="font-size-13px"
                       placeholder="Enter Here"
+                      onChange={onInputChange}
                     ></Form.Control>
                     {/* <div className="about">
                       Ankit will need to approve these updates. We'll notify
@@ -50,7 +68,7 @@ const ReviewRequestWork = ({ popup, data, setLoading }) => {
               </button>
               <button
                 className="font-weight-600"
-                onClick={() => handleApproveWork("")}
+                onClick={() => handleApproveWork("changed")}
               >
                 SEND REQUEST
               </button>

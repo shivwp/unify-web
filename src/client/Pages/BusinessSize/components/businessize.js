@@ -1,12 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Container from "react-bootstrap/Container";
 import { Col, Row } from "react-bootstrap";
 import Title from "../../../../components/title";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import Form from "react-bootstrap/Form";
-import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setClientCompnySize } from "../../../../redux/actions/authActions";
+import {
+  onSubmitProfile,
+  setClientCompnySize,
+} from "../../../../redux/actions/authActions";
 import { getClientInfoDetails } from "../../../../redux/actions/profileAction";
 import LoadingSpinner from "../../../../components/LoadingSpinner";
 
@@ -36,6 +38,10 @@ const Bsize = () => {
     dispatch(getClientInfoDetails(setLoading));
   }, []);
 
+  const handleProfileSubmit = () => {
+    dispatch(onSubmitProfile(navigate));
+  };
+
   const onNext = () => {
     let errorExist = false;
     let errorsObject = {};
@@ -55,7 +61,15 @@ const Bsize = () => {
       setLoading(false);
       return false;
     }
-    dispatch(setClientCompnySize(values, navigate, setLoading, update));
+    dispatch(
+      setClientCompnySize(
+        values,
+        navigate,
+        setLoading,
+        update,
+        handleProfileSubmit
+      )
+    );
   };
 
   return (
@@ -214,7 +228,7 @@ const Bsize = () => {
               )}
             </div>
             {!update && (
-              <Link to="/question1">
+              <Link to="/subscription">
                 <div
                   className="fo_btn_c next_b_btn_c"
                   style={{
@@ -222,6 +236,7 @@ const Bsize = () => {
                     fontWeight: "600",
                     fontSize: "16px",
                   }}
+                  onClick={() => handleProfileSubmit()}
                 >
                   Skip For Now &#62;&#62;
                 </div>
