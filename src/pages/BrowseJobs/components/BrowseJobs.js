@@ -97,18 +97,18 @@ const BrowseJobs = () => {
     });
   }, [selectSkills]);
 
-  // to filter jobs by category select
-  useEffect(() => {
-    var categoryKeys = Object.keys(selectCategory);
-    setFilters({
-      ...filters,
-      project_category: categoryKeys
-        ?.filter(function (key) {
-          return selectCategory[key];
-        })
-        ?.toString(),
-    });
-  }, [selectCategory]);
+  // // to filter jobs by category select
+  // useEffect(() => {
+  //   var categoryKeys = Object.keys(selectCategory);
+  //   setFilters({
+  //     ...filters,
+  //     project_category: categoryKeys
+  //       ?.filter(function (key) {
+  //         return selectCategory[key];
+  //       })
+  //       ?.toString(),
+  //   });
+  // }, [selectCategory]);
 
   // to select skills
   const addSkills = (item) => {
@@ -416,7 +416,7 @@ const BrowseJobs = () => {
                       <span> $ </span>
                       <Form.Control
                         type="number"
-                        placeholder="3.00"
+                        placeholder="Min"
                         name="min_price"
                         value={filterValues?.min_price || ""}
                         onChange={(e) => handleFilterChange(e)}
@@ -431,7 +431,7 @@ const BrowseJobs = () => {
                       <span> $ </span>
                       <Form.Control
                         type="number"
-                        placeholder="50.00"
+                        placeholder="Max"
                         name="max_price"
                         value={filterValues?.max_price || ""}
                         onChange={(e) => handleFilterChange(e)}

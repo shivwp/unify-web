@@ -1,5 +1,5 @@
 const title = (name)=>{
-    const webName = "unify";
+    const webName = "Unify";
     document.title = webName+name;
 }
 export default title

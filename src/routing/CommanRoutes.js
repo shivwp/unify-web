@@ -26,7 +26,7 @@ const CommanRoutes = () => {
         <Route path="/forgot-password" element={<ForgotPass />} />
         <Route path="/verify-forgot-otp" element={<VerifyForgotOTP />} />
         <Route path="/reset-password" element={<ResetPass />} />
-        <Route path="/how-it-works" element={<HowItWorks />} />
+        <Route path="/what-is-unify" element={<HowItWorks />} />
         <Route path="/browse-jobs" element={<BrowseJobs />} />
         <Route path="/cat-skills/:category" element={<SkillsListCatWise />} />
         <Route path="/skill-dev/:skill" element={<DevListCatWise />} />

@@ -181,7 +181,7 @@ const NavbarHeader = (props) => {
           </button>
         </div>
         <div className="navdata_li">
-          <Link to="/how-it-works">HOW IT WORKS</Link>
+          <Link to="/what-is-unify">HOW IT WORKS</Link>
         </div>
         <div className="navdata_li">
           <Link to="/browse-jobs">BROWSE JOBS</Link>

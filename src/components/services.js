@@ -73,9 +73,9 @@ const Services = ({ category, popular_service }) => {
           <Row>
             <Col lg={12}>
               <div className="d-flex justify-content-center btn_services">
-                <Button onClick={showMore} variant="">
+                <button onClick={showMore} variant="">
                   View All The Services
-                </Button>
+                </button>
               </div>
             </Col>
           </Row>
@@ -83,9 +83,9 @@ const Services = ({ category, popular_service }) => {
           <Row>
             <Col lg={12}>
               <div className="d-flex justify-content-center btn_services">
-                <Button onClick={showLess} variant="">
+                <button onClick={showLess} variant="">
                   Show Less
-                </Button>
+                </button>
               </div>
             </Col>
           </Row>

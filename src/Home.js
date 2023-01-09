@@ -17,7 +17,7 @@ const Home = () => {
   const homePageData = useSelector((state) => state?.auth?.homePageData);
 
   useEffect(() => {
-    Title("");
+    Title(" | The World's Work Marketplace");
     dispatch(getHomePageData(setLoading));
   }, []);
 

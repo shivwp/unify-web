@@ -5,7 +5,12 @@ import { useDispatch } from "react-redux";
 import { onFreelancerRequestMilestone } from "../../../../redux/actions/jobActions";
 import PopupsCloseIcon from "../../../components/popups/PopupsCloseIcon";
 
-const AddMilestonePopup = ({ popup, setLoading, afterSuccess }) => {
+const AddMilestonePopup = ({
+  popup,
+  setLoading,
+  afterSuccess,
+  contract_id,
+}) => {
   const [errors, setErrors] = useState({});
   const [values, setValues] = useState({});
   const dispatch = useDispatch();
@@ -16,7 +21,14 @@ const AddMilestonePopup = ({ popup, setLoading, afterSuccess }) => {
   const requestForMilestone = (another) => {
     const errorsObject = {};
     let errorExist = false;
+    setLoading(true);
 
+    const data = {
+      contract_id,
+      title: values.title,
+      amount: values.amount,
+      due_date: values.due_date,
+    };
     if (
       values.title == "" ||
       values.title == undefined ||
@@ -39,10 +51,10 @@ const AddMilestonePopup = ({ popup, setLoading, afterSuccess }) => {
     }
     if (errorExist) {
       setErrors(errorsObject);
+      setLoading(false);
       return false;
     }
-
-    // dispatch(onFreelancerRequestMilestone(data, setLoading, popup, another));
+    dispatch(onFreelancerRequestMilestone(data, setLoading, popup, another));
   };
   return (
     <>

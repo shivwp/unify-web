@@ -36,8 +36,8 @@ const config = {
 };
 
 export const getJobsList = (data, ScrollTop, setLoading) => (dispatch) => {
-  try {
-    Axios.post("/jobs-list", data, config).then((res) => {
+  Axios.post("/jobs-list", data, config)
+    .then((res) => {
       dispatch({
         type: JOBS_LIST,
         payload: res.data,
@@ -48,17 +48,17 @@ export const getJobsList = (data, ScrollTop, setLoading) => (dispatch) => {
       if (ScrollTop) {
         ScrollTop();
       }
+    })
+    .catch((err) => {
+      if (setLoading) {
+        setLoading(false);
+      }
     });
-  } catch (err) {
-    if (setLoading) {
-      setLoading(false);
-    }
-  }
 };
 
 export const getSavedJobsList = (data, ScrollTop, setLoading) => (dispatch) => {
-  try {
-    Axios.post("/freelancer-saved-job", data, config).then((res) => {
+  Axios.post("/freelancer-saved-job", data, config)
+    .then((res) => {
       dispatch({
         type: SAVED_JOBS_LIST,
         payload: res.data,
@@ -69,16 +69,16 @@ export const getSavedJobsList = (data, ScrollTop, setLoading) => (dispatch) => {
       if (ScrollTop) {
         ScrollTop();
       }
+    })
+    .catch((err) => {
+      if (setLoading) {
+        setLoading(false);
+      }
     });
-  } catch (err) {
-    if (setLoading) {
-      setLoading(false);
-    }
-  }
 };
 export const saveJobs = (data, setLoading) => (dispatch) => {
-  try {
-    Axios.post("/saved-jobs", data, config).then((res) => {
+  Axios.post("/saved-jobs", data, config)
+    .then((res) => {
       dispatch({
         type: SAVE_JOB_POST,
         payload: res.data,
@@ -86,16 +86,16 @@ export const saveJobs = (data, setLoading) => (dispatch) => {
       if (setLoading) {
         setLoading(false);
       }
+    })
+    .catch((err) => {
+      if (setLoading) {
+        setLoading(false);
+      }
     });
-  } catch (err) {
-    if (setLoading) {
-      setLoading(false);
-    }
-  }
 };
 export const removeSaveJob = (data, setLoading) => (dispatch) => {
-  try {
-    Axios.post("/remove-saved-jobs", data, config).then((res) => {
+  Axios.post("/remove-saved-jobs", data, config)
+    .then((res) => {
       dispatch({
         type: UNSAVE_JOB_POST,
         payload: res.data,
@@ -103,16 +103,16 @@ export const removeSaveJob = (data, setLoading) => (dispatch) => {
       if (setLoading) {
         setLoading(false);
       }
+    })
+    .catch((err) => {
+      if (setLoading) {
+        setLoading(false);
+      }
     });
-  } catch (err) {
-    if (setLoading) {
-      setLoading(false);
-    }
-  }
 };
 export const singleJobPostDetails = (data, setLoading) => (dispatch) => {
-  try {
-    Axios.get(`/single-job/${data.job_id}`, config).then((res) => {
+  Axios.get(`/single-job/${data.job_id}`, config)
+    .then((res) => {
       dispatch({
         type: JOB_POST_DETAILS,
         payload: res.data.data,
@@ -120,13 +120,14 @@ export const singleJobPostDetails = (data, setLoading) => (dispatch) => {
       if (setLoading) {
         setLoading(false);
       }
+    })
+    .catch((err) => {
+      if (setLoading) {
+        setLoading(false);
+      }
     });
-  } catch (err) {
-    if (setLoading) {
-      setLoading(false);
-    }
-  }
 };
+
 export const onSendJobProposal =
   (data, successPopup, setSuccessPopup, navigate, is_invited, setLoading) =>
   (dispatch) => {
@@ -168,8 +169,8 @@ export const onSendJobProposal =
       });
   };
 export const onDislikePostReasons = (setLoading) => (dispatch) => {
-  try {
-    Axios.get("/dislike-reasons").then((res) => {
+  Axios.get("/dislike-reasons")
+    .then((res) => {
       dispatch({
         type: DISLIKE_POST_REASONS,
         payload: res.data.data,
@@ -177,12 +178,12 @@ export const onDislikePostReasons = (setLoading) => (dispatch) => {
       if (setLoading) {
         setLoading(false);
       }
+    })
+    .catch((err) => {
+      if (setLoading) {
+        setLoading(false);
+      }
     });
-  } catch (err) {
-    if (setLoading) {
-      setLoading(false);
-    }
-  }
 };
 export const onDislikeJobPost =
   (data, setDropdownOpen, setLoading) => (dispatch) => {

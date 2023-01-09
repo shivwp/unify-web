@@ -180,7 +180,7 @@ const Header = (props) => {
             </button>
           </div>
           <div className="navdata_li">
-            <Link to="/how-it-works">What Is Unify ?</Link>
+            <Link to="/what-is-unify">What Is Unify ?</Link>
           </div>
           <div className="navdata_li">
             <Link to="#0">Browse Jobs</Link>

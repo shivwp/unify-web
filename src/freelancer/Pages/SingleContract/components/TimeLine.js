@@ -69,7 +69,7 @@ const TimeLine = ({ setPopup, singleContractData, setLoading }) => {
                       <ConnectingLine height={"100%"}></ConnectingLine>
                       {item.status == "active" || item.status == "paid" ? (
                         <Progress
-                          height={item.status == "paid" ? "100%" : 0}
+                          height={item.status == "paid" ? "100%" : "0%"}
                           delay={index}
                         ></Progress>
                       ) : null}
@@ -195,6 +195,26 @@ const TimeLine = ({ setPopup, singleContractData, setLoading }) => {
                 </div>
               </>
             ))}
+            {singleContractData?.milestone[
+              singleContractData?.milestone.length - 1
+            ].status == "paid" ? (
+              <div className="submit_work_btn">
+                <button
+                  onClick={() =>
+                    setPopup(
+                      <AddMilestonePopup
+                        popup={setPopup}
+                        setLoading={setLoading}
+                        contract_id={singleContractData.id}
+                        freelancer={singleContractData?.freelancer}
+                      />
+                    )
+                  }
+                >
+                  Submit Work
+                </button>
+              </div>
+            ) : null}
           </div>
         </div>
       </Col>

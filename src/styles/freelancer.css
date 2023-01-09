@@ -2018,6 +2018,11 @@
   display: flex;
   gap: 10px;
 }
+.jobPriceRange .inp_bdg_pdsp input::placeholder {
+  color: rgb(183, 183, 183) !important;
+  font-size: 14px;
+  font-weight: 400;
+}
 .priceStartRange {
   padding: 5px 6px;
   background-color: #fff;

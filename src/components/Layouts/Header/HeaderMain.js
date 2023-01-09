@@ -44,7 +44,7 @@ const NavbarHeader = (props) => {
           </button>
         </div>
         <div className="navdata_li">
-          <Link to="/how-it-works">What is Unify ?</Link>
+          <Link to="/what-is-unify">What is Unify ?</Link>
         </div>
         <div className="navdata_li">
           <Link to="/browse-jobs">BROWSE JOBS</Link>
@@ -119,7 +119,7 @@ const NavbarHeader = (props) => {
                   <Nav>
                     <Nav.Link
                       as={Link}
-                      to="/how-it-works"
+                      to="/what-is-unify"
                       className="navbar_btn"
                     >
                       What Is Unify ?
@@ -152,7 +152,7 @@ const NavbarHeader = (props) => {
                   <Nav>
                     <Nav.Link
                       as={Link}
-                      to="/how-it-works"
+                      to="/what-is-unify"
                       className="navbar_btn"
                     >
                       What Is Unify ?
