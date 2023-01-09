@@ -133,7 +133,7 @@ const HourlyBid = ({
             <div className="css-name-proetction mt-3">
               Includes Unify Protection.
             </div>
-            <div className="css-rve-prt pt-1">Learn More</div>
+            {/* <div className="css-rve-prt pt-1">Learn More</div> */}
           </div>
         </Col>
       </Row>

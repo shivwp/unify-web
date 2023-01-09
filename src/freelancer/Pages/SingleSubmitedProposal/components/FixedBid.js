@@ -157,7 +157,7 @@ const ByMilesstone = ({
             <div className="css-name-proetction mt-3">
               Includes Unify Protection.
             </div>
-            <div className="css-rve-prt pt-1">Learn More</div>
+            {/* <div className="css-rve-prt pt-1">Learn More</div> */}
           </div>
         </Col>
         <Col lg={8}>
@@ -314,7 +314,7 @@ const ByProject = ({ values, setValues, project_data, errors, setErrors }) => {
               <div className="css-name-proetction mt-3">
                 Includes Unify Protection.
               </div>
-              <div className="css-rve-prt pt-1">Learn More</div>
+              {/* <div className="css-rve-prt pt-1">Learn More</div> */}
             </div>
           </Col>
         </Row>

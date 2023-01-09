@@ -611,6 +611,9 @@ export const onSubmitWorkForPayment =
           payload: res.data.data,
           type: ON_SUBMIT_WORK_FOR_PAYMENT,
         });
+        if (setPopup) {
+          setPopup(false);
+        }
       })
       .catch((err) => {
         if (setLoading) {
@@ -619,6 +622,9 @@ export const onSubmitWorkForPayment =
         setPopup(
           <ErrorPopup popup={setPopup} message={err.response.data.message} />
         );
+        if (setPopup) {
+          setPopup(false);
+        }
       });
   };
 export const onFreelancerRequestMilestone =

@@ -5,7 +5,12 @@ import { useDispatch } from "react-redux";
 import { onSubmitWorkForPayment } from "../../../../redux/actions/jobActions";
 import PopupsCloseIcon from "../../../components/popups/PopupsCloseIcon";
 
-const SubmitWorkForPaymentPopup = ({ popup, setLoading }) => {
+const SubmitWorkForPaymentPopup = ({
+  popup,
+  setLoading,
+  milestone_id,
+  freelancer,
+}) => {
   const [errors, setErrors] = useState({});
   const [values, setValues] = useState({});
   const [attachment, setAttachment] = useState(null);
@@ -36,6 +41,8 @@ const SubmitWorkForPaymentPopup = ({ popup, setLoading }) => {
     const errorsObject = {};
     let errorExist = false;
     formData.append("image", attachment);
+    formData.append("message", values?.description);
+    formData.append("milestone_id", milestone_id);
 
     if (!attachment) {
       errorsObject.attachment = "Please choose a attachment file";
@@ -81,7 +88,8 @@ const SubmitWorkForPaymentPopup = ({ popup, setLoading }) => {
                   </div>
                   <div className="work_status">Active & Funded</div>
                   <div className="when_payment">
-                    Your payment will be released once Ankit approves your work.
+                    Your payment will be released once {freelancer.first_name}{" "}
+                    approves your work.
                   </div>
                   <div className="bb_divide"></div>
                 </Col>

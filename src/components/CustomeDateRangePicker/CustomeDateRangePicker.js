@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./CustomeDateRangePicker.css";
+import $ from "jquery";
 
 // Functions that needs to pass in props
 // 1. dateSelect, if need only selected date
@@ -14,6 +15,7 @@ const CustomeDateRangePicker = ({
   fullWeekSelect,
   currentWeekSelect,
   dateRangeSelect,
+  whenToStartWeek = 0,
 }) => {
   // weeks name
   const weekDays = [
@@ -26,15 +28,16 @@ const CustomeDateRangePicker = ({
     { day: "Saturday", id: 6 },
   ];
 
-  // const weekDayIds = {
-  //   Sunday: 0,
-  //   Monday: 1,
-  //   Tuesday: 2,
-  //   Wednesday: 3,
-  //   Thursday: 4,
-  //   Friday: 5,
-  //   Saturday: 6,
-  // };
+  // All Weeks ids
+  const weekDayIds = [
+    { Sunday: 0 },
+    { Monday: 1 },
+    { Tuesday: 2 },
+    { Wednesday: 3 },
+    { Thursday: 4 },
+    { Friday: 5 },
+    { Saturday: 6 },
+  ];
 
   // months name
   const months = [
@@ -72,6 +75,7 @@ const CustomeDateRangePicker = ({
   const [selectedMonth, setSelectedMonth] = useState(new Date().getMonth());
   const [selectedDate, setSelectedDate] = useState(new Date().getDate());
   const [selectedDay, setSelectedDay] = useState(new Date().getDay());
+  const [showCalendar, setShowCalendar] = useState(false);
   const [activeDates, setActiveDates] = useState();
   const [changeYear, setChangeYear] = useState(false);
   const [firstDateSelect, setFirstDateSelect] = useState(false);
@@ -80,6 +84,7 @@ const CustomeDateRangePicker = ({
   const currentMonth = new Date().getMonth();
   const currentYear = new Date().getFullYear();
 
+  // days in months
   const daysInMonth = (month, year) => {
     const dayInMonth = {
       January: 31,
@@ -227,6 +232,15 @@ const CustomeDateRangePicker = ({
   const selectNextMonth = (monthId, year) => {
     setSelectedMonth(getNextMonth(monthId, year).monthId);
     setSelectedYear(getNextMonth(monthId, year).year);
+  };
+
+  // select next year
+  const selectNextYear = (year) => {
+    setSelectedYear(selectedYear + 1);
+  };
+  // select previous year
+  const selectPreviousYear = (year) => {
+    setSelectedYear(selectedYear - 1);
   };
 
   // get full day
@@ -452,6 +466,7 @@ const CustomeDateRangePicker = ({
       : console.log(getFullDate(item.day, item.monthName, item.year));
   };
 
+  // functions to run on hover on date
   const runOnHover = (item) => {
     firstDateSelect &&
     !lastDateSelect &&
@@ -476,13 +491,22 @@ const CustomeDateRangePicker = ({
         )
       : console.log(getFullDate(item.day, item.monthName, item.year));
   };
+
+  // hide calendar when click outside
+  $(document).mouseup(function (e) {
+    if ($(e.target).closest("#mainCalendar, #calendarInp ").length === 0) {
+      setShowCalendar(false);
+    }
+  });
+
   return (
     <>
       <div className="custom_calendar">
         <div className="date_input">
           <input
+            id="calendarInp"
             type="text"
-            readOnly
+            onFocus={() => setShowCalendar(true)}
             value={
               fullWeekSelect && activeDates
                 ? `${selectedRangeStartAndEndDate(activeDates)?.start_date} - ${
@@ -496,85 +520,100 @@ const CustomeDateRangePicker = ({
             }
           />
         </div>
-        <div className="calendar">
-          <div className="change_year_month">
-            <div
-              className="prev_btn"
-              onClick={() => selectPreviousMonth(selectedMonth, selectedYear)}
-            >
-              &lt;
-            </div>
-            <div className="selected_month_year">
-              {!changeYear ? (
-                <div className="month">{months[selectedMonth].monthName}</div>
-              ) : null}
-              <div className="year" onClick={() => setChangeYear(!changeYear)}>
-                {selectedYear}
-              </div>
-            </div>
-            <div
-              className="next_btn"
-              onClick={() => selectNextMonth(selectedMonth, selectedYear)}
-            >
-              &gt;
-            </div>
-          </div>
-          <div className="week_days">
-            {weekDays?.map((item, index) => (
+        {showCalendar ? (
+          <div className="calendar" id="mainCalendar">
+            <div className="change_year_month">
               <div
-                key={item.id}
-                className={`week_day ${
-                  item.id ==
-                  new Date(
-                    getFullDate(
-                      selectedDate,
-                      months[selectedMonth].monthName,
-                      selectedYear
-                    )
-                  ).getDay()
-                    ? "ActiveWeek"
-                    : ""
-                }`}
+                className="prev_btn"
+                onClick={() => {
+                  changeYear
+                    ? selectPreviousYear(selectedYear)
+                    : selectPreviousMonth(selectedMonth, selectedYear);
+                }}
               >
-                {item?.day?.charAt(0)}
+                &lt;
               </div>
-            ))}
-          </div>
-          <div className="days">
-            {getAllDaysInMonth(selectedMonth, selectedYear)?.map(
-              (item, index) => (
+              <div className="selected_month_year">
+                {!changeYear ? (
+                  <div className="month">{months[selectedMonth].monthName}</div>
+                ) : null}
                 <div
-                  key={index}
-                  className={`day ${item.class} ${
-                    weekSelect || fullWeekSelect || dateRangeSelect
-                      ? activeDates?.find(
-                          (ele) =>
-                            ele.day == item.day &&
-                            ele.monthName == item.monthName &&
-                            ele.year == item.year
-                        )
-                        ? "ActiveDate"
-                        : ""
-                      : dateSelect
-                      ? item.day == selectedDate &&
-                        item.monthName == months[selectedMonth].monthName &&
-                        item.year == selectedYear
-                        ? "ActiveDate"
-                        : ""
-                      : ""
-                  }`}
-                  title={getFullDate(item.day, item.monthName, item.year)}
-                  onClick={() => runOnClick(item)}
-                  onMouseEnter={() => {
-                    dateRangeSelect ? runOnHover(item) : console.log();
+                  className="year"
+                  onClick={() => {
+                    setChangeYear(!changeYear);
                   }}
                 >
-                  {item.day}
+                  {selectedYear}
                 </div>
-              )
-            )}
+              </div>
+              <div
+                className="next_btn"
+                onClick={() => {
+                  changeYear
+                    ? selectNextYear(selectedYear)
+                    : selectNextMonth(selectedMonth, selectedYear);
+                }}
+              >
+                &gt;
+              </div>
+            </div>
+            <div className="week_days">
+              {weekDays?.map((item, index) => (
+                <div
+                  key={item.id}
+                  className={`week_day ${
+                    item.id ==
+                    new Date(
+                      getFullDate(
+                        selectedDate,
+                        months[selectedMonth].monthName,
+                        selectedYear
+                      )
+                    ).getDay()
+                      ? "ActiveWeek"
+                      : ""
+                  }`}
+                >
+                  {item?.day?.charAt(0)}
+                </div>
+              ))}
+            </div>
+            <div className="days">
+              {getAllDaysInMonth(selectedMonth, selectedYear)?.map(
+                (item, index) => (
+                  <div
+                    key={index}
+                    className={`day ${item.class} ${
+                      weekSelect || fullWeekSelect || dateRangeSelect
+                        ? activeDates?.find(
+                            (ele) =>
+                              ele.day == item.day &&
+                              ele.monthName == item.monthName &&
+                              ele.year == item.year
+                          )
+                          ? "ActiveDate"
+                          : ""
+                        : dateSelect
+                        ? item.day == selectedDate &&
+                          item.monthName == months[selectedMonth].monthName &&
+                          item.year == selectedYear
+                          ? "ActiveDate"
+                          : ""
+                        : ""
+                    }`}
+                    title={getFullDate(item.day, item.monthName, item.year)}
+                    onClick={() => runOnClick(item)}
+                    onMouseEnter={() => {
+                      dateRangeSelect ? runOnHover(item) : console.log();
+                    }}
+                  >
+                    {item.day}
+                  </div>
+                )
+              )}
+            </div>
           </div>
-        </div>
+        ) : null}
       </div>
     </>
   );

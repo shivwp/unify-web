@@ -5,7 +5,13 @@ import { useDispatch } from "react-redux";
 import { onSubmitWorkForPayment } from "../../../../redux/actions/jobActions";
 import PopupsCloseIcon from "../../../components/popups/PopupsCloseIcon";
 
-const ResubmitRevision = ({ popup, setLoading }) => {
+const ResubmitRevision = ({
+  popup,
+  setLoading,
+  milestone_id,
+  freelancer,
+  work_id,
+}) => {
   const [errors, setErrors] = useState({});
   const [values, setValues] = useState({});
   const [attachment, setAttachment] = useState(null);
@@ -36,6 +42,9 @@ const ResubmitRevision = ({ popup, setLoading }) => {
     const errorsObject = {};
     let errorExist = false;
     formData.append("image", attachment);
+    formData.append("milestone_id", milestone_id);
+    formData.append("work_id", work_id);
+    formData.append("message", values.description);
 
     if (!attachment) {
       errorsObject.attachment = "Please choose a attachment file";
@@ -77,7 +86,7 @@ const ResubmitRevision = ({ popup, setLoading }) => {
                 <Col md={12}>
                   <div className="popup_form_element">
                     <Form.Label className="text-black font-size-13px font-weight-500">
-                      Message to Ankit
+                      Message to {freelancer?.first_name}
                     </Form.Label>
                     <Form.Control
                       as="textarea"
@@ -139,8 +148,8 @@ const ResubmitRevision = ({ popup, setLoading }) => {
                         type="file"
                         id="choose_file"
                         className="font-size-13px choose_file_resubmit_revision_inp"
-                        value={values?.description}
-                        onChange={(e) => onInputChange(e)}
+                        value={values?.attachment}
+                        onChange={(e) => onImageChange(e)}
                         placeholder="Attach Files"
                       ></Form.Control>
                       <div className="choose_file_resubmit_revision">

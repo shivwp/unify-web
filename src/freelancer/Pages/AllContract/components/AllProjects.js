@@ -11,7 +11,7 @@ const AllProjects = ({ getAllContracts }) => {
         <div className="no_contract_data">No Data Found</div>
       ) : (
         <>
-          {/* {getAllContracts?.map((item) => (
+          {getAllContracts?.map((item) => (
             <>
               <div className="job_box_card contract1">
                 <Row style={{ marginTop: 10 }}>
@@ -96,9 +96,9 @@ const AllProjects = ({ getAllContracts }) => {
                 </Row>
               </div>
             </>
-          ))} */}
+          ))}
 
-          <div className="job_box_card contract1">
+          {/* <div className="job_box_card contract1">
             <Row style={{ marginTop: 10 }}>
               <Col lg={9} md={7}>
                 <div className="job_head_s">
@@ -363,7 +363,7 @@ const AllProjects = ({ getAllContracts }) => {
                 {new Date() ? moment(new Date()).format("MMM YY") : "Present"}
               </Col>
             </Row>
-          </div>
+          </div> */}
         </>
       )}
     </>

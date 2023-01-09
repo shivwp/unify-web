@@ -122,7 +122,6 @@ const TimeSheet = ({ setLoading, setPopup }) => {
     if (e.target.name == "hours") {
       if (e.target.value.length > 1) {
         document.getElementById("minuts").focus();
-        list[i][e.target.name] = e.target.value;
         setValues(list);
         setErrors({ hours: false });
       }
@@ -131,7 +130,7 @@ const TimeSheet = ({ setLoading, setPopup }) => {
 
   const currentWeekStart = (date) => {
     console.log(date);
-    setCurrentWeekStartDate(date.first_date);
+    setCurrentWeekStartDate(date.start_date);
   };
 
   return (
@@ -184,7 +183,6 @@ const TimeSheet = ({ setLoading, setPopup }) => {
                     {getTimeSheet?.all?.map((item, index) => (
                       <div className="day_timesheet" key={index}>
                         <span>{item?.date}</span>
-                        {/* <span>0.00 hrs</span> */}
                         {timeInput === item.date ? (
                           <div>
                             <div>
