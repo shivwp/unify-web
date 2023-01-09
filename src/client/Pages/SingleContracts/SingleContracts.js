@@ -35,7 +35,7 @@ const SingleContracts = () => {
   useEffect(() => {
     setLoading(true);
     dispatch(SingleContractData(contact_id, setLoading));
-  }, []);
+  }, [reviewWorkAndChange]);
 
   return (
     <>

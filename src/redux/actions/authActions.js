@@ -483,7 +483,8 @@ export const getFooterPageData = (pagename) => async (dispatch) => {
     });
 };
 export const setClientCompnySize =
-  (data, navigate, setLoading, update) => async (dispatch) => {
+  (data, navigate, setLoading, update, handleProfileSubmit) =>
+  async (dispatch) => {
     await Axios.post("/business-size", data, config)
       .then((res) => {
         if (res.data.status) {
@@ -495,7 +496,8 @@ export const setClientCompnySize =
           if (update) {
             navigate(`/view-job/${update}/job-details`);
           } else {
-            navigate("/question1");
+            handleProfileSubmit();
+            navigate("/subscription");
           }
         }
         if (setLoading) {
@@ -522,7 +524,7 @@ export const onSubmitProfile = (navigate) => async (dispatch) => {
         } else if (
           JSON.parse(localStorage.getItem("unify_user")).user_type === "client"
         ) {
-          navigate("/dashboard");
+          navigate("/subscription");
         }
       }
     })

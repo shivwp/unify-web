@@ -64,12 +64,17 @@ const Overview = ({ setCurrentTab, setPopup, milestoneData, setLoading }) => {
                     {index !== milestoneData?.length - 1 ? (
                       <>
                         <ConnectingLine height={"100%"}></ConnectingLine>
-                        {item.status == "active" ? (
-                          <Progress height={"100%"} delay={index}></Progress>
+                        {item.status == "active" || item.status === "paid" ? (
+                          <Progress
+                            height={item.status === "paid" ? "100%" : "0%"}
+                            delay={index}
+                          ></Progress>
                         ) : null}
                       </>
                     ) : null}
-                    {item.status === "paid" ? (
+                    {item.status == "active" ||
+                    item.status === "paid" ||
+                    item.status == "submit-work" ? (
                       <div className="fill_ filled_background fa-checkBackground">
                         <i className="fa fa-check text-white"></i>
                       </div>
@@ -120,7 +125,7 @@ const Overview = ({ setCurrentTab, setPopup, milestoneData, setLoading }) => {
                             onClick={() =>
                               setPopup(
                                 <ReviewRequestWork
-                                  data={item.id}
+                                  milestone_id={item.id}
                                   popup={setPopup}
                                   setLoading={setLoading}
                                 />
