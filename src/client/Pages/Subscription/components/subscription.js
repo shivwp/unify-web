@@ -10,13 +10,15 @@ import {
   onSubscriptionPayment,
 } from "../../../../redux/actions/subscriptionAction";
 import StripeCheckout from "react-stripe-checkout";
-import { onSubmitProfile } from "../../../../redux/actions/subscriptionAction";
+// import { onSubmitProfile } from "../../../../redux/actions/subscriptionAction";
 
 const Subscriptionplan = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [values, setValues] = useState({});
   const [errors, setErrors] = useState({});
+  let userDetails = JSON.parse(localStorage.getItem("unify_user"));
+
   const subscriptionList = useSelector(
     (state) => state.subscription.subscriptionList
   );
@@ -55,9 +57,9 @@ const Subscriptionplan = () => {
   //   dispatch(onSubscriptionPayment(data, navigate));
   // };
 
-  const onNext = () => {
-    dispatch(onSubmitProfile(navigate));
-  };
+  // const onNext = () => {
+  //   dispatch(onSubmitProfile(navigate));
+  // };
 
   return (
     <>
@@ -115,7 +117,11 @@ const Subscriptionplan = () => {
                         {values?.subscription === item.id ? (
                           <button
                             className="btn_chose_pl btnhovpple"
-                            onClick={onNext}
+                            onClick={() => {
+                              userDetails?.user_type == "freelancer"
+                                ? navigate("/freelancer/dashboard")
+                                : navigate("/dashboard");
+                            }}
                           >
                             CHOOSE PLAN
                           </button>

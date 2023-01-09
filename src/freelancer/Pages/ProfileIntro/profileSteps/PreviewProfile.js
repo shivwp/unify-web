@@ -5,6 +5,7 @@ import { useState } from "react";
 import { Row, Col } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
+import { onSubmitProfile } from "../../../../redux/actions/authActions";
 import {
   editNameInfo,
   onDeleteEducation,
@@ -42,7 +43,6 @@ const PreviewProfile = ({ setCurrentTab, profileList, setLoading }) => {
   };
 
   const afterSuccess = () => {
-   
     window?.location?.reload();
   };
 
@@ -76,7 +76,19 @@ const PreviewProfile = ({ setCurrentTab, profileList, setLoading }) => {
     formData.append("occcuption", profileList?.basic_info?.occuption);
     formData.append("profile_image", profileImage);
 
-    dispatch(editNameInfo(formData, successPopup, setSuccessPopup,afterSuccess, setLoading));
+    dispatch(
+      editNameInfo(
+        formData,
+        successPopup,
+        setSuccessPopup,
+        afterSuccess,
+        setLoading
+      )
+    );
+  };
+
+  const onProfileSubmit = () => {
+    dispatch(onSubmitProfile(navigate));
   };
 
   return (
@@ -98,11 +110,12 @@ const PreviewProfile = ({ setCurrentTab, profileList, setLoading }) => {
                   the scenes and let you know once it's ready. You can make
                   changes later on once you're live on the platform.
                 </div>
-                <Link to="/subscription">
-                  <button className="priviewSubmitButton">
-                    Submit Profile
-                  </button>
-                </Link>
+                <button
+                  className="priviewSubmitButton"
+                  onClick={onProfileSubmit}
+                >
+                  Submit Profile
+                </button>
               </Col>
               <Col sm={2} className="previewProfileThumbsIco">
                 <svg
@@ -812,11 +825,12 @@ const PreviewProfile = ({ setCurrentTab, profileList, setLoading }) => {
                 ))}
               </div>
               <Col>
-                <Link to="/subscription">
-                  <button className="priviewSubmitButton mt-4">
-                    Submit Profile
-                  </button>
-                </Link>
+                <button
+                  className="priviewSubmitButton mt-4"
+                  onClick={onProfileSubmit}
+                >
+                  Submit Profile
+                </button>
               </Col>
             </Row>
           </div>

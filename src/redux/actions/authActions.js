@@ -509,3 +509,24 @@ export const setClientCompnySize =
         }
       });
   };
+
+export const onSubmitProfile = (navigate) => async (dispatch) => {
+  await Axios.get(`/submit-profile`, config)
+    .then((res) => {
+      if (res.data.status) {
+        if (
+          JSON.parse(localStorage.getItem("unify_user")).user_type ===
+          "freelancer"
+        ) {
+          navigate("/subscription");
+        } else if (
+          JSON.parse(localStorage.getItem("unify_user")).user_type === "client"
+        ) {
+          navigate("/dashboard");
+        }
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
