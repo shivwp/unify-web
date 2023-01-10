@@ -3,10 +3,17 @@ import { useNavigate } from "react-router";
 import styled from "styled-components";
 import { keyframes } from "styled-components";
 import AddMilestone from "./popup/AddMilestone";
+import FundMilestone from "./popup/FundMilestone";
 import RequestMilestone from "./popup/RequestMilestone";
 import ReviewRequestWork from "./popup/ReviewRequestWork";
 
-const Overview = ({ setCurrentTab, setPopup, milestoneData, setLoading }) => {
+const Overview = ({
+  setPopup,
+  milestoneData,
+  setLoading,
+  singleContractData,
+  deleteMilestone,
+}) => {
   const navigate = useNavigate();
 
   const TimelineProgress = (height) => keyframes`
@@ -44,6 +51,16 @@ const Overview = ({ setCurrentTab, setPopup, milestoneData, setLoading }) => {
     animation-fill-mode: both;
   `;
 
+  const calculatedAmount = () => {
+    let total = 0;
+
+    milestoneData?.forEach((e) => {
+      total = total + e.amount;
+    });
+
+    return total;
+  };
+
   return (
     <>
       <div className="row">
@@ -52,7 +69,6 @@ const Overview = ({ setCurrentTab, setPopup, milestoneData, setLoading }) => {
             <div className="heading">Milestone Timeline</div>
             <div className="timeline">
               <ConnectingLine height={"100%"}></ConnectingLine>
-              {/* <Progress height={"20%"}></Progress> */}
 
               {milestoneData?.map((item, index) => (
                 <>
@@ -84,9 +100,6 @@ const Overview = ({ setCurrentTab, setPopup, milestoneData, setLoading }) => {
 
                     <div className="about_step">
                       <div className="p_heading">{item.description}</div>
-                      {/* Once
-                        the website is live done and the code submit to the
-                        client */}
                       <div className="paid_btn">
                         <span
                           style={{
@@ -108,17 +121,33 @@ const Overview = ({ setCurrentTab, setPopup, milestoneData, setLoading }) => {
                           <button>Pending</button>
                         ) : item.status === "paid" ? (
                           <button>Completed</button>
+                        ) : item.status === "draft" ? (
+                          <button>In Review</button>
                         ) : null}
                       </div>
-                      {item.status === "created"
-                        ? ` Chris hasn't paid for this milestone yet. Make sure the
-                          milestone is funded before starting the work.`
-                        : null}
 
                       {item.status === "created" ? (
-                        <div className="submit_work_btn">
-                          <button>Message Ankit</button>
-                        </div>
+                        <>
+                          {milestoneData?.filter(
+                            (ele) => ele.status == "created"
+                          )[0].id == item.id ? (
+                            <div
+                              className="submit_work_btn"
+                              onClick={() =>
+                                setPopup(<FundMilestone popup={setPopup} />)
+                              }
+                            >
+                              <button>Fund Milestone</button>
+                            </div>
+                          ) : (
+                            <div className="submit_work_btn">
+                              <button>
+                                Message{" "}
+                                {singleContractData?.freelancer?.first_name}
+                              </button>
+                            </div>
+                          )}
+                        </>
                       ) : item.status === "submit-work" ? (
                         <div className="submit_work_btn">
                           <button
@@ -133,6 +162,26 @@ const Overview = ({ setCurrentTab, setPopup, milestoneData, setLoading }) => {
                             }
                           >
                             Review & Request for change
+                          </button>
+                        </div>
+                      ) : item.status === "draft" ? (
+                        <div className="submit_work_btn">
+                          <button
+                            onClick={() =>
+                              setPopup(
+                                <AddMilestone
+                                  popup={setPopup}
+                                  milestoneDetails={item}
+                                  setLoading={setLoading}
+                                  singleContractData={singleContractData}
+                                />
+                              )
+                            }
+                          >
+                            Review and Approve
+                          </button>
+                          <button onClick={() => deleteMilestone(item.id)}>
+                            Decline
                           </button>
                         </div>
                       ) : null}
@@ -177,7 +226,15 @@ const Overview = ({ setCurrentTab, setPopup, milestoneData, setLoading }) => {
               <div className="about_step">
                 <div
                   className="timeline_link"
-                  onClick={() => setPopup(<AddMilestone popup={setPopup} />)}
+                  onClick={() =>
+                    setPopup(
+                      <AddMilestone
+                        popup={setPopup}
+                        setLoading={setLoading}
+                        singleContractData={singleContractData}
+                      />
+                    )
+                  }
                 >
                   Propose New Milestone
                 </div>
@@ -226,7 +283,7 @@ const Overview = ({ setCurrentTab, setPopup, milestoneData, setLoading }) => {
             </div>
             <div className="earnings_progress">
               <div>
-                <span>Received</span>
+                <span>Paid</span>
                 <span>$ 100</span>
               </div>
               <div>
@@ -235,7 +292,7 @@ const Overview = ({ setCurrentTab, setPopup, milestoneData, setLoading }) => {
               </div>
               <div>
                 <span>Project Price </span>
-                <span>$ 300</span>
+                <span>${calculatedAmount()}</span>
               </div>
             </div>
           </div>

@@ -863,6 +863,7 @@
   font-size: 15px;
   color: #3b3b3b;
   font-weight: bold;
+  cursor: pointer;
 }
 
 .freelancer_exp_in {
@@ -4047,6 +4048,7 @@
   justify-content: space-between;
   color: rgb(106, 106, 106);
   align-items: center;
+  padding: 5px 0px;
 }
 
 .milestone_overview_right .timesheet_progress .bg-success {
@@ -4174,6 +4176,7 @@
   padding: 10px 40px;
   margin: 10px 0;
   color: #fff;
+  margin-right: 10px;
 }
 
 .milestone_timeline .progress_steps .fill_ {

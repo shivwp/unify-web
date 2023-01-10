@@ -177,7 +177,7 @@ const Screen = () => {
         if (!scrollTo) {
           scrollTo = document.getElementById("bid_amount");
         }
-      } else if (values?.bid_amount < 3 || values?.bid_amount > 1000) {
+      } else if (values?.bid_amount < 3 || values?.bid_amount > 100000) {
         errorsObject.bid_amount =
           "Please enter an amount between $3.00 and $999.00";
         errorExist = true;

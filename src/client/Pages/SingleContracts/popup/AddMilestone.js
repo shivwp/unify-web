@@ -1,8 +1,38 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Col, Form, Row } from "react-bootstrap";
+import { useDispatch } from "react-redux";
 import PopupsCloseIcon from "../../../../freelancer/components/popups/PopupsCloseIcon";
+import { clientAddMilestone } from "../../../../redux/actions/freelancerAction";
 
-const AddMilestone = ({ popup }) => {
+const AddMilestone = ({
+  popup,
+  milestoneDetails,
+  setLoading,
+  singleContractData,
+}) => {
+  const dispatch = useDispatch();
+  const [values, setValues] = useState({});
+
+  useEffect(() => {
+    if (milestoneDetails) {
+      setValues(milestoneDetails);
+    }
+  }, [milestoneDetails]);
+
+  const onInputChange = (e) => {
+    setValues({ ...values, [e.target.name]: e.target.value });
+  };
+
+  const saveMilestone = () => {
+    const data = {
+      milestone_id: milestoneDetails?.id,
+      contract_id: singleContractData?.id,
+      title: values?.description,
+      amount: values?.amount,
+    };
+    dispatch(clientAddMilestone(data, popup, setLoading));
+  };
+
   return (
     <>
       <div className="bg_wrapper_popup_new">
@@ -23,9 +53,11 @@ const AddMilestone = ({ popup }) => {
                     </Form.Label>
                     <Form.Control
                       type="text"
-                      name="name"
+                      name="description"
                       className="font-size-13px"
                       placeholder=""
+                      value={values?.description}
+                      onChange={onInputChange}
                     />
                   </div>
                 </Col>
@@ -41,6 +73,8 @@ const AddMilestone = ({ popup }) => {
                         className="font-size-13px"
                         placeholder="2000"
                         style={{ textAlign: "right" }}
+                        value={values?.amount}
+                        onChange={onInputChange}
                       />
                       <span style={{ position: "absolute", top: 9, left: 7 }}>
                         $
@@ -54,9 +88,11 @@ const AddMilestone = ({ popup }) => {
                       Due Date (Optional)
                     </Form.Label>
                     <Form.Control
-                      name="due date"
+                      name="due_date"
                       className="font-size-13px"
                       type="date"
+                      value={values?.due_date}
+                      onChange={onInputChange}
                     />
                     <span style={{ fontSize: 12, marginTop: 8 }}>
                       All date and time are base on UTC
@@ -67,10 +103,10 @@ const AddMilestone = ({ popup }) => {
             </div>
 
             <div className="popup_btns_new flex-wrap cwiewyehkk">
-              <button variant="" className="font-weight-600 trans_btn">
+              <button className="font-weight-600 trans_btn">
                 SAVE & ADD ANOTHER
               </button>
-              <button variant="" className="font-weight-600 ">
+              <button className="font-weight-600" onClick={saveMilestone}>
                 SAVE
               </button>
             </div>

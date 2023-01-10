@@ -6,8 +6,7 @@ const Budget = ({
   onInputChange,
   values,
   reviewJobPost,
-  error,
-  setError,
+  errors,
 }) => {
   return (
     <Col lg={9}>
@@ -26,10 +25,7 @@ const Budget = ({
                     name="budget_type"
                     value="hourly"
                     checked={values?.budget_type === "hourly" ? true : false}
-                    onChange={(e) => {
-                      onInputChange(e);
-                      setError("");
-                    }}
+                    onChange={(e) => onInputChange(e)}
                   />
                 </div>
                 <div className="sel_icon">
@@ -58,10 +54,7 @@ const Budget = ({
                     name="budget_type"
                     value="fixed"
                     checked={values?.budget_type === "fixed" ? true : false}
-                    onChange={(e) => {
-                      onInputChange(e);
-                      setError("");
-                    }}
+                    onChange={(e) => onInputChange(e)}
                   />
                 </div>
                 <div className="sel_icon">
@@ -143,6 +136,7 @@ const Budget = ({
             </div>
           </div>
         ) : null}
+        <span className="signup-error">{errors.price && errors.price}</span>
         <div className="ft_par">
           This is the average rate for similar projects.
         </div>
@@ -158,7 +152,6 @@ const Budget = ({
           for UI/UX design projects like yours. Experts may charge higher rates.
         </div>
         <div className="ft_form_linki">Not ready to set an hourly rate?</div>
-        <span className="signup-error">{error}</span>
         <div className="btn_foot_sec flex-wrap no-border mt-2">
           <div className="fo_btn_c next_b_btn_c">
             <button

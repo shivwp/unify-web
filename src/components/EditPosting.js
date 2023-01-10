@@ -292,7 +292,9 @@ const EditPosting = () => {
                   <div className="b_bot_inp">
                     <div className="input_t_lab">Scope</div>
                     <div className="job_t_inp cat_inp_j d-flex flex-wrap align-items-center">
-                      <span>{values?.project_duration}</span>
+                      <span style={{ textTransform: "capitalize" }}>
+                        {values?.project_duration}
+                      </span>
 
                       <button
                         className="round_b_btn"
@@ -301,8 +303,12 @@ const EditPosting = () => {
                         <i className="bi bi-pencil-square"></i>
                       </button>
                     </div>
-                    <span>{values?.scop}</span>
-                    <div>{values?.experience_level}</div>
+                    <span style={{ textTransform: "capitalize" }}>
+                      {values?.scop}
+                    </span>
+                    <div style={{ textTransform: "capitalize" }}>
+                      {values?.experience_level}
+                    </div>
                   </div>
                   {/* Budget start here */}
 
