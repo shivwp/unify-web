@@ -110,6 +110,7 @@ const SingleContracts = () => {
                 setPopup={setPopup}
                 milestoneData={milestoneData}
                 setLoading={setLoading}
+                singleContractData={singleContractData}
               />
             )}
             {/* {currentTab === "messages" && <Messages />} */}

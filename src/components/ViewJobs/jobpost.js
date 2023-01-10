@@ -67,7 +67,10 @@ const JonComponent = ({ singleJobDetails, jobId, handleMakePublicPrivate }) => {
                         <img src="/assets/idea (1).svg" alt="" />
                       </div>
                       <div>
-                        <div className="input_t_lab p-0">
+                        <div
+                          className="input_t_lab p-0"
+                          style={{ textTransform: "capitalize" }}
+                        >
                           {singleJobDetails?.experience_level}
                         </div>
                         <div className="svs_para mt-0 pt-0">
@@ -102,7 +105,10 @@ const JonComponent = ({ singleJobDetails, jobId, handleMakePublicPrivate }) => {
                         <img src="/assets/calendar1.svg" alt="" />
                       </div>
                       <div>
-                        <div className="input_t_lab p-0">
+                        <div
+                          className="input_t_lab p-0"
+                          style={{ textTransform: "capitalize" }}
+                        >
                           {singleJobDetails?.project_duration}
                         </div>
                         <div className="svs_para mt-0 pt-0">Project Length</div>
@@ -117,7 +123,10 @@ const JonComponent = ({ singleJobDetails, jobId, handleMakePublicPrivate }) => {
                         <img src="/assets/idea (1).svg" alt="" />
                       </div>
                       <div>
-                        <div className="input_t_lab p-0">
+                        <div
+                          className="input_t_lab p-0"
+                          style={{ textTransform: "capitalize" }}
+                        >
                           {singleJobDetails?.experience_level}
                         </div>
                         <div className="svs_para mt-0 pt-0">

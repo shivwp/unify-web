@@ -16,24 +16,49 @@ const PostYourJobNow = () => {
   const navigate = useNavigate();
   const [currentTab, setCurrentTab] = useState("getting-started");
   const [values, setValues] = useState({});
-  const [error, setError] = useState();
+  const [errors, setErrors] = useState({});
 
   const onInputChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
+    setErrors({ ...errors, [e.target.name]: false });
   };
 
   const reviewJobPost = () => {
-    if (values?.min_price > values?.price) {
-      setError("Max price must be greater then min price");
-    } else {
-      dispatch({
-        type: SET_JOB_DATA_LISTING,
-        payload: values,
-      });
+    let errorExist = false;
+    let errorsObject = {};
 
-      navigate("/job-description");
-      setError("");
+    if (values?.budget_type === "hourly") {
+      if (values?.min_price < 3 || values?.price > 100000) {
+        errorsObject.price =
+          "Please enter an amount between $3.00 and $99999.00";
+        errorsObject.min_price =
+          "Please enter an amount between $3.00 and $99999.00";
+        errorExist = true;
+      } else if (values?.min_price > values?.price) {
+        errorsObject.price = "Min price must be less then max price";
+        errorsObject.min_price = "Min price must be less then max price";
+        errorExist = true;
+      }
+    } else if (values?.budget_type === "fixed") {
+      if (values?.price < 3 || values?.price > 100000) {
+        errorsObject.price =
+          "Please enter an amount between $3.00 and $99999.00";
+        errorExist = true;
+      }
     }
+
+    if (errorExist) {
+      setErrors(errorsObject);
+
+      return false;
+    }
+
+    dispatch({
+      type: SET_JOB_DATA_LISTING,
+      payload: values,
+    });
+
+    navigate("/job-description");
   };
 
   return (
@@ -83,8 +108,7 @@ const PostYourJobNow = () => {
               onInputChange={onInputChange}
               values={values}
               reviewJobPost={reviewJobPost}
-              error={error}
-              setError={setError}
+              errors={errors}
             />
           )}
         </Row>

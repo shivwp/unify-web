@@ -7,7 +7,7 @@ import Form from "react-bootstrap/Form";
 
 const ProjectBudgetPopup = ({ open, onCloseModal, setValues, values }) => {
   const [budgetData, setBudgetData] = useState({});
-  const [error, setError] = useState();
+  const [errors, setErrors] = useState({});
 
   useEffect(() => {
     if (values) {
@@ -17,21 +17,44 @@ const ProjectBudgetPopup = ({ open, onCloseModal, setValues, values }) => {
 
   const onInputChange = (e) => {
     setBudgetData({ ...budgetData, [e.target.name]: e.target.value });
+    setErrors({ ...errors, [e.target.name]: false });
   };
 
   const onSave = () => {
-    if (budgetData?.min_price > budgetData?.price) {
-      setError("Max price must be greater then min price");
-    } else {
-      setValues({
-        ...values,
-        budget_type: budgetData?.budget_type,
-        price: budgetData?.price,
-        min_price: budgetData?.min_price,
-      });
-      onCloseModal();
-      setError();
+    let errorExist = false;
+    let errorsObject = {};
+
+    if (budgetData?.budget_type === "hourly") {
+      if (budgetData?.min_price < 3 || budgetData?.price > 100000) {
+        errorsObject.price =
+          "Please enter an amount between $3.00 and $99999.00";
+        errorExist = true;
+      } else if (values?.min_price > values?.price) {
+        errorsObject.price = "Min price must be less then max price";
+        errorsObject.min_price = "Min price must be less then max price";
+        errorExist = true;
+      }
+    } else if (budgetData?.budget_type === "fixed") {
+      if (budgetData?.price < 3 || budgetData?.price > 100000) {
+        errorsObject.price =
+          "Please enter an amount between $3.00 and $99999.00";
+        errorExist = true;
+      }
     }
+
+    if (errorExist) {
+      setErrors(errorsObject);
+
+      return false;
+    }
+
+    setValues({
+      ...values,
+      budget_type: budgetData?.budget_type,
+      price: budgetData?.price,
+      min_price: budgetData?.min_price,
+    });
+    onCloseModal();
   };
 
   return (
@@ -55,10 +78,7 @@ const ProjectBudgetPopup = ({ open, onCloseModal, setValues, values }) => {
                     checked={
                       budgetData?.budget_type === "hourly" ? true : false
                     }
-                    onChange={(e) => {
-                      onInputChange(e);
-                      setError("");
-                    }}
+                    onChange={(e) => onInputChange(e)}
                   />
                 </div>
                 <div className="sel_icon">
@@ -87,10 +107,7 @@ const ProjectBudgetPopup = ({ open, onCloseModal, setValues, values }) => {
                     name="budget_type"
                     value="fixed"
                     checked={budgetData?.budget_type === "fixed" ? true : false}
-                    onChange={(e) => {
-                      onInputChange(e);
-                      setError("");
-                    }}
+                    onChange={(e) => onInputChange(e)}
                   />
                 </div>
                 <div className="sel_icon">
@@ -171,6 +188,7 @@ const ProjectBudgetPopup = ({ open, onCloseModal, setValues, values }) => {
             </div>
           </div>
         ) : null}
+        <span className="signup-error">{errors.price && errors.price}</span>
         <div className="ft_par">
           This is the average rate for similar projects.
         </div>
@@ -190,7 +208,6 @@ const ProjectBudgetPopup = ({ open, onCloseModal, setValues, values }) => {
           rates.
         </div>
         <div className="ft_form_linki">Not ready to set an hourly rate?</div>
-        <span className="signup-error">{error}</span>
         <div className="popup_btns_new flex-wrap cwiewyehkk">
           <button className="trans_btn hov_pple" onClick={() => onCloseModal()}>
             Cancel

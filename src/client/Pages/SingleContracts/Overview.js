@@ -6,7 +6,13 @@ import AddMilestone from "./popup/AddMilestone";
 import RequestMilestone from "./popup/RequestMilestone";
 import ReviewRequestWork from "./popup/ReviewRequestWork";
 
-const Overview = ({ setCurrentTab, setPopup, milestoneData, setLoading }) => {
+const Overview = ({
+  setCurrentTab,
+  setPopup,
+  milestoneData,
+  setLoading,
+  singleContractData,
+}) => {
   const navigate = useNavigate();
 
   const TimelineProgress = (height) => keyframes`
@@ -108,17 +114,32 @@ const Overview = ({ setCurrentTab, setPopup, milestoneData, setLoading }) => {
                           <button>Pending</button>
                         ) : item.status === "paid" ? (
                           <button>Completed</button>
+                        ) : item.status === "draft" ? (
+                          <button>In Review</button>
                         ) : null}
                       </div>
-                      {item.status === "created"
+                      {/* {item.status === "created"
                         ? ` Chris hasn't paid for this milestone yet. Make sure the
                           milestone is funded before starting the work.`
-                        : null}
+                        : null} */}
 
                       {item.status === "created" ? (
-                        <div className="submit_work_btn">
-                          <button>Message Ankit</button>
-                        </div>
+                        <>
+                          {milestoneData?.filter(
+                            (ele) => ele.status == "created"
+                          )[0].id == item.id ? (
+                            <div className="submit_work_btn">
+                              <button>Fund Milestone</button>
+                            </div>
+                          ) : (
+                            <div className="submit_work_btn">
+                              <button>
+                                Message{" "}
+                                {singleContractData?.freelancer?.first_name}
+                              </button>
+                            </div>
+                          )}
+                        </>
                       ) : item.status === "submit-work" ? (
                         <div className="submit_work_btn">
                           <button
@@ -134,6 +155,11 @@ const Overview = ({ setCurrentTab, setPopup, milestoneData, setLoading }) => {
                           >
                             Review & Request for change
                           </button>
+                        </div>
+                      ) : item.status === "draft" ? (
+                        <div className="submit_work_btn">
+                          <button>Review and Approve</button>
+                          <button>Decline</button>
                         </div>
                       ) : null}
                     </div>
