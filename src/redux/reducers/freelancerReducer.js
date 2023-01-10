@@ -27,6 +27,9 @@ import {
   SET_FREELANCER_LIST,
   SET_SELECTED_IDS,
   SET_CHANGE_APPROVE_WORK,
+  SET_CLIENT_ADD_MILESTONE,
+  SET_CLIENT_FUND_MILESTONE,
+  SET_CLIENT_DECLINE_MILESTONE,
 } from "../types";
 const initialState = {};
 
@@ -171,6 +174,21 @@ const freelancerReducer = (state = initialState, action) => {
       return {
         ...state,
         reviewWorkAndChange: action.payload,
+      };
+    case SET_CLIENT_ADD_MILESTONE:
+      return {
+        ...state,
+        addMilestone: action.payload,
+      };
+    case SET_CLIENT_FUND_MILESTONE:
+      return {
+        ...state,
+        fundMilestone: action.payload,
+      };
+    case SET_CLIENT_DECLINE_MILESTONE:
+      return {
+        ...state,
+        declineMilestone: action.payload,
       };
     default:
       return state;

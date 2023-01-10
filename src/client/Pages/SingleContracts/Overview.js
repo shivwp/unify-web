@@ -3,15 +3,16 @@ import { useNavigate } from "react-router";
 import styled from "styled-components";
 import { keyframes } from "styled-components";
 import AddMilestone from "./popup/AddMilestone";
+import FundMilestone from "./popup/FundMilestone";
 import RequestMilestone from "./popup/RequestMilestone";
 import ReviewRequestWork from "./popup/ReviewRequestWork";
 
 const Overview = ({
-  setCurrentTab,
   setPopup,
   milestoneData,
   setLoading,
   singleContractData,
+  deleteMilestone,
 }) => {
   const navigate = useNavigate();
 
@@ -50,6 +51,16 @@ const Overview = ({
     animation-fill-mode: both;
   `;
 
+  const calculatedAmount = () => {
+    let total = 0;
+
+    milestoneData?.forEach((e) => {
+      total = total + e.amount;
+    });
+
+    return total;
+  };
+
   return (
     <>
       <div className="row">
@@ -58,7 +69,6 @@ const Overview = ({
             <div className="heading">Milestone Timeline</div>
             <div className="timeline">
               <ConnectingLine height={"100%"}></ConnectingLine>
-              {/* <Progress height={"20%"}></Progress> */}
 
               {milestoneData?.map((item, index) => (
                 <>
@@ -90,9 +100,6 @@ const Overview = ({
 
                     <div className="about_step">
                       <div className="p_heading">{item.description}</div>
-                      {/* Once
-                        the website is live done and the code submit to the
-                        client */}
                       <div className="paid_btn">
                         <span
                           style={{
@@ -118,17 +125,18 @@ const Overview = ({
                           <button>In Review</button>
                         ) : null}
                       </div>
-                      {/* {item.status === "created"
-                        ? ` Chris hasn't paid for this milestone yet. Make sure the
-                          milestone is funded before starting the work.`
-                        : null} */}
 
                       {item.status === "created" ? (
                         <>
                           {milestoneData?.filter(
                             (ele) => ele.status == "created"
                           )[0].id == item.id ? (
-                            <div className="submit_work_btn">
+                            <div
+                              className="submit_work_btn"
+                              onClick={() =>
+                                setPopup(<FundMilestone popup={setPopup} />)
+                              }
+                            >
                               <button>Fund Milestone</button>
                             </div>
                           ) : (
@@ -158,8 +166,23 @@ const Overview = ({
                         </div>
                       ) : item.status === "draft" ? (
                         <div className="submit_work_btn">
-                          <button>Review and Approve</button>
-                          <button>Decline</button>
+                          <button
+                            onClick={() =>
+                              setPopup(
+                                <AddMilestone
+                                  popup={setPopup}
+                                  milestoneDetails={item}
+                                  setLoading={setLoading}
+                                  singleContractData={singleContractData}
+                                />
+                              )
+                            }
+                          >
+                            Review and Approve
+                          </button>
+                          <button onClick={() => deleteMilestone(item.id)}>
+                            Decline
+                          </button>
                         </div>
                       ) : null}
                     </div>
@@ -203,7 +226,15 @@ const Overview = ({
               <div className="about_step">
                 <div
                   className="timeline_link"
-                  onClick={() => setPopup(<AddMilestone popup={setPopup} />)}
+                  onClick={() =>
+                    setPopup(
+                      <AddMilestone
+                        popup={setPopup}
+                        setLoading={setLoading}
+                        singleContractData={singleContractData}
+                      />
+                    )
+                  }
                 >
                   Propose New Milestone
                 </div>
@@ -252,7 +283,7 @@ const Overview = ({
             </div>
             <div className="earnings_progress">
               <div>
-                <span>Received</span>
+                <span>Paid</span>
                 <span>$ 100</span>
               </div>
               <div>
@@ -261,7 +292,7 @@ const Overview = ({
               </div>
               <div>
                 <span>Project Price </span>
-                <span>$ 300</span>
+                <span>${calculatedAmount()}</span>
               </div>
             </div>
           </div>

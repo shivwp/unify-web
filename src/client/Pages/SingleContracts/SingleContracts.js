@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Container } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
@@ -10,6 +9,7 @@ import Messages from "./Messages";
 import Overview from "./Overview";
 import "./SingleContracts.css";
 import LoadingSpinner from "../../../components/LoadingSpinner";
+import { clientDeclineMilestone } from "../../../redux/actions/freelancerAction";
 
 const SingleContracts = () => {
   const navigate = useNavigate();
@@ -27,6 +27,10 @@ const SingleContracts = () => {
   const milestoneData = useSelector(
     (state) => state?.job?.singleContractData?.milestone
   );
+  const addMilestone = useSelector((state) => state?.freelancer?.addMilestone);
+  const declineMilestone = useSelector(
+    (state) => state?.freelancer?.declineMilestone
+  );
 
   useEffect(() => {
     setCurrentTab(buttonStatus);
@@ -35,7 +39,15 @@ const SingleContracts = () => {
   useEffect(() => {
     setLoading(true);
     dispatch(SingleContractData(contact_id, setLoading));
-  }, [reviewWorkAndChange]);
+  }, [reviewWorkAndChange, addMilestone, declineMilestone]);
+
+  const deleteMilestone = (milestone_id) => {
+    const data = {
+      milestone_id,
+    };
+
+    dispatch(clientDeclineMilestone(data));
+  };
 
   return (
     <>
@@ -106,11 +118,11 @@ const SingleContracts = () => {
             </div>
             {currentTab === "overview" && (
               <Overview
-                setCurrentTab={setCurrentTab}
                 setPopup={setPopup}
                 milestoneData={milestoneData}
                 setLoading={setLoading}
                 singleContractData={singleContractData}
+                deleteMilestone={deleteMilestone}
               />
             )}
             {/* {currentTab === "messages" && <Messages />} */}

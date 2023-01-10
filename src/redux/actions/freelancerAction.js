@@ -29,6 +29,9 @@ import {
   SET_OFFERED_FREELANCER_LIST,
   SET_FREELANCER_LIST,
   SET_CHANGE_APPROVE_WORK,
+  SET_CLIENT_ADD_MILESTONE,
+  SET_CLIENT_FUND_MILESTONE,
+  SET_CLIENT_DECLINE_MILESTONE,
 } from "../types";
 
 const config = {
@@ -662,6 +665,72 @@ export const reviewRequestForChange =
       })
       .catch((err) => {
         console.log(err);
+        if (setLoading) {
+          setLoading(false);
+        }
+      });
+  };
+
+export const clientAddMilestone =
+  (data, popup, setLoading) => async (dispatch) => {
+    await Axios.post(`/client-add-milestone`, data, config)
+      .then((res) => {
+        if (res.data.status) {
+          dispatch({
+            type: SET_CLIENT_ADD_MILESTONE,
+            payload: res.data,
+          });
+          popup();
+        }
+        if (setLoading) {
+          setLoading(false);
+        }
+      })
+      .catch((err) => {
+        if (setLoading) {
+          setLoading(false);
+        }
+      });
+  };
+
+export const clientDeclineMilestone =
+  (data, popup, setLoading) => async (dispatch) => {
+    await Axios.post(`/decline-milestone`, data, config)
+      .then((res) => {
+        if (res.data.status) {
+          dispatch({
+            type: SET_CLIENT_DECLINE_MILESTONE,
+            payload: res.data,
+          });
+          popup();
+        }
+        if (setLoading) {
+          setLoading(false);
+        }
+      })
+      .catch((err) => {
+        if (setLoading) {
+          setLoading(false);
+        }
+      });
+  };
+
+export const clientFundMilestone =
+  (data, popup, setLoading) => async (dispatch) => {
+    await Axios.post(`/milestone-payment`, data, config)
+      .then((res) => {
+        if (res.data.status) {
+          dispatch({
+            type: SET_CLIENT_FUND_MILESTONE,
+            payload: res.data,
+          });
+          popup();
+        }
+        if (setLoading) {
+          setLoading(false);
+        }
+      })
+      .catch((err) => {
         if (setLoading) {
           setLoading(false);
         }
