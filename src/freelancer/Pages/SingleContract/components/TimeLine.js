@@ -17,6 +17,9 @@ const TimeLine = ({ setPopup, singleContractData, setLoading }) => {
         popup={setPopup}
         setLoading={setLoading}
         afterSuccess={afterSuccess}
+        milestones={singleContractData?.milestone}
+        contract_id={singleContractData?.id}
+        freelancer={singleContractData?.freelancer}
       />
     );
   };
@@ -159,7 +162,14 @@ const TimeLine = ({ setPopup, singleContractData, setLoading }) => {
                           </div>
                         </>
                       ) : item.status == "created" ? (
-                        <button className="me-2 mb-2">Pending</button>
+                        <>
+                          <div>
+                            {singleContractData?.client?.first_name} hasn't paid
+                            for this milestone yet. Make sure the milestone is
+                            funded before starting the work.
+                          </div>
+                          <button className="me-2 mb-2">Pending</button>
+                        </>
                       ) : item.status == "changed" ? (
                         <>
                           <button className="me-2 mb-2">
@@ -197,21 +207,26 @@ const TimeLine = ({ setPopup, singleContractData, setLoading }) => {
             ))}
             {singleContractData?.milestone[
               singleContractData?.milestone.length - 1
-            ].status == "paid" ? (
+            ].status == "paid" ||
+            singleContractData?.milestone[
+              singleContractData?.milestone.length - 1
+            ].status == "draft" ? (
               <div className="submit_work_btn">
                 <button
                   onClick={() =>
                     setPopup(
                       <AddMilestonePopup
                         popup={setPopup}
+                        afterSuccess={afterSuccess}
                         setLoading={setLoading}
-                        contract_id={singleContractData.id}
+                        milestones={singleContractData?.milestone}
+                        contract_id={singleContractData?.id}
                         freelancer={singleContractData?.freelancer}
                       />
                     )
                   }
                 >
-                  Submit Work
+                  Add New Milestone
                 </button>
               </div>
             ) : null}

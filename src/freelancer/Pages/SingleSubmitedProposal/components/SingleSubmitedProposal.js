@@ -116,7 +116,7 @@ const SingleSubmitedProposal = () => {
                           </span>
                           <span>{project_data?.experience_level}</span>
                         </div>
-                        <div className="desc">Exprience Level</div>
+                        <div className="desc">Experience Level</div>
                       </div>
                       <div className="right_item">
                         <div className="head">
@@ -230,40 +230,15 @@ const SingleSubmitedProposal = () => {
                   <div className="head">How do you want to be paid?</div>
                   <div className="desc">
                     {project_data?.budget_type == "fixed" &&
-                    milestonedata?.length == 0
+                    proposal_data?.milestone_type == "single"
                       ? "By Project"
                       : project_data?.budget_type == "fixed" &&
-                        milestonedata?.length != 0
+                        proposal_data?.milestone_type == "multiple"
                       ? "By milestone"
                       : "Hourly"}
                   </div>
                 </div>
-                {project_data?.budget_type == "fixed" &&
-                milestonedata?.length == 0 ? (
-                  <>
-                    <div className="price_project">
-                      <div className="head">Total price of project</div>
-                      {/* <div className="desc">
-                        This includes all milsetones, and is the amount your
-                        client will see.
-                      </div> */}
-                      <div className="amt">${proposal_data?.bid_amount}</div>
-                    </div>
-                    <div className="you_recive">
-                      <div className="head">You'll Receive</div>
-                      <div className="desc">
-                        Your estimated payment, after service fees.
-                      </div>
-                      <div className="amt">
-                        $
-                        {proposal_data?.bid_amount -
-                          (proposal_data?.bid_amount / 100) *
-                            project_data?.service_fee}
-                      </div>
-                    </div>
-                  </>
-                ) : project_data?.budget_type == "fixed" &&
-                  milestonedata?.length != 0 ? (
+                {project_data?.budget_type == "fixed" ? (
                   <>
                     <div className="price_project">
                       <div className="head">Total price of project</div>
@@ -308,10 +283,7 @@ const SingleSubmitedProposal = () => {
                       </div>
                     </div>
                   </>
-                ) : (
-                  ""
-                )}
-
+                ) : null}
                 <div className="buttons">
                   <div className="theme_btns">
                     <button

@@ -52,7 +52,12 @@ const Screen = () => {
                   <Link to={`/freelancer/single-offer-detail/${item.id}`}>
                     <div className="titls">{item.name}</div>
                   </Link>
-                  <div className="job_type">{item.budget_type}</div>
+                  <div
+                    className="job_type"
+                    style={{ textTransform: "capitalize" }}
+                  >
+                    {item.budget_type}
+                  </div>
                 </div>
               ))}
             </div>
@@ -82,7 +87,12 @@ const Screen = () => {
                   <Link to={`/freelancer/single-invitation/${item.id}`}>
                     <div className="titls">{item.name}</div>
                   </Link>
-                  <div className="job_type">{item.budget_type}</div>
+                  <div
+                    className="job_type"
+                    style={{ textTransform: "capitalize" }}
+                  >
+                    {item.budget_type}
+                  </div>
                 </div>
               ))}
             </div>
@@ -111,7 +121,12 @@ const Screen = () => {
                   <Link to={`/freelancer/single-active-proposal/${item.id}`}>
                     <div className="titls">{item.name}</div>
                   </Link>
-                  <div className="job_type">{item.budget_type}</div>
+                  <div
+                    className="job_type"
+                    style={{ textTransform: "capitalize" }}
+                  >
+                    {item.budget_type}
+                  </div>
                 </div>
               ))}
             </div>
@@ -141,7 +156,12 @@ const Screen = () => {
                   <Link to={`/freelancer/single-submited-proposal/${item.id}`}>
                     <div className="titls">{item.name}</div>
                   </Link>
-                  <div className="job_type">{item.budget_type}</div>
+                  <div
+                    className="job_type"
+                    style={{ textTransform: "capitalize" }}
+                  >
+                    {item.budget_type}
+                  </div>
                 </div>
               ))}
             </div>

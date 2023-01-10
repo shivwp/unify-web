@@ -117,7 +117,7 @@ const SingleActiveProposal = () => {
                           </span>
                           <span>{project_data?.experience_level}</span>
                         </div>
-                        <div className="desc">Exprience Level</div>
+                        <div className="desc">Experience Level</div>
                       </div>
                       <div className="right_item">
                         <div className="head">

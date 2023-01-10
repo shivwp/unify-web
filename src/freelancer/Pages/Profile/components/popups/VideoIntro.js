@@ -20,7 +20,13 @@ const CloseIcon = () => {
   );
 };
 
-const VideoIntro = ({ data, Popup, successPopup, setSuccessPopup, setLoading }) => {
+const VideoIntro = ({
+  data,
+  Popup,
+  successPopup,
+  setSuccessPopup,
+  setLoading,
+}) => {
   const dispatch = useDispatch();
   const [values, setValues] = useState(data);
   const [errors, setErrors] = useState({});
@@ -43,7 +49,7 @@ const VideoIntro = ({ data, Popup, successPopup, setSuccessPopup, setLoading }) 
   };
 
   const onSave = () => {
-    setLoading(true)
+    setLoading(true);
     let errorExist = false;
     let errorsObject = {};
     if (values.url === "" || values.url === null || values.url === undefined) {
@@ -69,7 +75,7 @@ const VideoIntro = ({ data, Popup, successPopup, setSuccessPopup, setLoading }) 
 
     if (errorExist) {
       setErrors(errorsObject);
-      setLoading(false)
+      setLoading(false);
       return false;
     }
 
@@ -77,7 +83,9 @@ const VideoIntro = ({ data, Popup, successPopup, setSuccessPopup, setLoading }) 
       video: values.url,
       video_type: values.type,
     };
-    dispatch(onEditVideo(data, Popup, successPopup, setSuccessPopup, setLoading));
+    dispatch(
+      onEditVideo(data, Popup, successPopup, setSuccessPopup, setLoading)
+    );
   };
   return (
     <>
@@ -126,8 +134,8 @@ const VideoIntro = ({ data, Popup, successPopup, setSuccessPopup, setLoading }) 
                   value={values?.type}
                 >
                   <option value="">Select</option>
-                  <option value="Me talking about my skills and Exprience">
-                    Me talking about my skills and Exprience
+                  <option value="Me talking about my skills and Experience">
+                    Me talking about my skills and Experience
                   </option>
                   <option value="Visual samples of my work">
                     Visual samples of my work

@@ -43,7 +43,8 @@ const PreviewProfile = ({ setCurrentTab, profileList, setLoading }) => {
   };
 
   const afterSuccess = () => {
-    window?.location?.reload();
+    // window?.location?.reload();
+    setSuccessPopup(false);
   };
 
   const deleteEdu = (id) => {

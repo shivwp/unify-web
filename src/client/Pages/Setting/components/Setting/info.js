@@ -196,7 +196,7 @@ const Screen = () => {
       errorsObject.city = "Please enter your city";
       errorExist = true;
     } else if (/^[0-9]\d*$/.test(values?.city)) {
-      errorsObject.city = "please input a valid city ";
+      errorsObject.city = "Please input a valid city ";
       errorExist = true;
     }
     // if (

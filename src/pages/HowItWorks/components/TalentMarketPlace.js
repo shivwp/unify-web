@@ -121,8 +121,8 @@ const TalentMarketPlace = () => {
                       d="M36.6,20.552A16.052,16.052,0,1,1,20.552,4.5,16.052,16.052,0,0,1,36.6,20.552Z"
                       fill="none"
                       stroke="#fff"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
                       strokeWidth="3"
                     />
                     <path
@@ -132,8 +132,8 @@ const TalentMarketPlace = () => {
                       transform="translate(6.914 6.914)"
                       fill="none"
                       stroke="#fff"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
                       strokeWidth="3"
                     />
                   </g>

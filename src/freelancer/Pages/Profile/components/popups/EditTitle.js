@@ -49,7 +49,7 @@ const EditTitle = ({
       errorsObject.occuption = "Please enter your title";
       errorExist = true;
     } else if (/^[0-9]\d*$/.test(values?.occuption)) {
-      errorsObject.occuption = "please input a valid title ";
+      errorsObject.occuption = "Please input a valid title ";
       errorExist = true;
     }
 
@@ -61,7 +61,7 @@ const EditTitle = ({
       errorsObject.description = "Please enter your description";
       errorExist = true;
     } else if (/^[0-9]\d*$/.test(values?.description)) {
-      errorsObject.description = "please input a valid description ";
+      errorsObject.description = "Please input a valid description ";
       errorExist = true;
     } else if (values?.description?.length < 100) {
       errorsObject.description = "Atleast 100 charecters is required ";

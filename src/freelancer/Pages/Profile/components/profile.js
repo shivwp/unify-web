@@ -11,7 +11,7 @@ import {
   onDeleteEducation,
   onDeleteCertificate,
   editNameInfo,
-  editExprienceLev,
+  editExperienceLev,
   onDeletePortfolio,
 } from "../../../../redux/actions/profileAction";
 import moment from "moment";
@@ -199,7 +199,7 @@ const UnifyFreelancer = () => {
   const [workHistoryTab, setWorkHistoryTab] = useState("completedJobs");
   const [portfolioPopup, setPortfolioPopup] = useState(false);
   const [videoPopup, setVideoPopup] = useState(false);
-  const [showExprienceLevOpt, setShowExprienceLevOpt] = useState(false);
+  const [showExperienceLevOpt, setShowExperienceLevOpt] = useState(false);
   const [videoURL, setVideoURL] = useState(null);
   const [editPortfoData, setEditPortfoData] = useState([]);
   const [confirmPopup, setConfirmPopup] = useState(false);
@@ -209,8 +209,8 @@ const UnifyFreelancer = () => {
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState({});
 
-  const deleteExprience = useSelector(
-    (state) => state?.profile?.deleteExprience
+  const deleteExperience = useSelector(
+    (state) => state?.profile?.deleteExperience
   );
   const deleteCertificate = useSelector(
     (state) => state?.profile?.deleteCertificate
@@ -244,8 +244,8 @@ const UnifyFreelancer = () => {
   const editProfileVisiblity = useSelector(
     (state) => state?.profile?.editProfileVisiblity
   );
-  const editExprienceLevel = useSelector(
-    (state) => state?.profile?.editExprienceLevel
+  const editExperienceLevel = useSelector(
+    (state) => state?.profile?.editExperienceLevel
   );
   const requestTestimonial = useSelector(
     (state) => state?.profile?.requestTestimonial
@@ -255,14 +255,14 @@ const UnifyFreelancer = () => {
 
   const editSkills = useSelector((state) => state?.profile?.editSkills);
 
-  const addExprience = useSelector((state) => state?.profile?.addExprience);
+  const addExperience = useSelector((state) => state?.profile?.addExperience);
 
   useEffect(() => {
     setLoading(true);
     dispatch(getFreelancerProfile(setLoading));
   }, [
-    deleteExprience,
-    addExprience,
+    deleteExperience,
+    addExperience,
     deleteEducation,
     editLanguage,
     editHoursPerWeek,
@@ -276,7 +276,7 @@ const UnifyFreelancer = () => {
     editPortfolio,
     editVideo,
     editProfileVisiblity,
-    editExprienceLevel,
+    editExperienceLevel,
     deletePortfolio,
     verifyDocs,
     requestTestimonial,
@@ -377,13 +377,13 @@ const UnifyFreelancer = () => {
     border: "unset",
   };
 
-  const handleExprienceLevel = (level) => {
+  const handleExperienceLevel = (level) => {
     const data = { experience_level: level };
     setLoading(true);
     dispatch(
-      editExprienceLev(
+      editExperienceLev(
         data,
-        setShowExprienceLevOpt,
+        setShowExperienceLevOpt,
         successPopup,
         setSuccessPopup,
         setLoading
@@ -393,7 +393,7 @@ const UnifyFreelancer = () => {
 
   $(document).mouseup(function (e) {
     if ($(e.target).closest("#exprience_level_ops").length === 0) {
-      setShowExprienceLevOpt(false);
+      setShowExperienceLevOpt(false);
     }
   });
 
@@ -650,10 +650,12 @@ const UnifyFreelancer = () => {
                   className="myskill_hdingn profile_icon_25px profile_heading_mb"
                   style={{ position: "relative" }}
                 >
-                  Exprience Level
+                  Experience Level
                   <Button
                     variant=""
-                    onClick={() => setShowExprienceLevOpt(!showExprienceLevOpt)}
+                    onClick={() =>
+                      setShowExperienceLevOpt(!showExperienceLevOpt)
+                    }
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -670,21 +672,21 @@ const UnifyFreelancer = () => {
                       />
                     </svg>
                   </Button>
-                  {showExprienceLevOpt && (
+                  {showExperienceLevOpt && (
                     <>
                       <div
                         id="exprience_level_ops"
                         className="exprience_level_ops"
                       >
-                        <span onClick={() => handleExprienceLevel("entry")}>
+                        <span onClick={() => handleExperienceLevel("entry")}>
                           Entry
                         </span>
                         <span
-                          onClick={() => handleExprienceLevel("intermediate")}
+                          onClick={() => handleExperienceLevel("intermediate")}
                         >
                           Intermediate
                         </span>
-                        <span onClick={() => handleExprienceLevel("expert")}>
+                        <span onClick={() => handleExperienceLevel("expert")}>
                           Expert
                         </span>
                         <div className="exprience_level_ops_arrow">&#60;</div>

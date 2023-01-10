@@ -41,6 +41,7 @@ const ResubmitRevision = ({
     const formData = new FormData();
     const errorsObject = {};
     let errorExist = false;
+    setLoading(true);
     formData.append("image", attachment);
     formData.append("milestone_id", milestone_id);
     formData.append("work_id", work_id);
@@ -59,6 +60,7 @@ const ResubmitRevision = ({
       errorExist = true;
     }
     if (errorExist) {
+      setLoading(false);
       setErrors(errorsObject);
       return false;
     }

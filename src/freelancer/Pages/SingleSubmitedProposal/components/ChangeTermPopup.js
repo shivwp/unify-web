@@ -43,29 +43,22 @@ const ChangeTermPopup = ({
   ]);
 
   useEffect(() => {
-    setIsByMilestone(
-      milestonedata?.length == 0
-        ? "by_project"
-        : milestonedata?.length > 0
-        ? "by_milestone"
-        : ""
+    setIsByMilestone(proposal_data?.milestone_type);
+    setInputList(
+      milestonedata?.map((item) => {
+        return {
+          description: item.description,
+          due_date: item.due_date,
+          amount: item.amount,
+        };
+      })
     );
-    if (milestonedata?.length > 0) {
-      setInputList(
-        milestonedata?.map((item) => {
-          return {
-            description: item.description,
-            due_date: item.due_date,
-            amount: item.amount,
-          };
-        })
-      );
-    }
     setValues(proposal_data);
   }, [milestonedata]);
 
   const handleRadioChange = (e) => {
     setIsByMilestone(e.target.value);
+    console.log(e.target.value);
   };
 
   const onSave = () => {
@@ -96,20 +89,20 @@ const ChangeTermPopup = ({
         errorsObject.project_duration = "Please select project duration";
         errorExist = true;
       }
-      if (isByMilestone == "by_project") {
-        if (values?.bid_amount <= 0) {
-          errorsObject.bid_amount = "Please enter valid amount";
+      if (isByMilestone == "single") {
+        if (inputList[0]?.amount <= 0) {
+          errorsObject.amount = "Please enter valid amount";
           errorExist = true;
         } else if (
-          values?.bid_amount === "" ||
-          values?.bid_amount === undefined ||
-          values?.bid_amount === null
+          inputList[0]?.amount === "" ||
+          inputList[0]?.amount === undefined ||
+          inputList[0]?.amount === null
         ) {
-          errorsObject.bid_amount = "Please enter valid amount";
+          errorsObject.amount = "Please enter valid amount";
           errorExist = true;
         }
       }
-      if (isByMilestone == "by_milestone") {
+      if (isByMilestone == "multiple") {
         if (
           inputList[inputList.length - 1]?.description == "" ||
           inputList[inputList.length - 1]?.description == null ||
@@ -147,16 +140,9 @@ const ChangeTermPopup = ({
     if (project_data?.budget_type == "hourly") {
       formData.append("bid_amount", values?.bid_amount);
     } else if (project_data?.budget_type == "fixed") {
-      if (isByMilestone == "by_project") {
-        formData.append("milestone_type", "single");
-        formData.append("project_duration", values?.project_duration);
-        formData.append("bid_amount", values?.bid_amount);
-      }
-      if (isByMilestone == "by_milestone") {
-        formData.append("milestone_type", "multiple");
-        formData.append("project_duration", values?.project_duration);
-        formData.append("milestone_data", JSON.stringify(inputList));
-      }
+      formData.append("milestone_type", isByMilestone);
+      formData.append("project_duration", values?.project_duration);
+      formData.append("milestone_data", JSON.stringify(inputList));
     }
     dispatch(
       onChangeTermsOfProposals(

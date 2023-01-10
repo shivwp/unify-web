@@ -104,7 +104,7 @@ export const onAddEmployment =
         setSuccessPopup(
           <SuccessPopup
             Popup={() => setSuccessPopup(!successPopup)}
-            message="Exprience saved Sucessfully"
+            message="Experience saved Sucessfully"
           />
         );
       })
@@ -765,7 +765,7 @@ export const editVisiblity =
       });
   };
 
-export const editExprienceLev =
+export const editExperienceLev =
   (data, popup, successPopup, setSuccessPopup, setLoading) =>
   async (dispatch) => {
     await Axios.post("/edit-experience-level", data, config)

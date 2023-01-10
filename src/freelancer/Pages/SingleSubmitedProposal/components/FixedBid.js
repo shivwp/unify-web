@@ -206,10 +206,33 @@ const ByMilesstone = ({
   );
 };
 
-const ByProject = ({ values, setValues, project_data, errors, setErrors }) => {
-  const handleOnChange = (e) => {
-    setValues({ ...values, [e.target.name]: e.target.value });
-    setErrors({ ...errors, [e.target.name]: false });
+const ByProject = ({
+  values,
+  setValues,
+  project_data,
+  errors,
+  setErrors,
+  milestonedata,
+  inputList,
+  setInputList,
+}) => {
+  const handleInputChange = (e, index) => {
+    const { name, value } = e.target;
+    const list = [...inputList];
+    if (name == "amount") {
+      if (value.length <= 10) {
+        list[index][name] = Number(value);
+      }
+    } else {
+      list[index][name] = value;
+    }
+    setInputList(list);
+    if (index == inputList.length - 1) {
+      setErrors({
+        ...errors,
+        [e.target.name]: false,
+      });
+    }
   };
 
   return (
@@ -237,18 +260,18 @@ const ByProject = ({ values, setValues, project_data, errors, setErrors }) => {
                 <div style={{ position: "relative" }}>
                   <input
                     type="number"
-                    name="bid_amount"
+                    name="amount"
                     maxlength="10"
                     min="1"
-                    onChange={(e) => handleOnChange(e)}
-                    value={values?.bid_amount}
+                    onChange={(e) => handleInputChange(e, 0)}
+                    value={inputList[0]?.amount}
                     placeholder="0.00"
                     onWheel={(e) => e.target.blur()}
                   />
                   <span className="dollar_icon">$</span>
                 </div>
                 <span className="signup-error">
-                  {errors?.bid_amount && errors?.bid_amount}
+                  {errors?.amount && errors?.amount}
                 </span>
               </Col>
             </Row>
@@ -269,7 +292,10 @@ const ByProject = ({ values, setValues, project_data, errors, setErrors }) => {
                     disabled
                     placeholder="0.00"
                     value={
-                      (values?.bid_amount / 100) * project_data?.service_fee
+                      (
+                        (inputList[0]?.amount / 100) *
+                        project_data?.service_fee
+                      ).toFixed(2) || 0
                     }
                   />
                   <span className="dollar_icon">$</span>
@@ -296,8 +322,10 @@ const ByProject = ({ values, setValues, project_data, errors, setErrors }) => {
                     disabled
                     placeholder="0.00"
                     value={
-                      values?.bid_amount -
-                      (values?.bid_amount / 100) * project_data?.service_fee
+                      (
+                        inputList[0]?.amount -
+                        (inputList[0]?.amount / 100) * project_data?.service_fee
+                      ).toFixed(2) || 0
                     }
                   />
                   <span className="dollar_icon">$</span>
@@ -353,10 +381,12 @@ const FixedBid = ({
                   <div>
                     <input
                       type="radio"
-                      id="by_milestone"
+                      id="multiple"
                       name="paid_method"
-                      value="by_milestone"
-                      defaultChecked={milestonedata?.length > 0}
+                      value="multiple"
+                      defaultChecked={
+                        proposal_data?.milestone_type == "multiple"
+                      }
                       onChange={(e) => handleRadioChange(e)}
                     />
                   </div>
@@ -375,10 +405,10 @@ const FixedBid = ({
                   <div>
                     <input
                       type="radio"
-                      id="by_project"
+                      id="single"
                       name="paid_method"
-                      value="by_project"
-                      defaultChecked={milestonedata?.length == 0}
+                      value="single"
+                      defaultChecked={proposal_data?.milestone_type == "single"}
                       onChange={(e) => handleRadioChange(e)}
                     />
                   </div>
@@ -431,7 +461,7 @@ const FixedBid = ({
                   </Col>
                 </Row>
               </div>
-              {isByMilestone == "by_milestone" ? (
+              {isByMilestone == "multiple" ? (
                 <ByMilesstone
                   handleOnChange={handleOnChange}
                   project_data={project_data}
@@ -441,8 +471,11 @@ const FixedBid = ({
                   setErrors={setErrors}
                   errors={errors}
                 />
-              ) : isByMilestone == "by_project" ? (
+              ) : isByMilestone == "single" ? (
                 <ByProject
+                  milestonedata={milestonedata}
+                  inputList={inputList}
+                  setInputList={setInputList}
                   setValues={setValues}
                   errors={errors}
                   values={values}

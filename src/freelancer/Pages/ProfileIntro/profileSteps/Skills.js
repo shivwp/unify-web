@@ -151,6 +151,7 @@ const Skills = ({ setCurrentTab, profileList, setLoading }) => {
                   <Form.Control
                     type="text"
                     name="skill"
+                    autoComplete="off"
                     id="search_skill_inp"
                     placeholder="Start typing to search"
                     className="no-border font-size-13px search_skilloiouo"

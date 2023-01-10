@@ -821,7 +821,7 @@ const Dashboard = () => {
                     <div className="d-flex justify-content-between mb-3">
                       <div className="dcard_htext">Projects</div>
                       <div className="dcard_ltxt">
-                        <Link to="/freelancer/milestone-earning">
+                        <Link to="#">
                           Manage Projects
                         </Link>
                       </div>

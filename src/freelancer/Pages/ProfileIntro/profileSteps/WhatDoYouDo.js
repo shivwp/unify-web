@@ -41,7 +41,7 @@ const WhatDoYouDo = ({ setCurrentTab, profileList, setLoading }) => {
   const afterSuccess = () => {
     setCurrentTab("exprience");
     navigate(`/freelancer/profile-intro/exprience`);
-    window.location.reload();
+    // window.location.reload();
   };
 
   const onEditProfile = () => {
@@ -62,7 +62,7 @@ const WhatDoYouDo = ({ setCurrentTab, profileList, setLoading }) => {
     //   errorExist = true;
     // }
     else if (/^[0-9]\d*$/.test(values?.occuption)) {
-      errorsObject.occuption = "please input a valid title ";
+      errorsObject.occuption = "Please input a valid title ";
       errorExist = true;
     }
 
@@ -82,7 +82,7 @@ const WhatDoYouDo = ({ setCurrentTab, profileList, setLoading }) => {
     //   errorExist = true;
     // }
     else if (/^[0-9]\d*$/.test(values?.description)) {
-      errorsObject.description = "please input a valid description ";
+      errorsObject.description = "Please input a valid description ";
       errorExist = true;
     }
 

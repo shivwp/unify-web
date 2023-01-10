@@ -90,9 +90,9 @@ const NavbarHeader = (props) => {
             <div className="navabr_t_li">
               <Link to="/freelancer/work-diary">Management Board</Link>
             </div>
-            <div className="navabr_t_li">
+            {/* <div className="navabr_t_li">
               <Link to="/freelancer/goals">Goals</Link>
-            </div>
+            </div> */}
             <div className="navabr_t_li">
               <Link to="/freelancer/add-work-diary">Work Diary</Link>
             </div>
@@ -108,7 +108,7 @@ const NavbarHeader = (props) => {
             <div className="navabr_t_li">
               <Link to="/freelancer/overview">Overview</Link>
             </div>
-            <div className="navabr_t_li">
+            {/* <div className="navabr_t_li">
               <Link to="/freelancer/my-reports">My Reports</Link>
             </div>
             <div className="navabr_t_li">
@@ -116,7 +116,7 @@ const NavbarHeader = (props) => {
             </div>
             <div className="navabr_t_li">
               <Link to="/freelancer/unicoin-history">UniCoins History</Link>
-            </div>
+            </div> */}
             {/* <div className="navabr_t_li">
               <Link to="/freelancer/direct-contract">Direct Contracts</Link>
             </div> */}
@@ -341,9 +341,9 @@ const NavbarHeader = (props) => {
                     <div className="navabr_t_li">
                       <Link to="/freelancer/work-diary">Management Board</Link>
                     </div>
-                    <div className="navabr_t_li">
+                    {/* <div className="navabr_t_li">
                       <Link to="/freelancer/goals">Goals</Link>
-                    </div>
+                    </div> */}
                     <div className="navabr_t_li">
                       <Link to="/freelancer/add-work-diary">Work Diary</Link>
                     </div>
@@ -358,24 +358,24 @@ const NavbarHeader = (props) => {
                       <div className="navabr_t_li">
                         <Link to="/freelancer/overview">Overview</Link>
                       </div>
-                      <div className="navabr_t_li">
+                      {/* <div className="navabr_t_li">
                         <Link to="/freelancer/my-reports">My Reports</Link>
                       </div>
                       <div className="navabr_t_li">
                         <Link to="/freelancer/billing-earning">
                           Billings & Earnings
                         </Link>
-                      </div>
+                      </div> */}
                       {/* <div className="navabr_t_li">
                         <Link to="/freelancer/direct-contract">
                           Direct Contracts
                         </Link>
                       </div> */}
-                      <div className="navabr_t_li">
+                      {/* <div className="navabr_t_li">
                         <Link to="/freelancer/unicoin-history">
                           UniCoins History
                         </Link>
-                      </div>
+                      </div> */}
                       <div className="navabr_t_li">
                         <Link to="/freelancer/transaction-history">
                           Transaction History

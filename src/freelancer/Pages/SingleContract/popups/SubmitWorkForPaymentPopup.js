@@ -40,6 +40,7 @@ const SubmitWorkForPaymentPopup = ({
     const formData = new FormData();
     const errorsObject = {};
     let errorExist = false;
+    setLoading(true);
     formData.append("image", attachment);
     formData.append("message", values?.description);
     formData.append("milestone_id", milestone_id);
@@ -57,6 +58,7 @@ const SubmitWorkForPaymentPopup = ({
       errorExist = true;
     }
     if (errorExist) {
+      setLoading(false);
       setErrors(errorsObject);
       return false;
     }

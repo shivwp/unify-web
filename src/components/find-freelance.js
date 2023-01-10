@@ -80,7 +80,7 @@ const findfreelance = ({
                         <span className="count">
                           {item.launch_projects} Fast
                         </span>
-                        <span className="title">Lounch of Projects</span>
+                        <span className="title">Launch of Projects</span>
                       </div>{" "}
                     </div>
                   </div>

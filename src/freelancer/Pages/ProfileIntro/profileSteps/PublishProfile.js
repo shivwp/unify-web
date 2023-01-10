@@ -63,7 +63,7 @@ const PublishProfile = ({ setCurrentTab, profileList, setLoading }) => {
     } else {
       setSuccessPopup(!successPopup);
     }
-    window.location.reload();
+    // window.location.reload();
   };
 
   const onSave = () => {
@@ -102,7 +102,7 @@ const PublishProfile = ({ setCurrentTab, profileList, setLoading }) => {
       errorsObject.city = "Please enter city name";
       errorExist = true;
     } else if (/^[0-9]\d*$/.test(values?.city)) {
-      errorsObject.city = "please input a valid city name ";
+      errorsObject.city = "Please input a valid city name ";
       errorExist = true;
     }
     if (

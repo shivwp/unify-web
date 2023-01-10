@@ -69,7 +69,7 @@ const AllProjects = () => {
       dispatch(
         getJobsList(
           { pagination: 10, page: page, ...filters },
-          ScrollTop,
+          false,
           setLoading
         )
       );

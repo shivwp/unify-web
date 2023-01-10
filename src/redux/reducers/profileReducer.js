@@ -59,12 +59,12 @@ const profileReducer = (state = initialState, action) => {
     case SET_DELETE_EXPRIENCE:
       return {
         ...state,
-        deleteExprience: action.payload,
+        deleteExperience: action.payload,
       };
     case SET_ADD_EXPRIENCE:
       return {
         ...state,
-        addExprience: action.payload,
+        addExperience: action.payload,
       };
 
     // CLIENT
@@ -182,7 +182,7 @@ const profileReducer = (state = initialState, action) => {
     case SET_EXPRIENCE_LEVEL:
       return {
         ...state,
-        editExprienceLevel: action.payload,
+        editExperienceLevel: action.payload,
       };
     case SET_DELETE_PORTFOLIO:
       return {

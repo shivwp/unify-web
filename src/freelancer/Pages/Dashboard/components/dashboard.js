@@ -912,7 +912,7 @@ const Screen = () => {
                   <div className="d-flex justify-content-between align-items-center mb-3">
                     <div className="dcard_htext">Clients</div>
                     <div className="dcard_ltxt">
-                      <Link to="/">View All</Link>
+                      <Link to="#">View All</Link>
                     </div>
                   </div>
                   <Profile />
@@ -925,7 +925,7 @@ const Screen = () => {
                   <div className="d-flex justify-content-between align-items-center mb-3">
                     <div className="dcard_htext">Recent Payments</div>
                     <div className="dcard_ltxt cpink_ltxt">
-                      <Link to="/">View All</Link>
+                      <Link to="#">View All</Link>
                     </div>
                   </div>
                   <ProfilePayment />
@@ -1002,7 +1002,7 @@ const Screen = () => {
                   <div className="d-flex justify-content-between mb-3">
                     <div className="dcard_htext">Projects</div>
                     <div className="dcard_ltxt">
-                      <Link to="/freelancer/milestone-earning">
+                      <Link to="#">
                         Manage Projects
                       </Link>
                     </div>
@@ -1027,7 +1027,7 @@ const Screen = () => {
                   <div className="d-flex justify-content-between mb-3">
                     <div className="dcard_htext">Recommended</div>
                     <div className="dcard_ltxt">
-                      <Link to="/">View All</Link>
+                      <Link to="#">View All</Link>
                     </div>
                   </div>
                   <div className="d-flex mt-4 mb-3">

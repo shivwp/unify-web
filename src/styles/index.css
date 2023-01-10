@@ -3449,6 +3449,7 @@ body {
   color: #6b6b6b;
   font-weight: 400;
   font-family: "Poppins";
+  word-break: break-word;
 }
 
 .inp_label {
@@ -4574,7 +4575,7 @@ body {
   .newnav_v2_flxew {
     border: none;
     padding: 0px;
-    justify-content: start !important;
+    /* justify-content: start !important; */
   }
 }
 @media only screen and (max-width: 425px) {
@@ -7354,6 +7355,9 @@ a {
   flex-wrap: wrap;
   min-height: 61px;
 }
+.addSkillBox > div {
+  width: 100%;
+}
 
 @media screen and (max-width: 376px) {
   .addSkillBox .skill_bxr_gry {
@@ -8988,9 +8992,11 @@ a {
 .addSkillBox .search_inp_box {
   display: flex;
   position: relative;
+  width: 100%;
 }
 .addSkillBox .search_inp_box .suggest_skills {
-  top: 57px;
+  top: 40px;
+  max-width: 210px;
 }
 .addSkillBox .search_inp_box .suggest_skills span {
   font-size: 14px;

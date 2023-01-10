@@ -143,9 +143,9 @@ const EditSkill = ({
                 {selectSkills?.map((item, index) => (
                   <div className="skill_bxr_gry" key={item.skill_id}>
                     <span>{item.skill_name}</span>
-                    <Button variant="" onClick={() => removeSkills(index)}>
+                    <button variant="" onClick={() => removeSkills(index)}>
                       X
-                    </Button>
+                    </button>
                   </div>
                 ))}
               </div>

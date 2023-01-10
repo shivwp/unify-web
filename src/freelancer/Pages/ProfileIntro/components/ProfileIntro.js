@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import TakeTimeToIntro from "../profileSteps/TakeTimeToIntro";
 import WhatDoYouDo from "../profileSteps/WhatDoYouDo";
-import Exprience from "../profileSteps/Exprience";
+import Experience from "../profileSteps/Experience";
 import Education from "../profileSteps/Education";
 import Skills from "../profileSteps/Skills";
 import ServicesOffer from "../profileSteps/ServicesOffer";
@@ -19,15 +19,18 @@ import LoadingSpinner from "../../../../components/LoadingSpinner";
 const ProfileIntro = () => {
   const { tabName } = useParams();
   const dispatch = useDispatch();
-  const [currentTab, setCurrentTab] = useState("question2");
+  const [currentTab, setCurrentTab] = useState(tabName);
   const [loading, setLoading] = useState(false);
 
   const freelancerProfileList = useSelector(
     (state) => state.profile.freelancerProfileList
   );
+
   const editDesignation = useSelector((state) => state.profile.editDesignation);
-  const deleteExprience = useSelector((state) => state.profile.deleteExprience);
-  const addExprience = useSelector((state) => state.profile.addExprience);
+  const deleteExperience = useSelector(
+    (state) => state.profile.deleteExperience
+  );
+  const addExperience = useSelector((state) => state.profile.addExperience);
   const deleteEducation = useSelector((state) => state.profile.deleteEducation);
   const editEducation = useSelector((state) => state.profile.editEducation);
   const addCategory = useSelector((state) => state?.profile?.addCategory);
@@ -51,8 +54,8 @@ const ProfileIntro = () => {
     dispatch(getFreelancerProfile(setLoading));
   }, [
     editDesignation,
-    deleteExprience,
-    addExprience,
+    deleteExperience,
+    addExperience,
     deleteEducation,
     editEducation,
     editFreelancerLanguage,
@@ -63,84 +66,90 @@ const ProfileIntro = () => {
     editFreelancerLocation,
   ]);
 
-  return (
-    <div style={{ minHeight: 450 }}>
-      {currentTab === "question1" && (
+  const ChangeTab = (tab) => {
+    const tabs = {
+      question1: (
         <QuestionOne setCurrentTab={setCurrentTab} setLoading={setLoading} />
-      )}
-      {currentTab === "question2" && (
+      ),
+      question2: (
         <QuestionTwo setCurrentTab={setCurrentTab} setLoading={setLoading} />
-      )}
-      {currentTab === "takeTimeToIntro" && (
+      ),
+      takeTimeToIntro: (
         <TakeTimeToIntro
           setCurrentTab={setCurrentTab}
           setLoading={setLoading}
         />
-      )}
-      {currentTab === "whatDoYouDo" && (
+      ),
+      whatDoYouDo: (
         <WhatDoYouDo
           setCurrentTab={setCurrentTab}
           profileList={freelancerProfileList?.basic_info}
           setLoading={setLoading}
         />
-      )}
-      {currentTab === "exprience" && (
-        <Exprience
+      ),
+      exprience: (
+        <Experience
           setCurrentTab={setCurrentTab}
           profileList={freelancerProfileList?.employment}
           setLoading={setLoading}
         />
-      )}
-      {currentTab === "education" && (
+      ),
+      education: (
         <Education
           setCurrentTab={setCurrentTab}
           profileList={freelancerProfileList?.education}
           setLoading={setLoading}
         />
-      )}
-      {currentTab === "chooseLangauge" && (
+      ),
+      chooseLangauge: (
         <ChooseLangauge
           setCurrentTab={setCurrentTab}
           profileList={freelancerProfileList?.language}
           setLoading={setLoading}
         />
-      )}
-      {currentTab === "skills" && (
+      ),
+      skills: (
         <Skills
           setCurrentTab={setCurrentTab}
           setLoading={setLoading}
           profileList={freelancerProfileList?.skills}
         />
-      )}
-
-      {currentTab === "servicesOffer" && (
+      ),
+      servicesOffer: (
         <ServicesOffer
           setCurrentTab={setCurrentTab}
           profileList={freelancerProfileList?.basic_info}
           setLoading={setLoading}
         />
-      )}
-      {currentTab === "hourlyRate" && (
+      ),
+      hourlyRate: (
         <HourlyRate
           setCurrentTab={setCurrentTab}
           profileList={freelancerProfileList?.basic_info}
           setLoading={setLoading}
         />
-      )}
-      {currentTab === "publishProfile" && (
+      ),
+      publishProfile: (
         <PublishProfile
           setCurrentTab={setCurrentTab}
           profileList={freelancerProfileList?.basic_info}
           setLoading={setLoading}
         />
-      )}
-      {currentTab === "previewProfile" && (
+      ),
+      previewProfile: (
         <PreviewProfile
           setCurrentTab={setCurrentTab}
           setLoading={setLoading}
           profileList={freelancerProfileList}
         />
-      )}
+      ),
+    };
+    return tabs[tab];
+  };
+
+  return (
+    <div style={{ minHeight: 450 }}>
+      {ChangeTab(currentTab)}
       {loading ? <LoadingSpinner /> : null}
     </div>
   );

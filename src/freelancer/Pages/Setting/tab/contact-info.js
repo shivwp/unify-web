@@ -95,7 +95,7 @@ const Screen = () => {
         errorsObject.first_name = "Please enter your first name";
         errorExist = true;
       } else if (/^[0-9]\d*$/.test(values?.first_name)) {
-        errorsObject.first_name = "please input a valid first name ";
+        errorsObject.first_name = "Please input a valid first name ";
         errorExist = true;
       }
 
@@ -115,7 +115,7 @@ const Screen = () => {
         errorsObject.last_name = "Please enter your last name";
         errorExist = true;
       } else if (/^[0-9]\d*$/.test(values?.last_name)) {
-        errorsObject.last_name = "please input a valid last name ";
+        errorsObject.last_name = "Please input a valid last name ";
         errorExist = true;
       }
 
@@ -332,7 +332,7 @@ const Screen = () => {
         errorsObject.city = "Please enter your city";
         errorExist = true;
       } else if (/^[0-9]\d*$/.test(values?.city)) {
-        errorsObject.city = "please input a valid city ";
+        errorsObject.city = "Please input a valid city ";
         errorExist = true;
       }
       if (
@@ -354,7 +354,7 @@ const Screen = () => {
         values?.zip_code?.length < 4 ||
         values?.zip_code?.length > 10
       ) {
-        errorsObject.zip_code = "please input a valid zip code";
+        errorsObject.zip_code = "Please input a valid zip code";
         errorExist = true;
       }
 
@@ -459,7 +459,7 @@ const Screen = () => {
                         value={values.city}
                         onChange={(e) => onInputChange(e)}
                         type="text"
-                        placeholder="Jaipur"
+                        placeholder="City"
                       />
                     </div>
                     <span className="signup-error">
@@ -506,7 +506,7 @@ const Screen = () => {
                         value={values.address}
                         onChange={(e) => onInputChange(e)}
                         type="text"
-                        placeholder="12 Tiwari ji ka bagh adarsh nagar jaipur Surya Bekri Jaipur, RJ 302004 "
+                        placeholder="Address"
                       />
                     </div>
                     <span className="signup-error">
@@ -527,7 +527,7 @@ const Screen = () => {
                         value={values.phone}
                         name="phone"
                         onChange={(e) => onInputChange(e)}
-                        placeholder="987-654-3210"
+                        placeholder="Phone Number"
                       />
                     </div>
                     <span className="signup-error">
@@ -548,7 +548,7 @@ const Screen = () => {
                         value={values.zip_code}
                         name="zip_code"
                         onChange={(e) => onInputChange(e)}
-                        placeholder="301405"
+                        placeholder="Zip Code"
                       />
                     </div>
                     <span className="signup-error">

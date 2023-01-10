@@ -181,7 +181,7 @@
   width: 100%;
   background: #000000a1;
   top: 0;
-  z-index: 100;
+  z-index: 999;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1547,6 +1547,7 @@
   font: normal normal 400 15px/25px Poppins !important;
   padding: 8px 0px;
   white-space: pre-line;
+  word-break: break-word;
 }
 
 .bbsp_linkn a {
@@ -1733,6 +1734,9 @@
   border: none;
   outline: none;
   text-align: right;
+}
+.inp_bdg_pdsp input:disabled {
+  background-color: transparent;
 }
 
 .inp_bdg_pdsp input::placeholder {

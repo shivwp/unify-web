@@ -59,19 +59,19 @@ const Filter = ({ filters, setFilters }) => {
   // to filter jobs by skills end
 
   // change categories start
-  useMemo(() => {
-    if (selectCategory) {
-      var categoryKeys = Object.keys(selectCategory);
-      setFilters({
-        ...filters,
-        project_category: categoryKeys
-          ?.filter(function (key) {
-            return selectCategory[key];
-          })
-          ?.toString(),
-      });
-    }
-  }, [selectCategory]);
+  // useMemo(() => {
+  //   if (selectCategory) {
+  //     var categoryKeys = Object.keys(selectCategory);
+  //     setFilters({
+  //       ...filters,
+  //       project_category: categoryKeys
+  //         ?.filter(function (key) {
+  //           return selectCategory[key];
+  //         })
+  //         ?.toString(),
+  //     });
+  //   }
+  // }, [selectCategory]);
   // change categories end
 
   // remove skills start
@@ -127,12 +127,13 @@ const Filter = ({ filters, setFilters }) => {
     let errorsObject = {};
     if (filterValues?.min_price || filterValues?.max_price) {
       if (filterValues?.min_price < 3) {
-        errorsObject.price = "Amount must be minimum 3 ";
+        errorsObject.price = "Min amount must be minimum 3$";
         errorExist = true;
       } else if (
         Number(filterValues?.max_price) <= Number(filterValues?.min_price)
       ) {
-        errorsObject.price = "Price must be greater then minimum ";
+        errorsObject.price =
+          "Max price must be greater then or equal to min price ";
         errorExist = true;
       }
     }
@@ -232,7 +233,7 @@ const Filter = ({ filters, setFilters }) => {
                   <option value="default" hidden>
                     Project Type
                   </option>
-                  <option value="short_term">Sort Term </option>
+                  <option value="short_term">Short Term </option>
                   <option value="long_term">Long Term </option>
                 </select>
               </div>

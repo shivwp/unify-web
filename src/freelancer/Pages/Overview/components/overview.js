@@ -22,7 +22,7 @@ const Screen = () => {
 
   useEffect(() => {
     dispatch(getOverViewReport(setLoading, setPopup));
-  });
+  }, []);
   const ChangeTab = ({ tabName }) => {
     const tab = {
       inProgress: <WorkInProgress overviewReports={overviewReports} />,

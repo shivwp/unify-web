@@ -75,9 +75,10 @@ const HourlyBid = ({ project_data, values, setValues, errors, setErrors }) => {
                   $
                   <Form.Control
                     type="text"
-                    value={
-                      (values?.bid_amount / 100) * project_data?.service_fee
-                    }
+                    value={(
+                      (values?.bid_amount / 100) *
+                      project_data?.service_fee
+                    )?.toFixed(2)}
                     disabled
                     placeholder={`0.00`}
                     name="unify_service_fee"
@@ -104,10 +105,10 @@ const HourlyBid = ({ project_data, values, setValues, errors, setErrors }) => {
                     type="text"
                     placeholder={`0.00`}
                     disabled
-                    value={
+                    value={(
                       values?.bid_amount -
                       (values?.bid_amount / 100) * project_data?.service_fee
-                    }
+                    )?.toFixed(2)}
                     name="reciving_amt"
                   />
                 </div>

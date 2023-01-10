@@ -169,12 +169,13 @@ const BrowseJobs = () => {
     let errorExist = false;
     let errorsObject = {};
     if (filterValues?.min_price < 3) {
-      errorsObject.price = "Amount must be minimum 3 ";
+      errorsObject.price = "Min amount must be minimum 3$";
       errorExist = true;
     } else if (
       Number(filterValues?.max_price) <= Number(filterValues?.min_price)
     ) {
-      errorsObject.price = "Price must be greater then minimum ";
+      errorsObject.price =
+        "Max price must be greater then or equal to min price ";
       errorExist = true;
     }
     if (errorExist) {
@@ -263,7 +264,7 @@ const BrowseJobs = () => {
                         <option value="default" hidden disabled>
                           Project Type{" "}
                         </option>
-                        <option value="short_term">Sort Term </option>
+                        <option value="short_term">Short Term </option>
                         <option value="long_term">Long Term </option>
                       </select>
                     </div>
@@ -597,7 +598,9 @@ const BrowseJobs = () => {
               ) : (
                 ""
               )}
-              {jobsList?.length == 0 ? <ResultNotFound /> : null}
+              {jobsList?.length == 0 ? (
+                <ResultNotFound msg="Search result not found " />
+              ) : null}
             </Col>
 
             {/* Job end */}

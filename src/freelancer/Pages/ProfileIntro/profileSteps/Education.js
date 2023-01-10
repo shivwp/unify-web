@@ -179,8 +179,8 @@ const Education = ({ setCurrentTab, profileList, setLoading }) => {
                           transform="translate(312.5 467.5)"
                           fill="none"
                           stroke="#fff"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
                           strokeWidth="4"
                           fillRule="evenodd"
                         />

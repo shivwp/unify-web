@@ -7,10 +7,10 @@ import ConfirmationPopup from "../../../components/popups/ConfirmationPopup";
 import AddEmployment from "../../Profile/components/popups/AddEmployment";
 import moment from "moment";
 
-const Exprience = ({ setCurrentTab, profileList, setLoading }) => {
+const Experience = ({ setCurrentTab, profileList, setLoading }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [popup, Setpopup] = useState();
+  const [popup, setpopup] = useState();
   const [successPopup, setSuccessPopup] = useState(false);
   const [confirmPopup, setConfirmPopup] = useState(false);
   const [isNothing, setIsNothing] = useState(false);
@@ -57,9 +57,9 @@ const Exprience = ({ setCurrentTab, profileList, setLoading }) => {
                         height="40"
                         viewBox="0 0 40 40"
                         onClick={(e) => {
-                          Setpopup(
+                          setpopup(
                             <AddEmployment
-                              Popup={Setpopup}
+                              Popup={setpopup}
                               experience={item}
                               successPopup={successPopup}
                               setSuccessPopup={setSuccessPopup}
@@ -144,9 +144,9 @@ const Exprience = ({ setCurrentTab, profileList, setLoading }) => {
                 lg={3}
                 className="startIntroDe"
                 onClick={() => {
-                  Setpopup(
+                  setpopup(
                     <AddEmployment
-                      Popup={Setpopup}
+                      Popup={setpopup}
                       successPopup={successPopup}
                       setSuccessPopup={setSuccessPopup}
                       setLoading={setLoading}
@@ -182,8 +182,8 @@ const Exprience = ({ setCurrentTab, profileList, setLoading }) => {
                           transform="translate(312.5 467.5)"
                           fill="none"
                           stroke="#fff"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
                           strokeWidth="4"
                           fillRule="evenodd"
                         />
@@ -253,4 +253,4 @@ const Exprience = ({ setCurrentTab, profileList, setLoading }) => {
   );
 };
 
-export default Exprience;
+export default Experience;

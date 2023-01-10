@@ -8,8 +8,9 @@ import PopupsCloseIcon from "../../../components/popups/PopupsCloseIcon";
 const AddMilestonePopup = ({
   popup,
   setLoading,
-  afterSuccess,
   contract_id,
+  milestones,
+  afterSuccess,
 }) => {
   const [errors, setErrors] = useState({});
   const [values, setValues] = useState({});
@@ -54,7 +55,9 @@ const AddMilestonePopup = ({
       setLoading(false);
       return false;
     }
-    dispatch(onFreelancerRequestMilestone(data, setLoading, popup, another));
+    dispatch(
+      onFreelancerRequestMilestone(data, setLoading, popup, another, setValues)
+    );
   };
   return (
     <>
@@ -77,7 +80,7 @@ const AddMilestonePopup = ({
                 <Col md={12}>
                   <div className="popup_form_element">
                     <Form.Label className="text-black font-size-13px font-weight-500">
-                      Name of milestone 9
+                      Name of milestone {milestones?.length + 1}
                     </Form.Label>
                     <Form.Control
                       type="text"
@@ -85,7 +88,7 @@ const AddMilestonePopup = ({
                       className="font-size-13px"
                       value={values?.name}
                       onChange={(e) => onInputChange(e)}
-                      placeholder=""
+                      placeholder="Milestone name"
                     />
                     <span className="signup-error">
                       {errors.title && errors.title}
@@ -104,7 +107,7 @@ const AddMilestonePopup = ({
                         className="font-size-13px"
                         value={values?.amount}
                         onChange={(e) => onInputChange(e)}
-                        placeholder="2000"
+                        placeholder="0.00"
                         style={{ textAlign: "right" }}
                       />
                       <span style={{ position: "absolute", top: 9, left: 7 }}>
@@ -122,10 +125,10 @@ const AddMilestonePopup = ({
                       Due Date (Optional)
                     </Form.Label>
                     <Form.Control
-                      name="due date"
+                      name="due_date"
                       className="font-size-13px"
                       type="date"
-                      value={values?.email}
+                      value={values?.due_date}
                       onChange={(e) => onInputChange(e)}
                     />
                     <span style={{ fontSize: 12, marginTop: 8 }}>
@@ -145,7 +148,7 @@ const AddMilestonePopup = ({
                       className="font-size-13px"
                       value={values?.description}
                       onChange={(e) => onInputChange(e)}
-                      placeholder="Enter Here"
+                      placeholder="Enter here"
                     ></Form.Control>
                     {/* <span className="signup-error mt-1">
                       {errorRequestTestimonial && errorRequestTestimonial}

@@ -190,7 +190,7 @@ const SettingInfo = ({ setLoading }) => {
         scrollTo = document.getElementById("city");
       }
     } else if (/^[0-9]\d*$/.test(values?.city)) {
-      errorsObject.city = "please input a valid city ";
+      errorsObject.city = "Please input a valid city ";
       errorExist = true;
       if (!scrollTo) {
         scrollTo = document.getElementById("city");

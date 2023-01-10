@@ -22,7 +22,7 @@ const JobDetails = () => {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    setLoading(true)
+    setLoading(true);
     dispatch(singleJobPostDetails({ job_id: id }, setLoading));
   }, []);
 
@@ -209,7 +209,7 @@ const JobDetails = () => {
                     </div>
                   </div>
                   <div className="f_b_obx">
-                    <div className="ex_name_fb">Exprience Level</div>
+                    <div className="ex_name_fb">Experience Level</div>
                     <div className="ex_val_f pd_evf_n">
                       {singleJobDetails?.experience_level}{" "}
                     </div>

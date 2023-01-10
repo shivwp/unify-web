@@ -629,7 +629,7 @@ export const onSubmitWorkForPayment =
       });
   };
 export const onFreelancerRequestMilestone =
-  (data, setLoading, setPopup, afterSuccess) => (dispatch) => {
+  (data, setLoading, setPopup, afterSuccess, setValues) => (dispatch) => {
     Axios.post(`/freelancer-add-milestone`, data, config)
       .then((res) => {
         if (setLoading) {
@@ -640,7 +640,10 @@ export const onFreelancerRequestMilestone =
           type: ON_FREELANCER_REQUEST_MILESTONE,
         });
         if (afterSuccess) {
+          setValues({});
           afterSuccess();
+        } else {
+          setPopup(false);
         }
       })
       .catch((err) => {

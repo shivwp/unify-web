@@ -19,8 +19,8 @@ const ResultNotFound = ({ msg }) => {
                 transform="translate(0 45.105)"
                 fill="none"
                 stroke="#6d2ef1"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeLinecap="round"
+                strokeLinejoin="round"
                 strokeWidth="7"
               />
               <path
@@ -30,8 +30,8 @@ const ResultNotFound = ({ msg }) => {
                 transform="translate(5.726 79.406)"
                 fill="none"
                 stroke="#6d2ef1"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeLinecap="round"
+                strokeLinejoin="round"
                 strokeWidth="7"
               />
               <path
@@ -41,8 +41,8 @@ const ResultNotFound = ({ msg }) => {
                 transform="translate(62.894 117.069)"
                 fill="none"
                 stroke="#6d2ef1"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeLinecap="round"
+                strokeLinejoin="round"
                 strokeWidth="7"
               />
               <line
@@ -52,8 +52,8 @@ const ResultNotFound = ({ msg }) => {
                 transform="translate(59.244 123.773)"
                 fill="none"
                 stroke="#6d2ef1"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeLinecap="round"
+                strokeLinejoin="round"
                 strokeWidth="7"
               />
               <line
@@ -63,8 +63,8 @@ const ResultNotFound = ({ msg }) => {
                 transform="translate(106.261 123.773)"
                 fill="none"
                 stroke="#6d2ef1"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeLinecap="round"
+                strokeLinejoin="round"
                 strokeWidth="7"
               />
               <path
@@ -74,8 +74,8 @@ const ResultNotFound = ({ msg }) => {
                 transform="translate(62.894 0)"
                 fill="none"
                 stroke="#6d2ef1"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeLinecap="round"
+                strokeLinejoin="round"
                 strokeWidth="7"
               />
               <line
@@ -86,8 +86,8 @@ const ResultNotFound = ({ msg }) => {
                 transform="translate(111.299 21.342)"
                 fill="none"
                 stroke="#6d2ef1"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeLinecap="round"
+                strokeLinejoin="round"
                 strokeWidth="7"
               />
               <line
@@ -98,8 +98,8 @@ const ResultNotFound = ({ msg }) => {
                 transform="translate(111.299 21.342)"
                 fill="none"
                 stroke="#6d2ef1"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeLinecap="round"
+                strokeLinejoin="round"
                 strokeWidth="7"
               />
             </g>
