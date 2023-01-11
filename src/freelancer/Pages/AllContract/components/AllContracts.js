@@ -182,72 +182,7 @@ const Screen = () => {
             </div>
           </div>
 
-          {/* <div className="all_contract_overflow">
-            <div className="all_contract_tabs">
-              <div
-                className={`contract_tab ${
-                  activeTab == "ALL" ? "active_contract" : ""
-                }`}
-                onClick={() => setActiveTab("ALL")}
-              >
-                All
-              </div>
-              <div
-                className={`contract_tab ${
-                  activeTab == "HOURLY" ? "active_contract" : ""
-                }`}
-                onClick={() => setActiveTab("HOURLY")}
-              >
-                Hourly
-              </div>
-              <div
-                className={`contract_tab ${
-                  activeTab == "ACTIVE_MILESTONE" ? "active_contract" : ""
-                }`}
-                onClick={() => setActiveTab("ACTIVE_MILESTONE")}
-              >
-                Active Milestone
-              </div>
-              <div
-                className={`contract_tab ${
-                  activeTab == "AWAITNIG_MILESTONE" ? "active_contract" : ""
-                }`}
-                onClick={() => setActiveTab("AWAITNIG_MILESTONE")}
-              >
-                Awaiting Milestone
-              </div>
-              <div
-                className={`contract_tab ${
-                  activeTab == "PAYMENTR_EQUESTED" ? "active_contract" : ""
-                }`}
-                onClick={() => setActiveTab("PAYMENTR_EQUESTED")}
-              >
-                Payment Requested
-              </div>
-            </div>
-          </div> */}
-
           <AllProjects getAllContracts={getAllContracts?.All} />
-
-          {/* <>
-            {activeTab == "ALL" ? (
-              <HourlyProjects getAllContracts={getAllContracts?.All} />
-            ) : activeTab == "HOURLY" ? (
-              <HourlyProjects getAllContracts={getAllContracts?.Hourly} />
-            ) : activeTab == "ACTIVE_MILESTONE" ? (
-              <ActiveMilestones
-                getAllContracts={getAllContracts?.ActiveMilestone}
-              />
-            ) : activeTab == "AWAITNIG_MILESTONE" ? (
-              <AwaitingMilestones
-                getAllContracts={getAllContracts?.AwaitingMilestone}
-              />
-            ) : activeTab == "PAYMENTR_EQUESTED" ? (
-              <PaymentRequested
-                getAllContracts={getAllContracts?.PaymentRequest}
-              />
-            ) : null}
-          </> */}
         </div>
       </Container>
       {loading ? <LoadingSpinner /> : null}

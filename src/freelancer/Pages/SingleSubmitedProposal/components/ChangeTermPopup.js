@@ -140,9 +140,18 @@ const ChangeTermPopup = ({
     if (project_data?.budget_type == "hourly") {
       formData.append("bid_amount", values?.bid_amount);
     } else if (project_data?.budget_type == "fixed") {
-      formData.append("milestone_type", isByMilestone);
-      formData.append("project_duration", values?.project_duration);
-      formData.append("milestone_data", JSON.stringify(inputList));
+      if (isByMilestone == "single") {
+        formData.append("milestone_type", isByMilestone);
+        formData.append("project_duration", values?.project_duration);
+        formData.append(
+          "milestone_data",
+          JSON.stringify([{ amount: inputList[0].amount }])
+        );
+      } else if (isByMilestone == "multiple") {
+        formData.append("milestone_type", isByMilestone);
+        formData.append("project_duration", values?.project_duration);
+        formData.append("milestone_data", JSON.stringify(inputList));
+      }
     }
     dispatch(
       onChangeTermsOfProposals(

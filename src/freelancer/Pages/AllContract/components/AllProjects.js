@@ -8,7 +8,25 @@ const AllProjects = ({ getAllContracts }) => {
   return (
     <>
       {getAllContracts?.length === 0 ? (
-        <div className="no_contract_data">No Data Found</div>
+        <div className="no_found_cen">
+          <div>
+            <div className="no_found_img_cen">
+              <img src="/assets/Group 3148.png" alt="" />
+            </div>
+            <div className="no_foun_head_ce">
+              <h1>You don't have any contracts yet</h1>
+            </div>
+            <div className="no_foun_para_ce">
+              Your pending and active contracts will be available here when you
+              got any contract.
+            </div>
+            <div className="no_foun_para_ce">
+              <Link to="/freelancer/project-search">
+                Search for new projects now!
+              </Link>{" "}
+            </div>
+          </div>
+        </div>
       ) : (
         <>
           {getAllContracts?.map((item) => (
@@ -97,273 +115,6 @@ const AllProjects = ({ getAllContracts }) => {
               </div>
             </>
           ))}
-
-          {/* <div className="job_box_card contract1">
-            <Row style={{ marginTop: 10 }}>
-              <Col lg={9} md={7}>
-                <div className="job_head_s">
-                  <h2>React Js Project</h2>
-                </div>
-                <div className="job_d_par">
-                  <p>Ajay Kumar</p>
-                </div>
-              </Col>
-              <Col
-                lg={3}
-                md={5}
-                className="p-0"
-                style={{ display: "flex", justifyContent: "flex-end" }}
-              >
-                <div className="milestone_btn_s">
-                  <Link to="/freelancer/single-contract/see-contract/8">
-                    <button>See contract</button>
-                  </Link>
-                </div>
-              </Col>
-            </Row>
-            <Row>
-              <Col lg={4} md={5}>
-                <div className="job_head_s">
-                  <h3>Hired By: Aquib Faiz</h3>
-                </div>
-                <div className="job_d_par">
-                  <p style={{ marginBottom: 0 }}> India</p>
-                </div>
-              </Col>
-              <Col lg={6} md={5}>
-                <div className="job_head_s">
-                  <h3>
-                    Last Activity: <span>12 hours ago</span>
-                  </h3>
-                </div>
-              </Col>
-              <Col
-                lg={2}
-                md={2}
-                style={{
-                  fontSize: 14,
-                  color: "#6b6b6b",
-                  textAlign: "right",
-                }}
-              >
-                {moment(new Date()).format("MMM YY")} -{" "}
-                {new Date() ? moment(new Date()).format("MMM YY") : "Present"}
-              </Col>
-            </Row>
-          </div>
-
-          <div className="job_box_card contract1">
-            <Row style={{ marginTop: 10 }}>
-              <Col lg={9} md={7}>
-                <div className="job_head_s">
-                  <h2>React Js Project</h2>
-                </div>
-                <div className="job_d_par">
-                  <p>Ajay Kumar</p>
-                </div>
-              </Col>
-              <Col
-                lg={3}
-                md={5}
-                className="p-0"
-                style={{ display: "flex", justifyContent: "flex-end" }}
-              >
-                <div className="milestone_btn_s">
-                  <Link to="/freelancer/single-contract/see-timesheet/4">
-                    <button>See timesheet</button>
-                  </Link>
-                </div>
-              </Col>
-            </Row>
-            <Row>
-              <Col lg={4} md={5}>
-                <div className="job_head_s">
-                  <h3>Hired By: Aquib Faiz</h3>
-                </div>
-                <div className="job_d_par">
-                  <p style={{ marginBottom: 0 }}> India</p>
-                </div>
-              </Col>
-              <Col lg={6} md={5}>
-                <div className="job_head_s">
-                  <h3>
-                    Last Activity: <span>12 hours ago</span>
-                  </h3>
-                </div>
-              </Col>
-              <Col
-                lg={2}
-                md={2}
-                style={{
-                  fontSize: 14,
-                  color: "#6b6b6b",
-                  textAlign: "right",
-                }}
-              >
-                {moment(new Date()).format("MMM YY")} -{" "}
-                {new Date() ? moment(new Date()).format("MMM YY") : "Present"}
-              </Col>
-            </Row>
-          </div>
-          <div className="job_box_card contract1">
-            <Row style={{ marginTop: 10 }}>
-              <Col lg={9} md={7}>
-                <div className="job_head_s">
-                  <h2>React Js Project</h2>
-                </div>
-                <div className="job_d_par">
-                  <p>Ajay Kumar</p>
-                </div>
-              </Col>
-              <Col
-                lg={3}
-                md={5}
-                className="p-0"
-                style={{ display: "flex", justifyContent: "flex-end" }}
-              >
-                <div className="milestone_btn_s">
-                  <Link to="/freelancer/single-contract/review-or-resubmit-work/3">
-                    <button>Review and resubmit work</button>
-                  </Link>
-                </div>
-              </Col>
-            </Row>
-            <Row>
-              <Col lg={4} md={5}>
-                <div className="job_head_s">
-                  <h3>Hired By: Aquib Faiz</h3>
-                </div>
-                <div className="job_d_par">
-                  <p style={{ marginBottom: 0 }}> India</p>
-                </div>
-              </Col>
-              <Col lg={6} md={5}>
-                <div className="job_head_s">
-                  <h3>
-                    Last Activity: <span>12 hours ago</span>
-                  </h3>
-                </div>
-              </Col>
-              <Col
-                lg={2}
-                md={2}
-                style={{
-                  fontSize: 14,
-                  color: "#6b6b6b",
-                  textAlign: "right",
-                }}
-              >
-                {moment(new Date()).format("MMM YY")} -{" "}
-                {new Date() ? moment(new Date()).format("MMM YY") : "Present"}
-              </Col>
-            </Row>
-          </div>
-          <div className="job_box_card contract1">
-            <Row style={{ marginTop: 10 }}>
-              <Col lg={9} md={7}>
-                <div className="job_head_s">
-                  <h2>React Js Project</h2>
-                </div>
-                <div className="job_d_par">
-                  <p>Ajay Kumar</p>
-                </div>
-              </Col>
-              <Col
-                lg={3}
-                md={5}
-                className="p-0"
-                style={{ display: "flex", justifyContent: "flex-end" }}
-              >
-                <div className="milestone_btn_s">
-                  <Link to="/freelancer/single-contract/send-message/6">
-                    <button>Send Message</button>
-                  </Link>
-                </div>
-              </Col>
-            </Row>
-            <Row>
-              <Col lg={4} md={5}>
-                <div className="job_head_s">
-                  <h3>Hired By: Aquib Faiz</h3>
-                </div>
-                <div className="job_d_par">
-                  <p style={{ marginBottom: 0 }}> India</p>
-                </div>
-              </Col>
-              <Col lg={6} md={5}>
-                <div className="job_head_s">
-                  <h3>
-                    Last Activity: <span>12 hours ago</span>
-                  </h3>
-                </div>
-              </Col>
-              <Col
-                lg={2}
-                md={2}
-                style={{
-                  fontSize: 14,
-                  color: "#6b6b6b",
-                  textAlign: "right",
-                }}
-              >
-                {moment(new Date()).format("MMM YY")} -{" "}
-                {new Date() ? moment(new Date()).format("MMM YY") : "Present"}
-              </Col>
-            </Row>
-          </div>
-          <div className="job_box_card contract1">
-            <Row style={{ marginTop: 10 }}>
-              <Col lg={9} md={7}>
-                <div className="job_head_s">
-                  <h2>React Js Project</h2>
-                </div>
-                <div className="job_d_par">
-                  <p>Ajay Kumar</p>
-                </div>
-              </Col>
-              <Col
-                lg={3}
-                md={5}
-                className="p-0"
-                style={{ display: "flex", justifyContent: "flex-end" }}
-              >
-                <div className="milestone_btn_s">
-                  <Link to="/freelancer/single-contract/submit-work-for-payment">
-                    <button>Submit work for payment</button>
-                  </Link>
-                </div>
-              </Col>
-            </Row>
-            <Row>
-              <Col lg={4} md={5}>
-                <div className="job_head_s">
-                  <h3>Hired By: Aquib Faiz</h3>
-                </div>
-                <div className="job_d_par">
-                  <p style={{ marginBottom: 0 }}> India</p>
-                </div>
-              </Col>
-              <Col lg={6} md={5}>
-                <div className="job_head_s">
-                  <h3>
-                    Last Activity: <span>12 hours ago</span>
-                  </h3>
-                </div>
-              </Col>
-              <Col
-                lg={2}
-                md={2}
-                style={{
-                  fontSize: 14,
-                  color: "#6b6b6b",
-                  textAlign: "right",
-                }}
-              >
-                {moment(new Date()).format("MMM YY")} -{" "}
-                {new Date() ? moment(new Date()).format("MMM YY") : "Present"}
-              </Col>
-            </Row>
-          </div> */}
         </>
       )}
     </>
