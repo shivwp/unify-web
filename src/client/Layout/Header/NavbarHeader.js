@@ -118,7 +118,7 @@ const Header = (props) => {
             id="navbarScrollingDropdown"
           >
             <div className="navabr_t_li">
-              <Link to="#">Overview</Link>
+              <Link to="/overview">Overview</Link>
             </div>
             <div className="navabr_t_li">
               <Link to="/transaction-history">Transaction History</Link>
@@ -351,7 +351,7 @@ const Header = (props) => {
                         id="navbarScrollingDropdown"
                       >
                         <div className="navabr_t_li">
-                          <Link to="#">Overview</Link>
+                          <Link to="/overview">Overview</Link>
                         </div>
                         <div className="navabr_t_li">
                           <Link to="/transaction-history">

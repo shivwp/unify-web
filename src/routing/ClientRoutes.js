@@ -40,6 +40,7 @@ const EditCompanyAddress = lazy(() =>
   import("../client/Pages/EditCompanyAddress")
 );
 const JobListScreen = lazy(() => import("../client/Pages/AllPostings"));
+const Overview = lazy(() => import("../client/Pages/clientOverview"));
 const DraftJobListScreen = lazy(() =>
   import("../client/Pages/AllDraftPostings")
 );
@@ -108,6 +109,7 @@ const ClientRoutes = () => {
         <Route path="/message" element={<Message />} />
         <Route path="/management-board" element={<ManagementBoard />} />
         <Route path="/transaction-history" element={<TransactionHistory />} />
+        <Route path="/overview" element={<Overview />} />
 
         <Route path="/post-description" element={<Description />} />
         <Route path="/all-job-list" element={<JobListScreen />} />

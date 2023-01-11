@@ -30,6 +30,8 @@ import {
   SET_CLIENT_ADD_MILESTONE,
   SET_CLIENT_FUND_MILESTONE,
   SET_CLIENT_DECLINE_MILESTONE,
+  SET_CLIENT_TRANSECTION_HISTORY,
+  SET_CLIENT_OVERVIEW,
 } from "../types";
 const initialState = {};
 
@@ -189,6 +191,16 @@ const freelancerReducer = (state = initialState, action) => {
       return {
         ...state,
         declineMilestone: action.payload,
+      };
+    case SET_CLIENT_TRANSECTION_HISTORY:
+      return {
+        ...state,
+        transectionHistory: action.payload,
+      };
+    case SET_CLIENT_OVERVIEW:
+      return {
+        ...state,
+        overviewHistory: action.payload,
       };
     default:
       return state;
