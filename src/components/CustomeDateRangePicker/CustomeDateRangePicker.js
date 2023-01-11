@@ -422,48 +422,58 @@ const CustomeDateRangePicker = ({
 
   // all condition for run functions on click on any date
   const runOnClick = (item) => {
-    weekSelect
-      ? weekSelect(
-          selectedRangeStartAndEndDate(
-            selectFullWeek(item.day, item.monthName, item.year)
-          )
+    if (weekSelect) {
+      weekSelect(
+        selectedRangeStartAndEndDate(
+          selectFullWeek(item.day, item.monthName, item.year)
         )
-      : fullWeekSelect
-      ? fullWeekSelect(selectFullWeek(item.day, item.monthName, item.year))
-      : dateRangeSelect && !firstDateSelect
-      ? setFirstDateSelect({
-          day: item.day,
-          monthName: item.monthName,
-          year: item.year,
-        })
-      : firstDateSelect &&
-        new Date(
-          getFullDate(
-            firstDateSelect.day,
-            firstDateSelect.monthName,
-            firstDateSelect.year
-          )
-        ) > new Date(getFullDate(item.day, item.monthName, item.year))
-      ? setFirstDateSelect({
-          day: item.day,
-          monthName: item.monthName,
-          year: item.year,
-        })
-      : firstDateSelect && !lastDateSelect
-      ? setLastDateSelect({
-          day: item.day,
-          monthName: item.monthName,
-          year: item.year,
-        })
-      : firstDateSelect && lastDateSelect
-      ? onSelectNewDateRange({
-          day: item.day,
-          monthName: item.monthName,
-          year: item.year,
-        })
-      : dateSelect
-      ? dateSelect(changeSelectedDate(item.day, item.monthName, item.year))
-      : console.log(getFullDate(item.day, item.monthName, item.year));
+      );
+    } else if (fullWeekSelect) {
+      fullWeekSelect(selectFullWeek(item.day, item.monthName, item.year));
+    } else if (dateRangeSelect && !firstDateSelect) {
+      setFirstDateSelect({
+        day: item.day,
+        monthName: item.monthName,
+        year: item.year,
+      });
+    } else if (
+      firstDateSelect &&
+      new Date(
+        getFullDate(
+          firstDateSelect.day,
+          firstDateSelect.monthName,
+          firstDateSelect.year
+        )
+      ) > new Date(getFullDate(item.day, item.monthName, item.year))
+    ) {
+      setFirstDateSelect({
+        day: item.day,
+        monthName: item.monthName,
+        year: item.year,
+      });
+    } else if (firstDateSelect && !lastDateSelect) {
+      setLastDateSelect({
+        day: item.day,
+        monthName: item.monthName,
+        year: item.year,
+      });
+      dateRangeSelect({
+        start_date: getFullDate(
+          firstDateSelect.day,
+          firstDateSelect.monthName,
+          firstDateSelect.year
+        ),
+        end_date: getFullDate(item.day, item.monthName, item.year),
+      });
+    } else if (firstDateSelect && lastDateSelect) {
+      onSelectNewDateRange({
+        day: item.day,
+        monthName: item.monthName,
+        year: item.year,
+      });
+    } else if (dateSelect) {
+      dateSelect(changeSelectedDate(item.day, item.monthName, item.year));
+    }
   };
 
   // functions to run on hover on date
@@ -489,7 +499,7 @@ const CustomeDateRangePicker = ({
             year: item.year,
           }
         )
-      : console.log(getFullDate(item.day, item.monthName, item.year));
+      : console.log();
   };
 
   // hide calendar when click outside

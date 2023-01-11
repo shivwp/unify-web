@@ -199,6 +199,20 @@ const TimeLine = ({ setPopup, singleContractData, setLoading }) => {
                         <button className="me-2 mb-2">Paid</button>
                       ) : item.status == "draft" ? (
                         <button className="me-2 mb-2">Pending</button>
+                      ) : item.status == "refund-requested" ? (
+                        <>
+                          <button className="me-2 mb-2">
+                            Refund Requested
+                          </button>
+                          <div className="submit_work_btn">
+                            <button>Approve</button>
+                            <button>Raise A Dispute</button>
+                          </div>
+                        </>
+                      ) : item.status == "refund" ? (
+                        <button className="me-2 mb-2">Amount Refund</button>
+                      ) : item.status == "dispute" ? (
+                        <button className="me-2 mb-2">In Dispute</button>
                       ) : null}
                     </div>
                   </div>

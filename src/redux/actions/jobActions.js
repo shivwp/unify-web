@@ -9,7 +9,9 @@ import {
   GET_TIMESHEET_DATA,
   JOBS_LIST,
   JOB_POST_DETAILS,
+  ON_DELETE_CONTRACT,
   ON_DISLIKE_JOB_POST,
+  ON_END_CONTRACT,
   ON_FREELANCER_REQUEST_MILESTONE,
   ON_SUBMIT_WORK_FOR_PAYMENT,
   PROPOSAL_TERMS_CHANGE,
@@ -636,7 +638,7 @@ export const onFreelancerRequestMilestone =
           setLoading(false);
         }
         dispatch({
-          payload: res.data.data,
+          payload: res.data,
           type: ON_FREELANCER_REQUEST_MILESTONE,
         });
         if (afterSuccess) {
@@ -655,8 +657,8 @@ export const onFreelancerRequestMilestone =
         );
       });
   };
-export const getOverViewReport = (setLoading, setPopup) => (dispatch) => {
-  Axios.get(`/overview`, config)
+export const getOverViewReport = (data, setLoading, setPopup) => (dispatch) => {
+  Axios.post(`/overview`, data, config)
     .then((res) => {
       if (setLoading) {
         setLoading(false);
@@ -664,6 +666,26 @@ export const getOverViewReport = (setLoading, setPopup) => (dispatch) => {
       dispatch({
         payload: res.data.data,
         type: GET_OVERVIEW_REPORT,
+      });
+    })
+    .catch((err) => {
+      if (setLoading) {
+        setLoading(false);
+      }
+      setPopup(
+        <ErrorPopup popup={setPopup} message={err.response.data.message} />
+      );
+    });
+};
+export const onEndContract = (data, setLoading, setPopup) => (dispatch) => {
+  Axios.post(`/end-contract`, data, config)
+    .then((res) => {
+      if (setLoading) {
+        setLoading(false);
+      }
+      dispatch({
+        payload: res.data.data,
+        type: ON_END_CONTRACT,
       });
     })
     .catch((err) => {

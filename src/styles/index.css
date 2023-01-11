@@ -592,7 +592,7 @@ body {
   margin-top: 50px;
 }
 .browse_jobs .filter_area {
-  background-color: transparent;
+  /* background-color: transparent; */
   padding: 16px 20px;
   margin-top: 20px;
 }
@@ -6354,6 +6354,7 @@ a {
   flex-wrap: nowrap !important;
   /* justify-content: center; */
   width: 100%;
+  position: relative;
 }
 
 .tab_scroll_cont::-webkit-scrollbar {
@@ -6384,6 +6385,48 @@ a {
 
 .text-transform-cap {
   text-transform: capitalize !important;
+}
+.contract_right_btns {
+  display: flex;
+  justify-content: flex-end;
+  position: relative;
+}
+.contract_right_btns .three_dots {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: rotate(90deg);
+  font-weight: 600;
+  border: 1px solid #d5d5d5;
+  border-radius: 50%;
+  padding: 0px 0 12px 0px;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.contract_right_btn {
+  position: absolute;
+  right: 50px;
+  display: flex;
+  z-index: 99;
+  flex-direction: column;
+  width: 150px;
+  border: 1px solid #d1cece;
+}
+.contract_right_btn a {
+  width: 100%;
+}
+.contract_right_btn button {
+  border: none;
+  text-align: start;
+  padding: 5px 10px;
+  background-color: #fff;
+  width: 100%;
+}
+.contract_right_btn button:hover {
+  background-color: #f2f2f2;
 }
 
 .fill-black-imp {
@@ -6813,7 +6856,7 @@ a {
 .whatdoyoudo .heading {
   color: #00065a;
   font-size: 26px;
-  font-weight: 800;
+  font-weight: 700;
   margin: 10px 0;
 }
 
@@ -10157,15 +10200,12 @@ input::-webkit-inner-spin-button {
   text-align: center;
   font: normal normal 500 36px/86px Poppins;
   letter-spacing: -1.25px;
-  color: #00065a;
+  color: #666666a3;
 }
 
 @media screen and (max-width: 500px) and (min-width: 318px) {
   .pageNotFoundHead {
-    text-align: center;
     font: normal normal bold 22px/86px Poppins;
-    letter-spacing: -1.25px;
-    color: #00065a;
   }
   .pageNotFoundResp svg {
     height: 100px;

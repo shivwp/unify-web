@@ -203,6 +203,7 @@ const Screen = () => {
       if (isByMilestone == "by_project") {
         formData.append("milestone_type", "single");
         formData.append("project_duration", values?.project_duration);
+        formData.append("bid_amount", values?.bid_amount);
         formData.append(
           "milestone_data",
           JSON.stringify([{ amount: values?.bid_amount }])

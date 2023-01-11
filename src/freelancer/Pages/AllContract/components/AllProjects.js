@@ -56,7 +56,7 @@ const AllProjects = ({ getAllContracts }) => {
                         to={
                           item.button_status == "submit work for payment"
                             ? `/freelancer/single-contract/submit-work-for-payment/${item.id}`
-                            : item.button_status == " propose new contract"
+                            : item.button_status == "propose new contract"
                             ? `/freelancer/single-contract/propose-new-contract/${item.id}`
                             : item.button_status == "see timesheet"
                             ? `/freelancer/single-contract/see-timesheet/${item.id}`
@@ -106,9 +106,9 @@ const AllProjects = ({ getAllContracts }) => {
                       textAlign: "right",
                     }}
                   >
-                    {moment(new Date()).format("MMM YY")} -{" "}
-                    {new Date()
-                      ? moment(new Date()).format("MMM YY")
+                    {moment(new Date(item.start_time)).format("MMM YY")} -{" "}
+                    {item.end_time
+                      ? moment(new Date(item.end_time)).format("MMM YY")
                       : "Present"}
                   </Col>
                 </Row>

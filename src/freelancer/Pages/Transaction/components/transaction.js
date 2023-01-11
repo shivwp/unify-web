@@ -8,10 +8,22 @@ import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
 import Select from "react-select";
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getFreelancerTransectionHistory } from "../../../../redux/actions/freelancerAction";
+import { useEffect } from "react";
+import LoadingSpinner from "../../../../components/LoadingSpinner";
+import CustomeDateRangePicker from "../../../../components/CustomeDateRangePicker/CustomeDateRangePicker";
+import moment from "moment";
 
 const Screen = () => {
   Title(" | Transaction History");
+  const dispatch = useDispatch();
   const [openFilter, setOpenFilter] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [selecteDates, setSelectDates] = useState({});
+  const getTransectionHistory = useSelector(
+    (state) => state?.freelancer?.getTransectionHistory
+  );
   const options1 = [
     {
       name: "Fluent",
@@ -19,7 +31,12 @@ const Screen = () => {
     },
   ];
 
-  const Transactions = () => {
+  useEffect(() => {
+    setLoading(true);
+    dispatch(getFreelancerTransectionHistory(selecteDates, setLoading));
+  }, [selecteDates]);
+
+  const Transactions = ({ getTransectionHistory }) => {
     return (
       <>
         <Table className="trx_tbl_freelancer mt-3">
@@ -34,36 +51,24 @@ const Screen = () => {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>Aug 8, 2022</td>
-              <td>Service Fee</td>
-              <td>Withholding tax (IN) Ref ID 2583214</td>
-              <td>Jolly Smith</td>
-              <td>$100.00</td>
-              <td>
-                <span>258963025</span>
-              </td>
-            </tr>
-            <tr>
-              <td>Aug 8, 2022</td>
-              <td>Service Fee</td>
-              <td>Withholding tax (IN) Ref ID 2583214</td>
-              <td>Jolly Smith</td>
-              <td>$100.00</td>
-              <td>
-                <span>258963025</span>
-              </td>
-            </tr>
-            <tr>
-              <td>Aug 8, 2022</td>
-              <td>Service Fee</td>
-              <td>Withholding tax (IN) Ref ID 2583214</td>
-              <td>Jolly Smith</td>
-              <td>$100.00</td>
-              <td>
-                <span>258963025</span>
-              </td>
-            </tr>
+            {getTransectionHistory?.map((item, index) => (
+              <tr
+                style={
+                  index == getTransectionHistory?.length - 1
+                    ? { border: "1px solid transparent" }
+                    : {}
+                }
+              >
+                <td>{item?.transaction_date}</td>
+                <td>{item?.transaction_type}</td>
+                <td>{item?.description}</td>
+                <td>{item?.client_name}</td>
+                <td>${item?.amount}</td>
+                <td>
+                  <span>258963025</span>
+                </td>
+              </tr>
+            ))}
           </tbody>
         </Table>
       </>
@@ -97,6 +102,13 @@ const Screen = () => {
     );
   };
 
+  const dateRangeSelect = (dates) => {
+    setSelectDates({
+      start_date: moment(dates.start_date).format("YYYY-MM-DD"),
+      end_date: moment(dates.end_date).format("YYYY-MM-DD"),
+    });
+  };
+
   return (
     <>
       <Container>
@@ -122,15 +134,10 @@ const Screen = () => {
                   <div className="select_inp_in filter_select_m mt-0 mb-0">
                     <div className="select_inp_in filter_select_m flex-wrap d-flex align-items-center w-100 mt-0 mb-0">
                       <div className="min_width_inp_nie m-0 date_range_nod psr-relative">
-                        <DateRangePicker
-                          initialSettings={{
-                            startDate: "11/12/2014",
-                            endDate: "3/1/2014",
-                          }}
-                        >
-                          <input id="datePickerInp" />
-                        </DateRangePicker>
-                        <div
+                        <CustomeDateRangePicker
+                          dateRangeSelect={dateRangeSelect}
+                        />
+                        {/* <div
                           className="cal_icon_psr_abs"
                           onClick={() => {
                             document.getElementById("datePickerInp").focus();
@@ -147,7 +154,7 @@ const Screen = () => {
                             <path d="M9 7a1 1 0 0 1 1-1h5v2h-5a1 1 0 0 1-1-1zM1 9h4a1 1 0 0 1 0 2H1V9z" />
                             <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z" />
                           </svg>
-                        </div>
+                        </div> */}
                       </div>
                     </div>
                   </div>
@@ -155,7 +162,8 @@ const Screen = () => {
                 <Col className="mt-2">
                   <div>
                     <div className="ts_btn attach_f_btn wid_30_in mt-0 mb-0">
-                      <Button variant=""
+                      <Button
+                        variant=""
                         className="only_textstyle font-weight-600"
                         onClick={() => setOpenFilter(!openFilter)}
                       >
@@ -179,20 +187,25 @@ const Screen = () => {
             <div className="download_lnk_csx">
               <div className="btn_foot_sec p-0 justify-content-center flex-wrap no-border mt-2">
                 <div className="fo_btn_c next_b_btn_c">
-                  <Button variant="" className="mrright-gppnew">Download CSV</Button>
+                  <Button variant="" className="mrright-gppnew">
+                    Download CSV
+                  </Button>
                 </div>
                 <div className="fo_btn_c next_b_btn_c">
-                  <Button  variant="" className="active_btn_blue">
+                  <Button variant="" className="active_btn_blue">
                     Download Invoices
                   </Button>
                 </div>
               </div>
             </div>
           </div>
-          <div className="tbl_overflos_cewuw">{Transactions()}</div>
+          <div className="tbl_overflos_cewuw">
+            {<Transactions getTransectionHistory={getTransectionHistory} />}
+          </div>
           {openFilter && <FilterScr />}
         </div>
       </Container>
+      {loading ? <LoadingSpinner /> : null}
     </>
   );
 };

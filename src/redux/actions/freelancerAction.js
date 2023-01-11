@@ -34,6 +34,7 @@ import {
   SET_CLIENT_DECLINE_MILESTONE,
   SET_CLIENT_TRANSECTION_HISTORY,
   SET_CLIENT_OVERVIEW,
+  GET_FREELANCER_TRANSECTION_HISTORY,
 } from "../types";
 
 const config = {
@@ -771,3 +772,23 @@ export const getOverviewHistory = (data, setLoading) => async (dispatch) => {
       }
     });
 };
+export const getFreelancerTransectionHistory =
+  (data, setLoading) => (dispatch) => {
+    Axios.post(`/freelancer-transaction-history`, data, config)
+      .then((res) => {
+        if (res.data.status) {
+          dispatch({
+            type: GET_FREELANCER_TRANSECTION_HISTORY,
+            payload: res.data.data,
+          });
+        }
+        if (setLoading) {
+          setLoading(false);
+        }
+      })
+      .catch((err) => {
+        if (setLoading) {
+          setLoading(false);
+        }
+      });
+  };

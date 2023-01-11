@@ -8,7 +8,7 @@ const FooterPages = lazy(() => import("./FooterPages"));
 const Subscription = lazy(() => import("./client/Pages/Subscription"));
 const Testimonial = lazy(() => import("./components/Testimonial"));
 const HelpSupport = lazy(() => import("./client/Pages/HelpSupport"));
-
+const PageNotFound = lazy(() => import("./pages/PageNotFound/PageNotFound"));
 function App() {
   return (
     <Suspense fallback={<LoadingSpinner />}>
@@ -21,6 +21,9 @@ function App() {
       </Routes>
       <ClientRoutes />
       <FreelancerRoutes />
+      {/* <Routes>
+        <Route path="*" element={<PageNotFound />} />
+      </Routes> */}
     </Suspense>
   );
 }

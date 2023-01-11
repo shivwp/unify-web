@@ -127,10 +127,10 @@ const Filter = ({ filters, setFilters }) => {
     let errorsObject = {};
     if (filterValues?.min_price || filterValues?.max_price) {
       if (filterValues?.min_price < 3) {
-        errorsObject.price = "Min amount must be minimum 3$";
+        errorsObject.price = "Minimum price must be 3$";
         errorExist = true;
       } else if (
-        Number(filterValues?.max_price) <= Number(filterValues?.min_price)
+        Number(filterValues?.max_price) < Number(filterValues?.min_price)
       ) {
         errorsObject.price =
           "Max price must be greater then or equal to min price ";
@@ -362,7 +362,7 @@ const Filter = ({ filters, setFilters }) => {
                 <span> $ </span>
                 <Form.Control
                   type="number"
-                  placeholder="3.00"
+                  placeholder="Min"
                   name="min_price"
                   value={filterValues?.min_price || ""}
                   onChange={(e) => handleFilterChange(e)}
@@ -377,7 +377,7 @@ const Filter = ({ filters, setFilters }) => {
                 <span> $ </span>
                 <Form.Control
                   type="number"
-                  placeholder="50.00"
+                  placeholder="Max"
                   name="max_price"
                   value={filterValues?.max_price || ""}
                   onChange={(e) => handleFilterChange(e)}

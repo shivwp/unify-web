@@ -32,6 +32,7 @@ import {
   SET_CLIENT_DECLINE_MILESTONE,
   SET_CLIENT_TRANSECTION_HISTORY,
   SET_CLIENT_OVERVIEW,
+  GET_FREELANCER_TRANSECTION_HISTORY,
 } from "../types";
 const initialState = {};
 
@@ -201,6 +202,11 @@ const freelancerReducer = (state = initialState, action) => {
       return {
         ...state,
         overviewHistory: action.payload,
+      };
+    case GET_FREELANCER_TRANSECTION_HISTORY:
+      return {
+        ...state,
+        getTransectionHistory: action.payload,
       };
     default:
       return state;

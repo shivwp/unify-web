@@ -1,14 +1,19 @@
 import Container from "react-bootstrap/Container";
 import { useState, useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import Messages from "./Messages";
 import Details from "./Details";
 import TimeSheet from "./TimeSheet";
-import { SingleContractData } from "../../../../redux/actions/jobActions";
+import {
+  onEndContract,
+  SingleContractData,
+} from "../../../../redux/actions/jobActions";
 import { useDispatch, useSelector } from "react-redux";
 import OverViewFixed from "./OverViewFixed";
 import OverViewHourly from "./OverViewHourly";
 import LoadingSpinner from "../../../../components/LoadingSpinner";
+import ConfirmationPopup from "../../../components/popups/ConfirmationPopup";
+import $ from "jquery";
 
 const SingleContracts = () => {
   const navigate = useNavigate();
@@ -17,6 +22,7 @@ const SingleContracts = () => {
   const { buttonStatus, id } = useParams();
   const [currentTab, setCurrentTab] = useState("OVERVIEW");
   const [popup, setPopup] = useState(false);
+  const [showRightBtns, setShowRightBtns] = useState(false);
   const onSubmitWorkForPayment = useSelector(
     (state) => state?.job.onSubmitWorkForPayment
   );
@@ -27,10 +33,27 @@ const SingleContracts = () => {
     (state) => state?.job?.singleContractData
   );
 
+  const whenEndContract = useSelector((state) => state?.job?.whenEndContract);
+
   useEffect(() => {
     setLoading(true);
     dispatch(SingleContractData(id, setLoading, setPopup));
-  }, [onSubmitWorkForPayment, onRequestForMilestone]);
+  }, [onSubmitWorkForPayment, onRequestForMilestone, whenEndContract]);
+
+  const endContract = () => {
+    const data = {
+      contract_id: id,
+      type: "freelancer",
+    };
+    setLoading(true);
+    dispatch(onEndContract(data, setLoading, setPopup));
+  };
+
+  $(document).mouseup(function (e) {
+    if ($(e.target).closest("#contract_right_btn, #three_dots").length === 0) {
+      setShowRightBtns(false);
+    }
+  });
 
   return (
     <>
@@ -57,11 +80,13 @@ const SingleContracts = () => {
           <div>
             <div className="d-flex justify-content-between align-items-center flex-wrap">
               <div className="prof_round_me">
-                <img src="/assets/PRO-2.png" alt="" />
+                <img src={singleContractData?.client?.profile_image} alt="" />
               </div>
               <div>
                 <div className="prof_name_ne">
-                  {`${singleContractData?.client?.first_name} ${singleContractData?.client?.last_name}`}
+                  {`${singleContractData?.client?.first_name || ""} ${
+                    singleContractData?.client?.last_name || ""
+                  }`}
                 </div>
                 <div className="prof_sm_me">
                   {singleContractData?.client?.local_time}
@@ -70,42 +95,74 @@ const SingleContracts = () => {
             </div>
           </div>
         </div>
-        <div>
-          <div className="overflow-scroll">
-            <div className="d-flex tab_m_nodea tab_scroll_cont">
-              <button
-                variant=""
-                className={`text-capitalize tab_btn_vs w-auto ${
-                  currentTab == "OVERVIEW" ? "active_bvs" : ""
-                }`}
-                onClick={() => {
-                  setCurrentTab("OVERVIEW");
-                }}
-              >
-                Overview
-              </button>
-              {buttonStatus == "see-timesheet" ? (
+        <div className="row">
+          <div className="col-lg-8 col-md-7 col-10">
+            <div className="overflow-scroll">
+              <div className="d-flex tab_m_nodea tab_scroll_cont">
                 <button
                   variant=""
                   className={`text-capitalize tab_btn_vs w-auto ${
-                    currentTab == "TIMESHEET" ? "active_bvs" : ""
+                    currentTab == "OVERVIEW" ? "active_bvs" : ""
                   }`}
                   onClick={() => {
-                    setCurrentTab("TIMESHEET");
+                    setCurrentTab("OVERVIEW");
                   }}
                 >
-                  Timesheet
+                  Overview
                 </button>
-              ) : null}
-              <button
-                variant=""
-                className={`text-capitalize tab_btn_vs w-auto ${
-                  currentTab == "DETAILS" ? "active_bvs" : ""
-                }`}
-                onClick={() => setCurrentTab("DETAILS")}
+                {buttonStatus == "see-timesheet" ? (
+                  <button
+                    variant=""
+                    className={`text-capitalize tab_btn_vs w-auto ${
+                      currentTab == "TIMESHEET" ? "active_bvs" : ""
+                    }`}
+                    onClick={() => {
+                      setCurrentTab("TIMESHEET");
+                    }}
+                  >
+                    Timesheet
+                  </button>
+                ) : null}
+                <button
+                  variant=""
+                  className={`text-capitalize tab_btn_vs w-auto ${
+                    currentTab == "DETAILS" ? "active_bvs" : ""
+                  }`}
+                  onClick={() => setCurrentTab("DETAILS")}
+                >
+                  Details
+                </button>
+              </div>
+            </div>
+          </div>
+          <div className="col-lg-4 col-md-5 col-2">
+            <div className="contract_right_btns">
+              <span
+                className="three_dots"
+                id="three_dots"
+                onClick={() => setShowRightBtns(!showRightBtns)}
               >
-                Details
-              </button>
+                ...
+              </span>
+              {showRightBtns ? (
+                <div className="contract_right_btn" id="contract_right_btn">
+                  <Link to="/freelancer/chat">
+                    <button>Messages</button>
+                  </Link>
+                  <button
+                    onClick={() =>
+                      setPopup(
+                        <ConfirmationPopup
+                          Popup={() => setPopup(!popup)}
+                          confirm={() => endContract()}
+                        />
+                      )
+                    }
+                  >
+                    End Contract
+                  </button>
+                </div>
+              ) : null}
             </div>
           </div>
         </div>

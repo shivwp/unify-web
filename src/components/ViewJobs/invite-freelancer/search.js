@@ -64,7 +64,7 @@ const Screen = ({
               <img src="/assets/data-not-found.png" alt="" />
             </div>
             <div className="no_foun_head_ce">
-              <h1>Search result not found</h1>
+              <h1>There are no results that match your search</h1>
             </div>
           </div>
         </div>

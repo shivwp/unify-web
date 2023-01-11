@@ -12,17 +12,34 @@ import LoadingSpinner from "../../../../components/LoadingSpinner";
 import { useEffect } from "react";
 
 const Screen = () => {
-  const [currentTab, seturrentTab] = useState("inProgress");
   Title(" | Overview");
   const dispatch = useDispatch();
   const [popup, setPopup] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [currentTab, seturrentTab] = useState("inProgress");
   const overviewReports = useSelector((state) => state.job.overviewReportss);
   console.log(overviewReports);
 
   useEffect(() => {
-    dispatch(getOverViewReport(setLoading, setPopup));
-  }, []);
+    let data = {};
+    if (currentTab == "inReview") {
+      data = {
+        hourly_status: "review",
+        fixed_status: "submit-work",
+      };
+    } else if (currentTab == "Pending") {
+      data = {
+        hourly_status: "awaiting",
+        fixed_status: "completed",
+      };
+    } else if (currentTab == "Available") {
+      data = {
+        hourly_status: "payment",
+        fixed_status: "paid",
+      };
+    }
+    dispatch(getOverViewReport(data, setLoading, setPopup));
+  }, [currentTab]);
   const ChangeTab = ({ tabName }) => {
     const tab = {
       inProgress: <WorkInProgress overviewReports={overviewReports} />,

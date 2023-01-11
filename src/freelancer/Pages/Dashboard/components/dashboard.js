@@ -734,7 +734,7 @@ const Screen = () => {
               </div>
               <div className="dbaors_btn">
                 <Link to="/freelancer/project-search">
-                  <Button variant="">Find new Project</Button>
+                  <button variant="">Find new Project</button>
                 </Link>
               </div>
             </div>
@@ -1002,9 +1002,7 @@ const Screen = () => {
                   <div className="d-flex justify-content-between mb-3">
                     <div className="dcard_htext">Projects</div>
                     <div className="dcard_ltxt">
-                      <Link to="#">
-                        Manage Projects
-                      </Link>
+                      <Link to="#">Manage Projects</Link>
                     </div>
                   </div>
                   <div className="overflow-scroll">

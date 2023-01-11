@@ -169,10 +169,10 @@ const BrowseJobs = () => {
     let errorExist = false;
     let errorsObject = {};
     if (filterValues?.min_price < 3) {
-      errorsObject.price = "Min amount must be minimum 3$";
+      errorsObject.price = "Minimum price must be 3$";
       errorExist = true;
     } else if (
-      Number(filterValues?.max_price) <= Number(filterValues?.min_price)
+      Number(filterValues?.max_price) < Number(filterValues?.min_price)
     ) {
       errorsObject.price =
         "Max price must be greater then or equal to min price ";
@@ -599,7 +599,7 @@ const BrowseJobs = () => {
                 ""
               )}
               {jobsList?.length == 0 ? (
-                <ResultNotFound msg="Search result not found " />
+                <ResultNotFound msg="There are no results that match your search " />
               ) : null}
             </Col>
 

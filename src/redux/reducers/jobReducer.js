@@ -7,6 +7,7 @@ import {
   JOBS_LIST,
   JOB_POST_DETAILS,
   ON_DISLIKE_JOB_POST,
+  ON_END_CONTRACT,
   ON_FREELANCER_REQUEST_MILESTONE,
   ON_SUBMIT_WORK_FOR_PAYMENT,
   PROPOSAL_TERMS_CHANGE,
@@ -160,6 +161,11 @@ const jobReducer = (state = initialState, action) => {
       return {
         ...state,
         overviewReports: action.payload,
+      };
+    case ON_END_CONTRACT:
+      return {
+        ...state,
+        whenEndContract: action.payload,
       };
     default:
       return state;
