@@ -13,8 +13,10 @@ import {
   ON_DISLIKE_JOB_POST,
   ON_END_CONTRACT,
   ON_FREELANCER_REQUEST_MILESTONE,
+  ON_SEND_FEEDBACK,
   ON_SUBMIT_WORK_FOR_PAYMENT,
   PROPOSAL_TERMS_CHANGE,
+  REFUND_OR_DUSPUTE,
   SAVED_JOBS_LIST,
   SAVE_JOB_POST,
   SEND_JOB_PROPOSAL,
@@ -643,6 +645,7 @@ export const onFreelancerRequestMilestone =
         });
         if (afterSuccess) {
           setValues({});
+          setPopup(false);
           afterSuccess();
         } else {
           setPopup(false);
@@ -667,6 +670,9 @@ export const getOverViewReport = (data, setLoading, setPopup) => (dispatch) => {
         payload: res.data.data,
         type: GET_OVERVIEW_REPORT,
       });
+      if (setPopup) {
+        setPopup(false);
+      }
     })
     .catch((err) => {
       if (setLoading) {
@@ -686,6 +692,46 @@ export const onEndContract = (data, setLoading, setPopup) => (dispatch) => {
       dispatch({
         payload: res.data.data,
         type: ON_END_CONTRACT,
+      });
+    })
+    .catch((err) => {
+      if (setLoading) {
+        setLoading(false);
+      }
+      setPopup(
+        <ErrorPopup popup={setPopup} message={err.response.data.message} />
+      );
+    });
+};
+export const onGiveFeedBack = (data, setLoading, setPopup) => (dispatch) => {
+  Axios.post(`/feedback`, data, config)
+    .then((res) => {
+      if (setLoading) {
+        setLoading(false);
+      }
+      dispatch({
+        payload: res.data,
+        type: ON_SEND_FEEDBACK,
+      });
+    })
+    .catch((err) => {
+      if (setLoading) {
+        setLoading(false);
+      }
+      setPopup(
+        <ErrorPopup popup={setPopup} message={err.response.data.message} />
+      );
+    });
+};
+export const onRefundOrDispute = (data, setLoading, setPopup) => (dispatch) => {
+  Axios.post(`/freelancer-dispute`, data, config)
+    .then((res) => {
+      if (setLoading) {
+        setLoading(false);
+      }
+      dispatch({
+        payload: res.data,
+        type: REFUND_OR_DUSPUTE,
       });
     })
     .catch((err) => {

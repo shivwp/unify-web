@@ -82,8 +82,6 @@ const TimeSheet = ({ setLoading, setPopup }) => {
       errorsObject.hours = "Minuts can't be less then 0";
     }
 
-    console.log(`${values[index]?.hours}:${values[index].minuts}`);
-
     if (errorExist) {
       setErrors(errorsObject);
       return false;
@@ -105,6 +103,8 @@ const TimeSheet = ({ setLoading, setPopup }) => {
     };
     dispatch(AddTimeSheetTime(data, setTimeInput, setLoading, setPopup));
   };
+
+  
 
   const weekSelect = (dates) => {
     console.log(dates);
@@ -193,7 +193,11 @@ const TimeSheet = ({ setLoading, setPopup }) => {
                                 id="hours"
                                 tabIndex={1}
                                 placeholder="Hours"
-                                value={values[index].hours}
+                                value={
+                                  values[index].hours > 0
+                                    ? values[index].hours
+                                    : null
+                                }
                                 onChange={(e) => handleOnChange(e, index)}
                               />
                               <input
@@ -203,7 +207,11 @@ const TimeSheet = ({ setLoading, setPopup }) => {
                                 tabIndex={2}
                                 className="timesheet_time_input"
                                 placeholder="Minute"
-                                value={values[index].minuts}
+                                value={
+                                  values[index].minuts > 0
+                                    ? values[index].minuts
+                                    : null
+                                }
                                 onChange={(e) => handleOnChange(e, index)}
                               />
                             </div>

@@ -9,9 +9,9 @@ const ByMilesstone = ({
   singleJobDetails,
   errors,
   setErrors,
+  setTotalPrice,
+  totalPrice,
 }) => {
-  const [totalPrice, setTotalPrice] = useState(0.0);
-
   useEffect(() => {
     let add = 0;
     for (let i = 0; i < inputList?.length; i++) {
@@ -344,6 +344,8 @@ const FixedBid = ({
   handleRadioChange,
   isByMilestone,
   setErrors,
+  totalPrice,
+  setTotalPrice,
 }) => {
   return (
     <>
@@ -450,6 +452,8 @@ const FixedBid = ({
                   setInputList={setInputList}
                   setErrors={setErrors}
                   errors={errors}
+                  setTotalPrice={setTotalPrice}
+                  totalPrice={totalPrice}
                 />
               ) : isByMilestone == "by_project" ? (
                 <ByProject

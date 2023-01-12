@@ -14,6 +14,7 @@ import OverViewHourly from "./OverViewHourly";
 import LoadingSpinner from "../../../../components/LoadingSpinner";
 import ConfirmationPopup from "../../../components/popups/ConfirmationPopup";
 import $ from "jquery";
+import FeedBackPopup from "../popups/FeedBackPopup";
 
 const SingleContracts = () => {
   const navigate = useNavigate();
@@ -32,13 +33,21 @@ const SingleContracts = () => {
   const singleContractData = useSelector(
     (state) => state?.job?.singleContractData
   );
+  const sendFeedBack = useSelector((state) => state?.job?.sendFeedBack);
 
   const whenEndContract = useSelector((state) => state?.job?.whenEndContract);
+  const refundOrDispute = useSelector((state) => state?.job?.refundOrDispute);
 
   useEffect(() => {
     setLoading(true);
     dispatch(SingleContractData(id, setLoading, setPopup));
-  }, [onSubmitWorkForPayment, onRequestForMilestone, whenEndContract]);
+  }, [
+    onSubmitWorkForPayment,
+    onRequestForMilestone,
+    whenEndContract,
+    sendFeedBack,
+    refundOrDispute,
+  ]);
 
   const endContract = () => {
     const data = {
@@ -48,6 +57,18 @@ const SingleContracts = () => {
     setLoading(true);
     dispatch(onEndContract(data, setLoading, setPopup));
   };
+
+  // useEffect(() => {
+  //   if (singleContractData?.status == "close") {
+  //     setPopup(
+  //       <FeedBackPopup
+  //         contract_id={singleContractData?.id}
+  //         popup={setPopup}
+  //         setLoading={setLoading}
+  //       />
+  //     );
+  //   }
+  // }, [singleContractData?.status]);
 
   $(document).mouseup(function (e) {
     if ($(e.target).closest("#contract_right_btn, #three_dots").length === 0) {
@@ -170,6 +191,7 @@ const SingleContracts = () => {
         {currentTab === "OVERVIEW" ? (
           buttonStatus == "see-timesheet" ? (
             <OverViewHourly
+              setCurrentTab={setCurrentTab}
               setPopup={setPopup}
               singleContractData={singleContractData}
             />

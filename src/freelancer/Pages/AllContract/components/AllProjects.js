@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 
 const AllProjects = ({ getAllContracts }) => {
   console.log(getAllContracts);
+
+  
   return (
     <>
       {getAllContracts?.length === 0 ? (
@@ -35,7 +37,25 @@ const AllProjects = ({ getAllContracts }) => {
                 <Row style={{ marginTop: 10 }}>
                   <Col lg={9} md={7}>
                     <div className="job_head_s">
-                      <h2>{item?.project?.name || ""}</h2>
+                      <Link
+                        to={
+                          item.button_status == "submit work for payment"
+                            ? `/freelancer/single-contract/submit-work-for-payment/${item.id}`
+                            : item.button_status == "propose new contract"
+                            ? `/freelancer/single-contract/propose-new-contract/${item.id}`
+                            : item.button_status == "see timesheet"
+                            ? `/freelancer/single-contract/see-timesheet/${item.id}`
+                            : item.button_status == "send message"
+                            ? `/freelancer/single-contract/send-message/${item.id}`
+                            : item.button_status == "review and resubmit work"
+                            ? `/freelancer/single-contract/review-and-resubmit-work/${item.id}`
+                            : item.button_status == "see dispute"
+                            ? `/freelancer/single-contract/see-dispute/${item.id}`
+                            : ""
+                        }
+                      >
+                        <h2>{item?.project?.name || ""}</h2>
+                      </Link>
                     </div>
                     <div className="job_d_par">
                       <p>
@@ -57,7 +77,7 @@ const AllProjects = ({ getAllContracts }) => {
                           item.button_status == "submit work for payment"
                             ? `/freelancer/single-contract/submit-work-for-payment/${item.id}`
                             : item.button_status == "propose new contract"
-                            ? `/freelancer/single-contract/propose-new-contract/${item.id}`
+                            ? `/freelancer/chat`
                             : item.button_status == "see timesheet"
                             ? `/freelancer/single-contract/see-timesheet/${item.id}`
                             : item.button_status == "send message"
@@ -69,7 +89,11 @@ const AllProjects = ({ getAllContracts }) => {
                             : ""
                         }
                       >
-                        <button>{item.button_status}</button>
+                        <button style={{ textTransform: "capitalize" }}>
+                          {item.button_status == "propose new contract"
+                            ? "See Message"
+                            : item.button_status}
+                        </button>
                       </Link>
                     </div>
                   </Col>

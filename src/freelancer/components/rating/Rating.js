@@ -1,4 +1,4 @@
-const StarRating = ({ rating }) => {
+const StarRating = ({ rating, setStarRating }) => {
   const stars = [];
   for (let i = 1; i <= 5; i++) {
     if (i <= rating) {
@@ -48,12 +48,22 @@ const StarRating = ({ rating }) => {
       );
     }
   }
+
+  const giveRating = (rate) => {
+    setStarRating(rate);
+  };
   return (
     <>
       <div className="reviews">
         <div className="stars">
           {stars?.map((item, index) => (
-            <span key={index}>{item}</span>
+            <span
+              style={{ cursor: "pointer" }}
+              key={index}
+              onClick={() => giveRating(index + 1)}
+            >
+              {item}
+            </span>
           ))}
         </div>
       </div>

@@ -518,7 +518,7 @@ const CustomeDateRangePicker = ({
             type="text"
             onFocus={() => setShowCalendar(true)}
             value={
-              fullWeekSelect && activeDates
+              (fullWeekSelect && activeDates) || (weekSelect && activeDates)
                 ? `${selectedRangeStartAndEndDate(activeDates)?.start_date} - ${
                     selectedRangeStartAndEndDate(activeDates)?.end_date
                   }`

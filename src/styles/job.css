@@ -3797,6 +3797,9 @@
   padding: 0 11px;
   height: 40px;
 }
+.edit_contact_inp input::placeholder {
+  color: rgb(184, 184, 184);
+}
 
 .edit_contact_inp select {
   border: none;
@@ -4031,6 +4034,16 @@
 .milestone_overview_right .timesheet_msg {
   /* font-size: 15px; */
   margin: 10px 0 30px 0;
+}
+.milestone_overview_right .see_timeshee_botton {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+  cursor: pointer;
+}
+.milestone_overview_right .see_timeshee_botton:hover {
+  color: #6d2ef1;
+  text-decoration: underline;
 }
 
 .milestone_overview_right .timesheet_msg span {

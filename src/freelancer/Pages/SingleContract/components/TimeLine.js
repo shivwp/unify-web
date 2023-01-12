@@ -1,16 +1,19 @@
 import React from "react";
 import { Col } from "react-bootstrap";
+import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import { keyframes } from "styled-components";
+import { onRefundOrDispute } from "../../../../redux/actions/jobActions";
 import AddMilestonePopup from "../popups/AddMilestonePopup";
+import RaiseADispute from "../popups/RaiseADispute";
 import RequestMilestoneChanges from "../popups/RequestMilestoneChanges";
 import ResubmitRevision from "../popups/ResubmitRevision";
 import SubmitWorkForPaymentPopup from "../popups/SubmitWorkForPaymentPopup";
 
 const TimeLine = ({ setPopup, singleContractData, setLoading }) => {
   const { buttonStatus } = useParams();
-
+  const dispatch = useDispatch();
   const afterSuccess = () => {
     setPopup(
       <AddMilestonePopup
@@ -58,6 +61,16 @@ const TimeLine = ({ setPopup, singleContractData, setLoading }) => {
     animation-fill-mode: both;
   `;
 
+  const refundOrDispute = (action, milestone_id, description, amount) => {
+    const data = {
+      description,
+      milestone_id,
+      amount,
+      action,
+    };
+    dispatch(onRefundOrDispute(data, setLoading, setPopup));
+  };
+
   return (
     <>
       <Col md={7} lg={8}>
@@ -70,9 +83,18 @@ const TimeLine = ({ setPopup, singleContractData, setLoading }) => {
                   {index !== singleContractData?.milestone?.length - 1 ? (
                     <>
                       <ConnectingLine height={"100%"}></ConnectingLine>
-                      {item.status == "active" || item.status == "paid" ? (
+                      {item.status == "active" ||
+                      item.status == "paid" ||
+                      item.status == "dispute" ||
+                      item.status == "refunded" ? (
                         <Progress
-                          height={item.status == "paid" ? "100%" : "0%"}
+                          height={
+                            item.status == "paid" ||
+                            item.status == "refunded" ||
+                            item.status == "dispute"
+                              ? "100%"
+                              : "0%"
+                          }
                           delay={index}
                         ></Progress>
                       ) : null}
@@ -81,6 +103,8 @@ const TimeLine = ({ setPopup, singleContractData, setLoading }) => {
                   <div className="fill_ filled_background">
                     {item.status == "active" ||
                     item.status == "paid" ||
+                    item.status == "dispute" ||
+                    item.status == "refunded" ||
                     item.status == "submit-work" ? (
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -205,11 +229,30 @@ const TimeLine = ({ setPopup, singleContractData, setLoading }) => {
                             Refund Requested
                           </button>
                           <div className="submit_work_btn">
-                            <button>Approve</button>
-                            <button>Raise A Dispute</button>
+                            <button
+                              onClick={() =>
+                                refundOrDispute("refunded", item.id)
+                              }
+                            >
+                              Approve
+                            </button>
+                            <button
+                              onClick={() =>
+                                setPopup(
+                                  <RaiseADispute
+                                    popup={setPopup}
+                                    milestone_id={item.id}
+                                    amount={item.amount}
+                                    onDispute={refundOrDispute}
+                                  />
+                                )
+                              }
+                            >
+                              Raise A Dispute
+                            </button>
                           </div>
                         </>
-                      ) : item.status == "refund" ? (
+                      ) : item.status == "refunded" ? (
                         <button className="me-2 mb-2">Amount Refund</button>
                       ) : item.status == "dispute" ? (
                         <button className="me-2 mb-2">In Dispute</button>
@@ -220,11 +263,11 @@ const TimeLine = ({ setPopup, singleContractData, setLoading }) => {
               </>
             ))}
             {singleContractData?.milestone[
-              singleContractData?.milestone.length - 1
-            ].status == "paid" ||
+              singleContractData?.milestone?.length - 1
+            ]?.status == "paid" ||
             singleContractData?.milestone[
-              singleContractData?.milestone.length - 1
-            ].status == "draft" ? (
+              singleContractData?.milestone?.length - 1
+            ]?.status == "draft" ? (
               <div className="submit_work_btn">
                 <button
                   onClick={() =>

@@ -9,8 +9,10 @@ import {
   ON_DISLIKE_JOB_POST,
   ON_END_CONTRACT,
   ON_FREELANCER_REQUEST_MILESTONE,
+  ON_SEND_FEEDBACK,
   ON_SUBMIT_WORK_FOR_PAYMENT,
   PROPOSAL_TERMS_CHANGE,
+  REFUND_OR_DUSPUTE,
   SAVED_JOBS_LIST,
   SAVE_JOB_POST,
   SEND_JOB_PROPOSAL,
@@ -166,6 +168,16 @@ const jobReducer = (state = initialState, action) => {
       return {
         ...state,
         whenEndContract: action.payload,
+      };
+    case ON_SEND_FEEDBACK:
+      return {
+        ...state,
+        sendFeedBack: action.payload,
+      };
+    case REFUND_OR_DUSPUTE:
+      return {
+        ...state,
+        refundOrDispute: action.payload,
       };
     default:
       return state;

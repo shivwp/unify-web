@@ -34,12 +34,22 @@ const Screen = () => {
   const [isByMilestone, setIsByMilestone] = useState("by_milestone");
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
+  const [totalPrice, setTotalPrice] = useState(0.0);
+
   const singleFreelancer = useSelector(
     (state) => state.freelancer.singleFreelancer
   );
   const [inputList, setInputList] = useState([
     { description: "", due_date: "", amount: 0 },
   ]);
+
+  useEffect(() => {
+    let add = 0;
+    for (let i = 0; i < inputList?.length; i++) {
+      add += Number(inputList[i]?.amount);
+      setTotalPrice(add);
+    }
+  }, [inputList]);
 
   useEffect(() => {
     if (singleJobDetails?.budget_type == "hourly") {
@@ -72,7 +82,6 @@ const Screen = () => {
 
   // console.log(singleJobDetails);
 
-  console.log(inputList);
   const onSendProposal = () => {
     scrollTo = false;
     setLoading(true);
@@ -213,6 +222,7 @@ const Screen = () => {
         formData.append("milestone_type", "multiple");
         formData.append("project_duration", values?.project_duration);
         formData.append("milestone_data", JSON.stringify(inputList));
+        formData.append("bid_amount", totalPrice);
       }
     }
     dispatch(
@@ -519,6 +529,8 @@ const Screen = () => {
                   handleRadioChange={handleRadioChange}
                   isByMilestone={isByMilestone}
                   setErrors={setErrors}
+                  setTotalPrice={setTotalPrice}
+                  totalPrice={totalPrice}
                 />
               ) : singleJobDetails?.budget_type == "hourly" ? (
                 <HourlyBid
