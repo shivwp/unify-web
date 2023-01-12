@@ -94,7 +94,7 @@ const ClientRoutes = () => {
         <Route path="/my-jobs" element={<MyJobs />} />
         <Route path="/all-contracts" element={<AllContracts />} />
         <Route
-          path="/single-contracts/:buttonStatus/:contact_id"
+          path="/single-contracts/:buttonStatus/:contract_id"
           element={<SingleContracts />}
         />
         <Route path="/talent-discover" element={<TalentDiscover />} />

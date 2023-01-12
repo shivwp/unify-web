@@ -83,11 +83,9 @@ const Jobs = ({ clientContractList }) => {
                     </div>
                   </Link>
                 ) : data?.button_status === "rehire" ? (
-                  <Link to={`/single-contracts/overview/${data.id}`}>
-                    <div className="contract-listButton">
-                      <button className="RehireButton">Rehire</button>
-                    </div>
-                  </Link>
+                  <div className="contract-listButton">
+                    <button className="RehireButton">Rehire</button>
+                  </div>
                 ) : null}
               </div>
               <div className="contract-listDetails">

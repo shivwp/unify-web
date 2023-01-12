@@ -88,106 +88,242 @@ const Overview = ({
                         ) : null}
                       </>
                     ) : null}
-                    {item.status == "active" ||
-                    item.status === "paid" ||
-                    item.status == "submit-work" ? (
-                      <div className="fill_ filled_background fa-checkBackground">
-                        <i className="fa fa-check text-white"></i>
-                      </div>
-                    ) : (
-                      <div className="fill_ filled_background">{index + 1}</div>
-                    )}
 
-                    <div className="about_step">
-                      <div className="p_heading">{item.description}</div>
-                      <div className="paid_btn">
-                        <span
-                          style={{
-                            fontSize: "16px",
-                            fontWeight: "600",
-                            color: "rgb(0, 0, 0)",
-                            marginRight: "10px",
-                          }}
-                        >
-                          ${item.amount.toFixed(2)}
-                        </span>
-                        {item.status === "active" ? (
-                          <button>Paid</button>
-                        ) : item.status === "submit-work" ? (
-                          <button>Paid</button>
-                        ) : item.status === "changed" ? (
-                          <button>In Review</button>
-                        ) : item.status === "created" ? (
-                          <button>Pending</button>
-                        ) : item.status === "paid" ? (
-                          <button>Completed</button>
-                        ) : item.status === "draft" ? (
-                          <button>In Review</button>
-                        ) : item.status === "refund-requested" ? (
-                          <button>Refund Requested</button>
-                        ) : null}
-                      </div>
+                    {item.status === "active" ? (
+                      <>
+                        <div className="fill_ filled_background fa-checkBackground">
+                          <i className="fa fa-check text-white"></i>
+                        </div>
+                        <div className="about_step">
+                          <div className="p_heading">{item.description}</div>
+                          <div className="paid_btn">
+                            <span
+                              style={{
+                                fontSize: "16px",
+                                fontWeight: "600",
+                                color: "rgb(0, 0, 0)",
+                                marginRight: "10px",
+                              }}
+                            >
+                              ${item.amount.toFixed(2)}
+                            </span>
+                            <button>Active and Funded</button>
+                          </div>
+                        </div>
+                      </>
+                    ) : item.status === "submit-work" ? (
+                      <>
+                        <div className="fill_ filled_background fa-checkBackground">
+                          <i className="fa fa-check text-white"></i>
+                        </div>
+                        <div className="about_step">
+                          <div className="p_heading">{item.description}</div>
+                          <div className="paid_btn">
+                            <span
+                              style={{
+                                fontSize: "16px",
+                                fontWeight: "600",
+                                color: "rgb(0, 0, 0)",
+                                marginRight: "10px",
+                              }}
+                            >
+                              ${item.amount.toFixed(2)}
+                            </span>
+                            <button>Paid</button>
+                          </div>
+                          <div className="submit_work_btn">
+                            <button
+                              onClick={() =>
+                                setPopup(
+                                  <ReviewRequestWork
+                                    milestone_id={item.id}
+                                    popup={setPopup}
+                                    setLoading={setLoading}
+                                  />
+                                )
+                              }
+                            >
+                              Review & Request for change
+                            </button>
+                          </div>
+                        </div>
+                      </>
+                    ) : item.status === "changed" ? (
+                      <>
+                        <div className="fill_ filled_background">
+                          {index + 1}
+                        </div>
+                        <div className="about_step">
+                          <div className="p_heading">{item.description}</div>
+                          <div className="paid_btn">
+                            <span
+                              style={{
+                                fontSize: "16px",
+                                fontWeight: "600",
+                                color: "rgb(0, 0, 0)",
+                                marginRight: "10px",
+                              }}
+                            >
+                              ${item.amount.toFixed(2)}
+                            </span>
+                            <button>In Review</button>
+                          </div>
+                        </div>
+                      </>
+                    ) : item.status === "created" ? (
+                      <>
+                        <div className="fill_ filled_background">
+                          {index + 1}
+                        </div>
+                        <div className="about_step">
+                          <div className="p_heading">{item.description}</div>
+                          <div className="paid_btn">
+                            <span
+                              style={{
+                                fontSize: "16px",
+                                fontWeight: "600",
+                                color: "rgb(0, 0, 0)",
+                                marginRight: "10px",
+                              }}
+                            >
+                              ${item.amount.toFixed(2)}
+                            </span>
 
-                      {item.status === "created" ? (
-                        <>
+                            {milestoneData?.filter(
+                              (ele) => ele.status == "created"
+                            )[0].id == item.id ? (
+                              <button>In-Active</button>
+                            ) : (
+                              <button>Pending</button>
+                            )}
+                          </div>
                           {milestoneData?.filter(
                             (ele) => ele.status == "created"
-                          )[0].id == item.id ? (
+                          )[0].id == item.id && (
                             <div
                               className="submit_work_btn"
                               onClick={() =>
-                                setPopup(<FundMilestone popup={setPopup} />)
+                                setPopup(
+                                  <FundMilestone
+                                    popup={setPopup}
+                                    milestoneId={item.id}
+                                  />
+                                )
                               }
                             >
                               <button>Fund Milestone</button>
                             </div>
-                          ) : (
-                            <div className="submit_work_btn">
-                              <button>
-                                Message{" "}
-                                {singleContractData?.freelancer?.first_name}
-                              </button>
-                            </div>
                           )}
-                        </>
-                      ) : item.status === "submit-work" ? (
-                        <div className="submit_work_btn">
-                          <button
-                            onClick={() =>
-                              setPopup(
-                                <ReviewRequestWork
-                                  milestone_id={item.id}
-                                  popup={setPopup}
-                                  setLoading={setLoading}
-                                />
-                              )
-                            }
-                          >
-                            Review & Request for change
-                          </button>
                         </div>
-                      ) : item.status === "draft" ? (
-                        <div className="submit_work_btn">
-                          <button
-                            onClick={() =>
-                              setPopup(
-                                <AddMilestone
-                                  popup={setPopup}
-                                  milestoneDetails={item}
-                                  setLoading={setLoading}
-                                  singleContractData={singleContractData}
-                                />
-                              )
-                            }
-                          >
-                            Review and Approve
-                          </button>
-                          <button onClick={() => deleteMilestone(item.id)}>
-                            Decline
-                          </button>
+                      </>
+                    ) : item.status === "paid" ? (
+                      <>
+                        <div className="fill_ filled_background fa-checkBackground">
+                          <i className="fa fa-check text-white"></i>
                         </div>
-                      ) : null}
-                    </div>
+                        <div className="about_step">
+                          <div className="p_heading">{item.description}</div>
+                          <div className="paid_btn">
+                            <span
+                              style={{
+                                fontSize: "16px",
+                                fontWeight: "600",
+                                color: "rgb(0, 0, 0)",
+                                marginRight: "10px",
+                              }}
+                            >
+                              ${item.amount.toFixed(2)}
+                            </span>
+                            <button>Paid</button>
+                          </div>
+                        </div>
+                      </>
+                    ) : item.status === "draft" ? (
+                      <>
+                        <div className="fill_ filled_background">
+                          {index + 1}
+                        </div>
+                        <div className="about_step">
+                          <div className="p_heading">{item.description}</div>
+                          <div className="paid_btn">
+                            <span
+                              style={{
+                                fontSize: "16px",
+                                fontWeight: "600",
+                                color: "rgb(0, 0, 0)",
+                                marginRight: "10px",
+                              }}
+                            >
+                              ${item.amount.toFixed(2)}
+                            </span>
+                            <button>In Review</button>
+                          </div>
+                          <div className="submit_work_btn">
+                            <button
+                              onClick={() =>
+                                setPopup(
+                                  <AddMilestone
+                                    popup={setPopup}
+                                    milestoneDetails={item}
+                                    setLoading={setLoading}
+                                    singleContractData={singleContractData}
+                                  />
+                                )
+                              }
+                            >
+                              Review and Approve
+                            </button>
+                            <button onClick={() => deleteMilestone(item.id)}>
+                              Decline
+                            </button>
+                          </div>
+                        </div>
+                      </>
+                    ) : item.status === "refund-requested" ? (
+                      <>
+                        <div className="fill_ filled_background">
+                          {index + 1}
+                        </div>
+                        <div className="about_step">
+                          <div className="p_heading">{item.description}</div>
+                          <div className="paid_btn">
+                            <span
+                              style={{
+                                fontSize: "16px",
+                                fontWeight: "600",
+                                color: "rgb(0, 0, 0)",
+                                marginRight: "10px",
+                              }}
+                            >
+                              ${item.amount.toFixed(2)}
+                            </span>
+                            <button>Refund Requested</button>
+                          </div>
+                        </div>
+                      </>
+                    ) : item.status === "dispute" ? (
+                      <>
+                        <div className="fill_ filled_background">
+                          {index + 1}
+                        </div>
+                        <div className="about_step">
+                          <div className="p_heading">{item.description}</div>
+                          <div className="paid_btn">
+                            <span
+                              style={{
+                                fontSize: "16px",
+                                fontWeight: "600",
+                                color: "rgb(0, 0, 0)",
+                                marginRight: "10px",
+                              }}
+                            >
+                              ${item.amount.toFixed(2)}
+                            </span>
+                            <button>dispute</button>
+                          </div>
+                        </div>
+                      </>
+                    ) : null}
                   </div>
                 </>
               ))}

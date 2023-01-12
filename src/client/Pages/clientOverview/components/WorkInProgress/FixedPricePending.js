@@ -30,7 +30,9 @@ const FixedPricePending = ({ overviewFixed }) => {
           <div className="data_rows" key={key}>
             <div className="data_row">{item.due_date}</div>
             <div className="data_row name_row">
-              <div className="image">AK</div>
+              <div className="image">
+                <img src={item.profile_image} alt="" />
+              </div>
               <div className="desc">
                 <div className="name">{item.client_name}</div>
                 <div className="about">{item.project_name}</div>

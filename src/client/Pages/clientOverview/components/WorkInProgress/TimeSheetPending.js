@@ -49,9 +49,26 @@ const TimeSheetPending = ({ overviewHourly }) => {
         {/* data rows start */}
         {/* data rows end */}
         {overviewHourly?.map((item, key) => (
-          <div className="data_rows">
+          <div className="data_rows" key={key}>
             <div className="data_row name_row">
-              <div className="image">AK</div>
+              <div
+                className="image"
+                style={{
+                  width: "50px",
+                  height: "50px",
+                }}
+              >
+                <img
+                  src={item.profile_image}
+                  alt=""
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "cover",
+                    borderRadius: "50%",
+                  }}
+                />
+              </div>
               <div className="desc">
                 <div className="name">{item.client_name}</div>
                 <div className="about">{item.project_name}</div>

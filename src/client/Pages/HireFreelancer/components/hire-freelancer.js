@@ -400,14 +400,14 @@ const Screen = () => {
                         onChange={(e) => onInputChange(e)}
                       >
                         <option value="No limit">No limit</option>
-                        <option value="5">5 hrs/week</option>
-                        <option value="10">10 hrs/week</option>
-                        <option value="15">15 hrs/week</option>
-                        <option value="20">20 hrs/week</option>
-                        <option value="25">25 hrs/week</option>
-                        <option value="30">30 hrs/week</option>
-                        <option value="35">35 hrs/week</option>
-                        <option value="40">40 hrs/week</option>
+                        <option value="5:00">5 hrs/week</option>
+                        <option value="10:00">10 hrs/week</option>
+                        <option value="15:00">15 hrs/week</option>
+                        <option value="20:00">20 hrs/week</option>
+                        <option value="25:00">25 hrs/week</option>
+                        <option value="30:00">30 hrs/week</option>
+                        <option value="35:00">35 hrs/week</option>
+                        <option value="40:00">40 hrs/week</option>
                       </Form.Select>
                       &nbsp;
                       <span>hrs/week</span>

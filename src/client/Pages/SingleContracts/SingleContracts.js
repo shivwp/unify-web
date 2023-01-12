@@ -2,7 +2,10 @@ import React, { useState, useEffect } from "react";
 import { Container } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import { SingleContractData } from "../../../redux/actions/jobActions";
+import {
+  onEndContract,
+  SingleContractData,
+} from "../../../redux/actions/jobActions";
 import Layout from "../../Layout/Layout";
 import Details from "./Details";
 import Messages from "./Messages";
@@ -15,7 +18,7 @@ const SingleContracts = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
-  const { buttonStatus, contact_id } = useParams();
+  const { buttonStatus, contract_id } = useParams();
   const [currentTab, setCurrentTab] = useState("overview");
   const [popup, setPopup] = useState();
   const singleContractData = useSelector(
@@ -28,6 +31,9 @@ const SingleContracts = () => {
     (state) => state?.job?.singleContractData?.milestone
   );
   const addMilestone = useSelector((state) => state?.freelancer?.addMilestone);
+  const fundMilestone = useSelector(
+    (state) => state?.freelancer?.fundMilestone
+  );
   const declineMilestone = useSelector(
     (state) => state?.freelancer?.declineMilestone
   );
@@ -38,15 +44,26 @@ const SingleContracts = () => {
 
   useEffect(() => {
     setLoading(true);
-    dispatch(SingleContractData(contact_id, setLoading));
-  }, [reviewWorkAndChange, addMilestone, declineMilestone]);
+    dispatch(SingleContractData(contract_id, setLoading));
+  }, [reviewWorkAndChange, addMilestone, declineMilestone, fundMilestone]);
 
-  const deleteMilestone = (milestone_id) => {
+  const deleteMilestone = (id) => {
     const data = {
-      milestone_id,
+      milestone: id,
     };
 
     dispatch(clientDeclineMilestone(data));
+  };
+
+  const endContracts = () => {
+    // const data = {
+    //   contract_id: contract_id,
+    //   type: "client",
+    //   milestone_id: 5,
+    //   milestone_status: "refund-requested",
+    // };
+    // setLoading(true);
+    // dispatch(onEndContract(data, setLoading));
   };
 
   return (
@@ -70,7 +87,9 @@ const SingleContracts = () => {
                   <div className="prof_sm_me">12:19 pm Friday</div>
                 </div>
               </div>
-              <button className="endContracts-button">End Contracts</button>
+              <button className="endContracts-button" onClick={endContracts}>
+                End Contracts
+              </button>
             </div>
             <div className="d-flex justify-content-between align-items-center flex-wrap my-4">
               <div className="me_hed_h2_new">
@@ -86,7 +105,7 @@ const SingleContracts = () => {
                     }`}
                     onClick={() => {
                       setCurrentTab("overview");
-                      navigate(`/single-contracts/overview/${contact_id}`);
+                      navigate(`/single-contracts/overview/${contract_id}`);
                     }}
                   >
                     Overview
@@ -108,7 +127,7 @@ const SingleContracts = () => {
                     }`}
                     onClick={() => {
                       setCurrentTab("details");
-                      navigate(`/single-contracts/details/${contact_id}`);
+                      navigate(`/single-contracts/details/${contract_id}`);
                     }}
                   >
                     Details
